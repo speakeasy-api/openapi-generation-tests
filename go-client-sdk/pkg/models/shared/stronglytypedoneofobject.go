@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 )
 
 type StronglyTypedOneOfObjectType string

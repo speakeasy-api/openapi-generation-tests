@@ -6,51 +6,51 @@ import (
 	"net/http"
 )
 
-type RequestBodyPostEmptyObjectRequestBodyEmpty struct {
+type Empty struct {
 }
 
-type RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties struct {
+type EmptyWithEmptyProperties struct {
 }
 
 type RequestBodyPostEmptyObjectRequestBody struct {
-	Empty                    *RequestBodyPostEmptyObjectRequestBodyEmpty                    `json:"empty,omitempty"`
-	EmptyWithEmptyProperties *RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties `json:"emptyWithEmptyProperties,omitempty"`
+	Empty                    *Empty                    `json:"empty,omitempty"`
+	EmptyWithEmptyProperties *EmptyWithEmptyProperties `json:"emptyWithEmptyProperties,omitempty"`
 }
 
-func (o *RequestBodyPostEmptyObjectRequestBody) GetEmpty() *RequestBodyPostEmptyObjectRequestBodyEmpty {
+func (o *RequestBodyPostEmptyObjectRequestBody) GetEmpty() *Empty {
 	if o == nil {
 		return nil
 	}
 	return o.Empty
 }
 
-func (o *RequestBodyPostEmptyObjectRequestBody) GetEmptyWithEmptyProperties() *RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties {
+func (o *RequestBodyPostEmptyObjectRequestBody) GetEmptyWithEmptyProperties() *EmptyWithEmptyProperties {
 	if o == nil {
 		return nil
 	}
 	return o.EmptyWithEmptyProperties
 }
 
-type RequestBodyPostEmptyObject200ApplicationJSONEmpty struct {
+type RequestBodyPostEmptyObjectEmpty struct {
 }
 
-type RequestBodyPostEmptyObject200ApplicationJSONEmptyRespWithEmptyProperies struct {
+type EmptyRespWithEmptyProperies struct {
 }
 
-// RequestBodyPostEmptyObject200ApplicationJSON - OK
-type RequestBodyPostEmptyObject200ApplicationJSON struct {
-	Empty                       *RequestBodyPostEmptyObject200ApplicationJSONEmpty                       `json:"empty,omitempty"`
-	EmptyRespWithEmptyProperies *RequestBodyPostEmptyObject200ApplicationJSONEmptyRespWithEmptyProperies `json:"emptyRespWithEmptyProperies,omitempty"`
+// RequestBodyPostEmptyObjectResponseBody - OK
+type RequestBodyPostEmptyObjectResponseBody struct {
+	Empty                       *RequestBodyPostEmptyObjectEmpty `json:"empty,omitempty"`
+	EmptyRespWithEmptyProperies *EmptyRespWithEmptyProperies     `json:"emptyRespWithEmptyProperies,omitempty"`
 }
 
-func (o *RequestBodyPostEmptyObject200ApplicationJSON) GetEmpty() *RequestBodyPostEmptyObject200ApplicationJSONEmpty {
+func (o *RequestBodyPostEmptyObjectResponseBody) GetEmpty() *RequestBodyPostEmptyObjectEmpty {
 	if o == nil {
 		return nil
 	}
 	return o.Empty
 }
 
-func (o *RequestBodyPostEmptyObject200ApplicationJSON) GetEmptyRespWithEmptyProperies() *RequestBodyPostEmptyObject200ApplicationJSONEmptyRespWithEmptyProperies {
+func (o *RequestBodyPostEmptyObjectResponseBody) GetEmptyRespWithEmptyProperies() *EmptyRespWithEmptyProperies {
 	if o == nil {
 		return nil
 	}
@@ -65,7 +65,7 @@ type RequestBodyPostEmptyObjectResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	RequestBodyPostEmptyObject200ApplicationJSONObject *RequestBodyPostEmptyObject200ApplicationJSON
+	Object *RequestBodyPostEmptyObjectResponseBody
 }
 
 func (o *RequestBodyPostEmptyObjectResponse) GetContentType() string {
@@ -89,9 +89,9 @@ func (o *RequestBodyPostEmptyObjectResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *RequestBodyPostEmptyObjectResponse) GetRequestBodyPostEmptyObject200ApplicationJSONObject() *RequestBodyPostEmptyObject200ApplicationJSON {
+func (o *RequestBodyPostEmptyObjectResponse) GetObject() *RequestBodyPostEmptyObjectResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBodyPostEmptyObject200ApplicationJSONObject
+	return o.Object
 }

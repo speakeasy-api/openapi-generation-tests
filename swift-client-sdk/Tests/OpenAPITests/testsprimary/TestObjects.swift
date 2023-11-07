@@ -149,8 +149,8 @@ extension Shared.TypedObject3: Equatable {
 
 // MARK: - Union Types
 
-extension Shared.DeepObjectAny: Equatable {
-  public static func == (lhs: Shared.DeepObjectAny, rhs: Shared.DeepObjectAny) -> Bool {
+extension Shared.`Any`: Equatable {
+  public static func == (lhs: Shared.`Any`, rhs: Shared.`Any`) -> Bool {
     switch (lhs, rhs) {
     case (.simpleObject(let simpleObject1), .simpleObject(let simpleObject2)):
       return simpleObject1 == simpleObject2
@@ -216,8 +216,8 @@ extension Shared.TypedObjectOneOf: Equatable {
   }
 }
 
-extension Operations.PrimitiveTypeOneOfPostResJson: Equatable {
-  public static func == (lhs: Operations.PrimitiveTypeOneOfPostResJson, rhs: Operations.PrimitiveTypeOneOfPostResJson) -> Bool {
+extension Operations.PrimitiveTypeOneOfPostJson: Equatable {
+  public static func == (lhs: Operations.PrimitiveTypeOneOfPostJson, rhs: Operations.PrimitiveTypeOneOfPostJson) -> Bool {
     switch (lhs, rhs) {
     case (.string(let value1), .string(let value2)):
       return value1 == value2
@@ -233,8 +233,8 @@ extension Operations.PrimitiveTypeOneOfPostResJson: Equatable {
   }
 }
 
-extension Operations.MixedTypeOneOfPostResJson: Equatable {
-  public static func == (lhs: Operations.MixedTypeOneOfPostResJson, rhs: Operations.MixedTypeOneOfPostResJson) -> Bool {
+extension Operations.MixedTypeOneOfPostJson: Equatable {
+  public static func == (lhs: Operations.MixedTypeOneOfPostJson, rhs: Operations.MixedTypeOneOfPostJson) -> Bool {
     switch (lhs, rhs) {
     case (.string(let value1), .string(let value2)):
       return value1 == value2
@@ -288,7 +288,7 @@ extension Shared.WeaklyTypedOneOfObject {
   }
 }
 
-extension Operations.DeepObjectQueryParamsMapResArgs {
+extension Operations.DeepObjectQueryParamsMapArgs {
   func string() throws -> String {
     switch self {
     case .string(let string):

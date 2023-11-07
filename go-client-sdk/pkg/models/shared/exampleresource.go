@@ -5,34 +5,34 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 	"time"
 )
 
-type ExampleResourceChocolates struct {
+type Chocolates struct {
 	Description string `json:"description"`
 }
 
-func (o *ExampleResourceChocolates) GetDescription() string {
+func (o *Chocolates) GetDescription() string {
 	if o == nil {
 		return ""
 	}
 	return o.Description
 }
 
-type ExampleResourceEnumNumber int64
+type EnumNumber int64
 
 const (
-	ExampleResourceEnumNumberOne   ExampleResourceEnumNumber = 1
-	ExampleResourceEnumNumberTwo   ExampleResourceEnumNumber = 2
-	ExampleResourceEnumNumberThree ExampleResourceEnumNumber = 3
+	EnumNumberOne   EnumNumber = 1
+	EnumNumberTwo   EnumNumber = 2
+	EnumNumberThree EnumNumber = 3
 )
 
-func (e ExampleResourceEnumNumber) ToPointer() *ExampleResourceEnumNumber {
+func (e EnumNumber) ToPointer() *EnumNumber {
 	return &e
 }
 
-func (e *ExampleResourceEnumNumber) UnmarshalJSON(data []byte) error {
+func (e *EnumNumber) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -43,26 +43,26 @@ func (e *ExampleResourceEnumNumber) UnmarshalJSON(data []byte) error {
 	case 2:
 		fallthrough
 	case 3:
-		*e = ExampleResourceEnumNumber(v)
+		*e = EnumNumber(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ExampleResourceEnumNumber: %v", v)
+		return fmt.Errorf("invalid value for EnumNumber: %v", v)
 	}
 }
 
-type ExampleResourceEnumStr string
+type EnumStr string
 
 const (
-	ExampleResourceEnumStrOne   ExampleResourceEnumStr = "one"
-	ExampleResourceEnumStrTwo   ExampleResourceEnumStr = "two"
-	ExampleResourceEnumStrThree ExampleResourceEnumStr = "three"
+	EnumStrOne   EnumStr = "one"
+	EnumStrTwo   EnumStr = "two"
+	EnumStrThree EnumStr = "three"
 )
 
-func (e ExampleResourceEnumStr) ToPointer() *ExampleResourceEnumStr {
+func (e EnumStr) ToPointer() *EnumStr {
 	return &e
 }
 
-func (e *ExampleResourceEnumStr) UnmarshalJSON(data []byte) error {
+func (e *EnumStr) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -73,26 +73,26 @@ func (e *ExampleResourceEnumStr) UnmarshalJSON(data []byte) error {
 	case "two":
 		fallthrough
 	case "three":
-		*e = ExampleResourceEnumStr(v)
+		*e = EnumStr(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ExampleResourceEnumStr: %v", v)
+		return fmt.Errorf("invalid value for EnumStr: %v", v)
 	}
 }
 
 type ExampleResource struct {
-	ArrayOfNumber []float64                   `json:"arrayOfNumber,omitempty"`
-	ArrayOfString []string                    `json:"arrayOfString,omitempty"`
-	Chocolates    []ExampleResourceChocolates `json:"chocolates"`
-	CreatedAt     *time.Time                  `json:"createdAt,omitempty"`
-	EnumNumber    *ExampleResourceEnumNumber  `json:"enumNumber,omitempty"`
-	EnumStr       *ExampleResourceEnumStr     `json:"enumStr,omitempty"`
-	ID            string                      `json:"id"`
-	MapOfInteger  map[string]int64            `json:"mapOfInteger,omitempty"`
-	MapOfString   map[string]string           `json:"mapOfString,omitempty"`
-	Name          string                      `json:"name"`
-	UpdatedAt     *time.Time                  `json:"updatedAt,omitempty"`
-	Vehicle       ExampleVehicle              `json:"vehicle"`
+	ArrayOfNumber []float64         `json:"arrayOfNumber,omitempty"`
+	ArrayOfString []string          `json:"arrayOfString,omitempty"`
+	Chocolates    []Chocolates      `json:"chocolates"`
+	CreatedAt     *time.Time        `json:"createdAt,omitempty"`
+	EnumNumber    *EnumNumber       `json:"enumNumber,omitempty"`
+	EnumStr       *EnumStr          `json:"enumStr,omitempty"`
+	ID            string            `json:"id"`
+	MapOfInteger  map[string]int64  `json:"mapOfInteger,omitempty"`
+	MapOfString   map[string]string `json:"mapOfString,omitempty"`
+	Name          string            `json:"name"`
+	UpdatedAt     *time.Time        `json:"updatedAt,omitempty"`
+	Vehicle       ExampleVehicle    `json:"vehicle"`
 }
 
 func (e ExampleResource) MarshalJSON() ([]byte, error) {
@@ -120,9 +120,9 @@ func (o *ExampleResource) GetArrayOfString() []string {
 	return o.ArrayOfString
 }
 
-func (o *ExampleResource) GetChocolates() []ExampleResourceChocolates {
+func (o *ExampleResource) GetChocolates() []Chocolates {
 	if o == nil {
-		return []ExampleResourceChocolates{}
+		return []Chocolates{}
 	}
 	return o.Chocolates
 }
@@ -134,14 +134,14 @@ func (o *ExampleResource) GetCreatedAt() *time.Time {
 	return o.CreatedAt
 }
 
-func (o *ExampleResource) GetEnumNumber() *ExampleResourceEnumNumber {
+func (o *ExampleResource) GetEnumNumber() *EnumNumber {
 	if o == nil {
 		return nil
 	}
 	return o.EnumNumber
 }
 
-func (o *ExampleResource) GetEnumStr() *ExampleResourceEnumStr {
+func (o *ExampleResource) GetEnumStr() *EnumStr {
 	if o == nil {
 		return nil
 	}

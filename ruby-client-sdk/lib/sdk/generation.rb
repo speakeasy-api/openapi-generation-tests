@@ -39,7 +39,7 @@ module OpenApiSDK
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, Operations::TypeFromAnchor)
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::AnchorTypesGetTypeFromAnchor)
           res.type_from_anchor = out
         end
       end
@@ -254,8 +254,8 @@ module OpenApiSDK
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, Operations::DeprecatedObjectInSchemaGet200ApplicationJSON)
-          res.deprecated_object_in_schema_get_200_application_json_object = out
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::DeprecatedObjectInSchemaGetResponseBody)
+          res.object = out
         end
       end
       res
@@ -411,8 +411,8 @@ module OpenApiSDK
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, Operations::GetGlobalNameOverride200ApplicationJSON)
-          res.get_global_name_override_200_application_json_object = out
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::GetGlobalNameOverrideResponseBody)
+          res.object = out
         end
       end
       res
@@ -440,14 +440,14 @@ module OpenApiSDK
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, Operations::IgnoredGenerationGet200ApplicationJSON)
-          res.ignored_generation_get_200_application_json_object = out
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::IgnoredGenerationGetResponseBody)
+          res.object = out
         end
       end
       res
     end
 
-    sig { params(request_body: Operations::IgnoresPostApplicationJSON, test_param: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request_body: Operations::IgnoresPostRequestBody, test_param: T.nilable(String)).returns(Utils::FieldAugmented) }
     def ignores_post(request_body, test_param = nil)
 
       request = Operations::IgnoresPostRequest.new(
@@ -493,7 +493,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(test_enum_query_param: Operations::NameOverrideGetEnumNameOverride, test_query_param: String).returns(Utils::FieldAugmented) }
+    sig { params(test_enum_query_param: Operations::EnumNameOverride, test_query_param: String).returns(Utils::FieldAugmented) }
     def name_override(test_enum_query_param, test_query_param)
 
       request = Operations::NameOverrideGetRequest.new(
@@ -522,7 +522,7 @@ module OpenApiSDK
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, Operations::OverriddenResponse)
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::NameOverrideGetOverriddenResponse)
           res.overridden_response = out
         end
       end
@@ -587,7 +587,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(bigint: T.nilable(Integer), date: T.nilable(Date), decimal: T.nilable(Float), obj: T.nilable(Operations::TypedParameterGenerationGetObj)).returns(Utils::FieldAugmented) }
+    sig { params(bigint: T.nilable(Integer), date: T.nilable(Date), decimal: T.nilable(Float), obj: T.nilable(Operations::Obj)).returns(Utils::FieldAugmented) }
     def typed_parameter_generation_get(bigint = nil, date = nil, decimal = nil, obj = nil)
 
       request = Operations::TypedParameterGenerationGetRequest.new(
@@ -656,8 +656,8 @@ module OpenApiSDK
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, Operations::UsageExamplePost200ApplicationJSON)
-          res.usage_example_post_200_application_json_object = out
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::UsageExamplePostResponseBody)
+          res.object = out
         end
       end
       res

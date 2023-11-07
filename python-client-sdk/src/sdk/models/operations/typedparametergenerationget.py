@@ -9,7 +9,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class TypedParameterGenerationGetObj:
+class Obj:
     bool: bool = dataclasses.field(metadata={'query_param': { 'field_name': 'bool' }})
     num: float = dataclasses.field(metadata={'query_param': { 'field_name': 'num' }})
     str_: str = dataclasses.field(metadata={'query_param': { 'field_name': 'str' }})
@@ -22,7 +22,7 @@ class TypedParameterGenerationGetRequest:
     bigint: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'bigint', 'style': 'form', 'explode': True }})
     date_: Optional[date] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'date', 'style': 'form', 'explode': True }})
     decimal: Optional[Decimal] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'decimal', 'style': 'form', 'explode': True }})
-    obj: Optional[TypedParameterGenerationGetObj] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'obj', 'style': 'form', 'explode': True }})
+    obj: Optional[Obj] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'obj', 'style': 'form', 'explode': True }})
     
 
 

@@ -26,7 +26,7 @@ module OpenApiSDK
     end
 
 
-    class RequestBodyPutStringWithParamsResArgs < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPutStringWithParamsArgs < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -44,12 +44,12 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :args, Operations::RequestBodyPutStringWithParamsResArgs, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
+      field :args, Operations::RequestBodyPutStringWithParamsArgs, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
 
       field :data, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('data') } }
 
 
-      sig { params(args: Operations::RequestBodyPutStringWithParamsResArgs, data: String).void }
+      sig { params(args: Operations::RequestBodyPutStringWithParamsArgs, data: String).void }
       def initialize(args: nil, data: nil)
         @args = args
         @data = data

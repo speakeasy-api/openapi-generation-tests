@@ -9,7 +9,7 @@ import { Expose } from "class-transformer";
 /**
  * OK
  */
-export class RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON extends SpeakeasyBase {
+export class RequestBodyPostJsonDataTypesMapDateTimeResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     data: string;
@@ -42,5 +42,5 @@ export class RequestBodyPostJsonDataTypesMapDateTimeResponse extends SpeakeasyBa
      * OK
      */
     @SpeakeasyMetadata()
-    requestBodyPostJSONDataTypesMapDateTime200ApplicationJSONObject?: RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON;
+    object?: RequestBodyPostJsonDataTypesMapDateTimeResponseBody;
 }

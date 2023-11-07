@@ -1,5 +1,5 @@
 # Unions
-(*unions*)
+
 
 ## Overview
 
@@ -122,7 +122,7 @@ s.config_security(
 req = Shared::NullableOneOfRefInObject.new(
   request=Shared::NullableOneOfRefInObject.new(
     nullable_one_of_one=Shared::TypedObject1.new(
-      type=Shared::TypedObject1Type::OBJ1,
+      type=Shared::Type::OBJ1,
       value="string",
     ),
     nullable_one_of_two="string",
@@ -252,7 +252,7 @@ s.config_security(
    
 req = Shared::TypedObject1.new(
   request=Shared::TypedObject1.new(
-    type=Shared::TypedObject1Type::OBJ1,
+    type=Shared::Type::OBJ1,
     value="string",
   ),
 )

@@ -3,8 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import readwriteobject as shared_readwriteobject
-from ..shared import simpleobject as shared_simpleobject
+from ...models.shared import readwriteobject as shared_readwriteobject
+from ...models.shared import simpleobject as shared_simpleobject
 from typing import Optional, Union
 
 REQUEST_BODY_READ_WRITE_ONLY_UNION_SERVERS = [

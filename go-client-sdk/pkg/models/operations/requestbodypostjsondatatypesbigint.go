@@ -5,34 +5,34 @@ package operations
 import (
 	"math/big"
 	"net/http"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 )
 
-// RequestBodyPostJSONDataTypesBigInt200ApplicationJSON - OK
-type RequestBodyPostJSONDataTypesBigInt200ApplicationJSON struct {
+// RequestBodyPostJSONDataTypesBigIntResponseBody - OK
+type RequestBodyPostJSONDataTypesBigIntResponseBody struct {
 	Data string   `json:"data"`
 	JSON *big.Int `json:"json"`
 }
 
-func (r RequestBodyPostJSONDataTypesBigInt200ApplicationJSON) MarshalJSON() ([]byte, error) {
+func (r RequestBodyPostJSONDataTypesBigIntResponseBody) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(r, "", false)
 }
 
-func (r *RequestBodyPostJSONDataTypesBigInt200ApplicationJSON) UnmarshalJSON(data []byte) error {
+func (r *RequestBodyPostJSONDataTypesBigIntResponseBody) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *RequestBodyPostJSONDataTypesBigInt200ApplicationJSON) GetData() string {
+func (o *RequestBodyPostJSONDataTypesBigIntResponseBody) GetData() string {
 	if o == nil {
 		return ""
 	}
 	return o.Data
 }
 
-func (o *RequestBodyPostJSONDataTypesBigInt200ApplicationJSON) GetJSON() *big.Int {
+func (o *RequestBodyPostJSONDataTypesBigIntResponseBody) GetJSON() *big.Int {
 	if o == nil {
 		return big.NewInt(0)
 	}
@@ -47,7 +47,7 @@ type RequestBodyPostJSONDataTypesBigIntResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	RequestBodyPostJSONDataTypesBigInt200ApplicationJSONObject *RequestBodyPostJSONDataTypesBigInt200ApplicationJSON
+	Object *RequestBodyPostJSONDataTypesBigIntResponseBody
 }
 
 func (o *RequestBodyPostJSONDataTypesBigIntResponse) GetContentType() string {
@@ -71,9 +71,9 @@ func (o *RequestBodyPostJSONDataTypesBigIntResponse) GetRawResponse() *http.Resp
 	return o.RawResponse
 }
 
-func (o *RequestBodyPostJSONDataTypesBigIntResponse) GetRequestBodyPostJSONDataTypesBigInt200ApplicationJSONObject() *RequestBodyPostJSONDataTypesBigInt200ApplicationJSON {
+func (o *RequestBodyPostJSONDataTypesBigIntResponse) GetObject() *RequestBodyPostJSONDataTypesBigIntResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBodyPostJSONDataTypesBigInt200ApplicationJSONObject
+	return o.Object
 }

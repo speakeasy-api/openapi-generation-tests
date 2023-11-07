@@ -129,7 +129,7 @@ public class Errors {
 
         org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsResponse res = new org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsResponse(contentType, httpRes.statusCode()) {{
             error = null;
-            statusGetXSpeakeasyErrors501ApplicationJSONObject = null;
+            object = null;
         }};
         res.rawResponse = httpRes;
         
@@ -145,8 +145,8 @@ public class Errors {
         else if (httpRes.statusCode() == 501) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
-                org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrors501ApplicationJSON out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrors501ApplicationJSON.class);
-                res.statusGetXSpeakeasyErrors501ApplicationJSONObject = out;
+                org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsResponseBody out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsResponseBody.class);
+                res.object = out;
             }
         }
 

@@ -7,28 +7,19 @@ package org.openapis.openapi;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.openapis.openapi.models.shared.DeepObject;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Enum;
-import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseInt32EnumVal;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseIntEnumVal;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Helpers {
     public static SimpleObject createSimpleObject() {
         return new SimpleObject("any", true, LocalDate.parse("2020-01-01"),
                 OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, Long.valueOf(1), 1,
-                SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1, "test") {
+                Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1, "test") {
             {
                 boolOpt = true;
                 intOptNull = null;
@@ -40,8 +31,8 @@ public class Helpers {
 
     public static SimpleObjectCamelCase createSimpleObjectCamelCase() {
         return new SimpleObjectCamelCase("any", true, OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"),
-                LocalDate.parse("2020-01-01"), Enum.ONE, 1.1f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1,
-                SimpleObjectCamelCaseIntEnumVal.Second, Long.valueOf(1), 1.1, "test") {
+                LocalDate.parse("2020-01-01"), Enum.ONE, 1.1f, Int32EnumVal.FIFTY_FIVE, 1,
+                IntEnumVal.Second, Long.valueOf(1), 1.1, "test") {
             {
                 boolOptVal = true;
                 intOptNullVal = null;

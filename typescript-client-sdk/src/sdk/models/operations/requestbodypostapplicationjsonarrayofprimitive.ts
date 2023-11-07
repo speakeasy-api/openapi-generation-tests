@@ -31,5 +31,5 @@ export class RequestBodyPostApplicationJsonArrayOfPrimitiveResponse extends Spea
      * OK
      */
     @SpeakeasyMetadata()
-    strings?: string[];
+    res?: string[];
 }

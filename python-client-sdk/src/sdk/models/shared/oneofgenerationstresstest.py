@@ -9,15 +9,15 @@ from typing import Any, Optional, Union
 
 
 @dataclasses.dataclass
-class OneOfGenerationStressTestOneOfFromArrayOfTypes:
+class OneOfFromArrayOfTypes:
     pass
 
-class OneOfGenerationStressTestOneOfSameType2(str, Enum):
+class Two(str, Enum):
     LATEST = 'latest'
 
 
 @dataclasses.dataclass
-class OneOfGenerationStressTestOneOfSameType:
+class OneOfSameType:
     pass
 
 
@@ -27,6 +27,6 @@ class OneOfGenerationStressTest:
     any: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }})
     nullable_any: Optional[Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('nullableAny') }})
     one_of_from_array_of_types: Optional[Union[str, int]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('oneOfFromArrayOfTypes') }})
-    one_of_same_type: Optional[Union[str, OneOfGenerationStressTestOneOfSameType2]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('oneOfSameType') }})
+    one_of_same_type: Optional[Union[str, Two]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('oneOfSameType') }})
     
 

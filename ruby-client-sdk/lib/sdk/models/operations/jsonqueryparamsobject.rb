@@ -28,7 +28,7 @@ module OpenApiSDK
     end
 
 
-    class JsonQueryParamsObjectResArgs < OpenApiSDK::Utils::FieldAugmented
+    class JsonQueryParamsObjectArgs < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -49,12 +49,12 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :args, Operations::JsonQueryParamsObjectResArgs, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
+      field :args, Operations::JsonQueryParamsObjectArgs, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
 
       field :url, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('url') } }
 
 
-      sig { params(args: Operations::JsonQueryParamsObjectResArgs, url: String).void }
+      sig { params(args: Operations::JsonQueryParamsObjectArgs, url: String).void }
       def initialize(args: nil, url: nil)
         @args = args
         @url = url

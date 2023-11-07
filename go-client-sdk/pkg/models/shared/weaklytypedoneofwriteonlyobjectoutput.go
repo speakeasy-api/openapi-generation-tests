@@ -4,14 +4,14 @@ package shared
 
 import (
 	"errors"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 )
 
 type WeaklyTypedOneOfWriteOnlyObjectOutputType string
 
 const (
 	WeaklyTypedOneOfWriteOnlyObjectOutputTypeSimpleObject          WeaklyTypedOneOfWriteOnlyObjectOutputType = "simpleObject"
-	WeaklyTypedOneOfWriteOnlyObjectOutputTypeWriteOnlyObjectOutput WeaklyTypedOneOfWriteOnlyObjectOutputType = "writeOnlyObjectOutput"
+	WeaklyTypedOneOfWriteOnlyObjectOutputTypeWriteOnlyObjectOutput WeaklyTypedOneOfWriteOnlyObjectOutputType = "writeOnlyObject_output"
 )
 
 type WeaklyTypedOneOfWriteOnlyObjectOutput struct {

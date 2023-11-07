@@ -6,61 +6,61 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 )
 
-type OneOfGenerationStressTestOneOfFromArrayOfTypesType string
+type OneOfFromArrayOfTypesType string
 
 const (
-	OneOfGenerationStressTestOneOfFromArrayOfTypesTypeStr     OneOfGenerationStressTestOneOfFromArrayOfTypesType = "str"
-	OneOfGenerationStressTestOneOfFromArrayOfTypesTypeInteger OneOfGenerationStressTestOneOfFromArrayOfTypesType = "integer"
+	OneOfFromArrayOfTypesTypeStr     OneOfFromArrayOfTypesType = "str"
+	OneOfFromArrayOfTypesTypeInteger OneOfFromArrayOfTypesType = "integer"
 )
 
-type OneOfGenerationStressTestOneOfFromArrayOfTypes struct {
+type OneOfFromArrayOfTypes struct {
 	Str     *string
 	Integer *int64
 
-	Type OneOfGenerationStressTestOneOfFromArrayOfTypesType
+	Type OneOfFromArrayOfTypesType
 }
 
-func CreateOneOfGenerationStressTestOneOfFromArrayOfTypesStr(str string) OneOfGenerationStressTestOneOfFromArrayOfTypes {
-	typ := OneOfGenerationStressTestOneOfFromArrayOfTypesTypeStr
+func CreateOneOfFromArrayOfTypesStr(str string) OneOfFromArrayOfTypes {
+	typ := OneOfFromArrayOfTypesTypeStr
 
-	return OneOfGenerationStressTestOneOfFromArrayOfTypes{
+	return OneOfFromArrayOfTypes{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateOneOfGenerationStressTestOneOfFromArrayOfTypesInteger(integer int64) OneOfGenerationStressTestOneOfFromArrayOfTypes {
-	typ := OneOfGenerationStressTestOneOfFromArrayOfTypesTypeInteger
+func CreateOneOfFromArrayOfTypesInteger(integer int64) OneOfFromArrayOfTypes {
+	typ := OneOfFromArrayOfTypesTypeInteger
 
-	return OneOfGenerationStressTestOneOfFromArrayOfTypes{
+	return OneOfFromArrayOfTypes{
 		Integer: &integer,
 		Type:    typ,
 	}
 }
 
-func (u *OneOfGenerationStressTestOneOfFromArrayOfTypes) UnmarshalJSON(data []byte) error {
+func (u *OneOfFromArrayOfTypes) UnmarshalJSON(data []byte) error {
 
 	str := ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = OneOfGenerationStressTestOneOfFromArrayOfTypesTypeStr
+		u.Type = OneOfFromArrayOfTypesTypeStr
 		return nil
 	}
 
 	integer := int64(0)
 	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
 		u.Integer = &integer
-		u.Type = OneOfGenerationStressTestOneOfFromArrayOfTypesTypeInteger
+		u.Type = OneOfFromArrayOfTypesTypeInteger
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u OneOfGenerationStressTestOneOfFromArrayOfTypes) MarshalJSON() ([]byte, error) {
+func (u OneOfFromArrayOfTypes) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -72,98 +72,98 @@ func (u OneOfGenerationStressTestOneOfFromArrayOfTypes) MarshalJSON() ([]byte, e
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-type OneOfGenerationStressTestOneOfSameType2 string
+type Two string
 
 const (
-	OneOfGenerationStressTestOneOfSameType2Latest OneOfGenerationStressTestOneOfSameType2 = "latest"
+	TwoLatest Two = "latest"
 )
 
-func (e OneOfGenerationStressTestOneOfSameType2) ToPointer() *OneOfGenerationStressTestOneOfSameType2 {
+func (e Two) ToPointer() *Two {
 	return &e
 }
 
-func (e *OneOfGenerationStressTestOneOfSameType2) UnmarshalJSON(data []byte) error {
+func (e *Two) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "latest":
-		*e = OneOfGenerationStressTestOneOfSameType2(v)
+		*e = Two(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for OneOfGenerationStressTestOneOfSameType2: %v", v)
+		return fmt.Errorf("invalid value for Two: %v", v)
 	}
 }
 
-type OneOfGenerationStressTestOneOfSameTypeType string
+type OneOfSameTypeType string
 
 const (
-	OneOfGenerationStressTestOneOfSameTypeTypeStr                                     OneOfGenerationStressTestOneOfSameTypeType = "str"
-	OneOfGenerationStressTestOneOfSameTypeTypeOneOfGenerationStressTestOneOfSameType2 OneOfGenerationStressTestOneOfSameTypeType = "oneOfGenerationStressTest_oneOfSameType_2"
+	OneOfSameTypeTypeStr OneOfSameTypeType = "str"
+	OneOfSameTypeTypeTwo OneOfSameTypeType = "2"
 )
 
-type OneOfGenerationStressTestOneOfSameType struct {
-	Str                                     *string
-	OneOfGenerationStressTestOneOfSameType2 *OneOfGenerationStressTestOneOfSameType2
+type OneOfSameType struct {
+	Str *string
+	Two *Two
 
-	Type OneOfGenerationStressTestOneOfSameTypeType
+	Type OneOfSameTypeType
 }
 
-func CreateOneOfGenerationStressTestOneOfSameTypeStr(str string) OneOfGenerationStressTestOneOfSameType {
-	typ := OneOfGenerationStressTestOneOfSameTypeTypeStr
+func CreateOneOfSameTypeStr(str string) OneOfSameType {
+	typ := OneOfSameTypeTypeStr
 
-	return OneOfGenerationStressTestOneOfSameType{
+	return OneOfSameType{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateOneOfGenerationStressTestOneOfSameTypeOneOfGenerationStressTestOneOfSameType2(oneOfGenerationStressTestOneOfSameType2 OneOfGenerationStressTestOneOfSameType2) OneOfGenerationStressTestOneOfSameType {
-	typ := OneOfGenerationStressTestOneOfSameTypeTypeOneOfGenerationStressTestOneOfSameType2
+func CreateOneOfSameTypeTwo(two Two) OneOfSameType {
+	typ := OneOfSameTypeTypeTwo
 
-	return OneOfGenerationStressTestOneOfSameType{
-		OneOfGenerationStressTestOneOfSameType2: &oneOfGenerationStressTestOneOfSameType2,
-		Type:                                    typ,
+	return OneOfSameType{
+		Two:  &two,
+		Type: typ,
 	}
 }
 
-func (u *OneOfGenerationStressTestOneOfSameType) UnmarshalJSON(data []byte) error {
+func (u *OneOfSameType) UnmarshalJSON(data []byte) error {
 
 	str := ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = OneOfGenerationStressTestOneOfSameTypeTypeStr
+		u.Type = OneOfSameTypeTypeStr
 		return nil
 	}
 
-	oneOfGenerationStressTestOneOfSameType2 := OneOfGenerationStressTestOneOfSameType2("")
-	if err := utils.UnmarshalJSON(data, &oneOfGenerationStressTestOneOfSameType2, "", true, true); err == nil {
-		u.OneOfGenerationStressTestOneOfSameType2 = &oneOfGenerationStressTestOneOfSameType2
-		u.Type = OneOfGenerationStressTestOneOfSameTypeTypeOneOfGenerationStressTestOneOfSameType2
+	two := Two("")
+	if err := utils.UnmarshalJSON(data, &two, "", true, true); err == nil {
+		u.Two = &two
+		u.Type = OneOfSameTypeTypeTwo
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u OneOfGenerationStressTestOneOfSameType) MarshalJSON() ([]byte, error) {
+func (u OneOfSameType) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.OneOfGenerationStressTestOneOfSameType2 != nil {
-		return utils.MarshalJSON(u.OneOfGenerationStressTestOneOfSameType2, "", true)
+	if u.Two != nil {
+		return utils.MarshalJSON(u.Two, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type OneOfGenerationStressTest struct {
-	Any                   interface{}                                     `json:"any"`
-	NullableAny           interface{}                                     `json:"nullableAny"`
-	OneOfFromArrayOfTypes *OneOfGenerationStressTestOneOfFromArrayOfTypes `json:"oneOfFromArrayOfTypes"`
-	OneOfSameType         *OneOfGenerationStressTestOneOfSameType         `json:"oneOfSameType"`
+	Any                   interface{}            `json:"any"`
+	NullableAny           interface{}            `json:"nullableAny"`
+	OneOfFromArrayOfTypes *OneOfFromArrayOfTypes `json:"oneOfFromArrayOfTypes"`
+	OneOfSameType         *OneOfSameType         `json:"oneOfSameType"`
 }
 
 func (o *OneOfGenerationStressTest) GetAny() interface{} {
@@ -180,14 +180,14 @@ func (o *OneOfGenerationStressTest) GetNullableAny() interface{} {
 	return o.NullableAny
 }
 
-func (o *OneOfGenerationStressTest) GetOneOfFromArrayOfTypes() *OneOfGenerationStressTestOneOfFromArrayOfTypes {
+func (o *OneOfGenerationStressTest) GetOneOfFromArrayOfTypes() *OneOfFromArrayOfTypes {
 	if o == nil {
 		return nil
 	}
 	return o.OneOfFromArrayOfTypes
 }
 
-func (o *OneOfGenerationStressTest) GetOneOfSameType() *OneOfGenerationStressTestOneOfSameType {
+func (o *OneOfGenerationStressTest) GetOneOfSameType() *OneOfSameType {
 	if o == nil {
 		return nil
 	}

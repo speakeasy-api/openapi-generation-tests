@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 	"time"
 )
 

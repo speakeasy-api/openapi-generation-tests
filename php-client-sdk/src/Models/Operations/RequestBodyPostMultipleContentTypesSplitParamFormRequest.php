@@ -12,14 +12,14 @@ use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class RequestBodyPostMultipleContentTypesSplitParamFormRequest
 {
 	#[SpeakeasyMetadata('request:mediaType=application/x-www-form-urlencoded')]
-    public RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded $requestBody;
+    public RequestBodyPostMultipleContentTypesSplitParamFormRequestBody $requestBody;
     
 	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=paramStr')]
     public string $paramStr;
     
 	public function __construct()
 	{
-		$this->requestBody = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded();
+		$this->requestBody = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamFormRequestBody();
 		$this->paramStr = "";
 	}
 }

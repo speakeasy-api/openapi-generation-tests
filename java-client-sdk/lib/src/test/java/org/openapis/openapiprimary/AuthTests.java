@@ -4,11 +4,13 @@
 
 package org.openapis.openapi;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.shared.*;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class AuthTests {
     @Test
@@ -20,7 +22,7 @@ public class AuthTests {
 
         BasicAuthNewResponse res = s.authNew.basicAuthNew(new AuthServiceRequestBody() {
             {
-                basicAuth = new AuthServiceRequestBodyBasicAuth("testUser", "testPass");
+                basicAuth = new BasicAuth("testUser", "testPass");
             }
         }, new BasicAuthNewSecurity("testUser", "testPass"));
 
@@ -41,8 +43,8 @@ public class AuthTests {
 
         ApiKeyAuthGlobalNewResponse res = s.authNew.apiKeyAuthGlobalNew(new AuthServiceRequestBody() {
             {
-                headerAuth = new AuthServiceRequestBodyHeaderAuth[]{
-                        new AuthServiceRequestBodyHeaderAuth("test_api_key", "x-api-key")
+                headerAuth = new HeaderAuth[] {
+                        new HeaderAuth("test_api_key", "x-api-key")
                 };
             }
 
@@ -106,8 +108,8 @@ public class AuthTests {
 
         Oauth2AuthNewResponse res = s.authNew.oauth2AuthNew(new AuthServiceRequestBody() {
             {
-                headerAuth = new AuthServiceRequestBodyHeaderAuth[]{
-                        new AuthServiceRequestBodyHeaderAuth("Bearer testToken", "Authorization")
+                headerAuth = new HeaderAuth[] {
+                        new HeaderAuth("Bearer testToken", "Authorization")
                 };
             }
         }, new Oauth2AuthNewSecurity("Bearer testToken"));
@@ -125,8 +127,8 @@ public class AuthTests {
 
         OpenIdConnectAuthNewResponse res = s.authNew.openIdConnectAuthNew(new AuthServiceRequestBody() {
             {
-                headerAuth = new AuthServiceRequestBodyHeaderAuth[]{
-                        new AuthServiceRequestBodyHeaderAuth("Bearer testToken", "Authorization")
+                headerAuth = new HeaderAuth[] {
+                        new HeaderAuth("Bearer testToken", "Authorization")
                 };
             }
         }, new OpenIdConnectAuthNewSecurity("Bearer testToken"));
@@ -145,9 +147,9 @@ public class AuthTests {
         MultipleSimpleSchemeAuthResponse res = s.authNew
                 .multipleSimpleSchemeAuth(new AuthServiceRequestBody() {
                     {
-                        headerAuth = new AuthServiceRequestBodyHeaderAuth[]{
-                                new AuthServiceRequestBodyHeaderAuth("test_api_key", "x-api-key"),
-                                new AuthServiceRequestBodyHeaderAuth("Bearer testToken", "Authorization")
+                        headerAuth = new HeaderAuth[] {
+                                new HeaderAuth("test_api_key", "x-api-key"),
+                                new HeaderAuth("Bearer testToken", "Authorization")
                         };
                     }
                 }, new MultipleSimpleSchemeAuthSecurity("test_api_key", "Bearer testToken"));
@@ -166,10 +168,10 @@ public class AuthTests {
         MultipleMixedSchemeAuthResponse res = s.authNew
                 .multipleMixedSchemeAuth(new AuthServiceRequestBody() {
                     {
-                        headerAuth = new AuthServiceRequestBodyHeaderAuth[]{
-                                new AuthServiceRequestBodyHeaderAuth("test_api_key", "x-api-key")
+                        headerAuth = new HeaderAuth[] {
+                                new HeaderAuth("test_api_key", "x-api-key")
                         };
-                        basicAuth = new AuthServiceRequestBodyBasicAuth("testUser", "testPass");
+                        basicAuth = new BasicAuth("testUser", "testPass");
                     }
                 }, new MultipleMixedSchemeAuthSecurity("test_api_key", new SchemeBasicAuth("testUser", "testPass")));
 
@@ -187,8 +189,8 @@ public class AuthTests {
         MultipleSimpleOptionsAuthResponse res = s.authNew
                 .multipleSimpleOptionsAuth(new AuthServiceRequestBody() {
                     {
-                        headerAuth = new AuthServiceRequestBodyHeaderAuth[]{
-                                new AuthServiceRequestBodyHeaderAuth("test_api_key", "x-api-key"),
+                        headerAuth = new HeaderAuth[] {
+                                new HeaderAuth("test_api_key", "x-api-key"),
                         };
                     }
                 }, new MultipleSimpleOptionsAuthSecurity() {
@@ -211,8 +213,8 @@ public class AuthTests {
         MultipleSimpleOptionsAuthResponse res = s.authNew
                 .multipleSimpleOptionsAuth(new AuthServiceRequestBody() {
                     {
-                        headerAuth = new AuthServiceRequestBodyHeaderAuth[]{
-                                new AuthServiceRequestBodyHeaderAuth("Bearer testToken", "Authorization"),
+                        headerAuth = new HeaderAuth[] {
+                                new HeaderAuth("Bearer testToken", "Authorization"),
                         };
                     }
                 }, new MultipleSimpleOptionsAuthSecurity() {
@@ -235,8 +237,8 @@ public class AuthTests {
         MultipleMixedOptionsAuthResponse res = s.authNew
                 .multipleMixedOptionsAuth(new AuthServiceRequestBody() {
                     {
-                        headerAuth = new AuthServiceRequestBodyHeaderAuth[]{
-                                new AuthServiceRequestBodyHeaderAuth("test_api_key", "x-api-key"),
+                        headerAuth = new HeaderAuth[] {
+                                new HeaderAuth("test_api_key", "x-api-key"),
                         };
                     }
                 }, new MultipleMixedOptionsAuthSecurity() {
@@ -259,7 +261,7 @@ public class AuthTests {
         MultipleMixedOptionsAuthResponse res = s.authNew
                 .multipleMixedOptionsAuth(new AuthServiceRequestBody() {
                     {
-                        basicAuth = new AuthServiceRequestBodyBasicAuth("testUser", "testPass");
+                        basicAuth = new BasicAuth("testUser", "testPass");
                     }
                 }, new MultipleMixedOptionsAuthSecurity() {
                     {
@@ -281,14 +283,15 @@ public class AuthTests {
         MultipleOptionsWithSimpleSchemesAuthResponse res = s.authNew
                 .multipleOptionsWithSimpleSchemesAuth(new AuthServiceRequestBody() {
                     {
-                        headerAuth = new AuthServiceRequestBodyHeaderAuth[]{
-                                new AuthServiceRequestBodyHeaderAuth("test_api_key", "x-api-key"),
-                                new AuthServiceRequestBodyHeaderAuth("Bearer testToken", "Authorization"),
+                        headerAuth = new HeaderAuth[] {
+                                new HeaderAuth("test_api_key", "x-api-key"),
+                                new HeaderAuth("Bearer testToken", "Authorization"),
                         };
                     }
                 }, new MultipleOptionsWithSimpleSchemesAuthSecurity() {
                     {
-                        option1 = new MultipleOptionsWithSimpleSchemesAuthSecurityOption1("test_api_key", "Bearer testToken");
+                        option1 = new MultipleOptionsWithSimpleSchemesAuthSecurityOption1("test_api_key",
+                                "Bearer testToken");
                     }
                 });
 
@@ -306,14 +309,15 @@ public class AuthTests {
         MultipleOptionsWithSimpleSchemesAuthResponse res = s.authNew
                 .multipleOptionsWithSimpleSchemesAuth(new AuthServiceRequestBody() {
                     {
-                        headerAuth = new AuthServiceRequestBodyHeaderAuth[]{
-                                new AuthServiceRequestBodyHeaderAuth("test_api_key", "x-api-key"),
-                                new AuthServiceRequestBodyHeaderAuth("Bearer testToken", "Authorization"),
+                        headerAuth = new HeaderAuth[] {
+                                new HeaderAuth("test_api_key", "x-api-key"),
+                                new HeaderAuth("Bearer testToken", "Authorization"),
                         };
                     }
                 }, new MultipleOptionsWithSimpleSchemesAuthSecurity() {
                     {
-                        option2 = new MultipleOptionsWithSimpleSchemesAuthSecurityOption2("test_api_key", "Bearer testToken");
+                        option2 = new MultipleOptionsWithSimpleSchemesAuthSecurityOption2("test_api_key",
+                                "Bearer testToken");
                     }
                 });
 
@@ -331,14 +335,15 @@ public class AuthTests {
         MultipleOptionsWithMixedSchemesAuthResponse res = s.authNew
                 .multipleOptionsWithMixedSchemesAuth(new AuthServiceRequestBody() {
                     {
-                        headerAuth = new AuthServiceRequestBodyHeaderAuth[]{
-                                new AuthServiceRequestBodyHeaderAuth("test_api_key", "x-api-key"),
-                                new AuthServiceRequestBodyHeaderAuth("Bearer testToken", "Authorization"),
+                        headerAuth = new HeaderAuth[] {
+                                new HeaderAuth("test_api_key", "x-api-key"),
+                                new HeaderAuth("Bearer testToken", "Authorization"),
                         };
                     }
                 }, new MultipleOptionsWithMixedSchemesAuthSecurity() {
                     {
-                        option1 = new MultipleOptionsWithMixedSchemesAuthSecurityOption1("test_api_key", "Bearer testToken");
+                        option1 = new MultipleOptionsWithMixedSchemesAuthSecurityOption1("test_api_key",
+                                "Bearer testToken");
                     }
                 });
 
@@ -356,14 +361,15 @@ public class AuthTests {
         MultipleOptionsWithMixedSchemesAuthResponse res = s.authNew
                 .multipleOptionsWithMixedSchemesAuth(new AuthServiceRequestBody() {
                     {
-                        headerAuth = new AuthServiceRequestBodyHeaderAuth[]{
-                                new AuthServiceRequestBodyHeaderAuth("test_api_key", "x-api-key"),
+                        headerAuth = new HeaderAuth[] {
+                                new HeaderAuth("test_api_key", "x-api-key"),
                         };
-                        basicAuth = new AuthServiceRequestBodyBasicAuth("testUser", "testPass");
+                        basicAuth = new BasicAuth("testUser", "testPass");
                     }
                 }, new MultipleOptionsWithMixedSchemesAuthSecurity() {
                     {
-                        option2 = new MultipleOptionsWithMixedSchemesAuthSecurityOption2("test_api_key", new SchemeBasicAuth("testUser", "testPass"));
+                        option2 = new MultipleOptionsWithMixedSchemesAuthSecurityOption2("test_api_key",
+                                new SchemeBasicAuth("testUser", "testPass"));
                     }
                 });
 

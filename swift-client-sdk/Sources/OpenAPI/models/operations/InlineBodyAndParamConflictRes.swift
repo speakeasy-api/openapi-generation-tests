@@ -6,12 +6,12 @@ extension Operations {
     /// OK
     public struct InlineBodyAndParamConflictRes {
         public let args: [String: String]
-        public let json: Operations.InlineBodyAndParamConflictResJson
+        public let json: Operations.Json
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(args: [String: String], json: Operations.InlineBodyAndParamConflictResJson) {
+        public init(args: [String: String], json: Operations.Json) {
             self.args = args
             self.json = json
         }

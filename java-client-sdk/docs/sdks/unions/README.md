@@ -1,5 +1,5 @@
 # Unions
-(*unions*)
+(*.unions*)
 
 ## Overview
 
@@ -130,8 +130,8 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.NullableOneOfRefInObjectPostResponse;
 import org.openapis.openapi.models.shared.NullableOneOfRefInObject;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.Type;
 import org.openapis.openapi.models.shared.TypedObject1;
-import org.openapis.openapi.models.shared.TypedObject1Type;
 
 public class Application {
     public static void main(String[] args) {
@@ -144,7 +144,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.NullableOneOfRefInObject req = new NullableOneOfRefInObject(new TypedObject1(TypedObject1Type.OBJ1, "string"), "string", "string");            
+            org.openapis.openapi.models.shared.NullableOneOfRefInObject req = new NullableOneOfRefInObject(new TypedObject1(Type.OBJ1, "string"), "string", "string");            
 
             NullableOneOfRefInObjectPostResponse res = sdk.unions.nullableOneOfRefInObjectPost(req);
 
@@ -277,8 +277,8 @@ package hello.world;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.NullableTypedObjectPostResponse;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.Type;
 import org.openapis.openapi.models.shared.TypedObject1;
-import org.openapis.openapi.models.shared.TypedObject1Type;
 
 public class Application {
     public static void main(String[] args) {
@@ -291,7 +291,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.TypedObject1 req = new TypedObject1(TypedObject1Type.OBJ1, "string");            
+            org.openapis.openapi.models.shared.TypedObject1 req = new TypedObject1(Type.OBJ1, "string");            
 
             NullableTypedObjectPostResponse res = sdk.unions.nullableTypedObjectPost(req);
 

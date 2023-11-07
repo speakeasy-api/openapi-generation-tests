@@ -29,7 +29,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.sdk.putAnythingIgnoredGeneration("string");
+  const res = await sdk.putAnythingIgnoredGeneration("string");
 
 
   if (res.statusCode == 200) {
@@ -67,7 +67,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.sdk.responseBodyJsonGet();
+  const res = await sdk.responseBodyJsonGet();
 
 
   if (res.statusCode == 200) {

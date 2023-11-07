@@ -6,17 +6,17 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
-export class RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName extends SpeakeasyBase {
+export class DifferentFileName extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "multipart_form, content=true" })
     content: Uint8Array;
 
     @SpeakeasyMetadata({ data: "multipart_form, name=differentFileName" })
-    differentFileName: string;
+    fileName: string;
 }
 
 export class RequestBodyPutMultipartDifferentFileNameRequestBody extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "multipart_form, file=true" })
-    differentFileName?: RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName;
+    differentFileName?: DifferentFileName;
 }
 
 /**

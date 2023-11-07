@@ -4,15 +4,15 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
-// ResponseBodyAdditionalPropertiesPost200ApplicationJSON - OK
-type ResponseBodyAdditionalPropertiesPost200ApplicationJSON struct {
+// ResponseBodyAdditionalPropertiesPostResponseBody - OK
+type ResponseBodyAdditionalPropertiesPostResponseBody struct {
 	JSON shared.ObjWithStringAdditionalProperties `json:"json"`
 }
 
-func (o *ResponseBodyAdditionalPropertiesPost200ApplicationJSON) GetJSON() shared.ObjWithStringAdditionalProperties {
+func (o *ResponseBodyAdditionalPropertiesPostResponseBody) GetJSON() shared.ObjWithStringAdditionalProperties {
 	if o == nil {
 		return shared.ObjWithStringAdditionalProperties{}
 	}
@@ -27,7 +27,7 @@ type ResponseBodyAdditionalPropertiesPostResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	ResponseBodyAdditionalPropertiesPost200ApplicationJSONObject *ResponseBodyAdditionalPropertiesPost200ApplicationJSON
+	Object *ResponseBodyAdditionalPropertiesPostResponseBody
 }
 
 func (o *ResponseBodyAdditionalPropertiesPostResponse) GetContentType() string {
@@ -51,9 +51,9 @@ func (o *ResponseBodyAdditionalPropertiesPostResponse) GetRawResponse() *http.Re
 	return o.RawResponse
 }
 
-func (o *ResponseBodyAdditionalPropertiesPostResponse) GetResponseBodyAdditionalPropertiesPost200ApplicationJSONObject() *ResponseBodyAdditionalPropertiesPost200ApplicationJSON {
+func (o *ResponseBodyAdditionalPropertiesPostResponse) GetObject() *ResponseBodyAdditionalPropertiesPostResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.ResponseBodyAdditionalPropertiesPost200ApplicationJSONObject
+	return o.Object
 }

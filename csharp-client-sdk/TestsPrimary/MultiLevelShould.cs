@@ -7,14 +7,9 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
 using System.Threading.Tasks;
-using System.Text.RegularExpressions;
 using Xunit;
-using SDK;
+using Openapi;
 
 public class MultiLevelShould
 {
@@ -22,7 +17,7 @@ public class MultiLevelShould
     public async Task MultiLevelTest()
     {
         CommonHelpers.RecordTest("multi-level-grouping");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Nested.First.GetAsync();
 

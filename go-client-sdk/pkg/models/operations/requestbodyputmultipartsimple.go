@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-type RequestBodyPutMultipartSimpleResForm struct {
+type RequestBodyPutMultipartSimpleForm struct {
 	Any        string  `json:"any"`
 	Bool       string  `json:"bool"`
 	BoolOpt    *string `json:"boolOpt,omitempty"`
@@ -23,109 +23,109 @@ type RequestBodyPutMultipartSimpleResForm struct {
 	StrOpt     *string `json:"strOpt,omitempty"`
 }
 
-func (o *RequestBodyPutMultipartSimpleResForm) GetAny() string {
+func (o *RequestBodyPutMultipartSimpleForm) GetAny() string {
 	if o == nil {
 		return ""
 	}
 	return o.Any
 }
 
-func (o *RequestBodyPutMultipartSimpleResForm) GetBool() string {
+func (o *RequestBodyPutMultipartSimpleForm) GetBool() string {
 	if o == nil {
 		return ""
 	}
 	return o.Bool
 }
 
-func (o *RequestBodyPutMultipartSimpleResForm) GetBoolOpt() *string {
+func (o *RequestBodyPutMultipartSimpleForm) GetBoolOpt() *string {
 	if o == nil {
 		return nil
 	}
 	return o.BoolOpt
 }
 
-func (o *RequestBodyPutMultipartSimpleResForm) GetDate() string {
+func (o *RequestBodyPutMultipartSimpleForm) GetDate() string {
 	if o == nil {
 		return ""
 	}
 	return o.Date
 }
 
-func (o *RequestBodyPutMultipartSimpleResForm) GetDateTime() string {
+func (o *RequestBodyPutMultipartSimpleForm) GetDateTime() string {
 	if o == nil {
 		return ""
 	}
 	return o.DateTime
 }
 
-func (o *RequestBodyPutMultipartSimpleResForm) GetEnum() string {
+func (o *RequestBodyPutMultipartSimpleForm) GetEnum() string {
 	if o == nil {
 		return ""
 	}
 	return o.Enum
 }
 
-func (o *RequestBodyPutMultipartSimpleResForm) GetFloat32() string {
+func (o *RequestBodyPutMultipartSimpleForm) GetFloat32() string {
 	if o == nil {
 		return ""
 	}
 	return o.Float32
 }
 
-func (o *RequestBodyPutMultipartSimpleResForm) GetInt() string {
+func (o *RequestBodyPutMultipartSimpleForm) GetInt() string {
 	if o == nil {
 		return ""
 	}
 	return o.Int
 }
 
-func (o *RequestBodyPutMultipartSimpleResForm) GetInt32() string {
+func (o *RequestBodyPutMultipartSimpleForm) GetInt32() string {
 	if o == nil {
 		return ""
 	}
 	return o.Int32
 }
 
-func (o *RequestBodyPutMultipartSimpleResForm) GetIntOptNull() *string {
+func (o *RequestBodyPutMultipartSimpleForm) GetIntOptNull() *string {
 	if o == nil {
 		return nil
 	}
 	return o.IntOptNull
 }
 
-func (o *RequestBodyPutMultipartSimpleResForm) GetNum() string {
+func (o *RequestBodyPutMultipartSimpleForm) GetNum() string {
 	if o == nil {
 		return ""
 	}
 	return o.Num
 }
 
-func (o *RequestBodyPutMultipartSimpleResForm) GetNumOptNull() *string {
+func (o *RequestBodyPutMultipartSimpleForm) GetNumOptNull() *string {
 	if o == nil {
 		return nil
 	}
 	return o.NumOptNull
 }
 
-func (o *RequestBodyPutMultipartSimpleResForm) GetStr() string {
+func (o *RequestBodyPutMultipartSimpleForm) GetStr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Str
 }
 
-func (o *RequestBodyPutMultipartSimpleResForm) GetStrOpt() *string {
+func (o *RequestBodyPutMultipartSimpleForm) GetStrOpt() *string {
 	if o == nil {
 		return nil
 	}
 	return o.StrOpt
 }
 
-type RequestBodyPutMultipartSimpleResHeaders struct {
+type RequestBodyPutMultipartSimpleHeaders struct {
 	ContentType string `json:"Content-Type"`
 }
 
-func (o *RequestBodyPutMultipartSimpleResHeaders) GetContentType() string {
+func (o *RequestBodyPutMultipartSimpleHeaders) GetContentType() string {
 	if o == nil {
 		return ""
 	}
@@ -134,20 +134,20 @@ func (o *RequestBodyPutMultipartSimpleResHeaders) GetContentType() string {
 
 // RequestBodyPutMultipartSimpleRes - OK
 type RequestBodyPutMultipartSimpleRes struct {
-	Form    RequestBodyPutMultipartSimpleResForm    `json:"form"`
-	Headers RequestBodyPutMultipartSimpleResHeaders `json:"headers"`
+	Form    RequestBodyPutMultipartSimpleForm    `json:"form"`
+	Headers RequestBodyPutMultipartSimpleHeaders `json:"headers"`
 }
 
-func (o *RequestBodyPutMultipartSimpleRes) GetForm() RequestBodyPutMultipartSimpleResForm {
+func (o *RequestBodyPutMultipartSimpleRes) GetForm() RequestBodyPutMultipartSimpleForm {
 	if o == nil {
-		return RequestBodyPutMultipartSimpleResForm{}
+		return RequestBodyPutMultipartSimpleForm{}
 	}
 	return o.Form
 }
 
-func (o *RequestBodyPutMultipartSimpleRes) GetHeaders() RequestBodyPutMultipartSimpleResHeaders {
+func (o *RequestBodyPutMultipartSimpleRes) GetHeaders() RequestBodyPutMultipartSimpleHeaders {
 	if o == nil {
-		return RequestBodyPutMultipartSimpleResHeaders{}
+		return RequestBodyPutMultipartSimpleHeaders{}
 	}
 	return o.Headers
 }

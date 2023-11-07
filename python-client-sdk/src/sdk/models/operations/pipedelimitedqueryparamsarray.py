@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import simpleobject as shared_simpleobject
+from ...models.shared import simpleobject as shared_simpleobject
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Dict, List, Optional
@@ -22,7 +22,7 @@ class PipeDelimitedQueryParamsArrayRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PipeDelimitedQueryParamsArrayResArgs:
+class PipeDelimitedQueryParamsArrayArgs:
     arr_param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arrParam') }})
     arr_param_exploded: List[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arrParamExploded') }})
     
@@ -33,7 +33,7 @@ class PipeDelimitedQueryParamsArrayResArgs:
 @dataclasses.dataclass
 class PipeDelimitedQueryParamsArrayRes:
     r"""OK"""
-    args: PipeDelimitedQueryParamsArrayResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
+    args: PipeDelimitedQueryParamsArrayArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
 

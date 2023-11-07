@@ -38,16 +38,16 @@ class RequestBodyPostJsonDataTypesBooleanResponse
     /**
      * OK
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJSONDataTypesBoolean200ApplicationJSON $requestBodyPostJSONDataTypesBoolean200ApplicationJSONObject
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesBooleanResponseBody $object
      */
 	
-    public ?RequestBodyPostJSONDataTypesBoolean200ApplicationJSON $requestBodyPostJSONDataTypesBoolean200ApplicationJSONObject = null;
+    public ?RequestBodyPostJsonDataTypesBooleanResponseBody $object = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->requestBodyPostJSONDataTypesBoolean200ApplicationJSONObject = null;
+		$this->object = null;
 	}
 }

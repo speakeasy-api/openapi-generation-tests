@@ -15,7 +15,7 @@ s.config_security(
     
 res = s.generation.global_name_overridden()
 
-if ! res.get_global_name_override_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -127,8 +127,8 @@ req = Operations::UsageExamplePostRequest.new(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::SECOND,
+        int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int_enum=Shared::IntEnum::SECOND,
         int_opt_null=165468,
         num=1.1,
         num_opt_null=5944.32,
@@ -149,13 +149,13 @@ req = Operations::UsageExamplePostRequest.new(
     decimal_str_parameter="string",
     decimal_str_parameter_optional="string",
     double_parameter=8700.78,
-    enum_parameter=Operations::UsageExamplePostEnumParameter::VALUE2,
+    enum_parameter=Operations::EnumParameter::VALUE2,
     falsey_number_parameter=0,
     float32_parameter=1341.86,
     float_parameter=5429.24,
     int64_parameter=101970,
     int_parameter=938852,
-    opt_enum_parameter=Operations::UsageExamplePostOptEnumParameter::VALUE3,
+    opt_enum_parameter=Operations::OptEnumParameter::VALUE3,
     str_parameter="example 3",
   ),
   request_body=Operations::UsageExamplePostRequestBody.new(
@@ -248,8 +248,8 @@ req = Operations::UsageExamplePostRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::IntEnum::SECOND,
       int_opt_null=303425,
       num=1.1,
       num_opt_null=2928.25,
@@ -261,7 +261,7 @@ req = Operations::UsageExamplePostRequest.new(
     
 res = s.generation.usage_example_post(req)
 
-if ! res.usage_example_post_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 

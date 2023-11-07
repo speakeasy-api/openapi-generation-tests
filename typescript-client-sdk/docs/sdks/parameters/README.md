@@ -1,5 +1,5 @@
 # ParametersT
-(*parameters*)
+(*.parameters*)
 
 ## Overview
 
@@ -91,8 +91,8 @@ const mapArrParam: Record<string, string[]> = {
 
 ```typescript
 import { SDK } from "openapi";
-import { DeepObjectQueryParamsObjectObjArrParam, DeepObjectQueryParamsObjectRequest } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { DeepObjectQueryParamsObjectRequest, ObjArrParam } from "openapi/dist/sdk/models/operations";
+import { Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -117,13 +117,13 @@ const objParam: SimpleObject = {
   float32: 1.1,
   int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: Int32Enum.FiftyFive,
+  intEnum: IntEnum.Second,
   num: 1.1,
   str: "test",
   strOpt: "testOptional",
 };
-const objArrParam: DeepObjectQueryParamsObjectObjArrParam = {
+const objArrParam: ObjArrParam = {
   arr: [
     "test",
     "test2",
@@ -141,11 +141,11 @@ const objArrParam: DeepObjectQueryParamsObjectObjArrParam = {
 
 ### Parameters
 
-| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `objParam`                                                                                                             | [shared.SimpleObject](../../models/shared/simpleobject.md)                                                             | :heavy_check_mark:                                                                                                     | A simple object that uses all our supported primitive types and enums and has optional properties.                     |
-| `objArrParam`                                                                                                          | [operations.DeepObjectQueryParamsObjectObjArrParam](../../models/operations/deepobjectqueryparamsobjectobjarrparam.md) | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |
-| `config`                                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                           | :heavy_minus_sign:                                                                                                     | Available config options for making requests.                                                                          |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `objParam`                                                                                         | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objArrParam`                                                                                      | [operations.ObjArrParam](../../models/operations/objarrparam.md)                                   | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
 
 
 ### Response
@@ -247,11 +247,7 @@ const arrParamExploded: number[] = [
 
 ```typescript
 import { SDK } from "openapi";
-import {
-  FormQueryParamsCamelObjectObjParam,
-  FormQueryParamsCamelObjectObjParamExploded,
-  FormQueryParamsCamelObjectRequest,
-} from "openapi/dist/sdk/models/operations";
+import { FormQueryParamsCamelObjectRequest, ObjParam, ObjParamExploded } from "openapi/dist/sdk/models/operations";
 
 (async() => {
   const sdk = new SDK({
@@ -261,11 +257,11 @@ import {
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const objParamExploded: FormQueryParamsCamelObjectObjParamExploded = {
+const objParamExploded: ObjParamExploded = {
   itemCount: "10",
   searchTerm: "foo",
 };
-const objParam: FormQueryParamsCamelObjectObjParam = {
+const objParam: ObjParam = {
   encodedCount: "11",
   encodedTerm: "bar",
 };
@@ -281,11 +277,11 @@ const objParam: FormQueryParamsCamelObjectObjParam = {
 
 ### Parameters
 
-| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `objParamExploded`                                                                                                             | [operations.FormQueryParamsCamelObjectObjParamExploded](../../models/operations/formqueryparamscamelobjectobjparamexploded.md) | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |
-| `objParam`                                                                                                                     | [operations.FormQueryParamsCamelObjectObjParam](../../models/operations/formqueryparamscamelobjectobjparam.md)                 | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |
-| `config`                                                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                   | :heavy_minus_sign:                                                                                                             | Available config options for making requests.                                                                                  |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `objParamExploded`                                                         | [operations.ObjParamExploded](../../models/operations/objparamexploded.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `objParam`                                                                 | [operations.ObjParam](../../models/operations/objparam.md)                 | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
 
 
 ### Response
@@ -348,7 +344,7 @@ const mapParamExploded: Record<string, number> = {
 ```typescript
 import { SDK } from "openapi";
 import { FormQueryParamsObjectRequest } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -373,8 +369,8 @@ const objParamExploded: SimpleObject = {
   float32: 1.1,
   int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: Int32Enum.FiftyFive,
+  intEnum: IntEnum.Second,
   num: 1.1,
   str: "test",
   strOpt: "testOptional",
@@ -393,8 +389,8 @@ const objParam: SimpleObject = {
   float32: 1.1,
   int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: Int32Enum.FiftyFive,
+  intEnum: IntEnum.Second,
   num: 1.1,
   str: "test",
   strOpt: "testOptional",
@@ -620,7 +616,7 @@ const xHeaderMapExplode: Record<string, string> = {
 ```typescript
 import { SDK } from "openapi";
 import { HeaderParamsObjectRequest } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -645,8 +641,8 @@ const xHeaderObj: SimpleObject = {
   float32: 1.1,
   int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: Int32Enum.FiftyFive,
+  intEnum: IntEnum.Second,
   num: 1.1,
   str: "test",
   strOpt: "testOptional",
@@ -665,8 +661,8 @@ const xHeaderObjExplode: SimpleObject = {
   float32: 1.1,
   int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: Int32Enum.FiftyFive,
+  intEnum: IntEnum.Second,
   num: 1.1,
   str: "test",
   strOpt: "testOptional",
@@ -748,7 +744,7 @@ const xHeaderString: string = "test";
 ```typescript
 import { SDK } from "openapi";
 import { JsonQueryParamsObjectRequest } from "openapi/dist/sdk/models/operations";
-import { DeepObject, Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { DeepObject, Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -776,8 +772,8 @@ const deepObjParam: DeepObject = {
       float32: 1.1,
       int: 1,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: Int32Enum.FiftyFive,
+      intEnum: IntEnum.Second,
       num: 1.1,
       str: "test",
       strOpt: "testOptional",
@@ -796,8 +792,8 @@ const deepObjParam: DeepObject = {
       float32: 1.1,
       int: 1,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: Int32Enum.FiftyFive,
+      intEnum: IntEnum.Second,
       num: 1.1,
       str: "test",
       strOpt: "testOptional",
@@ -820,8 +816,8 @@ const deepObjParam: DeepObject = {
       float32: 1.1,
       int: 1,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: Int32Enum.FiftyFive,
+      intEnum: IntEnum.Second,
       num: 1.1,
       str: "test",
       strOpt: "testOptional",
@@ -840,8 +836,8 @@ const deepObjParam: DeepObject = {
       float32: 1.1,
       int: 1,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: Int32Enum.FiftyFive,
+      intEnum: IntEnum.Second,
       num: 1.1,
       str: "test",
       strOpt: "testOptional",
@@ -862,8 +858,8 @@ const deepObjParam: DeepObject = {
     float32: 1.1,
     int: 1,
     int32: 1,
-    int32Enum: SimpleObjectInt32Enum.FiftyFive,
-    intEnum: SimpleObjectIntEnum.Second,
+    int32Enum: Int32Enum.FiftyFive,
+    intEnum: IntEnum.Second,
     num: 1.1,
     str: "test",
     strOpt: "testOptional",
@@ -884,8 +880,8 @@ const simpleObjParam: SimpleObject = {
   float32: 1.1,
   int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: Int32Enum.FiftyFive,
+  intEnum: IntEnum.Second,
   num: 1.1,
   str: "test",
   strOpt: "testOptional",
@@ -1009,7 +1005,7 @@ const queryStringParam: string = "queryValue";
 ```typescript
 import { SDK } from "openapi";
 import { MixedQueryParamsRequest } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -1034,8 +1030,8 @@ const deepObjectParam: SimpleObject = {
   float32: 1.1,
   int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: Int32Enum.FiftyFive,
+  intEnum: IntEnum.Second,
   num: 1.1,
   str: "test",
   strOpt: "testOptional",
@@ -1054,8 +1050,8 @@ const formParam: SimpleObject = {
   float32: 1.1,
   int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: Int32Enum.FiftyFive,
+  intEnum: IntEnum.Second,
   num: 1.1,
   str: "test",
   strOpt: "testOptional",
@@ -1074,8 +1070,8 @@ const jsonParam: SimpleObject = {
   float32: 1.1,
   int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: Int32Enum.FiftyFive,
+  intEnum: IntEnum.Second,
   num: 1.1,
   str: "test",
   strOpt: "testOptional",
@@ -1112,7 +1108,7 @@ const jsonParam: SimpleObject = {
 ```typescript
 import { SDK } from "openapi";
 import { PathParameterJsonRequest } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -1137,8 +1133,8 @@ const jsonObj: SimpleObject = {
   float32: 1.1,
   int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: Int32Enum.FiftyFive,
+  intEnum: IntEnum.Second,
   num: 1.1,
   str: "test",
   strOpt: "testOptional",
@@ -1173,7 +1169,7 @@ const jsonObj: SimpleObject = {
 ```typescript
 import { SDK } from "openapi";
 import { PipeDelimitedQueryParamsArrayRequest } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -1210,8 +1206,8 @@ const objParam: SimpleObject = {
   float32: 1.1,
   int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: Int32Enum.FiftyFive,
+  intEnum: IntEnum.Second,
   num: 1.1,
   str: "test",
   strOpt: "testOptional",
@@ -1340,7 +1336,7 @@ const mapParamExploded: Record<string, number> = {
 ```typescript
 import { SDK } from "openapi";
 import { SimplePathParameterObjectsRequest } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -1365,8 +1361,8 @@ const objParam: SimpleObject = {
   float32: 1.1,
   int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: Int32Enum.FiftyFive,
+  intEnum: IntEnum.Second,
   num: 1.1,
   str: "test",
   strOpt: "testOptional",
@@ -1385,8 +1381,8 @@ const objParamExploded: SimpleObject = {
   float32: 1.1,
   int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: Int32Enum.FiftyFive,
+  intEnum: IntEnum.Second,
   num: 1.1,
   str: "test",
   strOpt: "testOptional",

@@ -3,14 +3,14 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 /**
  * OK
  */
-export class RequestBodyPostDefaultsAndConsts200ApplicationJSON extends SpeakeasyBase {
+export class RequestBodyPostDefaultsAndConstsResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "json" })
     @Type(() => shared.DefaultsAndConstsOutput)
@@ -40,5 +40,5 @@ export class RequestBodyPostDefaultsAndConstsResponse extends SpeakeasyBase {
      * OK
      */
     @SpeakeasyMetadata()
-    requestBodyPostDefaultsAndConsts200ApplicationJSONObject?: RequestBodyPostDefaultsAndConsts200ApplicationJSON;
+    object?: RequestBodyPostDefaultsAndConstsResponseBody;
 }

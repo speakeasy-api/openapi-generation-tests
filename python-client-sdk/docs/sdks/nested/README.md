@@ -1,5 +1,5 @@
 # Nested
-(*nested*)
+(*.nested*)
 
 ### Available Operations
 

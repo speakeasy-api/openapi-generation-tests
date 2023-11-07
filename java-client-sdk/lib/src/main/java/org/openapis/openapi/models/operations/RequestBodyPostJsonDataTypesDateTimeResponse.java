@@ -46,10 +46,10 @@ public class RequestBodyPostJsonDataTypesDateTimeResponse {
      * OK
      */
     
-    public RequestBodyPostJSONDataTypesDateTime200ApplicationJSON requestBodyPostJSONDataTypesDateTime200ApplicationJSONObject;
+    public RequestBodyPostJsonDataTypesDateTimeResponseBody object;
 
-    public RequestBodyPostJsonDataTypesDateTimeResponse withRequestBodyPostJSONDataTypesDateTime200ApplicationJSONObject(RequestBodyPostJSONDataTypesDateTime200ApplicationJSON requestBodyPostJSONDataTypesDateTime200ApplicationJSONObject) {
-        this.requestBodyPostJSONDataTypesDateTime200ApplicationJSONObject = requestBodyPostJSONDataTypesDateTime200ApplicationJSONObject;
+    public RequestBodyPostJsonDataTypesDateTimeResponse withObject(RequestBodyPostJsonDataTypesDateTimeResponseBody object) {
+        this.object = object;
         return this;
     }
     

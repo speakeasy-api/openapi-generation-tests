@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class HttpBinSimpleJsonObjectSlideshowSlides < OpenApiSDK::Utils::FieldAugmented
+    class Slides < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -29,7 +29,7 @@ module OpenApiSDK
     end
 
 
-    class HttpBinSimpleJsonObjectSlideshow < OpenApiSDK::Utils::FieldAugmented
+    class Slideshow < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -37,12 +37,12 @@ module OpenApiSDK
 
       field :date, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('date') } }
 
-      field :slides, T::Array[Shared::HttpBinSimpleJsonObjectSlideshowSlides], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('slides') } }
+      field :slides, T::Array[Shared::Slides], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('slides') } }
 
       field :title, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('title') } }
 
 
-      sig { params(author: String, date: String, slides: T::Array[Shared::HttpBinSimpleJsonObjectSlideshowSlides], title: String).void }
+      sig { params(author: String, date: String, slides: T::Array[Shared::Slides], title: String).void }
       def initialize(author: nil, date: nil, slides: nil, title: nil)
         @author = author
         @date = date
@@ -56,10 +56,10 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :slideshow, Shared::HttpBinSimpleJsonObjectSlideshow, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('slideshow') } }
+      field :slideshow, Shared::Slideshow, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('slideshow') } }
 
 
-      sig { params(slideshow: Shared::HttpBinSimpleJsonObjectSlideshow).void }
+      sig { params(slideshow: Shared::Slideshow).void }
       def initialize(slideshow: nil)
         @slideshow = slideshow
       end

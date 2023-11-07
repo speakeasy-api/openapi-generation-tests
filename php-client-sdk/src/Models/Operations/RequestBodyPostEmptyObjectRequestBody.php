@@ -12,14 +12,14 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 class RequestBodyPostEmptyObjectRequestBody
 {
 	#[\JMS\Serializer\Annotation\SerializedName('empty')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPostEmptyObjectRequestBodyEmpty')]
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\EmptyT')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?RequestBodyPostEmptyObjectRequestBodyEmpty $empty = null;
+    public ?EmptyT $empty = null;
     
 	#[\JMS\Serializer\Annotation\SerializedName('emptyWithEmptyProperties')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties')]
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\EmptyWithEmptyProperties')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties $emptyWithEmptyProperties = null;
+    public ?EmptyWithEmptyProperties $emptyWithEmptyProperties = null;
     
 	public function __construct()
 	{

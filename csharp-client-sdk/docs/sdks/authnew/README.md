@@ -1,5 +1,5 @@
-# AuthNewSDK
-(*AuthNew*)
+# AuthNew
+(*.AuthNew*)
 
 ## Overview
 
@@ -24,10 +24,11 @@ Endpoints for testing authentication.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
+using System.Collections.Generic;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -36,12 +37,12 @@ var sdk = new SDKSDK(
 );
 
 var res = await sdk.AuthNew.ApiKeyAuthGlobalNewAsync(new AuthServiceRequestBody() {
-    BasicAuth = new AuthServiceRequestBodyBasicAuth() {
+    BasicAuth = new BasicAuth() {
         Password = "owsGgP4_AhRPMSJ",
         Username = "Devonte_Bins",
     },
-    HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>() {
-        new AuthServiceRequestBodyHeaderAuth() {
+    HeaderAuth = new List<HeaderAuth>() {
+        new HeaderAuth() {
             ExpectedValue = "string",
             HeaderName = "string",
         },
@@ -69,10 +70,11 @@ var res = await sdk.AuthNew.ApiKeyAuthGlobalNewAsync(new AuthServiceRequestBody(
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
+using System.Collections.Generic;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -81,12 +83,12 @@ var sdk = new SDKSDK(
 );
 
 var res = await sdk.AuthNew.AuthGlobalAsync(new AuthServiceRequestBody() {
-    BasicAuth = new AuthServiceRequestBodyBasicAuth() {
+    BasicAuth = new BasicAuth() {
         Password = "xvJcf9GiJNr7T2x",
         Username = "Cory33",
     },
-    HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>() {
-        new AuthServiceRequestBodyHeaderAuth() {
+    HeaderAuth = new List<HeaderAuth>() {
+        new HeaderAuth() {
             ExpectedValue = "string",
             HeaderName = "string",
         },
@@ -114,11 +116,12 @@ var res = await sdk.AuthNew.AuthGlobalAsync(new AuthServiceRequestBody() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using System.Collections.Generic;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     globalPathParam: 100,
     globalQueryParam: "some example global query param"
 );
@@ -127,12 +130,12 @@ var res = await sdk.AuthNew.BasicAuthNewAsync(new BasicAuthNewSecurity() {
     Password = "YOUR_PASSWORD",
     Username = "YOUR_USERNAME",
 }, new AuthServiceRequestBody() {
-    BasicAuth = new AuthServiceRequestBodyBasicAuth() {
+    BasicAuth = new BasicAuth() {
         Password = "Z2OStPksFyrcGeu",
         Username = "Ashton.Steuber27",
     },
-    HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>() {
-        new AuthServiceRequestBodyHeaderAuth() {
+    HeaderAuth = new List<HeaderAuth>() {
+        new HeaderAuth() {
             ExpectedValue = "string",
             HeaderName = "string",
         },
@@ -161,11 +164,12 @@ var res = await sdk.AuthNew.BasicAuthNewAsync(new BasicAuthNewSecurity() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using System.Collections.Generic;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     globalPathParam: 100,
     globalQueryParam: "some example global query param"
 );
@@ -173,12 +177,12 @@ var sdk = new SDKSDK(
 var res = await sdk.AuthNew.MultipleMixedOptionsAuthAsync(new MultipleMixedOptionsAuthSecurity() {
     ApiKeyAuthNew = "Token <YOUR_API_KEY>",
 }, new AuthServiceRequestBody() {
-    BasicAuth = new AuthServiceRequestBodyBasicAuth() {
+    BasicAuth = new BasicAuth() {
         Password = "Iq1JSzG1wqLDz4v",
         Username = "Ismael.Emmerich",
     },
-    HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>() {
-        new AuthServiceRequestBodyHeaderAuth() {
+    HeaderAuth = new List<HeaderAuth>() {
+        new HeaderAuth() {
             ExpectedValue = "string",
             HeaderName = "string",
         },
@@ -207,11 +211,12 @@ var res = await sdk.AuthNew.MultipleMixedOptionsAuthAsync(new MultipleMixedOptio
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using System.Collections.Generic;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     globalPathParam: 100,
     globalQueryParam: "some example global query param"
 );
@@ -223,12 +228,12 @@ var res = await sdk.AuthNew.MultipleMixedSchemeAuthAsync(new MultipleMixedScheme
         Username = "YOUR_USERNAME",
     },
 }, new AuthServiceRequestBody() {
-    BasicAuth = new AuthServiceRequestBodyBasicAuth() {
+    BasicAuth = new BasicAuth() {
         Password = "OcWVV5608IiaWJQ",
         Username = "Kameron42",
     },
-    HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>() {
-        new AuthServiceRequestBodyHeaderAuth() {
+    HeaderAuth = new List<HeaderAuth>() {
+        new HeaderAuth() {
             ExpectedValue = "string",
             HeaderName = "string",
         },
@@ -257,11 +262,12 @@ var res = await sdk.AuthNew.MultipleMixedSchemeAuthAsync(new MultipleMixedScheme
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using System.Collections.Generic;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     globalPathParam: 100,
     globalQueryParam: "some example global query param"
 );
@@ -272,12 +278,12 @@ var res = await sdk.AuthNew.MultipleOptionsWithMixedSchemesAuthAsync(new Multipl
         Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
     },
 }, new AuthServiceRequestBody() {
-    BasicAuth = new AuthServiceRequestBodyBasicAuth() {
+    BasicAuth = new BasicAuth() {
         Password = "fpwNE90MyqKIrXk",
         Username = "Caroline_Walsh",
     },
-    HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>() {
-        new AuthServiceRequestBodyHeaderAuth() {
+    HeaderAuth = new List<HeaderAuth>() {
+        new HeaderAuth() {
             ExpectedValue = "string",
             HeaderName = "string",
         },
@@ -306,11 +312,12 @@ var res = await sdk.AuthNew.MultipleOptionsWithMixedSchemesAuthAsync(new Multipl
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using System.Collections.Generic;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     globalPathParam: 100,
     globalQueryParam: "some example global query param"
 );
@@ -321,12 +328,12 @@ var res = await sdk.AuthNew.MultipleOptionsWithSimpleSchemesAuthAsync(new Multip
         Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
     },
 }, new AuthServiceRequestBody() {
-    BasicAuth = new AuthServiceRequestBodyBasicAuth() {
+    BasicAuth = new BasicAuth() {
         Password = "pibxDTiJSijK04Y",
         Username = "Selena76",
     },
-    HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>() {
-        new AuthServiceRequestBodyHeaderAuth() {
+    HeaderAuth = new List<HeaderAuth>() {
+        new HeaderAuth() {
             ExpectedValue = "string",
             HeaderName = "string",
         },
@@ -355,11 +362,12 @@ var res = await sdk.AuthNew.MultipleOptionsWithSimpleSchemesAuthAsync(new Multip
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using System.Collections.Generic;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     globalPathParam: 100,
     globalQueryParam: "some example global query param"
 );
@@ -367,12 +375,12 @@ var sdk = new SDKSDK(
 var res = await sdk.AuthNew.MultipleSimpleOptionsAuthAsync(new MultipleSimpleOptionsAuthSecurity() {
     ApiKeyAuthNew = "Token <YOUR_API_KEY>",
 }, new AuthServiceRequestBody() {
-    BasicAuth = new AuthServiceRequestBodyBasicAuth() {
+    BasicAuth = new BasicAuth() {
         Password = "pzdKQgSGZSrUGNs",
         Username = "Eryn51",
     },
-    HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>() {
-        new AuthServiceRequestBodyHeaderAuth() {
+    HeaderAuth = new List<HeaderAuth>() {
+        new HeaderAuth() {
             ExpectedValue = "string",
             HeaderName = "string",
         },
@@ -401,11 +409,12 @@ var res = await sdk.AuthNew.MultipleSimpleOptionsAuthAsync(new MultipleSimpleOpt
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using System.Collections.Generic;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     globalPathParam: 100,
     globalQueryParam: "some example global query param"
 );
@@ -414,12 +423,12 @@ var res = await sdk.AuthNew.MultipleSimpleSchemeAuthAsync(new MultipleSimpleSche
     ApiKeyAuthNew = "Token <YOUR_API_KEY>",
     Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
 }, new AuthServiceRequestBody() {
-    BasicAuth = new AuthServiceRequestBodyBasicAuth() {
+    BasicAuth = new BasicAuth() {
         Password = "UrAsw466AAaYtr1",
         Username = "Kenya.Baumbach",
     },
-    HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>() {
-        new AuthServiceRequestBodyHeaderAuth() {
+    HeaderAuth = new List<HeaderAuth>() {
+        new HeaderAuth() {
             ExpectedValue = "string",
             HeaderName = "string",
         },
@@ -448,11 +457,12 @@ var res = await sdk.AuthNew.MultipleSimpleSchemeAuthAsync(new MultipleSimpleSche
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using System.Collections.Generic;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     globalPathParam: 100,
     globalQueryParam: "some example global query param"
 );
@@ -460,12 +470,12 @@ var sdk = new SDKSDK(
 var res = await sdk.AuthNew.Oauth2AuthNewAsync(new Oauth2AuthNewSecurity() {
     Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
 }, new AuthServiceRequestBody() {
-    BasicAuth = new AuthServiceRequestBodyBasicAuth() {
+    BasicAuth = new BasicAuth() {
         Password = "V02sHy2onRTMRgS",
         Username = "Polly.Aufderhar78",
     },
-    HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>() {
-        new AuthServiceRequestBodyHeaderAuth() {
+    HeaderAuth = new List<HeaderAuth>() {
+        new HeaderAuth() {
             ExpectedValue = "string",
             HeaderName = "string",
         },
@@ -494,11 +504,12 @@ var res = await sdk.AuthNew.Oauth2AuthNewAsync(new Oauth2AuthNewSecurity() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using System.Collections.Generic;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     globalPathParam: 100,
     globalQueryParam: "some example global query param"
 );
@@ -506,12 +517,12 @@ var sdk = new SDKSDK(
 var res = await sdk.AuthNew.OpenIdConnectAuthNewAsync(new OpenIdConnectAuthNewSecurity() {
     OpenIdConnect = "Bearer YOUR_OPENID_TOKEN",
 }, new AuthServiceRequestBody() {
-    BasicAuth = new AuthServiceRequestBodyBasicAuth() {
+    BasicAuth = new BasicAuth() {
         Password = "1_B3hNdr8HC3AeS",
         Username = "Floy_Heller",
     },
-    HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>() {
-        new AuthServiceRequestBodyHeaderAuth() {
+    HeaderAuth = new List<HeaderAuth>() {
+        new HeaderAuth() {
             ExpectedValue = "string",
             HeaderName = "string",
         },

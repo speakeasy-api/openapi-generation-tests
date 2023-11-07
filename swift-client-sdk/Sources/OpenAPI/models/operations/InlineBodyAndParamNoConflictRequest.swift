@@ -3,12 +3,12 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct InlineBodyAndParamNoConflictRequest: APIValue {
         public let paramStr: String
         public let requestBody: Operations.InlineBodyAndParamNoConflictRequestBody
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         ///
         public init(paramStr: String, requestBody: Operations.InlineBodyAndParamNoConflictRequestBody) {

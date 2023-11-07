@@ -9,26 +9,26 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj:
+class NullableOptionalObj:
     pass
 
 
 @dataclasses.dataclass
-class NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj:
+class NullableRequiredObj:
     pass
 
 
 @dataclasses.dataclass
-class NullableRequiredEmptyObjectPostRequestBodyRequiredObj:
+class RequiredObj:
     pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class NullableRequiredEmptyObjectPostRequestBody:
-    nullable_required_obj: Optional[NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredObj') }})
-    required_obj: NullableRequiredEmptyObjectPostRequestBodyRequiredObj = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('RequiredObj') }})
-    nullable_optional_obj: Optional[NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOptionalObj') }})
+    nullable_required_obj: Optional[NullableRequiredObj] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredObj') }})
+    required_obj: RequiredObj = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('RequiredObj') }})
+    nullable_optional_obj: Optional[NullableOptionalObj] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOptionalObj') }})
     
 
 
@@ -39,9 +39,9 @@ class NullableRequiredEmptyObjectPostResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    nullable_required_empty_object_post_200_application_json_string: Optional[str] = dataclasses.field(default=None)
-    r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
+    res: Optional[str] = dataclasses.field(default=None)
+    r"""OK"""
     
 

@@ -1,5 +1,5 @@
 # Parameters
-(*parameters*)
+
 
 ## Overview
 
@@ -41,14 +41,14 @@ Endpoints for testing parameters.
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsMapRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -94,24 +94,19 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectRequest;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
-use \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectObjArrParam;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $objParam = new SimpleObject();
+    $objParam = new Shared\SimpleObject();
     $objParam->any = 'any';
     $objParam->bigint = 8821239038968084;
     $objParam->bigintStr = '9223372036854775808';
@@ -121,19 +116,19 @@ try {
     $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
     $objParam->decimal = 3.141592653589793;
     $objParam->decimalStr = '3.14159265358979344719667586';
-    $objParam->enum = Enum::One;
+    $objParam->enum = Shared\Enum::One;
     $objParam->float32 = 1.1;
     $objParam->int = 1;
     $objParam->int32 = 1;
-    $objParam->int32Enum = SimpleObjectInt32Enum::SixtyNine;
-    $objParam->intEnum = SimpleObjectIntEnum::Second;
+    $objParam->int32Enum = Shared\Int32Enum::SixtyNine;
+    $objParam->intEnum = Shared\IntEnum::Second;
     $objParam->intOptNull = 303001;
     $objParam->num = 1.1;
     $objParam->numOptNull = 5571.55;
     $objParam->str = 'test';
     $objParam->strOpt = 'testOptional';
 
-    $objArrParam = new DeepObjectQueryParamsObjectObjArrParam();
+    $objArrParam = new Operations\ObjArrParam();
     $objArrParam->arr = [
         'test',
     ];
@@ -150,10 +145,10 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                                      | Type                                                                                                                                           | Required                                                                                                                                       | Description                                                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `objParam`                                                                                                                                     | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../models/shared/SimpleObject.md)                                                             | :heavy_check_mark:                                                                                                                             | A simple object that uses all our supported primitive types and enums and has optional properties.                                             |
-| `objArrParam`                                                                                                                                  | [\OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectObjArrParam](../../models/operations/DeepObjectQueryParamsObjectObjArrParam.md) | :heavy_minus_sign:                                                                                                                             | N/A                                                                                                                                            |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `objParam`                                                                                         | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../models/shared/SimpleObject.md)                 | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objArrParam`                                                                                      | [\OpenAPI\OpenAPI\Models\Operations\ObjArrParam](../../models/operations/ObjArrParam.md)           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 
 
 ### Response
@@ -171,14 +166,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\DuplicateParamRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -217,14 +212,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsArrayRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -268,25 +263,23 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectRequest;
-use \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectObjParamExploded;
-use \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectObjParam;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $objParamExploded = new FormQueryParamsCamelObjectObjParamExploded();
+    $objParamExploded = new Operations\ObjParamExploded();
     $objParamExploded->itemCount = '10';
     $objParamExploded->searchTerm = 'foo';
 
-    $objParam = new FormQueryParamsCamelObjectObjParam();
+    $objParam = new Operations\ObjParam();
     $objParam->encodedCount = '11';
     $objParam->encodedTerm = 'bar';
 
@@ -302,10 +295,10 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                                              | Type                                                                                                                                                   | Required                                                                                                                                               | Description                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `objParamExploded`                                                                                                                                     | [\OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectObjParamExploded](../../models/operations/FormQueryParamsCamelObjectObjParamExploded.md) | :heavy_check_mark:                                                                                                                                     | N/A                                                                                                                                                    |
-| `objParam`                                                                                                                                             | [\OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectObjParam](../../models/operations/FormQueryParamsCamelObjectObjParam.md)                 | :heavy_minus_sign:                                                                                                                                     | N/A                                                                                                                                                    |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `objParamExploded`                                                                                 | [\OpenAPI\OpenAPI\Models\Operations\ObjParamExploded](../../models/operations/ObjParamExploded.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `objParam`                                                                                         | [\OpenAPI\OpenAPI\Models\Operations\ObjParam](../../models/operations/ObjParam.md)                 | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 
 
 ### Response
@@ -323,14 +316,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsMapRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -374,23 +367,19 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsObjectRequest;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $objParamExploded = new SimpleObject();
+    $objParamExploded = new Shared\SimpleObject();
     $objParamExploded->any = 'any';
     $objParamExploded->bigint = 8821239038968084;
     $objParamExploded->bigintStr = '9223372036854775808';
@@ -400,19 +389,19 @@ try {
     $objParamExploded->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
     $objParamExploded->decimal = 3.141592653589793;
     $objParamExploded->decimalStr = '3.14159265358979344719667586';
-    $objParamExploded->enum = Enum::One;
+    $objParamExploded->enum = Shared\Enum::One;
     $objParamExploded->float32 = 1.1;
     $objParamExploded->int = 1;
     $objParamExploded->int32 = 1;
-    $objParamExploded->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $objParamExploded->intEnum = SimpleObjectIntEnum::Second;
+    $objParamExploded->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $objParamExploded->intEnum = Shared\IntEnum::Second;
     $objParamExploded->intOptNull = 645228;
     $objParamExploded->num = 1.1;
     $objParamExploded->numOptNull = 7602.31;
     $objParamExploded->str = 'test';
     $objParamExploded->strOpt = 'testOptional';
 
-    $objParam = new SimpleObject();
+    $objParam = new Shared\SimpleObject();
     $objParam->any = 'any';
     $objParam->bigint = 8821239038968084;
     $objParam->bigintStr = '9223372036854775808';
@@ -422,12 +411,12 @@ try {
     $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
     $objParam->decimal = 3.141592653589793;
     $objParam->decimalStr = '3.14159265358979344719667586';
-    $objParam->enum = Enum::One;
+    $objParam->enum = Shared\Enum::One;
     $objParam->float32 = 1.1;
     $objParam->int = 1;
     $objParam->int32 = 1;
-    $objParam->int32Enum = SimpleObjectInt32Enum::SixtyNine;
-    $objParam->intEnum = SimpleObjectIntEnum::First;
+    $objParam->int32Enum = Shared\Int32Enum::SixtyNine;
+    $objParam->intEnum = Shared\IntEnum::First;
     $objParam->intOptNull = 973554;
     $objParam->num = 1.1;
     $objParam->numOptNull = 873.54;
@@ -467,14 +456,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsPrimitiveRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -516,27 +505,25 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsRefParamObjectRequest;
-use \OpenAPI\OpenAPI\Models\Shared\RefQueryParamObj;
-use \OpenAPI\OpenAPI\Models\Shared\RefQueryParamObjExploded;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $refObjParam = new RefQueryParamObj();
+    $refObjParam = new Shared\RefQueryParamObj();
     $refObjParam->bool = true;
     $refObjParam->int = 1;
     $refObjParam->num = 1.1;
     $refObjParam->str = 'test';
 
-    $refObjParamExploded = new RefQueryParamObjExploded();
+    $refObjParamExploded = new Shared\RefQueryParamObjExploded();
     $refObjParamExploded->bool = true;
     $refObjParamExploded->int = 1;
     $refObjParamExploded->num = 1.1;
@@ -575,14 +562,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\HeaderParamsArrayRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -623,14 +610,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\HeaderParamsMapRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -674,23 +661,19 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\HeaderParamsObjectRequest;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $xHeaderObj = new SimpleObject();
+    $xHeaderObj = new Shared\SimpleObject();
     $xHeaderObj->any = 'any';
     $xHeaderObj->bigint = 8821239038968084;
     $xHeaderObj->bigintStr = '9223372036854775808';
@@ -700,19 +683,19 @@ try {
     $xHeaderObj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
     $xHeaderObj->decimal = 3.141592653589793;
     $xHeaderObj->decimalStr = '3.14159265358979344719667586';
-    $xHeaderObj->enum = Enum::One;
+    $xHeaderObj->enum = Shared\Enum::One;
     $xHeaderObj->float32 = 1.1;
     $xHeaderObj->int = 1;
     $xHeaderObj->int32 = 1;
-    $xHeaderObj->int32Enum = SimpleObjectInt32Enum::SixtyNine;
-    $xHeaderObj->intEnum = SimpleObjectIntEnum::Third;
+    $xHeaderObj->int32Enum = Shared\Int32Enum::SixtyNine;
+    $xHeaderObj->intEnum = Shared\IntEnum::Third;
     $xHeaderObj->intOptNull = 590416;
     $xHeaderObj->num = 1.1;
     $xHeaderObj->numOptNull = 144.68;
     $xHeaderObj->str = 'test';
     $xHeaderObj->strOpt = 'testOptional';
 
-    $xHeaderObjExplode = new SimpleObject();
+    $xHeaderObjExplode = new Shared\SimpleObject();
     $xHeaderObjExplode->any = 'any';
     $xHeaderObjExplode->bigint = 8821239038968084;
     $xHeaderObjExplode->bigintStr = '9223372036854775808';
@@ -722,12 +705,12 @@ try {
     $xHeaderObjExplode->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
     $xHeaderObjExplode->decimal = 3.141592653589793;
     $xHeaderObjExplode->decimalStr = '3.14159265358979344719667586';
-    $xHeaderObjExplode->enum = Enum::One;
+    $xHeaderObjExplode->enum = Shared\Enum::One;
     $xHeaderObjExplode->float32 = 1.1;
     $xHeaderObjExplode->int = 1;
     $xHeaderObjExplode->int32 = 1;
-    $xHeaderObjExplode->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $xHeaderObjExplode->intEnum = SimpleObjectIntEnum::Second;
+    $xHeaderObjExplode->int32Enum = Shared\Int32Enum::FiftyFive;
+    $xHeaderObjExplode->intEnum = Shared\IntEnum::Second;
     $xHeaderObjExplode->intOptNull = 54344;
     $xHeaderObjExplode->num = 1.1;
     $xHeaderObjExplode->numOptNull = 6940.18;
@@ -767,14 +750,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\HeaderParamsPrimitiveRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -816,35 +799,30 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\JsonQueryParamsObjectRequest;
-use \OpenAPI\OpenAPI\Models\Shared\DeepObject;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $deepObjParam = new DeepObject();
+    $deepObjParam = new Shared\DeepObject();
     $deepObjParam->any = 'anyOf[0]';
     $deepObjParam->arr = [
-        new SimpleObject(),
+        new Shared\SimpleObject(),
     ];
     $deepObjParam->bool = true;
     $deepObjParam->int = 1;
     $deepObjParam->map = [
-        'Hybrid' => new SimpleObject(),
+        'Hybrid' => new Shared\SimpleObject(),
     ];
     $deepObjParam->num = 1.1;
-    $deepObjParam->obj = new SimpleObject();
+    $deepObjParam->obj = new Shared\SimpleObject();
     $deepObjParam->obj->any = 'any';
     $deepObjParam->obj->bigint = 8821239038968084;
     $deepObjParam->obj->bigintStr = '9223372036854775808';
@@ -854,12 +832,12 @@ try {
     $deepObjParam->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
     $deepObjParam->obj->decimal = 3.141592653589793;
     $deepObjParam->obj->decimalStr = '3.14159265358979344719667586';
-    $deepObjParam->obj->enum = Enum::One;
+    $deepObjParam->obj->enum = Shared\Enum::One;
     $deepObjParam->obj->float32 = 1.1;
     $deepObjParam->obj->int = 1;
     $deepObjParam->obj->int32 = 1;
-    $deepObjParam->obj->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $deepObjParam->obj->intEnum = SimpleObjectIntEnum::Third;
+    $deepObjParam->obj->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $deepObjParam->obj->intEnum = Shared\IntEnum::Third;
     $deepObjParam->obj->intOptNull = 980270;
     $deepObjParam->obj->num = 1.1;
     $deepObjParam->obj->numOptNull = 2047.13;
@@ -868,7 +846,7 @@ try {
     $deepObjParam->str = 'test';
     $deepObjParam->type = 'string';
 
-    $simpleObjParam = new SimpleObject();
+    $simpleObjParam = new Shared\SimpleObject();
     $simpleObjParam->any = 'any';
     $simpleObjParam->bigint = 8821239038968084;
     $simpleObjParam->bigintStr = '9223372036854775808';
@@ -878,12 +856,12 @@ try {
     $simpleObjParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
     $simpleObjParam->decimal = 3.141592653589793;
     $simpleObjParam->decimalStr = '3.14159265358979344719667586';
-    $simpleObjParam->enum = Enum::One;
+    $simpleObjParam->enum = Shared\Enum::One;
     $simpleObjParam->float32 = 1.1;
     $simpleObjParam->int = 1;
     $simpleObjParam->int32 = 1;
-    $simpleObjParam->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $simpleObjParam->intEnum = SimpleObjectIntEnum::First;
+    $simpleObjParam->int32Enum = Shared\Int32Enum::FiftyFive;
+    $simpleObjParam->intEnum = Shared\IntEnum::First;
     $simpleObjParam->intOptNull = 835122;
     $simpleObjParam->num = 1.1;
     $simpleObjParam->numOptNull = 9111.59;
@@ -923,14 +901,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\MixedParametersCamelCaseRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -971,14 +949,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\MixedParametersPrimitivesRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -1019,23 +997,19 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\MixedQueryParamsRequest;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $deepObjectParam = new SimpleObject();
+    $deepObjectParam = new Shared\SimpleObject();
     $deepObjectParam->any = 'any';
     $deepObjectParam->bigint = 8821239038968084;
     $deepObjectParam->bigintStr = '9223372036854775808';
@@ -1045,19 +1019,19 @@ try {
     $deepObjectParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
     $deepObjectParam->decimal = 3.141592653589793;
     $deepObjectParam->decimalStr = '3.14159265358979344719667586';
-    $deepObjectParam->enum = Enum::One;
+    $deepObjectParam->enum = Shared\Enum::One;
     $deepObjectParam->float32 = 1.1;
     $deepObjectParam->int = 1;
     $deepObjectParam->int32 = 1;
-    $deepObjectParam->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $deepObjectParam->intEnum = SimpleObjectIntEnum::Second;
+    $deepObjectParam->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $deepObjectParam->intEnum = Shared\IntEnum::Second;
     $deepObjectParam->intOptNull = 89281;
     $deepObjectParam->num = 1.1;
     $deepObjectParam->numOptNull = 2132.48;
     $deepObjectParam->str = 'test';
     $deepObjectParam->strOpt = 'testOptional';
 
-    $formParam = new SimpleObject();
+    $formParam = new Shared\SimpleObject();
     $formParam->any = 'any';
     $formParam->bigint = 8821239038968084;
     $formParam->bigintStr = '9223372036854775808';
@@ -1067,19 +1041,19 @@ try {
     $formParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
     $formParam->decimal = 3.141592653589793;
     $formParam->decimalStr = '3.14159265358979344719667586';
-    $formParam->enum = Enum::One;
+    $formParam->enum = Shared\Enum::One;
     $formParam->float32 = 1.1;
     $formParam->int = 1;
     $formParam->int32 = 1;
-    $formParam->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $formParam->intEnum = SimpleObjectIntEnum::Second;
+    $formParam->int32Enum = Shared\Int32Enum::FiftyFive;
+    $formParam->intEnum = Shared\IntEnum::Second;
     $formParam->intOptNull = 218100;
     $formParam->num = 1.1;
     $formParam->numOptNull = 75.58;
     $formParam->str = 'test';
     $formParam->strOpt = 'testOptional';
 
-    $jsonParam = new SimpleObject();
+    $jsonParam = new Shared\SimpleObject();
     $jsonParam->any = 'any';
     $jsonParam->bigint = 8821239038968084;
     $jsonParam->bigintStr = '9223372036854775808';
@@ -1089,12 +1063,12 @@ try {
     $jsonParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
     $jsonParam->decimal = 3.141592653589793;
     $jsonParam->decimalStr = '3.14159265358979344719667586';
-    $jsonParam->enum = Enum::One;
+    $jsonParam->enum = Shared\Enum::One;
     $jsonParam->float32 = 1.1;
     $jsonParam->int = 1;
     $jsonParam->int32 = 1;
-    $jsonParam->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $jsonParam->intEnum = SimpleObjectIntEnum::Third;
+    $jsonParam->int32Enum = Shared\Int32Enum::FiftyFive;
+    $jsonParam->intEnum = Shared\IntEnum::Third;
     $jsonParam->intOptNull = 387493;
     $jsonParam->num = 1.1;
     $jsonParam->numOptNull = 5641.93;
@@ -1135,23 +1109,19 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\PathParameterJsonRequest;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $jsonObj = new SimpleObject();
+    $jsonObj = new Shared\SimpleObject();
     $jsonObj->any = 'any';
     $jsonObj->bigint = 8821239038968084;
     $jsonObj->bigintStr = '9223372036854775808';
@@ -1161,12 +1131,12 @@ try {
     $jsonObj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
     $jsonObj->decimal = 3.141592653589793;
     $jsonObj->decimalStr = '3.14159265358979344719667586';
-    $jsonObj->enum = Enum::One;
+    $jsonObj->enum = Shared\Enum::One;
     $jsonObj->float32 = 1.1;
     $jsonObj->int = 1;
     $jsonObj->int32 = 1;
-    $jsonObj->int32Enum = SimpleObjectInt32Enum::SixtyNine;
-    $jsonObj->intEnum = SimpleObjectIntEnum::Second;
+    $jsonObj->int32Enum = Shared\Int32Enum::SixtyNine;
+    $jsonObj->intEnum = Shared\IntEnum::Second;
     $jsonObj->intOptNull = 355762;
     $jsonObj->num = 1.1;
     $jsonObj->numOptNull = 5955.49;
@@ -1205,23 +1175,19 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\PipeDelimitedQueryParamsArrayRequest;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $objParam = new SimpleObject();
+    $objParam = new Shared\SimpleObject();
     $objParam->any = 'any';
     $objParam->bigint = 8821239038968084;
     $objParam->bigintStr = '9223372036854775808';
@@ -1231,12 +1197,12 @@ try {
     $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
     $objParam->decimal = 3.141592653589793;
     $objParam->decimalStr = '3.14159265358979344719667586';
-    $objParam->enum = Enum::One;
+    $objParam->enum = Shared\Enum::One;
     $objParam->float32 = 1.1;
     $objParam->int = 1;
     $objParam->int32 = 1;
-    $objParam->int32Enum = SimpleObjectInt32Enum::SixtyNine;
-    $objParam->intEnum = SimpleObjectIntEnum::First;
+    $objParam->int32Enum = Shared\Int32Enum::SixtyNine;
+    $objParam->intEnum = Shared\IntEnum::First;
     $objParam->intOptNull = 110513;
     $objParam->num = 1.1;
     $objParam->numOptNull = 1666.19;
@@ -1284,14 +1250,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterArraysRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -1332,14 +1298,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterMapsRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -1383,23 +1349,19 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterObjectsRequest;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $objParam = new SimpleObject();
+    $objParam = new Shared\SimpleObject();
     $objParam->any = 'any';
     $objParam->bigint = 8821239038968084;
     $objParam->bigintStr = '9223372036854775808';
@@ -1409,19 +1371,19 @@ try {
     $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
     $objParam->decimal = 3.141592653589793;
     $objParam->decimalStr = '3.14159265358979344719667586';
-    $objParam->enum = Enum::One;
+    $objParam->enum = Shared\Enum::One;
     $objParam->float32 = 1.1;
     $objParam->int = 1;
     $objParam->int32 = 1;
-    $objParam->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $objParam->intEnum = SimpleObjectIntEnum::Third;
+    $objParam->int32Enum = Shared\Int32Enum::FiftyFive;
+    $objParam->intEnum = Shared\IntEnum::Third;
     $objParam->intOptNull = 384918;
     $objParam->num = 1.1;
     $objParam->numOptNull = 9559.93;
     $objParam->str = 'test';
     $objParam->strOpt = 'testOptional';
 
-    $objParamExploded = new SimpleObject();
+    $objParamExploded = new Shared\SimpleObject();
     $objParamExploded->any = 'any';
     $objParamExploded->bigint = 8821239038968084;
     $objParamExploded->bigintStr = '9223372036854775808';
@@ -1431,12 +1393,12 @@ try {
     $objParamExploded->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
     $objParamExploded->decimal = 3.141592653589793;
     $objParamExploded->decimalStr = '3.14159265358979344719667586';
-    $objParamExploded->enum = Enum::One;
+    $objParamExploded->enum = Shared\Enum::One;
     $objParamExploded->float32 = 1.1;
     $objParamExploded->int = 1;
     $objParamExploded->int32 = 1;
-    $objParamExploded->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $objParamExploded->intEnum = SimpleObjectIntEnum::Second;
+    $objParamExploded->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $objParamExploded->intEnum = Shared\IntEnum::Second;
     $objParamExploded->intOptNull = 678638;
     $objParamExploded->num = 1.1;
     $objParamExploded->numOptNull = 5865.54;
@@ -1476,14 +1438,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterPrimitivesRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 

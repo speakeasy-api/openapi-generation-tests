@@ -36,11 +36,11 @@ func (o *InlineBodyAndParamConflictRequest) GetStr() string {
 	return o.Str
 }
 
-type InlineBodyAndParamConflictResJSON struct {
+type JSON struct {
 	Str string `json:"str"`
 }
 
-func (o *InlineBodyAndParamConflictResJSON) GetStr() string {
+func (o *JSON) GetStr() string {
 	if o == nil {
 		return ""
 	}
@@ -49,8 +49,8 @@ func (o *InlineBodyAndParamConflictResJSON) GetStr() string {
 
 // InlineBodyAndParamConflictRes - OK
 type InlineBodyAndParamConflictRes struct {
-	Args map[string]string                 `json:"args"`
-	JSON InlineBodyAndParamConflictResJSON `json:"json"`
+	Args map[string]string `json:"args"`
+	JSON JSON              `json:"json"`
 }
 
 func (o *InlineBodyAndParamConflictRes) GetArgs() map[string]string {
@@ -60,9 +60,9 @@ func (o *InlineBodyAndParamConflictRes) GetArgs() map[string]string {
 	return o.Args
 }
 
-func (o *InlineBodyAndParamConflictRes) GetJSON() InlineBodyAndParamConflictResJSON {
+func (o *InlineBodyAndParamConflictRes) GetJSON() JSON {
 	if o == nil {
-		return InlineBodyAndParamConflictResJSON{}
+		return JSON{}
 	}
 	return o.JSON
 }

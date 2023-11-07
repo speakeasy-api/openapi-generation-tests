@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
-export class RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded extends SpeakeasyBase {
+export class RequestBodyPostMultipleContentTypesSplitParamFormRequestBody extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "form, name=bool3" })
     bool3: boolean;
 
@@ -19,7 +19,7 @@ export class RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrl
 
 export class RequestBodyPostMultipleContentTypesSplitParamFormRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=application/x-www-form-urlencoded" })
-    requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded;
+    requestBody: RequestBodyPostMultipleContentTypesSplitParamFormRequestBody;
 
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=paramStr" })
     paramStr: string;

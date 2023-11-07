@@ -12,14 +12,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class HeaderParamsObjectRes {
     @JsonProperty("headers")
-    public HeaderParamsObjectResHeaders headers;
+    public HeaderParamsObjectHeaders headers;
 
-    public HeaderParamsObjectRes withHeaders(HeaderParamsObjectResHeaders headers) {
+    public HeaderParamsObjectRes withHeaders(HeaderParamsObjectHeaders headers) {
         this.headers = headers;
         return this;
     }
     
-    public HeaderParamsObjectRes(@JsonProperty("headers") HeaderParamsObjectResHeaders headers) {
+    public HeaderParamsObjectRes(@JsonProperty("headers") HeaderParamsObjectHeaders headers) {
         this.headers = headers;
   }
 }

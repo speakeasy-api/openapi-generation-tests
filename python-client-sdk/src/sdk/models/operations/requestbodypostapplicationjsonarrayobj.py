@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import arrobjvalue as shared_arrobjvalue
+from ...models.shared import arrobjvalue as shared_arrobjvalue
 from typing import Optional
 
 

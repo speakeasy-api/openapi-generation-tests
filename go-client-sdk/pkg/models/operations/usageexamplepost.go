@@ -8,9 +8,9 @@ import (
 	"github.com/ericlagergren/decimal"
 	"math/big"
 	"net/http"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
+	"openapi/v2/pkg/utils"
 	"time"
 )
 
@@ -64,20 +64,20 @@ func (o *UsageExamplePostRequestBody) GetSimpleObject() *shared.SimpleObject {
 	return o.SimpleObject
 }
 
-// UsageExamplePostEnumParameter - An enum type
-type UsageExamplePostEnumParameter string
+// EnumParameter - An enum type
+type EnumParameter string
 
 const (
-	UsageExamplePostEnumParameterValue1 UsageExamplePostEnumParameter = "value1"
-	UsageExamplePostEnumParameterValue2 UsageExamplePostEnumParameter = "value2"
-	UsageExamplePostEnumParameterValue3 UsageExamplePostEnumParameter = "value3"
+	EnumParameterValue1 EnumParameter = "value1"
+	EnumParameterValue2 EnumParameter = "value2"
+	EnumParameterValue3 EnumParameter = "value3"
 )
 
-func (e UsageExamplePostEnumParameter) ToPointer() *UsageExamplePostEnumParameter {
+func (e EnumParameter) ToPointer() *EnumParameter {
 	return &e
 }
 
-func (e *UsageExamplePostEnumParameter) UnmarshalJSON(data []byte) error {
+func (e *EnumParameter) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -88,27 +88,27 @@ func (e *UsageExamplePostEnumParameter) UnmarshalJSON(data []byte) error {
 	case "value2":
 		fallthrough
 	case "value3":
-		*e = UsageExamplePostEnumParameter(v)
+		*e = EnumParameter(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UsageExamplePostEnumParameter: %v", v)
+		return fmt.Errorf("invalid value for EnumParameter: %v", v)
 	}
 }
 
-// UsageExamplePostOptEnumParameter - An enum type
-type UsageExamplePostOptEnumParameter string
+// OptEnumParameter - An enum type
+type OptEnumParameter string
 
 const (
-	UsageExamplePostOptEnumParameterValue1 UsageExamplePostOptEnumParameter = "value1"
-	UsageExamplePostOptEnumParameterValue2 UsageExamplePostOptEnumParameter = "value2"
-	UsageExamplePostOptEnumParameterValue3 UsageExamplePostOptEnumParameter = "value3"
+	OptEnumParameterValue1 OptEnumParameter = "value1"
+	OptEnumParameterValue2 OptEnumParameter = "value2"
+	OptEnumParameterValue3 OptEnumParameter = "value3"
 )
 
-func (e UsageExamplePostOptEnumParameter) ToPointer() *UsageExamplePostOptEnumParameter {
+func (e OptEnumParameter) ToPointer() *OptEnumParameter {
 	return &e
 }
 
-func (e *UsageExamplePostOptEnumParameter) UnmarshalJSON(data []byte) error {
+func (e *OptEnumParameter) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -119,10 +119,10 @@ func (e *UsageExamplePostOptEnumParameter) UnmarshalJSON(data []byte) error {
 	case "value2":
 		fallthrough
 	case "value3":
-		*e = UsageExamplePostOptEnumParameter(v)
+		*e = OptEnumParameter(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UsageExamplePostOptEnumParameter: %v", v)
+		return fmt.Errorf("invalid value for OptEnumParameter: %v", v)
 	}
 }
 
@@ -156,7 +156,7 @@ type UsageExamplePostRequest struct {
 	// A double parameter
 	DoubleParameter float64 `queryParam:"style=form,explode=true,name=doubleParameter"`
 	// An enum parameter
-	EnumParameter UsageExamplePostEnumParameter `queryParam:"style=form,explode=true,name=enumParameter"`
+	EnumParameter EnumParameter `queryParam:"style=form,explode=true,name=enumParameter"`
 	// A number parameter that contains a falsey example value
 	FalseyNumberParameter float64 `queryParam:"style=form,explode=true,name=falseyNumberParameter"`
 	// A float32 parameter
@@ -168,7 +168,7 @@ type UsageExamplePostRequest struct {
 	// An integer parameter
 	IntParameter int `queryParam:"style=form,explode=true,name=intParameter"`
 	// An enum parameter
-	OptEnumParameter *UsageExamplePostOptEnumParameter `queryParam:"style=form,explode=true,name=optEnumParameter"`
+	OptEnumParameter *OptEnumParameter `queryParam:"style=form,explode=true,name=optEnumParameter"`
 	// A string parameter
 	StrParameter string `queryParam:"style=form,explode=true,name=strParameter"`
 }
@@ -282,9 +282,9 @@ func (o *UsageExamplePostRequest) GetDoubleParameter() float64 {
 	return o.DoubleParameter
 }
 
-func (o *UsageExamplePostRequest) GetEnumParameter() UsageExamplePostEnumParameter {
+func (o *UsageExamplePostRequest) GetEnumParameter() EnumParameter {
 	if o == nil {
-		return UsageExamplePostEnumParameter("")
+		return EnumParameter("")
 	}
 	return o.EnumParameter
 }
@@ -324,7 +324,7 @@ func (o *UsageExamplePostRequest) GetIntParameter() int {
 	return o.IntParameter
 }
 
-func (o *UsageExamplePostRequest) GetOptEnumParameter() *UsageExamplePostOptEnumParameter {
+func (o *UsageExamplePostRequest) GetOptEnumParameter() *OptEnumParameter {
 	if o == nil {
 		return nil
 	}
@@ -338,7 +338,7 @@ func (o *UsageExamplePostRequest) GetStrParameter() string {
 	return o.StrParameter
 }
 
-type UsageExamplePost200ApplicationJSONJSON struct {
+type UsageExamplePostJSON struct {
 	// A set of strings with format values that lead to relevant examples being generated for them
 	FakerFormattedStrings *shared.FakerFormattedStrings `json:"fakerFormattedStrings,omitempty"`
 	// A set of strings with fieldnames that lead to relevant examples being generated for them
@@ -347,35 +347,35 @@ type UsageExamplePost200ApplicationJSONJSON struct {
 	SimpleObject *shared.SimpleObject `json:"simpleObject,omitempty"`
 }
 
-func (o *UsageExamplePost200ApplicationJSONJSON) GetFakerFormattedStrings() *shared.FakerFormattedStrings {
+func (o *UsageExamplePostJSON) GetFakerFormattedStrings() *shared.FakerFormattedStrings {
 	if o == nil {
 		return nil
 	}
 	return o.FakerFormattedStrings
 }
 
-func (o *UsageExamplePost200ApplicationJSONJSON) GetFakerStrings() *shared.FakerStrings {
+func (o *UsageExamplePostJSON) GetFakerStrings() *shared.FakerStrings {
 	if o == nil {
 		return nil
 	}
 	return o.FakerStrings
 }
 
-func (o *UsageExamplePost200ApplicationJSONJSON) GetSimpleObject() *shared.SimpleObject {
+func (o *UsageExamplePostJSON) GetSimpleObject() *shared.SimpleObject {
 	if o == nil {
 		return nil
 	}
 	return o.SimpleObject
 }
 
-// UsageExamplePost200ApplicationJSON - A response body that contains the simpleObject sent in the request body
-type UsageExamplePost200ApplicationJSON struct {
-	JSON UsageExamplePost200ApplicationJSONJSON `json:"json"`
+// UsageExamplePostResponseBody - A response body that contains the simpleObject sent in the request body
+type UsageExamplePostResponseBody struct {
+	JSON UsageExamplePostJSON `json:"json"`
 }
 
-func (o *UsageExamplePost200ApplicationJSON) GetJSON() UsageExamplePost200ApplicationJSONJSON {
+func (o *UsageExamplePostResponseBody) GetJSON() UsageExamplePostJSON {
 	if o == nil {
-		return UsageExamplePost200ApplicationJSONJSON{}
+		return UsageExamplePostJSON{}
 	}
 	return o.JSON
 }
@@ -388,7 +388,7 @@ type UsageExamplePostResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A successful response that contains the simpleObject sent in the request body
-	UsageExamplePost200ApplicationJSONObject *UsageExamplePost200ApplicationJSON
+	Object *UsageExamplePostResponseBody
 }
 
 func (o *UsageExamplePostResponse) GetContentType() string {
@@ -412,9 +412,9 @@ func (o *UsageExamplePostResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *UsageExamplePostResponse) GetUsageExamplePost200ApplicationJSONObject() *UsageExamplePost200ApplicationJSON {
+func (o *UsageExamplePostResponse) GetObject() *UsageExamplePostResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.UsageExamplePost200ApplicationJSONObject
+	return o.Object
 }

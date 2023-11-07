@@ -1,5 +1,5 @@
-# PaginationSDK
-(*Pagination*)
+# Pagination
+(*.Pagination*)
 
 ## Overview
 
@@ -19,11 +19,11 @@ Endpoints for testing the pagination extension
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -56,11 +56,11 @@ var res = await sdk.Pagination.PaginationCursorBodyAsync(new PaginationCursorBod
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -91,10 +91,10 @@ var res = await sdk.Pagination.PaginationCursorParamsAsync(24812);
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -125,11 +125,11 @@ var res = await sdk.Pagination.PaginationLimitOffsetOffsetBodyAsync(new LimitOff
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -161,10 +161,10 @@ var res = await sdk.Pagination.PaginationLimitOffsetOffsetParamsAsync(661976, 60
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -195,11 +195,11 @@ var res = await sdk.Pagination.PaginationLimitOffsetPageBodyAsync(new LimitOffse
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },

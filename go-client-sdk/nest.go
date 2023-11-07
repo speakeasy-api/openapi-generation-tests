@@ -2,15 +2,15 @@
 
 package openapi
 
-type nest struct {
-	First *nestFirst
+type Nest struct {
+	First *SDKFirst
 
 	sdkConfiguration sdkConfiguration
 }
 
-func newNest(sdkConfig sdkConfiguration) *nest {
-	return &nest{
+func newNest(sdkConfig sdkConfiguration) *Nest {
+	return &Nest{
 		sdkConfiguration: sdkConfig,
-		First:            newNestFirst(sdkConfig),
+		First:            newSDKFirst(sdkConfig),
 	}
 }

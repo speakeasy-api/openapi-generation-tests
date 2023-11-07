@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
-export class RequestBodyPostMultipleContentTypesSplitParamApplicationJSON extends SpeakeasyBase {
+export class RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "bool" })
     bool: boolean;
@@ -22,7 +22,7 @@ export class RequestBodyPostMultipleContentTypesSplitParamApplicationJSON extend
 
 export class RequestBodyPostMultipleContentTypesSplitParamJsonRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-    requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationJSON;
+    requestBody: RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody;
 
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=paramStr" })
     paramStr: string;

@@ -1,5 +1,5 @@
-# ServersSDK
-(*Servers*)
+# Servers
+(*.Servers*)
 
 ## Overview
 
@@ -19,10 +19,10 @@ Endpoints for testing servers.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -48,10 +48,10 @@ Select a server by ID.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -81,10 +81,10 @@ var res = await sdk.Servers.SelectServerWithIDAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -114,10 +114,10 @@ var res = await sdk.Servers.ServerWithProtocolTemplateAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -147,10 +147,10 @@ var res = await sdk.Servers.ServerWithTemplatesAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -174,10 +174,10 @@ var res = await sdk.Servers.ServerWithTemplatesGlobalAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },

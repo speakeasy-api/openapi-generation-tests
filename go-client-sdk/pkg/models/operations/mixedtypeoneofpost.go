@@ -5,8 +5,8 @@ package operations
 import (
 	"errors"
 	"net/http"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/utils"
 )
 
 type MixedTypeOneOfPostRequestBodyType string
@@ -94,76 +94,76 @@ func (u MixedTypeOneOfPostRequestBody) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-type MixedTypeOneOfPostResJSONType string
+type MixedTypeOneOfPostJSONType string
 
 const (
-	MixedTypeOneOfPostResJSONTypeStr          MixedTypeOneOfPostResJSONType = "str"
-	MixedTypeOneOfPostResJSONTypeInteger      MixedTypeOneOfPostResJSONType = "integer"
-	MixedTypeOneOfPostResJSONTypeSimpleObject MixedTypeOneOfPostResJSONType = "simpleObject"
+	MixedTypeOneOfPostJSONTypeStr          MixedTypeOneOfPostJSONType = "str"
+	MixedTypeOneOfPostJSONTypeInteger      MixedTypeOneOfPostJSONType = "integer"
+	MixedTypeOneOfPostJSONTypeSimpleObject MixedTypeOneOfPostJSONType = "simpleObject"
 )
 
-type MixedTypeOneOfPostResJSON struct {
+type MixedTypeOneOfPostJSON struct {
 	Str          *string
 	Integer      *int64
 	SimpleObject *shared.SimpleObject
 
-	Type MixedTypeOneOfPostResJSONType
+	Type MixedTypeOneOfPostJSONType
 }
 
-func CreateMixedTypeOneOfPostResJSONStr(str string) MixedTypeOneOfPostResJSON {
-	typ := MixedTypeOneOfPostResJSONTypeStr
+func CreateMixedTypeOneOfPostJSONStr(str string) MixedTypeOneOfPostJSON {
+	typ := MixedTypeOneOfPostJSONTypeStr
 
-	return MixedTypeOneOfPostResJSON{
+	return MixedTypeOneOfPostJSON{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateMixedTypeOneOfPostResJSONInteger(integer int64) MixedTypeOneOfPostResJSON {
-	typ := MixedTypeOneOfPostResJSONTypeInteger
+func CreateMixedTypeOneOfPostJSONInteger(integer int64) MixedTypeOneOfPostJSON {
+	typ := MixedTypeOneOfPostJSONTypeInteger
 
-	return MixedTypeOneOfPostResJSON{
+	return MixedTypeOneOfPostJSON{
 		Integer: &integer,
 		Type:    typ,
 	}
 }
 
-func CreateMixedTypeOneOfPostResJSONSimpleObject(simpleObject shared.SimpleObject) MixedTypeOneOfPostResJSON {
-	typ := MixedTypeOneOfPostResJSONTypeSimpleObject
+func CreateMixedTypeOneOfPostJSONSimpleObject(simpleObject shared.SimpleObject) MixedTypeOneOfPostJSON {
+	typ := MixedTypeOneOfPostJSONTypeSimpleObject
 
-	return MixedTypeOneOfPostResJSON{
+	return MixedTypeOneOfPostJSON{
 		SimpleObject: &simpleObject,
 		Type:         typ,
 	}
 }
 
-func (u *MixedTypeOneOfPostResJSON) UnmarshalJSON(data []byte) error {
+func (u *MixedTypeOneOfPostJSON) UnmarshalJSON(data []byte) error {
 
 	simpleObject := shared.SimpleObject{}
 	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
 		u.SimpleObject = &simpleObject
-		u.Type = MixedTypeOneOfPostResJSONTypeSimpleObject
+		u.Type = MixedTypeOneOfPostJSONTypeSimpleObject
 		return nil
 	}
 
 	str := ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = MixedTypeOneOfPostResJSONTypeStr
+		u.Type = MixedTypeOneOfPostJSONTypeStr
 		return nil
 	}
 
 	integer := int64(0)
 	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
 		u.Integer = &integer
-		u.Type = MixedTypeOneOfPostResJSONTypeInteger
+		u.Type = MixedTypeOneOfPostJSONTypeInteger
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u MixedTypeOneOfPostResJSON) MarshalJSON() ([]byte, error) {
+func (u MixedTypeOneOfPostJSON) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -181,12 +181,12 @@ func (u MixedTypeOneOfPostResJSON) MarshalJSON() ([]byte, error) {
 
 // MixedTypeOneOfPostRes - OK
 type MixedTypeOneOfPostRes struct {
-	JSON MixedTypeOneOfPostResJSON `json:"json"`
+	JSON MixedTypeOneOfPostJSON `json:"json"`
 }
 
-func (o *MixedTypeOneOfPostRes) GetJSON() MixedTypeOneOfPostResJSON {
+func (o *MixedTypeOneOfPostRes) GetJSON() MixedTypeOneOfPostJSON {
 	if o == nil {
-		return MixedTypeOneOfPostResJSON{}
+		return MixedTypeOneOfPostJSON{}
 	}
 	return o.JSON
 }

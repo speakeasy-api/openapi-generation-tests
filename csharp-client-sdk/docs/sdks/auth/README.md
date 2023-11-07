@@ -1,5 +1,5 @@
-# AuthSDK
-(*Auth*)
+# Auth
+(*.Auth*)
 
 ## Overview
 
@@ -21,10 +21,10 @@ Endpoints for testing authentication.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     globalPathParam: 100,
     globalQueryParam: "some example global query param"
 );
@@ -53,10 +53,10 @@ var res = await sdk.Auth.ApiKeyAuthAsync(new ApiKeyAuthSecurity() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -80,10 +80,10 @@ var res = await sdk.Auth.ApiKeyAuthGlobalAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     globalPathParam: 100,
     globalQueryParam: "some example global query param"
 );
@@ -115,10 +115,10 @@ var res = await sdk.Auth.BasicAuthAsync(new BasicAuthSecurity() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     globalPathParam: 100,
     globalQueryParam: "some example global query param"
 );
@@ -147,10 +147,10 @@ var res = await sdk.Auth.BearerAuthAsync(new BearerAuthSecurity() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -174,10 +174,10 @@ var res = await sdk.Auth.GlobalBearerAuthAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     globalPathParam: 100,
     globalQueryParam: "some example global query param"
 );
@@ -206,10 +206,10 @@ var res = await sdk.Auth.Oauth2AuthAsync(new Oauth2AuthSecurity() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     globalPathParam: 100,
     globalQueryParam: "some example global query param"
 );
@@ -238,10 +238,10 @@ var res = await sdk.Auth.Oauth2OverrideAsync(new Oauth2OverrideSecurity() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     globalPathParam: 100,
     globalQueryParam: "some example global query param"
 );

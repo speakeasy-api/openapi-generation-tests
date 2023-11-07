@@ -5,12 +5,12 @@ import Foundation
 extension Operations {
     /// OK
     public struct PrimitiveTypeOneOfPostRes {
-        public let json: Operations.PrimitiveTypeOneOfPostResJson
+        public let json: Operations.PrimitiveTypeOneOfPostJson
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(json: Operations.PrimitiveTypeOneOfPostResJson) {
+        public init(json: Operations.PrimitiveTypeOneOfPostJson) {
             self.json = json
         }
     }

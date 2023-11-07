@@ -3,7 +3,7 @@
 package shared
 
 import (
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 )
 
 type ObjWithStringAdditionalProperties struct {

@@ -34,16 +34,16 @@ final class ResponseBodiesTest extends TestCase
         $this->assertNotNull($response->httpBinSimpleJsonObject);
 
         $obj = new \OpenAPI\OpenAPI\Models\Shared\HttpBinSimpleJsonObject();
-        $obj->slideshow = new \OpenAPI\OpenAPI\Models\Shared\HttpBinSimpleJsonObjectSlideshow();
+        $obj->slideshow = new \OpenAPI\OpenAPI\Models\Shared\Slideshow();
         $obj->slideshow->author = 'Yours Truly';
         $obj->slideshow->date = 'date of publication';
         $obj->slideshow->title = 'Sample Slide Show';
         $obj->slideshow->slides = [];
-        $slide1 = new \OpenAPI\OpenAPI\Models\Shared\HttpBinSimpleJsonObjectSlideshowSlides();
+        $slide1 = new \OpenAPI\OpenAPI\Models\Shared\Slides();
         $slide1->title = 'Wake up to WonderWidgets!';
         $slide1->type = 'all';
         $obj->slideshow->slides[] = $slide1;
-        $slide2 = new \OpenAPI\OpenAPI\Models\Shared\HttpBinSimpleJsonObjectSlideshowSlides();
+        $slide2 = new \OpenAPI\OpenAPI\Models\Shared\Slides();
         $slide2->title = 'Overview';
         $slide2->type = 'all';
         $slide2->items = [

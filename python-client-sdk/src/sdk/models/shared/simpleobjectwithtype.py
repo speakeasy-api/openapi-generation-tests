@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import dateutil.parser
-from ..shared import enum as shared_enum
+from .enum import EnumT
 from dataclasses_json import Undefined, dataclass_json
 from datetime import date, datetime
 from decimal import Decimal
@@ -38,7 +38,7 @@ class SimpleObjectWithType:
     r"""A date property."""
     date_time: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dateTime'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }})
     r"""A date-time property."""
-    enum: shared_enum.EnumT = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('enum') }})
+    enum: EnumT = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('enum') }})
     r"""A string based enum"""
     float32: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('float32') }})
     r"""A float32 property."""

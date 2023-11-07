@@ -6,12 +6,12 @@ import (
 	"net/http"
 )
 
-// RequestBodyPostJSONDataTypesFloat32200ApplicationJSON - OK
-type RequestBodyPostJSONDataTypesFloat32200ApplicationJSON struct {
+// RequestBodyPostJSONDataTypesFloat32ResponseBody - OK
+type RequestBodyPostJSONDataTypesFloat32ResponseBody struct {
 	JSON float64 `json:"json"`
 }
 
-func (o *RequestBodyPostJSONDataTypesFloat32200ApplicationJSON) GetJSON() float64 {
+func (o *RequestBodyPostJSONDataTypesFloat32ResponseBody) GetJSON() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -26,7 +26,7 @@ type RequestBodyPostJSONDataTypesFloat32Response struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	RequestBodyPostJSONDataTypesFloat32200ApplicationJSONObject *RequestBodyPostJSONDataTypesFloat32200ApplicationJSON
+	Object *RequestBodyPostJSONDataTypesFloat32ResponseBody
 }
 
 func (o *RequestBodyPostJSONDataTypesFloat32Response) GetContentType() string {
@@ -50,9 +50,9 @@ func (o *RequestBodyPostJSONDataTypesFloat32Response) GetRawResponse() *http.Res
 	return o.RawResponse
 }
 
-func (o *RequestBodyPostJSONDataTypesFloat32Response) GetRequestBodyPostJSONDataTypesFloat32200ApplicationJSONObject() *RequestBodyPostJSONDataTypesFloat32200ApplicationJSON {
+func (o *RequestBodyPostJSONDataTypesFloat32Response) GetObject() *RequestBodyPostJSONDataTypesFloat32ResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBodyPostJSONDataTypesFloat32200ApplicationJSONObject
+	return o.Object
 }

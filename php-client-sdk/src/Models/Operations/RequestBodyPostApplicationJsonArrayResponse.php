@@ -38,16 +38,16 @@ class RequestBodyPostApplicationJsonArrayResponse
     /**
      * OK
      * 
-     * @var ?array<\OpenAPI\OpenAPI\Models\Shared\SimpleObject> $simpleObjects
+     * @var ?array<\OpenAPI\OpenAPI\Models\Shared\SimpleObject> $res
      */
 	
-    public ?array $simpleObjects = null;
+    public ?array $res = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->simpleObjects = null;
+		$this->res = null;
 	}
 }

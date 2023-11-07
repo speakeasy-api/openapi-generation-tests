@@ -3,9 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -102,7 +102,7 @@ export class ParametersT {
 
     async deepObjectQueryParamsObject(
         objParam: shared.SimpleObject,
-        objArrParam?: operations.DeepObjectQueryParamsObjectObjArrParam,
+        objArrParam?: operations.ObjArrParam,
         config?: AxiosRequestConfig
     ): Promise<operations.DeepObjectQueryParamsObjectResponse> {
         const req = new operations.DeepObjectQueryParamsObjectRequest({
@@ -342,8 +342,8 @@ export class ParametersT {
     }
 
     async formQueryParamsCamelObject(
-        objParamExploded: operations.FormQueryParamsCamelObjectObjParamExploded,
-        objParam?: operations.FormQueryParamsCamelObjectObjParam,
+        objParamExploded: operations.ObjParamExploded,
+        objParam?: operations.ObjParam,
         config?: AxiosRequestConfig
     ): Promise<operations.FormQueryParamsCamelObjectResponse> {
         const req = new operations.FormQueryParamsCamelObjectRequest({

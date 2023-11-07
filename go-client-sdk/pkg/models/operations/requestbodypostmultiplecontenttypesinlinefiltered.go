@@ -6,27 +6,27 @@ import (
 	"net/http"
 )
 
-type RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON struct {
+type RequestBodyPostMultipleContentTypesInlineFilteredRequestBody struct {
 	Bool bool    `json:"bool"`
 	Num  float64 `json:"num"`
 	Str  string  `json:"str"`
 }
 
-func (o *RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON) GetBool() bool {
+func (o *RequestBodyPostMultipleContentTypesInlineFilteredRequestBody) GetBool() bool {
 	if o == nil {
 		return false
 	}
 	return o.Bool
 }
 
-func (o *RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON) GetNum() float64 {
+func (o *RequestBodyPostMultipleContentTypesInlineFilteredRequestBody) GetNum() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Num
 }
 
-func (o *RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON) GetStr() string {
+func (o *RequestBodyPostMultipleContentTypesInlineFilteredRequestBody) GetStr() string {
 	if o == nil {
 		return ""
 	}

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import simpleobject as shared_simpleobject
+from .simpleobject import SimpleObject
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Dict, List, Optional, Union
@@ -16,13 +16,13 @@ class DeepObjectWithTypeAny:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class DeepObjectWithType:
-    any: Union[shared_simpleobject.SimpleObject, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }})
-    arr: List[shared_simpleobject.SimpleObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arr') }})
+    any: Union[SimpleObject, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }})
+    arr: List[SimpleObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arr') }})
     bool: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool') }})
     int: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int') }})
-    map: Dict[str, shared_simpleobject.SimpleObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('map') }})
+    map: Dict[str, SimpleObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('map') }})
     num: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('num') }})
-    obj: shared_simpleobject.SimpleObject = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('obj') }})
+    obj: SimpleObject = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('obj') }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties.
     https://docs.speakeasyapi.dev - A link to the external docs.
     """

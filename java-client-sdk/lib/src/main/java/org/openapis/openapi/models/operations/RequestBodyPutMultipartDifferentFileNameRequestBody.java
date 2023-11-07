@@ -9,9 +9,9 @@ import org.openapis.openapi.utils.SpeakeasyMetadata;
 
 public class RequestBodyPutMultipartDifferentFileNameRequestBody {
     @SpeakeasyMetadata("multipartForm:file")
-    public RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName differentFileName;
+    public DifferentFileName differentFileName;
 
-    public RequestBodyPutMultipartDifferentFileNameRequestBody withDifferentFileName(RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName differentFileName) {
+    public RequestBodyPutMultipartDifferentFileNameRequestBody withDifferentFileName(DifferentFileName differentFileName) {
         this.differentFileName = differentFileName;
         return this;
     }

@@ -46,10 +46,10 @@ public class RequestBodyPostDefaultsAndConstsResponse {
      * OK
      */
     
-    public RequestBodyPostDefaultsAndConsts200ApplicationJSON requestBodyPostDefaultsAndConsts200ApplicationJSONObject;
+    public RequestBodyPostDefaultsAndConstsResponseBody object;
 
-    public RequestBodyPostDefaultsAndConstsResponse withRequestBodyPostDefaultsAndConsts200ApplicationJSONObject(RequestBodyPostDefaultsAndConsts200ApplicationJSON requestBodyPostDefaultsAndConsts200ApplicationJSONObject) {
-        this.requestBodyPostDefaultsAndConsts200ApplicationJSONObject = requestBodyPostDefaultsAndConsts200ApplicationJSONObject;
+    public RequestBodyPostDefaultsAndConstsResponse withObject(RequestBodyPostDefaultsAndConstsResponseBody object) {
+        this.object = object;
         return this;
     }
     

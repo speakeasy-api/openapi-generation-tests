@@ -5,14 +5,14 @@ import Foundation
 extension Operations {
     /// A model object
     public struct NullableRequiredEmptyObjectPostRequestBody {
-        public let nullableRequiredObj: Operations.NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj
-        public let requiredObj: Operations.NullableRequiredEmptyObjectPostRequestBodyRequiredObj
-        public let nullableOptionalObj: Operations.NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj?
+        public let nullableRequiredObj: Operations.NullableRequiredObj
+        public let requiredObj: Operations.RequiredObj
+        public let nullableOptionalObj: Operations.NullableOptionalObj?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(nullableRequiredObj: Operations.NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj, requiredObj: Operations.NullableRequiredEmptyObjectPostRequestBodyRequiredObj, nullableOptionalObj: Operations.NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj? = nil) {
+        public init(nullableRequiredObj: Operations.NullableRequiredObj, requiredObj: Operations.RequiredObj, nullableOptionalObj: Operations.NullableOptionalObj? = nil) {
             self.nullableRequiredObj = nullableRequiredObj
             self.requiredObj = requiredObj
             self.nullableOptionalObj = nullableOptionalObj

@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import mapobjvalue as shared_mapobjvalue
+from ...models.shared import mapobjvalue as shared_mapobjvalue
 from typing import Optional
 
 

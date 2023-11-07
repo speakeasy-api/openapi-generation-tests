@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class DefaultsAndConstsConstEnumInt < T::Enum
+    class ConstEnumInt < T::Enum
       enums do
         ONE = new(1)
         TWO = new(2)
@@ -19,7 +19,7 @@ module OpenApiSDK
 
 
 
-    class DefaultsAndConstsConstEnumStr < T::Enum
+    class ConstEnumStr < T::Enum
       enums do
         ONE = new('one')
         TWO = new('two')
@@ -29,7 +29,7 @@ module OpenApiSDK
 
 
 
-    class DefaultsAndConstsDefaultEnumInt < T::Enum
+    class DefaultEnumInt < T::Enum
       enums do
         ONE = new(1)
         TWO = new(2)
@@ -39,7 +39,7 @@ module OpenApiSDK
 
 
 
-    class DefaultsAndConstsDefaultEnumStr < T::Enum
+    class DefaultEnumStr < T::Enum
       enums do
         ONE = new('one')
         TWO = new('two')
@@ -67,9 +67,9 @@ module OpenApiSDK
 
       field :const_decimal_str, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constDecimalStr') } }
 
-      field :const_enum_int, Shared::DefaultsAndConstsConstEnumInt, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constEnumInt'), 'decoder': Utils.enum_from_string(Shared::DefaultsAndConstsConstEnumInt, false) } }
+      field :const_enum_int, Shared::ConstEnumInt, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constEnumInt'), 'decoder': Utils.enum_from_string(Shared::ConstEnumInt, false) } }
 
-      field :const_enum_str, Shared::DefaultsAndConstsConstEnumStr, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constEnumStr'), 'decoder': Utils.enum_from_string(Shared::DefaultsAndConstsConstEnumStr, false) } }
+      field :const_enum_str, Shared::ConstEnumStr, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constEnumStr'), 'decoder': Utils.enum_from_string(Shared::ConstEnumStr, false) } }
 
       field :const_int, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constInt') } }
 
@@ -95,9 +95,9 @@ module OpenApiSDK
 
       field :default_decimal_str, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultDecimalStr') } }
 
-      field :default_enum_int, T.nilable(Shared::DefaultsAndConstsDefaultEnumInt), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultEnumInt'), 'decoder': Utils.enum_from_string(Shared::DefaultsAndConstsDefaultEnumInt, true) } }
+      field :default_enum_int, T.nilable(Shared::DefaultEnumInt), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultEnumInt'), 'decoder': Utils.enum_from_string(Shared::DefaultEnumInt, true) } }
 
-      field :default_enum_str, T.nilable(Shared::DefaultsAndConstsDefaultEnumStr), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultEnumStr'), 'decoder': Utils.enum_from_string(Shared::DefaultsAndConstsDefaultEnumStr, true) } }
+      field :default_enum_str, T.nilable(Shared::DefaultEnumStr), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultEnumStr'), 'decoder': Utils.enum_from_string(Shared::DefaultEnumStr, true) } }
 
       field :default_int, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultInt') } }
 
@@ -110,7 +110,7 @@ module OpenApiSDK
       field :default_str_optional, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultStrOptional') } }
 
 
-      sig { params(const_big_int: Integer, const_big_int_str: String, const_bool: T::Boolean, const_date: Date, const_date_time: DateTime, const_decimal: Float, const_decimal_str: String, const_enum_int: Shared::DefaultsAndConstsConstEnumInt, const_enum_str: Shared::DefaultsAndConstsConstEnumStr, const_int: Integer, const_num: Float, const_str: String, const_str_null: String, normal_field: String, default_big_int: T.nilable(Integer), default_big_int_str: T.nilable(String), default_bool: T.nilable(T::Boolean), default_date: T.nilable(Date), default_date_time: T.nilable(DateTime), default_decimal: T.nilable(Float), default_decimal_str: T.nilable(String), default_enum_int: T.nilable(Shared::DefaultsAndConstsDefaultEnumInt), default_enum_str: T.nilable(Shared::DefaultsAndConstsDefaultEnumStr), default_int: T.nilable(Integer), default_num: T.nilable(Float), default_str: T.nilable(String), default_str_nullable: T.nilable(String), default_str_optional: T.nilable(String)).void }
+      sig { params(const_big_int: Integer, const_big_int_str: String, const_bool: T::Boolean, const_date: Date, const_date_time: DateTime, const_decimal: Float, const_decimal_str: String, const_enum_int: Shared::ConstEnumInt, const_enum_str: Shared::ConstEnumStr, const_int: Integer, const_num: Float, const_str: String, const_str_null: String, normal_field: String, default_big_int: T.nilable(Integer), default_big_int_str: T.nilable(String), default_bool: T.nilable(T::Boolean), default_date: T.nilable(Date), default_date_time: T.nilable(DateTime), default_decimal: T.nilable(Float), default_decimal_str: T.nilable(String), default_enum_int: T.nilable(Shared::DefaultEnumInt), default_enum_str: T.nilable(Shared::DefaultEnumStr), default_int: T.nilable(Integer), default_num: T.nilable(Float), default_str: T.nilable(String), default_str_nullable: T.nilable(String), default_str_optional: T.nilable(String)).void }
       def initialize(const_big_int: nil, const_big_int_str: nil, const_bool: nil, const_date: nil, const_date_time: nil, const_decimal: nil, const_decimal_str: nil, const_enum_int: nil, const_enum_str: nil, const_int: nil, const_num: nil, const_str: nil, const_str_null: nil, normal_field: nil, default_big_int: nil, default_big_int_str: nil, default_bool: nil, default_date: nil, default_date_time: nil, default_decimal: nil, default_decimal_str: nil, default_enum_int: nil, default_enum_str: nil, default_int: nil, default_num: nil, default_str: nil, default_str_nullable: nil, default_str_optional: nil)
         @const_big_int = const_big_int
         @const_big_int_str = const_big_int_str

@@ -6,27 +6,27 @@ import (
 	"net/http"
 )
 
-type RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded struct {
+type RequestBodyPostMultipleContentTypesSplitParamFormRequestBody struct {
 	Bool3 bool    `form:"name=bool3"`
 	Num3  float64 `form:"name=num3"`
 	Str3  string  `form:"name=str3"`
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded) GetBool3() bool {
+func (o *RequestBodyPostMultipleContentTypesSplitParamFormRequestBody) GetBool3() bool {
 	if o == nil {
 		return false
 	}
 	return o.Bool3
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded) GetNum3() float64 {
+func (o *RequestBodyPostMultipleContentTypesSplitParamFormRequestBody) GetNum3() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Num3
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded) GetStr3() string {
+func (o *RequestBodyPostMultipleContentTypesSplitParamFormRequestBody) GetStr3() string {
 	if o == nil {
 		return ""
 	}
@@ -34,13 +34,13 @@ func (o *RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlenco
 }
 
 type RequestBodyPostMultipleContentTypesSplitParamFormRequest struct {
-	RequestBody RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded `request:"mediaType=application/x-www-form-urlencoded"`
-	ParamStr    string                                                                     `queryParam:"style=form,explode=true,name=paramStr"`
+	RequestBody RequestBodyPostMultipleContentTypesSplitParamFormRequestBody `request:"mediaType=application/x-www-form-urlencoded"`
+	ParamStr    string                                                       `queryParam:"style=form,explode=true,name=paramStr"`
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitParamFormRequest) GetRequestBody() RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded {
+func (o *RequestBodyPostMultipleContentTypesSplitParamFormRequest) GetRequestBody() RequestBodyPostMultipleContentTypesSplitParamFormRequestBody {
 	if o == nil {
-		return RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded{}
+		return RequestBodyPostMultipleContentTypesSplitParamFormRequestBody{}
 	}
 	return o.RequestBody
 }

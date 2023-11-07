@@ -4,6 +4,14 @@
 
 package org.openapis.openapi;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.junit.jupiter.api.Test;
 import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.shared.DeepObject;
@@ -11,11 +19,6 @@ import org.openapis.openapi.models.shared.RefQueryParamObj;
 import org.openapis.openapi.models.shared.RefQueryParamObjExploded;
 import org.openapis.openapi.models.shared.SimpleObject;
 import org.openapis.openapi.utils.JSON;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class ParameterTests {
     @Test
@@ -31,7 +34,8 @@ public class ParameterTests {
         assertNotNull(res);
         assertEquals(200, res.statusCode);
         assertNotNull(res.res);
-        assertEquals("http://localhost:35123/anything/mixedParams/path/pathValue?queryStringParam=queryValue", res.res.url);
+        assertEquals("http://localhost:35123/anything/mixedParams/path/pathValue?queryStringParam=queryValue",
+                res.res.url);
         assertEquals("headerValue", res.res.headers.headerparam);
         assertEquals("queryValue", res.res.args.queryStringParam);
     }
@@ -49,7 +53,9 @@ public class ParameterTests {
         assertNotNull(res);
         assertEquals(200, res.statusCode);
         assertNotNull(res.res);
-        assertEquals("http://localhost:35123/anything/mixedParams/path/pathValue/camelcase?query_string_param=queryValue", res.res.url);
+        assertEquals(
+                "http://localhost:35123/anything/mixedParams/path/pathValue/camelcase?query_string_param=queryValue",
+                res.res.url);
         assertEquals("headerValue", res.res.headers.headerParam);
         assertEquals("queryValue", res.res.args.queryStringParam);
     }
@@ -96,7 +102,7 @@ public class ParameterTests {
         assertNotNull(s);
 
         SimplePathParameterArraysResponse res = s.parameters
-                .simplePathParameterArrays(new String[]{"test", "test2"});
+                .simplePathParameterArrays(new String[] { "test", "test2" });
 
         assertNotNull(res);
         assertEquals(200, res.statusCode);
@@ -246,8 +252,8 @@ public class ParameterTests {
 
         FormQueryParamsArrayResponse res = s.parameters
                 .formQueryParamsArray(
-                        new String[]{"test", "test2"},
-                        new Long[]{Long.valueOf(1), Long.valueOf(2)});
+                        new String[] { "test", "test2" },
+                        new Long[] { Long.valueOf(1), Long.valueOf(2) });
 
         assertNotNull(res);
         assertEquals(200, res.statusCode);
@@ -256,7 +262,7 @@ public class ParameterTests {
                 "http://localhost:35123/anything/queryParams/form/array?arrParam=test%2Ctest2&arrParamExploded=1&arrParamExploded=2",
                 res.res.url);
         assertEquals("test,test2", res.res.args.arrParam);
-        assertArrayEquals(new String[]{"1", "2"}, res.res.args.arrParamExploded);
+        assertArrayEquals(new String[] { "1", "2" }, res.res.args.arrParamExploded);
     }
 
     @Test
@@ -268,8 +274,8 @@ public class ParameterTests {
 
         PipeDelimitedQueryParamsArrayResponse res = s.parameters
                 .pipeDelimitedQueryParamsArray(
-                        new String[]{"test", "test2"},
-                        new Long[]{Long.valueOf(1), Long.valueOf(2)},
+                        new String[] { "test", "test2" },
+                        new Long[] { Long.valueOf(1), Long.valueOf(2) },
                         new HashMap<String, String>() {
                             {
                                 put("key1", "val1");
@@ -285,7 +291,7 @@ public class ParameterTests {
                 "http://localhost:35123/anything/queryParams/pipe/array?arrParam=test|test2&arrParamExploded=1&arrParamExploded=2&mapParam=key1|val1|key2|val2&objParam=any|any|bool|true|boolOpt|true|date|2020-01-01|dateTime|2020-01-01T00%3A00%3A00.000000001Z|enum|one|float32|1.1|int|1|int32|1|int32Enum|55|intEnum|2|num|1.1|str|test|strOpt|testOptional",
                 res.res.url);
         assertEquals("test|test2", res.res.args.arrParam);
-        assertArrayEquals(new String[]{"1", "2"}, res.res.args.arrParamExploded);
+        assertArrayEquals(new String[] { "1", "2" }, res.res.args.arrParamExploded);
     }
 
     @Test
@@ -334,8 +340,8 @@ public class ParameterTests {
         DeepObjectQueryParamsObjectResponse res = s.parameters
                 .deepObjectQueryParamsObject(
                         Helpers.createSimpleObject(),
-                        new DeepObjectQueryParamsObjectObjArrParam()
-                                .withArr(new String[]{"test", "test2"}));
+                        new ObjArrParam()
+                                .withArr(new String[] { "test", "test2" }));
 
         assertNotNull(res);
         assertEquals(200, res.statusCode);
@@ -343,7 +349,7 @@ public class ParameterTests {
         assertEquals(
                 "http://localhost:35123/anything/queryParams/deepObject/obj?objParam[any]=any&objParam[bool]=true&objParam[boolOpt]=true&objParam[date]=2020-01-01&objParam[dateTime]=2020-01-01T00%3A00%3A00.000000001Z&objParam[enum]=one&objParam[float32]=1.1&objParam[int]=1&objParam[int32]=1&objParam[int32Enum]=55&objParam[intEnum]=2&objParam[num]=1.1&objParam[str]=test&objParam[strOpt]=testOptional&objArrParam[arr]=test&objArrParam[arr]=test2",
                 res.res.url);
-        assertArrayEquals(new String[]{"test", "test2"}, res.res.args.objArrParamArr);
+        assertArrayEquals(new String[] { "test", "test2" }, res.res.args.objArrParamArr);
         assertEquals("any", res.res.args.objParamAny);
         assertEquals("true", res.res.args.objParamBool);
         assertEquals("true", res.res.args.objParamBoolOpt);
@@ -375,8 +381,8 @@ public class ParameterTests {
         };
         HashMap<String, String[]> mapArrParam = new HashMap<String, String[]>() {
             {
-                put("test", new String[]{"value", "value2"});
-                put("test2", new String[]{"value3", "value4"});
+                put("test", new String[] { "value", "value2" });
+                put("test2", new String[] { "value3", "value4" });
             }
         };
 
@@ -564,7 +570,7 @@ public class ParameterTests {
         assertNotNull(s);
 
         HeaderParamsArrayResponse res = s.parameters
-                .headerParamsArray(new String[]{"test1", "test2"});
+                .headerParamsArray(new String[] { "test1", "test2" });
 
         assertNotNull(res);
         assertEquals(200, res.statusCode);

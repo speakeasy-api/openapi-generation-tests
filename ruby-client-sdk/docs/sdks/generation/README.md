@@ -1,5 +1,5 @@
 # Generation
-(*generation*)
+
 
 ## Overview
 
@@ -305,7 +305,7 @@ s.config_security(
     
 res = s.generation.deprecated_object_in_schema_get()
 
-if ! res.deprecated_object_in_schema_get_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -499,7 +499,7 @@ s.config_security(
     
 res = s.generation.global_name_overridden()
 
-if ! res.get_global_name_override_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -529,7 +529,7 @@ s.config_security(
     
 res = s.generation.ignored_generation_get()
 
-if ! res.ignored_generation_get_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -559,13 +559,13 @@ s.config_security(
    
 req = Operations::IgnoresPostRequest.new(
   query_params=Operations::IgnoresPostRequest.new(
-    request_body=Operations::IgnoresPostApplicationJSON.new(
+    request_body=Operations::IgnoresPostRequestBody.new(
       callback_url="http://diligent-activist.biz",
       test_prop="string",
     ),
     test_param="string",
   ),
-  request_body=Operations::IgnoresPostApplicationJSON.new(
+  request_body=Operations::IgnoresPostRequestBody.new(
     callback_url="https://limping-upgrade.com",
     test_prop="string",
   ),
@@ -581,10 +581,10 @@ end
 
 ### Parameters
 
-| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
-| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `request_body`                                                                                  | [Operations::IgnoresPostApplicationJSON](../../models/operations/ignorespostapplicationjson.md) | :heavy_check_mark:                                                                              | N/A                                                                                             |
-| `test_param`                                                                                    | *String*                                                                                        | :heavy_minus_sign:                                                                              | N/A                                                                                             |
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `request_body`                                                                          | [Operations::IgnoresPostRequestBody](../../models/operations/ignorespostrequestbody.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `test_param`                                                                            | *String*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     |
 
 
 ### Response
@@ -610,7 +610,7 @@ s.config_security(
    
 req = Operations::NameOverrideGetRequest.new(
   query_params=Operations::NameOverrideGetRequest.new(
-    test_enum_query_param=Operations::NameOverrideGetEnumNameOverride::VALUE3,
+    test_enum_query_param=Operations::EnumNameOverride::VALUE3,
     test_query_param="example",
   ),
 )
@@ -625,10 +625,10 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               | Example                                                                                                   |
-| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `test_enum_query_param`                                                                                   | [Operations::NameOverrideGetEnumNameOverride](../../models/operations/nameoverridegetenumnameoverride.md) | :heavy_check_mark:                                                                                        | An enum type                                                                                              | value3                                                                                                    |
-| `test_query_param`                                                                                        | *String*                                                                                                  | :heavy_check_mark:                                                                                        | N/A                                                                                                       | example                                                                                                   |
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 | Example                                                                     |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `test_enum_query_param`                                                     | [Operations::EnumNameOverride](../../models/operations/enumnameoverride.md) | :heavy_check_mark:                                                          | An enum type                                                                | value3                                                                      |
+| `test_query_param`                                                          | *String*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         | example                                                                     |
 
 
 ### Response
@@ -717,7 +717,7 @@ req = Operations::TypedParameterGenerationGetRequest.new(
     bigint=879275,
     date=Date.parse("2023-11-18"),
     decimal=3346.96,
-    obj=Operations::TypedParameterGenerationGetObj.new(
+    obj=Operations::Obj.new(
       bool=false,
       num=4778.06,
       str_="string",
@@ -735,12 +735,12 @@ end
 
 ### Parameters
 
-| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `bigint`                                                                                                | *Integer*                                                                                               | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
-| `date`                                                                                                  | [DateTime](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/DateTime.html)                            | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
-| `decimal`                                                                                               | *Float*                                                                                                 | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
-| `obj`                                                                                                   | [Operations::TypedParameterGenerationGetObj](../../models/operations/typedparametergenerationgetobj.md) | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `bigint`                                                                     | *Integer*                                                                    | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `date`                                                                       | [DateTime](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/DateTime.html) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `decimal`                                                                    | *Float*                                                                      | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `obj`                                                                        | [Operations::Obj](../../models/operations/obj.md)                            | :heavy_minus_sign:                                                           | N/A                                                                          |
 
 
 ### Response
@@ -860,8 +860,8 @@ req = Operations::UsageExamplePostRequest.new(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::SECOND,
+        int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int_enum=Shared::IntEnum::SECOND,
         int_opt_null=165468,
         num=1.1,
         num_opt_null=5944.32,
@@ -882,13 +882,13 @@ req = Operations::UsageExamplePostRequest.new(
     decimal_str_parameter="string",
     decimal_str_parameter_optional="string",
     double_parameter=8700.78,
-    enum_parameter=Operations::UsageExamplePostEnumParameter::VALUE2,
+    enum_parameter=Operations::EnumParameter::VALUE2,
     falsey_number_parameter=0,
     float32_parameter=1341.86,
     float_parameter=5429.24,
     int64_parameter=101970,
     int_parameter=938852,
-    opt_enum_parameter=Operations::UsageExamplePostOptEnumParameter::VALUE3,
+    opt_enum_parameter=Operations::OptEnumParameter::VALUE3,
     str_parameter="example 3",
   ),
   request_body=Operations::UsageExamplePostRequestBody.new(
@@ -981,8 +981,8 @@ req = Operations::UsageExamplePostRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::IntEnum::SECOND,
       int_opt_null=303425,
       num=1.1,
       num_opt_null=2928.25,
@@ -994,7 +994,7 @@ req = Operations::UsageExamplePostRequest.new(
     
 res = s.generation.usage_example_post(req)
 
-if ! res.usage_example_post_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 

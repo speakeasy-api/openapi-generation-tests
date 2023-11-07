@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/utils"
 	"strings"
 )
 
-// errors - Endpoints for testing error responses.
-type errors struct {
+// Errors - Endpoints for testing error responses.
+type Errors struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newErrors(sdkConfig sdkConfiguration) *errors {
-	return &errors{
+func newErrors(sdkConfig sdkConfiguration) *Errors {
+	return &Errors{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *errors) ConnectionErrorGet(ctx context.Context, opts ...operations.Option) (*operations.ConnectionErrorGetResponse, error) {
+func (s *Errors) ConnectionErrorGet(ctx context.Context, opts ...operations.Option) (*operations.ConnectionErrorGetResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -85,7 +85,7 @@ func (s *errors) ConnectionErrorGet(ctx context.Context, opts ...operations.Opti
 	return res, nil
 }
 
-func (s *errors) StatusGetError(ctx context.Context, statusCode int64) (*operations.StatusGetErrorResponse, error) {
+func (s *Errors) StatusGetError(ctx context.Context, statusCode int64) (*operations.StatusGetErrorResponse, error) {
 	request := operations.StatusGetErrorRequest{
 		StatusCode: statusCode,
 	}
@@ -144,7 +144,7 @@ func (s *errors) StatusGetError(ctx context.Context, statusCode int64) (*operati
 	return res, nil
 }
 
-func (s *errors) StatusGetXSpeakeasyErrors(ctx context.Context, statusCode int64, opts ...operations.Option) (*operations.StatusGetXSpeakeasyErrorsResponse, error) {
+func (s *Errors) StatusGetXSpeakeasyErrors(ctx context.Context, statusCode int64, opts ...operations.Option) (*operations.StatusGetXSpeakeasyErrorsResponse, error) {
 	request := operations.StatusGetXSpeakeasyErrorsRequest{
 		StatusCode: statusCode,
 	}
@@ -224,7 +224,7 @@ func (s *errors) StatusGetXSpeakeasyErrors(ctx context.Context, statusCode int64
 	case httpRes.StatusCode == 501:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out sdkerrors.StatusGetXSpeakeasyErrors501ApplicationJSON
+			var out sdkerrors.StatusGetXSpeakeasyErrorsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

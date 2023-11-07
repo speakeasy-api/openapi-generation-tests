@@ -38,16 +38,16 @@ class ResponseBodyAdditionalPropertiesObjectPostResponse
     /**
      * OK
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSON $responseBodyAdditionalPropertiesObjectPost200ApplicationJSONObject
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesObjectPostResponseBody $object
      */
 	
-    public ?ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSON $responseBodyAdditionalPropertiesObjectPost200ApplicationJSONObject = null;
+    public ?ResponseBodyAdditionalPropertiesObjectPostResponseBody $object = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->responseBodyAdditionalPropertiesObjectPost200ApplicationJSONObject = null;
+		$this->object = null;
 	}
 }

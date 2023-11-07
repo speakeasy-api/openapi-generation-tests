@@ -1,5 +1,5 @@
 # Resource
-(*Resource*)
+(*.Resource*)
 
 ### Available Operations
 
@@ -19,9 +19,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -35,9 +35,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Resource.CreateFile(ctx, operations.CreateFileRequestBody{
-        File: &operations.CreateFileRequestBodyFile{
-            Content: []byte("`'$Z`(L/RH"),
-            File: "string",
+        File: &operations.CreateFileFile{
+            Content: []byte("0xf10df1a3b9"),
+            FileName: "rap_national.mp4v",
         },
     })
     if err != nil {
@@ -73,8 +73,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -94,8 +94,8 @@ func main() {
         ArrayOfString: []string{
             "string",
         },
-        Chocolates: []shared.ExampleResourceChocolates{
-            shared.ExampleResourceChocolates{
+        Chocolates: []shared.Chocolates{
+            shared.Chocolates{
                 Description: "Re-engineered asynchronous array",
             },
         },
@@ -150,8 +150,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -201,8 +201,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -252,8 +252,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {

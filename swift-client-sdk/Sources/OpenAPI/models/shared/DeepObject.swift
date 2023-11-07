@@ -5,7 +5,7 @@ import Foundation
 extension Shared {
     /// A model object
     public struct DeepObject: APIValue {
-        public let any: Shared.DeepObjectAny
+        public let any: Shared.`Any`
         public let arr: [Shared.SimpleObject]
         public let bool: Bool
         public let int: Int
@@ -21,7 +21,7 @@ extension Shared {
         ///
         /// - Parameter obj: A simple object that uses all our supported primitive types and enums and has optional properties.
         ///
-        public init(any: Shared.DeepObjectAny, arr: [Shared.SimpleObject], bool: Bool, int: Int, map: [String: Shared.SimpleObject], num: Double, obj: Shared.SimpleObject, str: String, type: String? = nil) {
+        public init(any: Shared.`Any`, arr: [Shared.SimpleObject], bool: Bool, int: Int, map: [String: Shared.SimpleObject], num: Double, obj: Shared.SimpleObject, str: String, type: String? = nil) {
             self.any = any
             self.arr = arr
             self.bool = bool
@@ -50,7 +50,7 @@ extension Shared.DeepObject: Codable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.any = try container.decode(Shared.DeepObjectAny.self, forKey: .any)
+        self.any = try container.decode(Shared.`Any`.self, forKey: .any)
         self.arr = try container.decode([Shared.SimpleObject].self, forKey: .arr)
         self.bool = try container.decode(Bool.self, forKey: .bool)
         self.int = try container.decode(Int.self, forKey: .int)

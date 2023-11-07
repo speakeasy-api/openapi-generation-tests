@@ -4,16 +4,16 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
-// IgnoredGenerationGet200ApplicationJSON - A successful response that contains the simpleObject sent in the request body
-type IgnoredGenerationGet200ApplicationJSON struct {
+// IgnoredGenerationGetResponseBody - A successful response that contains the simpleObject sent in the request body
+type IgnoredGenerationGetResponseBody struct {
 	// A simple object that uses all our supported primitive types and enums and has optional properties.
 	JSON *shared.SimpleObject `json:"json,omitempty"`
 }
 
-func (o *IgnoredGenerationGet200ApplicationJSON) GetJSON() *shared.SimpleObject {
+func (o *IgnoredGenerationGetResponseBody) GetJSON() *shared.SimpleObject {
 	if o == nil {
 		return nil
 	}
@@ -28,7 +28,7 @@ type IgnoredGenerationGetResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A successful response that contains the simpleObject sent in the request body
-	IgnoredGenerationGet200ApplicationJSONObject *IgnoredGenerationGet200ApplicationJSON
+	Object *IgnoredGenerationGetResponseBody
 }
 
 func (o *IgnoredGenerationGetResponse) GetContentType() string {
@@ -52,9 +52,9 @@ func (o *IgnoredGenerationGetResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *IgnoredGenerationGetResponse) GetIgnoredGenerationGet200ApplicationJSONObject() *IgnoredGenerationGet200ApplicationJSON {
+func (o *IgnoredGenerationGetResponse) GetObject() *IgnoredGenerationGetResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.IgnoredGenerationGet200ApplicationJSONObject
+	return o.Object
 }

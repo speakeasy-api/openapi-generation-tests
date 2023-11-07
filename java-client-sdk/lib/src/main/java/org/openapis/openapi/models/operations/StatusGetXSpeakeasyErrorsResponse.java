@@ -57,10 +57,10 @@ public class StatusGetXSpeakeasyErrorsResponse {
      * Not Implemented
      */
     
-    public StatusGetXSpeakeasyErrors501ApplicationJSON statusGetXSpeakeasyErrors501ApplicationJSONObject;
+    public StatusGetXSpeakeasyErrorsResponseBody object;
 
-    public StatusGetXSpeakeasyErrorsResponse withStatusGetXSpeakeasyErrors501ApplicationJSONObject(StatusGetXSpeakeasyErrors501ApplicationJSON statusGetXSpeakeasyErrors501ApplicationJSONObject) {
-        this.statusGetXSpeakeasyErrors501ApplicationJSONObject = statusGetXSpeakeasyErrors501ApplicationJSONObject;
+    public StatusGetXSpeakeasyErrorsResponse withObject(StatusGetXSpeakeasyErrorsResponseBody object) {
+        this.object = object;
         return this;
     }
     

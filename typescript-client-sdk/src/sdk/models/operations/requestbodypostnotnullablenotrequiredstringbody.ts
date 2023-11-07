@@ -9,7 +9,7 @@ import { Expose } from "class-transformer";
 /**
  * OK
  */
-export class RequestBodyPostNotNullableNotRequiredStringBody200ApplicationJSON extends SpeakeasyBase {
+export class RequestBodyPostNotNullableNotRequiredStringBodyResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     data: string;
@@ -38,5 +38,5 @@ export class RequestBodyPostNotNullableNotRequiredStringBodyResponse extends Spe
      * OK
      */
     @SpeakeasyMetadata()
-    requestBodyPostNotNullableNotRequiredStringBody200ApplicationJSONObject?: RequestBodyPostNotNullableNotRequiredStringBody200ApplicationJSON;
+    object?: RequestBodyPostNotNullableNotRequiredStringBodyResponseBody;
 }

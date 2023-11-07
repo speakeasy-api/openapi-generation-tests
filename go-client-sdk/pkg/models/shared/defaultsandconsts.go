@@ -7,24 +7,24 @@ import (
 	"fmt"
 	"github.com/ericlagergren/decimal"
 	"math/big"
-	"openapi/pkg/types"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/types"
+	"openapi/v2/pkg/utils"
 	"time"
 )
 
-type DefaultsAndConstsConstEnumInt int64
+type ConstEnumInt int64
 
 const (
-	DefaultsAndConstsConstEnumIntOne   DefaultsAndConstsConstEnumInt = 1
-	DefaultsAndConstsConstEnumIntTwo   DefaultsAndConstsConstEnumInt = 2
-	DefaultsAndConstsConstEnumIntThree DefaultsAndConstsConstEnumInt = 3
+	ConstEnumIntOne   ConstEnumInt = 1
+	ConstEnumIntTwo   ConstEnumInt = 2
+	ConstEnumIntThree ConstEnumInt = 3
 )
 
-func (e DefaultsAndConstsConstEnumInt) ToPointer() *DefaultsAndConstsConstEnumInt {
+func (e ConstEnumInt) ToPointer() *ConstEnumInt {
 	return &e
 }
 
-func (e *DefaultsAndConstsConstEnumInt) UnmarshalJSON(data []byte) error {
+func (e *ConstEnumInt) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -35,26 +35,26 @@ func (e *DefaultsAndConstsConstEnumInt) UnmarshalJSON(data []byte) error {
 	case 2:
 		fallthrough
 	case 3:
-		*e = DefaultsAndConstsConstEnumInt(v)
+		*e = ConstEnumInt(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DefaultsAndConstsConstEnumInt: %v", v)
+		return fmt.Errorf("invalid value for ConstEnumInt: %v", v)
 	}
 }
 
-type DefaultsAndConstsConstEnumStr string
+type ConstEnumStr string
 
 const (
-	DefaultsAndConstsConstEnumStrOne   DefaultsAndConstsConstEnumStr = "one"
-	DefaultsAndConstsConstEnumStrTwo   DefaultsAndConstsConstEnumStr = "two"
-	DefaultsAndConstsConstEnumStrThree DefaultsAndConstsConstEnumStr = "three"
+	ConstEnumStrOne   ConstEnumStr = "one"
+	ConstEnumStrTwo   ConstEnumStr = "two"
+	ConstEnumStrThree ConstEnumStr = "three"
 )
 
-func (e DefaultsAndConstsConstEnumStr) ToPointer() *DefaultsAndConstsConstEnumStr {
+func (e ConstEnumStr) ToPointer() *ConstEnumStr {
 	return &e
 }
 
-func (e *DefaultsAndConstsConstEnumStr) UnmarshalJSON(data []byte) error {
+func (e *ConstEnumStr) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -65,26 +65,26 @@ func (e *DefaultsAndConstsConstEnumStr) UnmarshalJSON(data []byte) error {
 	case "two":
 		fallthrough
 	case "three":
-		*e = DefaultsAndConstsConstEnumStr(v)
+		*e = ConstEnumStr(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DefaultsAndConstsConstEnumStr: %v", v)
+		return fmt.Errorf("invalid value for ConstEnumStr: %v", v)
 	}
 }
 
-type DefaultsAndConstsDefaultEnumInt int64
+type DefaultEnumInt int64
 
 const (
-	DefaultsAndConstsDefaultEnumIntOne   DefaultsAndConstsDefaultEnumInt = 1
-	DefaultsAndConstsDefaultEnumIntTwo   DefaultsAndConstsDefaultEnumInt = 2
-	DefaultsAndConstsDefaultEnumIntThree DefaultsAndConstsDefaultEnumInt = 3
+	DefaultEnumIntOne   DefaultEnumInt = 1
+	DefaultEnumIntTwo   DefaultEnumInt = 2
+	DefaultEnumIntThree DefaultEnumInt = 3
 )
 
-func (e DefaultsAndConstsDefaultEnumInt) ToPointer() *DefaultsAndConstsDefaultEnumInt {
+func (e DefaultEnumInt) ToPointer() *DefaultEnumInt {
 	return &e
 }
 
-func (e *DefaultsAndConstsDefaultEnumInt) UnmarshalJSON(data []byte) error {
+func (e *DefaultEnumInt) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -95,26 +95,26 @@ func (e *DefaultsAndConstsDefaultEnumInt) UnmarshalJSON(data []byte) error {
 	case 2:
 		fallthrough
 	case 3:
-		*e = DefaultsAndConstsDefaultEnumInt(v)
+		*e = DefaultEnumInt(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DefaultsAndConstsDefaultEnumInt: %v", v)
+		return fmt.Errorf("invalid value for DefaultEnumInt: %v", v)
 	}
 }
 
-type DefaultsAndConstsDefaultEnumStr string
+type DefaultEnumStr string
 
 const (
-	DefaultsAndConstsDefaultEnumStrOne   DefaultsAndConstsDefaultEnumStr = "one"
-	DefaultsAndConstsDefaultEnumStrTwo   DefaultsAndConstsDefaultEnumStr = "two"
-	DefaultsAndConstsDefaultEnumStrThree DefaultsAndConstsDefaultEnumStr = "three"
+	DefaultEnumStrOne   DefaultEnumStr = "one"
+	DefaultEnumStrTwo   DefaultEnumStr = "two"
+	DefaultEnumStrThree DefaultEnumStr = "three"
 )
 
-func (e DefaultsAndConstsDefaultEnumStr) ToPointer() *DefaultsAndConstsDefaultEnumStr {
+func (e DefaultEnumStr) ToPointer() *DefaultEnumStr {
 	return &e
 }
 
-func (e *DefaultsAndConstsDefaultEnumStr) UnmarshalJSON(data []byte) error {
+func (e *DefaultEnumStr) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -125,42 +125,42 @@ func (e *DefaultsAndConstsDefaultEnumStr) UnmarshalJSON(data []byte) error {
 	case "two":
 		fallthrough
 	case "three":
-		*e = DefaultsAndConstsDefaultEnumStr(v)
+		*e = DefaultEnumStr(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DefaultsAndConstsDefaultEnumStr: %v", v)
+		return fmt.Errorf("invalid value for DefaultEnumStr: %v", v)
 	}
 }
 
 type DefaultsAndConsts struct {
-	constBigInt        *big.Int                         `const:"9007199254740991" json:"constBigInt"`
-	constBigIntStr     *big.Int                         `const:"9223372036854775807" bigint:"string" json:"constBigIntStr"`
-	constBool          bool                             `const:"true" json:"constBool"`
-	constDate          types.Date                       `const:"2020-01-01" json:"constDate"`
-	constDateTime      time.Time                        `const:"2020-01-01T00:00:00Z" json:"constDateTime"`
-	constDecimal       *decimal.Big                     `const:"3.141592653589793" decimal:"number" json:"constDecimal"`
-	constDecimalStr    *decimal.Big                     `const:"3.141592653589793238462643383279" json:"constDecimalStr"`
-	constEnumInt       DefaultsAndConstsConstEnumInt    `const:"2" json:"constEnumInt"`
-	constEnumStr       DefaultsAndConstsConstEnumStr    `const:"two" json:"constEnumStr"`
-	constInt           int64                            `const:"123" json:"constInt"`
-	constNum           float64                          `const:"123.456" json:"constNum"`
-	constStr           string                           `const:"const" json:"constStr"`
-	constStrNull       *string                          `const:"null" json:"constStrNull"`
-	DefaultBigInt      *big.Int                         `default:"9007199254740991" json:"defaultBigInt"`
-	DefaultBigIntStr   *big.Int                         `default:"9223372036854775807" bigint:"string" json:"defaultBigIntStr"`
-	DefaultBool        *bool                            `default:"true" json:"defaultBool"`
-	DefaultDate        *types.Date                      `default:"2020-01-01" json:"defaultDate"`
-	DefaultDateTime    *time.Time                       `default:"2020-01-01T00:00:00Z" json:"defaultDateTime"`
-	DefaultDecimal     *decimal.Big                     `default:"3.141592653589793" decimal:"number" json:"defaultDecimal"`
-	DefaultDecimalStr  *decimal.Big                     `default:"3.141592653589793238462643383279" json:"defaultDecimalStr"`
-	DefaultEnumInt     *DefaultsAndConstsDefaultEnumInt `default:"2" json:"defaultEnumInt"`
-	DefaultEnumStr     *DefaultsAndConstsDefaultEnumStr `default:"two" json:"defaultEnumStr"`
-	DefaultInt         *int64                           `default:"123" json:"defaultInt"`
-	DefaultNum         *float64                         `default:"123.456" json:"defaultNum"`
-	DefaultStr         *string                          `default:"default" json:"defaultStr"`
-	DefaultStrNullable *string                          `default:"null" json:"defaultStrNullable"`
-	DefaultStrOptional *string                          `default:"default" json:"defaultStrOptional"`
-	NormalField        string                           `json:"normalField"`
+	constBigInt        *big.Int        `const:"9007199254740991" json:"constBigInt"`
+	constBigIntStr     *big.Int        `const:"9223372036854775807" bigint:"string" json:"constBigIntStr"`
+	constBool          bool            `const:"true" json:"constBool"`
+	constDate          types.Date      `const:"2020-01-01" json:"constDate"`
+	constDateTime      time.Time       `const:"2020-01-01T00:00:00Z" json:"constDateTime"`
+	constDecimal       *decimal.Big    `const:"3.141592653589793" decimal:"number" json:"constDecimal"`
+	constDecimalStr    *decimal.Big    `const:"3.141592653589793238462643383279" json:"constDecimalStr"`
+	constEnumInt       ConstEnumInt    `const:"2" json:"constEnumInt"`
+	constEnumStr       ConstEnumStr    `const:"two" json:"constEnumStr"`
+	constInt           int64           `const:"123" json:"constInt"`
+	constNum           float64         `const:"123.456" json:"constNum"`
+	constStr           string          `const:"const" json:"constStr"`
+	constStrNull       *string         `const:"null" json:"constStrNull"`
+	DefaultBigInt      *big.Int        `default:"9007199254740991" json:"defaultBigInt"`
+	DefaultBigIntStr   *big.Int        `default:"9223372036854775807" bigint:"string" json:"defaultBigIntStr"`
+	DefaultBool        *bool           `default:"true" json:"defaultBool"`
+	DefaultDate        *types.Date     `default:"2020-01-01" json:"defaultDate"`
+	DefaultDateTime    *time.Time      `default:"2020-01-01T00:00:00Z" json:"defaultDateTime"`
+	DefaultDecimal     *decimal.Big    `default:"3.141592653589793" decimal:"number" json:"defaultDecimal"`
+	DefaultDecimalStr  *decimal.Big    `default:"3.141592653589793238462643383279" json:"defaultDecimalStr"`
+	DefaultEnumInt     *DefaultEnumInt `default:"2" json:"defaultEnumInt"`
+	DefaultEnumStr     *DefaultEnumStr `default:"two" json:"defaultEnumStr"`
+	DefaultInt         *int64          `default:"123" json:"defaultInt"`
+	DefaultNum         *float64        `default:"123.456" json:"defaultNum"`
+	DefaultStr         *string         `default:"default" json:"defaultStr"`
+	DefaultStrNullable *string         `default:"null" json:"defaultStrNullable"`
+	DefaultStrOptional *string         `default:"default" json:"defaultStrOptional"`
+	NormalField        string          `json:"normalField"`
 }
 
 func (d DefaultsAndConsts) MarshalJSON() ([]byte, error) {
@@ -202,12 +202,12 @@ func (o *DefaultsAndConsts) GetConstDecimalStr() *decimal.Big {
 	return types.MustNewDecimalFromString("3.141592653589793238462643383279")
 }
 
-func (o *DefaultsAndConsts) GetConstEnumInt() DefaultsAndConstsConstEnumInt {
-	return DefaultsAndConstsConstEnumIntTwo
+func (o *DefaultsAndConsts) GetConstEnumInt() ConstEnumInt {
+	return ConstEnumIntTwo
 }
 
-func (o *DefaultsAndConsts) GetConstEnumStr() DefaultsAndConstsConstEnumStr {
-	return DefaultsAndConstsConstEnumStrTwo
+func (o *DefaultsAndConsts) GetConstEnumStr() ConstEnumStr {
+	return ConstEnumStrTwo
 }
 
 func (o *DefaultsAndConsts) GetConstInt() int64 {
@@ -275,14 +275,14 @@ func (o *DefaultsAndConsts) GetDefaultDecimalStr() *decimal.Big {
 	return o.DefaultDecimalStr
 }
 
-func (o *DefaultsAndConsts) GetDefaultEnumInt() *DefaultsAndConstsDefaultEnumInt {
+func (o *DefaultsAndConsts) GetDefaultEnumInt() *DefaultEnumInt {
 	if o == nil {
 		return nil
 	}
 	return o.DefaultEnumInt
 }
 
-func (o *DefaultsAndConsts) GetDefaultEnumStr() *DefaultsAndConstsDefaultEnumStr {
+func (o *DefaultsAndConsts) GetDefaultEnumStr() *DefaultEnumStr {
 	if o == nil {
 		return nil
 	}

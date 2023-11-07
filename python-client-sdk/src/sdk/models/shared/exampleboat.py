@@ -9,7 +9,7 @@ from enum import Enum
 from sdk import utils
 from typing import Optional
 
-class ExampleBoatType(str, Enum):
+class Type(str, Enum):
     BOAT = 'boat'
 
 
@@ -18,7 +18,7 @@ class ExampleBoatType(str, Enum):
 class ExampleBoat:
     length: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('length') }})
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
-    type: ExampleBoatType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: Type = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     created_at: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdAt'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'exclude': lambda f: f is None }})
     updated_at: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updatedAt'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'exclude': lambda f: f is None }})
     

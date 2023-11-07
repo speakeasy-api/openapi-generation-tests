@@ -46,10 +46,10 @@ public class ResponseBodyOptionalGetResponse {
      * OK
      */
     
-    public String responseBodyOptionalGet200TextPlainString;
+    public String res;
 
-    public ResponseBodyOptionalGetResponse withResponseBodyOptionalGet200TextPlainString(String responseBodyOptionalGet200TextPlainString) {
-        this.responseBodyOptionalGet200TextPlainString = responseBodyOptionalGet200TextPlainString;
+    public ResponseBodyOptionalGetResponse withRes(String res) {
+        this.res = res;
         return this;
     }
     

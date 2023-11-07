@@ -21,7 +21,7 @@ public class Application {
 
             GetGlobalNameOverrideResponse res = sdk.generation.globalNameOverridden();
 
-            if (res.getGlobalNameOverride200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -40,8 +40,8 @@ package hello.world;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.UsageExamplePostEnumParameter;
-import org.openapis.openapi.models.operations.UsageExamplePostOptEnumParameter;
+import org.openapis.openapi.models.operations.EnumParameter;
+import org.openapis.openapi.models.operations.OptEnumParameter;
 import org.openapis.openapi.models.operations.UsageExamplePostRequest;
 import org.openapis.openapi.models.operations.UsageExamplePostRequestBody;
 import org.openapis.openapi.models.operations.UsageExamplePostResponse;
@@ -49,10 +49,10 @@ import org.openapis.openapi.models.operations.UsageExamplePostSecurity;
 import org.openapis.openapi.models.shared.Enum;
 import org.openapis.openapi.models.shared.FakerFormattedStrings;
 import org.openapis.openapi.models.shared.FakerStrings;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -62,7 +62,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(168827L, "string", false, LocalDate.parse("2022-05-05"), OffsetDateTime.parse("2023-06-11T00:39:45.412Z"), OffsetDateTime.parse("2022-07-22T13:16:48.221Z"), 2679.33d, "string", 5223.72d, UsageExamplePostEnumParameter.VALUE1, 0d, 6946.59f, 2286.22d, 102975L, 566999, "example 1"){{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(168827L, "string", false, LocalDate.parse("2022-05-05"), OffsetDateTime.parse("2023-06-11T00:39:45.412Z"), OffsetDateTime.parse("2022-07-22T13:16:48.221Z"), 2679.33d, "string", 5223.72d, EnumParameter.VALUE1, 0d, 6946.59f, 2286.22d, 102975L, 566999, "example 1"){{
                 requestBody = new UsageExamplePostRequestBody(){{
                     fakerFormattedStrings = new FakerFormattedStrings(){{
                         addressFormat = "2344 Aufderhar Corner";
@@ -139,7 +139,7 @@ public class Application {
                         username = "Mable76";
                         uuid = "16b919d6-51cd-4e97-81e2-5221b7b6969f";
                     }};
-                    simpleObject = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                    simpleObject = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
                         boolOpt = true;
@@ -154,7 +154,7 @@ public class Application {
                 bigintStrParameterOptional = "string";
                 decimalParameterOptional = 5944.32d;
                 decimalStrParameterOptional = "string";
-                optEnumParameter = UsageExamplePostOptEnumParameter.VALUE3;
+                optEnumParameter = OptEnumParameter.VALUE3;
             }};            
 
             UsageExamplePostResponse res = sdk.generation.usageExamplePost(req, new UsageExamplePostSecurity("YOUR_PASSWORD", "YOUR_USERNAME"){{
@@ -162,7 +162,7 @@ public class Application {
                 username = "YOUR_USERNAME";
             }});
 
-            if (res.usageExamplePost200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {

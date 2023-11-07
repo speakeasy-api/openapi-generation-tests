@@ -18,7 +18,7 @@ class RequestBodyPutBytesWithParamsRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class RequestBodyPutBytesWithParamsResArgs:
+class RequestBodyPutBytesWithParamsArgs:
     query_string_param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('queryStringParam') }})
     
 
@@ -28,7 +28,7 @@ class RequestBodyPutBytesWithParamsResArgs:
 @dataclasses.dataclass
 class RequestBodyPutBytesWithParamsRes:
     r"""OK"""
-    args: RequestBodyPutBytesWithParamsResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
+    args: RequestBodyPutBytesWithParamsArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     data: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     
 

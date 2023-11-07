@@ -69,7 +69,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                res.nullable_required_empty_object_post_200_application_json_string = http_res.content
+                res.res = http_res.content
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -100,7 +100,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                res.nullable_required_property_post_200_application_json_string = http_res.content
+                res.res = http_res.content
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -131,7 +131,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                res.nullable_required_shared_object_post_200_application_json_string = http_res.content
+                res.res = http_res.content
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -166,7 +166,7 @@ class RequestBodies:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[List[shared.SimpleObject]])
-                res.simple_objects = out
+                res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -201,7 +201,7 @@ class RequestBodies:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[List[shared.SimpleObjectCamelCase]])
-                res.simple_object_camel_cases = out
+                res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -300,7 +300,7 @@ class RequestBodies:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[List[List[shared.SimpleObject]]])
-                res.arrs = out
+                res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -335,7 +335,7 @@ class RequestBodies:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[List[List[shared.SimpleObjectCamelCase]]])
-                res.arrs = out
+                res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -370,7 +370,7 @@ class RequestBodies:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[List[List[str]]])
-                res.arrs = out
+                res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -405,7 +405,7 @@ class RequestBodies:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[List[Dict[str, shared.SimpleObject]]])
-                res.maps = out
+                res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -440,7 +440,7 @@ class RequestBodies:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[List[Dict[str, shared.SimpleObjectCamelCase]]])
-                res.maps = out
+                res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -475,7 +475,7 @@ class RequestBodies:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[List[str]])
-                res.strings = out
+                res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1011,8 +1011,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostComplexNumberTypes200ApplicationJSON])
-                res.request_body_post_complex_number_types_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostComplexNumberTypesResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1043,8 +1043,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostDefaultsAndConsts200ApplicationJSON])
-                res.request_body_post_defaults_and_consts_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostDefaultsAndConstsResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1075,8 +1075,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostEmptyObject200ApplicationJSON])
-                res.request_body_post_empty_object_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostEmptyObjectResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1203,8 +1203,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON])
-                res.request_body_post_json_data_types_array_big_int_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesArrayBigIntResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1235,8 +1235,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON])
-                res.request_body_post_json_data_types_array_date_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesArrayDateResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1267,8 +1267,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON])
-                res.request_body_post_json_data_types_array_decimal_str_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesArrayDecimalStrResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1299,8 +1299,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesBigInt200ApplicationJSON])
-                res.request_body_post_json_data_types_big_int_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesBigIntResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1331,8 +1331,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSON])
-                res.request_body_post_json_data_types_big_int_str_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesBigIntStrResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1363,8 +1363,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesBoolean200ApplicationJSON])
-                res.request_body_post_json_data_types_boolean_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesBooleanResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1395,8 +1395,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesDate200ApplicationJSON])
-                res.request_body_post_json_data_types_date_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesDateResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1427,8 +1427,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesDateTime200ApplicationJSON])
-                res.request_body_post_json_data_types_date_time_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesDateTimeResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1459,8 +1459,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesDecimal200ApplicationJSON])
-                res.request_body_post_json_data_types_decimal_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesDecimalResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1491,8 +1491,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesDecimalStr200ApplicationJSON])
-                res.request_body_post_json_data_types_decimal_str_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesDecimalStrResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1523,8 +1523,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesFloat32200ApplicationJSON])
-                res.request_body_post_json_data_types_float32_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesFloat32ResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1555,8 +1555,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesInt32200ApplicationJSON])
-                res.request_body_post_json_data_types_int32_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesInt32ResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1587,8 +1587,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesInteger200ApplicationJSON])
-                res.request_body_post_json_data_types_integer_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesIntegerResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1619,8 +1619,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSON])
-                res.request_body_post_json_data_types_map_big_int_str_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesMapBigIntStrResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1651,8 +1651,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON])
-                res.request_body_post_json_data_types_map_date_time_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesMapDateTimeResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1683,8 +1683,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSON])
-                res.request_body_post_json_data_types_map_decimal_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesMapDecimalResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1715,8 +1715,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesNumber200ApplicationJSON])
-                res.request_body_post_json_data_types_number_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesNumberResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1747,8 +1747,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesString200ApplicationJSON])
-                res.request_body_post_json_data_types_string_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostJSONDataTypesStringResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -1789,7 +1789,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_multiple_content_types_inline_filtered(self, request: operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON) -> operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse:
+    def request_body_post_multiple_content_types_inline_filtered(self, request: operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody) -> operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/multiple/contentTypes/inline/filtered'
@@ -1821,7 +1821,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_multiple_content_types_split_param_form(self, request_body: operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded, param_str: str) -> operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse:
+    def request_body_post_multiple_content_types_split_param_form(self, request_body: operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody, param_str: str) -> operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse:
         request = operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest(
             request_body=request_body,
             param_str=param_str,
@@ -1859,7 +1859,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_multiple_content_types_split_param_json(self, request_body: operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON, param_str: str) -> operations.RequestBodyPostMultipleContentTypesSplitParamJSONResponse:
+    def request_body_post_multiple_content_types_split_param_json(self, request_body: operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody, param_str: str) -> operations.RequestBodyPostMultipleContentTypesSplitParamJSONResponse:
         request = operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequest(
             request_body=request_body,
             param_str=param_str,
@@ -1897,7 +1897,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_multiple_content_types_split_param_multipart(self, request_body: operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData, param_str: str) -> operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse:
+    def request_body_post_multiple_content_types_split_param_multipart(self, request_body: operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody, param_str: str) -> operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse:
         request = operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest(
             request_body=request_body,
             param_str=param_str,
@@ -1935,7 +1935,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_multiple_content_types_split_form(self, request: operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded) -> operations.RequestBodyPostMultipleContentTypesSplitFormResponse:
+    def request_body_post_multiple_content_types_split_form(self, request: operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody) -> operations.RequestBodyPostMultipleContentTypesSplitFormResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/multiple/contentTypes/split'
@@ -1967,7 +1967,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_multiple_content_types_split_json(self, request: operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON) -> operations.RequestBodyPostMultipleContentTypesSplitJSONResponse:
+    def request_body_post_multiple_content_types_split_json(self, request: operations.RequestBodyPostMultipleContentTypesSplitJSONRequestBody) -> operations.RequestBodyPostMultipleContentTypesSplitJSONResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/multiple/contentTypes/split'
@@ -1999,7 +1999,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_multiple_content_types_split_multipart(self, request: operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData) -> operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse:
+    def request_body_post_multiple_content_types_split_multipart(self, request: operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody) -> operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/multiple/contentTypes/split'
@@ -2051,8 +2051,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostNotNullableNotRequiredStringBody200ApplicationJSON])
-                res.request_body_post_not_nullable_not_required_string_body_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostNotNullableNotRequiredStringBodyResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -2083,8 +2083,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostNullArray200ApplicationJSON])
-                res.request_body_post_null_array_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostNullArrayResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -2115,8 +2115,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostNullDictionary200ApplicationJSON])
-                res.request_body_post_null_dictionary_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostNullDictionaryResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -2145,8 +2145,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostNullableNotRequiredStringBody200ApplicationJSON])
-                res.request_body_post_nullable_not_required_string_body_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostNullableNotRequiredStringBodyResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -2177,8 +2177,8 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostNullableRequiredStringBody200ApplicationJSON])
-                res.request_body_post_nullable_required_string_body_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostNullableRequiredStringBodyResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -2455,7 +2455,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_read_and_write(self, request: shared.ReadWriteObjectInput, server_url: Optional[str] = None) -> operations.RequestBodyReadAndWriteResponse:
+    def request_body_read_and_write(self, request: shared.ReadWriteObject, server_url: Optional[str] = None) -> operations.RequestBodyReadAndWriteResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_READ_AND_WRITE_SERVERS[0], {
         })
         if server_url is not None:
@@ -2560,7 +2560,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_read_write_only_union(self, request: Union[shared.SimpleObject, shared.ReadWriteObjectInput], server_url: Optional[str] = None) -> operations.RequestBodyReadWriteOnlyUnionResponse:
+    def request_body_read_write_only_union(self, request: Union[shared.SimpleObject, shared.ReadWriteObject], server_url: Optional[str] = None) -> operations.RequestBodyReadWriteOnlyUnionResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_READ_WRITE_ONLY_UNION_SERVERS[0], {
         })
         if server_url is not None:

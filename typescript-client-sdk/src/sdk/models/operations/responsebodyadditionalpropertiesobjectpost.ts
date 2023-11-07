@@ -3,14 +3,14 @@
  */
 
 import { objectToClass, SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Transform } from "class-transformer";
 
 /**
  * OK
  */
-export class ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSON extends SpeakeasyBase {
+export class ResponseBodyAdditionalPropertiesObjectPostResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: shared.SimpleObject })
     @Expose({ name: "json" })
     @Transform(
@@ -49,5 +49,5 @@ export class ResponseBodyAdditionalPropertiesObjectPostResponse extends Speakeas
      * OK
      */
     @SpeakeasyMetadata()
-    responseBodyAdditionalPropertiesObjectPost200ApplicationJSONObject?: ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSON;
+    object?: ResponseBodyAdditionalPropertiesObjectPostResponseBody;
 }

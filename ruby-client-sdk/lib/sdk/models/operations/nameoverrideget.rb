@@ -9,8 +9,8 @@ require_relative '../shared/simpleobject'
 
 module OpenApiSDK
   module Operations
-    # NameOverrideGetEnumNameOverride - An enum type
-    class NameOverrideGetEnumNameOverride < T::Enum
+    # EnumNameOverride - An enum type
+    class EnumNameOverride < T::Enum
       enums do
         VALUE1 = new('value1')
         VALUE2 = new('value2')
@@ -24,12 +24,12 @@ module OpenApiSDK
       extend T::Sig
 
       # An enum type
-      field :test_enum_query_param, Operations::NameOverrideGetEnumNameOverride, { 'query_param': { 'field_name': 'enumNameOverride', 'style': 'form', 'explode': true } }
+      field :test_enum_query_param, Operations::EnumNameOverride, { 'query_param': { 'field_name': 'enumNameOverride', 'style': 'form', 'explode': true } }
 
       field :test_query_param, String, { 'query_param': { 'field_name': 'nameOverride', 'style': 'form', 'explode': true } }
 
 
-      sig { params(test_enum_query_param: Operations::NameOverrideGetEnumNameOverride, test_query_param: String).void }
+      sig { params(test_enum_query_param: Operations::EnumNameOverride, test_query_param: String).void }
       def initialize(test_enum_query_param: nil, test_query_param: nil)
         @test_enum_query_param = test_enum_query_param
         @test_query_param = test_query_param
@@ -37,7 +37,7 @@ module OpenApiSDK
     end
 
     # A successful response that contains the simpleObject sent in the request body
-    class OverriddenResponse < OpenApiSDK::Utils::FieldAugmented
+    class NameOverrideGetOverriddenResponse < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # A simple object that uses all our supported primitive types and enums and has optional properties.
@@ -60,12 +60,12 @@ module OpenApiSDK
       # HTTP response status code for this operation
       field :status_code, Integer
       # A successful response that contains the simpleObject sent in the request body
-      field :overridden_response, T.nilable(Operations::OverriddenResponse)
+      field :overridden_response, T.nilable(Operations::NameOverrideGetOverriddenResponse)
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, overridden_response: T.nilable(Operations::OverriddenResponse), raw_response: T.nilable(Faraday::Response)).void }
+      sig { params(content_type: String, status_code: Integer, overridden_response: T.nilable(Operations::NameOverrideGetOverriddenResponse), raw_response: T.nilable(Faraday::Response)).void }
       def initialize(content_type: nil, status_code: nil, overridden_response: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code

@@ -1,5 +1,5 @@
 # RequestBodies
-(*request_bodies*)
+
 
 ## Overview
 
@@ -150,15 +150,15 @@ s.config_security(
    
 req = Operations::NullableRequiredEmptyObjectPostRequestBody.new(
   request=Operations::NullableRequiredEmptyObjectPostRequestBody.new(
-    nullable_optional_obj=Operations::NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj.new(),
-    nullable_required_obj=Operations::NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj.new(),
-    required_obj=Operations::NullableRequiredEmptyObjectPostRequestBodyRequiredObj.new(),
+    nullable_optional_obj=Operations::NullableOptionalObj.new(),
+    nullable_required_obj=Operations::NullableRequiredObj.new(),
+    required_obj=Operations::RequiredObj.new(),
   ),
 )
     
 res = s.request_bodies.nullable_required_empty_object_post(req)
 
-if ! res.nullable_required_empty_object_post_200_application_json_string.nil?
+if ! res.res.nil?
   # handle response
 end
 
@@ -198,14 +198,14 @@ req = Operations::NullableRequiredPropertyPostRequestBody.new(
     nullable_required_array=.new[
       6917.41,
     ],
-    nullable_required_enum=Operations::NullableRequiredPropertyPostRequestBodyNullableRequiredEnum::FIRST,
+    nullable_required_enum=Operations::NullableRequiredEnum::FIRST,
     nullable_required_int=282026,
   ),
 )
     
 res = s.request_bodies.nullable_required_property_post(req)
 
-if ! res.nullable_required_property_post_200_application_json_string.nil?
+if ! res.res.nil?
   # handle response
 end
 
@@ -254,7 +254,7 @@ req = Operations::NullableRequiredSharedObjectPostRequestBody.new(
     
 res = s.request_bodies.nullable_required_shared_object_post(req)
 
-if ! res.nullable_required_shared_object_post_200_application_json_string.nil?
+if ! res.res.nil?
   # handle response
 end
 
@@ -304,8 +304,8 @@ req = ::.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::FIRST,
+      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::IntEnum::FIRST,
       int_opt_null=690448,
       num=1.1,
       num_opt_null=7926.4,
@@ -317,7 +317,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_application_json_array(req)
 
-if ! res.simple_objects.nil?
+if ! res.res.nil?
   # handle response
 end
 
@@ -365,9 +365,9 @@ req = ::.new(
       decimal_val=6846.04,
       enum_val=Shared::Enum::ONE,
       float32_val=2.2222222,
-      int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
+      int32_enum_val=Shared::Int32EnumVal::FIFTY_FIVE,
       int32_val=1,
-      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
+      int_enum_val=Shared::IntEnumVal::SECOND,
       int_opt_null_val=999999,
       int_val=999999,
       num_opt_null_val=1.1,
@@ -380,7 +380,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_application_json_array_camel_case(req)
 
-if ! res.simple_object_camel_cases.nil?
+if ! res.res.nil?
   # handle response
 end
 
@@ -431,8 +431,8 @@ req = ::.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-      int_enum=Shared::SimpleObjectIntEnum::FIRST,
+      int32_enum=Shared::Int32Enum::SIXTY_NINE,
+      int_enum=Shared::IntEnum::FIRST,
       int_opt_null=441726,
       num=1.1,
       num_opt_null=9818.33,
@@ -491,9 +491,9 @@ req = ::.new(
       decimal_val=5504.23,
       enum_val=Shared::Enum::ONE,
       float32_val=2.2222222,
-      int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
+      int32_enum_val=Shared::Int32EnumVal::FIFTY_FIVE,
       int32_val=1,
-      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
+      int_enum_val=Shared::IntEnumVal::SECOND,
       int_opt_null_val=999999,
       int_val=999999,
       num_opt_null_val=1.1,
@@ -557,8 +557,8 @@ req = ::.new(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-        int_enum=Shared::SimpleObjectIntEnum::THIRD,
+        int32_enum=Shared::Int32Enum::SIXTY_NINE,
+        int_enum=Shared::IntEnum::THIRD,
         int_opt_null=74811,
         num=1.1,
         num_opt_null=5257.68,
@@ -571,7 +571,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_application_json_array_of_array(req)
 
-if ! res.arrs.nil?
+if ! res.res.nil?
   # handle response
 end
 
@@ -620,9 +620,9 @@ req = ::.new(
         decimal_val=4024.25,
         enum_val=Shared::Enum::ONE,
         float32_val=2.2222222,
-        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
+        int32_enum_val=Shared::Int32EnumVal::FIFTY_FIVE,
         int32_val=1,
-        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
+        int_enum_val=Shared::IntEnumVal::SECOND,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -636,7 +636,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_application_json_array_of_array_camel_case(req)
 
-if ! res.arrs.nil?
+if ! res.res.nil?
   # handle response
 end
 
@@ -681,7 +681,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_application_json_array_of_array_of_primitive(req)
 
-if ! res.arrs.nil?
+if ! res.res.nil?
   # handle response
 end
 
@@ -733,8 +733,8 @@ req = ::.new(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::FIRST,
+        int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int_enum=Shared::IntEnum::FIRST,
         int_opt_null=633957,
         num=1.1,
         num_opt_null=7796.22,
@@ -747,7 +747,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_application_json_array_of_map(req)
 
-if ! res.maps.nil?
+if ! res.res.nil?
   # handle response
 end
 
@@ -796,9 +796,9 @@ req = ::.new(
         decimal_val=3788.16,
         enum_val=Shared::Enum::ONE,
         float32_val=2.2222222,
-        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
+        int32_enum_val=Shared::Int32EnumVal::FIFTY_FIVE,
         int32_val=1,
-        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
+        int_enum_val=Shared::IntEnumVal::SECOND,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -812,7 +812,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_application_json_array_of_map_camel_case(req)
 
-if ! res.maps.nil?
+if ! res.res.nil?
   # handle response
 end
 
@@ -855,7 +855,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_application_json_array_of_primitive(req)
 
-if ! res.strings.nil?
+if ! res.res.nil?
   # handle response
 end
 
@@ -908,8 +908,8 @@ req = Shared::DeepObject.new(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::SECOND,
+        int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int_enum=Shared::IntEnum::SECOND,
         int_opt_null=331525,
         num=1.1,
         num_opt_null=7388.48,
@@ -934,8 +934,8 @@ req = Shared::DeepObject.new(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-        int_enum=Shared::SimpleObjectIntEnum::THIRD,
+        int32_enum=Shared::Int32Enum::FIFTY_FIVE,
+        int_enum=Shared::IntEnum::THIRD,
         int_opt_null=991506,
         num=1.1,
         num_opt_null=4260.62,
@@ -958,8 +958,8 @@ req = Shared::DeepObject.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
+      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::IntEnum::THIRD,
       int_opt_null=724689,
       num=1.1,
       num_opt_null=9926.81,
@@ -1022,9 +1022,9 @@ req = Shared::DeepObjectCamelCase.new(
         decimal_val=9629.09,
         enum_val=Shared::Enum::ONE,
         float32_val=2.2222222,
-        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
+        int32_enum_val=Shared::Int32EnumVal::FIFTY_FIVE,
         int32_val=1,
-        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
+        int_enum_val=Shared::IntEnumVal::SECOND,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -1047,9 +1047,9 @@ req = Shared::DeepObjectCamelCase.new(
         decimal_val=4268.81,
         enum_val=Shared::Enum::ONE,
         float32_val=2.2222222,
-        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
+        int32_enum_val=Shared::Int32EnumVal::FIFTY_FIVE,
         int32_val=1,
-        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::FIRST,
+        int_enum_val=Shared::IntEnumVal::FIRST,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -1070,9 +1070,9 @@ req = Shared::DeepObjectCamelCase.new(
       decimal_val=3547.55,
       enum_val=Shared::Enum::ONE,
       float32_val=2.2222222,
-      int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
+      int32_enum_val=Shared::Int32EnumVal::FIFTY_FIVE,
       int32_val=1,
-      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::FIRST,
+      int_enum_val=Shared::IntEnumVal::FIRST,
       int_opt_null_val=999999,
       int_val=999999,
       num_opt_null_val=1.1,
@@ -1137,8 +1137,8 @@ req = ::.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
+      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::IntEnum::THIRD,
       int_opt_null=821581,
       num=1.1,
       num_opt_null=7650.52,
@@ -1198,9 +1198,9 @@ req = ::.new(
       decimal_val=3388.78,
       enum_val=Shared::Enum::ONE,
       float32_val=2.2222222,
-      int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::SIXTY_NINE,
+      int32_enum_val=Shared::Int32EnumVal::SIXTY_NINE,
       int32_val=1,
-      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::FIRST,
+      int_enum_val=Shared::IntEnumVal::FIRST,
       int_opt_null_val=999999,
       int_val=999999,
       num_opt_null_val=1.1,
@@ -1264,8 +1264,8 @@ req = ::.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int32_enum=Shared::Int32Enum::SIXTY_NINE,
+      int_enum=Shared::IntEnum::SECOND,
       int_opt_null=108451,
       num=1.1,
       num_opt_null=7446.57,
@@ -1324,9 +1324,9 @@ req = ::.new(
       decimal_val=9878.97,
       enum_val=Shared::Enum::ONE,
       float32_val=2.2222222,
-      int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
+      int32_enum_val=Shared::Int32EnumVal::FIFTY_FIVE,
       int32_val=1,
-      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
+      int_enum_val=Shared::IntEnumVal::SECOND,
       int_opt_null_val=999999,
       int_val=999999,
       num_opt_null_val=1.1,
@@ -1390,8 +1390,8 @@ req = ::.new(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::SECOND,
+        int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int_enum=Shared::IntEnum::SECOND,
         int_opt_null=381188,
         num=1.1,
         num_opt_null=3457.34,
@@ -1453,9 +1453,9 @@ req = ::.new(
         decimal_val=7481.74,
         enum_val=Shared::Enum::ONE,
         float32_val=2.2222222,
-        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int32_enum_val=Shared::Int32EnumVal::ONE_HUNDRED_AND_EIGHTY_ONE,
         int32_val=1,
-        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
+        int_enum_val=Shared::IntEnumVal::SECOND,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -1521,8 +1521,8 @@ req = ::.new(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-        int_enum=Shared::SimpleObjectIntEnum::THIRD,
+        int32_enum=Shared::Int32Enum::SIXTY_NINE,
+        int_enum=Shared::IntEnum::THIRD,
         int_opt_null=313517,
         num=1.1,
         num_opt_null=4543.93,
@@ -1584,9 +1584,9 @@ req = ::.new(
         decimal_val=5080.8,
         enum_val=Shared::Enum::ONE,
         float32_val=2.2222222,
-        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
+        int32_enum_val=Shared::Int32EnumVal::FIFTY_FIVE,
         int32_val=1,
-        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::THIRD,
+        int_enum_val=Shared::IntEnumVal::THIRD,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -1738,8 +1738,8 @@ req = Shared::SimpleObject.new(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-    int_enum=Shared::SimpleObjectIntEnum::FIRST,
+    int32_enum=Shared::Int32Enum::SIXTY_NINE,
+    int_enum=Shared::IntEnum::FIRST,
     int_opt_null=680661,
     num=1.1,
     num_opt_null=8809.47,
@@ -1799,8 +1799,8 @@ req = Shared::SimpleObject.new(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-    int_enum=Shared::SimpleObjectIntEnum::SECOND,
+    int32_enum=Shared::Int32Enum::FIFTY_FIVE,
+    int_enum=Shared::IntEnum::SECOND,
     int_opt_null=387512,
     num=1.1,
     num_opt_null=7875.71,
@@ -1857,9 +1857,9 @@ req = Shared::SimpleObjectCamelCase.new(
     decimal_val=9976.38,
     enum_val=Shared::Enum::ONE,
     float32_val=2.2222222,
-    int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::SIXTY_NINE,
+    int32_enum_val=Shared::Int32EnumVal::SIXTY_NINE,
     int32_val=1,
-    int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
+    int_enum_val=Shared::IntEnumVal::SECOND,
     int_opt_null_val=999999,
     int_val=999999,
     num_opt_null_val=1.1,
@@ -1948,7 +1948,7 @@ req = Operations::RequestBodyPostComplexNumberTypesRequest.new(
     
 res = s.request_bodies.request_body_post_complex_number_types(req)
 
-if ! res.request_body_post_complex_number_types_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -1991,8 +1991,8 @@ req = Shared::DefaultsAndConsts.new(
     const_date_time=DateTime.iso8601('2022-12-15T04:16:08.794Z'),
     const_decimal=9160.69,
     const_decimal_str="string",
-    const_enum_int=Shared::DefaultsAndConstsConstEnumInt::ONE,
-    const_enum_str=Shared::DefaultsAndConstsConstEnumStr::THREE,
+    const_enum_int=Shared::ConstEnumInt::ONE,
+    const_enum_str=Shared::ConstEnumStr::THREE,
     const_int=299545,
     const_num=4612.63,
     const_str="string",
@@ -2004,8 +2004,8 @@ req = Shared::DefaultsAndConsts.new(
     default_date_time=DateTime.iso8601('2021-10-01T11:08:55.738Z'),
     default_decimal=4585.94,
     default_decimal_str="string",
-    default_enum_int=Shared::DefaultsAndConstsDefaultEnumInt::TWO,
-    default_enum_str=Shared::DefaultsAndConstsDefaultEnumStr::ONE,
+    default_enum_int=Shared::DefaultEnumInt::TWO,
+    default_enum_str=Shared::DefaultEnumStr::ONE,
     default_int=788517,
     default_num=639.73,
     default_str="string",
@@ -2017,7 +2017,7 @@ req = Shared::DefaultsAndConsts.new(
     
 res = s.request_bodies.request_body_post_defaults_and_consts(req)
 
-if ! res.request_body_post_defaults_and_consts_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -2053,14 +2053,14 @@ s.config_security(
    
 req = Operations::RequestBodyPostEmptyObjectRequestBody.new(
   request=Operations::RequestBodyPostEmptyObjectRequestBody.new(
-    empty=Operations::RequestBodyPostEmptyObjectRequestBodyEmpty.new(),
-    empty_with_empty_properties=Operations::RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties.new(),
+    empty=Operations::Empty.new(),
+    empty_with_empty_properties=Operations::EmptyWithEmptyProperties.new(),
   ),
 )
     
 res = s.request_bodies.request_body_post_empty_object(req)
 
-if ! res.request_body_post_empty_object_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -2112,8 +2112,8 @@ req = Shared::DeepObject.new(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::FIRST,
+        int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int_enum=Shared::IntEnum::FIRST,
         int_opt_null=14993,
         num=1.1,
         num_opt_null=6785.62,
@@ -2138,8 +2138,8 @@ req = Shared::DeepObject.new(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-        int_enum=Shared::SimpleObjectIntEnum::SECOND,
+        int32_enum=Shared::Int32Enum::FIFTY_FIVE,
+        int_enum=Shared::IntEnum::SECOND,
         int_opt_null=863312,
         num=1.1,
         num_opt_null=4808.84,
@@ -2162,8 +2162,8 @@ req = Shared::DeepObject.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-      int_enum=Shared::SimpleObjectIntEnum::FIRST,
+      int32_enum=Shared::Int32Enum::SIXTY_NINE,
+      int_enum=Shared::IntEnum::FIRST,
       int_opt_null=736071,
       num=1.1,
       num_opt_null=5899.47,
@@ -2268,8 +2268,8 @@ req = Shared::SimpleObject.new(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-    int_enum=Shared::SimpleObjectIntEnum::FIRST,
+    int32_enum=Shared::Int32Enum::SIXTY_NINE,
+    int_enum=Shared::IntEnum::FIRST,
     int_opt_null=5565,
     num=1.1,
     num_opt_null=8893.53,
@@ -2322,7 +2322,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_json_data_types_array_big_int(req)
 
-if ! res.request_body_post_json_data_types_array_big_int_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -2364,7 +2364,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_json_data_types_array_date(req)
 
-if ! res.request_body_post_json_data_types_array_date_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -2406,7 +2406,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_json_data_types_array_decimal_str(req)
 
-if ! res.request_body_post_json_data_types_array_decimal_str_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -2446,7 +2446,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_json_data_types_big_int(req)
 
-if ! res.request_body_post_json_data_types_big_int_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -2486,7 +2486,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_json_data_types_big_int_str(req)
 
-if ! res.request_body_post_json_data_types_big_int_str_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -2526,7 +2526,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_json_data_types_boolean(req)
 
-if ! res.request_body_post_json_data_types_boolean_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -2566,7 +2566,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_json_data_types_date(req)
 
-if ! res.request_body_post_json_data_types_date_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -2606,7 +2606,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_json_data_types_date_time(req)
 
-if ! res.request_body_post_json_data_types_date_time_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -2646,7 +2646,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_json_data_types_decimal(req)
 
-if ! res.request_body_post_json_data_types_decimal_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -2686,7 +2686,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_json_data_types_decimal_str(req)
 
-if ! res.request_body_post_json_data_types_decimal_str_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -2726,7 +2726,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_json_data_types_float32(req)
 
-if ! res.request_body_post_json_data_types_float32_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -2766,7 +2766,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_json_data_types_int32(req)
 
-if ! res.request_body_post_json_data_types_int32_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -2806,7 +2806,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_json_data_types_integer(req)
 
-if ! res.request_body_post_json_data_types_integer_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -2848,7 +2848,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_json_data_types_map_big_int_str(req)
 
-if ! res.request_body_post_json_data_types_map_big_int_str_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -2890,7 +2890,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_json_data_types_map_date_time(req)
 
-if ! res.request_body_post_json_data_types_map_date_time_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -2932,7 +2932,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_json_data_types_map_decimal(req)
 
-if ! res.request_body_post_json_data_types_map_decimal_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -2972,7 +2972,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_json_data_types_number(req)
 
-if ! res.request_body_post_json_data_types_number_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -3012,7 +3012,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_json_data_types_string(req)
 
-if ! res.request_body_post_json_data_types_string_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -3061,8 +3061,8 @@ req = Shared::SimpleObject.new(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-    int_enum=Shared::SimpleObjectIntEnum::THIRD,
+    int32_enum=Shared::Int32Enum::FIFTY_FIVE,
+    int_enum=Shared::IntEnum::THIRD,
     int_opt_null=587803,
     num=1.1,
     num_opt_null=9724.14,
@@ -3107,8 +3107,8 @@ s.config_security(
 )
 
    
-req = Operations::RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON.new(
-  request=Operations::RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON.new(
+req = Operations::RequestBodyPostMultipleContentTypesInlineFilteredRequestBody.new(
+  request=Operations::RequestBodyPostMultipleContentTypesInlineFilteredRequestBody.new(
     bool=false,
     num=3558.41,
     str_="string",
@@ -3125,9 +3125,9 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                                                                                   | Type                                                                                                                                                                        | Required                                                                                                                                                                    | Description                                                                                                                                                                 |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                                   | [Operations::RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON](../../models/operations/requestbodypostmultiplecontenttypesinlinefilteredapplicationjson.md) | :heavy_check_mark:                                                                                                                                                          | The request object to use for the request.                                                                                                                                  |
+| Parameter                                                                                                                                                           | Type                                                                                                                                                                | Required                                                                                                                                                            | Description                                                                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                           | [Operations::RequestBodyPostMultipleContentTypesInlineFilteredRequestBody](../../models/operations/requestbodypostmultiplecontenttypesinlinefilteredrequestbody.md) | :heavy_check_mark:                                                                                                                                                  | The request object to use for the request.                                                                                                                          |
 
 
 ### Response
@@ -3153,14 +3153,14 @@ s.config_security(
    
 req = Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequest.new(
   query_params=Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequest.new(
-    request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded.new(
+    request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequestBody.new(
       bool3=false,
       num3=8693.24,
       str3="string",
     ),
     param_str="string",
   ),
-  request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded.new(
+  request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequestBody.new(
     bool3=false,
     num3=1802.67,
     str3="string",
@@ -3177,10 +3177,10 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                       | Type                                                                                                                                                                                            | Required                                                                                                                                                                                        | Description                                                                                                                                                                                     |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request_body`                                                                                                                                                                                  | [Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded](../../models/operations/requestbodypostmultiplecontenttypessplitparamapplicationxwwwformurlencoded.md) | :heavy_check_mark:                                                                                                                                                                              | N/A                                                                                                                                                                                             |
-| `param_str`                                                                                                                                                                                     | *String*                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                              | N/A                                                                                                                                                                                             |
+| Parameter                                                                                                                                                           | Type                                                                                                                                                                | Required                                                                                                                                                            | Description                                                                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request_body`                                                                                                                                                      | [Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitparamformrequestbody.md) | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
+| `param_str`                                                                                                                                                         | *String*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 
 
 ### Response
@@ -3206,14 +3206,14 @@ s.config_security(
    
 req = Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequest.new(
   query_params=Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequest.new(
-    request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationJSON.new(
+    request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody.new(
       bool=false,
       num=9771.91,
       str_="string",
     ),
     param_str="string",
   ),
-  request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationJSON.new(
+  request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody.new(
     bool=false,
     num=5784.1,
     str_="string",
@@ -3232,7 +3232,7 @@ end
 
 | Parameter                                                                                                                                                           | Type                                                                                                                                                                | Required                                                                                                                                                            | Description                                                                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request_body`                                                                                                                                                      | [Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationJSON](../../models/operations/requestbodypostmultiplecontenttypessplitparamapplicationjson.md) | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
+| `request_body`                                                                                                                                                      | [Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitparamjsonrequestbody.md) | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 | `param_str`                                                                                                                                                         | *String*                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 
 
@@ -3259,14 +3259,14 @@ s.config_security(
    
 req = Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartRequest.new(
   query_params=Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartRequest.new(
-    request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartFormData.new(
+    request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody.new(
       bool2=false,
       num2=7000.76,
       str2="string",
     ),
     param_str="string",
   ),
-  request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartFormData.new(
+  request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody.new(
     bool2=false,
     num2=6115.78,
     str2="string",
@@ -3283,10 +3283,10 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                                                                               | Type                                                                                                                                                                    | Required                                                                                                                                                                | Description                                                                                                                                                             |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request_body`                                                                                                                                                          | [Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartFormData](../../models/operations/requestbodypostmultiplecontenttypessplitparammultipartformdata.md) | :heavy_check_mark:                                                                                                                                                      | N/A                                                                                                                                                                     |
-| `param_str`                                                                                                                                                             | *String*                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                      | N/A                                                                                                                                                                     |
+| Parameter                                                                                                                                                                     | Type                                                                                                                                                                          | Required                                                                                                                                                                      | Description                                                                                                                                                                   |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request_body`                                                                                                                                                                | [Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitparammultipartrequestbody.md) | :heavy_check_mark:                                                                                                                                                            | N/A                                                                                                                                                                           |
+| `param_str`                                                                                                                                                                   | *String*                                                                                                                                                                      | :heavy_check_mark:                                                                                                                                                            | N/A                                                                                                                                                                           |
 
 
 ### Response
@@ -3310,8 +3310,8 @@ s.config_security(
 )
 
    
-req = Operations::RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded.new(
-  request=Operations::RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded.new(
+req = Operations::RequestBodyPostMultipleContentTypesSplitFormRequestBody.new(
+  request=Operations::RequestBodyPostMultipleContentTypesSplitFormRequestBody.new(
     bool3=false,
     num3=7842.07,
     str3="string",
@@ -3328,9 +3328,9 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                                                                                             | Type                                                                                                                                                                                  | Required                                                                                                                                                                              | Description                                                                                                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                                             | [Operations::RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded](../../models/operations/requestbodypostmultiplecontenttypessplitapplicationxwwwformurlencoded.md) | :heavy_check_mark:                                                                                                                                                                    | The request object to use for the request.                                                                                                                                            |
+| Parameter                                                                                                                                                 | Type                                                                                                                                                      | Required                                                                                                                                                  | Description                                                                                                                                               |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                 | [Operations::RequestBodyPostMultipleContentTypesSplitFormRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitformrequestbody.md) | :heavy_check_mark:                                                                                                                                        | The request object to use for the request.                                                                                                                |
 
 
 ### Response
@@ -3354,8 +3354,8 @@ s.config_security(
 )
 
    
-req = Operations::RequestBodyPostMultipleContentTypesSplitApplicationJSON.new(
-  request=Operations::RequestBodyPostMultipleContentTypesSplitApplicationJSON.new(
+req = Operations::RequestBodyPostMultipleContentTypesSplitJsonRequestBody.new(
+  request=Operations::RequestBodyPostMultipleContentTypesSplitJsonRequestBody.new(
     bool=false,
     num=2445.56,
     str_="string",
@@ -3374,7 +3374,7 @@ end
 
 | Parameter                                                                                                                                                 | Type                                                                                                                                                      | Required                                                                                                                                                  | Description                                                                                                                                               |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                 | [Operations::RequestBodyPostMultipleContentTypesSplitApplicationJSON](../../models/operations/requestbodypostmultiplecontenttypessplitapplicationjson.md) | :heavy_check_mark:                                                                                                                                        | The request object to use for the request.                                                                                                                |
+| `request`                                                                                                                                                 | [Operations::RequestBodyPostMultipleContentTypesSplitJsonRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitjsonrequestbody.md) | :heavy_check_mark:                                                                                                                                        | The request object to use for the request.                                                                                                                |
 
 
 ### Response
@@ -3398,8 +3398,8 @@ s.config_security(
 )
 
    
-req = Operations::RequestBodyPostMultipleContentTypesSplitMultipartFormData.new(
-  request=Operations::RequestBodyPostMultipleContentTypesSplitMultipartFormData.new(
+req = Operations::RequestBodyPostMultipleContentTypesSplitMultipartRequestBody.new(
+  request=Operations::RequestBodyPostMultipleContentTypesSplitMultipartRequestBody.new(
     bool2=false,
     num2=2079.2,
     str2="string",
@@ -3416,9 +3416,9 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                                                                     | Type                                                                                                                                                          | Required                                                                                                                                                      | Description                                                                                                                                                   |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                     | [Operations::RequestBodyPostMultipleContentTypesSplitMultipartFormData](../../models/operations/requestbodypostmultiplecontenttypessplitmultipartformdata.md) | :heavy_check_mark:                                                                                                                                            | The request object to use for the request.                                                                                                                    |
+| Parameter                                                                                                                                                           | Type                                                                                                                                                                | Required                                                                                                                                                            | Description                                                                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                           | [Operations::RequestBodyPostMultipleContentTypesSplitMultipartRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitmultipartrequestbody.md) | :heavy_check_mark:                                                                                                                                                  | The request object to use for the request.                                                                                                                          |
 
 
 ### Response
@@ -3448,7 +3448,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_not_nullable_not_required_string_body(req)
 
-if ! res.request_body_post_not_nullable_not_required_string_body_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -3490,7 +3490,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_null_array(req)
 
-if ! res.request_body_post_null_array_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -3532,7 +3532,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_null_dictionary(req)
 
-if ! res.request_body_post_null_dictionary_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -3572,7 +3572,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_nullable_not_required_string_body(req)
 
-if ! res.request_body_post_nullable_not_required_string_body_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -3612,7 +3612,7 @@ req = ::.new(
     
 res = s.request_bodies.request_body_post_nullable_required_string_body(req)
 
-if ! res.request_body_post_nullable_required_string_body_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -3647,7 +3647,7 @@ s.config_security(
 
    
 req = ::.new(
-  request="9sS}}O%}aJ".encode(),
+  request="0x5DbFFb1Ff9".encode(),
 )
     
 res = s.request_bodies.request_body_put_bytes(req)
@@ -3688,10 +3688,10 @@ s.config_security(
    
 req = Operations::RequestBodyPutBytesWithParamsRequest.new(
   query_params=Operations::RequestBodyPutBytesWithParamsRequest.new(
-    request_body="o%jIWe4_P6".encode(),
+    request_body="0xC1B9cA4eb5".encode(),
     query_string_param="string",
   ),
-  request_body="$GrQJ30)!E".encode(),
+  request_body="0x09Db943108".encode(),
 )
     
 res = s.request_bodies.request_body_put_bytes_with_params(req)
@@ -3749,8 +3749,8 @@ req = Shared::DeepObject.new(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::FIRST,
+        int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int_enum=Shared::IntEnum::FIRST,
         int_opt_null=951052,
         num=1.1,
         num_opt_null=5976.82,
@@ -3775,8 +3775,8 @@ req = Shared::DeepObject.new(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-        int_enum=Shared::SimpleObjectIntEnum::SECOND,
+        int32_enum=Shared::Int32Enum::SIXTY_NINE,
+        int_enum=Shared::IntEnum::SECOND,
         int_opt_null=539713,
         num=1.1,
         num_opt_null=6305.02,
@@ -3799,8 +3799,8 @@ req = Shared::DeepObject.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int32_enum=Shared::Int32Enum::FIFTY_FIVE,
+      int_enum=Shared::IntEnum::SECOND,
       int_opt_null=354579,
       num=1.1,
       num_opt_null=7795.52,
@@ -3850,9 +3850,9 @@ s.config_security(
    
 req = Operations::RequestBodyPutMultipartDifferentFileNameRequestBody.new(
   request=Operations::RequestBodyPutMultipartDifferentFileNameRequestBody.new(
-    different_file_name=Operations::RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName.new(
-      content="Y}'H[5/Z[,".encode(),
-      different_file_name="string",
+    different_file_name=Operations::DifferentFileName.new(
+      content="0xdF19d43dd2".encode(),
+      file_name="west_tunisian.pdf",
     ),
   ),
 )
@@ -3895,9 +3895,9 @@ s.config_security(
    
 req = Operations::RequestBodyPutMultipartFileRequestBody.new(
   request=Operations::RequestBodyPutMultipartFileRequestBody.new(
-    file=Operations::RequestBodyPutMultipartFileRequestBodyFile.new(
-      content="OJa,v`.FW-".encode(),
-      file="string",
+    file=Operations::File.new(
+      content="0xa9f2Ee38c3".encode(),
+      file_name="bandwidth_sedan.pdf",
     ),
   ),
 )
@@ -3953,8 +3953,8 @@ req = Shared::SimpleObject.new(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-    int_enum=Shared::SimpleObjectIntEnum::THIRD,
+    int32_enum=Shared::Int32Enum::FIFTY_FIVE,
+    int_enum=Shared::IntEnum::THIRD,
     int_opt_null=544005,
     num=1.1,
     num_opt_null=7648.28,
@@ -4084,8 +4084,8 @@ s.config_security(
 )
 
    
-req = Shared::ReadWriteObjectInput.new(
-  request=Shared::ReadWriteObjectInput.new(
+req = Shared::ReadWriteObject.new(
+  request=Shared::ReadWriteObject.new(
     num1=797612,
     num2=89374,
     num3=459345,
@@ -4102,10 +4102,10 @@ end
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `request`                                                                   | [Shared::ReadWriteObjectInput](../../models/shared/readwriteobjectinput.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
-| `server_url`                                                                | *String*                                                                    | :heavy_minus_sign:                                                          | An optional server URL to use.                                              |
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `request`                                                         | [Shared::ReadWriteObject](../../models/shared/readwriteobject.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
+| `server_url`                                                      | *String*                                                          | :heavy_minus_sign:                                                | An optional server URL to use.                                    |
 
 
 ### Response

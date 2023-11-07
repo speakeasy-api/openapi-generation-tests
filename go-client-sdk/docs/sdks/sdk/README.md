@@ -23,8 +23,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -37,12 +37,12 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.SDK.PutAnythingIgnoredGeneration(ctx, "string")
+    res, err := s.PutAnythingIgnoredGeneration(ctx, "string")
     if err != nil {
         log.Fatal(err)
     }
 
-    if res.PutAnythingIgnoredGeneration200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -71,8 +71,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -85,7 +85,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.SDK.ResponseBodyJSONGet(ctx)
+    res, err := s.ResponseBodyJSONGet(ctx)
     if err != nil {
         log.Fatal(err)
     }

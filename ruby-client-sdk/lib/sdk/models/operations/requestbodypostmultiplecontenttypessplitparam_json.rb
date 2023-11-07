@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class RequestBodyPostMultipleContentTypesSplitParamApplicationJSON < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -35,10 +35,10 @@ module OpenApiSDK
 
       field :param_str, String, { 'query_param': { 'field_name': 'paramStr', 'style': 'form', 'explode': true } }
 
-      field :request_body, Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationJSON, { 'request': { 'media_type': 'application/json' } }
+      field :request_body, Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody, { 'request': { 'media_type': 'application/json' } }
 
 
-      sig { params(param_str: String, request_body: Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationJSON).void }
+      sig { params(param_str: String, request_body: Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody).void }
       def initialize(param_str: nil, request_body: nil)
         @param_str = param_str
         @request_body = request_body

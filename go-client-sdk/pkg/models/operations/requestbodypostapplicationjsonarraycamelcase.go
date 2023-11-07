@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
 var RequestBodyPostApplicationJSONArrayCamelCaseServerList = []string{
@@ -19,7 +19,7 @@ type RequestBodyPostApplicationJSONArrayCamelCaseResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	SimpleObjectCamelCases []shared.SimpleObjectCamelCase
+	Res []shared.SimpleObjectCamelCase
 }
 
 func (o *RequestBodyPostApplicationJSONArrayCamelCaseResponse) GetContentType() string {
@@ -43,9 +43,9 @@ func (o *RequestBodyPostApplicationJSONArrayCamelCaseResponse) GetRawResponse() 
 	return o.RawResponse
 }
 
-func (o *RequestBodyPostApplicationJSONArrayCamelCaseResponse) GetSimpleObjectCamelCases() []shared.SimpleObjectCamelCase {
+func (o *RequestBodyPostApplicationJSONArrayCamelCaseResponse) GetRes() []shared.SimpleObjectCamelCase {
 	if o == nil {
 		return nil
 	}
-	return o.SimpleObjectCamelCases
+	return o.Res
 }

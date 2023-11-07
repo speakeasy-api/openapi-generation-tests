@@ -6,27 +6,27 @@ import (
 	"net/http"
 )
 
-type RequestBodyPostMultipleContentTypesSplitApplicationJSON struct {
+type RequestBodyPostMultipleContentTypesSplitJSONRequestBody struct {
 	Bool bool    `json:"bool"`
 	Num  float64 `json:"num"`
 	Str  string  `json:"str"`
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitApplicationJSON) GetBool() bool {
+func (o *RequestBodyPostMultipleContentTypesSplitJSONRequestBody) GetBool() bool {
 	if o == nil {
 		return false
 	}
 	return o.Bool
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitApplicationJSON) GetNum() float64 {
+func (o *RequestBodyPostMultipleContentTypesSplitJSONRequestBody) GetNum() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Num
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitApplicationJSON) GetStr() string {
+func (o *RequestBodyPostMultipleContentTypesSplitJSONRequestBody) GetStr() string {
 	if o == nil {
 		return ""
 	}

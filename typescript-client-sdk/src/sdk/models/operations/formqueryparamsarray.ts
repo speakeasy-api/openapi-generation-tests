@@ -14,7 +14,7 @@ export class FormQueryParamsArrayRequest extends SpeakeasyBase {
     arrParamExploded?: number[];
 }
 
-export class FormQueryParamsArrayResArgs extends SpeakeasyBase {
+export class FormQueryParamsArrayArgs extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "arrParam" })
     arrParam: string;
@@ -30,8 +30,8 @@ export class FormQueryParamsArrayResArgs extends SpeakeasyBase {
 export class FormQueryParamsArrayRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "args" })
-    @Type(() => FormQueryParamsArrayResArgs)
-    args: FormQueryParamsArrayResArgs;
+    @Type(() => FormQueryParamsArrayArgs)
+    args: FormQueryParamsArrayArgs;
 
     @SpeakeasyMetadata()
     @Expose({ name: "url" })

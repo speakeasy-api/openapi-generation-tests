@@ -10,7 +10,7 @@ require_relative '../shared/simpleobject'
 module OpenApiSDK
   module Operations
     # A successful response that contains the simpleObject sent in the request body
-    class GetGlobalNameOverride200ApplicationJSON < OpenApiSDK::Utils::FieldAugmented
+    class GetGlobalNameOverrideResponseBody < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # A simple object that uses all our supported primitive types and enums and has optional properties.
@@ -33,16 +33,16 @@ module OpenApiSDK
       # HTTP response status code for this operation
       field :status_code, Integer
       # A successful response that contains the simpleObject sent in the request body
-      field :get_global_name_override_200_application_json_object, T.nilable(Operations::GetGlobalNameOverride200ApplicationJSON)
+      field :object, T.nilable(Operations::GetGlobalNameOverrideResponseBody)
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, get_global_name_override_200_application_json_object: T.nilable(Operations::GetGlobalNameOverride200ApplicationJSON), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, get_global_name_override_200_application_json_object: nil, raw_response: nil)
+      sig { params(content_type: String, status_code: Integer, object: T.nilable(Operations::GetGlobalNameOverrideResponseBody), raw_response: T.nilable(Faraday::Response)).void }
+      def initialize(content_type: nil, status_code: nil, object: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code
-        @get_global_name_override_200_application_json_object = get_global_name_override_200_application_json_object
+        @object = object
         @raw_response = raw_response
       end
     end

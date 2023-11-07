@@ -46,7 +46,7 @@ class Parameters:
         return res
 
     
-    def deep_object_query_params_object(self, obj_param: shared.SimpleObject, obj_arr_param: Optional[operations.DeepObjectQueryParamsObjectObjArrParam] = None) -> operations.DeepObjectQueryParamsObjectResponse:
+    def deep_object_query_params_object(self, obj_param: shared.SimpleObject, obj_arr_param: Optional[operations.ObjArrParam] = None) -> operations.DeepObjectQueryParamsObjectResponse:
         request = operations.DeepObjectQueryParamsObjectRequest(
             obj_param=obj_param,
             obj_arr_param=obj_arr_param,
@@ -143,7 +143,7 @@ class Parameters:
         return res
 
     
-    def form_query_params_camel_object(self, obj_param_exploded: operations.FormQueryParamsCamelObjectObjParamExploded, obj_param: Optional[operations.FormQueryParamsCamelObjectObjParam] = None) -> operations.FormQueryParamsCamelObjectResponse:
+    def form_query_params_camel_object(self, obj_param_exploded: operations.ObjParamExploded, obj_param: Optional[operations.ObjParam] = None) -> operations.FormQueryParamsCamelObjectResponse:
         request = operations.FormQueryParamsCamelObjectRequest(
             obj_param_exploded=obj_param_exploded,
             obj_param=obj_param,

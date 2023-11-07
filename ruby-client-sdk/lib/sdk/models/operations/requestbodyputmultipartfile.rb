@@ -9,19 +9,19 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class RequestBodyPutMultipartFileRequestBodyFile < OpenApiSDK::Utils::FieldAugmented
+    class File < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
       field :content, String, { 'multipart_form': { 'content': true } }
 
-      field :file, String, { 'multipart_form': { 'field_name': 'file' } }
+      field :file_name, String, { 'multipart_form': { 'field_name': 'file' } }
 
 
-      sig { params(content: String, file: String).void }
-      def initialize(content: nil, file: nil)
+      sig { params(content: String, file_name: String).void }
+      def initialize(content: nil, file_name: nil)
         @content = content
-        @file = file
+        @file_name = file_name
       end
     end
 
@@ -30,10 +30,10 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :file, T.nilable(Operations::RequestBodyPutMultipartFileRequestBodyFile), { 'multipart_form': { 'file': true } }
+      field :file, T.nilable(Operations::File), { 'multipart_form': { 'file': true } }
 
 
-      sig { params(file: T.nilable(Operations::RequestBodyPutMultipartFileRequestBodyFile)).void }
+      sig { params(file: T.nilable(Operations::File)).void }
       def initialize(file: nil)
         @file = file
       end

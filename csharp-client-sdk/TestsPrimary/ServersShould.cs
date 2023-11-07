@@ -10,7 +10,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
-using SDK;
+using Openapi;
 
 public class ServersShould
 {
@@ -18,7 +18,7 @@ public class ServersShould
     public async Task SelectGlobalServerValid()
     {
         CommonHelpers.RecordTest("servers-select-global-server-valid");
-        var sdk = new SDKSDK(serverUrl: SDKSDK.ServerList[0]);
+        var sdk = new SDK(serverUrl: SDK.ServerList[0]);
 
         var res = await sdk.Servers.SelectGlobalServerAsync();
         Assert.NotNull(res);
@@ -29,7 +29,7 @@ public class ServersShould
     public async Task SelectGlobalServerBroken()
     {
         CommonHelpers.RecordTest("servers-select-global-server-broken");
-        var sdk = new SDKSDK(serverUrl: SDKSDK.ServerList[1]);
+        var sdk = new SDK(serverUrl: SDK.ServerList[1]);
 
         await Assert.ThrowsAsync<HttpRequestException>(
             async () => await sdk.Servers.SelectGlobalServerAsync()
@@ -40,7 +40,7 @@ public class ServersShould
     public async Task SelectServerWithIDDefault()
     {
         CommonHelpers.RecordTest("servers-select-server-with-id-default");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Servers.SelectServerWithIDAsync();
         Assert.Equal(200, res.StatusCode);
@@ -51,12 +51,10 @@ public class ServersShould
     {
         CommonHelpers.RecordTest("servers-select-server-with-id-valid");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Servers.SelectServerWithIDAsync(
-            serverUrl: ServersSDK.SelectServerWithIDSERVERS[
-                ServersSDK.SelectServerWithIDServers.Valid
-            ]
+            serverUrl: Servers.SelectServerWithIDSERVERS[Servers.SelectServerWithIDServers.Valid]
         );
 
         Assert.Equal(200, res.StatusCode);
@@ -67,13 +65,13 @@ public class ServersShould
     {
         CommonHelpers.RecordTest("servers-select-server-with-id-broken");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         await Assert.ThrowsAsync<HttpRequestException>(
             async () =>
                 await sdk.Servers.SelectServerWithIDAsync(
-                    serverUrl: ServersSDK.SelectServerWithIDSERVERS[
-                        ServersSDK.SelectServerWithIDServers.Broken
+                    serverUrl: Servers.SelectServerWithIDSERVERS[
+                        Servers.SelectServerWithIDServers.Broken
                     ]
                 )
         );

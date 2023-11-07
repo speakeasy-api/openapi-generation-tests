@@ -25,19 +25,19 @@ func (o *FormQueryParamsArrayRequest) GetArrParamExploded() []int64 {
 	return o.ArrParamExploded
 }
 
-type FormQueryParamsArrayResArgs struct {
+type FormQueryParamsArrayArgs struct {
 	ArrParam         string   `json:"arrParam"`
 	ArrParamExploded []string `json:"arrParamExploded"`
 }
 
-func (o *FormQueryParamsArrayResArgs) GetArrParam() string {
+func (o *FormQueryParamsArrayArgs) GetArrParam() string {
 	if o == nil {
 		return ""
 	}
 	return o.ArrParam
 }
 
-func (o *FormQueryParamsArrayResArgs) GetArrParamExploded() []string {
+func (o *FormQueryParamsArrayArgs) GetArrParamExploded() []string {
 	if o == nil {
 		return []string{}
 	}
@@ -46,13 +46,13 @@ func (o *FormQueryParamsArrayResArgs) GetArrParamExploded() []string {
 
 // FormQueryParamsArrayRes - OK
 type FormQueryParamsArrayRes struct {
-	Args FormQueryParamsArrayResArgs `json:"args"`
-	URL  string                      `json:"url"`
+	Args FormQueryParamsArrayArgs `json:"args"`
+	URL  string                   `json:"url"`
 }
 
-func (o *FormQueryParamsArrayRes) GetArgs() FormQueryParamsArrayResArgs {
+func (o *FormQueryParamsArrayRes) GetArgs() FormQueryParamsArrayArgs {
 	if o == nil {
-		return FormQueryParamsArrayResArgs{}
+		return FormQueryParamsArrayArgs{}
 	}
 	return o.Args
 }

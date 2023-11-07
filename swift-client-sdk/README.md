@@ -28,7 +28,7 @@ You can add `OpenAPI` to your project directly in Xcode `(File > Add Packages...
 
 ```bash
 dependencies: [
-    .package(url: "", .upToNextMajor(from: "0.1.2"))
+    .package(url: "", .upToNextMajor(from: "0.2.0"))
 ]
 ```
 <!-- End SDK Installation -->
@@ -44,7 +44,7 @@ let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
 let response = try await client.generation.getGlobalNameOverride()
 
 switch response.data {
-case .getGlobalNameOverride200ApplicationJSONObject(let getGlobalNameOverride200ApplicationJSONObject):
+case .object(let object):
     // Handle response
     break
 case .empty:
@@ -190,7 +190,7 @@ let response = try await client.generation.usageExamplePost(
 )
 
 switch response.data {
-case .usageExamplePost200ApplicationJSONObject(let usageExamplePost200ApplicationJSONObject):
+case .object(let object):
     // Handle response
     break
 case .empty:

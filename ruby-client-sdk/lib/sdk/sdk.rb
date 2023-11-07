@@ -12,7 +12,7 @@ module OpenApiSDK
   class SDK
     extend T::Sig
 
-    attr_accessor :auth, :auth_new, :documentation, :errors, :first, :flattening, :generation, :globals, :nest_first, :nested, :nested_first, :nested_second, :pagination, :parameters, :request_bodies, :resource, :response_bodies, :retries, :second, :servers, :telemetry, :unions
+    attr_accessor :generation, :errors, :unions, :flattening, :globals, :parameters, :nest_first, :nested, :nested_first, :nested_second, :request_bodies, :response_bodies, :servers, :telemetry, :auth_new, :auth, :documentation, :resource, :first, :second, :pagination, :retries
 
     attr_accessor :security, :language, :sdk_version, :gen_version
 
@@ -120,28 +120,28 @@ module OpenApiSDK
 
     sig { void }
     def init_sdks
-      @auth = Auth.new(@sdk_configuration)
-      @auth_new = AuthNew.new(@sdk_configuration)
-      @documentation = Documentation.new(@sdk_configuration)
-      @errors = Errors.new(@sdk_configuration)
-      @first = First.new(@sdk_configuration)
-      @flattening = Flattening.new(@sdk_configuration)
       @generation = Generation.new(@sdk_configuration)
+      @errors = Errors.new(@sdk_configuration)
+      @unions = Unions.new(@sdk_configuration)
+      @flattening = Flattening.new(@sdk_configuration)
       @globals = Globals.new(@sdk_configuration)
+      @parameters = Parameters.new(@sdk_configuration)
       @nest_first = NestFirst.new(@sdk_configuration)
       @nested = Nested.new(@sdk_configuration)
       @nested_first = NestedFirst.new(@sdk_configuration)
       @nested_second = NestedSecond.new(@sdk_configuration)
-      @pagination = Pagination.new(@sdk_configuration)
-      @parameters = Parameters.new(@sdk_configuration)
       @request_bodies = RequestBodies.new(@sdk_configuration)
-      @resource = Resource.new(@sdk_configuration)
       @response_bodies = ResponseBodies.new(@sdk_configuration)
-      @retries = Retries.new(@sdk_configuration)
-      @second = Second.new(@sdk_configuration)
       @servers = Servers.new(@sdk_configuration)
       @telemetry = Telemetry.new(@sdk_configuration)
-      @unions = Unions.new(@sdk_configuration)
+      @auth_new = AuthNew.new(@sdk_configuration)
+      @auth = Auth.new(@sdk_configuration)
+      @documentation = Documentation.new(@sdk_configuration)
+      @resource = Resource.new(@sdk_configuration)
+      @first = First.new(@sdk_configuration)
+      @second = Second.new(@sdk_configuration)
+      @pagination = Pagination.new(@sdk_configuration)
+      @retries = Retries.new(@sdk_configuration)
     end
 
     
@@ -177,8 +177,8 @@ module OpenApiSDK
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, Operations::PutAnythingIgnoredGeneration200ApplicationJSON)
-          res.put_anything_ignored_generation_200_application_json_object = out
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::PutAnythingIgnoredGenerationResponseBody)
+          res.object = out
         end
       end
       res

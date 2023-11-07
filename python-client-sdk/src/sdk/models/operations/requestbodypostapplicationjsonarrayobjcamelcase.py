@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import arrobjvaluecamelcase as shared_arrobjvaluecamelcase
+from ...models.shared import arrobjvaluecamelcase as shared_arrobjvaluecamelcase
 from typing import Optional
 
 

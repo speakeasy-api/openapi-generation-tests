@@ -1,5 +1,5 @@
-# UnionsSDK
-(*Unions*)
+# Unions
+(*.Unions*)
 
 ## Overview
 
@@ -28,10 +28,10 @@ Endpoints for testing union types.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -61,10 +61,10 @@ var res = await sdk.Unions.FlattenedTypedObjectPostAsync("string");
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -94,10 +94,10 @@ var res = await sdk.Unions.MixedTypeOneOfPostAsync("string");
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -107,7 +107,7 @@ var sdk = new SDKSDK(
 
 var res = await sdk.Unions.NullableOneOfRefInObjectPostAsync(new NullableOneOfRefInObject() {
     NullableOneOfOne = new TypedObject1() {
-        Type = SDK.Models.Shared.TypedObject1Type.Obj1,
+        Type = Type.Obj1,
         Value = "string",
     },
     NullableOneOfTwo = "string",
@@ -134,10 +134,10 @@ var res = await sdk.Unions.NullableOneOfRefInObjectPostAsync(new NullableOneOfRe
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -167,10 +167,10 @@ var res = await sdk.Unions.NullableOneOfSchemaPostAsync("string");
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -204,10 +204,10 @@ var res = await sdk.Unions.NullableOneOfTypeInObjectPostAsync(new NullableOneOfT
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -216,7 +216,7 @@ var sdk = new SDKSDK(
 );
 
 var res = await sdk.Unions.NullableTypedObjectPostAsync(new TypedObject1() {
-    Type = SDK.Models.Shared.TypedObject1Type.Obj1,
+    Type = Type.Obj1,
     Value = "string",
 });
 
@@ -240,10 +240,10 @@ var res = await sdk.Unions.NullableTypedObjectPostAsync(new TypedObject1() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -273,10 +273,10 @@ var res = await sdk.Unions.PrimitiveTypeOneOfPostAsync("string");
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -306,10 +306,10 @@ var res = await sdk.Unions.StronglyTypedOneOfPostAsync("string");
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -339,10 +339,10 @@ var res = await sdk.Unions.TypedObjectNullableOneOfPostAsync("string");
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -372,10 +372,10 @@ var res = await sdk.Unions.TypedObjectOneOfPostAsync("string");
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -405,10 +405,10 @@ var res = await sdk.Unions.UnionBigIntDecimalAsync("string");
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -416,7 +416,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.Unions.UnionDateNullAsync(LocalDate.FromDateTime(DateTime.Parse("2022-11-25")));
+var res = await sdk.Unions.UnionDateNullAsync(LocalDate.FromDateTime(System.DateTime.Parse("2022-11-25")));
 
 // handle response
 ```
@@ -438,10 +438,10 @@ var res = await sdk.Unions.UnionDateNullAsync(LocalDate.FromDateTime(DateTime.Pa
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -471,10 +471,10 @@ var res = await sdk.Unions.UnionDateTimeBigIntAsync("string");
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -482,7 +482,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.Unions.UnionDateTimeNullAsync(DateTime.Parse("2022-04-12T19:39:53.907Z"));
+var res = await sdk.Unions.UnionDateTimeNullAsync(System.DateTime.Parse("2022-04-12T19:39:53.907Z"));
 
 // handle response
 ```
@@ -504,10 +504,10 @@ var res = await sdk.Unions.UnionDateTimeNullAsync(DateTime.Parse("2022-04-12T19:
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },

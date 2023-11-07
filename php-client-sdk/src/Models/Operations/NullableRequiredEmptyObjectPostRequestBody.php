@@ -12,22 +12,22 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 class NullableRequiredEmptyObjectPostRequestBody
 {
 	#[\JMS\Serializer\Annotation\SerializedName('NullableOptionalObj')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj')]
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\NullableOptionalObj')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj $nullableOptionalObj = null;
+    public ?NullableOptionalObj $nullableOptionalObj = null;
     
 	#[\JMS\Serializer\Annotation\SerializedName('NullableRequiredObj')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj')]
-    public NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj $nullableRequiredObj;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\NullableRequiredObj')]
+    public NullableRequiredObj $nullableRequiredObj;
     
 	#[\JMS\Serializer\Annotation\SerializedName('RequiredObj')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\NullableRequiredEmptyObjectPostRequestBodyRequiredObj')]
-    public NullableRequiredEmptyObjectPostRequestBodyRequiredObj $requiredObj;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequiredObj')]
+    public RequiredObj $requiredObj;
     
 	public function __construct()
 	{
 		$this->nullableOptionalObj = null;
-		$this->nullableRequiredObj = new \OpenAPI\OpenAPI\Models\Operations\NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj();
-		$this->requiredObj = new \OpenAPI\OpenAPI\Models\Operations\NullableRequiredEmptyObjectPostRequestBodyRequiredObj();
+		$this->nullableRequiredObj = new \OpenAPI\OpenAPI\Models\Operations\NullableRequiredObj();
+		$this->requiredObj = new \OpenAPI\OpenAPI\Models\Operations\RequiredObj();
 	}
 }

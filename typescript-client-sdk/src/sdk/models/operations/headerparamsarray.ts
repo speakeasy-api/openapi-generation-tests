@@ -11,7 +11,7 @@ export class HeaderParamsArrayRequest extends SpeakeasyBase {
     xHeaderArray: string[];
 }
 
-export class HeaderParamsArrayResHeaders extends SpeakeasyBase {
+export class Headers extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "X-Header-Array" })
     xHeaderArray: string;
@@ -23,8 +23,8 @@ export class HeaderParamsArrayResHeaders extends SpeakeasyBase {
 export class HeaderParamsArrayRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "headers" })
-    @Type(() => HeaderParamsArrayResHeaders)
-    headers: HeaderParamsArrayResHeaders;
+    @Type(() => Headers)
+    headers: Headers;
 }
 
 export class HeaderParamsArrayResponse extends SpeakeasyBase {

@@ -1,5 +1,5 @@
-# TelemetrySDK
-(*Telemetry*)
+# Telemetry
+(*.Telemetry*)
 
 ## Overview
 
@@ -15,11 +15,11 @@ Endpoints for testing telemetry.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -49,10 +49,10 @@ var res = await sdk.Telemetry.TelemetrySpeakeasyUserAgentGetAsync("string");
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },

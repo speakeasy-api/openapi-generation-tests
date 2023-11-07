@@ -5,12 +5,12 @@ import Foundation
 extension Operations {
     /// OK
     public struct HeaderParamsPrimitiveRes {
-        public let headers: Operations.HeaderParamsPrimitiveResHeaders
+        public let headers: Operations.HeaderParamsPrimitiveHeaders
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(headers: Operations.HeaderParamsPrimitiveResHeaders) {
+        public init(headers: Operations.HeaderParamsPrimitiveHeaders) {
             self.headers = headers
         }
     }

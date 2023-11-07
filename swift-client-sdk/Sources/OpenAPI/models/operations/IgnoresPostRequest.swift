@@ -3,15 +3,15 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct IgnoresPostRequest: APIValue {
-        public let requestBody: Operations.IgnoresPostApplicationJSON
+        public let requestBody: Operations.IgnoresPostRequestBody
         public let testParam: String?
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         ///
-        public init(requestBody: Operations.IgnoresPostApplicationJSON, testParam: String? = nil) {
+        public init(requestBody: Operations.IgnoresPostRequestBody, testParam: String? = nil) {
             self.requestBody = requestBody
             self.testParam = testParam
         }

@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostMultipleContentTypesInlineFilteredRequestBody < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 

@@ -3,13 +3,13 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct ResponseBodyEmptyWithHeadersRequest: APIValue {
         @DecimalSerialized
         public private(set) var xNumberHeader: Double
         public let xStringHeader: String
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         ///
         public init(xNumberHeader: Double, xStringHeader: String) {

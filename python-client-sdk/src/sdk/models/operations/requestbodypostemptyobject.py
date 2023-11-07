@@ -9,40 +9,40 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class RequestBodyPostEmptyObjectRequestBodyEmpty:
+class Empty:
     pass
 
 
 @dataclasses.dataclass
-class RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties:
+class EmptyWithEmptyProperties:
     pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class RequestBodyPostEmptyObjectRequestBody:
-    empty: Optional[RequestBodyPostEmptyObjectRequestBodyEmpty] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('empty'), 'exclude': lambda f: f is None }})
-    empty_with_empty_properties: Optional[RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('emptyWithEmptyProperties'), 'exclude': lambda f: f is None }})
+    empty: Optional[Empty] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('empty'), 'exclude': lambda f: f is None }})
+    empty_with_empty_properties: Optional[EmptyWithEmptyProperties] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('emptyWithEmptyProperties'), 'exclude': lambda f: f is None }})
     
 
 
 
 @dataclasses.dataclass
-class RequestBodyPostEmptyObject200ApplicationJSONEmpty:
+class RequestBodyPostEmptyObjectEmpty:
     pass
 
 
 @dataclasses.dataclass
-class RequestBodyPostEmptyObject200ApplicationJSONEmptyRespWithEmptyProperies:
+class EmptyRespWithEmptyProperies:
     pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class RequestBodyPostEmptyObject200ApplicationJSON:
+class RequestBodyPostEmptyObjectResponseBody:
     r"""OK"""
-    empty: Optional[RequestBodyPostEmptyObject200ApplicationJSONEmpty] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('empty'), 'exclude': lambda f: f is None }})
-    empty_resp_with_empty_properies: Optional[RequestBodyPostEmptyObject200ApplicationJSONEmptyRespWithEmptyProperies] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('emptyRespWithEmptyProperies'), 'exclude': lambda f: f is None }})
+    empty: Optional[RequestBodyPostEmptyObjectEmpty] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('empty'), 'exclude': lambda f: f is None }})
+    empty_resp_with_empty_properies: Optional[EmptyRespWithEmptyProperies] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('emptyRespWithEmptyProperies'), 'exclude': lambda f: f is None }})
     
 
 
@@ -53,9 +53,9 @@ class RequestBodyPostEmptyObjectResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    object: Optional[RequestBodyPostEmptyObjectResponseBody] = dataclasses.field(default=None)
+    r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    request_body_post_empty_object_200_application_json_object: Optional[RequestBodyPostEmptyObject200ApplicationJSON] = dataclasses.field(default=None)
-    r"""OK"""
     
 

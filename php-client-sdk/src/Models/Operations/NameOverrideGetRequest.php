@@ -14,17 +14,17 @@ class NameOverrideGetRequest
     /**
      * An enum type
      * 
-     * @var \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetEnumNameOverride $testEnumQueryParam
+     * @var \OpenAPI\OpenAPI\Models\Operations\EnumNameOverride $testEnumQueryParam
      */
 	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=enumNameOverride')]
-    public NameOverrideGetEnumNameOverride $testEnumQueryParam;
+    public EnumNameOverride $testEnumQueryParam;
     
 	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=nameOverride')]
     public string $testQueryParam;
     
 	public function __construct()
 	{
-		$this->testEnumQueryParam = \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetEnumNameOverride::Value1;
+		$this->testEnumQueryParam = \OpenAPI\OpenAPI\Models\Operations\EnumNameOverride::Value1;
 		$this->testQueryParam = "";
 	}
 }

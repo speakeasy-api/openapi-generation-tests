@@ -190,30 +190,30 @@ class SimpleObject
     /**
      * An int32 enum property.
      * 
-     * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum $int32Enum
+     * @var \OpenAPI\OpenAPI\Models\Shared\Int32Enum $int32Enum
      */
 	#[\JMS\Serializer\Annotation\SerializedName('int32Enum')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum>')]
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\Int32Enum>')]
     #[SpeakeasyMetadata('header:name=int32Enum')]
     #[SpeakeasyMetadata('pathParam:name=int32Enum')]
     #[SpeakeasyMetadata('queryParam:name=int32Enum')]
     #[SpeakeasyMetadata('form:name=int32Enum')]
     #[SpeakeasyMetadata('multipartForm:name=int32Enum')]
-    public SimpleObjectInt32Enum $int32Enum;
+    public Int32Enum $int32Enum;
     
     /**
      * An integer enum property.
      * 
-     * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum $intEnum
+     * @var \OpenAPI\OpenAPI\Models\Shared\IntEnum $intEnum
      */
 	#[\JMS\Serializer\Annotation\SerializedName('intEnum')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum>')]
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\IntEnum>')]
     #[SpeakeasyMetadata('header:name=intEnum')]
     #[SpeakeasyMetadata('pathParam:name=intEnum')]
     #[SpeakeasyMetadata('queryParam:name=intEnum')]
     #[SpeakeasyMetadata('form:name=intEnum')]
     #[SpeakeasyMetadata('multipartForm:name=intEnum')]
-    public SimpleObjectIntEnum $intEnum;
+    public IntEnum $intEnum;
     
     /**
      * An optional integer property will be null for tests.
@@ -303,8 +303,8 @@ class SimpleObject
 		$this->float32 = 0;
 		$this->int = 0;
 		$this->int32 = 0;
-		$this->int32Enum = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum::FiftyFive;
-		$this->intEnum = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum::First;
+		$this->int32Enum = \OpenAPI\OpenAPI\Models\Shared\Int32Enum::FiftyFive;
+		$this->intEnum = \OpenAPI\OpenAPI\Models\Shared\IntEnum::First;
 		$this->intOptNull = null;
 		$this->num = 0;
 		$this->numOptNull = null;

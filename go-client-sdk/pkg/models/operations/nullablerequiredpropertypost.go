@@ -8,18 +8,18 @@ import (
 	"net/http"
 )
 
-type NullableRequiredPropertyPostRequestBodyNullableRequiredEnum string
+type NullableRequiredEnum string
 
 const (
-	NullableRequiredPropertyPostRequestBodyNullableRequiredEnumFirst  NullableRequiredPropertyPostRequestBodyNullableRequiredEnum = "first"
-	NullableRequiredPropertyPostRequestBodyNullableRequiredEnumSecond NullableRequiredPropertyPostRequestBodyNullableRequiredEnum = "second"
+	NullableRequiredEnumFirst  NullableRequiredEnum = "first"
+	NullableRequiredEnumSecond NullableRequiredEnum = "second"
 )
 
-func (e NullableRequiredPropertyPostRequestBodyNullableRequiredEnum) ToPointer() *NullableRequiredPropertyPostRequestBodyNullableRequiredEnum {
+func (e NullableRequiredEnum) ToPointer() *NullableRequiredEnum {
 	return &e
 }
 
-func (e *NullableRequiredPropertyPostRequestBodyNullableRequiredEnum) UnmarshalJSON(data []byte) error {
+func (e *NullableRequiredEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -28,18 +28,18 @@ func (e *NullableRequiredPropertyPostRequestBodyNullableRequiredEnum) UnmarshalJ
 	case "first":
 		fallthrough
 	case "second":
-		*e = NullableRequiredPropertyPostRequestBodyNullableRequiredEnum(v)
+		*e = NullableRequiredEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for NullableRequiredPropertyPostRequestBodyNullableRequiredEnum: %v", v)
+		return fmt.Errorf("invalid value for NullableRequiredEnum: %v", v)
 	}
 }
 
 type NullableRequiredPropertyPostRequestBody struct {
-	NullableOptionalInt   *int64                                                       `json:"NullableOptionalInt,omitempty"`
-	NullableRequiredArray []float64                                                    `json:"NullableRequiredArray"`
-	NullableRequiredEnum  *NullableRequiredPropertyPostRequestBodyNullableRequiredEnum `json:"NullableRequiredEnum"`
-	NullableRequiredInt   *int64                                                       `json:"NullableRequiredInt"`
+	NullableOptionalInt   *int64                `json:"NullableOptionalInt,omitempty"`
+	NullableRequiredArray []float64             `json:"NullableRequiredArray"`
+	NullableRequiredEnum  *NullableRequiredEnum `json:"NullableRequiredEnum"`
+	NullableRequiredInt   *int64                `json:"NullableRequiredInt"`
 }
 
 func (o *NullableRequiredPropertyPostRequestBody) GetNullableOptionalInt() *int64 {
@@ -56,7 +56,7 @@ func (o *NullableRequiredPropertyPostRequestBody) GetNullableRequiredArray() []f
 	return o.NullableRequiredArray
 }
 
-func (o *NullableRequiredPropertyPostRequestBody) GetNullableRequiredEnum() *NullableRequiredPropertyPostRequestBodyNullableRequiredEnum {
+func (o *NullableRequiredPropertyPostRequestBody) GetNullableRequiredEnum() *NullableRequiredEnum {
 	if o == nil {
 		return nil
 	}
@@ -78,7 +78,7 @@ type NullableRequiredPropertyPostResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	NullableRequiredPropertyPost200ApplicationJSONString *string
+	Res *string
 }
 
 func (o *NullableRequiredPropertyPostResponse) GetContentType() string {
@@ -102,9 +102,9 @@ func (o *NullableRequiredPropertyPostResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *NullableRequiredPropertyPostResponse) GetNullableRequiredPropertyPost200ApplicationJSONString() *string {
+func (o *NullableRequiredPropertyPostResponse) GetRes() *string {
 	if o == nil {
 		return nil
 	}
-	return o.NullableRequiredPropertyPost200ApplicationJSONString
+	return o.Res
 }

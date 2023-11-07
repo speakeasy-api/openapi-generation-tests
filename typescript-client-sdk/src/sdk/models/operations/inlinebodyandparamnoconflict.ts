@@ -20,7 +20,7 @@ export class InlineBodyAndParamNoConflictRequest extends SpeakeasyBase {
     paramStr: string;
 }
 
-export class InlineBodyAndParamNoConflictResJson extends SpeakeasyBase {
+export class InlineBodyAndParamNoConflictJson extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "bodyStr" })
     bodyStr: string;
@@ -36,8 +36,8 @@ export class InlineBodyAndParamNoConflictRes extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "json" })
-    @Type(() => InlineBodyAndParamNoConflictResJson)
-    json: InlineBodyAndParamNoConflictResJson;
+    @Type(() => InlineBodyAndParamNoConflictJson)
+    json: InlineBodyAndParamNoConflictJson;
 }
 
 export class InlineBodyAndParamNoConflictResponse extends SpeakeasyBase {

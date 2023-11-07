@@ -1,5 +1,5 @@
 # Parameters
-(*parameters*)
+(*.parameters*)
 
 ## Overview
 
@@ -85,8 +85,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import operations, shared
 
@@ -113,12 +113,12 @@ res = s.parameters.deep_object_query_params_object(obj_param=shared.SimpleObject
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
-), obj_arr_param=operations.DeepObjectQueryParamsObjectObjArrParam(
+), obj_arr_param=operations.ObjArrParam(
     arr=[
         'test',
         'test2',
@@ -132,10 +132,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
-| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `obj_param`                                                                                                                      | [shared.SimpleObject](../../models/shared/simpleobject.md)                                                                       | :heavy_check_mark:                                                                                                               | A simple object that uses all our supported primitive types and enums and has optional properties.                               |
-| `obj_arr_param`                                                                                                                  | [Optional[operations.DeepObjectQueryParamsObjectObjArrParam]](../../models/operations/deepobjectqueryparamsobjectobjarrparam.md) | :heavy_minus_sign:                                                                                                               | N/A                                                                                                                              |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `obj_param`                                                                                        | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `obj_arr_param`                                                                                    | [Optional[operations.ObjArrParam]](../../models/operations/objarrparam.md)                         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 
 
 ### Response
@@ -239,10 +239,10 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.form_query_params_camel_object(obj_param_exploded=operations.FormQueryParamsCamelObjectObjParamExploded(
+res = s.parameters.form_query_params_camel_object(obj_param_exploded=operations.ObjParamExploded(
     item_count='10',
     search_term='foo',
-), obj_param=operations.FormQueryParamsCamelObjectObjParam(
+), obj_param=operations.ObjParam(
     encoded_count='11',
     encoded_term='bar',
 ))
@@ -254,10 +254,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `obj_param_exploded`                                                                                                           | [operations.FormQueryParamsCamelObjectObjParamExploded](../../models/operations/formqueryparamscamelobjectobjparamexploded.md) | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |
-| `obj_param`                                                                                                                    | [Optional[operations.FormQueryParamsCamelObjectObjParam]](../../models/operations/formqueryparamscamelobjectobjparam.md)       | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `obj_param_exploded`                                                       | [operations.ObjParamExploded](../../models/operations/objparamexploded.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `obj_param`                                                                | [Optional[operations.ObjParam]](../../models/operations/objparam.md)       | :heavy_minus_sign:                                                         | N/A                                                                        |
 
 
 ### Response
@@ -313,8 +313,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import operations, shared
 
@@ -341,8 +341,8 @@ res = s.parameters.form_query_params_object(obj_param_exploded=shared.SimpleObje
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
@@ -360,8 +360,8 @@ res = s.parameters.form_query_params_object(obj_param_exploded=shared.SimpleObje
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
@@ -558,8 +558,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import operations, shared
 
@@ -586,8 +586,8 @@ res = s.parameters.header_params_object(x_header_obj=shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
@@ -605,8 +605,8 @@ res = s.parameters.header_params_object(x_header_obj=shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
@@ -674,8 +674,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import operations, shared
 
@@ -703,8 +703,8 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int32_enum=shared.Int32Enum.FIFTY_FIVE,
+        int_enum=shared.IntEnum.SECOND,
         num=1.1,
         str_='test',
         str_opt='testOptional',
@@ -724,8 +724,8 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -744,8 +744,8 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -768,8 +768,8 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -788,8 +788,8 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -810,8 +810,8 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int32_enum=shared.Int32Enum.FIFTY_FIVE,
+        int_enum=shared.IntEnum.SECOND,
         num=1.1,
         str_='test',
         str_opt='testOptional',
@@ -831,8 +831,8 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
@@ -937,8 +937,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import operations, shared
 
@@ -965,8 +965,8 @@ res = s.parameters.mixed_query_params(deep_object_param=shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
@@ -984,8 +984,8 @@ res = s.parameters.mixed_query_params(deep_object_param=shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
@@ -1003,8 +1003,8 @@ res = s.parameters.mixed_query_params(deep_object_param=shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
@@ -1034,8 +1034,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import operations, shared
 
@@ -1062,8 +1062,8 @@ res = s.parameters.path_parameter_json(json_obj=shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
@@ -1091,8 +1091,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import operations, shared
 
@@ -1128,8 +1128,8 @@ res = s.parameters.pipe_delimited_query_params_array(arr_param=[
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
@@ -1242,8 +1242,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import operations, shared
 
@@ -1270,8 +1270,8 @@ res = s.parameters.simple_path_parameter_objects(obj_param=shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
@@ -1289,8 +1289,8 @@ res = s.parameters.simple_path_parameter_objects(obj_param=shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',

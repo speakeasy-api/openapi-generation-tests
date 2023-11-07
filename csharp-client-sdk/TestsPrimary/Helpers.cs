@@ -14,8 +14,8 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using Xunit;
-using SDK.Models.Shared;
-using SDK.Utils;
+using Openapi.Models.Shared;
+using Openapi.Utils;
 using NodaTime;
 
 public class Helpers
@@ -28,11 +28,11 @@ public class Helpers
             BoolOpt = true,
             Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
             DateTime = DateTime.Parse("2020-01-01T00:00:00.0000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Enum = Openapi.Models.Shared.Enum.One,
             Float32 = 1.1F,
             Int32 = 1,
-            Int32Enum = SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             IntOptNull = null,
             Int = 1,
             Num = 1.1D,
@@ -68,11 +68,11 @@ public class Helpers
             BoolOptVal = true,
             DateVal = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
             DateTimeVal = DateTime.Parse("2020-01-01T00:00:00.0000001Z"),
-            EnumVal = SDK.Models.Shared.Enum.One,
+            EnumVal = Openapi.Models.Shared.Enum.One,
             Float32Val = 1.1F,
             Int32Val = 1,
-            Int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
-            IntEnumVal = SimpleObjectCamelCaseIntEnumVal.Two,
+            Int32EnumVal = Int32EnumVal.FiftyFive,
+            IntEnumVal = IntEnumVal.Two,
             IntOptNullVal = null,
             IntVal = 1,
             NumVal = 1.1D,

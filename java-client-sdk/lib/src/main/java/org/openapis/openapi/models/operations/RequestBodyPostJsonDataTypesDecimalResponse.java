@@ -46,10 +46,10 @@ public class RequestBodyPostJsonDataTypesDecimalResponse {
      * OK
      */
     
-    public RequestBodyPostJSONDataTypesDecimal200ApplicationJSON requestBodyPostJSONDataTypesDecimal200ApplicationJSONObject;
+    public RequestBodyPostJsonDataTypesDecimalResponseBody object;
 
-    public RequestBodyPostJsonDataTypesDecimalResponse withRequestBodyPostJSONDataTypesDecimal200ApplicationJSONObject(RequestBodyPostJSONDataTypesDecimal200ApplicationJSON requestBodyPostJSONDataTypesDecimal200ApplicationJSONObject) {
-        this.requestBodyPostJSONDataTypesDecimal200ApplicationJSONObject = requestBodyPostJSONDataTypesDecimal200ApplicationJSONObject;
+    public RequestBodyPostJsonDataTypesDecimalResponse withObject(RequestBodyPostJsonDataTypesDecimalResponseBody object) {
+        this.object = object;
         return this;
     }
     

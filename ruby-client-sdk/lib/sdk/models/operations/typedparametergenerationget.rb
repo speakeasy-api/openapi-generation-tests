@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class TypedParameterGenerationGetObj < OpenApiSDK::Utils::FieldAugmented
+    class Obj < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -39,10 +39,10 @@ module OpenApiSDK
 
       field :decimal, T.nilable(Float), { 'query_param': { 'field_name': 'decimal', 'style': 'form', 'explode': true } }
 
-      field :obj, T.nilable(Operations::TypedParameterGenerationGetObj), { 'query_param': { 'field_name': 'obj', 'style': 'form', 'explode': true } }
+      field :obj, T.nilable(Operations::Obj), { 'query_param': { 'field_name': 'obj', 'style': 'form', 'explode': true } }
 
 
-      sig { params(bigint: T.nilable(Integer), date: T.nilable(Date), decimal: T.nilable(Float), obj: T.nilable(Operations::TypedParameterGenerationGetObj)).void }
+      sig { params(bigint: T.nilable(Integer), date: T.nilable(Date), decimal: T.nilable(Float), obj: T.nilable(Operations::Obj)).void }
       def initialize(bigint: nil, date: nil, decimal: nil, obj: nil)
         @bigint = bigint
         @date = date

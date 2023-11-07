@@ -3,14 +3,14 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import simpleobject as shared_simpleobject
+from ...models.shared import simpleobject as shared_simpleobject
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import List, Optional
 
 
 @dataclasses.dataclass
-class DeepObjectQueryParamsObjectObjArrParam:
+class ObjArrParam:
     arr: Optional[List[str]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'arr' }})
     
 
@@ -20,14 +20,14 @@ class DeepObjectQueryParamsObjectObjArrParam:
 class DeepObjectQueryParamsObjectRequest:
     obj_param: shared_simpleobject.SimpleObject = dataclasses.field(metadata={'query_param': { 'field_name': 'objParam', 'style': 'deepObject', 'explode': True }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties."""
-    obj_arr_param: Optional[DeepObjectQueryParamsObjectObjArrParam] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'objArrParam', 'style': 'deepObject', 'explode': True }})
+    obj_arr_param: Optional[ObjArrParam] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'objArrParam', 'style': 'deepObject', 'explode': True }})
     
 
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class DeepObjectQueryParamsObjectResArgs:
+class DeepObjectQueryParamsObjectArgs:
     obj_arr_param_arr: List[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objArrParam[arr]') }})
     obj_param_any: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[any]') }})
     obj_param_bool: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[bool]') }})
@@ -55,7 +55,7 @@ class DeepObjectQueryParamsObjectResArgs:
 @dataclasses.dataclass
 class DeepObjectQueryParamsObjectRes:
     r"""OK"""
-    args: DeepObjectQueryParamsObjectResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
+    args: DeepObjectQueryParamsObjectArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
 

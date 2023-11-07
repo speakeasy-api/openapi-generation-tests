@@ -25,7 +25,7 @@ s = sdk.SDK(
 
 res = s.generation.global_name_overridden()
 
-if res.get_global_name_override_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -34,8 +34,8 @@ if res.get_global_name_override_200_application_json_object is not None:
 ## Second
 Do this second
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import operations, shared
 
@@ -62,8 +62,8 @@ req = operations.UsageExamplePostRequest(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -78,13 +78,13 @@ req = operations.UsageExamplePostRequest(
     decimal_parameter=Decimal('5223.72'),
     decimal_str_parameter=Decimal('2911.37'),
     double_parameter=6946.59,
-    enum_parameter=operations.UsageExamplePostEnumParameter.VALUE1,
+    enum_parameter=operations.EnumParameter.VALUE1,
     falsey_number_parameter=0,
     float32_parameter=1029.75,
     float_parameter=5669.99,
     int64_parameter=195232,
     int_parameter=569663,
-    opt_enum_parameter=operations.UsageExamplePostOptEnumParameter.VALUE3,
+    opt_enum_parameter=operations.OptEnumParameter.VALUE3,
     str_parameter='example 1',
 )
 
@@ -93,7 +93,7 @@ res = s.generation.usage_example_post(req, operations.UsageExamplePostSecurity(
     username="YOUR_USERNAME",
 ))
 
-if res.usage_example_post_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -107,54 +107,7 @@ if res.usage_example_post_200_application_json_object is not None:
 * [put_anything_ignored_generation](docs/sdks/sdk/README.md#put_anything_ignored_generation)
 * [response_body_json_get](docs/sdks/sdk/README.md#response_body_json_get)
 
-### [auth](docs/sdks/auth/README.md)
-
-* [api_key_auth](docs/sdks/auth/README.md#api_key_auth)
-* [api_key_auth_global](docs/sdks/auth/README.md#api_key_auth_global)
-* [basic_auth](docs/sdks/auth/README.md#basic_auth)
-* [bearer_auth](docs/sdks/auth/README.md#bearer_auth)
-* [global_bearer_auth](docs/sdks/auth/README.md#global_bearer_auth)
-* [oauth2_auth](docs/sdks/auth/README.md#oauth2_auth)
-* [oauth2_override](docs/sdks/auth/README.md#oauth2_override)
-* [open_id_connect_auth](docs/sdks/auth/README.md#open_id_connect_auth)
-
-### [auth_new](docs/sdks/authnew/README.md)
-
-* [api_key_auth_global_new](docs/sdks/authnew/README.md#api_key_auth_global_new)
-* [auth_global](docs/sdks/authnew/README.md#auth_global)
-* [basic_auth_new](docs/sdks/authnew/README.md#basic_auth_new)
-* [multiple_mixed_options_auth](docs/sdks/authnew/README.md#multiple_mixed_options_auth)
-* [multiple_mixed_scheme_auth](docs/sdks/authnew/README.md#multiple_mixed_scheme_auth)
-* [multiple_options_with_mixed_schemes_auth](docs/sdks/authnew/README.md#multiple_options_with_mixed_schemes_auth)
-* [multiple_options_with_simple_schemes_auth](docs/sdks/authnew/README.md#multiple_options_with_simple_schemes_auth)
-* [multiple_simple_options_auth](docs/sdks/authnew/README.md#multiple_simple_options_auth)
-* [multiple_simple_scheme_auth](docs/sdks/authnew/README.md#multiple_simple_scheme_auth)
-* [oauth2_auth_new](docs/sdks/authnew/README.md#oauth2_auth_new)
-* [open_id_connect_auth_new](docs/sdks/authnew/README.md#open_id_connect_auth_new)
-
-### [documentation](docs/sdks/documentation/README.md)
-
-* [get_documentation_per_language](docs/sdks/documentation/README.md#get_documentation_per_language) - Gets documentation for some language, I guess.
-
-### [errors](docs/sdks/errors/README.md)
-
-* [connection_error_get](docs/sdks/errors/README.md#connection_error_get)
-* [status_get_error](docs/sdks/errors/README.md#status_get_error)
-* [status_get_x_speakeasy_errors](docs/sdks/errors/README.md#status_get_x_speakeasy_errors)
-
-### [first](docs/sdks/first/README.md)
-
-* [get](docs/sdks/first/README.md#get)
-
-### [flattening](docs/sdks/flattening/README.md)
-
-* [component_body_and_param_conflict](docs/sdks/flattening/README.md#component_body_and_param_conflict)
-* [component_body_and_param_no_conflict](docs/sdks/flattening/README.md#component_body_and_param_no_conflict)
-* [conflicting_params](docs/sdks/flattening/README.md#conflicting_params)
-* [inline_body_and_param_conflict](docs/sdks/flattening/README.md#inline_body_and_param_conflict)
-* [inline_body_and_param_no_conflict](docs/sdks/flattening/README.md#inline_body_and_param_no_conflict)
-
-### [generation](docs/sdks/generation/README.md)
+### [.generation](docs/sdks/generation/README.md)
 
 * [anchor_types_get](docs/sdks/generation/README.md#anchor_types_get)
 * [array_circular_reference_get](docs/sdks/generation/README.md#array_circular_reference_get)
@@ -177,38 +130,44 @@ if res.usage_example_post_200_application_json_object is not None:
 * [typed_parameter_generation_get](docs/sdks/generation/README.md#typed_parameter_generation_get)
 * [usage_example_post](docs/sdks/generation/README.md#usage_example_post) - An operation used for testing usage examples
 
-### [globals](docs/sdks/globals/README.md)
+### [.errors](docs/sdks/errors/README.md)
+
+* [connection_error_get](docs/sdks/errors/README.md#connection_error_get)
+* [status_get_error](docs/sdks/errors/README.md#status_get_error)
+* [status_get_x_speakeasy_errors](docs/sdks/errors/README.md#status_get_x_speakeasy_errors)
+
+### [.unions](docs/sdks/unions/README.md)
+
+* [flattened_typed_object_post](docs/sdks/unions/README.md#flattened_typed_object_post)
+* [mixed_type_one_of_post](docs/sdks/unions/README.md#mixed_type_one_of_post)
+* [nullable_one_of_ref_in_object_post](docs/sdks/unions/README.md#nullable_one_of_ref_in_object_post)
+* [nullable_one_of_schema_post](docs/sdks/unions/README.md#nullable_one_of_schema_post)
+* [nullable_one_of_type_in_object_post](docs/sdks/unions/README.md#nullable_one_of_type_in_object_post)
+* [nullable_typed_object_post](docs/sdks/unions/README.md#nullable_typed_object_post)
+* [primitive_type_one_of_post](docs/sdks/unions/README.md#primitive_type_one_of_post)
+* [strongly_typed_one_of_post](docs/sdks/unions/README.md#strongly_typed_one_of_post)
+* [typed_object_nullable_one_of_post](docs/sdks/unions/README.md#typed_object_nullable_one_of_post)
+* [typed_object_one_of_post](docs/sdks/unions/README.md#typed_object_one_of_post)
+* [union_big_int_decimal](docs/sdks/unions/README.md#union_big_int_decimal)
+* [union_date_null](docs/sdks/unions/README.md#union_date_null)
+* [union_date_time_big_int](docs/sdks/unions/README.md#union_date_time_big_int)
+* [union_date_time_null](docs/sdks/unions/README.md#union_date_time_null)
+* [weakly_typed_one_of_post](docs/sdks/unions/README.md#weakly_typed_one_of_post)
+
+### [.flattening](docs/sdks/flattening/README.md)
+
+* [component_body_and_param_conflict](docs/sdks/flattening/README.md#component_body_and_param_conflict)
+* [component_body_and_param_no_conflict](docs/sdks/flattening/README.md#component_body_and_param_no_conflict)
+* [conflicting_params](docs/sdks/flattening/README.md#conflicting_params)
+* [inline_body_and_param_conflict](docs/sdks/flattening/README.md#inline_body_and_param_conflict)
+* [inline_body_and_param_no_conflict](docs/sdks/flattening/README.md#inline_body_and_param_no_conflict)
+
+### [.globals](docs/sdks/globals/README.md)
 
 * [global_path_parameter_get](docs/sdks/globals/README.md#global_path_parameter_get)
 * [globals_query_parameter_get](docs/sdks/globals/README.md#globals_query_parameter_get)
 
-
-### [nest.first](docs/sdks/nestfirst/README.md)
-
-* [get](docs/sdks/nestfirst/README.md#get)
-
-### [nested](docs/sdks/nested/README.md)
-
-* [get](docs/sdks/nested/README.md#get)
-
-### [nested.first](docs/sdks/nestedfirst/README.md)
-
-* [get](docs/sdks/nestedfirst/README.md#get)
-
-### [nested.second](docs/sdks/nestedsecond/README.md)
-
-* [get](docs/sdks/nestedsecond/README.md#get)
-
-### [pagination](docs/sdks/pagination/README.md)
-
-* [pagination_cursor_body](docs/sdks/pagination/README.md#pagination_cursor_body)
-* [pagination_cursor_params](docs/sdks/pagination/README.md#pagination_cursor_params)
-* [pagination_limit_offset_offset_body](docs/sdks/pagination/README.md#pagination_limit_offset_offset_body)
-* [pagination_limit_offset_offset_params](docs/sdks/pagination/README.md#pagination_limit_offset_offset_params)
-* [pagination_limit_offset_page_body](docs/sdks/pagination/README.md#pagination_limit_offset_page_body)
-* [pagination_limit_offset_page_params](docs/sdks/pagination/README.md#pagination_limit_offset_page_params)
-
-### [parameters](docs/sdks/parameters/README.md)
+### [.parameters](docs/sdks/parameters/README.md)
 
 * [deep_object_query_params_map](docs/sdks/parameters/README.md#deep_object_query_params_map)
 * [deep_object_query_params_object](docs/sdks/parameters/README.md#deep_object_query_params_object)
@@ -234,7 +193,24 @@ if res.usage_example_post_200_application_json_object is not None:
 * [simple_path_parameter_objects](docs/sdks/parameters/README.md#simple_path_parameter_objects)
 * [simple_path_parameter_primitives](docs/sdks/parameters/README.md#simple_path_parameter_primitives)
 
-### [request_bodies](docs/sdks/requestbodies/README.md)
+
+### [.nest.first](docs/sdks/sdkfirst/README.md)
+
+* [get](docs/sdks/sdkfirst/README.md#get)
+
+### [.nested](docs/sdks/nested/README.md)
+
+* [get](docs/sdks/nested/README.md#get)
+
+### [.nested.first](docs/sdks/sdknestedfirst/README.md)
+
+* [get](docs/sdks/sdknestedfirst/README.md#get)
+
+### [.nested.second](docs/sdks/sdksecond/README.md)
+
+* [get](docs/sdks/sdksecond/README.md#get)
+
+### [.request_bodies](docs/sdks/requestbodies/README.md)
 
 * [nullable_object_post](docs/sdks/requestbodies/README.md#nullable_object_post)
 * [nullable_required_empty_object_post](docs/sdks/requestbodies/README.md#nullable_required_empty_object_post)
@@ -318,15 +294,7 @@ if res.usage_example_post_200_application_json_object is not None:
 * [request_body_write_only_output](docs/sdks/requestbodies/README.md#request_body_write_only_output)
 * [request_body_write_only_union](docs/sdks/requestbodies/README.md#request_body_write_only_union)
 
-### [resource](docs/sdks/resource/README.md)
-
-* [create_file](docs/sdks/resource/README.md#create_file)
-* [create_resource](docs/sdks/resource/README.md#create_resource)
-* [delete_resource](docs/sdks/resource/README.md#delete_resource)
-* [get_resource](docs/sdks/resource/README.md#get_resource)
-* [update_resource](docs/sdks/resource/README.md#update_resource)
-
-### [response_bodies](docs/sdks/responsebodies/README.md)
+### [.response_bodies](docs/sdks/responsebodies/README.md)
 
 * [response_body_additional_properties_complex_numbers_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_complex_numbers_post)
 * [response_body_additional_properties_date_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_date_post)
@@ -340,15 +308,7 @@ if res.usage_example_post_200_application_json_object is not None:
 * [response_body_xml_get](docs/sdks/responsebodies/README.md#response_body_xml_get)
 * [response_body_zero_value_complex_type_ptrs_post](docs/sdks/responsebodies/README.md#response_body_zero_value_complex_type_ptrs_post)
 
-### [retries](docs/sdks/retries/README.md)
-
-* [retries_get](docs/sdks/retries/README.md#retries_get)
-
-### [second](docs/sdks/second/README.md)
-
-* [get](docs/sdks/second/README.md#get)
-
-### [servers](docs/sdks/servers/README.md)
+### [.servers](docs/sdks/servers/README.md)
 
 * [select_global_server](docs/sdks/servers/README.md#select_global_server)
 * [select_server_with_id](docs/sdks/servers/README.md#select_server_with_id) - Select a server by ID.
@@ -357,28 +317,68 @@ if res.usage_example_post_200_application_json_object is not None:
 * [server_with_templates_global](docs/sdks/servers/README.md#server_with_templates_global)
 * [servers_by_id_with_templates](docs/sdks/servers/README.md#servers_by_id_with_templates)
 
-### [telemetry](docs/sdks/telemetry/README.md)
+### [.telemetry](docs/sdks/telemetry/README.md)
 
 * [telemetry_speakeasy_user_agent_get](docs/sdks/telemetry/README.md#telemetry_speakeasy_user_agent_get)
 * [telemetry_user_agent_get](docs/sdks/telemetry/README.md#telemetry_user_agent_get)
 
-### [unions](docs/sdks/unions/README.md)
+### [.auth_new](docs/sdks/authnew/README.md)
 
-* [flattened_typed_object_post](docs/sdks/unions/README.md#flattened_typed_object_post)
-* [mixed_type_one_of_post](docs/sdks/unions/README.md#mixed_type_one_of_post)
-* [nullable_one_of_ref_in_object_post](docs/sdks/unions/README.md#nullable_one_of_ref_in_object_post)
-* [nullable_one_of_schema_post](docs/sdks/unions/README.md#nullable_one_of_schema_post)
-* [nullable_one_of_type_in_object_post](docs/sdks/unions/README.md#nullable_one_of_type_in_object_post)
-* [nullable_typed_object_post](docs/sdks/unions/README.md#nullable_typed_object_post)
-* [primitive_type_one_of_post](docs/sdks/unions/README.md#primitive_type_one_of_post)
-* [strongly_typed_one_of_post](docs/sdks/unions/README.md#strongly_typed_one_of_post)
-* [typed_object_nullable_one_of_post](docs/sdks/unions/README.md#typed_object_nullable_one_of_post)
-* [typed_object_one_of_post](docs/sdks/unions/README.md#typed_object_one_of_post)
-* [union_big_int_decimal](docs/sdks/unions/README.md#union_big_int_decimal)
-* [union_date_null](docs/sdks/unions/README.md#union_date_null)
-* [union_date_time_big_int](docs/sdks/unions/README.md#union_date_time_big_int)
-* [union_date_time_null](docs/sdks/unions/README.md#union_date_time_null)
-* [weakly_typed_one_of_post](docs/sdks/unions/README.md#weakly_typed_one_of_post)
+* [api_key_auth_global_new](docs/sdks/authnew/README.md#api_key_auth_global_new)
+* [auth_global](docs/sdks/authnew/README.md#auth_global)
+* [basic_auth_new](docs/sdks/authnew/README.md#basic_auth_new)
+* [multiple_mixed_options_auth](docs/sdks/authnew/README.md#multiple_mixed_options_auth)
+* [multiple_mixed_scheme_auth](docs/sdks/authnew/README.md#multiple_mixed_scheme_auth)
+* [multiple_options_with_mixed_schemes_auth](docs/sdks/authnew/README.md#multiple_options_with_mixed_schemes_auth)
+* [multiple_options_with_simple_schemes_auth](docs/sdks/authnew/README.md#multiple_options_with_simple_schemes_auth)
+* [multiple_simple_options_auth](docs/sdks/authnew/README.md#multiple_simple_options_auth)
+* [multiple_simple_scheme_auth](docs/sdks/authnew/README.md#multiple_simple_scheme_auth)
+* [oauth2_auth_new](docs/sdks/authnew/README.md#oauth2_auth_new)
+* [open_id_connect_auth_new](docs/sdks/authnew/README.md#open_id_connect_auth_new)
+
+### [.auth](docs/sdks/auth/README.md)
+
+* [api_key_auth](docs/sdks/auth/README.md#api_key_auth)
+* [api_key_auth_global](docs/sdks/auth/README.md#api_key_auth_global)
+* [basic_auth](docs/sdks/auth/README.md#basic_auth)
+* [bearer_auth](docs/sdks/auth/README.md#bearer_auth)
+* [global_bearer_auth](docs/sdks/auth/README.md#global_bearer_auth)
+* [oauth2_auth](docs/sdks/auth/README.md#oauth2_auth)
+* [oauth2_override](docs/sdks/auth/README.md#oauth2_override)
+* [open_id_connect_auth](docs/sdks/auth/README.md#open_id_connect_auth)
+
+### [.documentation](docs/sdks/documentation/README.md)
+
+* [get_documentation_per_language](docs/sdks/documentation/README.md#get_documentation_per_language) - Gets documentation for some language, I guess.
+
+### [.resource](docs/sdks/resource/README.md)
+
+* [create_file](docs/sdks/resource/README.md#create_file)
+* [create_resource](docs/sdks/resource/README.md#create_resource)
+* [delete_resource](docs/sdks/resource/README.md#delete_resource)
+* [get_resource](docs/sdks/resource/README.md#get_resource)
+* [update_resource](docs/sdks/resource/README.md#update_resource)
+
+### [.first](docs/sdks/first/README.md)
+
+* [get](docs/sdks/first/README.md#get)
+
+### [.second](docs/sdks/second/README.md)
+
+* [get](docs/sdks/second/README.md#get)
+
+### [.pagination](docs/sdks/pagination/README.md)
+
+* [pagination_cursor_body](docs/sdks/pagination/README.md#pagination_cursor_body)
+* [pagination_cursor_params](docs/sdks/pagination/README.md#pagination_cursor_params)
+* [pagination_limit_offset_offset_body](docs/sdks/pagination/README.md#pagination_limit_offset_offset_body)
+* [pagination_limit_offset_offset_params](docs/sdks/pagination/README.md#pagination_limit_offset_offset_params)
+* [pagination_limit_offset_page_body](docs/sdks/pagination/README.md#pagination_limit_offset_page_body)
+* [pagination_limit_offset_page_params](docs/sdks/pagination/README.md#pagination_limit_offset_page_params)
+
+### [.retries](docs/sdks/retries/README.md)
+
+* [retries_get](docs/sdks/retries/README.md#retries_get)
 <!-- End SDK Available Operations -->
 
 
@@ -525,7 +525,7 @@ try:
 
 except (error) as e:
     print(e) # handle exception
-except (statusGetXSpeakeasyErrors_501ApplicationJSON_object) as e:
+except (501_application/json_object) as e:
     print(e) # handle exception
 
 if res.status_code == 200:
@@ -559,29 +559,28 @@ Some of the server options above contain variables. If you want to set the value
 
  * `protocol: str`
 
- * `something: ServerSomething`
+ * `something: models.ServerSomething`
 
 For example:
-
 
 ```python
 import sdk
 from sdk.models import shared
 
 s = sdk.SDK(
+    server_idx=4,
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
     global_path_param=100,
     global_query_param='some example global query param',
-    server_idx=4
 )
 
 req = 'string'
 
-res = s.sdk.put_anything_ignored_generation(req)
+res = s.put_anything_ignored_generation(req)
 
-if res.put_anything_ignored_generation_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -591,25 +590,24 @@ if res.put_anything_ignored_generation_200_application_json_object is not None:
 
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 
-
 ```python
 import sdk
 from sdk.models import shared
 
 s = sdk.SDK(
+    server_url="http://localhost:35123",
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
     global_path_param=100,
     global_query_param='some example global query param',
-    server_url="http://localhost:35123"
 )
 
 req = 'string'
 
-res = s.sdk.put_anything_ignored_generation(req)
+res = s.put_anything_ignored_generation(req)
 
-if res.put_anything_ignored_generation_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -618,7 +616,6 @@ if res.put_anything_ignored_generation_200_application_json_object is not None:
 
 The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
 
-
 ```python
 import sdk
 from sdk.models import shared
@@ -631,20 +628,8 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.AuthServiceRequestBody(
-    basic_auth=shared.AuthServiceRequestBodyBasicAuth(
-        password='owsGgP4_AhRPMSJ',
-        username='Devonte_Bins',
-    ),
-    header_auth=[
-        shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='string',
-            header_name='string',
-        ),
-    ],
-)
 
-res = s.auth_new.api_key_auth_global_new(req, server_url="http://localhost:35456")
+res = s.errors.connection_error_get(server_url="http://somebrokenapi.broken")
 
 if res.status_code == 200:
     # handle response
@@ -671,6 +656,180 @@ http_client.headers.update({'x-custom-header': 'someValue'})
 s = sdk.SDK(client: http_client)
 ```
 <!-- End Custom HTTP Client -->
+
+
+
+<!-- Start Retries -->
+# Retries
+
+Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+
+
+## Example
+
+```python
+import sdk
+from sdk.models import operations, shared
+from undefined.utils import BackoffStrategy, RetryConfig
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.retries.retries_get(request_id='string', num_retries=75342,
+    RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False))
+
+if res.retries is not None:
+    # handle response
+    pass
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+
+
+## Example
+
+```python
+import sdk
+from sdk.models import operations, shared
+from undefined.utils import BackoffStrategy, RetryConfig
+
+s = sdk.SDK(
+    retry_config=RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False)
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.retries.retries_get(request_id='string', num_retries=75342)
+
+if res.retries is not None:
+    # handle response
+    pass
+```
+
+
+<!-- End Retries -->
+
+
+
+<!-- Start Authentication -->
+
+# Authentication
+
+## Per-Client Security Schemes
+
+Your SDK supports the following security schemes globally:
+
+| Name               | Type               | Scheme             |
+| ------------------ | ------------------ | ------------------ |
+| `api_key_auth`     | apiKey             | API key            |
+| `api_key_auth_new` | apiKey             | API key            |
+| `oauth2`           | oauth2             | OAuth2 token       |
+
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = 'string'
+
+res = s.put_anything_ignored_generation(req)
+
+if res.object is not None:
+    # handle response
+    pass
+```
+
+## Per-Operation Security Schemes
+
+Some operations in your SDK require the security scheme to be specified at the request level. For example:
+## Second
+Do this second
+```python
+import dateutil.parser
+import sdk
+from decimal import Decimal
+from sdk.models import operations, shared
+
+s = sdk.SDK(
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = operations.UsageExamplePostRequest(
+    request_body=operations.UsageExamplePostRequestBody(
+        faker_formatted_strings=shared.FakerFormattedStrings(),
+        faker_strings=shared.FakerStrings(),
+        simple_object=shared.SimpleObject(
+            any='any',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            str_opt='testOptional',
+        ),
+    ),
+    bigint_parameter=168827,
+    bigint_str_parameter=446729,
+    bool_parameter=False,
+    date_parameter=dateutil.parser.parse('2023-06-11').date(),
+    date_time_default_parameter=dateutil.parser.isoparse('2022-07-22T13:16:48.221Z'),
+    date_time_parameter=dateutil.parser.isoparse('2021-10-21T09:16:58.799Z'),
+    decimal_parameter=Decimal('5223.72'),
+    decimal_str_parameter=Decimal('2911.37'),
+    double_parameter=6946.59,
+    enum_parameter=operations.EnumParameter.VALUE1,
+    falsey_number_parameter=0,
+    float32_parameter=1029.75,
+    float_parameter=5669.99,
+    int64_parameter=195232,
+    int_parameter=569663,
+    opt_enum_parameter=operations.OptEnumParameter.VALUE3,
+    str_parameter='example 1',
+)
+
+res = s.generation.usage_example_post(req, operations.UsageExamplePostSecurity(
+    password="YOUR_PASSWORD",
+    username="YOUR_USERNAME",
+))
+
+if res.object is not None:
+    # handle response
+    pass
+```
+<!-- End Authentication -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

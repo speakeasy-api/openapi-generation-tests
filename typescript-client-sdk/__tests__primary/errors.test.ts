@@ -5,7 +5,7 @@
 import {
   ErrorT,
   SDKError,
-  StatusGetXSpeakeasyErrors501ApplicationJSON,
+  StatusGetXSpeakeasyErrorsResponseBody,
 } from "../src/sdk/models/errors";
 import { expect, test } from "@jest/globals";
 
@@ -115,12 +115,12 @@ test("Test Status Get Error X-Speakeasy-Errors", async () => {
   try {
     await sdk.errors.statusGetXSpeakeasyErrors(501);
   } catch (e) {
-    expect(e).toBeInstanceOf(StatusGetXSpeakeasyErrors501ApplicationJSON);
+    expect(e).toBeInstanceOf(StatusGetXSpeakeasyErrorsResponseBody);
     expect(`${e}`).toBe(
-      'StatusGetXSpeakeasyErrors501ApplicationJSON: {"code":"501","message":"an error occurred","type":"internal"}'
+      'StatusGetXSpeakeasyErrorsResponseBody: {"code":"501","message":"an error occurred","type":"internal"}'
     );
 
-    const sdkErr = e as StatusGetXSpeakeasyErrors501ApplicationJSON;
+    const sdkErr = e as StatusGetXSpeakeasyErrorsResponseBody;
 
     expect(sdkErr.code).toBe("501");
     expect(sdkErr.rawResponse?.status).toBe(501);

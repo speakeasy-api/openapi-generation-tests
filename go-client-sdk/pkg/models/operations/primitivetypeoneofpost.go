@@ -5,7 +5,7 @@ package operations
 import (
 	"errors"
 	"net/http"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 )
 
 type PrimitiveTypeOneOfPostRequestBodyType string
@@ -115,94 +115,94 @@ func (u PrimitiveTypeOneOfPostRequestBody) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-type PrimitiveTypeOneOfPostResJSONType string
+type PrimitiveTypeOneOfPostJSONType string
 
 const (
-	PrimitiveTypeOneOfPostResJSONTypeStr     PrimitiveTypeOneOfPostResJSONType = "str"
-	PrimitiveTypeOneOfPostResJSONTypeInteger PrimitiveTypeOneOfPostResJSONType = "integer"
-	PrimitiveTypeOneOfPostResJSONTypeNumber  PrimitiveTypeOneOfPostResJSONType = "number"
-	PrimitiveTypeOneOfPostResJSONTypeBoolean PrimitiveTypeOneOfPostResJSONType = "boolean"
+	PrimitiveTypeOneOfPostJSONTypeStr     PrimitiveTypeOneOfPostJSONType = "str"
+	PrimitiveTypeOneOfPostJSONTypeInteger PrimitiveTypeOneOfPostJSONType = "integer"
+	PrimitiveTypeOneOfPostJSONTypeNumber  PrimitiveTypeOneOfPostJSONType = "number"
+	PrimitiveTypeOneOfPostJSONTypeBoolean PrimitiveTypeOneOfPostJSONType = "boolean"
 )
 
-type PrimitiveTypeOneOfPostResJSON struct {
+type PrimitiveTypeOneOfPostJSON struct {
 	Str     *string
 	Integer *int64
 	Number  *float64
 	Boolean *bool
 
-	Type PrimitiveTypeOneOfPostResJSONType
+	Type PrimitiveTypeOneOfPostJSONType
 }
 
-func CreatePrimitiveTypeOneOfPostResJSONStr(str string) PrimitiveTypeOneOfPostResJSON {
-	typ := PrimitiveTypeOneOfPostResJSONTypeStr
+func CreatePrimitiveTypeOneOfPostJSONStr(str string) PrimitiveTypeOneOfPostJSON {
+	typ := PrimitiveTypeOneOfPostJSONTypeStr
 
-	return PrimitiveTypeOneOfPostResJSON{
+	return PrimitiveTypeOneOfPostJSON{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreatePrimitiveTypeOneOfPostResJSONInteger(integer int64) PrimitiveTypeOneOfPostResJSON {
-	typ := PrimitiveTypeOneOfPostResJSONTypeInteger
+func CreatePrimitiveTypeOneOfPostJSONInteger(integer int64) PrimitiveTypeOneOfPostJSON {
+	typ := PrimitiveTypeOneOfPostJSONTypeInteger
 
-	return PrimitiveTypeOneOfPostResJSON{
+	return PrimitiveTypeOneOfPostJSON{
 		Integer: &integer,
 		Type:    typ,
 	}
 }
 
-func CreatePrimitiveTypeOneOfPostResJSONNumber(number float64) PrimitiveTypeOneOfPostResJSON {
-	typ := PrimitiveTypeOneOfPostResJSONTypeNumber
+func CreatePrimitiveTypeOneOfPostJSONNumber(number float64) PrimitiveTypeOneOfPostJSON {
+	typ := PrimitiveTypeOneOfPostJSONTypeNumber
 
-	return PrimitiveTypeOneOfPostResJSON{
+	return PrimitiveTypeOneOfPostJSON{
 		Number: &number,
 		Type:   typ,
 	}
 }
 
-func CreatePrimitiveTypeOneOfPostResJSONBoolean(boolean bool) PrimitiveTypeOneOfPostResJSON {
-	typ := PrimitiveTypeOneOfPostResJSONTypeBoolean
+func CreatePrimitiveTypeOneOfPostJSONBoolean(boolean bool) PrimitiveTypeOneOfPostJSON {
+	typ := PrimitiveTypeOneOfPostJSONTypeBoolean
 
-	return PrimitiveTypeOneOfPostResJSON{
+	return PrimitiveTypeOneOfPostJSON{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func (u *PrimitiveTypeOneOfPostResJSON) UnmarshalJSON(data []byte) error {
+func (u *PrimitiveTypeOneOfPostJSON) UnmarshalJSON(data []byte) error {
 
 	str := ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = PrimitiveTypeOneOfPostResJSONTypeStr
+		u.Type = PrimitiveTypeOneOfPostJSONTypeStr
 		return nil
 	}
 
 	integer := int64(0)
 	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
 		u.Integer = &integer
-		u.Type = PrimitiveTypeOneOfPostResJSONTypeInteger
+		u.Type = PrimitiveTypeOneOfPostJSONTypeInteger
 		return nil
 	}
 
 	number := float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
 		u.Number = &number
-		u.Type = PrimitiveTypeOneOfPostResJSONTypeNumber
+		u.Type = PrimitiveTypeOneOfPostJSONTypeNumber
 		return nil
 	}
 
 	boolean := false
 	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
 		u.Boolean = &boolean
-		u.Type = PrimitiveTypeOneOfPostResJSONTypeBoolean
+		u.Type = PrimitiveTypeOneOfPostJSONTypeBoolean
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u PrimitiveTypeOneOfPostResJSON) MarshalJSON() ([]byte, error) {
+func (u PrimitiveTypeOneOfPostJSON) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -224,12 +224,12 @@ func (u PrimitiveTypeOneOfPostResJSON) MarshalJSON() ([]byte, error) {
 
 // PrimitiveTypeOneOfPostRes - OK
 type PrimitiveTypeOneOfPostRes struct {
-	JSON PrimitiveTypeOneOfPostResJSON `json:"json"`
+	JSON PrimitiveTypeOneOfPostJSON `json:"json"`
 }
 
-func (o *PrimitiveTypeOneOfPostRes) GetJSON() PrimitiveTypeOneOfPostResJSON {
+func (o *PrimitiveTypeOneOfPostRes) GetJSON() PrimitiveTypeOneOfPostJSON {
 	if o == nil {
-		return PrimitiveTypeOneOfPostResJSON{}
+		return PrimitiveTypeOneOfPostJSON{}
 	}
 	return o.JSON
 }

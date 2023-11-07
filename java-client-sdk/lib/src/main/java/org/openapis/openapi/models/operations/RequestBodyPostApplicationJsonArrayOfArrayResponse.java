@@ -46,10 +46,10 @@ public class RequestBodyPostApplicationJsonArrayOfArrayResponse {
      * OK
      */
     
-    public org.openapis.openapi.models.shared.SimpleObject[][] arrs;
+    public org.openapis.openapi.models.shared.SimpleObject[][] res;
 
-    public RequestBodyPostApplicationJsonArrayOfArrayResponse withArrs(org.openapis.openapi.models.shared.SimpleObject[][] arrs) {
-        this.arrs = arrs;
+    public RequestBodyPostApplicationJsonArrayOfArrayResponse withRes(org.openapis.openapi.models.shared.SimpleObject[][] res) {
+        this.res = res;
         return this;
     }
     

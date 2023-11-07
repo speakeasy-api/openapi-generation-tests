@@ -46,10 +46,10 @@ public class RequestBodyPostApplicationJsonArrayCamelCaseResponse {
      * OK
      */
     
-    public org.openapis.openapi.models.shared.SimpleObjectCamelCase[] simpleObjectCamelCases;
+    public org.openapis.openapi.models.shared.SimpleObjectCamelCase[] res;
 
-    public RequestBodyPostApplicationJsonArrayCamelCaseResponse withSimpleObjectCamelCases(org.openapis.openapi.models.shared.SimpleObjectCamelCase[] simpleObjectCamelCases) {
-        this.simpleObjectCamelCases = simpleObjectCamelCases;
+    public RequestBodyPostApplicationJsonArrayCamelCaseResponse withRes(org.openapis.openapi.models.shared.SimpleObjectCamelCase[] res) {
+        this.res = res;
         return this;
     }
     

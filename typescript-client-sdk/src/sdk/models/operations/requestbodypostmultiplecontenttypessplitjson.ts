@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
-export class RequestBodyPostMultipleContentTypesSplitApplicationJSON extends SpeakeasyBase {
+export class RequestBodyPostMultipleContentTypesSplitJsonRequestBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "bool" })
     bool: boolean;

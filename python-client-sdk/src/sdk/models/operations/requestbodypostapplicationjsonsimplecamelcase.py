@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import simpleobjectcamelcase as shared_simpleobjectcamelcase
+from ...models.shared import simpleobjectcamelcase as shared_simpleobjectcamelcase
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional

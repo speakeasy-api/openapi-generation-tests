@@ -3,12 +3,12 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct RequestBodyPutBytesWithParamsRequest: APIValue {
         public let queryStringParam: String
         public let requestBody: Data
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         ///
         public init(queryStringParam: String, requestBody: Data) {

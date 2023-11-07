@@ -12,14 +12,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class RequestBodyPostFormDeepRes {
     @JsonProperty("form")
-    public RequestBodyPostFormDeepResForm form;
+    public Form form;
 
-    public RequestBodyPostFormDeepRes withForm(RequestBodyPostFormDeepResForm form) {
+    public RequestBodyPostFormDeepRes withForm(Form form) {
         this.form = form;
         return this;
     }
     
-    public RequestBodyPostFormDeepRes(@JsonProperty("form") RequestBodyPostFormDeepResForm form) {
+    public RequestBodyPostFormDeepRes(@JsonProperty("form") Form form) {
         this.form = form;
   }
 }

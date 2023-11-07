@@ -3,7 +3,7 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct PipeDelimitedQueryParamsArrayRequest: APIValue {
         public let arrParam: [String]?
         public let arrParamExploded: [Int]?
@@ -11,7 +11,7 @@ extension Operations {
         /// A simple object that uses all our supported primitive types and enums and has optional properties.
         public let objParam: Shared.SimpleObject?
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         /// - Parameter objParam: A simple object that uses all our supported primitive types and enums and has optional properties.
         ///

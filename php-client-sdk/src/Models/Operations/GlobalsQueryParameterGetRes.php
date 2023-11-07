@@ -18,11 +18,11 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 class GlobalsQueryParameterGetRes
 {
 	#[\JMS\Serializer\Annotation\SerializedName('args')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetResArgs')]
-    public GlobalsQueryParameterGetResArgs $args;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\Args')]
+    public Args $args;
     
 	public function __construct()
 	{
-		$this->args = new \OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetResArgs();
+		$this->args = new \OpenAPI\OpenAPI\Models\Operations\Args();
 	}
 }

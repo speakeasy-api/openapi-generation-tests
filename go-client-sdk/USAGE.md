@@ -7,8 +7,8 @@ package main
 import (
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -26,7 +26,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	if res.GetGlobalNameOverride200ApplicationJSONObject != nil {
+	if res.Object != nil {
 		// handle response
 	}
 }
@@ -43,10 +43,10 @@ import (
 	"context"
 	"log"
 	"math/big"
-	"openapi"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -79,8 +79,8 @@ func main() {
 				Float32:    1.1,
 				Int:        1,
 				Int32:      1,
-				Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-				IntEnum:    shared.SimpleObjectIntEnumSecond,
+				Int32Enum:  shared.Int32EnumFiftyFive,
+				IntEnum:    shared.IntEnumSecond,
 				Num:        1.1,
 				Str:        "test",
 				StrOpt:     openapi.String("testOptional"),
@@ -95,20 +95,20 @@ func main() {
 		DecimalParameter:         types.MustNewDecimalFromString("5223.72"),
 		DecimalStrParameter:      types.MustNewDecimalFromString("2911.37"),
 		DoubleParameter:          6946.59,
-		EnumParameter:            operations.UsageExamplePostEnumParameterValue1,
+		EnumParameter:            operations.EnumParameterValue1,
 		FalseyNumberParameter:    0,
 		Float32Parameter:         1029.75,
 		FloatParameter:           5669.99,
 		Int64Parameter:           195232,
 		IntParameter:             569663,
-		OptEnumParameter:         operations.UsageExamplePostOptEnumParameterValue3.ToPointer(),
+		OptEnumParameter:         operations.OptEnumParameterValue3.ToPointer(),
 		StrParameter:             "example 1",
 	}, operationSecurity)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	if res.UsageExamplePost200ApplicationJSONObject != nil {
+	if res.Object != nil {
 		// handle response
 	}
 }

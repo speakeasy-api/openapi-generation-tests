@@ -7,13 +7,13 @@ extension Shared {
     public struct OneOfGenerationStressTest {
         public let any: AnyValue
         public let nullableAny: AnyValue
-        public let oneOfFromArrayOfTypes: Shared.OneOfGenerationStressTestOneOfFromArrayOfTypes
-        public let oneOfSameType: Shared.OneOfGenerationStressTestOneOfSameType
+        public let oneOfFromArrayOfTypes: Shared.OneOfFromArrayOfTypes
+        public let oneOfSameType: Shared.OneOfSameType
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(any: AnyValue, nullableAny: AnyValue, oneOfFromArrayOfTypes: Shared.OneOfGenerationStressTestOneOfFromArrayOfTypes, oneOfSameType: Shared.OneOfGenerationStressTestOneOfSameType) {
+        public init(any: AnyValue, nullableAny: AnyValue, oneOfFromArrayOfTypes: Shared.OneOfFromArrayOfTypes, oneOfSameType: Shared.OneOfSameType) {
             self.any = any
             self.nullableAny = nullableAny
             self.oneOfFromArrayOfTypes = oneOfFromArrayOfTypes

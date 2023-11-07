@@ -1,5 +1,5 @@
 # AuthNew
-(*AuthNew*)
+(*.AuthNew*)
 
 ## Overview
 
@@ -29,8 +29,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -44,12 +44,12 @@ func main() {
 
     ctx := context.Background()
     res, err := s.AuthNew.APIKeyAuthGlobalNew(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
+        BasicAuth: &shared.BasicAuth{
             Password: "owsGgP4_AhRPMSJ",
             Username: "Devonte_Bins",
         },
-        HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
-            shared.AuthServiceRequestBodyHeaderAuth{
+        HeaderAuth: []shared.HeaderAuth{
+            shared.HeaderAuth{
                 ExpectedValue: "string",
                 HeaderName: "string",
             },
@@ -89,8 +89,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -104,12 +104,12 @@ func main() {
 
     ctx := context.Background()
     res, err := s.AuthNew.AuthGlobal(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
+        BasicAuth: &shared.BasicAuth{
             Password: "xvJcf9GiJNr7T2x",
             Username: "Cory33",
         },
-        HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
-            shared.AuthServiceRequestBodyHeaderAuth{
+        HeaderAuth: []shared.HeaderAuth{
+            shared.HeaderAuth{
                 ExpectedValue: "string",
                 HeaderName: "string",
             },
@@ -149,9 +149,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -168,12 +168,12 @@ func main() {
 
     ctx := context.Background()
     res, err := s.AuthNew.BasicAuthNew(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
+        BasicAuth: &shared.BasicAuth{
             Password: "Z2OStPksFyrcGeu",
             Username: "Ashton.Steuber27",
         },
-        HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
-            shared.AuthServiceRequestBodyHeaderAuth{
+        HeaderAuth: []shared.HeaderAuth{
+            shared.HeaderAuth{
                 ExpectedValue: "string",
                 HeaderName: "string",
             },
@@ -214,9 +214,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -232,12 +232,12 @@ func main() {
 
     ctx := context.Background()
     res, err := s.AuthNew.MultipleMixedOptionsAuth(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
+        BasicAuth: &shared.BasicAuth{
             Password: "Iq1JSzG1wqLDz4v",
             Username: "Ismael.Emmerich",
         },
-        HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
-            shared.AuthServiceRequestBodyHeaderAuth{
+        HeaderAuth: []shared.HeaderAuth{
+            shared.HeaderAuth{
                 ExpectedValue: "string",
                 HeaderName: "string",
             },
@@ -278,9 +278,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -300,12 +300,12 @@ func main() {
 
     ctx := context.Background()
     res, err := s.AuthNew.MultipleMixedSchemeAuth(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
+        BasicAuth: &shared.BasicAuth{
             Password: "OcWVV5608IiaWJQ",
             Username: "Kameron42",
         },
-        HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
-            shared.AuthServiceRequestBodyHeaderAuth{
+        HeaderAuth: []shared.HeaderAuth{
+            shared.HeaderAuth{
                 ExpectedValue: "string",
                 HeaderName: "string",
             },
@@ -346,9 +346,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -367,12 +367,12 @@ func main() {
 
     ctx := context.Background()
     res, err := s.AuthNew.MultipleOptionsWithMixedSchemesAuth(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
+        BasicAuth: &shared.BasicAuth{
             Password: "fpwNE90MyqKIrXk",
             Username: "Caroline_Walsh",
         },
-        HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
-            shared.AuthServiceRequestBodyHeaderAuth{
+        HeaderAuth: []shared.HeaderAuth{
+            shared.HeaderAuth{
                 ExpectedValue: "string",
                 HeaderName: "string",
             },
@@ -413,9 +413,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -434,12 +434,12 @@ func main() {
 
     ctx := context.Background()
     res, err := s.AuthNew.MultipleOptionsWithSimpleSchemesAuth(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
+        BasicAuth: &shared.BasicAuth{
             Password: "pibxDTiJSijK04Y",
             Username: "Selena76",
         },
-        HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
-            shared.AuthServiceRequestBodyHeaderAuth{
+        HeaderAuth: []shared.HeaderAuth{
+            shared.HeaderAuth{
                 ExpectedValue: "string",
                 HeaderName: "string",
             },
@@ -480,9 +480,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -498,12 +498,12 @@ func main() {
 
     ctx := context.Background()
     res, err := s.AuthNew.MultipleSimpleOptionsAuth(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
+        BasicAuth: &shared.BasicAuth{
             Password: "pzdKQgSGZSrUGNs",
             Username: "Eryn51",
         },
-        HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
-            shared.AuthServiceRequestBodyHeaderAuth{
+        HeaderAuth: []shared.HeaderAuth{
+            shared.HeaderAuth{
                 ExpectedValue: "string",
                 HeaderName: "string",
             },
@@ -544,9 +544,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -563,12 +563,12 @@ func main() {
 
     ctx := context.Background()
     res, err := s.AuthNew.MultipleSimpleSchemeAuth(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
+        BasicAuth: &shared.BasicAuth{
             Password: "UrAsw466AAaYtr1",
             Username: "Kenya.Baumbach",
         },
-        HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
-            shared.AuthServiceRequestBodyHeaderAuth{
+        HeaderAuth: []shared.HeaderAuth{
+            shared.HeaderAuth{
                 ExpectedValue: "string",
                 HeaderName: "string",
             },
@@ -609,9 +609,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -621,16 +621,18 @@ func main() {
     )
 
 
-    operationSecurity := "Bearer YOUR_OAUTH2_TOKEN"
+    operationSecurity := operations.Oauth2AuthNewSecurity{
+            Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+        }
 
     ctx := context.Background()
     res, err := s.AuthNew.Oauth2AuthNew(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
+        BasicAuth: &shared.BasicAuth{
             Password: "V02sHy2onRTMRgS",
             Username: "Polly.Aufderhar78",
         },
-        HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
-            shared.AuthServiceRequestBodyHeaderAuth{
+        HeaderAuth: []shared.HeaderAuth{
+            shared.HeaderAuth{
                 ExpectedValue: "string",
                 HeaderName: "string",
             },
@@ -671,9 +673,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -683,16 +685,18 @@ func main() {
     )
 
 
-    operationSecurity := "Bearer YOUR_OPENID_TOKEN"
+    operationSecurity := operations.OpenIDConnectAuthNewSecurity{
+            OpenIDConnect: "Bearer YOUR_OPENID_TOKEN",
+        }
 
     ctx := context.Background()
     res, err := s.AuthNew.OpenIDConnectAuthNew(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
+        BasicAuth: &shared.BasicAuth{
             Password: "1_B3hNdr8HC3AeS",
             Username: "Floy_Heller",
         },
-        HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
-            shared.AuthServiceRequestBodyHeaderAuth{
+        HeaderAuth: []shared.HeaderAuth{
+            shared.HeaderAuth{
                 ExpectedValue: "string",
                 HeaderName: "string",
             },

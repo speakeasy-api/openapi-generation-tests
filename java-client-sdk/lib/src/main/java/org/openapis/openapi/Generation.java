@@ -51,7 +51,7 @@ public class Generation {
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
-                org.openapis.openapi.models.operations.TypeFromAnchor out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.TypeFromAnchor.class);
+                org.openapis.openapi.models.operations.AnchorTypesGetTypeFromAnchor out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.AnchorTypesGetTypeFromAnchor.class);
                 res.typeFromAnchor = out;
             }
         }
@@ -280,15 +280,15 @@ public class Generation {
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
         org.openapis.openapi.models.operations.DeprecatedObjectInSchemaGetResponse res = new org.openapis.openapi.models.operations.DeprecatedObjectInSchemaGetResponse(contentType, httpRes.statusCode()) {{
-            deprecatedObjectInSchemaGet200ApplicationJSONObject = null;
+            object = null;
         }};
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
-                org.openapis.openapi.models.operations.DeprecatedObjectInSchemaGet200ApplicationJSON out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.DeprecatedObjectInSchemaGet200ApplicationJSON.class);
-                res.deprecatedObjectInSchemaGet200ApplicationJSONObject = out;
+                org.openapis.openapi.models.operations.DeprecatedObjectInSchemaGetResponseBody out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.DeprecatedObjectInSchemaGetResponseBody.class);
+                res.object = out;
             }
         }
 
@@ -496,15 +496,15 @@ public class Generation {
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
         org.openapis.openapi.models.operations.GetGlobalNameOverrideResponse res = new org.openapis.openapi.models.operations.GetGlobalNameOverrideResponse(contentType, httpRes.statusCode()) {{
-            getGlobalNameOverride200ApplicationJSONObject = null;
+            object = null;
         }};
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
-                org.openapis.openapi.models.operations.GetGlobalNameOverride200ApplicationJSON out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.GetGlobalNameOverride200ApplicationJSON.class);
-                res.getGlobalNameOverride200ApplicationJSONObject = out;
+                org.openapis.openapi.models.operations.GetGlobalNameOverrideResponseBody out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.GetGlobalNameOverrideResponseBody.class);
+                res.object = out;
             }
         }
 
@@ -529,26 +529,26 @@ public class Generation {
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
         org.openapis.openapi.models.operations.IgnoredGenerationGetResponse res = new org.openapis.openapi.models.operations.IgnoredGenerationGetResponse(contentType, httpRes.statusCode()) {{
-            ignoredGenerationGet200ApplicationJSONObject = null;
+            object = null;
         }};
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
-                org.openapis.openapi.models.operations.IgnoredGenerationGet200ApplicationJSON out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.IgnoredGenerationGet200ApplicationJSON.class);
-                res.ignoredGenerationGet200ApplicationJSONObject = out;
+                org.openapis.openapi.models.operations.IgnoredGenerationGetResponseBody out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.IgnoredGenerationGetResponseBody.class);
+                res.object = out;
             }
         }
 
         return res;
     }
 
-    public org.openapis.openapi.models.operations.IgnoresPostResponse ignoresPost(org.openapis.openapi.models.operations.IgnoresPostApplicationJSON requestBody) throws Exception {
+    public org.openapis.openapi.models.operations.IgnoresPostResponse ignoresPost(org.openapis.openapi.models.operations.IgnoresPostRequestBody requestBody) throws Exception {
         return this.ignoresPost(requestBody, null);
     }
 
-    public org.openapis.openapi.models.operations.IgnoresPostResponse ignoresPost(org.openapis.openapi.models.operations.IgnoresPostApplicationJSON requestBody, String testParam) throws Exception {
+    public org.openapis.openapi.models.operations.IgnoresPostResponse ignoresPost(org.openapis.openapi.models.operations.IgnoresPostRequestBody requestBody, String testParam) throws Exception {
         org.openapis.openapi.models.operations.IgnoresPostRequest request = new org.openapis.openapi.models.operations.IgnoresPostRequest(requestBody);
         request.testParam=testParam;
         
@@ -595,7 +595,7 @@ public class Generation {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.NameOverrideGetResponse nameOverride(org.openapis.openapi.models.operations.NameOverrideGetEnumNameOverride testEnumQueryParam, String testQueryParam) throws Exception {
+    public org.openapis.openapi.models.operations.NameOverrideGetResponse nameOverride(org.openapis.openapi.models.operations.EnumNameOverride testEnumQueryParam, String testQueryParam) throws Exception {
         org.openapis.openapi.models.operations.NameOverrideGetRequest request = new org.openapis.openapi.models.operations.NameOverrideGetRequest(testEnumQueryParam, testQueryParam);
         
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
@@ -628,7 +628,7 @@ public class Generation {
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
-                org.openapis.openapi.models.operations.OverriddenResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.OverriddenResponse.class);
+                org.openapis.openapi.models.operations.NameOverrideGetOverriddenResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.NameOverrideGetOverriddenResponse.class);
                 res.overriddenResponse = out;
             }
         }
@@ -706,7 +706,7 @@ public class Generation {
         return this.typedParameterGenerationGet(null, null, null, null);
     }
 
-    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(org.openapis.openapi.models.operations.Obj obj) throws Exception {
         return this.typedParameterGenerationGet(null, null, null, obj);
     }
 
@@ -714,7 +714,7 @@ public class Generation {
         return this.typedParameterGenerationGet(null, null, decimal, null);
     }
 
-    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Double decimal, org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Double decimal, org.openapis.openapi.models.operations.Obj obj) throws Exception {
         return this.typedParameterGenerationGet(null, null, decimal, obj);
     }
 
@@ -722,7 +722,7 @@ public class Generation {
         return this.typedParameterGenerationGet(null, date, null, null);
     }
 
-    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(LocalDate date, org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(LocalDate date, org.openapis.openapi.models.operations.Obj obj) throws Exception {
         return this.typedParameterGenerationGet(null, date, null, obj);
     }
 
@@ -730,7 +730,7 @@ public class Generation {
         return this.typedParameterGenerationGet(null, date, decimal, null);
     }
 
-    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(LocalDate date, Double decimal, org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(LocalDate date, Double decimal, org.openapis.openapi.models.operations.Obj obj) throws Exception {
         return this.typedParameterGenerationGet(null, date, decimal, obj);
     }
 
@@ -738,7 +738,7 @@ public class Generation {
         return this.typedParameterGenerationGet(bigint, null, null, null);
     }
 
-    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint, org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint, org.openapis.openapi.models.operations.Obj obj) throws Exception {
         return this.typedParameterGenerationGet(bigint, null, null, obj);
     }
 
@@ -746,7 +746,7 @@ public class Generation {
         return this.typedParameterGenerationGet(bigint, null, decimal, null);
     }
 
-    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint, Double decimal, org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint, Double decimal, org.openapis.openapi.models.operations.Obj obj) throws Exception {
         return this.typedParameterGenerationGet(bigint, null, decimal, obj);
     }
 
@@ -754,7 +754,7 @@ public class Generation {
         return this.typedParameterGenerationGet(bigint, date, null, null);
     }
 
-    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint, LocalDate date, org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint, LocalDate date, org.openapis.openapi.models.operations.Obj obj) throws Exception {
         return this.typedParameterGenerationGet(bigint, date, null, obj);
     }
 
@@ -762,7 +762,7 @@ public class Generation {
         return this.typedParameterGenerationGet(bigint, date, decimal, null);
     }
 
-    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint, LocalDate date, Double decimal, org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint, LocalDate date, Double decimal, org.openapis.openapi.models.operations.Obj obj) throws Exception {
         org.openapis.openapi.models.operations.TypedParameterGenerationGetRequest request = new org.openapis.openapi.models.operations.TypedParameterGenerationGetRequest();
         request.bigint=bigint;
         request.date=date;
@@ -836,15 +836,15 @@ public class Generation {
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
         org.openapis.openapi.models.operations.UsageExamplePostResponse res = new org.openapis.openapi.models.operations.UsageExamplePostResponse(contentType, httpRes.statusCode()) {{
-            usageExamplePost200ApplicationJSONObject = null;
+            object = null;
         }};
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
-                org.openapis.openapi.models.operations.UsageExamplePost200ApplicationJSON out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.UsageExamplePost200ApplicationJSON.class);
-                res.usageExamplePost200ApplicationJSONObject = out;
+                org.openapis.openapi.models.operations.UsageExamplePostResponseBody out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.UsageExamplePostResponseBody.class);
+                res.object = out;
             }
         }
 

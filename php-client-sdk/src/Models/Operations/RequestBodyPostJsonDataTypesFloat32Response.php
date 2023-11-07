@@ -38,16 +38,16 @@ class RequestBodyPostJsonDataTypesFloat32Response
     /**
      * OK
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJSONDataTypesFloat32200ApplicationJSON $requestBodyPostJSONDataTypesFloat32200ApplicationJSONObject
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesFloat32ResponseBody $object
      */
 	
-    public ?RequestBodyPostJSONDataTypesFloat32200ApplicationJSON $requestBodyPostJSONDataTypesFloat32200ApplicationJSONObject = null;
+    public ?RequestBodyPostJsonDataTypesFloat32ResponseBody $object = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->requestBodyPostJSONDataTypesFloat32200ApplicationJSONObject = null;
+		$this->object = null;
 	}
 }

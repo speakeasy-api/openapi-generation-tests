@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class RequestBodyPutMultipartSimpleResForm extends SpeakeasyBase {
+export class RequestBodyPutMultipartSimpleForm extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "any" })
     any: string;
@@ -64,7 +64,7 @@ export class RequestBodyPutMultipartSimpleResForm extends SpeakeasyBase {
     strOpt?: string;
 }
 
-export class RequestBodyPutMultipartSimpleResHeaders extends SpeakeasyBase {
+export class RequestBodyPutMultipartSimpleHeaders extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "Content-Type" })
     contentType: string;
@@ -76,13 +76,13 @@ export class RequestBodyPutMultipartSimpleResHeaders extends SpeakeasyBase {
 export class RequestBodyPutMultipartSimpleRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "form" })
-    @Type(() => RequestBodyPutMultipartSimpleResForm)
-    form: RequestBodyPutMultipartSimpleResForm;
+    @Type(() => RequestBodyPutMultipartSimpleForm)
+    form: RequestBodyPutMultipartSimpleForm;
 
     @SpeakeasyMetadata()
     @Expose({ name: "headers" })
-    @Type(() => RequestBodyPutMultipartSimpleResHeaders)
-    headers: RequestBodyPutMultipartSimpleResHeaders;
+    @Type(() => RequestBodyPutMultipartSimpleHeaders)
+    headers: RequestBodyPutMultipartSimpleHeaders;
 }
 
 export class RequestBodyPutMultipartSimpleResponse extends SpeakeasyBase {

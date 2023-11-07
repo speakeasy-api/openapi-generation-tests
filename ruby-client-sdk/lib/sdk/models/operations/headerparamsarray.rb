@@ -23,7 +23,7 @@ module OpenApiSDK
     end
 
 
-    class HeaderParamsArrayResHeaders < OpenApiSDK::Utils::FieldAugmented
+    class Headers < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -41,10 +41,10 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :headers, Operations::HeaderParamsArrayResHeaders, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('headers') } }
+      field :headers, Operations::Headers, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('headers') } }
 
 
-      sig { params(headers: Operations::HeaderParamsArrayResHeaders).void }
+      sig { params(headers: Operations::Headers).void }
       def initialize(headers: nil)
         @headers = headers
       end

@@ -9,16 +9,16 @@ from typing import Dict, Optional
 
 
 @dataclasses.dataclass
-class RequestBodyPutMultipartFileRequestBodyFile:
+class File:
     content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})
-    file: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'file' }})
+    file_name: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'file' }})
     
 
 
 
 @dataclasses.dataclass
 class RequestBodyPutMultipartFileRequestBody:
-    file: Optional[RequestBodyPutMultipartFileRequestBodyFile] = dataclasses.field(default=None, metadata={'multipart_form': { 'file': True }})
+    file: Optional[File] = dataclasses.field(default=None, metadata={'multipart_form': { 'file': True }})
     
 
 

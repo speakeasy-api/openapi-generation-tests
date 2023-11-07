@@ -46,10 +46,10 @@ public class NullableRequiredSharedObjectPostResponse {
      * OK
      */
     
-    public String nullableRequiredSharedObjectPost200ApplicationJSONString;
+    public String res;
 
-    public NullableRequiredSharedObjectPostResponse withNullableRequiredSharedObjectPost200ApplicationJSONString(String nullableRequiredSharedObjectPost200ApplicationJSONString) {
-        this.nullableRequiredSharedObjectPost200ApplicationJSONString = nullableRequiredSharedObjectPost200ApplicationJSONString;
+    public NullableRequiredSharedObjectPostResponse withRes(String res) {
+        this.res = res;
         return this;
     }
     

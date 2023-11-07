@@ -101,7 +101,7 @@ private func handleStatusGetXSpeakeasyErrorsResponse(response: Client.APIRespons
     } else if httpResponse.statusCode == 501 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .statusGetXSpeakeasyErrors501ApplicationJSONObject(try JSONDecoder().decode(Operations.StatusGetXSpeakeasyErrors501ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.StatusGetXSpeakeasyErrorsResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

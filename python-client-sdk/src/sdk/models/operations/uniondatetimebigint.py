@@ -16,7 +16,7 @@ class UnionDateTimeBigIntRequestBody:
 
 
 @dataclasses.dataclass
-class UnionDateTimeBigIntResJSON:
+class UnionDateTimeBigIntJSON:
     pass
 
 
@@ -24,7 +24,7 @@ class UnionDateTimeBigIntResJSON:
 @dataclasses.dataclass
 class UnionDateTimeBigIntRes:
     r"""OK"""
-    json: Union[datetime, int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'encoder': utils.union_encoder({datetime: utils.datetimeisoformat(True)}), 'decoder': utils.union_decoder([dateutil.parser.isoparse]) }})
+    json: Union[datetime, int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'encoder': utils.union_encoder({datetime: utils.datetimeisoformat(False)}), 'decoder': utils.union_decoder([dateutil.parser.isoparse]) }})
     
 
 

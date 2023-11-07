@@ -6,12 +6,12 @@ import (
 	"net/http"
 )
 
-// RequestBodyPostNullableNotRequiredStringBody200ApplicationJSON - OK
-type RequestBodyPostNullableNotRequiredStringBody200ApplicationJSON struct {
+// RequestBodyPostNullableNotRequiredStringBodyResponseBody - OK
+type RequestBodyPostNullableNotRequiredStringBodyResponseBody struct {
 	Data string `json:"data"`
 }
 
-func (o *RequestBodyPostNullableNotRequiredStringBody200ApplicationJSON) GetData() string {
+func (o *RequestBodyPostNullableNotRequiredStringBodyResponseBody) GetData() string {
 	if o == nil {
 		return ""
 	}
@@ -26,7 +26,7 @@ type RequestBodyPostNullableNotRequiredStringBodyResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	RequestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject *RequestBodyPostNullableNotRequiredStringBody200ApplicationJSON
+	Object *RequestBodyPostNullableNotRequiredStringBodyResponseBody
 }
 
 func (o *RequestBodyPostNullableNotRequiredStringBodyResponse) GetContentType() string {
@@ -50,9 +50,9 @@ func (o *RequestBodyPostNullableNotRequiredStringBodyResponse) GetRawResponse() 
 	return o.RawResponse
 }
 
-func (o *RequestBodyPostNullableNotRequiredStringBodyResponse) GetRequestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject() *RequestBodyPostNullableNotRequiredStringBody200ApplicationJSON {
+func (o *RequestBodyPostNullableNotRequiredStringBodyResponse) GetObject() *RequestBodyPostNullableNotRequiredStringBodyResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject
+	return o.Object
 }

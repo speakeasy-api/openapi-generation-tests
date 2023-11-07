@@ -5,12 +5,12 @@ import Foundation
 extension Shared {
     /// A model object
     public final class OneOfCircularReferenceObject {
-        public let child: Shared.OneOfCircularReferenceObjectChild
+        public let child: Shared.Child
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(child: Shared.OneOfCircularReferenceObjectChild) {
+        public init(child: Shared.Child) {
             self.child = child
         }
     }

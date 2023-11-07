@@ -18,7 +18,7 @@ class FormQueryParamsArrayRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class FormQueryParamsArrayResArgs:
+class FormQueryParamsArrayArgs:
     arr_param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arrParam') }})
     arr_param_exploded: List[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arrParamExploded') }})
     
@@ -29,7 +29,7 @@ class FormQueryParamsArrayResArgs:
 @dataclasses.dataclass
 class FormQueryParamsArrayRes:
     r"""OK"""
-    args: FormQueryParamsArrayResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
+    args: FormQueryParamsArrayArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
 

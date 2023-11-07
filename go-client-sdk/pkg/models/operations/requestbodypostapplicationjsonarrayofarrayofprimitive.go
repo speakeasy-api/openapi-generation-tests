@@ -18,7 +18,7 @@ type RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	Arrs [][]string
+	Res [][]string
 }
 
 func (o *RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse) GetContentType() string {
@@ -42,9 +42,9 @@ func (o *RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse) GetRawRe
 	return o.RawResponse
 }
 
-func (o *RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse) GetArrs() [][]string {
+func (o *RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse) GetRes() [][]string {
 	if o == nil {
 		return nil
 	}
-	return o.Arrs
+	return o.Res
 }

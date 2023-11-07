@@ -3,6 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { Auth } from "./auth";
 import { AuthNew } from "./authnew";
 import { Documentation } from "./documentation";
@@ -11,9 +14,6 @@ import { First } from "./first";
 import { Flattening } from "./flattening";
 import { Generation } from "./generation";
 import { Globals } from "./globals";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
 import { Nest } from "./nest";
 import { Nested } from "./nested";
 import { Pagination } from "./pagination";
@@ -130,9 +130,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.1.0";
-    sdkVersion = "1.40.3";
-    genVersion = "2.173.0";
-    userAgent = "speakeasy-sdk/typescript 1.40.3 2.173.0 0.1.0 openapi";
+    sdkVersion = "2.0.0";
+    genVersion = "2.181.1";
+    userAgent = "speakeasy-sdk/typescript 2.0.0 2.181.1 0.1.0 openapi";
     globals: any;
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
@@ -151,58 +151,39 @@ export class SDKConfiguration {
  */
 export class SDK {
     /**
-     * Endpoints for testing authentication.
+     * Endpoints for purely testing valid generation behavior.
      */
-    public auth: Auth;
-    /**
-     * Endpoints for testing authentication.
-     */
-    public authNew: AuthNew;
-    /**
-     * Testing for documentation extensions in TypeScript.
-     */
-    public documentation: Documentation;
+    public generation: Generation;
     /**
      * Endpoints for testing error responses.
      */
     public errors: Errors;
-    public first: First;
+    /**
+     * Endpoints for testing union types.
+     */
+    public unions: Unions;
     /**
      * Endpoints for testing flattening through request body and parameter combinations.
      */
     public flattening: Flattening;
     /**
-     * Endpoints for purely testing valid generation behavior.
-     */
-    public generation: Generation;
-    /**
      * Endpoints for testing global parameters.
      */
     public globals: Globals;
-    public nest: Nest;
-    public nested: Nested;
-    /**
-     * Endpoints for testing the pagination extension
-     */
-    public pagination: Pagination;
     /**
      * Endpoints for testing parameters.
      */
     public parameters: ParametersT;
+    public nest: Nest;
+    public nested: Nested;
     /**
      * Endpoints for testing request bodies.
      */
     public requestBodies: RequestBodies;
-    public resource: Resource;
     /**
      * Endpoints for testing response bodies.
      */
     public responseBodies: ResponseBodies;
-    /**
-     * Endpoints for testing retries.
-     */
-    public retries: Retries;
-    public second: Second;
     /**
      * Endpoints for testing servers.
      */
@@ -212,9 +193,28 @@ export class SDK {
      */
     public telemetry: Telemetry;
     /**
-     * Endpoints for testing union types.
+     * Endpoints for testing authentication.
      */
-    public unions: Unions;
+    public authNew: AuthNew;
+    /**
+     * Endpoints for testing authentication.
+     */
+    public auth: Auth;
+    /**
+     * Testing for documentation extensions in TypeScript.
+     */
+    public documentation: Documentation;
+    public resource: Resource;
+    public first: First;
+    public second: Second;
+    /**
+     * Endpoints for testing the pagination extension
+     */
+    public pagination: Pagination;
+    /**
+     * Endpoints for testing retries.
+     */
+    public retries: Retries;
 
     private sdkConfiguration: SDKConfiguration;
 
@@ -264,26 +264,26 @@ export class SDK {
             retryConfig: props?.retryConfig,
         });
 
-        this.auth = new Auth(this.sdkConfiguration);
-        this.authNew = new AuthNew(this.sdkConfiguration);
-        this.documentation = new Documentation(this.sdkConfiguration);
-        this.errors = new Errors(this.sdkConfiguration);
-        this.first = new First(this.sdkConfiguration);
-        this.flattening = new Flattening(this.sdkConfiguration);
         this.generation = new Generation(this.sdkConfiguration);
+        this.errors = new Errors(this.sdkConfiguration);
+        this.unions = new Unions(this.sdkConfiguration);
+        this.flattening = new Flattening(this.sdkConfiguration);
         this.globals = new Globals(this.sdkConfiguration);
+        this.parameters = new ParametersT(this.sdkConfiguration);
         this.nest = new Nest(this.sdkConfiguration);
         this.nested = new Nested(this.sdkConfiguration);
-        this.pagination = new Pagination(this.sdkConfiguration);
-        this.parameters = new ParametersT(this.sdkConfiguration);
         this.requestBodies = new RequestBodies(this.sdkConfiguration);
-        this.resource = new Resource(this.sdkConfiguration);
         this.responseBodies = new ResponseBodies(this.sdkConfiguration);
-        this.retries = new Retries(this.sdkConfiguration);
-        this.second = new Second(this.sdkConfiguration);
         this.servers = new Servers(this.sdkConfiguration);
         this.telemetry = new Telemetry(this.sdkConfiguration);
-        this.unions = new Unions(this.sdkConfiguration);
+        this.authNew = new AuthNew(this.sdkConfiguration);
+        this.auth = new Auth(this.sdkConfiguration);
+        this.documentation = new Documentation(this.sdkConfiguration);
+        this.resource = new Resource(this.sdkConfiguration);
+        this.first = new First(this.sdkConfiguration);
+        this.second = new Second(this.sdkConfiguration);
+        this.pagination = new Pagination(this.sdkConfiguration);
+        this.retries = new Retries(this.sdkConfiguration);
     }
 
     async putAnythingIgnoredGeneration(
@@ -350,9 +350,9 @@ export class SDK {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.putAnythingIgnoredGeneration200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.PutAnythingIgnoredGeneration200ApplicationJSON
+                        operations.PutAnythingIgnoredGenerationResponseBody
                     );
                 } else {
                     throw new errors.SDKError(

@@ -49,8 +49,8 @@ module OpenApiSDK
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, Operations::ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON)
-          res.response_body_additional_properties_complex_numbers_post_200_application_json_object = out
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody)
+          res.object = out
         end
       end
       res
@@ -88,8 +88,8 @@ module OpenApiSDK
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, Operations::ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON)
-          res.response_body_additional_properties_date_post_200_application_json_object = out
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::ResponseBodyAdditionalPropertiesDatePostResponseBody)
+          res.object = out
         end
       end
       res
@@ -127,8 +127,8 @@ module OpenApiSDK
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, Operations::ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSON)
-          res.response_body_additional_properties_object_post_200_application_json_object = out
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::ResponseBodyAdditionalPropertiesObjectPostResponseBody)
+          res.object = out
         end
       end
       res
@@ -166,8 +166,8 @@ module OpenApiSDK
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, Operations::ResponseBodyAdditionalPropertiesPost200ApplicationJSON)
-          res.response_body_additional_properties_post_200_application_json_object = out
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::ResponseBodyAdditionalPropertiesPostResponseBody)
+          res.object = out
         end
       end
       res
@@ -258,7 +258,7 @@ module OpenApiSDK
           out = Utils.unmarshal_complex(r.env.response_body, Shared::TypedObject1)
           res.typed_object1 = out
         end
-        res.response_body_optional_get_200_text_plain_string = r.env.response_body if Utils.match_content_type(content_type, 'text/plain')
+        res.res = r.env.response_body if Utils.match_content_type(content_type, 'text/plain')
       end
       res
     end
@@ -377,8 +377,8 @@ module OpenApiSDK
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, Operations::ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON)
-          res.response_body_zero_value_complex_type_ptrs_post_200_application_json_object = out
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::ResponseBodyZeroValueComplexTypePtrsPostResponseBody)
+          res.object = out
         end
       end
       res

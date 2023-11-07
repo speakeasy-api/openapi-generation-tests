@@ -38,16 +38,16 @@ class RequestBodyPostJsonDataTypesDecimalStrResponse
     /**
      * OK
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJSONDataTypesDecimalStr200ApplicationJSON $requestBodyPostJSONDataTypesDecimalStr200ApplicationJSONObject
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesDecimalStrResponseBody $object
      */
 	
-    public ?RequestBodyPostJSONDataTypesDecimalStr200ApplicationJSON $requestBodyPostJSONDataTypesDecimalStr200ApplicationJSONObject = null;
+    public ?RequestBodyPostJsonDataTypesDecimalStrResponseBody $object = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->requestBodyPostJSONDataTypesDecimalStr200ApplicationJSONObject = null;
+		$this->object = null;
 	}
 }

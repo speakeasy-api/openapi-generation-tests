@@ -38,16 +38,16 @@ class RequestBodyPostEmptyObjectResponse
     /**
      * OK
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostEmptyObject200ApplicationJSON $requestBodyPostEmptyObject200ApplicationJSONObject
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostEmptyObjectResponseBody $object
      */
 	
-    public ?RequestBodyPostEmptyObject200ApplicationJSON $requestBodyPostEmptyObject200ApplicationJSONObject = null;
+    public ?RequestBodyPostEmptyObjectResponseBody $object = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->requestBodyPostEmptyObject200ApplicationJSONObject = null;
+		$this->object = null;
 	}
 }

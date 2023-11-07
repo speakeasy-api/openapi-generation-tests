@@ -4,8 +4,9 @@ package tests
 
 import (
 	"context"
-	"openapi/pkg/models/sdkerrors"
 	"testing"
+
+	"openapi/pkg/models/sdkerrors"
 
 	sdk "openapi"
 
@@ -103,7 +104,7 @@ func TestStatusGetErrorXSpeakeasyErrors(t *testing.T) {
 	assert.Error(t, err)
 	assert.Equal(t, `{"code":"501","message":"an error occurred","type":"internal"}`, err.Error())
 
-	var e501 *sdkerrors.StatusGetXSpeakeasyErrors501ApplicationJSON
+	var e501 *sdkerrors.StatusGetXSpeakeasyErrorsResponseBody
 	if assert.ErrorAs(t, err, &e501) {
 		assert.Equal(t, "501", *e501.Code)
 		assert.Equal(t, 501, e501.RawResponse.StatusCode)

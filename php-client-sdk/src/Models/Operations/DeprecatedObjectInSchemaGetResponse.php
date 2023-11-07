@@ -38,16 +38,16 @@ class DeprecatedObjectInSchemaGetResponse
     /**
      * A successful response that contains a deprecatedObject sent in the request body
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\DeprecatedObjectInSchemaGet200ApplicationJSON $deprecatedObjectInSchemaGet200ApplicationJSONObject
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\DeprecatedObjectInSchemaGetResponseBody $object
      */
 	
-    public ?DeprecatedObjectInSchemaGet200ApplicationJSON $deprecatedObjectInSchemaGet200ApplicationJSONObject = null;
+    public ?DeprecatedObjectInSchemaGetResponseBody $object = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->deprecatedObjectInSchemaGet200ApplicationJSONObject = null;
+		$this->object = null;
 	}
 }

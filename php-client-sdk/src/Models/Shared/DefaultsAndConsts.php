@@ -40,12 +40,12 @@ class DefaultsAndConsts
     public string $constDecimalStr;
     
 	#[\JMS\Serializer\Annotation\SerializedName('constEnumInt')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsConstEnumInt>')]
-    public DefaultsAndConstsConstEnumInt $constEnumInt;
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\ConstEnumInt>')]
+    public ConstEnumInt $constEnumInt;
     
 	#[\JMS\Serializer\Annotation\SerializedName('constEnumStr')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsConstEnumStr>')]
-    public DefaultsAndConstsConstEnumStr $constEnumStr;
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\ConstEnumStr>')]
+    public ConstEnumStr $constEnumStr;
     
 	#[\JMS\Serializer\Annotation\SerializedName('constInt')]
     #[\JMS\Serializer\Annotation\Type('int')]
@@ -99,14 +99,14 @@ class DefaultsAndConsts
     public ?string $defaultDecimalStr = null;
     
 	#[\JMS\Serializer\Annotation\SerializedName('defaultEnumInt')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsDefaultEnumInt>')]
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\DefaultEnumInt>')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?DefaultsAndConstsDefaultEnumInt $defaultEnumInt = null;
+    public ?DefaultEnumInt $defaultEnumInt = null;
     
 	#[\JMS\Serializer\Annotation\SerializedName('defaultEnumStr')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsDefaultEnumStr>')]
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\DefaultEnumStr>')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?DefaultsAndConstsDefaultEnumStr $defaultEnumStr = null;
+    public ?DefaultEnumStr $defaultEnumStr = null;
     
 	#[\JMS\Serializer\Annotation\SerializedName('defaultInt')]
     #[\JMS\Serializer\Annotation\Type('int')]
@@ -146,8 +146,8 @@ class DefaultsAndConsts
 		$this->constDateTime = new \DateTime();
 		$this->constDecimal = 0;
 		$this->constDecimalStr = "";
-		$this->constEnumInt = \OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsConstEnumInt::One;
-		$this->constEnumStr = \OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsConstEnumStr::One;
+		$this->constEnumInt = \OpenAPI\OpenAPI\Models\Shared\ConstEnumInt::One;
+		$this->constEnumStr = \OpenAPI\OpenAPI\Models\Shared\ConstEnumStr::One;
 		$this->constInt = 0;
 		$this->constNum = 0;
 		$this->constStr = "";

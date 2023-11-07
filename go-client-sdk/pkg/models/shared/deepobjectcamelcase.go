@@ -4,61 +4,61 @@ package shared
 
 import (
 	"errors"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 )
 
-type DeepObjectCamelCaseAnyValType string
+type AnyValType string
 
 const (
-	DeepObjectCamelCaseAnyValTypeSimpleObjectCamelCase DeepObjectCamelCaseAnyValType = "simpleObjectCamelCase"
-	DeepObjectCamelCaseAnyValTypeStr                   DeepObjectCamelCaseAnyValType = "str"
+	AnyValTypeSimpleObjectCamelCase AnyValType = "simpleObjectCamelCase"
+	AnyValTypeStr                   AnyValType = "str"
 )
 
-type DeepObjectCamelCaseAnyVal struct {
+type AnyVal struct {
 	SimpleObjectCamelCase *SimpleObjectCamelCase
 	Str                   *string
 
-	Type DeepObjectCamelCaseAnyValType
+	Type AnyValType
 }
 
-func CreateDeepObjectCamelCaseAnyValSimpleObjectCamelCase(simpleObjectCamelCase SimpleObjectCamelCase) DeepObjectCamelCaseAnyVal {
-	typ := DeepObjectCamelCaseAnyValTypeSimpleObjectCamelCase
+func CreateAnyValSimpleObjectCamelCase(simpleObjectCamelCase SimpleObjectCamelCase) AnyVal {
+	typ := AnyValTypeSimpleObjectCamelCase
 
-	return DeepObjectCamelCaseAnyVal{
+	return AnyVal{
 		SimpleObjectCamelCase: &simpleObjectCamelCase,
 		Type:                  typ,
 	}
 }
 
-func CreateDeepObjectCamelCaseAnyValStr(str string) DeepObjectCamelCaseAnyVal {
-	typ := DeepObjectCamelCaseAnyValTypeStr
+func CreateAnyValStr(str string) AnyVal {
+	typ := AnyValTypeStr
 
-	return DeepObjectCamelCaseAnyVal{
+	return AnyVal{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func (u *DeepObjectCamelCaseAnyVal) UnmarshalJSON(data []byte) error {
+func (u *AnyVal) UnmarshalJSON(data []byte) error {
 
 	simpleObjectCamelCase := SimpleObjectCamelCase{}
 	if err := utils.UnmarshalJSON(data, &simpleObjectCamelCase, "", true, true); err == nil {
 		u.SimpleObjectCamelCase = &simpleObjectCamelCase
-		u.Type = DeepObjectCamelCaseAnyValTypeSimpleObjectCamelCase
+		u.Type = AnyValTypeSimpleObjectCamelCase
 		return nil
 	}
 
 	str := ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = DeepObjectCamelCaseAnyValTypeStr
+		u.Type = AnyValTypeStr
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u DeepObjectCamelCaseAnyVal) MarshalJSON() ([]byte, error) {
+func (u AnyVal) MarshalJSON() ([]byte, error) {
 	if u.SimpleObjectCamelCase != nil {
 		return utils.MarshalJSON(u.SimpleObjectCamelCase, "", true)
 	}
@@ -71,7 +71,7 @@ func (u DeepObjectCamelCaseAnyVal) MarshalJSON() ([]byte, error) {
 }
 
 type DeepObjectCamelCase struct {
-	AnyVal  DeepObjectCamelCaseAnyVal        `json:"any_val"`
+	AnyVal  AnyVal                           `json:"any_val"`
 	ArrVal  []SimpleObjectCamelCase          `json:"arr_val"`
 	BoolVal bool                             `json:"bool_val"`
 	IntVal  int64                            `json:"int_val"`
@@ -83,9 +83,9 @@ type DeepObjectCamelCase struct {
 	Type   *string               `json:"type,omitempty"`
 }
 
-func (o *DeepObjectCamelCase) GetAnyVal() DeepObjectCamelCaseAnyVal {
+func (o *DeepObjectCamelCase) GetAnyVal() AnyVal {
 	if o == nil {
-		return DeepObjectCamelCaseAnyVal{}
+		return AnyVal{}
 	}
 	return o.AnyVal
 }

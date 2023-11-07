@@ -1,5 +1,5 @@
-# ResourceSDK
-(*Resource*)
+# Resource
+(*.Resource*)
 
 ### Available Operations
 
@@ -14,11 +14,11 @@
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -27,9 +27,9 @@ var sdk = new SDKSDK(
 );
 
 var res = await sdk.Resource.CreateFileAsync(new CreateFileRequestBody() {
-    File = new CreateFileRequestBodyFile() {
-        Content = "`'$Z`(L/RH as bytes <<<>>>",
-        File = "string",
+    File = new CreateFileFile() {
+        Content = "0xf10df1a3b9 as bytes <<<>>>",
+        FileName = "rap_national.mp4v",
     },
 });
 
@@ -53,11 +53,11 @@ var res = await sdk.Resource.CreateFileAsync(new CreateFileRequestBody() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using System;
+using Openapi;
+using Openapi.Models.Shared;
+using System.Collections.Generic;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -66,8 +66,8 @@ var sdk = new SDKSDK(
 );
 
 var res = await sdk.Resource.CreateResourceAsync(new ExampleResource() {
-    Chocolates = new List<ExampleResourceChocolates>() {
-        new ExampleResourceChocolates() {
+    Chocolates = new List<Chocolates>() {
+        new Chocolates() {
             Description = "Digitized optimal archive",
         },
     },
@@ -108,11 +108,11 @@ var res = await sdk.Resource.CreateResourceAsync(new ExampleResource() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -142,11 +142,11 @@ var res = await sdk.Resource.DeleteResourceAsync("string");
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -176,11 +176,11 @@ var res = await sdk.Resource.GetResourceAsync("string");
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },

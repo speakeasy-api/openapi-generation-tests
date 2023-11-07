@@ -6,12 +6,12 @@ import (
 	"net/http"
 )
 
-// PutAnythingIgnoredGeneration200ApplicationJSON - OK
-type PutAnythingIgnoredGeneration200ApplicationJSON struct {
+// PutAnythingIgnoredGenerationResponseBody - OK
+type PutAnythingIgnoredGenerationResponseBody struct {
 	JSON *string `json:"json,omitempty"`
 }
 
-func (o *PutAnythingIgnoredGeneration200ApplicationJSON) GetJSON() *string {
+func (o *PutAnythingIgnoredGenerationResponseBody) GetJSON() *string {
 	if o == nil {
 		return nil
 	}
@@ -26,7 +26,7 @@ type PutAnythingIgnoredGenerationResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	PutAnythingIgnoredGeneration200ApplicationJSONObject *PutAnythingIgnoredGeneration200ApplicationJSON
+	Object *PutAnythingIgnoredGenerationResponseBody
 }
 
 func (o *PutAnythingIgnoredGenerationResponse) GetContentType() string {
@@ -50,9 +50,9 @@ func (o *PutAnythingIgnoredGenerationResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *PutAnythingIgnoredGenerationResponse) GetPutAnythingIgnoredGeneration200ApplicationJSONObject() *PutAnythingIgnoredGeneration200ApplicationJSON {
+func (o *PutAnythingIgnoredGenerationResponse) GetObject() *PutAnythingIgnoredGenerationResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.PutAnythingIgnoredGeneration200ApplicationJSONObject
+	return o.Object
 }

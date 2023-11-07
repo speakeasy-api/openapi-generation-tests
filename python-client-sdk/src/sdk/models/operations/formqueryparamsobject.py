@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import simpleobject as shared_simpleobject
+from ...models.shared import simpleobject as shared_simpleobject
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional
@@ -21,7 +21,7 @@ class FormQueryParamsObjectRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class FormQueryParamsObjectResArgs:
+class FormQueryParamsObjectArgs:
     any: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }})
     bool: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool') }})
     date_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date') }})
@@ -51,7 +51,7 @@ class FormQueryParamsObjectResArgs:
 @dataclasses.dataclass
 class FormQueryParamsObjectRes:
     r"""OK"""
-    args: FormQueryParamsObjectResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
+    args: FormQueryParamsObjectArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
 

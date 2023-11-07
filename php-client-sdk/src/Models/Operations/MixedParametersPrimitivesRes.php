@@ -18,12 +18,12 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 class MixedParametersPrimitivesRes
 {
 	#[\JMS\Serializer\Annotation\SerializedName('args')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\MixedParametersPrimitivesResArgs')]
-    public MixedParametersPrimitivesResArgs $args;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\MixedParametersPrimitivesArgs')]
+    public MixedParametersPrimitivesArgs $args;
     
 	#[\JMS\Serializer\Annotation\SerializedName('headers')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\MixedParametersPrimitivesResHeaders')]
-    public MixedParametersPrimitivesResHeaders $headers;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\MixedParametersPrimitivesHeaders')]
+    public MixedParametersPrimitivesHeaders $headers;
     
 	#[\JMS\Serializer\Annotation\SerializedName('url')]
     #[\JMS\Serializer\Annotation\Type('string')]
@@ -31,8 +31,8 @@ class MixedParametersPrimitivesRes
     
 	public function __construct()
 	{
-		$this->args = new \OpenAPI\OpenAPI\Models\Operations\MixedParametersPrimitivesResArgs();
-		$this->headers = new \OpenAPI\OpenAPI\Models\Operations\MixedParametersPrimitivesResHeaders();
+		$this->args = new \OpenAPI\OpenAPI\Models\Operations\MixedParametersPrimitivesArgs();
+		$this->headers = new \OpenAPI\OpenAPI\Models\Operations\MixedParametersPrimitivesHeaders();
 		$this->url = "";
 	}
 }

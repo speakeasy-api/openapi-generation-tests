@@ -3,10 +3,10 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct Oauth2OverrideRequest {
 
-        /// Creates a request model
+        /// Creates an object
         ///
         ///
         public init() {

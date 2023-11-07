@@ -53,7 +53,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(obj_param: Shared::SimpleObject, obj_arr_param: T.nilable(Operations::DeepObjectQueryParamsObjectObjArrParam)).returns(Utils::FieldAugmented) }
+    sig { params(obj_param: Shared::SimpleObject, obj_arr_param: T.nilable(Operations::ObjArrParam)).returns(Utils::FieldAugmented) }
     def deep_object_query_params_object(obj_param, obj_arr_param = nil)
 
       request = Operations::DeepObjectQueryParamsObjectRequest.new(
@@ -164,7 +164,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(obj_param_exploded: Operations::FormQueryParamsCamelObjectObjParamExploded, obj_param: T.nilable(Operations::FormQueryParamsCamelObjectObjParam)).returns(Utils::FieldAugmented) }
+    sig { params(obj_param_exploded: Operations::ObjParamExploded, obj_param: T.nilable(Operations::ObjParam)).returns(Utils::FieldAugmented) }
     def form_query_params_camel_object(obj_param_exploded, obj_param = nil)
 
       request = Operations::FormQueryParamsCamelObjectRequest.new(

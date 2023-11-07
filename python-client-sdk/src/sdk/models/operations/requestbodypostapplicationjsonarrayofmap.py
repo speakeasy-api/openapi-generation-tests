@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import simpleobject as shared_simpleobject
+from ...models.shared import simpleobject as shared_simpleobject
 from typing import Dict, List, Optional
 
 REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_MAP_SERVERS = [
@@ -17,9 +17,9 @@ class RequestBodyPostApplicationJSONArrayOfMapResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    maps: Optional[List[Dict[str, shared_simpleobject.SimpleObject]]] = dataclasses.field(default=None)
-    r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
+    res: Optional[List[Dict[str, shared_simpleobject.SimpleObject]]] = dataclasses.field(default=None)
+    r"""OK"""
     
 

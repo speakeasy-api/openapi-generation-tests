@@ -340,7 +340,7 @@ class Unions:
         
         url = base_url + '/anything/unionBigIntDecimal'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.union_encoder({int: utils.bigintencoder(True), Decimal: utils.decimalencoder(True, False)}))
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.union_encoder({int: utils.bigintencoder(False), Decimal: utils.decimalencoder(False, False)}))
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -404,7 +404,7 @@ class Unions:
         
         url = base_url + '/anything/unionDateTimeBigInt'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.union_encoder({datetime: utils.datetimeisoformat(True)}))
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.union_encoder({datetime: utils.datetimeisoformat(False)}))
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:

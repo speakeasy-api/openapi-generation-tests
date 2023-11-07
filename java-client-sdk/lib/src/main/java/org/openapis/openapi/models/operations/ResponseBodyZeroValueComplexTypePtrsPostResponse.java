@@ -46,10 +46,10 @@ public class ResponseBodyZeroValueComplexTypePtrsPostResponse {
      * OK
      */
     
-    public ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON responseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject;
+    public ResponseBodyZeroValueComplexTypePtrsPostResponseBody object;
 
-    public ResponseBodyZeroValueComplexTypePtrsPostResponse withResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject(ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON responseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject) {
-        this.responseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject = responseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject;
+    public ResponseBodyZeroValueComplexTypePtrsPostResponse withObject(ResponseBodyZeroValueComplexTypePtrsPostResponseBody object) {
+        this.object = object;
         return this;
     }
     

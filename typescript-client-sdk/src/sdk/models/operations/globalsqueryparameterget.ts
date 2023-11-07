@@ -11,7 +11,7 @@ export class GlobalsQueryParameterGetRequest extends SpeakeasyBase {
     globalQueryParam?: string;
 }
 
-export class GlobalsQueryParameterGetResArgs extends SpeakeasyBase {
+export class Args extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "globalQueryParam" })
     globalQueryParam: string;
@@ -23,8 +23,8 @@ export class GlobalsQueryParameterGetResArgs extends SpeakeasyBase {
 export class GlobalsQueryParameterGetRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "args" })
-    @Type(() => GlobalsQueryParameterGetResArgs)
-    args: GlobalsQueryParameterGetResArgs;
+    @Type(() => Args)
+    args: Args;
 }
 
 export class GlobalsQueryParameterGetResponse extends SpeakeasyBase {

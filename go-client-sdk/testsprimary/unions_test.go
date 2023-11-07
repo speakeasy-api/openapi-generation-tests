@@ -5,14 +5,14 @@ package tests
 import (
 	"bytes"
 	"context"
+	"math/big"
 	"net/http"
-	"testing"
-	"time"
-
 	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
 	"openapi/pkg/types"
 	"openapi/pkg/utils"
+	"testing"
+	"time"
 
 	sdk "openapi"
 
@@ -297,7 +297,7 @@ func TestNullableOneOfSchemaPost_Obj1(t *testing.T) {
 	res, err := s.Unions.NullableOneOfSchemaPost(context.Background(), &req)
 	require.NoError(t, err)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, operations.NullableOneOfSchemaPostResJSONTypeTypedObject1, res.Res.JSON.Type)
+	assert.Equal(t, operations.NullableOneOfSchemaPostJSONTypeTypedObject1, res.Res.JSON.Type)
 	assert.Equal(t, obj, *res.Res.JSON.TypedObject1)
 }
 
@@ -316,7 +316,7 @@ func TestNullableOneOfSchemaPost_Obj2(t *testing.T) {
 	res, err := s.Unions.NullableOneOfSchemaPost(context.Background(), &req)
 	require.NoError(t, err)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, operations.NullableOneOfSchemaPostResJSONTypeTypedObject2, res.Res.JSON.Type)
+	assert.Equal(t, operations.NullableOneOfSchemaPostJSONTypeTypedObject2, res.Res.JSON.Type)
 	assert.Equal(t, obj, *res.Res.JSON.TypedObject2)
 }
 
@@ -386,7 +386,7 @@ func TestNullableOneOfTypeInObject(t *testing.T) {
 func TestNullableOneOfRefInObject(t *testing.T) {
 	recordTest("unions-nullable-oneof-ref-in-object-post")
 
-	nullableOneOfTwoObj2 := shared.CreateNullableOneOfRefInObjectNullableOneOfTwoTypedObject2(shared.TypedObject2{Value: "two", Type: shared.TypedObject2TypeObj2})
+	nullableOneOfTwoObj2 := shared.CreateNullableOneOfTwoTypedObject2(shared.TypedObject2{Value: "two", Type: shared.TypedObject2TypeObj2})
 
 	tests := []struct {
 		name     string
@@ -396,7 +396,7 @@ func TestNullableOneOfRefInObject(t *testing.T) {
 		{
 			name: "Non-nullable field set only",
 			obj: shared.NullableOneOfRefInObject{
-				OneOfOne: shared.CreateNullableOneOfRefInObjectOneOfOneTypedObject1(shared.TypedObject1{Value: "one", Type: shared.TypedObject1TypeObj1}),
+				OneOfOne: shared.CreateOneOfOneTypedObject1(shared.TypedObject1{Value: "one", Type: shared.TypedObject1TypeObj1}),
 			},
 			wantJson: "{\"NullableOneOfOne\":null,\"NullableOneOfTwo\":null,\"OneOfOne\":{\"type\":\"obj1\",\"value\":\"one\"}}",
 		},
@@ -405,7 +405,7 @@ func TestNullableOneOfRefInObject(t *testing.T) {
 			obj: shared.NullableOneOfRefInObject{
 				NullableOneOfOne: nil,
 				NullableOneOfTwo: nil,
-				OneOfOne:         shared.CreateNullableOneOfRefInObjectOneOfOneTypedObject1(shared.TypedObject1{Value: "one", Type: shared.TypedObject1TypeObj1}),
+				OneOfOne:         shared.CreateOneOfOneTypedObject1(shared.TypedObject1{Value: "one", Type: shared.TypedObject1TypeObj1}),
 			},
 			wantJson: "{\"NullableOneOfOne\":null,\"NullableOneOfTwo\":null,\"OneOfOne\":{\"type\":\"obj1\",\"value\":\"one\"}}",
 		},
@@ -414,7 +414,7 @@ func TestNullableOneOfRefInObject(t *testing.T) {
 			obj: shared.NullableOneOfRefInObject{
 				NullableOneOfOne: &shared.TypedObject1{Value: "one", Type: shared.TypedObject1TypeObj1},
 				NullableOneOfTwo: &nullableOneOfTwoObj2,
-				OneOfOne:         shared.CreateNullableOneOfRefInObjectOneOfOneTypedObject1(shared.TypedObject1{Type: shared.TypedObject1TypeObj1}),
+				OneOfOne:         shared.CreateOneOfOneTypedObject1(shared.TypedObject1{Type: shared.TypedObject1TypeObj1}),
 			},
 			wantJson: "{\"NullableOneOfOne\":{\"type\":\"obj1\",\"value\":\"one\"},\"NullableOneOfTwo\":{\"type\":\"obj2\",\"value\":\"two\"},\"OneOfOne\":{\"type\":\"obj1\",\"value\":\"\"}}",
 		},
@@ -446,7 +446,7 @@ func TestPrimitiveTypeOneOfPost_String(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, operations.PrimitiveTypeOneOfPostResJSONTypeStr, res.Res.JSON.Type)
+	assert.Equal(t, operations.PrimitiveTypeOneOfPostJSONTypeStr, res.Res.JSON.Type)
 	assert.Equal(t, "test", *res.Res.JSON.Str)
 }
 
@@ -461,7 +461,7 @@ func TestPrimitiveTypeOneOfPost_Integer(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, operations.PrimitiveTypeOneOfPostResJSONTypeInteger, res.Res.JSON.Type)
+	assert.Equal(t, operations.PrimitiveTypeOneOfPostJSONTypeInteger, res.Res.JSON.Type)
 	assert.Equal(t, int64(111), *res.Res.JSON.Integer)
 }
 
@@ -476,7 +476,7 @@ func TestPrimitiveTypeOneOfPost_Number(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, operations.PrimitiveTypeOneOfPostResJSONTypeNumber, res.Res.JSON.Type)
+	assert.Equal(t, operations.PrimitiveTypeOneOfPostJSONTypeNumber, res.Res.JSON.Type)
 	assert.Equal(t, float64(22.2), *res.Res.JSON.Number)
 }
 
@@ -491,7 +491,7 @@ func TestPrimitiveTypeOneOfPost_Boolean(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, operations.PrimitiveTypeOneOfPostResJSONTypeBoolean, res.Res.JSON.Type)
+	assert.Equal(t, operations.PrimitiveTypeOneOfPostJSONTypeBoolean, res.Res.JSON.Type)
 	assert.Equal(t, true, *res.Res.JSON.Boolean)
 }
 
@@ -506,7 +506,7 @@ func TestMixedTypeOneOfPost_String(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, operations.MixedTypeOneOfPostResJSONTypeStr, res.Res.JSON.Type)
+	assert.Equal(t, operations.MixedTypeOneOfPostJSONTypeStr, res.Res.JSON.Type)
 	assert.Equal(t, "test", *res.Res.JSON.Str)
 }
 
@@ -521,7 +521,7 @@ func TestMixedTypeOneOfPost_Integer(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, operations.MixedTypeOneOfPostResJSONTypeInteger, res.Res.JSON.Type)
+	assert.Equal(t, operations.MixedTypeOneOfPostJSONTypeInteger, res.Res.JSON.Type)
 	assert.Equal(t, int64(111), *res.Res.JSON.Integer)
 }
 
@@ -538,6 +538,78 @@ func TestMixedTypeOneOfPost_Object(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, operations.MixedTypeOneOfPostResJSONTypeSimpleObject, res.Res.JSON.Type)
+	assert.Equal(t, operations.MixedTypeOneOfPostJSONTypeSimpleObject, res.Res.JSON.Type)
 	assert.Equal(t, obj, *res.Res.JSON.SimpleObject)
+}
+
+func TestDateNullUnion(t *testing.T) {
+	recordTest("unions-date-null")
+
+	s := sdk.New()
+	date := types.MustDateFromString("2020-01-01")
+	res, err := s.Unions.UnionDateNull(context.Background(), &date)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, types.MustDateFromString("2020-01-01"), *res.Res.JSON)
+}
+
+func TestDateTimeNullUnion(t *testing.T) {
+	recordTest("unions-datetime-null")
+
+	s := sdk.New()
+	dateTime := types.MustTimeFromString("2020-01-01T00:00:00Z")
+	res, err := s.Unions.UnionDateTimeNull(context.Background(), &dateTime)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, types.MustTimeFromString("2020-01-01T00:00:00Z"), *res.Res.JSON)
+}
+
+func TestDateTimeBigintUnion(t *testing.T) {
+	recordTest("unions-datetime-bigint")
+
+	s := sdk.New()
+
+	req := operations.CreateUnionDateTimeBigIntRequestBodyDateTime(types.MustTimeFromString("2020-01-01T00:00:00Z"))
+
+	res, err := s.Unions.UnionDateTimeBigInt(context.Background(), req)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, operations.UnionDateTimeBigIntJSONTypeDateTime, res.Res.JSON.Type)
+	assert.Equal(t, types.MustTimeFromString("2020-01-01T00:00:00Z"), *res.Res.JSON.DateTime)
+
+	nextReq := operations.CreateUnionDateTimeBigIntRequestBodyBigint(big.NewInt(9007199254740991))
+
+	nextRes, nextErr := s.Unions.UnionDateTimeBigInt(context.Background(), nextReq)
+	require.NoError(t, nextErr)
+	require.NotNil(t, nextRes)
+	assert.Equal(t, http.StatusOK, nextRes.StatusCode)
+	assert.Equal(t, operations.UnionDateTimeBigIntJSONTypeBigint, nextRes.Res.JSON.Type)
+	assert.Equal(t, big.NewInt(9007199254740991), nextRes.Res.JSON.Bigint)
+}
+
+func TestUnionBigintDecimal(t *testing.T) {
+	recordTest("unions-bigint-decimal")
+
+	s := sdk.New()
+
+	req := operations.CreateUnionBigIntDecimalRequestBodyDecimal(types.MustNewDecimalFromString("3.141592653589793"))
+
+	res, err := s.Unions.UnionBigIntDecimal(context.Background(), req)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, operations.UnionBigIntDecimalJSONTypeDecimal, res.Res.JSON.Type)
+	assert.Equal(t, types.MustNewDecimalFromString("3.141592653589793"), res.Res.JSON.Decimal)
+
+	nextReq := operations.CreateUnionBigIntDecimalRequestBodyBigint(big.NewInt(9007199254740991))
+
+	nextRes, nextErr := s.Unions.UnionBigIntDecimal(context.Background(), nextReq)
+	require.NoError(t, nextErr)
+	require.NotNil(t, nextRes)
+	assert.Equal(t, http.StatusOK, nextRes.StatusCode)
+	assert.Equal(t, operations.UnionBigIntDecimalJSONTypeBigint, nextRes.Res.JSON.Type)
+	assert.Equal(t, big.NewInt(9007199254740991), nextRes.Res.JSON.Bigint)
 }

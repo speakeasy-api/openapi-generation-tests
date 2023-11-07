@@ -7,7 +7,7 @@ extension Operations {
     public enum StatusGetXSpeakeasyErrorsResponse {
         case empty
         case error(Shared.Error)
-        case statusGetXSpeakeasyErrors501ApplicationJSONObject(Operations.StatusGetXSpeakeasyErrors501ApplicationJSON)
+        case object(Operations.StatusGetXSpeakeasyErrorsResponseBody)
 
         var isEmpty: Bool {
             if case .empty = self {
@@ -24,8 +24,8 @@ extension Operations {
             return value
         }
 
-        public func statusGetXSpeakeasyErrors501ApplicationJSONObject() throws -> Operations.StatusGetXSpeakeasyErrors501ApplicationJSON {
-            guard case .statusGetXSpeakeasyErrors501ApplicationJSONObject(let value) = self else {
+        public func object() throws -> Operations.StatusGetXSpeakeasyErrorsResponseBody {
+            guard case .object(let value) = self else {
                 throw OpenAPIError.missingResponseData
             }
             return value

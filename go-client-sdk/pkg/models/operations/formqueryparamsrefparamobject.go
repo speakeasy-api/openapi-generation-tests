@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
 type FormQueryParamsRefParamObjectRequest struct {
@@ -26,7 +26,7 @@ func (o *FormQueryParamsRefParamObjectRequest) GetRefObjParamExploded() *shared.
 	return o.RefObjParamExploded
 }
 
-type FormQueryParamsRefParamObjectResArgs struct {
+type FormQueryParamsRefParamObjectArgs struct {
 	Bool        string `json:"bool"`
 	Int         string `json:"int"`
 	Num         string `json:"num"`
@@ -34,35 +34,35 @@ type FormQueryParamsRefParamObjectResArgs struct {
 	Str         string `json:"str"`
 }
 
-func (o *FormQueryParamsRefParamObjectResArgs) GetBool() string {
+func (o *FormQueryParamsRefParamObjectArgs) GetBool() string {
 	if o == nil {
 		return ""
 	}
 	return o.Bool
 }
 
-func (o *FormQueryParamsRefParamObjectResArgs) GetInt() string {
+func (o *FormQueryParamsRefParamObjectArgs) GetInt() string {
 	if o == nil {
 		return ""
 	}
 	return o.Int
 }
 
-func (o *FormQueryParamsRefParamObjectResArgs) GetNum() string {
+func (o *FormQueryParamsRefParamObjectArgs) GetNum() string {
 	if o == nil {
 		return ""
 	}
 	return o.Num
 }
 
-func (o *FormQueryParamsRefParamObjectResArgs) GetRefObjParam() string {
+func (o *FormQueryParamsRefParamObjectArgs) GetRefObjParam() string {
 	if o == nil {
 		return ""
 	}
 	return o.RefObjParam
 }
 
-func (o *FormQueryParamsRefParamObjectResArgs) GetStr() string {
+func (o *FormQueryParamsRefParamObjectArgs) GetStr() string {
 	if o == nil {
 		return ""
 	}
@@ -71,13 +71,13 @@ func (o *FormQueryParamsRefParamObjectResArgs) GetStr() string {
 
 // FormQueryParamsRefParamObjectRes - OK
 type FormQueryParamsRefParamObjectRes struct {
-	Args FormQueryParamsRefParamObjectResArgs `json:"args"`
-	URL  string                               `json:"url"`
+	Args FormQueryParamsRefParamObjectArgs `json:"args"`
+	URL  string                            `json:"url"`
 }
 
-func (o *FormQueryParamsRefParamObjectRes) GetArgs() FormQueryParamsRefParamObjectResArgs {
+func (o *FormQueryParamsRefParamObjectRes) GetArgs() FormQueryParamsRefParamObjectArgs {
 	if o == nil {
-		return FormQueryParamsRefParamObjectResArgs{}
+		return FormQueryParamsRefParamObjectArgs{}
 	}
 	return o.Args
 }

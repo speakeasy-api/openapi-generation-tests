@@ -3,11 +3,11 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class DeepObjectQueryParamsObjectObjArrParam extends SpeakeasyBase {
+export class ObjArrParam extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "queryParam, name=arr" })
     arr?: string[];
 }
@@ -20,10 +20,10 @@ export class DeepObjectQueryParamsObjectRequest extends SpeakeasyBase {
     objParam: shared.SimpleObject;
 
     @SpeakeasyMetadata({ data: "queryParam, style=deepObject;explode=true;name=objArrParam" })
-    objArrParam?: DeepObjectQueryParamsObjectObjArrParam;
+    objArrParam?: ObjArrParam;
 }
 
-export class DeepObjectQueryParamsObjectResArgs extends SpeakeasyBase {
+export class DeepObjectQueryParamsObjectArgs extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "objArrParam[arr]" })
     objArrParamArr: string[];
@@ -107,8 +107,8 @@ export class DeepObjectQueryParamsObjectResArgs extends SpeakeasyBase {
 export class DeepObjectQueryParamsObjectRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "args" })
-    @Type(() => DeepObjectQueryParamsObjectResArgs)
-    args: DeepObjectQueryParamsObjectResArgs;
+    @Type(() => DeepObjectQueryParamsObjectArgs)
+    args: DeepObjectQueryParamsObjectArgs;
 
     @SpeakeasyMetadata()
     @Expose({ name: "url" })

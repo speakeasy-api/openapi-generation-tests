@@ -1,5 +1,5 @@
 # Flattening
-(*flattening*)
+(*.flattening*)
 
 ## Overview
 
@@ -26,10 +26,10 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.ComponentBodyAndParamConflictRequest;
 import org.openapis.openapi.models.operations.ComponentBodyAndParamConflictResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -42,7 +42,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ComponentBodyAndParamConflictResponse res = sdk.flattening.componentBodyAndParamConflict(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            ComponentBodyAndParamConflictResponse res = sdk.flattening.componentBodyAndParamConflict(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
@@ -56,8 +56,8 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Second;
+                int32Enum = Int32Enum.FIFTY_FIVE;
+                intEnum = IntEnum.Second;
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
@@ -99,10 +99,10 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.ComponentBodyAndParamNoConflictRequest;
 import org.openapis.openapi.models.operations.ComponentBodyAndParamNoConflictResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -115,7 +115,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ComponentBodyAndParamNoConflictResponse res = sdk.flattening.componentBodyAndParamNoConflict("string", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            ComponentBodyAndParamNoConflictResponse res = sdk.flattening.componentBodyAndParamNoConflict("string", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
@@ -129,8 +129,8 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Second;
+                int32Enum = Int32Enum.FIFTY_FIVE;
+                intEnum = IntEnum.Second;
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";

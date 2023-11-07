@@ -9,9 +9,9 @@ import org.openapis.openapi.utils.SpeakeasyMetadata;
 
 public class CreateFileRequestBody {
     @SpeakeasyMetadata("multipartForm:file")
-    public CreateFileRequestBodyFile file;
+    public CreateFileFile file;
 
-    public CreateFileRequestBody withFile(CreateFileRequestBodyFile file) {
+    public CreateFileRequestBody withFile(CreateFileFile file) {
         this.file = file;
         return this;
     }

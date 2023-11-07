@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/utils"
 	"strings"
 )
 
-// auth - Endpoints for testing authentication.
-type auth struct {
+// Auth - Endpoints for testing authentication.
+type Auth struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newAuth(sdkConfig sdkConfiguration) *auth {
-	return &auth{
+func newAuth(sdkConfig sdkConfiguration) *Auth {
+	return &Auth{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *auth) APIKeyAuth(ctx context.Context, security operations.APIKeyAuthSecurity) (*operations.APIKeyAuthResponse, error) {
+func (s *Auth) APIKeyAuth(ctx context.Context, security operations.APIKeyAuthSecurity) (*operations.APIKeyAuthResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/bearer#operation"
 
@@ -84,7 +84,7 @@ func (s *auth) APIKeyAuth(ctx context.Context, security operations.APIKeyAuthSec
 	return res, nil
 }
 
-func (s *auth) APIKeyAuthGlobal(ctx context.Context) (*operations.APIKeyAuthGlobalResponse, error) {
+func (s *Auth) APIKeyAuthGlobal(ctx context.Context) (*operations.APIKeyAuthGlobalResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/bearer"
 
@@ -143,7 +143,7 @@ func (s *auth) APIKeyAuthGlobal(ctx context.Context) (*operations.APIKeyAuthGlob
 	return res, nil
 }
 
-func (s *auth) BasicAuth(ctx context.Context, security operations.BasicAuthSecurity, passwd string, user string) (*operations.BasicAuthResponse, error) {
+func (s *Auth) BasicAuth(ctx context.Context, security operations.BasicAuthSecurity, passwd string, user string) (*operations.BasicAuthResponse, error) {
 	request := operations.BasicAuthRequest{
 		Passwd: passwd,
 		User:   user,
@@ -210,7 +210,7 @@ func (s *auth) BasicAuth(ctx context.Context, security operations.BasicAuthSecur
 	return res, nil
 }
 
-func (s *auth) BearerAuth(ctx context.Context, security operations.BearerAuthSecurity) (*operations.BearerAuthResponse, error) {
+func (s *Auth) BearerAuth(ctx context.Context, security operations.BearerAuthSecurity) (*operations.BearerAuthResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/bearer#bearer"
 
@@ -269,7 +269,7 @@ func (s *auth) BearerAuth(ctx context.Context, security operations.BearerAuthSec
 	return res, nil
 }
 
-func (s *auth) GlobalBearerAuth(ctx context.Context) (*operations.GlobalBearerAuthResponse, error) {
+func (s *Auth) GlobalBearerAuth(ctx context.Context) (*operations.GlobalBearerAuthResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/bearer#global"
 
@@ -328,7 +328,7 @@ func (s *auth) GlobalBearerAuth(ctx context.Context) (*operations.GlobalBearerAu
 	return res, nil
 }
 
-func (s *auth) Oauth2Auth(ctx context.Context, security operations.Oauth2AuthSecurity) (*operations.Oauth2AuthResponse, error) {
+func (s *Auth) Oauth2Auth(ctx context.Context, security operations.Oauth2AuthSecurity) (*operations.Oauth2AuthResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/bearer#oauth2"
 
@@ -387,7 +387,7 @@ func (s *auth) Oauth2Auth(ctx context.Context, security operations.Oauth2AuthSec
 	return res, nil
 }
 
-func (s *auth) Oauth2Override(ctx context.Context, security operations.Oauth2OverrideSecurity) (*operations.Oauth2OverrideResponse, error) {
+func (s *Auth) Oauth2Override(ctx context.Context, security operations.Oauth2OverrideSecurity) (*operations.Oauth2OverrideResponse, error) {
 	request := operations.Oauth2OverrideRequest{}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
@@ -450,7 +450,7 @@ func (s *auth) Oauth2Override(ctx context.Context, security operations.Oauth2Ove
 	return res, nil
 }
 
-func (s *auth) OpenIDConnectAuth(ctx context.Context, security operations.OpenIDConnectAuthSecurity) (*operations.OpenIDConnectAuthResponse, error) {
+func (s *Auth) OpenIDConnectAuth(ctx context.Context, security operations.OpenIDConnectAuthSecurity) (*operations.OpenIDConnectAuthResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/bearer#openIdConnect"
 

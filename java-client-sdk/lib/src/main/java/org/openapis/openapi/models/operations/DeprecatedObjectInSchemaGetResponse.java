@@ -46,10 +46,10 @@ public class DeprecatedObjectInSchemaGetResponse {
      * A successful response that contains a deprecatedObject sent in the request body
      */
     
-    public DeprecatedObjectInSchemaGet200ApplicationJSON deprecatedObjectInSchemaGet200ApplicationJSONObject;
+    public DeprecatedObjectInSchemaGetResponseBody object;
 
-    public DeprecatedObjectInSchemaGetResponse withDeprecatedObjectInSchemaGet200ApplicationJSONObject(DeprecatedObjectInSchemaGet200ApplicationJSON deprecatedObjectInSchemaGet200ApplicationJSONObject) {
-        this.deprecatedObjectInSchemaGet200ApplicationJSONObject = deprecatedObjectInSchemaGet200ApplicationJSONObject;
+    public DeprecatedObjectInSchemaGetResponse withObject(DeprecatedObjectInSchemaGetResponseBody object) {
+        this.object = object;
         return this;
     }
     

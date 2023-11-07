@@ -5,12 +5,12 @@ import Foundation
 extension Operations {
     /// OK
     public struct RequestBodyPostFormDeepRes {
-        public let form: Operations.RequestBodyPostFormDeepResForm
+        public let form: Operations.Form
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(form: Operations.RequestBodyPostFormDeepResForm) {
+        public init(form: Operations.Form) {
             self.form = form
         }
     }

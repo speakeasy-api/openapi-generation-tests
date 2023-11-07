@@ -5,8 +5,8 @@ package shared
 import (
 	"github.com/ericlagergren/decimal"
 	"math/big"
-	"openapi/pkg/types"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/types"
+	"openapi/v2/pkg/utils"
 	"time"
 )
 

@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class ExampleResourceChocolates < OpenApiSDK::Utils::FieldAugmented
+    class Chocolates < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -23,7 +23,7 @@ module OpenApiSDK
     end
 
 
-    class ExampleResourceEnumNumber < T::Enum
+    class EnumNumber < T::Enum
       enums do
         ONE = new(1)
         TWO = new(2)
@@ -33,7 +33,7 @@ module OpenApiSDK
 
 
 
-    class ExampleResourceEnumStr < T::Enum
+    class EnumStr < T::Enum
       enums do
         ONE = new('one')
         TWO = new('two')
@@ -47,7 +47,7 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :chocolates, T::Array[Shared::ExampleResourceChocolates], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('chocolates') } }
+      field :chocolates, T::Array[Shared::Chocolates], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('chocolates') } }
 
       field :id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('id') } }
 
@@ -61,9 +61,9 @@ module OpenApiSDK
 
       field :created_at, T.nilable(DateTime), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('createdAt'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-      field :enum_number, T.nilable(Shared::ExampleResourceEnumNumber), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('enumNumber'), 'decoder': Utils.enum_from_string(Shared::ExampleResourceEnumNumber, true) } }
+      field :enum_number, T.nilable(Shared::EnumNumber), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('enumNumber'), 'decoder': Utils.enum_from_string(Shared::EnumNumber, true) } }
 
-      field :enum_str, T.nilable(Shared::ExampleResourceEnumStr), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('enumStr'), 'decoder': Utils.enum_from_string(Shared::ExampleResourceEnumStr, true) } }
+      field :enum_str, T.nilable(Shared::EnumStr), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('enumStr'), 'decoder': Utils.enum_from_string(Shared::EnumStr, true) } }
 
       field :map_of_integer, T.nilable(T::Hash[Symbol, Integer]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('mapOfInteger') } }
 
@@ -72,7 +72,7 @@ module OpenApiSDK
       field :updated_at, T.nilable(DateTime), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('updatedAt'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
 
-      sig { params(chocolates: T::Array[Shared::ExampleResourceChocolates], id: String, name: String, vehicle: Object, array_of_number: T.nilable(T::Array[Float]), array_of_string: T.nilable(T::Array[String]), created_at: T.nilable(DateTime), enum_number: T.nilable(Shared::ExampleResourceEnumNumber), enum_str: T.nilable(Shared::ExampleResourceEnumStr), map_of_integer: T.nilable(T::Hash[Symbol, Integer]), map_of_string: T.nilable(T::Hash[Symbol, String]), updated_at: T.nilable(DateTime)).void }
+      sig { params(chocolates: T::Array[Shared::Chocolates], id: String, name: String, vehicle: Object, array_of_number: T.nilable(T::Array[Float]), array_of_string: T.nilable(T::Array[String]), created_at: T.nilable(DateTime), enum_number: T.nilable(Shared::EnumNumber), enum_str: T.nilable(Shared::EnumStr), map_of_integer: T.nilable(T::Hash[Symbol, Integer]), map_of_string: T.nilable(T::Hash[Symbol, String]), updated_at: T.nilable(DateTime)).void }
       def initialize(chocolates: nil, id: nil, name: nil, vehicle: nil, array_of_number: nil, array_of_string: nil, created_at: nil, enum_number: nil, enum_str: nil, map_of_integer: nil, map_of_string: nil, updated_at: nil)
         @chocolates = chocolates
         @id = id

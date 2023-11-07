@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import mapobjvaluecamelcase as shared_mapobjvaluecamelcase
+from ...models.shared import mapobjvaluecamelcase as shared_mapobjvaluecamelcase
 from typing import Optional
 
 

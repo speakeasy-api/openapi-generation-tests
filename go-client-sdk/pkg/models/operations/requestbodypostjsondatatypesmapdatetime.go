@@ -4,35 +4,35 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 	"time"
 )
 
-// RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON - OK
-type RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON struct {
+// RequestBodyPostJSONDataTypesMapDateTimeResponseBody - OK
+type RequestBodyPostJSONDataTypesMapDateTimeResponseBody struct {
 	Data string               `json:"data"`
 	JSON map[string]time.Time `json:"json"`
 }
 
-func (r RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON) MarshalJSON() ([]byte, error) {
+func (r RequestBodyPostJSONDataTypesMapDateTimeResponseBody) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(r, "", false)
 }
 
-func (r *RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON) UnmarshalJSON(data []byte) error {
+func (r *RequestBodyPostJSONDataTypesMapDateTimeResponseBody) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON) GetData() string {
+func (o *RequestBodyPostJSONDataTypesMapDateTimeResponseBody) GetData() string {
 	if o == nil {
 		return ""
 	}
 	return o.Data
 }
 
-func (o *RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON) GetJSON() map[string]time.Time {
+func (o *RequestBodyPostJSONDataTypesMapDateTimeResponseBody) GetJSON() map[string]time.Time {
 	if o == nil {
 		return map[string]time.Time{}
 	}
@@ -47,7 +47,7 @@ type RequestBodyPostJSONDataTypesMapDateTimeResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSONObject *RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON
+	Object *RequestBodyPostJSONDataTypesMapDateTimeResponseBody
 }
 
 func (o *RequestBodyPostJSONDataTypesMapDateTimeResponse) GetContentType() string {
@@ -71,9 +71,9 @@ func (o *RequestBodyPostJSONDataTypesMapDateTimeResponse) GetRawResponse() *http
 	return o.RawResponse
 }
 
-func (o *RequestBodyPostJSONDataTypesMapDateTimeResponse) GetRequestBodyPostJSONDataTypesMapDateTime200ApplicationJSONObject() *RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON {
+func (o *RequestBodyPostJSONDataTypesMapDateTimeResponse) GetObject() *RequestBodyPostJSONDataTypesMapDateTimeResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSONObject
+	return o.Object
 }

@@ -34,18 +34,18 @@ module OpenApiSDK
       field :content_type, String
       # HTTP response status code for this operation
       field :status_code, Integer
-      # OK
-      field :nullable_required_shared_object_post_200_application_json_string, T.nilable(String)
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
+      # OK
+      field :res, T.nilable(String)
 
 
-      sig { params(content_type: String, status_code: Integer, nullable_required_shared_object_post_200_application_json_string: T.nilable(String), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, nullable_required_shared_object_post_200_application_json_string: nil, raw_response: nil)
+      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), res: T.nilable(String)).void }
+      def initialize(content_type: nil, status_code: nil, raw_response: nil, res: nil)
         @content_type = content_type
         @status_code = status_code
-        @nullable_required_shared_object_post_200_application_json_string = nullable_required_shared_object_post_200_application_json_string
         @raw_response = raw_response
+        @res = res
       end
     end
   end

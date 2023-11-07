@@ -4,16 +4,16 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
-// GetGlobalNameOverride200ApplicationJSON - A successful response that contains the simpleObject sent in the request body
-type GetGlobalNameOverride200ApplicationJSON struct {
+// GetGlobalNameOverrideResponseBody - A successful response that contains the simpleObject sent in the request body
+type GetGlobalNameOverrideResponseBody struct {
 	// A simple object that uses all our supported primitive types and enums and has optional properties.
 	JSON *shared.SimpleObject `json:"json,omitempty"`
 }
 
-func (o *GetGlobalNameOverride200ApplicationJSON) GetJSON() *shared.SimpleObject {
+func (o *GetGlobalNameOverrideResponseBody) GetJSON() *shared.SimpleObject {
 	if o == nil {
 		return nil
 	}
@@ -28,7 +28,7 @@ type GetGlobalNameOverrideResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A successful response that contains the simpleObject sent in the request body
-	GetGlobalNameOverride200ApplicationJSONObject *GetGlobalNameOverride200ApplicationJSON
+	Object *GetGlobalNameOverrideResponseBody
 }
 
 func (o *GetGlobalNameOverrideResponse) GetContentType() string {
@@ -52,9 +52,9 @@ func (o *GetGlobalNameOverrideResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *GetGlobalNameOverrideResponse) GetGetGlobalNameOverride200ApplicationJSONObject() *GetGlobalNameOverride200ApplicationJSON {
+func (o *GetGlobalNameOverrideResponse) GetObject() *GetGlobalNameOverrideResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.GetGlobalNameOverride200ApplicationJSONObject
+	return o.Object
 }

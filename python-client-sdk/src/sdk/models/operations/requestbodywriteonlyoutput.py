@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import writeonlyobject as shared_writeonlyobject
+from ...models.shared import writeonlyobject as shared_writeonlyobject
 from typing import Optional
 
 REQUEST_BODY_WRITE_ONLY_OUTPUT_SERVERS = [

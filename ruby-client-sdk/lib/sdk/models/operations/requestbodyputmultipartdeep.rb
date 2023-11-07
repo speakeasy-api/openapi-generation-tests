@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class RequestBodyPutMultipartDeepResForm < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPutMultipartDeepForm < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -45,10 +45,10 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :form, Operations::RequestBodyPutMultipartDeepResForm, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('form') } }
+      field :form, Operations::RequestBodyPutMultipartDeepForm, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('form') } }
 
 
-      sig { params(form: Operations::RequestBodyPutMultipartDeepResForm).void }
+      sig { params(form: Operations::RequestBodyPutMultipartDeepForm).void }
       def initialize(form: nil)
         @form = form
       end

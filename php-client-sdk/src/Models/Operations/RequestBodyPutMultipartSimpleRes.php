@@ -18,16 +18,16 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 class RequestBodyPutMultipartSimpleRes
 {
 	#[\JMS\Serializer\Annotation\SerializedName('form')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartSimpleResForm')]
-    public RequestBodyPutMultipartSimpleResForm $form;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartSimpleForm')]
+    public RequestBodyPutMultipartSimpleForm $form;
     
 	#[\JMS\Serializer\Annotation\SerializedName('headers')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartSimpleResHeaders')]
-    public RequestBodyPutMultipartSimpleResHeaders $headers;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartSimpleHeaders')]
+    public RequestBodyPutMultipartSimpleHeaders $headers;
     
 	public function __construct()
 	{
-		$this->form = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartSimpleResForm();
-		$this->headers = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartSimpleResHeaders();
+		$this->form = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartSimpleForm();
+		$this->headers = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartSimpleHeaders();
 	}
 }

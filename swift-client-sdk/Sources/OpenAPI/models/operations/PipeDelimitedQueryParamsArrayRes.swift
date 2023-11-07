@@ -5,13 +5,13 @@ import Foundation
 extension Operations {
     /// OK
     public struct PipeDelimitedQueryParamsArrayRes {
-        public let args: Operations.PipeDelimitedQueryParamsArrayResArgs
+        public let args: Operations.PipeDelimitedQueryParamsArrayArgs
         public let url: String
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(args: Operations.PipeDelimitedQueryParamsArrayResArgs, url: String) {
+        public init(args: Operations.PipeDelimitedQueryParamsArrayArgs, url: String) {
             self.args = args
             self.url = url
         }

@@ -9,10 +9,10 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/utils"
 	"strings"
 	"time"
 )
@@ -84,41 +84,41 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 //
 // https://speakeasyapi.dev/docs/home - Speakeasy Docs
 type SDK struct {
-	// Endpoints for testing authentication.
-	Auth *auth
-	// Endpoints for testing authentication.
-	AuthNew *authNew
-	// Testing for documentation extensions in Go.
-	Documentation *documentation
-	// Endpoints for testing error responses.
-	Errors *errors
-	First  *first
-	// Endpoints for testing flattening through request body and parameter combinations.
-	Flattening *flattening
 	// Endpoints for purely testing valid generation behavior.
-	Generation *generation
-	// Endpoints for testing global parameters.
-	Globals *globals
-	Nest    *nest
-	Nested  *nested
-	// Endpoints for testing the pagination extension
-	Pagination *pagination
-	// Endpoints for testing parameters.
-	Parameters *parameters
-	// Endpoints for testing request bodies.
-	RequestBodies *requestBodies
-	Resource      *resource
-	// Endpoints for testing response bodies.
-	ResponseBodies *responseBodies
-	// Endpoints for testing retries.
-	Retries *retries
-	Second  *second
-	// Endpoints for testing servers.
-	Servers *servers
-	// Endpoints for testing telemetry.
-	Telemetry *telemetry
+	Generation *Generation
+	// Endpoints for testing error responses.
+	Errors *Errors
 	// Endpoints for testing union types.
-	Unions *unions
+	Unions *Unions
+	// Endpoints for testing flattening through request body and parameter combinations.
+	Flattening *Flattening
+	// Endpoints for testing global parameters.
+	Globals *Globals
+	// Endpoints for testing parameters.
+	Parameters *Parameters
+	Nest       *Nest
+	Nested     *Nested
+	// Endpoints for testing request bodies.
+	RequestBodies *RequestBodies
+	// Endpoints for testing response bodies.
+	ResponseBodies *ResponseBodies
+	// Endpoints for testing servers.
+	Servers *Servers
+	// Endpoints for testing telemetry.
+	Telemetry *Telemetry
+	// Endpoints for testing authentication.
+	AuthNew *AuthNew
+	// Endpoints for testing authentication.
+	Auth *Auth
+	// Testing for documentation extensions in Go.
+	Documentation *Documentation
+	Resource      *Resource
+	First         *First
+	Second        *Second
+	// Endpoints for testing the pagination extension
+	Pagination *Pagination
+	// Endpoints for testing retries.
+	Retries *Retries
 
 	sdkConfiguration sdkConfiguration
 }
@@ -301,9 +301,9 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.1.0",
-			SDKVersion:        "1.39.4",
-			GenVersion:        "2.173.0",
-			UserAgent:         "speakeasy-sdk/go 1.39.4 2.173.0 0.1.0 openapi",
+			SDKVersion:        "2.0.0",
+			GenVersion:        "2.181.1",
+			UserAgent:         "speakeasy-sdk/go 2.0.0 2.181.1 0.1.0 openapi",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},
@@ -341,45 +341,45 @@ func New(opts ...SDKOption) *SDK {
 		}
 	}
 
-	sdk.Auth = newAuth(sdk.sdkConfiguration)
-
-	sdk.AuthNew = newAuthNew(sdk.sdkConfiguration)
-
-	sdk.Documentation = newDocumentation(sdk.sdkConfiguration)
+	sdk.Generation = newGeneration(sdk.sdkConfiguration)
 
 	sdk.Errors = newErrors(sdk.sdkConfiguration)
 
-	sdk.First = newFirst(sdk.sdkConfiguration)
+	sdk.Unions = newUnions(sdk.sdkConfiguration)
 
 	sdk.Flattening = newFlattening(sdk.sdkConfiguration)
 
-	sdk.Generation = newGeneration(sdk.sdkConfiguration)
-
 	sdk.Globals = newGlobals(sdk.sdkConfiguration)
+
+	sdk.Parameters = newParameters(sdk.sdkConfiguration)
 
 	sdk.Nest = newNest(sdk.sdkConfiguration)
 
 	sdk.Nested = newNested(sdk.sdkConfiguration)
 
-	sdk.Pagination = newPagination(sdk.sdkConfiguration)
-
-	sdk.Parameters = newParameters(sdk.sdkConfiguration)
-
 	sdk.RequestBodies = newRequestBodies(sdk.sdkConfiguration)
 
-	sdk.Resource = newResource(sdk.sdkConfiguration)
-
 	sdk.ResponseBodies = newResponseBodies(sdk.sdkConfiguration)
-
-	sdk.Retries = newRetries(sdk.sdkConfiguration)
-
-	sdk.Second = newSecond(sdk.sdkConfiguration)
 
 	sdk.Servers = newServers(sdk.sdkConfiguration)
 
 	sdk.Telemetry = newTelemetry(sdk.sdkConfiguration)
 
-	sdk.Unions = newUnions(sdk.sdkConfiguration)
+	sdk.AuthNew = newAuthNew(sdk.sdkConfiguration)
+
+	sdk.Auth = newAuth(sdk.sdkConfiguration)
+
+	sdk.Documentation = newDocumentation(sdk.sdkConfiguration)
+
+	sdk.Resource = newResource(sdk.sdkConfiguration)
+
+	sdk.First = newFirst(sdk.sdkConfiguration)
+
+	sdk.Second = newSecond(sdk.sdkConfiguration)
+
+	sdk.Pagination = newPagination(sdk.sdkConfiguration)
+
+	sdk.Retries = newRetries(sdk.sdkConfiguration)
 
 	return sdk
 }
@@ -433,12 +433,12 @@ func (s *SDK) PutAnythingIgnoredGeneration(ctx context.Context, request string) 
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.PutAnythingIgnoredGeneration200ApplicationJSON
+			var out operations.PutAnythingIgnoredGenerationResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.PutAnythingIgnoredGeneration200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}

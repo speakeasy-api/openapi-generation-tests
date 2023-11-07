@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class RequestBodyPostMultipleContentTypesSplitMultipartFormData < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostMultipleContentTypesSplitMultipartRequestBody < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 

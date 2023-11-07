@@ -9,17 +9,17 @@ import org.openapis.openapi.utils.HTTPClient;
 import org.openapis.openapi.utils.HTTPRequest;
 
 public class Nested {    
-	public NestedFirst first;    
-	public NestedSecond second;
+	public SDKNestedFirst first;    
+	public SDKSecond second;
 	
 	private SDKConfiguration sdkConfiguration;
 
 	public Nested(SDKConfiguration sdkConfiguration) {
 		this.sdkConfiguration = sdkConfiguration;
 		
-		this.first = new NestedFirst(this.sdkConfiguration);
+		this.first = new SDKNestedFirst(this.sdkConfiguration);
 		
-		this.second = new NestedSecond(this.sdkConfiguration);
+		this.second = new SDKSecond(this.sdkConfiguration);
 	}
 
     public org.openapis.openapi.models.operations.NestedGetResponse get() throws Exception {

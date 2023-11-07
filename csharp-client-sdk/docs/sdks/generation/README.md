@@ -1,5 +1,5 @@
-# GenerationSDK
-(*Generation*)
+# Generation
+(*.Generation*)
 
 ## Overview
 
@@ -33,10 +33,10 @@ Endpoints for purely testing valid generation behavior.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -60,10 +60,10 @@ var res = await sdk.Generation.AnchorTypesGetAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -87,10 +87,10 @@ var res = await sdk.Generation.ArrayCircularReferenceGetAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -114,12 +114,12 @@ var res = await sdk.Generation.CircularReferenceGetAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 using NodaTime;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -127,7 +127,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.Generation.DateParamWithDefaultAsync(LocalDate.FromDateTime(DateTime.Parse("2021-11-30")));
+var res = await sdk.Generation.DateParamWithDefaultAsync(LocalDate.FromDateTime(System.DateTime.Parse("2021-11-30")));
 
 // handle response
 ```
@@ -149,12 +149,11 @@ var res = await sdk.Generation.DateParamWithDefaultAsync(LocalDate.FromDateTime(
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
-using System;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -162,7 +161,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.Generation.DateTimeParamWithDefaultAsync(DateTime.Parse("2023-02-09T21:53:21.077Z"));
+var res = await sdk.Generation.DateTimeParamWithDefaultAsync(System.DateTime.Parse("2023-02-09T21:53:21.077Z"));
 
 // handle response
 ```
@@ -184,11 +183,11 @@ var res = await sdk.Generation.DateTimeParamWithDefaultAsync(DateTime.Parse("202
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -218,10 +217,10 @@ var res = await sdk.Generation.DecimalParamWithDefaultAsync(4060.06M);
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -251,10 +250,10 @@ var res = await sdk.Generation.DeprecatedFieldInSchemaPostAsync(new DeprecatedFi
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -280,11 +279,11 @@ var res = await sdk.Generation.DeprecatedObjectInSchemaGetAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -318,11 +317,11 @@ This is an endpoint setup to test deprecation with comments
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -353,11 +352,11 @@ var res = await sdk.Generation.DeprecatedOperationWithCommentsGetAsync("string",
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -387,10 +386,10 @@ var res = await sdk.Generation.EmptyObjectGetAsync(new EmptyObjectParam() {});
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -414,10 +413,10 @@ var res = await sdk.Generation.EmptyResponseObjectWithCommentGetAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -441,10 +440,11 @@ var res = await sdk.Generation.GlobalNameOverriddenAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Callbacks;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -468,11 +468,11 @@ var res = await sdk.Generation.IgnoredGenerationGetAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -480,17 +480,17 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.Generation.IgnoresPostAsync(new IgnoresPostApplicationJSON() {}, "string");
+var res = await sdk.Generation.IgnoresPostAsync(new IgnoresPostRequestBody() {}, "string");
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `RequestBody`                                                                       | [IgnoresPostApplicationJSON](../../models/operations/IgnoresPostApplicationJSON.md) | :heavy_check_mark:                                                                  | N/A                                                                                 |
-| `TestParam`                                                                         | *string*                                                                            | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `RequestBody`                                                               | [IgnoresPostRequestBody](../../models/operations/IgnoresPostRequestBody.md) | :heavy_check_mark:                                                          | N/A                                                                         |
+| `TestParam`                                                                 | *string*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
 
 
 ### Response
@@ -503,11 +503,11 @@ var res = await sdk.Generation.IgnoresPostAsync(new IgnoresPostApplicationJSON()
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -515,17 +515,17 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.Generation.NameOverrideAsync(SDK.Models.Operations.NameOverrideGetEnumNameOverride.Value3, "example");
+var res = await sdk.Generation.NameOverrideAsync(EnumNameOverride.Value3, "example");
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `TestEnumQueryParam`                                                                          | [NameOverrideGetEnumNameOverride](../../models/operations/NameOverrideGetEnumNameOverride.md) | :heavy_check_mark:                                                                            | An enum type                                                                                  | value3                                                                                        |
-| `TestQueryParam`                                                                              | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           | example                                                                                       |
+| Parameter                                                       | Type                                                            | Required                                                        | Description                                                     | Example                                                         |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `TestEnumQueryParam`                                            | [EnumNameOverride](../../models/operations/EnumNameOverride.md) | :heavy_check_mark:                                              | An enum type                                                    | value3                                                          |
+| `TestQueryParam`                                                | *string*                                                        | :heavy_check_mark:                                              | N/A                                                             | example                                                         |
 
 
 ### Response
@@ -538,10 +538,10 @@ var res = await sdk.Generation.NameOverrideAsync(SDK.Models.Operations.NameOverr
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -565,10 +565,10 @@ var res = await sdk.Generation.ObjectCircularReferenceGetAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -592,12 +592,12 @@ var res = await sdk.Generation.OneOfCircularReferenceGetAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 using NodaTime;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -605,7 +605,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.Generation.TypedParameterGenerationGetAsync(879275, LocalDate.FromDateTime(DateTime.Parse("2023-11-18")), 3346.96M, new TypedParameterGenerationGetObj() {
+var res = await sdk.Generation.TypedParameterGenerationGetAsync(879275, LocalDate.FromDateTime(System.DateTime.Parse("2023-11-18")), 3346.96M, new Obj() {
     Bool = false,
     Num = 4778.06D,
     Str = "string",
@@ -616,12 +616,12 @@ var res = await sdk.Generation.TypedParameterGenerationGetAsync(879275, LocalDat
 
 ### Parameters
 
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `Bigint`                                                                                    | *BigInteger*                                                                                | :heavy_minus_sign:                                                                          | N/A                                                                                         |
-| `Date`                                                                                      | [LocalDate](https://nodatime.org/3.1.x/api/NodaTime.LocalDate.html)                         | :heavy_minus_sign:                                                                          | N/A                                                                                         |
-| `Decimal`                                                                                   | *decimal*                                                                                   | :heavy_minus_sign:                                                                          | N/A                                                                                         |
-| `Obj`                                                                                       | [TypedParameterGenerationGetObj](../../models/operations/TypedParameterGenerationGetObj.md) | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `Bigint`                                                            | *BigInteger*                                                        | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `Date`                                                              | [LocalDate](https://nodatime.org/3.1.x/api/NodaTime.LocalDate.html) | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `Decimal`                                                           | *decimal*                                                           | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `Obj`                                                               | [Obj](../../models/operations/Obj.md)                               | :heavy_minus_sign:                                                  | N/A                                                                 |
 
 
 ### Response
@@ -639,13 +639,12 @@ Usage example docs
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Operations;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     globalPathParam: 100,
     globalQueryParam: "some example global query param"
 );
@@ -657,13 +656,13 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
     BigintParameter = 168827,
     BigintStrParameter = 446729,
     BoolParameter = false,
-    DateParameter = LocalDate.FromDateTime(DateTime.Parse("2023-06-11")),
-    DateTimeDefaultParameter = DateTime.Parse("2022-07-22T13:16:48.221Z"),
-    DateTimeParameter = DateTime.Parse("2021-10-21T09:16:58.799Z"),
+    DateParameter = LocalDate.FromDateTime(System.DateTime.Parse("2023-06-11")),
+    DateTimeDefaultParameter = System.DateTime.Parse("2022-07-22T13:16:48.221Z"),
+    DateTimeParameter = System.DateTime.Parse("2021-10-21T09:16:58.799Z"),
     DecimalParameter = 5223.72M,
     DecimalStrParameter = 2911.37M,
     DoubleParameter = 6946.59D,
-    EnumParameter = SDK.Models.Operations.UsageExamplePostEnumParameter.Value1,
+    EnumParameter = EnumParameter.Value1,
     FalseyNumberParameter = 0D,
     Float32Parameter = 1029.75F,
     FloatParameter = 5669.99D,
@@ -676,14 +675,14 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
         SimpleObject = new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -694,7 +693,7 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
             StrOpt = "testOptional",
         },
     },
-    OptEnumParameter = SDK.Models.Operations.UsageExamplePostOptEnumParameter.Value3,
+    OptEnumParameter = OptEnumParameter.Value3,
 });
 
 // handle response

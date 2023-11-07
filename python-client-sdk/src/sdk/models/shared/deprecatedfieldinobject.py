@@ -7,7 +7,7 @@ from enum import Enum
 from sdk import utils
 from typing import Optional
 
-class DeprecatedFieldInObjectDeprecatedEnum(str, Enum):
+class DeprecatedEnum(str, Enum):
     r"""Deprecated class: This enum is deprecated."""
     A = 'a'
     B = 'b'
@@ -17,7 +17,7 @@ class DeprecatedFieldInObjectDeprecatedEnum(str, Enum):
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class DeprecatedFieldInObject:
-    deprecated_enum: Optional[DeprecatedFieldInObjectDeprecatedEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('deprecatedEnum'), 'exclude': lambda f: f is None }})
+    deprecated_enum: Optional[DeprecatedEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('deprecatedEnum'), 'exclude': lambda f: f is None }})
     r"""Deprecated field: This enum is deprecated."""
     deprecated_field: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('deprecatedField'), 'exclude': lambda f: f is None }})
     r"""Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible. Use new_field instead."""

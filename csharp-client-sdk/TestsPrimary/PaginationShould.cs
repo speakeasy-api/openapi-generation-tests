@@ -8,12 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using Xunit;
-using SDK;
-using SDK.Models.Shared;
-using System.Collections.Generic;
+using Openapi;
+using Openapi.Models.Shared;
 using System.Linq;
 using System.Threading.Tasks;
-using SDK.Models.Operations;
+using Openapi.Models.Operations;
 
 public class PaginationShould
 {
@@ -21,7 +20,7 @@ public class PaginationShould
     public async Task PaginationLimitOffsetPageParams()
     {
         CommonHelpers.RecordTest("pagination-limitOffset-page-params");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var serverLimit = 20;
 
@@ -34,7 +33,7 @@ public class PaginationShould
         var nextRes = await res.Next();
         Assert.Equal(200, nextRes.StatusCode);
         Assert.NotNull(nextRes.Res);
-        Assert.Equal(nextRes.Res.ResultArray.Count(), 0);
+        Assert.Empty(nextRes.Res.ResultArray);
 
         var nullRes = await nextRes.Next();
         Assert.Null(nullRes);
@@ -44,7 +43,7 @@ public class PaginationShould
     public async Task PaginationLimitOffsetPageBody()
     {
         CommonHelpers.RecordTest("pagination-limitOffset-page-body");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
         var limit = 15;
 
         var res = await sdk.Pagination.PaginationLimitOffsetPageBodyAsync(request: new LimitOffsetConfig{Page = 1, Limit = limit});
@@ -66,7 +65,7 @@ public class PaginationShould
     public async Task PaginationLimitOffsetOffsetParams()
     {
         CommonHelpers.RecordTest("pagination-limitOffset-offset-params");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
         var limit = 15;
 
         var res = await sdk.Pagination.PaginationLimitOffsetOffsetParamsAsync(limit: limit, offset: 0);
@@ -88,7 +87,7 @@ public class PaginationShould
     public async Task PaginationLimitOffsetOffsetBody()
     {
         CommonHelpers.RecordTest("pagination-limitOffset-offset-body");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
         var limit = 15;
 
         var res = await sdk.Pagination.PaginationLimitOffsetOffsetBodyAsync(request: new LimitOffsetConfig{Limit = limit, Offset = 0});
@@ -110,7 +109,7 @@ public class PaginationShould
     public async Task PaginationCursorParams()
     {
         CommonHelpers.RecordTest("pagination-cursor-params");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
         var limit = 15;
 
         var res = await sdk.Pagination.PaginationCursorParamsAsync(cursor: -1);
@@ -127,7 +126,7 @@ public class PaginationShould
         var penultimateRes = await nextRes.Next();
         Assert.Equal(200, penultimateRes.StatusCode);
         Assert.NotNull(penultimateRes.Res);
-        Assert.Equal(penultimateRes.Res.ResultArray.Count(), 0);
+        Assert.Empty(penultimateRes.Res.ResultArray);
 
 
         var nullRes = await penultimateRes.Next();
@@ -138,7 +137,7 @@ public class PaginationShould
     public async Task PaginationCursorBody()
     {
         CommonHelpers.RecordTest("pagination-cursor-body");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
         var limit = 15;
 
         var res = await sdk.Pagination.PaginationCursorBodyAsync(request: new PaginationCursorBodyRequestBody{Cursor = -1});
@@ -155,7 +154,7 @@ public class PaginationShould
         var penultimateRes = await nextRes.Next();
         Assert.Equal(200, penultimateRes.StatusCode);
         Assert.NotNull(penultimateRes.Res);
-        Assert.Equal(penultimateRes.Res.ResultArray.Count(), 0);
+        Assert.Empty(penultimateRes.Res.ResultArray);
 
 
         var nullRes = await penultimateRes.Next();

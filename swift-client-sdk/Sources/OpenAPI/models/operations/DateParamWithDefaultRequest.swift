@@ -3,13 +3,13 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct DateParamWithDefaultRequest: APIValue {
         /// A date parameter with a default value
         @DateOnly
         public private(set) var dateInput: Date
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         /// - Parameter dateInput: A date parameter with a default value
         ///

@@ -5,8 +5,8 @@ package operations
 import (
 	"errors"
 	"net/http"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/utils"
 )
 
 type NullableOneOfSchemaPostRequestBodyType string
@@ -72,58 +72,58 @@ func (u NullableOneOfSchemaPostRequestBody) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-type NullableOneOfSchemaPostResJSONType string
+type NullableOneOfSchemaPostJSONType string
 
 const (
-	NullableOneOfSchemaPostResJSONTypeTypedObject1 NullableOneOfSchemaPostResJSONType = "typedObject1"
-	NullableOneOfSchemaPostResJSONTypeTypedObject2 NullableOneOfSchemaPostResJSONType = "typedObject2"
+	NullableOneOfSchemaPostJSONTypeTypedObject1 NullableOneOfSchemaPostJSONType = "typedObject1"
+	NullableOneOfSchemaPostJSONTypeTypedObject2 NullableOneOfSchemaPostJSONType = "typedObject2"
 )
 
-type NullableOneOfSchemaPostResJSON struct {
+type NullableOneOfSchemaPostJSON struct {
 	TypedObject1 *shared.TypedObject1
 	TypedObject2 *shared.TypedObject2
 
-	Type NullableOneOfSchemaPostResJSONType
+	Type NullableOneOfSchemaPostJSONType
 }
 
-func CreateNullableOneOfSchemaPostResJSONTypedObject1(typedObject1 shared.TypedObject1) NullableOneOfSchemaPostResJSON {
-	typ := NullableOneOfSchemaPostResJSONTypeTypedObject1
+func CreateNullableOneOfSchemaPostJSONTypedObject1(typedObject1 shared.TypedObject1) NullableOneOfSchemaPostJSON {
+	typ := NullableOneOfSchemaPostJSONTypeTypedObject1
 
-	return NullableOneOfSchemaPostResJSON{
+	return NullableOneOfSchemaPostJSON{
 		TypedObject1: &typedObject1,
 		Type:         typ,
 	}
 }
 
-func CreateNullableOneOfSchemaPostResJSONTypedObject2(typedObject2 shared.TypedObject2) NullableOneOfSchemaPostResJSON {
-	typ := NullableOneOfSchemaPostResJSONTypeTypedObject2
+func CreateNullableOneOfSchemaPostJSONTypedObject2(typedObject2 shared.TypedObject2) NullableOneOfSchemaPostJSON {
+	typ := NullableOneOfSchemaPostJSONTypeTypedObject2
 
-	return NullableOneOfSchemaPostResJSON{
+	return NullableOneOfSchemaPostJSON{
 		TypedObject2: &typedObject2,
 		Type:         typ,
 	}
 }
 
-func (u *NullableOneOfSchemaPostResJSON) UnmarshalJSON(data []byte) error {
+func (u *NullableOneOfSchemaPostJSON) UnmarshalJSON(data []byte) error {
 
 	typedObject1 := shared.TypedObject1{}
 	if err := utils.UnmarshalJSON(data, &typedObject1, "", true, true); err == nil {
 		u.TypedObject1 = &typedObject1
-		u.Type = NullableOneOfSchemaPostResJSONTypeTypedObject1
+		u.Type = NullableOneOfSchemaPostJSONTypeTypedObject1
 		return nil
 	}
 
 	typedObject2 := shared.TypedObject2{}
 	if err := utils.UnmarshalJSON(data, &typedObject2, "", true, true); err == nil {
 		u.TypedObject2 = &typedObject2
-		u.Type = NullableOneOfSchemaPostResJSONTypeTypedObject2
+		u.Type = NullableOneOfSchemaPostJSONTypeTypedObject2
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u NullableOneOfSchemaPostResJSON) MarshalJSON() ([]byte, error) {
+func (u NullableOneOfSchemaPostJSON) MarshalJSON() ([]byte, error) {
 	if u.TypedObject1 != nil {
 		return utils.MarshalJSON(u.TypedObject1, "", true)
 	}
@@ -137,10 +137,10 @@ func (u NullableOneOfSchemaPostResJSON) MarshalJSON() ([]byte, error) {
 
 // NullableOneOfSchemaPostRes - OK
 type NullableOneOfSchemaPostRes struct {
-	JSON *NullableOneOfSchemaPostResJSON `json:"json"`
+	JSON *NullableOneOfSchemaPostJSON `json:"json"`
 }
 
-func (o *NullableOneOfSchemaPostRes) GetJSON() *NullableOneOfSchemaPostResJSON {
+func (o *NullableOneOfSchemaPostRes) GetJSON() *NullableOneOfSchemaPostJSON {
 	if o == nil {
 		return nil
 	}

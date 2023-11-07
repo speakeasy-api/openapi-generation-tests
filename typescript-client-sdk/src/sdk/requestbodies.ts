@@ -3,9 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { RFCDate } from "./types";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
@@ -185,7 +185,7 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.nullableRequiredEmptyObjectPost200ApplicationJSONString = decodedRes;
+                    res.res = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -277,7 +277,7 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.nullableRequiredPropertyPost200ApplicationJSONString = decodedRes;
+                    res.res = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -370,7 +370,7 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.nullableRequiredSharedObjectPost200ApplicationJSONString = decodedRes;
+                    res.res = decodedRes;
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -461,9 +461,9 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.simpleObjects = [];
+                    res.res = [];
                     const resFieldDepth: number = utils.getResFieldDepth(res);
-                    res.simpleObjects = utils.objectToClass(
+                    res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.SimpleObject,
                         resFieldDepth
@@ -558,9 +558,9 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.simpleObjectCamelCases = [];
+                    res.res = [];
                     const resFieldDepth: number = utils.getResFieldDepth(res);
-                    res.simpleObjectCamelCases = utils.objectToClass(
+                    res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.SimpleObjectCamelCase,
                         resFieldDepth
@@ -839,9 +839,9 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.arrs = [];
+                    res.res = [];
                     const resFieldDepth: number = utils.getResFieldDepth(res);
-                    res.arrs = utils.objectToClass(
+                    res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.SimpleObject,
                         resFieldDepth
@@ -936,9 +936,9 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.arrs = [];
+                    res.res = [];
                     const resFieldDepth: number = utils.getResFieldDepth(res);
-                    res.arrs = utils.objectToClass(
+                    res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.SimpleObjectCamelCase,
                         resFieldDepth
@@ -1033,7 +1033,7 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.arrs = utils.objectToClass(JSON.parse(decodedRes));
+                    res.res = utils.objectToClass(JSON.parse(decodedRes));
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -1124,9 +1124,9 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.maps = [];
+                    res.res = [];
                     const resFieldDepth: number = utils.getResFieldDepth(res);
-                    res.maps = utils.objectToClass(
+                    res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.SimpleObject,
                         resFieldDepth
@@ -1221,9 +1221,9 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.maps = [];
+                    res.res = [];
                     const resFieldDepth: number = utils.getResFieldDepth(res);
-                    res.maps = utils.objectToClass(
+                    res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.SimpleObjectCamelCase,
                         resFieldDepth
@@ -1318,7 +1318,7 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.strings = utils.objectToClass(JSON.parse(decodedRes));
+                    res.res = utils.objectToClass(JSON.parse(decodedRes));
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -2844,11 +2844,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostComplexNumberTypes200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostComplexNumberTypes200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostComplexNumberTypesResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -2940,11 +2939,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostDefaultsAndConsts200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostDefaultsAndConsts200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostDefaultsAndConstsResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -3036,9 +3034,9 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostEmptyObject200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.RequestBodyPostEmptyObject200ApplicationJSON
+                        operations.RequestBodyPostEmptyObjectResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -3406,11 +3404,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostJSONDataTypesArrayBigInt200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostJsonDataTypesArrayBigIntResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -3498,11 +3495,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostJsonDataTypesArrayDateResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -3591,11 +3587,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostJsonDataTypesArrayDecimalStrResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -3683,11 +3678,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostJSONDataTypesBigInt200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostJSONDataTypesBigInt200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostJsonDataTypesBigIntResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -3775,11 +3769,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostJSONDataTypesBigIntStr200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostJsonDataTypesBigIntStrResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -3867,11 +3860,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostJSONDataTypesBoolean200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostJSONDataTypesBoolean200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostJsonDataTypesBooleanResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -3959,11 +3951,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostJSONDataTypesDate200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostJSONDataTypesDate200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostJsonDataTypesDateResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -4051,11 +4042,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostJSONDataTypesDateTime200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostJSONDataTypesDateTime200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostJsonDataTypesDateTimeResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -4143,11 +4133,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostJSONDataTypesDecimal200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostJSONDataTypesDecimal200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostJsonDataTypesDecimalResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -4235,11 +4224,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostJSONDataTypesDecimalStr200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostJSONDataTypesDecimalStr200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostJsonDataTypesDecimalStrResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -4327,11 +4315,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostJSONDataTypesFloat32200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostJSONDataTypesFloat32200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostJsonDataTypesFloat32ResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -4419,11 +4406,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostJSONDataTypesInt32200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostJSONDataTypesInt32200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostJsonDataTypesInt32ResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -4511,11 +4497,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostJSONDataTypesInteger200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostJSONDataTypesInteger200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostJsonDataTypesIntegerResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -4603,11 +4588,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostJsonDataTypesMapBigIntStrResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -4695,11 +4679,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostJSONDataTypesMapDateTime200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostJsonDataTypesMapDateTimeResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -4787,11 +4770,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostJSONDataTypesMapDecimal200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostJsonDataTypesMapDecimalResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -4879,11 +4861,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostJSONDataTypesNumber200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostJSONDataTypesNumber200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostJsonDataTypesNumberResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -4971,11 +4952,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostJSONDataTypesString200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostJSONDataTypesString200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostJsonDataTypesStringResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -5095,13 +5075,11 @@ export class RequestBodies {
     }
 
     async requestBodyPostMultipleContentTypesInlineFiltered(
-        req: operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON,
+        req: operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON(
-                req
-            );
+            req = new operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody(req);
         }
 
         const baseURL: string = utils.templateUrl(
@@ -5193,7 +5171,7 @@ export class RequestBodies {
     }
 
     async requestBodyPostMultipleContentTypesSplitParamForm(
-        requestBody: operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded,
+        requestBody: operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody,
         paramStr: string,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse> {
@@ -5291,7 +5269,7 @@ export class RequestBodies {
     }
 
     async requestBodyPostMultipleContentTypesSplitParamJson(
-        requestBody: operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON,
+        requestBody: operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody,
         paramStr: string,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostMultipleContentTypesSplitParamJsonResponse> {
@@ -5389,7 +5367,7 @@ export class RequestBodies {
     }
 
     async requestBodyPostMultipleContentTypesSplitParamMultipart(
-        requestBody: operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData,
+        requestBody: operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody,
         paramStr: string,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse> {
@@ -5487,14 +5465,11 @@ export class RequestBodies {
     }
 
     async requestBodyPostMultipleContentTypesSplitForm(
-        req: operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded,
+        req: operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostMultipleContentTypesSplitFormResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req =
-                new operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded(
-                    req
-                );
+            req = new operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody(req);
         }
 
         const baseURL: string = utils.templateUrl(
@@ -5585,11 +5560,11 @@ export class RequestBodies {
     }
 
     async requestBodyPostMultipleContentTypesSplitJson(
-        req: operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON,
+        req: operations.RequestBodyPostMultipleContentTypesSplitJsonRequestBody,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostMultipleContentTypesSplitJsonResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON(req);
+            req = new operations.RequestBodyPostMultipleContentTypesSplitJsonRequestBody(req);
         }
 
         const baseURL: string = utils.templateUrl(
@@ -5680,11 +5655,11 @@ export class RequestBodies {
     }
 
     async requestBodyPostMultipleContentTypesSplitMultipart(
-        req: operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData,
+        req: operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData(req);
+            req = new operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody(req);
         }
 
         const baseURL: string = utils.templateUrl(
@@ -5839,11 +5814,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostNotNullableNotRequiredStringBody200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostNotNullableNotRequiredStringBody200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostNotNullableNotRequiredStringBodyResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -5930,9 +5904,9 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostNullArray200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.RequestBodyPostNullArray200ApplicationJSON
+                        operations.RequestBodyPostNullArrayResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -6021,9 +5995,9 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostNullDictionary200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.RequestBodyPostNullDictionary200ApplicationJSON
+                        operations.RequestBodyPostNullDictionaryResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -6111,11 +6085,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostNullableNotRequiredStringBody200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostNullableNotRequiredStringBodyResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -6203,11 +6176,10 @@ export class RequestBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.requestBodyPostNullableRequiredStringBody200ApplicationJSONObject =
-                        utils.objectToClass(
-                            JSON.parse(decodedRes),
-                            operations.RequestBodyPostNullableRequiredStringBody200ApplicationJSON
-                        );
+                    res.object = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostNullableRequiredStringBodyResponseBody
+                    );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -6985,12 +6957,12 @@ export class RequestBodies {
     }
 
     async requestBodyReadAndWrite(
-        req: shared.ReadWriteObjectInput,
+        req: shared.ReadWriteObject,
         serverURL?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyReadAndWriteResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new shared.ReadWriteObjectInput(req);
+            req = new shared.ReadWriteObject(req);
         }
 
         let baseURL: string = utils.templateUrl(

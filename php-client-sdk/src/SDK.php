@@ -35,25 +35,11 @@ class SDK
 	];
   	
     /**
-     * Endpoints for testing authentication.
+     * Endpoints for purely testing valid generation behavior.
      * 
-     * @var Auth $$auth
+     * @var Generation $$generation
      */
-	public Auth $auth;
-	
-    /**
-     * Endpoints for testing authentication.
-     * 
-     * @var AuthNew $$authNew
-     */
-	public AuthNew $authNew;
-	
-    /**
-     * Testing for documentation extensions and tooling.
-     * 
-     * @var Documentation $$documentation
-     */
-	public Documentation $documentation;
+	public Generation $generation;
 	
     /**
      * Endpoints for testing error responses.
@@ -62,7 +48,12 @@ class SDK
      */
 	public Errors $errors;
 	
-	public First $first;
+    /**
+     * Endpoints for testing union types.
+     * 
+     * @var Unions $$unions
+     */
+	public Unions $unions;
 	
     /**
      * Endpoints for testing flattening through request body and parameter combinations.
@@ -72,18 +63,18 @@ class SDK
 	public Flattening $flattening;
 	
     /**
-     * Endpoints for purely testing valid generation behavior.
-     * 
-     * @var Generation $$generation
-     */
-	public Generation $generation;
-	
-    /**
      * Endpoints for testing global parameters.
      * 
      * @var Globals $$globals
      */
 	public Globals $globals;
+	
+    /**
+     * Endpoints for testing parameters.
+     * 
+     * @var Parameters $$parameters
+     */
+	public Parameters $parameters;
 	
 	public NestFirst $nestFirst;
 	
@@ -94,27 +85,11 @@ class SDK
 	public NestedSecond $nestedSecond;
 	
     /**
-     * Endpoints for testing the pagination extension
-     * 
-     * @var Pagination $$pagination
-     */
-	public Pagination $pagination;
-	
-    /**
-     * Endpoints for testing parameters.
-     * 
-     * @var Parameters $$parameters
-     */
-	public Parameters $parameters;
-	
-    /**
      * Endpoints for testing request bodies.
      * 
      * @var RequestBodies $$requestBodies
      */
 	public RequestBodies $requestBodies;
-	
-	public Resource $resource;
 	
     /**
      * Endpoints for testing response bodies.
@@ -122,15 +97,6 @@ class SDK
      * @var ResponseBodies $$responseBodies
      */
 	public ResponseBodies $responseBodies;
-	
-    /**
-     * Endpoints for testing retries.
-     * 
-     * @var Retries $$retries
-     */
-	public Retries $retries;
-	
-	public Second $second;
 	
     /**
      * Endpoints for testing servers.
@@ -147,11 +113,45 @@ class SDK
 	public Telemetry $telemetry;
 	
     /**
-     * Endpoints for testing union types.
+     * Endpoints for testing authentication.
      * 
-     * @var Unions $$unions
+     * @var AuthNew $$authNew
      */
-	public Unions $unions;
+	public AuthNew $authNew;
+	
+    /**
+     * Endpoints for testing authentication.
+     * 
+     * @var Auth $$auth
+     */
+	public Auth $auth;
+	
+    /**
+     * Testing for documentation extensions and tooling.
+     * 
+     * @var Documentation $$documentation
+     */
+	public Documentation $documentation;
+	
+	public Resource $resource;
+	
+	public First $first;
+	
+	public Second $second;
+	
+    /**
+     * Endpoints for testing the pagination extension
+     * 
+     * @var Pagination $$pagination
+     */
+	public Pagination $pagination;
+	
+    /**
+     * Endpoints for testing retries.
+     * 
+     * @var Retries $$retries
+     */
+	public Retries $retries;
 		
 	private SDKConfiguration $sdkConfiguration;
 
@@ -172,21 +172,17 @@ class SDK
 	{
 		$this->sdkConfiguration = $sdkConfiguration;
 		
-		$this->auth = new Auth($this->sdkConfiguration);
-		
-		$this->authNew = new AuthNew($this->sdkConfiguration);
-		
-		$this->documentation = new Documentation($this->sdkConfiguration);
+		$this->generation = new Generation($this->sdkConfiguration);
 		
 		$this->errors = new Errors($this->sdkConfiguration);
 		
-		$this->first = new First($this->sdkConfiguration);
+		$this->unions = new Unions($this->sdkConfiguration);
 		
 		$this->flattening = new Flattening($this->sdkConfiguration);
 		
-		$this->generation = new Generation($this->sdkConfiguration);
-		
 		$this->globals = new Globals($this->sdkConfiguration);
+		
+		$this->parameters = new Parameters($this->sdkConfiguration);
 		
 		$this->nestFirst = new NestFirst($this->sdkConfiguration);
 		
@@ -196,25 +192,29 @@ class SDK
 		
 		$this->nestedSecond = new NestedSecond($this->sdkConfiguration);
 		
-		$this->pagination = new Pagination($this->sdkConfiguration);
-		
-		$this->parameters = new Parameters($this->sdkConfiguration);
-		
 		$this->requestBodies = new RequestBodies($this->sdkConfiguration);
 		
-		$this->resource = new Resource($this->sdkConfiguration);
-		
 		$this->responseBodies = new ResponseBodies($this->sdkConfiguration);
-		
-		$this->retries = new Retries($this->sdkConfiguration);
-		
-		$this->second = new Second($this->sdkConfiguration);
 		
 		$this->servers = new Servers($this->sdkConfiguration);
 		
 		$this->telemetry = new Telemetry($this->sdkConfiguration);
 		
-		$this->unions = new Unions($this->sdkConfiguration);
+		$this->authNew = new AuthNew($this->sdkConfiguration);
+		
+		$this->auth = new Auth($this->sdkConfiguration);
+		
+		$this->documentation = new Documentation($this->sdkConfiguration);
+		
+		$this->resource = new Resource($this->sdkConfiguration);
+		
+		$this->first = new First($this->sdkConfiguration);
+		
+		$this->second = new Second($this->sdkConfiguration);
+		
+		$this->pagination = new Pagination($this->sdkConfiguration);
+		
+		$this->retries = new Retries($this->sdkConfiguration);
 	}
 	
     /**
@@ -243,15 +243,17 @@ class SDK
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
+        $statusCode = $httpResponse->getStatusCode();
+
         $response = new \OpenAPI\OpenAPI\Models\Operations\PutAnythingIgnoredGenerationResponse();
-        $response->statusCode = $httpResponse->getStatusCode();
+        $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
         
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->putAnythingIgnoredGeneration200ApplicationJSONObject = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\PutAnythingIgnoredGeneration200ApplicationJSON', 'json');
+                $response->object = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\PutAnythingIgnoredGenerationResponseBody', 'json');
             }
         }
 
@@ -277,8 +279,10 @@ class SDK
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
+        $statusCode = $httpResponse->getStatusCode();
+
         $response = new \OpenAPI\OpenAPI\Models\Operations\ResponseBodyJsonGetResponse();
-        $response->statusCode = $httpResponse->getStatusCode();
+        $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
         

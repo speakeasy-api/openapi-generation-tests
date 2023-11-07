@@ -6,8 +6,8 @@ import (
 	"github.com/ericlagergren/decimal"
 	"math/big"
 	"net/http"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/utils"
 )
 
 type RequestBodyPostComplexNumberTypesRequest struct {
@@ -96,20 +96,20 @@ func (o *RequestBodyPostComplexNumberTypesRequest) GetQueryDecimalStr() *decimal
 	return o.QueryDecimalStr
 }
 
-// RequestBodyPostComplexNumberTypes200ApplicationJSON - OK
-type RequestBodyPostComplexNumberTypes200ApplicationJSON struct {
+// RequestBodyPostComplexNumberTypesResponseBody - OK
+type RequestBodyPostComplexNumberTypesResponseBody struct {
 	JSON shared.ComplexNumberTypes `json:"json"`
 	URL  string                    `json:"url"`
 }
 
-func (o *RequestBodyPostComplexNumberTypes200ApplicationJSON) GetJSON() shared.ComplexNumberTypes {
+func (o *RequestBodyPostComplexNumberTypesResponseBody) GetJSON() shared.ComplexNumberTypes {
 	if o == nil {
 		return shared.ComplexNumberTypes{}
 	}
 	return o.JSON
 }
 
-func (o *RequestBodyPostComplexNumberTypes200ApplicationJSON) GetURL() string {
+func (o *RequestBodyPostComplexNumberTypesResponseBody) GetURL() string {
 	if o == nil {
 		return ""
 	}
@@ -124,7 +124,7 @@ type RequestBodyPostComplexNumberTypesResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	RequestBodyPostComplexNumberTypes200ApplicationJSONObject *RequestBodyPostComplexNumberTypes200ApplicationJSON
+	Object *RequestBodyPostComplexNumberTypesResponseBody
 }
 
 func (o *RequestBodyPostComplexNumberTypesResponse) GetContentType() string {
@@ -148,9 +148,9 @@ func (o *RequestBodyPostComplexNumberTypesResponse) GetRawResponse() *http.Respo
 	return o.RawResponse
 }
 
-func (o *RequestBodyPostComplexNumberTypesResponse) GetRequestBodyPostComplexNumberTypes200ApplicationJSONObject() *RequestBodyPostComplexNumberTypes200ApplicationJSON {
+func (o *RequestBodyPostComplexNumberTypesResponse) GetObject() *RequestBodyPostComplexNumberTypesResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBodyPostComplexNumberTypes200ApplicationJSONObject
+	return o.Object
 }

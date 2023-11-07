@@ -5,13 +5,13 @@ import Foundation
 extension Shared {
     /// A model object
     public struct AuthServiceRequestBody {
-        public let basicAuth: Shared.AuthServiceRequestBodyBasicAuth?
-        public let headerAuth: [Shared.AuthServiceRequestBodyHeaderAuth]?
+        public let basicAuth: Shared.BasicAuth?
+        public let headerAuth: [Shared.HeaderAuth]?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(basicAuth: Shared.AuthServiceRequestBodyBasicAuth? = nil, headerAuth: [Shared.AuthServiceRequestBodyHeaderAuth]? = nil) {
+        public init(basicAuth: Shared.BasicAuth? = nil, headerAuth: [Shared.HeaderAuth]? = nil) {
             self.basicAuth = basicAuth
             self.headerAuth = headerAuth
         }

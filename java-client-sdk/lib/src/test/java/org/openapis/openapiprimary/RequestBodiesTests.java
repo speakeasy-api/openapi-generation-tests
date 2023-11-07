@@ -49,10 +49,10 @@ public class RequestBodiesTests {
 
         assertNotNull(res);
         assertEquals(200, res.statusCode);
-        assertNotNull(res.simpleObjects);
-        assertEquals(res.simpleObjects.length, 2);
-        Helpers.assertSimpleObject(res.simpleObjects[0]);
-        Helpers.assertSimpleObject(res.simpleObjects[1]);
+        assertNotNull(res.res);
+        assertEquals(res.res.length, 2);
+        Helpers.assertSimpleObject(res.res[0]);
+        Helpers.assertSimpleObject(res.res[1]);
     }
 
     @Test
@@ -72,14 +72,14 @@ public class RequestBodiesTests {
 
         assertNotNull(res);
         assertEquals(200, res.statusCode);
-        assertNotNull(res.arrs);
-        assertEquals(res.arrs.length, 2);
-        assertEquals(res.arrs[0].length, 2);
-        assertEquals(res.arrs[1].length, 2);
-        Helpers.assertSimpleObject(res.arrs[0][0]);
-        Helpers.assertSimpleObject(res.arrs[0][1]);
-        Helpers.assertSimpleObject(res.arrs[1][0]);
-        Helpers.assertSimpleObject(res.arrs[1][1]);
+        assertNotNull(res.res);
+        assertEquals(res.res.length, 2);
+        assertEquals(res.res[0].length, 2);
+        assertEquals(res.res[1].length, 2);
+        Helpers.assertSimpleObject(res.res[0][0]);
+        Helpers.assertSimpleObject(res.res[0][1]);
+        Helpers.assertSimpleObject(res.res[1][0]);
+        Helpers.assertSimpleObject(res.res[1][1]);
     }
 
     @Test
@@ -196,14 +196,14 @@ public class RequestBodiesTests {
 
         assertNotNull(res);
         assertEquals(200, res.statusCode);
-        assertNotNull(res.maps);
-        assertEquals(res.maps.length, 2);
-        assertEquals(res.maps[0].size(), 2);
-        assertEquals(res.maps[1].size(), 2);
-        Helpers.assertSimpleObject(res.maps[0].get("mapElem1"));
-        Helpers.assertSimpleObject(res.maps[0].get("mapElem2"));
-        Helpers.assertSimpleObject(res.maps[1].get("mapElem1"));
-        Helpers.assertSimpleObject(res.maps[1].get("mapElem2"));
+        assertNotNull(res.res);
+        assertEquals(res.res.length, 2);
+        assertEquals(res.res[0].size(), 2);
+        assertEquals(res.res[1].size(), 2);
+        Helpers.assertSimpleObject(res.res[0].get("mapElem1"));
+        Helpers.assertSimpleObject(res.res[0].get("mapElem2"));
+        Helpers.assertSimpleObject(res.res[1].get("mapElem1"));
+        Helpers.assertSimpleObject(res.res[1].get("mapElem2"));
     }
 
     @Test
@@ -241,10 +241,10 @@ public class RequestBodiesTests {
 
         assertNotNull(res);
         assertEquals(200, res.statusCode);
-        assertNotNull(res.strings);
-        assertEquals(res.strings.length, 2);
-        assertEquals(res.strings[0], "hello");
-        assertEquals(res.strings[1], "world");
+        assertNotNull(res.res);
+        assertEquals(res.res.length, 2);
+        assertEquals(res.res[0], "hello");
+        assertEquals(res.res[1], "world");
     }
 
     @Test
@@ -299,14 +299,14 @@ public class RequestBodiesTests {
 
         assertNotNull(res);
         assertEquals(200, res.statusCode);
-        assertNotNull(res.arrs);
-        assertEquals(res.arrs.length, 2);
-        assertEquals(res.arrs[0].length, 2);
-        assertEquals(res.arrs[1].length, 2);
-        assertEquals(res.arrs[0][0], "foo");
-        assertEquals(res.arrs[0][1], "bar");
-        assertEquals(res.arrs[1][0], "buzz");
-        assertEquals(res.arrs[1][1], "bazz");
+        assertNotNull(res.res);
+        assertEquals(res.res.length, 2);
+        assertEquals(res.res[0].length, 2);
+        assertEquals(res.res[1].length, 2);
+        assertEquals(res.res[0][0], "foo");
+        assertEquals(res.res[0][1], "bar");
+        assertEquals(res.res[1][0], "buzz");
+        assertEquals(res.res[1][1], "bazz");
     }
 
     @Test
@@ -419,7 +419,8 @@ public class RequestBodiesTests {
 
         RequestBodyPostMultipleContentTypesInlineFilteredResponse res = s.requestBodies
                 .requestBodyPostMultipleContentTypesInlineFiltered(
-                        new RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON(true, 1.1, "test"));
+                        new RequestBodyPostMultipleContentTypesInlineFilteredRequestBody(true, 1.1,
+                                "test"));
 
         assertNotNull(res);
         assertEquals(200, res.statusCode);
@@ -442,7 +443,7 @@ public class RequestBodiesTests {
 
         RequestBodyPostMultipleContentTypesSplitJsonResponse res = s.requestBodies
                 .requestBodyPostMultipleContentTypesSplitJson(
-                        new RequestBodyPostMultipleContentTypesSplitApplicationJSON(true, 1.1, "test"));
+                        new RequestBodyPostMultipleContentTypesSplitJsonRequestBody(true, 1.1, "test"));
 
         assertNotNull(res);
         assertEquals(200, res.statusCode);
@@ -465,7 +466,7 @@ public class RequestBodiesTests {
 
         RequestBodyPostMultipleContentTypesSplitMultipartResponse res = s.requestBodies
                 .requestBodyPostMultipleContentTypesSplitMultipart(
-                        new RequestBodyPostMultipleContentTypesSplitMultipartFormData(true, 1.1, "test"));
+                        new RequestBodyPostMultipleContentTypesSplitMultipartRequestBody(true, 1.1, "test"));
 
         assertNotNull(res);
         assertEquals(200, res.statusCode);
@@ -488,7 +489,7 @@ public class RequestBodiesTests {
 
         RequestBodyPostMultipleContentTypesSplitFormResponse res = s.requestBodies
                 .requestBodyPostMultipleContentTypesSplitForm(
-                        new RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded(true, 1.1, "test"));
+                        new RequestBodyPostMultipleContentTypesSplitFormRequestBody(true, 1.1, "test"));
 
         assertNotNull(res);
         assertEquals(200, res.statusCode);
@@ -509,7 +510,7 @@ public class RequestBodiesTests {
         SDK s = SDK.builder().build();
         assertNotNull(s);
 
-        RequestBodyPostMultipleContentTypesSplitParamApplicationJSON requestBody = new RequestBodyPostMultipleContentTypesSplitParamApplicationJSON(
+        RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody requestBody = new RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody(
                 true, 1.1, "test body");
 
         RequestBodyPostMultipleContentTypesSplitParamJsonResponse res = s.requestBodies
@@ -539,7 +540,7 @@ public class RequestBodiesTests {
         SDK s = SDK.builder().build();
         assertNotNull(s);
 
-        RequestBodyPostMultipleContentTypesSplitParamMultipartFormData formData = new RequestBodyPostMultipleContentTypesSplitParamMultipartFormData(
+        RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody formData = new RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody(
                 true, 1.1, "test body");
         RequestBodyPostMultipleContentTypesSplitParamMultipartResponse res = s.requestBodies
                 .requestBodyPostMultipleContentTypesSplitParamMultipart(formData, "test param");
@@ -567,7 +568,7 @@ public class RequestBodiesTests {
 
         SDK s = SDK.builder().build();
         assertNotNull(s);
-        RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded requestBody = new RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded(
+        RequestBodyPostMultipleContentTypesSplitParamFormRequestBody requestBody = new RequestBodyPostMultipleContentTypesSplitParamFormRequestBody(
                 true, 1.1, "test body");
         RequestBodyPostMultipleContentTypesSplitParamFormResponse res = s.requestBodies
                 .requestBodyPostMultipleContentTypesSplitParamForm(requestBody, "test param");
@@ -654,7 +655,7 @@ public class RequestBodiesTests {
         RequestBodyPutMultipartFileResponse res = s.requestBodies
                 .requestBodyPutMultipartFile(new RequestBodyPutMultipartFileRequestBody() {
                     {
-                        file = new RequestBodyPutMultipartFileRequestBodyFile(data, "testUpload.json");
+                        file = new File(data, "testUpload.json");
                     }
                 });
 
@@ -906,7 +907,7 @@ public class RequestBodiesTests {
         assertNotNull(s);
 
         RequestBodyReadAndWriteResponse res = s.requestBodies
-                .requestBodyReadAndWrite(new ReadWriteObjectInput(1l, 2l, 4l));
+                .requestBodyReadAndWrite(new ReadWriteObject(1l, 2l, 4l));
 
         assertNotNull(res);
         assertEquals(200, res.statusCode);

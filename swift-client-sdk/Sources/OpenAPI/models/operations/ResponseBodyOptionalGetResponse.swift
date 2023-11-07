@@ -6,7 +6,7 @@ extension Operations {
     /// A response model
     public enum ResponseBodyOptionalGetResponse {
         case empty
-        case responseBodyOptionalGet200TextPlainString(String)
+        case res(String)
         case typedObject1(Shared.TypedObject1)
 
         var isEmpty: Bool {
@@ -17,8 +17,8 @@ extension Operations {
             }
         }
 
-        public func responseBodyOptionalGet200TextPlainString() throws -> String {
-            guard case .responseBodyOptionalGet200TextPlainString(let value) = self else {
+        public func res() throws -> String {
+            guard case .res(let value) = self else {
                 throw OpenAPIError.missingResponseData
             }
             return value

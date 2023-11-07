@@ -6,38 +6,38 @@ import (
 	"net/http"
 )
 
-type NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj struct {
+type NullableOptionalObj struct {
 }
 
-type NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj struct {
+type NullableRequiredObj struct {
 }
 
-type NullableRequiredEmptyObjectPostRequestBodyRequiredObj struct {
+type RequiredObj struct {
 }
 
 type NullableRequiredEmptyObjectPostRequestBody struct {
-	NullableOptionalObj *NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj `json:"NullableOptionalObj,omitempty"`
-	NullableRequiredObj *NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj `json:"NullableRequiredObj"`
-	RequiredObj         NullableRequiredEmptyObjectPostRequestBodyRequiredObj          `json:"RequiredObj"`
+	NullableOptionalObj *NullableOptionalObj `json:"NullableOptionalObj,omitempty"`
+	NullableRequiredObj *NullableRequiredObj `json:"NullableRequiredObj"`
+	RequiredObj         RequiredObj          `json:"RequiredObj"`
 }
 
-func (o *NullableRequiredEmptyObjectPostRequestBody) GetNullableOptionalObj() *NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj {
+func (o *NullableRequiredEmptyObjectPostRequestBody) GetNullableOptionalObj() *NullableOptionalObj {
 	if o == nil {
 		return nil
 	}
 	return o.NullableOptionalObj
 }
 
-func (o *NullableRequiredEmptyObjectPostRequestBody) GetNullableRequiredObj() *NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj {
+func (o *NullableRequiredEmptyObjectPostRequestBody) GetNullableRequiredObj() *NullableRequiredObj {
 	if o == nil {
 		return nil
 	}
 	return o.NullableRequiredObj
 }
 
-func (o *NullableRequiredEmptyObjectPostRequestBody) GetRequiredObj() NullableRequiredEmptyObjectPostRequestBodyRequiredObj {
+func (o *NullableRequiredEmptyObjectPostRequestBody) GetRequiredObj() RequiredObj {
 	if o == nil {
-		return NullableRequiredEmptyObjectPostRequestBodyRequiredObj{}
+		return RequiredObj{}
 	}
 	return o.RequiredObj
 }
@@ -50,7 +50,7 @@ type NullableRequiredEmptyObjectPostResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	NullableRequiredEmptyObjectPost200ApplicationJSONString *string
+	Res *string
 }
 
 func (o *NullableRequiredEmptyObjectPostResponse) GetContentType() string {
@@ -74,9 +74,9 @@ func (o *NullableRequiredEmptyObjectPostResponse) GetRawResponse() *http.Respons
 	return o.RawResponse
 }
 
-func (o *NullableRequiredEmptyObjectPostResponse) GetNullableRequiredEmptyObjectPost200ApplicationJSONString() *string {
+func (o *NullableRequiredEmptyObjectPostResponse) GetRes() *string {
 	if o == nil {
 		return nil
 	}
-	return o.NullableRequiredEmptyObjectPost200ApplicationJSONString
+	return o.Res
 }

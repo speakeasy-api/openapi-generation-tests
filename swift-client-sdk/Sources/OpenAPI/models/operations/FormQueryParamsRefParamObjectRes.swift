@@ -5,13 +5,13 @@ import Foundation
 extension Operations {
     /// OK
     public struct FormQueryParamsRefParamObjectRes {
-        public let args: Operations.FormQueryParamsRefParamObjectResArgs
+        public let args: Operations.FormQueryParamsRefParamObjectArgs
         public let url: String
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(args: Operations.FormQueryParamsRefParamObjectResArgs, url: String) {
+        public init(args: Operations.FormQueryParamsRefParamObjectArgs, url: String) {
             self.args = args
             self.url = url
         }

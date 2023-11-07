@@ -8,7 +8,7 @@ extension Shared {
         @DecimalSerialized
         public private(set) var length: Double
         public let name: String
-        public let type: Shared.ExampleBoatType
+        public let type: Shared.TypeModel
         @DateTime
         public private(set) var createdAt: Date?
         @DateTime
@@ -17,7 +17,7 @@ extension Shared {
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(length: Double, name: String, type: Shared.ExampleBoatType, createdAt: Date? = nil, updatedAt: Date? = nil) {
+        public init(length: Double, name: String, type: Shared.TypeModel, createdAt: Date? = nil, updatedAt: Date? = nil) {
             self._length = DecimalSerialized<Double>(wrappedValue: length)
             self.name = name
             self.type = type
@@ -40,7 +40,7 @@ extension Shared.ExampleBoat: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self._length = try container.decode(DecimalSerialized<Double>.self, forKey: .length)
         self.name = try container.decode(String.self, forKey: .name)
-        self.type = try container.decode(Shared.ExampleBoatType.self, forKey: .type)
+        self.type = try container.decode(Shared.TypeModel.self, forKey: .type)
         self._createdAt = try container.decodeIfPresent(DateTime<Date?>.self, forKey: .createdAt) ?? DateTime<Date?>(wrappedValue: nil)
         self._updatedAt = try container.decodeIfPresent(DateTime<Date?>.self, forKey: .updatedAt) ?? DateTime<Date?>(wrappedValue: nil)
     }

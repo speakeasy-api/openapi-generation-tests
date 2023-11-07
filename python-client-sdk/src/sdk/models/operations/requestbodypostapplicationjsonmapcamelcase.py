@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import simpleobjectcamelcase as shared_simpleobjectcamelcase
+from ...models.shared import simpleobjectcamelcase as shared_simpleobjectcamelcase
 from typing import Dict, Optional
 
 REQUEST_BODY_POST_APPLICATION_JSON_MAP_CAMEL_CASE_SERVERS = [

@@ -38,16 +38,16 @@ class RequestBodyPostJsonDataTypesBigIntStrResponse
     /**
      * OK
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSON $requestBodyPostJSONDataTypesBigIntStr200ApplicationJSONObject
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesBigIntStrResponseBody $object
      */
 	
-    public ?RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSON $requestBodyPostJSONDataTypesBigIntStr200ApplicationJSONObject = null;
+    public ?RequestBodyPostJsonDataTypesBigIntStrResponseBody $object = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->requestBodyPostJSONDataTypesBigIntStr200ApplicationJSONObject = null;
+		$this->object = null;
 	}
 }

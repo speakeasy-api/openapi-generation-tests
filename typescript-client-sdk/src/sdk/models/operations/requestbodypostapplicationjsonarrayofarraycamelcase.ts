@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 export const RequestBodyPostApplicationJsonArrayOfArrayCamelCaseServerList = [
     "http://localhost:35456",
@@ -32,5 +32,5 @@ export class RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse extends
      * OK
      */
     @SpeakeasyMetadata({ elemType: shared.SimpleObjectCamelCase, elemDepth: 2 })
-    arrs?: shared.SimpleObjectCamelCase[][];
+    res?: shared.SimpleObjectCamelCase[][];
 }

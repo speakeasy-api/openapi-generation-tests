@@ -6,12 +6,12 @@ import (
 	"net/http"
 )
 
-// RequestBodyPostNullDictionary200ApplicationJSON - OK
-type RequestBodyPostNullDictionary200ApplicationJSON struct {
+// RequestBodyPostNullDictionaryResponseBody - OK
+type RequestBodyPostNullDictionaryResponseBody struct {
 	Data string `json:"data"`
 }
 
-func (o *RequestBodyPostNullDictionary200ApplicationJSON) GetData() string {
+func (o *RequestBodyPostNullDictionaryResponseBody) GetData() string {
 	if o == nil {
 		return ""
 	}
@@ -26,7 +26,7 @@ type RequestBodyPostNullDictionaryResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	RequestBodyPostNullDictionary200ApplicationJSONObject *RequestBodyPostNullDictionary200ApplicationJSON
+	Object *RequestBodyPostNullDictionaryResponseBody
 }
 
 func (o *RequestBodyPostNullDictionaryResponse) GetContentType() string {
@@ -50,9 +50,9 @@ func (o *RequestBodyPostNullDictionaryResponse) GetRawResponse() *http.Response 
 	return o.RawResponse
 }
 
-func (o *RequestBodyPostNullDictionaryResponse) GetRequestBodyPostNullDictionary200ApplicationJSONObject() *RequestBodyPostNullDictionary200ApplicationJSON {
+func (o *RequestBodyPostNullDictionaryResponse) GetObject() *RequestBodyPostNullDictionaryResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBodyPostNullDictionary200ApplicationJSONObject
+	return o.Object
 }

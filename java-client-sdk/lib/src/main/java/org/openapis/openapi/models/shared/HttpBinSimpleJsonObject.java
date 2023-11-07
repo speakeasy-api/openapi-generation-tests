@@ -9,14 +9,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class HttpBinSimpleJsonObject {
     @JsonProperty("slideshow")
-    public HttpBinSimpleJsonObjectSlideshow slideshow;
+    public Slideshow slideshow;
 
-    public HttpBinSimpleJsonObject withSlideshow(HttpBinSimpleJsonObjectSlideshow slideshow) {
+    public HttpBinSimpleJsonObject withSlideshow(Slideshow slideshow) {
         this.slideshow = slideshow;
         return this;
     }
     
-    public HttpBinSimpleJsonObject(@JsonProperty("slideshow") HttpBinSimpleJsonObjectSlideshow slideshow) {
+    public HttpBinSimpleJsonObject(@JsonProperty("slideshow") Slideshow slideshow) {
         this.slideshow = slideshow;
   }
 }

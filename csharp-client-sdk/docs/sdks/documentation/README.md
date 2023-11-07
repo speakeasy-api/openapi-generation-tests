@@ -1,5 +1,5 @@
-# DocumentationSDK
-(*Documentation*)
+# Documentation
+(*.Documentation*)
 
 ## Overview
 
@@ -16,11 +16,11 @@ Gets documentation for some language, I guess.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },

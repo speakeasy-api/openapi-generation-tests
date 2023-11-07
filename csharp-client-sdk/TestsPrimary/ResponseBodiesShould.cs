@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using Xunit;
-using SDK;
+using Openapi;
 using System.Threading.Tasks;
 
 public class ResponseBodiesShould
@@ -17,7 +17,7 @@ public class ResponseBodiesShould
     public async Task JsonGet()
     {
         CommonHelpers.RecordTest("response-bodies-json-get");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.ResponseBodyJsonGetAsync();
 
@@ -45,7 +45,7 @@ public class ResponseBodiesShould
     {
         CommonHelpers.RecordTest("response-bodies-string-get");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.ResponseBodies.ResponseBodyStringGetAsync();
 
@@ -62,7 +62,7 @@ public class ResponseBodiesShould
     {
         CommonHelpers.RecordTest("response-bodies-xml-get");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.ResponseBodies.ResponseBodyXmlGetAsync();
 
@@ -77,7 +77,7 @@ public class ResponseBodiesShould
     public async Task BytesGet()
     {
         CommonHelpers.RecordTest("response-bodies-bytes-get");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.ResponseBodies.ResponseBodyBytesGetAsync();
 
@@ -90,7 +90,7 @@ public class ResponseBodiesShould
     public async Task ResponseBodyReadOnly()
     {
         CommonHelpers.RecordTest("response-bodies-read-only");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.ResponseBodies.ResponseBodyReadOnlyAsync();
 

@@ -13,13 +13,13 @@ class DeprecatedFieldInObject
 {
     /**
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Shared\DeprecatedFieldInObjectDeprecatedEnum $deprecatedEnum
+     * @var ?\OpenAPI\OpenAPI\Models\Shared\DeprecatedEnum $deprecatedEnum
      * @deprecated  field: This enum is deprecated.
      */
 	#[\JMS\Serializer\Annotation\SerializedName('deprecatedEnum')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\DeprecatedFieldInObjectDeprecatedEnum>')]
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\DeprecatedEnum>')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?DeprecatedFieldInObjectDeprecatedEnum $deprecatedEnum = null;
+    public ?DeprecatedEnum $deprecatedEnum = null;
     
     /**
      * 

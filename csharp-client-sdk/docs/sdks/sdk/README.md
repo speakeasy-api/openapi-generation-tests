@@ -18,10 +18,10 @@ Speakeasy Docs
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -29,7 +29,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.SDK.PutAnythingIgnoredGenerationAsync("string");
+var res = await sdk.PutAnythingIgnoredGenerationAsync("string");
 
 // handle response
 ```
@@ -51,10 +51,10 @@ var res = await sdk.SDK.PutAnythingIgnoredGenerationAsync("string");
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -62,7 +62,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.SDK.ResponseBodyJsonGetAsync();
+var res = await sdk.ResponseBodyJsonGetAsync();
 
 // handle response
 ```

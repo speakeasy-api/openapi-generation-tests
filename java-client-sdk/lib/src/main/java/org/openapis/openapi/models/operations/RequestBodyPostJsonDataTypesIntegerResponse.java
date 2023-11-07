@@ -46,10 +46,10 @@ public class RequestBodyPostJsonDataTypesIntegerResponse {
      * OK
      */
     
-    public RequestBodyPostJSONDataTypesInteger200ApplicationJSON requestBodyPostJSONDataTypesInteger200ApplicationJSONObject;
+    public RequestBodyPostJsonDataTypesIntegerResponseBody object;
 
-    public RequestBodyPostJsonDataTypesIntegerResponse withRequestBodyPostJSONDataTypesInteger200ApplicationJSONObject(RequestBodyPostJSONDataTypesInteger200ApplicationJSON requestBodyPostJSONDataTypesInteger200ApplicationJSONObject) {
-        this.requestBodyPostJSONDataTypesInteger200ApplicationJSONObject = requestBodyPostJSONDataTypesInteger200ApplicationJSONObject;
+    public RequestBodyPostJsonDataTypesIntegerResponse withObject(RequestBodyPostJsonDataTypesIntegerResponseBody object) {
+        this.object = object;
         return this;
     }
     

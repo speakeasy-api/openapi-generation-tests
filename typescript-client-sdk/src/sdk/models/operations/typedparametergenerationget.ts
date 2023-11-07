@@ -3,10 +3,10 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { RFCDate } from "../../types";
+import { RFCDate } from "../../../sdk/types";
 import { AxiosResponse } from "axios";
 
-export class TypedParameterGenerationGetObj extends SpeakeasyBase {
+export class Obj extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "queryParam, name=bool" })
     bool: boolean;
 
@@ -28,7 +28,7 @@ export class TypedParameterGenerationGetRequest extends SpeakeasyBase {
     decimal?: number;
 
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=obj" })
-    obj?: TypedParameterGenerationGetObj;
+    obj?: Obj;
 }
 
 export class TypedParameterGenerationGetResponse extends SpeakeasyBase {

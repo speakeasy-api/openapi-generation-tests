@@ -46,10 +46,10 @@ public class NullableRequiredPropertyPostResponse {
      * OK
      */
     
-    public String nullableRequiredPropertyPost200ApplicationJSONString;
+    public String res;
 
-    public NullableRequiredPropertyPostResponse withNullableRequiredPropertyPost200ApplicationJSONString(String nullableRequiredPropertyPost200ApplicationJSONString) {
-        this.nullableRequiredPropertyPost200ApplicationJSONString = nullableRequiredPropertyPost200ApplicationJSONString;
+    public NullableRequiredPropertyPostResponse withRes(String res) {
+        this.res = res;
         return this;
     }
     

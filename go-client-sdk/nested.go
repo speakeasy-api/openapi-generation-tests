@@ -8,28 +8,28 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/utils"
 	"strings"
 )
 
-type nested struct {
-	First  *nestedFirst
-	Second *nestedSecond
+type Nested struct {
+	First  *SDKNestedFirst
+	Second *SDKSecond
 
 	sdkConfiguration sdkConfiguration
 }
 
-func newNested(sdkConfig sdkConfiguration) *nested {
-	return &nested{
+func newNested(sdkConfig sdkConfiguration) *Nested {
+	return &Nested{
 		sdkConfiguration: sdkConfig,
-		First:            newNestedFirst(sdkConfig),
-		Second:           newNestedSecond(sdkConfig),
+		First:            newSDKNestedFirst(sdkConfig),
+		Second:           newSDKSecond(sdkConfig),
 	}
 }
 
-func (s *nested) Get(ctx context.Context) (*operations.NestedGetResponse, error) {
+func (s *Nested) Get(ctx context.Context) (*operations.NestedGetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/nested"
 

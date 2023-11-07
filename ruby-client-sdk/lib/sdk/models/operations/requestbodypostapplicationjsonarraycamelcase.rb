@@ -22,15 +22,15 @@ module OpenApiSDK
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
       # OK
-      field :simple_object_camel_cases, T.nilable(T::Array[Shared::SimpleObjectCamelCase])
+      field :res, T.nilable(T::Array[Shared::SimpleObjectCamelCase])
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), simple_object_camel_cases: T.nilable(T::Array[Shared::SimpleObjectCamelCase])).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil, simple_object_camel_cases: nil)
+      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), res: T.nilable(T::Array[Shared::SimpleObjectCamelCase])).void }
+      def initialize(content_type: nil, status_code: nil, raw_response: nil, res: nil)
         @content_type = content_type
         @status_code = status_code
         @raw_response = raw_response
-        @simple_object_camel_cases = simple_object_camel_cases
+        @res = res
       end
     end
   end

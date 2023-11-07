@@ -2,62 +2,62 @@
 
 package shared
 
-type HTTPBinSimpleJSONObjectSlideshowSlides struct {
+type Slides struct {
 	Items []string `json:"items,omitempty"`
 	Title string   `json:"title"`
 	Type  string   `json:"type"`
 }
 
-func (o *HTTPBinSimpleJSONObjectSlideshowSlides) GetItems() []string {
+func (o *Slides) GetItems() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Items
 }
 
-func (o *HTTPBinSimpleJSONObjectSlideshowSlides) GetTitle() string {
+func (o *Slides) GetTitle() string {
 	if o == nil {
 		return ""
 	}
 	return o.Title
 }
 
-func (o *HTTPBinSimpleJSONObjectSlideshowSlides) GetType() string {
+func (o *Slides) GetType() string {
 	if o == nil {
 		return ""
 	}
 	return o.Type
 }
 
-type HTTPBinSimpleJSONObjectSlideshow struct {
-	Author string                                   `json:"author"`
-	Date   string                                   `json:"date"`
-	Slides []HTTPBinSimpleJSONObjectSlideshowSlides `json:"slides"`
-	Title  string                                   `json:"title"`
+type Slideshow struct {
+	Author string   `json:"author"`
+	Date   string   `json:"date"`
+	Slides []Slides `json:"slides"`
+	Title  string   `json:"title"`
 }
 
-func (o *HTTPBinSimpleJSONObjectSlideshow) GetAuthor() string {
+func (o *Slideshow) GetAuthor() string {
 	if o == nil {
 		return ""
 	}
 	return o.Author
 }
 
-func (o *HTTPBinSimpleJSONObjectSlideshow) GetDate() string {
+func (o *Slideshow) GetDate() string {
 	if o == nil {
 		return ""
 	}
 	return o.Date
 }
 
-func (o *HTTPBinSimpleJSONObjectSlideshow) GetSlides() []HTTPBinSimpleJSONObjectSlideshowSlides {
+func (o *Slideshow) GetSlides() []Slides {
 	if o == nil {
-		return []HTTPBinSimpleJSONObjectSlideshowSlides{}
+		return []Slides{}
 	}
 	return o.Slides
 }
 
-func (o *HTTPBinSimpleJSONObjectSlideshow) GetTitle() string {
+func (o *Slideshow) GetTitle() string {
 	if o == nil {
 		return ""
 	}
@@ -65,12 +65,12 @@ func (o *HTTPBinSimpleJSONObjectSlideshow) GetTitle() string {
 }
 
 type HTTPBinSimpleJSONObject struct {
-	Slideshow HTTPBinSimpleJSONObjectSlideshow `json:"slideshow"`
+	Slideshow Slideshow `json:"slideshow"`
 }
 
-func (o *HTTPBinSimpleJSONObject) GetSlideshow() HTTPBinSimpleJSONObjectSlideshow {
+func (o *HTTPBinSimpleJSONObject) GetSlideshow() Slideshow {
 	if o == nil {
-		return HTTPBinSimpleJSONObjectSlideshow{}
+		return Slideshow{}
 	}
 	return o.Slideshow
 }

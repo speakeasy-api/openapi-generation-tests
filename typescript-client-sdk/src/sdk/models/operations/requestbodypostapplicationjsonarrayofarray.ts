@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 export const RequestBodyPostApplicationJsonArrayOfArrayServerList = [
     "http://localhost:35456",
@@ -32,5 +32,5 @@ export class RequestBodyPostApplicationJsonArrayOfArrayResponse extends Speakeas
      * OK
      */
     @SpeakeasyMetadata({ elemType: shared.SimpleObject, elemDepth: 2 })
-    arrs?: shared.SimpleObject[][];
+    res?: shared.SimpleObject[][];
 }

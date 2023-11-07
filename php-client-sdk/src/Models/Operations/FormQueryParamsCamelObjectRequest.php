@@ -12,14 +12,14 @@ use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class FormQueryParamsCamelObjectRequest
 {
 	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=obj_param_exploded')]
-    public FormQueryParamsCamelObjectObjParamExploded $objParamExploded;
+    public ObjParamExploded $objParamExploded;
     
 	#[SpeakeasyMetadata('queryParam:style=form,explode=false,name=obj_param')]
-    public ?FormQueryParamsCamelObjectObjParam $objParam = null;
+    public ?ObjParam $objParam = null;
     
 	public function __construct()
 	{
-		$this->objParamExploded = new \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectObjParamExploded();
+		$this->objParamExploded = new \OpenAPI\OpenAPI\Models\Operations\ObjParamExploded();
 		$this->objParam = null;
 	}
 }

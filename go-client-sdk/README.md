@@ -16,8 +16,8 @@ package main
 import (
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -35,7 +35,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	if res.GetGlobalNameOverride200ApplicationJSONObject != nil {
+	if res.Object != nil {
 		// handle response
 	}
 }
@@ -52,10 +52,10 @@ import (
 	"context"
 	"log"
 	"math/big"
-	"openapi"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -88,8 +88,8 @@ func main() {
 				Float32:    1.1,
 				Int:        1,
 				Int32:      1,
-				Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-				IntEnum:    shared.SimpleObjectIntEnumSecond,
+				Int32Enum:  shared.Int32EnumFiftyFive,
+				IntEnum:    shared.IntEnumSecond,
 				Num:        1.1,
 				Str:        "test",
 				StrOpt:     openapi.String("testOptional"),
@@ -104,20 +104,20 @@ func main() {
 		DecimalParameter:         types.MustNewDecimalFromString("5223.72"),
 		DecimalStrParameter:      types.MustNewDecimalFromString("2911.37"),
 		DoubleParameter:          6946.59,
-		EnumParameter:            operations.UsageExamplePostEnumParameterValue1,
+		EnumParameter:            operations.EnumParameterValue1,
 		FalseyNumberParameter:    0,
 		Float32Parameter:         1029.75,
 		FloatParameter:           5669.99,
 		Int64Parameter:           195232,
 		IntParameter:             569663,
-		OptEnumParameter:         operations.UsageExamplePostOptEnumParameterValue3.ToPointer(),
+		OptEnumParameter:         operations.OptEnumParameterValue3.ToPointer(),
 		StrParameter:             "example 1",
 	}, operationSecurity)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	if res.UsageExamplePost200ApplicationJSONObject != nil {
+	if res.Object != nil {
 		// handle response
 	}
 }
@@ -133,54 +133,7 @@ func main() {
 * [PutAnythingIgnoredGeneration](docs/sdks/sdk/README.md#putanythingignoredgeneration)
 * [ResponseBodyJSONGet](docs/sdks/sdk/README.md#responsebodyjsonget)
 
-### [Auth](docs/sdks/auth/README.md)
-
-* [APIKeyAuth](docs/sdks/auth/README.md#apikeyauth)
-* [APIKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
-* [BasicAuth](docs/sdks/auth/README.md#basicauth)
-* [BearerAuth](docs/sdks/auth/README.md#bearerauth)
-* [GlobalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
-* [Oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
-* [Oauth2Override](docs/sdks/auth/README.md#oauth2override)
-* [OpenIDConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
-
-### [AuthNew](docs/sdks/authnew/README.md)
-
-* [APIKeyAuthGlobalNew](docs/sdks/authnew/README.md#apikeyauthglobalnew)
-* [AuthGlobal](docs/sdks/authnew/README.md#authglobal)
-* [BasicAuthNew](docs/sdks/authnew/README.md#basicauthnew)
-* [MultipleMixedOptionsAuth](docs/sdks/authnew/README.md#multiplemixedoptionsauth)
-* [MultipleMixedSchemeAuth](docs/sdks/authnew/README.md#multiplemixedschemeauth)
-* [MultipleOptionsWithMixedSchemesAuth](docs/sdks/authnew/README.md#multipleoptionswithmixedschemesauth)
-* [MultipleOptionsWithSimpleSchemesAuth](docs/sdks/authnew/README.md#multipleoptionswithsimpleschemesauth)
-* [MultipleSimpleOptionsAuth](docs/sdks/authnew/README.md#multiplesimpleoptionsauth)
-* [MultipleSimpleSchemeAuth](docs/sdks/authnew/README.md#multiplesimpleschemeauth)
-* [Oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
-* [OpenIDConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
-
-### [Documentation](docs/sdks/documentation/README.md)
-
-* [GetDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
-
-### [Errors](docs/sdks/errors/README.md)
-
-* [ConnectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
-* [StatusGetError](docs/sdks/errors/README.md#statusgeterror)
-* [StatusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
-
-### [First](docs/sdks/first/README.md)
-
-* [Get](docs/sdks/first/README.md#get)
-
-### [Flattening](docs/sdks/flattening/README.md)
-
-* [ComponentBodyAndParamConflict](docs/sdks/flattening/README.md#componentbodyandparamconflict)
-* [ComponentBodyAndParamNoConflict](docs/sdks/flattening/README.md#componentbodyandparamnoconflict)
-* [ConflictingParams](docs/sdks/flattening/README.md#conflictingparams)
-* [InlineBodyAndParamConflict](docs/sdks/flattening/README.md#inlinebodyandparamconflict)
-* [InlineBodyAndParamNoConflict](docs/sdks/flattening/README.md#inlinebodyandparamnoconflict)
-
-### [Generation](docs/sdks/generation/README.md)
+### [.Generation](docs/sdks/generation/README.md)
 
 * [AnchorTypesGet](docs/sdks/generation/README.md#anchortypesget)
 * [ArrayCircularReferenceGet](docs/sdks/generation/README.md#arraycircularreferenceget)
@@ -203,38 +156,44 @@ func main() {
 * [TypedParameterGenerationGet](docs/sdks/generation/README.md#typedparametergenerationget)
 * [UsageExamplePost](docs/sdks/generation/README.md#usageexamplepost) - An operation used for testing usage examples
 
-### [Globals](docs/sdks/globals/README.md)
+### [.Errors](docs/sdks/errors/README.md)
+
+* [ConnectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
+* [StatusGetError](docs/sdks/errors/README.md#statusgeterror)
+* [StatusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
+
+### [.Unions](docs/sdks/unions/README.md)
+
+* [FlattenedTypedObjectPost](docs/sdks/unions/README.md#flattenedtypedobjectpost)
+* [MixedTypeOneOfPost](docs/sdks/unions/README.md#mixedtypeoneofpost)
+* [NullableOneOfRefInObjectPost](docs/sdks/unions/README.md#nullableoneofrefinobjectpost)
+* [NullableOneOfSchemaPost](docs/sdks/unions/README.md#nullableoneofschemapost)
+* [NullableOneOfTypeInObjectPost](docs/sdks/unions/README.md#nullableoneoftypeinobjectpost)
+* [NullableTypedObjectPost](docs/sdks/unions/README.md#nullabletypedobjectpost)
+* [PrimitiveTypeOneOfPost](docs/sdks/unions/README.md#primitivetypeoneofpost)
+* [StronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
+* [TypedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
+* [TypedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
+* [UnionBigIntDecimal](docs/sdks/unions/README.md#unionbigintdecimal)
+* [UnionDateNull](docs/sdks/unions/README.md#uniondatenull)
+* [UnionDateTimeBigInt](docs/sdks/unions/README.md#uniondatetimebigint)
+* [UnionDateTimeNull](docs/sdks/unions/README.md#uniondatetimenull)
+* [WeaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
+
+### [.Flattening](docs/sdks/flattening/README.md)
+
+* [ComponentBodyAndParamConflict](docs/sdks/flattening/README.md#componentbodyandparamconflict)
+* [ComponentBodyAndParamNoConflict](docs/sdks/flattening/README.md#componentbodyandparamnoconflict)
+* [ConflictingParams](docs/sdks/flattening/README.md#conflictingparams)
+* [InlineBodyAndParamConflict](docs/sdks/flattening/README.md#inlinebodyandparamconflict)
+* [InlineBodyAndParamNoConflict](docs/sdks/flattening/README.md#inlinebodyandparamnoconflict)
+
+### [.Globals](docs/sdks/globals/README.md)
 
 * [GlobalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
 * [GlobalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
 
-
-### [Nest.First](docs/sdks/nestfirst/README.md)
-
-* [Get](docs/sdks/nestfirst/README.md#get)
-
-### [Nested](docs/sdks/nested/README.md)
-
-* [Get](docs/sdks/nested/README.md#get)
-
-### [Nested.First](docs/sdks/nestedfirst/README.md)
-
-* [Get](docs/sdks/nestedfirst/README.md#get)
-
-### [Nested.Second](docs/sdks/nestedsecond/README.md)
-
-* [Get](docs/sdks/nestedsecond/README.md#get)
-
-### [Pagination](docs/sdks/pagination/README.md)
-
-* [PaginationCursorBody](docs/sdks/pagination/README.md#paginationcursorbody)
-* [PaginationCursorParams](docs/sdks/pagination/README.md#paginationcursorparams)
-* [PaginationLimitOffsetOffsetBody](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetbody)
-* [PaginationLimitOffsetOffsetParams](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetparams)
-* [PaginationLimitOffsetPageBody](docs/sdks/pagination/README.md#paginationlimitoffsetpagebody)
-* [PaginationLimitOffsetPageParams](docs/sdks/pagination/README.md#paginationlimitoffsetpageparams)
-
-### [Parameters](docs/sdks/parameters/README.md)
+### [.Parameters](docs/sdks/parameters/README.md)
 
 * [DeepObjectQueryParamsMap](docs/sdks/parameters/README.md#deepobjectqueryparamsmap)
 * [DeepObjectQueryParamsObject](docs/sdks/parameters/README.md#deepobjectqueryparamsobject)
@@ -260,7 +219,24 @@ func main() {
 * [SimplePathParameterObjects](docs/sdks/parameters/README.md#simplepathparameterobjects)
 * [SimplePathParameterPrimitives](docs/sdks/parameters/README.md#simplepathparameterprimitives)
 
-### [RequestBodies](docs/sdks/requestbodies/README.md)
+
+### [.Nest.First](docs/sdks/sdkfirst/README.md)
+
+* [Get](docs/sdks/sdkfirst/README.md#get)
+
+### [.Nested](docs/sdks/nested/README.md)
+
+* [Get](docs/sdks/nested/README.md#get)
+
+### [.Nested.First](docs/sdks/sdknestedfirst/README.md)
+
+* [Get](docs/sdks/sdknestedfirst/README.md#get)
+
+### [.Nested.Second](docs/sdks/sdksecond/README.md)
+
+* [Get](docs/sdks/sdksecond/README.md#get)
+
+### [.RequestBodies](docs/sdks/requestbodies/README.md)
 
 * [NullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
 * [NullableRequiredEmptyObjectPost](docs/sdks/requestbodies/README.md#nullablerequiredemptyobjectpost)
@@ -344,15 +320,7 @@ func main() {
 * [RequestBodyWriteOnlyOutput](docs/sdks/requestbodies/README.md#requestbodywriteonlyoutput)
 * [RequestBodyWriteOnlyUnion](docs/sdks/requestbodies/README.md#requestbodywriteonlyunion)
 
-### [Resource](docs/sdks/resource/README.md)
-
-* [CreateFile](docs/sdks/resource/README.md#createfile)
-* [CreateResource](docs/sdks/resource/README.md#createresource)
-* [DeleteResource](docs/sdks/resource/README.md#deleteresource)
-* [GetResource](docs/sdks/resource/README.md#getresource)
-* [UpdateResource](docs/sdks/resource/README.md#updateresource)
-
-### [ResponseBodies](docs/sdks/responsebodies/README.md)
+### [.ResponseBodies](docs/sdks/responsebodies/README.md)
 
 * [ResponseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
 * [ResponseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
@@ -366,15 +334,7 @@ func main() {
 * [ResponseBodyXMLGet](docs/sdks/responsebodies/README.md#responsebodyxmlget)
 * [ResponseBodyZeroValueComplexTypePtrsPost](docs/sdks/responsebodies/README.md#responsebodyzerovaluecomplextypeptrspost)
 
-### [Retries](docs/sdks/retries/README.md)
-
-* [RetriesGet](docs/sdks/retries/README.md#retriesget)
-
-### [Second](docs/sdks/second/README.md)
-
-* [Get](docs/sdks/second/README.md#get)
-
-### [Servers](docs/sdks/servers/README.md)
+### [.Servers](docs/sdks/servers/README.md)
 
 * [SelectGlobalServer](docs/sdks/servers/README.md#selectglobalserver)
 * [SelectServerWithID](docs/sdks/servers/README.md#selectserverwithid) - Select a server by ID.
@@ -383,28 +343,68 @@ func main() {
 * [ServerWithTemplatesGlobal](docs/sdks/servers/README.md#serverwithtemplatesglobal)
 * [ServersByIDWithTemplates](docs/sdks/servers/README.md#serversbyidwithtemplates)
 
-### [Telemetry](docs/sdks/telemetry/README.md)
+### [.Telemetry](docs/sdks/telemetry/README.md)
 
 * [TelemetrySpeakeasyUserAgentGet](docs/sdks/telemetry/README.md#telemetryspeakeasyuseragentget)
 * [TelemetryUserAgentGet](docs/sdks/telemetry/README.md#telemetryuseragentget)
 
-### [Unions](docs/sdks/unions/README.md)
+### [.AuthNew](docs/sdks/authnew/README.md)
 
-* [FlattenedTypedObjectPost](docs/sdks/unions/README.md#flattenedtypedobjectpost)
-* [MixedTypeOneOfPost](docs/sdks/unions/README.md#mixedtypeoneofpost)
-* [NullableOneOfRefInObjectPost](docs/sdks/unions/README.md#nullableoneofrefinobjectpost)
-* [NullableOneOfSchemaPost](docs/sdks/unions/README.md#nullableoneofschemapost)
-* [NullableOneOfTypeInObjectPost](docs/sdks/unions/README.md#nullableoneoftypeinobjectpost)
-* [NullableTypedObjectPost](docs/sdks/unions/README.md#nullabletypedobjectpost)
-* [PrimitiveTypeOneOfPost](docs/sdks/unions/README.md#primitivetypeoneofpost)
-* [StronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
-* [TypedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
-* [TypedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
-* [UnionBigIntDecimal](docs/sdks/unions/README.md#unionbigintdecimal)
-* [UnionDateNull](docs/sdks/unions/README.md#uniondatenull)
-* [UnionDateTimeBigInt](docs/sdks/unions/README.md#uniondatetimebigint)
-* [UnionDateTimeNull](docs/sdks/unions/README.md#uniondatetimenull)
-* [WeaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
+* [APIKeyAuthGlobalNew](docs/sdks/authnew/README.md#apikeyauthglobalnew)
+* [AuthGlobal](docs/sdks/authnew/README.md#authglobal)
+* [BasicAuthNew](docs/sdks/authnew/README.md#basicauthnew)
+* [MultipleMixedOptionsAuth](docs/sdks/authnew/README.md#multiplemixedoptionsauth)
+* [MultipleMixedSchemeAuth](docs/sdks/authnew/README.md#multiplemixedschemeauth)
+* [MultipleOptionsWithMixedSchemesAuth](docs/sdks/authnew/README.md#multipleoptionswithmixedschemesauth)
+* [MultipleOptionsWithSimpleSchemesAuth](docs/sdks/authnew/README.md#multipleoptionswithsimpleschemesauth)
+* [MultipleSimpleOptionsAuth](docs/sdks/authnew/README.md#multiplesimpleoptionsauth)
+* [MultipleSimpleSchemeAuth](docs/sdks/authnew/README.md#multiplesimpleschemeauth)
+* [Oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
+* [OpenIDConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
+
+### [.Auth](docs/sdks/auth/README.md)
+
+* [APIKeyAuth](docs/sdks/auth/README.md#apikeyauth)
+* [APIKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
+* [BasicAuth](docs/sdks/auth/README.md#basicauth)
+* [BearerAuth](docs/sdks/auth/README.md#bearerauth)
+* [GlobalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
+* [Oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
+* [Oauth2Override](docs/sdks/auth/README.md#oauth2override)
+* [OpenIDConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
+
+### [.Documentation](docs/sdks/documentation/README.md)
+
+* [GetDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
+
+### [.Resource](docs/sdks/resource/README.md)
+
+* [CreateFile](docs/sdks/resource/README.md#createfile)
+* [CreateResource](docs/sdks/resource/README.md#createresource)
+* [DeleteResource](docs/sdks/resource/README.md#deleteresource)
+* [GetResource](docs/sdks/resource/README.md#getresource)
+* [UpdateResource](docs/sdks/resource/README.md#updateresource)
+
+### [.First](docs/sdks/first/README.md)
+
+* [Get](docs/sdks/first/README.md#get)
+
+### [.Second](docs/sdks/second/README.md)
+
+* [Get](docs/sdks/second/README.md#get)
+
+### [.Pagination](docs/sdks/pagination/README.md)
+
+* [PaginationCursorBody](docs/sdks/pagination/README.md#paginationcursorbody)
+* [PaginationCursorParams](docs/sdks/pagination/README.md#paginationcursorparams)
+* [PaginationLimitOffsetOffsetBody](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetbody)
+* [PaginationLimitOffsetOffsetParams](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetparams)
+* [PaginationLimitOffsetPageBody](docs/sdks/pagination/README.md#paginationlimitoffsetpagebody)
+* [PaginationLimitOffsetPageParams](docs/sdks/pagination/README.md#paginationlimitoffsetpageparams)
+
+### [.Retries](docs/sdks/retries/README.md)
+
+* [RetriesGet](docs/sdks/retries/README.md#retriesget)
 <!-- End SDK Available Operations -->
 
 
@@ -433,9 +433,9 @@ package main
 import (
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -528,8 +528,8 @@ package main
 import (
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -565,8 +565,8 @@ package main
 import (
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -610,8 +610,8 @@ package main
 import (
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -629,13 +629,13 @@ func main() {
 	res, err := s.Errors.StatusGetXSpeakeasyErrors(ctx, statusCode)
 	if err != nil {
 
-		var e *error
+		var e *sdkerrors.Error
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
 		}
 
-		var e *statusGetXSpeakeasyErrors_501ApplicationJSON_object
+		var e *sdkerrors.StatusGetXSpeakeasyErrorsResponseBody
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
@@ -672,10 +672,9 @@ Some of the server options above contain variables. If you want to set the value
 
  * `WithProtocol string`
 
- * `WithSomething ServerSomething`
+ * `WithSomething openapi.ServerSomething`
 
 For example:
-
 
 ```go
 package main
@@ -683,27 +682,27 @@ package main
 import (
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
 	s := openapi.New(
+		openapi.WithServerIndex(4),
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
-		openapi.WithServerIndex(4),
 	)
 
 	ctx := context.Background()
-	res, err := s.SDK.PutAnythingIgnoredGeneration(ctx, "string")
+	res, err := s.PutAnythingIgnoredGeneration(ctx, "string")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	if res.PutAnythingIgnoredGeneration200ApplicationJSONObject != nil {
+	if res.Object != nil {
 		// handle response
 	}
 }
@@ -715,34 +714,33 @@ func main() {
 
 The default server can also be overridden globally using the `WithServerURL` option when initializing the SDK client instance. For example:
 
-
 ```go
 package main
 
 import (
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
 	s := openapi.New(
+		openapi.WithServerURL("http://localhost:35123"),
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
-		openapi.WithServerURL("http://localhost:35123"),
 	)
 
 	ctx := context.Background()
-	res, err := s.SDK.PutAnythingIgnoredGeneration(ctx, "string")
+	res, err := s.PutAnythingIgnoredGeneration(ctx, "string")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	if res.PutAnythingIgnoredGeneration200ApplicationJSONObject != nil {
+	if res.Object != nil {
 		// handle response
 	}
 }
@@ -753,15 +751,14 @@ func main() {
 
 The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
 
-
 ```go
 package main
 
 import (
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -774,18 +771,7 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.AuthNew.APIKeyAuthGlobalNew(ctx, shared.AuthServiceRequestBody{
-		BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-			Password: "owsGgP4_AhRPMSJ",
-			Username: "Devonte_Bins",
-		},
-		HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
-			shared.AuthServiceRequestBodyHeaderAuth{
-				ExpectedValue: "string",
-				HeaderName:    "string",
-			},
-		},
-	}, operations.WithServerURL("http://localhost:35456"))
+	res, err := s.Errors.ConnectionErrorGet(ctx, operations.WithServerURL("http://somebrokenapi.broken"))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -828,6 +814,256 @@ var (
 
 This can be a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration.
 <!-- End Custom HTTP Client -->
+
+
+
+<!-- Start Retries -->
+# Retries
+
+Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+
+
+## Example
+
+```go
+package main
+
+import (
+	"/pkg/models/operations"
+	"/pkg/utils"
+	"context"
+	"log"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+)
+
+func main() {
+	s := openapi.New(
+		openapi.WithSecurity(shared.Security{
+			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+		}),
+		openapi.WithGlobalPathParam(100),
+		openapi.WithGlobalQueryParam("some example global query param"),
+	)
+
+	var requestID string = "string"
+
+	var numRetries *int64 = 75342
+
+	ctx := context.Background()
+	res, err := s.Retries.RetriesGet(ctx, requestID, numRetries, operations.WithRetries(utils.RetryConfig{
+		Strategy: "backoff",
+		Backoff: &utils.BackoffStrategy{
+			InitialInterval: 1,
+			MaxInterval:     50,
+			Exponent:        1.1,
+			MaxElapsedTime:  100,
+		},
+		RetryConnectionErrors: false,
+	}))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.Retries != nil {
+		// handle response
+	}
+}
+
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+
+
+## Example
+
+```go
+package main
+
+import (
+	"/pkg/models/operations"
+	"/pkg/utils"
+	"context"
+	"log"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+)
+
+func main() {
+	s := openapi.New(
+		openapi.WithRetryConfig(utils.RetryConfig{
+			Strategy: "backoff",
+			Backoff: &utils.BackoffStrategy{
+				InitialInterval: 1,
+				MaxInterval:     50,
+				Exponent:        1.1,
+				MaxElapsedTime:  100,
+			},
+			RetryConnectionErrors: false,
+		}),
+		openapi.WithSecurity(shared.Security{
+			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+		}),
+		openapi.WithGlobalPathParam(100),
+		openapi.WithGlobalQueryParam("some example global query param"),
+	)
+
+	var requestID string = "string"
+
+	var numRetries *int64 = 75342
+
+	ctx := context.Background()
+	res, err := s.Retries.RetriesGet(ctx, requestID, numRetries)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.Retries != nil {
+		// handle response
+	}
+}
+
+```
+
+
+<!-- End Retries -->
+
+
+
+<!-- Start Authentication -->
+
+# Authentication
+
+## Per-Client Security Schemes
+
+Your SDK supports the following security schemes globally:
+
+| Name            | Type            | Scheme          |
+| --------------- | --------------- | --------------- |
+| `APIKeyAuth`    | apiKey          | API key         |
+| `APIKeyAuthNew` | apiKey          | API key         |
+| `Oauth2`        | oauth2          | OAuth2 token    |
+
+You can set the security parameters through the `WithSecurity` option when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
+
+```go
+package main
+
+import (
+	"context"
+	"log"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+)
+
+func main() {
+	s := openapi.New(
+		openapi.WithSecurity(shared.Security{
+			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+		}),
+		openapi.WithGlobalPathParam(100),
+		openapi.WithGlobalQueryParam("some example global query param"),
+	)
+
+	ctx := context.Background()
+	res, err := s.PutAnythingIgnoredGeneration(ctx, "string")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.Object != nil {
+		// handle response
+	}
+}
+
+```
+
+## Per-Operation Security Schemes
+
+Some operations in your SDK require the security scheme to be specified at the request level. For example:
+## Second
+Do this second
+```go
+package main
+
+import (
+	"context"
+	"log"
+	"math/big"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
+)
+
+func main() {
+	s := openapi.New(
+		openapi.WithGlobalPathParam(100),
+		openapi.WithGlobalQueryParam("some example global query param"),
+	)
+
+	operationSecurity := operations.UsageExamplePostSecurity{
+		Password: "YOUR_PASSWORD",
+		Username: "YOUR_USERNAME",
+	}
+
+	ctx := context.Background()
+	res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
+		RequestBody: &operations.UsageExamplePostRequestBody{
+			FakerFormattedStrings: &shared.FakerFormattedStrings{},
+			FakerStrings:          &shared.FakerStrings{},
+			SimpleObject: &shared.SimpleObject{
+				Any:        "any",
+				Bigint:     big.NewInt(8821239038968084),
+				BigintStr:  types.MustNewBigIntFromString("9223372036854775808"),
+				Bool:       true,
+				BoolOpt:    openapi.Bool(true),
+				Date:       types.MustDateFromString("2020-01-01"),
+				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+				Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
+				DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+				Enum:       shared.EnumOne,
+				Float32:    1.1,
+				Int:        1,
+				Int32:      1,
+				Int32Enum:  shared.Int32EnumFiftyFive,
+				IntEnum:    shared.IntEnumSecond,
+				Num:        1.1,
+				Str:        "test",
+				StrOpt:     openapi.String("testOptional"),
+			},
+		},
+		BigintParameter:          big.NewInt(168827),
+		BigintStrParameter:       big.NewInt(446729),
+		BoolParameter:            false,
+		DateParameter:            types.MustDateFromString("2023-06-11"),
+		DateTimeDefaultParameter: types.MustTimeFromString("2022-07-22T13:16:48.221Z"),
+		DateTimeParameter:        types.MustTimeFromString("2021-10-21T09:16:58.799Z"),
+		DecimalParameter:         types.MustNewDecimalFromString("5223.72"),
+		DecimalStrParameter:      types.MustNewDecimalFromString("2911.37"),
+		DoubleParameter:          6946.59,
+		EnumParameter:            operations.EnumParameterValue1,
+		FalseyNumberParameter:    0,
+		Float32Parameter:         1029.75,
+		FloatParameter:           5669.99,
+		Int64Parameter:           195232,
+		IntParameter:             569663,
+		OptEnumParameter:         operations.OptEnumParameterValue3.ToPointer(),
+		StrParameter:             "example 1",
+	}, operationSecurity)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.Object != nil {
+		// handle response
+	}
+}
+
+```
+<!-- End Authentication -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

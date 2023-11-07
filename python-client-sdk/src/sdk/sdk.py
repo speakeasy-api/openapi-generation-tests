@@ -32,41 +32,41 @@ class SDK:
     About our test document.
     https://speakeasyapi.dev/docs/home - Speakeasy Docs
     """
-    auth: Auth
-    r"""Endpoints for testing authentication."""
-    auth_new: AuthNew
-    r"""Endpoints for testing authentication."""
-    documentation: Documentation
-    r"""Testing for documentation extensions in Python."""
-    errors: Errors
-    r"""Endpoints for testing error responses."""
-    first: First
-    flattening: Flattening
-    r"""Endpoints for testing flattening through request body and parameter combinations."""
     generation: Generation
     r"""Endpoints for purely testing valid generation behavior."""
+    errors: Errors
+    r"""Endpoints for testing error responses."""
+    unions: Unions
+    r"""Endpoints for testing union types."""
+    flattening: Flattening
+    r"""Endpoints for testing flattening through request body and parameter combinations."""
     globals: Globals
     r"""Endpoints for testing global parameters."""
-    nest: Nest
-    nested: Nested
-    pagination: Pagination
-    r"""Endpoints for testing the pagination extension"""
     parameters: Parameters
     r"""Endpoints for testing parameters."""
+    nest: Nest
+    nested: Nested
     request_bodies: RequestBodies
     r"""Endpoints for testing request bodies."""
-    resource: Resource
     response_bodies: ResponseBodies
     r"""Endpoints for testing response bodies."""
-    retries: Retries
-    r"""Endpoints for testing retries."""
-    second: Second
     servers: Servers
     r"""Endpoints for testing servers."""
     telemetry: Telemetry
     r"""Endpoints for testing telemetry."""
-    unions: Unions
-    r"""Endpoints for testing union types."""
+    auth_new: AuthNew
+    r"""Endpoints for testing authentication."""
+    auth: Auth
+    r"""Endpoints for testing authentication."""
+    documentation: Documentation
+    r"""Testing for documentation extensions in Python."""
+    resource: Resource
+    first: First
+    second: Second
+    pagination: Pagination
+    r"""Endpoints for testing the pagination extension"""
+    retries: Retries
+    r"""Endpoints for testing retries."""
 
     sdk_configuration: SDKConfiguration
 
@@ -93,13 +93,13 @@ class SDK:
         :param global_query_param: Configures the global_query_param parameter for all supported operations
         :type global_query_param: str
         :param hostname: Allows setting the hostname variable for url substitution
-        :type hostname: str
+        :type hostname: 
         :param port: Allows setting the port variable for url substitution
-        :type port: str
+        :type port: 
         :param protocol: Allows setting the protocol variable for url substitution
-        :type protocol: str
+        :type protocol: 
         :param something: Allows setting the something variable for url substitution
-        :type something: sdk.ServerSomething
+        :type something: ServerSomethingmodels.ServerSomething
         :param server_idx: The index of the server to use for all operations
         :type server_idx: int
         :param server_url: The server URL to use for all operations
@@ -154,26 +154,26 @@ class SDK:
         self._init_sdks()
     
     def _init_sdks(self):
-        self.auth = Auth(self.sdk_configuration)
-        self.auth_new = AuthNew(self.sdk_configuration)
-        self.documentation = Documentation(self.sdk_configuration)
-        self.errors = Errors(self.sdk_configuration)
-        self.first = First(self.sdk_configuration)
-        self.flattening = Flattening(self.sdk_configuration)
         self.generation = Generation(self.sdk_configuration)
+        self.errors = Errors(self.sdk_configuration)
+        self.unions = Unions(self.sdk_configuration)
+        self.flattening = Flattening(self.sdk_configuration)
         self.globals = Globals(self.sdk_configuration)
+        self.parameters = Parameters(self.sdk_configuration)
         self.nest = Nest(self.sdk_configuration)
         self.nested = Nested(self.sdk_configuration)
-        self.pagination = Pagination(self.sdk_configuration)
-        self.parameters = Parameters(self.sdk_configuration)
         self.request_bodies = RequestBodies(self.sdk_configuration)
-        self.resource = Resource(self.sdk_configuration)
         self.response_bodies = ResponseBodies(self.sdk_configuration)
-        self.retries = Retries(self.sdk_configuration)
-        self.second = Second(self.sdk_configuration)
         self.servers = Servers(self.sdk_configuration)
         self.telemetry = Telemetry(self.sdk_configuration)
-        self.unions = Unions(self.sdk_configuration)
+        self.auth_new = AuthNew(self.sdk_configuration)
+        self.auth = Auth(self.sdk_configuration)
+        self.documentation = Documentation(self.sdk_configuration)
+        self.resource = Resource(self.sdk_configuration)
+        self.first = First(self.sdk_configuration)
+        self.second = Second(self.sdk_configuration)
+        self.pagination = Pagination(self.sdk_configuration)
+        self.retries = Retries(self.sdk_configuration)
     
     def put_anything_ignored_generation(self, request: str) -> operations.PutAnythingIgnoredGenerationResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -197,8 +197,8 @@ class SDK:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PutAnythingIgnoredGeneration200ApplicationJSON])
-                res.put_anything_ignored_generation_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PutAnythingIgnoredGenerationResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:

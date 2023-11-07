@@ -9,11 +9,11 @@ import (
 	"net/http"
 	"testing"
 
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/utils"
 
-	sdk "openapi"
+	sdk "openapi/v2"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

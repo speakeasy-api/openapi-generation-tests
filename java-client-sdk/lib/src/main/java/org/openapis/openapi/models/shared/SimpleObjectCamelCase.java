@@ -133,9 +133,9 @@ public class SimpleObjectCamelCase {
      * An int32 enum property.
      */
     @JsonProperty("int32_enum_val")
-    public SimpleObjectCamelCaseInt32EnumVal int32EnumVal;
+    public Int32EnumVal int32EnumVal;
 
-    public SimpleObjectCamelCase withInt32EnumVal(SimpleObjectCamelCaseInt32EnumVal int32EnumVal) {
+    public SimpleObjectCamelCase withInt32EnumVal(Int32EnumVal int32EnumVal) {
         this.int32EnumVal = int32EnumVal;
         return this;
     }
@@ -155,9 +155,9 @@ public class SimpleObjectCamelCase {
      * An integer enum property.
      */
     @JsonProperty("int_enum_val")
-    public SimpleObjectCamelCaseIntEnumVal intEnumVal;
+    public IntEnumVal intEnumVal;
 
-    public SimpleObjectCamelCase withIntEnumVal(SimpleObjectCamelCaseIntEnumVal intEnumVal) {
+    public SimpleObjectCamelCase withIntEnumVal(IntEnumVal intEnumVal) {
         this.intEnumVal = intEnumVal;
         return this;
     }
@@ -231,7 +231,7 @@ public class SimpleObjectCamelCase {
         return this;
     }
     
-    public SimpleObjectCamelCase(@JsonProperty("any_val") Object anyVal, @JsonProperty("bool_val") Boolean boolVal, @JsonProperty("date_time_val") OffsetDateTime dateTimeVal, @JsonProperty("date_val") LocalDate dateVal, @JsonProperty("enum_val") Enum enumVal, @JsonProperty("float32_val") Float float32Val, @JsonProperty("int32_enum_val") SimpleObjectCamelCaseInt32EnumVal int32EnumVal, @JsonProperty("int32_val") Integer int32Val, @JsonProperty("int_enum_val") SimpleObjectCamelCaseIntEnumVal intEnumVal, @JsonProperty("int_val") Long intVal, @JsonProperty("num_val") Double numVal, @JsonProperty("str_val") String strVal) {
+    public SimpleObjectCamelCase(@JsonProperty("any_val") Object anyVal, @JsonProperty("bool_val") Boolean boolVal, @JsonProperty("date_time_val") OffsetDateTime dateTimeVal, @JsonProperty("date_val") LocalDate dateVal, @JsonProperty("enum_val") Enum enumVal, @JsonProperty("float32_val") Float float32Val, @JsonProperty("int32_enum_val") Int32EnumVal int32EnumVal, @JsonProperty("int32_val") Integer int32Val, @JsonProperty("int_enum_val") IntEnumVal intEnumVal, @JsonProperty("int_val") Long intVal, @JsonProperty("num_val") Double numVal, @JsonProperty("str_val") String strVal) {
         this.anyVal = anyVal;
         this.boolVal = boolVal;
         this.dateTimeVal = dateTimeVal;

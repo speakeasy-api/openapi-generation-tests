@@ -1,5 +1,5 @@
-# ResponseBodiesSDK
-(*ResponseBodies*)
+# ResponseBodies
+(*.ResponseBodies*)
 
 ## Overview
 
@@ -24,10 +24,10 @@ Endpoints for testing response bodies.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -59,10 +59,10 @@ var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesComplexNumber
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -71,7 +71,7 @@ var sdk = new SDKSDK(
 );
 
 var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesDatePostAsync(new Dictionary<string, LocalDate>() {
-    { "key", LocalDate.FromDateTime(DateTime.Parse("2021-03-16")) },
+    { "key", LocalDate.FromDateTime(System.DateTime.Parse("2021-03-16")) },
 });
 
 // handle response
@@ -94,12 +94,11 @@ var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesDatePostAsync
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -111,14 +110,14 @@ var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesObjectPostAsy
     { "key", new SimpleObject() {
         Any = "any",
         Bool = true,
-        Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-        DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-        Enum = SDK.Models.Shared.Enum.One,
+        Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
         Int32 = 1,
-        Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-        IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+        Int32Enum = Int32Enum.FiftyFive,
+        IntEnum = IntEnum.Two,
         Num = 1.1D,
         Str = "test",
         Bigint = 8821239038968084,
@@ -150,10 +149,10 @@ var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesObjectPostAsy
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -185,10 +184,10 @@ var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesPostAsync(new
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -212,11 +211,11 @@ var res = await sdk.ResponseBodies.ResponseBodyBytesGetAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -247,10 +246,10 @@ var res = await sdk.ResponseBodies.ResponseBodyEmptyWithHeadersAsync(1751.8D, "s
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -280,10 +279,10 @@ var res = await sdk.ResponseBodies.ResponseBodyOptionalGetAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -313,10 +312,10 @@ var res = await sdk.ResponseBodies.ResponseBodyReadOnlyAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -340,10 +339,10 @@ var res = await sdk.ResponseBodies.ResponseBodyStringGetAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -367,12 +366,11 @@ var res = await sdk.ResponseBodies.ResponseBodyXmlGetAsync();
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -381,8 +379,8 @@ var sdk = new SDKSDK(
 );
 
 var res = await sdk.ResponseBodies.ResponseBodyZeroValueComplexTypePtrsPostAsync(new ObjWithZeroValueComplexTypePtrs() {
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00Z"),
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00Z"),
 });
 
 // handle response

@@ -7,25 +7,25 @@ import (
 	"fmt"
 	"github.com/ericlagergren/decimal"
 	"math/big"
-	"openapi/pkg/types"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/types"
+	"openapi/v2/pkg/utils"
 	"time"
 )
 
-// SimpleObjectInt32Enum - An int32 enum property.
-type SimpleObjectInt32Enum int
+// Int32Enum - An int32 enum property.
+type Int32Enum int
 
 const (
-	SimpleObjectInt32EnumFiftyFive              SimpleObjectInt32Enum = 55
-	SimpleObjectInt32EnumSixtyNine              SimpleObjectInt32Enum = 69
-	SimpleObjectInt32EnumOneHundredAndEightyOne SimpleObjectInt32Enum = 181
+	Int32EnumFiftyFive              Int32Enum = 55
+	Int32EnumSixtyNine              Int32Enum = 69
+	Int32EnumOneHundredAndEightyOne Int32Enum = 181
 )
 
-func (e SimpleObjectInt32Enum) ToPointer() *SimpleObjectInt32Enum {
+func (e Int32Enum) ToPointer() *Int32Enum {
 	return &e
 }
 
-func (e *SimpleObjectInt32Enum) UnmarshalJSON(data []byte) error {
+func (e *Int32Enum) UnmarshalJSON(data []byte) error {
 	var v int
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -36,27 +36,27 @@ func (e *SimpleObjectInt32Enum) UnmarshalJSON(data []byte) error {
 	case 69:
 		fallthrough
 	case 181:
-		*e = SimpleObjectInt32Enum(v)
+		*e = Int32Enum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SimpleObjectInt32Enum: %v", v)
+		return fmt.Errorf("invalid value for Int32Enum: %v", v)
 	}
 }
 
-// SimpleObjectIntEnum - An integer enum property.
-type SimpleObjectIntEnum int64
+// IntEnum - An integer enum property.
+type IntEnum int64
 
 const (
-	SimpleObjectIntEnumFirst  SimpleObjectIntEnum = 1
-	SimpleObjectIntEnumSecond SimpleObjectIntEnum = 2
-	SimpleObjectIntEnumThird  SimpleObjectIntEnum = 3
+	IntEnumFirst  IntEnum = 1
+	IntEnumSecond IntEnum = 2
+	IntEnumThird  IntEnum = 3
 )
 
-func (e SimpleObjectIntEnum) ToPointer() *SimpleObjectIntEnum {
+func (e IntEnum) ToPointer() *IntEnum {
 	return &e
 }
 
-func (e *SimpleObjectIntEnum) UnmarshalJSON(data []byte) error {
+func (e *IntEnum) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -67,10 +67,10 @@ func (e *SimpleObjectIntEnum) UnmarshalJSON(data []byte) error {
 	case 2:
 		fallthrough
 	case 3:
-		*e = SimpleObjectIntEnum(v)
+		*e = IntEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SimpleObjectIntEnum: %v", v)
+		return fmt.Errorf("invalid value for IntEnum: %v", v)
 	}
 }
 
@@ -101,9 +101,9 @@ type SimpleObject struct {
 	// An int32 property.
 	Int32 int `json:"int32" header:"name=int32" pathParam:"name=int32" queryParam:"name=int32" form:"name=int32" multipartForm:"name=int32"`
 	// An int32 enum property.
-	Int32Enum SimpleObjectInt32Enum `json:"int32Enum" header:"name=int32Enum" pathParam:"name=int32Enum" queryParam:"name=int32Enum" form:"name=int32Enum" multipartForm:"name=int32Enum"`
+	Int32Enum Int32Enum `json:"int32Enum" header:"name=int32Enum" pathParam:"name=int32Enum" queryParam:"name=int32Enum" form:"name=int32Enum" multipartForm:"name=int32Enum"`
 	// An integer enum property.
-	IntEnum SimpleObjectIntEnum `json:"intEnum" header:"name=intEnum" pathParam:"name=intEnum" queryParam:"name=intEnum" form:"name=intEnum" multipartForm:"name=intEnum"`
+	IntEnum IntEnum `json:"intEnum" header:"name=intEnum" pathParam:"name=intEnum" queryParam:"name=intEnum" form:"name=intEnum" multipartForm:"name=intEnum"`
 	// An optional integer property will be null for tests.
 	IntOptNull *int64 `json:"intOptNull,omitempty" header:"name=intOptNull" pathParam:"name=intOptNull" queryParam:"name=intOptNull" form:"name=intOptNull" multipartForm:"name=intOptNull"`
 	// A number property.
@@ -218,16 +218,16 @@ func (o *SimpleObject) GetInt32() int {
 	return o.Int32
 }
 
-func (o *SimpleObject) GetInt32Enum() SimpleObjectInt32Enum {
+func (o *SimpleObject) GetInt32Enum() Int32Enum {
 	if o == nil {
-		return SimpleObjectInt32Enum(0)
+		return Int32Enum(0)
 	}
 	return o.Int32Enum
 }
 
-func (o *SimpleObject) GetIntEnum() SimpleObjectIntEnum {
+func (o *SimpleObject) GetIntEnum() IntEnum {
 	if o == nil {
-		return SimpleObjectIntEnum(0)
+		return IntEnum(0)
 	}
 	return o.IntEnum
 }

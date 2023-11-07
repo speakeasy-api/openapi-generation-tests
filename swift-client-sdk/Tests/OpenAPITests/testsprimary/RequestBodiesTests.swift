@@ -32,7 +32,7 @@ class RequestBodiesTests: XCTestCase {
             server: nil
         )
         XCTAssertEqual(response.statusCode, 200, "Request should succeed")
-        XCTAssertEqual(try response.data.simpleObjects(), [object], "Serialized request body and response objects should be equal")
+        XCTAssertEqual(try response.data.res(), [object], "Serialized request body and response objects should be equal")
     }
 
     func testRequestBodyPostApplicationJSONArrayOfArray() async throws {
@@ -44,8 +44,8 @@ class RequestBodiesTests: XCTestCase {
             server: nil
         )
         XCTAssertEqual(response.statusCode, 200, "Request should succeed")
-        XCTAssertEqual(try response.data.arrs()[safelyIndexed: 0]?[safelyIndexed: 0], object)
-        XCTAssertEqual(try response.data.arrs()[safelyIndexed: 1]?[safelyIndexed: 0], object)
+        XCTAssertEqual(try response.data.res()[safelyIndexed: 0]?[safelyIndexed: 0], object)
+        XCTAssertEqual(try response.data.res()[safelyIndexed: 1]?[safelyIndexed: 0], object)
     }
 
     func testRequestBodyPostApplicationJSONMap() async throws {
@@ -118,10 +118,10 @@ class RequestBodiesTests: XCTestCase {
             server: nil
         )
         XCTAssertEqual(response.statusCode, 200, "Request should succeed")
-        XCTAssertEqual(try response.data.maps()[safelyIndexed: 0]?["mapElem1"], object)
-        XCTAssertEqual(try response.data.maps()[safelyIndexed: 0]?["mapElem2"], object)
-        XCTAssertEqual(try response.data.maps()[safelyIndexed: 1]?["mapElem1"], object)
-        XCTAssertEqual(try response.data.maps()[safelyIndexed: 1]?["mapElem2"], object)
+        XCTAssertEqual(try response.data.res()[safelyIndexed: 0]?["mapElem1"], object)
+        XCTAssertEqual(try response.data.res()[safelyIndexed: 0]?["mapElem2"], object)
+        XCTAssertEqual(try response.data.res()[safelyIndexed: 1]?["mapElem1"], object)
+        XCTAssertEqual(try response.data.res()[safelyIndexed: 1]?["mapElem2"], object)
     }
 
     func testRequestBodyPostApplicationJSONMapOfPrimitive() async throws {
@@ -147,7 +147,7 @@ class RequestBodiesTests: XCTestCase {
             server: nil
         )
         XCTAssertEqual(response.statusCode, 200, "Request should succeed")
-        XCTAssertEqual(try response.data.strings(), ["hello", "world"])
+        XCTAssertEqual(try response.data.res(), ["hello", "world"])
     }
 
     func testRequestBodyPostApplicationJSONMapOfMapOfPrimitive() async throws {
@@ -184,7 +184,7 @@ class RequestBodiesTests: XCTestCase {
             server: nil
         )
         XCTAssertEqual(response.statusCode, 200, "Request should succeed")
-        XCTAssertEqual(try response.data.arrs(), [["foo", "bar"],["buzz", "bazz"]])
+        XCTAssertEqual(try response.data.res(), [["foo", "bar"],["buzz", "bazz"]])
     }
 
     func testRequestBodyPostApplicationJSONArrayObject() async throws {
@@ -431,7 +431,7 @@ class RequestBodiesTests: XCTestCase {
                 request: .init(
                     file: .init(
                         content: data,
-                        file: fileContents
+                        fileName: fileContents
                     )
                 )
             )

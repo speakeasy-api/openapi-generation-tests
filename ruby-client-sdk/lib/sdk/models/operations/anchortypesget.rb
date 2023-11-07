@@ -10,7 +10,7 @@ require_relative '../shared/simpleobject'
 module OpenApiSDK
   module Operations
     # A successful response that contains the simpleObject sent in the request body
-    class TypeFromAnchor < OpenApiSDK::Utils::FieldAugmented
+    class AnchorTypesGetTypeFromAnchor < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # A simple object that uses all our supported primitive types and enums and has optional properties.
@@ -35,10 +35,10 @@ module OpenApiSDK
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
       # A successful response that contains the simpleObject sent in the request body
-      field :type_from_anchor, T.nilable(Operations::TypeFromAnchor)
+      field :type_from_anchor, T.nilable(Operations::AnchorTypesGetTypeFromAnchor)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), type_from_anchor: T.nilable(Operations::TypeFromAnchor)).void }
+      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), type_from_anchor: T.nilable(Operations::AnchorTypesGetTypeFromAnchor)).void }
       def initialize(content_type: nil, status_code: nil, raw_response: nil, type_from_anchor: nil)
         @content_type = content_type
         @status_code = status_code

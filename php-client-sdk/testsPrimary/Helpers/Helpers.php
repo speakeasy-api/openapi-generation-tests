@@ -21,8 +21,8 @@ class Helpers
         $object->bool = true;
         $object->int = 1;
         $object->int32 = 1;
-        $object->int32Enum = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum::FiftyFive;
-        $object->intEnum = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum::Second;
+        $object->int32Enum = \OpenAPI\OpenAPI\Models\Shared\Int32Enum::FiftyFive;
+        $object->intEnum = \OpenAPI\OpenAPI\Models\Shared\IntEnum::Second;
         $object->num = 1.1;
         $object->float32 = 1.1;
         $object->enum = \OpenAPI\OpenAPI\Models\Shared\Enum::One;

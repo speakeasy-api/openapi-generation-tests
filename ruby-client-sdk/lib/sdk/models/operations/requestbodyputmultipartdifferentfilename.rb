@@ -9,19 +9,19 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName < OpenApiSDK::Utils::FieldAugmented
+    class DifferentFileName < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
       field :content, String, { 'multipart_form': { 'content': true } }
 
-      field :different_file_name, String, { 'multipart_form': { 'field_name': 'differentFileName' } }
+      field :file_name, String, { 'multipart_form': { 'field_name': 'differentFileName' } }
 
 
-      sig { params(content: String, different_file_name: String).void }
-      def initialize(content: nil, different_file_name: nil)
+      sig { params(content: String, file_name: String).void }
+      def initialize(content: nil, file_name: nil)
         @content = content
-        @different_file_name = different_file_name
+        @file_name = file_name
       end
     end
 
@@ -30,10 +30,10 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :different_file_name, T.nilable(Operations::RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName), { 'multipart_form': { 'file': true } }
+      field :different_file_name, T.nilable(Operations::DifferentFileName), { 'multipart_form': { 'file': true } }
 
 
-      sig { params(different_file_name: T.nilable(Operations::RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName)).void }
+      sig { params(different_file_name: T.nilable(Operations::DifferentFileName)).void }
       def initialize(different_file_name: nil)
         @different_file_name = different_file_name
       end

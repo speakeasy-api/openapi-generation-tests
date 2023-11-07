@@ -38,10 +38,10 @@ class AnchorTypesGetResponse
     /**
      * A successful response that contains the simpleObject sent in the request body
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\TypeFromAnchor $typeFromAnchor
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\AnchorTypesGetTypeFromAnchor $typeFromAnchor
      */
 	
-    public ?TypeFromAnchor $typeFromAnchor = null;
+    public ?AnchorTypesGetTypeFromAnchor $typeFromAnchor = null;
     
 	public function __construct()
 	{

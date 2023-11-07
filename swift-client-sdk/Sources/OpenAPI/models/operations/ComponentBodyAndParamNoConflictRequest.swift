@@ -3,12 +3,12 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct ComponentBodyAndParamNoConflictRequest: APIValue {
         public let paramStr: String
         public let simpleObject: Shared.SimpleObject
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         ///
         public init(paramStr: String, simpleObject: Shared.SimpleObject) {

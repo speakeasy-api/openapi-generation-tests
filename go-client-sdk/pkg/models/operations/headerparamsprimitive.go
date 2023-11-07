@@ -41,35 +41,35 @@ func (o *HeaderParamsPrimitiveRequest) GetXHeaderString() string {
 	return o.XHeaderString
 }
 
-type HeaderParamsPrimitiveResHeaders struct {
+type HeaderParamsPrimitiveHeaders struct {
 	XHeaderBoolean string `json:"X-Header-Boolean"`
 	XHeaderInteger string `json:"X-Header-Integer"`
 	XHeaderNumber  string `json:"X-Header-Number"`
 	XHeaderString  string `json:"X-Header-String"`
 }
 
-func (o *HeaderParamsPrimitiveResHeaders) GetXHeaderBoolean() string {
+func (o *HeaderParamsPrimitiveHeaders) GetXHeaderBoolean() string {
 	if o == nil {
 		return ""
 	}
 	return o.XHeaderBoolean
 }
 
-func (o *HeaderParamsPrimitiveResHeaders) GetXHeaderInteger() string {
+func (o *HeaderParamsPrimitiveHeaders) GetXHeaderInteger() string {
 	if o == nil {
 		return ""
 	}
 	return o.XHeaderInteger
 }
 
-func (o *HeaderParamsPrimitiveResHeaders) GetXHeaderNumber() string {
+func (o *HeaderParamsPrimitiveHeaders) GetXHeaderNumber() string {
 	if o == nil {
 		return ""
 	}
 	return o.XHeaderNumber
 }
 
-func (o *HeaderParamsPrimitiveResHeaders) GetXHeaderString() string {
+func (o *HeaderParamsPrimitiveHeaders) GetXHeaderString() string {
 	if o == nil {
 		return ""
 	}
@@ -78,12 +78,12 @@ func (o *HeaderParamsPrimitiveResHeaders) GetXHeaderString() string {
 
 // HeaderParamsPrimitiveRes - OK
 type HeaderParamsPrimitiveRes struct {
-	Headers HeaderParamsPrimitiveResHeaders `json:"headers"`
+	Headers HeaderParamsPrimitiveHeaders `json:"headers"`
 }
 
-func (o *HeaderParamsPrimitiveRes) GetHeaders() HeaderParamsPrimitiveResHeaders {
+func (o *HeaderParamsPrimitiveRes) GetHeaders() HeaderParamsPrimitiveHeaders {
 	if o == nil {
-		return HeaderParamsPrimitiveResHeaders{}
+		return HeaderParamsPrimitiveHeaders{}
 	}
 	return o.Headers
 }

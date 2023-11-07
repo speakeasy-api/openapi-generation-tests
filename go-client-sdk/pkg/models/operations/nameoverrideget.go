@@ -6,23 +6,23 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
-// NameOverrideGetEnumNameOverride - An enum type
-type NameOverrideGetEnumNameOverride string
+// EnumNameOverride - An enum type
+type EnumNameOverride string
 
 const (
-	NameOverrideGetEnumNameOverrideValue1 NameOverrideGetEnumNameOverride = "value1"
-	NameOverrideGetEnumNameOverrideValue2 NameOverrideGetEnumNameOverride = "value2"
-	NameOverrideGetEnumNameOverrideValue3 NameOverrideGetEnumNameOverride = "value3"
+	EnumNameOverrideValue1 EnumNameOverride = "value1"
+	EnumNameOverrideValue2 EnumNameOverride = "value2"
+	EnumNameOverrideValue3 EnumNameOverride = "value3"
 )
 
-func (e NameOverrideGetEnumNameOverride) ToPointer() *NameOverrideGetEnumNameOverride {
+func (e EnumNameOverride) ToPointer() *EnumNameOverride {
 	return &e
 }
 
-func (e *NameOverrideGetEnumNameOverride) UnmarshalJSON(data []byte) error {
+func (e *EnumNameOverride) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -33,22 +33,22 @@ func (e *NameOverrideGetEnumNameOverride) UnmarshalJSON(data []byte) error {
 	case "value2":
 		fallthrough
 	case "value3":
-		*e = NameOverrideGetEnumNameOverride(v)
+		*e = EnumNameOverride(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for NameOverrideGetEnumNameOverride: %v", v)
+		return fmt.Errorf("invalid value for EnumNameOverride: %v", v)
 	}
 }
 
 type NameOverrideGetRequest struct {
 	// An enum type
-	TestEnumQueryParam NameOverrideGetEnumNameOverride `queryParam:"style=form,explode=true,name=enumNameOverride"`
-	TestQueryParam     string                          `queryParam:"style=form,explode=true,name=nameOverride"`
+	TestEnumQueryParam EnumNameOverride `queryParam:"style=form,explode=true,name=enumNameOverride"`
+	TestQueryParam     string           `queryParam:"style=form,explode=true,name=nameOverride"`
 }
 
-func (o *NameOverrideGetRequest) GetTestEnumQueryParam() NameOverrideGetEnumNameOverride {
+func (o *NameOverrideGetRequest) GetTestEnumQueryParam() EnumNameOverride {
 	if o == nil {
-		return NameOverrideGetEnumNameOverride("")
+		return EnumNameOverride("")
 	}
 	return o.TestEnumQueryParam
 }
@@ -60,13 +60,13 @@ func (o *NameOverrideGetRequest) GetTestQueryParam() string {
 	return o.TestQueryParam
 }
 
-// OverriddenResponse - A successful response that contains the simpleObject sent in the request body
-type OverriddenResponse struct {
+// NameOverrideGetOverriddenResponse - A successful response that contains the simpleObject sent in the request body
+type NameOverrideGetOverriddenResponse struct {
 	// A simple object that uses all our supported primitive types and enums and has optional properties.
 	JSON *shared.SimpleObject `json:"json,omitempty"`
 }
 
-func (o *OverriddenResponse) GetJSON() *shared.SimpleObject {
+func (o *NameOverrideGetOverriddenResponse) GetJSON() *shared.SimpleObject {
 	if o == nil {
 		return nil
 	}
@@ -81,7 +81,7 @@ type NameOverrideGetResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A successful response that contains the simpleObject sent in the request body
-	OverriddenResponse *OverriddenResponse
+	OverriddenResponse *NameOverrideGetOverriddenResponse
 }
 
 func (o *NameOverrideGetResponse) GetContentType() string {
@@ -105,7 +105,7 @@ func (o *NameOverrideGetResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *NameOverrideGetResponse) GetOverriddenResponse() *OverriddenResponse {
+func (o *NameOverrideGetResponse) GetOverriddenResponse() *NameOverrideGetOverriddenResponse {
 	if o == nil {
 		return nil
 	}

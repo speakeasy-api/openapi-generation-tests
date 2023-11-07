@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import complexnumbertypes as shared_complexnumbertypes
+from ...models.shared import complexnumbertypes as shared_complexnumbertypes
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
 from sdk import utils
@@ -27,7 +27,7 @@ class RequestBodyPostComplexNumberTypesRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class RequestBodyPostComplexNumberTypes200ApplicationJSON:
+class RequestBodyPostComplexNumberTypesResponseBody:
     r"""OK"""
     json: shared_complexnumbertypes.ComplexNumberTypes = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
@@ -41,9 +41,9 @@ class RequestBodyPostComplexNumberTypesResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    object: Optional[RequestBodyPostComplexNumberTypesResponseBody] = dataclasses.field(default=None)
+    r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    request_body_post_complex_number_types_200_application_json_object: Optional[RequestBodyPostComplexNumberTypes200ApplicationJSON] = dataclasses.field(default=None)
-    r"""OK"""
     
 

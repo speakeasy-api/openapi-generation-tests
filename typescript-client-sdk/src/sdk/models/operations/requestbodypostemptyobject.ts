@@ -6,39 +6,39 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class RequestBodyPostEmptyObjectRequestBodyEmpty extends SpeakeasyBase {}
+export class Empty extends SpeakeasyBase {}
 
-export class RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties extends SpeakeasyBase {}
+export class EmptyWithEmptyProperties extends SpeakeasyBase {}
 
 export class RequestBodyPostEmptyObjectRequestBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "empty" })
-    @Type(() => RequestBodyPostEmptyObjectRequestBodyEmpty)
-    empty?: RequestBodyPostEmptyObjectRequestBodyEmpty;
+    @Type(() => Empty)
+    empty?: Empty;
 
     @SpeakeasyMetadata()
     @Expose({ name: "emptyWithEmptyProperties" })
-    @Type(() => RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties)
-    emptyWithEmptyProperties?: RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties;
+    @Type(() => EmptyWithEmptyProperties)
+    emptyWithEmptyProperties?: EmptyWithEmptyProperties;
 }
 
-export class RequestBodyPostEmptyObject200ApplicationJSONEmpty extends SpeakeasyBase {}
+export class RequestBodyPostEmptyObjectEmpty extends SpeakeasyBase {}
 
-export class RequestBodyPostEmptyObject200ApplicationJSONEmptyRespWithEmptyProperies extends SpeakeasyBase {}
+export class EmptyRespWithEmptyProperies extends SpeakeasyBase {}
 
 /**
  * OK
  */
-export class RequestBodyPostEmptyObject200ApplicationJSON extends SpeakeasyBase {
+export class RequestBodyPostEmptyObjectResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "empty" })
-    @Type(() => RequestBodyPostEmptyObject200ApplicationJSONEmpty)
-    empty?: RequestBodyPostEmptyObject200ApplicationJSONEmpty;
+    @Type(() => RequestBodyPostEmptyObjectEmpty)
+    empty?: RequestBodyPostEmptyObjectEmpty;
 
     @SpeakeasyMetadata()
     @Expose({ name: "emptyRespWithEmptyProperies" })
-    @Type(() => RequestBodyPostEmptyObject200ApplicationJSONEmptyRespWithEmptyProperies)
-    emptyRespWithEmptyProperies?: RequestBodyPostEmptyObject200ApplicationJSONEmptyRespWithEmptyProperies;
+    @Type(() => EmptyRespWithEmptyProperies)
+    emptyRespWithEmptyProperies?: EmptyRespWithEmptyProperies;
 }
 
 export class RequestBodyPostEmptyObjectResponse extends SpeakeasyBase {
@@ -64,5 +64,5 @@ export class RequestBodyPostEmptyObjectResponse extends SpeakeasyBase {
      * OK
      */
     @SpeakeasyMetadata()
-    requestBodyPostEmptyObject200ApplicationJSONObject?: RequestBodyPostEmptyObject200ApplicationJSON;
+    object?: RequestBodyPostEmptyObjectResponseBody;
 }

@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostMultipleContentTypesSplitParamFormRequestBody < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -35,10 +35,10 @@ module OpenApiSDK
 
       field :param_str, String, { 'query_param': { 'field_name': 'paramStr', 'style': 'form', 'explode': true } }
 
-      field :request_body, Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded, { 'request': { 'media_type': 'application/x-www-form-urlencoded' } }
+      field :request_body, Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequestBody, { 'request': { 'media_type': 'application/x-www-form-urlencoded' } }
 
 
-      sig { params(param_str: String, request_body: Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded).void }
+      sig { params(param_str: String, request_body: Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequestBody).void }
       def initialize(param_str: nil, request_body: nil)
         @param_str = param_str
         @request_body = request_body

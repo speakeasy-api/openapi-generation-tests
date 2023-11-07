@@ -1,5 +1,5 @@
 # Pagination
-(*pagination*)
+
 
 ## Overview
 
@@ -24,19 +24,19 @@ Endpoints for testing the pagination extension
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\PaginationCursorBodyRequestBody;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $request = new PaginationCursorBodyRequestBody();
+    $request = new Operations\PaginationCursorBodyRequestBody();
     $request->cursor = 868337;
 
     $response = $sdk->pagination->paginationCursorBody($request);
@@ -72,14 +72,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\PaginationCursorParamsRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -119,19 +119,18 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Shared\LimitOffsetConfig;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $request = new LimitOffsetConfig();
+    $request = new Shared\LimitOffsetConfig();
     $request->limit = 189971;
     $request->offset = 995974;
     $request->page = 329413;
@@ -169,14 +168,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\PaginationLimitOffsetOffsetParamsRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -217,19 +216,18 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Shared\LimitOffsetConfig;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $request = new LimitOffsetConfig();
+    $request = new Shared\LimitOffsetConfig();
     $request->limit = 479052;
     $request->offset = 716379;
     $request->page = 911806;
@@ -267,14 +265,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\PaginationLimitOffsetPageParamsRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 

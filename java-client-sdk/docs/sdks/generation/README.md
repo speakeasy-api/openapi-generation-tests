@@ -1,5 +1,5 @@
 # Generation
-(*generation*)
+(*.generation*)
 
 ## Overview
 
@@ -300,8 +300,8 @@ package hello.world;
 
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.DeprecatedFieldInSchemaPostResponse;
+import org.openapis.openapi.models.shared.DeprecatedEnum;
 import org.openapis.openapi.models.shared.DeprecatedFieldInObject;
-import org.openapis.openapi.models.shared.DeprecatedFieldInObjectDeprecatedEnum;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
@@ -316,7 +316,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.DeprecatedFieldInObject req = new DeprecatedFieldInObject(){{
-                deprecatedEnum = DeprecatedFieldInObjectDeprecatedEnum.B;
+                deprecatedEnum = DeprecatedEnum.B;
                 deprecatedField = "string";
                 newField = "string";
             }};            
@@ -369,7 +369,7 @@ public class Application {
 
             DeprecatedObjectInSchemaGetResponse res = sdk.generation.deprecatedObjectInSchemaGet();
 
-            if (res.deprecatedObjectInSchemaGet200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -598,7 +598,7 @@ public class Application {
 
             GetGlobalNameOverrideResponse res = sdk.generation.globalNameOverridden();
 
-            if (res.getGlobalNameOverride200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -642,7 +642,7 @@ public class Application {
 
             IgnoredGenerationGetResponse res = sdk.generation.ignoredGenerationGet();
 
-            if (res.ignoredGenerationGet200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -666,8 +666,8 @@ public class Application {
 package hello.world;
 
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.IgnoresPostApplicationJSON;
 import org.openapis.openapi.models.operations.IgnoresPostRequest;
+import org.openapis.openapi.models.operations.IgnoresPostRequestBody;
 import org.openapis.openapi.models.operations.IgnoresPostResponse;
 import org.openapis.openapi.models.shared.Security;
 
@@ -682,7 +682,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            IgnoresPostResponse res = sdk.generation.ignoresPost(new IgnoresPostApplicationJSON(){{}}, "string");
+            IgnoresPostResponse res = sdk.generation.ignoresPost(new IgnoresPostRequestBody(){{}}, "string");
 
             if (res.httpBinSimpleJsonObject != null) {
                 // handle response
@@ -696,10 +696,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                              | [org.openapis.openapi.models.operations.IgnoresPostApplicationJSON](../../models/operations/IgnoresPostApplicationJSON.md) | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |
-| `testParam`                                                                                                                | *String*                                                                                                                   | :heavy_minus_sign:                                                                                                         | N/A                                                                                                                        |
+| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `requestBody`                                                                                                      | [org.openapis.openapi.models.operations.IgnoresPostRequestBody](../../models/operations/IgnoresPostRequestBody.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `testParam`                                                                                                        | *String*                                                                                                           | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
 
 
 ### Response
@@ -715,7 +715,7 @@ public class Application {
 package hello.world;
 
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.NameOverrideGetEnumNameOverride;
+import org.openapis.openapi.models.operations.EnumNameOverride;
 import org.openapis.openapi.models.operations.NameOverrideGetRequest;
 import org.openapis.openapi.models.operations.NameOverrideGetResponse;
 import org.openapis.openapi.models.shared.Security;
@@ -731,7 +731,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            NameOverrideGetResponse res = sdk.generation.nameOverride(NameOverrideGetEnumNameOverride.VALUE3, "example");
+            NameOverrideGetResponse res = sdk.generation.nameOverride(EnumNameOverride.VALUE3, "example");
 
             if (res.overriddenResponse != null) {
                 // handle response
@@ -745,10 +745,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                            | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          | Example                                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `testEnumQueryParam`                                                                                                                 | [org.openapis.openapi.models.operations.NameOverrideGetEnumNameOverride](../../models/operations/NameOverrideGetEnumNameOverride.md) | :heavy_check_mark:                                                                                                                   | An enum type                                                                                                                         | value3                                                                                                                               |
-| `testQueryParam`                                                                                                                     | *String*                                                                                                                             | :heavy_check_mark:                                                                                                                   | N/A                                                                                                                                  | example                                                                                                                              |
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            | Example                                                                                                |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `testEnumQueryParam`                                                                                   | [org.openapis.openapi.models.operations.EnumNameOverride](../../models/operations/EnumNameOverride.md) | :heavy_check_mark:                                                                                     | An enum type                                                                                           | value3                                                                                                 |
+| `testQueryParam`                                                                                       | *String*                                                                                               | :heavy_check_mark:                                                                                     | N/A                                                                                                    | example                                                                                                |
 
 
 ### Response
@@ -845,7 +845,7 @@ package hello.world;
 
 import java.time.LocalDate;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.TypedParameterGenerationGetObj;
+import org.openapis.openapi.models.operations.Obj;
 import org.openapis.openapi.models.operations.TypedParameterGenerationGetRequest;
 import org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse;
 import org.openapis.openapi.models.shared.Security;
@@ -861,7 +861,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            TypedParameterGenerationGetResponse res = sdk.generation.typedParameterGenerationGet(879275L, LocalDate.parse("2023-11-18"), 3346.96d, new TypedParameterGenerationGetObj(false, 8948.31d, "string"){{
+            TypedParameterGenerationGetResponse res = sdk.generation.typedParameterGenerationGet(879275L, LocalDate.parse("2023-11-18"), 3346.96d, new Obj(false, 8948.31d, "string"){{
                 bool = false;
                 num = 4778.06d;
                 str = "string";
@@ -879,12 +879,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                          | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `bigint`                                                                                                                           | *Long*                                                                                                                             | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
-| `date`                                                                                                                             | [LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html)                                                    | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
-| `decimal`                                                                                                                          | *Double*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
-| `obj`                                                                                                                              | [org.openapis.openapi.models.operations.TypedParameterGenerationGetObj](../../models/operations/TypedParameterGenerationGetObj.md) | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `bigint`                                                                        | *Long*                                                                          | :heavy_minus_sign:                                                              | N/A                                                                             |
+| `date`                                                                          | [LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html) | :heavy_minus_sign:                                                              | N/A                                                                             |
+| `decimal`                                                                       | *Double*                                                                        | :heavy_minus_sign:                                                              | N/A                                                                             |
+| `obj`                                                                           | [org.openapis.openapi.models.operations.Obj](../../models/operations/Obj.md)    | :heavy_minus_sign:                                                              | N/A                                                                             |
 
 
 ### Response
@@ -907,8 +907,8 @@ package hello.world;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.UsageExamplePostEnumParameter;
-import org.openapis.openapi.models.operations.UsageExamplePostOptEnumParameter;
+import org.openapis.openapi.models.operations.EnumParameter;
+import org.openapis.openapi.models.operations.OptEnumParameter;
 import org.openapis.openapi.models.operations.UsageExamplePostRequest;
 import org.openapis.openapi.models.operations.UsageExamplePostRequestBody;
 import org.openapis.openapi.models.operations.UsageExamplePostResponse;
@@ -916,10 +916,10 @@ import org.openapis.openapi.models.operations.UsageExamplePostSecurity;
 import org.openapis.openapi.models.shared.Enum;
 import org.openapis.openapi.models.shared.FakerFormattedStrings;
 import org.openapis.openapi.models.shared.FakerStrings;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -929,7 +929,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(168827L, "string", false, LocalDate.parse("2022-05-05"), OffsetDateTime.parse("2023-06-11T00:39:45.412Z"), OffsetDateTime.parse("2022-07-22T13:16:48.221Z"), 2679.33d, "string", 5223.72d, UsageExamplePostEnumParameter.VALUE1, 0d, 6946.59f, 2286.22d, 102975L, 566999, "example 1"){{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(168827L, "string", false, LocalDate.parse("2022-05-05"), OffsetDateTime.parse("2023-06-11T00:39:45.412Z"), OffsetDateTime.parse("2022-07-22T13:16:48.221Z"), 2679.33d, "string", 5223.72d, EnumParameter.VALUE1, 0d, 6946.59f, 2286.22d, 102975L, 566999, "example 1"){{
                 requestBody = new UsageExamplePostRequestBody(){{
                     fakerFormattedStrings = new FakerFormattedStrings(){{
                         addressFormat = "2344 Aufderhar Corner";
@@ -1006,7 +1006,7 @@ public class Application {
                         username = "Mable76";
                         uuid = "16b919d6-51cd-4e97-81e2-5221b7b6969f";
                     }};
-                    simpleObject = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                    simpleObject = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
                         boolOpt = true;
@@ -1021,7 +1021,7 @@ public class Application {
                 bigintStrParameterOptional = "string";
                 decimalParameterOptional = 5944.32d;
                 decimalStrParameterOptional = "string";
-                optEnumParameter = UsageExamplePostOptEnumParameter.VALUE3;
+                optEnumParameter = OptEnumParameter.VALUE3;
             }};            
 
             UsageExamplePostResponse res = sdk.generation.usageExamplePost(req, new UsageExamplePostSecurity("YOUR_PASSWORD", "YOUR_USERNAME"){{
@@ -1029,7 +1029,7 @@ public class Application {
                 username = "YOUR_USERNAME";
             }});
 
-            if (res.usageExamplePost200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {

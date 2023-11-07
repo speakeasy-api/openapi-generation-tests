@@ -8,8 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using Xunit;
-using SDK;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Operations;
 using System.Threading.Tasks;
 
 public class FlatteningShould
@@ -19,7 +19,7 @@ public class FlatteningShould
     {
         CommonHelpers.RecordTest("flattening-component-body-and-param-no-conflict");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Flattening.ComponentBodyAndParamNoConflictAsync(
             "param test",
@@ -37,7 +37,7 @@ public class FlatteningShould
     {
         CommonHelpers.RecordTest("flattening-component-body-and-param-conflict");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Flattening.ComponentBodyAndParamConflictAsync(
             Helpers.CreateSimpleObject(),
@@ -55,7 +55,7 @@ public class FlatteningShould
     {
         CommonHelpers.RecordTest("flattening-inline-body-and-param-conflict");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Flattening.InlineBodyAndParamConflictAsync(
             new InlineBodyAndParamConflictRequestBody() { Str = "body test" },
@@ -72,7 +72,7 @@ public class FlatteningShould
     {
         CommonHelpers.RecordTest("flattening-inline-body-and-param-no-conflict");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Flattening.InlineBodyAndParamNoConflictAsync(
             new InlineBodyAndParamNoConflictRequestBody() { BodyStr = "body test" },
@@ -89,7 +89,7 @@ public class FlatteningShould
     {
         CommonHelpers.RecordTest("flattening-conflicting-params");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Flattening.ConflictingParamsAsync("pathParam", "queryParam");
 

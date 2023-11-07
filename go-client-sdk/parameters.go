@@ -8,25 +8,25 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/utils"
 	"strings"
 )
 
-// parameters - Endpoints for testing parameters.
-type parameters struct {
+// Parameters - Endpoints for testing parameters.
+type Parameters struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newParameters(sdkConfig sdkConfiguration) *parameters {
-	return &parameters{
+func newParameters(sdkConfig sdkConfiguration) *Parameters {
+	return &Parameters{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *parameters) DeepObjectQueryParamsMap(ctx context.Context, mapParam map[string]string, mapArrParam map[string][]string) (*operations.DeepObjectQueryParamsMapResponse, error) {
+func (s *Parameters) DeepObjectQueryParamsMap(ctx context.Context, mapParam map[string]string, mapArrParam map[string][]string) (*operations.DeepObjectQueryParamsMapResponse, error) {
 	request := operations.DeepObjectQueryParamsMapRequest{
 		MapParam:    mapParam,
 		MapArrParam: mapArrParam,
@@ -92,7 +92,7 @@ func (s *parameters) DeepObjectQueryParamsMap(ctx context.Context, mapParam map[
 	return res, nil
 }
 
-func (s *parameters) DeepObjectQueryParamsObject(ctx context.Context, objParam shared.SimpleObject, objArrParam *operations.DeepObjectQueryParamsObjectObjArrParam) (*operations.DeepObjectQueryParamsObjectResponse, error) {
+func (s *Parameters) DeepObjectQueryParamsObject(ctx context.Context, objParam shared.SimpleObject, objArrParam *operations.ObjArrParam) (*operations.DeepObjectQueryParamsObjectResponse, error) {
 	request := operations.DeepObjectQueryParamsObjectRequest{
 		ObjParam:    objParam,
 		ObjArrParam: objArrParam,
@@ -158,7 +158,7 @@ func (s *parameters) DeepObjectQueryParamsObject(ctx context.Context, objParam s
 	return res, nil
 }
 
-func (s *parameters) DuplicateParam(ctx context.Context, duplicateParamRequest string) (*operations.DuplicateParamResponse, error) {
+func (s *Parameters) DuplicateParam(ctx context.Context, duplicateParamRequest string) (*operations.DuplicateParamResponse, error) {
 	request := operations.DuplicateParamRequest{
 		DuplicateParamRequest: duplicateParamRequest,
 	}
@@ -222,7 +222,7 @@ func (s *parameters) DuplicateParam(ctx context.Context, duplicateParamRequest s
 	return res, nil
 }
 
-func (s *parameters) FormQueryParamsArray(ctx context.Context, arrParam []string, arrParamExploded []int64) (*operations.FormQueryParamsArrayResponse, error) {
+func (s *Parameters) FormQueryParamsArray(ctx context.Context, arrParam []string, arrParamExploded []int64) (*operations.FormQueryParamsArrayResponse, error) {
 	request := operations.FormQueryParamsArrayRequest{
 		ArrParam:         arrParam,
 		ArrParamExploded: arrParamExploded,
@@ -288,7 +288,7 @@ func (s *parameters) FormQueryParamsArray(ctx context.Context, arrParam []string
 	return res, nil
 }
 
-func (s *parameters) FormQueryParamsCamelObject(ctx context.Context, objParamExploded operations.FormQueryParamsCamelObjectObjParamExploded, objParam *operations.FormQueryParamsCamelObjectObjParam) (*operations.FormQueryParamsCamelObjectResponse, error) {
+func (s *Parameters) FormQueryParamsCamelObject(ctx context.Context, objParamExploded operations.ObjParamExploded, objParam *operations.ObjParam) (*operations.FormQueryParamsCamelObjectResponse, error) {
 	request := operations.FormQueryParamsCamelObjectRequest{
 		ObjParamExploded: objParamExploded,
 		ObjParam:         objParam,
@@ -354,7 +354,7 @@ func (s *parameters) FormQueryParamsCamelObject(ctx context.Context, objParamExp
 	return res, nil
 }
 
-func (s *parameters) FormQueryParamsMap(ctx context.Context, mapParam map[string]string, mapParamExploded map[string]int64) (*operations.FormQueryParamsMapResponse, error) {
+func (s *Parameters) FormQueryParamsMap(ctx context.Context, mapParam map[string]string, mapParamExploded map[string]int64) (*operations.FormQueryParamsMapResponse, error) {
 	request := operations.FormQueryParamsMapRequest{
 		MapParam:         mapParam,
 		MapParamExploded: mapParamExploded,
@@ -420,7 +420,7 @@ func (s *parameters) FormQueryParamsMap(ctx context.Context, mapParam map[string
 	return res, nil
 }
 
-func (s *parameters) FormQueryParamsObject(ctx context.Context, objParamExploded shared.SimpleObject, objParam *shared.SimpleObject) (*operations.FormQueryParamsObjectResponse, error) {
+func (s *Parameters) FormQueryParamsObject(ctx context.Context, objParamExploded shared.SimpleObject, objParam *shared.SimpleObject) (*operations.FormQueryParamsObjectResponse, error) {
 	request := operations.FormQueryParamsObjectRequest{
 		ObjParamExploded: objParamExploded,
 		ObjParam:         objParam,
@@ -486,7 +486,7 @@ func (s *parameters) FormQueryParamsObject(ctx context.Context, objParamExploded
 	return res, nil
 }
 
-func (s *parameters) FormQueryParamsPrimitive(ctx context.Context, boolParam bool, intParam int64, numParam float64, strParam string) (*operations.FormQueryParamsPrimitiveResponse, error) {
+func (s *Parameters) FormQueryParamsPrimitive(ctx context.Context, boolParam bool, intParam int64, numParam float64, strParam string) (*operations.FormQueryParamsPrimitiveResponse, error) {
 	request := operations.FormQueryParamsPrimitiveRequest{
 		BoolParam: boolParam,
 		IntParam:  intParam,
@@ -554,7 +554,7 @@ func (s *parameters) FormQueryParamsPrimitive(ctx context.Context, boolParam boo
 	return res, nil
 }
 
-func (s *parameters) FormQueryParamsRefParamObject(ctx context.Context, refObjParam *shared.RefQueryParamObj, refObjParamExploded *shared.RefQueryParamObjExploded) (*operations.FormQueryParamsRefParamObjectResponse, error) {
+func (s *Parameters) FormQueryParamsRefParamObject(ctx context.Context, refObjParam *shared.RefQueryParamObj, refObjParamExploded *shared.RefQueryParamObjExploded) (*operations.FormQueryParamsRefParamObjectResponse, error) {
 	request := operations.FormQueryParamsRefParamObjectRequest{
 		RefObjParam:         refObjParam,
 		RefObjParamExploded: refObjParamExploded,
@@ -620,7 +620,7 @@ func (s *parameters) FormQueryParamsRefParamObject(ctx context.Context, refObjPa
 	return res, nil
 }
 
-func (s *parameters) HeaderParamsArray(ctx context.Context, xHeaderArray []string) (*operations.HeaderParamsArrayResponse, error) {
+func (s *Parameters) HeaderParamsArray(ctx context.Context, xHeaderArray []string) (*operations.HeaderParamsArrayResponse, error) {
 	request := operations.HeaderParamsArrayRequest{
 		XHeaderArray: xHeaderArray,
 	}
@@ -683,7 +683,7 @@ func (s *parameters) HeaderParamsArray(ctx context.Context, xHeaderArray []strin
 	return res, nil
 }
 
-func (s *parameters) HeaderParamsMap(ctx context.Context, xHeaderMap map[string]string, xHeaderMapExplode map[string]string) (*operations.HeaderParamsMapResponse, error) {
+func (s *Parameters) HeaderParamsMap(ctx context.Context, xHeaderMap map[string]string, xHeaderMapExplode map[string]string) (*operations.HeaderParamsMapResponse, error) {
 	request := operations.HeaderParamsMapRequest{
 		XHeaderMap:        xHeaderMap,
 		XHeaderMapExplode: xHeaderMapExplode,
@@ -747,7 +747,7 @@ func (s *parameters) HeaderParamsMap(ctx context.Context, xHeaderMap map[string]
 	return res, nil
 }
 
-func (s *parameters) HeaderParamsObject(ctx context.Context, xHeaderObj shared.SimpleObject, xHeaderObjExplode shared.SimpleObject) (*operations.HeaderParamsObjectResponse, error) {
+func (s *Parameters) HeaderParamsObject(ctx context.Context, xHeaderObj shared.SimpleObject, xHeaderObjExplode shared.SimpleObject) (*operations.HeaderParamsObjectResponse, error) {
 	request := operations.HeaderParamsObjectRequest{
 		XHeaderObj:        xHeaderObj,
 		XHeaderObjExplode: xHeaderObjExplode,
@@ -811,7 +811,7 @@ func (s *parameters) HeaderParamsObject(ctx context.Context, xHeaderObj shared.S
 	return res, nil
 }
 
-func (s *parameters) HeaderParamsPrimitive(ctx context.Context, xHeaderBoolean bool, xHeaderInteger int64, xHeaderNumber float64, xHeaderString string) (*operations.HeaderParamsPrimitiveResponse, error) {
+func (s *Parameters) HeaderParamsPrimitive(ctx context.Context, xHeaderBoolean bool, xHeaderInteger int64, xHeaderNumber float64, xHeaderString string) (*operations.HeaderParamsPrimitiveResponse, error) {
 	request := operations.HeaderParamsPrimitiveRequest{
 		XHeaderBoolean: xHeaderBoolean,
 		XHeaderInteger: xHeaderInteger,
@@ -877,7 +877,7 @@ func (s *parameters) HeaderParamsPrimitive(ctx context.Context, xHeaderBoolean b
 	return res, nil
 }
 
-func (s *parameters) JSONQueryParamsObject(ctx context.Context, deepObjParam shared.DeepObject, simpleObjParam shared.SimpleObject) (*operations.JSONQueryParamsObjectResponse, error) {
+func (s *Parameters) JSONQueryParamsObject(ctx context.Context, deepObjParam shared.DeepObject, simpleObjParam shared.SimpleObject) (*operations.JSONQueryParamsObjectResponse, error) {
 	request := operations.JSONQueryParamsObjectRequest{
 		DeepObjParam:   deepObjParam,
 		SimpleObjParam: simpleObjParam,
@@ -943,7 +943,7 @@ func (s *parameters) JSONQueryParamsObject(ctx context.Context, deepObjParam sha
 	return res, nil
 }
 
-func (s *parameters) MixedParametersCamelCase(ctx context.Context, headerParam string, pathParam string, queryStringParam string) (*operations.MixedParametersCamelCaseResponse, error) {
+func (s *Parameters) MixedParametersCamelCase(ctx context.Context, headerParam string, pathParam string, queryStringParam string) (*operations.MixedParametersCamelCaseResponse, error) {
 	request := operations.MixedParametersCamelCaseRequest{
 		HeaderParam:      headerParam,
 		PathParam:        pathParam,
@@ -1015,7 +1015,7 @@ func (s *parameters) MixedParametersCamelCase(ctx context.Context, headerParam s
 	return res, nil
 }
 
-func (s *parameters) MixedParametersPrimitives(ctx context.Context, headerParam string, pathParam string, queryStringParam string) (*operations.MixedParametersPrimitivesResponse, error) {
+func (s *Parameters) MixedParametersPrimitives(ctx context.Context, headerParam string, pathParam string, queryStringParam string) (*operations.MixedParametersPrimitivesResponse, error) {
 	request := operations.MixedParametersPrimitivesRequest{
 		HeaderParam:      headerParam,
 		PathParam:        pathParam,
@@ -1087,7 +1087,7 @@ func (s *parameters) MixedParametersPrimitives(ctx context.Context, headerParam 
 	return res, nil
 }
 
-func (s *parameters) MixedQueryParams(ctx context.Context, deepObjectParam shared.SimpleObject, formParam shared.SimpleObject, jsonParam shared.SimpleObject) (*operations.MixedQueryParamsResponse, error) {
+func (s *Parameters) MixedQueryParams(ctx context.Context, deepObjectParam shared.SimpleObject, formParam shared.SimpleObject, jsonParam shared.SimpleObject) (*operations.MixedQueryParamsResponse, error) {
 	request := operations.MixedQueryParamsRequest{
 		DeepObjectParam: deepObjectParam,
 		FormParam:       formParam,
@@ -1154,7 +1154,7 @@ func (s *parameters) MixedQueryParams(ctx context.Context, deepObjectParam share
 	return res, nil
 }
 
-func (s *parameters) PathParameterJSON(ctx context.Context, jsonObj shared.SimpleObject) (*operations.PathParameterJSONResponse, error) {
+func (s *Parameters) PathParameterJSON(ctx context.Context, jsonObj shared.SimpleObject) (*operations.PathParameterJSONResponse, error) {
 	request := operations.PathParameterJSONRequest{
 		JSONObj: jsonObj,
 	}
@@ -1218,7 +1218,7 @@ func (s *parameters) PathParameterJSON(ctx context.Context, jsonObj shared.Simpl
 	return res, nil
 }
 
-func (s *parameters) PipeDelimitedQueryParamsArray(ctx context.Context, arrParam []string, arrParamExploded []int64, mapParam map[string]string, objParam *shared.SimpleObject) (*operations.PipeDelimitedQueryParamsArrayResponse, error) {
+func (s *Parameters) PipeDelimitedQueryParamsArray(ctx context.Context, arrParam []string, arrParamExploded []int64, mapParam map[string]string, objParam *shared.SimpleObject) (*operations.PipeDelimitedQueryParamsArrayResponse, error) {
 	request := operations.PipeDelimitedQueryParamsArrayRequest{
 		ArrParam:         arrParam,
 		ArrParamExploded: arrParamExploded,
@@ -1286,7 +1286,7 @@ func (s *parameters) PipeDelimitedQueryParamsArray(ctx context.Context, arrParam
 	return res, nil
 }
 
-func (s *parameters) SimplePathParameterArrays(ctx context.Context, arrParam []string) (*operations.SimplePathParameterArraysResponse, error) {
+func (s *Parameters) SimplePathParameterArrays(ctx context.Context, arrParam []string) (*operations.SimplePathParameterArraysResponse, error) {
 	request := operations.SimplePathParameterArraysRequest{
 		ArrParam: arrParam,
 	}
@@ -1350,7 +1350,7 @@ func (s *parameters) SimplePathParameterArrays(ctx context.Context, arrParam []s
 	return res, nil
 }
 
-func (s *parameters) SimplePathParameterMaps(ctx context.Context, mapParam map[string]string, mapParamExploded map[string]int64) (*operations.SimplePathParameterMapsResponse, error) {
+func (s *Parameters) SimplePathParameterMaps(ctx context.Context, mapParam map[string]string, mapParamExploded map[string]int64) (*operations.SimplePathParameterMapsResponse, error) {
 	request := operations.SimplePathParameterMapsRequest{
 		MapParam:         mapParam,
 		MapParamExploded: mapParamExploded,
@@ -1415,7 +1415,7 @@ func (s *parameters) SimplePathParameterMaps(ctx context.Context, mapParam map[s
 	return res, nil
 }
 
-func (s *parameters) SimplePathParameterObjects(ctx context.Context, objParam shared.SimpleObject, objParamExploded shared.SimpleObject) (*operations.SimplePathParameterObjectsResponse, error) {
+func (s *Parameters) SimplePathParameterObjects(ctx context.Context, objParam shared.SimpleObject, objParamExploded shared.SimpleObject) (*operations.SimplePathParameterObjectsResponse, error) {
 	request := operations.SimplePathParameterObjectsRequest{
 		ObjParam:         objParam,
 		ObjParamExploded: objParamExploded,
@@ -1480,7 +1480,7 @@ func (s *parameters) SimplePathParameterObjects(ctx context.Context, objParam sh
 	return res, nil
 }
 
-func (s *parameters) SimplePathParameterPrimitives(ctx context.Context, boolParam bool, intParam int64, numParam float64, strParam string) (*operations.SimplePathParameterPrimitivesResponse, error) {
+func (s *Parameters) SimplePathParameterPrimitives(ctx context.Context, boolParam bool, intParam int64, numParam float64, strParam string) (*operations.SimplePathParameterPrimitivesResponse, error) {
 	request := operations.SimplePathParameterPrimitivesRequest{
 		BoolParam: boolParam,
 		IntParam:  intParam,

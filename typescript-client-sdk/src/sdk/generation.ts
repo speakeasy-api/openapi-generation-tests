@@ -3,9 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { RFCDate } from "./types";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
@@ -67,7 +67,7 @@ export class Generation {
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.typeFromAnchor = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.TypeFromAnchor
+                        operations.AnchorTypesGetTypeFromAnchor
                     );
                 } else {
                     throw new errors.SDKError(
@@ -559,9 +559,9 @@ export class Generation {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.deprecatedObjectInSchemaGet200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.DeprecatedObjectInSchemaGet200ApplicationJSON
+                        operations.DeprecatedObjectInSchemaGetResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -907,9 +907,9 @@ export class Generation {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.getGlobalNameOverride200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.GetGlobalNameOverride200ApplicationJSON
+                        operations.GetGlobalNameOverrideResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -980,9 +980,9 @@ export class Generation {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.ignoredGenerationGet200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.IgnoredGenerationGet200ApplicationJSON
+                        operations.IgnoredGenerationGetResponseBody
                     );
                 } else {
                     throw new errors.SDKError(
@@ -1007,7 +1007,7 @@ export class Generation {
     }
 
     async ignoresPost(
-        requestBody: operations.IgnoresPostApplicationJSON,
+        requestBody: operations.IgnoresPostRequestBody,
         testParam?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.IgnoresPostResponse> {
@@ -1102,7 +1102,7 @@ export class Generation {
     }
 
     async nameOverride(
-        testEnumQueryParam: operations.NameOverrideGetEnumNameOverride,
+        testEnumQueryParam: operations.EnumNameOverride,
         testQueryParam: string,
         config?: AxiosRequestConfig
     ): Promise<operations.NameOverrideGetResponse> {
@@ -1156,7 +1156,7 @@ export class Generation {
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.overriddenResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.OverriddenResponse
+                        operations.NameOverrideGetOverriddenResponse
                     );
                 } else {
                     throw new errors.SDKError(
@@ -1330,7 +1330,7 @@ export class Generation {
         bigint?: number,
         date?: RFCDate,
         decimal?: number,
-        obj?: operations.TypedParameterGenerationGetObj,
+        obj?: operations.Obj,
         config?: AxiosRequestConfig
     ): Promise<operations.TypedParameterGenerationGetResponse> {
         const req = new operations.TypedParameterGenerationGetRequest({
@@ -1468,9 +1468,9 @@ export class Generation {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.usageExamplePost200ApplicationJSONObject = utils.objectToClass(
+                    res.object = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        operations.UsageExamplePost200ApplicationJSON
+                        operations.UsageExamplePostResponseBody
                     );
                 } else {
                     throw new errors.SDKError(

@@ -1,5 +1,5 @@
 # Flattening
-(*Flattening*)
+(*.Flattening*)
 
 ## Overview
 
@@ -23,10 +23,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -53,8 +53,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -98,10 +98,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -130,8 +130,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -173,8 +173,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -227,9 +227,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -284,9 +284,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {

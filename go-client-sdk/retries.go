@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/utils"
 	"strings"
 )
 
-// retries - Endpoints for testing retries.
-type retries struct {
+// Retries - Endpoints for testing retries.
+type Retries struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newRetries(sdkConfig sdkConfiguration) *retries {
-	return &retries{
+func newRetries(sdkConfig sdkConfiguration) *Retries {
+	return &Retries{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *retries) RetriesGet(ctx context.Context, requestID string, numRetries *int64, opts ...operations.Option) (*operations.RetriesGetResponse, error) {
+func (s *Retries) RetriesGet(ctx context.Context, requestID string, numRetries *int64, opts ...operations.Option) (*operations.RetriesGetResponse, error) {
 	request := operations.RetriesGetRequest{
 		RequestID:  requestID,
 		NumRetries: numRetries,

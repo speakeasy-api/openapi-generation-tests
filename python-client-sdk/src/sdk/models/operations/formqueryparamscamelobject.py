@@ -9,7 +9,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class FormQueryParamsCamelObjectObjParam:
+class ObjParam:
     encoded_count: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'encoded_count' }})
     encoded_term: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'encoded_term' }})
     
@@ -17,7 +17,7 @@ class FormQueryParamsCamelObjectObjParam:
 
 
 @dataclasses.dataclass
-class FormQueryParamsCamelObjectObjParamExploded:
+class ObjParamExploded:
     item_count: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'item_count' }})
     search_term: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'search_term' }})
     
@@ -26,15 +26,15 @@ class FormQueryParamsCamelObjectObjParamExploded:
 
 @dataclasses.dataclass
 class FormQueryParamsCamelObjectRequest:
-    obj_param_exploded: FormQueryParamsCamelObjectObjParamExploded = dataclasses.field(metadata={'query_param': { 'field_name': 'obj_param_exploded', 'style': 'form', 'explode': True }})
-    obj_param: Optional[FormQueryParamsCamelObjectObjParam] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'obj_param', 'style': 'form', 'explode': False }})
+    obj_param_exploded: ObjParamExploded = dataclasses.field(metadata={'query_param': { 'field_name': 'obj_param_exploded', 'style': 'form', 'explode': True }})
+    obj_param: Optional[ObjParam] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'obj_param', 'style': 'form', 'explode': False }})
     
 
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class FormQueryParamsCamelObjectResArgs:
+class FormQueryParamsCamelObjectArgs:
     item_count: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('item_count') }})
     search_term: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('search_term') }})
     
@@ -45,7 +45,7 @@ class FormQueryParamsCamelObjectResArgs:
 @dataclasses.dataclass
 class FormQueryParamsCamelObjectRes:
     r"""OK"""
-    args: FormQueryParamsCamelObjectResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
+    args: FormQueryParamsCamelObjectArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
 

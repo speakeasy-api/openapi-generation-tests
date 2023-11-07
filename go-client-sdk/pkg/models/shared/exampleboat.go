@@ -5,40 +5,40 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 	"time"
 )
 
-type ExampleBoatType string
+type Type string
 
 const (
-	ExampleBoatTypeBoat ExampleBoatType = "boat"
+	TypeBoat Type = "boat"
 )
 
-func (e ExampleBoatType) ToPointer() *ExampleBoatType {
+func (e Type) ToPointer() *Type {
 	return &e
 }
 
-func (e *ExampleBoatType) UnmarshalJSON(data []byte) error {
+func (e *Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "boat":
-		*e = ExampleBoatType(v)
+		*e = Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ExampleBoatType: %v", v)
+		return fmt.Errorf("invalid value for Type: %v", v)
 	}
 }
 
 type ExampleBoat struct {
-	CreatedAt *time.Time      `json:"createdAt,omitempty"`
-	Length    float64         `json:"length"`
-	Name      string          `json:"name"`
-	Type      ExampleBoatType `json:"type"`
-	UpdatedAt *time.Time      `json:"updatedAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	Length    float64    `json:"length"`
+	Name      string     `json:"name"`
+	Type      Type       `json:"type"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
 
 func (e ExampleBoat) MarshalJSON() ([]byte, error) {
@@ -73,9 +73,9 @@ func (o *ExampleBoat) GetName() string {
 	return o.Name
 }
 
-func (o *ExampleBoat) GetType() ExampleBoatType {
+func (o *ExampleBoat) GetType() Type {
 	if o == nil {
-		return ExampleBoatType("")
+		return Type("")
 	}
 	return o.Type
 }

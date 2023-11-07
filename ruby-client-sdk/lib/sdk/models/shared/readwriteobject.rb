@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class ReadWriteObjectInput < OpenApiSDK::Utils::FieldAugmented
+    class ReadWriteObject < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 

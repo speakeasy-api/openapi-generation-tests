@@ -8,27 +8,27 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
+	"openapi/v2/pkg/utils"
 	"strings"
 	"time"
 )
 
-// unions - Endpoints for testing union types.
-type unions struct {
+// Unions - Endpoints for testing union types.
+type Unions struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newUnions(sdkConfig sdkConfiguration) *unions {
-	return &unions{
+func newUnions(sdkConfig sdkConfiguration) *Unions {
+	return &Unions{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *unions) FlattenedTypedObjectPost(ctx context.Context, request shared.FlattenedTypedObject1) (*operations.FlattenedTypedObjectPostResponse, error) {
+func (s *Unions) FlattenedTypedObjectPost(ctx context.Context, request shared.FlattenedTypedObject1) (*operations.FlattenedTypedObjectPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/flattenedTypedObject"
 
@@ -95,7 +95,7 @@ func (s *unions) FlattenedTypedObjectPost(ctx context.Context, request shared.Fl
 	return res, nil
 }
 
-func (s *unions) MixedTypeOneOfPost(ctx context.Context, request operations.MixedTypeOneOfPostRequestBody) (*operations.MixedTypeOneOfPostResponse, error) {
+func (s *Unions) MixedTypeOneOfPost(ctx context.Context, request operations.MixedTypeOneOfPostRequestBody) (*operations.MixedTypeOneOfPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/mixedTypeOneOf"
 
@@ -162,7 +162,7 @@ func (s *unions) MixedTypeOneOfPost(ctx context.Context, request operations.Mixe
 	return res, nil
 }
 
-func (s *unions) NullableOneOfRefInObjectPost(ctx context.Context, request shared.NullableOneOfRefInObject) (*operations.NullableOneOfRefInObjectPostResponse, error) {
+func (s *Unions) NullableOneOfRefInObjectPost(ctx context.Context, request shared.NullableOneOfRefInObject) (*operations.NullableOneOfRefInObjectPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/nullableOneOfRefInObject"
 
@@ -229,7 +229,7 @@ func (s *unions) NullableOneOfRefInObjectPost(ctx context.Context, request share
 	return res, nil
 }
 
-func (s *unions) NullableOneOfSchemaPost(ctx context.Context, request *operations.NullableOneOfSchemaPostRequestBody) (*operations.NullableOneOfSchemaPostResponse, error) {
+func (s *Unions) NullableOneOfSchemaPost(ctx context.Context, request *operations.NullableOneOfSchemaPostRequestBody) (*operations.NullableOneOfSchemaPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/nullableOneOfSchema"
 
@@ -296,7 +296,7 @@ func (s *unions) NullableOneOfSchemaPost(ctx context.Context, request *operation
 	return res, nil
 }
 
-func (s *unions) NullableOneOfTypeInObjectPost(ctx context.Context, request shared.NullableOneOfTypeInObject) (*operations.NullableOneOfTypeInObjectPostResponse, error) {
+func (s *Unions) NullableOneOfTypeInObjectPost(ctx context.Context, request shared.NullableOneOfTypeInObject) (*operations.NullableOneOfTypeInObjectPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/nullableOneOfInObject"
 
@@ -363,7 +363,7 @@ func (s *unions) NullableOneOfTypeInObjectPost(ctx context.Context, request shar
 	return res, nil
 }
 
-func (s *unions) NullableTypedObjectPost(ctx context.Context, request *shared.TypedObject1) (*operations.NullableTypedObjectPostResponse, error) {
+func (s *Unions) NullableTypedObjectPost(ctx context.Context, request *shared.TypedObject1) (*operations.NullableTypedObjectPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/nullableTypedObject"
 
@@ -430,7 +430,7 @@ func (s *unions) NullableTypedObjectPost(ctx context.Context, request *shared.Ty
 	return res, nil
 }
 
-func (s *unions) PrimitiveTypeOneOfPost(ctx context.Context, request operations.PrimitiveTypeOneOfPostRequestBody) (*operations.PrimitiveTypeOneOfPostResponse, error) {
+func (s *Unions) PrimitiveTypeOneOfPost(ctx context.Context, request operations.PrimitiveTypeOneOfPostRequestBody) (*operations.PrimitiveTypeOneOfPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/primitiveTypeOneOf"
 
@@ -497,7 +497,7 @@ func (s *unions) PrimitiveTypeOneOfPost(ctx context.Context, request operations.
 	return res, nil
 }
 
-func (s *unions) StronglyTypedOneOfPost(ctx context.Context, request shared.StronglyTypedOneOfObject) (*operations.StronglyTypedOneOfPostResponse, error) {
+func (s *Unions) StronglyTypedOneOfPost(ctx context.Context, request shared.StronglyTypedOneOfObject) (*operations.StronglyTypedOneOfPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/stronglyTypedOneOf"
 
@@ -564,7 +564,7 @@ func (s *unions) StronglyTypedOneOfPost(ctx context.Context, request shared.Stro
 	return res, nil
 }
 
-func (s *unions) TypedObjectNullableOneOfPost(ctx context.Context, request *shared.TypedObjectNullableOneOf) (*operations.TypedObjectNullableOneOfPostResponse, error) {
+func (s *Unions) TypedObjectNullableOneOfPost(ctx context.Context, request *shared.TypedObjectNullableOneOf) (*operations.TypedObjectNullableOneOfPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/typedObjectNullableOneOf"
 
@@ -631,7 +631,7 @@ func (s *unions) TypedObjectNullableOneOfPost(ctx context.Context, request *shar
 	return res, nil
 }
 
-func (s *unions) TypedObjectOneOfPost(ctx context.Context, request shared.TypedObjectOneOf) (*operations.TypedObjectOneOfPostResponse, error) {
+func (s *Unions) TypedObjectOneOfPost(ctx context.Context, request shared.TypedObjectOneOf) (*operations.TypedObjectOneOfPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/typedObjectOneOf"
 
@@ -698,7 +698,7 @@ func (s *unions) TypedObjectOneOfPost(ctx context.Context, request shared.TypedO
 	return res, nil
 }
 
-func (s *unions) UnionBigIntDecimal(ctx context.Context, request operations.UnionBigIntDecimalRequestBody) (*operations.UnionBigIntDecimalResponse, error) {
+func (s *Unions) UnionBigIntDecimal(ctx context.Context, request operations.UnionBigIntDecimalRequestBody) (*operations.UnionBigIntDecimalResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/unionBigIntDecimal"
 
@@ -765,7 +765,7 @@ func (s *unions) UnionBigIntDecimal(ctx context.Context, request operations.Unio
 	return res, nil
 }
 
-func (s *unions) UnionDateNull(ctx context.Context, request *types.Date) (*operations.UnionDateNullResponse, error) {
+func (s *Unions) UnionDateNull(ctx context.Context, request *types.Date) (*operations.UnionDateNullResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/unionDateNull"
 
@@ -832,7 +832,7 @@ func (s *unions) UnionDateNull(ctx context.Context, request *types.Date) (*opera
 	return res, nil
 }
 
-func (s *unions) UnionDateTimeBigInt(ctx context.Context, request operations.UnionDateTimeBigIntRequestBody) (*operations.UnionDateTimeBigIntResponse, error) {
+func (s *Unions) UnionDateTimeBigInt(ctx context.Context, request operations.UnionDateTimeBigIntRequestBody) (*operations.UnionDateTimeBigIntResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/unionDateTimeBigInt"
 
@@ -899,7 +899,7 @@ func (s *unions) UnionDateTimeBigInt(ctx context.Context, request operations.Uni
 	return res, nil
 }
 
-func (s *unions) UnionDateTimeNull(ctx context.Context, request *time.Time) (*operations.UnionDateTimeNullResponse, error) {
+func (s *Unions) UnionDateTimeNull(ctx context.Context, request *time.Time) (*operations.UnionDateTimeNullResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/unionDateTimeNull"
 
@@ -966,7 +966,7 @@ func (s *unions) UnionDateTimeNull(ctx context.Context, request *time.Time) (*op
 	return res, nil
 }
 
-func (s *unions) WeaklyTypedOneOfPost(ctx context.Context, request shared.WeaklyTypedOneOfObject) (*operations.WeaklyTypedOneOfPostResponse, error) {
+func (s *Unions) WeaklyTypedOneOfPost(ctx context.Context, request shared.WeaklyTypedOneOfObject) (*operations.WeaklyTypedOneOfPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/weaklyTypedOneOf"
 

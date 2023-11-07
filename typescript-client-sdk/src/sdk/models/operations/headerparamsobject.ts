@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -21,7 +21,7 @@ export class HeaderParamsObjectRequest extends SpeakeasyBase {
     xHeaderObjExplode: shared.SimpleObject;
 }
 
-export class HeaderParamsObjectResHeaders extends SpeakeasyBase {
+export class HeaderParamsObjectHeaders extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "X-Header-Obj" })
     xHeaderObj: string;
@@ -37,8 +37,8 @@ export class HeaderParamsObjectResHeaders extends SpeakeasyBase {
 export class HeaderParamsObjectRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "headers" })
-    @Type(() => HeaderParamsObjectResHeaders)
-    headers: HeaderParamsObjectResHeaders;
+    @Type(() => HeaderParamsObjectHeaders)
+    headers: HeaderParamsObjectHeaders;
 }
 
 export class HeaderParamsObjectResponse extends SpeakeasyBase {

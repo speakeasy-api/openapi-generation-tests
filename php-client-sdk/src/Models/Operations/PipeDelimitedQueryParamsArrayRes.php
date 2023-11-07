@@ -18,8 +18,8 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 class PipeDelimitedQueryParamsArrayRes
 {
 	#[\JMS\Serializer\Annotation\SerializedName('args')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\PipeDelimitedQueryParamsArrayResArgs')]
-    public PipeDelimitedQueryParamsArrayResArgs $args;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\PipeDelimitedQueryParamsArrayArgs')]
+    public PipeDelimitedQueryParamsArrayArgs $args;
     
 	#[\JMS\Serializer\Annotation\SerializedName('url')]
     #[\JMS\Serializer\Annotation\Type('string')]
@@ -27,7 +27,7 @@ class PipeDelimitedQueryParamsArrayRes
     
 	public function __construct()
 	{
-		$this->args = new \OpenAPI\OpenAPI\Models\Operations\PipeDelimitedQueryParamsArrayResArgs();
+		$this->args = new \OpenAPI\OpenAPI\Models\Operations\PipeDelimitedQueryParamsArrayArgs();
 		$this->url = "";
 	}
 }

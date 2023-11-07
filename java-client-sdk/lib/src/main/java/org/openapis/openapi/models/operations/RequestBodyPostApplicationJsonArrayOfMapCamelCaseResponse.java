@@ -46,10 +46,10 @@ public class RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse {
      * OK
      */
     
-    public java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>[] maps;
+    public java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>[] res;
 
-    public RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse withMaps(java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>[] maps) {
-        this.maps = maps;
+    public RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse withRes(java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>[] res) {
+        this.res = res;
         return this;
     }
     

@@ -5,34 +5,34 @@ package operations
 import (
 	"math/big"
 	"net/http"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 )
 
-// RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON - OK
-type RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON struct {
+// RequestBodyPostJSONDataTypesArrayBigIntResponseBody - OK
+type RequestBodyPostJSONDataTypesArrayBigIntResponseBody struct {
 	Data string     `json:"data"`
 	JSON []*big.Int `json:"json"`
 }
 
-func (r RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON) MarshalJSON() ([]byte, error) {
+func (r RequestBodyPostJSONDataTypesArrayBigIntResponseBody) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(r, "", false)
 }
 
-func (r *RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON) UnmarshalJSON(data []byte) error {
+func (r *RequestBodyPostJSONDataTypesArrayBigIntResponseBody) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON) GetData() string {
+func (o *RequestBodyPostJSONDataTypesArrayBigIntResponseBody) GetData() string {
 	if o == nil {
 		return ""
 	}
 	return o.Data
 }
 
-func (o *RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON) GetJSON() []*big.Int {
+func (o *RequestBodyPostJSONDataTypesArrayBigIntResponseBody) GetJSON() []*big.Int {
 	if o == nil {
 		return []*big.Int{}
 	}
@@ -47,7 +47,7 @@ type RequestBodyPostJSONDataTypesArrayBigIntResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSONObject *RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON
+	Object *RequestBodyPostJSONDataTypesArrayBigIntResponseBody
 }
 
 func (o *RequestBodyPostJSONDataTypesArrayBigIntResponse) GetContentType() string {
@@ -71,9 +71,9 @@ func (o *RequestBodyPostJSONDataTypesArrayBigIntResponse) GetRawResponse() *http
 	return o.RawResponse
 }
 
-func (o *RequestBodyPostJSONDataTypesArrayBigIntResponse) GetRequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSONObject() *RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON {
+func (o *RequestBodyPostJSONDataTypesArrayBigIntResponse) GetObject() *RequestBodyPostJSONDataTypesArrayBigIntResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSONObject
+	return o.Object
 }

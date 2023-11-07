@@ -1,5 +1,5 @@
 # Auth
-(*auth*)
+
 
 ## Overview
 
@@ -26,15 +26,15 @@ Endpoints for testing authentication.
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthSecurity;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->build();
 
 try {
-    $requestSecurity = new ApiKeyAuthSecurity();
+    $requestSecurity = new Operations\ApiKeyAuthSecurity();
     $requestSecurity->apiKeyAuth = 'Token YOUR_API_KEY';
 
     $response = $sdk->auth->apiKeyAuth($requestSecurity);
@@ -69,13 +69,13 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -106,18 +106,17 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\BasicAuthRequest;
-use \OpenAPI\OpenAPI\Models\Operations\BasicAuthSecurity;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->build();
 
 try {
 
 
-    $requestSecurity = new BasicAuthSecurity();
+    $requestSecurity = new Operations\BasicAuthSecurity();
     $requestSecurity->password = 'YOUR_PASSWORD';
     $requestSecurity->username = 'YOUR_USERNAME';
 
@@ -155,15 +154,15 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\BearerAuthSecurity;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->build();
 
 try {
-    $requestSecurity = new BearerAuthSecurity();
+    $requestSecurity = new Operations\BearerAuthSecurity();
     $requestSecurity->bearerAuth = 'YOUR_JWT';
 
     $response = $sdk->auth->bearerAuth($requestSecurity);
@@ -198,13 +197,13 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -235,15 +234,15 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\Oauth2AuthSecurity;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->build();
 
 try {
-    $requestSecurity = new Oauth2AuthSecurity();
+    $requestSecurity = new Operations\Oauth2AuthSecurity();
     $requestSecurity->oauth2 = 'Bearer YOUR_OAUTH2_TOKEN';
 
     $response = $sdk->auth->oauth2Auth($requestSecurity);
@@ -278,18 +277,17 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideRequest;
-use \OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideSecurity;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->build();
 
 try {
 
 
-    $requestSecurity = new Oauth2OverrideSecurity();
+    $requestSecurity = new Operations\Oauth2OverrideSecurity();
     $requestSecurity->oauth2 = 'Bearer YOUR_OAUTH2_TOKEN';
 
     $response = $sdk->auth->oauth2Override($requestSecurity);
@@ -324,15 +322,15 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\OpenIdConnectAuthSecurity;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->build();
 
 try {
-    $requestSecurity = new OpenIdConnectAuthSecurity();
+    $requestSecurity = new Operations\OpenIdConnectAuthSecurity();
     $requestSecurity->openIdConnect = 'Bearer YOUR_OPENID_TOKEN';
 
     $response = $sdk->auth->openIdConnectAuth($requestSecurity);

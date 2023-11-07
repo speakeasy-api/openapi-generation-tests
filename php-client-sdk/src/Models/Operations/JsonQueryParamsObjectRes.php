@@ -18,8 +18,8 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 class JsonQueryParamsObjectRes
 {
 	#[\JMS\Serializer\Annotation\SerializedName('args')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\JsonQueryParamsObjectResArgs')]
-    public JsonQueryParamsObjectResArgs $args;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\JsonQueryParamsObjectArgs')]
+    public JsonQueryParamsObjectArgs $args;
     
 	#[\JMS\Serializer\Annotation\SerializedName('url')]
     #[\JMS\Serializer\Annotation\Type('string')]
@@ -27,7 +27,7 @@ class JsonQueryParamsObjectRes
     
 	public function __construct()
 	{
-		$this->args = new \OpenAPI\OpenAPI\Models\Operations\JsonQueryParamsObjectResArgs();
+		$this->args = new \OpenAPI\OpenAPI\Models\Operations\JsonQueryParamsObjectArgs();
 		$this->url = "";
 	}
 }

@@ -1,5 +1,5 @@
 # Generation
-(*Generation*)
+(*.Generation*)
 
 ## Overview
 
@@ -38,8 +38,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -85,8 +85,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -132,8 +132,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -179,8 +179,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -230,8 +230,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -281,8 +281,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -332,8 +332,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -380,8 +380,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -399,7 +399,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.DeprecatedObjectInSchemaGet200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -429,8 +429,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -484,8 +484,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -538,8 +538,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -589,8 +589,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -636,8 +636,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -655,7 +655,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.GetGlobalNameOverride200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -683,9 +683,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/callbacks"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/callbacks"
 )
 
 func main() {
@@ -703,7 +703,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.IgnoredGenerationGet200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -731,9 +731,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -746,7 +746,7 @@ func main() {
     )
 
 
-    requestBody := operations.IgnoresPostApplicationJSON{}
+    requestBody := operations.IgnoresPostRequestBody{}
 
     var testParam *string = "string"
 
@@ -764,11 +764,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |
-| `requestBody`                                                                                  | [operations.IgnoresPostApplicationJSON](../../models/operations/ignorespostapplicationjson.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `testParam`                                                                                    | **string*                                                                                      | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
+| `requestBody`                                                                          | [operations.IgnoresPostRequestBody](../../models/operations/ignorespostrequestbody.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `testParam`                                                                            | **string*                                                                              | :heavy_minus_sign:                                                                     | N/A                                                                                    |
 
 
 ### Response
@@ -786,9 +786,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -801,7 +801,7 @@ func main() {
     )
 
 
-    var testEnumQueryParam operations.NameOverrideGetEnumNameOverride = operations.NameOverrideGetEnumNameOverrideValue3
+    var testEnumQueryParam operations.EnumNameOverride = operations.EnumNameOverrideValue3
 
     var testQueryParam string = "example"
 
@@ -819,11 +819,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              | Example                                                                                                  |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                    | :heavy_check_mark:                                                                                       | The context to use for the request.                                                                      |                                                                                                          |
-| `testEnumQueryParam`                                                                                     | [operations.NameOverrideGetEnumNameOverride](../../models/operations/nameoverridegetenumnameoverride.md) | :heavy_check_mark:                                                                                       | An enum type                                                                                             | value3                                                                                                   |
-| `testQueryParam`                                                                                         | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      | example                                                                                                  |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                | Example                                                                    |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |                                                                            |
+| `testEnumQueryParam`                                                       | [operations.EnumNameOverride](../../models/operations/enumnameoverride.md) | :heavy_check_mark:                                                         | An enum type                                                               | value3                                                                     |
+| `testQueryParam`                                                           | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        | example                                                                    |
 
 
 ### Response
@@ -841,8 +841,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -888,8 +888,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -935,9 +935,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -956,7 +956,7 @@ func main() {
 
     var decimal *decimal.Big = types.MustNewDecimalFromString("3346.96")
 
-    obj := &operations.TypedParameterGenerationGetObj{
+    obj := &operations.Obj{
         Bool: false,
         Num: 4778.06,
         Str: "string",
@@ -976,13 +976,13 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                   | :heavy_check_mark:                                                                                      | The context to use for the request.                                                                     |
-| `bigint`                                                                                                | [*big.Int](https://pkg.go.dev/math/big#Int)                                                             | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
-| `date`                                                                                                  | [*types.Date](../../types/date.md)                                                                      | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
-| `decimal`                                                                                               | [*decimal.Big](https://pkg.go.dev/github.com/ericlagergren/decimal#Big)                                 | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
-| `obj`                                                                                                   | [*operations.TypedParameterGenerationGetObj](../../models/operations/typedparametergenerationgetobj.md) | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `ctx`                                                                   | [context.Context](https://pkg.go.dev/context#Context)                   | :heavy_check_mark:                                                      | The context to use for the request.                                     |
+| `bigint`                                                                | [*big.Int](https://pkg.go.dev/math/big#Int)                             | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `date`                                                                  | [*types.Date](../../types/date.md)                                      | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `decimal`                                                               | [*decimal.Big](https://pkg.go.dev/github.com/ericlagergren/decimal#Big) | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `obj`                                                                   | [*operations.Obj](../../models/operations/obj.md)                       | :heavy_minus_sign:                                                      | N/A                                                                     |
 
 
 ### Response
@@ -1005,11 +1005,11 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -1043,8 +1043,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -1059,20 +1059,20 @@ func main() {
         DecimalParameter: types.MustNewDecimalFromString("5223.72"),
         DecimalStrParameter: types.MustNewDecimalFromString("2911.37"),
         DoubleParameter: 6946.59,
-        EnumParameter: operations.UsageExamplePostEnumParameterValue1,
+        EnumParameter: operations.EnumParameterValue1,
         FalseyNumberParameter: 0,
         Float32Parameter: 1029.75,
         FloatParameter: 5669.99,
         Int64Parameter: 195232,
         IntParameter: 569663,
-        OptEnumParameter: operations.UsageExamplePostOptEnumParameterValue3.ToPointer(),
+        OptEnumParameter: operations.OptEnumParameterValue3.ToPointer(),
         StrParameter: "example 1",
     }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
 
-    if res.UsageExamplePost200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }

@@ -10,7 +10,7 @@ require_relative '../shared/defaultsandconstsoutput'
 module OpenApiSDK
   module Operations
     # OK
-    class RequestBodyPostDefaultsAndConsts200ApplicationJSON < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostDefaultsAndConstsResponseBody < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -31,18 +31,18 @@ module OpenApiSDK
       field :content_type, String
       # HTTP response status code for this operation
       field :status_code, Integer
+      # OK
+      field :object, T.nilable(Operations::RequestBodyPostDefaultsAndConstsResponseBody)
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
-      # OK
-      field :request_body_post_defaults_and_consts_200_application_json_object, T.nilable(Operations::RequestBodyPostDefaultsAndConsts200ApplicationJSON)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), request_body_post_defaults_and_consts_200_application_json_object: T.nilable(Operations::RequestBodyPostDefaultsAndConsts200ApplicationJSON)).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil, request_body_post_defaults_and_consts_200_application_json_object: nil)
+      sig { params(content_type: String, status_code: Integer, object: T.nilable(Operations::RequestBodyPostDefaultsAndConstsResponseBody), raw_response: T.nilable(Faraday::Response)).void }
+      def initialize(content_type: nil, status_code: nil, object: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code
+        @object = object
         @raw_response = raw_response
-        @request_body_post_defaults_and_consts_200_application_json_object = request_body_post_defaults_and_consts_200_application_json_object
       end
     end
   end

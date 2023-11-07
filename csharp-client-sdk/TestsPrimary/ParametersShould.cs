@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using Xunit;
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using SDK.Models.Operations;
+using Openapi.Models.Operations;
 
 public class ParametersShould
 {
@@ -21,7 +21,7 @@ public class ParametersShould
     {
         CommonHelpers.RecordTest("parameters-mixed-primitives");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.MixedParametersPrimitivesAsync(
             "headerValue",
@@ -43,7 +43,7 @@ public class ParametersShould
     {
         CommonHelpers.RecordTest("parameters-camel-case");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.MixedParametersCamelCaseAsync(
             "headerValue",
@@ -64,7 +64,7 @@ public class ParametersShould
     public async Task SimplePathParameterPrimitives()
     {
         CommonHelpers.RecordTest("parameters-simple-path-parameter-primitives");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.SimplePathParameterPrimitivesAsync(true, 1, 1.1D, "test");
 
@@ -79,7 +79,7 @@ public class ParametersShould
     public async Task SimplePathParameterObjects()
     {
         CommonHelpers.RecordTest("parameters-simple-path-parameter-objects");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.SimplePathParameterObjectsAsync(
             Helpers.CreateSimpleObject(),
@@ -97,7 +97,7 @@ public class ParametersShould
     public async Task SimplePathParameterArrays()
     {
         CommonHelpers.RecordTest("parameters-simple-path-parameter-arrays");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.SimplePathParameterArraysAsync(
             new List<string>() { "test", "test2" }
@@ -114,7 +114,7 @@ public class ParametersShould
     public async Task SimplePathParameterMaps()
     {
         CommonHelpers.RecordTest("parameters-simple-path-parameter-maps");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.SimplePathParameterMapsAsync(
             new Dictionary<string, string>() { { "test", "value" }, { "test2", "value2" } },
@@ -133,7 +133,7 @@ public class ParametersShould
     {
         CommonHelpers.RecordTest("parameters-path-parameter-json");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.PathParameterJsonAsync(Helpers.CreateSimpleObject());
 
@@ -148,7 +148,7 @@ public class ParametersShould
     public async Task FormQueryParamsPrimitive()
     {
         CommonHelpers.RecordTest("parameters-form-query-params-primitive");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.FormQueryParamsPrimitiveAsync(true, 1, 1.1D, "test");
 
@@ -163,7 +163,7 @@ public class ParametersShould
     public async Task FormQueryParamsObject()
     {
         CommonHelpers.RecordTest("parameters-form-query-params-object");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.FormQueryParamsObjectAsync(
             Helpers.CreateSimpleObject(),
@@ -181,7 +181,7 @@ public class ParametersShould
     public async Task FormQueryParamsArray()
     {
         CommonHelpers.RecordTest("parameters-form-query-params-array");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.FormQueryParamsArrayAsync(
             new List<string>() { "test", "test2" },
@@ -202,7 +202,7 @@ public class ParametersShould
     {
         CommonHelpers.RecordTest("parameters-pipe-query-params-array");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.PipeDelimitedQueryParamsArrayAsync(
             new List<string>() { "test", "test2" },
@@ -224,7 +224,7 @@ public class ParametersShould
     public async Task FormQueryParamsMap()
     {
         CommonHelpers.RecordTest("parameters-form-query-params-map");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.FormQueryParamsMapAsync(
             new Dictionary<string, string>() { { "test", "value" }, { "test2", "value2" } },
@@ -252,7 +252,7 @@ public class ParametersShould
     {
         CommonHelpers.RecordTest("parameters-form-query-params-ref-param-object");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.FormQueryParamsRefParamObjectAsync(
             new RefQueryParamObj()
@@ -287,11 +287,11 @@ public class ParametersShould
     public async Task DeepObjectQueryParamsObject()
     {
         CommonHelpers.RecordTest("parameters-deep-object-query-params-object");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.DeepObjectQueryParamsObjectAsync(
             Helpers.CreateSimpleObject(),
-            new DeepObjectQueryParamsObjectObjArrParam()
+            new ObjArrParam()
             {
                 Arr = new List<string> { "test", "test2" }
             }
@@ -321,7 +321,7 @@ public class ParametersShould
     public async Task DeepObjectQueryParamsMap()
     {
         CommonHelpers.RecordTest("parameters-deep-object-query-params-map");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.DeepObjectQueryParamsMapAsync(
             new Dictionary<string, string>() { { "test", "value" }, { "test2", "value2" } },
@@ -365,7 +365,7 @@ public class ParametersShould
     public async Task JsonQueryParamsObject()
     {
         CommonHelpers.RecordTest("parameters-json-query-params-object");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.JsonQueryParamsObjectAsync(
             Helpers.CreateDeepObject(),
@@ -383,7 +383,7 @@ public class ParametersShould
     public async Task MixedQueryParams()
     {
         CommonHelpers.RecordTest("parameters-mixed-query-params");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.MixedQueryParamsAsync(
             Helpers.CreateSimpleObject(),
@@ -402,7 +402,7 @@ public class ParametersShould
     public async Task HeaderParamsPrimitive()
     {
         CommonHelpers.RecordTest("parameters-header-params-primitive");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.HeaderParamsPrimitiveAsync(true, 1, 1.1D, "test");
 
@@ -417,7 +417,7 @@ public class ParametersShould
     public async Task HeaderParamsObject()
     {
         CommonHelpers.RecordTest("parameters-header-params-object");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.HeaderParamsObjectAsync(
             Helpers.CreateSimpleObject(),
@@ -439,7 +439,7 @@ public class ParametersShould
     public async Task HeaderParamsMap()
     {
         CommonHelpers.RecordTest("parameters-header-params-map");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.HeaderParamsMapAsync(
             new Dictionary<string, string>() { { "key1", "value1" }, { "key2", "value2" } },
@@ -455,7 +455,7 @@ public class ParametersShould
     public async Task HeaderParamsArray()
     {
         CommonHelpers.RecordTest("parameters-header-params-array");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Parameters.HeaderParamsArrayAsync(
             new List<string> { "test1", "test2" }

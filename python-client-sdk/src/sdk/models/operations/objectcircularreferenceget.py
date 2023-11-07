@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import objectcircularreferenceobject as shared_objectcircularreferenceobject
+from ...models.shared import objectcircularreferenceobject as shared_objectcircularreferenceobject
 from typing import Optional
 
 

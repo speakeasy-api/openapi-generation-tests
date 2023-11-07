@@ -38,16 +38,16 @@ class GetGlobalNameOverrideResponse
     /**
      * A successful response that contains the simpleObject sent in the request body
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\GetGlobalNameOverride200ApplicationJSON $getGlobalNameOverride200ApplicationJSONObject
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\GetGlobalNameOverrideResponseBody $object
      */
 	
-    public ?GetGlobalNameOverride200ApplicationJSON $getGlobalNameOverride200ApplicationJSONObject = null;
+    public ?GetGlobalNameOverrideResponseBody $object = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->getGlobalNameOverride200ApplicationJSONObject = null;
+		$this->object = null;
 	}
 }

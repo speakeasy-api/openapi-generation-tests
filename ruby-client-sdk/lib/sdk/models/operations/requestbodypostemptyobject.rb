@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class RequestBodyPostEmptyObjectRequestBodyEmpty < OpenApiSDK::Utils::FieldAugmented
+    class Empty < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -19,7 +19,7 @@ module OpenApiSDK
     end
 
 
-    class RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties < OpenApiSDK::Utils::FieldAugmented
+    class EmptyWithEmptyProperties < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -33,12 +33,12 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :empty, T.nilable(Operations::RequestBodyPostEmptyObjectRequestBodyEmpty), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('empty') } }
+      field :empty, T.nilable(Operations::Empty), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('empty') } }
 
-      field :empty_with_empty_properties, T.nilable(Operations::RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('emptyWithEmptyProperties') } }
+      field :empty_with_empty_properties, T.nilable(Operations::EmptyWithEmptyProperties), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('emptyWithEmptyProperties') } }
 
 
-      sig { params(empty: T.nilable(Operations::RequestBodyPostEmptyObjectRequestBodyEmpty), empty_with_empty_properties: T.nilable(Operations::RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties)).void }
+      sig { params(empty: T.nilable(Operations::Empty), empty_with_empty_properties: T.nilable(Operations::EmptyWithEmptyProperties)).void }
       def initialize(empty: nil, empty_with_empty_properties: nil)
         @empty = empty
         @empty_with_empty_properties = empty_with_empty_properties
@@ -46,7 +46,7 @@ module OpenApiSDK
     end
 
 
-    class RequestBodyPostEmptyObject200ApplicationJSONEmpty < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostEmptyObjectEmpty < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -56,7 +56,7 @@ module OpenApiSDK
     end
 
 
-    class RequestBodyPostEmptyObject200ApplicationJSONEmptyRespWithEmptyProperies < OpenApiSDK::Utils::FieldAugmented
+    class EmptyRespWithEmptyProperies < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -66,16 +66,16 @@ module OpenApiSDK
     end
 
     # OK
-    class RequestBodyPostEmptyObject200ApplicationJSON < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostEmptyObjectResponseBody < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :empty, T.nilable(Operations::RequestBodyPostEmptyObject200ApplicationJSONEmpty), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('empty') } }
+      field :empty, T.nilable(Operations::RequestBodyPostEmptyObjectEmpty), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('empty') } }
 
-      field :empty_resp_with_empty_properies, T.nilable(Operations::RequestBodyPostEmptyObject200ApplicationJSONEmptyRespWithEmptyProperies), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('emptyRespWithEmptyProperies') } }
+      field :empty_resp_with_empty_properies, T.nilable(Operations::EmptyRespWithEmptyProperies), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('emptyRespWithEmptyProperies') } }
 
 
-      sig { params(empty: T.nilable(Operations::RequestBodyPostEmptyObject200ApplicationJSONEmpty), empty_resp_with_empty_properies: T.nilable(Operations::RequestBodyPostEmptyObject200ApplicationJSONEmptyRespWithEmptyProperies)).void }
+      sig { params(empty: T.nilable(Operations::RequestBodyPostEmptyObjectEmpty), empty_resp_with_empty_properies: T.nilable(Operations::EmptyRespWithEmptyProperies)).void }
       def initialize(empty: nil, empty_resp_with_empty_properies: nil)
         @empty = empty
         @empty_resp_with_empty_properies = empty_resp_with_empty_properies
@@ -90,18 +90,18 @@ module OpenApiSDK
       field :content_type, String
       # HTTP response status code for this operation
       field :status_code, Integer
+      # OK
+      field :object, T.nilable(Operations::RequestBodyPostEmptyObjectResponseBody)
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
-      # OK
-      field :request_body_post_empty_object_200_application_json_object, T.nilable(Operations::RequestBodyPostEmptyObject200ApplicationJSON)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), request_body_post_empty_object_200_application_json_object: T.nilable(Operations::RequestBodyPostEmptyObject200ApplicationJSON)).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil, request_body_post_empty_object_200_application_json_object: nil)
+      sig { params(content_type: String, status_code: Integer, object: T.nilable(Operations::RequestBodyPostEmptyObjectResponseBody), raw_response: T.nilable(Faraday::Response)).void }
+      def initialize(content_type: nil, status_code: nil, object: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code
+        @object = object
         @raw_response = raw_response
-        @request_body_post_empty_object_200_application_json_object = request_body_post_empty_object_200_application_json_object
       end
     end
   end

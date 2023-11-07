@@ -18,7 +18,7 @@ class HeaderParamsMapRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class HeaderParamsMapResHeaders:
+class HeaderParamsMapHeaders:
     x_header_map: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('X-Header-Map') }})
     x_header_map_explode: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('X-Header-Map-Explode') }})
     
@@ -29,7 +29,7 @@ class HeaderParamsMapResHeaders:
 @dataclasses.dataclass
 class HeaderParamsMapRes:
     r"""OK"""
-    headers: HeaderParamsMapResHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
+    headers: HeaderParamsMapHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
     
 
 

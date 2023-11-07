@@ -23,7 +23,7 @@ module OpenApiSDK
     end
 
 
-    class GlobalsQueryParameterGetResArgs < OpenApiSDK::Utils::FieldAugmented
+    class Args < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -41,10 +41,10 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :args, Operations::GlobalsQueryParameterGetResArgs, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
+      field :args, Operations::Args, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
 
 
-      sig { params(args: Operations::GlobalsQueryParameterGetResArgs).void }
+      sig { params(args: Operations::Args).void }
       def initialize(args: nil)
         @args = args
       end

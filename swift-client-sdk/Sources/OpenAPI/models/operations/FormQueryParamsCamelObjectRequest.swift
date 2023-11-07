@@ -3,15 +3,15 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct FormQueryParamsCamelObjectRequest: APIValue {
-        public let objParamExploded: Operations.FormQueryParamsCamelObjectObjParamExploded
-        public let objParam: Operations.FormQueryParamsCamelObjectObjParam?
+        public let objParamExploded: Operations.ObjParamExploded
+        public let objParam: Operations.ObjParam?
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         ///
-        public init(objParamExploded: Operations.FormQueryParamsCamelObjectObjParamExploded, objParam: Operations.FormQueryParamsCamelObjectObjParam? = nil) {
+        public init(objParamExploded: Operations.ObjParamExploded, objParam: Operations.ObjParam? = nil) {
             self.objParamExploded = objParamExploded
             self.objParam = objParam
         }

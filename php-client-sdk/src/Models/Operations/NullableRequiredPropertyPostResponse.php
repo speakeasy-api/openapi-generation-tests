@@ -38,16 +38,16 @@ class NullableRequiredPropertyPostResponse
     /**
      * OK
      * 
-     * @var ?string $nullableRequiredPropertyPost200ApplicationJSONString
+     * @var ?string $res
      */
 	
-    public ?string $nullableRequiredPropertyPost200ApplicationJSONString = null;
+    public ?string $res = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->nullableRequiredPropertyPost200ApplicationJSONString = null;
+		$this->res = null;
 	}
 }

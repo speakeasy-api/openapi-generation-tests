@@ -25,11 +25,11 @@ func (o *RequestBodyPutStringWithParamsRequest) GetQueryStringParam() string {
 	return o.QueryStringParam
 }
 
-type RequestBodyPutStringWithParamsResArgs struct {
+type RequestBodyPutStringWithParamsArgs struct {
 	QueryStringParam string `json:"queryStringParam"`
 }
 
-func (o *RequestBodyPutStringWithParamsResArgs) GetQueryStringParam() string {
+func (o *RequestBodyPutStringWithParamsArgs) GetQueryStringParam() string {
 	if o == nil {
 		return ""
 	}
@@ -38,13 +38,13 @@ func (o *RequestBodyPutStringWithParamsResArgs) GetQueryStringParam() string {
 
 // RequestBodyPutStringWithParamsRes - OK
 type RequestBodyPutStringWithParamsRes struct {
-	Args RequestBodyPutStringWithParamsResArgs `json:"args"`
-	Data string                                `json:"data"`
+	Args RequestBodyPutStringWithParamsArgs `json:"args"`
+	Data string                             `json:"data"`
 }
 
-func (o *RequestBodyPutStringWithParamsRes) GetArgs() RequestBodyPutStringWithParamsResArgs {
+func (o *RequestBodyPutStringWithParamsRes) GetArgs() RequestBodyPutStringWithParamsArgs {
 	if o == nil {
-		return RequestBodyPutStringWithParamsResArgs{}
+		return RequestBodyPutStringWithParamsArgs{}
 	}
 	return o.Args
 }

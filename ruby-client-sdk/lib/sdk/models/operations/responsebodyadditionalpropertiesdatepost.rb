@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
     # OK
-    class ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON < OpenApiSDK::Utils::FieldAugmented
+    class ResponseBodyAdditionalPropertiesDatePostResponseBody < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -30,18 +30,18 @@ module OpenApiSDK
       field :content_type, String
       # HTTP response status code for this operation
       field :status_code, Integer
+      # OK
+      field :object, T.nilable(Operations::ResponseBodyAdditionalPropertiesDatePostResponseBody)
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
-      # OK
-      field :response_body_additional_properties_date_post_200_application_json_object, T.nilable(Operations::ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), response_body_additional_properties_date_post_200_application_json_object: T.nilable(Operations::ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON)).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil, response_body_additional_properties_date_post_200_application_json_object: nil)
+      sig { params(content_type: String, status_code: Integer, object: T.nilable(Operations::ResponseBodyAdditionalPropertiesDatePostResponseBody), raw_response: T.nilable(Faraday::Response)).void }
+      def initialize(content_type: nil, status_code: nil, object: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code
+        @object = object
         @raw_response = raw_response
-        @response_body_additional_properties_date_post_200_application_json_object = response_body_additional_properties_date_post_200_application_json_object
       end
     end
   end

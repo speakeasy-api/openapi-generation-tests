@@ -7,22 +7,22 @@ import (
 	"fmt"
 )
 
-// DeprecatedFieldInObjectDeprecatedEnum
+// DeprecatedEnum
 //
 // Deprecated type: This enum is deprecated.
-type DeprecatedFieldInObjectDeprecatedEnum string
+type DeprecatedEnum string
 
 const (
-	DeprecatedFieldInObjectDeprecatedEnumA DeprecatedFieldInObjectDeprecatedEnum = "a"
-	DeprecatedFieldInObjectDeprecatedEnumB DeprecatedFieldInObjectDeprecatedEnum = "b"
-	DeprecatedFieldInObjectDeprecatedEnumC DeprecatedFieldInObjectDeprecatedEnum = "c"
+	DeprecatedEnumA DeprecatedEnum = "a"
+	DeprecatedEnumB DeprecatedEnum = "b"
+	DeprecatedEnumC DeprecatedEnum = "c"
 )
 
-func (e DeprecatedFieldInObjectDeprecatedEnum) ToPointer() *DeprecatedFieldInObjectDeprecatedEnum {
+func (e DeprecatedEnum) ToPointer() *DeprecatedEnum {
 	return &e
 }
 
-func (e *DeprecatedFieldInObjectDeprecatedEnum) UnmarshalJSON(data []byte) error {
+func (e *DeprecatedEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -33,22 +33,22 @@ func (e *DeprecatedFieldInObjectDeprecatedEnum) UnmarshalJSON(data []byte) error
 	case "b":
 		fallthrough
 	case "c":
-		*e = DeprecatedFieldInObjectDeprecatedEnum(v)
+		*e = DeprecatedEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DeprecatedFieldInObjectDeprecatedEnum: %v", v)
+		return fmt.Errorf("invalid value for DeprecatedEnum: %v", v)
 	}
 }
 
 type DeprecatedFieldInObject struct {
 	// Deprecated field: This enum is deprecated.
-	DeprecatedEnum *DeprecatedFieldInObjectDeprecatedEnum `json:"deprecatedEnum,omitempty"`
+	DeprecatedEnum *DeprecatedEnum `json:"deprecatedEnum,omitempty"`
 	// Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible. Use NewField instead.
 	DeprecatedField *string `json:"deprecatedField,omitempty"`
 	NewField        *string `json:"newField,omitempty"`
 }
 
-func (o *DeprecatedFieldInObject) GetDeprecatedEnum() *DeprecatedFieldInObjectDeprecatedEnum {
+func (o *DeprecatedFieldInObject) GetDeprecatedEnum() *DeprecatedEnum {
 	if o == nil {
 		return nil
 	}

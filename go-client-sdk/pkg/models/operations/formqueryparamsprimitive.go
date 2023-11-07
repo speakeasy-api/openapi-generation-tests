@@ -41,35 +41,35 @@ func (o *FormQueryParamsPrimitiveRequest) GetStrParam() string {
 	return o.StrParam
 }
 
-type FormQueryParamsPrimitiveResArgs struct {
+type FormQueryParamsPrimitiveArgs struct {
 	BoolParam string `json:"boolParam"`
 	IntParam  string `json:"intParam"`
 	NumParam  string `json:"numParam"`
 	StrParam  string `json:"strParam"`
 }
 
-func (o *FormQueryParamsPrimitiveResArgs) GetBoolParam() string {
+func (o *FormQueryParamsPrimitiveArgs) GetBoolParam() string {
 	if o == nil {
 		return ""
 	}
 	return o.BoolParam
 }
 
-func (o *FormQueryParamsPrimitiveResArgs) GetIntParam() string {
+func (o *FormQueryParamsPrimitiveArgs) GetIntParam() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntParam
 }
 
-func (o *FormQueryParamsPrimitiveResArgs) GetNumParam() string {
+func (o *FormQueryParamsPrimitiveArgs) GetNumParam() string {
 	if o == nil {
 		return ""
 	}
 	return o.NumParam
 }
 
-func (o *FormQueryParamsPrimitiveResArgs) GetStrParam() string {
+func (o *FormQueryParamsPrimitiveArgs) GetStrParam() string {
 	if o == nil {
 		return ""
 	}
@@ -78,13 +78,13 @@ func (o *FormQueryParamsPrimitiveResArgs) GetStrParam() string {
 
 // FormQueryParamsPrimitiveRes - OK
 type FormQueryParamsPrimitiveRes struct {
-	Args FormQueryParamsPrimitiveResArgs `json:"args"`
-	URL  string                          `json:"url"`
+	Args FormQueryParamsPrimitiveArgs `json:"args"`
+	URL  string                       `json:"url"`
 }
 
-func (o *FormQueryParamsPrimitiveRes) GetArgs() FormQueryParamsPrimitiveResArgs {
+func (o *FormQueryParamsPrimitiveRes) GetArgs() FormQueryParamsPrimitiveArgs {
 	if o == nil {
-		return FormQueryParamsPrimitiveResArgs{}
+		return FormQueryParamsPrimitiveArgs{}
 	}
 	return o.Args
 }

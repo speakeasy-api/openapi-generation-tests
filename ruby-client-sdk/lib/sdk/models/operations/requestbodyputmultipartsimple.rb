@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class RequestBodyPutMultipartSimpleResForm < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPutMultipartSimpleForm < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -62,7 +62,7 @@ module OpenApiSDK
     end
 
 
-    class RequestBodyPutMultipartSimpleResHeaders < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPutMultipartSimpleHeaders < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -80,12 +80,12 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :form, Operations::RequestBodyPutMultipartSimpleResForm, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('form') } }
+      field :form, Operations::RequestBodyPutMultipartSimpleForm, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('form') } }
 
-      field :headers, Operations::RequestBodyPutMultipartSimpleResHeaders, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('headers') } }
+      field :headers, Operations::RequestBodyPutMultipartSimpleHeaders, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('headers') } }
 
 
-      sig { params(form: Operations::RequestBodyPutMultipartSimpleResForm, headers: Operations::RequestBodyPutMultipartSimpleResHeaders).void }
+      sig { params(form: Operations::RequestBodyPutMultipartSimpleForm, headers: Operations::RequestBodyPutMultipartSimpleHeaders).void }
       def initialize(form: nil, headers: nil)
         @form = form
         @headers = headers

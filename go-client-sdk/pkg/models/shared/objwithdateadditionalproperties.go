@@ -3,8 +3,8 @@
 package shared
 
 import (
-	"openapi/pkg/types"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/types"
+	"openapi/v2/pkg/utils"
 )
 
 type ObjWithDateAdditionalProperties struct {

@@ -17,11 +17,11 @@ func (o *HeaderParamsArrayRequest) GetXHeaderArray() []string {
 	return o.XHeaderArray
 }
 
-type HeaderParamsArrayResHeaders struct {
+type Headers struct {
 	XHeaderArray string `json:"X-Header-Array"`
 }
 
-func (o *HeaderParamsArrayResHeaders) GetXHeaderArray() string {
+func (o *Headers) GetXHeaderArray() string {
 	if o == nil {
 		return ""
 	}
@@ -30,12 +30,12 @@ func (o *HeaderParamsArrayResHeaders) GetXHeaderArray() string {
 
 // HeaderParamsArrayRes - OK
 type HeaderParamsArrayRes struct {
-	Headers HeaderParamsArrayResHeaders `json:"headers"`
+	Headers Headers `json:"headers"`
 }
 
-func (o *HeaderParamsArrayRes) GetHeaders() HeaderParamsArrayResHeaders {
+func (o *HeaderParamsArrayRes) GetHeaders() Headers {
 	if o == nil {
-		return HeaderParamsArrayResHeaders{}
+		return Headers{}
 	}
 	return o.Headers
 }

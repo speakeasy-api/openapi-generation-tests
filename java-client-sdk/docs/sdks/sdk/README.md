@@ -37,9 +37,9 @@ public class Application {
 
             org.openapis.openapi.models.. req = "string";            
 
-            PutAnythingIgnoredGenerationResponse res = sdk.sdk.putAnythingIgnoredGeneration(req);
+            PutAnythingIgnoredGenerationResponse res = sdk.putAnythingIgnoredGeneration(req);
 
-            if (res.putAnythingIgnoredGeneration200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -83,7 +83,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ResponseBodyJsonGetResponse res = sdk.sdk.responseBodyJsonGet();
+            ResponseBodyJsonGetResponse res = sdk.responseBodyJsonGet();
 
             if (res.httpBinSimpleJsonObject != null) {
                 // handle response

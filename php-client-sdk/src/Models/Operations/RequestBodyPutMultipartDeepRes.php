@@ -18,11 +18,11 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 class RequestBodyPutMultipartDeepRes
 {
 	#[\JMS\Serializer\Annotation\SerializedName('form')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDeepResForm')]
-    public RequestBodyPutMultipartDeepResForm $form;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDeepForm')]
+    public RequestBodyPutMultipartDeepForm $form;
     
 	public function __construct()
 	{
-		$this->form = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDeepResForm();
+		$this->form = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDeepForm();
 	}
 }

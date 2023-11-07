@@ -6,7 +6,7 @@ extension Operations {
     /// A response model
     public enum RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse {
         case empty
-        case arrs([[String]])
+        case res([[String]])
 
         var isEmpty: Bool {
             if case .empty = self {
@@ -16,8 +16,8 @@ extension Operations {
             }
         }
 
-        public func arrs() throws -> [[String]] {
-            guard case .arrs(let value) = self else {
+        public func res() throws -> [[String]] {
+            guard case .res(let value) = self else {
                 throw OpenAPIError.missingResponseData
             }
             return value

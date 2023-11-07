@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using Xunit;
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

@@ -40,7 +40,7 @@ module OpenApiSDK
     end
 
 
-    class InlineBodyAndParamNoConflictResJson < OpenApiSDK::Utils::FieldAugmented
+    class InlineBodyAndParamNoConflictJson < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -60,10 +60,10 @@ module OpenApiSDK
 
       field :args, T::Hash[Symbol, String], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
 
-      field :json, Operations::InlineBodyAndParamNoConflictResJson, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
+      field :json, Operations::InlineBodyAndParamNoConflictJson, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
 
 
-      sig { params(args: T::Hash[Symbol, String], json: Operations::InlineBodyAndParamNoConflictResJson).void }
+      sig { params(args: T::Hash[Symbol, String], json: Operations::InlineBodyAndParamNoConflictJson).void }
       def initialize(args: nil, json: nil)
         @args = args
         @json = json

@@ -3,12 +3,12 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct PathParameterJsonRequest: APIValue {
         /// A simple object that uses all our supported primitive types and enums and has optional properties.
         public let jsonObj: Shared.SimpleObject
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         /// - Parameter jsonObj: A simple object that uses all our supported primitive types and enums and has optional properties.
         ///

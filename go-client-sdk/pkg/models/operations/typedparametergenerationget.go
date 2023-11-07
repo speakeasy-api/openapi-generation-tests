@@ -6,31 +6,31 @@ import (
 	"github.com/ericlagergren/decimal"
 	"math/big"
 	"net/http"
-	"openapi/pkg/types"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/types"
+	"openapi/v2/pkg/utils"
 )
 
-type TypedParameterGenerationGetObj struct {
+type Obj struct {
 	Bool bool    `queryParam:"name=bool"`
 	Num  float64 `queryParam:"name=num"`
 	Str  string  `queryParam:"name=str"`
 }
 
-func (o *TypedParameterGenerationGetObj) GetBool() bool {
+func (o *Obj) GetBool() bool {
 	if o == nil {
 		return false
 	}
 	return o.Bool
 }
 
-func (o *TypedParameterGenerationGetObj) GetNum() float64 {
+func (o *Obj) GetNum() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Num
 }
 
-func (o *TypedParameterGenerationGetObj) GetStr() string {
+func (o *Obj) GetStr() string {
 	if o == nil {
 		return ""
 	}
@@ -38,10 +38,10 @@ func (o *TypedParameterGenerationGetObj) GetStr() string {
 }
 
 type TypedParameterGenerationGetRequest struct {
-	Bigint  *big.Int                        `queryParam:"style=form,explode=true,name=bigint"`
-	Date    *types.Date                     `queryParam:"style=form,explode=true,name=date"`
-	Decimal *decimal.Big                    `decimal:"number" queryParam:"style=form,explode=true,name=decimal"`
-	Obj     *TypedParameterGenerationGetObj `queryParam:"style=form,explode=true,name=obj"`
+	Bigint  *big.Int     `queryParam:"style=form,explode=true,name=bigint"`
+	Date    *types.Date  `queryParam:"style=form,explode=true,name=date"`
+	Decimal *decimal.Big `decimal:"number" queryParam:"style=form,explode=true,name=decimal"`
+	Obj     *Obj         `queryParam:"style=form,explode=true,name=obj"`
 }
 
 func (t TypedParameterGenerationGetRequest) MarshalJSON() ([]byte, error) {
@@ -76,7 +76,7 @@ func (o *TypedParameterGenerationGetRequest) GetDecimal() *decimal.Big {
 	return o.Decimal
 }
 
-func (o *TypedParameterGenerationGetRequest) GetObj() *TypedParameterGenerationGetObj {
+func (o *TypedParameterGenerationGetRequest) GetObj() *Obj {
 	if o == nil {
 		return nil
 	}

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using Xunit;
-using SDK;
+using Openapi;
 using System.Threading.Tasks;
 
 public class TelemetryShould
@@ -18,12 +18,12 @@ public class TelemetryShould
     {
         CommonHelpers.RecordTest("telemetry-user-agent-get");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Telemetry.TelemetryUserAgentGetAsync();
 
         Assert.Equal(200, res.StatusCode);
-        Assert.Equal("speakeasy-sdk/csharp 0.1.2 2.173.0 0.1.0 openapi", res.Res.Headers["X-Speakeasy-User-Agent"]);
+        Assert.Equal("speakeasy-sdk/csharp 0.2.0 2.181.1 0.1.0 openapi", res.Res.Headers["X-Speakeasy-User-Agent"]);
     }
 
     [Fact]
@@ -31,7 +31,7 @@ public class TelemetryShould
     {
         CommonHelpers.RecordTest("telemetry-speakeasy-user-agent-get");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var userAgent = "test user agent";
 
@@ -39,6 +39,6 @@ public class TelemetryShould
 
         Assert.Equal(200, res.StatusCode);
         Assert.Equal(userAgent, res.Res.Headers["User-Agent"]);
-        Assert.Equal("speakeasy-sdk/csharp 0.1.2 2.173.0 0.1.0 openapi", res.Res.Headers["X-Speakeasy-User-Agent"]);
+        Assert.Equal("speakeasy-sdk/csharp 0.2.0 2.181.1 0.1.0 openapi", res.Res.Headers["X-Speakeasy-User-Agent"]);
     }
 }

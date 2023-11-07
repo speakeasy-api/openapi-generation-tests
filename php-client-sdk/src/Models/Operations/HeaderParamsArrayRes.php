@@ -18,11 +18,11 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 class HeaderParamsArrayRes
 {
 	#[\JMS\Serializer\Annotation\SerializedName('headers')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\HeaderParamsArrayResHeaders')]
-    public HeaderParamsArrayResHeaders $headers;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\Headers')]
+    public Headers $headers;
     
 	public function __construct()
 	{
-		$this->headers = new \OpenAPI\OpenAPI\Models\Operations\HeaderParamsArrayResHeaders();
+		$this->headers = new \OpenAPI\OpenAPI\Models\Operations\Headers();
 	}
 }

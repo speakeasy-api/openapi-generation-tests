@@ -5,13 +5,13 @@ import Foundation
 extension Operations {
     /// OK
     public struct RequestBodyPutBytesWithParamsRes {
-        public let args: Operations.RequestBodyPutBytesWithParamsResArgs
+        public let args: Operations.RequestBodyPutBytesWithParamsArgs
         public let data: String
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(args: Operations.RequestBodyPutBytesWithParamsResArgs, data: String) {
+        public init(args: Operations.RequestBodyPutBytesWithParamsArgs, data: String) {
             self.args = args
             self.data = data
         }

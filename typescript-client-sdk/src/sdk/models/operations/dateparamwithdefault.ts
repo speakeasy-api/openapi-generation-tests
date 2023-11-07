@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { RFCDate } from "../../types";
+import { RFCDate } from "../../../sdk/types";
 import { AxiosResponse } from "axios";
 
 export class DateParamWithDefaultRequest extends SpeakeasyBase {

@@ -1,5 +1,5 @@
 # Unions
-(*unions*)
+
 
 ## Overview
 
@@ -33,13 +33,13 @@ Endpoints for testing union types.
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -78,13 +78,13 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -123,23 +123,20 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Shared\NullableOneOfRefInObject;
-use \OpenAPI\OpenAPI\Models\Shared\TypedObject1;
-use \OpenAPI\OpenAPI\Models\Shared\TypedObject1Type;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $request = new NullableOneOfRefInObject();
-    $request->nullableOneOfOne = new TypedObject1();
-    $request->nullableOneOfOne->type = TypedObject1Type::Obj1;
+    $request = new Shared\NullableOneOfRefInObject();
+    $request->nullableOneOfOne = new Shared\TypedObject1();
+    $request->nullableOneOfOne->type = Shared\Type::Obj1;
     $request->nullableOneOfOne->value = 'string';
     $request->nullableOneOfTwo = 'string';
     $request->oneOfOne = 'string';
@@ -176,13 +173,13 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -221,19 +218,18 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Shared\NullableOneOfTypeInObject;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $request = new NullableOneOfTypeInObject();
+    $request = new Shared\NullableOneOfTypeInObject();
     $request->nullableOneOfOne = false;
     $request->nullableOneOfTwo = 'string';
     $request->oneOfOne = false;
@@ -270,21 +266,19 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Shared\TypedObject1;
-use \OpenAPI\OpenAPI\Models\Shared\TypedObject1Type;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $request = new TypedObject1();
-    $request->type = TypedObject1Type::Obj1;
+    $request = new Shared\TypedObject1();
+    $request->type = Shared\Type::Obj1;
     $request->value = 'string';
 
     $response = $sdk->unions->nullableTypedObjectPost($request);
@@ -319,13 +313,13 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -364,13 +358,13 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -409,13 +403,13 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -454,13 +448,13 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -499,13 +493,13 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -544,13 +538,13 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -589,13 +583,13 @@ DateTime::createFromFormat('Y-m-d', '2022-11-25')
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -634,13 +628,13 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -679,13 +673,13 @@ DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-04-12T19:39:53.907Z')
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 

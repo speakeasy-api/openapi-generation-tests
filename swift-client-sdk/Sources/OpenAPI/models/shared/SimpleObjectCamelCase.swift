@@ -21,11 +21,11 @@ extension Shared {
         @DecimalSerialized
         public private(set) var float32Val: Double
         /// An integer enum property.
-        public let intEnumVal: Shared.SimpleObjectCamelCaseIntEnumVal
+        public let intEnumVal: Shared.IntEnumVal
         /// An integer property.
         public let intVal: Int
         /// An int32 enum property.
-        public let int32EnumVal: Shared.SimpleObjectCamelCaseInt32EnumVal
+        public let int32EnumVal: Shared.Int32EnumVal
         /// An int32 property.
         public let int32Val: Int
         /// A number property.
@@ -66,7 +66,7 @@ extension Shared {
         /// - Parameter numOptNullVal: An optional number property will be null for tests.
         /// - Parameter strOptVal: An optional string property.
         ///
-        public init(anyVal: AnyValue, boolVal: Bool, dateTimeVal: Date, dateVal: Date, enumVal: Shared.Enum, float32Val: Double, intEnumVal: Shared.SimpleObjectCamelCaseIntEnumVal, intVal: Int, int32EnumVal: Shared.SimpleObjectCamelCaseInt32EnumVal, int32Val: Int, numVal: Double, strVal: String, bigintStrVal: String? = nil, bigintVal: Int? = nil, boolOptVal: Bool? = nil, decimalVal: Double? = nil, intOptNullVal: Int? = nil, numOptNullVal: Double? = nil, strOptVal: String? = nil) {
+        public init(anyVal: AnyValue, boolVal: Bool, dateTimeVal: Date, dateVal: Date, enumVal: Shared.Enum, float32Val: Double, intEnumVal: Shared.IntEnumVal, intVal: Int, int32EnumVal: Shared.Int32EnumVal, int32Val: Int, numVal: Double, strVal: String, bigintStrVal: String? = nil, bigintVal: Int? = nil, boolOptVal: Bool? = nil, decimalVal: Double? = nil, intOptNullVal: Int? = nil, numOptNullVal: Double? = nil, strOptVal: String? = nil) {
             self.anyVal = anyVal
             self.boolVal = boolVal
             self._dateTimeVal = DateTime<Date>(wrappedValue: dateTimeVal)
@@ -121,9 +121,9 @@ extension Shared.SimpleObjectCamelCase: Codable {
         self._dateVal = try container.decode(DateOnly<Date>.self, forKey: .dateVal)
         self.enumVal = try container.decode(Shared.Enum.self, forKey: .enumVal)
         self._float32Val = try container.decode(DecimalSerialized<Double>.self, forKey: .float32Val)
-        self.intEnumVal = try container.decode(Shared.SimpleObjectCamelCaseIntEnumVal.self, forKey: .intEnumVal)
+        self.intEnumVal = try container.decode(Shared.IntEnumVal.self, forKey: .intEnumVal)
         self.intVal = try container.decode(Int.self, forKey: .intVal)
-        self.int32EnumVal = try container.decode(Shared.SimpleObjectCamelCaseInt32EnumVal.self, forKey: .int32EnumVal)
+        self.int32EnumVal = try container.decode(Shared.Int32EnumVal.self, forKey: .int32EnumVal)
         self.int32Val = try container.decode(Int.self, forKey: .int32Val)
         self._numVal = try container.decode(DecimalSerialized<Double>.self, forKey: .numVal)
         self.strVal = try container.decode(String.self, forKey: .strVal)

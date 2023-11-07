@@ -12,22 +12,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class RequestBodyPutMultipartSimpleRes {
     @JsonProperty("form")
-    public RequestBodyPutMultipartSimpleResForm form;
+    public RequestBodyPutMultipartSimpleForm form;
 
-    public RequestBodyPutMultipartSimpleRes withForm(RequestBodyPutMultipartSimpleResForm form) {
+    public RequestBodyPutMultipartSimpleRes withForm(RequestBodyPutMultipartSimpleForm form) {
         this.form = form;
         return this;
     }
     
     @JsonProperty("headers")
-    public RequestBodyPutMultipartSimpleResHeaders headers;
+    public RequestBodyPutMultipartSimpleHeaders headers;
 
-    public RequestBodyPutMultipartSimpleRes withHeaders(RequestBodyPutMultipartSimpleResHeaders headers) {
+    public RequestBodyPutMultipartSimpleRes withHeaders(RequestBodyPutMultipartSimpleHeaders headers) {
         this.headers = headers;
         return this;
     }
     
-    public RequestBodyPutMultipartSimpleRes(@JsonProperty("form") RequestBodyPutMultipartSimpleResForm form, @JsonProperty("headers") RequestBodyPutMultipartSimpleResHeaders headers) {
+    public RequestBodyPutMultipartSimpleRes(@JsonProperty("form") RequestBodyPutMultipartSimpleForm form, @JsonProperty("headers") RequestBodyPutMultipartSimpleHeaders headers) {
         this.form = form;
         this.headers = headers;
   }

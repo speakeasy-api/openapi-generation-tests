@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"testing"
 
-	sdk "openapi"
+	sdk "openapi/v2"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

@@ -9,7 +9,7 @@ from typing import Any, Dict, Optional
 
 
 @dataclasses.dataclass
-class RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded:
+class RequestBodyPostMultipleContentTypesSplitParamFormRequestBody:
     bool3: bool = dataclasses.field(metadata={'form': { 'field_name': 'bool3' }})
     num3: float = dataclasses.field(metadata={'form': { 'field_name': 'num3' }})
     str3: str = dataclasses.field(metadata={'form': { 'field_name': 'str3' }})
@@ -20,7 +20,7 @@ class RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesSplitParamFormRequest:
     param_str: str = dataclasses.field(metadata={'query_param': { 'field_name': 'paramStr', 'style': 'form', 'explode': True }})
-    request_body: RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded = dataclasses.field(metadata={'request': { 'media_type': 'application/x-www-form-urlencoded' }})
+    request_body: RequestBodyPostMultipleContentTypesSplitParamFormRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'application/x-www-form-urlencoded' }})
     
 
 

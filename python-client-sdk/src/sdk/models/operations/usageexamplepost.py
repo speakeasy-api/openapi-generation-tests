@@ -3,9 +3,9 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import fakerformattedstrings as shared_fakerformattedstrings
-from ..shared import fakerstrings as shared_fakerstrings
-from ..shared import simpleobject as shared_simpleobject
+from ...models.shared import fakerformattedstrings as shared_fakerformattedstrings
+from ...models.shared import fakerstrings as shared_fakerstrings
+from ...models.shared import simpleobject as shared_simpleobject
 from dataclasses_json import Undefined, dataclass_json
 from datetime import date, datetime
 from decimal import Decimal
@@ -37,13 +37,13 @@ class UsageExamplePostRequestBody:
     
 
 
-class UsageExamplePostEnumParameter(str, Enum):
+class EnumParameter(str, Enum):
     r"""An enum type"""
     VALUE1 = 'value1'
     VALUE2 = 'value2'
     VALUE3 = 'value3'
 
-class UsageExamplePostOptEnumParameter(str, Enum):
+class OptEnumParameter(str, Enum):
     r"""An enum type"""
     VALUE1 = 'value1'
     VALUE2 = 'value2'
@@ -70,7 +70,7 @@ class UsageExamplePostRequest:
     r"""A decimal parameter"""
     double_parameter: float = dataclasses.field(metadata={'query_param': { 'field_name': 'doubleParameter', 'style': 'form', 'explode': True }})
     r"""A double parameter"""
-    enum_parameter: UsageExamplePostEnumParameter = dataclasses.field(metadata={'query_param': { 'field_name': 'enumParameter', 'style': 'form', 'explode': True }})
+    enum_parameter: EnumParameter = dataclasses.field(metadata={'query_param': { 'field_name': 'enumParameter', 'style': 'form', 'explode': True }})
     r"""An enum parameter"""
     falsey_number_parameter: float = dataclasses.field(metadata={'query_param': { 'field_name': 'falseyNumberParameter', 'style': 'form', 'explode': True }})
     r"""A number parameter that contains a falsey example value"""
@@ -92,7 +92,7 @@ class UsageExamplePostRequest:
     r"""A decimal parameter"""
     decimal_str_parameter_optional: Optional[Decimal] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'decimalStrParameterOptional', 'style': 'form', 'explode': True }})
     r"""A decimal parameter"""
-    opt_enum_parameter: Optional[UsageExamplePostOptEnumParameter] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'optEnumParameter', 'style': 'form', 'explode': True }})
+    opt_enum_parameter: Optional[OptEnumParameter] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'optEnumParameter', 'style': 'form', 'explode': True }})
     r"""An enum parameter"""
     request_body: Optional[UsageExamplePostRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     r"""A request body that contains fields with different formats for testing example generation"""
@@ -102,7 +102,7 @@ class UsageExamplePostRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class UsageExamplePost200ApplicationJSONJSON:
+class UsageExamplePostJSON:
     faker_formatted_strings: Optional[shared_fakerformattedstrings.FakerFormattedStrings] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fakerFormattedStrings'), 'exclude': lambda f: f is None }})
     r"""A set of strings with format values that lead to relevant examples being generated for them"""
     faker_strings: Optional[shared_fakerstrings.FakerStrings] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fakerStrings'), 'exclude': lambda f: f is None }})
@@ -117,9 +117,9 @@ class UsageExamplePost200ApplicationJSONJSON:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class UsageExamplePost200ApplicationJSON:
+class UsageExamplePostResponseBody:
     r"""A response body that contains the simpleObject sent in the request body"""
-    json: UsageExamplePost200ApplicationJSONJSON = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
+    json: UsageExamplePostJSON = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
 
 
@@ -130,9 +130,9 @@ class UsageExamplePostResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    object: Optional[UsageExamplePostResponseBody] = dataclasses.field(default=None)
+    r"""A successful response that contains the simpleObject sent in the request body"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    usage_example_post_200_application_json_object: Optional[UsageExamplePost200ApplicationJSON] = dataclasses.field(default=None)
-    r"""A successful response that contains the simpleObject sent in the request body"""
     
 

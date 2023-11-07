@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import httpbinsimplejsonobject as shared_httpbinsimplejsonobject
+from ...models.shared import httpbinsimplejsonobject as shared_httpbinsimplejsonobject
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional
@@ -11,7 +11,7 @@ from typing import Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class IgnoresPostApplicationJSON:
+class IgnoresPostRequestBody:
     callback_url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('callbackUrl'), 'exclude': lambda f: f is None }})
     test_prop: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('testProp'), 'exclude': lambda f: f is None }})
     
@@ -20,7 +20,7 @@ class IgnoresPostApplicationJSON:
 
 @dataclasses.dataclass
 class IgnoresPostRequest:
-    request_body: IgnoresPostApplicationJSON = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
+    request_body: IgnoresPostRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     test_param: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'testParam', 'style': 'form', 'explode': True }})
     
 

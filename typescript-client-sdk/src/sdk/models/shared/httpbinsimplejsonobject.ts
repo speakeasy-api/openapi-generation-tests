@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Type } from "class-transformer";
 
-export class HttpBinSimpleJsonObjectSlideshowSlides extends SpeakeasyBase {
+export class Slides extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "items" })
     items?: string[];
@@ -19,7 +19,7 @@ export class HttpBinSimpleJsonObjectSlideshowSlides extends SpeakeasyBase {
     type: string;
 }
 
-export class HttpBinSimpleJsonObjectSlideshow extends SpeakeasyBase {
+export class Slideshow extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "author" })
     author: string;
@@ -28,10 +28,10 @@ export class HttpBinSimpleJsonObjectSlideshow extends SpeakeasyBase {
     @Expose({ name: "date" })
     date: string;
 
-    @SpeakeasyMetadata({ elemType: HttpBinSimpleJsonObjectSlideshowSlides })
+    @SpeakeasyMetadata({ elemType: Slides })
     @Expose({ name: "slides" })
-    @Type(() => HttpBinSimpleJsonObjectSlideshowSlides)
-    slides: HttpBinSimpleJsonObjectSlideshowSlides[];
+    @Type(() => Slides)
+    slides: Slides[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "title" })
@@ -41,6 +41,6 @@ export class HttpBinSimpleJsonObjectSlideshow extends SpeakeasyBase {
 export class HttpBinSimpleJsonObject extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "slideshow" })
-    @Type(() => HttpBinSimpleJsonObjectSlideshow)
-    slideshow: HttpBinSimpleJsonObjectSlideshow;
+    @Type(() => Slideshow)
+    slideshow: Slideshow;
 }

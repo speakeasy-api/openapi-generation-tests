@@ -1,5 +1,5 @@
 # Flattening
-(*flattening*)
+(*.flattening*)
 
 ## Overview
 
@@ -20,7 +20,7 @@ Endpoints for testing flattening through request body and parameter combinations
 ```typescript
 import { SDK } from "openapi";
 import { ComponentBodyAndParamConflictRequest } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -45,8 +45,8 @@ const simpleObject: SimpleObject = {
   float32: 1.1,
   int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: Int32Enum.FiftyFive,
+  intEnum: IntEnum.Second,
   num: 1.1,
   str: "test",
   strOpt: "testOptional",
@@ -83,7 +83,7 @@ const str: string = "string";
 ```typescript
 import { SDK } from "openapi";
 import { ComponentBodyAndParamNoConflictRequest } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -109,8 +109,8 @@ const simpleObject: SimpleObject = {
   float32: 1.1,
   int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: Int32Enum.FiftyFive,
+  intEnum: IntEnum.Second,
   num: 1.1,
   str: "test",
   strOpt: "testOptional",

@@ -6,14 +6,14 @@ extension Operations {
     /// A model object
     public struct NullableRequiredPropertyPostRequestBody {
         public let nullableRequiredArray: [Double]
-        public let nullableRequiredEnum: Operations.NullableRequiredPropertyPostRequestBodyNullableRequiredEnum
+        public let nullableRequiredEnum: Operations.NullableRequiredEnum
         public let nullableRequiredInt: Int
         public let nullableOptionalInt: Int?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(nullableRequiredArray: [Double], nullableRequiredEnum: Operations.NullableRequiredPropertyPostRequestBodyNullableRequiredEnum, nullableRequiredInt: Int, nullableOptionalInt: Int? = nil) {
+        public init(nullableRequiredArray: [Double], nullableRequiredEnum: Operations.NullableRequiredEnum, nullableRequiredInt: Int, nullableOptionalInt: Int? = nil) {
             self.nullableRequiredArray = nullableRequiredArray
             self.nullableRequiredEnum = nullableRequiredEnum
             self.nullableRequiredInt = nullableRequiredInt

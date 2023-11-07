@@ -3,13 +3,13 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import simpleobject as shared_simpleobject
+from ...models.shared import simpleobject as shared_simpleobject
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from sdk import utils
 from typing import Optional
 
-class NameOverrideGetEnumNameOverride(str, Enum):
+class EnumNameOverride(str, Enum):
     r"""An enum type"""
     VALUE1 = 'value1'
     VALUE2 = 'value2'
@@ -18,7 +18,7 @@ class NameOverrideGetEnumNameOverride(str, Enum):
 
 @dataclasses.dataclass
 class NameOverrideGetRequest:
-    test_enum_query_param: NameOverrideGetEnumNameOverride = dataclasses.field(metadata={'query_param': { 'field_name': 'enumNameOverride', 'style': 'form', 'explode': True }})
+    test_enum_query_param: EnumNameOverride = dataclasses.field(metadata={'query_param': { 'field_name': 'enumNameOverride', 'style': 'form', 'explode': True }})
     r"""An enum type"""
     test_query_param: str = dataclasses.field(metadata={'query_param': { 'field_name': 'nameOverride', 'style': 'form', 'explode': True }})
     
@@ -27,7 +27,7 @@ class NameOverrideGetRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class OverriddenResponse:
+class NameOverrideGetOverriddenResponse:
     r"""A successful response that contains the simpleObject sent in the request body"""
     json: Optional[shared_simpleobject.SimpleObject] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties.
@@ -43,7 +43,7 @@ class NameOverrideGetResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    overridden_response: Optional[OverriddenResponse] = dataclasses.field(default=None)
+    overridden_response: Optional[NameOverrideGetOverriddenResponse] = dataclasses.field(default=None)
     r"""A successful response that contains the simpleObject sent in the request body"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""

@@ -6,7 +6,7 @@ extension Operations {
     /// A response model
     public enum RequestBodyPostJsonDataTypesArrayDateResponse {
         case empty
-        case requestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject(Operations.RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON)
+        case object(Operations.RequestBodyPostJsonDataTypesArrayDateResponseBody)
 
         var isEmpty: Bool {
             if case .empty = self {
@@ -16,8 +16,8 @@ extension Operations {
             }
         }
 
-        public func requestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject() throws -> Operations.RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON {
-            guard case .requestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject(let value) = self else {
+        public func object() throws -> Operations.RequestBodyPostJsonDataTypesArrayDateResponseBody {
+            guard case .object(let value) = self else {
                 throw OpenAPIError.missingResponseData
             }
             return value

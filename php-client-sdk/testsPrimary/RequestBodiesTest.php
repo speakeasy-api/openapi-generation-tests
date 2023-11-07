@@ -51,8 +51,8 @@ final class RequestBodiesTest extends TestCase
 
         $this->assertNotNull($response);
         $this->assertEquals(200, $response->statusCode);
-        $this->assertNotNull($response->simpleObjects);
-        $this->assertEquals($arr, $response->simpleObjects);
+        $this->assertNotNull($response->res);
+        $this->assertEquals($arr, $response->res);
     }
 
     public function testRequestBodyPostApplicationJsonArrayOfArray(): void
@@ -71,8 +71,8 @@ final class RequestBodiesTest extends TestCase
 
         $this->assertNotNull($response);
         $this->assertEquals(200, $response->statusCode);
-        $this->assertNotNull($response->arrs);
-        $this->assertEquals($arrArr, $response->arrs);
+        $this->assertNotNull($response->res);
+        $this->assertEquals($arrArr, $response->res);
     }
 
     public function testRequestBodyPostApplicationJsonMap(): void
@@ -175,8 +175,8 @@ final class RequestBodiesTest extends TestCase
 
         $this->assertNotNull($response);
         $this->assertEquals(200, $response->statusCode);
-        $this->assertNotNull($response->maps);
-        $this->assertEquals($arrM, $response->maps);
+        $this->assertNotNull($response->res);
+        $this->assertEquals($arrM, $response->res);
     }
 
     public function testRequestBodyPostApplicationJsonMapOfPrimitive(): void
@@ -214,8 +214,8 @@ final class RequestBodiesTest extends TestCase
 
         $this->assertNotNull($response);
         $this->assertEquals(200, $response->statusCode);
-        $this->assertNotNull($response->strings);
-        $this->assertEquals($arr, $response->strings);
+        $this->assertNotNull($response->res);
+        $this->assertEquals($arr, $response->res);
     }
 
     public function testRequestBodyPostApplicationJsonMapOfMapOfPrimitive(): void
@@ -262,8 +262,8 @@ final class RequestBodiesTest extends TestCase
 
         $this->assertNotNull($response);
         $this->assertEquals(200, $response->statusCode);
-        $this->assertNotNull($response->arrs);
-        $this->assertEquals($arrArr, $response->arrs);
+        $this->assertNotNull($response->res);
+        $this->assertEquals($arrArr, $response->res);
     }
 
     public function testRequestBodyPostApplicationJsonArrayObject(): void
@@ -389,7 +389,7 @@ final class RequestBodiesTest extends TestCase
 
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
-        $request = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON();
+        $request = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesInlineFilteredRequestBody();
         $request->bool = true;
         $request->num = 1.1;
         $request->str = 'test';
@@ -412,7 +412,7 @@ final class RequestBodiesTest extends TestCase
 
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
-        $request = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitApplicationJSON();
+        $request = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitJsonRequestBody();
         $request->bool = true;
         $request->num = 1.1;
         $request->str = 'test';
@@ -435,7 +435,7 @@ final class RequestBodiesTest extends TestCase
 
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
-        $request = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitMultipartFormData();
+        $request = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitMultipartRequestBody();
         $request->bool2 = true;
         $request->num2 = 1.1;
         $request->str2 = 'test';
@@ -458,7 +458,7 @@ final class RequestBodiesTest extends TestCase
 
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
-        $request = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded();
+        $request = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitFormRequestBody();
         $request->bool3 = true;
         $request->num3 = 1.1;
         $request->str3 = 'test';
@@ -481,7 +481,7 @@ final class RequestBodiesTest extends TestCase
 
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
-        $requestBody = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamApplicationJSON();
+        $requestBody = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody();
         $requestBody->bool = true;
         $requestBody->num = 1.1;
         $requestBody->str = 'test body';
@@ -505,7 +505,7 @@ final class RequestBodiesTest extends TestCase
 
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
-        $requestBody = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartFormData();
+        $requestBody = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody();
         $requestBody->bool2 = true;
         $requestBody->num2 = 1.1;
         $requestBody->str2 = 'test body';
@@ -529,7 +529,7 @@ final class RequestBodiesTest extends TestCase
 
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
-        $requestBody = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded();
+        $requestBody = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamFormRequestBody();
         $requestBody->bool3 = true;
         $requestBody->num3 = 1.1;
         $requestBody->str3 = 'test body';
@@ -611,13 +611,13 @@ final class RequestBodiesTest extends TestCase
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
         $request = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartFileRequestBody();
-        $request->file = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartFileRequestBodyFile();
+        $request->file = new \OpenAPI\OpenAPI\Models\Operations\File();
 
         $path = './tests/testUpload.json';
         $file = fopen($path, 'r');
         $content = fread($file, filesize($path));
 
-        $request->file->file = 'testUpload.json';
+        $request->file->fileName = 'testUpload.json';
         $request->file->content = $content;
 
         $response = $sdk->requestBodies->requestBodyPutMultipartFile($request);
@@ -854,7 +854,7 @@ final class RequestBodiesTest extends TestCase
 
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
-        $r = new \OpenAPI\OpenAPI\Models\Shared\ReadWriteObjectInput();
+        $r = new \OpenAPI\OpenAPI\Models\Shared\ReadWriteObject();
         $r->num1 = 1;
         $r->num2 = 2;
         $r->num3 = 4;

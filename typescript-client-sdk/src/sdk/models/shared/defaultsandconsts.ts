@@ -3,28 +3,28 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { RFCDate } from "../../types";
+import { RFCDate } from "../../../sdk/types";
 import { Expose, Transform, Type } from "class-transformer";
 
-export enum DefaultsAndConstsConstEnumInt {
+export enum ConstEnumInt {
     One = 1,
     Two = 2,
     Three = 3,
 }
 
-export enum DefaultsAndConstsConstEnumStr {
+export enum ConstEnumStr {
     One = "one",
     Two = "two",
     Three = "three",
 }
 
-export enum DefaultsAndConstsDefaultEnumInt {
+export enum DefaultEnumInt {
     One = 1,
     Two = 2,
     Three = 3,
 }
 
-export enum DefaultsAndConstsDefaultEnumStr {
+export enum DefaultEnumStr {
     One = "one",
     Two = "two",
     Three = "three",
@@ -64,11 +64,11 @@ export class DefaultsAndConsts extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "constEnumInt" })
-    constEnumInt: DefaultsAndConstsConstEnumInt;
+    constEnumInt: ConstEnumInt;
 
     @SpeakeasyMetadata()
     @Expose({ name: "constEnumStr" })
-    constEnumStr: DefaultsAndConstsConstEnumStr;
+    constEnumStr: ConstEnumStr;
 
     @SpeakeasyMetadata()
     @Expose({ name: "constInt" })
@@ -119,11 +119,11 @@ export class DefaultsAndConsts extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "defaultEnumInt" })
-    defaultEnumInt?: DefaultsAndConstsDefaultEnumInt;
+    defaultEnumInt?: DefaultEnumInt;
 
     @SpeakeasyMetadata()
     @Expose({ name: "defaultEnumStr" })
-    defaultEnumStr?: DefaultsAndConstsDefaultEnumStr;
+    defaultEnumStr?: DefaultEnumStr;
 
     @SpeakeasyMetadata()
     @Expose({ name: "defaultInt" })

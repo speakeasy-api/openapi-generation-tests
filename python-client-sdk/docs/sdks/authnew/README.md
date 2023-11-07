@@ -1,5 +1,5 @@
 # AuthNew
-(*auth_new*)
+(*.auth_new*)
 
 ## Overview
 
@@ -36,12 +36,12 @@ s = sdk.SDK(
 )
 
 req = shared.AuthServiceRequestBody(
-    basic_auth=shared.AuthServiceRequestBodyBasicAuth(
+    basic_auth=shared.BasicAuth(
         password='owsGgP4_AhRPMSJ',
         username='Devonte_Bins',
     ),
     header_auth=[
-        shared.AuthServiceRequestBodyHeaderAuth(
+        shared.HeaderAuth(
             expected_value='string',
             header_name='string',
         ),
@@ -85,12 +85,12 @@ s = sdk.SDK(
 )
 
 req = shared.AuthServiceRequestBody(
-    basic_auth=shared.AuthServiceRequestBodyBasicAuth(
+    basic_auth=shared.BasicAuth(
         password='xvJcf9GiJNr7T2x',
         username='Cory33',
     ),
     header_auth=[
-        shared.AuthServiceRequestBodyHeaderAuth(
+        shared.HeaderAuth(
             expected_value='string',
             header_name='string',
         ),
@@ -131,12 +131,12 @@ s = sdk.SDK(
 )
 
 req = shared.AuthServiceRequestBody(
-    basic_auth=shared.AuthServiceRequestBodyBasicAuth(
+    basic_auth=shared.BasicAuth(
         password='Z2OStPksFyrcGeu',
         username='Ashton.Steuber27',
     ),
     header_auth=[
-        shared.AuthServiceRequestBodyHeaderAuth(
+        shared.HeaderAuth(
             expected_value='string',
             header_name='string',
         ),
@@ -181,12 +181,12 @@ s = sdk.SDK(
 )
 
 req = shared.AuthServiceRequestBody(
-    basic_auth=shared.AuthServiceRequestBodyBasicAuth(
+    basic_auth=shared.BasicAuth(
         password='Iq1JSzG1wqLDz4v',
         username='Ismael.Emmerich',
     ),
     header_auth=[
-        shared.AuthServiceRequestBodyHeaderAuth(
+        shared.HeaderAuth(
             expected_value='string',
             header_name='string',
         ),
@@ -230,12 +230,12 @@ s = sdk.SDK(
 )
 
 req = shared.AuthServiceRequestBody(
-    basic_auth=shared.AuthServiceRequestBodyBasicAuth(
+    basic_auth=shared.BasicAuth(
         password='OcWVV5608IiaWJQ',
         username='Kameron42',
     ),
     header_auth=[
-        shared.AuthServiceRequestBodyHeaderAuth(
+        shared.HeaderAuth(
             expected_value='string',
             header_name='string',
         ),
@@ -283,12 +283,12 @@ s = sdk.SDK(
 )
 
 req = shared.AuthServiceRequestBody(
-    basic_auth=shared.AuthServiceRequestBodyBasicAuth(
+    basic_auth=shared.BasicAuth(
         password='fpwNE90MyqKIrXk',
         username='Caroline_Walsh',
     ),
     header_auth=[
-        shared.AuthServiceRequestBodyHeaderAuth(
+        shared.HeaderAuth(
             expected_value='string',
             header_name='string',
         ),
@@ -335,12 +335,12 @@ s = sdk.SDK(
 )
 
 req = shared.AuthServiceRequestBody(
-    basic_auth=shared.AuthServiceRequestBodyBasicAuth(
+    basic_auth=shared.BasicAuth(
         password='pibxDTiJSijK04Y',
         username='Selena76',
     ),
     header_auth=[
-        shared.AuthServiceRequestBodyHeaderAuth(
+        shared.HeaderAuth(
             expected_value='string',
             header_name='string',
         ),
@@ -387,12 +387,12 @@ s = sdk.SDK(
 )
 
 req = shared.AuthServiceRequestBody(
-    basic_auth=shared.AuthServiceRequestBodyBasicAuth(
+    basic_auth=shared.BasicAuth(
         password='pzdKQgSGZSrUGNs',
         username='Eryn51',
     ),
     header_auth=[
-        shared.AuthServiceRequestBodyHeaderAuth(
+        shared.HeaderAuth(
             expected_value='string',
             header_name='string',
         ),
@@ -436,12 +436,12 @@ s = sdk.SDK(
 )
 
 req = shared.AuthServiceRequestBody(
-    basic_auth=shared.AuthServiceRequestBodyBasicAuth(
+    basic_auth=shared.BasicAuth(
         password='UrAsw466AAaYtr1',
         username='Kenya.Baumbach',
     ),
     header_auth=[
-        shared.AuthServiceRequestBodyHeaderAuth(
+        shared.HeaderAuth(
             expected_value='string',
             header_name='string',
         ),
@@ -486,12 +486,12 @@ s = sdk.SDK(
 )
 
 req = shared.AuthServiceRequestBody(
-    basic_auth=shared.AuthServiceRequestBodyBasicAuth(
+    basic_auth=shared.BasicAuth(
         password='V02sHy2onRTMRgS',
         username='Polly.Aufderhar78',
     ),
     header_auth=[
-        shared.AuthServiceRequestBodyHeaderAuth(
+        shared.HeaderAuth(
             expected_value='string',
             header_name='string',
         ),
@@ -535,12 +535,12 @@ s = sdk.SDK(
 )
 
 req = shared.AuthServiceRequestBody(
-    basic_auth=shared.AuthServiceRequestBodyBasicAuth(
+    basic_auth=shared.BasicAuth(
         password='1_B3hNdr8HC3AeS',
         username='Floy_Heller',
     ),
     header_auth=[
-        shared.AuthServiceRequestBodyHeaderAuth(
+        shared.HeaderAuth(
             expected_value='string',
             header_name='string',
         ),

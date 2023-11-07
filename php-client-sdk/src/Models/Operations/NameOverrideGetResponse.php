@@ -38,10 +38,10 @@ class NameOverrideGetResponse
     /**
      * A successful response that contains the simpleObject sent in the request body
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\OverriddenResponse $overriddenResponse
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\NameOverrideGetOverriddenResponse $overriddenResponse
      */
 	
-    public ?OverriddenResponse $overriddenResponse = null;
+    public ?NameOverrideGetOverriddenResponse $overriddenResponse = null;
     
 	public function __construct()
 	{

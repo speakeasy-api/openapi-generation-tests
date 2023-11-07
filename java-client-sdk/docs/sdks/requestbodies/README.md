@@ -1,5 +1,5 @@
 # RequestBodies
-(*requestBodies*)
+(*.requestBodies*)
 
 ## Overview
 
@@ -148,11 +148,11 @@ public class Application {
 package hello.world;
 
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.NullableOptionalObj;
 import org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostRequestBody;
-import org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj;
-import org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj;
-import org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostRequestBodyRequiredObj;
 import org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostResponse;
+import org.openapis.openapi.models.operations.NullableRequiredObj;
+import org.openapis.openapi.models.operations.RequiredObj;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
@@ -166,13 +166,13 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            NullableRequiredEmptyObjectPostRequestBody req = new NullableRequiredEmptyObjectPostRequestBody(new NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj(), new NullableRequiredEmptyObjectPostRequestBodyRequiredObj()){{
-                nullableOptionalObj = new NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj();
+            NullableRequiredEmptyObjectPostRequestBody req = new NullableRequiredEmptyObjectPostRequestBody(new NullableRequiredObj(), new RequiredObj()){{
+                nullableOptionalObj = new NullableOptionalObj();
             }};            
 
             NullableRequiredEmptyObjectPostResponse res = sdk.requestBodies.nullableRequiredEmptyObjectPost(req);
 
-            if (res.nullableRequiredEmptyObjectPost200ApplicationJSONString != null) {
+            if (res.res != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -202,8 +202,8 @@ public class Application {
 package hello.world;
 
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.NullableRequiredEnum;
 import org.openapis.openapi.models.operations.NullableRequiredPropertyPostRequestBody;
-import org.openapis.openapi.models.operations.NullableRequiredPropertyPostRequestBodyNullableRequiredEnum;
 import org.openapis.openapi.models.operations.NullableRequiredPropertyPostResponse;
 import org.openapis.openapi.models.shared.Security;
 
@@ -220,13 +220,13 @@ public class Application {
 
             NullableRequiredPropertyPostRequestBody req = new NullableRequiredPropertyPostRequestBody(new Double[]{{
     add(2355.17d),
-}}, NullableRequiredPropertyPostRequestBodyNullableRequiredEnum.SECOND, 50266L){{
+}}, NullableRequiredEnum.SECOND, 50266L){{
                 nullableOptionalInt = 282026L;
             }};            
 
             NullableRequiredPropertyPostResponse res = sdk.requestBodies.nullableRequiredPropertyPost(req);
 
-            if (res.nullableRequiredPropertyPost200ApplicationJSONString != null) {
+            if (res.res != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -282,7 +282,7 @@ optional = "string";
 
             NullableRequiredSharedObjectPostResponse res = sdk.requestBodies.nullableRequiredSharedObjectPost(req);
 
-            if (res.nullableRequiredSharedObjectPost200ApplicationJSONString != null) {
+            if (res.res != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -316,10 +316,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -333,7 +333,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req =             new org.openapis.openapi.models.shared.SimpleObject[]{{
-                add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
@@ -347,8 +347,8 @@ public class Application {
                     float32 = 1.1f;
                     int_ = 1L;
                     int32 = 1;
-                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                    intEnum = SimpleObjectIntEnum.Second;
+                    int32Enum = Int32Enum.FIFTY_FIVE;
+                    intEnum = IntEnum.Second;
                     num = 1.1d;
                     str = "test";
                     strOpt = "testOptional";
@@ -357,7 +357,7 @@ public class Application {
 
             RequestBodyPostApplicationJsonArrayResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArray(req);
 
-            if (res.simpleObjects != null) {
+            if (res.res != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -392,10 +392,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayCamelCaseResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32EnumVal;
+import org.openapis.openapi.models.shared.IntEnumVal;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseInt32EnumVal;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseIntEnumVal;
 
 public class Application {
     public static void main(String[] args) {
@@ -409,7 +409,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req =             new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example"){{
+                add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
                     anyVal = "any example";
                     boolOptVal = true;
                     boolVal = true;
@@ -417,9 +417,9 @@ public class Application {
                     dateVal = LocalDate.parse("2020-01-01");
                     enumVal = Enum.ONE;
                     float32Val = 2.2222222f;
-                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                    int32EnumVal = Int32EnumVal.SIXTY_NINE;
                     int32Val = 1;
-                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+                    intEnumVal = IntEnumVal.Third;
                     intOptNullVal = 999999L;
                     intVal = 999999L;
                     numOptNullVal = 1.1d;
@@ -431,7 +431,7 @@ public class Application {
 
             RequestBodyPostApplicationJsonArrayCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayCamelCase(req);
 
-            if (res.simpleObjectCamelCases != null) {
+            if (res.res != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -466,10 +466,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayObjResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -483,7 +483,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req =             new org.openapis.openapi.models.shared.SimpleObject[]{{
-                add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
@@ -497,8 +497,8 @@ public class Application {
                     float32 = 1.1f;
                     int_ = 1L;
                     int32 = 1;
-                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                    intEnum = SimpleObjectIntEnum.Second;
+                    int32Enum = Int32Enum.FIFTY_FIVE;
+                    intEnum = IntEnum.Second;
                     num = 1.1d;
                     str = "test";
                     strOpt = "testOptional";
@@ -541,10 +541,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayObjCamelCaseResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32EnumVal;
+import org.openapis.openapi.models.shared.IntEnumVal;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseInt32EnumVal;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseIntEnumVal;
 
 public class Application {
     public static void main(String[] args) {
@@ -558,7 +558,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req =             new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example"){{
+                add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
                     anyVal = "any example";
                     boolOptVal = true;
                     boolVal = true;
@@ -566,9 +566,9 @@ public class Application {
                     dateVal = LocalDate.parse("2020-01-01");
                     enumVal = Enum.ONE;
                     float32Val = 2.2222222f;
-                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                    int32EnumVal = Int32EnumVal.SIXTY_NINE;
                     int32Val = 1;
-                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+                    intEnumVal = IntEnumVal.Third;
                     intOptNullVal = 999999L;
                     intVal = 999999L;
                     numOptNullVal = 1.1d;
@@ -614,10 +614,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -632,7 +632,7 @@ public class Application {
 
             org.openapis.openapi.models.. req =             new org.openapis.openapi.models.shared.SimpleObject[][]{{
                 add(new org.openapis.openapi.models.shared.SimpleObject[]{{
-                    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                         any = "any";
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
@@ -646,8 +646,8 @@ public class Application {
                         float32 = 1.1f;
                         int_ = 1L;
                         int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                        intEnum = SimpleObjectIntEnum.Second;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
                         num = 1.1d;
                         str = "test";
                         strOpt = "testOptional";
@@ -657,7 +657,7 @@ public class Application {
 
             RequestBodyPostApplicationJsonArrayOfArrayResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArray(req);
 
-            if (res.arrs != null) {
+            if (res.res != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -692,10 +692,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32EnumVal;
+import org.openapis.openapi.models.shared.IntEnumVal;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseInt32EnumVal;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseIntEnumVal;
 
 public class Application {
     public static void main(String[] args) {
@@ -710,7 +710,7 @@ public class Application {
 
             org.openapis.openapi.models.. req =             new org.openapis.openapi.models.shared.SimpleObjectCamelCase[][]{{
                 add(new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                    add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example"){{
+                    add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
                         anyVal = "any example";
                         boolOptVal = true;
                         boolVal = true;
@@ -718,9 +718,9 @@ public class Application {
                         dateVal = LocalDate.parse("2020-01-01");
                         enumVal = Enum.ONE;
                         float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                        int32EnumVal = Int32EnumVal.SIXTY_NINE;
                         int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+                        intEnumVal = IntEnumVal.Third;
                         intOptNullVal = 999999L;
                         intVal = 999999L;
                         numOptNullVal = 1.1d;
@@ -733,7 +733,7 @@ public class Application {
 
             RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayCamelCase(req);
 
-            if (res.arrs != null) {
+            if (res.res != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -786,7 +786,7 @@ public class Application {
 
             RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayOfPrimitive(req);
 
-            if (res.arrs != null) {
+            if (res.res != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -821,10 +821,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfMapResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -839,7 +839,7 @@ public class Application {
 
             org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>[]{{
                 add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                         any = "any";
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
@@ -853,8 +853,8 @@ public class Application {
                         float32 = 1.1f;
                         int_ = 1L;
                         int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                        intEnum = SimpleObjectIntEnum.Second;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
                         num = 1.1d;
                         str = "test";
                         strOpt = "testOptional";
@@ -864,7 +864,7 @@ public class Application {
 
             RequestBodyPostApplicationJsonArrayOfMapResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMap(req);
 
-            if (res.maps != null) {
+            if (res.res != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -899,10 +899,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32EnumVal;
+import org.openapis.openapi.models.shared.IntEnumVal;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseInt32EnumVal;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseIntEnumVal;
 
 public class Application {
     public static void main(String[] args) {
@@ -917,7 +917,7 @@ public class Application {
 
             org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>[]{{
                 add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(){{
-                    put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example"){{
+                    put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
                         anyVal = "any example";
                         boolOptVal = true;
                         boolVal = true;
@@ -925,9 +925,9 @@ public class Application {
                         dateVal = LocalDate.parse("2020-01-01");
                         enumVal = Enum.ONE;
                         float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                        int32EnumVal = Int32EnumVal.SIXTY_NINE;
                         int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+                        intEnumVal = IntEnumVal.Third;
                         intOptNullVal = 999999L;
                         intVal = 999999L;
                         numOptNullVal = 1.1d;
@@ -940,7 +940,7 @@ public class Application {
 
             RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMapCamelCase(req);
 
-            if (res.maps != null) {
+            if (res.res != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -991,7 +991,7 @@ public class Application {
 
             RequestBodyPostApplicationJsonArrayOfPrimitiveResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfPrimitive(req);
 
-            if (res.strings != null) {
+            if (res.res != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -1027,10 +1027,10 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonDeepResponse;
 import org.openapis.openapi.models.shared.DeepObject;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -1044,7 +1044,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.DeepObject req = new DeepObject("anyOf[0]", new org.openapis.openapi.models.shared.SimpleObject[]{{
-    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
         any = "any";
         bigint = 8821239038968084L;
         bigintStr = "9223372036854775808";
@@ -1058,13 +1058,13 @@ public class Application {
         float32 = 1.1f;
         int_ = 1L;
         int32 = 1;
-        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-        intEnum = SimpleObjectIntEnum.Second;
+        int32Enum = Int32Enum.FIFTY_FIVE;
+        intEnum = IntEnum.Second;
         num = 1.1d;
         str = "test";
         strOpt = "testOptional";
     }}),
-    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
         any = "any";
         bigint = 8821239038968084L;
         bigintStr = "9223372036854775808";
@@ -1078,14 +1078,14 @@ public class Application {
         float32 = 1.1f;
         int_ = 1L;
         int32 = 1;
-        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-        intEnum = SimpleObjectIntEnum.Second;
+        int32Enum = Int32Enum.FIFTY_FIVE;
+        intEnum = IntEnum.Second;
         num = 1.1d;
         str = "test";
         strOpt = "testOptional";
     }}),
 }}, true, 1L, new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
         any = "any";
         bigint = 8821239038968084L;
         bigintStr = "9223372036854775808";
@@ -1099,13 +1099,13 @@ public class Application {
         float32 = 1.1f;
         int_ = 1L;
         int32 = 1;
-        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-        intEnum = SimpleObjectIntEnum.Second;
+        int32Enum = Int32Enum.FIFTY_FIVE;
+        intEnum = IntEnum.Second;
         num = 1.1d;
         str = "test";
         strOpt = "testOptional";
     }});
-    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
         any = "any";
         bigint = 8821239038968084L;
         bigintStr = "9223372036854775808";
@@ -1119,13 +1119,13 @@ public class Application {
         float32 = 1.1f;
         int_ = 1L;
         int32 = 1;
-        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-        intEnum = SimpleObjectIntEnum.Second;
+        int32Enum = Int32Enum.FIFTY_FIVE;
+        intEnum = IntEnum.Second;
         num = 1.1d;
         str = "test";
         strOpt = "testOptional";
     }});
-}}, 1.1d, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+}}, 1.1d, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
 bigint = 8821239038968084L;
 bigintStr = "9223372036854775808";
 boolOpt = true;
@@ -1175,10 +1175,10 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonDeepCamelCaseResponse;
 import org.openapis.openapi.models.shared.DeepObjectCamelCase;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32EnumVal;
+import org.openapis.openapi.models.shared.IntEnumVal;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseInt32EnumVal;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseIntEnumVal;
 
 public class Application {
     public static void main(String[] args) {
@@ -1192,7 +1192,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.DeepObjectCamelCase req = new DeepObjectCamelCase("string", new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-    add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example"){{
+    add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
         anyVal = "any example";
         boolOptVal = true;
         boolVal = true;
@@ -1200,9 +1200,9 @@ public class Application {
         dateVal = LocalDate.parse("2020-01-01");
         enumVal = Enum.ONE;
         float32Val = 2.2222222f;
-        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+        int32EnumVal = Int32EnumVal.SIXTY_NINE;
         int32Val = 1;
-        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+        intEnumVal = IntEnumVal.Third;
         intOptNullVal = 999999L;
         intVal = 999999L;
         numOptNullVal = 1.1d;
@@ -1211,7 +1211,7 @@ public class Application {
         strVal = "example";
     }}),
 }}, false, 66469L, new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(){{
-    put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example"){{
+    put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
         anyVal = "any example";
         boolOptVal = true;
         boolVal = true;
@@ -1219,9 +1219,9 @@ public class Application {
         dateVal = LocalDate.parse("2020-01-01");
         enumVal = Enum.ONE;
         float32Val = 2.2222222f;
-        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+        int32EnumVal = Int32EnumVal.SIXTY_NINE;
         int32Val = 1;
-        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+        intEnumVal = IntEnumVal.Third;
         intOptNullVal = 999999L;
         intVal = 999999L;
         numOptNullVal = 1.1d;
@@ -1229,7 +1229,7 @@ public class Application {
         strOptVal = "optional example";
         strVal = "example";
     }});
-}}, 9629.09d, new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example"){{
+}}, 9629.09d, new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
 bigintStrVal = "string";
 bigintVal = 206440L;
 boolOptVal = true;
@@ -1277,10 +1277,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -1294,7 +1294,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
@@ -1308,8 +1308,8 @@ public class Application {
                     float32 = 1.1f;
                     int_ = 1L;
                     int32 = 1;
-                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                    intEnum = SimpleObjectIntEnum.Second;
+                    int32Enum = Int32Enum.FIFTY_FIVE;
+                    intEnum = IntEnum.Second;
                     num = 1.1d;
                     str = "test";
                     strOpt = "testOptional";
@@ -1353,10 +1353,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapCamelCaseResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32EnumVal;
+import org.openapis.openapi.models.shared.IntEnumVal;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseInt32EnumVal;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseIntEnumVal;
 
 public class Application {
     public static void main(String[] args) {
@@ -1370,7 +1370,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(){{
-                put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example"){{
+                put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
                     anyVal = "any example";
                     boolOptVal = true;
                     boolVal = true;
@@ -1378,9 +1378,9 @@ public class Application {
                     dateVal = LocalDate.parse("2020-01-01");
                     enumVal = Enum.ONE;
                     float32Val = 2.2222222f;
-                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                    int32EnumVal = Int32EnumVal.SIXTY_NINE;
                     int32Val = 1;
-                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+                    intEnumVal = IntEnumVal.Third;
                     intOptNullVal = 999999L;
                     intVal = 999999L;
                     numOptNullVal = 1.1d;
@@ -1427,10 +1427,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapObjResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -1444,7 +1444,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
@@ -1458,8 +1458,8 @@ public class Application {
                     float32 = 1.1f;
                     int_ = 1L;
                     int32 = 1;
-                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                    intEnum = SimpleObjectIntEnum.Second;
+                    int32Enum = Int32Enum.FIFTY_FIVE;
+                    intEnum = IntEnum.Second;
                     num = 1.1d;
                     str = "test";
                     strOpt = "testOptional";
@@ -1502,10 +1502,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapObjCamelCaseResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32EnumVal;
+import org.openapis.openapi.models.shared.IntEnumVal;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseInt32EnumVal;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseIntEnumVal;
 
 public class Application {
     public static void main(String[] args) {
@@ -1519,7 +1519,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(){{
-                put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example"){{
+                put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
                     anyVal = "any example";
                     boolOptVal = true;
                     boolVal = true;
@@ -1527,9 +1527,9 @@ public class Application {
                     dateVal = LocalDate.parse("2020-01-01");
                     enumVal = Enum.ONE;
                     float32Val = 2.2222222f;
-                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                    int32EnumVal = Int32EnumVal.SIXTY_NINE;
                     int32Val = 1;
-                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+                    intEnumVal = IntEnumVal.Third;
                     intOptNullVal = 999999L;
                     intVal = 999999L;
                     numOptNullVal = 1.1d;
@@ -1575,10 +1575,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfArrayResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -1593,7 +1593,7 @@ public class Application {
 
             org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject[]>(){{
                 put("key", new org.openapis.openapi.models.shared.SimpleObject[]{{
-                    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                         any = "any";
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
@@ -1607,8 +1607,8 @@ public class Application {
                         float32 = 1.1f;
                         int_ = 1L;
                         int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                        intEnum = SimpleObjectIntEnum.Second;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
                         num = 1.1d;
                         str = "test";
                         strOpt = "testOptional";
@@ -1653,10 +1653,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32EnumVal;
+import org.openapis.openapi.models.shared.IntEnumVal;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseInt32EnumVal;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseIntEnumVal;
 
 public class Application {
     public static void main(String[] args) {
@@ -1671,7 +1671,7 @@ public class Application {
 
             org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase[]>(){{
                 put("key", new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                    add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example"){{
+                    add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
                         anyVal = "any example";
                         boolOptVal = true;
                         boolVal = true;
@@ -1679,9 +1679,9 @@ public class Application {
                         dateVal = LocalDate.parse("2020-01-01");
                         enumVal = Enum.ONE;
                         float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                        int32EnumVal = Int32EnumVal.SIXTY_NINE;
                         int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+                        intEnumVal = IntEnumVal.Third;
                         intOptNullVal = 999999L;
                         intVal = 999999L;
                         numOptNullVal = 1.1d;
@@ -1729,10 +1729,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -1747,7 +1747,7 @@ public class Application {
 
             org.openapis.openapi.models.. req =             new java.util.HashMap<String, java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>>(){{
                 put("key", new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                         any = "any";
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
@@ -1761,8 +1761,8 @@ public class Application {
                         float32 = 1.1f;
                         int_ = 1L;
                         int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                        intEnum = SimpleObjectIntEnum.Second;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
                         num = 1.1d;
                         str = "test";
                         strOpt = "testOptional";
@@ -1807,10 +1807,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32EnumVal;
+import org.openapis.openapi.models.shared.IntEnumVal;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseInt32EnumVal;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseIntEnumVal;
 
 public class Application {
     public static void main(String[] args) {
@@ -1825,7 +1825,7 @@ public class Application {
 
             org.openapis.openapi.models.. req =             new java.util.HashMap<String, java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>>(){{
                 put("key", new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(){{
-                    put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example"){{
+                    put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
                         anyVal = "any example";
                         boolOptVal = true;
                         boolVal = true;
@@ -1833,9 +1833,9 @@ public class Application {
                         dateVal = LocalDate.parse("2020-01-01");
                         enumVal = Enum.ONE;
                         float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                        int32EnumVal = Int32EnumVal.SIXTY_NINE;
                         int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+                        intEnumVal = IntEnumVal.Third;
                         intOptNullVal = 999999L;
                         intVal = 999999L;
                         numOptNullVal = 1.1d;
@@ -1987,10 +1987,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMultipleJsonFilteredResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -2003,7 +2003,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 boolOpt = true;
@@ -2050,10 +2050,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonSimpleResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -2066,7 +2066,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 boolOpt = true;
@@ -2113,10 +2113,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonSimpleCamelCaseResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32EnumVal;
+import org.openapis.openapi.models.shared.IntEnumVal;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseInt32EnumVal;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCaseIntEnumVal;
 
 public class Application {
     public static void main(String[] args) {
@@ -2129,7 +2129,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObjectCamelCase req = new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example"){{
+            org.openapis.openapi.models.shared.SimpleObjectCamelCase req = new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
                 bigintStrVal = "string";
                 bigintVal = 281697L;
                 boolOptVal = true;
@@ -2191,7 +2191,7 @@ public class Application {
 
             RequestBodyPostComplexNumberTypesResponse res = sdk.requestBodies.requestBodyPostComplexNumberTypes(req);
 
-            if (res.requestBodyPostComplexNumberTypes200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -2224,11 +2224,11 @@ import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostDefaultsAndConstsResponse;
+import org.openapis.openapi.models.shared.ConstEnumInt;
+import org.openapis.openapi.models.shared.ConstEnumStr;
+import org.openapis.openapi.models.shared.DefaultEnumInt;
+import org.openapis.openapi.models.shared.DefaultEnumStr;
 import org.openapis.openapi.models.shared.DefaultsAndConsts;
-import org.openapis.openapi.models.shared.DefaultsAndConstsConstEnumInt;
-import org.openapis.openapi.models.shared.DefaultsAndConstsConstEnumStr;
-import org.openapis.openapi.models.shared.DefaultsAndConstsDefaultEnumInt;
-import org.openapis.openapi.models.shared.DefaultsAndConstsDefaultEnumStr;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
@@ -2242,7 +2242,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.DefaultsAndConsts req = new DefaultsAndConsts(559205L, "string", false, LocalDate.parse("2021-09-13"), OffsetDateTime.parse("2022-12-15T04:16:08.794Z"), 9160.69d, "string", DefaultsAndConstsConstEnumInt.ONE, DefaultsAndConstsConstEnumStr.THREE, 299545L, 4612.63d, "string", "string", "string"){{
+            org.openapis.openapi.models.shared.DefaultsAndConsts req = new DefaultsAndConsts(559205L, "string", false, LocalDate.parse("2021-09-13"), OffsetDateTime.parse("2022-12-15T04:16:08.794Z"), 9160.69d, "string", ConstEnumInt.ONE, ConstEnumStr.THREE, 299545L, 4612.63d, "string", "string", "string"){{
                 defaultBigInt = 450379L;
                 defaultBigIntStr = "string";
                 defaultBool = false;
@@ -2250,8 +2250,8 @@ public class Application {
                 defaultDateTime = OffsetDateTime.parse("2021-10-01T11:08:55.738Z");
                 defaultDecimal = 4585.94d;
                 defaultDecimalStr = "string";
-                defaultEnumInt = DefaultsAndConstsDefaultEnumInt.TWO;
-                defaultEnumStr = DefaultsAndConstsDefaultEnumStr.ONE;
+                defaultEnumInt = DefaultEnumInt.TWO;
+                defaultEnumStr = DefaultEnumStr.ONE;
                 defaultInt = 788517L;
                 defaultNum = 639.73d;
                 defaultStr = "string";
@@ -2261,7 +2261,7 @@ public class Application {
 
             RequestBodyPostDefaultsAndConstsResponse res = sdk.requestBodies.requestBodyPostDefaultsAndConsts(req);
 
-            if (res.requestBodyPostDefaultsAndConsts200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -2291,9 +2291,9 @@ public class Application {
 package hello.world;
 
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.Empty;
+import org.openapis.openapi.models.operations.EmptyWithEmptyProperties;
 import org.openapis.openapi.models.operations.RequestBodyPostEmptyObjectRequestBody;
-import org.openapis.openapi.models.operations.RequestBodyPostEmptyObjectRequestBodyEmpty;
-import org.openapis.openapi.models.operations.RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties;
 import org.openapis.openapi.models.operations.RequestBodyPostEmptyObjectResponse;
 import org.openapis.openapi.models.shared.Security;
 
@@ -2309,13 +2309,13 @@ public class Application {
                 .build();
 
             RequestBodyPostEmptyObjectRequestBody req = new RequestBodyPostEmptyObjectRequestBody(){{
-                empty = new RequestBodyPostEmptyObjectRequestBodyEmpty();
-                emptyWithEmptyProperties = new RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties();
+                empty = new Empty();
+                emptyWithEmptyProperties = new EmptyWithEmptyProperties();
             }};            
 
             RequestBodyPostEmptyObjectResponse res = sdk.requestBodies.requestBodyPostEmptyObject(req);
 
-            if (res.requestBodyPostEmptyObject200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -2350,10 +2350,10 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostFormDeepResponse;
 import org.openapis.openapi.models.shared.DeepObject;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -2367,7 +2367,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.DeepObject req = new DeepObject("anyOf[0]", new org.openapis.openapi.models.shared.SimpleObject[]{{
-    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
         any = "any";
         bigint = 8821239038968084L;
         bigintStr = "9223372036854775808";
@@ -2381,13 +2381,13 @@ public class Application {
         float32 = 1.1f;
         int_ = 1L;
         int32 = 1;
-        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-        intEnum = SimpleObjectIntEnum.Second;
+        int32Enum = Int32Enum.FIFTY_FIVE;
+        intEnum = IntEnum.Second;
         num = 1.1d;
         str = "test";
         strOpt = "testOptional";
     }}),
-    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
         any = "any";
         bigint = 8821239038968084L;
         bigintStr = "9223372036854775808";
@@ -2401,14 +2401,14 @@ public class Application {
         float32 = 1.1f;
         int_ = 1L;
         int32 = 1;
-        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-        intEnum = SimpleObjectIntEnum.Second;
+        int32Enum = Int32Enum.FIFTY_FIVE;
+        intEnum = IntEnum.Second;
         num = 1.1d;
         str = "test";
         strOpt = "testOptional";
     }}),
 }}, true, 1L, new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
         any = "any";
         bigint = 8821239038968084L;
         bigintStr = "9223372036854775808";
@@ -2422,13 +2422,13 @@ public class Application {
         float32 = 1.1f;
         int_ = 1L;
         int32 = 1;
-        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-        intEnum = SimpleObjectIntEnum.Second;
+        int32Enum = Int32Enum.FIFTY_FIVE;
+        intEnum = IntEnum.Second;
         num = 1.1d;
         str = "test";
         strOpt = "testOptional";
     }});
-    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
         any = "any";
         bigint = 8821239038968084L;
         bigintStr = "9223372036854775808";
@@ -2442,13 +2442,13 @@ public class Application {
         float32 = 1.1f;
         int_ = 1L;
         int32 = 1;
-        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-        intEnum = SimpleObjectIntEnum.Second;
+        int32Enum = Int32Enum.FIFTY_FIVE;
+        intEnum = IntEnum.Second;
         num = 1.1d;
         str = "test";
         strOpt = "testOptional";
     }});
-}}, 1.1d, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+}}, 1.1d, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
 bigint = 8821239038968084L;
 bigintStr = "9223372036854775808";
 boolOpt = true;
@@ -2547,10 +2547,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostFormSimpleResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -2563,7 +2563,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 boolOpt = true;
@@ -2626,7 +2626,7 @@ public class Application {
 
             RequestBodyPostJsonDataTypesArrayBigIntResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesArrayBigInt(req);
 
-            if (res.requestBodyPostJSONDataTypesArrayBigInt200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -2676,7 +2676,7 @@ public class Application {
 
             RequestBodyPostJsonDataTypesArrayDateResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesArrayDate(req);
 
-            if (res.requestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -2726,7 +2726,7 @@ public class Application {
 
             RequestBodyPostJsonDataTypesArrayDecimalStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesArrayDecimalStr(req);
 
-            if (res.requestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -2774,7 +2774,7 @@ public class Application {
 
             RequestBodyPostJsonDataTypesBigIntResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesBigInt(req);
 
-            if (res.requestBodyPostJSONDataTypesBigInt200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -2822,7 +2822,7 @@ public class Application {
 
             RequestBodyPostJsonDataTypesBigIntStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesBigIntStr(req);
 
-            if (res.requestBodyPostJSONDataTypesBigIntStr200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -2870,7 +2870,7 @@ public class Application {
 
             RequestBodyPostJsonDataTypesBooleanResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesBoolean(req);
 
-            if (res.requestBodyPostJSONDataTypesBoolean200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -2918,7 +2918,7 @@ public class Application {
 
             RequestBodyPostJsonDataTypesDateResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesDate(req);
 
-            if (res.requestBodyPostJSONDataTypesDate200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -2966,7 +2966,7 @@ public class Application {
 
             RequestBodyPostJsonDataTypesDateTimeResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesDateTime(req);
 
-            if (res.requestBodyPostJSONDataTypesDateTime200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -3014,7 +3014,7 @@ public class Application {
 
             RequestBodyPostJsonDataTypesDecimalResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesDecimal(req);
 
-            if (res.requestBodyPostJSONDataTypesDecimal200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -3062,7 +3062,7 @@ public class Application {
 
             RequestBodyPostJsonDataTypesDecimalStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesDecimalStr(req);
 
-            if (res.requestBodyPostJSONDataTypesDecimalStr200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -3110,7 +3110,7 @@ public class Application {
 
             RequestBodyPostJsonDataTypesFloat32Response res = sdk.requestBodies.requestBodyPostJsonDataTypesFloat32(req);
 
-            if (res.requestBodyPostJSONDataTypesFloat32200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -3158,7 +3158,7 @@ public class Application {
 
             RequestBodyPostJsonDataTypesInt32Response res = sdk.requestBodies.requestBodyPostJsonDataTypesInt32(req);
 
-            if (res.requestBodyPostJSONDataTypesInt32200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -3206,7 +3206,7 @@ public class Application {
 
             RequestBodyPostJsonDataTypesIntegerResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesInteger(req);
 
-            if (res.requestBodyPostJSONDataTypesInteger200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -3256,7 +3256,7 @@ public class Application {
 
             RequestBodyPostJsonDataTypesMapBigIntStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesMapBigIntStr(req);
 
-            if (res.requestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -3306,7 +3306,7 @@ public class Application {
 
             RequestBodyPostJsonDataTypesMapDateTimeResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesMapDateTime(req);
 
-            if (res.requestBodyPostJSONDataTypesMapDateTime200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -3356,7 +3356,7 @@ public class Application {
 
             RequestBodyPostJsonDataTypesMapDecimalResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesMapDecimal(req);
 
-            if (res.requestBodyPostJSONDataTypesMapDecimal200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -3404,7 +3404,7 @@ public class Application {
 
             RequestBodyPostJsonDataTypesNumberResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesNumber(req);
 
-            if (res.requestBodyPostJSONDataTypesNumber200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -3452,7 +3452,7 @@ public class Application {
 
             RequestBodyPostJsonDataTypesStringResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesString(req);
 
-            if (res.requestBodyPostJSONDataTypesString200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -3486,10 +3486,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesComponentFilteredResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -3502,7 +3502,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 boolOpt = true;
@@ -3545,7 +3545,7 @@ public class Application {
 package hello.world;
 
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON;
+import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse;
 import org.openapis.openapi.models.shared.Security;
 
@@ -3560,7 +3560,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON req = new RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON(false, 3558.41d, "string");            
+            RequestBodyPostMultipleContentTypesInlineFilteredRequestBody req = new RequestBodyPostMultipleContentTypesInlineFilteredRequestBody(false, 3558.41d, "string");            
 
             RequestBodyPostMultipleContentTypesInlineFilteredResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesInlineFiltered(req);
 
@@ -3576,9 +3576,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                              | Type                                                                                                                                                                                                   | Required                                                                                                                                                                                               | Description                                                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                                              | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON](../../models/operations/RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON.md) | :heavy_check_mark:                                                                                                                                                                                     | The request object to use for the request.                                                                                                                                                             |
+| Parameter                                                                                                                                                                                      | Type                                                                                                                                                                                           | Required                                                                                                                                                                                       | Description                                                                                                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                                                      | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesInlineFilteredRequestBody.md) | :heavy_check_mark:                                                                                                                                                                             | The request object to use for the request.                                                                                                                                                     |
 
 
 ### Response
@@ -3594,8 +3594,8 @@ public class Application {
 package hello.world;
 
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest;
+import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse;
 import org.openapis.openapi.models.shared.Security;
 
@@ -3610,7 +3610,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitParamFormResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(new RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded(false, 1802.67d, "string"){{
+            RequestBodyPostMultipleContentTypesSplitParamFormResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(new RequestBodyPostMultipleContentTypesSplitParamFormRequestBody(false, 1802.67d, "string"){{
                 bool3 = false;
                 num3 = 8693.24d;
                 str3 = "string";
@@ -3628,10 +3628,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                  | Type                                                                                                                                                                                                                       | Required                                                                                                                                                                                                                   | Description                                                                                                                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                                                                                                                              | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded.md) | :heavy_check_mark:                                                                                                                                                                                                         | N/A                                                                                                                                                                                                                        |
-| `paramStr`                                                                                                                                                                                                                 | *String*                                                                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                                                         | N/A                                                                                                                                                                                                                        |
+| Parameter                                                                                                                                                                                      | Type                                                                                                                                                                                           | Required                                                                                                                                                                                       | Description                                                                                                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                                                                                                                  | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamFormRequestBody.md) | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
+| `paramStr`                                                                                                                                                                                     | *String*                                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
 
 
 ### Response
@@ -3647,8 +3647,8 @@ public class Application {
 package hello.world;
 
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequest;
+import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonResponse;
 import org.openapis.openapi.models.shared.Security;
 
@@ -3663,7 +3663,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitParamJsonResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(new RequestBodyPostMultipleContentTypesSplitParamApplicationJSON(false, 5784.1d, "string"){{
+            RequestBodyPostMultipleContentTypesSplitParamJsonResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(new RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody(false, 5784.1d, "string"){{
                 bool = false;
                 num = 9771.91d;
                 str = "string";
@@ -3683,7 +3683,7 @@ public class Application {
 
 | Parameter                                                                                                                                                                                      | Type                                                                                                                                                                                           | Required                                                                                                                                                                                       | Description                                                                                                                                                                                    |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                                                                                                  | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamApplicationJSON.md) | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
+| `requestBody`                                                                                                                                                                                  | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody.md) | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
 | `paramStr`                                                                                                                                                                                     | *String*                                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
 
 
@@ -3700,8 +3700,8 @@ public class Application {
 package hello.world;
 
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest;
+import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse;
 import org.openapis.openapi.models.shared.Security;
 
@@ -3716,7 +3716,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitParamMultipartResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(new RequestBodyPostMultipleContentTypesSplitParamMultipartFormData(false, 6115.78d, "string"){{
+            RequestBodyPostMultipleContentTypesSplitParamMultipartResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(new RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody(false, 6115.78d, "string"){{
                 bool2 = false;
                 num2 = 7000.76d;
                 str2 = "string";
@@ -3734,10 +3734,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                          | Type                                                                                                                                                                                               | Required                                                                                                                                                                                           | Description                                                                                                                                                                                        |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                                                                                                      | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamMultipartFormData.md) | :heavy_check_mark:                                                                                                                                                                                 | N/A                                                                                                                                                                                                |
-| `paramStr`                                                                                                                                                                                         | *String*                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                 | N/A                                                                                                                                                                                                |
+| Parameter                                                                                                                                                                                                | Type                                                                                                                                                                                                     | Required                                                                                                                                                                                                 | Description                                                                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                                                                                                                            | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody.md) | :heavy_check_mark:                                                                                                                                                                                       | N/A                                                                                                                                                                                                      |
+| `paramStr`                                                                                                                                                                                               | *String*                                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                       | N/A                                                                                                                                                                                                      |
 
 
 ### Response
@@ -3753,7 +3753,7 @@ public class Application {
 package hello.world;
 
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded;
+import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitFormResponse;
 import org.openapis.openapi.models.shared.Security;
 
@@ -3768,7 +3768,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded req = new RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded(false, 7842.07d, "string");            
+            RequestBodyPostMultipleContentTypesSplitFormRequestBody req = new RequestBodyPostMultipleContentTypesSplitFormRequestBody(false, 7842.07d, "string");            
 
             RequestBodyPostMultipleContentTypesSplitFormResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitForm(req);
 
@@ -3784,9 +3784,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                        | Type                                                                                                                                                                                                             | Required                                                                                                                                                                                                         | Description                                                                                                                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                                                                        | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded](../../models/operations/RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded.md) | :heavy_check_mark:                                                                                                                                                                                               | The request object to use for the request.                                                                                                                                                                       |
+| Parameter                                                                                                                                                                            | Type                                                                                                                                                                                 | Required                                                                                                                                                                             | Description                                                                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                            | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitFormRequestBody.md) | :heavy_check_mark:                                                                                                                                                                   | The request object to use for the request.                                                                                                                                           |
 
 
 ### Response
@@ -3802,7 +3802,7 @@ public class Application {
 package hello.world;
 
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON;
+import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitJsonRequestBody;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitJsonResponse;
 import org.openapis.openapi.models.shared.Security;
 
@@ -3817,7 +3817,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitApplicationJSON req = new RequestBodyPostMultipleContentTypesSplitApplicationJSON(false, 2445.56d, "string");            
+            RequestBodyPostMultipleContentTypesSplitJsonRequestBody req = new RequestBodyPostMultipleContentTypesSplitJsonRequestBody(false, 2445.56d, "string");            
 
             RequestBodyPostMultipleContentTypesSplitJsonResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitJson(req);
 
@@ -3835,7 +3835,7 @@ public class Application {
 
 | Parameter                                                                                                                                                                            | Type                                                                                                                                                                                 | Required                                                                                                                                                                             | Description                                                                                                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                            | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON](../../models/operations/RequestBodyPostMultipleContentTypesSplitApplicationJSON.md) | :heavy_check_mark:                                                                                                                                                                   | The request object to use for the request.                                                                                                                                           |
+| `request`                                                                                                                                                                            | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitJsonRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitJsonRequestBody.md) | :heavy_check_mark:                                                                                                                                                                   | The request object to use for the request.                                                                                                                                           |
 
 
 ### Response
@@ -3851,7 +3851,7 @@ public class Application {
 package hello.world;
 
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData;
+import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse;
 import org.openapis.openapi.models.shared.Security;
 
@@ -3866,7 +3866,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitMultipartFormData req = new RequestBodyPostMultipleContentTypesSplitMultipartFormData(false, 2079.2d, "string");            
+            RequestBodyPostMultipleContentTypesSplitMultipartRequestBody req = new RequestBodyPostMultipleContentTypesSplitMultipartRequestBody(false, 2079.2d, "string");            
 
             RequestBodyPostMultipleContentTypesSplitMultipartResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitMultipart(req);
 
@@ -3882,9 +3882,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                | Type                                                                                                                                                                                     | Required                                                                                                                                                                                 | Description                                                                                                                                                                              |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                                                | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData](../../models/operations/RequestBodyPostMultipleContentTypesSplitMultipartFormData.md) | :heavy_check_mark:                                                                                                                                                                       | The request object to use for the request.                                                                                                                                               |
+| Parameter                                                                                                                                                                                      | Type                                                                                                                                                                                           | Required                                                                                                                                                                                       | Description                                                                                                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                                                      | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitMultipartRequestBody.md) | :heavy_check_mark:                                                                                                                                                                             | The request object to use for the request.                                                                                                                                                     |
 
 
 ### Response
@@ -3918,7 +3918,7 @@ public class Application {
 
             RequestBodyPostNotNullableNotRequiredStringBodyResponse res = sdk.requestBodies.requestBodyPostNotNullableNotRequiredStringBody(req);
 
-            if (res.requestBodyPostNotNullableNotRequiredStringBody200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -3968,7 +3968,7 @@ public class Application {
 
             RequestBodyPostNullArrayResponse res = sdk.requestBodies.requestBodyPostNullArray(req);
 
-            if (res.requestBodyPostNullArray200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -4018,7 +4018,7 @@ public class Application {
 
             RequestBodyPostNullDictionaryResponse res = sdk.requestBodies.requestBodyPostNullDictionary(req);
 
-            if (res.requestBodyPostNullDictionary200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -4066,7 +4066,7 @@ public class Application {
 
             RequestBodyPostNullableNotRequiredStringBodyResponse res = sdk.requestBodies.requestBodyPostNullableNotRequiredStringBody(req);
 
-            if (res.requestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -4114,7 +4114,7 @@ public class Application {
 
             RequestBodyPostNullableRequiredStringBodyResponse res = sdk.requestBodies.requestBodyPostNullableRequiredStringBody(req);
 
-            if (res.requestBodyPostNullableRequiredStringBody200ApplicationJSONObject != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -4158,7 +4158,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "9sS}}O%}aJ".getBytes();            
+            org.openapis.openapi.models.. req = "0x5DbFFb1Ff9".getBytes();            
 
             RequestBodyPutBytesResponse res = sdk.requestBodies.requestBodyPutBytes(req);
 
@@ -4207,7 +4207,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPutBytesWithParamsResponse res = sdk.requestBodies.requestBodyPutBytesWithParams("o%jIWe4_P6".getBytes(), "string");
+            RequestBodyPutBytesWithParamsResponse res = sdk.requestBodies.requestBodyPutBytesWithParams("0xC1B9cA4eb5".getBytes(), "string");
 
             if (res.res != null) {
                 // handle response
@@ -4245,10 +4245,10 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPutMultipartDeepResponse;
 import org.openapis.openapi.models.shared.DeepObject;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -4262,7 +4262,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.DeepObject req = new DeepObject("anyOf[0]", new org.openapis.openapi.models.shared.SimpleObject[]{{
-    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
         any = "any";
         bigint = 8821239038968084L;
         bigintStr = "9223372036854775808";
@@ -4276,13 +4276,13 @@ public class Application {
         float32 = 1.1f;
         int_ = 1L;
         int32 = 1;
-        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-        intEnum = SimpleObjectIntEnum.Second;
+        int32Enum = Int32Enum.FIFTY_FIVE;
+        intEnum = IntEnum.Second;
         num = 1.1d;
         str = "test";
         strOpt = "testOptional";
     }}),
-    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
         any = "any";
         bigint = 8821239038968084L;
         bigintStr = "9223372036854775808";
@@ -4296,14 +4296,14 @@ public class Application {
         float32 = 1.1f;
         int_ = 1L;
         int32 = 1;
-        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-        intEnum = SimpleObjectIntEnum.Second;
+        int32Enum = Int32Enum.FIFTY_FIVE;
+        intEnum = IntEnum.Second;
         num = 1.1d;
         str = "test";
         strOpt = "testOptional";
     }}),
 }}, true, 1L, new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
         any = "any";
         bigint = 8821239038968084L;
         bigintStr = "9223372036854775808";
@@ -4317,13 +4317,13 @@ public class Application {
         float32 = 1.1f;
         int_ = 1L;
         int32 = 1;
-        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-        intEnum = SimpleObjectIntEnum.Second;
+        int32Enum = Int32Enum.FIFTY_FIVE;
+        intEnum = IntEnum.Second;
         num = 1.1d;
         str = "test";
         strOpt = "testOptional";
     }});
-    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
         any = "any";
         bigint = 8821239038968084L;
         bigintStr = "9223372036854775808";
@@ -4337,13 +4337,13 @@ public class Application {
         float32 = 1.1f;
         int_ = 1L;
         int32 = 1;
-        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-        intEnum = SimpleObjectIntEnum.Second;
+        int32Enum = Int32Enum.FIFTY_FIVE;
+        intEnum = IntEnum.Second;
         num = 1.1d;
         str = "test";
         strOpt = "testOptional";
     }});
-}}, 1.1d, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+}}, 1.1d, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
 bigint = 8821239038968084L;
 bigintStr = "9223372036854775808";
 boolOpt = true;
@@ -4388,8 +4388,8 @@ strOpt = "testOptional";
 package hello.world;
 
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.DifferentFileName;
 import org.openapis.openapi.models.operations.RequestBodyPutMultipartDifferentFileNameRequestBody;
-import org.openapis.openapi.models.operations.RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName;
 import org.openapis.openapi.models.operations.RequestBodyPutMultipartDifferentFileNameResponse;
 import org.openapis.openapi.models.shared.Security;
 
@@ -4405,7 +4405,7 @@ public class Application {
                 .build();
 
             RequestBodyPutMultipartDifferentFileNameRequestBody req = new RequestBodyPutMultipartDifferentFileNameRequestBody(){{
-                differentFileName = new RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName("Y}'H[5/Z[,".getBytes(), "string");
+                differentFileName = new DifferentFileName("0xdF19d43dd2".getBytes(), "string");
             }};            
 
             RequestBodyPutMultipartDifferentFileNameResponse res = sdk.requestBodies.requestBodyPutMultipartDifferentFileName(req);
@@ -4440,8 +4440,8 @@ public class Application {
 package hello.world;
 
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.File;
 import org.openapis.openapi.models.operations.RequestBodyPutMultipartFileRequestBody;
-import org.openapis.openapi.models.operations.RequestBodyPutMultipartFileRequestBodyFile;
 import org.openapis.openapi.models.operations.RequestBodyPutMultipartFileResponse;
 import org.openapis.openapi.models.shared.Security;
 
@@ -4457,7 +4457,7 @@ public class Application {
                 .build();
 
             RequestBodyPutMultipartFileRequestBody req = new RequestBodyPutMultipartFileRequestBody(){{
-                file = new RequestBodyPutMultipartFileRequestBodyFile("OJa,v`.FW-".getBytes(), "string");
+                file = new File("0xa9f2Ee38c3".getBytes(), "string");
             }};            
 
             RequestBodyPutMultipartFileResponse res = sdk.requestBodies.requestBodyPutMultipartFile(req);
@@ -4496,10 +4496,10 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPutMultipartSimpleResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -4512,7 +4512,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 boolOpt = true;
@@ -4652,7 +4652,7 @@ package hello.world;
 
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyReadAndWriteResponse;
-import org.openapis.openapi.models.shared.ReadWriteObjectInput;
+import org.openapis.openapi.models.shared.ReadWriteObject;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
@@ -4666,7 +4666,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.ReadWriteObjectInput req = new ReadWriteObjectInput(797612L, 89374L, 459345L);            
+            org.openapis.openapi.models.shared.ReadWriteObject req = new ReadWriteObject(797612L, 89374L, 459345L);            
 
             RequestBodyReadAndWriteResponse res = sdk.requestBodies.requestBodyReadAndWrite(req);
 
@@ -4682,10 +4682,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                              | [org.openapis.openapi.models.shared.ReadWriteObjectInput](../../models/shared/ReadWriteObjectInput.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
-| `serverURL`                                                                                            | *String*                                                                                               | :heavy_minus_sign:                                                                                     | An optional server URL to use.                                                                         |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [org.openapis.openapi.models.shared.ReadWriteObject](../../models/shared/ReadWriteObject.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `serverURL`                                                                                  | *String*                                                                                     | :heavy_minus_sign:                                                                           | An optional server URL to use.                                                               |
 
 
 ### Response

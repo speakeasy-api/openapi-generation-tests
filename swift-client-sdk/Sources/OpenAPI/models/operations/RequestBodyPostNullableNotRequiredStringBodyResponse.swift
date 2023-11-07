@@ -6,7 +6,7 @@ extension Operations {
     /// A response model
     public enum RequestBodyPostNullableNotRequiredStringBodyResponse {
         case empty
-        case requestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject(Operations.RequestBodyPostNullableNotRequiredStringBody200ApplicationJSON)
+        case object(Operations.RequestBodyPostNullableNotRequiredStringBodyResponseBody)
 
         var isEmpty: Bool {
             if case .empty = self {
@@ -16,8 +16,8 @@ extension Operations {
             }
         }
 
-        public func requestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject() throws -> Operations.RequestBodyPostNullableNotRequiredStringBody200ApplicationJSON {
-            guard case .requestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject(let value) = self else {
+        public func object() throws -> Operations.RequestBodyPostNullableNotRequiredStringBodyResponseBody {
+            guard case .object(let value) = self else {
                 throw OpenAPIError.missingResponseData
             }
             return value

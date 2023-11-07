@@ -3,8 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import refqueryparamobj as shared_refqueryparamobj
-from ..shared import refqueryparamobjexploded as shared_refqueryparamobjexploded
+from ...models.shared import refqueryparamobj as shared_refqueryparamobj
+from ...models.shared import refqueryparamobjexploded as shared_refqueryparamobjexploded
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional
@@ -20,7 +20,7 @@ class FormQueryParamsRefParamObjectRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class FormQueryParamsRefParamObjectResArgs:
+class FormQueryParamsRefParamObjectArgs:
     bool: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool') }})
     int: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int') }})
     num: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('num') }})
@@ -34,7 +34,7 @@ class FormQueryParamsRefParamObjectResArgs:
 @dataclasses.dataclass
 class FormQueryParamsRefParamObjectRes:
     r"""OK"""
-    args: FormQueryParamsRefParamObjectResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
+    args: FormQueryParamsRefParamObjectArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
 

@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import simpleobject as shared_simpleobject
+from ...models.shared import simpleobject as shared_simpleobject
 from typing import Dict, List, Optional
 
 REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_SERVERS = [

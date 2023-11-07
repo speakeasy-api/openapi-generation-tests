@@ -5,7 +5,7 @@ import Foundation
 extension Shared {
     /// A model object
     public struct DeepObjectCamelCase {
-        public let anyVal: Shared.DeepObjectCamelCaseAnyVal
+        public let anyVal: Shared.AnyVal
         public let arrVal: [Shared.SimpleObjectCamelCase]
         public let boolVal: Bool
         public let intVal: Int
@@ -21,7 +21,7 @@ extension Shared {
         ///
         /// - Parameter objVal: A simple object that uses all our supported primitive types and enums and has optional properties.
         ///
-        public init(anyVal: Shared.DeepObjectCamelCaseAnyVal, arrVal: [Shared.SimpleObjectCamelCase], boolVal: Bool, intVal: Int, mapVal: [String: Shared.SimpleObjectCamelCase], numVal: Double, objVal: Shared.SimpleObjectCamelCase, strVal: String, type: String? = nil) {
+        public init(anyVal: Shared.AnyVal, arrVal: [Shared.SimpleObjectCamelCase], boolVal: Bool, intVal: Int, mapVal: [String: Shared.SimpleObjectCamelCase], numVal: Double, objVal: Shared.SimpleObjectCamelCase, strVal: String, type: String? = nil) {
             self.anyVal = anyVal
             self.arrVal = arrVal
             self.boolVal = boolVal
@@ -50,7 +50,7 @@ extension Shared.DeepObjectCamelCase: Codable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.anyVal = try container.decode(Shared.DeepObjectCamelCaseAnyVal.self, forKey: .anyVal)
+        self.anyVal = try container.decode(Shared.AnyVal.self, forKey: .anyVal)
         self.arrVal = try container.decode([Shared.SimpleObjectCamelCase].self, forKey: .arrVal)
         self.boolVal = try container.decode(Bool.self, forKey: .boolVal)
         self.intVal = try container.decode(Int.self, forKey: .intVal)

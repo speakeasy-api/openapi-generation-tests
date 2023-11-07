@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class FormQueryParamsCamelObjectObjParamExploded extends SpeakeasyBase {
+export class ObjParamExploded extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "queryParam, name=item_count" })
     itemCount?: string;
 
@@ -14,7 +14,7 @@ export class FormQueryParamsCamelObjectObjParamExploded extends SpeakeasyBase {
     searchTerm?: string;
 }
 
-export class FormQueryParamsCamelObjectObjParam extends SpeakeasyBase {
+export class ObjParam extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "queryParam, name=encoded_count" })
     encodedCount?: string;
 
@@ -24,13 +24,13 @@ export class FormQueryParamsCamelObjectObjParam extends SpeakeasyBase {
 
 export class FormQueryParamsCamelObjectRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=obj_param_exploded" })
-    objParamExploded: FormQueryParamsCamelObjectObjParamExploded;
+    objParamExploded: ObjParamExploded;
 
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=false;name=obj_param" })
-    objParam?: FormQueryParamsCamelObjectObjParam;
+    objParam?: ObjParam;
 }
 
-export class FormQueryParamsCamelObjectResArgs extends SpeakeasyBase {
+export class FormQueryParamsCamelObjectArgs extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "item_count" })
     itemCount: string;
@@ -46,8 +46,8 @@ export class FormQueryParamsCamelObjectResArgs extends SpeakeasyBase {
 export class FormQueryParamsCamelObjectRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "args" })
-    @Type(() => FormQueryParamsCamelObjectResArgs)
-    args: FormQueryParamsCamelObjectResArgs;
+    @Type(() => FormQueryParamsCamelObjectArgs)
+    args: FormQueryParamsCamelObjectArgs;
 
     @SpeakeasyMetadata()
     @Expose({ name: "url" })

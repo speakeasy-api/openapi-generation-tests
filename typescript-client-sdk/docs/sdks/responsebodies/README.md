@@ -1,5 +1,5 @@
 # ResponseBodies
-(*responseBodies*)
+(*.responseBodies*)
 
 ## Overview
 
@@ -105,7 +105,7 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -132,8 +132,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
       float32: 1.1,
       int: 1,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: Int32Enum.FiftyFive,
+      intEnum: IntEnum.Second,
       num: 1.1,
       str: "test",
       strOpt: "testOptional",

@@ -12,18 +12,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AuthServiceRequestBody {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("basicAuth")
-    public AuthServiceRequestBodyBasicAuth basicAuth;
+    public BasicAuth basicAuth;
 
-    public AuthServiceRequestBody withBasicAuth(AuthServiceRequestBodyBasicAuth basicAuth) {
+    public AuthServiceRequestBody withBasicAuth(BasicAuth basicAuth) {
         this.basicAuth = basicAuth;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("headerAuth")
-    public AuthServiceRequestBodyHeaderAuth[] headerAuth;
+    public HeaderAuth[] headerAuth;
 
-    public AuthServiceRequestBody withHeaderAuth(AuthServiceRequestBodyHeaderAuth[] headerAuth) {
+    public AuthServiceRequestBody withHeaderAuth(HeaderAuth[] headerAuth) {
         this.headerAuth = headerAuth;
         return this;
     }

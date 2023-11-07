@@ -9,13 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
-import org.openapis.openapi.models.operations.ComponentBodyAndParamConflictResponse;
-import org.openapis.openapi.models.operations.ComponentBodyAndParamNoConflictResponse;
-import org.openapis.openapi.models.operations.ConflictingParamsResponse;
-import org.openapis.openapi.models.operations.InlineBodyAndParamConflictRequestBody;
-import org.openapis.openapi.models.operations.InlineBodyAndParamConflictResponse;
-import org.openapis.openapi.models.operations.InlineBodyAndParamNoConflictRequestBody;
-import org.openapis.openapi.models.operations.InlineBodyAndParamNoConflictResponse;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.shared.SimpleObject;
 
 public class FlatteningTests {

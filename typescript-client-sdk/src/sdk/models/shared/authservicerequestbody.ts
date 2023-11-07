@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Type } from "class-transformer";
 
-export class AuthServiceRequestBodyBasicAuth extends SpeakeasyBase {
+export class BasicAuth extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "password" })
     password: string;
@@ -15,7 +15,7 @@ export class AuthServiceRequestBodyBasicAuth extends SpeakeasyBase {
     username: string;
 }
 
-export class AuthServiceRequestBodyHeaderAuth extends SpeakeasyBase {
+export class HeaderAuth extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "expectedValue" })
     expectedValue: string;
@@ -28,11 +28,11 @@ export class AuthServiceRequestBodyHeaderAuth extends SpeakeasyBase {
 export class AuthServiceRequestBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "basicAuth" })
-    @Type(() => AuthServiceRequestBodyBasicAuth)
-    basicAuth?: AuthServiceRequestBodyBasicAuth;
+    @Type(() => BasicAuth)
+    basicAuth?: BasicAuth;
 
-    @SpeakeasyMetadata({ elemType: AuthServiceRequestBodyHeaderAuth })
+    @SpeakeasyMetadata({ elemType: HeaderAuth })
     @Expose({ name: "headerAuth" })
-    @Type(() => AuthServiceRequestBodyHeaderAuth)
-    headerAuth?: AuthServiceRequestBodyHeaderAuth[];
+    @Type(() => HeaderAuth)
+    headerAuth?: HeaderAuth[];
 }

@@ -10,19 +10,19 @@ require_relative '../shared/fileresource'
 module OpenApiSDK
   module Operations
 
-    class CreateFileRequestBodyFile < OpenApiSDK::Utils::FieldAugmented
+    class CreateFileFile < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
       field :content, String, { 'multipart_form': { 'content': true } }
 
-      field :file, String, { 'multipart_form': { 'field_name': 'file' } }
+      field :file_name, String, { 'multipart_form': { 'field_name': 'file' } }
 
 
-      sig { params(content: String, file: String).void }
-      def initialize(content: nil, file: nil)
+      sig { params(content: String, file_name: String).void }
+      def initialize(content: nil, file_name: nil)
         @content = content
-        @file = file
+        @file_name = file_name
       end
     end
 
@@ -31,10 +31,10 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :file, T.nilable(Operations::CreateFileRequestBodyFile), { 'multipart_form': { 'file': true } }
+      field :file, T.nilable(Operations::CreateFileFile), { 'multipart_form': { 'file': true } }
 
 
-      sig { params(file: T.nilable(Operations::CreateFileRequestBodyFile)).void }
+      sig { params(file: T.nilable(Operations::CreateFileFile)).void }
       def initialize(file: nil)
         @file = file
       end

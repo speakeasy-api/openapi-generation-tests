@@ -12,7 +12,6 @@ import java.nio.charset.StandardCharsets;
 
 import org.junit.jupiter.api.Test;
 import org.openapis.openapi.models.operations.*;
-import org.openapis.openapi.models.shared.*;
 
 public class ResponseBodiesTests {
     @Test

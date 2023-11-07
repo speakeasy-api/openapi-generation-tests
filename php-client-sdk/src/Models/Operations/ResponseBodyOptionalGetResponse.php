@@ -38,10 +38,10 @@ class ResponseBodyOptionalGetResponse
     /**
      * OK
      * 
-     * @var ?string $responseBodyOptionalGet200TextPlainString
+     * @var ?string $res
      */
 	
-    public ?string $responseBodyOptionalGet200TextPlainString = null;
+    public ?string $res = null;
     
     /**
      * OK
@@ -56,7 +56,7 @@ class ResponseBodyOptionalGetResponse
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->responseBodyOptionalGet200TextPlainString = null;
+		$this->res = null;
 		$this->typedObject1 = null;
 	}
 }

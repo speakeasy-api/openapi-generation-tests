@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import readwriteobject as shared_readwriteobject
+from ...models.shared import readwriteobject as shared_readwriteobject
 from typing import Optional
 
 REQUEST_BODY_READ_AND_WRITE_SERVERS = [

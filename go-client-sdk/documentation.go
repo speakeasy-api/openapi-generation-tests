@@ -8,25 +8,25 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/utils"
 	"strings"
 )
 
-// documentation - Testing for documentation extensions in Go.
-type documentation struct {
+// Documentation - Testing for documentation extensions in Go.
+type Documentation struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newDocumentation(sdkConfig sdkConfiguration) *documentation {
-	return &documentation{
+func newDocumentation(sdkConfig sdkConfiguration) *Documentation {
+	return &Documentation{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetDocumentationPerLanguage - Get stuff in Golang.
-func (s *documentation) GetDocumentationPerLanguage(ctx context.Context, language string) (*operations.GetDocumentationPerLanguageResponse, error) {
+func (s *Documentation) GetDocumentationPerLanguage(ctx context.Context, language string) (*operations.GetDocumentationPerLanguageResponse, error) {
 	request := operations.GetDocumentationPerLanguageRequest{
 		Language: language,
 	}

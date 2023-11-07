@@ -1,5 +1,5 @@
 # Generation
-(*generation*)
+
 
 ## Overview
 
@@ -38,13 +38,13 @@ Endpoints for purely testing valid generation behavior.
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -75,13 +75,13 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -112,13 +112,13 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -149,14 +149,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\DateParamWithDefaultRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -195,14 +195,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\DateTimeParamWithDefaultRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -241,14 +241,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\DecimalParamWithDefaultRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -287,20 +287,18 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Shared\DeprecatedFieldInObject;
-use \OpenAPI\OpenAPI\Models\Shared\DeprecatedFieldInObjectDeprecatedEnum;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $request = new DeprecatedFieldInObject();
+    $request = new Shared\DeprecatedFieldInObject();
     $request->deprecatedField = 'string';
     $request->newField = 'string';
 
@@ -336,20 +334,20 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
     $response = $sdk->generation->deprecatedObjectInSchemaGet();
 
-    if ($response->deprecatedObjectInSchemaGet200ApplicationJSONObject !== null) {
+    if ($response->object !== null) {
         // handle response
     }
 } catch (Exception $e) {
@@ -377,14 +375,14 @@ deprecatedOperationNoCommentsGet
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationNoCommentsGetRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -427,14 +425,14 @@ This is an endpoint setup to test deprecation with comments
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationWithCommentsGetRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -474,20 +472,19 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\EmptyObjectGetRequest;
-use \OpenAPI\OpenAPI\Models\Shared\EmptyObjectParam;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $emptyObject = new EmptyObjectParam();
+    $emptyObject = new Shared\EmptyObjectParam();
 
     $response = $sdk->generation->emptyObjectGet($emptyObject);
 
@@ -521,13 +518,13 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -558,20 +555,20 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
     $response = $sdk->generation->globalNameOverridden();
 
-    if ($response->getGlobalNameOverride200ApplicationJSONObject !== null) {
+    if ($response->object !== null) {
         // handle response
     }
 } catch (Exception $e) {
@@ -595,20 +592,20 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
     $response = $sdk->generation->ignoredGenerationGet();
 
-    if ($response->ignoredGenerationGet200ApplicationJSONObject !== null) {
+    if ($response->object !== null) {
         // handle response
     }
 } catch (Exception $e) {
@@ -632,20 +629,19 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\IgnoresPostRequest;
-use \OpenAPI\OpenAPI\Models\Operations\IgnoresPostApplicationJSON;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $requestBody = new IgnoresPostApplicationJSON();
+    $requestBody = new Operations\IgnoresPostRequestBody();
     $requestBody->callbackUrl = 'http://diligent-activist.biz';
     $requestBody->testProp = 'string';
 
@@ -661,10 +657,10 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                          | [\OpenAPI\OpenAPI\Models\Operations\IgnoresPostApplicationJSON](../../models/operations/IgnoresPostApplicationJSON.md) | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
-| `testParam`                                                                                                            | *string*                                                                                                               | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |
+| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                                  | [\OpenAPI\OpenAPI\Models\Operations\IgnoresPostRequestBody](../../models/operations/IgnoresPostRequestBody.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `testParam`                                                                                                    | *string*                                                                                                       | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
 
 
 ### Response
@@ -682,22 +678,21 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetRequest;
-use \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetEnumNameOverride;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
 
 
-    $response = $sdk->generation->nameOverride(NameOverrideGetEnumNameOverride::Value3, 'example');
+    $response = $sdk->generation->nameOverride(Operations\EnumNameOverride::Value3, 'example');
 
     if ($response->overriddenResponse !== null) {
         // handle response
@@ -709,10 +704,10 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      | Example                                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `testEnumQueryParam`                                                                                                             | [\OpenAPI\OpenAPI\Models\Operations\NameOverrideGetEnumNameOverride](../../models/operations/NameOverrideGetEnumNameOverride.md) | :heavy_check_mark:                                                                                                               | An enum type                                                                                                                     | value3                                                                                                                           |
-| `testQueryParam`                                                                                                                 | *string*                                                                                                                         | :heavy_check_mark:                                                                                                               | N/A                                                                                                                              | example                                                                                                                          |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `testEnumQueryParam`                                                                               | [\OpenAPI\OpenAPI\Models\Operations\EnumNameOverride](../../models/operations/EnumNameOverride.md) | :heavy_check_mark:                                                                                 | An enum type                                                                                       | value3                                                                                             |
+| `testQueryParam`                                                                                   | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                | example                                                                                            |
 
 
 ### Response
@@ -730,13 +725,13 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -767,13 +762,13 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -804,20 +799,19 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetRequest;
-use \OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetObj;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $obj = new TypedParameterGenerationGetObj();
+    $obj = new Operations\Obj();
     $obj->bool = false;
     $obj->num = 8792.75;
     $obj->str = 'string';
@@ -834,12 +828,12 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `bigint`                                                                                                                       | *int*                                                                                                                          | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |
-| `date`                                                                                                                         | [\DateTime](https://www.php.net/manual/en/class.datetime.php)                                                                  | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |
-| `decimal`                                                                                                                      | *float*                                                                                                                        | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |
-| `obj`                                                                                                                          | [\OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetObj](../../models/operations/TypedParameterGenerationGetObj.md) | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |
+| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `bigint`                                                                 | *int*                                                                    | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `date`                                                                   | [\DateTime](https://www.php.net/manual/en/class.datetime.php)            | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `decimal`                                                                | *float*                                                                  | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `obj`                                                                    | [\OpenAPI\OpenAPI\Models\Operations\Obj](../../models/operations/Obj.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
 
 
 ### Response
@@ -862,27 +856,17 @@ Usage example docs
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequest;
-use \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequestBody;
-use \OpenAPI\OpenAPI\Models\Shared\FakerFormattedStrings;
-use \OpenAPI\OpenAPI\Models\Shared\FakerStrings;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
-use \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostEnumParameter;
-use \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostOptEnumParameter;
-use \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostSecurity;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->build();
 
 try {
-    $request = new UsageExamplePostRequest();
-    $request->requestBody = new UsageExamplePostRequestBody();
-    $request->requestBody->fakerFormattedStrings = new FakerFormattedStrings();
+    $request = new Operations\UsageExamplePostRequest();
+    $request->requestBody = new Operations\UsageExamplePostRequestBody();
+    $request->requestBody->fakerFormattedStrings = new Shared\FakerFormattedStrings();
     $request->requestBody->fakerFormattedStrings->addressFormat = '48525 Maude Fall';
     $request->requestBody->fakerFormattedStrings->directoryFormat = '/etc/defaults';
     $request->requestBody->fakerFormattedStrings->domainFormat = 'next-conflict.name';
@@ -901,7 +885,7 @@ try {
     $request->requestBody->fakerFormattedStrings->urlFormat = 'http://beneficial-inconvenience.net';
     $request->requestBody->fakerFormattedStrings->uuidFormat = '342442b8-aff3-42e0-b62d-e2e2d47a9bf1';
     $request->requestBody->fakerFormattedStrings->zipcodeFormat = '09432';
-    $request->requestBody->fakerStrings = new FakerStrings();
+    $request->requestBody->fakerStrings = new Shared\FakerStrings();
     $request->requestBody->fakerStrings->city = 'McLaughlinchester';
     $request->requestBody->fakerStrings->iban = 'TL232743267267003560099';
     $request->requestBody->fakerStrings->id = '<ID>';
@@ -955,7 +939,7 @@ try {
     $request->requestBody->fakerStrings->url = 'https://crooked-dulcimer.name';
     $request->requestBody->fakerStrings->username = 'Mable76';
     $request->requestBody->fakerStrings->uuid = '16b919d6-51cd-4e97-81e2-5221b7b6969f';
-    $request->requestBody->simpleObject = new SimpleObject();
+    $request->requestBody->simpleObject = new Shared\SimpleObject();
     $request->requestBody->simpleObject->any = 'any';
     $request->requestBody->simpleObject->bigint = 8821239038968084;
     $request->requestBody->simpleObject->bigintStr = '9223372036854775808';
@@ -965,12 +949,12 @@ try {
     $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
     $request->requestBody->simpleObject->decimal = 3.141592653589793;
     $request->requestBody->simpleObject->decimalStr = '3.14159265358979344719667586';
-    $request->requestBody->simpleObject->enum = Enum::One;
+    $request->requestBody->simpleObject->enum = Shared\Enum::One;
     $request->requestBody->simpleObject->float32 = 1.1;
     $request->requestBody->simpleObject->int = 1;
     $request->requestBody->simpleObject->int32 = 1;
-    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $request->requestBody->simpleObject->intEnum = SimpleObjectIntEnum::Second;
+    $request->requestBody->simpleObject->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $request->requestBody->simpleObject->intEnum = Shared\IntEnum::Second;
     $request->requestBody->simpleObject->intOptNull = 165468;
     $request->requestBody->simpleObject->num = 1.1;
     $request->requestBody->simpleObject->numOptNull = 5944.32;
@@ -989,22 +973,22 @@ try {
     $request->decimalStrParameter = 'string';
     $request->decimalStrParameterOptional = 'string';
     $request->doubleParameter = 8700.78;
-    $request->enumParameter = UsageExamplePostEnumParameter::Value2;
+    $request->enumParameter = Operations\EnumParameter::Value2;
     $request->falseyNumberParameter = 0;
     $request->float32Parameter = 1341.86;
     $request->floatParameter = 5429.24;
     $request->int64Parameter = 101970;
     $request->intParameter = 938852;
-    $request->optEnumParameter = UsageExamplePostOptEnumParameter::Value3;
+    $request->optEnumParameter = Operations\OptEnumParameter::Value3;
     $request->strParameter = 'example 3';
 
-    $requestSecurity = new UsageExamplePostSecurity();
+    $requestSecurity = new Operations\UsageExamplePostSecurity();
     $requestSecurity->password = 'YOUR_PASSWORD';
     $requestSecurity->username = 'YOUR_USERNAME';
 
     $response = $sdk->generation->usageExamplePost($request, $requestSecurity);
 
-    if ($response->usageExamplePost200ApplicationJSONObject !== null) {
+    if ($response->object !== null) {
         // handle response
     }
 } catch (Exception $e) {

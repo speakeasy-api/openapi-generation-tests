@@ -223,24 +223,24 @@ final class ParameterTest extends TestCase
     }
 
     public function testPipeDelimitedQueryParamsArray(): void
-        {
-            CommonHelpers::recordTest('parameters-pipe-query-params-array');
+    {
+        CommonHelpers::recordTest('parameters-pipe-query-params-array');
 
-            $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
 
-            $obj = Helpers::createSimpleObject();
+        $obj = Helpers::createSimpleObject();
 
-            $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
-            $response = $sdk->parameters->pipeDelimitedQueryParamsArray(['test', 'test2'], [1, 2], ['key1' => 'val1', 'key2' => 'val2'], $obj);
+        $response = $sdk->parameters->pipeDelimitedQueryParamsArray(['test', 'test2'], [1, 2], ['key1' => 'val1', 'key2' => 'val2'], $obj);
 
-            $this->assertNotNull($response);
-            $this->assertEquals(200, $response->statusCode);
-            $this->assertNotNull($response->res);
-            $this->assertEquals('http://localhost:35123/anything/queryParams/pipe/array?arrParam=test|test2&arrParamExploded=1&arrParamExploded=2&mapParam=key1|val1|key2|val2&objParam=any|any|bool|true|boolOpt|true|date|2020-01-01|dateTime|2020-01-01T00%3A00%3A00.000001Z|enum|one|float32|1.1|int|1|int32|1|int32Enum|55|intEnum|2|num|1.1|str|test|strOpt|testOptional', $response->res->url);
-            $this->assertEquals('test|test2', $response->res->args->arrParam);
-            $this->assertEquals(['1', '2'], $response->res->args->arrParamExploded);
-        }
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+        $this->assertNotNull($response->res);
+        $this->assertEquals('http://localhost:35123/anything/queryParams/pipe/array?arrParam=test|test2&arrParamExploded=1&arrParamExploded=2&mapParam=key1|val1|key2|val2&objParam=any|any|bool|true|boolOpt|true|date|2020-01-01|dateTime|2020-01-01T00%3A00%3A00.000001Z|enum|one|float32|1.1|int|1|int32|1|int32Enum|55|intEnum|2|num|1.1|str|test|strOpt|testOptional', $response->res->url);
+        $this->assertEquals('test|test2', $response->res->args->arrParam);
+        $this->assertEquals(['1', '2'], $response->res->args->arrParamExploded);
+    }
 
     public function testFormQueryParamsMap(): void
     {
@@ -269,7 +269,7 @@ final class ParameterTest extends TestCase
 
         $obj = Helpers::createSimpleObject();
 
-        $objArrParam = new \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectObjArrParam();
+        $objArrParam = new \OpenAPI\OpenAPI\Models\Operations\ObjArrParam();
         $objArrParam->arr = ['test', 'test2'];
 
         $response = $sdk->parameters->deepObjectQueryParamsObject($obj, $objArrParam);

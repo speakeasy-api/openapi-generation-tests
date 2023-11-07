@@ -1,5 +1,5 @@
 # Unions
-(*unions*)
+(*.unions*)
 
 ## Overview
 
@@ -105,7 +105,7 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { TypedObject1Type } from "openapi/dist/sdk/models/shared";
+import { TypeT } from "openapi/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new SDK({
@@ -118,7 +118,7 @@ import { TypedObject1Type } from "openapi/dist/sdk/models/shared";
 
   const res = await sdk.unions.nullableOneOfRefInObjectPost({
     nullableOneOfOne: {
-      type: TypedObject1Type.Obj1,
+      type: TypeT.Obj1,
       value: "string",
     },
     nullableOneOfTwo: "string",
@@ -231,7 +231,7 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { TypedObject1Type } from "openapi/dist/sdk/models/shared";
+import { TypeT } from "openapi/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new SDK({
@@ -243,7 +243,7 @@ import { TypedObject1Type } from "openapi/dist/sdk/models/shared";
   });
 
   const res = await sdk.unions.nullableTypedObjectPost({
-    type: TypedObject1Type.Obj1,
+    type: TypeT.Obj1,
     value: "string",
   });
 

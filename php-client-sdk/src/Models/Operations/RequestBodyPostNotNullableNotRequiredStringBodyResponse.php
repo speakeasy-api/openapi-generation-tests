@@ -38,16 +38,16 @@ class RequestBodyPostNotNullableNotRequiredStringBodyResponse
     /**
      * OK
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostNotNullableNotRequiredStringBody200ApplicationJSON $requestBodyPostNotNullableNotRequiredStringBody200ApplicationJSONObject
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostNotNullableNotRequiredStringBodyResponseBody $object
      */
 	
-    public ?RequestBodyPostNotNullableNotRequiredStringBody200ApplicationJSON $requestBodyPostNotNullableNotRequiredStringBody200ApplicationJSONObject = null;
+    public ?RequestBodyPostNotNullableNotRequiredStringBodyResponseBody $object = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->requestBodyPostNotNullableNotRequiredStringBody200ApplicationJSONObject = null;
+		$this->object = null;
 	}
 }

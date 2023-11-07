@@ -19,18 +19,18 @@ module OpenApiSDK
       field :content_type, String
       # HTTP response status code for this operation
       field :status_code, Integer
-      # OK
-      field :arrs, T.nilable(T::Array[T::Array[Shared::SimpleObjectCamelCase]])
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
+      # OK
+      field :res, T.nilable(T::Array[T::Array[Shared::SimpleObjectCamelCase]])
 
 
-      sig { params(content_type: String, status_code: Integer, arrs: T.nilable(T::Array[T::Array[Shared::SimpleObjectCamelCase]]), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, arrs: nil, raw_response: nil)
+      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), res: T.nilable(T::Array[T::Array[Shared::SimpleObjectCamelCase]])).void }
+      def initialize(content_type: nil, status_code: nil, raw_response: nil, res: nil)
         @content_type = content_type
         @status_code = status_code
-        @arrs = arrs
         @raw_response = raw_response
+        @res = res
       end
     end
   end

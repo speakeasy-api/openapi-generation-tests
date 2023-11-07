@@ -46,10 +46,10 @@ public class ResponseBodyAdditionalPropertiesObjectPostResponse {
      * OK
      */
     
-    public ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSON responseBodyAdditionalPropertiesObjectPost200ApplicationJSONObject;
+    public ResponseBodyAdditionalPropertiesObjectPostResponseBody object;
 
-    public ResponseBodyAdditionalPropertiesObjectPostResponse withResponseBodyAdditionalPropertiesObjectPost200ApplicationJSONObject(ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSON responseBodyAdditionalPropertiesObjectPost200ApplicationJSONObject) {
-        this.responseBodyAdditionalPropertiesObjectPost200ApplicationJSONObject = responseBodyAdditionalPropertiesObjectPost200ApplicationJSONObject;
+    public ResponseBodyAdditionalPropertiesObjectPostResponse withObject(ResponseBodyAdditionalPropertiesObjectPostResponseBody object) {
+        this.object = object;
         return this;
     }
     

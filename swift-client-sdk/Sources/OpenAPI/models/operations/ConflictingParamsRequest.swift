@@ -3,12 +3,12 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct ConflictingParamsRequest: APIValue {
         public let strPathParameter: String
         public let strQueryParameter: String
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         ///
         public init(strPathParameter: String, strQueryParameter: String) {

@@ -5,7 +5,7 @@ package shared
 import (
 	"github.com/ericlagergren/decimal"
 	"math/big"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 )
 
 type ComplexNumberTypes struct {

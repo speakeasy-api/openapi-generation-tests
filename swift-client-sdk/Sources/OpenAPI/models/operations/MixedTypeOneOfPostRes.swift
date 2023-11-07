@@ -5,12 +5,12 @@ import Foundation
 extension Operations {
     /// OK
     public struct MixedTypeOneOfPostRes {
-        public let json: Operations.MixedTypeOneOfPostResJson
+        public let json: Operations.MixedTypeOneOfPostJson
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(json: Operations.MixedTypeOneOfPostResJson) {
+        public init(json: Operations.MixedTypeOneOfPostJson) {
             self.json = json
         }
     }

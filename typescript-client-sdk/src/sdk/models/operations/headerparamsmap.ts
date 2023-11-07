@@ -14,7 +14,7 @@ export class HeaderParamsMapRequest extends SpeakeasyBase {
     xHeaderMapExplode: Record<string, string>;
 }
 
-export class HeaderParamsMapResHeaders extends SpeakeasyBase {
+export class HeaderParamsMapHeaders extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "X-Header-Map" })
     xHeaderMap: string;
@@ -30,8 +30,8 @@ export class HeaderParamsMapResHeaders extends SpeakeasyBase {
 export class HeaderParamsMapRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "headers" })
-    @Type(() => HeaderParamsMapResHeaders)
-    headers: HeaderParamsMapResHeaders;
+    @Type(() => HeaderParamsMapHeaders)
+    headers: HeaderParamsMapHeaders;
 }
 
 export class HeaderParamsMapResponse extends SpeakeasyBase {

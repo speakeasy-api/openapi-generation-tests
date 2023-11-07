@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import dateutil.parser
-from ..shared import enum as shared_enum
+from .enum import EnumT
 from dataclasses_json import Undefined, dataclass_json
 from datetime import date, datetime
 from decimal import Decimal
@@ -11,13 +11,13 @@ from enum import Enum
 from sdk import utils
 from typing import Any, Optional
 
-class SimpleObjectInt32Enum(int, Enum):
+class Int32Enum(int, Enum):
     r"""An int32 enum property."""
     FIFTY_FIVE = 55
     SIXTY_NINE = 69
     ONE_HUNDRED_AND_EIGHTY_ONE = 181
 
-class SimpleObjectIntEnum(int, Enum):
+class IntEnum(int, Enum):
     r"""An integer enum property."""
     FIRST = 1
     SECOND = 2
@@ -38,7 +38,7 @@ class SimpleObject:
     r"""A date property."""
     date_time: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dateTime'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }, 'header': { 'field_name': 'dateTime' }, 'path_param': { 'field_name': 'dateTime' }, 'query_param': { 'field_name': 'dateTime' }, 'form': { 'field_name': 'dateTime' }, 'multipart_form': { 'field_name': 'dateTime' }})
     r"""A date-time property."""
-    enum: shared_enum.EnumT = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('enum') }, 'header': { 'field_name': 'enum' }, 'path_param': { 'field_name': 'enum' }, 'query_param': { 'field_name': 'enum' }, 'form': { 'field_name': 'enum' }, 'multipart_form': { 'field_name': 'enum' }})
+    enum: EnumT = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('enum') }, 'header': { 'field_name': 'enum' }, 'path_param': { 'field_name': 'enum' }, 'query_param': { 'field_name': 'enum' }, 'form': { 'field_name': 'enum' }, 'multipart_form': { 'field_name': 'enum' }})
     r"""A string based enum"""
     float32: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('float32') }, 'header': { 'field_name': 'float32' }, 'path_param': { 'field_name': 'float32' }, 'query_param': { 'field_name': 'float32' }, 'form': { 'field_name': 'float32' }, 'multipart_form': { 'field_name': 'float32' }})
     r"""A float32 property."""
@@ -46,9 +46,9 @@ class SimpleObject:
     r"""An integer property."""
     int32: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int32') }, 'header': { 'field_name': 'int32' }, 'path_param': { 'field_name': 'int32' }, 'query_param': { 'field_name': 'int32' }, 'form': { 'field_name': 'int32' }, 'multipart_form': { 'field_name': 'int32' }})
     r"""An int32 property."""
-    int32_enum: SimpleObjectInt32Enum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int32Enum') }, 'header': { 'field_name': 'int32Enum' }, 'path_param': { 'field_name': 'int32Enum' }, 'query_param': { 'field_name': 'int32Enum' }, 'form': { 'field_name': 'int32Enum' }, 'multipart_form': { 'field_name': 'int32Enum' }})
+    int32_enum: Int32Enum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int32Enum') }, 'header': { 'field_name': 'int32Enum' }, 'path_param': { 'field_name': 'int32Enum' }, 'query_param': { 'field_name': 'int32Enum' }, 'form': { 'field_name': 'int32Enum' }, 'multipart_form': { 'field_name': 'int32Enum' }})
     r"""An int32 enum property."""
-    int_enum: SimpleObjectIntEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('intEnum') }, 'header': { 'field_name': 'intEnum' }, 'path_param': { 'field_name': 'intEnum' }, 'query_param': { 'field_name': 'intEnum' }, 'form': { 'field_name': 'intEnum' }, 'multipart_form': { 'field_name': 'intEnum' }})
+    int_enum: IntEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('intEnum') }, 'header': { 'field_name': 'intEnum' }, 'path_param': { 'field_name': 'intEnum' }, 'query_param': { 'field_name': 'intEnum' }, 'form': { 'field_name': 'intEnum' }, 'multipart_form': { 'field_name': 'intEnum' }})
     r"""An integer enum property."""
     num: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('num') }, 'header': { 'field_name': 'num' }, 'path_param': { 'field_name': 'num' }, 'query_param': { 'field_name': 'num' }, 'form': { 'field_name': 'num' }, 'multipart_form': { 'field_name': 'num' }})
     r"""A number property."""

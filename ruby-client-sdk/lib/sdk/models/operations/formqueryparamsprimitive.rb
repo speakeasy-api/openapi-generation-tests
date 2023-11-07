@@ -32,7 +32,7 @@ module OpenApiSDK
     end
 
 
-    class FormQueryParamsPrimitiveResArgs < OpenApiSDK::Utils::FieldAugmented
+    class FormQueryParamsPrimitiveArgs < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -59,12 +59,12 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :args, Operations::FormQueryParamsPrimitiveResArgs, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
+      field :args, Operations::FormQueryParamsPrimitiveArgs, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
 
       field :url, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('url') } }
 
 
-      sig { params(args: Operations::FormQueryParamsPrimitiveResArgs, url: String).void }
+      sig { params(args: Operations::FormQueryParamsPrimitiveArgs, url: String).void }
       def initialize(args: nil, url: nil)
         @args = args
         @url = url

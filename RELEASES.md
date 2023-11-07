@@ -977,3 +977,20 @@ Based on:
 - [ruby v1.36.2] ruby-client-sdk
 ### Releases
 - [Go v1.39.4] https://github.com/speakeasy-api/openapi-generation-tests/releases/tag/go-client-sdk/v1.39.4 - go-client-sdk
+
+## 2023-11-07 00:11:56
+### Changes
+Based on:
+- OpenAPI Doc 0.1.0 
+- Speakeasy CLI 1.114.1 (2.181.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v2.0.0] typescript-client-sdk
+- [csharp v0.2.0] csharp-client-sdk
+- [go v2.0.0] go-client-sdk
+- [java v2.0.0] java-client-sdk
+- [php v2.0.0] php-client-sdk
+- [python v3.0.0] python-client-sdk
+- [ruby v2.0.0] ruby-client-sdk
+- [swift v0.2.0] swift-client-sdk
+### Releases
+- [Go v2.0.0] https://github.com/speakeasy-api/openapi-generation-tests/releases/tag/go-client-sdk/v2.0.0 - go-client-sdk

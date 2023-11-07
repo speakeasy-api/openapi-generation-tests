@@ -1,5 +1,5 @@
 # Flattening
-(*flattening*)
+(*.flattening*)
 
 ## Overview
 
@@ -18,8 +18,8 @@ Endpoints for testing flattening through request body and parameter combinations
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import operations, shared
 
@@ -46,8 +46,8 @@ res = s.flattening.component_body_and_param_conflict(simple_object=shared.Simple
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
@@ -76,8 +76,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import operations, shared
 
@@ -104,8 +104,8 @@ res = s.flattening.component_body_and_param_no_conflict(param_str='string', simp
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',

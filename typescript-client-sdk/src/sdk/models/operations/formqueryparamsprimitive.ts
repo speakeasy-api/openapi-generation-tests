@@ -20,7 +20,7 @@ export class FormQueryParamsPrimitiveRequest extends SpeakeasyBase {
     strParam: string;
 }
 
-export class FormQueryParamsPrimitiveResArgs extends SpeakeasyBase {
+export class FormQueryParamsPrimitiveArgs extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "boolParam" })
     boolParam: string;
@@ -44,8 +44,8 @@ export class FormQueryParamsPrimitiveResArgs extends SpeakeasyBase {
 export class FormQueryParamsPrimitiveRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "args" })
-    @Type(() => FormQueryParamsPrimitiveResArgs)
-    args: FormQueryParamsPrimitiveResArgs;
+    @Type(() => FormQueryParamsPrimitiveArgs)
+    args: FormQueryParamsPrimitiveArgs;
 
     @SpeakeasyMetadata()
     @Expose({ name: "url" })

@@ -5,12 +5,12 @@ import Foundation
 extension Operations {
     /// A model object
     public struct RequestBodyPutMultipartDifferentFileNameRequestBody: APIValue {
-        public let differentFileName: Operations.RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName?
+        public let differentFileName: Operations.DifferentFileName?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(differentFileName: Operations.RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName? = nil) {
+        public init(differentFileName: Operations.DifferentFileName? = nil) {
             self.differentFileName = differentFileName
         }
     }

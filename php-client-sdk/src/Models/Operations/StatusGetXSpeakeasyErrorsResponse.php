@@ -46,10 +46,10 @@ class StatusGetXSpeakeasyErrorsResponse
     /**
      * Not Implemented
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\StatusGetXSpeakeasyErrors501ApplicationJSON $statusGetXSpeakeasyErrors501ApplicationJSONObject
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\StatusGetXSpeakeasyErrorsResponseBody $object
      */
 	
-    public ?StatusGetXSpeakeasyErrors501ApplicationJSON $statusGetXSpeakeasyErrors501ApplicationJSONObject = null;
+    public ?StatusGetXSpeakeasyErrorsResponseBody $object = null;
     
 	public function __construct()
 	{
@@ -57,6 +57,6 @@ class StatusGetXSpeakeasyErrorsResponse
 		$this->statusCode = 0;
 		$this->rawResponse = null;
 		$this->error = null;
-		$this->statusGetXSpeakeasyErrors501ApplicationJSONObject = null;
+		$this->object = null;
 	}
 }

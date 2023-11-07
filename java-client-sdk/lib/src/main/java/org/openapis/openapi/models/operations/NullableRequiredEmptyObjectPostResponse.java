@@ -46,10 +46,10 @@ public class NullableRequiredEmptyObjectPostResponse {
      * OK
      */
     
-    public String nullableRequiredEmptyObjectPost200ApplicationJSONString;
+    public String res;
 
-    public NullableRequiredEmptyObjectPostResponse withNullableRequiredEmptyObjectPost200ApplicationJSONString(String nullableRequiredEmptyObjectPost200ApplicationJSONString) {
-        this.nullableRequiredEmptyObjectPost200ApplicationJSONString = nullableRequiredEmptyObjectPost200ApplicationJSONString;
+    public NullableRequiredEmptyObjectPostResponse withRes(String res) {
+        this.res = res;
         return this;
     }
     

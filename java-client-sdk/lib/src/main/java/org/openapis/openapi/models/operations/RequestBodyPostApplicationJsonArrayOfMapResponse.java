@@ -46,10 +46,10 @@ public class RequestBodyPostApplicationJsonArrayOfMapResponse {
      * OK
      */
     
-    public java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject>[] maps;
+    public java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject>[] res;
 
-    public RequestBodyPostApplicationJsonArrayOfMapResponse withMaps(java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject>[] maps) {
-        this.maps = maps;
+    public RequestBodyPostApplicationJsonArrayOfMapResponse withRes(java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject>[] res) {
+        this.res = res;
         return this;
     }
     

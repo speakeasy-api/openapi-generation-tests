@@ -38,16 +38,16 @@ class PutAnythingIgnoredGenerationResponse
     /**
      * OK
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\PutAnythingIgnoredGeneration200ApplicationJSON $putAnythingIgnoredGeneration200ApplicationJSONObject
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\PutAnythingIgnoredGenerationResponseBody $object
      */
 	
-    public ?PutAnythingIgnoredGeneration200ApplicationJSON $putAnythingIgnoredGeneration200ApplicationJSONObject = null;
+    public ?PutAnythingIgnoredGenerationResponseBody $object = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->putAnythingIgnoredGeneration200ApplicationJSONObject = null;
+		$this->object = null;
 	}
 }

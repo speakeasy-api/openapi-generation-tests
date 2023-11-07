@@ -8,10 +8,10 @@ require 'faraday'
 
 module OpenApiSDK
   module Shared
-    # DeprecatedFieldInObjectDeprecatedEnum
+    # DeprecatedEnum
     # 
     # @deprecated  class: This enum is deprecated.
-    class DeprecatedFieldInObjectDeprecatedEnum < T::Enum
+    class DeprecatedEnum < T::Enum
       enums do
         A = new('a')
         B = new('b')
@@ -25,14 +25,14 @@ module OpenApiSDK
       extend T::Sig
 
       # @deprecated  true: This enum is deprecated.
-      field :deprecated_enum, T.nilable(Shared::DeprecatedFieldInObjectDeprecatedEnum), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('deprecatedEnum'), 'decoder': Utils.enum_from_string(Shared::DeprecatedFieldInObjectDeprecatedEnum, true) } }
+      field :deprecated_enum, T.nilable(Shared::DeprecatedEnum), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('deprecatedEnum'), 'decoder': Utils.enum_from_string(Shared::DeprecatedEnum, true) } }
       # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible. Use new_field instead.
       field :deprecated_field, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('deprecatedField') } }
 
       field :new_field, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('newField') } }
 
 
-      sig { params(deprecated_enum: T.nilable(Shared::DeprecatedFieldInObjectDeprecatedEnum), deprecated_field: T.nilable(String), new_field: T.nilable(String)).void }
+      sig { params(deprecated_enum: T.nilable(Shared::DeprecatedEnum), deprecated_field: T.nilable(String), new_field: T.nilable(String)).void }
       def initialize(deprecated_enum: nil, deprecated_field: nil, new_field: nil)
         @deprecated_enum = deprecated_enum
         @deprecated_field = deprecated_field

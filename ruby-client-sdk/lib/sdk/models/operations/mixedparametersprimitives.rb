@@ -29,7 +29,7 @@ module OpenApiSDK
     end
 
 
-    class MixedParametersPrimitivesResArgs < OpenApiSDK::Utils::FieldAugmented
+    class MixedParametersPrimitivesArgs < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -43,7 +43,7 @@ module OpenApiSDK
     end
 
 
-    class MixedParametersPrimitivesResHeaders < OpenApiSDK::Utils::FieldAugmented
+    class MixedParametersPrimitivesHeaders < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -61,14 +61,14 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :args, Operations::MixedParametersPrimitivesResArgs, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
+      field :args, Operations::MixedParametersPrimitivesArgs, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
 
-      field :headers, Operations::MixedParametersPrimitivesResHeaders, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('headers') } }
+      field :headers, Operations::MixedParametersPrimitivesHeaders, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('headers') } }
 
       field :url, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('url') } }
 
 
-      sig { params(args: Operations::MixedParametersPrimitivesResArgs, headers: Operations::MixedParametersPrimitivesResHeaders, url: String).void }
+      sig { params(args: Operations::MixedParametersPrimitivesArgs, headers: Operations::MixedParametersPrimitivesHeaders, url: String).void }
       def initialize(args: nil, headers: nil, url: nil)
         @args = args
         @headers = headers

@@ -16,10 +16,10 @@ public class DeprecatedFieldInObject {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("deprecatedEnum")
     @Deprecated
-    public DeprecatedFieldInObjectDeprecatedEnum deprecatedEnum;
+    public DeprecatedEnum deprecatedEnum;
 
     @Deprecated
-    public DeprecatedFieldInObject withDeprecatedEnum(DeprecatedFieldInObjectDeprecatedEnum deprecatedEnum) {
+    public DeprecatedFieldInObject withDeprecatedEnum(DeprecatedEnum deprecatedEnum) {
         this.deprecatedEnum = deprecatedEnum;
         return this;
     }

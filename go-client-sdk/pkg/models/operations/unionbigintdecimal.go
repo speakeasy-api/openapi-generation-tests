@@ -7,7 +7,7 @@ import (
 	"github.com/ericlagergren/decimal"
 	"math/big"
 	"net/http"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 )
 
 type UnionBigIntDecimalRequestBodyType string
@@ -73,58 +73,58 @@ func (u UnionBigIntDecimalRequestBody) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-type UnionBigIntDecimalResJSONType string
+type UnionBigIntDecimalJSONType string
 
 const (
-	UnionBigIntDecimalResJSONTypeBigint  UnionBigIntDecimalResJSONType = "bigint"
-	UnionBigIntDecimalResJSONTypeDecimal UnionBigIntDecimalResJSONType = "decimal"
+	UnionBigIntDecimalJSONTypeBigint  UnionBigIntDecimalJSONType = "bigint"
+	UnionBigIntDecimalJSONTypeDecimal UnionBigIntDecimalJSONType = "decimal"
 )
 
-type UnionBigIntDecimalResJSON struct {
+type UnionBigIntDecimalJSON struct {
 	Bigint  *big.Int
 	Decimal *decimal.Big
 
-	Type UnionBigIntDecimalResJSONType
+	Type UnionBigIntDecimalJSONType
 }
 
-func CreateUnionBigIntDecimalResJSONBigint(bigint *big.Int) UnionBigIntDecimalResJSON {
-	typ := UnionBigIntDecimalResJSONTypeBigint
+func CreateUnionBigIntDecimalJSONBigint(bigint *big.Int) UnionBigIntDecimalJSON {
+	typ := UnionBigIntDecimalJSONTypeBigint
 
-	return UnionBigIntDecimalResJSON{
+	return UnionBigIntDecimalJSON{
 		Bigint: bigint,
 		Type:   typ,
 	}
 }
 
-func CreateUnionBigIntDecimalResJSONDecimal(decimal *decimal.Big) UnionBigIntDecimalResJSON {
-	typ := UnionBigIntDecimalResJSONTypeDecimal
+func CreateUnionBigIntDecimalJSONDecimal(decimal *decimal.Big) UnionBigIntDecimalJSON {
+	typ := UnionBigIntDecimalJSONTypeDecimal
 
-	return UnionBigIntDecimalResJSON{
+	return UnionBigIntDecimalJSON{
 		Decimal: decimal,
 		Type:    typ,
 	}
 }
 
-func (u *UnionBigIntDecimalResJSON) UnmarshalJSON(data []byte) error {
+func (u *UnionBigIntDecimalJSON) UnmarshalJSON(data []byte) error {
 
 	bigint := big.NewInt(0)
 	if err := utils.UnmarshalJSON(data, &bigint, `bigint:"string"`, true, true); err == nil {
 		u.Bigint = bigint
-		u.Type = UnionBigIntDecimalResJSONTypeBigint
+		u.Type = UnionBigIntDecimalJSONTypeBigint
 		return nil
 	}
 
 	decimal := new(decimal.Big).SetFloat64(0.0)
 	if err := utils.UnmarshalJSON(data, &decimal, `decimal:"number"`, true, true); err == nil {
 		u.Decimal = decimal
-		u.Type = UnionBigIntDecimalResJSONTypeDecimal
+		u.Type = UnionBigIntDecimalJSONTypeDecimal
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u UnionBigIntDecimalResJSON) MarshalJSON() ([]byte, error) {
+func (u UnionBigIntDecimalJSON) MarshalJSON() ([]byte, error) {
 	if u.Bigint != nil {
 		return utils.MarshalJSON(u.Bigint, `bigint:"string"`, true)
 	}
@@ -138,12 +138,12 @@ func (u UnionBigIntDecimalResJSON) MarshalJSON() ([]byte, error) {
 
 // UnionBigIntDecimalRes - OK
 type UnionBigIntDecimalRes struct {
-	JSON UnionBigIntDecimalResJSON `json:"json"`
+	JSON UnionBigIntDecimalJSON `json:"json"`
 }
 
-func (o *UnionBigIntDecimalRes) GetJSON() UnionBigIntDecimalResJSON {
+func (o *UnionBigIntDecimalRes) GetJSON() UnionBigIntDecimalJSON {
 	if o == nil {
-		return UnionBigIntDecimalResJSON{}
+		return UnionBigIntDecimalJSON{}
 	}
 	return o.JSON
 }

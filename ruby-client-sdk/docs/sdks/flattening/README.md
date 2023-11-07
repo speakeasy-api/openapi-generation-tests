@@ -1,5 +1,5 @@
 # Flattening
-(*flattening*)
+
 
 ## Overview
 
@@ -45,8 +45,8 @@ req = Operations::ComponentBodyAndParamConflictRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::IntEnum::SECOND,
       int_opt_null=843322,
       num=1.1,
       num_opt_null=7126.06,
@@ -69,8 +69,8 @@ req = Operations::ComponentBodyAndParamConflictRequest.new(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-    int_enum=Shared::SimpleObjectIntEnum::SECOND,
+    int32_enum=Shared::Int32Enum::FIFTY_FIVE,
+    int_enum=Shared::IntEnum::SECOND,
     int_opt_null=845828,
     num=1.1,
     num_opt_null=2573.18,
@@ -133,8 +133,8 @@ req = Operations::ComponentBodyAndParamNoConflictRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
+      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::IntEnum::THIRD,
       int_opt_null=758827,
       num=1.1,
       num_opt_null=1702.8,
@@ -156,8 +156,8 @@ req = Operations::ComponentBodyAndParamNoConflictRequest.new(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-    int_enum=Shared::SimpleObjectIntEnum::SECOND,
+    int32_enum=Shared::Int32Enum::SIXTY_NINE,
+    int_enum=Shared::IntEnum::SECOND,
     int_opt_null=836157,
     num=1.1,
     num_opt_null=2914.21,

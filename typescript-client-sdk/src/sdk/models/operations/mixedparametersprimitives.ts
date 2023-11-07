@@ -17,13 +17,13 @@ export class MixedParametersPrimitivesRequest extends SpeakeasyBase {
     queryStringParam: string;
 }
 
-export class MixedParametersPrimitivesResArgs extends SpeakeasyBase {
+export class MixedParametersPrimitivesArgs extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "queryStringParam" })
     queryStringParam: string;
 }
 
-export class MixedParametersPrimitivesResHeaders extends SpeakeasyBase {
+export class MixedParametersPrimitivesHeaders extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "Headerparam" })
     headerparam: string;
@@ -35,13 +35,13 @@ export class MixedParametersPrimitivesResHeaders extends SpeakeasyBase {
 export class MixedParametersPrimitivesRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "args" })
-    @Type(() => MixedParametersPrimitivesResArgs)
-    args: MixedParametersPrimitivesResArgs;
+    @Type(() => MixedParametersPrimitivesArgs)
+    args: MixedParametersPrimitivesArgs;
 
     @SpeakeasyMetadata()
     @Expose({ name: "headers" })
-    @Type(() => MixedParametersPrimitivesResHeaders)
-    headers: MixedParametersPrimitivesResHeaders;
+    @Type(() => MixedParametersPrimitivesHeaders)
+    headers: MixedParametersPrimitivesHeaders;
 
     @SpeakeasyMetadata()
     @Expose({ name: "url" })

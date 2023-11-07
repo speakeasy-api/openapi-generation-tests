@@ -1,5 +1,5 @@
 # RequestBodies
-(*RequestBodies*)
+(*.RequestBodies*)
 
 ## Overview
 
@@ -99,8 +99,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -149,9 +149,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -165,15 +165,15 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.NullableRequiredEmptyObjectPost(ctx, operations.NullableRequiredEmptyObjectPostRequestBody{
-        NullableOptionalObj: &operations.NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj{},
-        NullableRequiredObj: &operations.NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj{},
-        RequiredObj: operations.NullableRequiredEmptyObjectPostRequestBodyRequiredObj{},
+        NullableOptionalObj: &operations.NullableOptionalObj{},
+        NullableRequiredObj: &operations.NullableRequiredObj{},
+        RequiredObj: operations.RequiredObj{},
     })
     if err != nil {
         log.Fatal(err)
     }
 
-    if res.NullableRequiredEmptyObjectPost200ApplicationJSONString != nil {
+    if res.Res != nil {
         // handle response
     }
 }
@@ -202,9 +202,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -221,14 +221,14 @@ func main() {
         NullableRequiredArray: []float64{
             2355.17,
         },
-        NullableRequiredEnum: operations.NullableRequiredPropertyPostRequestBodyNullableRequiredEnumSecond,
+        NullableRequiredEnum: operations.NullableRequiredEnumSecond,
         NullableRequiredInt: 50266,
     })
     if err != nil {
         log.Fatal(err)
     }
 
-    if res.NullableRequiredPropertyPost200ApplicationJSONString != nil {
+    if res.Res != nil {
         // handle response
     }
 }
@@ -257,9 +257,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -284,7 +284,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.NullableRequiredSharedObjectPost200ApplicationJSONString != nil {
+    if res.Res != nil {
         // handle response
     }
 }
@@ -313,10 +313,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -344,8 +344,8 @@ func main() {
             Float32: 1.1,
             Int: 1,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-            IntEnum: shared.SimpleObjectIntEnumSecond,
+            Int32Enum: shared.Int32EnumFiftyFive,
+            IntEnum: shared.IntEnumSecond,
             Num: 1.1,
             Str: "test",
             StrOpt: openapi.String("testOptional"),
@@ -355,7 +355,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.SimpleObjects != nil {
+    if res.Res != nil {
         // handle response
     }
 }
@@ -385,9 +385,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -409,9 +409,9 @@ func main() {
             DateVal: types.MustDateFromString("2020-01-01"),
             EnumVal: shared.EnumOne,
             Float32Val: 2.2222222,
-            Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
+            Int32EnumVal: shared.Int32EnumValSixtyNine,
             Int32Val: 1,
-            IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
+            IntEnumVal: shared.IntEnumValThird,
             IntOptNullVal: openapi.Int64(999999),
             IntVal: 999999,
             NumOptNullVal: openapi.Float64(1.1),
@@ -424,7 +424,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.SimpleObjectCamelCases != nil {
+    if res.Res != nil {
         // handle response
     }
 }
@@ -454,10 +454,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -485,8 +485,8 @@ func main() {
             Float32: 1.1,
             Int: 1,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-            IntEnum: shared.SimpleObjectIntEnumSecond,
+            Int32Enum: shared.Int32EnumFiftyFive,
+            IntEnum: shared.IntEnumSecond,
             Num: 1.1,
             Str: "test",
             StrOpt: openapi.String("testOptional"),
@@ -525,9 +525,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -549,9 +549,9 @@ func main() {
             DateVal: types.MustDateFromString("2020-01-01"),
             EnumVal: shared.EnumOne,
             Float32Val: 2.2222222,
-            Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
+            Int32EnumVal: shared.Int32EnumValSixtyNine,
             Int32Val: 1,
-            IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
+            IntEnumVal: shared.IntEnumValThird,
             IntOptNullVal: openapi.Int64(999999),
             IntVal: 999999,
             NumOptNullVal: openapi.Float64(1.1),
@@ -593,10 +593,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -625,8 +625,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -637,7 +637,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.Arrs != nil {
+    if res.Res != nil {
         // handle response
     }
 }
@@ -667,9 +667,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -692,9 +692,9 @@ func main() {
                 DateVal: types.MustDateFromString("2020-01-01"),
                 EnumVal: shared.EnumOne,
                 Float32Val: 2.2222222,
-                Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
+                Int32EnumVal: shared.Int32EnumValSixtyNine,
                 Int32Val: 1,
-                IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
+                IntEnumVal: shared.IntEnumValThird,
                 IntOptNullVal: openapi.Int64(999999),
                 IntVal: 999999,
                 NumOptNullVal: openapi.Float64(1.1),
@@ -708,7 +708,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.Arrs != nil {
+    if res.Res != nil {
         // handle response
     }
 }
@@ -738,8 +738,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -761,7 +761,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.Arrs != nil {
+    if res.Res != nil {
         // handle response
     }
 }
@@ -791,10 +791,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -823,8 +823,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -835,7 +835,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.Maps != nil {
+    if res.Res != nil {
         // handle response
     }
 }
@@ -865,9 +865,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -890,9 +890,9 @@ func main() {
                 DateVal: types.MustDateFromString("2020-01-01"),
                 EnumVal: shared.EnumOne,
                 Float32Val: 2.2222222,
-                Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
+                Int32EnumVal: shared.Int32EnumValSixtyNine,
                 Int32Val: 1,
-                IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
+                IntEnumVal: shared.IntEnumValThird,
                 IntOptNullVal: openapi.Int64(999999),
                 IntVal: 999999,
                 NumOptNullVal: openapi.Float64(1.1),
@@ -906,7 +906,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.Maps != nil {
+    if res.Res != nil {
         // handle response
     }
 }
@@ -936,8 +936,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -957,7 +957,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.Strings != nil {
+    if res.Res != nil {
         // handle response
     }
 }
@@ -987,10 +987,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -1004,7 +1004,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONDeep(ctx, shared.DeepObject{
-        Any: shared.CreateDeepObjectAnySimpleObject(
+        Any: shared.CreateAnySimpleObject(
                 shared.SimpleObject{
                     Any: "any",
                     Bigint: big.NewInt(8821239038968084),
@@ -1019,8 +1019,8 @@ func main() {
                     Float32: 1.1,
                     Int: 1,
                     Int32: 1,
-                    Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                    IntEnum: shared.SimpleObjectIntEnumSecond,
+                    Int32Enum: shared.Int32EnumFiftyFive,
+                    IntEnum: shared.IntEnumSecond,
                     Num: 1.1,
                     Str: "test",
                     StrOpt: openapi.String("testOptional"),
@@ -1041,8 +1041,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -1061,8 +1061,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -1071,26 +1071,6 @@ func main() {
         Bool: true,
         Int: 1,
         Map: map[string]shared.SimpleObject{
-            "key": shared.SimpleObject{
-                Any: "any",
-                Bigint: big.NewInt(8821239038968084),
-                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
-                Bool: true,
-                BoolOpt: openapi.Bool(true),
-                Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
-                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
-                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
-                Enum: shared.EnumOne,
-                Float32: 1.1,
-                Int: 1,
-                Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
-                Num: 1.1,
-                Str: "test",
-                StrOpt: openapi.String("testOptional"),
-            },
             "key2": shared.SimpleObject{
                 Any: "any",
                 Bigint: big.NewInt(8821239038968084),
@@ -1105,8 +1085,28 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
+                Num: 1.1,
+                Str: "test",
+                StrOpt: openapi.String("testOptional"),
+            },
+            "key": shared.SimpleObject{
+                Any: "any",
+                Bigint: big.NewInt(8821239038968084),
+                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                Enum: shared.EnumOne,
+                Float32: 1.1,
+                Int: 1,
+                Int32: 1,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -1127,8 +1127,8 @@ func main() {
             Float32: 1.1,
             Int: 1,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-            IntEnum: shared.SimpleObjectIntEnumSecond,
+            Int32Enum: shared.Int32EnumFiftyFive,
+            IntEnum: shared.IntEnumSecond,
             Num: 1.1,
             Str: "test",
             StrOpt: openapi.String("testOptional"),
@@ -1168,9 +1168,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -1184,7 +1184,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONDeepCamelCase(ctx, shared.DeepObjectCamelCase{
-        AnyVal: shared.CreateDeepObjectCamelCaseAnyValSimpleObjectCamelCase(
+        AnyVal: shared.CreateAnyValSimpleObjectCamelCase(
                 shared.SimpleObjectCamelCase{
                     AnyVal: "any example",
                     BoolOptVal: openapi.Bool(true),
@@ -1193,9 +1193,9 @@ func main() {
                     DateVal: types.MustDateFromString("2020-01-01"),
                     EnumVal: shared.EnumOne,
                     Float32Val: 2.2222222,
-                    Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
+                    Int32EnumVal: shared.Int32EnumValSixtyNine,
                     Int32Val: 1,
-                    IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
+                    IntEnumVal: shared.IntEnumValThird,
                     IntOptNullVal: openapi.Int64(999999),
                     IntVal: 999999,
                     NumOptNullVal: openapi.Float64(1.1),
@@ -1213,9 +1213,9 @@ func main() {
                 DateVal: types.MustDateFromString("2020-01-01"),
                 EnumVal: shared.EnumOne,
                 Float32Val: 2.2222222,
-                Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
+                Int32EnumVal: shared.Int32EnumValSixtyNine,
                 Int32Val: 1,
-                IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
+                IntEnumVal: shared.IntEnumValThird,
                 IntOptNullVal: openapi.Int64(999999),
                 IntVal: 999999,
                 NumOptNullVal: openapi.Float64(1.1),
@@ -1235,9 +1235,9 @@ func main() {
                 DateVal: types.MustDateFromString("2020-01-01"),
                 EnumVal: shared.EnumOne,
                 Float32Val: 2.2222222,
-                Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
+                Int32EnumVal: shared.Int32EnumValSixtyNine,
                 Int32Val: 1,
-                IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
+                IntEnumVal: shared.IntEnumValThird,
                 IntOptNullVal: openapi.Int64(999999),
                 IntVal: 999999,
                 NumOptNullVal: openapi.Float64(1.1),
@@ -1255,9 +1255,9 @@ func main() {
             DateVal: types.MustDateFromString("2020-01-01"),
             EnumVal: shared.EnumOne,
             Float32Val: 2.2222222,
-            Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
+            Int32EnumVal: shared.Int32EnumValSixtyNine,
             Int32Val: 1,
-            IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
+            IntEnumVal: shared.IntEnumValThird,
             IntOptNullVal: openapi.Int64(999999),
             IntVal: 999999,
             NumOptNullVal: openapi.Float64(1.1),
@@ -1300,10 +1300,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -1331,8 +1331,8 @@ func main() {
             Float32: 1.1,
             Int: 1,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-            IntEnum: shared.SimpleObjectIntEnumSecond,
+            Int32Enum: shared.Int32EnumFiftyFive,
+            IntEnum: shared.IntEnumSecond,
             Num: 1.1,
             Str: "test",
             StrOpt: openapi.String("testOptional"),
@@ -1372,9 +1372,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -1396,9 +1396,9 @@ func main() {
             DateVal: types.MustDateFromString("2020-01-01"),
             EnumVal: shared.EnumOne,
             Float32Val: 2.2222222,
-            Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
+            Int32EnumVal: shared.Int32EnumValSixtyNine,
             Int32Val: 1,
-            IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
+            IntEnumVal: shared.IntEnumValThird,
             IntOptNullVal: openapi.Int64(999999),
             IntVal: 999999,
             NumOptNullVal: openapi.Float64(1.1),
@@ -1441,10 +1441,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -1472,8 +1472,8 @@ func main() {
             Float32: 1.1,
             Int: 1,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-            IntEnum: shared.SimpleObjectIntEnumSecond,
+            Int32Enum: shared.Int32EnumFiftyFive,
+            IntEnum: shared.IntEnumSecond,
             Num: 1.1,
             Str: "test",
             StrOpt: openapi.String("testOptional"),
@@ -1512,9 +1512,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -1536,9 +1536,9 @@ func main() {
             DateVal: types.MustDateFromString("2020-01-01"),
             EnumVal: shared.EnumOne,
             Float32Val: 2.2222222,
-            Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
+            Int32EnumVal: shared.Int32EnumValSixtyNine,
             Int32Val: 1,
-            IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
+            IntEnumVal: shared.IntEnumValThird,
             IntOptNullVal: openapi.Int64(999999),
             IntVal: 999999,
             NumOptNullVal: openapi.Float64(1.1),
@@ -1580,10 +1580,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -1612,8 +1612,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -1654,9 +1654,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -1679,9 +1679,9 @@ func main() {
                 DateVal: types.MustDateFromString("2020-01-01"),
                 EnumVal: shared.EnumOne,
                 Float32Val: 2.2222222,
-                Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
+                Int32EnumVal: shared.Int32EnumValSixtyNine,
                 Int32Val: 1,
-                IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
+                IntEnumVal: shared.IntEnumValThird,
                 IntOptNullVal: openapi.Int64(999999),
                 IntVal: 999999,
                 NumOptNullVal: openapi.Float64(1.1),
@@ -1725,10 +1725,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -1757,8 +1757,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -1799,9 +1799,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -1824,9 +1824,9 @@ func main() {
                 DateVal: types.MustDateFromString("2020-01-01"),
                 EnumVal: shared.EnumOne,
                 Float32Val: 2.2222222,
-                Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
+                Int32EnumVal: shared.Int32EnumValSixtyNine,
                 Int32Val: 1,
-                IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
+                IntEnumVal: shared.IntEnumValThird,
                 IntOptNullVal: openapi.Int64(999999),
                 IntVal: 999999,
                 NumOptNullVal: openapi.Float64(1.1),
@@ -1870,8 +1870,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -1923,8 +1923,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -1974,10 +1974,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -2004,8 +2004,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -2043,10 +2043,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -2073,8 +2073,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -2112,9 +2112,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -2135,9 +2135,9 @@ func main() {
         DateVal: types.MustDateFromString("2020-01-01"),
         EnumVal: shared.EnumOne,
         Float32Val: 2.2222222,
-        Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
+        Int32EnumVal: shared.Int32EnumValSixtyNine,
         Int32Val: 1,
-        IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
+        IntEnumVal: shared.IntEnumValThird,
         IntOptNullVal: openapi.Int64(999999),
         IntVal: 999999,
         NumOptNullVal: openapi.Float64(1.1),
@@ -2178,11 +2178,11 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -2215,7 +2215,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostComplexNumberTypes200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -2244,10 +2244,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -2268,8 +2268,8 @@ func main() {
         ConstDateTime: types.MustTimeFromString("2023-10-01T02:16:56.173Z"),
         ConstDecimal: types.MustNewDecimalFromString("1120.58"),
         ConstDecimalStr: types.MustNewDecimalFromString("8445.08"),
-        ConstEnumInt: shared.DefaultsAndConstsConstEnumIntOne,
-        ConstEnumStr: shared.DefaultsAndConstsConstEnumStrTwo,
+        ConstEnumInt: shared.ConstEnumIntOne,
+        ConstEnumStr: shared.ConstEnumStrTwo,
         ConstInt: 450379,
         ConstNum: 7742.71,
         ConstStr: "string",
@@ -2280,7 +2280,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -2309,9 +2309,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -2325,14 +2325,14 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostEmptyObject(ctx, operations.RequestBodyPostEmptyObjectRequestBody{
-        Empty: &operations.RequestBodyPostEmptyObjectRequestBodyEmpty{},
-        EmptyWithEmptyProperties: &operations.RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties{},
+        Empty: &operations.Empty{},
+        EmptyWithEmptyProperties: &operations.EmptyWithEmptyProperties{},
     })
     if err != nil {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostEmptyObject200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -2361,10 +2361,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -2378,7 +2378,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostFormDeep(ctx, shared.DeepObject{
-        Any: shared.CreateDeepObjectAnySimpleObject(
+        Any: shared.CreateAnySimpleObject(
                 shared.SimpleObject{
                     Any: "any",
                     Bigint: big.NewInt(8821239038968084),
@@ -2393,8 +2393,8 @@ func main() {
                     Float32: 1.1,
                     Int: 1,
                     Int32: 1,
-                    Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                    IntEnum: shared.SimpleObjectIntEnumSecond,
+                    Int32Enum: shared.Int32EnumFiftyFive,
+                    IntEnum: shared.IntEnumSecond,
                     Num: 1.1,
                     Str: "test",
                     StrOpt: openapi.String("testOptional"),
@@ -2415,8 +2415,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -2435,8 +2435,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -2445,26 +2445,6 @@ func main() {
         Bool: true,
         Int: 1,
         Map: map[string]shared.SimpleObject{
-            "key2": shared.SimpleObject{
-                Any: "any",
-                Bigint: big.NewInt(8821239038968084),
-                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
-                Bool: true,
-                BoolOpt: openapi.Bool(true),
-                Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
-                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
-                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
-                Enum: shared.EnumOne,
-                Float32: 1.1,
-                Int: 1,
-                Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
-                Num: 1.1,
-                Str: "test",
-                StrOpt: openapi.String("testOptional"),
-            },
             "key": shared.SimpleObject{
                 Any: "any",
                 Bigint: big.NewInt(8821239038968084),
@@ -2479,8 +2459,28 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
+                Num: 1.1,
+                Str: "test",
+                StrOpt: openapi.String("testOptional"),
+            },
+            "key2": shared.SimpleObject{
+                Any: "any",
+                Bigint: big.NewInt(8821239038968084),
+                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                Enum: shared.EnumOne,
+                Float32: 1.1,
+                Int: 1,
+                Int32: 1,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -2501,8 +2501,8 @@ func main() {
             Float32: 1.1,
             Int: 1,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-            IntEnum: shared.SimpleObjectIntEnumSecond,
+            Int32Enum: shared.Int32EnumFiftyFive,
+            IntEnum: shared.IntEnumSecond,
             Num: 1.1,
             Str: "test",
             StrOpt: openapi.String("testOptional"),
@@ -2542,8 +2542,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -2592,10 +2592,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -2622,8 +2622,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -2661,8 +2661,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -2682,7 +2682,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -2711,8 +2711,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -2732,7 +2732,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -2761,8 +2761,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -2782,7 +2782,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -2811,8 +2811,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -2830,7 +2830,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostJSONDataTypesBigInt200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -2859,8 +2859,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -2878,7 +2878,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -2907,8 +2907,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -2926,7 +2926,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostJSONDataTypesBoolean200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -2955,8 +2955,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -2974,7 +2974,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostJSONDataTypesDate200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -3003,8 +3003,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -3022,7 +3022,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostJSONDataTypesDateTime200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -3051,8 +3051,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -3070,7 +3070,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostJSONDataTypesDecimal200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -3099,8 +3099,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -3118,7 +3118,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostJSONDataTypesDecimalStr200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -3147,8 +3147,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -3166,7 +3166,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostJSONDataTypesFloat32200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -3195,8 +3195,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -3214,7 +3214,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostJSONDataTypesInt32200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -3243,8 +3243,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -3262,7 +3262,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostJSONDataTypesInteger200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -3291,8 +3291,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -3312,7 +3312,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -3341,8 +3341,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -3362,7 +3362,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -3391,8 +3391,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -3412,7 +3412,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -3441,8 +3441,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -3460,7 +3460,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostJSONDataTypesNumber200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -3489,8 +3489,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -3508,7 +3508,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostJSONDataTypesString200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -3537,10 +3537,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -3567,8 +3567,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -3606,9 +3606,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -3621,7 +3621,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesInlineFiltered(ctx, operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON{
+    res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesInlineFiltered(ctx, operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody{
         Bool: false,
         Num: 3558.41,
         Str: "string",
@@ -3638,10 +3638,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                  | Type                                                                                                                                                                       | Required                                                                                                                                                                   | Description                                                                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                      | :heavy_check_mark:                                                                                                                                                         | The context to use for the request.                                                                                                                                        |
-| `request`                                                                                                                                                                  | [operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON](../../models/operations/requestbodypostmultiplecontenttypesinlinefilteredapplicationjson.md) | :heavy_check_mark:                                                                                                                                                         | The request object to use for the request.                                                                                                                                 |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                                                                                              | :heavy_check_mark:                                                                                                                                                 | The context to use for the request.                                                                                                                                |
+| `request`                                                                                                                                                          | [operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody](../../models/operations/requestbodypostmultiplecontenttypesinlinefilteredrequestbody.md) | :heavy_check_mark:                                                                                                                                                 | The request object to use for the request.                                                                                                                         |
 
 
 ### Response
@@ -3659,9 +3659,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -3674,7 +3674,7 @@ func main() {
     )
 
 
-    requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded{
+    requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody{
         Bool3: false,
         Num3: 8693.24,
         Str3: "string",
@@ -3696,11 +3696,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                      | Type                                                                                                                                                                                           | Required                                                                                                                                                                                       | Description                                                                                                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                                          | :heavy_check_mark:                                                                                                                                                                             | The context to use for the request.                                                                                                                                                            |
-| `requestBody`                                                                                                                                                                                  | [operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded](../../models/operations/requestbodypostmultiplecontenttypessplitparamapplicationxwwwformurlencoded.md) | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
-| `paramStr`                                                                                                                                                                                     | *string*                                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                                                                                              | :heavy_check_mark:                                                                                                                                                 | The context to use for the request.                                                                                                                                |
+| `requestBody`                                                                                                                                                      | [operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitparamformrequestbody.md) | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
+| `paramStr`                                                                                                                                                         | *string*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
 
 
 ### Response
@@ -3718,9 +3718,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -3733,7 +3733,7 @@ func main() {
     )
 
 
-    requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON{
+    requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody{
         Bool: false,
         Num: 9771.91,
         Str: "string",
@@ -3758,7 +3758,7 @@ func main() {
 | Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `ctx`                                                                                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                                                                                              | :heavy_check_mark:                                                                                                                                                 | The context to use for the request.                                                                                                                                |
-| `requestBody`                                                                                                                                                      | [operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON](../../models/operations/requestbodypostmultiplecontenttypessplitparamapplicationjson.md) | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
+| `requestBody`                                                                                                                                                      | [operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitparamjsonrequestbody.md) | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
 | `paramStr`                                                                                                                                                         | *string*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
 
 
@@ -3777,9 +3777,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -3792,7 +3792,7 @@ func main() {
     )
 
 
-    requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData{
+    requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody{
         Bool2: false,
         Num2: 7000.76,
         Str2: "string",
@@ -3814,11 +3814,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                                              | Type                                                                                                                                                                   | Required                                                                                                                                                               | Description                                                                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                  | :heavy_check_mark:                                                                                                                                                     | The context to use for the request.                                                                                                                                    |
-| `requestBody`                                                                                                                                                          | [operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData](../../models/operations/requestbodypostmultiplecontenttypessplitparammultipartformdata.md) | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
-| `paramStr`                                                                                                                                                             | *string*                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
+| Parameter                                                                                                                                                                    | Type                                                                                                                                                                         | Required                                                                                                                                                                     | Description                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                        | :heavy_check_mark:                                                                                                                                                           | The context to use for the request.                                                                                                                                          |
+| `requestBody`                                                                                                                                                                | [operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitparammultipartrequestbody.md) | :heavy_check_mark:                                                                                                                                                           | N/A                                                                                                                                                                          |
+| `paramStr`                                                                                                                                                                   | *string*                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                           | N/A                                                                                                                                                                          |
 
 
 ### Response
@@ -3836,9 +3836,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -3851,7 +3851,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitForm(ctx, operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded{
+    res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitForm(ctx, operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody{
         Bool3: false,
         Num3: 7842.07,
         Str3: "string",
@@ -3868,10 +3868,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                            | Type                                                                                                                                                                                 | Required                                                                                                                                                                             | Description                                                                                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                                | :heavy_check_mark:                                                                                                                                                                   | The context to use for the request.                                                                                                                                                  |
-| `request`                                                                                                                                                                            | [operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded](../../models/operations/requestbodypostmultiplecontenttypessplitapplicationxwwwformurlencoded.md) | :heavy_check_mark:                                                                                                                                                                   | The request object to use for the request.                                                                                                                                           |
+| Parameter                                                                                                                                                | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                                                    | :heavy_check_mark:                                                                                                                                       | The context to use for the request.                                                                                                                      |
+| `request`                                                                                                                                                | [operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitformrequestbody.md) | :heavy_check_mark:                                                                                                                                       | The request object to use for the request.                                                                                                               |
 
 
 ### Response
@@ -3889,9 +3889,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -3904,7 +3904,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitJSON(ctx, operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON{
+    res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitJSON(ctx, operations.RequestBodyPostMultipleContentTypesSplitJSONRequestBody{
         Bool: false,
         Num: 2445.56,
         Str: "string",
@@ -3924,7 +3924,7 @@ func main() {
 | Parameter                                                                                                                                                | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                                                    | :heavy_check_mark:                                                                                                                                       | The context to use for the request.                                                                                                                      |
-| `request`                                                                                                                                                | [operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON](../../models/operations/requestbodypostmultiplecontenttypessplitapplicationjson.md) | :heavy_check_mark:                                                                                                                                       | The request object to use for the request.                                                                                                               |
+| `request`                                                                                                                                                | [operations.RequestBodyPostMultipleContentTypesSplitJSONRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitjsonrequestbody.md) | :heavy_check_mark:                                                                                                                                       | The request object to use for the request.                                                                                                               |
 
 
 ### Response
@@ -3942,9 +3942,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -3957,7 +3957,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitMultipart(ctx, operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData{
+    res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitMultipart(ctx, operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody{
         Bool2: false,
         Num2: 2079.2,
         Str2: "string",
@@ -3974,10 +3974,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                                    | Type                                                                                                                                                         | Required                                                                                                                                                     | Description                                                                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                                                                        | :heavy_check_mark:                                                                                                                                           | The context to use for the request.                                                                                                                          |
-| `request`                                                                                                                                                    | [operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData](../../models/operations/requestbodypostmultiplecontenttypessplitmultipartformdata.md) | :heavy_check_mark:                                                                                                                                           | The request object to use for the request.                                                                                                                   |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                                                                                              | :heavy_check_mark:                                                                                                                                                 | The context to use for the request.                                                                                                                                |
+| `request`                                                                                                                                                          | [operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitmultipartrequestbody.md) | :heavy_check_mark:                                                                                                                                                 | The request object to use for the request.                                                                                                                         |
 
 
 ### Response
@@ -3995,8 +3995,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4014,7 +4014,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostNotNullableNotRequiredStringBody200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -4043,8 +4043,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4064,7 +4064,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostNullArray200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -4093,8 +4093,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4114,7 +4114,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostNullDictionary200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -4143,8 +4143,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4162,7 +4162,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -4191,8 +4191,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4210,7 +4210,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.RequestBodyPostNullableRequiredStringBody200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -4239,8 +4239,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4253,7 +4253,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPutBytes(ctx, []byte("9sS}}O%}aJ"))
+    res, err := s.RequestBodies.RequestBodyPutBytes(ctx, []byte("0x5DbFFb1Ff9"))
     if err != nil {
         log.Fatal(err)
     }
@@ -4287,8 +4287,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4301,7 +4301,7 @@ func main() {
     )
 
 
-    var requestBody []byte = []byte("o%jIWe4_P6")
+    var requestBody []byte = []byte("0xC1B9cA4eb5")
 
     var queryStringParam string = "string"
 
@@ -4341,10 +4341,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -4358,7 +4358,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutMultipartDeep(ctx, shared.DeepObject{
-        Any: shared.CreateDeepObjectAnySimpleObject(
+        Any: shared.CreateAnySimpleObject(
                 shared.SimpleObject{
                     Any: "any",
                     Bigint: big.NewInt(8821239038968084),
@@ -4373,8 +4373,8 @@ func main() {
                     Float32: 1.1,
                     Int: 1,
                     Int32: 1,
-                    Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                    IntEnum: shared.SimpleObjectIntEnumSecond,
+                    Int32Enum: shared.Int32EnumFiftyFive,
+                    IntEnum: shared.IntEnumSecond,
                     Num: 1.1,
                     Str: "test",
                     StrOpt: openapi.String("testOptional"),
@@ -4395,8 +4395,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -4415,8 +4415,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -4439,8 +4439,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -4459,8 +4459,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -4481,8 +4481,8 @@ func main() {
             Float32: 1.1,
             Int: 1,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-            IntEnum: shared.SimpleObjectIntEnumSecond,
+            Int32Enum: shared.Int32EnumFiftyFive,
+            IntEnum: shared.IntEnumSecond,
             Num: 1.1,
             Str: "test",
             StrOpt: openapi.String("testOptional"),
@@ -4522,9 +4522,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -4538,9 +4538,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutMultipartDifferentFileName(ctx, operations.RequestBodyPutMultipartDifferentFileNameRequestBody{
-        DifferentFileName: &operations.RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName{
-            Content: []byte("Y}'H[5/Z[,"),
-            DifferentFileName: "string",
+        DifferentFileName: &operations.DifferentFileName{
+            Content: []byte("0xdF19d43dd2"),
+            FileName: "west_tunisian.pdf",
         },
     })
     if err != nil {
@@ -4576,9 +4576,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -4592,9 +4592,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutMultipartFile(ctx, operations.RequestBodyPutMultipartFileRequestBody{
-        File: &operations.RequestBodyPutMultipartFileRequestBodyFile{
-            Content: []byte("OJa,v`.FW-"),
-            File: "string",
+        File: &operations.File{
+            Content: []byte("0xa9f2Ee38c3"),
+            FileName: "bandwidth_sedan.pdf",
         },
     })
     if err != nil {
@@ -4630,10 +4630,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -4660,8 +4660,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -4699,8 +4699,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4747,8 +4747,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4801,8 +4801,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4815,7 +4815,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyReadAndWrite(ctx, shared.ReadWriteObjectInput{
+    res, err := s.RequestBodies.RequestBodyReadAndWrite(ctx, shared.ReadWriteObject{
         Num1: 797612,
         Num2: 89374,
         Num3: 459345,
@@ -4832,11 +4832,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
-| `request`                                                                  | [shared.ReadWriteObjectInput](../../models/shared/readwriteobjectinput.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `opts`                                                                     | [][operations.Option](../../models/operations/option.md)                   | :heavy_minus_sign:                                                         | The options for this request.                                              |
+| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `ctx`                                                            | [context.Context](https://pkg.go.dev/context#Context)            | :heavy_check_mark:                                               | The context to use for the request.                              |
+| `request`                                                        | [shared.ReadWriteObject](../../models/shared/readwriteobject.md) | :heavy_check_mark:                                               | The request object to use for the request.                       |
+| `opts`                                                           | [][operations.Option](../../models/operations/option.md)         | :heavy_minus_sign:                                               | The options for this request.                                    |
 
 
 ### Response
@@ -4854,8 +4854,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4903,10 +4903,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -4934,8 +4934,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -4975,10 +4975,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -4991,8 +4991,8 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyReadWriteOnlyUnion(ctx, shared.CreateWeaklyTypedOneOfReadWriteObjectInputReadWriteObjectInput(
-            shared.ReadWriteObjectInput{
+    res, err := s.RequestBodies.RequestBodyReadWriteOnlyUnion(ctx, shared.CreateWeaklyTypedOneOfReadWriteObjectReadWriteObject(
+            shared.ReadWriteObject{
                 Num1: 817251,
                 Num2: 891192,
                 Num3: 743101,
@@ -5010,11 +5010,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                      | :heavy_check_mark:                                                                                         | The context to use for the request.                                                                        |
-| `request`                                                                                                  | [shared.WeaklyTypedOneOfReadWriteObjectInput](../../models/shared/weaklytypedoneofreadwriteobjectinput.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
-| `opts`                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                         | The options for this request.                                                                              |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                            | :heavy_check_mark:                                                                               | The context to use for the request.                                                              |
+| `request`                                                                                        | [shared.WeaklyTypedOneOfReadWriteObject](../../models/shared/weaklytypedoneofreadwriteobject.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `opts`                                                                                           | [][operations.Option](../../models/operations/option.md)                                         | :heavy_minus_sign:                                                                               | The options for this request.                                                                    |
 
 
 ### Response
@@ -5032,8 +5032,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -5085,8 +5085,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -5138,10 +5138,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {

@@ -9,7 +9,7 @@ from typing import Any, Dict, Optional
 
 
 @dataclasses.dataclass
-class RequestBodyPostMultipleContentTypesSplitParamMultipartFormData:
+class RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody:
     bool2: bool = dataclasses.field(metadata={'multipart_form': { 'field_name': 'bool2' }})
     num2: float = dataclasses.field(metadata={'multipart_form': { 'field_name': 'num2' }})
     str2: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'str2' }})
@@ -20,7 +20,7 @@ class RequestBodyPostMultipleContentTypesSplitParamMultipartFormData:
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesSplitParamMultipartRequest:
     param_str: str = dataclasses.field(metadata={'query_param': { 'field_name': 'paramStr', 'style': 'form', 'explode': True }})
-    request_body: RequestBodyPostMultipleContentTypesSplitParamMultipartFormData = dataclasses.field(metadata={'request': { 'media_type': 'multipart/form-data' }})
+    request_body: RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'multipart/form-data' }})
     
 
 

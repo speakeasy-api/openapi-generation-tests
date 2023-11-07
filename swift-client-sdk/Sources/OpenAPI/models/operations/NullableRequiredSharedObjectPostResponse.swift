@@ -6,7 +6,7 @@ extension Operations {
     /// A response model
     public enum NullableRequiredSharedObjectPostResponse {
         case empty
-        case nullableRequiredSharedObjectPost200ApplicationJSONString(String)
+        case res(String)
 
         var isEmpty: Bool {
             if case .empty = self {
@@ -16,8 +16,8 @@ extension Operations {
             }
         }
 
-        public func nullableRequiredSharedObjectPost200ApplicationJSONString() throws -> String {
-            guard case .nullableRequiredSharedObjectPost200ApplicationJSONString(let value) = self else {
+        public func res() throws -> String {
+            guard case .res(let value) = self else {
                 throw OpenAPIError.missingResponseData
             }
             return value

@@ -38,16 +38,16 @@ class RequestBodyPostApplicationJsonArrayOfPrimitiveResponse
     /**
      * OK
      * 
-     * @var ?array<string> $strings
+     * @var ?array<string> $res
      */
 	
-    public ?array $strings = null;
+    public ?array $res = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->strings = null;
+		$this->res = null;
 	}
 }

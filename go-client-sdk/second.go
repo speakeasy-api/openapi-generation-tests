@@ -8,23 +8,23 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/utils"
 	"strings"
 )
 
-type second struct {
+type Second struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newSecond(sdkConfig sdkConfiguration) *second {
-	return &second{
+func newSecond(sdkConfig sdkConfiguration) *Second {
+	return &Second{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *second) Get(ctx context.Context) (*operations.GroupSecondGetResponse, error) {
+func (s *Second) Get(ctx context.Context) (*operations.GroupSecondGetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/group/second"
 

@@ -27,12 +27,12 @@ class InlineBodyAndParamConflictRes
     public array $args;
     
 	#[\JMS\Serializer\Annotation\SerializedName('json')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictResJson')]
-    public InlineBodyAndParamConflictResJson $json;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\Json')]
+    public Json $json;
     
 	public function __construct()
 	{
 		$this->args = [];
-		$this->json = new \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictResJson();
+		$this->json = new \OpenAPI\OpenAPI\Models\Operations\Json();
 	}
 }

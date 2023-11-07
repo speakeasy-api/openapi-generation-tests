@@ -3,8 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import typedobject1 as shared_typedobject1
-from ..shared import typedobject2 as shared_typedobject2
+from ...models.shared import typedobject1 as shared_typedobject1
+from ...models.shared import typedobject2 as shared_typedobject2
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional, Union
@@ -16,7 +16,7 @@ class NullableOneOfSchemaPostRequestBody:
 
 
 @dataclasses.dataclass
-class NullableOneOfSchemaPostResJSON:
+class NullableOneOfSchemaPostJSON:
     pass
 
 

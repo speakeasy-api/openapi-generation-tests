@@ -10,7 +10,7 @@ require_relative '../shared/deprecatedobject'
 module OpenApiSDK
   module Operations
     # A successful response that contains a deprecatedObject sent in the request body
-    class DeprecatedObjectInSchemaGet200ApplicationJSON < OpenApiSDK::Utils::FieldAugmented
+    class DeprecatedObjectInSchemaGetResponseBody < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # @deprecated  true: This object is deprecated.
@@ -32,16 +32,16 @@ module OpenApiSDK
       # HTTP response status code for this operation
       field :status_code, Integer
       # A successful response that contains a deprecatedObject sent in the request body
-      field :deprecated_object_in_schema_get_200_application_json_object, T.nilable(Operations::DeprecatedObjectInSchemaGet200ApplicationJSON)
+      field :object, T.nilable(Operations::DeprecatedObjectInSchemaGetResponseBody)
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, deprecated_object_in_schema_get_200_application_json_object: T.nilable(Operations::DeprecatedObjectInSchemaGet200ApplicationJSON), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, deprecated_object_in_schema_get_200_application_json_object: nil, raw_response: nil)
+      sig { params(content_type: String, status_code: Integer, object: T.nilable(Operations::DeprecatedObjectInSchemaGetResponseBody), raw_response: T.nilable(Faraday::Response)).void }
+      def initialize(content_type: nil, status_code: nil, object: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code
-        @deprecated_object_in_schema_get_200_application_json_object = deprecated_object_in_schema_get_200_application_json_object
+        @object = object
         @raw_response = raw_response
       end
     end

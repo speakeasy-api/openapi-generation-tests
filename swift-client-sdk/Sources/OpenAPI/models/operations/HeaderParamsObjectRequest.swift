@@ -3,14 +3,14 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct HeaderParamsObjectRequest: APIValue {
         /// A simple object that uses all our supported primitive types and enums and has optional properties.
         public let xHeaderObj: Shared.SimpleObject
         /// A simple object that uses all our supported primitive types and enums and has optional properties.
         public let xHeaderObjExplode: Shared.SimpleObject
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         /// - Parameter xHeaderObj: A simple object that uses all our supported primitive types and enums and has optional properties.
         /// - Parameter xHeaderObjExplode: A simple object that uses all our supported primitive types and enums and has optional properties.

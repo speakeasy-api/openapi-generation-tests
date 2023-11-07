@@ -31,11 +31,11 @@ func TestResponseBodyJSONGet(t *testing.T) {
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.NotNil(t, res.HTTPBinSimpleJSONObject)
 	assert.Equal(t, &shared.HTTPBinSimpleJSONObject{
-		Slideshow: shared.HTTPBinSimpleJSONObjectSlideshow{
+		Slideshow: shared.Slideshow{
 			Author: "Yours Truly",
 			Date:   "date of publication",
 			Title:  "Sample Slide Show",
-			Slides: []shared.HTTPBinSimpleJSONObjectSlideshowSlides{
+			Slides: []shared.Slides{
 				{
 					Title: "Wake up to WonderWidgets!",
 					Type:  "all",
@@ -108,8 +108,8 @@ func TestResponseBodyOverrideAcceptHeader(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.NotNil(t, res.GetResponseBodyOptionalGet200TextPlainString)
-	assert.Equal(t, "Success", *res.GetResponseBodyOptionalGet200TextPlainString())
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, "Success", *res.GetRes())
 }
 
 func TestResponseBodyDefaultAcceptHeader(t *testing.T) {
@@ -155,7 +155,7 @@ func TestResponseBodyAdditionalPropertiesPost(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, req, res.ResponseBodyAdditionalPropertiesPost200ApplicationJSONObject.JSON)
+	assert.Equal(t, req, res.Object.JSON)
 }
 
 func TestResponseBodyAdditionalPropertiesComplexNumbersPost(t *testing.T) {
@@ -174,7 +174,7 @@ func TestResponseBodyAdditionalPropertiesComplexNumbersPost(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, req, res.ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject.JSON)
+	assert.Equal(t, req, res.Object.JSON)
 }
 
 func TestResponseBodyZeroValueComplexTypePtrsPost(t *testing.T) {
@@ -193,7 +193,7 @@ func TestResponseBodyZeroValueComplexTypePtrsPost(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, req, res.ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject.JSON)
+	assert.Equal(t, req, res.Object.JSON)
 }
 
 func TestResponseBodyAdditionalPropertiesDatePost(t *testing.T) {
@@ -212,7 +212,7 @@ func TestResponseBodyAdditionalPropertiesDatePost(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, req, res.ResponseBodyAdditionalPropertiesDatePost200ApplicationJSONObject.JSON)
+	assert.Equal(t, req, res.Object.JSON)
 }
 
 func TestResponseBodyAdditionalPropertiesObjectPost(t *testing.T) {
@@ -232,5 +232,5 @@ func TestResponseBodyAdditionalPropertiesObjectPost(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, req, res.ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSONObject.JSON)
+	assert.Equal(t, req, res.Object.JSON)
 }

@@ -1,5 +1,5 @@
 # Resource
-(*resource*)
+
 
 ### Available Operations
 
@@ -27,9 +27,9 @@ s.config_security(
    
 req = Operations::CreateFileRequestBody.new(
   request=Operations::CreateFileRequestBody.new(
-    file=Operations::CreateFileRequestBodyFile.new(
-      content="`'$Z`(L/RH".encode(),
-      file="string",
+    file=Operations::CreateFileFile.new(
+      content="0xf10df1a3b9".encode(),
+      file_name="rap_national.mp4v",
     ),
   ),
 )
@@ -79,13 +79,13 @@ req = Shared::ExampleResource.new(
       "string",
     ],
     chocolates=.new[
-      Shared::ExampleResourceChocolates.new(
+      Shared::Chocolates.new(
         description="Re-engineered asynchronous array",
       ),
     ],
     created_at=DateTime.iso8601('2021-10-25T14:40:21.269Z'),
-    enum_number=Shared::ExampleResourceEnumNumber::THREE,
-    enum_str=Shared::ExampleResourceEnumStr::TWO,
+    enum_number=Shared::EnumNumber::THREE,
+    enum_str=Shared::EnumStr::TWO,
     id="<ID>",
     map_of_integer=.new{
       "Florida": 967142,

@@ -45,11 +45,11 @@ Do this second
 ```typescript
 import { SDK } from "openapi";
 import {
-    UsageExamplePostEnumParameter,
-    UsageExamplePostOptEnumParameter,
+    EnumParameter,
+    OptEnumParameter,
     UsageExamplePostSecurity,
 } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async () => {
@@ -81,8 +81,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
                     float32: 1.1,
                     int: 1,
                     int32: 1,
-                    int32Enum: SimpleObjectInt32Enum.FiftyFive,
-                    intEnum: SimpleObjectIntEnum.Second,
+                    int32Enum: Int32Enum.FiftyFive,
+                    intEnum: IntEnum.Second,
                     num: 1.1,
                     str: "test",
                     strOpt: "testOptional",
@@ -97,13 +97,13 @@ import { RFCDate } from "openapi/dist/sdk/types";
             decimalParameter: 2679.33,
             decimalStrParameter: "string",
             doubleParameter: 5223.72,
-            enumParameter: UsageExamplePostEnumParameter.Value1,
+            enumParameter: EnumParameter.Value1,
             falseyNumberParameter: 0,
             float32Parameter: 6946.59,
             floatParameter: 2286.22,
             int64Parameter: 102975,
             intParameter: 566999,
-            optEnumParameter: UsageExamplePostOptEnumParameter.Value3,
+            optEnumParameter: OptEnumParameter.Value3,
             strParameter: "example 1",
         },
         operationSecurity
@@ -125,54 +125,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 * [putAnythingIgnoredGeneration](docs/sdks/sdk/README.md#putanythingignoredgeneration)
 * [responseBodyJsonGet](docs/sdks/sdk/README.md#responsebodyjsonget)
 
-### [auth](docs/sdks/auth/README.md)
-
-* [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
-* [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
-* [basicAuth](docs/sdks/auth/README.md#basicauth)
-* [bearerAuth](docs/sdks/auth/README.md#bearerauth)
-* [globalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
-* [oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
-* [oauth2Override](docs/sdks/auth/README.md#oauth2override)
-* [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
-
-### [authNew](docs/sdks/authnew/README.md)
-
-* [apiKeyAuthGlobalNew](docs/sdks/authnew/README.md#apikeyauthglobalnew)
-* [authGlobal](docs/sdks/authnew/README.md#authglobal)
-* [basicAuthNew](docs/sdks/authnew/README.md#basicauthnew)
-* [multipleMixedOptionsAuth](docs/sdks/authnew/README.md#multiplemixedoptionsauth)
-* [multipleMixedSchemeAuth](docs/sdks/authnew/README.md#multiplemixedschemeauth)
-* [multipleOptionsWithMixedSchemesAuth](docs/sdks/authnew/README.md#multipleoptionswithmixedschemesauth)
-* [multipleOptionsWithSimpleSchemesAuth](docs/sdks/authnew/README.md#multipleoptionswithsimpleschemesauth)
-* [multipleSimpleOptionsAuth](docs/sdks/authnew/README.md#multiplesimpleoptionsauth)
-* [multipleSimpleSchemeAuth](docs/sdks/authnew/README.md#multiplesimpleschemeauth)
-* [oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
-* [openIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
-
-### [documentation](docs/sdks/documentation/README.md)
-
-* [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
-
-### [errors](docs/sdks/errors/README.md)
-
-* [connectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
-* [statusGetError](docs/sdks/errors/README.md#statusgeterror)
-* [statusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
-
-### [first](docs/sdks/first/README.md)
-
-* [get](docs/sdks/first/README.md#get)
-
-### [flattening](docs/sdks/flattening/README.md)
-
-* [componentBodyAndParamConflict](docs/sdks/flattening/README.md#componentbodyandparamconflict)
-* [componentBodyAndParamNoConflict](docs/sdks/flattening/README.md#componentbodyandparamnoconflict)
-* [conflictingParams](docs/sdks/flattening/README.md#conflictingparams)
-* [inlineBodyAndParamConflict](docs/sdks/flattening/README.md#inlinebodyandparamconflict)
-* [inlineBodyAndParamNoConflict](docs/sdks/flattening/README.md#inlinebodyandparamnoconflict)
-
-### [generation](docs/sdks/generation/README.md)
+### [.generation](docs/sdks/generation/README.md)
 
 * [anchorTypesGet](docs/sdks/generation/README.md#anchortypesget)
 * [arrayCircularReferenceGet](docs/sdks/generation/README.md#arraycircularreferenceget)
@@ -195,38 +148,44 @@ import { RFCDate } from "openapi/dist/sdk/types";
 * [typedParameterGenerationGet](docs/sdks/generation/README.md#typedparametergenerationget)
 * [usageExamplePost](docs/sdks/generation/README.md#usageexamplepost) - An operation used for testing usage examples
 
-### [globals](docs/sdks/globals/README.md)
+### [.errors](docs/sdks/errors/README.md)
+
+* [connectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
+* [statusGetError](docs/sdks/errors/README.md#statusgeterror)
+* [statusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
+
+### [.unions](docs/sdks/unions/README.md)
+
+* [flattenedTypedObjectPost](docs/sdks/unions/README.md#flattenedtypedobjectpost)
+* [mixedTypeOneOfPost](docs/sdks/unions/README.md#mixedtypeoneofpost)
+* [nullableOneOfRefInObjectPost](docs/sdks/unions/README.md#nullableoneofrefinobjectpost)
+* [nullableOneOfSchemaPost](docs/sdks/unions/README.md#nullableoneofschemapost)
+* [nullableOneOfTypeInObjectPost](docs/sdks/unions/README.md#nullableoneoftypeinobjectpost)
+* [nullableTypedObjectPost](docs/sdks/unions/README.md#nullabletypedobjectpost)
+* [primitiveTypeOneOfPost](docs/sdks/unions/README.md#primitivetypeoneofpost)
+* [stronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
+* [typedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
+* [typedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
+* [unionBigIntDecimal](docs/sdks/unions/README.md#unionbigintdecimal)
+* [unionDateNull](docs/sdks/unions/README.md#uniondatenull)
+* [unionDateTimeBigInt](docs/sdks/unions/README.md#uniondatetimebigint)
+* [unionDateTimeNull](docs/sdks/unions/README.md#uniondatetimenull)
+* [weaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
+
+### [.flattening](docs/sdks/flattening/README.md)
+
+* [componentBodyAndParamConflict](docs/sdks/flattening/README.md#componentbodyandparamconflict)
+* [componentBodyAndParamNoConflict](docs/sdks/flattening/README.md#componentbodyandparamnoconflict)
+* [conflictingParams](docs/sdks/flattening/README.md#conflictingparams)
+* [inlineBodyAndParamConflict](docs/sdks/flattening/README.md#inlinebodyandparamconflict)
+* [inlineBodyAndParamNoConflict](docs/sdks/flattening/README.md#inlinebodyandparamnoconflict)
+
+### [.globals](docs/sdks/globals/README.md)
 
 * [globalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
 * [globalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
 
-
-### [nest.first](docs/sdks/nestfirst/README.md)
-
-* [get](docs/sdks/nestfirst/README.md#get)
-
-### [nested](docs/sdks/nested/README.md)
-
-* [get](docs/sdks/nested/README.md#get)
-
-### [nested.first](docs/sdks/nestedfirst/README.md)
-
-* [get](docs/sdks/nestedfirst/README.md#get)
-
-### [nested.second](docs/sdks/nestedsecond/README.md)
-
-* [get](docs/sdks/nestedsecond/README.md#get)
-
-### [pagination](docs/sdks/pagination/README.md)
-
-* [paginationCursorBody](docs/sdks/pagination/README.md#paginationcursorbody)
-* [paginationCursorParams](docs/sdks/pagination/README.md#paginationcursorparams)
-* [paginationLimitOffsetOffsetBody](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetbody)
-* [paginationLimitOffsetOffsetParams](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetparams)
-* [paginationLimitOffsetPageBody](docs/sdks/pagination/README.md#paginationlimitoffsetpagebody)
-* [paginationLimitOffsetPageParams](docs/sdks/pagination/README.md#paginationlimitoffsetpageparams)
-
-### [parameters](docs/sdks/parameters/README.md)
+### [.parameters](docs/sdks/parameters/README.md)
 
 * [deepObjectQueryParamsMap](docs/sdks/parameters/README.md#deepobjectqueryparamsmap)
 * [deepObjectQueryParamsObject](docs/sdks/parameters/README.md#deepobjectqueryparamsobject)
@@ -252,7 +211,24 @@ import { RFCDate } from "openapi/dist/sdk/types";
 * [simplePathParameterObjects](docs/sdks/parameters/README.md#simplepathparameterobjects)
 * [simplePathParameterPrimitives](docs/sdks/parameters/README.md#simplepathparameterprimitives)
 
-### [requestBodies](docs/sdks/requestbodies/README.md)
+
+### [.nest.first](docs/sdks/sdkfirst/README.md)
+
+* [get](docs/sdks/sdkfirst/README.md#get)
+
+### [.nested](docs/sdks/nested/README.md)
+
+* [get](docs/sdks/nested/README.md#get)
+
+### [.nested.first](docs/sdks/sdknestedfirst/README.md)
+
+* [get](docs/sdks/sdknestedfirst/README.md#get)
+
+### [.nested.second](docs/sdks/sdksecond/README.md)
+
+* [get](docs/sdks/sdksecond/README.md#get)
+
+### [.requestBodies](docs/sdks/requestbodies/README.md)
 
 * [nullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
 * [nullableRequiredEmptyObjectPost](docs/sdks/requestbodies/README.md#nullablerequiredemptyobjectpost)
@@ -336,15 +312,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 * [requestBodyWriteOnlyOutput](docs/sdks/requestbodies/README.md#requestbodywriteonlyoutput)
 * [requestBodyWriteOnlyUnion](docs/sdks/requestbodies/README.md#requestbodywriteonlyunion)
 
-### [resource](docs/sdks/resource/README.md)
-
-* [createFile](docs/sdks/resource/README.md#createfile)
-* [createResource](docs/sdks/resource/README.md#createresource)
-* [deleteResource](docs/sdks/resource/README.md#deleteresource)
-* [getResource](docs/sdks/resource/README.md#getresource)
-* [updateResource](docs/sdks/resource/README.md#updateresource)
-
-### [responseBodies](docs/sdks/responsebodies/README.md)
+### [.responseBodies](docs/sdks/responsebodies/README.md)
 
 * [responseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
 * [responseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
@@ -358,15 +326,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 * [responseBodyXmlGet](docs/sdks/responsebodies/README.md#responsebodyxmlget)
 * [responseBodyZeroValueComplexTypePtrsPost](docs/sdks/responsebodies/README.md#responsebodyzerovaluecomplextypeptrspost)
 
-### [retries](docs/sdks/retries/README.md)
-
-* [retriesGet](docs/sdks/retries/README.md#retriesget)
-
-### [second](docs/sdks/second/README.md)
-
-* [get](docs/sdks/second/README.md#get)
-
-### [servers](docs/sdks/servers/README.md)
+### [.servers](docs/sdks/servers/README.md)
 
 * [selectGlobalServer](docs/sdks/servers/README.md#selectglobalserver)
 * [selectServerWithID](docs/sdks/servers/README.md#selectserverwithid) - Select a server by ID.
@@ -375,28 +335,68 @@ import { RFCDate } from "openapi/dist/sdk/types";
 * [serverWithTemplatesGlobal](docs/sdks/servers/README.md#serverwithtemplatesglobal)
 * [serversByIDWithTemplates](docs/sdks/servers/README.md#serversbyidwithtemplates)
 
-### [telemetry](docs/sdks/telemetry/README.md)
+### [.telemetry](docs/sdks/telemetry/README.md)
 
 * [telemetrySpeakeasyUserAgentGet](docs/sdks/telemetry/README.md#telemetryspeakeasyuseragentget)
 * [telemetryUserAgentGet](docs/sdks/telemetry/README.md#telemetryuseragentget)
 
-### [unions](docs/sdks/unions/README.md)
+### [.authNew](docs/sdks/authnew/README.md)
 
-* [flattenedTypedObjectPost](docs/sdks/unions/README.md#flattenedtypedobjectpost)
-* [mixedTypeOneOfPost](docs/sdks/unions/README.md#mixedtypeoneofpost)
-* [nullableOneOfRefInObjectPost](docs/sdks/unions/README.md#nullableoneofrefinobjectpost)
-* [nullableOneOfSchemaPost](docs/sdks/unions/README.md#nullableoneofschemapost)
-* [nullableOneOfTypeInObjectPost](docs/sdks/unions/README.md#nullableoneoftypeinobjectpost)
-* [nullableTypedObjectPost](docs/sdks/unions/README.md#nullabletypedobjectpost)
-* [primitiveTypeOneOfPost](docs/sdks/unions/README.md#primitivetypeoneofpost)
-* [stronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
-* [typedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
-* [typedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
-* [unionBigIntDecimal](docs/sdks/unions/README.md#unionbigintdecimal)
-* [unionDateNull](docs/sdks/unions/README.md#uniondatenull)
-* [unionDateTimeBigInt](docs/sdks/unions/README.md#uniondatetimebigint)
-* [unionDateTimeNull](docs/sdks/unions/README.md#uniondatetimenull)
-* [weaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
+* [apiKeyAuthGlobalNew](docs/sdks/authnew/README.md#apikeyauthglobalnew)
+* [authGlobal](docs/sdks/authnew/README.md#authglobal)
+* [basicAuthNew](docs/sdks/authnew/README.md#basicauthnew)
+* [multipleMixedOptionsAuth](docs/sdks/authnew/README.md#multiplemixedoptionsauth)
+* [multipleMixedSchemeAuth](docs/sdks/authnew/README.md#multiplemixedschemeauth)
+* [multipleOptionsWithMixedSchemesAuth](docs/sdks/authnew/README.md#multipleoptionswithmixedschemesauth)
+* [multipleOptionsWithSimpleSchemesAuth](docs/sdks/authnew/README.md#multipleoptionswithsimpleschemesauth)
+* [multipleSimpleOptionsAuth](docs/sdks/authnew/README.md#multiplesimpleoptionsauth)
+* [multipleSimpleSchemeAuth](docs/sdks/authnew/README.md#multiplesimpleschemeauth)
+* [oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
+* [openIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
+
+### [.auth](docs/sdks/auth/README.md)
+
+* [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
+* [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
+* [basicAuth](docs/sdks/auth/README.md#basicauth)
+* [bearerAuth](docs/sdks/auth/README.md#bearerauth)
+* [globalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
+* [oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
+* [oauth2Override](docs/sdks/auth/README.md#oauth2override)
+* [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
+
+### [.documentation](docs/sdks/documentation/README.md)
+
+* [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
+
+### [.resource](docs/sdks/resource/README.md)
+
+* [createFile](docs/sdks/resource/README.md#createfile)
+* [createResource](docs/sdks/resource/README.md#createresource)
+* [deleteResource](docs/sdks/resource/README.md#deleteresource)
+* [getResource](docs/sdks/resource/README.md#getresource)
+* [updateResource](docs/sdks/resource/README.md#updateresource)
+
+### [.first](docs/sdks/first/README.md)
+
+* [get](docs/sdks/first/README.md#get)
+
+### [.second](docs/sdks/second/README.md)
+
+* [get](docs/sdks/second/README.md#get)
+
+### [.pagination](docs/sdks/pagination/README.md)
+
+* [paginationCursorBody](docs/sdks/pagination/README.md#paginationcursorbody)
+* [paginationCursorParams](docs/sdks/pagination/README.md#paginationcursorparams)
+* [paginationLimitOffsetOffsetBody](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetbody)
+* [paginationLimitOffsetOffsetParams](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetparams)
+* [paginationLimitOffsetPageBody](docs/sdks/pagination/README.md#paginationlimitoffsetpagebody)
+* [paginationLimitOffsetPageParams](docs/sdks/pagination/README.md#paginationlimitoffsetpageparams)
+
+### [.retries](docs/sdks/retries/README.md)
+
+* [retriesGet](docs/sdks/retries/README.md#retriesget)
 <!-- End SDK Available Operations -->
 
 
@@ -552,7 +552,7 @@ const statusCode: number = 385913;
     } else if (e instanceof error) {
       console.error(e) // handle exception 
     
-    } else if (e instanceof statusGetXSpeakeasyErrors_501ApplicationJSON_object) {
+    } else if (e instanceof 501_application/json_object) {
       console.error(e) // handle exception 
     }
   }
@@ -590,25 +590,24 @@ Some of the server options above contain variables. If you want to set the value
 
  * `protocol: string`
 
- * `something: ServerSomething`
+ * `something: models.ServerSomething`
 
 For example:
-
 
 ```typescript
 import { SDK } from "openapi";
 
 (async () => {
     const sdk = new SDK({
+        serverIdx: 4,
         security: {
             apiKeyAuth: "Token YOUR_API_KEY",
         },
         globalPathParam: 100,
         globalQueryParam: "some example global query param",
-        serverIdx: 4,
     });
 
-    const res = await sdk.sdk.putAnythingIgnoredGeneration("string");
+    const res = await sdk.putAnythingIgnoredGeneration("string");
 
     if (res.statusCode == 200) {
         // handle response
@@ -622,21 +621,20 @@ import { SDK } from "openapi";
 
 The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
 
-
 ```typescript
 import { SDK } from "openapi";
 
 (async () => {
     const sdk = new SDK({
+        serverURL: "http://localhost:35123",
         security: {
             apiKeyAuth: "Token YOUR_API_KEY",
         },
         globalPathParam: 100,
         globalQueryParam: "some example global query param",
-        serverURL: "http://localhost:35123",
     });
 
-    const res = await sdk.sdk.putAnythingIgnoredGeneration("string");
+    const res = await sdk.putAnythingIgnoredGeneration("string");
 
     if (res.statusCode == 200) {
         // handle response
@@ -649,37 +647,25 @@ import { SDK } from "openapi";
 
 The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
 
-
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
-  const sdk = new SDK({
-    security: {
-      apiKeyAuth: "Token YOUR_API_KEY",
-    },
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
-  });
+(async () => {
+    const sdk = new SDK({
+        security: {
+            apiKeyAuth: "Token YOUR_API_KEY",
+        },
+        globalPathParam: 100,
+        globalQueryParam: "some example global query param",
+    });
 
-  const res = await sdk.authNew.apiKeyAuthGlobalNew({
-    basicAuth: {
-      password: "owsGgP4_AhRPMSJ",
-      username: "Devonte_Bins",
-    },
-    headerAuth: [
-      {
-        expectedValue: "string",
-        headerName: "string",
-      },
-    ],
-  }, serverURL: "http://localhost:35456");
+    const res = await sdk.errors.connectionErrorGet("http://somebrokenapi.broken");
 
-
-  if (res.statusCode == 200) {
-    // handle response
-  }
+    if (res.statusCode == 200) {
+        // handle response
+    }
 })();
+
 ```
 <!-- End Server Selection -->
 
@@ -705,6 +691,212 @@ const httpClient = axios.create({
 const sdk = new SDK({defaultClient: httpClient});
 ```
 <!-- End Custom HTTP Client -->
+
+
+
+<!-- Start Retries -->
+# Retries
+
+Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+
+
+## Example
+
+```typescript
+import { SDK } from "openapi";
+import { RetriesGetRequest } from "openapi/dist/sdk/models/operations";
+
+(async () => {
+    const sdk = new SDK({
+        security: {
+            apiKeyAuth: "Token YOUR_API_KEY",
+        },
+        globalPathParam: 100,
+        globalQueryParam: "some example global query param",
+    });
+    const requestId: string = "string";
+    const numRetries: number = 75342;
+
+    const res = await sdk.retries.retriesGet(requestId, numRetries, {
+        strategy: "backoff",
+        backoff: {
+            initialInterval: 1,
+            maxInterval: 50,
+            exponent: 1.1,
+            maxElapsedTime: 100,
+        },
+        retryConnectionErrors: false,
+    });
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+
+
+## Example
+
+```typescript
+import { SDK } from "openapi";
+import { RetriesGetRequest } from "openapi/dist/sdk/models/operations";
+
+(async() => {
+  const sdk = new SDK({
+    retry_config: {
+        strategy: "backoff",
+        backoff: {
+          initialInterval: 1,
+          maxInterval: 50,
+          exponent: 1.1,
+          maxElapsedTime: 100,
+        },
+        retryConnectionErrors: false,
+      }
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+const requestId: string = "string";
+const numRetries: number = 75342;
+
+  const res = await sdk.retries.retriesGet(requestId, numRetries);
+
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+
+
+<!-- End Retries -->
+
+
+
+<!-- Start Authentication -->
+
+# Authentication
+
+## Per-Client Security Schemes
+
+Your SDK supports the following security schemes globally:
+
+| Name            | Type            | Scheme          |
+| --------------- | --------------- | --------------- |
+| `apiKeyAuth`    | apiKey          | API key         |
+| `apiKeyAuthNew` | apiKey          | API key         |
+| `oauth2`        | oauth2          | OAuth2 token    |
+
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
+
+```typescript
+import { SDK } from "openapi";
+
+(async () => {
+    const sdk = new SDK({
+        security: {
+            apiKeyAuth: "Token YOUR_API_KEY",
+        },
+        globalPathParam: 100,
+        globalQueryParam: "some example global query param",
+    });
+
+    const res = await sdk.putAnythingIgnoredGeneration("string");
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+
+## Per-Operation Security Schemes
+
+Some operations in your SDK require the security scheme to be specified at the request level. For example:
+## Second
+Do this second
+```typescript
+import { SDK } from "openapi";
+import {
+    EnumParameter,
+    OptEnumParameter,
+    UsageExamplePostSecurity,
+} from "openapi/dist/sdk/models/operations";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
+import { RFCDate } from "openapi/dist/sdk/types";
+
+(async () => {
+    const sdk = new SDK({
+        globalPathParam: 100,
+        globalQueryParam: "some example global query param",
+    });
+    const operationSecurity: UsageExamplePostSecurity = {
+        password: "YOUR_PASSWORD",
+        username: "YOUR_USERNAME",
+    };
+
+    const res = await sdk.generation.usageExamplePost(
+        {
+            requestBody: {
+                fakerFormattedStrings: {},
+                fakerStrings: {},
+                simpleObject: {
+                    any: "any",
+                    bigint: 8821239038968084,
+                    bigintStr: "9223372036854775808",
+                    bool: true,
+                    boolOpt: true,
+                    date: new RFCDate("2020-01-01"),
+                    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+                    decimal: 3.141592653589793,
+                    decimalStr: "3.14159265358979344719667586",
+                    enum: Enum.One,
+                    float32: 1.1,
+                    int: 1,
+                    int32: 1,
+                    int32Enum: Int32Enum.FiftyFive,
+                    intEnum: IntEnum.Second,
+                    num: 1.1,
+                    str: "test",
+                    strOpt: "testOptional",
+                },
+            },
+            bigintParameter: 168827,
+            bigintStrParameter: "string",
+            boolParameter: false,
+            dateParameter: new RFCDate("2022-05-05"),
+            dateTimeDefaultParameter: new Date("2023-06-11T00:39:45.412Z"),
+            dateTimeParameter: new Date("2022-07-22T13:16:48.221Z"),
+            decimalParameter: 2679.33,
+            decimalStrParameter: "string",
+            doubleParameter: 5223.72,
+            enumParameter: EnumParameter.Value1,
+            falseyNumberParameter: 0,
+            float32Parameter: 6946.59,
+            floatParameter: 2286.22,
+            int64Parameter: 102975,
+            intParameter: 566999,
+            optEnumParameter: OptEnumParameter.Value3,
+            strParameter: "example 1",
+        },
+        operationSecurity
+    );
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+<!-- End Authentication -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

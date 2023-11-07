@@ -1,5 +1,5 @@
 # AuthNew
-(*authNew*)
+(*.authNew*)
 
 ## Overview
 

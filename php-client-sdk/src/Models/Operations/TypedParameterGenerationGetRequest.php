@@ -21,7 +21,7 @@ class TypedParameterGenerationGetRequest
     public ?float $decimal = null;
     
 	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=obj')]
-    public ?TypedParameterGenerationGetObj $obj = null;
+    public ?Obj $obj = null;
     
 	public function __construct()
 	{

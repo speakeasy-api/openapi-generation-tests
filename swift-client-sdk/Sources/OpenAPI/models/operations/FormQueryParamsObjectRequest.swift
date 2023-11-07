@@ -3,14 +3,14 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct FormQueryParamsObjectRequest: APIValue {
         /// A simple object that uses all our supported primitive types and enums and has optional properties.
         public let objParamExploded: Shared.SimpleObject
         /// A simple object that uses all our supported primitive types and enums and has optional properties.
         public let objParam: Shared.SimpleObject?
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         /// - Parameter objParamExploded: A simple object that uses all our supported primitive types and enums and has optional properties.
         /// - Parameter objParam: A simple object that uses all our supported primitive types and enums and has optional properties.

@@ -1,5 +1,5 @@
 # Resource
-(*resource*)
+(*.resource*)
 
 ### Available Operations
 
@@ -26,9 +26,9 @@ s = sdk.SDK(
 )
 
 req = operations.CreateFileRequestBody(
-    file=operations.CreateFileRequestBodyFile(
-        content='`\'$Z`(L/RH'.encode(),
-        file='string',
+    file=operations.CreateFileFile(
+        content='0xf10df1a3b9'.encode(),
+        file_name='rap_national.mp4v',
     ),
 )
 
@@ -56,8 +56,8 @@ if res.file_resource is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -76,7 +76,7 @@ req = shared.ExampleResource(
         'string',
     ],
     chocolates=[
-        shared.ExampleResourceChocolates(
+        shared.Chocolates(
             description='Re-engineered asynchronous array',
         ),
     ],

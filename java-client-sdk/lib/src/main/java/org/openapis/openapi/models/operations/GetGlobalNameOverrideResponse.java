@@ -46,10 +46,10 @@ public class GetGlobalNameOverrideResponse {
      * A successful response that contains the simpleObject sent in the request body
      */
     
-    public GetGlobalNameOverride200ApplicationJSON getGlobalNameOverride200ApplicationJSONObject;
+    public GetGlobalNameOverrideResponseBody object;
 
-    public GetGlobalNameOverrideResponse withGetGlobalNameOverride200ApplicationJSONObject(GetGlobalNameOverride200ApplicationJSON getGlobalNameOverride200ApplicationJSONObject) {
-        this.getGlobalNameOverride200ApplicationJSONObject = getGlobalNameOverride200ApplicationJSONObject;
+    public GetGlobalNameOverrideResponse withObject(GetGlobalNameOverrideResponseBody object) {
+        this.object = object;
         return this;
     }
     

@@ -1,5 +1,5 @@
 # Unions
-(*unions*)
+(*.unions*)
 
 ## Overview
 
@@ -68,8 +68,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -315,8 +315,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -343,8 +343,8 @@ req = shared.DeepObjectWithType(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int32_enum=shared.Int32Enum.FIFTY_FIVE,
+        int_enum=shared.IntEnum.SECOND,
         num=1.1,
         str_='test',
         str_opt='testOptional',
@@ -364,8 +364,8 @@ req = shared.DeepObjectWithType(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -384,8 +384,8 @@ req = shared.DeepObjectWithType(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -408,8 +408,8 @@ req = shared.DeepObjectWithType(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -428,8 +428,8 @@ req = shared.DeepObjectWithType(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -450,8 +450,8 @@ req = shared.DeepObjectWithType(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int32_enum=shared.Int32Enum.FIFTY_FIVE,
+        int_enum=shared.IntEnum.SECOND,
         num=1.1,
         str_='test',
         str_opt='testOptional',
@@ -711,8 +711,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -738,8 +738,8 @@ req = shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',

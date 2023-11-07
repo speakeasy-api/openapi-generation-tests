@@ -5,7 +5,7 @@ package operations
 import (
 	"errors"
 	"net/http"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 )
 
 type DeepObjectQueryParamsMapRequest struct {
@@ -27,58 +27,58 @@ func (o *DeepObjectQueryParamsMapRequest) GetMapArrParam() map[string][]string {
 	return o.MapArrParam
 }
 
-type DeepObjectQueryParamsMapResArgsType string
+type DeepObjectQueryParamsMapArgsType string
 
 const (
-	DeepObjectQueryParamsMapResArgsTypeStr        DeepObjectQueryParamsMapResArgsType = "str"
-	DeepObjectQueryParamsMapResArgsTypeArrayOfstr DeepObjectQueryParamsMapResArgsType = "arrayOfstr"
+	DeepObjectQueryParamsMapArgsTypeStr        DeepObjectQueryParamsMapArgsType = "str"
+	DeepObjectQueryParamsMapArgsTypeArrayOfstr DeepObjectQueryParamsMapArgsType = "arrayOfstr"
 )
 
-type DeepObjectQueryParamsMapResArgs struct {
+type DeepObjectQueryParamsMapArgs struct {
 	Str        *string
 	ArrayOfstr []string
 
-	Type DeepObjectQueryParamsMapResArgsType
+	Type DeepObjectQueryParamsMapArgsType
 }
 
-func CreateDeepObjectQueryParamsMapResArgsStr(str string) DeepObjectQueryParamsMapResArgs {
-	typ := DeepObjectQueryParamsMapResArgsTypeStr
+func CreateDeepObjectQueryParamsMapArgsStr(str string) DeepObjectQueryParamsMapArgs {
+	typ := DeepObjectQueryParamsMapArgsTypeStr
 
-	return DeepObjectQueryParamsMapResArgs{
+	return DeepObjectQueryParamsMapArgs{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateDeepObjectQueryParamsMapResArgsArrayOfstr(arrayOfstr []string) DeepObjectQueryParamsMapResArgs {
-	typ := DeepObjectQueryParamsMapResArgsTypeArrayOfstr
+func CreateDeepObjectQueryParamsMapArgsArrayOfstr(arrayOfstr []string) DeepObjectQueryParamsMapArgs {
+	typ := DeepObjectQueryParamsMapArgsTypeArrayOfstr
 
-	return DeepObjectQueryParamsMapResArgs{
+	return DeepObjectQueryParamsMapArgs{
 		ArrayOfstr: arrayOfstr,
 		Type:       typ,
 	}
 }
 
-func (u *DeepObjectQueryParamsMapResArgs) UnmarshalJSON(data []byte) error {
+func (u *DeepObjectQueryParamsMapArgs) UnmarshalJSON(data []byte) error {
 
 	str := ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = DeepObjectQueryParamsMapResArgsTypeStr
+		u.Type = DeepObjectQueryParamsMapArgsTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
-		u.Type = DeepObjectQueryParamsMapResArgsTypeArrayOfstr
+		u.Type = DeepObjectQueryParamsMapArgsTypeArrayOfstr
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u DeepObjectQueryParamsMapResArgs) MarshalJSON() ([]byte, error) {
+func (u DeepObjectQueryParamsMapArgs) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -92,13 +92,13 @@ func (u DeepObjectQueryParamsMapResArgs) MarshalJSON() ([]byte, error) {
 
 // DeepObjectQueryParamsMapRes - OK
 type DeepObjectQueryParamsMapRes struct {
-	Args map[string]DeepObjectQueryParamsMapResArgs `json:"args"`
-	URL  string                                     `json:"url"`
+	Args map[string]DeepObjectQueryParamsMapArgs `json:"args"`
+	URL  string                                  `json:"url"`
 }
 
-func (o *DeepObjectQueryParamsMapRes) GetArgs() map[string]DeepObjectQueryParamsMapResArgs {
+func (o *DeepObjectQueryParamsMapRes) GetArgs() map[string]DeepObjectQueryParamsMapArgs {
 	if o == nil {
-		return map[string]DeepObjectQueryParamsMapResArgs{}
+		return map[string]DeepObjectQueryParamsMapArgs{}
 	}
 	return o.Args
 }

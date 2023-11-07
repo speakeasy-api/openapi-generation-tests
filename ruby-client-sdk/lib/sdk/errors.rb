@@ -117,8 +117,8 @@ module OpenApiSDK
         end
       elsif r.status == 501
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, Operations::StatusGetXSpeakeasyErrors501ApplicationJSON)
-          res.status_get_x_speakeasy_errors_501_application_json_object = out
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::StatusGetXSpeakeasyErrorsResponseBody)
+          res.object = out
         end
       end
       res

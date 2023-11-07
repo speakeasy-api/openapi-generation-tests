@@ -13,9 +13,9 @@ public class NameOverrideGetRequest {
      * An enum type
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=enumNameOverride")
-    public NameOverrideGetEnumNameOverride testEnumQueryParam;
+    public EnumNameOverride testEnumQueryParam;
 
-    public NameOverrideGetRequest withTestEnumQueryParam(NameOverrideGetEnumNameOverride testEnumQueryParam) {
+    public NameOverrideGetRequest withTestEnumQueryParam(EnumNameOverride testEnumQueryParam) {
         this.testEnumQueryParam = testEnumQueryParam;
         return this;
     }
@@ -28,7 +28,7 @@ public class NameOverrideGetRequest {
         return this;
     }
     
-    public NameOverrideGetRequest(@JsonProperty("testEnumQueryParam") NameOverrideGetEnumNameOverride testEnumQueryParam, @JsonProperty("testQueryParam") String testQueryParam) {
+    public NameOverrideGetRequest(@JsonProperty("testEnumQueryParam") EnumNameOverride testEnumQueryParam, @JsonProperty("testQueryParam") String testQueryParam) {
         this.testEnumQueryParam = testEnumQueryParam;
         this.testQueryParam = testQueryParam;
   }

@@ -20,7 +20,7 @@ export class HeaderParamsPrimitiveRequest extends SpeakeasyBase {
     xHeaderString: string;
 }
 
-export class HeaderParamsPrimitiveResHeaders extends SpeakeasyBase {
+export class HeaderParamsPrimitiveHeaders extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "X-Header-Boolean" })
     xHeaderBoolean: string;
@@ -44,8 +44,8 @@ export class HeaderParamsPrimitiveResHeaders extends SpeakeasyBase {
 export class HeaderParamsPrimitiveRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "headers" })
-    @Type(() => HeaderParamsPrimitiveResHeaders)
-    headers: HeaderParamsPrimitiveResHeaders;
+    @Type(() => HeaderParamsPrimitiveHeaders)
+    headers: HeaderParamsPrimitiveHeaders;
 }
 
 export class HeaderParamsPrimitiveResponse extends SpeakeasyBase {

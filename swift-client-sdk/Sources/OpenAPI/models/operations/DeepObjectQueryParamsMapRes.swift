@@ -5,13 +5,13 @@ import Foundation
 extension Operations {
     /// OK
     public struct DeepObjectQueryParamsMapRes {
-        public let args: [String: Operations.DeepObjectQueryParamsMapResArgs]
+        public let args: [String: Operations.DeepObjectQueryParamsMapArgs]
         public let url: String
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(args: [String: Operations.DeepObjectQueryParamsMapResArgs], url: String) {
+        public init(args: [String: Operations.DeepObjectQueryParamsMapArgs], url: String) {
             self.args = args
             self.url = url
         }

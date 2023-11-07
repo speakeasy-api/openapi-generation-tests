@@ -5,14 +5,14 @@ import Foundation
 extension Operations {
     /// OK
     public struct MixedParametersCamelCaseRes {
-        public let args: Operations.MixedParametersCamelCaseResArgs
-        public let headers: Operations.MixedParametersCamelCaseResHeaders
+        public let args: Operations.MixedParametersCamelCaseArgs
+        public let headers: Operations.MixedParametersCamelCaseHeaders
         public let url: String
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(args: Operations.MixedParametersCamelCaseResArgs, headers: Operations.MixedParametersCamelCaseResHeaders, url: String) {
+        public init(args: Operations.MixedParametersCamelCaseArgs, headers: Operations.MixedParametersCamelCaseHeaders, url: String) {
             self.args = args
             self.headers = headers
             self.url = url

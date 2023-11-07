@@ -5,12 +5,12 @@ import Foundation
 extension Shared {
     /// A model object
     public struct HttpBinSimpleJsonObject {
-        public let slideshow: Shared.HttpBinSimpleJsonObjectSlideshow
+        public let slideshow: Shared.Slideshow
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(slideshow: Shared.HttpBinSimpleJsonObjectSlideshow) {
+        public init(slideshow: Shared.Slideshow) {
             self.slideshow = slideshow
         }
     }

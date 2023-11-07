@@ -2,6 +2,7 @@
 
 from .error import *
 from .errortype import *
+from .sdkerror import *
 from .statusgetxspeakeasyerrors import *
-from .sdkerror import SDKError
-__all__ = ["Error","ErrorType","StatusGetXSpeakeasyErrors501ApplicationJSON","SDKError"]
+
+__all__ = ["Error","ErrorType","SDKError","StatusGetXSpeakeasyErrorsResponseBody"]

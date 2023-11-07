@@ -18,8 +18,8 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 class RequestBodyPutBytesWithParamsRes
 {
 	#[\JMS\Serializer\Annotation\SerializedName('args')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPutBytesWithParamsResArgs')]
-    public RequestBodyPutBytesWithParamsResArgs $args;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPutBytesWithParamsArgs')]
+    public RequestBodyPutBytesWithParamsArgs $args;
     
 	#[\JMS\Serializer\Annotation\SerializedName('data')]
     #[\JMS\Serializer\Annotation\Type('string')]
@@ -27,7 +27,7 @@ class RequestBodyPutBytesWithParamsRes
     
 	public function __construct()
 	{
-		$this->args = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutBytesWithParamsResArgs();
+		$this->args = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutBytesWithParamsArgs();
 		$this->data = "";
 	}
 }

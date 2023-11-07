@@ -25,19 +25,19 @@ func (o *HeaderParamsMapRequest) GetXHeaderMapExplode() map[string]string {
 	return o.XHeaderMapExplode
 }
 
-type HeaderParamsMapResHeaders struct {
+type HeaderParamsMapHeaders struct {
 	XHeaderMap        string `json:"X-Header-Map"`
 	XHeaderMapExplode string `json:"X-Header-Map-Explode"`
 }
 
-func (o *HeaderParamsMapResHeaders) GetXHeaderMap() string {
+func (o *HeaderParamsMapHeaders) GetXHeaderMap() string {
 	if o == nil {
 		return ""
 	}
 	return o.XHeaderMap
 }
 
-func (o *HeaderParamsMapResHeaders) GetXHeaderMapExplode() string {
+func (o *HeaderParamsMapHeaders) GetXHeaderMapExplode() string {
 	if o == nil {
 		return ""
 	}
@@ -46,12 +46,12 @@ func (o *HeaderParamsMapResHeaders) GetXHeaderMapExplode() string {
 
 // HeaderParamsMapRes - OK
 type HeaderParamsMapRes struct {
-	Headers HeaderParamsMapResHeaders `json:"headers"`
+	Headers HeaderParamsMapHeaders `json:"headers"`
 }
 
-func (o *HeaderParamsMapRes) GetHeaders() HeaderParamsMapResHeaders {
+func (o *HeaderParamsMapRes) GetHeaders() HeaderParamsMapHeaders {
 	if o == nil {
-		return HeaderParamsMapResHeaders{}
+		return HeaderParamsMapHeaders{}
 	}
 	return o.Headers
 }

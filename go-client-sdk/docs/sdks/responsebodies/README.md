@@ -1,5 +1,5 @@
 # ResponseBodies
-(*ResponseBodies*)
+(*.ResponseBodies*)
 
 ## Overview
 
@@ -29,8 +29,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
 )
 
@@ -54,7 +54,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -83,9 +83,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -108,7 +108,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.ResponseBodyAdditionalPropertiesDatePost200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -137,10 +137,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -172,8 +172,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -185,7 +185,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -214,8 +214,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -238,7 +238,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.ResponseBodyAdditionalPropertiesPost200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -267,8 +267,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -314,8 +314,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -368,8 +368,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -416,8 +416,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -464,8 +464,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -511,8 +511,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -558,9 +558,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -581,7 +581,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }

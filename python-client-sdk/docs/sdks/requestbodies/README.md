@@ -1,5 +1,5 @@
 # RequestBodies
-(*request_bodies*)
+(*.request_bodies*)
 
 ## Overview
 
@@ -145,14 +145,14 @@ s = sdk.SDK(
 )
 
 req = operations.NullableRequiredEmptyObjectPostRequestBody(
-    nullable_optional_obj=operations.NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj(),
-    nullable_required_obj=operations.NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj(),
-    required_obj=operations.NullableRequiredEmptyObjectPostRequestBodyRequiredObj(),
+    nullable_optional_obj=operations.NullableOptionalObj(),
+    nullable_required_obj=operations.NullableRequiredObj(),
+    required_obj=operations.RequiredObj(),
 )
 
 res = s.request_bodies.nullable_required_empty_object_post(req)
 
-if res.nullable_required_empty_object_post_200_application_json_string is not None:
+if res.res is not None:
     # handle response
     pass
 ```
@@ -189,13 +189,13 @@ req = operations.NullableRequiredPropertyPostRequestBody(
     nullable_required_array=[
         2355.17,
     ],
-    nullable_required_enum=operations.NullableRequiredPropertyPostRequestBodyNullableRequiredEnum.SECOND,
+    nullable_required_enum=operations.NullableRequiredEnum.SECOND,
     nullable_required_int=50266,
 )
 
 res = s.request_bodies.nullable_required_property_post(req)
 
-if res.nullable_required_property_post_200_application_json_string is not None:
+if res.res is not None:
     # handle response
     pass
 ```
@@ -239,7 +239,7 @@ req = operations.NullableRequiredSharedObjectPostRequestBody(
 
 res = s.request_bodies.nullable_required_shared_object_post(req)
 
-if res.nullable_required_shared_object_post_200_application_json_string is not None:
+if res.res is not None:
     # handle response
     pass
 ```
@@ -261,8 +261,8 @@ if res.nullable_required_shared_object_post_200_application_json_string is not N
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -289,8 +289,8 @@ req = [
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int32_enum=shared.Int32Enum.FIFTY_FIVE,
+        int_enum=shared.IntEnum.SECOND,
         num=1.1,
         str_='test',
         str_opt='testOptional',
@@ -299,7 +299,7 @@ req = [
 
 res = s.request_bodies.request_body_post_application_json_array(req)
 
-if res.simple_objects is not None:
+if res.res is not None:
     # handle response
     pass
 ```
@@ -322,8 +322,8 @@ if res.simple_objects is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -344,9 +344,9 @@ req = [
         date_val=dateutil.parser.parse('2020-01-01').date(),
         enum_val=shared.EnumT.ONE,
         float32_val=2.2222222,
-        int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
+        int32_enum_val=shared.Int32EnumVal.SIXTY_NINE,
         int32_val=1,
-        int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
+        int_enum_val=shared.IntEnumVal.THIRD,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -358,7 +358,7 @@ req = [
 
 res = s.request_bodies.request_body_post_application_json_array_camel_case(req)
 
-if res.simple_object_camel_cases is not None:
+if res.res is not None:
     # handle response
     pass
 ```
@@ -381,8 +381,8 @@ if res.simple_object_camel_cases is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -409,8 +409,8 @@ req = [
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int32_enum=shared.Int32Enum.FIFTY_FIVE,
+        int_enum=shared.IntEnum.SECOND,
         num=1.1,
         str_='test',
         str_opt='testOptional',
@@ -441,8 +441,8 @@ if res.arr_obj_value is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -463,9 +463,9 @@ req = [
         date_val=dateutil.parser.parse('2020-01-01').date(),
         enum_val=shared.EnumT.ONE,
         float32_val=2.2222222,
-        int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
+        int32_enum_val=shared.Int32EnumVal.SIXTY_NINE,
         int32_val=1,
-        int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
+        int_enum_val=shared.IntEnumVal.THIRD,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -499,8 +499,8 @@ if res.arr_obj_value_camel_case is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -528,8 +528,8 @@ req = [
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -539,7 +539,7 @@ req = [
 
 res = s.request_bodies.request_body_post_application_json_array_of_array(req)
 
-if res.arrs is not None:
+if res.res is not None:
     # handle response
     pass
 ```
@@ -562,8 +562,8 @@ if res.arrs is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -585,9 +585,9 @@ req = [
             date_val=dateutil.parser.parse('2020-01-01').date(),
             enum_val=shared.EnumT.ONE,
             float32_val=2.2222222,
-            int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
+            int32_enum_val=shared.Int32EnumVal.SIXTY_NINE,
             int32_val=1,
-            int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
+            int_enum_val=shared.IntEnumVal.THIRD,
             int_opt_null_val=999999,
             int_val=999999,
             num_opt_null_val=1.1,
@@ -600,7 +600,7 @@ req = [
 
 res = s.request_bodies.request_body_post_application_json_array_of_array_camel_case(req)
 
-if res.arrs is not None:
+if res.res is not None:
     # handle response
     pass
 ```
@@ -642,7 +642,7 @@ req = [
 
 res = s.request_bodies.request_body_post_application_json_array_of_array_of_primitive(req)
 
-if res.arrs is not None:
+if res.res is not None:
     # handle response
     pass
 ```
@@ -665,8 +665,8 @@ if res.arrs is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -694,8 +694,8 @@ req = [
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -705,7 +705,7 @@ req = [
 
 res = s.request_bodies.request_body_post_application_json_array_of_map(req)
 
-if res.maps is not None:
+if res.res is not None:
     # handle response
     pass
 ```
@@ -728,8 +728,8 @@ if res.maps is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -751,9 +751,9 @@ req = [
             date_val=dateutil.parser.parse('2020-01-01').date(),
             enum_val=shared.EnumT.ONE,
             float32_val=2.2222222,
-            int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
+            int32_enum_val=shared.Int32EnumVal.SIXTY_NINE,
             int32_val=1,
-            int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
+            int_enum_val=shared.IntEnumVal.THIRD,
             int_opt_null_val=999999,
             int_val=999999,
             num_opt_null_val=1.1,
@@ -766,7 +766,7 @@ req = [
 
 res = s.request_bodies.request_body_post_application_json_array_of_map_camel_case(req)
 
-if res.maps is not None:
+if res.res is not None:
     # handle response
     pass
 ```
@@ -806,7 +806,7 @@ req = [
 
 res = s.request_bodies.request_body_post_application_json_array_of_primitive(req)
 
-if res.strings is not None:
+if res.res is not None:
     # handle response
     pass
 ```
@@ -829,8 +829,8 @@ if res.strings is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -857,8 +857,8 @@ req = shared.DeepObject(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int32_enum=shared.Int32Enum.FIFTY_FIVE,
+        int_enum=shared.IntEnum.SECOND,
         num=1.1,
         str_='test',
         str_opt='testOptional',
@@ -878,8 +878,8 @@ req = shared.DeepObject(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -898,8 +898,8 @@ req = shared.DeepObject(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -922,8 +922,8 @@ req = shared.DeepObject(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -942,8 +942,8 @@ req = shared.DeepObject(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -964,8 +964,8 @@ req = shared.DeepObject(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int32_enum=shared.Int32Enum.FIFTY_FIVE,
+        int_enum=shared.IntEnum.SECOND,
         num=1.1,
         str_='test',
         str_opt='testOptional',
@@ -997,8 +997,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -1019,9 +1019,9 @@ req = shared.DeepObjectCamelCase(
         date_val=dateutil.parser.parse('2020-01-01').date(),
         enum_val=shared.EnumT.ONE,
         float32_val=2.2222222,
-        int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
+        int32_enum_val=shared.Int32EnumVal.SIXTY_NINE,
         int32_val=1,
-        int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
+        int_enum_val=shared.IntEnumVal.THIRD,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -1038,9 +1038,9 @@ req = shared.DeepObjectCamelCase(
             date_val=dateutil.parser.parse('2020-01-01').date(),
             enum_val=shared.EnumT.ONE,
             float32_val=2.2222222,
-            int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
+            int32_enum_val=shared.Int32EnumVal.SIXTY_NINE,
             int32_val=1,
-            int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
+            int_enum_val=shared.IntEnumVal.THIRD,
             int_opt_null_val=999999,
             int_val=999999,
             num_opt_null_val=1.1,
@@ -1060,9 +1060,9 @@ req = shared.DeepObjectCamelCase(
             date_val=dateutil.parser.parse('2020-01-01').date(),
             enum_val=shared.EnumT.ONE,
             float32_val=2.2222222,
-            int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
+            int32_enum_val=shared.Int32EnumVal.SIXTY_NINE,
             int32_val=1,
-            int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
+            int_enum_val=shared.IntEnumVal.THIRD,
             int_opt_null_val=999999,
             int_val=999999,
             num_opt_null_val=1.1,
@@ -1080,9 +1080,9 @@ req = shared.DeepObjectCamelCase(
         date_val=dateutil.parser.parse('2020-01-01').date(),
         enum_val=shared.EnumT.ONE,
         float32_val=2.2222222,
-        int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
+        int32_enum_val=shared.Int32EnumVal.SIXTY_NINE,
         int32_val=1,
-        int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
+        int_enum_val=shared.IntEnumVal.THIRD,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -1117,8 +1117,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -1145,8 +1145,8 @@ req = {
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int32_enum=shared.Int32Enum.FIFTY_FIVE,
+        int_enum=shared.IntEnum.SECOND,
         num=1.1,
         str_='test',
         str_opt='testOptional',
@@ -1178,8 +1178,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -1200,9 +1200,9 @@ req = {
         date_val=dateutil.parser.parse('2020-01-01').date(),
         enum_val=shared.EnumT.ONE,
         float32_val=2.2222222,
-        int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
+        int32_enum_val=shared.Int32EnumVal.SIXTY_NINE,
         int32_val=1,
-        int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
+        int_enum_val=shared.IntEnumVal.THIRD,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -1237,8 +1237,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -1265,8 +1265,8 @@ req = {
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int32_enum=shared.Int32Enum.FIFTY_FIVE,
+        int_enum=shared.IntEnum.SECOND,
         num=1.1,
         str_='test',
         str_opt='testOptional',
@@ -1297,8 +1297,8 @@ if res.map_obj_value is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -1319,9 +1319,9 @@ req = {
         date_val=dateutil.parser.parse('2020-01-01').date(),
         enum_val=shared.EnumT.ONE,
         float32_val=2.2222222,
-        int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
+        int32_enum_val=shared.Int32EnumVal.SIXTY_NINE,
         int32_val=1,
-        int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
+        int_enum_val=shared.IntEnumVal.THIRD,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -1355,8 +1355,8 @@ if res.map_obj_value_camel_case is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -1384,8 +1384,8 @@ req = {
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -1418,8 +1418,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -1441,9 +1441,9 @@ req = {
             date_val=dateutil.parser.parse('2020-01-01').date(),
             enum_val=shared.EnumT.ONE,
             float32_val=2.2222222,
-            int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
+            int32_enum_val=shared.Int32EnumVal.SIXTY_NINE,
             int32_val=1,
-            int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
+            int_enum_val=shared.IntEnumVal.THIRD,
             int_opt_null_val=999999,
             int_val=999999,
             num_opt_null_val=1.1,
@@ -1479,8 +1479,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -1508,8 +1508,8 @@ req = {
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -1542,8 +1542,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -1565,9 +1565,9 @@ req = {
             date_val=dateutil.parser.parse('2020-01-01').date(),
             enum_val=shared.EnumT.ONE,
             float32_val=2.2222222,
-            int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
+            int32_enum_val=shared.Int32EnumVal.SIXTY_NINE,
             int32_val=1,
-            int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
+            int_enum_val=shared.IntEnumVal.THIRD,
             int_opt_null_val=999999,
             int_val=999999,
             num_opt_null_val=1.1,
@@ -1685,8 +1685,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -1712,8 +1712,8 @@ req = shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
@@ -1743,8 +1743,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -1770,8 +1770,8 @@ req = shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
@@ -1801,8 +1801,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -1822,9 +1822,9 @@ req = shared.SimpleObjectCamelCase(
     date_val=dateutil.parser.parse('2020-01-01').date(),
     enum_val=shared.EnumT.ONE,
     float32_val=2.2222222,
-    int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
+    int32_enum_val=shared.Int32EnumVal.SIXTY_NINE,
     int32_val=1,
-    int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
+    int_enum_val=shared.IntEnumVal.THIRD,
     int_opt_null_val=999999,
     int_val=999999,
     num_opt_null_val=1.1,
@@ -1888,7 +1888,7 @@ req = operations.RequestBodyPostComplexNumberTypesRequest(
 
 res = s.request_bodies.request_body_post_complex_number_types(req)
 
-if res.request_body_post_complex_number_types_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -1910,8 +1910,8 @@ if res.request_body_post_complex_number_types_200_application_json_object is not
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -1931,8 +1931,8 @@ req = shared.DefaultsAndConsts(
     const_date_time=dateutil.parser.isoparse('2023-10-01T02:16:56.173Z'),
     const_decimal=Decimal('1120.58'),
     const_decimal_str=Decimal('8445.08'),
-    const_enum_int=shared.DefaultsAndConstsConstEnumInt.ONE,
-    const_enum_str=shared.DefaultsAndConstsConstEnumStr.TWO,
+    const_enum_int=shared.ConstEnumInt.ONE,
+    const_enum_str=shared.ConstEnumStr.TWO,
     const_int=450379,
     const_num=7742.71,
     const_str='string',
@@ -1942,7 +1942,7 @@ req = shared.DefaultsAndConsts(
 
 res = s.request_bodies.request_body_post_defaults_and_consts(req)
 
-if res.request_body_post_defaults_and_consts_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -1976,13 +1976,13 @@ s = sdk.SDK(
 )
 
 req = operations.RequestBodyPostEmptyObjectRequestBody(
-    empty=operations.RequestBodyPostEmptyObjectRequestBodyEmpty(),
-    empty_with_empty_properties=operations.RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties(),
+    empty=operations.Empty(),
+    empty_with_empty_properties=operations.EmptyWithEmptyProperties(),
 )
 
 res = s.request_bodies.request_body_post_empty_object(req)
 
-if res.request_body_post_empty_object_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2004,8 +2004,8 @@ if res.request_body_post_empty_object_200_application_json_object is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -2032,8 +2032,8 @@ req = shared.DeepObject(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int32_enum=shared.Int32Enum.FIFTY_FIVE,
+        int_enum=shared.IntEnum.SECOND,
         num=1.1,
         str_='test',
         str_opt='testOptional',
@@ -2053,8 +2053,8 @@ req = shared.DeepObject(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -2073,8 +2073,8 @@ req = shared.DeepObject(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -2083,26 +2083,6 @@ req = shared.DeepObject(
     bool=True,
     int=1,
     map={
-        "key": shared.SimpleObject(
-            any='any',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
-            enum=shared.EnumT.ONE,
-            float32=1.1,
-            int=1,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
-            num=1.1,
-            str_='test',
-            str_opt='testOptional',
-        ),
         "key2": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
@@ -2117,8 +2097,28 @@ req = shared.DeepObject(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            str_opt='testOptional',
+        ),
+        "key": shared.SimpleObject(
+            any='any',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -2139,8 +2139,8 @@ req = shared.DeepObject(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int32_enum=shared.Int32Enum.FIFTY_FIVE,
+        int_enum=shared.IntEnum.SECOND,
         num=1.1,
         str_='test',
         str_opt='testOptional',
@@ -2211,8 +2211,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -2238,8 +2238,8 @@ req = shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
@@ -2286,7 +2286,7 @@ req = [
 
 res = s.request_bodies.request_body_post_json_data_types_array_big_int(req)
 
-if res.request_body_post_json_data_types_array_big_int_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2325,7 +2325,7 @@ req = [
 
 res = s.request_bodies.request_body_post_json_data_types_array_date(req)
 
-if res.request_body_post_json_data_types_array_date_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2364,7 +2364,7 @@ req = [
 
 res = s.request_bodies.request_body_post_json_data_types_array_decimal_str(req)
 
-if res.request_body_post_json_data_types_array_decimal_str_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2401,7 +2401,7 @@ req = 687617
 
 res = s.request_bodies.request_body_post_json_data_types_big_int(req)
 
-if res.request_body_post_json_data_types_big_int_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2438,7 +2438,7 @@ req = 649473
 
 res = s.request_bodies.request_body_post_json_data_types_big_int_str(req)
 
-if res.request_body_post_json_data_types_big_int_str_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2475,7 +2475,7 @@ req = False
 
 res = s.request_bodies.request_body_post_json_data_types_boolean(req)
 
-if res.request_body_post_json_data_types_boolean_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2512,7 +2512,7 @@ req = dateutil.parser.parse('2022-03-04').date()
 
 res = s.request_bodies.request_body_post_json_data_types_date(req)
 
-if res.request_body_post_json_data_types_date_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2549,7 +2549,7 @@ req = dateutil.parser.isoparse('2023-03-04T01:33:15.031Z')
 
 res = s.request_bodies.request_body_post_json_data_types_date_time(req)
 
-if res.request_body_post_json_data_types_date_time_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2586,7 +2586,7 @@ req = Decimal('1107.81')
 
 res = s.request_bodies.request_body_post_json_data_types_decimal(req)
 
-if res.request_body_post_json_data_types_decimal_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2623,7 +2623,7 @@ req = Decimal('5432.92')
 
 res = s.request_bodies.request_body_post_json_data_types_decimal_str(req)
 
-if res.request_body_post_json_data_types_decimal_str_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2660,7 +2660,7 @@ req = 4464.34
 
 res = s.request_bodies.request_body_post_json_data_types_float32(req)
 
-if res.request_body_post_json_data_types_float32_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2697,7 +2697,7 @@ req = 22155
 
 res = s.request_bodies.request_body_post_json_data_types_int32(req)
 
-if res.request_body_post_json_data_types_int32_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2734,7 +2734,7 @@ req = 273673
 
 res = s.request_bodies.request_body_post_json_data_types_integer(req)
 
-if res.request_body_post_json_data_types_integer_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2773,7 +2773,7 @@ req = {
 
 res = s.request_bodies.request_body_post_json_data_types_map_big_int_str(req)
 
-if res.request_body_post_json_data_types_map_big_int_str_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2812,7 +2812,7 @@ req = {
 
 res = s.request_bodies.request_body_post_json_data_types_map_date_time(req)
 
-if res.request_body_post_json_data_types_map_date_time_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2851,7 +2851,7 @@ req = {
 
 res = s.request_bodies.request_body_post_json_data_types_map_decimal(req)
 
-if res.request_body_post_json_data_types_map_decimal_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2888,7 +2888,7 @@ req = 2193.66
 
 res = s.request_bodies.request_body_post_json_data_types_number(req)
 
-if res.request_body_post_json_data_types_number_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2925,7 +2925,7 @@ req = 'string'
 
 res = s.request_bodies.request_body_post_json_data_types_string(req)
 
-if res.request_body_post_json_data_types_string_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -2947,8 +2947,8 @@ if res.request_body_post_json_data_types_string_200_application_json_object is n
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -2974,8 +2974,8 @@ req = shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
@@ -3016,7 +3016,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON(
+req = operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody(
     bool=False,
     num=3558.41,
     str_='string',
@@ -3031,9 +3031,9 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                                                                                                                                                  | Type                                                                                                                                                                       | Required                                                                                                                                                                   | Description                                                                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                                  | [operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON](../../models/operations/requestbodypostmultiplecontenttypesinlinefilteredapplicationjson.md) | :heavy_check_mark:                                                                                                                                                         | The request object to use for the request.                                                                                                                                 |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                          | [operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody](../../models/operations/requestbodypostmultiplecontenttypesinlinefilteredrequestbody.md) | :heavy_check_mark:                                                                                                                                                 | The request object to use for the request.                                                                                                                         |
 
 
 ### Response
@@ -3058,7 +3058,7 @@ s = sdk.SDK(
 )
 
 
-res = s.request_bodies.request_body_post_multiple_content_types_split_param_form(request_body=operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded(
+res = s.request_bodies.request_body_post_multiple_content_types_split_param_form(request_body=operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody(
     bool3=False,
     num3=8693.24,
     str3='string',
@@ -3071,10 +3071,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                      | Type                                                                                                                                                                                           | Required                                                                                                                                                                                       | Description                                                                                                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request_body`                                                                                                                                                                                 | [operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded](../../models/operations/requestbodypostmultiplecontenttypessplitparamapplicationxwwwformurlencoded.md) | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
-| `param_str`                                                                                                                                                                                    | *str*                                                                                                                                                                                          | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request_body`                                                                                                                                                     | [operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitparamformrequestbody.md) | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
+| `param_str`                                                                                                                                                        | *str*                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
 
 
 ### Response
@@ -3099,7 +3099,7 @@ s = sdk.SDK(
 )
 
 
-res = s.request_bodies.request_body_post_multiple_content_types_split_param_json(request_body=operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON(
+res = s.request_bodies.request_body_post_multiple_content_types_split_param_json(request_body=operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody(
     bool=False,
     num=9771.91,
     str_='string',
@@ -3114,7 +3114,7 @@ if res.res is not None:
 
 | Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request_body`                                                                                                                                                     | [operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON](../../models/operations/requestbodypostmultiplecontenttypessplitparamapplicationjson.md) | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
+| `request_body`                                                                                                                                                     | [operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitparamjsonrequestbody.md) | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
 | `param_str`                                                                                                                                                        | *str*                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
 
 
@@ -3140,7 +3140,7 @@ s = sdk.SDK(
 )
 
 
-res = s.request_bodies.request_body_post_multiple_content_types_split_param_multipart(request_body=operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData(
+res = s.request_bodies.request_body_post_multiple_content_types_split_param_multipart(request_body=operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody(
     bool2=False,
     num2=7000.76,
     str2='string',
@@ -3153,10 +3153,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                                                                                                                                              | Type                                                                                                                                                                   | Required                                                                                                                                                               | Description                                                                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request_body`                                                                                                                                                         | [operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData](../../models/operations/requestbodypostmultiplecontenttypessplitparammultipartformdata.md) | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
-| `param_str`                                                                                                                                                            | *str*                                                                                                                                                                  | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
+| Parameter                                                                                                                                                                    | Type                                                                                                                                                                         | Required                                                                                                                                                                     | Description                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request_body`                                                                                                                                                               | [operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitparammultipartrequestbody.md) | :heavy_check_mark:                                                                                                                                                           | N/A                                                                                                                                                                          |
+| `param_str`                                                                                                                                                                  | *str*                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                           | N/A                                                                                                                                                                          |
 
 
 ### Response
@@ -3180,7 +3180,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded(
+req = operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody(
     bool3=False,
     num3=7842.07,
     str3='string',
@@ -3195,9 +3195,9 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                                                                                                                                                            | Type                                                                                                                                                                                 | Required                                                                                                                                                                             | Description                                                                                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                            | [operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded](../../models/operations/requestbodypostmultiplecontenttypessplitapplicationxwwwformurlencoded.md) | :heavy_check_mark:                                                                                                                                                                   | The request object to use for the request.                                                                                                                                           |
+| Parameter                                                                                                                                                | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                | [operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitformrequestbody.md) | :heavy_check_mark:                                                                                                                                       | The request object to use for the request.                                                                                                               |
 
 
 ### Response
@@ -3221,7 +3221,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON(
+req = operations.RequestBodyPostMultipleContentTypesSplitJSONRequestBody(
     bool=False,
     num=2445.56,
     str_='string',
@@ -3238,7 +3238,7 @@ if res.res is not None:
 
 | Parameter                                                                                                                                                | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                | [operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON](../../models/operations/requestbodypostmultiplecontenttypessplitapplicationjson.md) | :heavy_check_mark:                                                                                                                                       | The request object to use for the request.                                                                                                               |
+| `request`                                                                                                                                                | [operations.RequestBodyPostMultipleContentTypesSplitJSONRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitjsonrequestbody.md) | :heavy_check_mark:                                                                                                                                       | The request object to use for the request.                                                                                                               |
 
 
 ### Response
@@ -3262,7 +3262,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData(
+req = operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody(
     bool2=False,
     num2=2079.2,
     str2='string',
@@ -3277,9 +3277,9 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                                                                                                                                    | Type                                                                                                                                                         | Required                                                                                                                                                     | Description                                                                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                    | [operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData](../../models/operations/requestbodypostmultiplecontenttypessplitmultipartformdata.md) | :heavy_check_mark:                                                                                                                                           | The request object to use for the request.                                                                                                                   |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                          | [operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitmultipartrequestbody.md) | :heavy_check_mark:                                                                                                                                                 | The request object to use for the request.                                                                                                                         |
 
 
 ### Response
@@ -3307,7 +3307,7 @@ req = 'string'
 
 res = s.request_bodies.request_body_post_not_nullable_not_required_string_body(req)
 
-if res.request_body_post_not_nullable_not_required_string_body_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -3346,7 +3346,7 @@ req = [
 
 res = s.request_bodies.request_body_post_null_array(req)
 
-if res.request_body_post_null_array_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -3385,7 +3385,7 @@ req = {
 
 res = s.request_bodies.request_body_post_null_dictionary(req)
 
-if res.request_body_post_null_dictionary_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -3422,7 +3422,7 @@ req = 'string'
 
 res = s.request_bodies.request_body_post_nullable_not_required_string_body(req)
 
-if res.request_body_post_nullable_not_required_string_body_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -3459,7 +3459,7 @@ req = 'string'
 
 res = s.request_bodies.request_body_post_nullable_required_string_body(req)
 
-if res.request_body_post_nullable_required_string_body_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -3492,7 +3492,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = '9sS}}O%}aJ'.encode()
+req = '0x5DbFFb1Ff9'.encode()
 
 res = s.request_bodies.request_body_put_bytes(req)
 
@@ -3530,7 +3530,7 @@ s = sdk.SDK(
 )
 
 
-res = s.request_bodies.request_body_put_bytes_with_params(request_body='o%jIWe4_P6'.encode(), query_string_param='string')
+res = s.request_bodies.request_body_put_bytes_with_params(request_body='0xC1B9cA4eb5'.encode(), query_string_param='string')
 
 if res.res is not None:
     # handle response
@@ -3555,8 +3555,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -3583,8 +3583,8 @@ req = shared.DeepObject(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int32_enum=shared.Int32Enum.FIFTY_FIVE,
+        int_enum=shared.IntEnum.SECOND,
         num=1.1,
         str_='test',
         str_opt='testOptional',
@@ -3604,8 +3604,8 @@ req = shared.DeepObject(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -3624,8 +3624,8 @@ req = shared.DeepObject(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -3634,26 +3634,6 @@ req = shared.DeepObject(
     bool=True,
     int=1,
     map={
-        "key2": shared.SimpleObject(
-            any='any',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
-            enum=shared.EnumT.ONE,
-            float32=1.1,
-            int=1,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
-            num=1.1,
-            str_='test',
-            str_opt='testOptional',
-        ),
         "key": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
@@ -3668,8 +3648,28 @@ req = shared.DeepObject(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            str_opt='testOptional',
+        ),
+        "key2": shared.SimpleObject(
+            any='any',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -3690,8 +3690,8 @@ req = shared.DeepObject(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int32_enum=shared.Int32Enum.FIFTY_FIVE,
+        int_enum=shared.IntEnum.SECOND,
         num=1.1,
         str_='test',
         str_opt='testOptional',
@@ -3735,9 +3735,9 @@ s = sdk.SDK(
 )
 
 req = operations.RequestBodyPutMultipartDifferentFileNameRequestBody(
-    different_file_name=operations.RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName(
-        content='Y}\'H[5/Z[,'.encode(),
-        different_file_name='string',
+    different_file_name=operations.DifferentFileName(
+        content='0xdF19d43dd2'.encode(),
+        file_name='west_tunisian.pdf',
     ),
 )
 
@@ -3777,9 +3777,9 @@ s = sdk.SDK(
 )
 
 req = operations.RequestBodyPutMultipartFileRequestBody(
-    file=operations.RequestBodyPutMultipartFileRequestBodyFile(
-        content='OJa,v`.FW-'.encode(),
-        file='string',
+    file=operations.File(
+        content='0xa9f2Ee38c3'.encode(),
+        file_name='bandwidth_sedan.pdf',
     ),
 )
 
@@ -3807,8 +3807,8 @@ if res.res is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -3834,8 +3834,8 @@ req = shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
@@ -3950,7 +3950,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.ReadWriteObjectInput(
+req = shared.ReadWriteObject(
     num1=797612,
     num2=89374,
     num3=459345,
@@ -3965,10 +3965,10 @@ if res.read_write_object is not None:
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [shared.ReadWriteObjectInput](../../models/shared/readwriteobjectinput.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `server_url`                                                               | *Optional[str]*                                                            | :heavy_minus_sign:                                                         | An optional server URL to use.                                             |
+| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `request`                                                        | [shared.ReadWriteObject](../../models/shared/readwriteobject.md) | :heavy_check_mark:                                               | The request object to use for the request.                       |
+| `server_url`                                                     | *Optional[str]*                                                  | :heavy_minus_sign:                                               | An optional server URL to use.                                   |
 
 
 ### Response
@@ -4019,8 +4019,8 @@ if res.read_only_object is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -4046,8 +4046,8 @@ req = shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
     str_opt='testOptional',
@@ -4078,8 +4078,8 @@ if res.weakly_typed_one_of_read_only_object is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -4091,7 +4091,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.ReadWriteObjectInput(
+req = shared.ReadWriteObject(
     num1=817251,
     num2=891192,
     num3=743101,
@@ -4106,10 +4106,10 @@ if res.weakly_typed_one_of_read_write_object is not None:
 
 ### Parameters
 
-| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                              | [Union[shared.SimpleObject, shared.ReadWriteObjectInput]](../../models/shared/weaklytypedoneofreadwriteobjectinput.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
-| `server_url`                                                                                                           | *Optional[str]*                                                                                                        | :heavy_minus_sign:                                                                                                     | An optional server URL to use.                                                                                         |
+| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                    | [Union[shared.SimpleObject, shared.ReadWriteObject]](../../models/shared/weaklytypedoneofreadwriteobject.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
+| `server_url`                                                                                                 | *Optional[str]*                                                                                              | :heavy_minus_sign:                                                                                           | An optional server URL to use.                                                                               |
 
 
 ### Response
@@ -4206,8 +4206,8 @@ if res.write_only_object is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 

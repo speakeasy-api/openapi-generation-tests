@@ -12,9 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PipeDelimitedQueryParamsArrayRes {
     @JsonProperty("args")
-    public PipeDelimitedQueryParamsArrayResArgs args;
+    public PipeDelimitedQueryParamsArrayArgs args;
 
-    public PipeDelimitedQueryParamsArrayRes withArgs(PipeDelimitedQueryParamsArrayResArgs args) {
+    public PipeDelimitedQueryParamsArrayRes withArgs(PipeDelimitedQueryParamsArrayArgs args) {
         this.args = args;
         return this;
     }
@@ -27,7 +27,7 @@ public class PipeDelimitedQueryParamsArrayRes {
         return this;
     }
     
-    public PipeDelimitedQueryParamsArrayRes(@JsonProperty("args") PipeDelimitedQueryParamsArrayResArgs args, @JsonProperty("url") String url) {
+    public PipeDelimitedQueryParamsArrayRes(@JsonProperty("args") PipeDelimitedQueryParamsArrayArgs args, @JsonProperty("url") String url) {
         this.args = args;
         this.url = url;
   }

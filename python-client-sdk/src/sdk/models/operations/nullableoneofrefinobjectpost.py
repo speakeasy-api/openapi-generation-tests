@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import nullableoneofrefinobject as shared_nullableoneofrefinobject
+from ...models.shared import nullableoneofrefinobject as shared_nullableoneofrefinobject
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional

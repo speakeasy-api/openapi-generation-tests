@@ -1,5 +1,5 @@
 # Flattening
-(*flattening*)
+
 
 ## Overview
 
@@ -23,23 +23,19 @@ Endpoints for testing flattening through request body and parameter combinations
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamConflictRequest;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $simpleObject = new SimpleObject();
+    $simpleObject = new Shared\SimpleObject();
     $simpleObject->any = 'any';
     $simpleObject->bigint = 8821239038968084;
     $simpleObject->bigintStr = '9223372036854775808';
@@ -49,12 +45,12 @@ try {
     $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
     $simpleObject->decimal = 3.141592653589793;
     $simpleObject->decimalStr = '3.14159265358979344719667586';
-    $simpleObject->enum = Enum::One;
+    $simpleObject->enum = Shared\Enum::One;
     $simpleObject->float32 = 1.1;
     $simpleObject->int = 1;
     $simpleObject->int32 = 1;
-    $simpleObject->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $simpleObject->intEnum = SimpleObjectIntEnum::Second;
+    $simpleObject->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $simpleObject->intEnum = Shared\IntEnum::Second;
     $simpleObject->intOptNull = 843322;
     $simpleObject->num = 1.1;
     $simpleObject->numOptNull = 7126.06;
@@ -94,23 +90,19 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamNoConflictRequest;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $simpleObject = new SimpleObject();
+    $simpleObject = new Shared\SimpleObject();
     $simpleObject->any = 'any';
     $simpleObject->bigint = 8821239038968084;
     $simpleObject->bigintStr = '9223372036854775808';
@@ -120,12 +112,12 @@ try {
     $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
     $simpleObject->decimal = 3.141592653589793;
     $simpleObject->decimalStr = '3.14159265358979344719667586';
-    $simpleObject->enum = Enum::One;
+    $simpleObject->enum = Shared\Enum::One;
     $simpleObject->float32 = 1.1;
     $simpleObject->int = 1;
     $simpleObject->int32 = 1;
-    $simpleObject->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $simpleObject->intEnum = SimpleObjectIntEnum::Third;
+    $simpleObject->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $simpleObject->intEnum = Shared\IntEnum::Third;
     $simpleObject->intOptNull = 758827;
     $simpleObject->num = 1.1;
     $simpleObject->numOptNull = 1702.8;
@@ -165,14 +157,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\ConflictingParamsRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -212,20 +204,19 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictRequest;
-use \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictRequestBody;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $requestBody = new InlineBodyAndParamConflictRequestBody();
+    $requestBody = new Operations\InlineBodyAndParamConflictRequestBody();
     $requestBody->str = 'string';
 
     $response = $sdk->flattening->inlineBodyAndParamConflict($requestBody, 'string');
@@ -261,20 +252,19 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictRequest;
-use \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictRequestBody;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $requestBody = new InlineBodyAndParamNoConflictRequestBody();
+    $requestBody = new Operations\InlineBodyAndParamNoConflictRequestBody();
     $requestBody->bodyStr = 'string';
 
     $response = $sdk->flattening->inlineBodyAndParamNoConflict($requestBody, 'string');

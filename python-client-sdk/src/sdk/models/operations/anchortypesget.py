@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import simpleobject as shared_simpleobject
+from ...models.shared import simpleobject as shared_simpleobject
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional
@@ -11,7 +11,7 @@ from typing import Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class TypeFromAnchor:
+class AnchorTypesGetTypeFromAnchor:
     r"""A successful response that contains the simpleObject sent in the request body"""
     json: Optional[shared_simpleobject.SimpleObject] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties.
@@ -29,7 +29,7 @@ class AnchorTypesGetResponse:
     r"""HTTP response status code for this operation"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    type_from_anchor: Optional[TypeFromAnchor] = dataclasses.field(default=None)
+    type_from_anchor: Optional[AnchorTypesGetTypeFromAnchor] = dataclasses.field(default=None)
     r"""A successful response that contains the simpleObject sent in the request body"""
     
 

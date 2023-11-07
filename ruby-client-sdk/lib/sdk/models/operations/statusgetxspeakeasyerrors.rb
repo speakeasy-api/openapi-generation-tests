@@ -28,7 +28,7 @@ module OpenApiSDK
     end
 
     # Not Implemented
-    class StatusGetXSpeakeasyErrors501ApplicationJSON < OpenApiSDK::Utils::FieldAugmented
+    class StatusGetXSpeakeasyErrorsResponseBody < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -57,19 +57,19 @@ module OpenApiSDK
       field :status_code, Integer
       # Internal Server Error
       field :error, T.nilable(Shared::Error)
+      # Not Implemented
+      field :object, T.nilable(Operations::StatusGetXSpeakeasyErrorsResponseBody)
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
-      # Not Implemented
-      field :status_get_x_speakeasy_errors_501_application_json_object, T.nilable(Operations::StatusGetXSpeakeasyErrors501ApplicationJSON)
 
 
-      sig { params(content_type: String, status_code: Integer, error: T.nilable(Shared::Error), raw_response: T.nilable(Faraday::Response), status_get_x_speakeasy_errors_501_application_json_object: T.nilable(Operations::StatusGetXSpeakeasyErrors501ApplicationJSON)).void }
-      def initialize(content_type: nil, status_code: nil, error: nil, raw_response: nil, status_get_x_speakeasy_errors_501_application_json_object: nil)
+      sig { params(content_type: String, status_code: Integer, error: T.nilable(Shared::Error), object: T.nilable(Operations::StatusGetXSpeakeasyErrorsResponseBody), raw_response: T.nilable(Faraday::Response)).void }
+      def initialize(content_type: nil, status_code: nil, error: nil, object: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code
         @error = error
+        @object = object
         @raw_response = raw_response
-        @status_get_x_speakeasy_errors_501_application_json_object = status_get_x_speakeasy_errors_501_application_json_object
       end
     end
   end

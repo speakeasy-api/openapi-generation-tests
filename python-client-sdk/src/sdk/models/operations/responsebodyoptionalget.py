@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import typedobject1 as shared_typedobject1
+from ...models.shared import typedobject1 as shared_typedobject1
 from typing import Optional
 
 RESPONSE_BODY_OPTIONAL_GET_SERVERS = [
@@ -19,7 +19,7 @@ class ResponseBodyOptionalGetResponse:
     r"""HTTP response status code for this operation"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    response_body_optional_get_200_text_plain_string: Optional[str] = dataclasses.field(default=None)
+    res: Optional[str] = dataclasses.field(default=None)
     r"""OK"""
     typed_object1: Optional[shared_typedobject1.TypedObject1] = dataclasses.field(default=None)
     r"""OK"""

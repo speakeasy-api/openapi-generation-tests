@@ -10,7 +10,7 @@ from typing import Any, Dict, Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class RequestBodyPostMultipleContentTypesSplitParamApplicationJSON:
+class RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody:
     bool: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool') }})
     num: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('num') }})
     str_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('str') }})
@@ -21,7 +21,7 @@ class RequestBodyPostMultipleContentTypesSplitParamApplicationJSON:
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesSplitParamJSONRequest:
     param_str: str = dataclasses.field(metadata={'query_param': { 'field_name': 'paramStr', 'style': 'form', 'explode': True }})
-    request_body: RequestBodyPostMultipleContentTypesSplitParamApplicationJSON = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
+    request_body: RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     
 
 

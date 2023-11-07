@@ -8,25 +8,25 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/utils"
 	"strings"
 )
 
-// flattening - Endpoints for testing flattening through request body and parameter combinations.
-type flattening struct {
+// Flattening - Endpoints for testing flattening through request body and parameter combinations.
+type Flattening struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newFlattening(sdkConfig sdkConfiguration) *flattening {
-	return &flattening{
+func newFlattening(sdkConfig sdkConfiguration) *Flattening {
+	return &Flattening{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *flattening) ComponentBodyAndParamConflict(ctx context.Context, simpleObject shared.SimpleObject, str string) (*operations.ComponentBodyAndParamConflictResponse, error) {
+func (s *Flattening) ComponentBodyAndParamConflict(ctx context.Context, simpleObject shared.SimpleObject, str string) (*operations.ComponentBodyAndParamConflictResponse, error) {
 	request := operations.ComponentBodyAndParamConflictRequest{
 		SimpleObject: simpleObject,
 		Str:          str,
@@ -102,7 +102,7 @@ func (s *flattening) ComponentBodyAndParamConflict(ctx context.Context, simpleOb
 	return res, nil
 }
 
-func (s *flattening) ComponentBodyAndParamNoConflict(ctx context.Context, paramStr string, simpleObject shared.SimpleObject) (*operations.ComponentBodyAndParamNoConflictResponse, error) {
+func (s *Flattening) ComponentBodyAndParamNoConflict(ctx context.Context, paramStr string, simpleObject shared.SimpleObject) (*operations.ComponentBodyAndParamNoConflictResponse, error) {
 	request := operations.ComponentBodyAndParamNoConflictRequest{
 		ParamStr:     paramStr,
 		SimpleObject: simpleObject,
@@ -178,7 +178,7 @@ func (s *flattening) ComponentBodyAndParamNoConflict(ctx context.Context, paramS
 	return res, nil
 }
 
-func (s *flattening) ConflictingParams(ctx context.Context, strPathParameter string, strQueryParameter string) (*operations.ConflictingParamsResponse, error) {
+func (s *Flattening) ConflictingParams(ctx context.Context, strPathParameter string, strQueryParameter string) (*operations.ConflictingParamsResponse, error) {
 	request := operations.ConflictingParamsRequest{
 		StrPathParameter:  strPathParameter,
 		StrQueryParameter: strQueryParameter,
@@ -247,7 +247,7 @@ func (s *flattening) ConflictingParams(ctx context.Context, strPathParameter str
 	return res, nil
 }
 
-func (s *flattening) InlineBodyAndParamConflict(ctx context.Context, requestBody operations.InlineBodyAndParamConflictRequestBody, str string) (*operations.InlineBodyAndParamConflictResponse, error) {
+func (s *Flattening) InlineBodyAndParamConflict(ctx context.Context, requestBody operations.InlineBodyAndParamConflictRequestBody, str string) (*operations.InlineBodyAndParamConflictResponse, error) {
 	request := operations.InlineBodyAndParamConflictRequest{
 		RequestBody: requestBody,
 		Str:         str,
@@ -323,7 +323,7 @@ func (s *flattening) InlineBodyAndParamConflict(ctx context.Context, requestBody
 	return res, nil
 }
 
-func (s *flattening) InlineBodyAndParamNoConflict(ctx context.Context, requestBody operations.InlineBodyAndParamNoConflictRequestBody, paramStr string) (*operations.InlineBodyAndParamNoConflictResponse, error) {
+func (s *Flattening) InlineBodyAndParamNoConflict(ctx context.Context, requestBody operations.InlineBodyAndParamNoConflictRequestBody, paramStr string) (*operations.InlineBodyAndParamNoConflictResponse, error) {
 	request := operations.InlineBodyAndParamNoConflictRequest{
 		RequestBody: requestBody,
 		ParamStr:    paramStr,

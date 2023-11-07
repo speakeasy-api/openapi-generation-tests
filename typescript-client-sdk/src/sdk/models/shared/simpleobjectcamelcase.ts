@@ -3,14 +3,14 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { RFCDate } from "../../types";
+import { RFCDate } from "../../../sdk/types";
 import { Enum } from "./enum";
 import { Expose, Transform, Type } from "class-transformer";
 
 /**
  * An int32 enum property.
  */
-export enum SimpleObjectCamelCaseInt32EnumVal {
+export enum Int32EnumVal {
     FiftyFive = 55,
     SixtyNine = 69,
     OneHundredAndEightyOne = 181,
@@ -19,7 +19,7 @@ export enum SimpleObjectCamelCaseInt32EnumVal {
 /**
  * An integer enum property.
  */
-export enum SimpleObjectCamelCaseIntEnumVal {
+export enum IntEnumVal {
     First = 1,
     Second = 2,
     Third = 3,
@@ -100,7 +100,7 @@ export class SimpleObjectCamelCase extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "int32_enum_val" })
-    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal;
+    int32EnumVal: Int32EnumVal;
 
     /**
      * An int32 property.
@@ -114,7 +114,7 @@ export class SimpleObjectCamelCase extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "int_enum_val" })
-    intEnumVal: SimpleObjectCamelCaseIntEnumVal;
+    intEnumVal: IntEnumVal;
 
     /**
      * An optional integer property will be null for tests.

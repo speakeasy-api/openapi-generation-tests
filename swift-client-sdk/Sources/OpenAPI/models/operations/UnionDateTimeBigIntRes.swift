@@ -5,12 +5,12 @@ import Foundation
 extension Operations {
     /// OK
     public struct UnionDateTimeBigIntRes {
-        public let json: Operations.UnionDateTimeBigIntResJson
+        public let json: Operations.UnionDateTimeBigIntJson
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(json: Operations.UnionDateTimeBigIntResJson) {
+        public init(json: Operations.UnionDateTimeBigIntJson) {
             self.json = json
         }
     }

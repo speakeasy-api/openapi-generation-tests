@@ -12,7 +12,7 @@ use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class RequestBodyPutMultipartFileRequestBody
 {
 	#[SpeakeasyMetadata('multipartForm:file=true')]
-    public ?RequestBodyPutMultipartFileRequestBodyFile $file = null;
+    public ?File $file = null;
     
 	public function __construct()
 	{

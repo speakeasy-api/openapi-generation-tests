@@ -7,20 +7,20 @@
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use OpenAPI\OpenAPI\SDK;
-use OpenAPI\OpenAPI\Models\Shared\Security;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
     $response = $sdk->generation->globalNameOverridden();
 
-    if ($response->getGlobalNameOverride200ApplicationJSONObject !== null) {
+    if ($response->object !== null) {
         // handle response
     }
 } catch (Exception $e) {
@@ -38,26 +38,16 @@ Do this second
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use OpenAPI\OpenAPI\SDK;
-use OpenAPI\OpenAPI\Models\Shared\Security;
-use OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequest;
-use OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequestBody;
-use OpenAPI\OpenAPI\Models\Shared\FakerFormattedStrings;
-use OpenAPI\OpenAPI\Models\Shared\FakerStrings;
-use OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use OpenAPI\OpenAPI\Models\Shared\Enum;
-use OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
-use OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
-use OpenAPI\OpenAPI\Models\Operations\UsageExamplePostEnumParameter;
-use OpenAPI\OpenAPI\Models\Operations\UsageExamplePostOptEnumParameter;
-use OpenAPI\OpenAPI\Models\Operations\UsageExamplePostSecurity;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Models\Operations;
 
-$sdk = SDK::builder()->build();
+$sdk = OpenAPI\SDK::builder()->build();
 
 try {
-    $request = new UsageExamplePostRequest();
-    $request->requestBody = new UsageExamplePostRequestBody();
-    $request->requestBody->fakerFormattedStrings = new FakerFormattedStrings();
+    $request = new Operations\UsageExamplePostRequest();
+    $request->requestBody = new Operations\UsageExamplePostRequestBody();
+    $request->requestBody->fakerFormattedStrings = new Shared\FakerFormattedStrings();
     $request->requestBody->fakerFormattedStrings->addressFormat = '48525 Maude Fall';
     $request->requestBody->fakerFormattedStrings->directoryFormat = '/etc/defaults';
     $request->requestBody->fakerFormattedStrings->domainFormat = 'next-conflict.name';
@@ -79,7 +69,7 @@ try {
     $request->requestBody->fakerFormattedStrings->uuidFormat =
         '342442b8-aff3-42e0-b62d-e2e2d47a9bf1';
     $request->requestBody->fakerFormattedStrings->zipcodeFormat = '09432';
-    $request->requestBody->fakerStrings = new FakerStrings();
+    $request->requestBody->fakerStrings = new Shared\FakerStrings();
     $request->requestBody->fakerStrings->city = 'McLaughlinchester';
     $request->requestBody->fakerStrings->iban = 'TL232743267267003560099';
     $request->requestBody->fakerStrings->id = '<ID>';
@@ -134,7 +124,7 @@ try {
     $request->requestBody->fakerStrings->url = 'https://crooked-dulcimer.name';
     $request->requestBody->fakerStrings->username = 'Mable76';
     $request->requestBody->fakerStrings->uuid = '16b919d6-51cd-4e97-81e2-5221b7b6969f';
-    $request->requestBody->simpleObject = new SimpleObject();
+    $request->requestBody->simpleObject = new Shared\SimpleObject();
     $request->requestBody->simpleObject->any = 'any';
     $request->requestBody->simpleObject->bigint = 8821239038968084;
     $request->requestBody->simpleObject->bigintStr = '9223372036854775808';
@@ -147,12 +137,12 @@ try {
     );
     $request->requestBody->simpleObject->decimal = 3.141592653589793;
     $request->requestBody->simpleObject->decimalStr = '3.14159265358979344719667586';
-    $request->requestBody->simpleObject->enum = Enum::One;
+    $request->requestBody->simpleObject->enum = Shared\Enum::One;
     $request->requestBody->simpleObject->float32 = 1.1;
     $request->requestBody->simpleObject->int = 1;
     $request->requestBody->simpleObject->int32 = 1;
-    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $request->requestBody->simpleObject->intEnum = SimpleObjectIntEnum::Second;
+    $request->requestBody->simpleObject->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $request->requestBody->simpleObject->intEnum = Shared\IntEnum::Second;
     $request->requestBody->simpleObject->intOptNull = 165468;
     $request->requestBody->simpleObject->num = 1.1;
     $request->requestBody->simpleObject->numOptNull = 5944.32;
@@ -177,22 +167,22 @@ try {
     $request->decimalStrParameter = 'string';
     $request->decimalStrParameterOptional = 'string';
     $request->doubleParameter = 8700.78;
-    $request->enumParameter = UsageExamplePostEnumParameter::Value2;
+    $request->enumParameter = Operations\EnumParameter::Value2;
     $request->falseyNumberParameter = 0;
     $request->float32Parameter = 1341.86;
     $request->floatParameter = 5429.24;
     $request->int64Parameter = 101970;
     $request->intParameter = 938852;
-    $request->optEnumParameter = UsageExamplePostOptEnumParameter::Value3;
+    $request->optEnumParameter = Operations\OptEnumParameter::Value3;
     $request->strParameter = 'example 3';
 
-    $requestSecurity = new UsageExamplePostSecurity();
+    $requestSecurity = new Operations\UsageExamplePostSecurity();
     $requestSecurity->password = 'YOUR_PASSWORD';
     $requestSecurity->username = 'YOUR_USERNAME';
 
     $response = $sdk->generation->usageExamplePost($request, $requestSecurity);
 
-    if ($response->usageExamplePost200ApplicationJSONObject !== null) {
+    if ($response->object !== null) {
         // handle response
     }
 } catch (Exception $e) {

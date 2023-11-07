@@ -1,5 +1,5 @@
 # Generation
-(*generation*)
+(*.generation*)
 
 ## Overview
 
@@ -266,7 +266,7 @@ const decimalInput: number = 4060.06;
 
 ```typescript
 import { SDK } from "openapi";
-import { DeprecatedFieldInObjectDeprecatedEnum } from "openapi/dist/sdk/models/shared";
+import { DeprecatedEnum } from "openapi/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new SDK({
@@ -582,7 +582,7 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { IgnoresPostApplicationJSON, IgnoresPostRequest } from "openapi/dist/sdk/models/operations";
+import { IgnoresPostRequest, IgnoresPostRequestBody } from "openapi/dist/sdk/models/operations";
 
 (async() => {
   const sdk = new SDK({
@@ -592,7 +592,7 @@ import { IgnoresPostApplicationJSON, IgnoresPostRequest } from "openapi/dist/sdk
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const requestBody: IgnoresPostApplicationJSON = {};
+const requestBody: IgnoresPostRequestBody = {};
 const testParam: string = "string";
 
   const res = await sdk.generation.ignoresPost(requestBody, testParam);
@@ -606,11 +606,11 @@ const testParam: string = "string";
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                  | [operations.IgnoresPostApplicationJSON](../../models/operations/ignorespostapplicationjson.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `testParam`                                                                                    | *string*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
-| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `requestBody`                                                                          | [operations.IgnoresPostRequestBody](../../models/operations/ignorespostrequestbody.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `testParam`                                                                            | *string*                                                                               | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
@@ -624,7 +624,7 @@ const testParam: string = "string";
 
 ```typescript
 import { SDK } from "openapi";
-import { NameOverrideGetEnumNameOverride, NameOverrideGetRequest } from "openapi/dist/sdk/models/operations";
+import { EnumNameOverride, NameOverrideGetRequest } from "openapi/dist/sdk/models/operations";
 
 (async() => {
   const sdk = new SDK({
@@ -634,7 +634,7 @@ import { NameOverrideGetEnumNameOverride, NameOverrideGetRequest } from "openapi
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const testEnumQueryParam: NameOverrideGetEnumNameOverride = NameOverrideGetEnumNameOverride.Value3;
+const testEnumQueryParam: EnumNameOverride = EnumNameOverride.Value3;
 const testQueryParam: string = "example";
 
   const res = await sdk.generation.nameOverride(testEnumQueryParam, testQueryParam);
@@ -648,11 +648,11 @@ const testQueryParam: string = "example";
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              | Example                                                                                                  |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `testEnumQueryParam`                                                                                     | [operations.NameOverrideGetEnumNameOverride](../../models/operations/nameoverridegetenumnameoverride.md) | :heavy_check_mark:                                                                                       | An enum type                                                                                             | value3                                                                                                   |
-| `testQueryParam`                                                                                         | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      | example                                                                                                  |
-| `config`                                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                             | :heavy_minus_sign:                                                                                       | Available config options for making requests.                                                            |                                                                                                          |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                | Example                                                                    |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `testEnumQueryParam`                                                       | [operations.EnumNameOverride](../../models/operations/enumnameoverride.md) | :heavy_check_mark:                                                         | An enum type                                                               | value3                                                                     |
+| `testQueryParam`                                                           | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        | example                                                                    |
+| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |                                                                            |
 
 
 ### Response
@@ -740,7 +740,7 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { TypedParameterGenerationGetObj, TypedParameterGenerationGetRequest } from "openapi/dist/sdk/models/operations";
+import { Obj, TypedParameterGenerationGetRequest } from "openapi/dist/sdk/models/operations";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -754,7 +754,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 const bigint: number = 879275;
 const date: RFCDate = new RFCDate("2023-11-18");
 const decimal: number = 3346.96;
-const obj: TypedParameterGenerationGetObj = {
+const obj: Obj = {
   bool: false,
   num: 4778.06,
   str: "string",
@@ -771,13 +771,13 @@ const obj: TypedParameterGenerationGetObj = {
 
 ### Parameters
 
-| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `bigint`                                                                                               | *number*                                                                                               | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
-| `date`                                                                                                 | [RFCDate](../../types/rfcdate.md)                                                                      | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
-| `decimal`                                                                                              | *number*                                                                                               | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
-| `obj`                                                                                                  | [operations.TypedParameterGenerationGetObj](../../models/operations/typedparametergenerationgetobj.md) | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
-| `config`                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                           | :heavy_minus_sign:                                                                                     | Available config options for making requests.                                                          |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `bigint`                                                     | *number*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `date`                                                       | [RFCDate](../../types/rfcdate.md)                            | :heavy_minus_sign:                                           | N/A                                                          |
+| `decimal`                                                    | *number*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `obj`                                                        | [operations.Obj](../../models/operations/obj.md)             | :heavy_minus_sign:                                           | N/A                                                          |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
@@ -796,12 +796,8 @@ Usage example docs
 
 ```typescript
 import { SDK } from "openapi";
-import {
-  UsageExamplePostEnumParameter,
-  UsageExamplePostOptEnumParameter,
-  UsageExamplePostSecurity,
-} from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { EnumParameter, OptEnumParameter, UsageExamplePostSecurity } from "openapi/dist/sdk/models/operations";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -832,8 +828,8 @@ const operationSecurity: UsageExamplePostSecurity = {
         float32: 1.1,
         int: 1,
         int32: 1,
-        int32Enum: SimpleObjectInt32Enum.FiftyFive,
-        intEnum: SimpleObjectIntEnum.Second,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
         num: 1.1,
         str: "test",
         strOpt: "testOptional",
@@ -848,13 +844,13 @@ const operationSecurity: UsageExamplePostSecurity = {
     decimalParameter: 2679.33,
     decimalStrParameter: "string",
     doubleParameter: 5223.72,
-    enumParameter: UsageExamplePostEnumParameter.Value1,
+    enumParameter: EnumParameter.Value1,
     falseyNumberParameter: 0,
     float32Parameter: 6946.59,
     floatParameter: 2286.22,
     int64Parameter: 102975,
     intParameter: 566999,
-    optEnumParameter: UsageExamplePostOptEnumParameter.Value3,
+    optEnumParameter: OptEnumParameter.Value3,
     strParameter: "example 1",
   }, operationSecurity);
 

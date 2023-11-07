@@ -46,10 +46,10 @@ public class RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse {
      * OK
      */
     
-    public String[][] arrs;
+    public String[][] res;
 
-    public RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse withArrs(String[][] arrs) {
-        this.arrs = arrs;
+    public RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse withRes(String[][] res) {
+        this.res = res;
         return this;
     }
     

@@ -7,7 +7,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class EmptyResponseObjectWithCommentGet200ApplicationOctetStream:
+class EmptyResponseObjectWithCommentGetResponseBody:
     r"""OK"""
     
 

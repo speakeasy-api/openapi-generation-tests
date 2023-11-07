@@ -7,10 +7,10 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"math/big"
-	"openapi"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 	"testing"
 )
 
@@ -45,23 +45,23 @@ func TestParameters_DeepObjectQueryParamsMap(t *testing.T) {
 	require.NotNil(t, res)
 
 	assert.Equal(t, 200, res.StatusCode)
-	assert.Equal(t, map[string]operations.DeepObjectQueryParamsMapResArgs{
-		"mapArrParam[test]": operations.CreateDeepObjectQueryParamsMapResArgsArrayOfstr(
+	assert.Equal(t, map[string]operations.DeepObjectQueryParamsMapArgs{
+		"mapArrParam[test]": operations.CreateDeepObjectQueryParamsMapArgsArrayOfstr(
 			[]string{
 				"test",
 				"test2",
 			},
 		),
-		"mapArrParam[test2]": operations.CreateDeepObjectQueryParamsMapResArgsArrayOfstr(
+		"mapArrParam[test2]": operations.CreateDeepObjectQueryParamsMapArgsArrayOfstr(
 			[]string{
 				"test3",
 				"test4",
 			},
 		),
-		"mapParam[test]": operations.CreateDeepObjectQueryParamsMapResArgsStr(
+		"mapParam[test]": operations.CreateDeepObjectQueryParamsMapArgsStr(
 			"value",
 		),
-		"mapParam[test2]": operations.CreateDeepObjectQueryParamsMapResArgsStr(
+		"mapParam[test2]": operations.CreateDeepObjectQueryParamsMapArgsStr(
 			"value2",
 		),
 	}, res.Res.Args)
@@ -91,14 +91,14 @@ func TestParameters_DeepObjectQueryParamsObject(t *testing.T) {
 		Float32:    1.1,
 		Int:        1,
 		Int32:      1,
-		Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-		IntEnum:    shared.SimpleObjectIntEnumSecond,
+		Int32Enum:  shared.Int32EnumFiftyFive,
+		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
 	}
 
-	objArrParam := &operations.DeepObjectQueryParamsObjectObjArrParam{
+	objArrParam := &operations.ObjArrParam{
 		Arr: []string{
 			"test",
 			"test2",
@@ -178,12 +178,12 @@ func TestParameters_FormQueryParamsCamelObject(t *testing.T) {
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
 
-	objParamExploded := operations.FormQueryParamsCamelObjectObjParamExploded{
+	objParamExploded := operations.ObjParamExploded{
 		ItemCount:  openapi.String("10"),
 		SearchTerm: openapi.String("foo"),
 	}
 
-	objParam := &operations.FormQueryParamsCamelObjectObjParam{
+	objParam := &operations.ObjParam{
 		EncodedCount: openapi.String("11"),
 		EncodedTerm:  openapi.String("bar"),
 	}
@@ -209,13 +209,13 @@ func TestParameters_FormQueryParamsMap(t *testing.T) {
 	)
 
 	mapParam := map[string]string{
-		"test":  "value",
 		"test2": "value2",
+		"test":  "value",
 	}
 
 	mapParamExploded := map[string]int64{
-		"test":  1,
 		"test2": 2,
+		"test":  1,
 	}
 
 	ctx := context.Background()
@@ -225,9 +225,9 @@ func TestParameters_FormQueryParamsMap(t *testing.T) {
 
 	assert.Equal(t, 200, res.StatusCode)
 	assert.Equal(t, map[string]string{
+		"mapParam": "test,value,test2,value2",
 		"test":     "1",
 		"test2":    "2",
-		"mapParam": "test,value,test2,value2",
 	}, sortSerializedMaps(res.Res.Args, `(.*)`, ","))
 	assert.Equal(t, "http://localhost:35123/anything/queryParams/form/map?mapParam=test%2Cvalue%2Ctest2%2Cvalue2&test=1&test2=2", sortSerializedMaps(res.Res.URL, `.*?\?mapParam=(.*?)&(.*)`, "%2C"))
 }
@@ -255,8 +255,8 @@ func TestParameters_FormQueryParamsObject(t *testing.T) {
 		Float32:    1.1,
 		Int:        1,
 		Int32:      1,
-		Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-		IntEnum:    shared.SimpleObjectIntEnumSecond,
+		Int32Enum:  shared.Int32EnumFiftyFive,
+		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
@@ -276,8 +276,8 @@ func TestParameters_FormQueryParamsObject(t *testing.T) {
 		Float32:    1.1,
 		Int:        1,
 		Int32:      1,
-		Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-		IntEnum:    shared.SimpleObjectIntEnumSecond,
+		Int32Enum:  shared.Int32EnumFiftyFive,
+		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
@@ -455,8 +455,8 @@ func TestParameters_HeaderParamsObject(t *testing.T) {
 		Float32:    1.1,
 		Int:        1,
 		Int32:      1,
-		Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-		IntEnum:    shared.SimpleObjectIntEnumSecond,
+		Int32Enum:  shared.Int32EnumFiftyFive,
+		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
@@ -476,8 +476,8 @@ func TestParameters_HeaderParamsObject(t *testing.T) {
 		Float32:    1.1,
 		Int:        1,
 		Int32:      1,
-		Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-		IntEnum:    shared.SimpleObjectIntEnumSecond,
+		Int32Enum:  shared.Int32EnumFiftyFive,
+		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
@@ -532,7 +532,7 @@ func TestParameters_JSONQueryParamsObject(t *testing.T) {
 	)
 
 	deepObjParam := shared.DeepObject{
-		Any: shared.CreateDeepObjectAnySimpleObject(
+		Any: shared.CreateAnySimpleObject(
 			shared.SimpleObject{
 				Any:        "any",
 				Bigint:     big.NewInt(8821239038968084),
@@ -547,8 +547,8 @@ func TestParameters_JSONQueryParamsObject(t *testing.T) {
 				Float32:    1.1,
 				Int:        1,
 				Int32:      1,
-				Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-				IntEnum:    shared.SimpleObjectIntEnumSecond,
+				Int32Enum:  shared.Int32EnumFiftyFive,
+				IntEnum:    shared.IntEnumSecond,
 				Num:        1.1,
 				Str:        "test",
 				StrOpt:     openapi.String("testOptional"),
@@ -569,8 +569,8 @@ func TestParameters_JSONQueryParamsObject(t *testing.T) {
 				Float32:    1.1,
 				Int:        1,
 				Int32:      1,
-				Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-				IntEnum:    shared.SimpleObjectIntEnumSecond,
+				Int32Enum:  shared.Int32EnumFiftyFive,
+				IntEnum:    shared.IntEnumSecond,
 				Num:        1.1,
 				Str:        "test",
 				StrOpt:     openapi.String("testOptional"),
@@ -589,8 +589,8 @@ func TestParameters_JSONQueryParamsObject(t *testing.T) {
 				Float32:    1.1,
 				Int:        1,
 				Int32:      1,
-				Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-				IntEnum:    shared.SimpleObjectIntEnumSecond,
+				Int32Enum:  shared.Int32EnumFiftyFive,
+				IntEnum:    shared.IntEnumSecond,
 				Num:        1.1,
 				Str:        "test",
 				StrOpt:     openapi.String("testOptional"),
@@ -613,8 +613,8 @@ func TestParameters_JSONQueryParamsObject(t *testing.T) {
 				Float32:    1.1,
 				Int:        1,
 				Int32:      1,
-				Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-				IntEnum:    shared.SimpleObjectIntEnumSecond,
+				Int32Enum:  shared.Int32EnumFiftyFive,
+				IntEnum:    shared.IntEnumSecond,
 				Num:        1.1,
 				Str:        "test",
 				StrOpt:     openapi.String("testOptional"),
@@ -633,8 +633,8 @@ func TestParameters_JSONQueryParamsObject(t *testing.T) {
 				Float32:    1.1,
 				Int:        1,
 				Int32:      1,
-				Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-				IntEnum:    shared.SimpleObjectIntEnumSecond,
+				Int32Enum:  shared.Int32EnumFiftyFive,
+				IntEnum:    shared.IntEnumSecond,
 				Num:        1.1,
 				Str:        "test",
 				StrOpt:     openapi.String("testOptional"),
@@ -655,8 +655,8 @@ func TestParameters_JSONQueryParamsObject(t *testing.T) {
 			Float32:    1.1,
 			Int:        1,
 			Int32:      1,
-			Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-			IntEnum:    shared.SimpleObjectIntEnumSecond,
+			Int32Enum:  shared.Int32EnumFiftyFive,
+			IntEnum:    shared.IntEnumSecond,
 			Num:        1.1,
 			Str:        "test",
 			StrOpt:     openapi.String("testOptional"),
@@ -678,8 +678,8 @@ func TestParameters_JSONQueryParamsObject(t *testing.T) {
 		Float32:    1.1,
 		Int:        1,
 		Int32:      1,
-		Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-		IntEnum:    shared.SimpleObjectIntEnumSecond,
+		Int32Enum:  shared.Int32EnumFiftyFive,
+		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
@@ -771,8 +771,8 @@ func TestParameters_MixedQueryParams(t *testing.T) {
 		Float32:    1.1,
 		Int:        1,
 		Int32:      1,
-		Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-		IntEnum:    shared.SimpleObjectIntEnumSecond,
+		Int32Enum:  shared.Int32EnumFiftyFive,
+		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
@@ -792,8 +792,8 @@ func TestParameters_MixedQueryParams(t *testing.T) {
 		Float32:    1.1,
 		Int:        1,
 		Int32:      1,
-		Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-		IntEnum:    shared.SimpleObjectIntEnumSecond,
+		Int32Enum:  shared.Int32EnumFiftyFive,
+		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
@@ -813,8 +813,8 @@ func TestParameters_MixedQueryParams(t *testing.T) {
 		Float32:    1.1,
 		Int:        1,
 		Int32:      1,
-		Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-		IntEnum:    shared.SimpleObjectIntEnumSecond,
+		Int32Enum:  shared.Int32EnumFiftyFive,
+		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
@@ -827,43 +827,43 @@ func TestParameters_MixedQueryParams(t *testing.T) {
 
 	assert.Equal(t, 200, res.StatusCode)
 	assert.Equal(t, map[string]string{
-		"deepObjectParam[boolOpt]":    "true",
-		"deepObjectParam[dateTime]":   "2020-01-01T00:00:00.000000001Z",
+		"int":                         "1",
+		"decimalStr":                  "3.14159265358979344719667586",
+		"strOpt":                      "testOptional",
+		"deepObjectParam[enum]":       "one",
+		"deepObjectParam[decimalStr]": "3.14159265358979344719667586",
+		"deepObjectParam[str]":        "test",
+		"float32":                     "1.1",
 		"intEnum":                     "2",
+		"bigint":                      "8821239038968084",
+		"deepObjectParam[intEnum]":    "2",
+		"deepObjectParam[decimal]":    "3.141592653589793",
+		"deepObjectParam[float32]":    "1.1",
+		"num":                         "1.1",
+		"str":                         "test",
+		"deepObjectParam[bigintStr]":  "9223372036854775808",
+		"deepObjectParam[boolOpt]":    "true",
+		"deepObjectParam[int32Enum]":  "55",
+		"bigintStr":                   "9223372036854775808",
+		"bool":                        "true",
+		"boolOpt":                     "true",
 		"jsonParam":                   "{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}",
 		"any":                         "any",
 		"date":                        "2020-01-01",
-		"deepObjectParam[any]":        "any",
-		"deepObjectParam[strOpt]":     "testOptional",
 		"int32":                       "1",
+		"deepObjectParam[dateTime]":   "2020-01-01T00:00:00.000000001Z",
+		"deepObjectParam[int32]":      "1",
+		"deepObjectParam[int]":        "1",
+		"deepObjectParam[strOpt]":     "testOptional",
+		"enum":                        "one",
 		"dateTime":                    "2020-01-01T00:00:00.000000001Z",
 		"deepObjectParam[bigint]":     "8821239038968084",
-		"deepObjectParam[int]":        "1",
-		"deepObjectParam[int32Enum]":  "55",
-		"deepObjectParam[num]":        "1.1",
-		"int32Enum":                   "55",
-		"boolOpt":                     "true",
-		"deepObjectParam[intEnum]":    "2",
-		"deepObjectParam[decimalStr]": "3.14159265358979344719667586",
-		"float32":                     "1.1",
-		"int":                         "1",
-		"deepObjectParam[bigintStr]":  "9223372036854775808",
-		"deepObjectParam[enum]":       "one",
-		"deepObjectParam[int32]":      "1",
-		"enum":                        "one",
-		"deepObjectParam[decimal]":    "3.141592653589793",
-		"deepObjectParam[str]":        "test",
-		"num":                         "1.1",
-		"decimal":                     "3.141592653589793",
-		"str":                         "test",
-		"bigint":                      "8821239038968084",
-		"bigintStr":                   "9223372036854775808",
-		"bool":                        "true",
 		"deepObjectParam[bool]":       "true",
+		"decimal":                     "3.141592653589793",
+		"int32Enum":                   "55",
+		"deepObjectParam[any]":        "any",
 		"deepObjectParam[date]":       "2020-01-01",
-		"deepObjectParam[float32]":    "1.1",
-		"decimalStr":                  "3.14159265358979344719667586",
-		"strOpt":                      "testOptional",
+		"deepObjectParam[num]":        "1.1",
 	}, res.Res.Args)
 	assert.Equal(t, "http://localhost:35123/anything/queryParams/mixed?any=any&bigint=8821239038968084&bigintStr=9223372036854775808&bool=true&boolOpt=true&date=2020-01-01&dateTime=2020-01-01T00%3A00%3A00.000000001Z&decimal=3.141592653589793&decimalStr=3.14159265358979344719667586&deepObjectParam[any]=any&deepObjectParam[bigintStr]=9223372036854775808&deepObjectParam[bigint]=8821239038968084&deepObjectParam[boolOpt]=true&deepObjectParam[bool]=true&deepObjectParam[dateTime]=2020-01-01T00%3A00%3A00.000000001Z&deepObjectParam[date]=2020-01-01&deepObjectParam[decimalStr]=3.14159265358979344719667586&deepObjectParam[decimal]=3.141592653589793&deepObjectParam[enum]=one&deepObjectParam[float32]=1.1&deepObjectParam[int32Enum]=55&deepObjectParam[int32]=1&deepObjectParam[intEnum]=2&deepObjectParam[int]=1&deepObjectParam[num]=1.1&deepObjectParam[strOpt]=testOptional&deepObjectParam[str]=test&enum=one&float32=1.1&int=1&int32=1&int32Enum=55&intEnum=2&jsonParam={\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.000000001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}&num=1.1&str=test&strOpt=testOptional", res.Res.URL)
 }
@@ -891,8 +891,8 @@ func TestParameters_PathParameterJSON(t *testing.T) {
 		Float32:    1.1,
 		Int:        1,
 		Int32:      1,
-		Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-		IntEnum:    shared.SimpleObjectIntEnumSecond,
+		Int32Enum:  shared.Int32EnumFiftyFive,
+		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
@@ -945,8 +945,8 @@ func TestParameters_PipeDelimitedQueryParamsArray(t *testing.T) {
 		Float32:    1.1,
 		Int:        1,
 		Int32:      1,
-		Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-		IntEnum:    shared.SimpleObjectIntEnumSecond,
+		Int32Enum:  shared.Int32EnumFiftyFive,
+		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
@@ -1040,8 +1040,8 @@ func TestParameters_SimplePathParameterObjects(t *testing.T) {
 		Float32:    1.1,
 		Int:        1,
 		Int32:      1,
-		Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-		IntEnum:    shared.SimpleObjectIntEnumSecond,
+		Int32Enum:  shared.Int32EnumFiftyFive,
+		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
@@ -1061,8 +1061,8 @@ func TestParameters_SimplePathParameterObjects(t *testing.T) {
 		Float32:    1.1,
 		Int:        1,
 		Int32:      1,
-		Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
-		IntEnum:    shared.SimpleObjectIntEnumSecond,
+		Int32Enum:  shared.Int32EnumFiftyFive,
+		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),

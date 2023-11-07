@@ -126,10 +126,10 @@ class UsageExamplePostRequest
     /**
      * An enum parameter
      * 
-     * @var \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostEnumParameter $enumParameter
+     * @var \OpenAPI\OpenAPI\Models\Operations\EnumParameter $enumParameter
      */
 	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=enumParameter')]
-    public UsageExamplePostEnumParameter $enumParameter;
+    public EnumParameter $enumParameter;
     
     /**
      * A number parameter that contains a falsey example value
@@ -174,10 +174,10 @@ class UsageExamplePostRequest
     /**
      * An enum parameter
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\UsageExamplePostOptEnumParameter $optEnumParameter
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\OptEnumParameter $optEnumParameter
      */
 	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=optEnumParameter')]
-    public ?UsageExamplePostOptEnumParameter $optEnumParameter = null;
+    public ?OptEnumParameter $optEnumParameter = null;
     
     /**
      * A string parameter
@@ -203,7 +203,7 @@ class UsageExamplePostRequest
 		$this->decimalStrParameter = "";
 		$this->decimalStrParameterOptional = null;
 		$this->doubleParameter = 0;
-		$this->enumParameter = \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostEnumParameter::Value1;
+		$this->enumParameter = \OpenAPI\OpenAPI\Models\Operations\EnumParameter::Value1;
 		$this->falseyNumberParameter = 0;
 		$this->float32Parameter = 0;
 		$this->floatParameter = 0;

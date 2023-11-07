@@ -25,36 +25,28 @@ extension Client: OpenAPI {
 
     // MARK: - Scoped API operations
 
-    public var auth: AuthAPI {
-        return _AuthAPI(client: self)
-    }
-
-    public var authNew: AuthNewAPI {
-        return _AuthNewAPI(client: self)
-    }
-
-    public var documentation: DocumentationAPI {
-        return _DocumentationAPI(client: self)
+    public var generation: GenerationAPI {
+        return _GenerationAPI(client: self)
     }
 
     public var errors: ErrorsAPI {
         return _ErrorsAPI(client: self)
     }
 
-    public var first: FirstAPI {
-        return _FirstAPI(client: self)
+    public var unions: UnionsAPI {
+        return _UnionsAPI(client: self)
     }
 
     public var flattening: FlatteningAPI {
         return _FlatteningAPI(client: self)
     }
 
-    public var generation: GenerationAPI {
-        return _GenerationAPI(client: self)
-    }
-
     public var globals: GlobalsAPI {
         return _GlobalsAPI(client: self)
+    }
+
+    public var parameters: ParametersAPI {
+        return _ParametersAPI(client: self)
     }
 
     public var nestFirst: NestFirstAPI {
@@ -73,32 +65,12 @@ extension Client: OpenAPI {
         return _NestedSecondAPI(client: self)
     }
 
-    public var pagination: PaginationAPI {
-        return _PaginationAPI(client: self)
-    }
-
-    public var parameters: ParametersAPI {
-        return _ParametersAPI(client: self)
-    }
-
     public var requestBodies: RequestBodiesAPI {
         return _RequestBodiesAPI(client: self)
     }
 
-    public var resource: ResourceAPI {
-        return _ResourceAPI(client: self)
-    }
-
     public var responseBodies: ResponseBodiesAPI {
         return _ResponseBodiesAPI(client: self)
-    }
-
-    public var retries: RetriesAPI {
-        return _RetriesAPI(client: self)
-    }
-
-    public var second: SecondAPI {
-        return _SecondAPI(client: self)
     }
 
     public var servers: ServersAPI {
@@ -109,8 +81,36 @@ extension Client: OpenAPI {
         return _TelemetryAPI(client: self)
     }
 
-    public var unions: UnionsAPI {
-        return _UnionsAPI(client: self)
+    public var authNew: AuthNewAPI {
+        return _AuthNewAPI(client: self)
+    }
+
+    public var auth: AuthAPI {
+        return _AuthAPI(client: self)
+    }
+
+    public var documentation: DocumentationAPI {
+        return _DocumentationAPI(client: self)
+    }
+
+    public var resource: ResourceAPI {
+        return _ResourceAPI(client: self)
+    }
+
+    public var first: FirstAPI {
+        return _FirstAPI(client: self)
+    }
+
+    public var second: SecondAPI {
+        return _SecondAPI(client: self)
+    }
+
+    public var pagination: PaginationAPI {
+        return _PaginationAPI(client: self)
+    }
+
+    public var retries: RetriesAPI {
+        return _RetriesAPI(client: self)
     }
 }
 
@@ -141,7 +141,7 @@ private func handlePutAnythingIgnoredGenerationResponse(response: Client.APIResp
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .putAnythingIgnoredGeneration200ApplicationJSONObject(try JSONDecoder().decode(Operations.PutAnythingIgnoredGeneration200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.PutAnythingIgnoredGenerationResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

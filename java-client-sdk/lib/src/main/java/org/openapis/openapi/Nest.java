@@ -7,13 +7,13 @@ package org.openapis.openapi;
 
 
 public class Nest {    
-	public NestFirst first;
+	public SDKFirst first;
 	
 	private SDKConfiguration sdkConfiguration;
 
 	public Nest(SDKConfiguration sdkConfiguration) {
 		this.sdkConfiguration = sdkConfiguration;
 		
-		this.first = new NestFirst(this.sdkConfiguration);
+		this.first = new SDKFirst(this.sdkConfiguration);
 	}
 }

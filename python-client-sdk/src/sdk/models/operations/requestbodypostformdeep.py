@@ -10,7 +10,7 @@ from typing import Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class RequestBodyPostFormDeepResForm:
+class Form:
     arr: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arr') }})
     bool: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool') }})
     int: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int') }})
@@ -26,7 +26,7 @@ class RequestBodyPostFormDeepResForm:
 @dataclasses.dataclass
 class RequestBodyPostFormDeepRes:
     r"""OK"""
-    form: RequestBodyPostFormDeepResForm = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form') }})
+    form: Form = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form') }})
     
 
 

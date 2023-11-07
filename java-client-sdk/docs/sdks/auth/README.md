@@ -1,5 +1,5 @@
 # Auth
-(*auth*)
+(*.auth*)
 
 ## Overview
 

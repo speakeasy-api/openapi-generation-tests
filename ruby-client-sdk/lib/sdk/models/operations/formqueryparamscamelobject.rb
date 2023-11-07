@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class FormQueryParamsCamelObjectObjParam < OpenApiSDK::Utils::FieldAugmented
+    class ObjParam < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -26,7 +26,7 @@ module OpenApiSDK
     end
 
 
-    class FormQueryParamsCamelObjectObjParamExploded < OpenApiSDK::Utils::FieldAugmented
+    class ObjParamExploded < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -47,12 +47,12 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :obj_param_exploded, Operations::FormQueryParamsCamelObjectObjParamExploded, { 'query_param': { 'field_name': 'obj_param_exploded', 'style': 'form', 'explode': true } }
+      field :obj_param_exploded, Operations::ObjParamExploded, { 'query_param': { 'field_name': 'obj_param_exploded', 'style': 'form', 'explode': true } }
 
-      field :obj_param, T.nilable(Operations::FormQueryParamsCamelObjectObjParam), { 'query_param': { 'field_name': 'obj_param', 'style': 'form', 'explode': false } }
+      field :obj_param, T.nilable(Operations::ObjParam), { 'query_param': { 'field_name': 'obj_param', 'style': 'form', 'explode': false } }
 
 
-      sig { params(obj_param_exploded: Operations::FormQueryParamsCamelObjectObjParamExploded, obj_param: T.nilable(Operations::FormQueryParamsCamelObjectObjParam)).void }
+      sig { params(obj_param_exploded: Operations::ObjParamExploded, obj_param: T.nilable(Operations::ObjParam)).void }
       def initialize(obj_param_exploded: nil, obj_param: nil)
         @obj_param_exploded = obj_param_exploded
         @obj_param = obj_param
@@ -60,7 +60,7 @@ module OpenApiSDK
     end
 
 
-    class FormQueryParamsCamelObjectResArgs < OpenApiSDK::Utils::FieldAugmented
+    class FormQueryParamsCamelObjectArgs < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -81,12 +81,12 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :args, Operations::FormQueryParamsCamelObjectResArgs, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
+      field :args, Operations::FormQueryParamsCamelObjectArgs, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
 
       field :url, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('url') } }
 
 
-      sig { params(args: Operations::FormQueryParamsCamelObjectResArgs, url: String).void }
+      sig { params(args: Operations::FormQueryParamsCamelObjectArgs, url: String).void }
       def initialize(args: nil, url: nil)
         @args = args
         @url = url

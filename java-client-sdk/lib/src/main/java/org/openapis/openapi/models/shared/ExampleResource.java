@@ -34,9 +34,9 @@ public class ExampleResource {
     }
     
     @JsonProperty("chocolates")
-    public ExampleResourceChocolates[] chocolates;
+    public Chocolates[] chocolates;
 
-    public ExampleResource withChocolates(ExampleResourceChocolates[] chocolates) {
+    public ExampleResource withChocolates(Chocolates[] chocolates) {
         this.chocolates = chocolates;
         return this;
     }
@@ -54,18 +54,18 @@ public class ExampleResource {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("enumNumber")
-    public ExampleResourceEnumNumber enumNumber;
+    public EnumNumber enumNumber;
 
-    public ExampleResource withEnumNumber(ExampleResourceEnumNumber enumNumber) {
+    public ExampleResource withEnumNumber(EnumNumber enumNumber) {
         this.enumNumber = enumNumber;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("enumStr")
-    public ExampleResourceEnumStr enumStr;
+    public EnumStr enumStr;
 
-    public ExampleResource withEnumStr(ExampleResourceEnumStr enumStr) {
+    public ExampleResource withEnumStr(EnumStr enumStr) {
         this.enumStr = enumStr;
         return this;
     }
@@ -123,7 +123,7 @@ public class ExampleResource {
         return this;
     }
     
-    public ExampleResource(@JsonProperty("chocolates") ExampleResourceChocolates[] chocolates, @JsonProperty("id") String id, @JsonProperty("name") String name, @JsonProperty("vehicle") Object vehicle) {
+    public ExampleResource(@JsonProperty("chocolates") Chocolates[] chocolates, @JsonProperty("id") String id, @JsonProperty("name") String name, @JsonProperty("vehicle") Object vehicle) {
         this.chocolates = chocolates;
         this.id = id;
         this.name = name;

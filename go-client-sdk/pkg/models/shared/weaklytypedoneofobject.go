@@ -4,7 +4,7 @@ package shared
 
 import (
 	"errors"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 )
 
 type WeaklyTypedOneOfObjectType string

@@ -10,7 +10,7 @@ let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
 let response = try await client.generation.getGlobalNameOverride()
 
 switch response.data {
-case .getGlobalNameOverride200ApplicationJSONObject(let getGlobalNameOverride200ApplicationJSONObject):
+case .object(let object):
     // Handle response
     break
 case .empty:
@@ -156,7 +156,7 @@ let response = try await client.generation.usageExamplePost(
 )
 
 switch response.data {
-case .usageExamplePost200ApplicationJSONObject(let usageExamplePost200ApplicationJSONObject):
+case .object(let object):
     // Handle response
     break
 case .empty:

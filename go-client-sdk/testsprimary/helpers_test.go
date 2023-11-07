@@ -5,11 +5,11 @@ package tests
 import (
 	"encoding/json"
 	"math/big"
+	"testing"
+	"time"
 
 	"openapi/pkg/models/shared"
 	"openapi/pkg/types"
-	"testing"
-	"time"
 
 	"github.com/AlekSi/pointer"
 	"github.com/stretchr/testify/require"
@@ -21,8 +21,8 @@ func createSimpleObject() shared.SimpleObject {
 		Bool:       true,
 		Int:        1,
 		Int32:      1,
-		IntEnum:    shared.SimpleObjectIntEnumSecond,
-		Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
+		IntEnum:    shared.IntEnumSecond,
+		Int32Enum:  shared.Int32EnumFiftyFive,
 		Num:        1.1,
 		Float32:    1.1,
 		Enum:       shared.EnumOne,
@@ -44,8 +44,8 @@ func createSimpleObjectCamelCase() shared.SimpleObjectCamelCase {
 		BoolVal:       true,
 		IntVal:        1,
 		Int32Val:      1,
-		IntEnumVal:    shared.SimpleObjectCamelCaseIntEnumValSecond,
-		Int32EnumVal:  shared.SimpleObjectCamelCaseInt32EnumValFiftyFive,
+		IntEnumVal:    shared.IntEnumValSecond,
+		Int32EnumVal:  shared.Int32EnumValFiftyFive,
 		NumVal:        1.1,
 		Float32Val:    1.1,
 		EnumVal:       shared.EnumOne,
@@ -63,7 +63,7 @@ func createSimpleObjectCamelCase() shared.SimpleObjectCamelCase {
 
 func createDeepObject() shared.DeepObject {
 	return shared.DeepObject{
-		Any: shared.CreateDeepObjectAnySimpleObject(createSimpleObject()),
+		Any: shared.CreateAnySimpleObject(createSimpleObject()),
 		Arr: []shared.SimpleObject{
 			createSimpleObject(), createSimpleObject(),
 		},
@@ -80,7 +80,7 @@ func createDeepObject() shared.DeepObject {
 
 func createDeepObjectCamelCase() shared.DeepObjectCamelCase {
 	return shared.DeepObjectCamelCase{
-		AnyVal: shared.CreateDeepObjectCamelCaseAnyValSimpleObjectCamelCase(createSimpleObjectCamelCase()),
+		AnyVal: shared.CreateAnyValSimpleObjectCamelCase(createSimpleObjectCamelCase()),
 		ArrVal: []shared.SimpleObjectCamelCase{
 			createSimpleObjectCamelCase(), createSimpleObjectCamelCase(),
 		},

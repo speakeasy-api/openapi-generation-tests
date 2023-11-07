@@ -3,14 +3,14 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 /**
  * An enum type
  */
-export enum NameOverrideGetEnumNameOverride {
+export enum EnumNameOverride {
     Value1 = "value1",
     Value2 = "value2",
     Value3 = "value3",
@@ -21,7 +21,7 @@ export class NameOverrideGetRequest extends SpeakeasyBase {
      * An enum type
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=enumNameOverride" })
-    testEnumQueryParam: NameOverrideGetEnumNameOverride;
+    testEnumQueryParam: EnumNameOverride;
 
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=nameOverride" })
     testQueryParam: string;
@@ -30,7 +30,7 @@ export class NameOverrideGetRequest extends SpeakeasyBase {
 /**
  * A successful response that contains the simpleObject sent in the request body
  */
-export class OverriddenResponse extends SpeakeasyBase {
+export class NameOverrideGetOverriddenResponse extends SpeakeasyBase {
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
      */
@@ -63,5 +63,5 @@ export class NameOverrideGetResponse extends SpeakeasyBase {
      * A successful response that contains the simpleObject sent in the request body
      */
     @SpeakeasyMetadata()
-    overriddenResponse?: OverriddenResponse;
+    overriddenResponse?: NameOverrideGetOverriddenResponse;
 }

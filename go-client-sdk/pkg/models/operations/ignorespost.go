@@ -4,22 +4,22 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
-type IgnoresPostApplicationJSON struct {
+type IgnoresPostRequestBody struct {
 	CallbackURL *string `json:"callbackUrl,omitempty"`
 	TestProp    *string `json:"testProp,omitempty"`
 }
 
-func (o *IgnoresPostApplicationJSON) GetCallbackURL() *string {
+func (o *IgnoresPostRequestBody) GetCallbackURL() *string {
 	if o == nil {
 		return nil
 	}
 	return o.CallbackURL
 }
 
-func (o *IgnoresPostApplicationJSON) GetTestProp() *string {
+func (o *IgnoresPostRequestBody) GetTestProp() *string {
 	if o == nil {
 		return nil
 	}
@@ -27,13 +27,13 @@ func (o *IgnoresPostApplicationJSON) GetTestProp() *string {
 }
 
 type IgnoresPostRequest struct {
-	RequestBody IgnoresPostApplicationJSON `request:"mediaType=application/json"`
-	TestParam   *string                    `queryParam:"style=form,explode=true,name=testParam"`
+	RequestBody IgnoresPostRequestBody `request:"mediaType=application/json"`
+	TestParam   *string                `queryParam:"style=form,explode=true,name=testParam"`
 }
 
-func (o *IgnoresPostRequest) GetRequestBody() IgnoresPostApplicationJSON {
+func (o *IgnoresPostRequest) GetRequestBody() IgnoresPostRequestBody {
 	if o == nil {
-		return IgnoresPostApplicationJSON{}
+		return IgnoresPostRequestBody{}
 	}
 	return o.RequestBody
 }

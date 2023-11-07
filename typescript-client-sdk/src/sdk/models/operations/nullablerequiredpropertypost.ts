@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
-export enum NullableRequiredPropertyPostRequestBodyNullableRequiredEnum {
+export enum NullableRequiredEnum {
     First = "first",
     Second = "second",
 }
@@ -22,7 +22,7 @@ export class NullableRequiredPropertyPostRequestBody extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "NullableRequiredEnum" })
-    nullableRequiredEnum: NullableRequiredPropertyPostRequestBodyNullableRequiredEnum;
+    nullableRequiredEnum: NullableRequiredEnum;
 
     @SpeakeasyMetadata()
     @Expose({ name: "NullableRequiredInt" })
@@ -52,5 +52,5 @@ export class NullableRequiredPropertyPostResponse extends SpeakeasyBase {
      * OK
      */
     @SpeakeasyMetadata()
-    nullableRequiredPropertyPost200ApplicationJSONString?: string;
+    res?: string;
 }

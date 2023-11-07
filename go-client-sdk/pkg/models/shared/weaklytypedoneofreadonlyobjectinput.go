@@ -4,14 +4,14 @@ package shared
 
 import (
 	"errors"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 )
 
 type WeaklyTypedOneOfReadOnlyObjectInputType string
 
 const (
 	WeaklyTypedOneOfReadOnlyObjectInputTypeSimpleObject        WeaklyTypedOneOfReadOnlyObjectInputType = "simpleObject"
-	WeaklyTypedOneOfReadOnlyObjectInputTypeReadOnlyObjectInput WeaklyTypedOneOfReadOnlyObjectInputType = "readOnlyObjectInput"
+	WeaklyTypedOneOfReadOnlyObjectInputTypeReadOnlyObjectInput WeaklyTypedOneOfReadOnlyObjectInputType = "readOnlyObject_input"
 )
 
 type WeaklyTypedOneOfReadOnlyObjectInput struct {

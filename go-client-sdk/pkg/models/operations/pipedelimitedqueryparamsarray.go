@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
 type PipeDelimitedQueryParamsArrayRequest struct {
@@ -43,19 +43,19 @@ func (o *PipeDelimitedQueryParamsArrayRequest) GetObjParam() *shared.SimpleObjec
 	return o.ObjParam
 }
 
-type PipeDelimitedQueryParamsArrayResArgs struct {
+type PipeDelimitedQueryParamsArrayArgs struct {
 	ArrParam         string   `json:"arrParam"`
 	ArrParamExploded []string `json:"arrParamExploded"`
 }
 
-func (o *PipeDelimitedQueryParamsArrayResArgs) GetArrParam() string {
+func (o *PipeDelimitedQueryParamsArrayArgs) GetArrParam() string {
 	if o == nil {
 		return ""
 	}
 	return o.ArrParam
 }
 
-func (o *PipeDelimitedQueryParamsArrayResArgs) GetArrParamExploded() []string {
+func (o *PipeDelimitedQueryParamsArrayArgs) GetArrParamExploded() []string {
 	if o == nil {
 		return []string{}
 	}
@@ -64,13 +64,13 @@ func (o *PipeDelimitedQueryParamsArrayResArgs) GetArrParamExploded() []string {
 
 // PipeDelimitedQueryParamsArrayRes - OK
 type PipeDelimitedQueryParamsArrayRes struct {
-	Args PipeDelimitedQueryParamsArrayResArgs `json:"args"`
-	URL  string                               `json:"url"`
+	Args PipeDelimitedQueryParamsArrayArgs `json:"args"`
+	URL  string                            `json:"url"`
 }
 
-func (o *PipeDelimitedQueryParamsArrayRes) GetArgs() PipeDelimitedQueryParamsArrayResArgs {
+func (o *PipeDelimitedQueryParamsArrayRes) GetArgs() PipeDelimitedQueryParamsArrayArgs {
 	if o == nil {
-		return PipeDelimitedQueryParamsArrayResArgs{}
+		return PipeDelimitedQueryParamsArrayArgs{}
 	}
 	return o.Args
 }

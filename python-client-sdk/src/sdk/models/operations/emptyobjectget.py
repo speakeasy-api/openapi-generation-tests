@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import emptyobjectparam as shared_emptyobjectparam
+from ...models.shared import emptyobjectparam as shared_emptyobjectparam
 from typing import Optional
 
 

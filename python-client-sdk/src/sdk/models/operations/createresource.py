@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import exampleresource as shared_exampleresource
+from ...models.shared import exampleresource as shared_exampleresource
 from typing import Optional
 
 

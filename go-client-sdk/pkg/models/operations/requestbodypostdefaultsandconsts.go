@@ -4,15 +4,15 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
-// RequestBodyPostDefaultsAndConsts200ApplicationJSON - OK
-type RequestBodyPostDefaultsAndConsts200ApplicationJSON struct {
+// RequestBodyPostDefaultsAndConstsResponseBody - OK
+type RequestBodyPostDefaultsAndConstsResponseBody struct {
 	JSON shared.DefaultsAndConstsOutput `json:"json"`
 }
 
-func (o *RequestBodyPostDefaultsAndConsts200ApplicationJSON) GetJSON() shared.DefaultsAndConstsOutput {
+func (o *RequestBodyPostDefaultsAndConstsResponseBody) GetJSON() shared.DefaultsAndConstsOutput {
 	if o == nil {
 		return shared.DefaultsAndConstsOutput{}
 	}
@@ -27,7 +27,7 @@ type RequestBodyPostDefaultsAndConstsResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	RequestBodyPostDefaultsAndConsts200ApplicationJSONObject *RequestBodyPostDefaultsAndConsts200ApplicationJSON
+	Object *RequestBodyPostDefaultsAndConstsResponseBody
 }
 
 func (o *RequestBodyPostDefaultsAndConstsResponse) GetContentType() string {
@@ -51,9 +51,9 @@ func (o *RequestBodyPostDefaultsAndConstsResponse) GetRawResponse() *http.Respon
 	return o.RawResponse
 }
 
-func (o *RequestBodyPostDefaultsAndConstsResponse) GetRequestBodyPostDefaultsAndConsts200ApplicationJSONObject() *RequestBodyPostDefaultsAndConsts200ApplicationJSON {
+func (o *RequestBodyPostDefaultsAndConstsResponse) GetObject() *RequestBodyPostDefaultsAndConstsResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject
+	return o.Object
 }

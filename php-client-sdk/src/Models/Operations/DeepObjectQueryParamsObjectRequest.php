@@ -20,7 +20,7 @@ class DeepObjectQueryParamsObjectRequest
     public \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam;
     
 	#[SpeakeasyMetadata('queryParam:style=deepObject,explode=true,name=objArrParam')]
-    public ?DeepObjectQueryParamsObjectObjArrParam $objArrParam = null;
+    public ?ObjArrParam $objArrParam = null;
     
 	public function __construct()
 	{

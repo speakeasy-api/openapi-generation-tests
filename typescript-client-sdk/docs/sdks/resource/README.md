@@ -1,5 +1,5 @@
 # Resource
-(*resource*)
+(*.resource*)
 
 ### Available Operations
 
@@ -27,8 +27,8 @@ import { SDK } from "openapi";
 
   const res = await sdk.resource.createFile({
     file: {
-      content: "`'$Z`(L/RH" as bytes <<<>>>,
-      file: "string",
+      content: new TextEncoder().encode("0xf10df1a3b9"),
+      fileName: "rap_national.mp4v",
     },
   });
 
@@ -58,7 +58,7 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { ExampleResourceEnumNumber, ExampleResourceEnumStr } from "openapi/dist/sdk/models/shared";
+import { EnumNumber, EnumStr } from "openapi/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new SDK({

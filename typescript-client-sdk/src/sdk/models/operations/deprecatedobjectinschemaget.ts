@@ -3,14 +3,14 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 /**
  * A successful response that contains a deprecatedObject sent in the request body
  */
-export class DeprecatedObjectInSchemaGet200ApplicationJSON extends SpeakeasyBase {
+export class DeprecatedObjectInSchemaGetResponseBody extends SpeakeasyBase {
     /**
      * @deprecated field: This object is deprecated.
      */
@@ -43,5 +43,5 @@ export class DeprecatedObjectInSchemaGetResponse extends SpeakeasyBase {
      * A successful response that contains a deprecatedObject sent in the request body
      */
     @SpeakeasyMetadata()
-    deprecatedObjectInSchemaGet200ApplicationJSONObject?: DeprecatedObjectInSchemaGet200ApplicationJSON;
+    object?: DeprecatedObjectInSchemaGetResponseBody;
 }

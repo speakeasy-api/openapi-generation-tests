@@ -5,13 +5,13 @@ import Foundation
 extension Operations {
     /// OK
     public struct JsonQueryParamsObjectRes {
-        public let args: Operations.JsonQueryParamsObjectResArgs
+        public let args: Operations.JsonQueryParamsObjectArgs
         public let url: String
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(args: Operations.JsonQueryParamsObjectResArgs, url: String) {
+        public init(args: Operations.JsonQueryParamsObjectArgs, url: String) {
             self.args = args
             self.url = url
         }

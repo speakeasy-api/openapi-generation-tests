@@ -9,7 +9,7 @@ from typing import Any, Dict, Optional
 
 
 @dataclasses.dataclass
-class RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded:
+class RequestBodyPostMultipleContentTypesSplitFormRequestBody:
     bool3: bool = dataclasses.field(metadata={'form': { 'field_name': 'bool3' }})
     num3: float = dataclasses.field(metadata={'form': { 'field_name': 'num3' }})
     str3: str = dataclasses.field(metadata={'form': { 'field_name': 'str3' }})

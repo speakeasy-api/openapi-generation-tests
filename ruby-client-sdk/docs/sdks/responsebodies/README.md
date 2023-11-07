@@ -1,5 +1,5 @@
 # ResponseBodies
-(*response_bodies*)
+
 
 ## Overview
 
@@ -43,7 +43,7 @@ req = ::.new(
     
 res = s.response_bodies.response_body_additional_properties_complex_numbers_post(req)
 
-if ! res.response_body_additional_properties_complex_numbers_post_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -85,7 +85,7 @@ req = ::.new(
     
 res = s.response_bodies.response_body_additional_properties_date_post(req)
 
-if ! res.response_body_additional_properties_date_post_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -135,8 +135,8 @@ req = ::.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::FIRST,
+      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::IntEnum::FIRST,
       int_opt_null=957109,
       num=1.1,
       num_opt_null=7193.38,
@@ -148,7 +148,7 @@ req = ::.new(
     
 res = s.response_bodies.response_body_additional_properties_object_post(req)
 
-if ! res.response_body_additional_properties_object_post_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -190,7 +190,7 @@ req = ::.new(
     
 res = s.response_bodies.response_body_additional_properties_post(req)
 
-if ! res.response_body_additional_properties_post_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 
@@ -442,7 +442,7 @@ req = Shared::ObjWithZeroValueComplexTypePtrs.new(
     
 res = s.response_bodies.response_body_zero_value_complex_type_ptrs_post(req)
 
-if ! res.response_body_zero_value_complex_type_ptrs_post_200_application_json_object.nil?
+if ! res.object.nil?
   # handle response
 end
 

@@ -3,23 +3,23 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
-import { NestedFirst } from "./nestedfirst";
-import { NestedSecond } from "./nestedsecond";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
+import { SDKNestedFirst } from "./sdknestedfirst";
+import { SDKSecond } from "./sdksecond";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
 export class Nested {
-    public first: NestedFirst;
-    public second: NestedSecond;
+    public first: SDKNestedFirst;
+    public second: SDKSecond;
     private sdkConfiguration: SDKConfiguration;
 
     constructor(sdkConfig: SDKConfiguration) {
         this.sdkConfiguration = sdkConfig;
-        this.first = new NestedFirst(this.sdkConfiguration);
-        this.second = new NestedSecond(this.sdkConfiguration);
+        this.first = new SDKNestedFirst(this.sdkConfiguration);
+        this.second = new SDKSecond(this.sdkConfiguration);
     }
 
     async get(config?: AxiosRequestConfig): Promise<operations.NestedGetResponse> {

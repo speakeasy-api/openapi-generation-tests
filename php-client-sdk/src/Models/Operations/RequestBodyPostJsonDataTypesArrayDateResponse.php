@@ -38,16 +38,16 @@ class RequestBodyPostJsonDataTypesArrayDateResponse
     /**
      * OK
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON $requestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesArrayDateResponseBody $object
      */
 	
-    public ?RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON $requestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject = null;
+    public ?RequestBodyPostJsonDataTypesArrayDateResponseBody $object = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->requestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject = null;
+		$this->object = null;
 	}
 }

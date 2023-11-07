@@ -12,9 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class JsonQueryParamsObjectRes {
     @JsonProperty("args")
-    public JsonQueryParamsObjectResArgs args;
+    public JsonQueryParamsObjectArgs args;
 
-    public JsonQueryParamsObjectRes withArgs(JsonQueryParamsObjectResArgs args) {
+    public JsonQueryParamsObjectRes withArgs(JsonQueryParamsObjectArgs args) {
         this.args = args;
         return this;
     }
@@ -27,7 +27,7 @@ public class JsonQueryParamsObjectRes {
         return this;
     }
     
-    public JsonQueryParamsObjectRes(@JsonProperty("args") JsonQueryParamsObjectResArgs args, @JsonProperty("url") String url) {
+    public JsonQueryParamsObjectRes(@JsonProperty("args") JsonQueryParamsObjectArgs args, @JsonProperty("url") String url) {
         this.args = args;
         this.url = url;
   }

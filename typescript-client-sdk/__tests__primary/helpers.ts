@@ -6,13 +6,13 @@ import {
   DeepObject,
   DeepObjectCamelCase,
   Enum,
+  Int32Enum,
+  IntEnum,
   SimpleObject,
   SimpleObjectCamelCase,
-  SimpleObjectInt32Enum,
-  SimpleObjectIntEnum,
 } from "../src/sdk/models/shared";
 
-import {RFCDate} from "../src/sdk/types";
+import { RFCDate } from "../src/sdk/types";
 
 export const createSimpleObject = (): SimpleObject => {
   return new SimpleObject({
@@ -20,8 +20,8 @@ export const createSimpleObject = (): SimpleObject => {
     bool: true,
     int: 1,
     int32: 1,
-    int32Enum: SimpleObjectInt32Enum.FiftyFive,
-    intEnum: SimpleObjectIntEnum.Second,
+    int32Enum: Int32Enum.FiftyFive,
+    intEnum: IntEnum.Second,
     num: 1.1,
     float32: 1.1,
     enum: Enum.One,
@@ -39,8 +39,8 @@ export const createSimpleObjectCamelCase = (): SimpleObjectCamelCase => {
     boolVal: true,
     intVal: 1,
     int32Val: 1,
-    int32EnumVal: SimpleObjectInt32Enum.FiftyFive,
-    intEnumVal: SimpleObjectIntEnum.Second,
+    int32EnumVal: Int32Enum.FiftyFive,
+    intEnumVal: IntEnum.Second,
     numVal: 1.1,
     float32Val: 1.1,
     enumVal: Enum.One,
@@ -80,7 +80,7 @@ export const createDeepObjectCamelCase = (): DeepObjectCamelCase => {
     objVal: createSimpleObjectCamelCase(),
     strVal: "test",
   });
-}
+};
 
 export const sortKeys = (obj: any): any => {
   if (Array.isArray(obj)) {

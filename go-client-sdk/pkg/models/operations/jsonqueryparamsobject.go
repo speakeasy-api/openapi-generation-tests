@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
 type JSONQueryParamsObjectRequest struct {
@@ -27,19 +27,19 @@ func (o *JSONQueryParamsObjectRequest) GetSimpleObjParam() shared.SimpleObject {
 	return o.SimpleObjParam
 }
 
-type JSONQueryParamsObjectResArgs struct {
+type JSONQueryParamsObjectArgs struct {
 	DeepObjParam   string `json:"deepObjParam"`
 	SimpleObjParam string `json:"simpleObjParam"`
 }
 
-func (o *JSONQueryParamsObjectResArgs) GetDeepObjParam() string {
+func (o *JSONQueryParamsObjectArgs) GetDeepObjParam() string {
 	if o == nil {
 		return ""
 	}
 	return o.DeepObjParam
 }
 
-func (o *JSONQueryParamsObjectResArgs) GetSimpleObjParam() string {
+func (o *JSONQueryParamsObjectArgs) GetSimpleObjParam() string {
 	if o == nil {
 		return ""
 	}
@@ -48,13 +48,13 @@ func (o *JSONQueryParamsObjectResArgs) GetSimpleObjParam() string {
 
 // JSONQueryParamsObjectRes - OK
 type JSONQueryParamsObjectRes struct {
-	Args JSONQueryParamsObjectResArgs `json:"args"`
-	URL  string                       `json:"url"`
+	Args JSONQueryParamsObjectArgs `json:"args"`
+	URL  string                    `json:"url"`
 }
 
-func (o *JSONQueryParamsObjectRes) GetArgs() JSONQueryParamsObjectResArgs {
+func (o *JSONQueryParamsObjectRes) GetArgs() JSONQueryParamsObjectArgs {
 	if o == nil {
-		return JSONQueryParamsObjectResArgs{}
+		return JSONQueryParamsObjectArgs{}
 	}
 	return o.Args
 }

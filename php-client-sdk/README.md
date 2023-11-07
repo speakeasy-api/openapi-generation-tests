@@ -18,20 +18,20 @@ composer require "openapi/openapi"
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use OpenAPI\OpenAPI\SDK;
-use OpenAPI\OpenAPI\Models\Shared\Security;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
     $response = $sdk->generation->globalNameOverridden();
 
-    if ($response->getGlobalNameOverride200ApplicationJSONObject !== null) {
+    if ($response->object !== null) {
         // handle response
     }
 } catch (Exception $e) {
@@ -49,26 +49,16 @@ Do this second
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use OpenAPI\OpenAPI\SDK;
-use OpenAPI\OpenAPI\Models\Shared\Security;
-use OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequest;
-use OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequestBody;
-use OpenAPI\OpenAPI\Models\Shared\FakerFormattedStrings;
-use OpenAPI\OpenAPI\Models\Shared\FakerStrings;
-use OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use OpenAPI\OpenAPI\Models\Shared\Enum;
-use OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
-use OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
-use OpenAPI\OpenAPI\Models\Operations\UsageExamplePostEnumParameter;
-use OpenAPI\OpenAPI\Models\Operations\UsageExamplePostOptEnumParameter;
-use OpenAPI\OpenAPI\Models\Operations\UsageExamplePostSecurity;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Models\Operations;
 
-$sdk = SDK::builder()->build();
+$sdk = OpenAPI\SDK::builder()->build();
 
 try {
-    $request = new UsageExamplePostRequest();
-    $request->requestBody = new UsageExamplePostRequestBody();
-    $request->requestBody->fakerFormattedStrings = new FakerFormattedStrings();
+    $request = new Operations\UsageExamplePostRequest();
+    $request->requestBody = new Operations\UsageExamplePostRequestBody();
+    $request->requestBody->fakerFormattedStrings = new Shared\FakerFormattedStrings();
     $request->requestBody->fakerFormattedStrings->addressFormat = '48525 Maude Fall';
     $request->requestBody->fakerFormattedStrings->directoryFormat = '/etc/defaults';
     $request->requestBody->fakerFormattedStrings->domainFormat = 'next-conflict.name';
@@ -90,7 +80,7 @@ try {
     $request->requestBody->fakerFormattedStrings->uuidFormat =
         '342442b8-aff3-42e0-b62d-e2e2d47a9bf1';
     $request->requestBody->fakerFormattedStrings->zipcodeFormat = '09432';
-    $request->requestBody->fakerStrings = new FakerStrings();
+    $request->requestBody->fakerStrings = new Shared\FakerStrings();
     $request->requestBody->fakerStrings->city = 'McLaughlinchester';
     $request->requestBody->fakerStrings->iban = 'TL232743267267003560099';
     $request->requestBody->fakerStrings->id = '<ID>';
@@ -145,7 +135,7 @@ try {
     $request->requestBody->fakerStrings->url = 'https://crooked-dulcimer.name';
     $request->requestBody->fakerStrings->username = 'Mable76';
     $request->requestBody->fakerStrings->uuid = '16b919d6-51cd-4e97-81e2-5221b7b6969f';
-    $request->requestBody->simpleObject = new SimpleObject();
+    $request->requestBody->simpleObject = new Shared\SimpleObject();
     $request->requestBody->simpleObject->any = 'any';
     $request->requestBody->simpleObject->bigint = 8821239038968084;
     $request->requestBody->simpleObject->bigintStr = '9223372036854775808';
@@ -158,12 +148,12 @@ try {
     );
     $request->requestBody->simpleObject->decimal = 3.141592653589793;
     $request->requestBody->simpleObject->decimalStr = '3.14159265358979344719667586';
-    $request->requestBody->simpleObject->enum = Enum::One;
+    $request->requestBody->simpleObject->enum = Shared\Enum::One;
     $request->requestBody->simpleObject->float32 = 1.1;
     $request->requestBody->simpleObject->int = 1;
     $request->requestBody->simpleObject->int32 = 1;
-    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $request->requestBody->simpleObject->intEnum = SimpleObjectIntEnum::Second;
+    $request->requestBody->simpleObject->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $request->requestBody->simpleObject->intEnum = Shared\IntEnum::Second;
     $request->requestBody->simpleObject->intOptNull = 165468;
     $request->requestBody->simpleObject->num = 1.1;
     $request->requestBody->simpleObject->numOptNull = 5944.32;
@@ -188,22 +178,22 @@ try {
     $request->decimalStrParameter = 'string';
     $request->decimalStrParameterOptional = 'string';
     $request->doubleParameter = 8700.78;
-    $request->enumParameter = UsageExamplePostEnumParameter::Value2;
+    $request->enumParameter = Operations\EnumParameter::Value2;
     $request->falseyNumberParameter = 0;
     $request->float32Parameter = 1341.86;
     $request->floatParameter = 5429.24;
     $request->int64Parameter = 101970;
     $request->intParameter = 938852;
-    $request->optEnumParameter = UsageExamplePostOptEnumParameter::Value3;
+    $request->optEnumParameter = Operations\OptEnumParameter::Value3;
     $request->strParameter = 'example 3';
 
-    $requestSecurity = new UsageExamplePostSecurity();
+    $requestSecurity = new Operations\UsageExamplePostSecurity();
     $requestSecurity->password = 'YOUR_PASSWORD';
     $requestSecurity->username = 'YOUR_USERNAME';
 
     $response = $sdk->generation->usageExamplePost($request, $requestSecurity);
 
-    if ($response->usageExamplePost200ApplicationJSONObject !== null) {
+    if ($response->object !== null) {
         // handle response
     }
 } catch (Exception $e) {
@@ -221,54 +211,7 @@ try {
 * [putAnythingIgnoredGeneration](docs/sdks/sdk/README.md#putanythingignoredgeneration)
 * [responseBodyJsonGet](docs/sdks/sdk/README.md#responsebodyjsonget)
 
-### [auth](docs/sdks/auth/README.md)
-
-* [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
-* [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
-* [basicAuth](docs/sdks/auth/README.md#basicauth)
-* [bearerAuth](docs/sdks/auth/README.md#bearerauth)
-* [globalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
-* [oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
-* [oauth2Override](docs/sdks/auth/README.md#oauth2override)
-* [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
-
-### [authNew](docs/sdks/authnew/README.md)
-
-* [apiKeyAuthGlobalNew](docs/sdks/authnew/README.md#apikeyauthglobalnew)
-* [authGlobal](docs/sdks/authnew/README.md#authglobal)
-* [basicAuthNew](docs/sdks/authnew/README.md#basicauthnew)
-* [multipleMixedOptionsAuth](docs/sdks/authnew/README.md#multiplemixedoptionsauth)
-* [multipleMixedSchemeAuth](docs/sdks/authnew/README.md#multiplemixedschemeauth)
-* [multipleOptionsWithMixedSchemesAuth](docs/sdks/authnew/README.md#multipleoptionswithmixedschemesauth)
-* [multipleOptionsWithSimpleSchemesAuth](docs/sdks/authnew/README.md#multipleoptionswithsimpleschemesauth)
-* [multipleSimpleOptionsAuth](docs/sdks/authnew/README.md#multiplesimpleoptionsauth)
-* [multipleSimpleSchemeAuth](docs/sdks/authnew/README.md#multiplesimpleschemeauth)
-* [oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
-* [openIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
-
-### [documentation](docs/sdks/documentation/README.md)
-
-* [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
-
-### [errors](docs/sdks/errors/README.md)
-
-* [connectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
-* [statusGetError](docs/sdks/errors/README.md#statusgeterror)
-* [statusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
-
-### [first](docs/sdks/first/README.md)
-
-* [get](docs/sdks/first/README.md#get)
-
-### [flattening](docs/sdks/flattening/README.md)
-
-* [componentBodyAndParamConflict](docs/sdks/flattening/README.md#componentbodyandparamconflict)
-* [componentBodyAndParamNoConflict](docs/sdks/flattening/README.md#componentbodyandparamnoconflict)
-* [conflictingParams](docs/sdks/flattening/README.md#conflictingparams)
-* [inlineBodyAndParamConflict](docs/sdks/flattening/README.md#inlinebodyandparamconflict)
-* [inlineBodyAndParamNoConflict](docs/sdks/flattening/README.md#inlinebodyandparamnoconflict)
-
-### [generation](docs/sdks/generation/README.md)
+### [Generation](docs/sdks/generation/README.md)
 
 * [anchorTypesGet](docs/sdks/generation/README.md#anchortypesget)
 * [arrayCircularReferenceGet](docs/sdks/generation/README.md#arraycircularreferenceget)
@@ -291,37 +234,44 @@ try {
 * [typedParameterGenerationGet](docs/sdks/generation/README.md#typedparametergenerationget)
 * [usageExamplePost](docs/sdks/generation/README.md#usageexamplepost) - An operation used for testing usage examples
 
-### [globals](docs/sdks/globals/README.md)
+### [Errors](docs/sdks/errors/README.md)
+
+* [connectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
+* [statusGetError](docs/sdks/errors/README.md#statusgeterror)
+* [statusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
+
+### [Unions](docs/sdks/unions/README.md)
+
+* [flattenedTypedObjectPost](docs/sdks/unions/README.md#flattenedtypedobjectpost)
+* [mixedTypeOneOfPost](docs/sdks/unions/README.md#mixedtypeoneofpost)
+* [nullableOneOfRefInObjectPost](docs/sdks/unions/README.md#nullableoneofrefinobjectpost)
+* [nullableOneOfSchemaPost](docs/sdks/unions/README.md#nullableoneofschemapost)
+* [nullableOneOfTypeInObjectPost](docs/sdks/unions/README.md#nullableoneoftypeinobjectpost)
+* [nullableTypedObjectPost](docs/sdks/unions/README.md#nullabletypedobjectpost)
+* [primitiveTypeOneOfPost](docs/sdks/unions/README.md#primitivetypeoneofpost)
+* [stronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
+* [typedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
+* [typedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
+* [unionBigIntDecimal](docs/sdks/unions/README.md#unionbigintdecimal)
+* [unionDateNull](docs/sdks/unions/README.md#uniondatenull)
+* [unionDateTimeBigInt](docs/sdks/unions/README.md#uniondatetimebigint)
+* [unionDateTimeNull](docs/sdks/unions/README.md#uniondatetimenull)
+* [weaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
+
+### [Flattening](docs/sdks/flattening/README.md)
+
+* [componentBodyAndParamConflict](docs/sdks/flattening/README.md#componentbodyandparamconflict)
+* [componentBodyAndParamNoConflict](docs/sdks/flattening/README.md#componentbodyandparamnoconflict)
+* [conflictingParams](docs/sdks/flattening/README.md#conflictingparams)
+* [inlineBodyAndParamConflict](docs/sdks/flattening/README.md#inlinebodyandparamconflict)
+* [inlineBodyAndParamNoConflict](docs/sdks/flattening/README.md#inlinebodyandparamnoconflict)
+
+### [Globals](docs/sdks/globals/README.md)
 
 * [globalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
 * [globalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
 
-### [nest.first](docs/sdks/nestfirst/README.md)
-
-* [get](docs/sdks/nestfirst/README.md#get)
-
-### [nested](docs/sdks/nested/README.md)
-
-* [get](docs/sdks/nested/README.md#get)
-
-### [nested.first](docs/sdks/nestedfirst/README.md)
-
-* [get](docs/sdks/nestedfirst/README.md#get)
-
-### [nested.second](docs/sdks/nestedsecond/README.md)
-
-* [get](docs/sdks/nestedsecond/README.md#get)
-
-### [pagination](docs/sdks/pagination/README.md)
-
-* [paginationCursorBody](docs/sdks/pagination/README.md#paginationcursorbody)
-* [paginationCursorParams](docs/sdks/pagination/README.md#paginationcursorparams)
-* [paginationLimitOffsetOffsetBody](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetbody)
-* [paginationLimitOffsetOffsetParams](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetparams)
-* [paginationLimitOffsetPageBody](docs/sdks/pagination/README.md#paginationlimitoffsetpagebody)
-* [paginationLimitOffsetPageParams](docs/sdks/pagination/README.md#paginationlimitoffsetpageparams)
-
-### [parameters](docs/sdks/parameters/README.md)
+### [Parameters](docs/sdks/parameters/README.md)
 
 * [deepObjectQueryParamsMap](docs/sdks/parameters/README.md#deepobjectqueryparamsmap)
 * [deepObjectQueryParamsObject](docs/sdks/parameters/README.md#deepobjectqueryparamsobject)
@@ -347,7 +297,23 @@ try {
 * [simplePathParameterObjects](docs/sdks/parameters/README.md#simplepathparameterobjects)
 * [simplePathParameterPrimitives](docs/sdks/parameters/README.md#simplepathparameterprimitives)
 
-### [requestBodies](docs/sdks/requestbodies/README.md)
+### [NestFirst](docs/sdks/nestfirst/README.md)
+
+* [get](docs/sdks/nestfirst/README.md#get)
+
+### [Nested](docs/sdks/nested/README.md)
+
+* [get](docs/sdks/nested/README.md#get)
+
+### [NestedFirst](docs/sdks/nestedfirst/README.md)
+
+* [get](docs/sdks/nestedfirst/README.md#get)
+
+### [NestedSecond](docs/sdks/nestedsecond/README.md)
+
+* [get](docs/sdks/nestedsecond/README.md#get)
+
+### [RequestBodies](docs/sdks/requestbodies/README.md)
 
 * [nullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
 * [nullableRequiredEmptyObjectPost](docs/sdks/requestbodies/README.md#nullablerequiredemptyobjectpost)
@@ -431,15 +397,7 @@ try {
 * [requestBodyWriteOnlyOutput](docs/sdks/requestbodies/README.md#requestbodywriteonlyoutput)
 * [requestBodyWriteOnlyUnion](docs/sdks/requestbodies/README.md#requestbodywriteonlyunion)
 
-### [resource](docs/sdks/resource/README.md)
-
-* [createFile](docs/sdks/resource/README.md#createfile)
-* [createResource](docs/sdks/resource/README.md#createresource)
-* [deleteResource](docs/sdks/resource/README.md#deleteresource)
-* [getResource](docs/sdks/resource/README.md#getresource)
-* [updateResource](docs/sdks/resource/README.md#updateresource)
-
-### [responseBodies](docs/sdks/responsebodies/README.md)
+### [ResponseBodies](docs/sdks/responsebodies/README.md)
 
 * [responseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
 * [responseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
@@ -453,15 +411,7 @@ try {
 * [responseBodyXmlGet](docs/sdks/responsebodies/README.md#responsebodyxmlget)
 * [responseBodyZeroValueComplexTypePtrsPost](docs/sdks/responsebodies/README.md#responsebodyzerovaluecomplextypeptrspost)
 
-### [retries](docs/sdks/retries/README.md)
-
-* [retriesGet](docs/sdks/retries/README.md#retriesget)
-
-### [second](docs/sdks/second/README.md)
-
-* [get](docs/sdks/second/README.md#get)
-
-### [servers](docs/sdks/servers/README.md)
+### [Servers](docs/sdks/servers/README.md)
 
 * [selectGlobalServer](docs/sdks/servers/README.md#selectglobalserver)
 * [selectServerWithID](docs/sdks/servers/README.md#selectserverwithid) - Select a server by ID.
@@ -470,28 +420,68 @@ try {
 * [serverWithTemplatesGlobal](docs/sdks/servers/README.md#serverwithtemplatesglobal)
 * [serversByIDWithTemplates](docs/sdks/servers/README.md#serversbyidwithtemplates)
 
-### [telemetry](docs/sdks/telemetry/README.md)
+### [Telemetry](docs/sdks/telemetry/README.md)
 
 * [telemetrySpeakeasyUserAgentGet](docs/sdks/telemetry/README.md#telemetryspeakeasyuseragentget)
 * [telemetryUserAgentGet](docs/sdks/telemetry/README.md#telemetryuseragentget)
 
-### [unions](docs/sdks/unions/README.md)
+### [AuthNew](docs/sdks/authnew/README.md)
 
-* [flattenedTypedObjectPost](docs/sdks/unions/README.md#flattenedtypedobjectpost)
-* [mixedTypeOneOfPost](docs/sdks/unions/README.md#mixedtypeoneofpost)
-* [nullableOneOfRefInObjectPost](docs/sdks/unions/README.md#nullableoneofrefinobjectpost)
-* [nullableOneOfSchemaPost](docs/sdks/unions/README.md#nullableoneofschemapost)
-* [nullableOneOfTypeInObjectPost](docs/sdks/unions/README.md#nullableoneoftypeinobjectpost)
-* [nullableTypedObjectPost](docs/sdks/unions/README.md#nullabletypedobjectpost)
-* [primitiveTypeOneOfPost](docs/sdks/unions/README.md#primitivetypeoneofpost)
-* [stronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
-* [typedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
-* [typedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
-* [unionBigIntDecimal](docs/sdks/unions/README.md#unionbigintdecimal)
-* [unionDateNull](docs/sdks/unions/README.md#uniondatenull)
-* [unionDateTimeBigInt](docs/sdks/unions/README.md#uniondatetimebigint)
-* [unionDateTimeNull](docs/sdks/unions/README.md#uniondatetimenull)
-* [weaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
+* [apiKeyAuthGlobalNew](docs/sdks/authnew/README.md#apikeyauthglobalnew)
+* [authGlobal](docs/sdks/authnew/README.md#authglobal)
+* [basicAuthNew](docs/sdks/authnew/README.md#basicauthnew)
+* [multipleMixedOptionsAuth](docs/sdks/authnew/README.md#multiplemixedoptionsauth)
+* [multipleMixedSchemeAuth](docs/sdks/authnew/README.md#multiplemixedschemeauth)
+* [multipleOptionsWithMixedSchemesAuth](docs/sdks/authnew/README.md#multipleoptionswithmixedschemesauth)
+* [multipleOptionsWithSimpleSchemesAuth](docs/sdks/authnew/README.md#multipleoptionswithsimpleschemesauth)
+* [multipleSimpleOptionsAuth](docs/sdks/authnew/README.md#multiplesimpleoptionsauth)
+* [multipleSimpleSchemeAuth](docs/sdks/authnew/README.md#multiplesimpleschemeauth)
+* [oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
+* [openIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
+
+### [Auth](docs/sdks/auth/README.md)
+
+* [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
+* [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
+* [basicAuth](docs/sdks/auth/README.md#basicauth)
+* [bearerAuth](docs/sdks/auth/README.md#bearerauth)
+* [globalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
+* [oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
+* [oauth2Override](docs/sdks/auth/README.md#oauth2override)
+* [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
+
+### [Documentation](docs/sdks/documentation/README.md)
+
+* [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
+
+### [Resource](docs/sdks/resource/README.md)
+
+* [createFile](docs/sdks/resource/README.md#createfile)
+* [createResource](docs/sdks/resource/README.md#createresource)
+* [deleteResource](docs/sdks/resource/README.md#deleteresource)
+* [getResource](docs/sdks/resource/README.md#getresource)
+* [updateResource](docs/sdks/resource/README.md#updateresource)
+
+### [First](docs/sdks/first/README.md)
+
+* [get](docs/sdks/first/README.md#get)
+
+### [Second](docs/sdks/second/README.md)
+
+* [get](docs/sdks/second/README.md#get)
+
+### [Pagination](docs/sdks/pagination/README.md)
+
+* [paginationCursorBody](docs/sdks/pagination/README.md#paginationcursorbody)
+* [paginationCursorParams](docs/sdks/pagination/README.md#paginationcursorparams)
+* [paginationLimitOffsetOffsetBody](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetbody)
+* [paginationLimitOffsetOffsetParams](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetparams)
+* [paginationLimitOffsetPageBody](docs/sdks/pagination/README.md#paginationlimitoffsetpagebody)
+* [paginationLimitOffsetPageParams](docs/sdks/pagination/README.md#paginationlimitoffsetpageparams)
+
+### [Retries](docs/sdks/retries/README.md)
+
+* [retriesGet](docs/sdks/retries/README.md#retriesget)
 <!-- End SDK Available Operations -->
 
 
@@ -529,14 +519,14 @@ The following global parameters are available. The required parameters must be s
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use OpenAPI\OpenAPI\SDK;
-use OpenAPI\OpenAPI\Models\Shared\Security;
-use OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetRequest;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -561,14 +551,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use OpenAPI\OpenAPI\SDK;
-use OpenAPI\OpenAPI\Models\Shared\Security;
-use OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetRequest;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 

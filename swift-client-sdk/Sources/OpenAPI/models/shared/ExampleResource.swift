@@ -5,7 +5,7 @@ import Foundation
 extension Shared {
     /// A model object
     public struct ExampleResource {
-        public let chocolates: [Shared.ExampleResourceChocolates]
+        public let chocolates: [Shared.Chocolates]
         public let id: String
         public let name: String
         public let vehicle: Shared.ExampleVehicle
@@ -13,8 +13,8 @@ extension Shared {
         public let arrayOfString: [String]?
         @DateTime
         public private(set) var createdAt: Date?
-        public let enumNumber: Shared.ExampleResourceEnumNumber?
-        public let enumStr: Shared.ExampleResourceEnumStr?
+        public let enumNumber: Shared.EnumNumber?
+        public let enumStr: Shared.EnumStr?
         public let mapOfInteger: [String: Int]?
         public let mapOfString: [String: String]?
         @DateTime
@@ -23,7 +23,7 @@ extension Shared {
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(chocolates: [Shared.ExampleResourceChocolates], id: String, name: String, vehicle: Shared.ExampleVehicle, arrayOfNumber: [Double]? = nil, arrayOfString: [String]? = nil, createdAt: Date? = nil, enumNumber: Shared.ExampleResourceEnumNumber? = nil, enumStr: Shared.ExampleResourceEnumStr? = nil, mapOfInteger: [String: Int]? = nil, mapOfString: [String: String]? = nil, updatedAt: Date? = nil) {
+        public init(chocolates: [Shared.Chocolates], id: String, name: String, vehicle: Shared.ExampleVehicle, arrayOfNumber: [Double]? = nil, arrayOfString: [String]? = nil, createdAt: Date? = nil, enumNumber: Shared.EnumNumber? = nil, enumStr: Shared.EnumStr? = nil, mapOfInteger: [String: Int]? = nil, mapOfString: [String: String]? = nil, updatedAt: Date? = nil) {
             self.chocolates = chocolates
             self.id = id
             self.name = name
@@ -58,15 +58,15 @@ extension Shared.ExampleResource: Codable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.chocolates = try container.decode([Shared.ExampleResourceChocolates].self, forKey: .chocolates)
+        self.chocolates = try container.decode([Shared.Chocolates].self, forKey: .chocolates)
         self.id = try container.decode(String.self, forKey: .id)
         self.name = try container.decode(String.self, forKey: .name)
         self.vehicle = try container.decode(Shared.ExampleVehicle.self, forKey: .vehicle)
         self.arrayOfNumber = try container.decodeIfPresent([Double].self, forKey: .arrayOfNumber)
         self.arrayOfString = try container.decodeIfPresent([String].self, forKey: .arrayOfString)
         self._createdAt = try container.decodeIfPresent(DateTime<Date?>.self, forKey: .createdAt) ?? DateTime<Date?>(wrappedValue: nil)
-        self.enumNumber = try container.decodeIfPresent(Shared.ExampleResourceEnumNumber.self, forKey: .enumNumber)
-        self.enumStr = try container.decodeIfPresent(Shared.ExampleResourceEnumStr.self, forKey: .enumStr)
+        self.enumNumber = try container.decodeIfPresent(Shared.EnumNumber.self, forKey: .enumNumber)
+        self.enumStr = try container.decodeIfPresent(Shared.EnumStr.self, forKey: .enumStr)
         self.mapOfInteger = try container.decodeIfPresent([String: Int].self, forKey: .mapOfInteger)
         self.mapOfString = try container.decodeIfPresent([String: String].self, forKey: .mapOfString)
         self._updatedAt = try container.decodeIfPresent(DateTime<Date?>.self, forKey: .updatedAt) ?? DateTime<Date?>(wrappedValue: nil)

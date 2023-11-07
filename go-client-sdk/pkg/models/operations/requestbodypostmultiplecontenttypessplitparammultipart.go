@@ -6,27 +6,27 @@ import (
 	"net/http"
 )
 
-type RequestBodyPostMultipleContentTypesSplitParamMultipartFormData struct {
+type RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody struct {
 	Bool2 bool    `multipartForm:"name=bool2"`
 	Num2  float64 `multipartForm:"name=num2"`
 	Str2  string  `multipartForm:"name=str2"`
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartFormData) GetBool2() bool {
+func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody) GetBool2() bool {
 	if o == nil {
 		return false
 	}
 	return o.Bool2
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartFormData) GetNum2() float64 {
+func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody) GetNum2() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Num2
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartFormData) GetStr2() string {
+func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody) GetStr2() string {
 	if o == nil {
 		return ""
 	}
@@ -34,13 +34,13 @@ func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartFormData) GetStr2
 }
 
 type RequestBodyPostMultipleContentTypesSplitParamMultipartRequest struct {
-	RequestBody RequestBodyPostMultipleContentTypesSplitParamMultipartFormData `request:"mediaType=multipart/form-data"`
-	ParamStr    string                                                         `queryParam:"style=form,explode=true,name=paramStr"`
+	RequestBody RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody `request:"mediaType=multipart/form-data"`
+	ParamStr    string                                                            `queryParam:"style=form,explode=true,name=paramStr"`
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartRequest) GetRequestBody() RequestBodyPostMultipleContentTypesSplitParamMultipartFormData {
+func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartRequest) GetRequestBody() RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody {
 	if o == nil {
-		return RequestBodyPostMultipleContentTypesSplitParamMultipartFormData{}
+		return RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody{}
 	}
 	return o.RequestBody
 }

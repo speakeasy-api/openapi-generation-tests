@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-type RequestBodyPutMultipartDeepResForm struct {
+type RequestBodyPutMultipartDeepForm struct {
 	Arr  string `json:"arr"`
 	Bool string `json:"bool"`
 	Int  string `json:"int"`
@@ -16,49 +16,49 @@ type RequestBodyPutMultipartDeepResForm struct {
 	Str  string `json:"str"`
 }
 
-func (o *RequestBodyPutMultipartDeepResForm) GetArr() string {
+func (o *RequestBodyPutMultipartDeepForm) GetArr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Arr
 }
 
-func (o *RequestBodyPutMultipartDeepResForm) GetBool() string {
+func (o *RequestBodyPutMultipartDeepForm) GetBool() string {
 	if o == nil {
 		return ""
 	}
 	return o.Bool
 }
 
-func (o *RequestBodyPutMultipartDeepResForm) GetInt() string {
+func (o *RequestBodyPutMultipartDeepForm) GetInt() string {
 	if o == nil {
 		return ""
 	}
 	return o.Int
 }
 
-func (o *RequestBodyPutMultipartDeepResForm) GetMap() string {
+func (o *RequestBodyPutMultipartDeepForm) GetMap() string {
 	if o == nil {
 		return ""
 	}
 	return o.Map
 }
 
-func (o *RequestBodyPutMultipartDeepResForm) GetNum() string {
+func (o *RequestBodyPutMultipartDeepForm) GetNum() string {
 	if o == nil {
 		return ""
 	}
 	return o.Num
 }
 
-func (o *RequestBodyPutMultipartDeepResForm) GetObj() string {
+func (o *RequestBodyPutMultipartDeepForm) GetObj() string {
 	if o == nil {
 		return ""
 	}
 	return o.Obj
 }
 
-func (o *RequestBodyPutMultipartDeepResForm) GetStr() string {
+func (o *RequestBodyPutMultipartDeepForm) GetStr() string {
 	if o == nil {
 		return ""
 	}
@@ -67,12 +67,12 @@ func (o *RequestBodyPutMultipartDeepResForm) GetStr() string {
 
 // RequestBodyPutMultipartDeepRes - OK
 type RequestBodyPutMultipartDeepRes struct {
-	Form RequestBodyPutMultipartDeepResForm `json:"form"`
+	Form RequestBodyPutMultipartDeepForm `json:"form"`
 }
 
-func (o *RequestBodyPutMultipartDeepRes) GetForm() RequestBodyPutMultipartDeepResForm {
+func (o *RequestBodyPutMultipartDeepRes) GetForm() RequestBodyPutMultipartDeepForm {
 	if o == nil {
-		return RequestBodyPutMultipartDeepResForm{}
+		return RequestBodyPutMultipartDeepForm{}
 	}
 	return o.Form
 }

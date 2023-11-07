@@ -5,12 +5,12 @@ import Foundation
 extension Operations {
     /// OK
     public struct UnionBigIntDecimalRes {
-        public let json: Operations.UnionBigIntDecimalResJson
+        public let json: Operations.UnionBigIntDecimalJson
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(json: Operations.UnionBigIntDecimalResJson) {
+        public init(json: Operations.UnionBigIntDecimalJson) {
             self.json = json
         }
     }

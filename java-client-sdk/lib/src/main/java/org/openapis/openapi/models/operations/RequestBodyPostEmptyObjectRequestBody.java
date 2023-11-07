@@ -12,18 +12,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class RequestBodyPostEmptyObjectRequestBody {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("empty")
-    public RequestBodyPostEmptyObjectRequestBodyEmpty empty;
+    public Empty empty;
 
-    public RequestBodyPostEmptyObjectRequestBody withEmpty(RequestBodyPostEmptyObjectRequestBodyEmpty empty) {
+    public RequestBodyPostEmptyObjectRequestBody withEmpty(Empty empty) {
         this.empty = empty;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("emptyWithEmptyProperties")
-    public RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties emptyWithEmptyProperties;
+    public EmptyWithEmptyProperties emptyWithEmptyProperties;
 
-    public RequestBodyPostEmptyObjectRequestBody withEmptyWithEmptyProperties(RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties emptyWithEmptyProperties) {
+    public RequestBodyPostEmptyObjectRequestBody withEmptyWithEmptyProperties(EmptyWithEmptyProperties emptyWithEmptyProperties) {
         this.emptyWithEmptyProperties = emptyWithEmptyProperties;
         return this;
     }

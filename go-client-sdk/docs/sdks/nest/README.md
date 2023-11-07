@@ -1,5 +1,5 @@
 # Nest
-(*Nest*)
+(*.Nest*)
 
 ### Available Operations
 

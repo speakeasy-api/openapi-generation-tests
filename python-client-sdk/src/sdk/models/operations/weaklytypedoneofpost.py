@@ -3,8 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import deepobject as shared_deepobject
-from ..shared import simpleobject as shared_simpleobject
+from ...models.shared import deepobject as shared_deepobject
+from ...models.shared import simpleobject as shared_simpleobject
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional, Union

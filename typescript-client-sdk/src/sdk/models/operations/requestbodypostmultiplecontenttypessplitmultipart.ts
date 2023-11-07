@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
-export class RequestBodyPostMultipleContentTypesSplitMultipartFormData extends SpeakeasyBase {
+export class RequestBodyPostMultipleContentTypesSplitMultipartRequestBody extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "multipart_form, name=bool2" })
     bool2: boolean;
 

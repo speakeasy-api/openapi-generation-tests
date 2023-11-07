@@ -34,9 +34,9 @@ public class TypedParameterGenerationGetRequest {
     }
     
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=obj")
-    public TypedParameterGenerationGetObj obj;
+    public Obj obj;
 
-    public TypedParameterGenerationGetRequest withObj(TypedParameterGenerationGetObj obj) {
+    public TypedParameterGenerationGetRequest withObj(Obj obj) {
         this.obj = obj;
         return this;
     }

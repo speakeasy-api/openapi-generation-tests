@@ -5,13 +5,13 @@ import Foundation
 extension Operations {
     /// A model object
     public struct RequestBodyPostEmptyObjectRequestBody {
-        public let empty: Operations.RequestBodyPostEmptyObjectRequestBodyEmpty?
-        public let emptyWithEmptyProperties: Operations.RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties?
+        public let empty: Operations.Empty?
+        public let emptyWithEmptyProperties: Operations.EmptyWithEmptyProperties?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(empty: Operations.RequestBodyPostEmptyObjectRequestBodyEmpty? = nil, emptyWithEmptyProperties: Operations.RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties? = nil) {
+        public init(empty: Operations.Empty? = nil, emptyWithEmptyProperties: Operations.EmptyWithEmptyProperties? = nil) {
             self.empty = empty
             self.emptyWithEmptyProperties = emptyWithEmptyProperties
         }

@@ -3,11 +3,11 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct PaginationLimitOffsetPageParamsRequest: APIValue {
         public let page: Int
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         ///
         public init(page: Int) {

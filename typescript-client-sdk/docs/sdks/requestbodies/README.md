@@ -1,5 +1,5 @@
 # RequestBodies
-(*requestBodies*)
+(*.requestBodies*)
 
 ## Overview
 
@@ -177,7 +177,7 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { NullableRequiredPropertyPostRequestBodyNullableRequiredEnum } from "openapi/dist/sdk/models/operations";
+import { NullableRequiredEnum } from "openapi/dist/sdk/models/operations";
 
 (async() => {
   const sdk = new SDK({
@@ -192,7 +192,7 @@ import { NullableRequiredPropertyPostRequestBodyNullableRequiredEnum } from "ope
     nullableRequiredArray: [
       2355.17,
     ],
-    nullableRequiredEnum: NullableRequiredPropertyPostRequestBodyNullableRequiredEnum.Second,
+    nullableRequiredEnum: NullableRequiredEnum.Second,
     nullableRequiredInt: 50266,
   });
 
@@ -267,7 +267,7 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -294,8 +294,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
       float32: 1.1,
       int: 1,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: Int32Enum.FiftyFive,
+      intEnum: IntEnum.Second,
       num: 1.1,
       str: "test",
       strOpt: "testOptional",
@@ -329,7 +329,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -350,9 +350,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
       dateVal: new RFCDate("2020-01-01"),
       enumVal: Enum.One,
       float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32EnumVal: Int32EnumVal.SixtyNine,
       int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+      intEnumVal: IntEnumVal.Third,
       intOptNullVal: 999999,
       intVal: 999999,
       numOptNullVal: 1.1,
@@ -389,7 +389,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -416,8 +416,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
       float32: 1.1,
       int: 1,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: Int32Enum.FiftyFive,
+      intEnum: IntEnum.Second,
       num: 1.1,
       str: "test",
       strOpt: "testOptional",
@@ -450,7 +450,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -471,9 +471,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
       dateVal: new RFCDate("2020-01-01"),
       enumVal: Enum.One,
       float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32EnumVal: Int32EnumVal.SixtyNine,
       int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+      intEnumVal: IntEnumVal.Third,
       intOptNullVal: 999999,
       intVal: 999999,
       numOptNullVal: 1.1,
@@ -509,7 +509,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -537,8 +537,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
         float32: 1.1,
         int: 1,
         int32: 1,
-        int32Enum: SimpleObjectInt32Enum.FiftyFive,
-        intEnum: SimpleObjectIntEnum.Second,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
         num: 1.1,
         str: "test",
         strOpt: "testOptional",
@@ -573,7 +573,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -595,9 +595,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
         dateVal: new RFCDate("2020-01-01"),
         enumVal: Enum.One,
         float32Val: 2.2222222,
-        int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+        int32EnumVal: Int32EnumVal.SixtyNine,
         int32Val: 1,
-        intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+        intEnumVal: IntEnumVal.Third,
         intOptNullVal: 999999,
         intVal: 999999,
         numOptNullVal: 1.1,
@@ -678,7 +678,7 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -706,8 +706,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
         float32: 1.1,
         int: 1,
         int32: 1,
-        int32Enum: SimpleObjectInt32Enum.FiftyFive,
-        intEnum: SimpleObjectIntEnum.Second,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
         num: 1.1,
         str: "test",
         strOpt: "testOptional",
@@ -742,7 +742,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -764,9 +764,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
         dateVal: new RFCDate("2020-01-01"),
         enumVal: Enum.One,
         float32Val: 2.2222222,
-        int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+        int32EnumVal: Int32EnumVal.SixtyNine,
         int32Val: 1,
-        intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+        intEnumVal: IntEnumVal.Third,
         intOptNullVal: 999999,
         intVal: 999999,
         numOptNullVal: 1.1,
@@ -845,7 +845,7 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -874,8 +874,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
         float32: 1.1,
         int: 1,
         int32: 1,
-        int32Enum: SimpleObjectInt32Enum.FiftyFive,
-        intEnum: SimpleObjectIntEnum.Second,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
         num: 1.1,
         str: "test",
         strOpt: "testOptional",
@@ -894,8 +894,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
         float32: 1.1,
         int: 1,
         int32: 1,
-        int32Enum: SimpleObjectInt32Enum.FiftyFive,
-        intEnum: SimpleObjectIntEnum.Second,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
         num: 1.1,
         str: "test",
         strOpt: "testOptional",
@@ -918,8 +918,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
         float32: 1.1,
         int: 1,
         int32: 1,
-        int32Enum: SimpleObjectInt32Enum.FiftyFive,
-        intEnum: SimpleObjectIntEnum.Second,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
         num: 1.1,
         str: "test",
         strOpt: "testOptional",
@@ -938,8 +938,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
         float32: 1.1,
         int: 1,
         int32: 1,
-        int32Enum: SimpleObjectInt32Enum.FiftyFive,
-        intEnum: SimpleObjectIntEnum.Second,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
         num: 1.1,
         str: "test",
         strOpt: "testOptional",
@@ -960,8 +960,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
       float32: 1.1,
       int: 1,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: Int32Enum.FiftyFive,
+      intEnum: IntEnum.Second,
       num: 1.1,
       str: "test",
       strOpt: "testOptional",
@@ -995,7 +995,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -1018,9 +1018,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
         dateVal: new RFCDate("2020-01-01"),
         enumVal: Enum.One,
         float32Val: 2.2222222,
-        int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+        int32EnumVal: Int32EnumVal.SixtyNine,
         int32Val: 1,
-        intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+        intEnumVal: IntEnumVal.Third,
         intOptNullVal: 999999,
         intVal: 999999,
         numOptNullVal: 1.1,
@@ -1040,9 +1040,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
         dateVal: new RFCDate("2020-01-01"),
         enumVal: Enum.One,
         float32Val: 2.2222222,
-        int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+        int32EnumVal: Int32EnumVal.SixtyNine,
         int32Val: 1,
-        intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+        intEnumVal: IntEnumVal.Third,
         intOptNullVal: 999999,
         intVal: 999999,
         numOptNullVal: 1.1,
@@ -1060,9 +1060,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
       dateVal: new RFCDate("2020-01-01"),
       enumVal: Enum.One,
       float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32EnumVal: Int32EnumVal.SixtyNine,
       int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+      intEnumVal: IntEnumVal.Third,
       intOptNullVal: 999999,
       intVal: 999999,
       numOptNullVal: 1.1,
@@ -1099,7 +1099,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -1126,8 +1126,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
       float32: 1.1,
       int: 1,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: Int32Enum.FiftyFive,
+      intEnum: IntEnum.Second,
       num: 1.1,
       str: "test",
       strOpt: "testOptional",
@@ -1161,7 +1161,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -1182,9 +1182,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
       dateVal: new RFCDate("2020-01-01"),
       enumVal: Enum.One,
       float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32EnumVal: Int32EnumVal.SixtyNine,
       int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+      intEnumVal: IntEnumVal.Third,
       intOptNullVal: 999999,
       intVal: 999999,
       numOptNullVal: 1.1,
@@ -1221,7 +1221,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -1248,8 +1248,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
       float32: 1.1,
       int: 1,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: Int32Enum.FiftyFive,
+      intEnum: IntEnum.Second,
       num: 1.1,
       str: "test",
       strOpt: "testOptional",
@@ -1282,7 +1282,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -1303,9 +1303,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
       dateVal: new RFCDate("2020-01-01"),
       enumVal: Enum.One,
       float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32EnumVal: Int32EnumVal.SixtyNine,
       int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+      intEnumVal: IntEnumVal.Third,
       intOptNullVal: 999999,
       intVal: 999999,
       numOptNullVal: 1.1,
@@ -1341,7 +1341,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -1369,8 +1369,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
         float32: 1.1,
         int: 1,
         int32: 1,
-        int32Enum: SimpleObjectInt32Enum.FiftyFive,
-        intEnum: SimpleObjectIntEnum.Second,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
         num: 1.1,
         str: "test",
         strOpt: "testOptional",
@@ -1405,7 +1405,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -1427,9 +1427,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
         dateVal: new RFCDate("2020-01-01"),
         enumVal: Enum.One,
         float32Val: 2.2222222,
-        int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+        int32EnumVal: Int32EnumVal.SixtyNine,
         int32Val: 1,
-        intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+        intEnumVal: IntEnumVal.Third,
         intOptNullVal: 999999,
         intVal: 999999,
         numOptNullVal: 1.1,
@@ -1467,7 +1467,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -1495,8 +1495,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
         float32: 1.1,
         int: 1,
         int32: 1,
-        int32Enum: SimpleObjectInt32Enum.FiftyFive,
-        intEnum: SimpleObjectIntEnum.Second,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
         num: 1.1,
         str: "test",
         strOpt: "testOptional",
@@ -1531,7 +1531,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -1553,9 +1553,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
         dateVal: new RFCDate("2020-01-01"),
         enumVal: Enum.One,
         float32Val: 2.2222222,
-        int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+        int32EnumVal: Int32EnumVal.SixtyNine,
         int32Val: 1,
-        intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+        intEnumVal: IntEnumVal.Third,
         intOptNullVal: 999999,
         intVal: 999999,
         numOptNullVal: 1.1,
@@ -1677,7 +1677,7 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -1703,8 +1703,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
     float32: 1.1,
     int: 1,
     int32: 1,
-    int32Enum: SimpleObjectInt32Enum.FiftyFive,
-    intEnum: SimpleObjectIntEnum.Second,
+    int32Enum: Int32Enum.FiftyFive,
+    intEnum: IntEnum.Second,
     num: 1.1,
     str: "test",
     strOpt: "testOptional",
@@ -1736,7 +1736,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -1762,8 +1762,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
     float32: 1.1,
     int: 1,
     int32: 1,
-    int32Enum: SimpleObjectInt32Enum.FiftyFive,
-    intEnum: SimpleObjectIntEnum.Second,
+    int32Enum: Int32Enum.FiftyFive,
+    intEnum: IntEnum.Second,
     num: 1.1,
     str: "test",
     strOpt: "testOptional",
@@ -1795,7 +1795,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -1815,9 +1815,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
     dateVal: new RFCDate("2020-01-01"),
     enumVal: Enum.One,
     float32Val: 2.2222222,
-    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+    int32EnumVal: Int32EnumVal.SixtyNine,
     int32Val: 1,
-    intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+    intEnumVal: IntEnumVal.Third,
     intOptNullVal: 999999,
     intVal: 999999,
     numOptNullVal: 1.1,
@@ -1905,12 +1905,7 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import {
-  DefaultsAndConstsConstEnumInt,
-  DefaultsAndConstsConstEnumStr,
-  DefaultsAndConstsDefaultEnumInt,
-  DefaultsAndConstsDefaultEnumStr,
-} from "openapi/dist/sdk/models/shared";
+import { ConstEnumInt, ConstEnumStr, DefaultEnumInt, DefaultEnumStr } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -1930,8 +1925,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
     constDateTime: new Date("2022-12-15T04:16:08.794Z"),
     constDecimal: 9160.69,
     constDecimalStr: "string",
-    constEnumInt: DefaultsAndConstsConstEnumInt.One,
-    constEnumStr: DefaultsAndConstsConstEnumStr.Three,
+    constEnumInt: ConstEnumInt.One,
+    constEnumStr: ConstEnumStr.Three,
     constInt: 299545,
     constNum: 4612.63,
     constStr: "string",
@@ -2006,7 +2001,7 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -2035,8 +2030,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
         float32: 1.1,
         int: 1,
         int32: 1,
-        int32Enum: SimpleObjectInt32Enum.FiftyFive,
-        intEnum: SimpleObjectIntEnum.Second,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
         num: 1.1,
         str: "test",
         strOpt: "testOptional",
@@ -2055,8 +2050,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
         float32: 1.1,
         int: 1,
         int32: 1,
-        int32Enum: SimpleObjectInt32Enum.FiftyFive,
-        intEnum: SimpleObjectIntEnum.Second,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
         num: 1.1,
         str: "test",
         strOpt: "testOptional",
@@ -2065,26 +2060,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     bool: true,
     int: 1,
     map: {
-      "key": {
-        any: "any",
-        bigint: 8821239038968084,
-        bigintStr: "9223372036854775808",
-        bool: true,
-        boolOpt: true,
-        date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-        decimal: 3.141592653589793,
-        decimalStr: "3.14159265358979344719667586",
-        enum: Enum.One,
-        float32: 1.1,
-        int: 1,
-        int32: 1,
-        int32Enum: SimpleObjectInt32Enum.FiftyFive,
-        intEnum: SimpleObjectIntEnum.Second,
-        num: 1.1,
-        str: "test",
-        strOpt: "testOptional",
-      },
       "key2": {
         any: "any",
         bigint: 8821239038968084,
@@ -2099,8 +2074,28 @@ import { RFCDate } from "openapi/dist/sdk/types";
         float32: 1.1,
         int: 1,
         int32: 1,
-        int32Enum: SimpleObjectInt32Enum.FiftyFive,
-        intEnum: SimpleObjectIntEnum.Second,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
+        num: 1.1,
+        str: "test",
+        strOpt: "testOptional",
+      },
+      "key": {
+        any: "any",
+        bigint: 8821239038968084,
+        bigintStr: "9223372036854775808",
+        bool: true,
+        boolOpt: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        decimal: 3.141592653589793,
+        decimalStr: "3.14159265358979344719667586",
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
         num: 1.1,
         str: "test",
         strOpt: "testOptional",
@@ -2121,8 +2116,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
       float32: 1.1,
       int: 1,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: Int32Enum.FiftyFive,
+      intEnum: IntEnum.Second,
       num: 1.1,
       str: "test",
       strOpt: "testOptional",
@@ -2196,7 +2191,7 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -2222,8 +2217,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
     float32: 1.1,
     int: 1,
     int32: 1,
-    int32Enum: SimpleObjectInt32Enum.FiftyFive,
-    intEnum: SimpleObjectIntEnum.Second,
+    int32Enum: Int32Enum.FiftyFive,
+    intEnum: IntEnum.Second,
     num: 1.1,
     str: "test",
     strOpt: "testOptional",
@@ -2951,7 +2946,7 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -2977,8 +2972,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
     float32: 1.1,
     int: 1,
     int32: 1,
-    int32Enum: SimpleObjectInt32Enum.FiftyFive,
-    intEnum: SimpleObjectIntEnum.Second,
+    int32Enum: Int32Enum.FiftyFive,
+    intEnum: IntEnum.Second,
     num: 1.1,
     str: "test",
     strOpt: "testOptional",
@@ -3035,10 +3030,10 @@ import { SDK } from "openapi";
 
 ### Parameters
 
-| Parameter                                                                                                                                                                  | Type                                                                                                                                                                       | Required                                                                                                                                                                   | Description                                                                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                                  | [operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON](../../models/operations/requestbodypostmultiplecontenttypesinlinefilteredapplicationjson.md) | :heavy_check_mark:                                                                                                                                                         | The request object to use for the request.                                                                                                                                 |
-| `config`                                                                                                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                               | :heavy_minus_sign:                                                                                                                                                         | Available config options for making requests.                                                                                                                              |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                          | [operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody](../../models/operations/requestbodypostmultiplecontenttypesinlinefilteredrequestbody.md) | :heavy_check_mark:                                                                                                                                                 | The request object to use for the request.                                                                                                                         |
+| `config`                                                                                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                       | :heavy_minus_sign:                                                                                                                                                 | Available config options for making requests.                                                                                                                      |
 
 
 ### Response
@@ -3053,8 +3048,8 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 import {
-  RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded,
   RequestBodyPostMultipleContentTypesSplitParamFormRequest,
+  RequestBodyPostMultipleContentTypesSplitParamFormRequestBody,
 } from "openapi/dist/sdk/models/operations";
 
 (async() => {
@@ -3065,7 +3060,7 @@ import {
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded = {
+const requestBody: RequestBodyPostMultipleContentTypesSplitParamFormRequestBody = {
   bool3: false,
   num3: 8693.24,
   str3: "string",
@@ -3083,11 +3078,11 @@ const paramStr: string = "string";
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                      | Type                                                                                                                                                                                           | Required                                                                                                                                                                                       | Description                                                                                                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                                                                                                  | [operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded](../../models/operations/requestbodypostmultiplecontenttypessplitparamapplicationxwwwformurlencoded.md) | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
-| `paramStr`                                                                                                                                                                                     | *string*                                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
-| `config`                                                                                                                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                             | Available config options for making requests.                                                                                                                                                  |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `requestBody`                                                                                                                                                      | [operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitparamformrequestbody.md) | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
+| `paramStr`                                                                                                                                                         | *string*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
+| `config`                                                                                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                       | :heavy_minus_sign:                                                                                                                                                 | Available config options for making requests.                                                                                                                      |
 
 
 ### Response
@@ -3102,8 +3097,8 @@ const paramStr: string = "string";
 ```typescript
 import { SDK } from "openapi";
 import {
-  RequestBodyPostMultipleContentTypesSplitParamApplicationJSON,
   RequestBodyPostMultipleContentTypesSplitParamJsonRequest,
+  RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody,
 } from "openapi/dist/sdk/models/operations";
 
 (async() => {
@@ -3114,7 +3109,7 @@ import {
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationJSON = {
+const requestBody: RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody = {
   bool: false,
   num: 9771.91,
   str: "string",
@@ -3134,7 +3129,7 @@ const paramStr: string = "string";
 
 | Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `requestBody`                                                                                                                                                      | [operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON](../../models/operations/requestbodypostmultiplecontenttypessplitparamapplicationjson.md) | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
+| `requestBody`                                                                                                                                                      | [operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitparamjsonrequestbody.md) | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
 | `paramStr`                                                                                                                                                         | *string*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
 | `config`                                                                                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                       | :heavy_minus_sign:                                                                                                                                                 | Available config options for making requests.                                                                                                                      |
 
@@ -3151,8 +3146,8 @@ const paramStr: string = "string";
 ```typescript
 import { SDK } from "openapi";
 import {
-  RequestBodyPostMultipleContentTypesSplitParamMultipartFormData,
   RequestBodyPostMultipleContentTypesSplitParamMultipartRequest,
+  RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody,
 } from "openapi/dist/sdk/models/operations";
 
 (async() => {
@@ -3163,7 +3158,7 @@ import {
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const requestBody: RequestBodyPostMultipleContentTypesSplitParamMultipartFormData = {
+const requestBody: RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody = {
   bool2: false,
   num2: 7000.76,
   str2: "string",
@@ -3181,11 +3176,11 @@ const paramStr: string = "string";
 
 ### Parameters
 
-| Parameter                                                                                                                                                              | Type                                                                                                                                                                   | Required                                                                                                                                                               | Description                                                                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                                                                          | [operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData](../../models/operations/requestbodypostmultiplecontenttypessplitparammultipartformdata.md) | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
-| `paramStr`                                                                                                                                                             | *string*                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
-| `config`                                                                                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                           | :heavy_minus_sign:                                                                                                                                                     | Available config options for making requests.                                                                                                                          |
+| Parameter                                                                                                                                                                    | Type                                                                                                                                                                         | Required                                                                                                                                                                     | Description                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                                                                                                | [operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitparammultipartrequestbody.md) | :heavy_check_mark:                                                                                                                                                           | N/A                                                                                                                                                                          |
+| `paramStr`                                                                                                                                                                   | *string*                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                           | N/A                                                                                                                                                                          |
+| `config`                                                                                                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                                 | :heavy_minus_sign:                                                                                                                                                           | Available config options for making requests.                                                                                                                                |
 
 
 ### Response
@@ -3224,10 +3219,10 @@ import { SDK } from "openapi";
 
 ### Parameters
 
-| Parameter                                                                                                                                                                            | Type                                                                                                                                                                                 | Required                                                                                                                                                                             | Description                                                                                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                            | [operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded](../../models/operations/requestbodypostmultiplecontenttypessplitapplicationxwwwformurlencoded.md) | :heavy_check_mark:                                                                                                                                                                   | The request object to use for the request.                                                                                                                                           |
-| `config`                                                                                                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                   | Available config options for making requests.                                                                                                                                        |
+| Parameter                                                                                                                                                | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                | [operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitformrequestbody.md) | :heavy_check_mark:                                                                                                                                       | The request object to use for the request.                                                                                                               |
+| `config`                                                                                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                             | :heavy_minus_sign:                                                                                                                                       | Available config options for making requests.                                                                                                            |
 
 
 ### Response
@@ -3268,7 +3263,7 @@ import { SDK } from "openapi";
 
 | Parameter                                                                                                                                                | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                | [operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON](../../models/operations/requestbodypostmultiplecontenttypessplitapplicationjson.md) | :heavy_check_mark:                                                                                                                                       | The request object to use for the request.                                                                                                               |
+| `request`                                                                                                                                                | [operations.RequestBodyPostMultipleContentTypesSplitJsonRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitjsonrequestbody.md) | :heavy_check_mark:                                                                                                                                       | The request object to use for the request.                                                                                                               |
 | `config`                                                                                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                             | :heavy_minus_sign:                                                                                                                                       | Available config options for making requests.                                                                                                            |
 
 
@@ -3308,10 +3303,10 @@ import { SDK } from "openapi";
 
 ### Parameters
 
-| Parameter                                                                                                                                                    | Type                                                                                                                                                         | Required                                                                                                                                                     | Description                                                                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                    | [operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData](../../models/operations/requestbodypostmultiplecontenttypessplitmultipartformdata.md) | :heavy_check_mark:                                                                                                                                           | The request object to use for the request.                                                                                                                   |
-| `config`                                                                                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                 | :heavy_minus_sign:                                                                                                                                           | Available config options for making requests.                                                                                                                |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                          | [operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody](../../models/operations/requestbodypostmultiplecontenttypessplitmultipartrequestbody.md) | :heavy_check_mark:                                                                                                                                                 | The request object to use for the request.                                                                                                                         |
+| `config`                                                                                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                       | :heavy_minus_sign:                                                                                                                                                 | Available config options for making requests.                                                                                                                      |
 
 
 ### Response
@@ -3529,7 +3524,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.requestBodies.requestBodyPutBytes("9sS}}O%}aJ" as bytes <<<>>>);
+  const res = await sdk.requestBodies.requestBodyPutBytes(new TextEncoder().encode("0x5DbFFb1Ff9"));
 
 
   if (res.statusCode == 200) {
@@ -3567,7 +3562,7 @@ import { RequestBodyPutBytesWithParamsRequest } from "openapi/dist/sdk/models/op
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const requestBody: Uint8Array = "o%jIWe4_P6" as bytes <<<>>>;
+const requestBody: Uint8Array = new TextEncoder().encode("0xC1B9cA4eb5");
 const queryStringParam: string = "string";
 
   const res = await sdk.requestBodies.requestBodyPutBytesWithParams(requestBody, queryStringParam);
@@ -3599,7 +3594,7 @@ const queryStringParam: string = "string";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -3628,8 +3623,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
         float32: 1.1,
         int: 1,
         int32: 1,
-        int32Enum: SimpleObjectInt32Enum.FiftyFive,
-        intEnum: SimpleObjectIntEnum.Second,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
         num: 1.1,
         str: "test",
         strOpt: "testOptional",
@@ -3648,8 +3643,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
         float32: 1.1,
         int: 1,
         int32: 1,
-        int32Enum: SimpleObjectInt32Enum.FiftyFive,
-        intEnum: SimpleObjectIntEnum.Second,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
         num: 1.1,
         str: "test",
         strOpt: "testOptional",
@@ -3672,8 +3667,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
         float32: 1.1,
         int: 1,
         int32: 1,
-        int32Enum: SimpleObjectInt32Enum.FiftyFive,
-        intEnum: SimpleObjectIntEnum.Second,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
         num: 1.1,
         str: "test",
         strOpt: "testOptional",
@@ -3692,8 +3687,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
         float32: 1.1,
         int: 1,
         int32: 1,
-        int32Enum: SimpleObjectInt32Enum.FiftyFive,
-        intEnum: SimpleObjectIntEnum.Second,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
         num: 1.1,
         str: "test",
         strOpt: "testOptional",
@@ -3714,8 +3709,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
       float32: 1.1,
       int: 1,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: Int32Enum.FiftyFive,
+      intEnum: IntEnum.Second,
       num: 1.1,
       str: "test",
       strOpt: "testOptional",
@@ -3761,8 +3756,8 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPutMultipartDifferentFileName({
     differentFileName: {
-      content: "Y}'H[5/Z[," as bytes <<<>>>,
-      differentFileName: "string",
+      content: new TextEncoder().encode("0xdF19d43dd2"),
+      fileName: "west_tunisian.pdf",
     },
   });
 
@@ -3804,8 +3799,8 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPutMultipartFile({
     file: {
-      content: "OJa,v`.FW-" as bytes <<<>>>,
-      file: "string",
+      content: new TextEncoder().encode("0xa9f2Ee38c3"),
+      fileName: "bandwidth_sedan.pdf",
     },
   });
 
@@ -3835,7 +3830,7 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async() => {
@@ -3861,8 +3856,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
     float32: 1.1,
     int: 1,
     int32: 1,
-    int32Enum: SimpleObjectInt32Enum.FiftyFive,
-    intEnum: SimpleObjectIntEnum.Second,
+    int32Enum: Int32Enum.FiftyFive,
+    intEnum: IntEnum.Second,
     num: 1.1,
     str: "test",
     strOpt: "testOptional",
@@ -3999,11 +3994,11 @@ import { SDK } from "openapi";
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [shared.ReadWriteObjectInput](../../models/shared/readwriteobjectinput.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `serverURL`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | An optional server URL to use.                                             |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `request`                                                        | [shared.ReadWriteObject](../../models/shared/readwriteobject.md) | :heavy_check_mark:                                               | The request object to use for the request.                       |
+| `serverURL`                                                      | *string*                                                         | :heavy_minus_sign:                                               | An optional server URL to use.                                   |
+| `config`                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)     | :heavy_minus_sign:                                               | Available config options for making requests.                    |
 
 
 ### Response

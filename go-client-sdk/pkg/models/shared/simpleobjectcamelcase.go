@@ -7,25 +7,25 @@ import (
 	"fmt"
 	"github.com/ericlagergren/decimal"
 	"math/big"
-	"openapi/pkg/types"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/types"
+	"openapi/v2/pkg/utils"
 	"time"
 )
 
-// SimpleObjectCamelCaseInt32EnumVal - An int32 enum property.
-type SimpleObjectCamelCaseInt32EnumVal int
+// Int32EnumVal - An int32 enum property.
+type Int32EnumVal int
 
 const (
-	SimpleObjectCamelCaseInt32EnumValFiftyFive              SimpleObjectCamelCaseInt32EnumVal = 55
-	SimpleObjectCamelCaseInt32EnumValSixtyNine              SimpleObjectCamelCaseInt32EnumVal = 69
-	SimpleObjectCamelCaseInt32EnumValOneHundredAndEightyOne SimpleObjectCamelCaseInt32EnumVal = 181
+	Int32EnumValFiftyFive              Int32EnumVal = 55
+	Int32EnumValSixtyNine              Int32EnumVal = 69
+	Int32EnumValOneHundredAndEightyOne Int32EnumVal = 181
 )
 
-func (e SimpleObjectCamelCaseInt32EnumVal) ToPointer() *SimpleObjectCamelCaseInt32EnumVal {
+func (e Int32EnumVal) ToPointer() *Int32EnumVal {
 	return &e
 }
 
-func (e *SimpleObjectCamelCaseInt32EnumVal) UnmarshalJSON(data []byte) error {
+func (e *Int32EnumVal) UnmarshalJSON(data []byte) error {
 	var v int
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -36,27 +36,27 @@ func (e *SimpleObjectCamelCaseInt32EnumVal) UnmarshalJSON(data []byte) error {
 	case 69:
 		fallthrough
 	case 181:
-		*e = SimpleObjectCamelCaseInt32EnumVal(v)
+		*e = Int32EnumVal(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SimpleObjectCamelCaseInt32EnumVal: %v", v)
+		return fmt.Errorf("invalid value for Int32EnumVal: %v", v)
 	}
 }
 
-// SimpleObjectCamelCaseIntEnumVal - An integer enum property.
-type SimpleObjectCamelCaseIntEnumVal int64
+// IntEnumVal - An integer enum property.
+type IntEnumVal int64
 
 const (
-	SimpleObjectCamelCaseIntEnumValFirst  SimpleObjectCamelCaseIntEnumVal = 1
-	SimpleObjectCamelCaseIntEnumValSecond SimpleObjectCamelCaseIntEnumVal = 2
-	SimpleObjectCamelCaseIntEnumValThird  SimpleObjectCamelCaseIntEnumVal = 3
+	IntEnumValFirst  IntEnumVal = 1
+	IntEnumValSecond IntEnumVal = 2
+	IntEnumValThird  IntEnumVal = 3
 )
 
-func (e SimpleObjectCamelCaseIntEnumVal) ToPointer() *SimpleObjectCamelCaseIntEnumVal {
+func (e IntEnumVal) ToPointer() *IntEnumVal {
 	return &e
 }
 
-func (e *SimpleObjectCamelCaseIntEnumVal) UnmarshalJSON(data []byte) error {
+func (e *IntEnumVal) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -67,10 +67,10 @@ func (e *SimpleObjectCamelCaseIntEnumVal) UnmarshalJSON(data []byte) error {
 	case 2:
 		fallthrough
 	case 3:
-		*e = SimpleObjectCamelCaseIntEnumVal(v)
+		*e = IntEnumVal(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SimpleObjectCamelCaseIntEnumVal: %v", v)
+		return fmt.Errorf("invalid value for IntEnumVal: %v", v)
 	}
 }
 
@@ -96,11 +96,11 @@ type SimpleObjectCamelCase struct {
 	// A float32 property.
 	Float32Val float32 `json:"float32_val"`
 	// An int32 enum property.
-	Int32EnumVal SimpleObjectCamelCaseInt32EnumVal `json:"int32_enum_val"`
+	Int32EnumVal Int32EnumVal `json:"int32_enum_val"`
 	// An int32 property.
 	Int32Val int `json:"int32_val"`
 	// An integer enum property.
-	IntEnumVal SimpleObjectCamelCaseIntEnumVal `json:"int_enum_val"`
+	IntEnumVal IntEnumVal `json:"int_enum_val"`
 	// An optional integer property will be null for tests.
 	IntOptNullVal *int64 `json:"int_opt_null_val,omitempty"`
 	// An integer property.
@@ -196,9 +196,9 @@ func (o *SimpleObjectCamelCase) GetFloat32Val() float32 {
 	return o.Float32Val
 }
 
-func (o *SimpleObjectCamelCase) GetInt32EnumVal() SimpleObjectCamelCaseInt32EnumVal {
+func (o *SimpleObjectCamelCase) GetInt32EnumVal() Int32EnumVal {
 	if o == nil {
-		return SimpleObjectCamelCaseInt32EnumVal(0)
+		return Int32EnumVal(0)
 	}
 	return o.Int32EnumVal
 }
@@ -210,9 +210,9 @@ func (o *SimpleObjectCamelCase) GetInt32Val() int {
 	return o.Int32Val
 }
 
-func (o *SimpleObjectCamelCase) GetIntEnumVal() SimpleObjectCamelCaseIntEnumVal {
+func (o *SimpleObjectCamelCase) GetIntEnumVal() IntEnumVal {
 	if o == nil {
-		return SimpleObjectCamelCaseIntEnumVal(0)
+		return IntEnumVal(0)
 	}
 	return o.IntEnumVal
 }

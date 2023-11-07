@@ -12,9 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DeepObjectQueryParamsObjectRes {
     @JsonProperty("args")
-    public DeepObjectQueryParamsObjectResArgs args;
+    public DeepObjectQueryParamsObjectArgs args;
 
-    public DeepObjectQueryParamsObjectRes withArgs(DeepObjectQueryParamsObjectResArgs args) {
+    public DeepObjectQueryParamsObjectRes withArgs(DeepObjectQueryParamsObjectArgs args) {
         this.args = args;
         return this;
     }
@@ -27,7 +27,7 @@ public class DeepObjectQueryParamsObjectRes {
         return this;
     }
     
-    public DeepObjectQueryParamsObjectRes(@JsonProperty("args") DeepObjectQueryParamsObjectResArgs args, @JsonProperty("url") String url) {
+    public DeepObjectQueryParamsObjectRes(@JsonProperty("args") DeepObjectQueryParamsObjectArgs args, @JsonProperty("url") String url) {
         this.args = args;
         this.url = url;
   }

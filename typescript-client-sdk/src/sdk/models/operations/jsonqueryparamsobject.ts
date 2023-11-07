@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -18,7 +18,7 @@ export class JsonQueryParamsObjectRequest extends SpeakeasyBase {
     simpleObjParam: shared.SimpleObject;
 }
 
-export class JsonQueryParamsObjectResArgs extends SpeakeasyBase {
+export class JsonQueryParamsObjectArgs extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "deepObjParam" })
     deepObjParam: string;
@@ -34,8 +34,8 @@ export class JsonQueryParamsObjectResArgs extends SpeakeasyBase {
 export class JsonQueryParamsObjectRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "args" })
-    @Type(() => JsonQueryParamsObjectResArgs)
-    args: JsonQueryParamsObjectResArgs;
+    @Type(() => JsonQueryParamsObjectArgs)
+    args: JsonQueryParamsObjectArgs;
 
     @SpeakeasyMetadata()
     @Expose({ name: "url" })

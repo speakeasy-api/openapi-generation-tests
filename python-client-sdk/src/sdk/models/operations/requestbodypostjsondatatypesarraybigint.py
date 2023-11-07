@@ -10,7 +10,7 @@ from typing import List, Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON:
+class RequestBodyPostJSONDataTypesArrayBigIntResponseBody:
     r"""OK"""
     data: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     json: List[int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
@@ -24,9 +24,9 @@ class RequestBodyPostJSONDataTypesArrayBigIntResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    object: Optional[RequestBodyPostJSONDataTypesArrayBigIntResponseBody] = dataclasses.field(default=None)
+    r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    request_body_post_json_data_types_array_big_int_200_application_json_object: Optional[RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON] = dataclasses.field(default=None)
-    r"""OK"""
     
 

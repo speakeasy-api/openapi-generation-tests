@@ -215,7 +215,7 @@ private func handleResponseBodyAdditionalPropertiesComplexNumbersPostResponse(re
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .responseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject(try JSONDecoder().decode(Operations.ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -231,7 +231,7 @@ private func handleResponseBodyAdditionalPropertiesDatePostResponse(response: Cl
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .responseBodyAdditionalPropertiesDatePost200ApplicationJSONObject(try JSONDecoder().decode(Operations.ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.ResponseBodyAdditionalPropertiesDatePostResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -247,7 +247,7 @@ private func handleResponseBodyAdditionalPropertiesObjectPostResponse(response: 
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .responseBodyAdditionalPropertiesObjectPost200ApplicationJSONObject(try JSONDecoder().decode(Operations.ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.ResponseBodyAdditionalPropertiesObjectPostResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -263,7 +263,7 @@ private func handleResponseBodyAdditionalPropertiesPostResponse(response: Client
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .responseBodyAdditionalPropertiesPost200ApplicationJSONObject(try JSONDecoder().decode(Operations.ResponseBodyAdditionalPropertiesPost200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.ResponseBodyAdditionalPropertiesPostResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -310,7 +310,7 @@ private func handleResponseBodyOptionalGetResponse(response: Client.APIResponse)
             guard let string = String(data: data, encoding: .utf8) else {
                 throw ResponseHandlerError.failedToDecodeResponse
             }
-            return .responseBodyOptionalGet200TextPlainString(string)
+            return .res(string)
         }
     }
 
@@ -369,7 +369,7 @@ private func handleResponseBodyZeroValueComplexTypePtrsPostResponse(response: Cl
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .responseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject(try JSONDecoder().decode(Operations.ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.ResponseBodyZeroValueComplexTypePtrsPostResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

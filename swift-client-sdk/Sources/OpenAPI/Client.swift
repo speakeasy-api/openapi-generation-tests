@@ -11,10 +11,10 @@ import FoundationNetworking
 ///
 /// ### API calls
 ///
-/// Each API endpoint (or *operation*) is exposed as a method. For instance, the 'basicAuth' operation is exposed as:
+/// Each API endpoint (or *operation*) is exposed as a method. For instance, the 'dateParamWithDefault' operation is exposed as:
 ///
 /// ```swift
-/// func basicAuth(request: Operations.BasicAuthRequest, security: Operations.BasicAuthSecurity) async throws -> Response<Operations.BasicAuthResponse>
+/// func dateParamWithDefault(request: Operations.DateParamWithDefaultRequest) async throws -> Response<Operations.DateParamWithDefaultResponse>
 /// ```
 ///
 /// ### Request and response objects
@@ -23,13 +23,11 @@ import FoundationNetworking
 ///
 /// Each API method also returns a ``Response`` object, which provides information about the result of making the API request. It is generic and parameterised by the resulting data — stored in the ``Response/data`` property — which is determined by each API operation.
 ///
-/// The ``Response/data`` property defined by each API operation is an enum, and you can `switch` on this value to extract the corresponding value from the response. For example, the 'basicAuth' operation returns a ``Operations/BasicAuthResponse`` value:
+/// The ``Response/data`` property defined by each API operation is an enum, and you can `switch` on this value to extract the corresponding value from the response. For example, the 'dateParamWithDefault' operation returns a ``Operations/DateParamWithDefaultResponse`` value:
 ///
 /// ```swift
-/// let response: Response<Operations.BasicAuthResponse> = ... // Response from API call
+/// let response: Response<Operations.DateParamWithDefaultResponse> = ... // Response from API call
 /// switch response.data {
-/// case .user(let user):
-///     // Handle response
 /// case .empty:
 ///     // Handle empty response
 /// }
@@ -71,28 +69,28 @@ import FoundationNetworking
 ///
 /// These properties logically group other parts of the API.
 ///
-/// - ``auth``
-/// - ``authNew``
-/// - ``documentation``
-/// - ``errors``
-/// - ``first``
-/// - ``flattening``
 /// - ``generation``
+/// - ``errors``
+/// - ``unions``
+/// - ``flattening``
 /// - ``globals``
+/// - ``parameters``
 /// - ``nestFirst``
 /// - ``nested``
 /// - ``nestedFirst``
 /// - ``nestedSecond``
-/// - ``pagination``
-/// - ``parameters``
 /// - ``requestBodies``
-/// - ``resource``
 /// - ``responseBodies``
-/// - ``retries``
-/// - ``second``
 /// - ``servers``
 /// - ``telemetry``
-/// - ``unions``
+/// - ``authNew``
+/// - ``auth``
+/// - ``documentation``
+/// - ``resource``
+/// - ``first``
+/// - ``second``
+/// - ``pagination``
+/// - ``retries``
 ///
 public final class Client {
     internal struct APIResponse {

@@ -12,14 +12,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GlobalsQueryParameterGetRes {
     @JsonProperty("args")
-    public GlobalsQueryParameterGetResArgs args;
+    public Args args;
 
-    public GlobalsQueryParameterGetRes withArgs(GlobalsQueryParameterGetResArgs args) {
+    public GlobalsQueryParameterGetRes withArgs(Args args) {
         this.args = args;
         return this;
     }
     
-    public GlobalsQueryParameterGetRes(@JsonProperty("args") GlobalsQueryParameterGetResArgs args) {
+    public GlobalsQueryParameterGetRes(@JsonProperty("args") Args args) {
         this.args = args;
   }
 }

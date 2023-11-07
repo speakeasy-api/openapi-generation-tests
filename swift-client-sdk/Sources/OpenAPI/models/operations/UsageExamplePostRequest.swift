@@ -3,7 +3,7 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct UsageExamplePostRequest: APIValue {
         /// An bigint parameter
         public let bigintParameter: Int
@@ -29,7 +29,7 @@ extension Operations {
         @DecimalSerialized
         public private(set) var doubleParameter: Double
         /// An enum parameter
-        public let enumParameter: Operations.UsageExamplePostEnumParameter
+        public let enumParameter: Operations.EnumParameter
         /// A number parameter that contains a falsey example value
         @DecimalSerialized
         public private(set) var falseyNumberParameter: Double
@@ -55,11 +55,11 @@ extension Operations {
         /// A decimal parameter
         public let decimalStrParameterOptional: String?
         /// An enum parameter
-        public let optEnumParameter: Operations.UsageExamplePostOptEnumParameter?
+        public let optEnumParameter: Operations.OptEnumParameter?
         /// A request body that contains fields with different formats for testing example generation
         public let requestBody: Operations.UsageExamplePostRequestBody?
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         /// - Parameter bigintParameter: An bigint parameter
         /// - Parameter bigintStrParameter: An bigint parameter
@@ -84,7 +84,7 @@ extension Operations {
         /// - Parameter optEnumParameter: An enum parameter
         /// - Parameter requestBody: A request body that contains fields with different formats for testing example generation
         ///
-        public init(bigintParameter: Int, bigintStrParameter: String, boolParameter: Bool, dateParameter: Date, dateTimeDefaultParameter: Date, dateTimeParameter: Date, decimalParameter: Double, decimalStrParameter: String, doubleParameter: Double, enumParameter: Operations.UsageExamplePostEnumParameter, falseyNumberParameter: Double, float32Parameter: Double, floatParameter: Double, int64Parameter: Int, intParameter: Int, strParameter: String, bigintParameterOptional: Int? = nil, bigintStrParameterOptional: String? = nil, decimalParameterOptional: Double? = nil, decimalStrParameterOptional: String? = nil, optEnumParameter: Operations.UsageExamplePostOptEnumParameter? = nil, requestBody: Operations.UsageExamplePostRequestBody? = nil) {
+        public init(bigintParameter: Int, bigintStrParameter: String, boolParameter: Bool, dateParameter: Date, dateTimeDefaultParameter: Date, dateTimeParameter: Date, decimalParameter: Double, decimalStrParameter: String, doubleParameter: Double, enumParameter: Operations.EnumParameter, falseyNumberParameter: Double, float32Parameter: Double, floatParameter: Double, int64Parameter: Int, intParameter: Int, strParameter: String, bigintParameterOptional: Int? = nil, bigintStrParameterOptional: String? = nil, decimalParameterOptional: Double? = nil, decimalStrParameterOptional: String? = nil, optEnumParameter: Operations.OptEnumParameter? = nil, requestBody: Operations.UsageExamplePostRequestBody? = nil) {
             self.bigintParameter = bigintParameter
             self.bigintStrParameter = bigintStrParameter
             self.boolParameter = boolParameter

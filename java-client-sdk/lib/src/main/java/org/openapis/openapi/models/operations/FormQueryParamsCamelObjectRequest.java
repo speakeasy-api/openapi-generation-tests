@@ -10,22 +10,22 @@ import org.openapis.openapi.utils.SpeakeasyMetadata;
 
 public class FormQueryParamsCamelObjectRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=obj_param_exploded")
-    public FormQueryParamsCamelObjectObjParamExploded objParamExploded;
+    public ObjParamExploded objParamExploded;
 
-    public FormQueryParamsCamelObjectRequest withObjParamExploded(FormQueryParamsCamelObjectObjParamExploded objParamExploded) {
+    public FormQueryParamsCamelObjectRequest withObjParamExploded(ObjParamExploded objParamExploded) {
         this.objParamExploded = objParamExploded;
         return this;
     }
     
     @SpeakeasyMetadata("queryParam:style=form,explode=false,name=obj_param")
-    public FormQueryParamsCamelObjectObjParam objParam;
+    public ObjParam objParam;
 
-    public FormQueryParamsCamelObjectRequest withObjParam(FormQueryParamsCamelObjectObjParam objParam) {
+    public FormQueryParamsCamelObjectRequest withObjParam(ObjParam objParam) {
         this.objParam = objParam;
         return this;
     }
     
-    public FormQueryParamsCamelObjectRequest(@JsonProperty("obj_param_exploded") FormQueryParamsCamelObjectObjParamExploded objParamExploded) {
+    public FormQueryParamsCamelObjectRequest(@JsonProperty("obj_param_exploded") ObjParamExploded objParamExploded) {
         this.objParamExploded = objParamExploded;
   }
 }

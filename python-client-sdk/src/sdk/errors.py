@@ -101,7 +101,7 @@ class Errors:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code == 501:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, errors.StatusGetXSpeakeasyErrors501ApplicationJSON)
+                out = utils.unmarshal_json(http_res.text, errors.StatusGetXSpeakeasyErrorsResponseBody)
                 out.raw_response = http_res
                 raise out
             else:

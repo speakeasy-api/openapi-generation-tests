@@ -3,11 +3,11 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
-export class IgnoresPostApplicationJSON extends SpeakeasyBase {
+export class IgnoresPostRequestBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "callbackUrl" })
     callbackUrl?: string;
@@ -19,7 +19,7 @@ export class IgnoresPostApplicationJSON extends SpeakeasyBase {
 
 export class IgnoresPostRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-    requestBody: IgnoresPostApplicationJSON;
+    requestBody: IgnoresPostRequestBody;
 
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=testParam" })
     testParam?: string;

@@ -46,10 +46,10 @@ public class IgnoredGenerationGetResponse {
      * A successful response that contains the simpleObject sent in the request body
      */
     
-    public IgnoredGenerationGet200ApplicationJSON ignoredGenerationGet200ApplicationJSONObject;
+    public IgnoredGenerationGetResponseBody object;
 
-    public IgnoredGenerationGetResponse withIgnoredGenerationGet200ApplicationJSONObject(IgnoredGenerationGet200ApplicationJSON ignoredGenerationGet200ApplicationJSONObject) {
-        this.ignoredGenerationGet200ApplicationJSONObject = ignoredGenerationGet200ApplicationJSONObject;
+    public IgnoredGenerationGetResponse withObject(IgnoredGenerationGetResponseBody object) {
+        this.object = object;
         return this;
     }
     

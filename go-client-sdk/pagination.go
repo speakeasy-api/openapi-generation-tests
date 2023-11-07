@@ -9,25 +9,25 @@ import (
 	"github.com/spyzhov/ajson"
 	"io"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/utils"
 	"strings"
 )
 
-// pagination - Endpoints for testing the pagination extension
-type pagination struct {
+// Pagination - Endpoints for testing the pagination extension
+type Pagination struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newPagination(sdkConfig sdkConfiguration) *pagination {
-	return &pagination{
+func newPagination(sdkConfig sdkConfiguration) *Pagination {
+	return &Pagination{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *pagination) PaginationCursorBody(ctx context.Context, request operations.PaginationCursorBodyRequestBody, opts ...operations.Option) (*operations.PaginationCursorBodyResponse, error) {
+func (s *Pagination) PaginationCursorBody(ctx context.Context, request operations.PaginationCursorBodyRequestBody, opts ...operations.Option) (*operations.PaginationCursorBodyResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -145,7 +145,7 @@ func (s *pagination) PaginationCursorBody(ctx context.Context, request operation
 	return res, nil
 }
 
-func (s *pagination) PaginationCursorParams(ctx context.Context, cursor int64, opts ...operations.Option) (*operations.PaginationCursorParamsResponse, error) {
+func (s *Pagination) PaginationCursorParams(ctx context.Context, cursor int64, opts ...operations.Option) (*operations.PaginationCursorParamsResponse, error) {
 	request := operations.PaginationCursorParamsRequest{
 		Cursor: cursor,
 	}
@@ -259,7 +259,7 @@ func (s *pagination) PaginationCursorParams(ctx context.Context, cursor int64, o
 	return res, nil
 }
 
-func (s *pagination) PaginationLimitOffsetOffsetBody(ctx context.Context, request shared.LimitOffsetConfig, opts ...operations.Option) (*operations.PaginationLimitOffsetOffsetBodyResponse, error) {
+func (s *Pagination) PaginationLimitOffsetOffsetBody(ctx context.Context, request shared.LimitOffsetConfig, opts ...operations.Option) (*operations.PaginationLimitOffsetOffsetBodyResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -377,7 +377,7 @@ func (s *pagination) PaginationLimitOffsetOffsetBody(ctx context.Context, reques
 	return res, nil
 }
 
-func (s *pagination) PaginationLimitOffsetOffsetParams(ctx context.Context, limit *int64, offset *int64, opts ...operations.Option) (*operations.PaginationLimitOffsetOffsetParamsResponse, error) {
+func (s *Pagination) PaginationLimitOffsetOffsetParams(ctx context.Context, limit *int64, offset *int64, opts ...operations.Option) (*operations.PaginationLimitOffsetOffsetParamsResponse, error) {
 	request := operations.PaginationLimitOffsetOffsetParamsRequest{
 		Limit:  limit,
 		Offset: offset,
@@ -491,7 +491,7 @@ func (s *pagination) PaginationLimitOffsetOffsetParams(ctx context.Context, limi
 	return res, nil
 }
 
-func (s *pagination) PaginationLimitOffsetPageBody(ctx context.Context, request shared.LimitOffsetConfig, opts ...operations.Option) (*operations.PaginationLimitOffsetPageBodyResponse, error) {
+func (s *Pagination) PaginationLimitOffsetPageBody(ctx context.Context, request shared.LimitOffsetConfig, opts ...operations.Option) (*operations.PaginationLimitOffsetPageBodyResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -607,7 +607,7 @@ func (s *pagination) PaginationLimitOffsetPageBody(ctx context.Context, request 
 	return res, nil
 }
 
-func (s *pagination) PaginationLimitOffsetPageParams(ctx context.Context, page int64, opts ...operations.Option) (*operations.PaginationLimitOffsetPageParamsResponse, error) {
+func (s *Pagination) PaginationLimitOffsetPageParams(ctx context.Context, page int64, opts ...operations.Option) (*operations.PaginationLimitOffsetPageParamsResponse, error) {
 	request := operations.PaginationLimitOffsetPageParamsRequest{
 		Page: page,
 	}

@@ -12,14 +12,14 @@ use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class RequestBodyPostMultipleContentTypesSplitParamMultipartRequest
 {
 	#[SpeakeasyMetadata('request:mediaType=multipart/form-data')]
-    public RequestBodyPostMultipleContentTypesSplitParamMultipartFormData $requestBody;
+    public RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody $requestBody;
     
 	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=paramStr')]
     public string $paramStr;
     
 	public function __construct()
 	{
-		$this->requestBody = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartFormData();
+		$this->requestBody = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody();
 		$this->paramStr = "";
 	}
 }

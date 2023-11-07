@@ -3,13 +3,13 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct JsonQueryParamsObjectRequest: APIValue {
         public let deepObjParam: Shared.DeepObject
         /// A simple object that uses all our supported primitive types and enums and has optional properties.
         public let simpleObjParam: Shared.SimpleObject
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         /// - Parameter simpleObjParam: A simple object that uses all our supported primitive types and enums and has optional properties.
         ///

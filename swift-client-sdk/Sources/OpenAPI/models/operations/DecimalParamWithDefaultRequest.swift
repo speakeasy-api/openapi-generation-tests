@@ -3,13 +3,13 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct DecimalParamWithDefaultRequest: APIValue {
         /// A decimal parameter with a default value
         @DecimalSerialized
         public private(set) var decimalInput: Double
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         /// - Parameter decimalInput: A decimal parameter with a default value
         ///

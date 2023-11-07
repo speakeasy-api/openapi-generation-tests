@@ -1,5 +1,5 @@
-# ParametersSDK
-(*Parameters*)
+# Parameters
+(*.Parameters*)
 
 ## Overview
 
@@ -36,11 +36,12 @@ Endpoints for testing parameters.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
+using System.Collections.Generic;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -52,13 +53,13 @@ var res = await sdk.Parameters.DeepObjectQueryParamsMapAsync(new Dictionary<stri
     { "test", "value" },
     { "test2", "value2" },
 }, new Dictionary<string, List<string>>() {
-    { "test2", new List<string>() {
-        "test3",
-        "test4",
-    } },
     { "test", new List<string>() {
         "test",
         "test2",
+    } },
+    { "test2", new List<string>() {
+        "test3",
+        "test4",
     } },
 });
 
@@ -83,13 +84,13 @@ var res = await sdk.Parameters.DeepObjectQueryParamsMapAsync(new Dictionary<stri
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
+using System.Collections.Generic;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -100,14 +101,14 @@ var sdk = new SDKSDK(
 var res = await sdk.Parameters.DeepObjectQueryParamsObjectAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = SDK.Models.Shared.Enum.One,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-    IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -116,7 +117,7 @@ var res = await sdk.Parameters.DeepObjectQueryParamsObjectAsync(new SimpleObject
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
     StrOpt = "testOptional",
-}, new DeepObjectQueryParamsObjectObjArrParam() {
+}, new ObjArrParam() {
     Arr = new List<string>() {
         "test",
         "test2",
@@ -128,10 +129,10 @@ var res = await sdk.Parameters.DeepObjectQueryParamsObjectAsync(new SimpleObject
 
 ### Parameters
 
-| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `ObjParam`                                                                                                  | [SimpleObject](../../models/shared/SimpleObject.md)                                                         | :heavy_check_mark:                                                                                          | A simple object that uses all our supported primitive types and enums and has optional properties.          |
-| `ObjArrParam`                                                                                               | [DeepObjectQueryParamsObjectObjArrParam](../../models/operations/DeepObjectQueryParamsObjectObjArrParam.md) | :heavy_minus_sign:                                                                                          | N/A                                                                                                         |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `ObjParam`                                                                                         | [SimpleObject](../../models/shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `ObjArrParam`                                                                                      | [ObjArrParam](../../models/operations/ObjArrParam.md)                                              | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 
 
 ### Response
@@ -144,11 +145,11 @@ var res = await sdk.Parameters.DeepObjectQueryParamsObjectAsync(new SimpleObject
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -178,11 +179,12 @@ var res = await sdk.Parameters.DuplicateParamAsync("string");
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
+using System.Collections.Generic;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -219,11 +221,11 @@ var res = await sdk.Parameters.FormQueryParamsArrayAsync(new List<string>() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -231,10 +233,10 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.Parameters.FormQueryParamsCamelObjectAsync(new FormQueryParamsCamelObjectObjParamExploded() {
+var res = await sdk.Parameters.FormQueryParamsCamelObjectAsync(new ObjParamExploded() {
     ItemCount = "10",
     SearchTerm = "foo",
-}, new FormQueryParamsCamelObjectObjParam() {
+}, new ObjParam() {
     EncodedCount = "11",
     EncodedTerm = "bar",
 });
@@ -244,10 +246,10 @@ var res = await sdk.Parameters.FormQueryParamsCamelObjectAsync(new FormQueryPara
 
 ### Parameters
 
-| Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `ObjParamExploded`                                                                                                  | [FormQueryParamsCamelObjectObjParamExploded](../../models/operations/FormQueryParamsCamelObjectObjParamExploded.md) | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |
-| `ObjParam`                                                                                                          | [FormQueryParamsCamelObjectObjParam](../../models/operations/FormQueryParamsCamelObjectObjParam.md)                 | :heavy_minus_sign:                                                                                                  | N/A                                                                                                                 |
+| Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `ObjParamExploded`                                              | [ObjParamExploded](../../models/operations/ObjParamExploded.md) | :heavy_check_mark:                                              | N/A                                                             |
+| `ObjParam`                                                      | [ObjParam](../../models/operations/ObjParam.md)                 | :heavy_minus_sign:                                              | N/A                                                             |
 
 
 ### Response
@@ -260,11 +262,12 @@ var res = await sdk.Parameters.FormQueryParamsCamelObjectAsync(new FormQueryPara
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
+using System.Collections.Generic;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -276,8 +279,8 @@ var res = await sdk.Parameters.FormQueryParamsMapAsync(new Dictionary<string, st
     { "test", "value" },
     { "test2", "value2" },
 }, new Dictionary<string, long>() {
-    { "test", 1 },
     { "test2", 2 },
+    { "test", 1 },
 });
 
 // handle response
@@ -301,13 +304,12 @@ var res = await sdk.Parameters.FormQueryParamsMapAsync(new Dictionary<string, st
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -318,14 +320,14 @@ var sdk = new SDKSDK(
 var res = await sdk.Parameters.FormQueryParamsObjectAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = SDK.Models.Shared.Enum.One,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-    IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -337,14 +339,14 @@ var res = await sdk.Parameters.FormQueryParamsObjectAsync(new SimpleObject() {
 }, new SimpleObject() {
     Any = "any",
     Bool = true,
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = SDK.Models.Shared.Enum.One,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-    IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -376,11 +378,11 @@ var res = await sdk.Parameters.FormQueryParamsObjectAsync(new SimpleObject() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -413,11 +415,11 @@ var res = await sdk.Parameters.FormQueryParamsPrimitiveAsync(true, 1, 1.1D, "tes
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -458,11 +460,12 @@ var res = await sdk.Parameters.FormQueryParamsRefParamObjectAsync(new RefQueryPa
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
+using System.Collections.Generic;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -495,11 +498,12 @@ var res = await sdk.Parameters.HeaderParamsArrayAsync(new List<string>() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
+using System.Collections.Generic;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -511,8 +515,8 @@ var res = await sdk.Parameters.HeaderParamsMapAsync(new Dictionary<string, strin
     { "key1", "value1" },
     { "key2", "value2" },
 }, new Dictionary<string, string>() {
-    { "test2", "val2" },
     { "test1", "val1" },
+    { "test2", "val2" },
 });
 
 // handle response
@@ -536,13 +540,12 @@ var res = await sdk.Parameters.HeaderParamsMapAsync(new Dictionary<string, strin
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -553,14 +556,14 @@ var sdk = new SDKSDK(
 var res = await sdk.Parameters.HeaderParamsObjectAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = SDK.Models.Shared.Enum.One,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-    IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -572,14 +575,14 @@ var res = await sdk.Parameters.HeaderParamsObjectAsync(new SimpleObject() {
 }, new SimpleObject() {
     Any = "any",
     Bool = true,
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = SDK.Models.Shared.Enum.One,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-    IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -611,11 +614,11 @@ var res = await sdk.Parameters.HeaderParamsObjectAsync(new SimpleObject() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -648,13 +651,13 @@ var res = await sdk.Parameters.HeaderParamsPrimitiveAsync(true, 1, 1.1D, "test")
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
+using System.Collections.Generic;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -668,14 +671,14 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
         new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -688,14 +691,14 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
         new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -712,14 +715,14 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
         { "key", new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -732,14 +735,14 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
         { "key2", new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -754,14 +757,14 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
     Obj = new SimpleObject() {
         Any = "any",
         Bool = true,
-        Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-        DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-        Enum = SDK.Models.Shared.Enum.One,
+        Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
         Int32 = 1,
-        Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-        IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+        Int32Enum = Int32Enum.FiftyFive,
+        IntEnum = IntEnum.Two,
         Num = 1.1D,
         Str = "test",
         Bigint = 8821239038968084,
@@ -775,14 +778,14 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
 }, new SimpleObject() {
     Any = "any",
     Bool = true,
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = SDK.Models.Shared.Enum.One,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-    IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -814,11 +817,11 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -850,11 +853,11 @@ var res = await sdk.Parameters.MixedParametersCamelCaseAsync("headerValue", "pat
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -886,13 +889,12 @@ var res = await sdk.Parameters.MixedParametersPrimitivesAsync("headerValue", "pa
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -903,14 +905,14 @@ var sdk = new SDKSDK(
 var res = await sdk.Parameters.MixedQueryParamsAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = SDK.Models.Shared.Enum.One,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-    IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -922,14 +924,14 @@ var res = await sdk.Parameters.MixedQueryParamsAsync(new SimpleObject() {
 }, new SimpleObject() {
     Any = "any",
     Bool = true,
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = SDK.Models.Shared.Enum.One,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-    IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -941,14 +943,14 @@ var res = await sdk.Parameters.MixedQueryParamsAsync(new SimpleObject() {
 }, new SimpleObject() {
     Any = "any",
     Bool = true,
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = SDK.Models.Shared.Enum.One,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-    IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -981,13 +983,12 @@ var res = await sdk.Parameters.MixedQueryParamsAsync(new SimpleObject() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -998,14 +999,14 @@ var sdk = new SDKSDK(
 var res = await sdk.Parameters.PathParameterJsonAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = SDK.Models.Shared.Enum.One,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-    IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -1036,13 +1037,13 @@ var res = await sdk.Parameters.PathParameterJsonAsync(new SimpleObject() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
+using System.Collections.Generic;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1062,14 +1063,14 @@ var res = await sdk.Parameters.PipeDelimitedQueryParamsArrayAsync(new List<strin
 }, new SimpleObject() {
     Any = "any",
     Bool = true,
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = SDK.Models.Shared.Enum.One,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-    IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -1103,11 +1104,12 @@ var res = await sdk.Parameters.PipeDelimitedQueryParamsArrayAsync(new List<strin
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
+using System.Collections.Generic;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1140,11 +1142,12 @@ var res = await sdk.Parameters.SimplePathParameterArraysAsync(new List<string>()
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
+using System.Collections.Generic;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1181,13 +1184,12 @@ var res = await sdk.Parameters.SimplePathParameterMapsAsync(new Dictionary<strin
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1198,14 +1200,14 @@ var sdk = new SDKSDK(
 var res = await sdk.Parameters.SimplePathParameterObjectsAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = SDK.Models.Shared.Enum.One,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-    IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -1217,14 +1219,14 @@ var res = await sdk.Parameters.SimplePathParameterObjectsAsync(new SimpleObject(
 }, new SimpleObject() {
     Any = "any",
     Bool = true,
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = SDK.Models.Shared.Enum.One,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-    IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -1256,11 +1258,11 @@ var res = await sdk.Parameters.SimplePathParameterObjectsAsync(new SimpleObject(
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },

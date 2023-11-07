@@ -5,19 +5,19 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Transform, Type } from "class-transformer";
 
-export class ExampleResourceChocolates extends SpeakeasyBase {
+export class Chocolates extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "description" })
     description: string;
 }
 
-export enum ExampleResourceEnumNumber {
+export enum EnumNumber {
     One = 1,
     Two = 2,
     Three = 3,
 }
 
-export enum ExampleResourceEnumStr {
+export enum EnumStr {
     One = "one",
     Two = "two",
     Three = "three",
@@ -32,10 +32,10 @@ export class ExampleResource extends SpeakeasyBase {
     @Expose({ name: "arrayOfString" })
     arrayOfString?: string[];
 
-    @SpeakeasyMetadata({ elemType: ExampleResourceChocolates })
+    @SpeakeasyMetadata({ elemType: Chocolates })
     @Expose({ name: "chocolates" })
-    @Type(() => ExampleResourceChocolates)
-    chocolates: ExampleResourceChocolates[];
+    @Type(() => Chocolates)
+    chocolates: Chocolates[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "createdAt" })
@@ -44,11 +44,11 @@ export class ExampleResource extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "enumNumber" })
-    enumNumber?: ExampleResourceEnumNumber;
+    enumNumber?: EnumNumber;
 
     @SpeakeasyMetadata()
     @Expose({ name: "enumStr" })
-    enumStr?: ExampleResourceEnumStr;
+    enumStr?: EnumStr;
 
     @SpeakeasyMetadata()
     @Expose({ name: "id" })

@@ -4,35 +4,35 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/types"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/types"
+	"openapi/v2/pkg/utils"
 )
 
-// RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON - OK
-type RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON struct {
+// RequestBodyPostJSONDataTypesArrayDateResponseBody - OK
+type RequestBodyPostJSONDataTypesArrayDateResponseBody struct {
 	Data string       `json:"data"`
 	JSON []types.Date `json:"json"`
 }
 
-func (r RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON) MarshalJSON() ([]byte, error) {
+func (r RequestBodyPostJSONDataTypesArrayDateResponseBody) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(r, "", false)
 }
 
-func (r *RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON) UnmarshalJSON(data []byte) error {
+func (r *RequestBodyPostJSONDataTypesArrayDateResponseBody) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON) GetData() string {
+func (o *RequestBodyPostJSONDataTypesArrayDateResponseBody) GetData() string {
 	if o == nil {
 		return ""
 	}
 	return o.Data
 }
 
-func (o *RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON) GetJSON() []types.Date {
+func (o *RequestBodyPostJSONDataTypesArrayDateResponseBody) GetJSON() []types.Date {
 	if o == nil {
 		return []types.Date{}
 	}
@@ -47,7 +47,7 @@ type RequestBodyPostJSONDataTypesArrayDateResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	RequestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject *RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON
+	Object *RequestBodyPostJSONDataTypesArrayDateResponseBody
 }
 
 func (o *RequestBodyPostJSONDataTypesArrayDateResponse) GetContentType() string {
@@ -71,9 +71,9 @@ func (o *RequestBodyPostJSONDataTypesArrayDateResponse) GetRawResponse() *http.R
 	return o.RawResponse
 }
 
-func (o *RequestBodyPostJSONDataTypesArrayDateResponse) GetRequestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject() *RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON {
+func (o *RequestBodyPostJSONDataTypesArrayDateResponse) GetObject() *RequestBodyPostJSONDataTypesArrayDateResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject
+	return o.Object
 }

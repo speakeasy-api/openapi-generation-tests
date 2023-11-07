@@ -34,10 +34,10 @@ class ExampleResource
     /**
      * $chocolates
      * 
-     * @var array<\OpenAPI\OpenAPI\Models\Shared\ExampleResourceChocolates> $chocolates
+     * @var array<\OpenAPI\OpenAPI\Models\Shared\Chocolates> $chocolates
      */
 	#[\JMS\Serializer\Annotation\SerializedName('chocolates')]
-    #[\JMS\Serializer\Annotation\Type('array<OpenAPI\OpenAPI\Models\Shared\ExampleResourceChocolates>')]
+    #[\JMS\Serializer\Annotation\Type('array<OpenAPI\OpenAPI\Models\Shared\Chocolates>')]
     public array $chocolates;
     
 	#[\JMS\Serializer\Annotation\SerializedName('createdAt')]
@@ -46,14 +46,14 @@ class ExampleResource
     public ?\DateTime $createdAt = null;
     
 	#[\JMS\Serializer\Annotation\SerializedName('enumNumber')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\ExampleResourceEnumNumber>')]
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\EnumNumber>')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?ExampleResourceEnumNumber $enumNumber = null;
+    public ?EnumNumber $enumNumber = null;
     
 	#[\JMS\Serializer\Annotation\SerializedName('enumStr')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\ExampleResourceEnumStr>')]
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\EnumStr>')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?ExampleResourceEnumStr $enumStr = null;
+    public ?EnumStr $enumStr = null;
     
 	#[\JMS\Serializer\Annotation\SerializedName('id')]
     #[\JMS\Serializer\Annotation\Type('string')]

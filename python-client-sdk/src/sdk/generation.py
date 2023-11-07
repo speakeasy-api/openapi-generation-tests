@@ -32,7 +32,7 @@ class Generation:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.TypeFromAnchor])
+                out = utils.unmarshal_json(http_res.text, Optional[operations.AnchorTypesGetTypeFromAnchor])
                 res.type_from_anchor = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -225,8 +225,8 @@ class Generation:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.DeprecatedObjectInSchemaGet200ApplicationJSON])
-                res.deprecated_object_in_schema_get_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.DeprecatedObjectInSchemaGetResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -367,8 +367,8 @@ class Generation:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetGlobalNameOverride200ApplicationJSON])
-                res.get_global_name_override_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetGlobalNameOverrideResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -394,8 +394,8 @@ class Generation:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.IgnoredGenerationGet200ApplicationJSON])
-                res.ignored_generation_get_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.IgnoredGenerationGetResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -404,7 +404,7 @@ class Generation:
         return res
 
     
-    def ignores_post(self, request_body: operations.IgnoresPostApplicationJSON, test_param: Optional[str] = None) -> operations.IgnoresPostResponse:
+    def ignores_post(self, request_body: operations.IgnoresPostRequestBody, test_param: Optional[str] = None) -> operations.IgnoresPostResponse:
         request = operations.IgnoresPostRequest(
             request_body=request_body,
             test_param=test_param,
@@ -442,7 +442,7 @@ class Generation:
         return res
 
     
-    def name_override(self, test_enum_query_param: operations.NameOverrideGetEnumNameOverride, test_query_param: str) -> operations.NameOverrideGetResponse:
+    def name_override(self, test_enum_query_param: operations.EnumNameOverride, test_query_param: str) -> operations.NameOverrideGetResponse:
         request = operations.NameOverrideGetRequest(
             test_enum_query_param=test_enum_query_param,
             test_query_param=test_query_param,
@@ -465,7 +465,7 @@ class Generation:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.OverriddenResponse])
+                out = utils.unmarshal_json(http_res.text, Optional[operations.NameOverrideGetOverriddenResponse])
                 res.overridden_response = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -529,7 +529,7 @@ class Generation:
         return res
 
     
-    def typed_parameter_generation_get(self, bigint: Optional[int] = None, date_: Optional[date] = None, decimal: Optional[Decimal] = None, obj: Optional[operations.TypedParameterGenerationGetObj] = None) -> operations.TypedParameterGenerationGetResponse:
+    def typed_parameter_generation_get(self, bigint: Optional[int] = None, date_: Optional[date] = None, decimal: Optional[Decimal] = None, obj: Optional[operations.Obj] = None) -> operations.TypedParameterGenerationGetResponse:
         request = operations.TypedParameterGenerationGetRequest(
             bigint=bigint,
             date_=date_,
@@ -585,8 +585,8 @@ class Generation:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.UsageExamplePost200ApplicationJSON])
-                res.usage_example_post_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.UsageExamplePostResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:

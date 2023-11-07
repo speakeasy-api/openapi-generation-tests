@@ -120,7 +120,7 @@ func TestRequestBodyPostMultipleContentTypesInlineFiltered(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesInlineFiltered(context.Background(),
-		operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON{
+		operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody{
 			Bool: true,
 			Num:  1.1,
 			Str:  "test",
@@ -142,7 +142,7 @@ func TestRequestBodyPostMultipleContentTypesSplitJSON(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitJSON(context.Background(),
-		operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON{
+		operations.RequestBodyPostMultipleContentTypesSplitJSONRequestBody{
 			Bool: true,
 			Num:  1.1,
 			Str:  "test",
@@ -164,7 +164,7 @@ func TestRequestBodyPostMultipleContentTypesSplitMultipart(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitMultipart(context.Background(),
-		operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData{
+		operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody{
 			Bool2: true,
 			Num2:  1.1,
 			Str2:  "test",
@@ -186,7 +186,7 @@ func TestRequestBodyPostMultipleContentTypesSplitForm(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitForm(context.Background(),
-		operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded{
+		operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody{
 			Bool3: true,
 			Num3:  1.1,
 			Str3:  "test",
@@ -208,7 +208,7 @@ func TestRequestBodyPostMultipleContentTypesSplitJSONWithParam(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamJSON(context.Background(),
-		operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON{
+		operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody{
 			Bool: true,
 			Num:  1.1,
 			Str:  "test body",
@@ -236,7 +236,7 @@ func TestRequestBodyPostMultipleContentTypesSplitMultipartWithParam(t *testing.T
 	s := sdk.New()
 
 	res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamMultipart(context.Background(),
-		operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData{
+		operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody{
 			Bool2: true,
 			Num2:  1.1,
 			Str2:  "test body",
@@ -264,7 +264,7 @@ func TestRequestBodyPostMultipleContentTypesSplitFormWithParam(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamForm(context.Background(),
-		operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded{
+		operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody{
 			Bool3: true,
 			Num3:  1.1,
 			Str3:  "test body",
@@ -299,8 +299,8 @@ func TestRequestBodyPostApplicationJSONArray(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.NotNil(t, res.SimpleObjects)
-	assert.Equal(t, obj, res.SimpleObjects)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, obj, res.Res)
 }
 
 func TestRequestBodyPostApplicationJSONArrayCamelCase(t *testing.T) {
@@ -316,8 +316,8 @@ func TestRequestBodyPostApplicationJSONArrayCamelCase(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.NotNil(t, res.SimpleObjectCamelCases)
-	assert.Equal(t, obj, res.SimpleObjectCamelCases)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, obj, res.Res)
 }
 
 func TestRequestBodyPostApplicationJSONArrayOfArray(t *testing.T) {
@@ -335,8 +335,8 @@ func TestRequestBodyPostApplicationJSONArrayOfArray(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.NotNil(t, res.Arrs)
-	assert.Equal(t, obj, res.Arrs)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, obj, res.Res)
 }
 
 func TestRequestBodyPostApplicationJSONArrayOfArrayCamelCase(t *testing.T) {
@@ -354,8 +354,8 @@ func TestRequestBodyPostApplicationJSONArrayOfArrayCamelCase(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.NotNil(t, res.Arrs)
-	assert.Equal(t, obj, res.Arrs)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, obj, res.Res)
 }
 
 func TestRequestBodyPostApplicationJSONMap(t *testing.T) {
@@ -498,8 +498,8 @@ func TestRequestBodyPostApplicationJSONArrayOfMap(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.NotNil(t, res.Maps)
-	assert.Equal(t, obj, res.Maps)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, obj, res.Res)
 }
 
 func TestRequestBodyPostApplicationJSONArrayOfMapCamelCase(t *testing.T) {
@@ -522,8 +522,8 @@ func TestRequestBodyPostApplicationJSONArrayOfMapCamelCase(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.NotNil(t, res.Maps)
-	assert.Equal(t, obj, res.Maps)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, obj, res.Res)
 }
 
 func TestRequestBodyPostApplicationJSONArrayOfPrimitive(t *testing.T) {
@@ -537,8 +537,8 @@ func TestRequestBodyPostApplicationJSONArrayOfPrimitive(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.NotNil(t, res.Strings)
-	assert.Equal(t, obj, res.Strings)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, obj, res.Res)
 }
 
 func TestRequestBodyPostApplicationJSONMapOfPrimitive(t *testing.T) {
@@ -597,8 +597,8 @@ func TestRequestBodyPostApplicationJSONArrayOfArrayOfPrimitive(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.NotNil(t, res.Arrs)
-	assert.Equal(t, obj, res.Arrs)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, obj, res.Res)
 }
 
 func TestRequestBodyPostApplicationJSONArrayObject(t *testing.T) {
@@ -679,7 +679,7 @@ func TestRequestBodyPutMultipartSimple(t *testing.T) {
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.NotNil(t, res.Res)
-	assert.Equal(t, operations.RequestBodyPutMultipartSimpleResForm{
+	assert.Equal(t, operations.RequestBodyPutMultipartSimpleForm{
 		Any:      "any",
 		Bool:     "true",
 		BoolOpt:  pointer.ToString("true"),
@@ -708,7 +708,7 @@ func TestRequestBodyPutMultipartDeep(t *testing.T) {
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.NotNil(t, res.Res)
 
-	assert.Equal(t, operations.RequestBodyPutMultipartDeepResForm{
+	assert.Equal(t, operations.RequestBodyPutMultipartDeepForm{
 		Arr:  marshalJSON(t, obj.Arr),
 		Bool: "true",
 		Int:  "1",
@@ -729,9 +729,9 @@ func TestRequestBodyPutMultipartFile(t *testing.T) {
 
 	res, err := s.RequestBodies.RequestBodyPutMultipartFile(context.Background(),
 		operations.RequestBodyPutMultipartFileRequestBody{
-			File: &operations.RequestBodyPutMultipartFileRequestBodyFile{
-				Content: data,
-				File:    "testUpload.json",
+			File: &operations.File{
+				Content:  data,
+				FileName: "testUpload.json",
 			},
 		},
 	)
@@ -754,9 +754,9 @@ func TestRequestBodyPutMultipartDifferentFileName(t *testing.T) {
 
 	res, err := s.RequestBodies.RequestBodyPutMultipartDifferentFileName(context.Background(),
 		operations.RequestBodyPutMultipartDifferentFileNameRequestBody{
-			DifferentFileName: &operations.RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName{
-				Content:           data,
-				DifferentFileName: "testUpload.json",
+			DifferentFileName: &operations.DifferentFileName{
+				Content:  data,
+				FileName: "testUpload.json",
 			},
 		},
 	)
@@ -781,7 +781,7 @@ func TestRequestBodyPostFormSimple(t *testing.T) {
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.NotNil(t, res.Res)
-	assert.Equal(t, operations.RequestBodyPostFormSimpleResForm{
+	assert.Equal(t, operations.RequestBodyPostFormSimpleForm{
 		Any:      "any",
 		Bool:     "true",
 		BoolOpt:  pointer.ToString("true"),
@@ -809,7 +809,7 @@ func TestRequestBodyPostFormDeep(t *testing.T) {
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.NotNil(t, res.Res)
-	assert.Equal(t, operations.RequestBodyPostFormDeepResForm{
+	assert.Equal(t, operations.Form{
 		Arr:  marshalJSON(t, obj.Arr),
 		Bool: "true",
 		Int:  "1",
@@ -904,13 +904,13 @@ func TestRequestBodyEmptyObject(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.RequestBodies.RequestBodyPostEmptyObject(context.Background(), operations.RequestBodyPostEmptyObjectRequestBody{
-		Empty:                    &operations.RequestBodyPostEmptyObjectRequestBodyEmpty{},
-		EmptyWithEmptyProperties: &operations.RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties{},
+		Empty:                    &operations.Empty{},
+		EmptyWithEmptyProperties: &operations.EmptyWithEmptyProperties{},
 	})
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.NotNil(t, res.RequestBodyPostEmptyObject200ApplicationJSONObject)
+	assert.NotNil(t, res.Object)
 }
 
 func TestRequestBodyPostNullableRequiredProperty(t *testing.T) {
@@ -947,7 +947,7 @@ func TestRequestBodyPostNullableRequiredProperty(t *testing.T) {
 			arg: operations.NullableRequiredPropertyPostRequestBody{
 				NullableOptionalInt:   pointer.ToInt64(0),
 				NullableRequiredArray: []float64{1, 2, 3},
-				NullableRequiredEnum:  operations.NullableRequiredPropertyPostRequestBodyNullableRequiredEnumSecond.ToPointer(),
+				NullableRequiredEnum:  operations.NullableRequiredEnumSecond.ToPointer(),
 				NullableRequiredInt:   pointer.ToInt64(1),
 			},
 			wantJson: "{\"NullableOptionalInt\":0,\"NullableRequiredArray\":[1,2,3],\"NullableRequiredEnum\":\"second\",\"NullableRequiredInt\":1}",
@@ -1034,7 +1034,7 @@ func TestRequestBodyPostNullableRequiredEmptyObject(t *testing.T) {
 		{
 			name: "Nullable fields set to null",
 			arg: operations.NullableRequiredEmptyObjectPostRequestBody{
-				RequiredObj:         operations.NullableRequiredEmptyObjectPostRequestBodyRequiredObj{},
+				RequiredObj:         operations.RequiredObj{},
 				NullableOptionalObj: nil,
 				NullableRequiredObj: nil,
 			},
@@ -1043,16 +1043,16 @@ func TestRequestBodyPostNullableRequiredEmptyObject(t *testing.T) {
 		{
 			name: "Optional field set to non-null value",
 			arg: operations.NullableRequiredEmptyObjectPostRequestBody{
-				NullableOptionalObj: &operations.NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj{},
+				NullableOptionalObj: &operations.NullableOptionalObj{},
 			},
 			wantJson: "{\"NullableOptionalObj\":{},\"NullableRequiredObj\":null,\"RequiredObj\":{}}",
 		},
 		{
 			name: "All fields set to non-null value",
 			arg: operations.NullableRequiredEmptyObjectPostRequestBody{
-				RequiredObj:         operations.NullableRequiredEmptyObjectPostRequestBodyRequiredObj{},
-				NullableOptionalObj: &operations.NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj{},
-				NullableRequiredObj: &operations.NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj{},
+				RequiredObj:         operations.RequiredObj{},
+				NullableOptionalObj: &operations.NullableOptionalObj{},
+				NullableRequiredObj: &operations.NullableRequiredObj{},
 			},
 			wantJson: "{\"NullableOptionalObj\":{},\"NullableRequiredObj\":{},\"RequiredObj\":{}}",
 		},
@@ -1127,7 +1127,7 @@ func TestRequestBodyReadAndWrite(t *testing.T) {
 
 	s := sdk.New()
 
-	res, err := s.RequestBodies.RequestBodyReadAndWrite(context.Background(), shared.ReadWriteObjectInput{
+	res, err := s.RequestBodies.RequestBodyReadAndWrite(context.Background(), shared.ReadWriteObject{
 		Num1: 1,
 		Num2: 2,
 		Num3: 4,
@@ -1177,7 +1177,7 @@ func TestRequestBodyReadWriteOnlyUnion(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.RequestBodies.RequestBodyReadWriteOnlyUnion(context.Background(),
-		shared.CreateWeaklyTypedOneOfReadWriteObjectInputReadWriteObjectInput(shared.ReadWriteObjectInput{
+		shared.CreateWeaklyTypedOneOfReadWriteObjectReadWriteObject(shared.ReadWriteObject{
 			Num1: 1,
 			Num2: 2,
 			Num3: 4,
@@ -1215,8 +1215,8 @@ func TestRequestBodyPostComplexNumberTypes(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, req.ComplexNumberTypes, res.RequestBodyPostComplexNumberTypes200ApplicationJSONObject.JSON)
-	assert.Equal(t, "http://localhost:35123/anything/requestBodies/post/9007199254740991/9223372036854775807/3.141592653589793/3.141592653589793238462643383279/complex-number-types?queryBigInt=9007199254740991&queryBigIntStr=9223372036854775807&queryDecimal=3.141592653589793&queryDecimalStr=3.141592653589793238462643383279", res.RequestBodyPostComplexNumberTypes200ApplicationJSONObject.URL)
+	assert.Equal(t, req.ComplexNumberTypes, res.Object.JSON)
+	assert.Equal(t, "http://localhost:35123/anything/requestBodies/post/9007199254740991/9223372036854775807/3.141592653589793/3.141592653589793238462643383279/complex-number-types?queryBigInt=9007199254740991&queryBigIntStr=9223372036854775807&queryDecimal=3.141592653589793&queryDecimalStr=3.141592653589793238462643383279", res.Object.URL)
 }
 
 func TestRequestBodyPostDefaultsAndConsts(t *testing.T) {
@@ -1236,8 +1236,8 @@ func TestRequestBodyPostDefaultsAndConsts(t *testing.T) {
 	assert.Equal(t, types.MustTimeFromString("2020-01-01T00:00:00Z"), req.GetConstDateTime())
 	assert.Equal(t, types.MustNewDecimalFromString("3.141592653589793"), req.GetConstDecimal())
 	assert.Equal(t, types.MustNewDecimalFromString("3.141592653589793238462643383279"), req.GetConstDecimalStr())
-	assert.Equal(t, shared.DefaultsAndConstsConstEnumIntTwo, req.GetConstEnumInt())
-	assert.Equal(t, shared.DefaultsAndConstsConstEnumStrTwo, req.GetConstEnumStr())
+	assert.Equal(t, shared.ConstEnumIntTwo, req.GetConstEnumInt())
+	assert.Equal(t, shared.ConstEnumStrTwo, req.GetConstEnumStr())
 	assert.Equal(t, int64(123), req.GetConstInt())
 	assert.Equal(t, float64(123.456), req.GetConstNum())
 	assert.Equal(t, "const", req.GetConstStr())
@@ -1247,36 +1247,36 @@ func TestRequestBodyPostDefaultsAndConsts(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, "normal", res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.NormalField)
+	assert.Equal(t, "normal", res.Object.JSON.NormalField)
 
-	assert.Equal(t, types.MustNewBigIntFromString("9007199254740991"), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.ConstBigInt)
-	assert.Equal(t, types.MustNewBigIntFromString("9223372036854775807"), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.ConstBigIntStr)
-	assert.Equal(t, true, res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.ConstBool)
-	assert.Equal(t, types.MustDateFromString("2020-01-01"), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.ConstDate)
-	assert.Equal(t, types.MustTimeFromString("2020-01-01T00:00:00Z"), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.ConstDateTime)
-	assert.Equal(t, types.MustNewDecimalFromString("3.141592653589793").String(), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.ConstDecimal.String())
-	assert.Equal(t, types.MustNewDecimalFromString("3.141592653589793238462643383279").String(), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.ConstDecimalStr.String())
-	assert.Equal(t, shared.DefaultsAndConstsOutputConstEnumIntTwo, res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.ConstEnumInt)
-	assert.Equal(t, shared.DefaultsAndConstsOutputConstEnumStrTwo, res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.ConstEnumStr)
-	assert.Equal(t, int64(123), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.ConstInt)
-	assert.Equal(t, float64(123.456), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.ConstNum)
-	assert.Equal(t, "const", res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.ConstStr)
-	assert.Equal(t, (*string)(nil), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.ConstStrNull)
+	assert.Equal(t, types.MustNewBigIntFromString("9007199254740991"), res.Object.JSON.ConstBigInt)
+	assert.Equal(t, types.MustNewBigIntFromString("9223372036854775807"), res.Object.JSON.ConstBigIntStr)
+	assert.Equal(t, true, res.Object.JSON.ConstBool)
+	assert.Equal(t, types.MustDateFromString("2020-01-01"), res.Object.JSON.ConstDate)
+	assert.Equal(t, types.MustTimeFromString("2020-01-01T00:00:00Z"), res.Object.JSON.ConstDateTime)
+	assert.Equal(t, types.MustNewDecimalFromString("3.141592653589793").String(), res.Object.JSON.ConstDecimal.String())
+	assert.Equal(t, types.MustNewDecimalFromString("3.141592653589793238462643383279").String(), res.Object.JSON.ConstDecimalStr.String())
+	assert.Equal(t, shared.DefaultsAndConstsOutputConstEnumIntTwo, res.Object.JSON.ConstEnumInt)
+	assert.Equal(t, shared.DefaultsAndConstsOutputConstEnumStrTwo, res.Object.JSON.ConstEnumStr)
+	assert.Equal(t, int64(123), res.Object.JSON.ConstInt)
+	assert.Equal(t, float64(123.456), res.Object.JSON.ConstNum)
+	assert.Equal(t, "const", res.Object.JSON.ConstStr)
+	assert.Equal(t, (*string)(nil), res.Object.JSON.ConstStrNull)
 
-	assert.Equal(t, types.MustNewBigIntFromString("9007199254740991"), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.DefaultBigInt)
-	assert.Equal(t, types.MustNewBigIntFromString("9223372036854775807"), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.DefaultBigIntStr)
-	assert.Equal(t, true, res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.DefaultBool)
-	assert.Equal(t, types.MustDateFromString("2020-01-01"), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.DefaultDate)
-	assert.Equal(t, types.MustTimeFromString("2020-01-01T00:00:00Z"), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.DefaultDateTime)
-	assert.Equal(t, types.MustNewDecimalFromString("3.141592653589793").String(), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.DefaultDecimal.String())
-	assert.Equal(t, types.MustNewDecimalFromString("3.141592653589793238462643383279").String(), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.DefaultDecimalStr.String())
-	assert.Equal(t, shared.DefaultsAndConstsOutputDefaultEnumIntTwo, res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.DefaultEnumInt)
-	assert.Equal(t, shared.DefaultsAndConstsOutputDefaultEnumStrTwo, res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.DefaultEnumStr)
-	assert.Equal(t, int64(123), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.DefaultInt)
-	assert.Equal(t, float64(123.456), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.DefaultNum)
-	assert.Equal(t, "not default", res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.DefaultStr)
-	assert.Equal(t, (*string)(nil), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.DefaultStrNullable)
-	assert.Equal(t, "default", *res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.DefaultStrOptional)
+	assert.Equal(t, types.MustNewBigIntFromString("9007199254740991"), res.Object.JSON.DefaultBigInt)
+	assert.Equal(t, types.MustNewBigIntFromString("9223372036854775807"), res.Object.JSON.DefaultBigIntStr)
+	assert.Equal(t, true, res.Object.JSON.DefaultBool)
+	assert.Equal(t, types.MustDateFromString("2020-01-01"), res.Object.JSON.DefaultDate)
+	assert.Equal(t, types.MustTimeFromString("2020-01-01T00:00:00Z"), res.Object.JSON.DefaultDateTime)
+	assert.Equal(t, types.MustNewDecimalFromString("3.141592653589793").String(), res.Object.JSON.DefaultDecimal.String())
+	assert.Equal(t, types.MustNewDecimalFromString("3.141592653589793238462643383279").String(), res.Object.JSON.DefaultDecimalStr.String())
+	assert.Equal(t, shared.DefaultsAndConstsOutputDefaultEnumIntTwo, res.Object.JSON.DefaultEnumInt)
+	assert.Equal(t, shared.DefaultsAndConstsOutputDefaultEnumStrTwo, res.Object.JSON.DefaultEnumStr)
+	assert.Equal(t, int64(123), res.Object.JSON.DefaultInt)
+	assert.Equal(t, float64(123.456), res.Object.JSON.DefaultNum)
+	assert.Equal(t, "not default", res.Object.JSON.DefaultStr)
+	assert.Equal(t, (*string)(nil), res.Object.JSON.DefaultStrNullable)
+	assert.Equal(t, "default", *res.Object.JSON.DefaultStrOptional)
 }
 
 func TestRequestBodyPostJsonDataTypesString(t *testing.T) {
@@ -1288,7 +1288,7 @@ func TestRequestBodyPostJsonDataTypesString(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, "test", res.RequestBodyPostJSONDataTypesString200ApplicationJSONObject.JSON)
+	assert.Equal(t, "test", res.Object.JSON)
 }
 
 func TestRequestBodyPostJsonDataTypesInteger(t *testing.T) {
@@ -1300,7 +1300,7 @@ func TestRequestBodyPostJsonDataTypesInteger(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, int64(1), res.RequestBodyPostJSONDataTypesInteger200ApplicationJSONObject.JSON)
+	assert.Equal(t, int64(1), res.Object.JSON)
 }
 
 func TestRequestBodyPostJsonDataTypesInt32(t *testing.T) {
@@ -1312,7 +1312,7 @@ func TestRequestBodyPostJsonDataTypesInt32(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, 1, res.RequestBodyPostJSONDataTypesInt32200ApplicationJSONObject.JSON)
+	assert.Equal(t, 1, res.Object.JSON)
 }
 
 func TestRequestBodyPostJsonDataTypesBigInt(t *testing.T) {
@@ -1324,8 +1324,8 @@ func TestRequestBodyPostJsonDataTypesBigInt(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, big.NewInt(1), res.RequestBodyPostJSONDataTypesBigInt200ApplicationJSONObject.JSON)
-	assert.Equal(t, "1", res.RequestBodyPostJSONDataTypesBigInt200ApplicationJSONObject.Data)
+	assert.Equal(t, big.NewInt(1), res.Object.JSON)
+	assert.Equal(t, "1", res.Object.Data)
 }
 
 func TestRequestBodyPostJsonDataTypesBigIntStr(t *testing.T) {
@@ -1337,8 +1337,8 @@ func TestRequestBodyPostJsonDataTypesBigIntStr(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, types.MustNewBigIntFromString("1"), res.RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSONObject.JSON)
-	assert.Equal(t, `"1"`, res.RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSONObject.Data)
+	assert.Equal(t, types.MustNewBigIntFromString("1"), res.Object.JSON)
+	assert.Equal(t, `"1"`, res.Object.Data)
 }
 
 func TestRequestBodyPostJsonDataTypesNumber(t *testing.T) {
@@ -1350,7 +1350,7 @@ func TestRequestBodyPostJsonDataTypesNumber(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, 1.1, res.RequestBodyPostJSONDataTypesNumber200ApplicationJSONObject.JSON)
+	assert.Equal(t, 1.1, res.Object.JSON)
 }
 
 func TestRequestBodyPostJsonDataTypesFloat32(t *testing.T) {
@@ -1362,7 +1362,7 @@ func TestRequestBodyPostJsonDataTypesFloat32(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, 1.1, res.RequestBodyPostJSONDataTypesFloat32200ApplicationJSONObject.JSON)
+	assert.Equal(t, 1.1, res.Object.JSON)
 }
 
 func TestRequestBodyPostJsonDataTypesDecimal(t *testing.T) {
@@ -1374,8 +1374,8 @@ func TestRequestBodyPostJsonDataTypesDecimal(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, types.MustNewDecimalFromString("1.1"), res.RequestBodyPostJSONDataTypesDecimal200ApplicationJSONObject.JSON)
-	assert.Equal(t, "1.1", res.RequestBodyPostJSONDataTypesDecimal200ApplicationJSONObject.Data)
+	assert.Equal(t, types.MustNewDecimalFromString("1.1"), res.Object.JSON)
+	assert.Equal(t, "1.1", res.Object.Data)
 }
 
 func TestRequestBodyPostJsonDataTypesDecimalStr(t *testing.T) {
@@ -1387,8 +1387,8 @@ func TestRequestBodyPostJsonDataTypesDecimalStr(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, types.MustNewDecimalFromString("1.1"), res.RequestBodyPostJSONDataTypesDecimalStr200ApplicationJSONObject.JSON)
-	assert.Equal(t, `"1.1"`, res.RequestBodyPostJSONDataTypesDecimalStr200ApplicationJSONObject.Data)
+	assert.Equal(t, types.MustNewDecimalFromString("1.1"), res.Object.JSON)
+	assert.Equal(t, `"1.1"`, res.Object.Data)
 }
 
 func TestRequestBodyPostJsonDataTypesBoolean(t *testing.T) {
@@ -1400,7 +1400,7 @@ func TestRequestBodyPostJsonDataTypesBoolean(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, true, res.RequestBodyPostJSONDataTypesBoolean200ApplicationJSONObject.JSON)
+	assert.Equal(t, true, res.Object.JSON)
 }
 
 func TestRequestBodyPostJsonDataTypesDate(t *testing.T) {
@@ -1412,8 +1412,8 @@ func TestRequestBodyPostJsonDataTypesDate(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, types.MustDateFromString("2020-01-01"), res.RequestBodyPostJSONDataTypesDate200ApplicationJSONObject.JSON)
-	assert.Equal(t, `"2020-01-01"`, res.RequestBodyPostJSONDataTypesDate200ApplicationJSONObject.Data)
+	assert.Equal(t, types.MustDateFromString("2020-01-01"), res.Object.JSON)
+	assert.Equal(t, `"2020-01-01"`, res.Object.Data)
 }
 
 func TestRequestBodyPostJsonDataTypesDateTime(t *testing.T) {
@@ -1425,8 +1425,8 @@ func TestRequestBodyPostJsonDataTypesDateTime(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, types.MustTimeFromString("2020-01-01T00:00:00Z"), res.RequestBodyPostJSONDataTypesDateTime200ApplicationJSONObject.JSON)
-	assert.Equal(t, `"2020-01-01T00:00:00Z"`, res.RequestBodyPostJSONDataTypesDateTime200ApplicationJSONObject.Data)
+	assert.Equal(t, types.MustTimeFromString("2020-01-01T00:00:00Z"), res.Object.JSON)
+	assert.Equal(t, `"2020-01-01T00:00:00Z"`, res.Object.Data)
 }
 
 func TestRequestBodyPostJSONDataTypesMapDateTime(t *testing.T) {
@@ -1442,8 +1442,8 @@ func TestRequestBodyPostJSONDataTypesMapDateTime(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, req, res.RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSONObject.JSON)
-	assert.Equal(t, `{"test":"2020-01-01T00:00:00.000000001Z"}`, res.RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSONObject.Data)
+	assert.Equal(t, req, res.Object.JSON)
+	assert.Equal(t, `{"test":"2020-01-01T00:00:00.000000001Z"}`, res.Object.Data)
 }
 
 func TestRequestBodyPostJSONDataTypesMapBigIntStr(t *testing.T) {
@@ -1459,8 +1459,8 @@ func TestRequestBodyPostJSONDataTypesMapBigIntStr(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, req, res.RequestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSONObject.JSON)
-	assert.Equal(t, `{"test":"1"}`, res.RequestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSONObject.Data)
+	assert.Equal(t, req, res.Object.JSON)
+	assert.Equal(t, `{"test":"1"}`, res.Object.Data)
 }
 
 func TestRequestBodyPostJSONDataTypesMapDecimal(t *testing.T) {
@@ -1476,8 +1476,8 @@ func TestRequestBodyPostJSONDataTypesMapDecimal(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, req, res.RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSONObject.JSON)
-	assert.Equal(t, `{"test":3.141592653589793}`, res.RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSONObject.Data)
+	assert.Equal(t, req, res.Object.JSON)
+	assert.Equal(t, `{"test":3.141592653589793}`, res.Object.Data)
 }
 
 func TestRequestBodyPostJSONDataTypesArrayDate(t *testing.T) {
@@ -1493,8 +1493,8 @@ func TestRequestBodyPostJSONDataTypesArrayDate(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, req, res.RequestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject.JSON)
-	assert.Equal(t, `["2020-01-01"]`, res.RequestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject.Data)
+	assert.Equal(t, req, res.Object.JSON)
+	assert.Equal(t, `["2020-01-01"]`, res.Object.Data)
 }
 
 func TestRequestBodyPostJSONDataTypesArrayBigInt(t *testing.T) {
@@ -1510,8 +1510,8 @@ func TestRequestBodyPostJSONDataTypesArrayBigInt(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, req, res.RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSONObject.JSON)
-	assert.Equal(t, `[1]`, res.RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSONObject.Data)
+	assert.Equal(t, req, res.Object.JSON)
+	assert.Equal(t, `[1]`, res.Object.Data)
 }
 
 func TestRequestBodyPostJSONDataTypesArrayDecimalStr(t *testing.T) {
@@ -1527,8 +1527,8 @@ func TestRequestBodyPostJSONDataTypesArrayDecimalStr(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, req, res.RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSONObject.JSON)
-	assert.Equal(t, `["3.141592653589793438462643383279"]`, res.RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSONObject.Data)
+	assert.Equal(t, req, res.Object.JSON)
+	assert.Equal(t, `["3.141592653589793438462643383279"]`, res.Object.Data)
 }
 
 func TestRequestBodyPostNullableRequiredStringBody(t *testing.T) {
@@ -1540,7 +1540,7 @@ func TestRequestBodyPostNullableRequiredStringBody(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, "null", res.RequestBodyPostNullableRequiredStringBody200ApplicationJSONObject.Data)
+	assert.Equal(t, "null", res.Object.Data)
 }
 
 func TestRequestBodyPostNullableNotRequiredStringBody(t *testing.T) {
@@ -1552,7 +1552,7 @@ func TestRequestBodyPostNullableNotRequiredStringBody(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, "null", res.RequestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject.Data)
+	assert.Equal(t, "null", res.Object.Data)
 }
 
 func TestRequestBodyPostNotNullableNotRequiredStringBody(t *testing.T) {
@@ -1564,5 +1564,5 @@ func TestRequestBodyPostNotNullableNotRequiredStringBody(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, "", res.RequestBodyPostNotNullableNotRequiredStringBody200ApplicationJSONObject.Data)
+	assert.Equal(t, "", res.Object.Data)
 }

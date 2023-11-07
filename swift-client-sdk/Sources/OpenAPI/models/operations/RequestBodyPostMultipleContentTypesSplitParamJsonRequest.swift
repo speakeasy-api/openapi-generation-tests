@@ -3,15 +3,15 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct RequestBodyPostMultipleContentTypesSplitParamJsonRequest: APIValue {
         public let paramStr: String
-        public let requestBody: Operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON
+        public let requestBody: Operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         ///
-        public init(paramStr: String, requestBody: Operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON) {
+        public init(paramStr: String, requestBody: Operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody) {
             self.paramStr = paramStr
             self.requestBody = requestBody
         }

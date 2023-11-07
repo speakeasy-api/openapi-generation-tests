@@ -46,10 +46,10 @@ public class UsageExamplePostResponse {
      * A successful response that contains the simpleObject sent in the request body
      */
     
-    public UsageExamplePost200ApplicationJSON usageExamplePost200ApplicationJSONObject;
+    public UsageExamplePostResponseBody object;
 
-    public UsageExamplePostResponse withUsageExamplePost200ApplicationJSONObject(UsageExamplePost200ApplicationJSON usageExamplePost200ApplicationJSONObject) {
-        this.usageExamplePost200ApplicationJSONObject = usageExamplePost200ApplicationJSONObject;
+    public UsageExamplePostResponse withObject(UsageExamplePostResponseBody object) {
+        this.object = object;
         return this;
     }
     

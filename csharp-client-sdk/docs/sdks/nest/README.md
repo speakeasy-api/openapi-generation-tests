@@ -1,5 +1,5 @@
-# NestSDK
-(*Nest*)
+# Nest
+(*.Nest*)
 
 ### Available Operations
 

@@ -2,27 +2,27 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import simpleobject as shared_simpleobject
+from .simpleobject import SimpleObject
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Dict, List, Optional, Union
 
 
 @dataclasses.dataclass
-class DeepObjectAny:
+class AnyT:
     pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class DeepObject:
-    any: Union[shared_simpleobject.SimpleObject, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }, 'form': { 'field_name': 'any', 'json': True }, 'multipart_form': { 'field_name': 'any', 'json': True }})
-    arr: List[shared_simpleobject.SimpleObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arr') }, 'form': { 'field_name': 'arr', 'json': True }, 'multipart_form': { 'field_name': 'arr', 'json': True }})
+    any: Union[SimpleObject, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }, 'form': { 'field_name': 'any', 'json': True }, 'multipart_form': { 'field_name': 'any', 'json': True }})
+    arr: List[SimpleObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arr') }, 'form': { 'field_name': 'arr', 'json': True }, 'multipart_form': { 'field_name': 'arr', 'json': True }})
     bool: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool') }, 'form': { 'field_name': 'bool' }, 'multipart_form': { 'field_name': 'bool' }})
     int: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int') }, 'form': { 'field_name': 'int' }, 'multipart_form': { 'field_name': 'int' }})
-    map: Dict[str, shared_simpleobject.SimpleObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('map') }, 'form': { 'field_name': 'map', 'json': True }, 'multipart_form': { 'field_name': 'map', 'json': True }})
+    map: Dict[str, SimpleObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('map') }, 'form': { 'field_name': 'map', 'json': True }, 'multipart_form': { 'field_name': 'map', 'json': True }})
     num: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('num') }, 'form': { 'field_name': 'num' }, 'multipart_form': { 'field_name': 'num' }})
-    obj: shared_simpleobject.SimpleObject = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('obj') }, 'form': { 'field_name': 'obj', 'json': True }, 'multipart_form': { 'field_name': 'obj', 'json': True }})
+    obj: SimpleObject = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('obj') }, 'form': { 'field_name': 'obj', 'json': True }, 'multipart_form': { 'field_name': 'obj', 'json': True }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties.
     https://docs.speakeasyapi.dev - A link to the external docs.
     """

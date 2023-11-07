@@ -102,11 +102,11 @@ class SimpleObjectCamelCase
     /**
      * An int32 enum property.
      * 
-     * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseInt32EnumVal $int32EnumVal
+     * @var \OpenAPI\OpenAPI\Models\Shared\Int32EnumVal $int32EnumVal
      */
 	#[\JMS\Serializer\Annotation\SerializedName('int32_enum_val')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseInt32EnumVal>')]
-    public SimpleObjectCamelCaseInt32EnumVal $int32EnumVal;
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\Int32EnumVal>')]
+    public Int32EnumVal $int32EnumVal;
     
     /**
      * An int32 property.
@@ -120,11 +120,11 @@ class SimpleObjectCamelCase
     /**
      * An integer enum property.
      * 
-     * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseIntEnumVal $intEnumVal
+     * @var \OpenAPI\OpenAPI\Models\Shared\IntEnumVal $intEnumVal
      */
 	#[\JMS\Serializer\Annotation\SerializedName('int_enum_val')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseIntEnumVal>')]
-    public SimpleObjectCamelCaseIntEnumVal $intEnumVal;
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\IntEnumVal>')]
+    public IntEnumVal $intEnumVal;
     
     /**
      * An optional integer property will be null for tests.
@@ -195,9 +195,9 @@ class SimpleObjectCamelCase
 		$this->decimalVal = null;
 		$this->enumVal = \OpenAPI\OpenAPI\Models\Shared\Enum::One;
 		$this->float32Val = 0;
-		$this->int32EnumVal = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseInt32EnumVal::FiftyFive;
+		$this->int32EnumVal = \OpenAPI\OpenAPI\Models\Shared\Int32EnumVal::FiftyFive;
 		$this->int32Val = 0;
-		$this->intEnumVal = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseIntEnumVal::First;
+		$this->intEnumVal = \OpenAPI\OpenAPI\Models\Shared\IntEnumVal::First;
 		$this->intOptNullVal = null;
 		$this->intVal = 0;
 		$this->numOptNullVal = null;

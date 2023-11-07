@@ -1,5 +1,5 @@
 # ResponseBodies
-(*response_bodies*)
+(*.response_bodies*)
 
 ## Overview
 
@@ -44,7 +44,7 @@ req = shared.ObjWithComplexNumbersAdditionalProperties(
 
 res = s.response_bodies.response_body_additional_properties_complex_numbers_post(req)
 
-if res.response_body_additional_properties_complex_numbers_post_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -66,8 +66,8 @@ if res.response_body_additional_properties_complex_numbers_post_200_application_
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -87,7 +87,7 @@ req = shared.ObjWithDateAdditionalProperties(
 
 res = s.response_bodies.response_body_additional_properties_date_post(req)
 
-if res.response_body_additional_properties_date_post_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -109,8 +109,8 @@ if res.response_body_additional_properties_date_post_200_application_json_object
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -141,8 +141,8 @@ req = shared.ObjWithObjAdditionalProperties(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -153,7 +153,7 @@ req = shared.ObjWithObjAdditionalProperties(
 
 res = s.response_bodies.response_body_additional_properties_object_post(req)
 
-if res.response_body_additional_properties_object_post_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -195,7 +195,7 @@ req = shared.ObjWithStringAdditionalProperties(
 
 res = s.response_bodies.response_body_additional_properties_post(req)
 
-if res.response_body_additional_properties_post_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -416,8 +416,8 @@ if res.xml is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import shared
 
@@ -436,7 +436,7 @@ req = shared.ObjWithZeroValueComplexTypePtrs(
 
 res = s.response_bodies.response_body_zero_value_complex_type_ptrs_post(req)
 
-if res.response_body_zero_value_complex_type_ptrs_post_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```

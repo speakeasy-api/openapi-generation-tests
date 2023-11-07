@@ -6,8 +6,8 @@ import (
 	"net/http"
 )
 
-// EmptyResponseObjectWithCommentGet200ApplicationOctetStream - OK
-type EmptyResponseObjectWithCommentGet200ApplicationOctetStream struct {
+// EmptyResponseObjectWithCommentGetResponseBody - OK
+type EmptyResponseObjectWithCommentGetResponseBody struct {
 }
 
 type EmptyResponseObjectWithCommentGetResponse struct {

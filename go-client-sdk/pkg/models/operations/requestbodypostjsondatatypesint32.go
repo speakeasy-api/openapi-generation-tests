@@ -6,12 +6,12 @@ import (
 	"net/http"
 )
 
-// RequestBodyPostJSONDataTypesInt32200ApplicationJSON - OK
-type RequestBodyPostJSONDataTypesInt32200ApplicationJSON struct {
+// RequestBodyPostJSONDataTypesInt32ResponseBody - OK
+type RequestBodyPostJSONDataTypesInt32ResponseBody struct {
 	JSON int `json:"json"`
 }
 
-func (o *RequestBodyPostJSONDataTypesInt32200ApplicationJSON) GetJSON() int {
+func (o *RequestBodyPostJSONDataTypesInt32ResponseBody) GetJSON() int {
 	if o == nil {
 		return 0
 	}
@@ -26,7 +26,7 @@ type RequestBodyPostJSONDataTypesInt32Response struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	RequestBodyPostJSONDataTypesInt32200ApplicationJSONObject *RequestBodyPostJSONDataTypesInt32200ApplicationJSON
+	Object *RequestBodyPostJSONDataTypesInt32ResponseBody
 }
 
 func (o *RequestBodyPostJSONDataTypesInt32Response) GetContentType() string {
@@ -50,9 +50,9 @@ func (o *RequestBodyPostJSONDataTypesInt32Response) GetRawResponse() *http.Respo
 	return o.RawResponse
 }
 
-func (o *RequestBodyPostJSONDataTypesInt32Response) GetRequestBodyPostJSONDataTypesInt32200ApplicationJSONObject() *RequestBodyPostJSONDataTypesInt32200ApplicationJSON {
+func (o *RequestBodyPostJSONDataTypesInt32Response) GetObject() *RequestBodyPostJSONDataTypesInt32ResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBodyPostJSONDataTypesInt32200ApplicationJSONObject
+	return o.Object
 }

@@ -17,7 +17,7 @@ class HeaderParamsArrayRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class HeaderParamsArrayResHeaders:
+class Headers:
     x_header_array: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('X-Header-Array') }})
     
 
@@ -27,7 +27,7 @@ class HeaderParamsArrayResHeaders:
 @dataclasses.dataclass
 class HeaderParamsArrayRes:
     r"""OK"""
-    headers: HeaderParamsArrayResHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
+    headers: Headers = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
     
 
 

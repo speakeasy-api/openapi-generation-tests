@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/utils"
 	"strings"
 )
 
-// servers - Endpoints for testing servers.
-type servers struct {
+// Servers - Endpoints for testing servers.
+type Servers struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newServers(sdkConfig sdkConfiguration) *servers {
-	return &servers{
+func newServers(sdkConfig sdkConfiguration) *Servers {
+	return &Servers{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *servers) SelectGlobalServer(ctx context.Context) (*operations.SelectGlobalServerResponse, error) {
+func (s *Servers) SelectGlobalServer(ctx context.Context) (*operations.SelectGlobalServerResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/selectGlobalServer"
 
@@ -74,7 +74,7 @@ func (s *servers) SelectGlobalServer(ctx context.Context) (*operations.SelectGlo
 }
 
 // SelectServerWithID - Select a server by ID.
-func (s *servers) SelectServerWithID(ctx context.Context, opts ...operations.Option) (*operations.SelectServerWithIDResponse, error) {
+func (s *Servers) SelectServerWithID(ctx context.Context, opts ...operations.Option) (*operations.SelectServerWithIDResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -134,7 +134,7 @@ func (s *servers) SelectServerWithID(ctx context.Context, opts ...operations.Opt
 	return res, nil
 }
 
-func (s *servers) ServerWithProtocolTemplate(ctx context.Context, opts ...operations.Option) (*operations.ServerWithProtocolTemplateResponse, error) {
+func (s *Servers) ServerWithProtocolTemplate(ctx context.Context, opts ...operations.Option) (*operations.ServerWithProtocolTemplateResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -198,7 +198,7 @@ func (s *servers) ServerWithProtocolTemplate(ctx context.Context, opts ...operat
 	return res, nil
 }
 
-func (s *servers) ServerWithTemplates(ctx context.Context, opts ...operations.Option) (*operations.ServerWithTemplatesResponse, error) {
+func (s *Servers) ServerWithTemplates(ctx context.Context, opts ...operations.Option) (*operations.ServerWithTemplatesResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -261,7 +261,7 @@ func (s *servers) ServerWithTemplates(ctx context.Context, opts ...operations.Op
 	return res, nil
 }
 
-func (s *servers) ServerWithTemplatesGlobal(ctx context.Context) (*operations.ServerWithTemplatesGlobalResponse, error) {
+func (s *Servers) ServerWithTemplatesGlobal(ctx context.Context) (*operations.ServerWithTemplatesGlobalResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/serverWithTemplatesGlobal"
 
@@ -307,7 +307,7 @@ func (s *servers) ServerWithTemplatesGlobal(ctx context.Context) (*operations.Se
 	return res, nil
 }
 
-func (s *servers) ServersByIDWithTemplates(ctx context.Context, opts ...operations.Option) (*operations.ServersByIDWithTemplatesResponse, error) {
+func (s *Servers) ServersByIDWithTemplates(ctx context.Context, opts ...operations.Option) (*operations.ServersByIDWithTemplatesResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,

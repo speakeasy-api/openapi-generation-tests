@@ -1,5 +1,5 @@
-# RequestBodiesSDK
-(*RequestBodies*)
+# RequestBodies
+(*.RequestBodies*)
 
 ## Overview
 
@@ -94,10 +94,10 @@ Endpoints for testing request bodies.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -129,11 +129,11 @@ var res = await sdk.RequestBodies.NullableObjectPostAsync(new NullableObject() {
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -142,9 +142,9 @@ var sdk = new SDKSDK(
 );
 
 var res = await sdk.RequestBodies.NullableRequiredEmptyObjectPostAsync(new NullableRequiredEmptyObjectPostRequestBody() {
-    NullableRequiredObj = new NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj() {},
-    RequiredObj = new NullableRequiredEmptyObjectPostRequestBodyRequiredObj() {},
-    NullableOptionalObj = new NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj() {},
+    NullableRequiredObj = new NullableRequiredObj() {},
+    RequiredObj = new RequiredObj() {},
+    NullableOptionalObj = new NullableOptionalObj() {},
 });
 
 // handle response
@@ -167,11 +167,12 @@ var res = await sdk.RequestBodies.NullableRequiredEmptyObjectPostAsync(new Nulla
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
+using System.Collections.Generic;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -183,7 +184,7 @@ var res = await sdk.RequestBodies.NullableRequiredPropertyPostAsync(new Nullable
     NullableRequiredArray = new List<double>() {
         2355.17D,
     },
-    NullableRequiredEnum = SDK.Models.Operations.NullableRequiredPropertyPostRequestBodyNullableRequiredEnum.Second,
+    NullableRequiredEnum = NullableRequiredEnum.Second,
     NullableRequiredInt = 50266,
 });
 
@@ -207,11 +208,11 @@ var res = await sdk.RequestBodies.NullableRequiredPropertyPostAsync(new Nullable
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -248,12 +249,11 @@ var res = await sdk.RequestBodies.NullableRequiredSharedObjectPostAsync(new Null
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -265,14 +265,14 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayAsync(new L
     new SimpleObject() {
         Any = "any",
         Bool = true,
-        Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-        DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-        Enum = SDK.Models.Shared.Enum.One,
+        Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
         Int32 = 1,
-        Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-        IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+        Int32Enum = Int32Enum.FiftyFive,
+        IntEnum = IntEnum.Two,
         Num = 1.1D,
         Str = "test",
         Bigint = 8821239038968084,
@@ -305,12 +305,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayAsync(new L
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using System;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -322,13 +321,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayCamelCaseAs
     new SimpleObjectCamelCase() {
         AnyVal = "any example",
         BoolVal = true,
-        DateTimeVal = DateTime.Parse("2020-01-01T00:00:00Z"),
-        DateVal = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-        EnumVal = SDK.Models.Shared.Enum.One,
+        DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+        DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        EnumVal = Enum.One,
         Float32Val = 2.2222222F,
-        Int32EnumVal = SDK.Models.Shared.SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+        Int32EnumVal = Int32EnumVal.SixtyNine,
         Int32Val = 1,
-        IntEnumVal = SDK.Models.Shared.SimpleObjectCamelCaseIntEnumVal.Three,
+        IntEnumVal = IntEnumVal.Three,
         IntVal = 999999,
         NumVal = 1.1D,
         StrVal = "example",
@@ -360,12 +359,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayCamelCaseAs
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -377,14 +375,14 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayObjAsync(ne
     new SimpleObject() {
         Any = "any",
         Bool = true,
-        Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-        DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-        Enum = SDK.Models.Shared.Enum.One,
+        Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
         Int32 = 1,
-        Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-        IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+        Int32Enum = Int32Enum.FiftyFive,
+        IntEnum = IntEnum.Two,
         Num = 1.1D,
         Str = "test",
         Bigint = 8821239038968084,
@@ -416,12 +414,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayObjAsync(ne
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using System;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -433,13 +430,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayObjCamelCas
     new SimpleObjectCamelCase() {
         AnyVal = "any example",
         BoolVal = true,
-        DateTimeVal = DateTime.Parse("2020-01-01T00:00:00Z"),
-        DateVal = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-        EnumVal = SDK.Models.Shared.Enum.One,
+        DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+        DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        EnumVal = Enum.One,
         Float32Val = 2.2222222F,
-        Int32EnumVal = SDK.Models.Shared.SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+        Int32EnumVal = Int32EnumVal.SixtyNine,
         Int32Val = 1,
-        IntEnumVal = SDK.Models.Shared.SimpleObjectCamelCaseIntEnumVal.Three,
+        IntEnumVal = IntEnumVal.Three,
         IntVal = 999999,
         NumVal = 1.1D,
         StrVal = "example",
@@ -470,12 +467,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayObjCamelCas
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -488,14 +484,14 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfArrayAsyn
         new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -529,12 +525,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfArrayAsyn
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using System;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -547,13 +542,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfArrayCame
         new SimpleObjectCamelCase() {
             AnyVal = "any example",
             BoolVal = true,
-            DateTimeVal = DateTime.Parse("2020-01-01T00:00:00Z"),
-            DateVal = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            EnumVal = SDK.Models.Shared.Enum.One,
+            DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+            DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            EnumVal = Enum.One,
             Float32Val = 2.2222222F,
-            Int32EnumVal = SDK.Models.Shared.SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+            Int32EnumVal = Int32EnumVal.SixtyNine,
             Int32Val = 1,
-            IntEnumVal = SDK.Models.Shared.SimpleObjectCamelCaseIntEnumVal.Three,
+            IntEnumVal = IntEnumVal.Three,
             IntVal = 999999,
             NumVal = 1.1D,
             StrVal = "example",
@@ -586,10 +581,10 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfArrayCame
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -624,12 +619,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfArrayOfPr
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -642,14 +636,14 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfMapAsync(
         { "key", new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -683,12 +677,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfMapAsync(
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using System;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -701,13 +694,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfMapCamelC
         { "key", new SimpleObjectCamelCase() {
             AnyVal = "any example",
             BoolVal = true,
-            DateTimeVal = DateTime.Parse("2020-01-01T00:00:00Z"),
-            DateVal = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            EnumVal = SDK.Models.Shared.Enum.One,
+            DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+            DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            EnumVal = Enum.One,
             Float32Val = 2.2222222F,
-            Int32EnumVal = SDK.Models.Shared.SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+            Int32EnumVal = Int32EnumVal.SixtyNine,
             Int32Val = 1,
-            IntEnumVal = SDK.Models.Shared.SimpleObjectCamelCaseIntEnumVal.Three,
+            IntEnumVal = IntEnumVal.Three,
             IntVal = 999999,
             NumVal = 1.1D,
             StrVal = "example",
@@ -740,10 +733,10 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfMapCamelC
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -776,12 +769,12 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfPrimitive
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
+using System.Collections.Generic;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -795,14 +788,14 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(new De
         new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -815,14 +808,14 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(new De
         new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -839,14 +832,14 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(new De
         { "key", new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -859,14 +852,14 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(new De
         { "key2", new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -881,14 +874,14 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(new De
     Obj = new SimpleObject() {
         Any = "any",
         Bool = true,
-        Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-        DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-        Enum = SDK.Models.Shared.Enum.One,
+        Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
         Int32 = 1,
-        Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-        IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+        Int32Enum = Int32Enum.FiftyFive,
+        IntEnum = IntEnum.Two,
         Num = 1.1D,
         Str = "test",
         Bigint = 8821239038968084,
@@ -921,12 +914,12 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(new De
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using System;
+using Openapi;
+using Openapi.Models.Shared;
+using System.Collections.Generic;
 using NodaTime;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -940,13 +933,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepCamelCaseAsy
         new SimpleObjectCamelCase() {
             AnyVal = "any example",
             BoolVal = true,
-            DateTimeVal = DateTime.Parse("2020-01-01T00:00:00Z"),
-            DateVal = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            EnumVal = SDK.Models.Shared.Enum.One,
+            DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+            DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            EnumVal = Enum.One,
             Float32Val = 2.2222222F,
-            Int32EnumVal = SDK.Models.Shared.SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+            Int32EnumVal = Int32EnumVal.SixtyNine,
             Int32Val = 1,
-            IntEnumVal = SDK.Models.Shared.SimpleObjectCamelCaseIntEnumVal.Three,
+            IntEnumVal = IntEnumVal.Three,
             IntVal = 999999,
             NumVal = 1.1D,
             StrVal = "example",
@@ -962,13 +955,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepCamelCaseAsy
         { "key", new SimpleObjectCamelCase() {
             AnyVal = "any example",
             BoolVal = true,
-            DateTimeVal = DateTime.Parse("2020-01-01T00:00:00Z"),
-            DateVal = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            EnumVal = SDK.Models.Shared.Enum.One,
+            DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+            DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            EnumVal = Enum.One,
             Float32Val = 2.2222222F,
-            Int32EnumVal = SDK.Models.Shared.SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+            Int32EnumVal = Int32EnumVal.SixtyNine,
             Int32Val = 1,
-            IntEnumVal = SDK.Models.Shared.SimpleObjectCamelCaseIntEnumVal.Three,
+            IntEnumVal = IntEnumVal.Three,
             IntVal = 999999,
             NumVal = 1.1D,
             StrVal = "example",
@@ -982,13 +975,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepCamelCaseAsy
     ObjVal = new SimpleObjectCamelCase() {
         AnyVal = "any example",
         BoolVal = true,
-        DateTimeVal = DateTime.Parse("2020-01-01T00:00:00Z"),
-        DateVal = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-        EnumVal = SDK.Models.Shared.Enum.One,
+        DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+        DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        EnumVal = Enum.One,
         Float32Val = 2.2222222F,
-        Int32EnumVal = SDK.Models.Shared.SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+        Int32EnumVal = Int32EnumVal.SixtyNine,
         Int32Val = 1,
-        IntEnumVal = SDK.Models.Shared.SimpleObjectCamelCaseIntEnumVal.Three,
+        IntEnumVal = IntEnumVal.Three,
         IntVal = 999999,
         NumVal = 1.1D,
         StrVal = "example",
@@ -1020,12 +1013,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepCamelCaseAsy
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1037,14 +1029,14 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapAsync(new Dic
     { "key", new SimpleObject() {
         Any = "any",
         Bool = true,
-        Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-        DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-        Enum = SDK.Models.Shared.Enum.One,
+        Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
         Int32 = 1,
-        Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-        IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+        Int32Enum = Int32Enum.FiftyFive,
+        IntEnum = IntEnum.Two,
         Num = 1.1D,
         Str = "test",
         Bigint = 8821239038968084,
@@ -1077,12 +1069,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapAsync(new Dic
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using System;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1094,13 +1085,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapCamelCaseAsyn
     { "key", new SimpleObjectCamelCase() {
         AnyVal = "any example",
         BoolVal = true,
-        DateTimeVal = DateTime.Parse("2020-01-01T00:00:00Z"),
-        DateVal = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-        EnumVal = SDK.Models.Shared.Enum.One,
+        DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+        DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        EnumVal = Enum.One,
         Float32Val = 2.2222222F,
-        Int32EnumVal = SDK.Models.Shared.SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+        Int32EnumVal = Int32EnumVal.SixtyNine,
         Int32Val = 1,
-        IntEnumVal = SDK.Models.Shared.SimpleObjectCamelCaseIntEnumVal.Three,
+        IntEnumVal = IntEnumVal.Three,
         IntVal = 999999,
         NumVal = 1.1D,
         StrVal = "example",
@@ -1132,12 +1123,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapCamelCaseAsyn
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1149,14 +1139,14 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapObjAsync(new 
     { "key", new SimpleObject() {
         Any = "any",
         Bool = true,
-        Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-        DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-        Enum = SDK.Models.Shared.Enum.One,
+        Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
         Int32 = 1,
-        Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-        IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+        Int32Enum = Int32Enum.FiftyFive,
+        IntEnum = IntEnum.Two,
         Num = 1.1D,
         Str = "test",
         Bigint = 8821239038968084,
@@ -1188,12 +1178,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapObjAsync(new 
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using System;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1205,13 +1194,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapObjCamelCaseA
     { "key", new SimpleObjectCamelCase() {
         AnyVal = "any example",
         BoolVal = true,
-        DateTimeVal = DateTime.Parse("2020-01-01T00:00:00Z"),
-        DateVal = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-        EnumVal = SDK.Models.Shared.Enum.One,
+        DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+        DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        EnumVal = Enum.One,
         Float32Val = 2.2222222F,
-        Int32EnumVal = SDK.Models.Shared.SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+        Int32EnumVal = Int32EnumVal.SixtyNine,
         Int32Val = 1,
-        IntEnumVal = SDK.Models.Shared.SimpleObjectCamelCaseIntEnumVal.Three,
+        IntEnumVal = IntEnumVal.Three,
         IntVal = 999999,
         NumVal = 1.1D,
         StrVal = "example",
@@ -1242,12 +1231,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapObjCamelCaseA
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1260,14 +1248,14 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfArrayAsync(
         new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -1301,12 +1289,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfArrayAsync(
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using System;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1319,13 +1306,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfArrayCamelC
         new SimpleObjectCamelCase() {
             AnyVal = "any example",
             BoolVal = true,
-            DateTimeVal = DateTime.Parse("2020-01-01T00:00:00Z"),
-            DateVal = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            EnumVal = SDK.Models.Shared.Enum.One,
+            DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+            DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            EnumVal = Enum.One,
             Float32Val = 2.2222222F,
-            Int32EnumVal = SDK.Models.Shared.SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+            Int32EnumVal = Int32EnumVal.SixtyNine,
             Int32Val = 1,
-            IntEnumVal = SDK.Models.Shared.SimpleObjectCamelCaseIntEnumVal.Three,
+            IntEnumVal = IntEnumVal.Three,
             IntVal = 999999,
             NumVal = 1.1D,
             StrVal = "example",
@@ -1358,12 +1345,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfArrayCamelC
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1376,14 +1362,14 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfMapAsync(ne
         { "key", new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -1417,12 +1403,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfMapAsync(ne
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using System;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1435,13 +1420,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfMapCamelCas
         { "key", new SimpleObjectCamelCase() {
             AnyVal = "any example",
             BoolVal = true,
-            DateTimeVal = DateTime.Parse("2020-01-01T00:00:00Z"),
-            DateVal = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            EnumVal = SDK.Models.Shared.Enum.One,
+            DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+            DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            EnumVal = Enum.One,
             Float32Val = 2.2222222F,
-            Int32EnumVal = SDK.Models.Shared.SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+            Int32EnumVal = Int32EnumVal.SixtyNine,
             Int32Val = 1,
-            IntEnumVal = SDK.Models.Shared.SimpleObjectCamelCaseIntEnumVal.Three,
+            IntEnumVal = IntEnumVal.Three,
             IntVal = 999999,
             NumVal = 1.1D,
             StrVal = "example",
@@ -1474,10 +1459,10 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfMapCamelCas
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1512,10 +1497,10 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfMapOfPrimit
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1548,12 +1533,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfPrimitiveAs
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1564,14 +1548,14 @@ var sdk = new SDKSDK(
 var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMultipleJsonFilteredAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = SDK.Models.Shared.Enum.One,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-    IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -1602,12 +1586,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMultipleJsonFilt
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1618,14 +1601,14 @@ var sdk = new SDKSDK(
 var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonSimpleAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = SDK.Models.Shared.Enum.One,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-    IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -1656,12 +1639,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonSimpleAsync(new 
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using System;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1672,13 +1654,13 @@ var sdk = new SDKSDK(
 var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonSimpleCamelCaseAsync(new SimpleObjectCamelCase() {
     AnyVal = "any example",
     BoolVal = true,
-    DateTimeVal = DateTime.Parse("2020-01-01T00:00:00Z"),
-    DateVal = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    EnumVal = SDK.Models.Shared.Enum.One,
+    DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+    DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    EnumVal = Enum.One,
     Float32Val = 2.2222222F,
-    Int32EnumVal = SDK.Models.Shared.SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+    Int32EnumVal = Int32EnumVal.SixtyNine,
     Int32Val = 1,
-    IntEnumVal = SDK.Models.Shared.SimpleObjectCamelCaseIntEnumVal.Three,
+    IntEnumVal = IntEnumVal.Three,
     IntVal = 999999,
     NumVal = 1.1D,
     StrVal = "example",
@@ -1708,11 +1690,11 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonSimpleCamelCaseA
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1757,12 +1739,11 @@ var res = await sdk.RequestBodies.RequestBodyPostComplexNumberTypesAsync(new Req
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1774,12 +1755,12 @@ var res = await sdk.RequestBodies.RequestBodyPostDefaultsAndConstsAsync(new Defa
     ConstBigInt = 559205,
     ConstBigIntStr = 233601,
     ConstBool = false,
-    ConstDate = LocalDate.FromDateTime(DateTime.Parse("2022-12-15")),
-    ConstDateTime = DateTime.Parse("2023-10-01T02:16:56.173Z"),
+    ConstDate = LocalDate.FromDateTime(System.DateTime.Parse("2022-12-15")),
+    ConstDateTime = System.DateTime.Parse("2023-10-01T02:16:56.173Z"),
     ConstDecimal = 1120.58M,
     ConstDecimalStr = 8445.08M,
-    ConstEnumInt = SDK.Models.Shared.DefaultsAndConstsConstEnumInt.One,
-    ConstEnumStr = SDK.Models.Shared.DefaultsAndConstsConstEnumStr.Two,
+    ConstEnumInt = ConstEnumInt.One,
+    ConstEnumStr = ConstEnumStr.Two,
     ConstInt = 450379,
     ConstNum = 7742.71D,
     ConstStr = "string",
@@ -1807,11 +1788,11 @@ var res = await sdk.RequestBodies.RequestBodyPostDefaultsAndConstsAsync(new Defa
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1820,8 +1801,8 @@ var sdk = new SDKSDK(
 );
 
 var res = await sdk.RequestBodies.RequestBodyPostEmptyObjectAsync(new RequestBodyPostEmptyObjectRequestBody() {
-    Empty = new RequestBodyPostEmptyObjectRequestBodyEmpty() {},
-    EmptyWithEmptyProperties = new RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties() {},
+    Empty = new Empty() {},
+    EmptyWithEmptyProperties = new EmptyWithEmptyProperties() {},
 });
 
 // handle response
@@ -1844,12 +1825,12 @@ var res = await sdk.RequestBodies.RequestBodyPostEmptyObjectAsync(new RequestBod
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
+using System.Collections.Generic;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -1863,14 +1844,14 @@ var res = await sdk.RequestBodies.RequestBodyPostFormDeepAsync(new DeepObject() 
         new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -1883,14 +1864,14 @@ var res = await sdk.RequestBodies.RequestBodyPostFormDeepAsync(new DeepObject() 
         new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -1907,14 +1888,14 @@ var res = await sdk.RequestBodies.RequestBodyPostFormDeepAsync(new DeepObject() 
         { "key", new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -1927,14 +1908,14 @@ var res = await sdk.RequestBodies.RequestBodyPostFormDeepAsync(new DeepObject() 
         { "key2", new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -1949,14 +1930,14 @@ var res = await sdk.RequestBodies.RequestBodyPostFormDeepAsync(new DeepObject() 
     Obj = new SimpleObject() {
         Any = "any",
         Bool = true,
-        Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-        DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-        Enum = SDK.Models.Shared.Enum.One,
+        Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
         Int32 = 1,
-        Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-        IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+        Int32Enum = Int32Enum.FiftyFive,
+        IntEnum = IntEnum.Two,
         Num = 1.1D,
         Str = "test",
         Bigint = 8821239038968084,
@@ -1989,10 +1970,10 @@ var res = await sdk.RequestBodies.RequestBodyPostFormDeepAsync(new DeepObject() 
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2024,12 +2005,11 @@ var res = await sdk.RequestBodies.RequestBodyPostFormMapPrimitiveAsync(new Dicti
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2040,14 +2020,14 @@ var sdk = new SDKSDK(
 var res = await sdk.RequestBodies.RequestBodyPostFormSimpleAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = SDK.Models.Shared.Enum.One,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-    IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -2078,10 +2058,10 @@ var res = await sdk.RequestBodies.RequestBodyPostFormSimpleAsync(new SimpleObjec
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2113,10 +2093,10 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayBigIntAsync(n
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2125,7 +2105,7 @@ var sdk = new SDKSDK(
 );
 
 var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayDateAsync(new List<LocalDate>() {
-    LocalDate.FromDateTime(DateTime.Parse("2022-03-22")),
+    LocalDate.FromDateTime(System.DateTime.Parse("2022-03-22")),
 });
 
 // handle response
@@ -2148,10 +2128,10 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayDateAsync(new
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2183,10 +2163,10 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayDecimalStrAsy
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2216,10 +2196,10 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesBigIntAsync(687617
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2249,10 +2229,10 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesBigIntStrAsync(649
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2282,10 +2262,10 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesBooleanAsync(false
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2293,7 +2273,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDateAsync(LocalDate.FromDateTime(DateTime.Parse("2022-03-04")));
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDateAsync(LocalDate.FromDateTime(System.DateTime.Parse("2022-03-04")));
 
 // handle response
 ```
@@ -2315,10 +2295,10 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDateAsync(LocalDat
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2326,7 +2306,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDateTimeAsync(DateTime.Parse("2023-03-04T01:33:15.031Z"));
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDateTimeAsync(System.DateTime.Parse("2023-03-04T01:33:15.031Z"));
 
 // handle response
 ```
@@ -2348,10 +2328,10 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDateTimeAsync(Date
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2381,10 +2361,10 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDecimalAsync(1107.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2414,10 +2394,10 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDecimalStrAsync(54
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2447,10 +2427,10 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesFloat32Async(4464.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2480,10 +2460,10 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesInt32Async(22155);
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2513,10 +2493,10 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesIntegerAsync(27367
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2548,10 +2528,10 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapBigIntStrAsync(
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2560,7 +2540,7 @@ var sdk = new SDKSDK(
 );
 
 var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapDateTimeAsync(new Dictionary<string, DateTime>() {
-    { "key", DateTime.Parse("2022-09-03T18:52:14.477Z") },
+    { "key", System.DateTime.Parse("2022-09-03T18:52:14.477Z") },
 });
 
 // handle response
@@ -2583,10 +2563,10 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapDateTimeAsync(n
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2618,10 +2598,10 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapDecimalAsync(ne
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2651,10 +2631,10 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesNumberAsync(2193.6
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2684,12 +2664,11 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesStringAsync("strin
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2700,14 +2679,14 @@ var sdk = new SDKSDK(
 var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesComponentFilteredAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = SDK.Models.Shared.Enum.One,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-    IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -2738,11 +2717,11 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesComponentFi
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2750,7 +2729,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesInlineFilteredAsync(new RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON() {
+var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesInlineFilteredAsync(new RequestBodyPostMultipleContentTypesInlineFilteredRequestBody() {
     Bool = false,
     Num = 3558.41D,
     Str = "string",
@@ -2761,9 +2740,9 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesInlineFilte
 
 ### Parameters
 
-| Parameter                                                                                                                                                       | Type                                                                                                                                                            | Required                                                                                                                                                        | Description                                                                                                                                                     |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                       | [RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON](../../models/operations/RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON.md) | :heavy_check_mark:                                                                                                                                              | The request object to use for the request.                                                                                                                      |
+| Parameter                                                                                                                                               | Type                                                                                                                                                    | Required                                                                                                                                                | Description                                                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                               | [RequestBodyPostMultipleContentTypesInlineFilteredRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesInlineFilteredRequestBody.md) | :heavy_check_mark:                                                                                                                                      | The request object to use for the request.                                                                                                              |
 
 
 ### Response
@@ -2776,11 +2755,11 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesInlineFilte
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2788,7 +2767,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamFormAsync(new RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded() {
+var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamFormAsync(new RequestBodyPostMultipleContentTypesSplitParamFormRequestBody() {
     Bool3 = false,
     Num3 = 8693.24D,
     Str3 = "string",
@@ -2799,10 +2778,10 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamF
 
 ### Parameters
 
-| Parameter                                                                                                                                                                           | Type                                                                                                                                                                                | Required                                                                                                                                                                            | Description                                                                                                                                                                         |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `RequestBody`                                                                                                                                                                       | [RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded.md) | :heavy_check_mark:                                                                                                                                                                  | N/A                                                                                                                                                                                 |
-| `ParamStr`                                                                                                                                                                          | *string*                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                  | N/A                                                                                                                                                                                 |
+| Parameter                                                                                                                                               | Type                                                                                                                                                    | Required                                                                                                                                                | Description                                                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `RequestBody`                                                                                                                                           | [RequestBodyPostMultipleContentTypesSplitParamFormRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamFormRequestBody.md) | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |
+| `ParamStr`                                                                                                                                              | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |
 
 
 ### Response
@@ -2815,11 +2794,11 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamF
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2827,7 +2806,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamJsonAsync(new RequestBodyPostMultipleContentTypesSplitParamApplicationJSON() {
+var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamJsonAsync(new RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody() {
     Bool = false,
     Num = 9771.91D,
     Str = "string",
@@ -2840,7 +2819,7 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamJ
 
 | Parameter                                                                                                                                               | Type                                                                                                                                                    | Required                                                                                                                                                | Description                                                                                                                                             |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `RequestBody`                                                                                                                                           | [RequestBodyPostMultipleContentTypesSplitParamApplicationJSON](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamApplicationJSON.md) | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |
+| `RequestBody`                                                                                                                                           | [RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody.md) | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |
 | `ParamStr`                                                                                                                                              | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |
 
 
@@ -2854,11 +2833,11 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamJ
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2866,7 +2845,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamMultipartAsync(new RequestBodyPostMultipleContentTypesSplitParamMultipartFormData() {
+var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamMultipartAsync(new RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody() {
     Bool2 = false,
     Num2 = 7000.76D,
     Str2 = "string",
@@ -2877,10 +2856,10 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamM
 
 ### Parameters
 
-| Parameter                                                                                                                                                   | Type                                                                                                                                                        | Required                                                                                                                                                    | Description                                                                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `RequestBody`                                                                                                                                               | [RequestBodyPostMultipleContentTypesSplitParamMultipartFormData](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamMultipartFormData.md) | :heavy_check_mark:                                                                                                                                          | N/A                                                                                                                                                         |
-| `ParamStr`                                                                                                                                                  | *string*                                                                                                                                                    | :heavy_check_mark:                                                                                                                                          | N/A                                                                                                                                                         |
+| Parameter                                                                                                                                                         | Type                                                                                                                                                              | Required                                                                                                                                                          | Description                                                                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `RequestBody`                                                                                                                                                     | [RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody.md) | :heavy_check_mark:                                                                                                                                                | N/A                                                                                                                                                               |
+| `ParamStr`                                                                                                                                                        | *string*                                                                                                                                                          | :heavy_check_mark:                                                                                                                                                | N/A                                                                                                                                                               |
 
 
 ### Response
@@ -2893,11 +2872,11 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamM
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2905,7 +2884,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitFormAsync(new RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded() {
+var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitFormAsync(new RequestBodyPostMultipleContentTypesSplitFormRequestBody() {
     Bool3 = false,
     Num3 = 7842.07D,
     Str3 = "string",
@@ -2916,9 +2895,9 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitFormAs
 
 ### Parameters
 
-| Parameter                                                                                                                                                                 | Type                                                                                                                                                                      | Required                                                                                                                                                                  | Description                                                                                                                                                               |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                                 | [RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded](../../models/operations/RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded.md) | :heavy_check_mark:                                                                                                                                                        | The request object to use for the request.                                                                                                                                |
+| Parameter                                                                                                                                     | Type                                                                                                                                          | Required                                                                                                                                      | Description                                                                                                                                   |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                     | [RequestBodyPostMultipleContentTypesSplitFormRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitFormRequestBody.md) | :heavy_check_mark:                                                                                                                            | The request object to use for the request.                                                                                                    |
 
 
 ### Response
@@ -2931,11 +2910,11 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitFormAs
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2943,7 +2922,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitJsonAsync(new RequestBodyPostMultipleContentTypesSplitApplicationJSON() {
+var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitJsonAsync(new RequestBodyPostMultipleContentTypesSplitJsonRequestBody() {
     Bool = false,
     Num = 2445.56D,
     Str = "string",
@@ -2956,7 +2935,7 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitJsonAs
 
 | Parameter                                                                                                                                     | Type                                                                                                                                          | Required                                                                                                                                      | Description                                                                                                                                   |
 | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                     | [RequestBodyPostMultipleContentTypesSplitApplicationJSON](../../models/operations/RequestBodyPostMultipleContentTypesSplitApplicationJSON.md) | :heavy_check_mark:                                                                                                                            | The request object to use for the request.                                                                                                    |
+| `request`                                                                                                                                     | [RequestBodyPostMultipleContentTypesSplitJsonRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitJsonRequestBody.md) | :heavy_check_mark:                                                                                                                            | The request object to use for the request.                                                                                                    |
 
 
 ### Response
@@ -2969,11 +2948,11 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitJsonAs
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -2981,7 +2960,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitMultipartAsync(new RequestBodyPostMultipleContentTypesSplitMultipartFormData() {
+var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitMultipartAsync(new RequestBodyPostMultipleContentTypesSplitMultipartRequestBody() {
     Bool2 = false,
     Num2 = 2079.2D,
     Str2 = "string",
@@ -2992,9 +2971,9 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitMultip
 
 ### Parameters
 
-| Parameter                                                                                                                                         | Type                                                                                                                                              | Required                                                                                                                                          | Description                                                                                                                                       |
-| ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                         | [RequestBodyPostMultipleContentTypesSplitMultipartFormData](../../models/operations/RequestBodyPostMultipleContentTypesSplitMultipartFormData.md) | :heavy_check_mark:                                                                                                                                | The request object to use for the request.                                                                                                        |
+| Parameter                                                                                                                                               | Type                                                                                                                                                    | Required                                                                                                                                                | Description                                                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                               | [RequestBodyPostMultipleContentTypesSplitMultipartRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitMultipartRequestBody.md) | :heavy_check_mark:                                                                                                                                      | The request object to use for the request.                                                                                                              |
 
 
 ### Response
@@ -3007,10 +2986,10 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitMultip
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3040,10 +3019,10 @@ var res = await sdk.RequestBodies.RequestBodyPostNotNullableNotRequiredStringBod
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3075,10 +3054,10 @@ var res = await sdk.RequestBodies.RequestBodyPostNullArrayAsync(new List<string>
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3110,10 +3089,10 @@ var res = await sdk.RequestBodies.RequestBodyPostNullDictionaryAsync(new Diction
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3143,10 +3122,10 @@ var res = await sdk.RequestBodies.RequestBodyPostNullableNotRequiredStringBodyAs
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3176,10 +3155,10 @@ var res = await sdk.RequestBodies.RequestBodyPostNullableRequiredStringBodyAsync
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3187,7 +3166,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.RequestBodies.RequestBodyPutBytesAsync("9sS}}O%}aJ as bytes <<<>>>");
+var res = await sdk.RequestBodies.RequestBodyPutBytesAsync("0x5DbFFb1Ff9 as bytes <<<>>>");
 
 // handle response
 ```
@@ -3209,11 +3188,11 @@ var res = await sdk.RequestBodies.RequestBodyPutBytesAsync("9sS}}O%}aJ as bytes 
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3221,7 +3200,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.RequestBodies.RequestBodyPutBytesWithParamsAsync("o%jIWe4_P6 as bytes <<<>>>", "string");
+var res = await sdk.RequestBodies.RequestBodyPutBytesWithParamsAsync("0xC1B9cA4eb5 as bytes <<<>>>", "string");
 
 // handle response
 ```
@@ -3244,12 +3223,12 @@ var res = await sdk.RequestBodies.RequestBodyPutBytesWithParamsAsync("o%jIWe4_P6
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
+using System.Collections.Generic;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3263,14 +3242,14 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartDeepAsync(new DeepObjec
         new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -3283,14 +3262,14 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartDeepAsync(new DeepObjec
         new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -3307,14 +3286,14 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartDeepAsync(new DeepObjec
         { "key", new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -3327,14 +3306,14 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartDeepAsync(new DeepObjec
         { "key2", new SimpleObject() {
             Any = "any",
             Bool = true,
-            Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = SDK.Models.Shared.Enum.One,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-            IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -3349,14 +3328,14 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartDeepAsync(new DeepObjec
     Obj = new SimpleObject() {
         Any = "any",
         Bool = true,
-        Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-        DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-        Enum = SDK.Models.Shared.Enum.One,
+        Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
         Int32 = 1,
-        Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-        IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+        Int32Enum = Int32Enum.FiftyFive,
+        IntEnum = IntEnum.Two,
         Num = 1.1D,
         Str = "test",
         Bigint = 8821239038968084,
@@ -3389,11 +3368,11 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartDeepAsync(new DeepObjec
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3402,9 +3381,9 @@ var sdk = new SDKSDK(
 );
 
 var res = await sdk.RequestBodies.RequestBodyPutMultipartDifferentFileNameAsync(new RequestBodyPutMultipartDifferentFileNameRequestBody() {
-    DifferentFileName = new RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName() {
-        Content = "Y}'H[5/Z[, as bytes <<<>>>",
-        DifferentFileName = "string",
+    DifferentFileName = new DifferentFileName() {
+        Content = "0xdF19d43dd2 as bytes <<<>>>",
+        FileName = "west_tunisian.pdf",
     },
 });
 
@@ -3428,11 +3407,11 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartDifferentFileNameAsync(
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3441,9 +3420,9 @@ var sdk = new SDKSDK(
 );
 
 var res = await sdk.RequestBodies.RequestBodyPutMultipartFileAsync(new RequestBodyPutMultipartFileRequestBody() {
-    File = new RequestBodyPutMultipartFileRequestBodyFile() {
-        Content = "OJa,v`.FW- as bytes <<<>>>",
-        File = "string",
+    File = new File() {
+        Content = "0xa9f2Ee38c3 as bytes <<<>>>",
+        FileName = "bandwidth_sedan.pdf",
     },
 });
 
@@ -3467,12 +3446,11 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartFileAsync(new RequestBo
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 using NodaTime;
-using System;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3483,14 +3461,14 @@ var sdk = new SDKSDK(
 var res = await sdk.RequestBodies.RequestBodyPutMultipartSimpleAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
-    Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-    DateTime = DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = SDK.Models.Shared.Enum.One,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = SDK.Models.Shared.SimpleObjectInt32Enum.FiftyFive,
-    IntEnum = SDK.Models.Shared.SimpleObjectIntEnum.Two,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -3521,10 +3499,10 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartSimpleAsync(new SimpleO
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3554,11 +3532,11 @@ var res = await sdk.RequestBodies.RequestBodyPutStringAsync("string");
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3589,10 +3567,10 @@ var res = await sdk.RequestBodies.RequestBodyPutStringWithParamsAsync("string", 
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3600,7 +3578,7 @@ var sdk = new SDKSDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.RequestBodies.RequestBodyReadAndWriteAsync(new ReadWriteObjectInput() {
+var res = await sdk.RequestBodies.RequestBodyReadAndWriteAsync(new ReadWriteObject() {
     Num1 = 797612,
     Num2 = 89374,
     Num3 = 459345,
@@ -3611,10 +3589,10 @@ var res = await sdk.RequestBodies.RequestBodyReadAndWriteAsync(new ReadWriteObje
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `request`                                                           | [ReadWriteObjectInput](../../models/shared/ReadWriteObjectInput.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
-| `serverURL`                                                         | *string*                                                            | :heavy_minus_sign:                                                  | An optional server URL to use.                                      |
+| Parameter                                                 | Type                                                      | Required                                                  | Description                                               |
+| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| `request`                                                 | [ReadWriteObject](../../models/shared/ReadWriteObject.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
+| `serverURL`                                               | *string*                                                  | :heavy_minus_sign:                                        | An optional server URL to use.                            |
 
 
 ### Response
@@ -3627,10 +3605,10 @@ var res = await sdk.RequestBodies.RequestBodyReadAndWriteAsync(new ReadWriteObje
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3661,10 +3639,10 @@ var res = await sdk.RequestBodies.RequestBodyReadOnlyInputAsync(new ReadOnlyObje
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3695,10 +3673,10 @@ var res = await sdk.RequestBodies.RequestBodyReadOnlyUnionAsync("string");
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3729,10 +3707,10 @@ var res = await sdk.RequestBodies.RequestBodyReadWriteOnlyUnionAsync("string");
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3767,10 +3745,10 @@ var res = await sdk.RequestBodies.RequestBodyWriteOnlyAsync(new WriteOnlyObject(
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
@@ -3805,10 +3783,10 @@ var res = await sdk.RequestBodies.RequestBodyWriteOnlyOutputAsync(new WriteOnlyO
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },

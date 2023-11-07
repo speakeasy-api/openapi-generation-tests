@@ -3,12 +3,12 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct FormQueryParamsRefParamObjectRequest: APIValue {
         public let refObjParam: Shared.RefQueryParamObj?
         public let refObjParamExploded: Shared.RefQueryParamObjExploded?
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         ///
         public init(refObjParam: Shared.RefQueryParamObj? = nil, refObjParamExploded: Shared.RefQueryParamObjExploded? = nil) {

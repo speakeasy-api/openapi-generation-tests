@@ -46,10 +46,10 @@ public class RequestBodyPostNullableNotRequiredStringBodyResponse {
      * OK
      */
     
-    public RequestBodyPostNullableNotRequiredStringBody200ApplicationJSON requestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject;
+    public RequestBodyPostNullableNotRequiredStringBodyResponseBody object;
 
-    public RequestBodyPostNullableNotRequiredStringBodyResponse withRequestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject(RequestBodyPostNullableNotRequiredStringBody200ApplicationJSON requestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject) {
-        this.requestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject = requestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject;
+    public RequestBodyPostNullableNotRequiredStringBodyResponse withObject(RequestBodyPostNullableNotRequiredStringBodyResponseBody object) {
+        this.object = object;
         return this;
     }
     

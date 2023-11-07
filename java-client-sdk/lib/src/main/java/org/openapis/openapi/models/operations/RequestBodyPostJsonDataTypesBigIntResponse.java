@@ -46,10 +46,10 @@ public class RequestBodyPostJsonDataTypesBigIntResponse {
      * OK
      */
     
-    public RequestBodyPostJSONDataTypesBigInt200ApplicationJSON requestBodyPostJSONDataTypesBigInt200ApplicationJSONObject;
+    public RequestBodyPostJsonDataTypesBigIntResponseBody object;
 
-    public RequestBodyPostJsonDataTypesBigIntResponse withRequestBodyPostJSONDataTypesBigInt200ApplicationJSONObject(RequestBodyPostJSONDataTypesBigInt200ApplicationJSON requestBodyPostJSONDataTypesBigInt200ApplicationJSONObject) {
-        this.requestBodyPostJSONDataTypesBigInt200ApplicationJSONObject = requestBodyPostJSONDataTypesBigInt200ApplicationJSONObject;
+    public RequestBodyPostJsonDataTypesBigIntResponse withObject(RequestBodyPostJsonDataTypesBigIntResponseBody object) {
+        this.object = object;
         return this;
     }
     

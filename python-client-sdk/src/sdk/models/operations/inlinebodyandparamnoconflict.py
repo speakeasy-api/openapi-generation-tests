@@ -26,7 +26,7 @@ class InlineBodyAndParamNoConflictRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class InlineBodyAndParamNoConflictResJSON:
+class InlineBodyAndParamNoConflictJSON:
     body_str: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bodyStr') }})
     
 
@@ -37,7 +37,7 @@ class InlineBodyAndParamNoConflictResJSON:
 class InlineBodyAndParamNoConflictRes:
     r"""OK"""
     args: Dict[str, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
-    json: InlineBodyAndParamNoConflictResJSON = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
+    json: InlineBodyAndParamNoConflictJSON = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
 
 

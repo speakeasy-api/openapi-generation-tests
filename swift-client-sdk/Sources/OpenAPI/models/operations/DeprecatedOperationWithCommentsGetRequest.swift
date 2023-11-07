@@ -3,7 +3,7 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct DeprecatedOperationWithCommentsGetRequest: APIValue {
         /// This is a string parameter
         @available(*, deprecated, renamed: "newParameter", message: "This parameter is deprecated")
@@ -11,7 +11,7 @@ extension Operations {
         /// This is a string parameter
         public let newParameter: String?
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         /// - Parameter deprecatedParameter: This is a string parameter
         /// - Parameter newParameter: This is a string parameter

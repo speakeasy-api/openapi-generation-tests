@@ -19,7 +19,7 @@ class MixedParametersPrimitivesRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class MixedParametersPrimitivesResArgs:
+class MixedParametersPrimitivesArgs:
     query_string_param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('queryStringParam') }})
     
 
@@ -27,7 +27,7 @@ class MixedParametersPrimitivesResArgs:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class MixedParametersPrimitivesResHeaders:
+class MixedParametersPrimitivesHeaders:
     headerparam: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Headerparam') }})
     
 
@@ -37,8 +37,8 @@ class MixedParametersPrimitivesResHeaders:
 @dataclasses.dataclass
 class MixedParametersPrimitivesRes:
     r"""OK"""
-    args: MixedParametersPrimitivesResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
-    headers: MixedParametersPrimitivesResHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
+    args: MixedParametersPrimitivesArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
+    headers: MixedParametersPrimitivesHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
 

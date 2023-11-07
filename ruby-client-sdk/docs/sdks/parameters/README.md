@@ -1,5 +1,5 @@
 # Parameters
-(*parameters*)
+
 
 ## Overview
 
@@ -113,15 +113,15 @@ req = Operations::DeepObjectQueryParamsObjectRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int32_enum=Shared::Int32Enum::SIXTY_NINE,
+      int_enum=Shared::IntEnum::SECOND,
       int_opt_null=303001,
       num=1.1,
       num_opt_null=5571.55,
       str_="test",
       str_opt="testOptional",
     ),
-    obj_arr_param=Operations::DeepObjectQueryParamsObjectObjArrParam.new(
+    obj_arr_param=Operations::ObjArrParam.new(
       arr=.new[
         "test",
       ],
@@ -139,10 +139,10 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                               | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
-| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `obj_param`                                                                                                             | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                                             | :heavy_check_mark:                                                                                                      | A simple object that uses all our supported primitive types and enums and has optional properties.                      |
-| `obj_arr_param`                                                                                                         | [Operations::DeepObjectQueryParamsObjectObjArrParam](../../models/operations/deepobjectqueryparamsobjectobjarrparam.md) | :heavy_minus_sign:                                                                                                      | N/A                                                                                                                     |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `obj_param`                                                                                        | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `obj_arr_param`                                                                                    | [Operations::ObjArrParam](../../models/operations/objarrparam.md)                                  | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 
 
 ### Response
@@ -258,11 +258,11 @@ s.config_security(
    
 req = Operations::FormQueryParamsCamelObjectRequest.new(
   query_params=Operations::FormQueryParamsCamelObjectRequest.new(
-    obj_param_exploded=Operations::FormQueryParamsCamelObjectObjParamExploded.new(
+    obj_param_exploded=Operations::ObjParamExploded.new(
       item_count="10",
       search_term="foo",
     ),
-    obj_param=Operations::FormQueryParamsCamelObjectObjParam.new(
+    obj_param=Operations::ObjParam.new(
       encoded_count="11",
       encoded_term="bar",
     ),
@@ -279,10 +279,10 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                                       | Type                                                                                                                            | Required                                                                                                                        | Description                                                                                                                     |
-| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `obj_param_exploded`                                                                                                            | [Operations::FormQueryParamsCamelObjectObjParamExploded](../../models/operations/formqueryparamscamelobjectobjparamexploded.md) | :heavy_check_mark:                                                                                                              | N/A                                                                                                                             |
-| `obj_param`                                                                                                                     | [Operations::FormQueryParamsCamelObjectObjParam](../../models/operations/formqueryparamscamelobjectobjparam.md)                 | :heavy_minus_sign:                                                                                                              | N/A                                                                                                                             |
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `obj_param_exploded`                                                        | [Operations::ObjParamExploded](../../models/operations/objparamexploded.md) | :heavy_check_mark:                                                          | N/A                                                                         |
+| `obj_param`                                                                 | [Operations::ObjParam](../../models/operations/objparam.md)                 | :heavy_minus_sign:                                                          | N/A                                                                         |
 
 
 ### Response
@@ -370,8 +370,8 @@ req = Operations::FormQueryParamsObjectRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::IntEnum::SECOND,
       int_opt_null=645228,
       num=1.1,
       num_opt_null=7602.31,
@@ -392,8 +392,8 @@ req = Operations::FormQueryParamsObjectRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-      int_enum=Shared::SimpleObjectIntEnum::FIRST,
+      int32_enum=Shared::Int32Enum::SIXTY_NINE,
+      int_enum=Shared::IntEnum::FIRST,
       int_opt_null=973554,
       num=1.1,
       num_opt_null=873.54,
@@ -650,8 +650,8 @@ req = Operations::HeaderParamsObjectRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
+      int32_enum=Shared::Int32Enum::SIXTY_NINE,
+      int_enum=Shared::IntEnum::THIRD,
       int_opt_null=590416,
       num=1.1,
       num_opt_null=144.68,
@@ -672,8 +672,8 @@ req = Operations::HeaderParamsObjectRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int32_enum=Shared::Int32Enum::FIFTY_FIVE,
+      int_enum=Shared::IntEnum::SECOND,
       int_opt_null=54344,
       num=1.1,
       num_opt_null=6940.18,
@@ -787,8 +787,8 @@ req = Operations::JsonQueryParamsObjectRequest.new(
           float32=1.1,
           int=1,
           int32=1,
-          int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-          int_enum=Shared::SimpleObjectIntEnum::THIRD,
+          int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+          int_enum=Shared::IntEnum::THIRD,
           int_opt_null=740671,
           num=1.1,
           num_opt_null=8661.35,
@@ -813,8 +813,8 @@ req = Operations::JsonQueryParamsObjectRequest.new(
           float32=1.1,
           int=1,
           int32=1,
-          int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-          int_enum=Shared::SimpleObjectIntEnum::FIRST,
+          int32_enum=Shared::Int32Enum::FIFTY_FIVE,
+          int_enum=Shared::IntEnum::FIRST,
           int_opt_null=835122,
           num=1.1,
           num_opt_null=9111.59,
@@ -837,8 +837,8 @@ req = Operations::JsonQueryParamsObjectRequest.new(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::THIRD,
+        int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int_enum=Shared::IntEnum::THIRD,
         int_opt_null=416807,
         num=1.1,
         num_opt_null=8525.86,
@@ -862,8 +862,8 @@ req = Operations::JsonQueryParamsObjectRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::FIRST,
+      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::IntEnum::FIRST,
       int_opt_null=488845,
       num=1.1,
       num_opt_null=5405.85,
@@ -1038,8 +1038,8 @@ req = Operations::MixedQueryParamsRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::IntEnum::SECOND,
       int_opt_null=89281,
       num=1.1,
       num_opt_null=2132.48,
@@ -1060,8 +1060,8 @@ req = Operations::MixedQueryParamsRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int32_enum=Shared::Int32Enum::FIFTY_FIVE,
+      int_enum=Shared::IntEnum::SECOND,
       int_opt_null=218100,
       num=1.1,
       num_opt_null=75.58,
@@ -1082,8 +1082,8 @@ req = Operations::MixedQueryParamsRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
+      int32_enum=Shared::Int32Enum::FIFTY_FIVE,
+      int_enum=Shared::IntEnum::THIRD,
       int_opt_null=387493,
       num=1.1,
       num_opt_null=5641.93,
@@ -1147,8 +1147,8 @@ req = Operations::PathParameterJsonRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int32_enum=Shared::Int32Enum::SIXTY_NINE,
+      int_enum=Shared::IntEnum::SECOND,
       int_opt_null=355762,
       num=1.1,
       num_opt_null=5955.49,
@@ -1219,8 +1219,8 @@ req = Operations::PipeDelimitedQueryParamsArrayRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
+      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::IntEnum::THIRD,
       int_opt_null=161819,
       num=1.1,
       num_opt_null=722.43,
@@ -1377,8 +1377,8 @@ req = Operations::SimplePathParameterObjectsRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
+      int32_enum=Shared::Int32Enum::FIFTY_FIVE,
+      int_enum=Shared::IntEnum::THIRD,
       int_opt_null=384918,
       num=1.1,
       num_opt_null=9559.93,
@@ -1399,8 +1399,8 @@ req = Operations::SimplePathParameterObjectsRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::IntEnum::SECOND,
       int_opt_null=678638,
       num=1.1,
       num_opt_null=5865.54,

@@ -10,7 +10,7 @@ import { classToPlain, Exclude, Expose } from "class-transformer";
 /**
  * Not Implemented
  */
-export class StatusGetXSpeakeasyErrors501ApplicationJSON extends Error {
+export class StatusGetXSpeakeasyErrorsResponseBody extends Error {
     /**
      * Raw HTTP response; suitable for custom response parsing
      */
@@ -30,7 +30,7 @@ export class StatusGetXSpeakeasyErrors501ApplicationJSON extends Error {
     @Expose({ name: "type" })
     type?: ErrorType;
 
-    constructor(err?: StatusGetXSpeakeasyErrors501ApplicationJSON) {
+    constructor(err?: StatusGetXSpeakeasyErrorsResponseBody) {
         super();
         if (err) {
             Object.assign(this, err);
@@ -39,7 +39,7 @@ export class StatusGetXSpeakeasyErrors501ApplicationJSON extends Error {
             );
         }
 
-        this.name = "StatusGetXSpeakeasyErrors501ApplicationJSON";
-        Object.setPrototypeOf(this, StatusGetXSpeakeasyErrors501ApplicationJSON.prototype);
+        this.name = "StatusGetXSpeakeasyErrorsResponseBody";
+        Object.setPrototypeOf(this, StatusGetXSpeakeasyErrorsResponseBody.prototype);
     }
 }

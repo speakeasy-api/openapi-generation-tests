@@ -17,7 +17,7 @@ class DeepObjectQueryParamsMapRequest:
 
 
 @dataclasses.dataclass
-class DeepObjectQueryParamsMapResArgs:
+class DeepObjectQueryParamsMapArgs:
     pass
 
 

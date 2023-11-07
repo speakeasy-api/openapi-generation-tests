@@ -4,33 +4,33 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
-type CreateFileRequestBodyFile struct {
-	Content []byte `multipartForm:"content"`
-	File    string `multipartForm:"name=file"`
+type CreateFileFile struct {
+	Content  []byte `multipartForm:"content"`
+	FileName string `multipartForm:"name=file"`
 }
 
-func (o *CreateFileRequestBodyFile) GetContent() []byte {
+func (o *CreateFileFile) GetContent() []byte {
 	if o == nil {
 		return []byte{}
 	}
 	return o.Content
 }
 
-func (o *CreateFileRequestBodyFile) GetFile() string {
+func (o *CreateFileFile) GetFileName() string {
 	if o == nil {
 		return ""
 	}
-	return o.File
+	return o.FileName
 }
 
 type CreateFileRequestBody struct {
-	File *CreateFileRequestBodyFile `multipartForm:"file"`
+	File *CreateFileFile `multipartForm:"file"`
 }
 
-func (o *CreateFileRequestBody) GetFile() *CreateFileRequestBodyFile {
+func (o *CreateFileRequestBody) GetFile() *CreateFileFile {
 	if o == nil {
 		return nil
 	}

@@ -10,14 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.HashMap;
 
-import org.openapis.openapi.utils.Utils;
 import org.junit.jupiter.api.Test;
 import org.openapis.openapi.SDK.Builder.ServerSomething;
-import org.openapis.openapi.models.operations.SelectGlobalServerResponse;
-import org.openapis.openapi.models.operations.SelectServerWithIDResponse;
-import org.openapis.openapi.models.operations.ServerWithTemplatesGlobalResponse;
-import org.openapis.openapi.models.operations.ServerWithTemplatesResponse;
-import org.openapis.openapi.models.operations.ServersByIDWithTemplatesResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.utils.Utils;
 
 public class ServerTests {
     @Test

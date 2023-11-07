@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import httpbinsimplejsonobject as shared_httpbinsimplejsonobject
+from ...models.shared import httpbinsimplejsonobject as shared_httpbinsimplejsonobject
 from typing import Optional
 
 

@@ -14,7 +14,7 @@ export class RequestBodyPutStringWithParamsRequest extends SpeakeasyBase {
     queryStringParam: string;
 }
 
-export class RequestBodyPutStringWithParamsResArgs extends SpeakeasyBase {
+export class RequestBodyPutStringWithParamsArgs extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "queryStringParam" })
     queryStringParam: string;
@@ -26,8 +26,8 @@ export class RequestBodyPutStringWithParamsResArgs extends SpeakeasyBase {
 export class RequestBodyPutStringWithParamsRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "args" })
-    @Type(() => RequestBodyPutStringWithParamsResArgs)
-    args: RequestBodyPutStringWithParamsResArgs;
+    @Type(() => RequestBodyPutStringWithParamsArgs)
+    args: RequestBodyPutStringWithParamsArgs;
 
     @SpeakeasyMetadata()
     @Expose({ name: "data" })

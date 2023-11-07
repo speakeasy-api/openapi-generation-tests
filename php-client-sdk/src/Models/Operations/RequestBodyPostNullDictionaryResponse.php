@@ -38,16 +38,16 @@ class RequestBodyPostNullDictionaryResponse
     /**
      * OK
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostNullDictionary200ApplicationJSON $requestBodyPostNullDictionary200ApplicationJSONObject
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostNullDictionaryResponseBody $object
      */
 	
-    public ?RequestBodyPostNullDictionary200ApplicationJSON $requestBodyPostNullDictionary200ApplicationJSONObject = null;
+    public ?RequestBodyPostNullDictionaryResponseBody $object = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->requestBodyPostNullDictionary200ApplicationJSONObject = null;
+		$this->object = null;
 	}
 }

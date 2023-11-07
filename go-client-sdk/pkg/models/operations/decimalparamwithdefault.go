@@ -5,7 +5,7 @@ package operations
 import (
 	"github.com/ericlagergren/decimal"
 	"net/http"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 )
 
 type DecimalParamWithDefaultRequest struct {

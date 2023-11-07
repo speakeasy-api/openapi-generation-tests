@@ -1,5 +1,5 @@
 # Auth
-(*Auth*)
+(*.Auth*)
 
 ## Overview
 
@@ -26,8 +26,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -37,7 +37,9 @@ func main() {
     )
 
 
-    operationSecurity := "Token YOUR_API_KEY"
+    operationSecurity := operations.APIKeyAuthSecurity{
+            APIKeyAuth: "Token YOUR_API_KEY",
+        }
 
     ctx := context.Background()
     res, err := s.Auth.APIKeyAuth(ctx, operationSecurity)
@@ -74,8 +76,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -121,8 +123,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -178,8 +180,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -189,7 +191,9 @@ func main() {
     )
 
 
-    operationSecurity := "YOUR_JWT"
+    operationSecurity := operations.BearerAuthSecurity{
+            BearerAuth: "YOUR_JWT",
+        }
 
     ctx := context.Background()
     res, err := s.Auth.BearerAuth(ctx, operationSecurity)
@@ -226,8 +230,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -273,8 +277,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -284,7 +288,9 @@ func main() {
     )
 
 
-    operationSecurity := "Bearer YOUR_OAUTH2_TOKEN"
+    operationSecurity := operations.Oauth2AuthSecurity{
+            Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+        }
 
     ctx := context.Background()
     res, err := s.Auth.Oauth2Auth(ctx, operationSecurity)
@@ -321,8 +327,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -332,7 +338,9 @@ func main() {
     )
 
 
-    operationSecurity := "Bearer YOUR_OAUTH2_TOKEN"
+    operationSecurity := operations.Oauth2OverrideSecurity{
+            Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+        }
 
     ctx := context.Background()
     res, err := s.Auth.Oauth2Override(ctx, operationSecurity)
@@ -369,8 +377,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -380,7 +388,9 @@ func main() {
     )
 
 
-    operationSecurity := "Bearer YOUR_OPENID_TOKEN"
+    operationSecurity := operations.OpenIDConnectAuthSecurity{
+            OpenIDConnect: "Bearer YOUR_OPENID_TOKEN",
+        }
 
     ctx := context.Background()
     res, err := s.Auth.OpenIDConnectAuth(ctx, operationSecurity)

@@ -4,15 +4,15 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
-// ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON - OK
-type ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON struct {
+// ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody - OK
+type ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody struct {
 	JSON shared.ObjWithComplexNumbersAdditionalProperties `json:"json"`
 }
 
-func (o *ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON) GetJSON() shared.ObjWithComplexNumbersAdditionalProperties {
+func (o *ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody) GetJSON() shared.ObjWithComplexNumbersAdditionalProperties {
 	if o == nil {
 		return shared.ObjWithComplexNumbersAdditionalProperties{}
 	}
@@ -27,7 +27,7 @@ type ResponseBodyAdditionalPropertiesComplexNumbersPostResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject *ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON
+	Object *ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody
 }
 
 func (o *ResponseBodyAdditionalPropertiesComplexNumbersPostResponse) GetContentType() string {
@@ -51,9 +51,9 @@ func (o *ResponseBodyAdditionalPropertiesComplexNumbersPostResponse) GetRawRespo
 	return o.RawResponse
 }
 
-func (o *ResponseBodyAdditionalPropertiesComplexNumbersPostResponse) GetResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject() *ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON {
+func (o *ResponseBodyAdditionalPropertiesComplexNumbersPostResponse) GetObject() *ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject
+	return o.Object
 }

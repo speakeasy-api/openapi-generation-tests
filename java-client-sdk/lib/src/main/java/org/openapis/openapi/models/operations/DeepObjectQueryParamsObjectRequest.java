@@ -21,9 +21,9 @@ public class DeepObjectQueryParamsObjectRequest {
     }
     
     @SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=objArrParam")
-    public DeepObjectQueryParamsObjectObjArrParam objArrParam;
+    public ObjArrParam objArrParam;
 
-    public DeepObjectQueryParamsObjectRequest withObjArrParam(DeepObjectQueryParamsObjectObjArrParam objArrParam) {
+    public DeepObjectQueryParamsObjectRequest withObjArrParam(ObjArrParam objArrParam) {
         this.objArrParam = objArrParam;
         return this;
     }

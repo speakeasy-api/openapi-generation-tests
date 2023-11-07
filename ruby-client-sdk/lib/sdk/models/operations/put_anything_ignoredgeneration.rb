@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
     # OK
-    class PutAnythingIgnoredGeneration200ApplicationJSON < OpenApiSDK::Utils::FieldAugmented
+    class PutAnythingIgnoredGenerationResponseBody < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -31,16 +31,16 @@ module OpenApiSDK
       # HTTP response status code for this operation
       field :status_code, Integer
       # OK
-      field :put_anything_ignored_generation_200_application_json_object, T.nilable(Operations::PutAnythingIgnoredGeneration200ApplicationJSON)
+      field :object, T.nilable(Operations::PutAnythingIgnoredGenerationResponseBody)
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, put_anything_ignored_generation_200_application_json_object: T.nilable(Operations::PutAnythingIgnoredGeneration200ApplicationJSON), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, put_anything_ignored_generation_200_application_json_object: nil, raw_response: nil)
+      sig { params(content_type: String, status_code: Integer, object: T.nilable(Operations::PutAnythingIgnoredGenerationResponseBody), raw_response: T.nilable(Faraday::Response)).void }
+      def initialize(content_type: nil, status_code: nil, object: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code
-        @put_anything_ignored_generation_200_application_json_object = put_anything_ignored_generation_200_application_json_object
+        @object = object
         @raw_response = raw_response
       end
     end

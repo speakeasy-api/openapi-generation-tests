@@ -18,12 +18,12 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 class MixedParametersCamelCaseRes
 {
 	#[\JMS\Serializer\Annotation\SerializedName('args')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\MixedParametersCamelCaseResArgs')]
-    public MixedParametersCamelCaseResArgs $args;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\MixedParametersCamelCaseArgs')]
+    public MixedParametersCamelCaseArgs $args;
     
 	#[\JMS\Serializer\Annotation\SerializedName('headers')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\MixedParametersCamelCaseResHeaders')]
-    public MixedParametersCamelCaseResHeaders $headers;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\MixedParametersCamelCaseHeaders')]
+    public MixedParametersCamelCaseHeaders $headers;
     
 	#[\JMS\Serializer\Annotation\SerializedName('url')]
     #[\JMS\Serializer\Annotation\Type('string')]
@@ -31,8 +31,8 @@ class MixedParametersCamelCaseRes
     
 	public function __construct()
 	{
-		$this->args = new \OpenAPI\OpenAPI\Models\Operations\MixedParametersCamelCaseResArgs();
-		$this->headers = new \OpenAPI\OpenAPI\Models\Operations\MixedParametersCamelCaseResHeaders();
+		$this->args = new \OpenAPI\OpenAPI\Models\Operations\MixedParametersCamelCaseArgs();
+		$this->headers = new \OpenAPI\OpenAPI\Models\Operations\MixedParametersCamelCaseHeaders();
 		$this->url = "";
 	}
 }

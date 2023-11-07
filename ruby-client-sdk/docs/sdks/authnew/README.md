@@ -1,5 +1,5 @@
 # AuthNew
-(*auth_new*)
+
 
 ## Overview
 
@@ -37,12 +37,12 @@ s.config_security(
    
 req = Shared::AuthServiceRequestBody.new(
   request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
+    basic_auth=Shared::BasicAuth.new(
       password="owsGgP4_AhRPMSJ",
       username="Devonte_Bins",
     ),
     header_auth=.new[
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
+      Shared::HeaderAuth.new(
         expected_value="string",
         header_name="string",
       ),
@@ -89,12 +89,12 @@ s.config_security(
    
 req = Shared::AuthServiceRequestBody.new(
   request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
+    basic_auth=Shared::BasicAuth.new(
       password="xvJcf9GiJNr7T2x",
       username="Cory33",
     ),
     header_auth=.new[
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
+      Shared::HeaderAuth.new(
         expected_value="string",
         header_name="string",
       ),
@@ -140,12 +140,12 @@ req = Shared::AuthServiceRequestBody.new(
     username="YOUR_USERNAME",
   ),
   request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
+    basic_auth=Shared::BasicAuth.new(
       password="Z2OStPksFyrcGeu",
       username="Ashton.Steuber27",
     ),
     header_auth=.new[
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
+      Shared::HeaderAuth.new(
         expected_value="string",
         header_name="string",
       ),
@@ -191,12 +191,12 @@ req = Shared::AuthServiceRequestBody.new(
     api_key_auth_new=.foo"Token <YOUR_API_KEY>",
   ),
   request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
+    basic_auth=Shared::BasicAuth.new(
       password="Iq1JSzG1wqLDz4v",
       username="Ismael.Emmerich",
     ),
     header_auth=.new[
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
+      Shared::HeaderAuth.new(
         expected_value="string",
         header_name="string",
       ),
@@ -246,12 +246,12 @@ req = Shared::AuthServiceRequestBody.new(
     ),
   ),
   request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
+    basic_auth=Shared::BasicAuth.new(
       password="OcWVV5608IiaWJQ",
       username="Kameron42",
     ),
     header_auth=.new[
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
+      Shared::HeaderAuth.new(
         expected_value="string",
         header_name="string",
       ),
@@ -300,12 +300,12 @@ req = Shared::AuthServiceRequestBody.new(
     ),
   ),
   request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
+    basic_auth=Shared::BasicAuth.new(
       password="fpwNE90MyqKIrXk",
       username="Caroline_Walsh",
     ),
     header_auth=.new[
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
+      Shared::HeaderAuth.new(
         expected_value="string",
         header_name="string",
       ),
@@ -354,12 +354,12 @@ req = Shared::AuthServiceRequestBody.new(
     ),
   ),
   request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
+    basic_auth=Shared::BasicAuth.new(
       password="pibxDTiJSijK04Y",
       username="Selena76",
     ),
     header_auth=.new[
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
+      Shared::HeaderAuth.new(
         expected_value="string",
         header_name="string",
       ),
@@ -405,12 +405,12 @@ req = Shared::AuthServiceRequestBody.new(
     api_key_auth_new=.foo"Token <YOUR_API_KEY>",
   ),
   request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
+    basic_auth=Shared::BasicAuth.new(
       password="pzdKQgSGZSrUGNs",
       username="Eryn51",
     ),
     header_auth=.new[
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
+      Shared::HeaderAuth.new(
         expected_value="string",
         header_name="string",
       ),
@@ -457,12 +457,12 @@ req = Shared::AuthServiceRequestBody.new(
     oauth2="Bearer YOUR_OAUTH2_TOKEN",
   ),
   request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
+    basic_auth=Shared::BasicAuth.new(
       password="UrAsw466AAaYtr1",
       username="Kenya.Baumbach",
     ),
     header_auth=.new[
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
+      Shared::HeaderAuth.new(
         expected_value="string",
         header_name="string",
       ),
@@ -508,12 +508,12 @@ req = Shared::AuthServiceRequestBody.new(
     oauth2="Bearer YOUR_OAUTH2_TOKEN",
   ),
   request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
+    basic_auth=Shared::BasicAuth.new(
       password="V02sHy2onRTMRgS",
       username="Polly.Aufderhar78",
     ),
     header_auth=.new[
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
+      Shared::HeaderAuth.new(
         expected_value="string",
         header_name="string",
       ),
@@ -559,12 +559,12 @@ req = Shared::AuthServiceRequestBody.new(
     open_id_connect="Bearer YOUR_OPENID_TOKEN",
   ),
   request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
+    basic_auth=Shared::BasicAuth.new(
       password="1_B3hNdr8HC3AeS",
       username="Floy_Heller",
     ),
     header_auth=.new[
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
+      Shared::HeaderAuth.new(
         expected_value="string",
         header_name="string",
       ),

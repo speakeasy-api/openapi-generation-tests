@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostMultipleContentTypesSplitFormRequestBody < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 

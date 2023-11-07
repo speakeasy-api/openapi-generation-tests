@@ -31,8 +31,8 @@ module OpenApiSDK
 
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
-      refute_nil(res.simple_objects)
-      compare_simple_object(obj, res.simple_objects[0])
+      refute_nil(res.res)
+      compare_simple_object(obj, res.res[0])
     end
 
 
@@ -45,9 +45,9 @@ module OpenApiSDK
 
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
-      refute_nil(res.arrs)
-      compare_simple_object(obj, res.arrs[0][0])
-      compare_simple_object(obj, res.arrs[1][0])
+      refute_nil(res.res)
+      compare_simple_object(obj, res.res[0][0])
+      compare_simple_object(obj, res.res[1][0])
     end
 
 
@@ -130,11 +130,11 @@ module OpenApiSDK
 
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
-      refute_nil(res.maps)
-      compare_simple_object(obj, res.maps[0]['mapElem1'])
-      compare_simple_object(obj, res.maps[0]['mapElem1'])
-      compare_simple_object(obj, res.maps[1]['mapElem2'])
-      compare_simple_object(obj, res.maps[1]['mapElem2'])
+      refute_nil(res.res)
+      compare_simple_object(obj, res.res[0]['mapElem1'])
+      compare_simple_object(obj, res.res[0]['mapElem1'])
+      compare_simple_object(obj, res.res[1]['mapElem2'])
+      compare_simple_object(obj, res.res[1]['mapElem2'])
     end
 
     def test_request_body_post_application_json_map_of_primitive
@@ -159,8 +159,8 @@ module OpenApiSDK
 
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
-      refute_nil(res.strings)
-      assert_equal(['hello', 'world'], res.strings)
+      refute_nil(res.res)
+      assert_equal(['hello', 'world'], res.res)
     end
 
     def test_request_body_post_application_json_map_of_map_of_primitive
@@ -196,8 +196,8 @@ module OpenApiSDK
 
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
-      refute_nil(res.arrs)
-      assert_equal([['foo', 'bar'], ['buzz', 'bazz']], res.arrs)
+      refute_nil(res.res)
+      assert_equal([['foo', 'bar'], ['buzz', 'bazz']], res.res)
     end
 
     def test_request_body_post_application_json_array_object
@@ -294,7 +294,7 @@ module OpenApiSDK
     def test_request_body_post_multiple_content_types_inline_filtered
       record_test('request-bodies-post-multiple-content-types-inline-filtered')
 
-      res = @sdk.request_bodies.request_body_post_multiple_content_types_inline_filtered(Operations::RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON.new(
+      res = @sdk.request_bodies.request_body_post_multiple_content_types_inline_filtered(Operations::RequestBodyPostMultipleContentTypesInlineFilteredRequestBody.new(
                                                                                            bool: true,
                                                                                            num: 1.1,
                                                                                            str_: 'test'
@@ -314,7 +314,7 @@ module OpenApiSDK
     def test_request_body_post_multiple_content_types_split_json
       record_test('request-bodies-post-multiple-content-types-split-json')
 
-      res = @sdk.request_bodies.request_body_post_multiple_content_types_split_json(Operations::RequestBodyPostMultipleContentTypesSplitApplicationJSON.new(
+      res = @sdk.request_bodies.request_body_post_multiple_content_types_split_json(Operations::RequestBodyPostMultipleContentTypesSplitJsonRequestBody.new(
                                                                                       bool: true,
                                                                                       num: 1.1,
                                                                                       str_: 'test'
@@ -333,7 +333,7 @@ module OpenApiSDK
     def test_request_body_post_multiple_content_types_split_multipart
       record_test('request-bodies-post-multiple-content-types-split-multipart')
 
-      res = @sdk.request_bodies.request_body_post_multiple_content_types_split_multipart(Operations::RequestBodyPostMultipleContentTypesSplitMultipartFormData.new(
+      res = @sdk.request_bodies.request_body_post_multiple_content_types_split_multipart(Operations::RequestBodyPostMultipleContentTypesSplitMultipartRequestBody.new(
                                                                                            bool2: true,
                                                                                            num2: 1.1,
                                                                                            str2: 'test'
@@ -352,7 +352,7 @@ module OpenApiSDK
     def test_request_body_post_multiple_content_types_split_form
       record_test('request-bodies-post-multiple-content-types-split-form')
 
-      res = @sdk.request_bodies.request_body_post_multiple_content_types_split_form(Operations::RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded.new(
+      res = @sdk.request_bodies.request_body_post_multiple_content_types_split_form(Operations::RequestBodyPostMultipleContentTypesSplitFormRequestBody.new(
                                                                                       bool3: true,
                                                                                       num3: 1.1,
                                                                                       str3: 'test'
@@ -372,7 +372,7 @@ module OpenApiSDK
       record_test('request-bodies-post-multiple-content-types-split-json-with-param')
 
       res = @sdk.request_bodies.request_body_post_multiple_content_types_split_param_json(
-        Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationJSON.new(
+        Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody.new(
           bool: true,
           num: 1.1,
           str_: 'test body'
@@ -396,7 +396,7 @@ module OpenApiSDK
       record_test('request-bodies-post-multiple-content-types-split-multipart-with-param')
 
       res = @sdk.request_bodies.request_body_post_multiple_content_types_split_param_multipart(
-        Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartFormData.new(
+        Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody.new(
           bool2: true,
           num2: 1.1,
           str2: 'test body'
@@ -421,7 +421,7 @@ module OpenApiSDK
       record_test('request-bodies-post-multiple-content-types-split-form-with-param')
 
       res = @sdk.request_bodies.request_body_post_multiple_content_types_split_param_form(
-        Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded.new(
+        Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequestBody.new(
           bool3: true,
           num3: 1.1,
           str3: 'test body'
@@ -487,9 +487,9 @@ module OpenApiSDK
       data = File.open('test/testdata/testUpload.json').read
 
       res = @sdk.request_bodies.request_body_put_multipart_file(Operations::RequestBodyPutMultipartFileRequestBody.new(
-                                                                  file: Operations::RequestBodyPutMultipartFileRequestBodyFile.new(
+                                                                  file: Operations::File.new(
                                                                     content: data,
-                                                                    file: 'test/testdata/testUpload.json'
+                                                                    file_name: 'test/testdata/testUpload.json'
                                                                   )
                                                                 ))
       refute_nil(res)
@@ -613,8 +613,8 @@ module OpenApiSDK
       record_test('request-bodies-post-empty-object')
 
       res = @sdk.request_bodies.request_body_post_empty_object(Operations::RequestBodyPostEmptyObjectRequestBody.new(
-                                                                 empty: Operations::RequestBodyPostEmptyObjectRequestBodyEmpty.new,
-                                                                 empty_with_empty_properties: Operations::RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties.new
+                                                                 empty: Operations::Empty.new,
+                                                                 empty_with_empty_properties: Operations::EmptyWithEmptyProperties.new
                                                                ))
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
@@ -664,7 +664,7 @@ module OpenApiSDK
     def test_request_body_read_and_write
       record_test('request-bodies-read-and-write')
 
-      res = @sdk.request_bodies.request_body_read_and_write(Shared::ReadWriteObjectInput.new(
+      res = @sdk.request_bodies.request_body_read_and_write(Shared::ReadWriteObject.new(
                                                               num1: 1,
                                                               num2: 2,
                                                               num3: 4

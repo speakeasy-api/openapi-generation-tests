@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using Xunit;
-using SDK;
-using SDK.Models.Shared;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -21,17 +21,13 @@ public class AuthShould
     {
         CommonHelpers.RecordTest("auth-basic-auth");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.AuthNew.BasicAuthNewAsync(
             new BasicAuthNewSecurity() { Username = "testUser", Password = "testPass" },
             new AuthServiceRequestBody()
             {
-                BasicAuth = new AuthServiceRequestBodyBasicAuth()
-                {
-                    Username = "testUser",
-                    Password = "testPass"
-                }
+                BasicAuth = new BasicAuth() { Username = "testUser", Password = "testPass" }
             }
         );
 
@@ -44,14 +40,14 @@ public class AuthShould
     {
         CommonHelpers.RecordTest("auth-api-key-auth-global");
 
-        var sdk = new SDKSDK(security: new Security() { ApiKeyAuthNew = "test_api_key" });
+        var sdk = new SDK(security: new Security() { ApiKeyAuthNew = "test_api_key" });
 
         var res = await sdk.AuthNew.ApiKeyAuthGlobalNewAsync(
             new AuthServiceRequestBody()
             {
-                HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>()
+                HeaderAuth = new List<HeaderAuth>()
                 {
-                    new AuthServiceRequestBodyHeaderAuth()
+                    new HeaderAuth()
                     {
                         ExpectedValue = "test_api_key",
                         HeaderName = "x-api-key"
@@ -69,7 +65,7 @@ public class AuthShould
     {
         CommonHelpers.RecordTest("auth-api-key-auth-operation");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Auth.ApiKeyAuthAsync(
             new ApiKeyAuthSecurity() { ApiKeyAuth = "Bearer testToken" }
@@ -86,7 +82,7 @@ public class AuthShould
     {
         CommonHelpers.RecordTest("auth-bearer-auth-operation-with-prefix");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Auth.BearerAuthAsync(
             new BearerAuthSecurity() { BearerAuth = "Bearer testToken" }
@@ -103,7 +99,7 @@ public class AuthShould
     {
         CommonHelpers.RecordTest("auth-bearer-auth-operation-without-prefix");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.Auth.BearerAuthAsync(
             new BearerAuthSecurity() { BearerAuth = "testToken" }
@@ -120,15 +116,15 @@ public class AuthShould
     {
         CommonHelpers.RecordTest("auth-oauth2-auth");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.AuthNew.Oauth2AuthNewAsync(
             new Oauth2AuthNewSecurity() { Oauth2 = "Bearer testToken" },
             new AuthServiceRequestBody()
             {
-                HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>()
+                HeaderAuth = new List<HeaderAuth>()
                 {
-                    new AuthServiceRequestBodyHeaderAuth()
+                    new HeaderAuth()
                     {
                         HeaderName = "Authorization",
                         ExpectedValue = "Bearer testToken"
@@ -145,15 +141,15 @@ public class AuthShould
     {
         CommonHelpers.RecordTest("auth-open-id-connect-auth");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.AuthNew.OpenIdConnectAuthNewAsync(
             new OpenIdConnectAuthNewSecurity() { OpenIdConnect = "Bearer testToken" },
             new AuthServiceRequestBody()
             {
-                HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>()
+                HeaderAuth = new List<HeaderAuth>()
                 {
-                    new AuthServiceRequestBodyHeaderAuth()
+                    new HeaderAuth()
                     {
                         HeaderName = "Authorization",
                         ExpectedValue = "Bearer testToken"
@@ -170,7 +166,7 @@ public class AuthShould
     {
         CommonHelpers.RecordTest("auth-multiple-simple-scheme-auth");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.AuthNew.MultipleSimpleSchemeAuthAsync(
             new MultipleSimpleSchemeAuthSecurity()
@@ -180,14 +176,14 @@ public class AuthShould
             },
             new AuthServiceRequestBody()
             {
-                HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>()
+                HeaderAuth = new List<HeaderAuth>()
                 {
-                    new AuthServiceRequestBodyHeaderAuth()
+                    new HeaderAuth()
                     {
                         HeaderName = "x-api-key",
                         ExpectedValue = "test_api_key"
                     },
-                    new AuthServiceRequestBodyHeaderAuth()
+                    new HeaderAuth()
                     {
                         HeaderName = "Authorization",
                         ExpectedValue = "Bearer testToken"
@@ -204,7 +200,7 @@ public class AuthShould
     {
         CommonHelpers.RecordTest("auth-multiple-mixed-scheme-auth");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.AuthNew.MultipleMixedSchemeAuthAsync(
             new MultipleMixedSchemeAuthSecurity()
@@ -214,15 +210,15 @@ public class AuthShould
             },
             new AuthServiceRequestBody()
             {
-                HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>()
+                HeaderAuth = new List<HeaderAuth>()
                 {
-                    new AuthServiceRequestBodyHeaderAuth()
+                    new HeaderAuth()
                     {
                         HeaderName = "x-api-key",
                         ExpectedValue = "test_api_key"
                     }
                 },
-                BasicAuth = new AuthServiceRequestBodyBasicAuth()
+                BasicAuth = new BasicAuth()
                 {
                     Username = "testUser",
                     Password = "testPass"
@@ -238,15 +234,15 @@ public class AuthShould
     {
         CommonHelpers.RecordTest("auth-multiple-simple-options-auth-first-option");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.AuthNew.MultipleSimpleOptionsAuthAsync(
             new MultipleSimpleOptionsAuthSecurity { ApiKeyAuthNew = "test_api_key" },
             new AuthServiceRequestBody()
             {
-                HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>()
+                HeaderAuth = new List<HeaderAuth>()
                 {
-                    new AuthServiceRequestBodyHeaderAuth()
+                    new HeaderAuth()
                     {
                         HeaderName = "x-api-key",
                         ExpectedValue = "test_api_key"
@@ -263,15 +259,15 @@ public class AuthShould
     {
         CommonHelpers.RecordTest("auth-multiple-simple-options-auth-second-option");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.AuthNew.MultipleSimpleOptionsAuthAsync(
             new MultipleSimpleOptionsAuthSecurity { Oauth2 = "Bearer testToken" },
             new AuthServiceRequestBody()
             {
-                HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>()
+                HeaderAuth = new List<HeaderAuth>()
                 {
-                    new AuthServiceRequestBodyHeaderAuth()
+                    new HeaderAuth()
                     {
                         HeaderName = "Authorization",
                         ExpectedValue = "Bearer testToken"
@@ -288,15 +284,15 @@ public class AuthShould
     {
         CommonHelpers.RecordTest("auth-multiple-mixed-options-auth-first-option");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.AuthNew.MultipleMixedOptionsAuthAsync(
             new MultipleMixedOptionsAuthSecurity() { ApiKeyAuthNew = "test_api_key" },
             new AuthServiceRequestBody()
             {
-                HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>()
+                HeaderAuth = new List<HeaderAuth>()
                 {
-                    new AuthServiceRequestBodyHeaderAuth()
+                    new HeaderAuth()
                     {
                         HeaderName = "x-api-key",
                         ExpectedValue = "test_api_key"
@@ -313,7 +309,7 @@ public class AuthShould
     {
         CommonHelpers.RecordTest("auth-multiple-mixed-options-auth-second-option");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.AuthNew.MultipleMixedOptionsAuthAsync(
             new MultipleMixedOptionsAuthSecurity()
@@ -322,7 +318,7 @@ public class AuthShould
             },
             new AuthServiceRequestBody()
             {
-                BasicAuth = new AuthServiceRequestBodyBasicAuth()
+                BasicAuth = new BasicAuth()
                 {
                     Username = "testUser",
                     Password = "testPass"
@@ -338,7 +334,7 @@ public class AuthShould
     {
         CommonHelpers.RecordTest("auth-multiple-options-with-simple-schemes-auth-first-option");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.AuthNew.MultipleOptionsWithSimpleSchemesAuthAsync(
             new MultipleOptionsWithSimpleSchemesAuthSecurity()
@@ -351,14 +347,14 @@ public class AuthShould
             },
             new AuthServiceRequestBody()
             {
-                HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>()
+                HeaderAuth = new List<HeaderAuth>()
                 {
-                    new AuthServiceRequestBodyHeaderAuth()
+                    new HeaderAuth()
                     {
                         HeaderName = "x-api-key",
                         ExpectedValue = "test_api_key"
                     },
-                    new AuthServiceRequestBodyHeaderAuth()
+                    new HeaderAuth()
                     {
                         HeaderName = "Authorization",
                         ExpectedValue = "Bearer testToken"
@@ -375,7 +371,7 @@ public class AuthShould
     {
         CommonHelpers.RecordTest("auth-multiple-options-with-simple-schemes-auth-second-option");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.AuthNew.MultipleOptionsWithSimpleSchemesAuthAsync(
             new MultipleOptionsWithSimpleSchemesAuthSecurity()
@@ -388,14 +384,14 @@ public class AuthShould
             },
             new AuthServiceRequestBody()
             {
-                HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>()
+                HeaderAuth = new List<HeaderAuth>()
                 {
-                    new AuthServiceRequestBodyHeaderAuth()
+                    new HeaderAuth()
                     {
                         HeaderName = "x-api-key",
                         ExpectedValue = "test_api_key"
                     },
-                    new AuthServiceRequestBodyHeaderAuth()
+                    new HeaderAuth()
                     {
                         HeaderName = "Authorization",
                         ExpectedValue = "Bearer testToken"
@@ -412,7 +408,7 @@ public class AuthShould
     {
         CommonHelpers.RecordTest("auth-multiple-options-with-mixed-schemes-auth-first-option");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.AuthNew.MultipleOptionsWithMixedSchemesAuthAsync(
             new MultipleOptionsWithMixedSchemesAuthSecurity()
@@ -425,14 +421,14 @@ public class AuthShould
             },
             new AuthServiceRequestBody()
             {
-                HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>()
+                HeaderAuth = new List<HeaderAuth>()
                 {
-                    new AuthServiceRequestBodyHeaderAuth()
+                    new HeaderAuth()
                     {
                         HeaderName = "x-api-key",
                         ExpectedValue = "test_api_key"
                     },
-                    new AuthServiceRequestBodyHeaderAuth()
+                    new HeaderAuth()
                     {
                         HeaderName = "Authorization",
                         ExpectedValue = "Bearer testToken"
@@ -449,7 +445,7 @@ public class AuthShould
     {
         CommonHelpers.RecordTest("auth-multiple-options-with-mixed-schemes-auth-second-option");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.AuthNew.MultipleOptionsWithMixedSchemesAuthAsync(
             new MultipleOptionsWithMixedSchemesAuthSecurity()
@@ -466,15 +462,15 @@ public class AuthShould
             },
             new AuthServiceRequestBody()
             {
-                HeaderAuth = new List<AuthServiceRequestBodyHeaderAuth>()
+                HeaderAuth = new List<HeaderAuth>()
                 {
-                    new AuthServiceRequestBodyHeaderAuth()
+                    new HeaderAuth()
                     {
                         HeaderName = "x-api-key",
                         ExpectedValue = "test_api_key"
                     }
                 },
-                BasicAuth = new AuthServiceRequestBodyBasicAuth()
+                BasicAuth = new BasicAuth()
                 {
                     Username = "testUser",
                     Password = "testPass"

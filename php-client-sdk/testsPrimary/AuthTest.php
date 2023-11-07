@@ -10,7 +10,6 @@ declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
 use OpenAPI\OpenAPI\Tests\CommonHelpers;
-use OpenAPI\OpenAPI\Tests\Helpers\Helpers;
 use PHPUnit\Framework\TestCase;
 
 final class AuthTest extends TestCase
@@ -24,7 +23,7 @@ final class AuthTest extends TestCase
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
         $request = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody();
-        $request->basicAuth = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyBasicAuth();
+        $request->basicAuth = new \OpenAPI\OpenAPI\Models\Shared\BasicAuth();
         $request->basicAuth->username = 'testUser';
         $request->basicAuth->password = 'testPass';
 
@@ -50,7 +49,7 @@ final class AuthTest extends TestCase
 
         $request = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody();
 
-        $header = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth();
+        $header = new \OpenAPI\OpenAPI\Models\Shared\HeaderAuth();
         $header->headerName = 'x-api-key';
         $header->expectedValue = 'test_api_key';
 
@@ -127,7 +126,7 @@ final class AuthTest extends TestCase
 
         $request = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody();
 
-        $header = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth();
+        $header = new \OpenAPI\OpenAPI\Models\Shared\HeaderAuth();
         $header->headerName = 'Authorization';
         $header->expectedValue = 'Bearer testToken';
 
@@ -153,7 +152,7 @@ final class AuthTest extends TestCase
 
         $request = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody();
 
-        $header = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth();
+        $header = new \OpenAPI\OpenAPI\Models\Shared\HeaderAuth();
         $header->headerName = 'Authorization';
         $header->expectedValue = 'Bearer testToken';
 
@@ -180,11 +179,11 @@ final class AuthTest extends TestCase
 
         $request = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody();
 
-        $header1 = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth();
+        $header1 = new \OpenAPI\OpenAPI\Models\Shared\HeaderAuth();
         $header1->headerName = 'x-api-key';
         $header1->expectedValue = 'test_api_key';
 
-        $header2 = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth();
+        $header2 = new \OpenAPI\OpenAPI\Models\Shared\HeaderAuth();
         $header2->headerName = 'Authorization';
         $header2->expectedValue = 'Bearer testToken';
 
@@ -212,11 +211,11 @@ final class AuthTest extends TestCase
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
         $request = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody();
-        $request->basicAuth = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyBasicAuth();
+        $request->basicAuth = new \OpenAPI\OpenAPI\Models\Shared\BasicAuth();
         $request->basicAuth->username = 'testUser';
         $request->basicAuth->password = 'testPass';
 
-        $header1 = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth();
+        $header1 = new \OpenAPI\OpenAPI\Models\Shared\HeaderAuth();
         $header1->headerName = 'x-api-key';
         $header1->expectedValue = 'test_api_key';
 
@@ -246,7 +245,7 @@ final class AuthTest extends TestCase
 
         $request = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody();
 
-        $header1 = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth();
+        $header1 = new \OpenAPI\OpenAPI\Models\Shared\HeaderAuth();
         $header1->headerName = 'x-api-key';
         $header1->expectedValue = 'test_api_key';
 
@@ -273,7 +272,7 @@ final class AuthTest extends TestCase
 
         $request = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody();
 
-        $header1 = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth();
+        $header1 = new \OpenAPI\OpenAPI\Models\Shared\HeaderAuth();
         $header1->headerName = 'Authorization';
         $header1->expectedValue = 'Bearer testToken';
 
@@ -300,7 +299,7 @@ final class AuthTest extends TestCase
 
         $request = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody();
 
-        $header1 = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth();
+        $header1 = new \OpenAPI\OpenAPI\Models\Shared\HeaderAuth();
         $header1->headerName = 'x-api-key';
         $header1->expectedValue = 'test_api_key';
 
@@ -326,7 +325,7 @@ final class AuthTest extends TestCase
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
         $request = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody();
-        $request->basicAuth = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyBasicAuth();
+        $request->basicAuth = new \OpenAPI\OpenAPI\Models\Shared\BasicAuth();
         $request->basicAuth->username = 'testUser';
         $request->basicAuth->password = 'testPass';
 
@@ -351,11 +350,11 @@ final class AuthTest extends TestCase
 
         $request = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody();
 
-        $header1 = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth();
+        $header1 = new \OpenAPI\OpenAPI\Models\Shared\HeaderAuth();
         $header1->headerName = 'x-api-key';
         $header1->expectedValue = 'test_api_key';
 
-        $header2 = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth();
+        $header2 = new \OpenAPI\OpenAPI\Models\Shared\HeaderAuth();
         $header2->headerName = 'Authorization';
         $header2->expectedValue = 'Bearer testToken';
 
@@ -385,11 +384,11 @@ final class AuthTest extends TestCase
 
         $request = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody();
 
-        $header1 = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth();
+        $header1 = new \OpenAPI\OpenAPI\Models\Shared\HeaderAuth();
         $header1->headerName = 'x-api-key';
         $header1->expectedValue = 'test_api_key';
 
-        $header2 = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth();
+        $header2 = new \OpenAPI\OpenAPI\Models\Shared\HeaderAuth();
         $header2->headerName = 'Authorization';
         $header2->expectedValue = 'Bearer testToken';
 
@@ -419,11 +418,11 @@ final class AuthTest extends TestCase
 
         $request = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody();
 
-        $header1 = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth();
+        $header1 = new \OpenAPI\OpenAPI\Models\Shared\HeaderAuth();
         $header1->headerName = 'x-api-key';
         $header1->expectedValue = 'test_api_key';
 
-        $header2 = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth();
+        $header2 = new \OpenAPI\OpenAPI\Models\Shared\HeaderAuth();
         $header2->headerName = 'Authorization';
         $header2->expectedValue = 'Bearer testToken';
 
@@ -452,11 +451,11 @@ final class AuthTest extends TestCase
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
         $request = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody();
-        $request->basicAuth = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyBasicAuth();
+        $request->basicAuth = new \OpenAPI\OpenAPI\Models\Shared\BasicAuth();
         $request->basicAuth->username = 'testUser';
         $request->basicAuth->password = 'testPass';
 
-        $header1 = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth();
+        $header1 = new \OpenAPI\OpenAPI\Models\Shared\HeaderAuth();
         $header1->headerName = 'x-api-key';
         $header1->expectedValue = 'test_api_key';
 

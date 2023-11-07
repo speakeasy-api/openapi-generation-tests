@@ -23,17 +23,17 @@ module OpenApiSDK
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
       # OK
-      field :response_body_optional_get_200_text_plain_string, T.nilable(String)
+      field :res, T.nilable(String)
       # OK
       field :typed_object1, T.nilable(Shared::TypedObject1)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), response_body_optional_get_200_text_plain_string: T.nilable(String), typed_object1: T.nilable(Shared::TypedObject1)).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil, response_body_optional_get_200_text_plain_string: nil, typed_object1: nil)
+      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), res: T.nilable(String), typed_object1: T.nilable(Shared::TypedObject1)).void }
+      def initialize(content_type: nil, status_code: nil, raw_response: nil, res: nil, typed_object1: nil)
         @content_type = content_type
         @status_code = status_code
         @raw_response = raw_response
-        @response_body_optional_get_200_text_plain_string = response_body_optional_get_200_text_plain_string
+        @res = res
         @typed_object1 = typed_object1
       end
     end

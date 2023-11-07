@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class AuthServiceRequestBodyBasicAuth < OpenApiSDK::Utils::FieldAugmented
+    class BasicAuth < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -26,7 +26,7 @@ module OpenApiSDK
     end
 
 
-    class AuthServiceRequestBodyHeaderAuth < OpenApiSDK::Utils::FieldAugmented
+    class HeaderAuth < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -47,12 +47,12 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :basic_auth, T.nilable(Shared::AuthServiceRequestBodyBasicAuth), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('basicAuth') } }
+      field :basic_auth, T.nilable(Shared::BasicAuth), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('basicAuth') } }
 
-      field :header_auth, T.nilable(T::Array[Shared::AuthServiceRequestBodyHeaderAuth]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('headerAuth') } }
+      field :header_auth, T.nilable(T::Array[Shared::HeaderAuth]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('headerAuth') } }
 
 
-      sig { params(basic_auth: T.nilable(Shared::AuthServiceRequestBodyBasicAuth), header_auth: T.nilable(T::Array[Shared::AuthServiceRequestBodyHeaderAuth])).void }
+      sig { params(basic_auth: T.nilable(Shared::BasicAuth), header_auth: T.nilable(T::Array[Shared::HeaderAuth])).void }
       def initialize(basic_auth: nil, header_auth: nil)
         @basic_auth = basic_auth
         @header_auth = header_auth

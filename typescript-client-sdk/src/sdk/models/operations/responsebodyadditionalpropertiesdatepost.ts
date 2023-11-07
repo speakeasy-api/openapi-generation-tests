@@ -3,14 +3,14 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { RFCDate } from "../../types";
+import { RFCDate } from "../../../sdk/types";
 import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 /**
  * OK
  */
-export class ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON extends SpeakeasyBase {
+export class ResponseBodyAdditionalPropertiesDatePostResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "json" })
     json: Record<string, RFCDate>;
@@ -39,5 +39,5 @@ export class ResponseBodyAdditionalPropertiesDatePostResponse extends SpeakeasyB
      * OK
      */
     @SpeakeasyMetadata()
-    responseBodyAdditionalPropertiesDatePost200ApplicationJSONObject?: ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON;
+    object?: ResponseBodyAdditionalPropertiesDatePostResponseBody;
 }

@@ -3,8 +3,8 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { RFCDate } from "../../types";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
+import { RFCDate } from "../../../sdk/types";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -48,7 +48,7 @@ export class UsageExamplePostRequestBody extends SpeakeasyBase {
 /**
  * An enum type
  */
-export enum UsageExamplePostEnumParameter {
+export enum EnumParameter {
     Value1 = "value1",
     Value2 = "value2",
     Value3 = "value3",
@@ -57,7 +57,7 @@ export enum UsageExamplePostEnumParameter {
 /**
  * An enum type
  */
-export enum UsageExamplePostOptEnumParameter {
+export enum OptEnumParameter {
     Value1 = "value1",
     Value2 = "value2",
     Value3 = "value3",
@@ -160,7 +160,7 @@ export class UsageExamplePostRequest extends SpeakeasyBase {
      * An enum parameter
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=enumParameter" })
-    enumParameter: UsageExamplePostEnumParameter;
+    enumParameter: EnumParameter;
 
     /**
      * A number parameter that contains a falsey example value
@@ -196,7 +196,7 @@ export class UsageExamplePostRequest extends SpeakeasyBase {
      * An enum parameter
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=optEnumParameter" })
-    optEnumParameter?: UsageExamplePostOptEnumParameter;
+    optEnumParameter?: OptEnumParameter;
 
     /**
      * A string parameter
@@ -205,7 +205,7 @@ export class UsageExamplePostRequest extends SpeakeasyBase {
     strParameter: string;
 }
 
-export class UsageExamplePost200ApplicationJSONJSON extends SpeakeasyBase {
+export class UsageExamplePostJson extends SpeakeasyBase {
     /**
      * A set of strings with format values that lead to relevant examples being generated for them
      */
@@ -234,11 +234,11 @@ export class UsageExamplePost200ApplicationJSONJSON extends SpeakeasyBase {
 /**
  * A response body that contains the simpleObject sent in the request body
  */
-export class UsageExamplePost200ApplicationJSON extends SpeakeasyBase {
+export class UsageExamplePostResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "json" })
-    @Type(() => UsageExamplePost200ApplicationJSONJSON)
-    json: UsageExamplePost200ApplicationJSONJSON;
+    @Type(() => UsageExamplePostJson)
+    json: UsageExamplePostJson;
 }
 
 export class UsageExamplePostResponse extends SpeakeasyBase {
@@ -264,5 +264,5 @@ export class UsageExamplePostResponse extends SpeakeasyBase {
      * A successful response that contains the simpleObject sent in the request body
      */
     @SpeakeasyMetadata()
-    usageExamplePost200ApplicationJSONObject?: UsageExamplePost200ApplicationJSON;
+    object?: UsageExamplePostResponseBody;
 }

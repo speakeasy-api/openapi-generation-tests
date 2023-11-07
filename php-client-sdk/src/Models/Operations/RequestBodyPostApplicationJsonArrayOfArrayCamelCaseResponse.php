@@ -38,16 +38,16 @@ class RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse
     /**
      * OK
      * 
-     * @var ?array<array<\OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase>> $arrs
+     * @var ?array<array<\OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase>> $res
      */
 	
-    public ?array $arrs = null;
+    public ?array $res = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->arrs = null;
+		$this->res = null;
 	}
 }

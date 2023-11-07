@@ -64,15 +64,15 @@ public class ResponseBodies {
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
         org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse res = new org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse(contentType, httpRes.statusCode()) {{
-            responseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject = null;
+            object = null;
         }};
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
-                org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON.class);
-                res.responseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject = out;
+                org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody.class);
+                res.object = out;
             }
         }
 
@@ -102,15 +102,15 @@ public class ResponseBodies {
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
         org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesDatePostResponse res = new org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesDatePostResponse(contentType, httpRes.statusCode()) {{
-            responseBodyAdditionalPropertiesDatePost200ApplicationJSONObject = null;
+            object = null;
         }};
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
-                org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON.class);
-                res.responseBodyAdditionalPropertiesDatePost200ApplicationJSONObject = out;
+                org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesDatePostResponseBody out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesDatePostResponseBody.class);
+                res.object = out;
             }
         }
 
@@ -140,15 +140,15 @@ public class ResponseBodies {
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
         org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesObjectPostResponse res = new org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesObjectPostResponse(contentType, httpRes.statusCode()) {{
-            responseBodyAdditionalPropertiesObjectPost200ApplicationJSONObject = null;
+            object = null;
         }};
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
-                org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSON out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSON.class);
-                res.responseBodyAdditionalPropertiesObjectPost200ApplicationJSONObject = out;
+                org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesObjectPostResponseBody out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesObjectPostResponseBody.class);
+                res.object = out;
             }
         }
 
@@ -178,15 +178,15 @@ public class ResponseBodies {
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
         org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesPostResponse res = new org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesPostResponse(contentType, httpRes.statusCode()) {{
-            responseBodyAdditionalPropertiesPost200ApplicationJSONObject = null;
+            object = null;
         }};
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
-                org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesPost200ApplicationJSON out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesPost200ApplicationJSON.class);
-                res.responseBodyAdditionalPropertiesPost200ApplicationJSONObject = out;
+                org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesPostResponseBody out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesPostResponseBody.class);
+                res.object = out;
             }
         }
 
@@ -289,7 +289,7 @@ public class ResponseBodies {
 
         org.openapis.openapi.models.operations.ResponseBodyOptionalGetResponse res = new org.openapis.openapi.models.operations.ResponseBodyOptionalGetResponse(contentType, httpRes.statusCode()) {{
             typedObject1 = null;
-            responseBodyOptionalGet200TextPlainString = null;
+            res = null;
         }};
         res.rawResponse = httpRes;
         
@@ -301,7 +301,7 @@ public class ResponseBodies {
             }
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "text/plain")) {
                 String out = new String(httpRes.body(), StandardCharsets.UTF_8);
-                res.responseBodyOptionalGet200TextPlainString = out;
+                res.res = out;
             }
         }
 
@@ -436,15 +436,15 @@ public class ResponseBodies {
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
         org.openapis.openapi.models.operations.ResponseBodyZeroValueComplexTypePtrsPostResponse res = new org.openapis.openapi.models.operations.ResponseBodyZeroValueComplexTypePtrsPostResponse(contentType, httpRes.statusCode()) {{
-            responseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject = null;
+            object = null;
         }};
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
-                org.openapis.openapi.models.operations.ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON.class);
-                res.responseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject = out;
+                org.openapis.openapi.models.operations.ResponseBodyZeroValueComplexTypePtrsPostResponseBody out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.ResponseBodyZeroValueComplexTypePtrsPostResponseBody.class);
+                res.object = out;
             }
         }
 

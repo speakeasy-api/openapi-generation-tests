@@ -5,12 +5,12 @@ import Foundation
 extension Operations {
     /// A model object
     public struct RequestBodyPutMultipartFileRequestBody: APIValue {
-        public let file: Operations.RequestBodyPutMultipartFileRequestBodyFile?
+        public let file: Operations.File?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(file: Operations.RequestBodyPutMultipartFileRequestBodyFile? = nil) {
+        public init(file: Operations.File? = nil) {
             self.file = file
         }
     }

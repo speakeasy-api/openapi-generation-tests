@@ -10,27 +10,27 @@ import (
 	"io"
 	"math/big"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
+	"openapi/v2/pkg/utils"
 	"strings"
 	"time"
 )
 
-// generation - Endpoints for purely testing valid generation behavior.
-type generation struct {
+// Generation - Endpoints for purely testing valid generation behavior.
+type Generation struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newGeneration(sdkConfig sdkConfiguration) *generation {
-	return &generation{
+func newGeneration(sdkConfig sdkConfiguration) *Generation {
+	return &Generation{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *generation) AnchorTypesGet(ctx context.Context) (*operations.AnchorTypesGetResponse, error) {
+func (s *Generation) AnchorTypesGet(ctx context.Context) (*operations.AnchorTypesGetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/anchorTypes"
 
@@ -69,7 +69,7 @@ func (s *generation) AnchorTypesGet(ctx context.Context) (*operations.AnchorType
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.TypeFromAnchor
+			var out operations.AnchorTypesGetTypeFromAnchor
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -87,7 +87,7 @@ func (s *generation) AnchorTypesGet(ctx context.Context) (*operations.AnchorType
 	return res, nil
 }
 
-func (s *generation) ArrayCircularReferenceGet(ctx context.Context) (*operations.ArrayCircularReferenceGetResponse, error) {
+func (s *Generation) ArrayCircularReferenceGet(ctx context.Context) (*operations.ArrayCircularReferenceGetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/arrayCircularReference"
 
@@ -144,7 +144,7 @@ func (s *generation) ArrayCircularReferenceGet(ctx context.Context) (*operations
 	return res, nil
 }
 
-func (s *generation) CircularReferenceGet(ctx context.Context) (*operations.CircularReferenceGetResponse, error) {
+func (s *Generation) CircularReferenceGet(ctx context.Context) (*operations.CircularReferenceGetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/circularReference"
 
@@ -201,7 +201,7 @@ func (s *generation) CircularReferenceGet(ctx context.Context) (*operations.Circ
 	return res, nil
 }
 
-func (s *generation) DateParamWithDefault(ctx context.Context, dateInput types.Date) (*operations.DateParamWithDefaultResponse, error) {
+func (s *Generation) DateParamWithDefault(ctx context.Context, dateInput types.Date) (*operations.DateParamWithDefaultResponse, error) {
 	request := operations.DateParamWithDefaultRequest{
 		DateInput: dateInput,
 	}
@@ -255,7 +255,7 @@ func (s *generation) DateParamWithDefault(ctx context.Context, dateInput types.D
 	return res, nil
 }
 
-func (s *generation) DateTimeParamWithDefault(ctx context.Context, dateTimeInput time.Time) (*operations.DateTimeParamWithDefaultResponse, error) {
+func (s *Generation) DateTimeParamWithDefault(ctx context.Context, dateTimeInput time.Time) (*operations.DateTimeParamWithDefaultResponse, error) {
 	request := operations.DateTimeParamWithDefaultRequest{
 		DateTimeInput: dateTimeInput,
 	}
@@ -309,7 +309,7 @@ func (s *generation) DateTimeParamWithDefault(ctx context.Context, dateTimeInput
 	return res, nil
 }
 
-func (s *generation) DecimalParamWithDefault(ctx context.Context, decimalInput *decimal.Big) (*operations.DecimalParamWithDefaultResponse, error) {
+func (s *Generation) DecimalParamWithDefault(ctx context.Context, decimalInput *decimal.Big) (*operations.DecimalParamWithDefaultResponse, error) {
 	request := operations.DecimalParamWithDefaultRequest{
 		DecimalInput: decimalInput,
 	}
@@ -363,7 +363,7 @@ func (s *generation) DecimalParamWithDefault(ctx context.Context, decimalInput *
 	return res, nil
 }
 
-func (s *generation) DeprecatedFieldInSchemaPost(ctx context.Context, request shared.DeprecatedFieldInObject) (*operations.DeprecatedFieldInSchemaPostResponse, error) {
+func (s *Generation) DeprecatedFieldInSchemaPost(ctx context.Context, request shared.DeprecatedFieldInObject) (*operations.DeprecatedFieldInSchemaPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/deprecatedFieldInSchema"
 
@@ -419,7 +419,7 @@ func (s *generation) DeprecatedFieldInSchemaPost(ctx context.Context, request sh
 	return res, nil
 }
 
-func (s *generation) DeprecatedObjectInSchemaGet(ctx context.Context) (*operations.DeprecatedObjectInSchemaGetResponse, error) {
+func (s *Generation) DeprecatedObjectInSchemaGet(ctx context.Context) (*operations.DeprecatedObjectInSchemaGetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/deprecatedObjectInSchema"
 
@@ -458,12 +458,12 @@ func (s *generation) DeprecatedObjectInSchemaGet(ctx context.Context) (*operatio
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.DeprecatedObjectInSchemaGet200ApplicationJSON
+			var out operations.DeprecatedObjectInSchemaGetResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.DeprecatedObjectInSchemaGet200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -479,7 +479,7 @@ func (s *generation) DeprecatedObjectInSchemaGet(ctx context.Context) (*operatio
 // DeprecatedOperationNoCommentsGet
 //
 // Deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-func (s *generation) DeprecatedOperationNoCommentsGet(ctx context.Context, deprecatedParameter *string) (*operations.DeprecatedOperationNoCommentsGetResponse, error) {
+func (s *Generation) DeprecatedOperationNoCommentsGet(ctx context.Context, deprecatedParameter *string) (*operations.DeprecatedOperationNoCommentsGetResponse, error) {
 	request := operations.DeprecatedOperationNoCommentsGetRequest{
 		DeprecatedParameter: deprecatedParameter,
 	}
@@ -536,7 +536,7 @@ func (s *generation) DeprecatedOperationNoCommentsGet(ctx context.Context, depre
 // DeprecatedOperationWithCommentsGet - This is an endpoint setup to test deprecation with comments
 //
 // Deprecated method: This operation is deprecated. Use SimplePathParameterObjects instead.
-func (s *generation) DeprecatedOperationWithCommentsGet(ctx context.Context, deprecatedParameter *string, newParameter *string) (*operations.DeprecatedOperationWithCommentsGetResponse, error) {
+func (s *Generation) DeprecatedOperationWithCommentsGet(ctx context.Context, deprecatedParameter *string, newParameter *string) (*operations.DeprecatedOperationWithCommentsGetResponse, error) {
 	request := operations.DeprecatedOperationWithCommentsGetRequest{
 		DeprecatedParameter: deprecatedParameter,
 		NewParameter:        newParameter,
@@ -591,7 +591,7 @@ func (s *generation) DeprecatedOperationWithCommentsGet(ctx context.Context, dep
 	return res, nil
 }
 
-func (s *generation) EmptyObjectGet(ctx context.Context, emptyObject shared.EmptyObjectParam) (*operations.EmptyObjectGetResponse, error) {
+func (s *Generation) EmptyObjectGet(ctx context.Context, emptyObject shared.EmptyObjectParam) (*operations.EmptyObjectGetResponse, error) {
 	request := operations.EmptyObjectGetRequest{
 		EmptyObject: emptyObject,
 	}
@@ -644,7 +644,7 @@ func (s *generation) EmptyObjectGet(ctx context.Context, emptyObject shared.Empt
 	return res, nil
 }
 
-func (s *generation) EmptyResponseObjectWithCommentGet(ctx context.Context) (*operations.EmptyResponseObjectWithCommentGetResponse, error) {
+func (s *Generation) EmptyResponseObjectWithCommentGet(ctx context.Context) (*operations.EmptyResponseObjectWithCommentGetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/emptyResponseObjectWithComment"
 
@@ -696,7 +696,7 @@ func (s *generation) EmptyResponseObjectWithCommentGet(ctx context.Context) (*op
 	return res, nil
 }
 
-func (s *generation) GlobalNameOverridden(ctx context.Context) (*operations.GetGlobalNameOverrideResponse, error) {
+func (s *Generation) GlobalNameOverridden(ctx context.Context) (*operations.GetGlobalNameOverrideResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/globalNameOverride"
 
@@ -735,12 +735,12 @@ func (s *generation) GlobalNameOverridden(ctx context.Context) (*operations.GetG
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.GetGlobalNameOverride200ApplicationJSON
+			var out operations.GetGlobalNameOverrideResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.GetGlobalNameOverride200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -753,7 +753,7 @@ func (s *generation) GlobalNameOverridden(ctx context.Context) (*operations.GetG
 	return res, nil
 }
 
-func (s *generation) IgnoredGenerationGet(ctx context.Context) (*operations.IgnoredGenerationGetResponse, error) {
+func (s *Generation) IgnoredGenerationGet(ctx context.Context) (*operations.IgnoredGenerationGetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/ignoredGeneration"
 
@@ -792,12 +792,12 @@ func (s *generation) IgnoredGenerationGet(ctx context.Context) (*operations.Igno
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.IgnoredGenerationGet200ApplicationJSON
+			var out operations.IgnoredGenerationGetResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.IgnoredGenerationGet200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -810,7 +810,7 @@ func (s *generation) IgnoredGenerationGet(ctx context.Context) (*operations.Igno
 	return res, nil
 }
 
-func (s *generation) IgnoresPost(ctx context.Context, requestBody operations.IgnoresPostApplicationJSON, testParam *string) (*operations.IgnoresPostResponse, error) {
+func (s *Generation) IgnoresPost(ctx context.Context, requestBody operations.IgnoresPostRequestBody, testParam *string) (*operations.IgnoresPostResponse, error) {
 	request := operations.IgnoresPostRequest{
 		RequestBody: requestBody,
 		TestParam:   testParam,
@@ -886,7 +886,7 @@ func (s *generation) IgnoresPost(ctx context.Context, requestBody operations.Ign
 	return res, nil
 }
 
-func (s *generation) NameOverride(ctx context.Context, testEnumQueryParam operations.NameOverrideGetEnumNameOverride, testQueryParam string) (*operations.NameOverrideGetResponse, error) {
+func (s *Generation) NameOverride(ctx context.Context, testEnumQueryParam operations.EnumNameOverride, testQueryParam string) (*operations.NameOverrideGetResponse, error) {
 	request := operations.NameOverrideGetRequest{
 		TestEnumQueryParam: testEnumQueryParam,
 		TestQueryParam:     testQueryParam,
@@ -934,7 +934,7 @@ func (s *generation) NameOverride(ctx context.Context, testEnumQueryParam operat
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.OverriddenResponse
+			var out operations.NameOverrideGetOverriddenResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -952,7 +952,7 @@ func (s *generation) NameOverride(ctx context.Context, testEnumQueryParam operat
 	return res, nil
 }
 
-func (s *generation) ObjectCircularReferenceGet(ctx context.Context) (*operations.ObjectCircularReferenceGetResponse, error) {
+func (s *Generation) ObjectCircularReferenceGet(ctx context.Context) (*operations.ObjectCircularReferenceGetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/objectCircularReference"
 
@@ -1009,7 +1009,7 @@ func (s *generation) ObjectCircularReferenceGet(ctx context.Context) (*operation
 	return res, nil
 }
 
-func (s *generation) OneOfCircularReferenceGet(ctx context.Context) (*operations.OneOfCircularReferenceGetResponse, error) {
+func (s *Generation) OneOfCircularReferenceGet(ctx context.Context) (*operations.OneOfCircularReferenceGetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/oneOfCircularReference"
 
@@ -1066,7 +1066,7 @@ func (s *generation) OneOfCircularReferenceGet(ctx context.Context) (*operations
 	return res, nil
 }
 
-func (s *generation) TypedParameterGenerationGet(ctx context.Context, bigint *big.Int, date *types.Date, decimal *decimal.Big, obj *operations.TypedParameterGenerationGetObj) (*operations.TypedParameterGenerationGetResponse, error) {
+func (s *Generation) TypedParameterGenerationGet(ctx context.Context, bigint *big.Int, date *types.Date, decimal *decimal.Big, obj *operations.Obj) (*operations.TypedParameterGenerationGetResponse, error) {
 	request := operations.TypedParameterGenerationGetRequest{
 		Bigint:  bigint,
 		Date:    date,
@@ -1127,7 +1127,7 @@ func (s *generation) TypedParameterGenerationGet(ctx context.Context, bigint *bi
 // An operation used for testing usage examples that includes a large array of parameters and input types to ensure that all are handled correctly
 //
 // https://docs.example.com - Usage example docs
-func (s *generation) UsageExamplePost(ctx context.Context, request operations.UsageExamplePostRequest, security operations.UsageExamplePostSecurity) (*operations.UsageExamplePostResponse, error) {
+func (s *Generation) UsageExamplePost(ctx context.Context, request operations.UsageExamplePostRequest, security operations.UsageExamplePostSecurity) (*operations.UsageExamplePostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/usageExample"
 
@@ -1177,12 +1177,12 @@ func (s *generation) UsageExamplePost(ctx context.Context, request operations.Us
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.UsageExamplePost200ApplicationJSON
+			var out operations.UsageExamplePostResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.UsageExamplePost200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}

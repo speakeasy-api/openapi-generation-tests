@@ -3,17 +3,17 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct NameOverrideGetRequest: APIValue {
         /// An enum type
-        public let testEnumQueryParam: Operations.NameOverrideGetEnumNameOverride
+        public let testEnumQueryParam: Operations.EnumNameOverride
         public let testQueryParam: String
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         /// - Parameter testEnumQueryParam: An enum type
         ///
-        public init(testEnumQueryParam: Operations.NameOverrideGetEnumNameOverride, testQueryParam: String) {
+        public init(testEnumQueryParam: Operations.EnumNameOverride, testQueryParam: String) {
             self.testEnumQueryParam = testEnumQueryParam
             self.testQueryParam = testQueryParam
         }

@@ -1,5 +1,5 @@
 # Parameters
-(*Parameters*)
+(*.Parameters*)
 
 ## Overview
 
@@ -41,8 +41,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -107,11 +107,11 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
-	"openapi/pkg/models/operations"
+	"openapi/v2/pkg/types"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -138,14 +138,14 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
 
-    objArrParam := &operations.DeepObjectQueryParamsObjectObjArrParam{
+    objArrParam := &operations.ObjArrParam{
         Arr: []string{
             "test",
             "test2",
@@ -166,11 +166,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                               | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
-| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                                   | :heavy_check_mark:                                                                                                      | The context to use for the request.                                                                                     |
-| `objParam`                                                                                                              | [shared.SimpleObject](../../models/shared/simpleobject.md)                                                              | :heavy_check_mark:                                                                                                      | A simple object that uses all our supported primitive types and enums and has optional properties.                      |
-| `objArrParam`                                                                                                           | [*operations.DeepObjectQueryParamsObjectObjArrParam](../../models/operations/deepobjectqueryparamsobjectobjarrparam.md) | :heavy_minus_sign:                                                                                                      | N/A                                                                                                                     |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |
+| `objParam`                                                                                         | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objArrParam`                                                                                      | [*operations.ObjArrParam](../../models/operations/objarrparam.md)                                  | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 
 
 ### Response
@@ -188,8 +188,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -239,8 +239,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -299,9 +299,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -314,12 +314,12 @@ func main() {
     )
 
 
-    objParamExploded := operations.FormQueryParamsCamelObjectObjParamExploded{
+    objParamExploded := operations.ObjParamExploded{
         ItemCount: openapi.String("10"),
         SearchTerm: openapi.String("foo"),
     }
 
-    objParam := &operations.FormQueryParamsCamelObjectObjParam{
+    objParam := &operations.ObjParam{
         EncodedCount: openapi.String("11"),
         EncodedTerm: openapi.String("bar"),
     }
@@ -338,11 +338,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                                          | :heavy_check_mark:                                                                                                             | The context to use for the request.                                                                                            |
-| `objParamExploded`                                                                                                             | [operations.FormQueryParamsCamelObjectObjParamExploded](../../models/operations/formqueryparamscamelobjectobjparamexploded.md) | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |
-| `objParam`                                                                                                                     | [*operations.FormQueryParamsCamelObjectObjParam](../../models/operations/formqueryparamscamelobjectobjparam.md)                | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
+| `objParamExploded`                                                         | [operations.ObjParamExploded](../../models/operations/objparamexploded.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `objParam`                                                                 | [*operations.ObjParam](../../models/operations/objparam.md)                | :heavy_minus_sign:                                                         | N/A                                                                        |
 
 
 ### Response
@@ -360,8 +360,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -420,10 +420,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -450,8 +450,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -471,8 +471,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -514,8 +514,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -574,8 +574,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -638,8 +638,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -692,8 +692,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -707,8 +707,8 @@ func main() {
 
 
     xHeaderMap := map[string]string{
-        "key1": "value1",
         "key2": "value2",
+        "key1": "value1",
     }
 
     xHeaderMapExplode := map[string]string{
@@ -752,10 +752,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -782,8 +782,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -803,8 +803,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -846,8 +846,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -906,10 +906,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -923,7 +923,7 @@ func main() {
 
 
     deepObjParam := shared.DeepObject{
-        Any: shared.CreateDeepObjectAnySimpleObject(
+        Any: shared.CreateAnySimpleObject(
                 shared.SimpleObject{
                     Any: "any",
                     Bigint: big.NewInt(8821239038968084),
@@ -938,8 +938,8 @@ func main() {
                     Float32: 1.1,
                     Int: 1,
                     Int32: 1,
-                    Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                    IntEnum: shared.SimpleObjectIntEnumSecond,
+                    Int32Enum: shared.Int32EnumFiftyFive,
+                    IntEnum: shared.IntEnumSecond,
                     Num: 1.1,
                     Str: "test",
                     StrOpt: openapi.String("testOptional"),
@@ -960,8 +960,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -980,8 +980,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -1004,8 +1004,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -1024,8 +1024,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
@@ -1046,8 +1046,8 @@ func main() {
             Float32: 1.1,
             Int: 1,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-            IntEnum: shared.SimpleObjectIntEnumSecond,
+            Int32Enum: shared.Int32EnumFiftyFive,
+            IntEnum: shared.IntEnumSecond,
             Num: 1.1,
             Str: "test",
             StrOpt: openapi.String("testOptional"),
@@ -1069,8 +1069,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -1112,8 +1112,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -1169,8 +1169,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -1226,10 +1226,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -1256,8 +1256,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -1277,8 +1277,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -1298,8 +1298,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -1342,10 +1342,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -1372,8 +1372,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -1414,10 +1414,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -1459,8 +1459,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -1504,8 +1504,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -1558,8 +1558,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -1618,10 +1618,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -1648,8 +1648,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -1669,8 +1669,8 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
@@ -1712,8 +1712,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {

@@ -28,11 +28,11 @@ Do this second
 ```typescript
 import { SDK } from "openapi";
 import {
-    UsageExamplePostEnumParameter,
-    UsageExamplePostOptEnumParameter,
+    EnumParameter,
+    OptEnumParameter,
     UsageExamplePostSecurity,
 } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 (async () => {
@@ -64,8 +64,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
                     float32: 1.1,
                     int: 1,
                     int32: 1,
-                    int32Enum: SimpleObjectInt32Enum.FiftyFive,
-                    intEnum: SimpleObjectIntEnum.Second,
+                    int32Enum: Int32Enum.FiftyFive,
+                    intEnum: IntEnum.Second,
                     num: 1.1,
                     str: "test",
                     strOpt: "testOptional",
@@ -80,13 +80,13 @@ import { RFCDate } from "openapi/dist/sdk/types";
             decimalParameter: 2679.33,
             decimalStrParameter: "string",
             doubleParameter: 5223.72,
-            enumParameter: UsageExamplePostEnumParameter.Value1,
+            enumParameter: EnumParameter.Value1,
             falseyNumberParameter: 0,
             float32Parameter: 6946.59,
             floatParameter: 2286.22,
             int64Parameter: 102975,
             intParameter: 566999,
-            optEnumParameter: UsageExamplePostOptEnumParameter.Value3,
+            optEnumParameter: OptEnumParameter.Value3,
             strParameter: "example 1",
         },
         operationSecurity

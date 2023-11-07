@@ -3,14 +3,14 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 /**
  * A successful response that contains the simpleObject sent in the request body
  */
-export class TypeFromAnchor extends SpeakeasyBase {
+export class AnchorTypesGetTypeFromAnchor extends SpeakeasyBase {
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
      */
@@ -43,5 +43,5 @@ export class AnchorTypesGetResponse extends SpeakeasyBase {
      * A successful response that contains the simpleObject sent in the request body
      */
     @SpeakeasyMetadata()
-    typeFromAnchor?: TypeFromAnchor;
+    typeFromAnchor?: AnchorTypesGetTypeFromAnchor;
 }

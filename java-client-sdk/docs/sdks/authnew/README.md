@@ -1,5 +1,5 @@
 # AuthNew
-(*authNew*)
+(*.authNew*)
 
 ## Overview
 
@@ -29,8 +29,8 @@ package hello.world;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.ApiKeyAuthGlobalNewResponse;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyBasicAuth;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth;
+import org.openapis.openapi.models.shared.BasicAuth;
+import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
@@ -45,9 +45,9 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                basicAuth = new BasicAuth("string", "string");
+                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
+                    add(new HeaderAuth("string", "string"){{
                         expectedValue = "string";
                         headerName = "string";
                     }}),
@@ -89,8 +89,8 @@ package hello.world;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.AuthGlobalResponse;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyBasicAuth;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth;
+import org.openapis.openapi.models.shared.BasicAuth;
+import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
@@ -105,9 +105,9 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                basicAuth = new BasicAuth("string", "string");
+                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
+                    add(new HeaderAuth("string", "string"){{
                         expectedValue = "string";
                         headerName = "string";
                     }}),
@@ -150,8 +150,8 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.BasicAuthNewResponse;
 import org.openapis.openapi.models.operations.BasicAuthNewSecurity;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyBasicAuth;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth;
+import org.openapis.openapi.models.shared.BasicAuth;
+import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
@@ -163,9 +163,9 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                basicAuth = new BasicAuth("string", "string");
+                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
+                    add(new HeaderAuth("string", "string"){{
                         expectedValue = "string";
                         headerName = "string";
                     }}),
@@ -212,8 +212,8 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.MultipleMixedOptionsAuthResponse;
 import org.openapis.openapi.models.operations.MultipleMixedOptionsAuthSecurity;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyBasicAuth;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth;
+import org.openapis.openapi.models.shared.BasicAuth;
+import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.SchemeBasicAuth;
 import org.openapis.openapi.models.shared.Security;
 
@@ -226,9 +226,9 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                basicAuth = new BasicAuth("string", "string");
+                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
+                    add(new HeaderAuth("string", "string"){{
                         expectedValue = "string";
                         headerName = "string";
                     }}),
@@ -274,8 +274,8 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.MultipleMixedSchemeAuthResponse;
 import org.openapis.openapi.models.operations.MultipleMixedSchemeAuthSecurity;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyBasicAuth;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth;
+import org.openapis.openapi.models.shared.BasicAuth;
+import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.SchemeBasicAuth;
 import org.openapis.openapi.models.shared.Security;
 
@@ -288,9 +288,9 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                basicAuth = new BasicAuth("string", "string");
+                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
+                    add(new HeaderAuth("string", "string"){{
                         expectedValue = "string";
                         headerName = "string";
                     }}),
@@ -342,8 +342,8 @@ import org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAut
 import org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthSecurityOption1;
 import org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthSecurityOption2;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyBasicAuth;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth;
+import org.openapis.openapi.models.shared.BasicAuth;
+import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.SchemeBasicAuth;
 import org.openapis.openapi.models.shared.Security;
 
@@ -356,9 +356,9 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                basicAuth = new BasicAuth("string", "string");
+                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
+                    add(new HeaderAuth("string", "string"){{
                         expectedValue = "string";
                         headerName = "string";
                     }}),
@@ -409,8 +409,8 @@ import org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAu
 import org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthSecurityOption1;
 import org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthSecurityOption2;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyBasicAuth;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth;
+import org.openapis.openapi.models.shared.BasicAuth;
+import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
@@ -422,9 +422,9 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                basicAuth = new BasicAuth("string", "string");
+                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
+                    add(new HeaderAuth("string", "string"){{
                         expectedValue = "string";
                         headerName = "string";
                     }}),
@@ -473,8 +473,8 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.MultipleSimpleOptionsAuthResponse;
 import org.openapis.openapi.models.operations.MultipleSimpleOptionsAuthSecurity;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyBasicAuth;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth;
+import org.openapis.openapi.models.shared.BasicAuth;
+import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
@@ -486,9 +486,9 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                basicAuth = new BasicAuth("string", "string");
+                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
+                    add(new HeaderAuth("string", "string"){{
                         expectedValue = "string";
                         headerName = "string";
                     }}),
@@ -534,8 +534,8 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.MultipleSimpleSchemeAuthResponse;
 import org.openapis.openapi.models.operations.MultipleSimpleSchemeAuthSecurity;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyBasicAuth;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth;
+import org.openapis.openapi.models.shared.BasicAuth;
+import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
@@ -547,9 +547,9 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                basicAuth = new BasicAuth("string", "string");
+                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
+                    add(new HeaderAuth("string", "string"){{
                         expectedValue = "string";
                         headerName = "string";
                     }}),
@@ -596,8 +596,8 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.Oauth2AuthNewResponse;
 import org.openapis.openapi.models.operations.Oauth2AuthNewSecurity;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyBasicAuth;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth;
+import org.openapis.openapi.models.shared.BasicAuth;
+import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
@@ -609,9 +609,9 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                basicAuth = new BasicAuth("string", "string");
+                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
+                    add(new HeaderAuth("string", "string"){{
                         expectedValue = "string";
                         headerName = "string";
                     }}),
@@ -657,8 +657,8 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.OpenIdConnectAuthNewResponse;
 import org.openapis.openapi.models.operations.OpenIdConnectAuthNewSecurity;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyBasicAuth;
-import org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth;
+import org.openapis.openapi.models.shared.BasicAuth;
+import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
@@ -670,9 +670,9 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                basicAuth = new BasicAuth("string", "string");
+                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
+                    add(new HeaderAuth("string", "string"){{
                         expectedValue = "string";
                         headerName = "string";
                     }}),

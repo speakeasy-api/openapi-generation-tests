@@ -8,25 +8,25 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/utils"
 	"strings"
 )
 
-// authNew - Endpoints for testing authentication.
-type authNew struct {
+// AuthNew - Endpoints for testing authentication.
+type AuthNew struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newAuthNew(sdkConfig sdkConfiguration) *authNew {
-	return &authNew{
+func newAuthNew(sdkConfig sdkConfiguration) *AuthNew {
+	return &AuthNew{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *authNew) APIKeyAuthGlobalNew(ctx context.Context, request shared.AuthServiceRequestBody, opts ...operations.Option) (*operations.APIKeyAuthGlobalNewResponse, error) {
+func (s *AuthNew) APIKeyAuthGlobalNew(ctx context.Context, request shared.AuthServiceRequestBody, opts ...operations.Option) (*operations.APIKeyAuthGlobalNewResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -98,7 +98,7 @@ func (s *authNew) APIKeyAuthGlobalNew(ctx context.Context, request shared.AuthSe
 	return res, nil
 }
 
-func (s *authNew) AuthGlobal(ctx context.Context, request shared.AuthServiceRequestBody, opts ...operations.Option) (*operations.AuthGlobalResponse, error) {
+func (s *AuthNew) AuthGlobal(ctx context.Context, request shared.AuthServiceRequestBody, opts ...operations.Option) (*operations.AuthGlobalResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -170,7 +170,7 @@ func (s *authNew) AuthGlobal(ctx context.Context, request shared.AuthServiceRequ
 	return res, nil
 }
 
-func (s *authNew) BasicAuthNew(ctx context.Context, request shared.AuthServiceRequestBody, security operations.BasicAuthNewSecurity, opts ...operations.Option) (*operations.BasicAuthNewResponse, error) {
+func (s *AuthNew) BasicAuthNew(ctx context.Context, request shared.AuthServiceRequestBody, security operations.BasicAuthNewSecurity, opts ...operations.Option) (*operations.BasicAuthNewResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -242,7 +242,7 @@ func (s *authNew) BasicAuthNew(ctx context.Context, request shared.AuthServiceRe
 	return res, nil
 }
 
-func (s *authNew) MultipleMixedOptionsAuth(ctx context.Context, request shared.AuthServiceRequestBody, security operations.MultipleMixedOptionsAuthSecurity, opts ...operations.Option) (*operations.MultipleMixedOptionsAuthResponse, error) {
+func (s *AuthNew) MultipleMixedOptionsAuth(ctx context.Context, request shared.AuthServiceRequestBody, security operations.MultipleMixedOptionsAuthSecurity, opts ...operations.Option) (*operations.MultipleMixedOptionsAuthResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -314,7 +314,7 @@ func (s *authNew) MultipleMixedOptionsAuth(ctx context.Context, request shared.A
 	return res, nil
 }
 
-func (s *authNew) MultipleMixedSchemeAuth(ctx context.Context, request shared.AuthServiceRequestBody, security operations.MultipleMixedSchemeAuthSecurity, opts ...operations.Option) (*operations.MultipleMixedSchemeAuthResponse, error) {
+func (s *AuthNew) MultipleMixedSchemeAuth(ctx context.Context, request shared.AuthServiceRequestBody, security operations.MultipleMixedSchemeAuthSecurity, opts ...operations.Option) (*operations.MultipleMixedSchemeAuthResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -386,7 +386,7 @@ func (s *authNew) MultipleMixedSchemeAuth(ctx context.Context, request shared.Au
 	return res, nil
 }
 
-func (s *authNew) MultipleOptionsWithMixedSchemesAuth(ctx context.Context, request shared.AuthServiceRequestBody, security operations.MultipleOptionsWithMixedSchemesAuthSecurity, opts ...operations.Option) (*operations.MultipleOptionsWithMixedSchemesAuthResponse, error) {
+func (s *AuthNew) MultipleOptionsWithMixedSchemesAuth(ctx context.Context, request shared.AuthServiceRequestBody, security operations.MultipleOptionsWithMixedSchemesAuthSecurity, opts ...operations.Option) (*operations.MultipleOptionsWithMixedSchemesAuthResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -458,7 +458,7 @@ func (s *authNew) MultipleOptionsWithMixedSchemesAuth(ctx context.Context, reque
 	return res, nil
 }
 
-func (s *authNew) MultipleOptionsWithSimpleSchemesAuth(ctx context.Context, request shared.AuthServiceRequestBody, security operations.MultipleOptionsWithSimpleSchemesAuthSecurity, opts ...operations.Option) (*operations.MultipleOptionsWithSimpleSchemesAuthResponse, error) {
+func (s *AuthNew) MultipleOptionsWithSimpleSchemesAuth(ctx context.Context, request shared.AuthServiceRequestBody, security operations.MultipleOptionsWithSimpleSchemesAuthSecurity, opts ...operations.Option) (*operations.MultipleOptionsWithSimpleSchemesAuthResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -530,7 +530,7 @@ func (s *authNew) MultipleOptionsWithSimpleSchemesAuth(ctx context.Context, requ
 	return res, nil
 }
 
-func (s *authNew) MultipleSimpleOptionsAuth(ctx context.Context, request shared.AuthServiceRequestBody, security operations.MultipleSimpleOptionsAuthSecurity, opts ...operations.Option) (*operations.MultipleSimpleOptionsAuthResponse, error) {
+func (s *AuthNew) MultipleSimpleOptionsAuth(ctx context.Context, request shared.AuthServiceRequestBody, security operations.MultipleSimpleOptionsAuthSecurity, opts ...operations.Option) (*operations.MultipleSimpleOptionsAuthResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -602,7 +602,7 @@ func (s *authNew) MultipleSimpleOptionsAuth(ctx context.Context, request shared.
 	return res, nil
 }
 
-func (s *authNew) MultipleSimpleSchemeAuth(ctx context.Context, request shared.AuthServiceRequestBody, security operations.MultipleSimpleSchemeAuthSecurity, opts ...operations.Option) (*operations.MultipleSimpleSchemeAuthResponse, error) {
+func (s *AuthNew) MultipleSimpleSchemeAuth(ctx context.Context, request shared.AuthServiceRequestBody, security operations.MultipleSimpleSchemeAuthSecurity, opts ...operations.Option) (*operations.MultipleSimpleSchemeAuthResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -674,7 +674,7 @@ func (s *authNew) MultipleSimpleSchemeAuth(ctx context.Context, request shared.A
 	return res, nil
 }
 
-func (s *authNew) Oauth2AuthNew(ctx context.Context, request shared.AuthServiceRequestBody, security operations.Oauth2AuthNewSecurity, opts ...operations.Option) (*operations.Oauth2AuthNewResponse, error) {
+func (s *AuthNew) Oauth2AuthNew(ctx context.Context, request shared.AuthServiceRequestBody, security operations.Oauth2AuthNewSecurity, opts ...operations.Option) (*operations.Oauth2AuthNewResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -746,7 +746,7 @@ func (s *authNew) Oauth2AuthNew(ctx context.Context, request shared.AuthServiceR
 	return res, nil
 }
 
-func (s *authNew) OpenIDConnectAuthNew(ctx context.Context, request shared.AuthServiceRequestBody, security operations.OpenIDConnectAuthNewSecurity, opts ...operations.Option) (*operations.OpenIDConnectAuthNewResponse, error) {
+func (s *AuthNew) OpenIDConnectAuthNew(ctx context.Context, request shared.AuthServiceRequestBody, security operations.OpenIDConnectAuthNewSecurity, opts ...operations.Option) (*operations.OpenIDConnectAuthNewResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,

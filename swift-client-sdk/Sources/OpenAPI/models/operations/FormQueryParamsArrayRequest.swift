@@ -3,12 +3,12 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct FormQueryParamsArrayRequest: APIValue {
         public let arrParam: [String]?
         public let arrParamExploded: [Int]?
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         ///
         public init(arrParam: [String]? = nil, arrParamExploded: [Int]? = nil) {

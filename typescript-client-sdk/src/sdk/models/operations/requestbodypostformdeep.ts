@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class RequestBodyPostFormDeepResForm extends SpeakeasyBase {
+export class Form extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "arr" })
     arr: string;
@@ -42,8 +42,8 @@ export class RequestBodyPostFormDeepResForm extends SpeakeasyBase {
 export class RequestBodyPostFormDeepRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "form" })
-    @Type(() => RequestBodyPostFormDeepResForm)
-    form: RequestBodyPostFormDeepResForm;
+    @Type(() => Form)
+    form: Form;
 }
 
 export class RequestBodyPostFormDeepResponse extends SpeakeasyBase {

@@ -3,19 +3,19 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct TypedParameterGenerationGetRequest: APIValue {
         public let bigint: Int?
         @DateOnly
         public private(set) var date: Date?
         @DecimalSerialized
         public private(set) var decimal: Double?
-        public let obj: Operations.TypedParameterGenerationGetObj?
+        public let obj: Operations.Obj?
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         ///
-        public init(bigint: Int? = nil, date: Date? = nil, decimal: Double? = nil, obj: Operations.TypedParameterGenerationGetObj? = nil) {
+        public init(bigint: Int? = nil, date: Date? = nil, decimal: Double? = nil, obj: Operations.Obj? = nil) {
             self.bigint = bigint
             self._date = DateOnly<Date?>(wrappedValue: date)
             self._decimal = DecimalSerialized<Double?>(wrappedValue: decimal)

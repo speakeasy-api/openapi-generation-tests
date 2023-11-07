@@ -20,7 +20,7 @@ class HeaderParamsPrimitiveRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class HeaderParamsPrimitiveResHeaders:
+class HeaderParamsPrimitiveHeaders:
     x_header_boolean: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('X-Header-Boolean') }})
     x_header_integer: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('X-Header-Integer') }})
     x_header_number: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('X-Header-Number') }})
@@ -33,7 +33,7 @@ class HeaderParamsPrimitiveResHeaders:
 @dataclasses.dataclass
 class HeaderParamsPrimitiveRes:
     r"""OK"""
-    headers: HeaderParamsPrimitiveResHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
+    headers: HeaderParamsPrimitiveHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
     
 
 

@@ -38,16 +38,16 @@ class NullableRequiredSharedObjectPostResponse
     /**
      * OK
      * 
-     * @var ?string $nullableRequiredSharedObjectPost200ApplicationJSONString
+     * @var ?string $res
      */
 	
-    public ?string $nullableRequiredSharedObjectPost200ApplicationJSONString = null;
+    public ?string $res = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->nullableRequiredSharedObjectPost200ApplicationJSONString = null;
+		$this->res = null;
 	}
 }

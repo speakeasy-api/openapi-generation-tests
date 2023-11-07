@@ -6,7 +6,7 @@ import (
 	"errors"
 	"math/big"
 	"net/http"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 	"time"
 )
 
@@ -73,58 +73,58 @@ func (u UnionDateTimeBigIntRequestBody) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-type UnionDateTimeBigIntResJSONType string
+type UnionDateTimeBigIntJSONType string
 
 const (
-	UnionDateTimeBigIntResJSONTypeDateTime UnionDateTimeBigIntResJSONType = "date-time"
-	UnionDateTimeBigIntResJSONTypeBigint   UnionDateTimeBigIntResJSONType = "bigint"
+	UnionDateTimeBigIntJSONTypeDateTime UnionDateTimeBigIntJSONType = "date-time"
+	UnionDateTimeBigIntJSONTypeBigint   UnionDateTimeBigIntJSONType = "bigint"
 )
 
-type UnionDateTimeBigIntResJSON struct {
+type UnionDateTimeBigIntJSON struct {
 	DateTime *time.Time
 	Bigint   *big.Int
 
-	Type UnionDateTimeBigIntResJSONType
+	Type UnionDateTimeBigIntJSONType
 }
 
-func CreateUnionDateTimeBigIntResJSONDateTime(dateTime time.Time) UnionDateTimeBigIntResJSON {
-	typ := UnionDateTimeBigIntResJSONTypeDateTime
+func CreateUnionDateTimeBigIntJSONDateTime(dateTime time.Time) UnionDateTimeBigIntJSON {
+	typ := UnionDateTimeBigIntJSONTypeDateTime
 
-	return UnionDateTimeBigIntResJSON{
+	return UnionDateTimeBigIntJSON{
 		DateTime: &dateTime,
 		Type:     typ,
 	}
 }
 
-func CreateUnionDateTimeBigIntResJSONBigint(bigint *big.Int) UnionDateTimeBigIntResJSON {
-	typ := UnionDateTimeBigIntResJSONTypeBigint
+func CreateUnionDateTimeBigIntJSONBigint(bigint *big.Int) UnionDateTimeBigIntJSON {
+	typ := UnionDateTimeBigIntJSONTypeBigint
 
-	return UnionDateTimeBigIntResJSON{
+	return UnionDateTimeBigIntJSON{
 		Bigint: bigint,
 		Type:   typ,
 	}
 }
 
-func (u *UnionDateTimeBigIntResJSON) UnmarshalJSON(data []byte) error {
+func (u *UnionDateTimeBigIntJSON) UnmarshalJSON(data []byte) error {
 
 	dateTime := time.Time{}
 	if err := utils.UnmarshalJSON(data, &dateTime, "", true, true); err == nil {
 		u.DateTime = &dateTime
-		u.Type = UnionDateTimeBigIntResJSONTypeDateTime
+		u.Type = UnionDateTimeBigIntJSONTypeDateTime
 		return nil
 	}
 
 	bigint := big.NewInt(0)
 	if err := utils.UnmarshalJSON(data, &bigint, "", true, true); err == nil {
 		u.Bigint = bigint
-		u.Type = UnionDateTimeBigIntResJSONTypeBigint
+		u.Type = UnionDateTimeBigIntJSONTypeBigint
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u UnionDateTimeBigIntResJSON) MarshalJSON() ([]byte, error) {
+func (u UnionDateTimeBigIntJSON) MarshalJSON() ([]byte, error) {
 	if u.DateTime != nil {
 		return utils.MarshalJSON(u.DateTime, "", true)
 	}
@@ -138,12 +138,12 @@ func (u UnionDateTimeBigIntResJSON) MarshalJSON() ([]byte, error) {
 
 // UnionDateTimeBigIntRes - OK
 type UnionDateTimeBigIntRes struct {
-	JSON UnionDateTimeBigIntResJSON `json:"json"`
+	JSON UnionDateTimeBigIntJSON `json:"json"`
 }
 
-func (o *UnionDateTimeBigIntRes) GetJSON() UnionDateTimeBigIntResJSON {
+func (o *UnionDateTimeBigIntRes) GetJSON() UnionDateTimeBigIntJSON {
 	if o == nil {
-		return UnionDateTimeBigIntResJSON{}
+		return UnionDateTimeBigIntJSON{}
 	}
 	return o.JSON
 }

@@ -26,8 +26,8 @@ class NullableRequiredPropertyPostRequestBody
     public array $nullableRequiredArray;
     
 	#[\JMS\Serializer\Annotation\SerializedName('NullableRequiredEnum')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Operations\NullableRequiredPropertyPostRequestBodyNullableRequiredEnum>')]
-    public NullableRequiredPropertyPostRequestBodyNullableRequiredEnum $nullableRequiredEnum;
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Operations\NullableRequiredEnum>')]
+    public NullableRequiredEnum $nullableRequiredEnum;
     
 	#[\JMS\Serializer\Annotation\SerializedName('NullableRequiredInt')]
     #[\JMS\Serializer\Annotation\Type('int')]
@@ -37,7 +37,7 @@ class NullableRequiredPropertyPostRequestBody
 	{
 		$this->nullableOptionalInt = null;
 		$this->nullableRequiredArray = [];
-		$this->nullableRequiredEnum = \OpenAPI\OpenAPI\Models\Operations\NullableRequiredPropertyPostRequestBodyNullableRequiredEnum::First;
+		$this->nullableRequiredEnum = \OpenAPI\OpenAPI\Models\Operations\NullableRequiredEnum::First;
 		$this->nullableRequiredInt = 0;
 	}
 }

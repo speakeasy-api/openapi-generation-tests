@@ -49,8 +49,8 @@ module OpenApiSDK
       end
     end
 
-    # UsageExamplePostEnumParameter - An enum type
-    class UsageExamplePostEnumParameter < T::Enum
+    # EnumParameter - An enum type
+    class EnumParameter < T::Enum
       enums do
         VALUE1 = new('value1')
         VALUE2 = new('value2')
@@ -59,8 +59,8 @@ module OpenApiSDK
     end
 
 
-    # UsageExamplePostOptEnumParameter - An enum type
-    class UsageExamplePostOptEnumParameter < T::Enum
+    # OptEnumParameter - An enum type
+    class OptEnumParameter < T::Enum
       enums do
         VALUE1 = new('value1')
         VALUE2 = new('value2')
@@ -92,7 +92,7 @@ module OpenApiSDK
       # A double parameter
       field :double_parameter, Float, { 'query_param': { 'field_name': 'doubleParameter', 'style': 'form', 'explode': true } }
       # An enum parameter
-      field :enum_parameter, Operations::UsageExamplePostEnumParameter, { 'query_param': { 'field_name': 'enumParameter', 'style': 'form', 'explode': true } }
+      field :enum_parameter, Operations::EnumParameter, { 'query_param': { 'field_name': 'enumParameter', 'style': 'form', 'explode': true } }
       # A number parameter that contains a falsey example value
       field :falsey_number_parameter, Float, { 'query_param': { 'field_name': 'falseyNumberParameter', 'style': 'form', 'explode': true } }
       # A float32 parameter
@@ -114,12 +114,12 @@ module OpenApiSDK
       # A decimal parameter
       field :decimal_str_parameter_optional, T.nilable(String), { 'query_param': { 'field_name': 'decimalStrParameterOptional', 'style': 'form', 'explode': true } }
       # An enum parameter
-      field :opt_enum_parameter, T.nilable(Operations::UsageExamplePostOptEnumParameter), { 'query_param': { 'field_name': 'optEnumParameter', 'style': 'form', 'explode': true } }
+      field :opt_enum_parameter, T.nilable(Operations::OptEnumParameter), { 'query_param': { 'field_name': 'optEnumParameter', 'style': 'form', 'explode': true } }
       # A request body that contains fields with different formats for testing example generation
       field :request_body, T.nilable(Operations::UsageExamplePostRequestBody), { 'request': { 'media_type': 'application/json' } }
 
 
-      sig { params(bigint_parameter: Integer, bigint_str_parameter: String, bool_parameter: T::Boolean, date_parameter: Date, date_time_default_parameter: DateTime, date_time_parameter: DateTime, decimal_parameter: Float, decimal_str_parameter: String, double_parameter: Float, enum_parameter: Operations::UsageExamplePostEnumParameter, falsey_number_parameter: Float, float32_parameter: Float, float_parameter: Float, int64_parameter: Integer, int_parameter: Integer, str_parameter: String, bigint_parameter_optional: T.nilable(Integer), bigint_str_parameter_optional: T.nilable(String), decimal_parameter_optional: T.nilable(Float), decimal_str_parameter_optional: T.nilable(String), opt_enum_parameter: T.nilable(Operations::UsageExamplePostOptEnumParameter), request_body: T.nilable(Operations::UsageExamplePostRequestBody)).void }
+      sig { params(bigint_parameter: Integer, bigint_str_parameter: String, bool_parameter: T::Boolean, date_parameter: Date, date_time_default_parameter: DateTime, date_time_parameter: DateTime, decimal_parameter: Float, decimal_str_parameter: String, double_parameter: Float, enum_parameter: Operations::EnumParameter, falsey_number_parameter: Float, float32_parameter: Float, float_parameter: Float, int64_parameter: Integer, int_parameter: Integer, str_parameter: String, bigint_parameter_optional: T.nilable(Integer), bigint_str_parameter_optional: T.nilable(String), decimal_parameter_optional: T.nilable(Float), decimal_str_parameter_optional: T.nilable(String), opt_enum_parameter: T.nilable(Operations::OptEnumParameter), request_body: T.nilable(Operations::UsageExamplePostRequestBody)).void }
       def initialize(bigint_parameter: nil, bigint_str_parameter: nil, bool_parameter: nil, date_parameter: nil, date_time_default_parameter: nil, date_time_parameter: nil, decimal_parameter: nil, decimal_str_parameter: nil, double_parameter: nil, enum_parameter: nil, falsey_number_parameter: nil, float32_parameter: nil, float_parameter: nil, int64_parameter: nil, int_parameter: nil, str_parameter: nil, bigint_parameter_optional: nil, bigint_str_parameter_optional: nil, decimal_parameter_optional: nil, decimal_str_parameter_optional: nil, opt_enum_parameter: nil, request_body: nil)
         @bigint_parameter = bigint_parameter
         @bigint_str_parameter = bigint_str_parameter
@@ -147,7 +147,7 @@ module OpenApiSDK
     end
 
 
-    class UsageExamplePost200ApplicationJSONJSON < OpenApiSDK::Utils::FieldAugmented
+    class UsageExamplePostJson < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # A set of strings with format values that lead to relevant examples being generated for them
@@ -168,14 +168,14 @@ module OpenApiSDK
     end
 
     # A response body that contains the simpleObject sent in the request body
-    class UsageExamplePost200ApplicationJSON < OpenApiSDK::Utils::FieldAugmented
+    class UsageExamplePostResponseBody < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :json, Operations::UsageExamplePost200ApplicationJSONJSON, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
+      field :json, Operations::UsageExamplePostJson, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
 
 
-      sig { params(json: Operations::UsageExamplePost200ApplicationJSONJSON).void }
+      sig { params(json: Operations::UsageExamplePostJson).void }
       def initialize(json: nil)
         @json = json
       end
@@ -189,18 +189,18 @@ module OpenApiSDK
       field :content_type, String
       # HTTP response status code for this operation
       field :status_code, Integer
+      # A successful response that contains the simpleObject sent in the request body
+      field :object, T.nilable(Operations::UsageExamplePostResponseBody)
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
-      # A successful response that contains the simpleObject sent in the request body
-      field :usage_example_post_200_application_json_object, T.nilable(Operations::UsageExamplePost200ApplicationJSON)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), usage_example_post_200_application_json_object: T.nilable(Operations::UsageExamplePost200ApplicationJSON)).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil, usage_example_post_200_application_json_object: nil)
+      sig { params(content_type: String, status_code: Integer, object: T.nilable(Operations::UsageExamplePostResponseBody), raw_response: T.nilable(Faraday::Response)).void }
+      def initialize(content_type: nil, status_code: nil, object: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code
+        @object = object
         @raw_response = raw_response
-        @usage_example_post_200_application_json_object = usage_example_post_200_application_json_object
       end
     end
   end

@@ -9,7 +9,7 @@ from typing import List, Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class HTTPBinSimpleJSONObjectSlideshowSlides:
+class Slides:
     title: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title') }})
     type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     items: Optional[List[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('items'), 'exclude': lambda f: f is None }})
@@ -19,10 +19,10 @@ class HTTPBinSimpleJSONObjectSlideshowSlides:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class HTTPBinSimpleJSONObjectSlideshow:
+class Slideshow:
     author: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('author') }})
     date_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date') }})
-    slides: List[HTTPBinSimpleJSONObjectSlideshowSlides] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('slides') }})
+    slides: List[Slides] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('slides') }})
     title: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title') }})
     
 
@@ -31,6 +31,6 @@ class HTTPBinSimpleJSONObjectSlideshow:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class HTTPBinSimpleJSONObject:
-    slideshow: HTTPBinSimpleJSONObjectSlideshow = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('slideshow') }})
+    slideshow: Slideshow = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('slideshow') }})
     
 

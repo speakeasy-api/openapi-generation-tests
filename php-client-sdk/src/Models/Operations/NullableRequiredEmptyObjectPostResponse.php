@@ -38,16 +38,16 @@ class NullableRequiredEmptyObjectPostResponse
     /**
      * OK
      * 
-     * @var ?string $nullableRequiredEmptyObjectPost200ApplicationJSONString
+     * @var ?string $res
      */
 	
-    public ?string $nullableRequiredEmptyObjectPost200ApplicationJSONString = null;
+    public ?string $res = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->nullableRequiredEmptyObjectPost200ApplicationJSONString = null;
+		$this->res = null;
 	}
 }

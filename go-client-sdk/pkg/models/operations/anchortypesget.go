@@ -4,16 +4,16 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
-// TypeFromAnchor - A successful response that contains the simpleObject sent in the request body
-type TypeFromAnchor struct {
+// AnchorTypesGetTypeFromAnchor - A successful response that contains the simpleObject sent in the request body
+type AnchorTypesGetTypeFromAnchor struct {
 	// A simple object that uses all our supported primitive types and enums and has optional properties.
 	JSON *shared.SimpleObject `json:"json,omitempty"`
 }
 
-func (o *TypeFromAnchor) GetJSON() *shared.SimpleObject {
+func (o *AnchorTypesGetTypeFromAnchor) GetJSON() *shared.SimpleObject {
 	if o == nil {
 		return nil
 	}
@@ -28,7 +28,7 @@ type AnchorTypesGetResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A successful response that contains the simpleObject sent in the request body
-	TypeFromAnchor *TypeFromAnchor
+	TypeFromAnchor *AnchorTypesGetTypeFromAnchor
 }
 
 func (o *AnchorTypesGetResponse) GetContentType() string {
@@ -52,7 +52,7 @@ func (o *AnchorTypesGetResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *AnchorTypesGetResponse) GetTypeFromAnchor() *TypeFromAnchor {
+func (o *AnchorTypesGetResponse) GetTypeFromAnchor() *AnchorTypesGetTypeFromAnchor {
 	if o == nil {
 		return nil
 	}

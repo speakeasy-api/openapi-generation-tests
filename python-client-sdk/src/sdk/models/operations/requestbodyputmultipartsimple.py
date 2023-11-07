@@ -10,7 +10,7 @@ from typing import Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class RequestBodyPutMultipartSimpleResForm:
+class RequestBodyPutMultipartSimpleForm:
     any: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }})
     bool: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool') }})
     date_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date') }})
@@ -31,7 +31,7 @@ class RequestBodyPutMultipartSimpleResForm:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class RequestBodyPutMultipartSimpleResHeaders:
+class RequestBodyPutMultipartSimpleHeaders:
     content_type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Content-Type') }})
     
 
@@ -41,8 +41,8 @@ class RequestBodyPutMultipartSimpleResHeaders:
 @dataclasses.dataclass
 class RequestBodyPutMultipartSimpleRes:
     r"""OK"""
-    form: RequestBodyPutMultipartSimpleResForm = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form') }})
-    headers: RequestBodyPutMultipartSimpleResHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
+    form: RequestBodyPutMultipartSimpleForm = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form') }})
+    headers: RequestBodyPutMultipartSimpleHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
     
 
 

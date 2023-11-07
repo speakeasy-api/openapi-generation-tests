@@ -10,7 +10,7 @@ from typing import Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class PutAnythingIgnoredGeneration200ApplicationJSON:
+class PutAnythingIgnoredGenerationResponseBody:
     r"""OK"""
     json: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     
@@ -23,7 +23,7 @@ class PutAnythingIgnoredGenerationResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    put_anything_ignored_generation_200_application_json_object: Optional[PutAnythingIgnoredGeneration200ApplicationJSON] = dataclasses.field(default=None)
+    object: Optional[PutAnythingIgnoredGenerationResponseBody] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""

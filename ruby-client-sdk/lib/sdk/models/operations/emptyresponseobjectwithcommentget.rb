@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
     # OK
-    class EmptyResponseObjectWithCommentGet200ApplicationOctetStream < OpenApiSDK::Utils::FieldAugmented
+    class EmptyResponseObjectWithCommentGetResponseBody < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 

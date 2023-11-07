@@ -10,9 +10,9 @@ import org.openapis.openapi.utils.SpeakeasyMetadata;
 
 public class RequestBodyPostMultipleContentTypesSplitParamFormRequest {
     @SpeakeasyMetadata("request:mediaType=application/x-www-form-urlencoded")
-    public RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded requestBody;
+    public RequestBodyPostMultipleContentTypesSplitParamFormRequestBody requestBody;
 
-    public RequestBodyPostMultipleContentTypesSplitParamFormRequest withRequestBody(RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded requestBody) {
+    public RequestBodyPostMultipleContentTypesSplitParamFormRequest withRequestBody(RequestBodyPostMultipleContentTypesSplitParamFormRequestBody requestBody) {
         this.requestBody = requestBody;
         return this;
     }
@@ -25,7 +25,7 @@ public class RequestBodyPostMultipleContentTypesSplitParamFormRequest {
         return this;
     }
     
-    public RequestBodyPostMultipleContentTypesSplitParamFormRequest(@JsonProperty("RequestBody") RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded requestBody, @JsonProperty("paramStr") String paramStr) {
+    public RequestBodyPostMultipleContentTypesSplitParamFormRequest(@JsonProperty("RequestBody") RequestBodyPostMultipleContentTypesSplitParamFormRequestBody requestBody, @JsonProperty("paramStr") String paramStr) {
         this.requestBody = requestBody;
         this.paramStr = paramStr;
   }

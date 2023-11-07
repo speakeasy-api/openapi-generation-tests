@@ -33,22 +33,22 @@ func (o *MixedParametersPrimitivesRequest) GetQueryStringParam() string {
 	return o.QueryStringParam
 }
 
-type MixedParametersPrimitivesResArgs struct {
+type MixedParametersPrimitivesArgs struct {
 	QueryStringParam string `json:"queryStringParam"`
 }
 
-func (o *MixedParametersPrimitivesResArgs) GetQueryStringParam() string {
+func (o *MixedParametersPrimitivesArgs) GetQueryStringParam() string {
 	if o == nil {
 		return ""
 	}
 	return o.QueryStringParam
 }
 
-type MixedParametersPrimitivesResHeaders struct {
+type MixedParametersPrimitivesHeaders struct {
 	Headerparam string `json:"Headerparam"`
 }
 
-func (o *MixedParametersPrimitivesResHeaders) GetHeaderparam() string {
+func (o *MixedParametersPrimitivesHeaders) GetHeaderparam() string {
 	if o == nil {
 		return ""
 	}
@@ -57,21 +57,21 @@ func (o *MixedParametersPrimitivesResHeaders) GetHeaderparam() string {
 
 // MixedParametersPrimitivesRes - OK
 type MixedParametersPrimitivesRes struct {
-	Args    MixedParametersPrimitivesResArgs    `json:"args"`
-	Headers MixedParametersPrimitivesResHeaders `json:"headers"`
-	URL     string                              `json:"url"`
+	Args    MixedParametersPrimitivesArgs    `json:"args"`
+	Headers MixedParametersPrimitivesHeaders `json:"headers"`
+	URL     string                           `json:"url"`
 }
 
-func (o *MixedParametersPrimitivesRes) GetArgs() MixedParametersPrimitivesResArgs {
+func (o *MixedParametersPrimitivesRes) GetArgs() MixedParametersPrimitivesArgs {
 	if o == nil {
-		return MixedParametersPrimitivesResArgs{}
+		return MixedParametersPrimitivesArgs{}
 	}
 	return o.Args
 }
 
-func (o *MixedParametersPrimitivesRes) GetHeaders() MixedParametersPrimitivesResHeaders {
+func (o *MixedParametersPrimitivesRes) GetHeaders() MixedParametersPrimitivesHeaders {
 	if o == nil {
-		return MixedParametersPrimitivesResHeaders{}
+		return MixedParametersPrimitivesHeaders{}
 	}
 	return o.Headers
 }

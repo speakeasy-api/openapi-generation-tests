@@ -22,7 +22,7 @@ func TestBasicAuth(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.AuthNew.BasicAuthNew(context.Background(), shared.AuthServiceRequestBody{
-		BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
+		BasicAuth: &shared.BasicAuth{
 			Username: "testUser",
 			Password: "testPass",
 		},
@@ -43,7 +43,7 @@ func TestAPIKeyAuthGlobal(t *testing.T) {
 	}))
 
 	res, err := s.AuthNew.APIKeyAuthGlobalNew(context.Background(), shared.AuthServiceRequestBody{
-		HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
+		HeaderAuth: []shared.HeaderAuth{
 			{
 				HeaderName:    "x-api-key",
 				ExpectedValue: "test_api_key",
@@ -106,7 +106,7 @@ func TestOauth2Auth(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.AuthNew.Oauth2AuthNew(context.Background(), shared.AuthServiceRequestBody{
-		HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
+		HeaderAuth: []shared.HeaderAuth{
 			{
 				HeaderName:    "Authorization",
 				ExpectedValue: "Bearer testToken",
@@ -126,7 +126,7 @@ func TestOpenIdConnectAuth(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.AuthNew.OpenIDConnectAuthNew(context.Background(), shared.AuthServiceRequestBody{
-		HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
+		HeaderAuth: []shared.HeaderAuth{
 			{
 				HeaderName:    "Authorization",
 				ExpectedValue: "Bearer testToken",
@@ -146,7 +146,7 @@ func TestMultipleSimpleSchemeAuth(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.AuthNew.MultipleSimpleSchemeAuth(context.Background(), shared.AuthServiceRequestBody{
-		HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
+		HeaderAuth: []shared.HeaderAuth{
 			{
 				HeaderName:    "x-api-key",
 				ExpectedValue: "test_api_key",
@@ -171,13 +171,13 @@ func TestMultipleMixedSchemeAuth(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.AuthNew.MultipleMixedSchemeAuth(context.Background(), shared.AuthServiceRequestBody{
-		HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
+		HeaderAuth: []shared.HeaderAuth{
 			{
 				HeaderName:    "x-api-key",
 				ExpectedValue: "test_api_key",
 			},
 		},
-		BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
+		BasicAuth: &shared.BasicAuth{
 			Username: "testUser",
 			Password: "testPass",
 		},
@@ -199,7 +199,7 @@ func TestMultipleSimpleOptionsAuth_FirstOption(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.AuthNew.MultipleSimpleOptionsAuth(context.Background(), shared.AuthServiceRequestBody{
-		HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
+		HeaderAuth: []shared.HeaderAuth{
 			{
 				HeaderName:    "x-api-key",
 				ExpectedValue: "test_api_key",
@@ -219,7 +219,7 @@ func TestMultipleSimpleOptionsAuth_SecondOption(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.AuthNew.MultipleSimpleOptionsAuth(context.Background(), shared.AuthServiceRequestBody{
-		HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
+		HeaderAuth: []shared.HeaderAuth{
 			{
 				HeaderName:    "Authorization",
 				ExpectedValue: "Bearer testToken",
@@ -239,7 +239,7 @@ func TestMultipleMixedOptionsAuth_FirstOption(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.AuthNew.MultipleMixedOptionsAuth(context.Background(), shared.AuthServiceRequestBody{
-		HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
+		HeaderAuth: []shared.HeaderAuth{
 			{
 				HeaderName:    "x-api-key",
 				ExpectedValue: "test_api_key",
@@ -259,7 +259,7 @@ func TestMultipleMixedOptionsAuth_SecondOption(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.AuthNew.MultipleMixedOptionsAuth(context.Background(), shared.AuthServiceRequestBody{
-		BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
+		BasicAuth: &shared.BasicAuth{
 			Username: "testUser",
 			Password: "testPass",
 		},
@@ -280,7 +280,7 @@ func TestMultipleOptionsWithSimpleSchemesAuth_FirstOption(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.AuthNew.MultipleOptionsWithSimpleSchemesAuth(context.Background(), shared.AuthServiceRequestBody{
-		HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
+		HeaderAuth: []shared.HeaderAuth{
 			{
 				HeaderName:    "x-api-key",
 				ExpectedValue: "test_api_key",
@@ -307,7 +307,7 @@ func TestMultipleOptionsWithSimpleSchemesAuth_SecondOption(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.AuthNew.MultipleOptionsWithSimpleSchemesAuth(context.Background(), shared.AuthServiceRequestBody{
-		HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
+		HeaderAuth: []shared.HeaderAuth{
 			{
 				HeaderName:    "x-api-key",
 				ExpectedValue: "test_api_key",
@@ -334,7 +334,7 @@ func TestMultipleOptionsWithMixedSchemesAuth_FirstOption(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.AuthNew.MultipleOptionsWithMixedSchemesAuth(context.Background(), shared.AuthServiceRequestBody{
-		HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
+		HeaderAuth: []shared.HeaderAuth{
 			{
 				HeaderName:    "x-api-key",
 				ExpectedValue: "test_api_key",
@@ -361,13 +361,13 @@ func TestMultipleOptionsWithMixedSchemesAuth_SecondOption(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.AuthNew.MultipleOptionsWithMixedSchemesAuth(context.Background(), shared.AuthServiceRequestBody{
-		HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
+		HeaderAuth: []shared.HeaderAuth{
 			{
 				HeaderName:    "x-api-key",
 				ExpectedValue: "test_api_key",
 			},
 		},
-		BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
+		BasicAuth: &shared.BasicAuth{
 			Username: "testUser",
 			Password: "testPass",
 		},

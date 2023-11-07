@@ -5,14 +5,14 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
-export enum TypedObject1Type {
+export enum TypeT {
     Obj1 = "obj1",
 }
 
 export class TypedObject1 extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "type" })
-    type: TypedObject1Type;
+    type: TypeT;
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })

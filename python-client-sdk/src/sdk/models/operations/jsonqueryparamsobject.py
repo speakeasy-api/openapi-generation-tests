@@ -3,8 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import deepobject as shared_deepobject
-from ..shared import simpleobject as shared_simpleobject
+from ...models.shared import deepobject as shared_deepobject
+from ...models.shared import simpleobject as shared_simpleobject
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional
@@ -21,7 +21,7 @@ class JSONQueryParamsObjectRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class JSONQueryParamsObjectResArgs:
+class JSONQueryParamsObjectArgs:
     deep_obj_param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('deepObjParam') }})
     simple_obj_param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('simpleObjParam') }})
     
@@ -32,7 +32,7 @@ class JSONQueryParamsObjectResArgs:
 @dataclasses.dataclass
 class JSONQueryParamsObjectRes:
     r"""OK"""
-    args: JSONQueryParamsObjectResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
+    args: JSONQueryParamsObjectArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
 

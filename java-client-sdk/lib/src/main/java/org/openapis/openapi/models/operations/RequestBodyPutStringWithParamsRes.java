@@ -12,9 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class RequestBodyPutStringWithParamsRes {
     @JsonProperty("args")
-    public RequestBodyPutStringWithParamsResArgs args;
+    public RequestBodyPutStringWithParamsArgs args;
 
-    public RequestBodyPutStringWithParamsRes withArgs(RequestBodyPutStringWithParamsResArgs args) {
+    public RequestBodyPutStringWithParamsRes withArgs(RequestBodyPutStringWithParamsArgs args) {
         this.args = args;
         return this;
     }
@@ -27,7 +27,7 @@ public class RequestBodyPutStringWithParamsRes {
         return this;
     }
     
-    public RequestBodyPutStringWithParamsRes(@JsonProperty("args") RequestBodyPutStringWithParamsResArgs args, @JsonProperty("data") String data) {
+    public RequestBodyPutStringWithParamsRes(@JsonProperty("args") RequestBodyPutStringWithParamsArgs args, @JsonProperty("data") String data) {
         this.args = args;
         this.data = data;
   }

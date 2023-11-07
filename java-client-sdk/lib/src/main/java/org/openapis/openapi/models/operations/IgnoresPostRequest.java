@@ -10,9 +10,9 @@ import org.openapis.openapi.utils.SpeakeasyMetadata;
 
 public class IgnoresPostRequest {
     @SpeakeasyMetadata("request:mediaType=application/json")
-    public IgnoresPostApplicationJSON requestBody;
+    public IgnoresPostRequestBody requestBody;
 
-    public IgnoresPostRequest withRequestBody(IgnoresPostApplicationJSON requestBody) {
+    public IgnoresPostRequest withRequestBody(IgnoresPostRequestBody requestBody) {
         this.requestBody = requestBody;
         return this;
     }
@@ -25,7 +25,7 @@ public class IgnoresPostRequest {
         return this;
     }
     
-    public IgnoresPostRequest(@JsonProperty("RequestBody") IgnoresPostApplicationJSON requestBody) {
+    public IgnoresPostRequest(@JsonProperty("RequestBody") IgnoresPostRequestBody requestBody) {
         this.requestBody = requestBody;
   }
 }

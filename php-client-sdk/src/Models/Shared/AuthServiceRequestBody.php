@@ -12,17 +12,17 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 class AuthServiceRequestBody
 {
 	#[\JMS\Serializer\Annotation\SerializedName('basicAuth')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyBasicAuth')]
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\BasicAuth')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?AuthServiceRequestBodyBasicAuth $basicAuth = null;
+    public ?BasicAuth $basicAuth = null;
     
     /**
      * $headerAuth
      * 
-     * @var ?array<\OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth> $headerAuth
+     * @var ?array<\OpenAPI\OpenAPI\Models\Shared\HeaderAuth> $headerAuth
      */
 	#[\JMS\Serializer\Annotation\SerializedName('headerAuth')]
-    #[\JMS\Serializer\Annotation\Type('array<OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth>')]
+    #[\JMS\Serializer\Annotation\Type('array<OpenAPI\OpenAPI\Models\Shared\HeaderAuth>')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?array $headerAuth = null;
     

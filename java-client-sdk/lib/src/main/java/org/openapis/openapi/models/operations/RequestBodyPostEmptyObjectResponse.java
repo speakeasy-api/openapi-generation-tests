@@ -46,10 +46,10 @@ public class RequestBodyPostEmptyObjectResponse {
      * OK
      */
     
-    public RequestBodyPostEmptyObject200ApplicationJSON requestBodyPostEmptyObject200ApplicationJSONObject;
+    public RequestBodyPostEmptyObjectResponseBody object;
 
-    public RequestBodyPostEmptyObjectResponse withRequestBodyPostEmptyObject200ApplicationJSONObject(RequestBodyPostEmptyObject200ApplicationJSON requestBodyPostEmptyObject200ApplicationJSONObject) {
-        this.requestBodyPostEmptyObject200ApplicationJSONObject = requestBodyPostEmptyObject200ApplicationJSONObject;
+    public RequestBodyPostEmptyObjectResponse withObject(RequestBodyPostEmptyObjectResponseBody object) {
+        this.object = object;
         return this;
     }
     

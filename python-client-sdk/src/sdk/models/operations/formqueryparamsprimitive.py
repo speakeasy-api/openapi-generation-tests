@@ -20,7 +20,7 @@ class FormQueryParamsPrimitiveRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class FormQueryParamsPrimitiveResArgs:
+class FormQueryParamsPrimitiveArgs:
     bool_param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('boolParam') }})
     int_param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('intParam') }})
     num_param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('numParam') }})
@@ -33,7 +33,7 @@ class FormQueryParamsPrimitiveResArgs:
 @dataclasses.dataclass
 class FormQueryParamsPrimitiveRes:
     r"""OK"""
-    args: FormQueryParamsPrimitiveResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
+    args: FormQueryParamsPrimitiveArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
 

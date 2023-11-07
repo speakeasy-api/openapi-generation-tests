@@ -4,16 +4,16 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
-// DeprecatedObjectInSchemaGet200ApplicationJSON - A successful response that contains a deprecatedObject sent in the request body
-type DeprecatedObjectInSchemaGet200ApplicationJSON struct {
+// DeprecatedObjectInSchemaGetResponseBody - A successful response that contains a deprecatedObject sent in the request body
+type DeprecatedObjectInSchemaGetResponseBody struct {
 	// Deprecated field: This object is deprecated.
 	JSON *shared.DeprecatedObject `json:"json,omitempty"`
 }
 
-func (o *DeprecatedObjectInSchemaGet200ApplicationJSON) GetJSON() *shared.DeprecatedObject {
+func (o *DeprecatedObjectInSchemaGetResponseBody) GetJSON() *shared.DeprecatedObject {
 	if o == nil {
 		return nil
 	}
@@ -28,7 +28,7 @@ type DeprecatedObjectInSchemaGetResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A successful response that contains a deprecatedObject sent in the request body
-	DeprecatedObjectInSchemaGet200ApplicationJSONObject *DeprecatedObjectInSchemaGet200ApplicationJSON
+	Object *DeprecatedObjectInSchemaGetResponseBody
 }
 
 func (o *DeprecatedObjectInSchemaGetResponse) GetContentType() string {
@@ -52,9 +52,9 @@ func (o *DeprecatedObjectInSchemaGetResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *DeprecatedObjectInSchemaGetResponse) GetDeprecatedObjectInSchemaGet200ApplicationJSONObject() *DeprecatedObjectInSchemaGet200ApplicationJSON {
+func (o *DeprecatedObjectInSchemaGetResponse) GetObject() *DeprecatedObjectInSchemaGetResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.DeprecatedObjectInSchemaGet200ApplicationJSONObject
+	return o.Object
 }

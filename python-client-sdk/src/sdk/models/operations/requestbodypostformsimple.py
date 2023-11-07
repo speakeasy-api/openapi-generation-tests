@@ -10,7 +10,7 @@ from typing import Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class RequestBodyPostFormSimpleResForm:
+class RequestBodyPostFormSimpleForm:
     any: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }})
     bool: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool') }})
     date_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date') }})
@@ -31,7 +31,7 @@ class RequestBodyPostFormSimpleResForm:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class RequestBodyPostFormSimpleResHeaders:
+class RequestBodyPostFormSimpleHeaders:
     content_type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Content-Type') }})
     
 
@@ -41,8 +41,8 @@ class RequestBodyPostFormSimpleResHeaders:
 @dataclasses.dataclass
 class RequestBodyPostFormSimpleRes:
     r"""OK"""
-    form: RequestBodyPostFormSimpleResForm = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form') }})
-    headers: RequestBodyPostFormSimpleResHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
+    form: RequestBodyPostFormSimpleForm = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form') }})
+    headers: RequestBodyPostFormSimpleHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
     
 
 

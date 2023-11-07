@@ -6,38 +6,38 @@ import (
 	"net/http"
 )
 
-type FormQueryParamsCamelObjectObjParam struct {
+type ObjParam struct {
 	EncodedCount *string `queryParam:"name=encoded_count"`
 	EncodedTerm  *string `queryParam:"name=encoded_term"`
 }
 
-func (o *FormQueryParamsCamelObjectObjParam) GetEncodedCount() *string {
+func (o *ObjParam) GetEncodedCount() *string {
 	if o == nil {
 		return nil
 	}
 	return o.EncodedCount
 }
 
-func (o *FormQueryParamsCamelObjectObjParam) GetEncodedTerm() *string {
+func (o *ObjParam) GetEncodedTerm() *string {
 	if o == nil {
 		return nil
 	}
 	return o.EncodedTerm
 }
 
-type FormQueryParamsCamelObjectObjParamExploded struct {
+type ObjParamExploded struct {
 	ItemCount  *string `queryParam:"name=item_count"`
 	SearchTerm *string `queryParam:"name=search_term"`
 }
 
-func (o *FormQueryParamsCamelObjectObjParamExploded) GetItemCount() *string {
+func (o *ObjParamExploded) GetItemCount() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ItemCount
 }
 
-func (o *FormQueryParamsCamelObjectObjParamExploded) GetSearchTerm() *string {
+func (o *ObjParamExploded) GetSearchTerm() *string {
 	if o == nil {
 		return nil
 	}
@@ -45,37 +45,37 @@ func (o *FormQueryParamsCamelObjectObjParamExploded) GetSearchTerm() *string {
 }
 
 type FormQueryParamsCamelObjectRequest struct {
-	ObjParamExploded FormQueryParamsCamelObjectObjParamExploded `queryParam:"style=form,explode=true,name=obj_param_exploded"`
-	ObjParam         *FormQueryParamsCamelObjectObjParam        `queryParam:"style=form,explode=false,name=obj_param"`
+	ObjParamExploded ObjParamExploded `queryParam:"style=form,explode=true,name=obj_param_exploded"`
+	ObjParam         *ObjParam        `queryParam:"style=form,explode=false,name=obj_param"`
 }
 
-func (o *FormQueryParamsCamelObjectRequest) GetObjParamExploded() FormQueryParamsCamelObjectObjParamExploded {
+func (o *FormQueryParamsCamelObjectRequest) GetObjParamExploded() ObjParamExploded {
 	if o == nil {
-		return FormQueryParamsCamelObjectObjParamExploded{}
+		return ObjParamExploded{}
 	}
 	return o.ObjParamExploded
 }
 
-func (o *FormQueryParamsCamelObjectRequest) GetObjParam() *FormQueryParamsCamelObjectObjParam {
+func (o *FormQueryParamsCamelObjectRequest) GetObjParam() *ObjParam {
 	if o == nil {
 		return nil
 	}
 	return o.ObjParam
 }
 
-type FormQueryParamsCamelObjectResArgs struct {
+type FormQueryParamsCamelObjectArgs struct {
 	ItemCount  string `json:"item_count"`
 	SearchTerm string `json:"search_term"`
 }
 
-func (o *FormQueryParamsCamelObjectResArgs) GetItemCount() string {
+func (o *FormQueryParamsCamelObjectArgs) GetItemCount() string {
 	if o == nil {
 		return ""
 	}
 	return o.ItemCount
 }
 
-func (o *FormQueryParamsCamelObjectResArgs) GetSearchTerm() string {
+func (o *FormQueryParamsCamelObjectArgs) GetSearchTerm() string {
 	if o == nil {
 		return ""
 	}
@@ -84,13 +84,13 @@ func (o *FormQueryParamsCamelObjectResArgs) GetSearchTerm() string {
 
 // FormQueryParamsCamelObjectRes - OK
 type FormQueryParamsCamelObjectRes struct {
-	Args FormQueryParamsCamelObjectResArgs `json:"args"`
-	URL  string                            `json:"url"`
+	Args FormQueryParamsCamelObjectArgs `json:"args"`
+	URL  string                         `json:"url"`
 }
 
-func (o *FormQueryParamsCamelObjectRes) GetArgs() FormQueryParamsCamelObjectResArgs {
+func (o *FormQueryParamsCamelObjectRes) GetArgs() FormQueryParamsCamelObjectArgs {
 	if o == nil {
-		return FormQueryParamsCamelObjectResArgs{}
+		return FormQueryParamsCamelObjectArgs{}
 	}
 	return o.Args
 }

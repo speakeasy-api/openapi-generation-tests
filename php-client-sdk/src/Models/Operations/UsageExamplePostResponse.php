@@ -38,16 +38,16 @@ class UsageExamplePostResponse
     /**
      * A successful response that contains the simpleObject sent in the request body
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\UsageExamplePost200ApplicationJSON $usageExamplePost200ApplicationJSONObject
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\UsageExamplePostResponseBody $object
      */
 	
-    public ?UsageExamplePost200ApplicationJSON $usageExamplePost200ApplicationJSONObject = null;
+    public ?UsageExamplePostResponseBody $object = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->usageExamplePost200ApplicationJSONObject = null;
+		$this->object = null;
 	}
 }

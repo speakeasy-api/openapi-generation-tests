@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
 type HeaderParamsObjectRequest struct {
@@ -28,19 +28,19 @@ func (o *HeaderParamsObjectRequest) GetXHeaderObjExplode() shared.SimpleObject {
 	return o.XHeaderObjExplode
 }
 
-type HeaderParamsObjectResHeaders struct {
+type HeaderParamsObjectHeaders struct {
 	XHeaderObj        string `json:"X-Header-Obj"`
 	XHeaderObjExplode string `json:"X-Header-Obj-Explode"`
 }
 
-func (o *HeaderParamsObjectResHeaders) GetXHeaderObj() string {
+func (o *HeaderParamsObjectHeaders) GetXHeaderObj() string {
 	if o == nil {
 		return ""
 	}
 	return o.XHeaderObj
 }
 
-func (o *HeaderParamsObjectResHeaders) GetXHeaderObjExplode() string {
+func (o *HeaderParamsObjectHeaders) GetXHeaderObjExplode() string {
 	if o == nil {
 		return ""
 	}
@@ -49,12 +49,12 @@ func (o *HeaderParamsObjectResHeaders) GetXHeaderObjExplode() string {
 
 // HeaderParamsObjectRes - OK
 type HeaderParamsObjectRes struct {
-	Headers HeaderParamsObjectResHeaders `json:"headers"`
+	Headers HeaderParamsObjectHeaders `json:"headers"`
 }
 
-func (o *HeaderParamsObjectRes) GetHeaders() HeaderParamsObjectResHeaders {
+func (o *HeaderParamsObjectRes) GetHeaders() HeaderParamsObjectHeaders {
 	if o == nil {
-		return HeaderParamsObjectResHeaders{}
+		return HeaderParamsObjectHeaders{}
 	}
 	return o.Headers
 }

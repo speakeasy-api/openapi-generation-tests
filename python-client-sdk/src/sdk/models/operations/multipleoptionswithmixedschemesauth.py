@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import security as shared_security
+from ...models.shared import security as shared_security
 from typing import Optional
 
 MULTIPLE_OPTIONS_WITH_MIXED_SCHEMES_AUTH_SERVERS = [

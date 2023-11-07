@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -39,7 +39,7 @@ export class RequestBodyPostComplexNumberTypesRequest extends SpeakeasyBase {
 /**
  * OK
  */
-export class RequestBodyPostComplexNumberTypes200ApplicationJSON extends SpeakeasyBase {
+export class RequestBodyPostComplexNumberTypesResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "json" })
     @Type(() => shared.ComplexNumberTypes)
@@ -73,5 +73,5 @@ export class RequestBodyPostComplexNumberTypesResponse extends SpeakeasyBase {
      * OK
      */
     @SpeakeasyMetadata()
-    requestBodyPostComplexNumberTypes200ApplicationJSONObject?: RequestBodyPostComplexNumberTypes200ApplicationJSON;
+    object?: RequestBodyPostComplexNumberTypesResponseBody;
 }

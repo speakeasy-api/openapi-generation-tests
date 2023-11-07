@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import simpleobjectcamelcase as shared_simpleobjectcamelcase
+from .simpleobjectcamelcase import SimpleObjectCamelCase
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Any, List, Optional
@@ -11,7 +11,7 @@ from typing import Any, List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ArrObjValueCamelCase:
-    json: Optional[List[shared_simpleobjectcamelcase.SimpleObjectCamelCase]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
+    json: Optional[List[SimpleObjectCamelCase]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     required: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('required'), 'exclude': lambda f: f is None }})
     
 

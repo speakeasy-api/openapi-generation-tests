@@ -18,8 +18,8 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 class DeepObjectQueryParamsObjectRes
 {
 	#[\JMS\Serializer\Annotation\SerializedName('args')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectResArgs')]
-    public DeepObjectQueryParamsObjectResArgs $args;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectArgs')]
+    public DeepObjectQueryParamsObjectArgs $args;
     
 	#[\JMS\Serializer\Annotation\SerializedName('url')]
     #[\JMS\Serializer\Annotation\Type('string')]
@@ -27,7 +27,7 @@ class DeepObjectQueryParamsObjectRes
     
 	public function __construct()
 	{
-		$this->args = new \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectResArgs();
+		$this->args = new \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectArgs();
 		$this->url = "";
 	}
 }

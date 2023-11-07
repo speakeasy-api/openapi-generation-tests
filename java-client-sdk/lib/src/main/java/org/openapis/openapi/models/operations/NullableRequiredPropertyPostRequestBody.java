@@ -28,9 +28,9 @@ public class NullableRequiredPropertyPostRequestBody {
     }
     
     @JsonProperty("NullableRequiredEnum")
-    public NullableRequiredPropertyPostRequestBodyNullableRequiredEnum nullableRequiredEnum;
+    public NullableRequiredEnum nullableRequiredEnum;
 
-    public NullableRequiredPropertyPostRequestBody withNullableRequiredEnum(NullableRequiredPropertyPostRequestBodyNullableRequiredEnum nullableRequiredEnum) {
+    public NullableRequiredPropertyPostRequestBody withNullableRequiredEnum(NullableRequiredEnum nullableRequiredEnum) {
         this.nullableRequiredEnum = nullableRequiredEnum;
         return this;
     }
@@ -43,7 +43,7 @@ public class NullableRequiredPropertyPostRequestBody {
         return this;
     }
     
-    public NullableRequiredPropertyPostRequestBody(@JsonProperty("NullableRequiredArray") Double[] nullableRequiredArray, @JsonProperty("NullableRequiredEnum") NullableRequiredPropertyPostRequestBodyNullableRequiredEnum nullableRequiredEnum, @JsonProperty("NullableRequiredInt") Long nullableRequiredInt) {
+    public NullableRequiredPropertyPostRequestBody(@JsonProperty("NullableRequiredArray") Double[] nullableRequiredArray, @JsonProperty("NullableRequiredEnum") NullableRequiredEnum nullableRequiredEnum, @JsonProperty("NullableRequiredInt") Long nullableRequiredInt) {
         this.nullableRequiredArray = nullableRequiredArray;
         this.nullableRequiredEnum = nullableRequiredEnum;
         this.nullableRequiredInt = nullableRequiredInt;

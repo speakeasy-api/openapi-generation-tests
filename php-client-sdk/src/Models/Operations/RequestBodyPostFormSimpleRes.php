@@ -18,16 +18,16 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 class RequestBodyPostFormSimpleRes
 {
 	#[\JMS\Serializer\Annotation\SerializedName('form')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPostFormSimpleResForm')]
-    public RequestBodyPostFormSimpleResForm $form;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPostFormSimpleForm')]
+    public RequestBodyPostFormSimpleForm $form;
     
 	#[\JMS\Serializer\Annotation\SerializedName('headers')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPostFormSimpleResHeaders')]
-    public RequestBodyPostFormSimpleResHeaders $headers;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPostFormSimpleHeaders')]
+    public RequestBodyPostFormSimpleHeaders $headers;
     
 	public function __construct()
 	{
-		$this->form = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostFormSimpleResForm();
-		$this->headers = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostFormSimpleResHeaders();
+		$this->form = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostFormSimpleForm();
+		$this->headers = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostFormSimpleHeaders();
 	}
 }

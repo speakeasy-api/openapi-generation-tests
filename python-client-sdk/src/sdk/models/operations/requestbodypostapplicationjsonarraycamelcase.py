@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import simpleobjectcamelcase as shared_simpleobjectcamelcase
+from ...models.shared import simpleobjectcamelcase as shared_simpleobjectcamelcase
 from typing import List, Optional
 
 REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_CAMEL_CASE_SERVERS = [
@@ -19,7 +19,7 @@ class RequestBodyPostApplicationJSONArrayCamelCaseResponse:
     r"""HTTP response status code for this operation"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    simple_object_camel_cases: Optional[List[shared_simpleobjectcamelcase.SimpleObjectCamelCase]] = dataclasses.field(default=None)
+    res: Optional[List[shared_simpleobjectcamelcase.SimpleObjectCamelCase]] = dataclasses.field(default=None)
     r"""OK"""
     
 

@@ -1,5 +1,5 @@
 # Unions
-(*Unions*)
+(*.Unions*)
 
 ## Overview
 
@@ -33,8 +33,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -86,11 +86,11 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -139,8 +139,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -158,13 +158,13 @@ func main() {
             Type: shared.TypedObject1TypeObj1,
             Value: "string",
         },
-        NullableOneOfTwo: shared.CreateNullableOneOfRefInObjectNullableOneOfTwoTypedObject2(
+        NullableOneOfTwo: shared.CreateNullableOneOfTwoTypedObject2(
                 shared.TypedObject2{
                     Type: shared.TypedObject2TypeObj2,
                     Value: "string",
                 },
         ),
-        OneOfOne: shared.CreateNullableOneOfRefInObjectOneOfOneTypedObject1(
+        OneOfOne: shared.CreateOneOfOneTypedObject1(
                 shared.TypedObject1{
                     Type: shared.TypedObject1TypeObj1,
                     Value: "string",
@@ -204,9 +204,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -258,8 +258,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -312,8 +312,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -363,9 +363,9 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -414,10 +414,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -447,8 +447,8 @@ func main() {
                             Float32: 1.1,
                             Int: 1,
                             Int32: 1,
-                            Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                            IntEnum: shared.SimpleObjectIntEnumSecond,
+                            Int32Enum: shared.Int32EnumFiftyFive,
+                            IntEnum: shared.IntEnumSecond,
                             Num: 1.1,
                             Str: "test",
                             StrOpt: openapi.String("testOptional"),
@@ -469,8 +469,8 @@ func main() {
                         Float32: 1.1,
                         Int: 1,
                         Int32: 1,
-                        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                        IntEnum: shared.SimpleObjectIntEnumSecond,
+                        Int32Enum: shared.Int32EnumFiftyFive,
+                        IntEnum: shared.IntEnumSecond,
                         Num: 1.1,
                         Str: "test",
                         StrOpt: openapi.String("testOptional"),
@@ -489,8 +489,8 @@ func main() {
                         Float32: 1.1,
                         Int: 1,
                         Int32: 1,
-                        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                        IntEnum: shared.SimpleObjectIntEnumSecond,
+                        Int32Enum: shared.Int32EnumFiftyFive,
+                        IntEnum: shared.IntEnumSecond,
                         Num: 1.1,
                         Str: "test",
                         StrOpt: openapi.String("testOptional"),
@@ -513,8 +513,8 @@ func main() {
                         Float32: 1.1,
                         Int: 1,
                         Int32: 1,
-                        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                        IntEnum: shared.SimpleObjectIntEnumSecond,
+                        Int32Enum: shared.Int32EnumFiftyFive,
+                        IntEnum: shared.IntEnumSecond,
                         Num: 1.1,
                         Str: "test",
                         StrOpt: openapi.String("testOptional"),
@@ -533,8 +533,8 @@ func main() {
                         Float32: 1.1,
                         Int: 1,
                         Int32: 1,
-                        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                        IntEnum: shared.SimpleObjectIntEnumSecond,
+                        Int32Enum: shared.Int32EnumFiftyFive,
+                        IntEnum: shared.IntEnumSecond,
                         Num: 1.1,
                         Str: "test",
                         StrOpt: openapi.String("testOptional"),
@@ -555,8 +555,8 @@ func main() {
                     Float32: 1.1,
                     Int: 1,
                     Int32: 1,
-                    Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                    IntEnum: shared.SimpleObjectIntEnumSecond,
+                    Int32Enum: shared.Int32EnumFiftyFive,
+                    IntEnum: shared.IntEnumSecond,
                     Num: 1.1,
                     Str: "test",
                     StrOpt: openapi.String("testOptional"),
@@ -597,8 +597,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -650,8 +650,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -703,11 +703,11 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -756,8 +756,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -804,10 +804,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/types"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/types"
 	"math/big"
 )
 
@@ -857,8 +857,8 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -905,10 +905,10 @@ package main
 import(
 	"context"
 	"log"
-	"openapi"
-	"openapi/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -936,8 +936,8 @@ func main() {
                 Float32: 1.1,
                 Int: 1,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),

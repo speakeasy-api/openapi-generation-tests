@@ -7,8 +7,8 @@ import (
 	"net/http"
 )
 
-// StatusGetXSpeakeasyErrors501ApplicationJSON - Not Implemented
-type StatusGetXSpeakeasyErrors501ApplicationJSON struct {
+// StatusGetXSpeakeasyErrorsResponseBody - Not Implemented
+type StatusGetXSpeakeasyErrorsResponseBody struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response `json:"-"`
 	Code        *string        `json:"code,omitempty"`
@@ -16,9 +16,9 @@ type StatusGetXSpeakeasyErrors501ApplicationJSON struct {
 	Type        *ErrorType     `json:"type,omitempty"`
 }
 
-var _ error = &StatusGetXSpeakeasyErrors501ApplicationJSON{}
+var _ error = &StatusGetXSpeakeasyErrorsResponseBody{}
 
-func (e *StatusGetXSpeakeasyErrors501ApplicationJSON) Error() string {
+func (e *StatusGetXSpeakeasyErrorsResponseBody) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

@@ -10,7 +10,7 @@ require_relative '../shared/simpleobject'
 module OpenApiSDK
   module Operations
 
-    class DeepObjectQueryParamsObjectObjArrParam < OpenApiSDK::Utils::FieldAugmented
+    class ObjArrParam < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -30,10 +30,10 @@ module OpenApiSDK
       # A simple object that uses all our supported primitive types and enums and has optional properties.
       field :obj_param, Shared::SimpleObject, { 'query_param': { 'field_name': 'objParam', 'style': 'deepObject', 'explode': true } }
 
-      field :obj_arr_param, T.nilable(Operations::DeepObjectQueryParamsObjectObjArrParam), { 'query_param': { 'field_name': 'objArrParam', 'style': 'deepObject', 'explode': true } }
+      field :obj_arr_param, T.nilable(Operations::ObjArrParam), { 'query_param': { 'field_name': 'objArrParam', 'style': 'deepObject', 'explode': true } }
 
 
-      sig { params(obj_param: Shared::SimpleObject, obj_arr_param: T.nilable(Operations::DeepObjectQueryParamsObjectObjArrParam)).void }
+      sig { params(obj_param: Shared::SimpleObject, obj_arr_param: T.nilable(Operations::ObjArrParam)).void }
       def initialize(obj_param: nil, obj_arr_param: nil)
         @obj_param = obj_param
         @obj_arr_param = obj_arr_param
@@ -41,7 +41,7 @@ module OpenApiSDK
     end
 
 
-    class DeepObjectQueryParamsObjectResArgs < OpenApiSDK::Utils::FieldAugmented
+    class DeepObjectQueryParamsObjectArgs < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -113,12 +113,12 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :args, Operations::DeepObjectQueryParamsObjectResArgs, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
+      field :args, Operations::DeepObjectQueryParamsObjectArgs, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
 
       field :url, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('url') } }
 
 
-      sig { params(args: Operations::DeepObjectQueryParamsObjectResArgs, url: String).void }
+      sig { params(args: Operations::DeepObjectQueryParamsObjectArgs, url: String).void }
       def initialize(args: nil, url: nil)
         @args = args
         @url = url

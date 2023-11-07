@@ -38,16 +38,16 @@ class ResponseBodyZeroValueComplexTypePtrsPostResponse
     /**
      * OK
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON $responseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyZeroValueComplexTypePtrsPostResponseBody $object
      */
 	
-    public ?ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON $responseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject = null;
+    public ?ResponseBodyZeroValueComplexTypePtrsPostResponseBody $object = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->responseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject = null;
+		$this->object = null;
 	}
 }

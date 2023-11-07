@@ -1,5 +1,5 @@
 # Parameters
-(*parameters*)
+(*.parameters*)
 
 ## Overview
 
@@ -55,8 +55,8 @@ public class Application {
                 .build();
 
             DeepObjectQueryParamsMapResponse res = sdk.parameters.deepObjectQueryParamsMap(new java.util.HashMap<String, String>(){{
-                put("test2", "value2");
                 put("test", "value");
+                put("test2", "value2");
             }}, new java.util.HashMap<String, String[]>(){{
                 put("test", new String[]{{
                     add("test"),
@@ -101,14 +101,14 @@ package hello.world;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectObjArrParam;
 import org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectRequest;
 import org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectResponse;
+import org.openapis.openapi.models.operations.ObjArrParam;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -121,7 +121,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeepObjectQueryParamsObjectResponse res = sdk.parameters.deepObjectQueryParamsObject(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            DeepObjectQueryParamsObjectResponse res = sdk.parameters.deepObjectQueryParamsObject(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
@@ -135,12 +135,12 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Second;
+                int32Enum = Int32Enum.FIFTY_FIVE;
+                intEnum = IntEnum.Second;
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, new DeepObjectQueryParamsObjectObjArrParam(){{
+            }}, new ObjArrParam(){{
                 arr = new String[]{{
                     add("test"),
                     add("test2"),
@@ -159,10 +159,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                          | Type                                                                                                                                               | Required                                                                                                                                           | Description                                                                                                                                        |
-| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `objParam`                                                                                                                                         | [org.openapis.openapi.models.shared.SimpleObject](../../models/shared/SimpleObject.md)                                                             | :heavy_check_mark:                                                                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties.                                                 |
-| `objArrParam`                                                                                                                                      | [org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectObjArrParam](../../models/operations/DeepObjectQueryParamsObjectObjArrParam.md) | :heavy_minus_sign:                                                                                                                                 | N/A                                                                                                                                                |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `objParam`                                                                                         | [org.openapis.openapi.models.shared.SimpleObject](../../models/shared/SimpleObject.md)             | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objArrParam`                                                                                      | [org.openapis.openapi.models.operations.ObjArrParam](../../models/operations/ObjArrParam.md)       | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 
 
 ### Response
@@ -279,10 +279,10 @@ public class Application {
 package hello.world;
 
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.FormQueryParamsCamelObjectObjParam;
-import org.openapis.openapi.models.operations.FormQueryParamsCamelObjectObjParamExploded;
 import org.openapis.openapi.models.operations.FormQueryParamsCamelObjectRequest;
 import org.openapis.openapi.models.operations.FormQueryParamsCamelObjectResponse;
+import org.openapis.openapi.models.operations.ObjParam;
+import org.openapis.openapi.models.operations.ObjParamExploded;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
@@ -296,10 +296,10 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            FormQueryParamsCamelObjectResponse res = sdk.parameters.formQueryParamsCamelObject(new FormQueryParamsCamelObjectObjParamExploded(){{
+            FormQueryParamsCamelObjectResponse res = sdk.parameters.formQueryParamsCamelObject(new ObjParamExploded(){{
                 itemCount = "10";
                 searchTerm = "foo";
-            }}, new FormQueryParamsCamelObjectObjParam(){{
+            }}, new ObjParam(){{
                 encodedCount = "11";
                 encodedTerm = "bar";
             }});
@@ -316,10 +316,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                  | Type                                                                                                                                                       | Required                                                                                                                                                   | Description                                                                                                                                                |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `objParamExploded`                                                                                                                                         | [org.openapis.openapi.models.operations.FormQueryParamsCamelObjectObjParamExploded](../../models/operations/FormQueryParamsCamelObjectObjParamExploded.md) | :heavy_check_mark:                                                                                                                                         | N/A                                                                                                                                                        |
-| `objParam`                                                                                                                                                 | [org.openapis.openapi.models.operations.FormQueryParamsCamelObjectObjParam](../../models/operations/FormQueryParamsCamelObjectObjParam.md)                 | :heavy_minus_sign:                                                                                                                                         | N/A                                                                                                                                                        |
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `objParamExploded`                                                                                     | [org.openapis.openapi.models.operations.ObjParamExploded](../../models/operations/ObjParamExploded.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| `objParam`                                                                                             | [org.openapis.openapi.models.operations.ObjParam](../../models/operations/ObjParam.md)                 | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
 
 
 ### Response
@@ -394,10 +394,10 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.FormQueryParamsObjectRequest;
 import org.openapis.openapi.models.operations.FormQueryParamsObjectResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -410,7 +410,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            FormQueryParamsObjectResponse res = sdk.parameters.formQueryParamsObject(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            FormQueryParamsObjectResponse res = sdk.parameters.formQueryParamsObject(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
@@ -424,12 +424,12 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Second;
+                int32Enum = Int32Enum.FIFTY_FIVE;
+                intEnum = IntEnum.Second;
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
@@ -443,8 +443,8 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Second;
+                int32Enum = Int32Enum.FIFTY_FIVE;
+                intEnum = IntEnum.Second;
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
@@ -657,8 +657,8 @@ public class Application {
                 .build();
 
             HeaderParamsMapResponse res = sdk.parameters.headerParamsMap(new java.util.HashMap<String, String>(){{
-                put("key2", "value2");
                 put("key1", "value1");
+                put("key2", "value2");
             }}, new java.util.HashMap<String, String>(){{
                 put("test1", "val1");
                 put("test2", "val2");
@@ -700,10 +700,10 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.HeaderParamsObjectRequest;
 import org.openapis.openapi.models.operations.HeaderParamsObjectResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -716,7 +716,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            HeaderParamsObjectResponse res = sdk.parameters.headerParamsObject(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            HeaderParamsObjectResponse res = sdk.parameters.headerParamsObject(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
@@ -730,12 +730,12 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Second;
+                int32Enum = Int32Enum.FIFTY_FIVE;
+                intEnum = IntEnum.Second;
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
@@ -749,8 +749,8 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Second;
+                int32Enum = Int32Enum.FIFTY_FIVE;
+                intEnum = IntEnum.Second;
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
@@ -843,10 +843,10 @@ import org.openapis.openapi.models.operations.JsonQueryParamsObjectRequest;
 import org.openapis.openapi.models.operations.JsonQueryParamsObjectResponse;
 import org.openapis.openapi.models.shared.DeepObject;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -860,7 +860,7 @@ public class Application {
                 .build();
 
             JsonQueryParamsObjectResponse res = sdk.parameters.jsonQueryParamsObject(new DeepObject("anyOf[0]", new org.openapis.openapi.models.shared.SimpleObject[]{{
-                add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
@@ -874,13 +874,13 @@ public class Application {
                     float32 = 1.1f;
                     int_ = 1L;
                     int32 = 1;
-                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                    intEnum = SimpleObjectIntEnum.Second;
+                    int32Enum = Int32Enum.FIFTY_FIVE;
+                    intEnum = IntEnum.Second;
                     num = 1.1d;
                     str = "test";
                     strOpt = "testOptional";
                 }}),
-                add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
@@ -894,14 +894,14 @@ public class Application {
                     float32 = 1.1f;
                     int_ = 1L;
                     int32 = 1;
-                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                    intEnum = SimpleObjectIntEnum.Second;
+                    int32Enum = Int32Enum.FIFTY_FIVE;
+                    intEnum = IntEnum.Second;
                     num = 1.1d;
                     str = "test";
                     strOpt = "testOptional";
                 }}),
             }}, true, 1L, new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
@@ -915,13 +915,13 @@ public class Application {
                     float32 = 1.1f;
                     int_ = 1L;
                     int32 = 1;
-                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                    intEnum = SimpleObjectIntEnum.Second;
+                    int32Enum = Int32Enum.FIFTY_FIVE;
+                    intEnum = IntEnum.Second;
                     num = 1.1d;
                     str = "test";
                     strOpt = "testOptional";
                 }});
-                put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
@@ -935,13 +935,13 @@ public class Application {
                     float32 = 1.1f;
                     int_ = 1L;
                     int32 = 1;
-                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                    intEnum = SimpleObjectIntEnum.Second;
+                    int32Enum = Int32Enum.FIFTY_FIVE;
+                    intEnum = IntEnum.Second;
                     num = 1.1d;
                     str = "test";
                     strOpt = "testOptional";
                 }});
-            }}, 1.1d, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            }}, 1.1d, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
             bigint = 8821239038968084L;
             bigintStr = "9223372036854775808";
             boolOpt = true;
@@ -953,7 +953,7 @@ public class Application {
             }}, "test"){{
                 any = "anyOf[0]";
                 arr = new org.openapis.openapi.models.shared.SimpleObject[]{{
-                    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                         any = "any";
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
@@ -967,13 +967,13 @@ public class Application {
                         float32 = 1.1f;
                         int_ = 1L;
                         int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                        intEnum = SimpleObjectIntEnum.Second;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
                         num = 1.1d;
                         str = "test";
                         strOpt = "testOptional";
                     }}),
-                    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                         any = "any";
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
@@ -987,8 +987,8 @@ public class Application {
                         float32 = 1.1f;
                         int_ = 1L;
                         int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                        intEnum = SimpleObjectIntEnum.Second;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
                         num = 1.1d;
                         str = "test";
                         strOpt = "testOptional";
@@ -997,7 +997,7 @@ public class Application {
                 bool = true;
                 int_ = 1L;
                 map = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                         any = "any";
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
@@ -1011,13 +1011,13 @@ public class Application {
                         float32 = 1.1f;
                         int_ = 1L;
                         int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                        intEnum = SimpleObjectIntEnum.Second;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
                         num = 1.1d;
                         str = "test";
                         strOpt = "testOptional";
                     }});
-                    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                         any = "any";
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
@@ -1031,15 +1031,15 @@ public class Application {
                         float32 = 1.1f;
                         int_ = 1L;
                         int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                        intEnum = SimpleObjectIntEnum.Second;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
                         num = 1.1d;
                         str = "test";
                         strOpt = "testOptional";
                     }});
                 }};
                 num = 1.1d;
-                obj = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                obj = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
@@ -1053,14 +1053,14 @@ public class Application {
                     float32 = 1.1f;
                     int_ = 1L;
                     int32 = 1;
-                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                    intEnum = SimpleObjectIntEnum.Second;
+                    int32Enum = Int32Enum.FIFTY_FIVE;
+                    intEnum = IntEnum.Second;
                     num = 1.1d;
                     str = "test";
                     strOpt = "testOptional";
                 }};
                 str = "test";
-            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
@@ -1074,8 +1074,8 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Second;
+                int32Enum = Int32Enum.FIFTY_FIVE;
+                intEnum = IntEnum.Second;
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
@@ -1215,10 +1215,10 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.MixedQueryParamsRequest;
 import org.openapis.openapi.models.operations.MixedQueryParamsResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -1231,7 +1231,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            MixedQueryParamsResponse res = sdk.parameters.mixedQueryParams(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            MixedQueryParamsResponse res = sdk.parameters.mixedQueryParams(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
@@ -1245,12 +1245,12 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Second;
+                int32Enum = Int32Enum.FIFTY_FIVE;
+                intEnum = IntEnum.Second;
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
@@ -1264,12 +1264,12 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Second;
+                int32Enum = Int32Enum.FIFTY_FIVE;
+                intEnum = IntEnum.Second;
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
@@ -1283,8 +1283,8 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Second;
+                int32Enum = Int32Enum.FIFTY_FIVE;
+                intEnum = IntEnum.Second;
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
@@ -1327,10 +1327,10 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.PathParameterJsonRequest;
 import org.openapis.openapi.models.operations.PathParameterJsonResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -1343,7 +1343,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            PathParameterJsonResponse res = sdk.parameters.pathParameterJson(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            PathParameterJsonResponse res = sdk.parameters.pathParameterJson(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
@@ -1357,8 +1357,8 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Second;
+                int32Enum = Int32Enum.FIFTY_FIVE;
+                intEnum = IntEnum.Second;
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
@@ -1399,10 +1399,10 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayRequest;
 import org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -1422,9 +1422,9 @@ public class Application {
                 add(1L),
                 add(2L),
             }}, new java.util.HashMap<String, String>(){{
-                put("key2", "val2");
                 put("key1", "val1");
-            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                put("key2", "val2");
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
@@ -1438,8 +1438,8 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Second;
+                int32Enum = Int32Enum.FIFTY_FIVE;
+                intEnum = IntEnum.Second;
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
@@ -1544,8 +1544,8 @@ public class Application {
                 .build();
 
             SimplePathParameterMapsResponse res = sdk.parameters.simplePathParameterMaps(new java.util.HashMap<String, String>(){{
-                put("test", "value");
                 put("test2", "value2");
+                put("test", "value");
             }}, new java.util.HashMap<String, Long>(){{
                 put("test", 1L);
                 put("test2", 2L);
@@ -1587,10 +1587,10 @@ import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.SimplePathParameterObjectsRequest;
 import org.openapis.openapi.models.operations.SimplePathParameterObjectsResponse;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -1603,7 +1603,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            SimplePathParameterObjectsResponse res = sdk.parameters.simplePathParameterObjects(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            SimplePathParameterObjectsResponse res = sdk.parameters.simplePathParameterObjects(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
@@ -1617,12 +1617,12 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Second;
+                int32Enum = Int32Enum.FIFTY_FIVE;
+                intEnum = IntEnum.Second;
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
@@ -1636,8 +1636,8 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Second;
+                int32Enum = Int32Enum.FIFTY_FIVE;
+                intEnum = IntEnum.Second;
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";

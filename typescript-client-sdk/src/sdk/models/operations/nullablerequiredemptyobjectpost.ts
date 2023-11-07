@@ -6,27 +6,27 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj extends SpeakeasyBase {}
+export class NullableOptionalObj extends SpeakeasyBase {}
 
-export class NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj extends SpeakeasyBase {}
+export class NullableRequiredObj extends SpeakeasyBase {}
 
-export class NullableRequiredEmptyObjectPostRequestBodyRequiredObj extends SpeakeasyBase {}
+export class RequiredObj extends SpeakeasyBase {}
 
 export class NullableRequiredEmptyObjectPostRequestBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "NullableOptionalObj" })
-    @Type(() => NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj)
-    nullableOptionalObj?: NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj;
+    @Type(() => NullableOptionalObj)
+    nullableOptionalObj?: NullableOptionalObj;
 
     @SpeakeasyMetadata()
     @Expose({ name: "NullableRequiredObj" })
-    @Type(() => NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj)
-    nullableRequiredObj: NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj;
+    @Type(() => NullableRequiredObj)
+    nullableRequiredObj: NullableRequiredObj;
 
     @SpeakeasyMetadata()
     @Expose({ name: "RequiredObj" })
-    @Type(() => NullableRequiredEmptyObjectPostRequestBodyRequiredObj)
-    requiredObj: NullableRequiredEmptyObjectPostRequestBodyRequiredObj;
+    @Type(() => RequiredObj)
+    requiredObj: RequiredObj;
 }
 
 export class NullableRequiredEmptyObjectPostResponse extends SpeakeasyBase {
@@ -52,5 +52,5 @@ export class NullableRequiredEmptyObjectPostResponse extends SpeakeasyBase {
      * OK
      */
     @SpeakeasyMetadata()
-    nullableRequiredEmptyObjectPost200ApplicationJSONString?: string;
+    res?: string;
 }

@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
 type NullableRequiredSharedObjectPostRequestBody struct {
@@ -34,7 +34,7 @@ type NullableRequiredSharedObjectPostResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	NullableRequiredSharedObjectPost200ApplicationJSONString *string
+	Res *string
 }
 
 func (o *NullableRequiredSharedObjectPostResponse) GetContentType() string {
@@ -58,9 +58,9 @@ func (o *NullableRequiredSharedObjectPostResponse) GetRawResponse() *http.Respon
 	return o.RawResponse
 }
 
-func (o *NullableRequiredSharedObjectPostResponse) GetNullableRequiredSharedObjectPost200ApplicationJSONString() *string {
+func (o *NullableRequiredSharedObjectPostResponse) GetRes() *string {
 	if o == nil {
 		return nil
 	}
-	return o.NullableRequiredSharedObjectPost200ApplicationJSONString
+	return o.Res
 }

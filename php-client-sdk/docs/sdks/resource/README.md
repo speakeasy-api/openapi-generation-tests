@@ -1,5 +1,5 @@
 # Resource
-(*resource*)
+
 
 ### Available Operations
 
@@ -19,23 +19,22 @@
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\CreateFileRequestBody;
-use \OpenAPI\OpenAPI\Models\Operations\CreateFileRequestBodyFile;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $request = new CreateFileRequestBody();
-    $request->file = new CreateFileRequestBodyFile();
-    $request->file->content = '`\'$Z`(L/RH';
-    $request->file->file = 'string';
+    $request = new Operations\CreateFileRequestBody();
+    $request->file = new Operations\CreateFileFile();
+    $request->file->content = '0xf10df1a3b9';
+    $request->file->fileName = 'rap_national.mp4v';
 
     $response = $sdk->resource->createFile($request);
 
@@ -69,22 +68,18 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Shared\ExampleResource;
-use \OpenAPI\OpenAPI\Models\Shared\ExampleResourceChocolates;
-use \OpenAPI\OpenAPI\Models\Shared\ExampleResourceEnumNumber;
-use \OpenAPI\OpenAPI\Models\Shared\ExampleResourceEnumStr;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
 try {
-    $request = new ExampleResource();
+    $request = new Shared\ExampleResource();
     $request->arrayOfNumber = [
         1867.47,
     ];
@@ -92,11 +87,11 @@ try {
         'string',
     ];
     $request->chocolates = [
-        new ExampleResourceChocolates(),
+        new Shared\Chocolates(),
     ];
     $request->createdAt = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2023-03-21T05:07:13.653Z');
-    $request->enumNumber = ExampleResourceEnumNumber::One;
-    $request->enumStr = ExampleResourceEnumStr::One;
+    $request->enumNumber = Shared\EnumNumber::One;
+    $request->enumStr = Shared\EnumStr::One;
     $request->id = '<ID>';
     $request->mapOfInteger = [
         'Unbranded' => 967142,
@@ -140,14 +135,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\DeleteResourceRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -186,14 +181,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\GetResourceRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 
@@ -232,14 +227,14 @@ try {
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI\SDK;
-use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\UpdateResourceRequest;
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Security();
+$security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
-$sdk = SDK::builder()
+$sdk = OpenAPI\SDK::builder()
     ->setSecurity($security)
     ->build();
 

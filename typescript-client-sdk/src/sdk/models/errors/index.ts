@@ -4,6 +4,5 @@
 
 export * from "./error";
 export * from "./errortype";
-export * from "./statusgetxspeakeasyerrors";
-
 export * from "./sdkerror";
+export * from "./statusgetxspeakeasyerrors";

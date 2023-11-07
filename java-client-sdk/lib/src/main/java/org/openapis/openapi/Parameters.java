@@ -75,7 +75,7 @@ public class Parameters {
         return this.deepObjectQueryParamsObject(objParam, null);
     }
 
-    public org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectResponse deepObjectQueryParamsObject(org.openapis.openapi.models.shared.SimpleObject objParam, org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectObjArrParam objArrParam) throws Exception {
+    public org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectResponse deepObjectQueryParamsObject(org.openapis.openapi.models.shared.SimpleObject objParam, org.openapis.openapi.models.operations.ObjArrParam objArrParam) throws Exception {
         org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectRequest request = new org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectRequest(objParam);
         request.objArrParam=objArrParam;
         
@@ -203,11 +203,11 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.FormQueryParamsCamelObjectResponse formQueryParamsCamelObject(org.openapis.openapi.models.operations.FormQueryParamsCamelObjectObjParamExploded objParamExploded) throws Exception {
+    public org.openapis.openapi.models.operations.FormQueryParamsCamelObjectResponse formQueryParamsCamelObject(org.openapis.openapi.models.operations.ObjParamExploded objParamExploded) throws Exception {
         return this.formQueryParamsCamelObject(objParamExploded, null);
     }
 
-    public org.openapis.openapi.models.operations.FormQueryParamsCamelObjectResponse formQueryParamsCamelObject(org.openapis.openapi.models.operations.FormQueryParamsCamelObjectObjParamExploded objParamExploded, org.openapis.openapi.models.operations.FormQueryParamsCamelObjectObjParam objParam) throws Exception {
+    public org.openapis.openapi.models.operations.FormQueryParamsCamelObjectResponse formQueryParamsCamelObject(org.openapis.openapi.models.operations.ObjParamExploded objParamExploded, org.openapis.openapi.models.operations.ObjParam objParam) throws Exception {
         org.openapis.openapi.models.operations.FormQueryParamsCamelObjectRequest request = new org.openapis.openapi.models.operations.FormQueryParamsCamelObjectRequest(objParamExploded);
         request.objParam=objParam;
         

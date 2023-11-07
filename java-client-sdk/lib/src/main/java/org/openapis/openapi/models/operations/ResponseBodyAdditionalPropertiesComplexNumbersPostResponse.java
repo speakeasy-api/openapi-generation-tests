@@ -46,10 +46,10 @@ public class ResponseBodyAdditionalPropertiesComplexNumbersPostResponse {
      * OK
      */
     
-    public ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON responseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject;
+    public ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody object;
 
-    public ResponseBodyAdditionalPropertiesComplexNumbersPostResponse withResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject(ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON responseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject) {
-        this.responseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject = responseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject;
+    public ResponseBodyAdditionalPropertiesComplexNumbersPostResponse withObject(ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody object) {
+        this.object = object;
         return this;
     }
     

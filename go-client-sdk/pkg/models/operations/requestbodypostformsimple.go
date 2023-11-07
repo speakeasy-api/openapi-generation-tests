@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-type RequestBodyPostFormSimpleResForm struct {
+type RequestBodyPostFormSimpleForm struct {
 	Any        string  `json:"any"`
 	Bool       string  `json:"bool"`
 	BoolOpt    *string `json:"boolOpt,omitempty"`
@@ -23,109 +23,109 @@ type RequestBodyPostFormSimpleResForm struct {
 	StrOpt     *string `json:"strOpt,omitempty"`
 }
 
-func (o *RequestBodyPostFormSimpleResForm) GetAny() string {
+func (o *RequestBodyPostFormSimpleForm) GetAny() string {
 	if o == nil {
 		return ""
 	}
 	return o.Any
 }
 
-func (o *RequestBodyPostFormSimpleResForm) GetBool() string {
+func (o *RequestBodyPostFormSimpleForm) GetBool() string {
 	if o == nil {
 		return ""
 	}
 	return o.Bool
 }
 
-func (o *RequestBodyPostFormSimpleResForm) GetBoolOpt() *string {
+func (o *RequestBodyPostFormSimpleForm) GetBoolOpt() *string {
 	if o == nil {
 		return nil
 	}
 	return o.BoolOpt
 }
 
-func (o *RequestBodyPostFormSimpleResForm) GetDate() string {
+func (o *RequestBodyPostFormSimpleForm) GetDate() string {
 	if o == nil {
 		return ""
 	}
 	return o.Date
 }
 
-func (o *RequestBodyPostFormSimpleResForm) GetDateTime() string {
+func (o *RequestBodyPostFormSimpleForm) GetDateTime() string {
 	if o == nil {
 		return ""
 	}
 	return o.DateTime
 }
 
-func (o *RequestBodyPostFormSimpleResForm) GetEnum() string {
+func (o *RequestBodyPostFormSimpleForm) GetEnum() string {
 	if o == nil {
 		return ""
 	}
 	return o.Enum
 }
 
-func (o *RequestBodyPostFormSimpleResForm) GetFloat32() string {
+func (o *RequestBodyPostFormSimpleForm) GetFloat32() string {
 	if o == nil {
 		return ""
 	}
 	return o.Float32
 }
 
-func (o *RequestBodyPostFormSimpleResForm) GetInt() string {
+func (o *RequestBodyPostFormSimpleForm) GetInt() string {
 	if o == nil {
 		return ""
 	}
 	return o.Int
 }
 
-func (o *RequestBodyPostFormSimpleResForm) GetInt32() string {
+func (o *RequestBodyPostFormSimpleForm) GetInt32() string {
 	if o == nil {
 		return ""
 	}
 	return o.Int32
 }
 
-func (o *RequestBodyPostFormSimpleResForm) GetIntOptNull() *string {
+func (o *RequestBodyPostFormSimpleForm) GetIntOptNull() *string {
 	if o == nil {
 		return nil
 	}
 	return o.IntOptNull
 }
 
-func (o *RequestBodyPostFormSimpleResForm) GetNum() string {
+func (o *RequestBodyPostFormSimpleForm) GetNum() string {
 	if o == nil {
 		return ""
 	}
 	return o.Num
 }
 
-func (o *RequestBodyPostFormSimpleResForm) GetNumOptNull() *string {
+func (o *RequestBodyPostFormSimpleForm) GetNumOptNull() *string {
 	if o == nil {
 		return nil
 	}
 	return o.NumOptNull
 }
 
-func (o *RequestBodyPostFormSimpleResForm) GetStr() string {
+func (o *RequestBodyPostFormSimpleForm) GetStr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Str
 }
 
-func (o *RequestBodyPostFormSimpleResForm) GetStrOpt() *string {
+func (o *RequestBodyPostFormSimpleForm) GetStrOpt() *string {
 	if o == nil {
 		return nil
 	}
 	return o.StrOpt
 }
 
-type RequestBodyPostFormSimpleResHeaders struct {
+type RequestBodyPostFormSimpleHeaders struct {
 	ContentType string `json:"Content-Type"`
 }
 
-func (o *RequestBodyPostFormSimpleResHeaders) GetContentType() string {
+func (o *RequestBodyPostFormSimpleHeaders) GetContentType() string {
 	if o == nil {
 		return ""
 	}
@@ -134,20 +134,20 @@ func (o *RequestBodyPostFormSimpleResHeaders) GetContentType() string {
 
 // RequestBodyPostFormSimpleRes - OK
 type RequestBodyPostFormSimpleRes struct {
-	Form    RequestBodyPostFormSimpleResForm    `json:"form"`
-	Headers RequestBodyPostFormSimpleResHeaders `json:"headers"`
+	Form    RequestBodyPostFormSimpleForm    `json:"form"`
+	Headers RequestBodyPostFormSimpleHeaders `json:"headers"`
 }
 
-func (o *RequestBodyPostFormSimpleRes) GetForm() RequestBodyPostFormSimpleResForm {
+func (o *RequestBodyPostFormSimpleRes) GetForm() RequestBodyPostFormSimpleForm {
 	if o == nil {
-		return RequestBodyPostFormSimpleResForm{}
+		return RequestBodyPostFormSimpleForm{}
 	}
 	return o.Form
 }
 
-func (o *RequestBodyPostFormSimpleRes) GetHeaders() RequestBodyPostFormSimpleResHeaders {
+func (o *RequestBodyPostFormSimpleRes) GetHeaders() RequestBodyPostFormSimpleHeaders {
 	if o == nil {
-		return RequestBodyPostFormSimpleResHeaders{}
+		return RequestBodyPostFormSimpleHeaders{}
 	}
 	return o.Headers
 }

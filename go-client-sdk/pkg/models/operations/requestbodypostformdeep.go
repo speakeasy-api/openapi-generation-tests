@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-type RequestBodyPostFormDeepResForm struct {
+type Form struct {
 	Arr  string `json:"arr"`
 	Bool string `json:"bool"`
 	Int  string `json:"int"`
@@ -16,49 +16,49 @@ type RequestBodyPostFormDeepResForm struct {
 	Str  string `json:"str"`
 }
 
-func (o *RequestBodyPostFormDeepResForm) GetArr() string {
+func (o *Form) GetArr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Arr
 }
 
-func (o *RequestBodyPostFormDeepResForm) GetBool() string {
+func (o *Form) GetBool() string {
 	if o == nil {
 		return ""
 	}
 	return o.Bool
 }
 
-func (o *RequestBodyPostFormDeepResForm) GetInt() string {
+func (o *Form) GetInt() string {
 	if o == nil {
 		return ""
 	}
 	return o.Int
 }
 
-func (o *RequestBodyPostFormDeepResForm) GetMap() string {
+func (o *Form) GetMap() string {
 	if o == nil {
 		return ""
 	}
 	return o.Map
 }
 
-func (o *RequestBodyPostFormDeepResForm) GetNum() string {
+func (o *Form) GetNum() string {
 	if o == nil {
 		return ""
 	}
 	return o.Num
 }
 
-func (o *RequestBodyPostFormDeepResForm) GetObj() string {
+func (o *Form) GetObj() string {
 	if o == nil {
 		return ""
 	}
 	return o.Obj
 }
 
-func (o *RequestBodyPostFormDeepResForm) GetStr() string {
+func (o *Form) GetStr() string {
 	if o == nil {
 		return ""
 	}
@@ -67,12 +67,12 @@ func (o *RequestBodyPostFormDeepResForm) GetStr() string {
 
 // RequestBodyPostFormDeepRes - OK
 type RequestBodyPostFormDeepRes struct {
-	Form RequestBodyPostFormDeepResForm `json:"form"`
+	Form Form `json:"form"`
 }
 
-func (o *RequestBodyPostFormDeepRes) GetForm() RequestBodyPostFormDeepResForm {
+func (o *RequestBodyPostFormDeepRes) GetForm() Form {
 	if o == nil {
-		return RequestBodyPostFormDeepResForm{}
+		return Form{}
 	}
 	return o.Form
 }

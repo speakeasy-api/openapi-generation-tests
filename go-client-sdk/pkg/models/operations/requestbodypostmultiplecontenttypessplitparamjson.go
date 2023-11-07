@@ -6,27 +6,27 @@ import (
 	"net/http"
 )
 
-type RequestBodyPostMultipleContentTypesSplitParamApplicationJSON struct {
+type RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody struct {
 	Bool bool    `json:"bool"`
 	Num  float64 `json:"num"`
 	Str  string  `json:"str"`
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitParamApplicationJSON) GetBool() bool {
+func (o *RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody) GetBool() bool {
 	if o == nil {
 		return false
 	}
 	return o.Bool
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitParamApplicationJSON) GetNum() float64 {
+func (o *RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody) GetNum() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Num
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitParamApplicationJSON) GetStr() string {
+func (o *RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody) GetStr() string {
 	if o == nil {
 		return ""
 	}
@@ -34,13 +34,13 @@ func (o *RequestBodyPostMultipleContentTypesSplitParamApplicationJSON) GetStr() 
 }
 
 type RequestBodyPostMultipleContentTypesSplitParamJSONRequest struct {
-	RequestBody RequestBodyPostMultipleContentTypesSplitParamApplicationJSON `request:"mediaType=application/json"`
+	RequestBody RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody `request:"mediaType=application/json"`
 	ParamStr    string                                                       `queryParam:"style=form,explode=true,name=paramStr"`
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitParamJSONRequest) GetRequestBody() RequestBodyPostMultipleContentTypesSplitParamApplicationJSON {
+func (o *RequestBodyPostMultipleContentTypesSplitParamJSONRequest) GetRequestBody() RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody {
 	if o == nil {
-		return RequestBodyPostMultipleContentTypesSplitParamApplicationJSON{}
+		return RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody{}
 	}
 	return o.RequestBody
 }

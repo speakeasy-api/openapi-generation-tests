@@ -4,61 +4,61 @@ package shared
 
 import (
 	"errors"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 )
 
-type OneOfCircularReferenceObjectChildType string
+type ChildType string
 
 const (
-	OneOfCircularReferenceObjectChildTypeOneOfCircularReferenceObject OneOfCircularReferenceObjectChildType = "oneOfCircularReferenceObject"
-	OneOfCircularReferenceObjectChildTypeSimpleObject                 OneOfCircularReferenceObjectChildType = "simpleObject"
+	ChildTypeOneOfCircularReferenceObject ChildType = "oneOfCircularReferenceObject"
+	ChildTypeSimpleObject                 ChildType = "simpleObject"
 )
 
-type OneOfCircularReferenceObjectChild struct {
+type Child struct {
 	OneOfCircularReferenceObject *OneOfCircularReferenceObject
 	SimpleObject                 *SimpleObject
 
-	Type OneOfCircularReferenceObjectChildType
+	Type ChildType
 }
 
-func CreateOneOfCircularReferenceObjectChildOneOfCircularReferenceObject(oneOfCircularReferenceObject OneOfCircularReferenceObject) OneOfCircularReferenceObjectChild {
-	typ := OneOfCircularReferenceObjectChildTypeOneOfCircularReferenceObject
+func CreateChildOneOfCircularReferenceObject(oneOfCircularReferenceObject OneOfCircularReferenceObject) Child {
+	typ := ChildTypeOneOfCircularReferenceObject
 
-	return OneOfCircularReferenceObjectChild{
+	return Child{
 		OneOfCircularReferenceObject: &oneOfCircularReferenceObject,
 		Type:                         typ,
 	}
 }
 
-func CreateOneOfCircularReferenceObjectChildSimpleObject(simpleObject SimpleObject) OneOfCircularReferenceObjectChild {
-	typ := OneOfCircularReferenceObjectChildTypeSimpleObject
+func CreateChildSimpleObject(simpleObject SimpleObject) Child {
+	typ := ChildTypeSimpleObject
 
-	return OneOfCircularReferenceObjectChild{
+	return Child{
 		SimpleObject: &simpleObject,
 		Type:         typ,
 	}
 }
 
-func (u *OneOfCircularReferenceObjectChild) UnmarshalJSON(data []byte) error {
+func (u *Child) UnmarshalJSON(data []byte) error {
 
 	oneOfCircularReferenceObject := OneOfCircularReferenceObject{}
 	if err := utils.UnmarshalJSON(data, &oneOfCircularReferenceObject, "", true, true); err == nil {
 		u.OneOfCircularReferenceObject = &oneOfCircularReferenceObject
-		u.Type = OneOfCircularReferenceObjectChildTypeOneOfCircularReferenceObject
+		u.Type = ChildTypeOneOfCircularReferenceObject
 		return nil
 	}
 
 	simpleObject := SimpleObject{}
 	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
 		u.SimpleObject = &simpleObject
-		u.Type = OneOfCircularReferenceObjectChildTypeSimpleObject
+		u.Type = ChildTypeSimpleObject
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u OneOfCircularReferenceObjectChild) MarshalJSON() ([]byte, error) {
+func (u Child) MarshalJSON() ([]byte, error) {
 	if u.OneOfCircularReferenceObject != nil {
 		return utils.MarshalJSON(u.OneOfCircularReferenceObject, "", true)
 	}
@@ -71,12 +71,12 @@ func (u OneOfCircularReferenceObjectChild) MarshalJSON() ([]byte, error) {
 }
 
 type OneOfCircularReferenceObject struct {
-	Child OneOfCircularReferenceObjectChild `json:"child"`
+	Child Child `json:"child"`
 }
 
-func (o *OneOfCircularReferenceObject) GetChild() OneOfCircularReferenceObjectChild {
+func (o *OneOfCircularReferenceObject) GetChild() Child {
 	if o == nil {
-		return OneOfCircularReferenceObjectChild{}
+		return Child{}
 	}
 	return o.Child
 }

@@ -9,8 +9,8 @@ require_relative '../shared/enum'
 
 module OpenApiSDK
   module Shared
-    # SimpleObjectCamelCaseInt32EnumVal - An int32 enum property.
-    class SimpleObjectCamelCaseInt32EnumVal < T::Enum
+    # Int32EnumVal - An int32 enum property.
+    class Int32EnumVal < T::Enum
       enums do
         FIFTY_FIVE = new(55)
         SIXTY_NINE = new(69)
@@ -19,8 +19,8 @@ module OpenApiSDK
     end
 
 
-    # SimpleObjectCamelCaseIntEnumVal - An integer enum property.
-    class SimpleObjectCamelCaseIntEnumVal < T::Enum
+    # IntEnumVal - An integer enum property.
+    class IntEnumVal < T::Enum
       enums do
         FIRST = new(1)
         SECOND = new(2)
@@ -47,11 +47,11 @@ module OpenApiSDK
       # A float32 property.
       field :float32_val, Float, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('float32_val') } }
       # An integer enum property.
-      field :int_enum_val, Shared::SimpleObjectCamelCaseIntEnumVal, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int_enum_val'), 'decoder': Utils.enum_from_string(Shared::SimpleObjectCamelCaseIntEnumVal, false) } }
+      field :int_enum_val, Shared::IntEnumVal, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int_enum_val'), 'decoder': Utils.enum_from_string(Shared::IntEnumVal, false) } }
       # An integer property.
       field :int_val, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int_val') } }
       # An int32 enum property.
-      field :int32_enum_val, Shared::SimpleObjectCamelCaseInt32EnumVal, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int32_enum_val'), 'decoder': Utils.enum_from_string(Shared::SimpleObjectCamelCaseInt32EnumVal, false) } }
+      field :int32_enum_val, Shared::Int32EnumVal, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int32_enum_val'), 'decoder': Utils.enum_from_string(Shared::Int32EnumVal, false) } }
       # An int32 property.
       field :int32_val, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int32_val') } }
       # A number property.
@@ -74,7 +74,7 @@ module OpenApiSDK
       field :str_opt_val, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('str_opt_val') } }
 
 
-      sig { params(any_val: Object, bool_val: T::Boolean, date_time_val: DateTime, date_val: Date, enum_val: Shared::Enum, float32_val: Float, int_enum_val: Shared::SimpleObjectCamelCaseIntEnumVal, int_val: Integer, int32_enum_val: Shared::SimpleObjectCamelCaseInt32EnumVal, int32_val: Integer, num_val: Float, str_val: String, bigint_str_val: T.nilable(String), bigint_val: T.nilable(Integer), bool_opt_val: T.nilable(T::Boolean), decimal_val: T.nilable(Float), int_opt_null_val: T.nilable(Integer), num_opt_null_val: T.nilable(Float), str_opt_val: T.nilable(String)).void }
+      sig { params(any_val: Object, bool_val: T::Boolean, date_time_val: DateTime, date_val: Date, enum_val: Shared::Enum, float32_val: Float, int_enum_val: Shared::IntEnumVal, int_val: Integer, int32_enum_val: Shared::Int32EnumVal, int32_val: Integer, num_val: Float, str_val: String, bigint_str_val: T.nilable(String), bigint_val: T.nilable(Integer), bool_opt_val: T.nilable(T::Boolean), decimal_val: T.nilable(Float), int_opt_null_val: T.nilable(Integer), num_opt_null_val: T.nilable(Float), str_opt_val: T.nilable(String)).void }
       def initialize(any_val: nil, bool_val: nil, date_time_val: nil, date_val: nil, enum_val: nil, float32_val: nil, int_enum_val: nil, int_val: nil, int32_enum_val: nil, int32_val: nil, num_val: nil, str_val: nil, bigint_str_val: nil, bigint_val: nil, bool_opt_val: nil, decimal_val: nil, int_opt_null_val: nil, num_opt_null_val: nil, str_opt_val: nil)
         @any_val = any_val
         @bool_val = bool_val

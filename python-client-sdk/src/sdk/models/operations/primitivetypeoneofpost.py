@@ -14,7 +14,7 @@ class PrimitiveTypeOneOfPostRequestBody:
 
 
 @dataclasses.dataclass
-class PrimitiveTypeOneOfPostResJSON:
+class PrimitiveTypeOneOfPostJSON:
     pass
 
 

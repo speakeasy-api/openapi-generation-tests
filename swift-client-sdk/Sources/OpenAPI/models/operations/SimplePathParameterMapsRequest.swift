@@ -3,12 +3,12 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct SimplePathParameterMapsRequest: APIValue {
         public let mapParam: [String: String]
         public let mapParamExploded: [String: Int]
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         ///
         public init(mapParam: [String: String], mapParamExploded: [String: Int]) {

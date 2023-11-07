@@ -31,9 +31,9 @@ s = sdk.SDK(
 
 req = 'string'
 
-res = s.sdk.put_anything_ignored_generation(req)
+res = s.put_anything_ignored_generation(req)
 
-if res.put_anything_ignored_generation_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -67,7 +67,7 @@ s = sdk.SDK(
 )
 
 
-res = s.sdk.response_body_json_get()
+res = s.response_body_json_get()
 
 if res.http_bin_simple_json_object is not None:
     # handle response

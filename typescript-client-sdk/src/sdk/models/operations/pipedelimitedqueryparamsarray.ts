@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -26,7 +26,7 @@ export class PipeDelimitedQueryParamsArrayRequest extends SpeakeasyBase {
     objParam?: shared.SimpleObject;
 }
 
-export class PipeDelimitedQueryParamsArrayResArgs extends SpeakeasyBase {
+export class PipeDelimitedQueryParamsArrayArgs extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "arrParam" })
     arrParam: string;
@@ -42,8 +42,8 @@ export class PipeDelimitedQueryParamsArrayResArgs extends SpeakeasyBase {
 export class PipeDelimitedQueryParamsArrayRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "args" })
-    @Type(() => PipeDelimitedQueryParamsArrayResArgs)
-    args: PipeDelimitedQueryParamsArrayResArgs;
+    @Type(() => PipeDelimitedQueryParamsArrayArgs)
+    args: PipeDelimitedQueryParamsArrayArgs;
 
     @SpeakeasyMetadata()
     @Expose({ name: "url" })

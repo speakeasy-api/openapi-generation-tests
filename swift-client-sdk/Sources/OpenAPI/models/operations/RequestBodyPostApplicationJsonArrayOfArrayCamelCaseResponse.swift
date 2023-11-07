@@ -6,7 +6,7 @@ extension Operations {
     /// A response model
     public enum RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse {
         case empty
-        case arrs([[Shared.SimpleObjectCamelCase]])
+        case res([[Shared.SimpleObjectCamelCase]])
 
         var isEmpty: Bool {
             if case .empty = self {
@@ -16,8 +16,8 @@ extension Operations {
             }
         }
 
-        public func arrs() throws -> [[Shared.SimpleObjectCamelCase]] {
-            guard case .arrs(let value) = self else {
+        public func res() throws -> [[Shared.SimpleObjectCamelCase]] {
+            guard case .res(let value) = self else {
                 throw OpenAPIError.missingResponseData
             }
             return value

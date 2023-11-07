@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class RequestBodyPostFormSimpleResForm extends SpeakeasyBase {
+export class RequestBodyPostFormSimpleForm extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "any" })
     any: string;
@@ -64,7 +64,7 @@ export class RequestBodyPostFormSimpleResForm extends SpeakeasyBase {
     strOpt?: string;
 }
 
-export class RequestBodyPostFormSimpleResHeaders extends SpeakeasyBase {
+export class RequestBodyPostFormSimpleHeaders extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "Content-Type" })
     contentType: string;
@@ -76,13 +76,13 @@ export class RequestBodyPostFormSimpleResHeaders extends SpeakeasyBase {
 export class RequestBodyPostFormSimpleRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "form" })
-    @Type(() => RequestBodyPostFormSimpleResForm)
-    form: RequestBodyPostFormSimpleResForm;
+    @Type(() => RequestBodyPostFormSimpleForm)
+    form: RequestBodyPostFormSimpleForm;
 
     @SpeakeasyMetadata()
     @Expose({ name: "headers" })
-    @Type(() => RequestBodyPostFormSimpleResHeaders)
-    headers: RequestBodyPostFormSimpleResHeaders;
+    @Type(() => RequestBodyPostFormSimpleHeaders)
+    headers: RequestBodyPostFormSimpleHeaders;
 }
 
 export class RequestBodyPostFormSimpleResponse extends SpeakeasyBase {

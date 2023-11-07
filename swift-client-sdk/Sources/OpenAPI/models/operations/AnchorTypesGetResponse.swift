@@ -6,7 +6,7 @@ extension Operations {
     /// A response model
     public enum AnchorTypesGetResponse {
         case empty
-        case typeFromAnchor(Operations.TypeFromAnchor)
+        case typeFromAnchor(Operations.AnchorTypesGetTypeFromAnchor)
 
         var isEmpty: Bool {
             if case .empty = self {
@@ -16,7 +16,7 @@ extension Operations {
             }
         }
 
-        public func typeFromAnchor() throws -> Operations.TypeFromAnchor {
+        public func typeFromAnchor() throws -> Operations.AnchorTypesGetTypeFromAnchor {
             guard case .typeFromAnchor(let value) = self else {
                 throw OpenAPIError.missingResponseData
             }

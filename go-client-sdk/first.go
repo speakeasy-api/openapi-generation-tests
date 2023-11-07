@@ -8,23 +8,23 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/utils"
 	"strings"
 )
 
-type first struct {
+type First struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newFirst(sdkConfig sdkConfiguration) *first {
-	return &first{
+func newFirst(sdkConfig sdkConfiguration) *First {
+	return &First{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *first) Get(ctx context.Context) (*operations.GroupFirstGetResponse, error) {
+func (s *First) Get(ctx context.Context) (*operations.GroupFirstGetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/group/first"
 

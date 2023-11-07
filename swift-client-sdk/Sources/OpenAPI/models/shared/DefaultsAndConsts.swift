@@ -15,8 +15,8 @@ extension Shared {
         @DecimalSerialized
         public private(set) var constDecimal: Double
         public let constDecimalStr: String
-        public let constEnumInt: Shared.DefaultsAndConstsConstEnumInt
-        public let constEnumStr: Shared.DefaultsAndConstsConstEnumStr
+        public let constEnumInt: Shared.ConstEnumInt
+        public let constEnumStr: Shared.ConstEnumStr
         public let constInt: Int
         @DecimalSerialized
         public private(set) var constNum: Double
@@ -33,8 +33,8 @@ extension Shared {
         @DecimalSerialized
         public private(set) var defaultDecimal: Double?
         public let defaultDecimalStr: String?
-        public let defaultEnumInt: Shared.DefaultsAndConstsDefaultEnumInt?
-        public let defaultEnumStr: Shared.DefaultsAndConstsDefaultEnumStr?
+        public let defaultEnumInt: Shared.DefaultEnumInt?
+        public let defaultEnumStr: Shared.DefaultEnumStr?
         public let defaultInt: Int?
         @DecimalSerialized
         public private(set) var defaultNum: Double?
@@ -45,7 +45,7 @@ extension Shared {
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(constBigInt: Int, constBigIntStr: String, constBool: Bool, constDate: Date, constDateTime: Date, constDecimal: Double, constDecimalStr: String, constEnumInt: Shared.DefaultsAndConstsConstEnumInt, constEnumStr: Shared.DefaultsAndConstsConstEnumStr, constInt: Int, constNum: Double, constStr: String, constStrNull: String, normalField: String, defaultBigInt: Int? = nil, defaultBigIntStr: String? = nil, defaultBool: Bool? = nil, defaultDate: Date? = nil, defaultDateTime: Date? = nil, defaultDecimal: Double? = nil, defaultDecimalStr: String? = nil, defaultEnumInt: Shared.DefaultsAndConstsDefaultEnumInt? = nil, defaultEnumStr: Shared.DefaultsAndConstsDefaultEnumStr? = nil, defaultInt: Int? = nil, defaultNum: Double? = nil, defaultStr: String? = nil, defaultStrNullable: String? = nil, defaultStrOptional: String? = nil) {
+        public init(constBigInt: Int, constBigIntStr: String, constBool: Bool, constDate: Date, constDateTime: Date, constDecimal: Double, constDecimalStr: String, constEnumInt: Shared.ConstEnumInt, constEnumStr: Shared.ConstEnumStr, constInt: Int, constNum: Double, constStr: String, constStrNull: String, normalField: String, defaultBigInt: Int? = nil, defaultBigIntStr: String? = nil, defaultBool: Bool? = nil, defaultDate: Date? = nil, defaultDateTime: Date? = nil, defaultDecimal: Double? = nil, defaultDecimalStr: String? = nil, defaultEnumInt: Shared.DefaultEnumInt? = nil, defaultEnumStr: Shared.DefaultEnumStr? = nil, defaultInt: Int? = nil, defaultNum: Double? = nil, defaultStr: String? = nil, defaultStrNullable: String? = nil, defaultStrOptional: String? = nil) {
             self.constBigInt = constBigInt
             self.constBigIntStr = constBigIntStr
             self.constBool = constBool
@@ -119,8 +119,8 @@ extension Shared.DefaultsAndConsts: Codable {
         self._constDateTime = try container.decode(DateTime<Date>.self, forKey: .constDateTime)
         self._constDecimal = try container.decode(DecimalSerialized<Double>.self, forKey: .constDecimal)
         self.constDecimalStr = try container.decode(String.self, forKey: .constDecimalStr)
-        self.constEnumInt = try container.decode(Shared.DefaultsAndConstsConstEnumInt.self, forKey: .constEnumInt)
-        self.constEnumStr = try container.decode(Shared.DefaultsAndConstsConstEnumStr.self, forKey: .constEnumStr)
+        self.constEnumInt = try container.decode(Shared.ConstEnumInt.self, forKey: .constEnumInt)
+        self.constEnumStr = try container.decode(Shared.ConstEnumStr.self, forKey: .constEnumStr)
         self.constInt = try container.decode(Int.self, forKey: .constInt)
         self._constNum = try container.decode(DecimalSerialized<Double>.self, forKey: .constNum)
         self.constStr = try container.decode(String.self, forKey: .constStr)
@@ -133,8 +133,8 @@ extension Shared.DefaultsAndConsts: Codable {
         self._defaultDateTime = try container.decodeIfPresent(DateTime<Date?>.self, forKey: .defaultDateTime) ?? DateTime<Date?>(wrappedValue: nil)
         self._defaultDecimal = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .defaultDecimal) ?? DecimalSerialized<Double?>(wrappedValue: nil)
         self.defaultDecimalStr = try container.decodeIfPresent(String.self, forKey: .defaultDecimalStr)
-        self.defaultEnumInt = try container.decodeIfPresent(Shared.DefaultsAndConstsDefaultEnumInt.self, forKey: .defaultEnumInt)
-        self.defaultEnumStr = try container.decodeIfPresent(Shared.DefaultsAndConstsDefaultEnumStr.self, forKey: .defaultEnumStr)
+        self.defaultEnumInt = try container.decodeIfPresent(Shared.DefaultEnumInt.self, forKey: .defaultEnumInt)
+        self.defaultEnumStr = try container.decodeIfPresent(Shared.DefaultEnumStr.self, forKey: .defaultEnumStr)
         self.defaultInt = try container.decodeIfPresent(Int.self, forKey: .defaultInt)
         self._defaultNum = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .defaultNum) ?? DecimalSerialized<Double?>(wrappedValue: nil)
         self.defaultStr = try container.decodeIfPresent(String.self, forKey: .defaultStr)

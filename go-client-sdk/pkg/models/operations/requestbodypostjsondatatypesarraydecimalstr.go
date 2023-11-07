@@ -5,34 +5,34 @@ package operations
 import (
 	"github.com/ericlagergren/decimal"
 	"net/http"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/utils"
 )
 
-// RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON - OK
-type RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON struct {
+// RequestBodyPostJSONDataTypesArrayDecimalStrResponseBody - OK
+type RequestBodyPostJSONDataTypesArrayDecimalStrResponseBody struct {
 	Data string         `json:"data"`
 	JSON []*decimal.Big `json:"json"`
 }
 
-func (r RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON) MarshalJSON() ([]byte, error) {
+func (r RequestBodyPostJSONDataTypesArrayDecimalStrResponseBody) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(r, "", false)
 }
 
-func (r *RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON) UnmarshalJSON(data []byte) error {
+func (r *RequestBodyPostJSONDataTypesArrayDecimalStrResponseBody) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON) GetData() string {
+func (o *RequestBodyPostJSONDataTypesArrayDecimalStrResponseBody) GetData() string {
 	if o == nil {
 		return ""
 	}
 	return o.Data
 }
 
-func (o *RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON) GetJSON() []*decimal.Big {
+func (o *RequestBodyPostJSONDataTypesArrayDecimalStrResponseBody) GetJSON() []*decimal.Big {
 	if o == nil {
 		return []*decimal.Big{}
 	}
@@ -47,7 +47,7 @@ type RequestBodyPostJSONDataTypesArrayDecimalStrResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSONObject *RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON
+	Object *RequestBodyPostJSONDataTypesArrayDecimalStrResponseBody
 }
 
 func (o *RequestBodyPostJSONDataTypesArrayDecimalStrResponse) GetContentType() string {
@@ -71,9 +71,9 @@ func (o *RequestBodyPostJSONDataTypesArrayDecimalStrResponse) GetRawResponse() *
 	return o.RawResponse
 }
 
-func (o *RequestBodyPostJSONDataTypesArrayDecimalStrResponse) GetRequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSONObject() *RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON {
+func (o *RequestBodyPostJSONDataTypesArrayDecimalStrResponse) GetObject() *RequestBodyPostJSONDataTypesArrayDecimalStrResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSONObject
+	return o.Object
 }

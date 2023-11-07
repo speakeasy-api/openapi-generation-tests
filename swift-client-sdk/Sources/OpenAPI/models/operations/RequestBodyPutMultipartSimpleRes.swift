@@ -5,13 +5,13 @@ import Foundation
 extension Operations {
     /// OK
     public struct RequestBodyPutMultipartSimpleRes {
-        public let form: Operations.RequestBodyPutMultipartSimpleResForm
-        public let headers: Operations.RequestBodyPutMultipartSimpleResHeaders
+        public let form: Operations.RequestBodyPutMultipartSimpleForm
+        public let headers: Operations.RequestBodyPutMultipartSimpleHeaders
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(form: Operations.RequestBodyPutMultipartSimpleResForm, headers: Operations.RequestBodyPutMultipartSimpleResHeaders) {
+        public init(form: Operations.RequestBodyPutMultipartSimpleForm, headers: Operations.RequestBodyPutMultipartSimpleHeaders) {
             self.form = form
             self.headers = headers
         }

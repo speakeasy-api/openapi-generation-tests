@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/utils"
 	"strings"
 )
 
-type resource struct {
+type Resource struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newResource(sdkConfig sdkConfiguration) *resource {
-	return &resource{
+func newResource(sdkConfig sdkConfiguration) *Resource {
+	return &Resource{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *resource) CreateFile(ctx context.Context, request operations.CreateFileRequestBody) (*operations.CreateFileResponse, error) {
+func (s *Resource) CreateFile(ctx context.Context, request operations.CreateFileRequestBody) (*operations.CreateFileResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/fileResource"
 
@@ -92,7 +92,7 @@ func (s *resource) CreateFile(ctx context.Context, request operations.CreateFile
 	return res, nil
 }
 
-func (s *resource) CreateResource(ctx context.Context, request shared.ExampleResource) (*operations.CreateResourceResponse, error) {
+func (s *Resource) CreateResource(ctx context.Context, request shared.ExampleResource) (*operations.CreateResourceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/resource"
 
@@ -159,7 +159,7 @@ func (s *resource) CreateResource(ctx context.Context, request shared.ExampleRes
 	return res, nil
 }
 
-func (s *resource) DeleteResource(ctx context.Context, resourceID string) (*operations.DeleteResourceResponse, error) {
+func (s *Resource) DeleteResource(ctx context.Context, resourceID string) (*operations.DeleteResourceResponse, error) {
 	request := operations.DeleteResourceRequest{
 		ResourceID: resourceID,
 	}
@@ -212,7 +212,7 @@ func (s *resource) DeleteResource(ctx context.Context, resourceID string) (*oper
 	return res, nil
 }
 
-func (s *resource) GetResource(ctx context.Context, resourceID string) (*operations.GetResourceResponse, error) {
+func (s *Resource) GetResource(ctx context.Context, resourceID string) (*operations.GetResourceResponse, error) {
 	request := operations.GetResourceRequest{
 		ResourceID: resourceID,
 	}
@@ -276,7 +276,7 @@ func (s *resource) GetResource(ctx context.Context, resourceID string) (*operati
 	return res, nil
 }
 
-func (s *resource) UpdateResource(ctx context.Context, resourceID string) (*operations.UpdateResourceResponse, error) {
+func (s *Resource) UpdateResource(ctx context.Context, resourceID string) (*operations.UpdateResourceResponse, error) {
 	request := operations.UpdateResourceRequest{
 		ResourceID: resourceID,
 	}

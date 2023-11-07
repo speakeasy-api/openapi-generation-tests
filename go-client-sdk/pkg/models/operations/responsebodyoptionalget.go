@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
 var ResponseBodyOptionalGetServerList = []string{
@@ -19,7 +19,7 @@ type ResponseBodyOptionalGetResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	ResponseBodyOptionalGet200TextPlainString *string
+	Res *string
 	// OK
 	TypedObject1 *shared.TypedObject1
 }
@@ -45,11 +45,11 @@ func (o *ResponseBodyOptionalGetResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *ResponseBodyOptionalGetResponse) GetResponseBodyOptionalGet200TextPlainString() *string {
+func (o *ResponseBodyOptionalGetResponse) GetRes() *string {
 	if o == nil {
 		return nil
 	}
-	return o.ResponseBodyOptionalGet200TextPlainString
+	return o.Res
 }
 
 func (o *ResponseBodyOptionalGetResponse) GetTypedObject1() *shared.TypedObject1 {

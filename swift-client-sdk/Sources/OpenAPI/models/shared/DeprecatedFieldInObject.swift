@@ -7,7 +7,7 @@ extension Shared {
     public struct DeprecatedFieldInObject {
 
         @available(*, deprecated, message: "This enum is deprecated")
-        public let deprecatedEnum: Shared.DeprecatedFieldInObjectDeprecatedEnum?
+        public let deprecatedEnum: Shared.DeprecatedEnum?
 
         @available(*, deprecated, renamed: "newField", message: "This will be removed in a future release, please migrate away from it as soon as possible")
         public let deprecatedField: String?
@@ -19,7 +19,7 @@ extension Shared {
         /// - Parameter deprecatedField: 
         ///
         @available(*, deprecated, message: "This initializer uses deprecated fields and will be removed in a future version.")
-        public init(deprecatedEnum: Shared.DeprecatedFieldInObjectDeprecatedEnum? = nil, deprecatedField: String? = nil, newField: String? = nil) {
+        public init(deprecatedEnum: Shared.DeprecatedEnum? = nil, deprecatedField: String? = nil, newField: String? = nil) {
             self.deprecatedEnum = deprecatedEnum
             self.deprecatedField = deprecatedField
             self.newField = newField

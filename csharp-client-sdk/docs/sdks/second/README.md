@@ -1,5 +1,5 @@
-# SecondSDK
-(*Second*)
+# Second
+(*.Second*)
 
 ### Available Operations
 
@@ -10,10 +10,10 @@
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Shared;
+using Openapi;
+using Openapi.Models.Shared;
 
-var sdk = new SDKSDK(
+var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },

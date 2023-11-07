@@ -6,27 +6,27 @@ import (
 	"net/http"
 )
 
-type RequestBodyPostMultipleContentTypesSplitMultipartFormData struct {
+type RequestBodyPostMultipleContentTypesSplitMultipartRequestBody struct {
 	Bool2 bool    `multipartForm:"name=bool2"`
 	Num2  float64 `multipartForm:"name=num2"`
 	Str2  string  `multipartForm:"name=str2"`
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitMultipartFormData) GetBool2() bool {
+func (o *RequestBodyPostMultipleContentTypesSplitMultipartRequestBody) GetBool2() bool {
 	if o == nil {
 		return false
 	}
 	return o.Bool2
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitMultipartFormData) GetNum2() float64 {
+func (o *RequestBodyPostMultipleContentTypesSplitMultipartRequestBody) GetNum2() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Num2
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitMultipartFormData) GetStr2() string {
+func (o *RequestBodyPostMultipleContentTypesSplitMultipartRequestBody) GetStr2() string {
 	if o == nil {
 		return ""
 	}

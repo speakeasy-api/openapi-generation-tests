@@ -10,9 +10,9 @@ import org.openapis.openapi.utils.SpeakeasyMetadata;
 
 public class RequestBodyPostMultipleContentTypesSplitParamJsonRequest {
     @SpeakeasyMetadata("request:mediaType=application/json")
-    public RequestBodyPostMultipleContentTypesSplitParamApplicationJSON requestBody;
+    public RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody requestBody;
 
-    public RequestBodyPostMultipleContentTypesSplitParamJsonRequest withRequestBody(RequestBodyPostMultipleContentTypesSplitParamApplicationJSON requestBody) {
+    public RequestBodyPostMultipleContentTypesSplitParamJsonRequest withRequestBody(RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody requestBody) {
         this.requestBody = requestBody;
         return this;
     }
@@ -25,7 +25,7 @@ public class RequestBodyPostMultipleContentTypesSplitParamJsonRequest {
         return this;
     }
     
-    public RequestBodyPostMultipleContentTypesSplitParamJsonRequest(@JsonProperty("RequestBody") RequestBodyPostMultipleContentTypesSplitParamApplicationJSON requestBody, @JsonProperty("paramStr") String paramStr) {
+    public RequestBodyPostMultipleContentTypesSplitParamJsonRequest(@JsonProperty("RequestBody") RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody requestBody, @JsonProperty("paramStr") String paramStr) {
         this.requestBody = requestBody;
         this.paramStr = paramStr;
   }

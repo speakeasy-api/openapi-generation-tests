@@ -29,7 +29,7 @@ module OpenApiSDK
     end
 
 
-    class MixedParametersCamelCaseResArgs < OpenApiSDK::Utils::FieldAugmented
+    class MixedParametersCamelCaseArgs < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -43,7 +43,7 @@ module OpenApiSDK
     end
 
 
-    class MixedParametersCamelCaseResHeaders < OpenApiSDK::Utils::FieldAugmented
+    class MixedParametersCamelCaseHeaders < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -61,14 +61,14 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :args, Operations::MixedParametersCamelCaseResArgs, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
+      field :args, Operations::MixedParametersCamelCaseArgs, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
 
-      field :headers, Operations::MixedParametersCamelCaseResHeaders, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('headers') } }
+      field :headers, Operations::MixedParametersCamelCaseHeaders, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('headers') } }
 
       field :url, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('url') } }
 
 
-      sig { params(args: Operations::MixedParametersCamelCaseResArgs, headers: Operations::MixedParametersCamelCaseResHeaders, url: String).void }
+      sig { params(args: Operations::MixedParametersCamelCaseArgs, headers: Operations::MixedParametersCamelCaseHeaders, url: String).void }
       def initialize(args: nil, headers: nil, url: nil)
         @args = args
         @headers = headers

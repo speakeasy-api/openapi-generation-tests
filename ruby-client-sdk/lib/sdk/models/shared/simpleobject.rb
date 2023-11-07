@@ -9,8 +9,8 @@ require_relative '../shared/enum'
 
 module OpenApiSDK
   module Shared
-    # SimpleObjectInt32Enum - An int32 enum property.
-    class SimpleObjectInt32Enum < T::Enum
+    # Int32Enum - An int32 enum property.
+    class Int32Enum < T::Enum
       enums do
         FIFTY_FIVE = new(55)
         SIXTY_NINE = new(69)
@@ -19,8 +19,8 @@ module OpenApiSDK
     end
 
 
-    # SimpleObjectIntEnum - An integer enum property.
-    class SimpleObjectIntEnum < T::Enum
+    # IntEnum - An integer enum property.
+    class IntEnum < T::Enum
       enums do
         FIRST = new(1)
         SECOND = new(2)
@@ -51,9 +51,9 @@ module OpenApiSDK
       # An int32 property.
       field :int32, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int32') }, 'header': { 'field_name': 'int32' }, 'path_param': { 'field_name': 'int32' }, 'query_param': { 'field_name': 'int32' }, 'form': { 'field_name': 'int32' }, 'multipart_form': { 'field_name': 'int32' } }
       # An int32 enum property.
-      field :int32_enum, Shared::SimpleObjectInt32Enum, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int32Enum'), 'decoder': Utils.enum_from_string(Shared::SimpleObjectInt32Enum, false) }, 'header': { 'field_name': 'int32Enum' }, 'path_param': { 'field_name': 'int32Enum' }, 'query_param': { 'field_name': 'int32Enum' }, 'form': { 'field_name': 'int32Enum' }, 'multipart_form': { 'field_name': 'int32Enum' } }
+      field :int32_enum, Shared::Int32Enum, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int32Enum'), 'decoder': Utils.enum_from_string(Shared::Int32Enum, false) }, 'header': { 'field_name': 'int32Enum' }, 'path_param': { 'field_name': 'int32Enum' }, 'query_param': { 'field_name': 'int32Enum' }, 'form': { 'field_name': 'int32Enum' }, 'multipart_form': { 'field_name': 'int32Enum' } }
       # An integer enum property.
-      field :int_enum, Shared::SimpleObjectIntEnum, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('intEnum'), 'decoder': Utils.enum_from_string(Shared::SimpleObjectIntEnum, false) }, 'header': { 'field_name': 'intEnum' }, 'path_param': { 'field_name': 'intEnum' }, 'query_param': { 'field_name': 'intEnum' }, 'form': { 'field_name': 'intEnum' }, 'multipart_form': { 'field_name': 'intEnum' } }
+      field :int_enum, Shared::IntEnum, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('intEnum'), 'decoder': Utils.enum_from_string(Shared::IntEnum, false) }, 'header': { 'field_name': 'intEnum' }, 'path_param': { 'field_name': 'intEnum' }, 'query_param': { 'field_name': 'intEnum' }, 'form': { 'field_name': 'intEnum' }, 'multipart_form': { 'field_name': 'intEnum' } }
       # A number property.
       field :num, Float, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('num') }, 'header': { 'field_name': 'num' }, 'path_param': { 'field_name': 'num' }, 'query_param': { 'field_name': 'num' }, 'form': { 'field_name': 'num' }, 'multipart_form': { 'field_name': 'num' } }
       # A string property.
@@ -76,7 +76,7 @@ module OpenApiSDK
       field :str_opt, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('strOpt') }, 'header': { 'field_name': 'strOpt' }, 'path_param': { 'field_name': 'strOpt' }, 'query_param': { 'field_name': 'strOpt' }, 'form': { 'field_name': 'strOpt' }, 'multipart_form': { 'field_name': 'strOpt' } }
 
 
-      sig { params(any: Object, bool: T::Boolean, date: Date, date_time: DateTime, enum: Shared::Enum, float32: Float, int: Integer, int32: Integer, int32_enum: Shared::SimpleObjectInt32Enum, int_enum: Shared::SimpleObjectIntEnum, num: Float, str_: String, bigint: T.nilable(Integer), bigint_str: T.nilable(String), bool_opt: T.nilable(T::Boolean), decimal: T.nilable(Float), decimal_str: T.nilable(String), int_opt_null: T.nilable(Integer), num_opt_null: T.nilable(Float), str_opt: T.nilable(String)).void }
+      sig { params(any: Object, bool: T::Boolean, date: Date, date_time: DateTime, enum: Shared::Enum, float32: Float, int: Integer, int32: Integer, int32_enum: Shared::Int32Enum, int_enum: Shared::IntEnum, num: Float, str_: String, bigint: T.nilable(Integer), bigint_str: T.nilable(String), bool_opt: T.nilable(T::Boolean), decimal: T.nilable(Float), decimal_str: T.nilable(String), int_opt_null: T.nilable(Integer), num_opt_null: T.nilable(Float), str_opt: T.nilable(String)).void }
       def initialize(any: nil, bool: nil, date: nil, date_time: nil, enum: nil, float32: nil, int: nil, int32: nil, int32_enum: nil, int_enum: nil, num: nil, str_: nil, bigint: nil, bigint_str: nil, bool_opt: nil, decimal: nil, decimal_str: nil, int_opt_null: nil, num_opt_null: nil, str_opt: nil)
         @any = any
         @bool = bool

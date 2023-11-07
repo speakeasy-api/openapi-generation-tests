@@ -46,10 +46,10 @@ public class RequestBodyPostNullArrayResponse {
      * OK
      */
     
-    public RequestBodyPostNullArray200ApplicationJSON requestBodyPostNullArray200ApplicationJSONObject;
+    public RequestBodyPostNullArrayResponseBody object;
 
-    public RequestBodyPostNullArrayResponse withRequestBodyPostNullArray200ApplicationJSONObject(RequestBodyPostNullArray200ApplicationJSON requestBodyPostNullArray200ApplicationJSONObject) {
-        this.requestBodyPostNullArray200ApplicationJSONObject = requestBodyPostNullArray200ApplicationJSONObject;
+    public RequestBodyPostNullArrayResponse withObject(RequestBodyPostNullArrayResponseBody object) {
+        this.object = object;
         return this;
     }
     

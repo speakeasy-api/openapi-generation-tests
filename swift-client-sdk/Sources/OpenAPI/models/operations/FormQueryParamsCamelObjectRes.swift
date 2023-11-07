@@ -5,13 +5,13 @@ import Foundation
 extension Operations {
     /// OK
     public struct FormQueryParamsCamelObjectRes {
-        public let args: Operations.FormQueryParamsCamelObjectResArgs
+        public let args: Operations.FormQueryParamsCamelObjectArgs
         public let url: String
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(args: Operations.FormQueryParamsCamelObjectResArgs, url: String) {
+        public init(args: Operations.FormQueryParamsCamelObjectArgs, url: String) {
             self.args = args
             self.url = url
         }

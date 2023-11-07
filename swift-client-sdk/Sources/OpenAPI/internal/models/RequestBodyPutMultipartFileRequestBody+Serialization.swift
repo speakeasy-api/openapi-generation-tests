@@ -18,7 +18,7 @@ extension Operations.RequestBodyPutMultipartFileRequestBody: Serializable {
 extension Operations.RequestBodyPutMultipartFileRequestBody: MultipartFormBodySerializable {
     func serializedMultipartFormParameters(formatOverride: SerializableFormat?) throws -> [MultipartFormParameter] {
         return [
-            .file(name: "file", filename: file?.file, data: file?.content)
+            .file(name: "file", filename: file?.fileName, data: file?.content)
         ]
     }
 }

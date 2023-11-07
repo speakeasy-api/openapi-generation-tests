@@ -10,7 +10,7 @@ from typing import Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class RequestBodyPostNullDictionary200ApplicationJSON:
+class RequestBodyPostNullDictionaryResponseBody:
     r"""OK"""
     data: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     
@@ -23,9 +23,9 @@ class RequestBodyPostNullDictionaryResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    object: Optional[RequestBodyPostNullDictionaryResponseBody] = dataclasses.field(default=None)
+    r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    request_body_post_null_dictionary_200_application_json_object: Optional[RequestBodyPostNullDictionary200ApplicationJSON] = dataclasses.field(default=None)
-    r"""OK"""
     
 

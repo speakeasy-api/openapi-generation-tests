@@ -4,14 +4,14 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
-type DeepObjectQueryParamsObjectObjArrParam struct {
+type ObjArrParam struct {
 	Arr []string `queryParam:"name=arr"`
 }
 
-func (o *DeepObjectQueryParamsObjectObjArrParam) GetArr() []string {
+func (o *ObjArrParam) GetArr() []string {
 	if o == nil {
 		return nil
 	}
@@ -20,8 +20,8 @@ func (o *DeepObjectQueryParamsObjectObjArrParam) GetArr() []string {
 
 type DeepObjectQueryParamsObjectRequest struct {
 	// A simple object that uses all our supported primitive types and enums and has optional properties.
-	ObjParam    shared.SimpleObject                     `queryParam:"style=deepObject,explode=true,name=objParam"`
-	ObjArrParam *DeepObjectQueryParamsObjectObjArrParam `queryParam:"style=deepObject,explode=true,name=objArrParam"`
+	ObjParam    shared.SimpleObject `queryParam:"style=deepObject,explode=true,name=objParam"`
+	ObjArrParam *ObjArrParam        `queryParam:"style=deepObject,explode=true,name=objArrParam"`
 }
 
 func (o *DeepObjectQueryParamsObjectRequest) GetObjParam() shared.SimpleObject {
@@ -31,14 +31,14 @@ func (o *DeepObjectQueryParamsObjectRequest) GetObjParam() shared.SimpleObject {
 	return o.ObjParam
 }
 
-func (o *DeepObjectQueryParamsObjectRequest) GetObjArrParam() *DeepObjectQueryParamsObjectObjArrParam {
+func (o *DeepObjectQueryParamsObjectRequest) GetObjArrParam() *ObjArrParam {
 	if o == nil {
 		return nil
 	}
 	return o.ObjArrParam
 }
 
-type DeepObjectQueryParamsObjectResArgs struct {
+type DeepObjectQueryParamsObjectArgs struct {
 	ObjArrParamArr     []string `json:"objArrParam[arr]"`
 	ObjParamAny        string   `json:"objParam[any]"`
 	ObjParamBigintStr  *string  `json:"objParam[bigintStr],omitempty"`
@@ -60,133 +60,133 @@ type DeepObjectQueryParamsObjectResArgs struct {
 	ObjParamStr        string   `json:"objParam[str]"`
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjArrParamArr() []string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjArrParamArr() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.ObjArrParamArr
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamAny() string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamAny() string {
 	if o == nil {
 		return ""
 	}
 	return o.ObjParamAny
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamBigintStr() *string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamBigintStr() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ObjParamBigintStr
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamBigint() *string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamBigint() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ObjParamBigint
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamBoolOpt() string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamBoolOpt() string {
 	if o == nil {
 		return ""
 	}
 	return o.ObjParamBoolOpt
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamBool() string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamBool() string {
 	if o == nil {
 		return ""
 	}
 	return o.ObjParamBool
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamDateTime() string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamDateTime() string {
 	if o == nil {
 		return ""
 	}
 	return o.ObjParamDateTime
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamDate() string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamDate() string {
 	if o == nil {
 		return ""
 	}
 	return o.ObjParamDate
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamDecimalStr() *string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamDecimalStr() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ObjParamDecimalStr
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamDecimal() *string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamDecimal() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ObjParamDecimal
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamEnum() string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamEnum() string {
 	if o == nil {
 		return ""
 	}
 	return o.ObjParamEnum
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamFloat32() string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamFloat32() string {
 	if o == nil {
 		return ""
 	}
 	return o.ObjParamFloat32
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamInt32Enum() string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamInt32Enum() string {
 	if o == nil {
 		return ""
 	}
 	return o.ObjParamInt32Enum
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamInt32() string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamInt32() string {
 	if o == nil {
 		return ""
 	}
 	return o.ObjParamInt32
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamIntEnum() string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamIntEnum() string {
 	if o == nil {
 		return ""
 	}
 	return o.ObjParamIntEnum
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamInt() string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamInt() string {
 	if o == nil {
 		return ""
 	}
 	return o.ObjParamInt
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamNum() string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamNum() string {
 	if o == nil {
 		return ""
 	}
 	return o.ObjParamNum
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamStrOpt() string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamStrOpt() string {
 	if o == nil {
 		return ""
 	}
 	return o.ObjParamStrOpt
 }
 
-func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamStr() string {
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamStr() string {
 	if o == nil {
 		return ""
 	}
@@ -195,13 +195,13 @@ func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamStr() string {
 
 // DeepObjectQueryParamsObjectRes - OK
 type DeepObjectQueryParamsObjectRes struct {
-	Args DeepObjectQueryParamsObjectResArgs `json:"args"`
-	URL  string                             `json:"url"`
+	Args DeepObjectQueryParamsObjectArgs `json:"args"`
+	URL  string                          `json:"url"`
 }
 
-func (o *DeepObjectQueryParamsObjectRes) GetArgs() DeepObjectQueryParamsObjectResArgs {
+func (o *DeepObjectQueryParamsObjectRes) GetArgs() DeepObjectQueryParamsObjectArgs {
 	if o == nil {
-		return DeepObjectQueryParamsObjectResArgs{}
+		return DeepObjectQueryParamsObjectArgs{}
 	}
 	return o.Args
 }

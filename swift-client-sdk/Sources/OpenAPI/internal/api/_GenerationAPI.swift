@@ -345,7 +345,7 @@ private func handleAnchorTypesGetResponse(response: Client.APIResponse) throws -
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .typeFromAnchor(try JSONDecoder().decode(Operations.TypeFromAnchor.self, from: data))
+                return .typeFromAnchor(try JSONDecoder().decode(Operations.AnchorTypesGetTypeFromAnchor.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -433,7 +433,7 @@ private func handleDeprecatedObjectInSchemaGetResponse(response: Client.APIRespo
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .deprecatedObjectInSchemaGet200ApplicationJSONObject(try JSONDecoder().decode(Operations.DeprecatedObjectInSchemaGet200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.DeprecatedObjectInSchemaGetResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -491,7 +491,7 @@ private func handleGetGlobalNameOverrideResponse(response: Client.APIResponse) t
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .getGlobalNameOverride200ApplicationJSONObject(try JSONDecoder().decode(Operations.GetGlobalNameOverride200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.GetGlobalNameOverrideResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -507,7 +507,7 @@ private func handleIgnoredGenerationGetResponse(response: Client.APIResponse) th
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .ignoredGenerationGet200ApplicationJSONObject(try JSONDecoder().decode(Operations.IgnoredGenerationGet200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.IgnoredGenerationGetResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -539,7 +539,7 @@ private func handleNameOverrideGetResponse(response: Client.APIResponse) throws 
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .overriddenResponse(try JSONDecoder().decode(Operations.OverriddenResponse.self, from: data))
+                return .overriddenResponse(try JSONDecoder().decode(Operations.NameOverrideGetOverriddenResponse.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -597,7 +597,7 @@ private func handleUsageExamplePostResponse(response: Client.APIResponse) throws
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .usageExamplePost200ApplicationJSONObject(try JSONDecoder().decode(Operations.UsageExamplePost200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.UsageExamplePostResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

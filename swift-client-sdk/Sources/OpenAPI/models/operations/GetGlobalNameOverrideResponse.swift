@@ -6,7 +6,7 @@ extension Operations {
     /// A response model
     public enum GetGlobalNameOverrideResponse {
         case empty
-        case getGlobalNameOverride200ApplicationJSONObject(Operations.GetGlobalNameOverride200ApplicationJSON)
+        case object(Operations.GetGlobalNameOverrideResponseBody)
 
         var isEmpty: Bool {
             if case .empty = self {
@@ -16,8 +16,8 @@ extension Operations {
             }
         }
 
-        public func getGlobalNameOverride200ApplicationJSONObject() throws -> Operations.GetGlobalNameOverride200ApplicationJSON {
-            guard case .getGlobalNameOverride200ApplicationJSONObject(let value) = self else {
+        public func object() throws -> Operations.GetGlobalNameOverrideResponseBody {
+            guard case .object(let value) = self else {
                 throw OpenAPIError.missingResponseData
             }
             return value

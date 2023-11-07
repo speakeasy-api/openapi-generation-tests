@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using Xunit;
-using SDK;
+using Openapi;
 using System.Threading.Tasks;
 
 public class GlobalsShould
@@ -18,7 +18,7 @@ public class GlobalsShould
     {
         CommonHelpers.RecordTest("globals-query-parameter-get-uses-global");
 
-        var sdk = new SDKSDK(globalQueryParam: "test");
+        var sdk = new SDK(globalQueryParam: "test");
 
         var res = await sdk.Globals.GlobalsQueryParameterGetAsync();
 
@@ -31,7 +31,7 @@ public class GlobalsShould
     {
         CommonHelpers.RecordTest("globals-query-parameter-get-uses-local");
 
-        var sdk = new SDKSDK(globalQueryParam: "test");
+        var sdk = new SDK(globalQueryParam: "test");
 
         var res = await sdk.Globals.GlobalsQueryParameterGetAsync("local");
 
@@ -44,7 +44,7 @@ public class GlobalsShould
     {
         CommonHelpers.RecordTest("globals-path-parameter-get-uses-global");
 
-        var sdk = new SDKSDK(globalPathParam: 1);
+        var sdk = new SDK(globalPathParam: 1);
 
         var res = await sdk.Globals.GlobalPathParameterGetAsync();
 
@@ -57,7 +57,7 @@ public class GlobalsShould
     {
         CommonHelpers.RecordTest("globals-path-parameter-get-uses-local");
 
-        var sdk = new SDKSDK(globalPathParam: 1);
+        var sdk = new SDK(globalPathParam: 1);
 
         var res = await sdk.Globals.GlobalPathParameterGetAsync(2);
 

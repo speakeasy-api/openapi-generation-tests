@@ -1,5 +1,5 @@
 # Resource
-(*resource*)
+(*.resource*)
 
 ### Available Operations
 
@@ -17,8 +17,8 @@
 package hello.world;
 
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.CreateFileFile;
 import org.openapis.openapi.models.operations.CreateFileRequestBody;
-import org.openapis.openapi.models.operations.CreateFileRequestBodyFile;
 import org.openapis.openapi.models.operations.CreateFileResponse;
 import org.openapis.openapi.models.shared.Security;
 
@@ -34,7 +34,7 @@ public class Application {
                 .build();
 
             CreateFileRequestBody req = new CreateFileRequestBody(){{
-                file = new CreateFileRequestBodyFile("`'$Z`(L/RH".getBytes(), "string");
+                file = new CreateFileFile("0xf10df1a3b9".getBytes(), "string");
             }};            
 
             CreateFileResponse res = sdk.resource.createFile(req);
@@ -71,10 +71,10 @@ package hello.world;
 import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.CreateResourceResponse;
+import org.openapis.openapi.models.shared.Chocolates;
+import org.openapis.openapi.models.shared.EnumNumber;
+import org.openapis.openapi.models.shared.EnumStr;
 import org.openapis.openapi.models.shared.ExampleResource;
-import org.openapis.openapi.models.shared.ExampleResourceChocolates;
-import org.openapis.openapi.models.shared.ExampleResourceEnumNumber;
-import org.openapis.openapi.models.shared.ExampleResourceEnumStr;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
@@ -88,8 +88,8 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.ExampleResource req = new ExampleResource(new org.openapis.openapi.models.shared.ExampleResourceChocolates[]{{
-    add(new ExampleResourceChocolates("string"){{
+            org.openapis.openapi.models.shared.ExampleResource req = new ExampleResource(new org.openapis.openapi.models.shared.Chocolates[]{{
+    add(new Chocolates("string"){{
         description = "Digitized optimal archive";
     }}),
 }}, "string", "string", "string"){{
@@ -100,8 +100,8 @@ public class Application {
                     add("string"),
                 }};
                 createdAt = OffsetDateTime.parse("2021-10-25T14:40:21.269Z");
-                enumNumber = ExampleResourceEnumNumber.THREE;
-                enumStr = ExampleResourceEnumStr.TWO;
+                enumNumber = EnumNumber.THREE;
+                enumStr = EnumStr.TWO;
                 mapOfInteger = new java.util.HashMap<String, Long>(){{
                     put("key", 125983L);
                 }};

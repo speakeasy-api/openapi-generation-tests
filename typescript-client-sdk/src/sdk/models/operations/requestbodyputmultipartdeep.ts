@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class RequestBodyPutMultipartDeepResForm extends SpeakeasyBase {
+export class RequestBodyPutMultipartDeepForm extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "arr" })
     arr: string;
@@ -42,8 +42,8 @@ export class RequestBodyPutMultipartDeepResForm extends SpeakeasyBase {
 export class RequestBodyPutMultipartDeepRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "form" })
-    @Type(() => RequestBodyPutMultipartDeepResForm)
-    form: RequestBodyPutMultipartDeepResForm;
+    @Type(() => RequestBodyPutMultipartDeepForm)
+    form: RequestBodyPutMultipartDeepForm;
 }
 
 export class RequestBodyPutMultipartDeepResponse extends SpeakeasyBase {

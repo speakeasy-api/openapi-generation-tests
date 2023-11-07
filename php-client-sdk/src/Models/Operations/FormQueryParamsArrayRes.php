@@ -18,8 +18,8 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 class FormQueryParamsArrayRes
 {
 	#[\JMS\Serializer\Annotation\SerializedName('args')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\FormQueryParamsArrayResArgs')]
-    public FormQueryParamsArrayResArgs $args;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\FormQueryParamsArrayArgs')]
+    public FormQueryParamsArrayArgs $args;
     
 	#[\JMS\Serializer\Annotation\SerializedName('url')]
     #[\JMS\Serializer\Annotation\Type('string')]
@@ -27,7 +27,7 @@ class FormQueryParamsArrayRes
     
 	public function __construct()
 	{
-		$this->args = new \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsArrayResArgs();
+		$this->args = new \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsArrayArgs();
 		$this->url = "";
 	}
 }

@@ -46,10 +46,10 @@ public class PutAnythingIgnoredGenerationResponse {
      * OK
      */
     
-    public PutAnythingIgnoredGeneration200ApplicationJSON putAnythingIgnoredGeneration200ApplicationJSONObject;
+    public PutAnythingIgnoredGenerationResponseBody object;
 
-    public PutAnythingIgnoredGenerationResponse withPutAnythingIgnoredGeneration200ApplicationJSONObject(PutAnythingIgnoredGeneration200ApplicationJSON putAnythingIgnoredGeneration200ApplicationJSONObject) {
-        this.putAnythingIgnoredGeneration200ApplicationJSONObject = putAnythingIgnoredGeneration200ApplicationJSONObject;
+    public PutAnythingIgnoredGenerationResponse withObject(PutAnythingIgnoredGenerationResponseBody object) {
+        this.object = object;
         return this;
     }
     

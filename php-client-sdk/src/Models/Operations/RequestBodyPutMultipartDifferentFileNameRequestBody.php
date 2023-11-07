@@ -12,7 +12,7 @@ use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class RequestBodyPutMultipartDifferentFileNameRequestBody
 {
 	#[SpeakeasyMetadata('multipartForm:file=true')]
-    public ?RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName $differentFileName = null;
+    public ?DifferentFileName $differentFileName = null;
     
 	public function __construct()
 	{

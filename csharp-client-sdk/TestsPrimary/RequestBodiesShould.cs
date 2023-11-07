@@ -14,10 +14,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using Xunit;
-using SDK;
-using SDK.Models.Shared;
-using SDK.Utils;
-using SDK.Models.Operations;
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Utils;
+using Openapi.Models.Operations;
 
 public class RequestBodiesShould
 {
@@ -25,7 +25,7 @@ public class RequestBodiesShould
     public async Task PostApplicationJsonSimple()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-simple");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonSimpleAsync(
             Helpers.CreateSimpleObject()
@@ -39,15 +39,15 @@ public class RequestBodiesShould
     public async Task PostApplicationJsonArray()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-array");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayAsync(
             new List<SimpleObject>() { Helpers.CreateSimpleObject(), Helpers.CreateSimpleObject() }
         );
 
         Assert.Equal(200, res.StatusCode);
-        Assert.Equal(2, res.SimpleObjects.Count());
-        foreach (var obj in res.SimpleObjects)
+        Assert.Equal(2, res.Res.Count());
+        foreach (var obj in res.Res)
         {
             Helpers.AssertSimpleObject(obj);
         }
@@ -57,7 +57,7 @@ public class RequestBodiesShould
     public async Task PostApplicationJsonArrayOfArray()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-array-of-array");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var obj = Helpers.CreateSimpleObject();
 
@@ -70,15 +70,15 @@ public class RequestBodiesShould
         );
 
         Assert.Equal(200, res.StatusCode);
-        Assert.Equal(2, res.Arrs.Count());
-        Assert.Equal(2, res.Arrs.ToList()[0].Count());
-        Assert.Equal(2, res.Arrs.ToList()[1].Count());
+        Assert.Equal(2, res.Res.Count());
+        Assert.Equal(2, res.Res.ToList()[0].Count());
+        Assert.Equal(2, res.Res.ToList()[1].Count());
 
         for (var i = 0; i < 2; i++)
         {
             for (var j = 0; j < 2; j++)
             {
-                Helpers.AssertSimpleObject(res.Arrs.ToList()[i].ToList()[j]);
+                Helpers.AssertSimpleObject(res.Res.ToList()[i].ToList()[j]);
             }
         }
     }
@@ -87,7 +87,7 @@ public class RequestBodiesShould
     public async Task PostApplicationJsonMap()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-map");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var obj = Helpers.CreateSimpleObject();
 
@@ -105,7 +105,7 @@ public class RequestBodiesShould
     public async Task PostApplicationJsonMapOfMap()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-map-of-map");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var obj = Helpers.CreateSimpleObject();
 
@@ -145,7 +145,7 @@ public class RequestBodiesShould
     public async Task PostApplicationJsonMapOfArray()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-map-of-array");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var obj = Helpers.CreateSimpleObject();
 
@@ -177,7 +177,7 @@ public class RequestBodiesShould
     public async Task PostApplicationJsonArrayOfMap()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-array-of-map");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var maps = new List<Dictionary<string, SimpleObject>>();
         for (int i = 0; i < 2; i++)
@@ -194,20 +194,20 @@ public class RequestBodiesShould
         var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfMapAsync(maps);
 
         Assert.Equal(200, res.StatusCode);
-        Assert.Equal(2, res.Maps.Count());
-        Assert.Equal(2, res.Maps.ToList()[0].Count());
-        Assert.Equal(2, res.Maps.ToList()[1].Count());
-        Helpers.AssertSimpleObject(res.Maps.ToList()[0]["mapElem1"]);
-        Helpers.AssertSimpleObject(res.Maps.ToList()[0]["mapElem2"]);
-        Helpers.AssertSimpleObject(res.Maps.ToList()[1]["mapElem1"]);
-        Helpers.AssertSimpleObject(res.Maps.ToList()[1]["mapElem2"]);
+        Assert.Equal(2, res.Res.Count());
+        Assert.Equal(2, res.Res.ToList()[0].Count());
+        Assert.Equal(2, res.Res.ToList()[1].Count());
+        Helpers.AssertSimpleObject(res.Res.ToList()[0]["mapElem1"]);
+        Helpers.AssertSimpleObject(res.Res.ToList()[0]["mapElem2"]);
+        Helpers.AssertSimpleObject(res.Res.ToList()[1]["mapElem1"]);
+        Helpers.AssertSimpleObject(res.Res.ToList()[1]["mapElem2"]);
     }
 
     [Fact]
     public async Task PostApplicationJsonMapOfPrimitive()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-map-of-primitive");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfPrimitiveAsync(
             new Dictionary<string, string>() { { "mapElem1", "hello" }, { "mapElem2", "world" } }
@@ -223,23 +223,23 @@ public class RequestBodiesShould
     public async Task PostApplicationJsonArrayOfPrimitive()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-array-of-primitive");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfPrimitiveAsync(
             new List<string>() { "hello", "world" }
         );
 
         Assert.Equal(200, res.StatusCode);
-        Assert.Equal(2, res.Strings.Count());
-        Assert.Equal("hello", res.Strings.ToList()[0]);
-        Assert.Equal("world", res.Strings.ToList()[1]);
+        Assert.Equal(2, res.Res.Count());
+        Assert.Equal("hello", res.Res.ToList()[0]);
+        Assert.Equal("world", res.Res.ToList()[1]);
     }
 
     [Fact]
     public async Task PostApplicationJsonMapOfMapOfPrimitive()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-map-of-map-of-primitive");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfMapOfPrimitiveAsync(
             new Dictionary<string, Dictionary<string, string>>()
@@ -277,7 +277,7 @@ public class RequestBodiesShould
     public async Task PostApplicationJsonArrayOfArrayOfPrimitive()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-array-of-array-of-primitive");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res =
             await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveAsync(
@@ -289,20 +289,20 @@ public class RequestBodiesShould
             );
 
         Assert.Equal(200, res.StatusCode);
-        Assert.Equal(2, res.Arrs.Count());
-        Assert.Equal(2, res.Arrs.First().Count());
-        Assert.Equal(2, res.Arrs.Last().Count());
-        Assert.Equal("foo", res.Arrs.First().First());
-        Assert.Equal("bar", res.Arrs.First().Last());
-        Assert.Equal("buzz", res.Arrs.Last().First());
-        Assert.Equal("bazz", res.Arrs.Last().Last());
+        Assert.Equal(2, res.Res.Count());
+        Assert.Equal(2, res.Res.First().Count());
+        Assert.Equal(2, res.Res.Last().Count());
+        Assert.Equal("foo", res.Res.First().First());
+        Assert.Equal("bar", res.Res.First().Last());
+        Assert.Equal("buzz", res.Res.Last().First());
+        Assert.Equal("bazz", res.Res.Last().Last());
     }
 
     [Fact]
     public async Task PostApplicationJsonArrayObject()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-array-object");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var obj = Helpers.CreateSimpleObject();
 
@@ -320,7 +320,7 @@ public class RequestBodiesShould
     public async Task PostApplicationJsonMapObject()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-map-object");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var obj = Helpers.CreateSimpleObject();
 
@@ -338,7 +338,7 @@ public class RequestBodiesShould
     public async Task PostApplicationJsonDeep()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-deep");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(
             Helpers.CreateDeepObject()
@@ -352,7 +352,7 @@ public class RequestBodiesShould
     public async Task PostApplicationJsonMultipleJsonFiltered()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-multiple-json-filtered");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMultipleJsonFilteredAsync(
             Helpers.CreateSimpleObject()
@@ -366,7 +366,7 @@ public class RequestBodiesShould
     public async Task PostMultipleContentTypesComponentFiltered()
     {
         CommonHelpers.RecordTest("request-bodies-post-multiple-content-types-component-filtered");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesComponentFilteredAsync(
             Helpers.CreateSimpleObject()
@@ -380,10 +380,10 @@ public class RequestBodiesShould
     public async Task PostMultipleContentTypesInlineFiltered()
     {
         CommonHelpers.RecordTest("request-bodies-post-multiple-content-types-inline-filtered");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesInlineFilteredAsync(
-            new RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON()
+            new RequestBodyPostMultipleContentTypesInlineFilteredRequestBody()
             {
                 Bool = true,
                 Num = 1.1F,
@@ -402,10 +402,10 @@ public class RequestBodiesShould
     public async Task PostMultipleContentTypeSplitJson()
     {
         CommonHelpers.RecordTest("request-bodies-post-multiple-content-types-split-json");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitJsonAsync(
-            new RequestBodyPostMultipleContentTypesSplitApplicationJSON()
+            new RequestBodyPostMultipleContentTypesSplitJsonRequestBody()
             {
                 Bool = true,
                 Num = 1.1F,
@@ -423,10 +423,10 @@ public class RequestBodiesShould
     public async Task PostMutlipleContentTypesSplitMultipart()
     {
         CommonHelpers.RecordTest("request-bodies-post-multiple-content-types-split-multipart");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitMultipartAsync(
-            new RequestBodyPostMultipleContentTypesSplitMultipartFormData()
+            new RequestBodyPostMultipleContentTypesSplitMultipartRequestBody()
             {
                 Bool2 = true,
                 Num2 = 1.1D,
@@ -445,10 +445,10 @@ public class RequestBodiesShould
     public async Task PostMultipleContentTypesSplitForm()
     {
         CommonHelpers.RecordTest("request-bodies-post-multiple-content-types-split-form");
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitFormAsync(
-            new RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded()
+            new RequestBodyPostMultipleContentTypesSplitFormRequestBody()
             {
                 Bool3 = true,
                 Num3 = 1.1D,
@@ -467,9 +467,9 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-post-multiple-content-types-split-json-with-param");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
-        var requestBody = new RequestBodyPostMultipleContentTypesSplitParamApplicationJSON()
+        var requestBody = new RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody()
         {
             Bool = true,
             Num = 1.1D,
@@ -494,9 +494,9 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-post-multiple-content-types-split-multipart-with-param");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
-        var formData = new RequestBodyPostMultipleContentTypesSplitParamMultipartFormData()
+        var formData = new RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody()
         {
             Bool2 = true,
             Num2 = 1.1D,
@@ -522,10 +522,10 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-post-multiple-content-types-split-form-with-param");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var requestBody =
-            new RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded()
+            new RequestBodyPostMultipleContentTypesSplitParamFormRequestBody()
             {
                 Bool3 = true,
                 Num3 = 1.1D,
@@ -550,7 +550,7 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-put-multipart-simple");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyPutMultipartSimpleAsync(
             Helpers.CreateSimpleObject()
@@ -576,7 +576,7 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-put-multipart-deep");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var obj = Helpers.CreateDeepObject();
         var res = await sdk.RequestBodies.RequestBodyPutMultipartDeepAsync(obj);
@@ -596,17 +596,17 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-put-multipart-file");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var data = Helpers.GetData();
 
         var res = await sdk.RequestBodies.RequestBodyPutMultipartFileAsync(
             new RequestBodyPutMultipartFileRequestBody()
             {
-                File = new RequestBodyPutMultipartFileRequestBodyFile()
+                File = new File()
                 {
                     Content = data,
-                    File = "testUpload.json"
+                    FileName = "testUpload.json"
                 }
             }
         );
@@ -621,7 +621,7 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-post-form-simple");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyPostFormSimpleAsync(
             Helpers.CreateSimpleObject()
@@ -648,7 +648,7 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-post-form-deep");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var obj = Helpers.CreateDeepObject();
 
@@ -670,7 +670,7 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-post-form-map-primitive");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var map = new Dictionary<string, string>()
         {
@@ -690,7 +690,7 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-put-string");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var str = "Hello world";
 
@@ -705,7 +705,7 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-put-bytes");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var data = Helpers.GetData();
 
@@ -720,7 +720,7 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-put-string-with-params");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyPutStringWithParamsAsync(
             "Hello world",
@@ -737,7 +737,7 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-put-bytes-with-params");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var data = Helpers.GetData();
 
@@ -753,7 +753,7 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-post-empty-object");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyPostEmptyObjectAsync(
             new RequestBodyPostEmptyObjectRequestBody()
@@ -767,7 +767,7 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-simple-camel-case");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonSimpleCamelCaseAsync(
             Helpers.CreateSimpleObjectCamelCase()
@@ -785,7 +785,7 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-read-only-input");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyReadOnlyInputAsync(new ReadOnlyObjectInput());
 
@@ -800,7 +800,7 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-write-only-output");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyWriteOnlyOutputAsync(
             new WriteOnlyObject()
@@ -819,7 +819,7 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-write-only");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyWriteOnlyAsync(
             new WriteOnlyObject()
@@ -841,10 +841,10 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-read-and-write");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var res = await sdk.RequestBodies.RequestBodyReadAndWriteAsync(
-            new ReadWriteObjectInput()
+            new ReadWriteObject()
             {
                 Num1 = 1,
                 Num2 = 2,
@@ -862,7 +862,7 @@ public class RequestBodiesShould
     {
         CommonHelpers.RecordTest("request-bodies-complex-number-types");
 
-        var sdk = new SDKSDK();
+        var sdk = new SDK();
 
         var req = new RequestBodyPostComplexNumberTypesRequest()
         {
@@ -888,23 +888,23 @@ public class RequestBodiesShould
         Assert.Equal(200, res.StatusCode);
         Assert.Equal(
             req.ComplexNumberTypes.Bigint,
-            res.RequestBodyPostComplexNumberTypes200ApplicationJSONObject.Json.Bigint
+            res.Object.Json.Bigint
         );
         Assert.Equal(
             req.ComplexNumberTypes.BigintStr,
-            res.RequestBodyPostComplexNumberTypes200ApplicationJSONObject.Json.BigintStr
+            res.Object.Json.BigintStr
         );
         Assert.Equal(
             req.ComplexNumberTypes.Decimal,
-            res.RequestBodyPostComplexNumberTypes200ApplicationJSONObject.Json.Decimal
+            res.Object.Json.Decimal
         );
         Assert.Equal(
             req.ComplexNumberTypes.DecimalStr,
-            res.RequestBodyPostComplexNumberTypes200ApplicationJSONObject.Json.DecimalStr
+            res.Object.Json.DecimalStr
         );
         Assert.Equal(
             "http://localhost:35123/anything/requestBodies/post/9007199254740991/9223372036854775807/3.141592653589793/3.1415926535897932384626433833/complex-number-types?queryBigInt=9007199254740991&queryBigIntStr=9223372036854775807&queryDecimal=3.141592653589793&queryDecimalStr=3.1415926535897932384626433833",
-            res.RequestBodyPostComplexNumberTypes200ApplicationJSONObject.Url
+            res.Object.Url
         );
     }
 }

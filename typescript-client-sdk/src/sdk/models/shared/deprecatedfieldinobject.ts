@@ -8,7 +8,7 @@ import { Expose } from "class-transformer";
 /**
  * @deprecated enum: This enum is deprecated.
  */
-export enum DeprecatedFieldInObjectDeprecatedEnum {
+export enum DeprecatedEnum {
     A = "a",
     B = "b",
     C = "c",
@@ -20,7 +20,7 @@ export class DeprecatedFieldInObject extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "deprecatedEnum" })
-    deprecatedEnum?: DeprecatedFieldInObjectDeprecatedEnum;
+    deprecatedEnum?: DeprecatedEnum;
 
     /**
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible. Use newField instead.

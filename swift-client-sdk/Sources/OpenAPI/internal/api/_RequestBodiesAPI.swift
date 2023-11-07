@@ -512,7 +512,7 @@ class _RequestBodiesAPI: RequestBodiesAPI {
         )
     }
     
-    public func requestBodyPostMultipleContentTypesInlineFiltered(request: Operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON) async throws -> Response<Operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse> {
+    public func requestBodyPostMultipleContentTypesInlineFiltered(request: Operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody) async throws -> Response<Operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
                 try configureRequestBodyPostMultipleContentTypesInlineFilteredRequest(with: configuration, request: request)
@@ -548,7 +548,7 @@ class _RequestBodiesAPI: RequestBodiesAPI {
         )
     }
     
-    public func requestBodyPostMultipleContentTypesSplitForm(request: Operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded) async throws -> Response<Operations.RequestBodyPostMultipleContentTypesSplitFormResponse> {
+    public func requestBodyPostMultipleContentTypesSplitForm(request: Operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody) async throws -> Response<Operations.RequestBodyPostMultipleContentTypesSplitFormResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
                 try configureRequestBodyPostMultipleContentTypesSplitFormRequest(with: configuration, request: request)
@@ -557,7 +557,7 @@ class _RequestBodiesAPI: RequestBodiesAPI {
         )
     }
     
-    public func requestBodyPostMultipleContentTypesSplitJson(request: Operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON) async throws -> Response<Operations.RequestBodyPostMultipleContentTypesSplitJsonResponse> {
+    public func requestBodyPostMultipleContentTypesSplitJson(request: Operations.RequestBodyPostMultipleContentTypesSplitJsonRequestBody) async throws -> Response<Operations.RequestBodyPostMultipleContentTypesSplitJsonResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
                 try configureRequestBodyPostMultipleContentTypesSplitJsonRequest(with: configuration, request: request)
@@ -566,7 +566,7 @@ class _RequestBodiesAPI: RequestBodiesAPI {
         )
     }
     
-    public func requestBodyPostMultipleContentTypesSplitMultipart(request: Operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData) async throws -> Response<Operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse> {
+    public func requestBodyPostMultipleContentTypesSplitMultipart(request: Operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody) async throws -> Response<Operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
                 try configureRequestBodyPostMultipleContentTypesSplitMultipartRequest(with: configuration, request: request)
@@ -692,7 +692,7 @@ class _RequestBodiesAPI: RequestBodiesAPI {
         )
     }
     
-    public func requestBodyReadAndWrite(request: Shared.ReadWriteObjectInput, server: RequestBodiesServers.RequestBodyReadAndWrite?) async throws -> Response<Operations.RequestBodyReadAndWriteResponse> {
+    public func requestBodyReadAndWrite(request: Shared.ReadWriteObject, server: RequestBodiesServers.RequestBodyReadAndWrite?) async throws -> Response<Operations.RequestBodyReadAndWriteResponse> {
         return try await client.makeRequest(
             with: try server?.server() ?? RequestBodiesServers.RequestBodyReadAndWrite.default(),
             configureRequest: { configuration in
@@ -722,7 +722,7 @@ class _RequestBodiesAPI: RequestBodiesAPI {
         )
     }
     
-    public func requestBodyReadWriteOnlyUnion(request: Shared.WeaklyTypedOneOfReadWriteObjectInput, server: RequestBodiesServers.RequestBodyReadWriteOnlyUnion?) async throws -> Response<Operations.RequestBodyReadWriteOnlyUnionResponse> {
+    public func requestBodyReadWriteOnlyUnion(request: Shared.WeaklyTypedOneOfReadWriteObject, server: RequestBodiesServers.RequestBodyReadWriteOnlyUnion?) async throws -> Response<Operations.RequestBodyReadWriteOnlyUnionResponse> {
         return try await client.makeRequest(
             with: try server?.server() ?? RequestBodiesServers.RequestBodyReadWriteOnlyUnion.default(),
             configureRequest: { configuration in
@@ -1362,7 +1362,7 @@ private func configureRequestBodyPostMultipleContentTypesComponentFilteredReques
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
-private func configureRequestBodyPostMultipleContentTypesInlineFilteredRequest(with configuration: URLRequestConfiguration, request: Operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON) throws {
+private func configureRequestBodyPostMultipleContentTypesInlineFilteredRequest(with configuration: URLRequestConfiguration, request: Operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody) throws {
     configuration.path = "/anything/requestBodies/post/multiple/contentTypes/inline/filtered"
     configuration.method = .post
     configuration.contentType = "application/json"
@@ -1410,7 +1410,7 @@ private func configureRequestBodyPostMultipleContentTypesSplitParamMultipartRequ
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
-private func configureRequestBodyPostMultipleContentTypesSplitFormRequest(with configuration: URLRequestConfiguration, request: Operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded) throws {
+private func configureRequestBodyPostMultipleContentTypesSplitFormRequest(with configuration: URLRequestConfiguration, request: Operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody) throws {
     configuration.path = "/anything/requestBodies/post/multiple/contentTypes/split"
     configuration.method = .post
     configuration.contentType = "application/x-www-form-urlencoded"
@@ -1421,7 +1421,7 @@ private func configureRequestBodyPostMultipleContentTypesSplitFormRequest(with c
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
-private func configureRequestBodyPostMultipleContentTypesSplitJsonRequest(with configuration: URLRequestConfiguration, request: Operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON) throws {
+private func configureRequestBodyPostMultipleContentTypesSplitJsonRequest(with configuration: URLRequestConfiguration, request: Operations.RequestBodyPostMultipleContentTypesSplitJsonRequestBody) throws {
     configuration.path = "/anything/requestBodies/post/multiple/contentTypes/split"
     configuration.method = .post
     configuration.contentType = "application/json"
@@ -1432,7 +1432,7 @@ private func configureRequestBodyPostMultipleContentTypesSplitJsonRequest(with c
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
-private func configureRequestBodyPostMultipleContentTypesSplitMultipartRequest(with configuration: URLRequestConfiguration, request: Operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData) throws {
+private func configureRequestBodyPostMultipleContentTypesSplitMultipartRequest(with configuration: URLRequestConfiguration, request: Operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody) throws {
     configuration.path = "/anything/requestBodies/post/multiple/contentTypes/split"
     configuration.method = .post
     let (boundary, formData) = try serializeMultipartFormData(with: request)
@@ -1587,7 +1587,7 @@ private func configureRequestBodyPutStringWithParamsRequest(with configuration: 
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
-private func configureRequestBodyReadAndWriteRequest(with configuration: URLRequestConfiguration, request: Shared.ReadWriteObjectInput) throws {
+private func configureRequestBodyReadAndWriteRequest(with configuration: URLRequestConfiguration, request: Shared.ReadWriteObject) throws {
     configuration.path = "/readonlyandwriteonly"
     configuration.method = .post
     configuration.contentType = "application/json"
@@ -1620,7 +1620,7 @@ private func configureRequestBodyReadOnlyUnionRequest(with configuration: URLReq
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
-private func configureRequestBodyReadWriteOnlyUnionRequest(with configuration: URLRequestConfiguration, request: Shared.WeaklyTypedOneOfReadWriteObjectInput) throws {
+private func configureRequestBodyReadWriteOnlyUnionRequest(with configuration: URLRequestConfiguration, request: Shared.WeaklyTypedOneOfReadWriteObject) throws {
     configuration.path = "/readonlyandwriteonly#readWriteOnlyUnion"
     configuration.method = .post
     configuration.contentType = "application/json"
@@ -1690,7 +1690,7 @@ private func handleNullableRequiredEmptyObjectPostResponse(response: Client.APIR
             guard let string = String(data: data, encoding: .utf8) else {
                 throw ResponseHandlerError.failedToDecodeResponse
             }
-            return .nullableRequiredEmptyObjectPost200ApplicationJSONString(string)
+            return .res(string)
         }
     }
 
@@ -1705,7 +1705,7 @@ private func handleNullableRequiredPropertyPostResponse(response: Client.APIResp
             guard let string = String(data: data, encoding: .utf8) else {
                 throw ResponseHandlerError.failedToDecodeResponse
             }
-            return .nullableRequiredPropertyPost200ApplicationJSONString(string)
+            return .res(string)
         }
     }
 
@@ -1720,7 +1720,7 @@ private func handleNullableRequiredSharedObjectPostResponse(response: Client.API
             guard let string = String(data: data, encoding: .utf8) else {
                 throw ResponseHandlerError.failedToDecodeResponse
             }
-            return .nullableRequiredSharedObjectPost200ApplicationJSONString(string)
+            return .res(string)
         }
     }
 
@@ -1733,7 +1733,7 @@ private func handleRequestBodyPostApplicationJsonArrayResponse(response: Client.
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .simpleObjects(try JSONDecoder().decode([Shared.SimpleObject].self, from: data))
+                return .res(try JSONDecoder().decode([Shared.SimpleObject].self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -1749,7 +1749,7 @@ private func handleRequestBodyPostApplicationJsonArrayCamelCaseResponse(response
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .simpleObjectCamelCases(try JSONDecoder().decode([Shared.SimpleObjectCamelCase].self, from: data))
+                return .res(try JSONDecoder().decode([Shared.SimpleObjectCamelCase].self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -1797,7 +1797,7 @@ private func handleRequestBodyPostApplicationJsonArrayOfArrayResponse(response: 
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .arrs(try JSONDecoder().decode([[Shared.SimpleObject]].self, from: data))
+                return .res(try JSONDecoder().decode([[Shared.SimpleObject]].self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -1813,7 +1813,7 @@ private func handleRequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse(r
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .arrs(try JSONDecoder().decode([[Shared.SimpleObjectCamelCase]].self, from: data))
+                return .res(try JSONDecoder().decode([[Shared.SimpleObjectCamelCase]].self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -1829,7 +1829,7 @@ private func handleRequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .arrs(try JSONDecoder().decode([[String]].self, from: data))
+                return .res(try JSONDecoder().decode([[String]].self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -1845,7 +1845,7 @@ private func handleRequestBodyPostApplicationJsonArrayOfMapResponse(response: Cl
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .maps(try JSONDecoder().decode([[String: Shared.SimpleObject]].self, from: data))
+                return .res(try JSONDecoder().decode([[String: Shared.SimpleObject]].self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -1861,7 +1861,7 @@ private func handleRequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse(res
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .maps(try JSONDecoder().decode([[String: Shared.SimpleObjectCamelCase]].self, from: data))
+                return .res(try JSONDecoder().decode([[String: Shared.SimpleObjectCamelCase]].self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -1877,7 +1877,7 @@ private func handleRequestBodyPostApplicationJsonArrayOfPrimitiveResponse(respon
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .strings(try JSONDecoder().decode([String].self, from: data))
+                return .res(try JSONDecoder().decode([String].self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2133,7 +2133,7 @@ private func handleRequestBodyPostComplexNumberTypesResponse(response: Client.AP
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostComplexNumberTypes200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostComplexNumberTypes200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostComplexNumberTypesResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2149,7 +2149,7 @@ private func handleRequestBodyPostDefaultsAndConstsResponse(response: Client.API
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostDefaultsAndConsts200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostDefaultsAndConsts200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostDefaultsAndConstsResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2165,7 +2165,7 @@ private func handleRequestBodyPostEmptyObjectResponse(response: Client.APIRespon
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostEmptyObject200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostEmptyObject200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostEmptyObjectResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2229,7 +2229,7 @@ private func handleRequestBodyPostJsonDataTypesArrayBigIntResponse(response: Cli
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostJSONDataTypesArrayBigInt200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesArrayBigIntResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2245,7 +2245,7 @@ private func handleRequestBodyPostJsonDataTypesArrayDateResponse(response: Clien
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesArrayDateResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2261,7 +2261,7 @@ private func handleRequestBodyPostJsonDataTypesArrayDecimalStrResponse(response:
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesArrayDecimalStrResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2277,7 +2277,7 @@ private func handleRequestBodyPostJsonDataTypesBigIntResponse(response: Client.A
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostJSONDataTypesBigInt200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostJSONDataTypesBigInt200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesBigIntResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2293,7 +2293,7 @@ private func handleRequestBodyPostJsonDataTypesBigIntStrResponse(response: Clien
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostJSONDataTypesBigIntStr200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesBigIntStrResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2309,7 +2309,7 @@ private func handleRequestBodyPostJsonDataTypesBooleanResponse(response: Client.
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostJSONDataTypesBoolean200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostJSONDataTypesBoolean200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesBooleanResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2325,7 +2325,7 @@ private func handleRequestBodyPostJsonDataTypesDateResponse(response: Client.API
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostJSONDataTypesDate200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostJSONDataTypesDate200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesDateResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2341,7 +2341,7 @@ private func handleRequestBodyPostJsonDataTypesDateTimeResponse(response: Client
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostJSONDataTypesDateTime200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostJSONDataTypesDateTime200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesDateTimeResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2357,7 +2357,7 @@ private func handleRequestBodyPostJsonDataTypesDecimalResponse(response: Client.
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostJSONDataTypesDecimal200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostJSONDataTypesDecimal200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesDecimalResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2373,7 +2373,7 @@ private func handleRequestBodyPostJsonDataTypesDecimalStrResponse(response: Clie
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostJSONDataTypesDecimalStr200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostJSONDataTypesDecimalStr200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesDecimalStrResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2389,7 +2389,7 @@ private func handleRequestBodyPostJsonDataTypesFloat32Response(response: Client.
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostJSONDataTypesFloat32200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostJSONDataTypesFloat32200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesFloat32ResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2405,7 +2405,7 @@ private func handleRequestBodyPostJsonDataTypesInt32Response(response: Client.AP
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostJSONDataTypesInt32200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostJSONDataTypesInt32200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesInt32ResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2421,7 +2421,7 @@ private func handleRequestBodyPostJsonDataTypesIntegerResponse(response: Client.
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostJSONDataTypesInteger200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostJSONDataTypesInteger200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesIntegerResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2437,7 +2437,7 @@ private func handleRequestBodyPostJsonDataTypesMapBigIntStrResponse(response: Cl
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesMapBigIntStrResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2453,7 +2453,7 @@ private func handleRequestBodyPostJsonDataTypesMapDateTimeResponse(response: Cli
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostJSONDataTypesMapDateTime200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesMapDateTimeResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2469,7 +2469,7 @@ private func handleRequestBodyPostJsonDataTypesMapDecimalResponse(response: Clie
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostJSONDataTypesMapDecimal200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesMapDecimalResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2485,7 +2485,7 @@ private func handleRequestBodyPostJsonDataTypesNumberResponse(response: Client.A
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostJSONDataTypesNumber200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostJSONDataTypesNumber200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesNumberResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2501,7 +2501,7 @@ private func handleRequestBodyPostJsonDataTypesStringResponse(response: Client.A
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostJSONDataTypesString200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostJSONDataTypesString200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesStringResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2645,7 +2645,7 @@ private func handleRequestBodyPostNotNullableNotRequiredStringBodyResponse(respo
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostNotNullableNotRequiredStringBody200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostNotNullableNotRequiredStringBody200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostNotNullableNotRequiredStringBodyResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2661,7 +2661,7 @@ private func handleRequestBodyPostNullArrayResponse(response: Client.APIResponse
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostNullArray200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostNullArray200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostNullArrayResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2677,7 +2677,7 @@ private func handleRequestBodyPostNullDictionaryResponse(response: Client.APIRes
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostNullDictionary200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostNullDictionary200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostNullDictionaryResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2693,7 +2693,7 @@ private func handleRequestBodyPostNullableNotRequiredStringBodyResponse(response
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostNullableNotRequiredStringBody200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostNullableNotRequiredStringBodyResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -2709,7 +2709,7 @@ private func handleRequestBodyPostNullableRequiredStringBodyResponse(response: C
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .requestBodyPostNullableRequiredStringBody200ApplicationJSONObject(try JSONDecoder().decode(Operations.RequestBodyPostNullableRequiredStringBody200ApplicationJSON.self, from: data))
+                return .object(try JSONDecoder().decode(Operations.RequestBodyPostNullableRequiredStringBodyResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

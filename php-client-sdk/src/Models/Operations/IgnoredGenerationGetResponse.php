@@ -38,16 +38,16 @@ class IgnoredGenerationGetResponse
     /**
      * A successful response that contains the simpleObject sent in the request body
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\IgnoredGenerationGet200ApplicationJSON $ignoredGenerationGet200ApplicationJSONObject
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\IgnoredGenerationGetResponseBody $object
      */
 	
-    public ?IgnoredGenerationGet200ApplicationJSON $ignoredGenerationGet200ApplicationJSONObject = null;
+    public ?IgnoredGenerationGetResponseBody $object = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->ignoredGenerationGet200ApplicationJSONObject = null;
+		$this->object = null;
 	}
 }

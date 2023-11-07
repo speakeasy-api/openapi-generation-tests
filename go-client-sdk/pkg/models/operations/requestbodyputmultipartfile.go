@@ -6,30 +6,30 @@ import (
 	"net/http"
 )
 
-type RequestBodyPutMultipartFileRequestBodyFile struct {
-	Content []byte `multipartForm:"content"`
-	File    string `multipartForm:"name=file"`
+type File struct {
+	Content  []byte `multipartForm:"content"`
+	FileName string `multipartForm:"name=file"`
 }
 
-func (o *RequestBodyPutMultipartFileRequestBodyFile) GetContent() []byte {
+func (o *File) GetContent() []byte {
 	if o == nil {
 		return []byte{}
 	}
 	return o.Content
 }
 
-func (o *RequestBodyPutMultipartFileRequestBodyFile) GetFile() string {
+func (o *File) GetFileName() string {
 	if o == nil {
 		return ""
 	}
-	return o.File
+	return o.FileName
 }
 
 type RequestBodyPutMultipartFileRequestBody struct {
-	File *RequestBodyPutMultipartFileRequestBodyFile `multipartForm:"file"`
+	File *File `multipartForm:"file"`
 }
 
-func (o *RequestBodyPutMultipartFileRequestBody) GetFile() *RequestBodyPutMultipartFileRequestBodyFile {
+func (o *RequestBodyPutMultipartFileRequestBody) GetFile() *File {
 	if o == nil {
 		return nil
 	}

@@ -40,8 +40,8 @@ class ResponseBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON])
-                res.response_body_additional_properties_complex_numbers_post_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -72,8 +72,8 @@ class ResponseBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON])
-                res.response_body_additional_properties_date_post_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ResponseBodyAdditionalPropertiesDatePostResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -104,8 +104,8 @@ class ResponseBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSON])
-                res.response_body_additional_properties_object_post_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ResponseBodyAdditionalPropertiesObjectPostResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -136,8 +136,8 @@ class ResponseBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ResponseBodyAdditionalPropertiesPost200ApplicationJSON])
-                res.response_body_additional_properties_post_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ResponseBodyAdditionalPropertiesPostResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -228,7 +228,7 @@ class ResponseBodies:
                 out = utils.unmarshal_json(http_res.text, Optional[shared.TypedObject1])
                 res.typed_object1 = out
             elif utils.match_content_type(content_type, 'text/plain'):
-                res.response_body_optional_get_200_text_plain_string = http_res.content
+                res.res = http_res.content
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -341,8 +341,8 @@ class ResponseBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON])
-                res.response_body_zero_value_complex_type_ptrs_post_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ResponseBodyZeroValueComplexTypePtrsPostResponseBody])
+                res.object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:

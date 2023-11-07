@@ -10,27 +10,27 @@ import (
 	"io"
 	"math/big"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
+	"openapi/v2/pkg/utils"
 	"strings"
 	"time"
 )
 
-// requestBodies - Endpoints for testing request bodies.
-type requestBodies struct {
+// RequestBodies - Endpoints for testing request bodies.
+type RequestBodies struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newRequestBodies(sdkConfig sdkConfiguration) *requestBodies {
-	return &requestBodies{
+func newRequestBodies(sdkConfig sdkConfiguration) *RequestBodies {
+	return &RequestBodies{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *requestBodies) NullableObjectPost(ctx context.Context, request *shared.NullableObject) (*operations.NullableObjectPostResponse, error) {
+func (s *RequestBodies) NullableObjectPost(ctx context.Context, request *shared.NullableObject) (*operations.NullableObjectPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/nullableRequiredObject"
 
@@ -97,7 +97,7 @@ func (s *requestBodies) NullableObjectPost(ctx context.Context, request *shared.
 	return res, nil
 }
 
-func (s *requestBodies) NullableRequiredEmptyObjectPost(ctx context.Context, request operations.NullableRequiredEmptyObjectPostRequestBody) (*operations.NullableRequiredEmptyObjectPostResponse, error) {
+func (s *RequestBodies) NullableRequiredEmptyObjectPost(ctx context.Context, request operations.NullableRequiredEmptyObjectPostRequestBody) (*operations.NullableRequiredEmptyObjectPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/nullableRequiredEmptyObject"
 
@@ -147,7 +147,7 @@ func (s *requestBodies) NullableRequiredEmptyObjectPost(ctx context.Context, req
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			out := string(rawBody)
-			res.NullableRequiredEmptyObjectPost200ApplicationJSONString = &out
+			res.Res = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -160,7 +160,7 @@ func (s *requestBodies) NullableRequiredEmptyObjectPost(ctx context.Context, req
 	return res, nil
 }
 
-func (s *requestBodies) NullableRequiredPropertyPost(ctx context.Context, request operations.NullableRequiredPropertyPostRequestBody) (*operations.NullableRequiredPropertyPostResponse, error) {
+func (s *RequestBodies) NullableRequiredPropertyPost(ctx context.Context, request operations.NullableRequiredPropertyPostRequestBody) (*operations.NullableRequiredPropertyPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/nullableRequiredProperty"
 
@@ -210,7 +210,7 @@ func (s *requestBodies) NullableRequiredPropertyPost(ctx context.Context, reques
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			out := string(rawBody)
-			res.NullableRequiredPropertyPost200ApplicationJSONString = &out
+			res.Res = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -223,7 +223,7 @@ func (s *requestBodies) NullableRequiredPropertyPost(ctx context.Context, reques
 	return res, nil
 }
 
-func (s *requestBodies) NullableRequiredSharedObjectPost(ctx context.Context, request operations.NullableRequiredSharedObjectPostRequestBody) (*operations.NullableRequiredSharedObjectPostResponse, error) {
+func (s *RequestBodies) NullableRequiredSharedObjectPost(ctx context.Context, request operations.NullableRequiredSharedObjectPostRequestBody) (*operations.NullableRequiredSharedObjectPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/nullableRequiredSharedObject"
 
@@ -273,7 +273,7 @@ func (s *requestBodies) NullableRequiredSharedObjectPost(ctx context.Context, re
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			out := string(rawBody)
-			res.NullableRequiredSharedObjectPost200ApplicationJSONString = &out
+			res.Res = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -286,7 +286,7 @@ func (s *requestBodies) NullableRequiredSharedObjectPost(ctx context.Context, re
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONArray(ctx context.Context, request []shared.SimpleObject, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONArray(ctx context.Context, request []shared.SimpleObject, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -354,7 +354,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArray(ctx context.Context,
 				return nil, err
 			}
 
-			res.SimpleObjects = out
+			res.Res = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -367,7 +367,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArray(ctx context.Context,
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONArrayCamelCase(ctx context.Context, request []shared.SimpleObjectCamelCase, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayCamelCaseResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONArrayCamelCase(ctx context.Context, request []shared.SimpleObjectCamelCase, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayCamelCaseResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -435,7 +435,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayCamelCase(ctx context
 				return nil, err
 			}
 
-			res.SimpleObjectCamelCases = out
+			res.Res = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -448,7 +448,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayCamelCase(ctx context
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONArrayObj(ctx context.Context, request []shared.SimpleObject) (*operations.RequestBodyPostApplicationJSONArrayObjResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONArrayObj(ctx context.Context, request []shared.SimpleObject) (*operations.RequestBodyPostApplicationJSONArrayObjResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/application/json/array/objResponse"
 
@@ -515,7 +515,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayObj(ctx context.Conte
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONArrayObjCamelCase(ctx context.Context, request []shared.SimpleObjectCamelCase) (*operations.RequestBodyPostApplicationJSONArrayObjCamelCaseResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONArrayObjCamelCase(ctx context.Context, request []shared.SimpleObjectCamelCase) (*operations.RequestBodyPostApplicationJSONArrayObjCamelCaseResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/application/json/array/objResponseCamelCase"
 
@@ -582,7 +582,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayObjCamelCase(ctx cont
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfArray(ctx context.Context, request [][]shared.SimpleObject, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayOfArrayResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfArray(ctx context.Context, request [][]shared.SimpleObject, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayOfArrayResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -650,7 +650,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfArray(ctx context.C
 				return nil, err
 			}
 
-			res.Arrs = out
+			res.Res = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -663,7 +663,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfArray(ctx context.C
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfArrayCamelCase(ctx context.Context, request [][]shared.SimpleObjectCamelCase, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayOfArrayCamelCaseResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfArrayCamelCase(ctx context.Context, request [][]shared.SimpleObjectCamelCase, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayOfArrayCamelCaseResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -731,7 +731,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfArrayCamelCase(ctx 
 				return nil, err
 			}
 
-			res.Arrs = out
+			res.Res = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -744,7 +744,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfArrayCamelCase(ctx 
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfArrayOfPrimitive(ctx context.Context, request [][]string, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfArrayOfPrimitive(ctx context.Context, request [][]string, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -812,7 +812,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfArrayOfPrimitive(ct
 				return nil, err
 			}
 
-			res.Arrs = out
+			res.Res = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -825,7 +825,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfArrayOfPrimitive(ct
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfMap(ctx context.Context, request []map[string]shared.SimpleObject, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayOfMapResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfMap(ctx context.Context, request []map[string]shared.SimpleObject, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayOfMapResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -893,7 +893,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfMap(ctx context.Con
 				return nil, err
 			}
 
-			res.Maps = out
+			res.Res = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -906,7 +906,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfMap(ctx context.Con
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfMapCamelCase(ctx context.Context, request []map[string]shared.SimpleObjectCamelCase, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayOfMapCamelCaseResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfMapCamelCase(ctx context.Context, request []map[string]shared.SimpleObjectCamelCase, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayOfMapCamelCaseResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -974,7 +974,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfMapCamelCase(ctx co
 				return nil, err
 			}
 
-			res.Maps = out
+			res.Res = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -987,7 +987,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfMapCamelCase(ctx co
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfPrimitive(ctx context.Context, request []string, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayOfPrimitiveResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfPrimitive(ctx context.Context, request []string, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayOfPrimitiveResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -1055,7 +1055,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfPrimitive(ctx conte
 				return nil, err
 			}
 
-			res.Strings = out
+			res.Res = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -1068,7 +1068,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfPrimitive(ctx conte
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONDeep(ctx context.Context, request shared.DeepObject) (*operations.RequestBodyPostApplicationJSONDeepResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONDeep(ctx context.Context, request shared.DeepObject) (*operations.RequestBodyPostApplicationJSONDeepResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/application/json/deep"
 
@@ -1135,7 +1135,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONDeep(ctx context.Context, 
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONDeepCamelCase(ctx context.Context, request shared.DeepObjectCamelCase) (*operations.RequestBodyPostApplicationJSONDeepCamelCaseResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONDeepCamelCase(ctx context.Context, request shared.DeepObjectCamelCase) (*operations.RequestBodyPostApplicationJSONDeepCamelCaseResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/application/json/deep/camelcase"
 
@@ -1202,7 +1202,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONDeepCamelCase(ctx context.
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONMap(ctx context.Context, request map[string]shared.SimpleObject, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONMap(ctx context.Context, request map[string]shared.SimpleObject, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -1283,7 +1283,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMap(ctx context.Context, r
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONMapCamelCase(ctx context.Context, request map[string]shared.SimpleObjectCamelCase, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapCamelCaseResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONMapCamelCase(ctx context.Context, request map[string]shared.SimpleObjectCamelCase, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapCamelCaseResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -1364,7 +1364,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapCamelCase(ctx context.C
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONMapObj(ctx context.Context, request map[string]shared.SimpleObject) (*operations.RequestBodyPostApplicationJSONMapObjResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONMapObj(ctx context.Context, request map[string]shared.SimpleObject) (*operations.RequestBodyPostApplicationJSONMapObjResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/application/json/map/objResponse"
 
@@ -1431,7 +1431,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapObj(ctx context.Context
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONMapObjCamelCase(ctx context.Context, request map[string]shared.SimpleObjectCamelCase) (*operations.RequestBodyPostApplicationJSONMapObjCamelCaseResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONMapObjCamelCase(ctx context.Context, request map[string]shared.SimpleObjectCamelCase) (*operations.RequestBodyPostApplicationJSONMapObjCamelCaseResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/application/json/map/objResponseCamelCase"
 
@@ -1498,7 +1498,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapObjCamelCase(ctx contex
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONMapOfArray(ctx context.Context, request map[string][]shared.SimpleObject, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapOfArrayResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfArray(ctx context.Context, request map[string][]shared.SimpleObject, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapOfArrayResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -1579,7 +1579,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapOfArray(ctx context.Con
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONMapOfArrayCamelCase(ctx context.Context, request map[string][]shared.SimpleObjectCamelCase, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapOfArrayCamelCaseResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfArrayCamelCase(ctx context.Context, request map[string][]shared.SimpleObjectCamelCase, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapOfArrayCamelCaseResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -1660,7 +1660,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapOfArrayCamelCase(ctx co
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONMapOfMap(ctx context.Context, request map[string]map[string]shared.SimpleObject, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapOfMapResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfMap(ctx context.Context, request map[string]map[string]shared.SimpleObject, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapOfMapResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -1741,7 +1741,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapOfMap(ctx context.Conte
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONMapOfMapCamelCase(ctx context.Context, request map[string]map[string]shared.SimpleObjectCamelCase, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapOfMapCamelCaseResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfMapCamelCase(ctx context.Context, request map[string]map[string]shared.SimpleObjectCamelCase, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapOfMapCamelCaseResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -1822,7 +1822,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapOfMapCamelCase(ctx cont
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONMapOfMapOfPrimitive(ctx context.Context, request map[string]map[string]string, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapOfMapOfPrimitiveResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfMapOfPrimitive(ctx context.Context, request map[string]map[string]string, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapOfMapOfPrimitiveResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -1903,7 +1903,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapOfMapOfPrimitive(ctx co
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONMapOfPrimitive(ctx context.Context, request map[string]string, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapOfPrimitiveResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfPrimitive(ctx context.Context, request map[string]string, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapOfPrimitiveResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -1984,7 +1984,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapOfPrimitive(ctx context
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONMultipleJSONFiltered(ctx context.Context, request shared.SimpleObject) (*operations.RequestBodyPostApplicationJSONMultipleJSONFilteredResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONMultipleJSONFiltered(ctx context.Context, request shared.SimpleObject) (*operations.RequestBodyPostApplicationJSONMultipleJSONFilteredResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/application/json/multiple/json/filtered"
 
@@ -2051,7 +2051,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMultipleJSONFiltered(ctx c
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONSimple(ctx context.Context, request shared.SimpleObject) (*operations.RequestBodyPostApplicationJSONSimpleResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONSimple(ctx context.Context, request shared.SimpleObject) (*operations.RequestBodyPostApplicationJSONSimpleResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/application/json/simple"
 
@@ -2118,7 +2118,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONSimple(ctx context.Context
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostApplicationJSONSimpleCamelCase(ctx context.Context, request shared.SimpleObjectCamelCase) (*operations.RequestBodyPostApplicationJSONSimpleCamelCaseResponse, error) {
+func (s *RequestBodies) RequestBodyPostApplicationJSONSimpleCamelCase(ctx context.Context, request shared.SimpleObjectCamelCase) (*operations.RequestBodyPostApplicationJSONSimpleCamelCaseResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/application/json/camelcase"
 
@@ -2185,7 +2185,7 @@ func (s *requestBodies) RequestBodyPostApplicationJSONSimpleCamelCase(ctx contex
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostComplexNumberTypes(ctx context.Context, request operations.RequestBodyPostComplexNumberTypesRequest) (*operations.RequestBodyPostComplexNumberTypesResponse, error) {
+func (s *RequestBodies) RequestBodyPostComplexNumberTypes(ctx context.Context, request operations.RequestBodyPostComplexNumberTypesRequest) (*operations.RequestBodyPostComplexNumberTypesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/anything/requestBodies/post/{pathBigInt}/{pathBigIntStr}/{pathDecimal}/{pathDecimalStr}/complex-number-types", request, s.sdkConfiguration.Globals)
 	if err != nil {
@@ -2241,12 +2241,12 @@ func (s *requestBodies) RequestBodyPostComplexNumberTypes(ctx context.Context, r
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostComplexNumberTypes200ApplicationJSON
+			var out operations.RequestBodyPostComplexNumberTypesResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostComplexNumberTypes200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -2259,7 +2259,7 @@ func (s *requestBodies) RequestBodyPostComplexNumberTypes(ctx context.Context, r
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostDefaultsAndConsts(ctx context.Context, request shared.DefaultsAndConsts) (*operations.RequestBodyPostDefaultsAndConstsResponse, error) {
+func (s *RequestBodies) RequestBodyPostDefaultsAndConsts(ctx context.Context, request shared.DefaultsAndConsts) (*operations.RequestBodyPostDefaultsAndConstsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/defaultsAndConsts"
 
@@ -2308,12 +2308,12 @@ func (s *requestBodies) RequestBodyPostDefaultsAndConsts(ctx context.Context, re
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostDefaultsAndConsts200ApplicationJSON
+			var out operations.RequestBodyPostDefaultsAndConstsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -2326,7 +2326,7 @@ func (s *requestBodies) RequestBodyPostDefaultsAndConsts(ctx context.Context, re
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostEmptyObject(ctx context.Context, request operations.RequestBodyPostEmptyObjectRequestBody) (*operations.RequestBodyPostEmptyObjectResponse, error) {
+func (s *RequestBodies) RequestBodyPostEmptyObject(ctx context.Context, request operations.RequestBodyPostEmptyObjectRequestBody) (*operations.RequestBodyPostEmptyObjectResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/empty-object"
 
@@ -2375,12 +2375,12 @@ func (s *requestBodies) RequestBodyPostEmptyObject(ctx context.Context, request 
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostEmptyObject200ApplicationJSON
+			var out operations.RequestBodyPostEmptyObjectResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostEmptyObject200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -2393,7 +2393,7 @@ func (s *requestBodies) RequestBodyPostEmptyObject(ctx context.Context, request 
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostFormDeep(ctx context.Context, request shared.DeepObject) (*operations.RequestBodyPostFormDeepResponse, error) {
+func (s *RequestBodies) RequestBodyPostFormDeep(ctx context.Context, request shared.DeepObject) (*operations.RequestBodyPostFormDeepResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/form/deep"
 
@@ -2460,7 +2460,7 @@ func (s *requestBodies) RequestBodyPostFormDeep(ctx context.Context, request sha
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostFormMapPrimitive(ctx context.Context, request map[string]string) (*operations.RequestBodyPostFormMapPrimitiveResponse, error) {
+func (s *RequestBodies) RequestBodyPostFormMapPrimitive(ctx context.Context, request map[string]string) (*operations.RequestBodyPostFormMapPrimitiveResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/form/map/primitive"
 
@@ -2527,7 +2527,7 @@ func (s *requestBodies) RequestBodyPostFormMapPrimitive(ctx context.Context, req
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostFormSimple(ctx context.Context, request shared.SimpleObject) (*operations.RequestBodyPostFormSimpleResponse, error) {
+func (s *RequestBodies) RequestBodyPostFormSimple(ctx context.Context, request shared.SimpleObject) (*operations.RequestBodyPostFormSimpleResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/form/simple"
 
@@ -2594,7 +2594,7 @@ func (s *requestBodies) RequestBodyPostFormSimple(ctx context.Context, request s
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostJSONDataTypesArrayBigInt(ctx context.Context, request []*big.Int) (*operations.RequestBodyPostJSONDataTypesArrayBigIntResponse, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesArrayBigInt(ctx context.Context, request []*big.Int) (*operations.RequestBodyPostJSONDataTypesArrayBigIntResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/array/bigInt"
 
@@ -2643,12 +2643,12 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesArrayBigInt(ctx context.Cont
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON
+			var out operations.RequestBodyPostJSONDataTypesArrayBigIntResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -2661,7 +2661,7 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesArrayBigInt(ctx context.Cont
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostJSONDataTypesArrayDate(ctx context.Context, request []types.Date) (*operations.RequestBodyPostJSONDataTypesArrayDateResponse, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesArrayDate(ctx context.Context, request []types.Date) (*operations.RequestBodyPostJSONDataTypesArrayDateResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/array/date"
 
@@ -2710,12 +2710,12 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesArrayDate(ctx context.Contex
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON
+			var out operations.RequestBodyPostJSONDataTypesArrayDateResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -2728,7 +2728,7 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesArrayDate(ctx context.Contex
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostJSONDataTypesArrayDecimalStr(ctx context.Context, request []*decimal.Big) (*operations.RequestBodyPostJSONDataTypesArrayDecimalStrResponse, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesArrayDecimalStr(ctx context.Context, request []*decimal.Big) (*operations.RequestBodyPostJSONDataTypesArrayDecimalStrResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/array/decimalStr"
 
@@ -2777,12 +2777,12 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesArrayDecimalStr(ctx context.
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON
+			var out operations.RequestBodyPostJSONDataTypesArrayDecimalStrResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -2795,7 +2795,7 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesArrayDecimalStr(ctx context.
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostJSONDataTypesBigInt(ctx context.Context, request *big.Int) (*operations.RequestBodyPostJSONDataTypesBigIntResponse, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesBigInt(ctx context.Context, request *big.Int) (*operations.RequestBodyPostJSONDataTypesBigIntResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/bigint"
 
@@ -2844,12 +2844,12 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesBigInt(ctx context.Context, 
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostJSONDataTypesBigInt200ApplicationJSON
+			var out operations.RequestBodyPostJSONDataTypesBigIntResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostJSONDataTypesBigInt200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -2862,7 +2862,7 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesBigInt(ctx context.Context, 
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostJSONDataTypesBigIntStr(ctx context.Context, request *big.Int) (*operations.RequestBodyPostJSONDataTypesBigIntStrResponse, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesBigIntStr(ctx context.Context, request *big.Int) (*operations.RequestBodyPostJSONDataTypesBigIntStrResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/bigintStr"
 
@@ -2911,12 +2911,12 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesBigIntStr(ctx context.Contex
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSON
+			var out operations.RequestBodyPostJSONDataTypesBigIntStrResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -2929,7 +2929,7 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesBigIntStr(ctx context.Contex
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostJSONDataTypesBoolean(ctx context.Context, request bool) (*operations.RequestBodyPostJSONDataTypesBooleanResponse, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesBoolean(ctx context.Context, request bool) (*operations.RequestBodyPostJSONDataTypesBooleanResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/boolean"
 
@@ -2978,12 +2978,12 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesBoolean(ctx context.Context,
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostJSONDataTypesBoolean200ApplicationJSON
+			var out operations.RequestBodyPostJSONDataTypesBooleanResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostJSONDataTypesBoolean200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -2996,7 +2996,7 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesBoolean(ctx context.Context,
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostJSONDataTypesDate(ctx context.Context, request types.Date) (*operations.RequestBodyPostJSONDataTypesDateResponse, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesDate(ctx context.Context, request types.Date) (*operations.RequestBodyPostJSONDataTypesDateResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/date"
 
@@ -3045,12 +3045,12 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesDate(ctx context.Context, re
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostJSONDataTypesDate200ApplicationJSON
+			var out operations.RequestBodyPostJSONDataTypesDateResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostJSONDataTypesDate200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -3063,7 +3063,7 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesDate(ctx context.Context, re
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostJSONDataTypesDateTime(ctx context.Context, request time.Time) (*operations.RequestBodyPostJSONDataTypesDateTimeResponse, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesDateTime(ctx context.Context, request time.Time) (*operations.RequestBodyPostJSONDataTypesDateTimeResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/dateTime"
 
@@ -3112,12 +3112,12 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesDateTime(ctx context.Context
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostJSONDataTypesDateTime200ApplicationJSON
+			var out operations.RequestBodyPostJSONDataTypesDateTimeResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostJSONDataTypesDateTime200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -3130,7 +3130,7 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesDateTime(ctx context.Context
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostJSONDataTypesDecimal(ctx context.Context, request *decimal.Big) (*operations.RequestBodyPostJSONDataTypesDecimalResponse, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesDecimal(ctx context.Context, request *decimal.Big) (*operations.RequestBodyPostJSONDataTypesDecimalResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/decimal"
 
@@ -3179,12 +3179,12 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesDecimal(ctx context.Context,
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostJSONDataTypesDecimal200ApplicationJSON
+			var out operations.RequestBodyPostJSONDataTypesDecimalResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostJSONDataTypesDecimal200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -3197,7 +3197,7 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesDecimal(ctx context.Context,
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostJSONDataTypesDecimalStr(ctx context.Context, request *decimal.Big) (*operations.RequestBodyPostJSONDataTypesDecimalStrResponse, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesDecimalStr(ctx context.Context, request *decimal.Big) (*operations.RequestBodyPostJSONDataTypesDecimalStrResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/decimalStr"
 
@@ -3246,12 +3246,12 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesDecimalStr(ctx context.Conte
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostJSONDataTypesDecimalStr200ApplicationJSON
+			var out operations.RequestBodyPostJSONDataTypesDecimalStrResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostJSONDataTypesDecimalStr200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -3264,7 +3264,7 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesDecimalStr(ctx context.Conte
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostJSONDataTypesFloat32(ctx context.Context, request float64) (*operations.RequestBodyPostJSONDataTypesFloat32Response, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesFloat32(ctx context.Context, request float64) (*operations.RequestBodyPostJSONDataTypesFloat32Response, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/float32"
 
@@ -3313,12 +3313,12 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesFloat32(ctx context.Context,
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostJSONDataTypesFloat32200ApplicationJSON
+			var out operations.RequestBodyPostJSONDataTypesFloat32ResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostJSONDataTypesFloat32200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -3331,7 +3331,7 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesFloat32(ctx context.Context,
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostJSONDataTypesInt32(ctx context.Context, request int) (*operations.RequestBodyPostJSONDataTypesInt32Response, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesInt32(ctx context.Context, request int) (*operations.RequestBodyPostJSONDataTypesInt32Response, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/int32"
 
@@ -3380,12 +3380,12 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesInt32(ctx context.Context, r
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostJSONDataTypesInt32200ApplicationJSON
+			var out operations.RequestBodyPostJSONDataTypesInt32ResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostJSONDataTypesInt32200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -3398,7 +3398,7 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesInt32(ctx context.Context, r
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostJSONDataTypesInteger(ctx context.Context, request int64) (*operations.RequestBodyPostJSONDataTypesIntegerResponse, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesInteger(ctx context.Context, request int64) (*operations.RequestBodyPostJSONDataTypesIntegerResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/integer"
 
@@ -3447,12 +3447,12 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesInteger(ctx context.Context,
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostJSONDataTypesInteger200ApplicationJSON
+			var out operations.RequestBodyPostJSONDataTypesIntegerResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostJSONDataTypesInteger200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -3465,7 +3465,7 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesInteger(ctx context.Context,
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostJSONDataTypesMapBigIntStr(ctx context.Context, request map[string]*big.Int) (*operations.RequestBodyPostJSONDataTypesMapBigIntStrResponse, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesMapBigIntStr(ctx context.Context, request map[string]*big.Int) (*operations.RequestBodyPostJSONDataTypesMapBigIntStrResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/map/bigIntStr"
 
@@ -3514,12 +3514,12 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesMapBigIntStr(ctx context.Con
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSON
+			var out operations.RequestBodyPostJSONDataTypesMapBigIntStrResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -3532,7 +3532,7 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesMapBigIntStr(ctx context.Con
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostJSONDataTypesMapDateTime(ctx context.Context, request map[string]time.Time) (*operations.RequestBodyPostJSONDataTypesMapDateTimeResponse, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesMapDateTime(ctx context.Context, request map[string]time.Time) (*operations.RequestBodyPostJSONDataTypesMapDateTimeResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/map/dateTime"
 
@@ -3581,12 +3581,12 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesMapDateTime(ctx context.Cont
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON
+			var out operations.RequestBodyPostJSONDataTypesMapDateTimeResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -3599,7 +3599,7 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesMapDateTime(ctx context.Cont
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostJSONDataTypesMapDecimal(ctx context.Context, request map[string]*decimal.Big) (*operations.RequestBodyPostJSONDataTypesMapDecimalResponse, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesMapDecimal(ctx context.Context, request map[string]*decimal.Big) (*operations.RequestBodyPostJSONDataTypesMapDecimalResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/map/decimal"
 
@@ -3648,12 +3648,12 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesMapDecimal(ctx context.Conte
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSON
+			var out operations.RequestBodyPostJSONDataTypesMapDecimalResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -3666,7 +3666,7 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesMapDecimal(ctx context.Conte
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostJSONDataTypesNumber(ctx context.Context, request float64) (*operations.RequestBodyPostJSONDataTypesNumberResponse, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesNumber(ctx context.Context, request float64) (*operations.RequestBodyPostJSONDataTypesNumberResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/number"
 
@@ -3715,12 +3715,12 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesNumber(ctx context.Context, 
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostJSONDataTypesNumber200ApplicationJSON
+			var out operations.RequestBodyPostJSONDataTypesNumberResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostJSONDataTypesNumber200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -3733,7 +3733,7 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesNumber(ctx context.Context, 
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostJSONDataTypesString(ctx context.Context, request string) (*operations.RequestBodyPostJSONDataTypesStringResponse, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesString(ctx context.Context, request string) (*operations.RequestBodyPostJSONDataTypesStringResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/string"
 
@@ -3782,12 +3782,12 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesString(ctx context.Context, 
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostJSONDataTypesString200ApplicationJSON
+			var out operations.RequestBodyPostJSONDataTypesStringResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostJSONDataTypesString200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -3800,7 +3800,7 @@ func (s *requestBodies) RequestBodyPostJSONDataTypesString(ctx context.Context, 
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostMultipleContentTypesComponentFiltered(ctx context.Context, request shared.SimpleObject) (*operations.RequestBodyPostMultipleContentTypesComponentFilteredResponse, error) {
+func (s *RequestBodies) RequestBodyPostMultipleContentTypesComponentFiltered(ctx context.Context, request shared.SimpleObject) (*operations.RequestBodyPostMultipleContentTypesComponentFilteredResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/multiple/contentTypes/component/filtered"
 
@@ -3867,7 +3867,7 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesComponentFiltered(ctx
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostMultipleContentTypesInlineFiltered(ctx context.Context, request operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON) (*operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse, error) {
+func (s *RequestBodies) RequestBodyPostMultipleContentTypesInlineFiltered(ctx context.Context, request operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody) (*operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/multiple/contentTypes/inline/filtered"
 
@@ -3934,7 +3934,7 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesInlineFiltered(ctx co
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitParamForm(ctx context.Context, requestBody operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded, paramStr string) (*operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse, error) {
+func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitParamForm(ctx context.Context, requestBody operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody, paramStr string) (*operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse, error) {
 	request := operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest{
 		RequestBody: requestBody,
 		ParamStr:    paramStr,
@@ -4010,7 +4010,7 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitParamForm(ctx co
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitParamJSON(ctx context.Context, requestBody operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON, paramStr string) (*operations.RequestBodyPostMultipleContentTypesSplitParamJSONResponse, error) {
+func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitParamJSON(ctx context.Context, requestBody operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody, paramStr string) (*operations.RequestBodyPostMultipleContentTypesSplitParamJSONResponse, error) {
 	request := operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequest{
 		RequestBody: requestBody,
 		ParamStr:    paramStr,
@@ -4086,7 +4086,7 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitParamJSON(ctx co
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitParamMultipart(ctx context.Context, requestBody operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData, paramStr string) (*operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse, error) {
+func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitParamMultipart(ctx context.Context, requestBody operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody, paramStr string) (*operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse, error) {
 	request := operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest{
 		RequestBody: requestBody,
 		ParamStr:    paramStr,
@@ -4162,7 +4162,7 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitParamMultipart(c
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitForm(ctx context.Context, request operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded) (*operations.RequestBodyPostMultipleContentTypesSplitFormResponse, error) {
+func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitForm(ctx context.Context, request operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody) (*operations.RequestBodyPostMultipleContentTypesSplitFormResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/multiple/contentTypes/split"
 
@@ -4229,7 +4229,7 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitForm(ctx context
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitJSON(ctx context.Context, request operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON) (*operations.RequestBodyPostMultipleContentTypesSplitJSONResponse, error) {
+func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitJSON(ctx context.Context, request operations.RequestBodyPostMultipleContentTypesSplitJSONRequestBody) (*operations.RequestBodyPostMultipleContentTypesSplitJSONResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/multiple/contentTypes/split"
 
@@ -4296,7 +4296,7 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitJSON(ctx context
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitMultipart(ctx context.Context, request operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData) (*operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse, error) {
+func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitMultipart(ctx context.Context, request operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody) (*operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/multiple/contentTypes/split"
 
@@ -4363,7 +4363,7 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitMultipart(ctx co
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostNotNullableNotRequiredStringBody(ctx context.Context, request *string) (*operations.RequestBodyPostNotNullableNotRequiredStringBodyResponse, error) {
+func (s *RequestBodies) RequestBodyPostNotNullableNotRequiredStringBody(ctx context.Context, request *string) (*operations.RequestBodyPostNotNullableNotRequiredStringBodyResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/notnullable/notrequired/string"
 
@@ -4409,12 +4409,12 @@ func (s *requestBodies) RequestBodyPostNotNullableNotRequiredStringBody(ctx cont
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostNotNullableNotRequiredStringBody200ApplicationJSON
+			var out operations.RequestBodyPostNotNullableNotRequiredStringBodyResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostNotNullableNotRequiredStringBody200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -4427,7 +4427,7 @@ func (s *requestBodies) RequestBodyPostNotNullableNotRequiredStringBody(ctx cont
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostNullArray(ctx context.Context, request []string) (*operations.RequestBodyPostNullArrayResponse, error) {
+func (s *RequestBodies) RequestBodyPostNullArray(ctx context.Context, request []string) (*operations.RequestBodyPostNullArrayResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/null-array"
 
@@ -4476,12 +4476,12 @@ func (s *requestBodies) RequestBodyPostNullArray(ctx context.Context, request []
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostNullArray200ApplicationJSON
+			var out operations.RequestBodyPostNullArrayResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostNullArray200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -4494,7 +4494,7 @@ func (s *requestBodies) RequestBodyPostNullArray(ctx context.Context, request []
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostNullDictionary(ctx context.Context, request map[string]string) (*operations.RequestBodyPostNullDictionaryResponse, error) {
+func (s *RequestBodies) RequestBodyPostNullDictionary(ctx context.Context, request map[string]string) (*operations.RequestBodyPostNullDictionaryResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/null-dictionary"
 
@@ -4543,12 +4543,12 @@ func (s *requestBodies) RequestBodyPostNullDictionary(ctx context.Context, reque
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostNullDictionary200ApplicationJSON
+			var out operations.RequestBodyPostNullDictionaryResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostNullDictionary200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -4561,7 +4561,7 @@ func (s *requestBodies) RequestBodyPostNullDictionary(ctx context.Context, reque
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostNullableNotRequiredStringBody(ctx context.Context, request *string) (*operations.RequestBodyPostNullableNotRequiredStringBodyResponse, error) {
+func (s *RequestBodies) RequestBodyPostNullableNotRequiredStringBody(ctx context.Context, request *string) (*operations.RequestBodyPostNullableNotRequiredStringBodyResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/nullable/notrequired/string"
 
@@ -4607,12 +4607,12 @@ func (s *requestBodies) RequestBodyPostNullableNotRequiredStringBody(ctx context
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostNullableNotRequiredStringBody200ApplicationJSON
+			var out operations.RequestBodyPostNullableNotRequiredStringBodyResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -4625,7 +4625,7 @@ func (s *requestBodies) RequestBodyPostNullableNotRequiredStringBody(ctx context
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostNullableRequiredStringBody(ctx context.Context, request *string) (*operations.RequestBodyPostNullableRequiredStringBodyResponse, error) {
+func (s *RequestBodies) RequestBodyPostNullableRequiredStringBody(ctx context.Context, request *string) (*operations.RequestBodyPostNullableRequiredStringBodyResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/nullable/required/string"
 
@@ -4674,12 +4674,12 @@ func (s *requestBodies) RequestBodyPostNullableRequiredStringBody(ctx context.Co
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.RequestBodyPostNullableRequiredStringBody200ApplicationJSON
+			var out operations.RequestBodyPostNullableRequiredStringBodyResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.RequestBodyPostNullableRequiredStringBody200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -4692,7 +4692,7 @@ func (s *requestBodies) RequestBodyPostNullableRequiredStringBody(ctx context.Co
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPutBytes(ctx context.Context, request []byte) (*operations.RequestBodyPutBytesResponse, error) {
+func (s *RequestBodies) RequestBodyPutBytes(ctx context.Context, request []byte) (*operations.RequestBodyPutBytesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/put/bytes"
 
@@ -4759,7 +4759,7 @@ func (s *requestBodies) RequestBodyPutBytes(ctx context.Context, request []byte)
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPutBytesWithParams(ctx context.Context, requestBody []byte, queryStringParam string) (*operations.RequestBodyPutBytesWithParamsResponse, error) {
+func (s *RequestBodies) RequestBodyPutBytesWithParams(ctx context.Context, requestBody []byte, queryStringParam string) (*operations.RequestBodyPutBytesWithParamsResponse, error) {
 	request := operations.RequestBodyPutBytesWithParamsRequest{
 		RequestBody:      requestBody,
 		QueryStringParam: queryStringParam,
@@ -4835,7 +4835,7 @@ func (s *requestBodies) RequestBodyPutBytesWithParams(ctx context.Context, reque
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPutMultipartDeep(ctx context.Context, request shared.DeepObject) (*operations.RequestBodyPutMultipartDeepResponse, error) {
+func (s *RequestBodies) RequestBodyPutMultipartDeep(ctx context.Context, request shared.DeepObject) (*operations.RequestBodyPutMultipartDeepResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/put/multipart/deep"
 
@@ -4902,7 +4902,7 @@ func (s *requestBodies) RequestBodyPutMultipartDeep(ctx context.Context, request
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPutMultipartDifferentFileName(ctx context.Context, request operations.RequestBodyPutMultipartDifferentFileNameRequestBody) (*operations.RequestBodyPutMultipartDifferentFileNameResponse, error) {
+func (s *RequestBodies) RequestBodyPutMultipartDifferentFileName(ctx context.Context, request operations.RequestBodyPutMultipartDifferentFileNameRequestBody) (*operations.RequestBodyPutMultipartDifferentFileNameResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/put/multipart/differentFileName"
 
@@ -4969,7 +4969,7 @@ func (s *requestBodies) RequestBodyPutMultipartDifferentFileName(ctx context.Con
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPutMultipartFile(ctx context.Context, request operations.RequestBodyPutMultipartFileRequestBody) (*operations.RequestBodyPutMultipartFileResponse, error) {
+func (s *RequestBodies) RequestBodyPutMultipartFile(ctx context.Context, request operations.RequestBodyPutMultipartFileRequestBody) (*operations.RequestBodyPutMultipartFileResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/put/multipart/file"
 
@@ -5036,7 +5036,7 @@ func (s *requestBodies) RequestBodyPutMultipartFile(ctx context.Context, request
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPutMultipartSimple(ctx context.Context, request shared.SimpleObject) (*operations.RequestBodyPutMultipartSimpleResponse, error) {
+func (s *RequestBodies) RequestBodyPutMultipartSimple(ctx context.Context, request shared.SimpleObject) (*operations.RequestBodyPutMultipartSimpleResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/put/multipart/simple"
 
@@ -5103,7 +5103,7 @@ func (s *requestBodies) RequestBodyPutMultipartSimple(ctx context.Context, reque
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPutString(ctx context.Context, request string) (*operations.RequestBodyPutStringResponse, error) {
+func (s *RequestBodies) RequestBodyPutString(ctx context.Context, request string) (*operations.RequestBodyPutStringResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/put/string"
 
@@ -5170,7 +5170,7 @@ func (s *requestBodies) RequestBodyPutString(ctx context.Context, request string
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPutStringWithParams(ctx context.Context, requestBody string, queryStringParam string) (*operations.RequestBodyPutStringWithParamsResponse, error) {
+func (s *RequestBodies) RequestBodyPutStringWithParams(ctx context.Context, requestBody string, queryStringParam string) (*operations.RequestBodyPutStringWithParamsResponse, error) {
 	request := operations.RequestBodyPutStringWithParamsRequest{
 		RequestBody:      requestBody,
 		QueryStringParam: queryStringParam,
@@ -5246,7 +5246,7 @@ func (s *requestBodies) RequestBodyPutStringWithParams(ctx context.Context, requ
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyReadAndWrite(ctx context.Context, request shared.ReadWriteObjectInput, opts ...operations.Option) (*operations.RequestBodyReadAndWriteResponse, error) {
+func (s *RequestBodies) RequestBodyReadAndWrite(ctx context.Context, request shared.ReadWriteObject, opts ...operations.Option) (*operations.RequestBodyReadAndWriteResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -5327,7 +5327,7 @@ func (s *requestBodies) RequestBodyReadAndWrite(ctx context.Context, request sha
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyReadOnlyInput(ctx context.Context, request shared.ReadOnlyObjectInput, opts ...operations.Option) (*operations.RequestBodyReadOnlyInputResponse, error) {
+func (s *RequestBodies) RequestBodyReadOnlyInput(ctx context.Context, request shared.ReadOnlyObjectInput, opts ...operations.Option) (*operations.RequestBodyReadOnlyInputResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -5408,7 +5408,7 @@ func (s *requestBodies) RequestBodyReadOnlyInput(ctx context.Context, request sh
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyReadOnlyUnion(ctx context.Context, request shared.WeaklyTypedOneOfReadOnlyObjectInput, opts ...operations.Option) (*operations.RequestBodyReadOnlyUnionResponse, error) {
+func (s *RequestBodies) RequestBodyReadOnlyUnion(ctx context.Context, request shared.WeaklyTypedOneOfReadOnlyObjectInput, opts ...operations.Option) (*operations.RequestBodyReadOnlyUnionResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -5489,7 +5489,7 @@ func (s *requestBodies) RequestBodyReadOnlyUnion(ctx context.Context, request sh
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyReadWriteOnlyUnion(ctx context.Context, request shared.WeaklyTypedOneOfReadWriteObjectInput, opts ...operations.Option) (*operations.RequestBodyReadWriteOnlyUnionResponse, error) {
+func (s *RequestBodies) RequestBodyReadWriteOnlyUnion(ctx context.Context, request shared.WeaklyTypedOneOfReadWriteObject, opts ...operations.Option) (*operations.RequestBodyReadWriteOnlyUnionResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -5570,7 +5570,7 @@ func (s *requestBodies) RequestBodyReadWriteOnlyUnion(ctx context.Context, reque
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyWriteOnly(ctx context.Context, request shared.WriteOnlyObject, opts ...operations.Option) (*operations.RequestBodyWriteOnlyResponse, error) {
+func (s *RequestBodies) RequestBodyWriteOnly(ctx context.Context, request shared.WriteOnlyObject, opts ...operations.Option) (*operations.RequestBodyWriteOnlyResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -5651,7 +5651,7 @@ func (s *requestBodies) RequestBodyWriteOnly(ctx context.Context, request shared
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyWriteOnlyOutput(ctx context.Context, request shared.WriteOnlyObject, opts ...operations.Option) (*operations.RequestBodyWriteOnlyOutputResponse, error) {
+func (s *RequestBodies) RequestBodyWriteOnlyOutput(ctx context.Context, request shared.WriteOnlyObject, opts ...operations.Option) (*operations.RequestBodyWriteOnlyOutputResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -5732,7 +5732,7 @@ func (s *requestBodies) RequestBodyWriteOnlyOutput(ctx context.Context, request 
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyWriteOnlyUnion(ctx context.Context, request shared.WeaklyTypedOneOfWriteOnlyObject, opts ...operations.Option) (*operations.RequestBodyWriteOnlyUnionResponse, error) {
+func (s *RequestBodies) RequestBodyWriteOnlyUnion(ctx context.Context, request shared.WeaklyTypedOneOfWriteOnlyObject, opts ...operations.Option) (*operations.RequestBodyWriteOnlyUnionResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,

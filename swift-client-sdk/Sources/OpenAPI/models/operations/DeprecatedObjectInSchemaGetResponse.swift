@@ -6,7 +6,7 @@ extension Operations {
     /// A response model
     public enum DeprecatedObjectInSchemaGetResponse {
         case empty
-        case deprecatedObjectInSchemaGet200ApplicationJSONObject(Operations.DeprecatedObjectInSchemaGet200ApplicationJSON)
+        case object(Operations.DeprecatedObjectInSchemaGetResponseBody)
 
         var isEmpty: Bool {
             if case .empty = self {
@@ -16,8 +16,8 @@ extension Operations {
             }
         }
 
-        public func deprecatedObjectInSchemaGet200ApplicationJSONObject() throws -> Operations.DeprecatedObjectInSchemaGet200ApplicationJSON {
-            guard case .deprecatedObjectInSchemaGet200ApplicationJSONObject(let value) = self else {
+        public func object() throws -> Operations.DeprecatedObjectInSchemaGetResponseBody {
+            guard case .object(let value) = self else {
                 throw OpenAPIError.missingResponseData
             }
             return value

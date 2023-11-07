@@ -17,11 +17,11 @@ func (o *GlobalsQueryParameterGetRequest) GetGlobalQueryParam() *string {
 	return o.GlobalQueryParam
 }
 
-type GlobalsQueryParameterGetResArgs struct {
+type Args struct {
 	GlobalQueryParam string `json:"globalQueryParam"`
 }
 
-func (o *GlobalsQueryParameterGetResArgs) GetGlobalQueryParam() string {
+func (o *Args) GetGlobalQueryParam() string {
 	if o == nil {
 		return ""
 	}
@@ -30,12 +30,12 @@ func (o *GlobalsQueryParameterGetResArgs) GetGlobalQueryParam() string {
 
 // GlobalsQueryParameterGetRes - OK
 type GlobalsQueryParameterGetRes struct {
-	Args GlobalsQueryParameterGetResArgs `json:"args"`
+	Args Args `json:"args"`
 }
 
-func (o *GlobalsQueryParameterGetRes) GetArgs() GlobalsQueryParameterGetResArgs {
+func (o *GlobalsQueryParameterGetRes) GetArgs() Args {
 	if o == nil {
-		return GlobalsQueryParameterGetResArgs{}
+		return Args{}
 	}
 	return o.Args
 }

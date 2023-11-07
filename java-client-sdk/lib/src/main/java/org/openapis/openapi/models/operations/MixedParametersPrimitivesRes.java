@@ -12,17 +12,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MixedParametersPrimitivesRes {
     @JsonProperty("args")
-    public MixedParametersPrimitivesResArgs args;
+    public MixedParametersPrimitivesArgs args;
 
-    public MixedParametersPrimitivesRes withArgs(MixedParametersPrimitivesResArgs args) {
+    public MixedParametersPrimitivesRes withArgs(MixedParametersPrimitivesArgs args) {
         this.args = args;
         return this;
     }
     
     @JsonProperty("headers")
-    public MixedParametersPrimitivesResHeaders headers;
+    public MixedParametersPrimitivesHeaders headers;
 
-    public MixedParametersPrimitivesRes withHeaders(MixedParametersPrimitivesResHeaders headers) {
+    public MixedParametersPrimitivesRes withHeaders(MixedParametersPrimitivesHeaders headers) {
         this.headers = headers;
         return this;
     }
@@ -35,7 +35,7 @@ public class MixedParametersPrimitivesRes {
         return this;
     }
     
-    public MixedParametersPrimitivesRes(@JsonProperty("args") MixedParametersPrimitivesResArgs args, @JsonProperty("headers") MixedParametersPrimitivesResHeaders headers, @JsonProperty("url") String url) {
+    public MixedParametersPrimitivesRes(@JsonProperty("args") MixedParametersPrimitivesArgs args, @JsonProperty("headers") MixedParametersPrimitivesHeaders headers, @JsonProperty("url") String url) {
         this.args = args;
         this.headers = headers;
         this.url = url;

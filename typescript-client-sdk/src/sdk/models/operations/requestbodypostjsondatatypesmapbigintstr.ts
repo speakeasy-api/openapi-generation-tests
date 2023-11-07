@@ -9,7 +9,7 @@ import { Expose } from "class-transformer";
 /**
  * OK
  */
-export class RequestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSON extends SpeakeasyBase {
+export class RequestBodyPostJsonDataTypesMapBigIntStrResponseBody extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "data" })
     data: string;
@@ -42,5 +42,5 @@ export class RequestBodyPostJsonDataTypesMapBigIntStrResponse extends SpeakeasyB
      * OK
      */
     @SpeakeasyMetadata()
-    requestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSONObject?: RequestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSON;
+    object?: RequestBodyPostJsonDataTypesMapBigIntStrResponseBody;
 }

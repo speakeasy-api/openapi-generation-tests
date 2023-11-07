@@ -3,11 +3,11 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct PaginationCursorParamsRequest: APIValue {
         public let cursor: Int
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         ///
         public init(cursor: Int) {

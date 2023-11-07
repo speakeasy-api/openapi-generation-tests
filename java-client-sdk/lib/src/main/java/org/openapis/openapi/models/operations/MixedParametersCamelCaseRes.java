@@ -12,17 +12,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MixedParametersCamelCaseRes {
     @JsonProperty("args")
-    public MixedParametersCamelCaseResArgs args;
+    public MixedParametersCamelCaseArgs args;
 
-    public MixedParametersCamelCaseRes withArgs(MixedParametersCamelCaseResArgs args) {
+    public MixedParametersCamelCaseRes withArgs(MixedParametersCamelCaseArgs args) {
         this.args = args;
         return this;
     }
     
     @JsonProperty("headers")
-    public MixedParametersCamelCaseResHeaders headers;
+    public MixedParametersCamelCaseHeaders headers;
 
-    public MixedParametersCamelCaseRes withHeaders(MixedParametersCamelCaseResHeaders headers) {
+    public MixedParametersCamelCaseRes withHeaders(MixedParametersCamelCaseHeaders headers) {
         this.headers = headers;
         return this;
     }
@@ -35,7 +35,7 @@ public class MixedParametersCamelCaseRes {
         return this;
     }
     
-    public MixedParametersCamelCaseRes(@JsonProperty("args") MixedParametersCamelCaseResArgs args, @JsonProperty("headers") MixedParametersCamelCaseResHeaders headers, @JsonProperty("url") String url) {
+    public MixedParametersCamelCaseRes(@JsonProperty("args") MixedParametersCamelCaseArgs args, @JsonProperty("headers") MixedParametersCamelCaseHeaders headers, @JsonProperty("url") String url) {
         this.args = args;
         this.headers = headers;
         this.url = url;

@@ -6,7 +6,7 @@ extension Operations {
     /// A response model
     public enum IgnoredGenerationGetResponse {
         case empty
-        case ignoredGenerationGet200ApplicationJSONObject(Operations.IgnoredGenerationGet200ApplicationJSON)
+        case object(Operations.IgnoredGenerationGetResponseBody)
 
         var isEmpty: Bool {
             if case .empty = self {
@@ -16,8 +16,8 @@ extension Operations {
             }
         }
 
-        public func ignoredGenerationGet200ApplicationJSONObject() throws -> Operations.IgnoredGenerationGet200ApplicationJSON {
-            guard case .ignoredGenerationGet200ApplicationJSONObject(let value) = self else {
+        public func object() throws -> Operations.IgnoredGenerationGetResponseBody {
+            guard case .object(let value) = self else {
                 throw OpenAPIError.missingResponseData
             }
             return value

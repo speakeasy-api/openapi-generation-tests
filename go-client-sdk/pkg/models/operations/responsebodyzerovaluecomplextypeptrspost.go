@@ -4,15 +4,15 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
+	"openapi/v2/pkg/models/shared"
 )
 
-// ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON - OK
-type ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON struct {
+// ResponseBodyZeroValueComplexTypePtrsPostResponseBody - OK
+type ResponseBodyZeroValueComplexTypePtrsPostResponseBody struct {
 	JSON shared.ObjWithZeroValueComplexTypePtrs `json:"json"`
 }
 
-func (o *ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON) GetJSON() shared.ObjWithZeroValueComplexTypePtrs {
+func (o *ResponseBodyZeroValueComplexTypePtrsPostResponseBody) GetJSON() shared.ObjWithZeroValueComplexTypePtrs {
 	if o == nil {
 		return shared.ObjWithZeroValueComplexTypePtrs{}
 	}
@@ -27,7 +27,7 @@ type ResponseBodyZeroValueComplexTypePtrsPostResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject *ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON
+	Object *ResponseBodyZeroValueComplexTypePtrsPostResponseBody
 }
 
 func (o *ResponseBodyZeroValueComplexTypePtrsPostResponse) GetContentType() string {
@@ -51,9 +51,9 @@ func (o *ResponseBodyZeroValueComplexTypePtrsPostResponse) GetRawResponse() *htt
 	return o.RawResponse
 }
 
-func (o *ResponseBodyZeroValueComplexTypePtrsPostResponse) GetResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject() *ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON {
+func (o *ResponseBodyZeroValueComplexTypePtrsPostResponse) GetObject() *ResponseBodyZeroValueComplexTypePtrsPostResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject
+	return o.Object
 }

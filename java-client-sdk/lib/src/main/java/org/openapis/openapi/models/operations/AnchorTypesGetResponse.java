@@ -46,9 +46,9 @@ public class AnchorTypesGetResponse {
      * A successful response that contains the simpleObject sent in the request body
      */
     
-    public TypeFromAnchor typeFromAnchor;
+    public AnchorTypesGetTypeFromAnchor typeFromAnchor;
 
-    public AnchorTypesGetResponse withTypeFromAnchor(TypeFromAnchor typeFromAnchor) {
+    public AnchorTypesGetResponse withTypeFromAnchor(AnchorTypesGetTypeFromAnchor typeFromAnchor) {
         this.typeFromAnchor = typeFromAnchor;
         return this;
     }

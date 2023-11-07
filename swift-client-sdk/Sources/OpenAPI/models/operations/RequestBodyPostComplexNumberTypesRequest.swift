@@ -3,7 +3,7 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct RequestBodyPostComplexNumberTypesRequest: APIValue {
         public let complexNumberTypes: Shared.ComplexNumberTypes
         public let pathBigInt: Int
@@ -17,7 +17,7 @@ extension Operations {
         public private(set) var queryDecimal: Double
         public let queryDecimalStr: String
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         ///
         public init(complexNumberTypes: Shared.ComplexNumberTypes, pathBigInt: Int, pathBigIntStr: String, pathDecimal: Double, pathDecimalStr: String, queryBigInt: Int, queryBigIntStr: String, queryDecimal: Double, queryDecimalStr: String) {

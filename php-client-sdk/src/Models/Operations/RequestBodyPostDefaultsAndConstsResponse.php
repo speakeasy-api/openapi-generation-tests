@@ -38,16 +38,16 @@ class RequestBodyPostDefaultsAndConstsResponse
     /**
      * OK
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostDefaultsAndConsts200ApplicationJSON $requestBodyPostDefaultsAndConsts200ApplicationJSONObject
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostDefaultsAndConstsResponseBody $object
      */
 	
-    public ?RequestBodyPostDefaultsAndConsts200ApplicationJSON $requestBodyPostDefaultsAndConsts200ApplicationJSONObject = null;
+    public ?RequestBodyPostDefaultsAndConstsResponseBody $object = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->requestBodyPostDefaultsAndConsts200ApplicationJSONObject = null;
+		$this->object = null;
 	}
 }

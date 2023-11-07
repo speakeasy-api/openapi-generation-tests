@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/utils"
 	"strings"
 )
 
-// telemetry - Endpoints for testing telemetry.
-type telemetry struct {
+// Telemetry - Endpoints for testing telemetry.
+type Telemetry struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newTelemetry(sdkConfig sdkConfiguration) *telemetry {
-	return &telemetry{
+func newTelemetry(sdkConfig sdkConfiguration) *Telemetry {
+	return &Telemetry{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *telemetry) TelemetrySpeakeasyUserAgentGet(ctx context.Context, userAgent string) (*operations.TelemetrySpeakeasyUserAgentGetResponse, error) {
+func (s *Telemetry) TelemetrySpeakeasyUserAgentGet(ctx context.Context, userAgent string) (*operations.TelemetrySpeakeasyUserAgentGetResponse, error) {
 	request := operations.TelemetrySpeakeasyUserAgentGetRequest{
 		UserAgent: userAgent,
 	}
@@ -88,7 +88,7 @@ func (s *telemetry) TelemetrySpeakeasyUserAgentGet(ctx context.Context, userAgen
 	return res, nil
 }
 
-func (s *telemetry) TelemetryUserAgentGet(ctx context.Context) (*operations.TelemetryUserAgentGetResponse, error) {
+func (s *Telemetry) TelemetryUserAgentGet(ctx context.Context) (*operations.TelemetryUserAgentGetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/telemetry/user-agent"
 

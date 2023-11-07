@@ -2,28 +2,28 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import typedobject1 as shared_typedobject1
-from ..shared import typedobject2 as shared_typedobject2
+from .typedobject1 import TypedObject1
+from .typedobject2 import TypedObject2
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional, Union
 
 
 @dataclasses.dataclass
-class NullableOneOfRefInObjectNullableOneOfTwo:
+class NullableOneOfTwo:
     pass
 
 
 @dataclasses.dataclass
-class NullableOneOfRefInObjectOneOfOne:
+class OneOfOne:
     pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class NullableOneOfRefInObject:
-    nullable_one_of_one: Optional[shared_typedobject1.TypedObject1] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfOne') }})
-    nullable_one_of_two: Optional[Union[shared_typedobject1.TypedObject1, shared_typedobject2.TypedObject2]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfTwo') }})
-    one_of_one: Union[shared_typedobject1.TypedObject1] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('OneOfOne') }})
+    nullable_one_of_one: Optional[TypedObject1] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfOne') }})
+    nullable_one_of_two: Optional[Union[TypedObject1, TypedObject2]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfTwo') }})
+    one_of_one: Union[TypedObject1] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('OneOfOne') }})
     
 

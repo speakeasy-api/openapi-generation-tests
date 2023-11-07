@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import deprecatedobject as shared_deprecatedobject
+from ...models.shared import deprecatedobject as shared_deprecatedobject
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional
@@ -11,7 +11,7 @@ from typing import Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class DeprecatedObjectInSchemaGet200ApplicationJSON:
+class DeprecatedObjectInSchemaGetResponseBody:
     r"""A successful response that contains a deprecatedObject sent in the request body"""
     json: Optional[shared_deprecatedobject.DeprecatedObject] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     r"""Deprecated field: This object is deprecated."""
@@ -25,7 +25,7 @@ class DeprecatedObjectInSchemaGetResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    deprecated_object_in_schema_get_200_application_json_object: Optional[DeprecatedObjectInSchemaGet200ApplicationJSON] = dataclasses.field(default=None)
+    object: Optional[DeprecatedObjectInSchemaGetResponseBody] = dataclasses.field(default=None)
     r"""A successful response that contains a deprecatedObject sent in the request body"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""

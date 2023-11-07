@@ -16,7 +16,7 @@ s = sdk.SDK(
 
 res = s.generation.global_name_overridden()
 
-if res.get_global_name_override_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -25,8 +25,8 @@ if res.get_global_name_override_200_application_json_object is not None:
 ## Second
 Do this second
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import operations, shared
 
@@ -53,8 +53,8 @@ req = operations.UsageExamplePostRequest(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -69,13 +69,13 @@ req = operations.UsageExamplePostRequest(
     decimal_parameter=Decimal('5223.72'),
     decimal_str_parameter=Decimal('2911.37'),
     double_parameter=6946.59,
-    enum_parameter=operations.UsageExamplePostEnumParameter.VALUE1,
+    enum_parameter=operations.EnumParameter.VALUE1,
     falsey_number_parameter=0,
     float32_parameter=1029.75,
     float_parameter=5669.99,
     int64_parameter=195232,
     int_parameter=569663,
-    opt_enum_parameter=operations.UsageExamplePostOptEnumParameter.VALUE3,
+    opt_enum_parameter=operations.OptEnumParameter.VALUE3,
     str_parameter='example 1',
 )
 
@@ -84,7 +84,7 @@ res = s.generation.usage_example_post(req, operations.UsageExamplePostSecurity(
     username="YOUR_USERNAME",
 ))
 
-if res.usage_example_post_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```

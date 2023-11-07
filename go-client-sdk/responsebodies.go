@@ -8,25 +8,25 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/models/shared"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/utils"
 	"strings"
 )
 
-// responseBodies - Endpoints for testing response bodies.
-type responseBodies struct {
+// ResponseBodies - Endpoints for testing response bodies.
+type ResponseBodies struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newResponseBodies(sdkConfig sdkConfiguration) *responseBodies {
-	return &responseBodies{
+func newResponseBodies(sdkConfig sdkConfiguration) *ResponseBodies {
+	return &ResponseBodies{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *responseBodies) ResponseBodyAdditionalPropertiesComplexNumbersPost(ctx context.Context, request shared.ObjWithComplexNumbersAdditionalProperties) (*operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse, error) {
+func (s *ResponseBodies) ResponseBodyAdditionalPropertiesComplexNumbersPost(ctx context.Context, request shared.ObjWithComplexNumbersAdditionalProperties) (*operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/responseBodies/additionalPropertiesComplexNumbers"
 
@@ -75,12 +75,12 @@ func (s *responseBodies) ResponseBodyAdditionalPropertiesComplexNumbersPost(ctx 
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON
+			var out operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -93,7 +93,7 @@ func (s *responseBodies) ResponseBodyAdditionalPropertiesComplexNumbersPost(ctx 
 	return res, nil
 }
 
-func (s *responseBodies) ResponseBodyAdditionalPropertiesDatePost(ctx context.Context, request shared.ObjWithDateAdditionalProperties) (*operations.ResponseBodyAdditionalPropertiesDatePostResponse, error) {
+func (s *ResponseBodies) ResponseBodyAdditionalPropertiesDatePost(ctx context.Context, request shared.ObjWithDateAdditionalProperties) (*operations.ResponseBodyAdditionalPropertiesDatePostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/responseBodies/additionalPropertiesDate"
 
@@ -142,12 +142,12 @@ func (s *responseBodies) ResponseBodyAdditionalPropertiesDatePost(ctx context.Co
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON
+			var out operations.ResponseBodyAdditionalPropertiesDatePostResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.ResponseBodyAdditionalPropertiesDatePost200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -160,7 +160,7 @@ func (s *responseBodies) ResponseBodyAdditionalPropertiesDatePost(ctx context.Co
 	return res, nil
 }
 
-func (s *responseBodies) ResponseBodyAdditionalPropertiesObjectPost(ctx context.Context, request shared.ObjWithObjAdditionalProperties) (*operations.ResponseBodyAdditionalPropertiesObjectPostResponse, error) {
+func (s *ResponseBodies) ResponseBodyAdditionalPropertiesObjectPost(ctx context.Context, request shared.ObjWithObjAdditionalProperties) (*operations.ResponseBodyAdditionalPropertiesObjectPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/responseBodies/additionalPropertiesObject"
 
@@ -209,12 +209,12 @@ func (s *responseBodies) ResponseBodyAdditionalPropertiesObjectPost(ctx context.
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSON
+			var out operations.ResponseBodyAdditionalPropertiesObjectPostResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -227,7 +227,7 @@ func (s *responseBodies) ResponseBodyAdditionalPropertiesObjectPost(ctx context.
 	return res, nil
 }
 
-func (s *responseBodies) ResponseBodyAdditionalPropertiesPost(ctx context.Context, request shared.ObjWithStringAdditionalProperties) (*operations.ResponseBodyAdditionalPropertiesPostResponse, error) {
+func (s *ResponseBodies) ResponseBodyAdditionalPropertiesPost(ctx context.Context, request shared.ObjWithStringAdditionalProperties) (*operations.ResponseBodyAdditionalPropertiesPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/responseBodies/additionalProperties"
 
@@ -276,12 +276,12 @@ func (s *responseBodies) ResponseBodyAdditionalPropertiesPost(ctx context.Contex
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.ResponseBodyAdditionalPropertiesPost200ApplicationJSON
+			var out operations.ResponseBodyAdditionalPropertiesPostResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.ResponseBodyAdditionalPropertiesPost200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -294,7 +294,7 @@ func (s *responseBodies) ResponseBodyAdditionalPropertiesPost(ctx context.Contex
 	return res, nil
 }
 
-func (s *responseBodies) ResponseBodyBytesGet(ctx context.Context) (*operations.ResponseBodyBytesGetResponse, error) {
+func (s *ResponseBodies) ResponseBodyBytesGet(ctx context.Context) (*operations.ResponseBodyBytesGetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/bytes/100"
 
@@ -350,7 +350,7 @@ func (s *responseBodies) ResponseBodyBytesGet(ctx context.Context) (*operations.
 	return res, nil
 }
 
-func (s *responseBodies) ResponseBodyEmptyWithHeaders(ctx context.Context, xNumberHeader float64, xStringHeader string) (*operations.ResponseBodyEmptyWithHeadersResponse, error) {
+func (s *ResponseBodies) ResponseBodyEmptyWithHeaders(ctx context.Context, xNumberHeader float64, xStringHeader string) (*operations.ResponseBodyEmptyWithHeadersResponse, error) {
 	request := operations.ResponseBodyEmptyWithHeadersRequest{
 		XNumberHeader: xNumberHeader,
 		XStringHeader: xStringHeader,
@@ -407,7 +407,7 @@ func (s *responseBodies) ResponseBodyEmptyWithHeaders(ctx context.Context, xNumb
 	return res, nil
 }
 
-func (s *responseBodies) ResponseBodyOptionalGet(ctx context.Context, opts ...operations.Option) (*operations.ResponseBodyOptionalGetResponse, error) {
+func (s *ResponseBodies) ResponseBodyOptionalGet(ctx context.Context, opts ...operations.Option) (*operations.ResponseBodyOptionalGetResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -474,7 +474,7 @@ func (s *responseBodies) ResponseBodyOptionalGet(ctx context.Context, opts ...op
 			res.TypedObject1 = &out
 		case utils.MatchContentType(contentType, `text/plain`):
 			out := string(rawBody)
-			res.ResponseBodyOptionalGet200TextPlainString = &out
+			res.Res = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -487,7 +487,7 @@ func (s *responseBodies) ResponseBodyOptionalGet(ctx context.Context, opts ...op
 	return res, nil
 }
 
-func (s *responseBodies) ResponseBodyReadOnly(ctx context.Context, opts ...operations.Option) (*operations.ResponseBodyReadOnlyResponse, error) {
+func (s *ResponseBodies) ResponseBodyReadOnly(ctx context.Context, opts ...operations.Option) (*operations.ResponseBodyReadOnlyResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -558,7 +558,7 @@ func (s *responseBodies) ResponseBodyReadOnly(ctx context.Context, opts ...opera
 	return res, nil
 }
 
-func (s *responseBodies) ResponseBodyStringGet(ctx context.Context) (*operations.ResponseBodyStringGetResponse, error) {
+func (s *ResponseBodies) ResponseBodyStringGet(ctx context.Context) (*operations.ResponseBodyStringGetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/html"
 
@@ -611,7 +611,7 @@ func (s *responseBodies) ResponseBodyStringGet(ctx context.Context) (*operations
 	return res, nil
 }
 
-func (s *responseBodies) ResponseBodyXMLGet(ctx context.Context) (*operations.ResponseBodyXMLGetResponse, error) {
+func (s *ResponseBodies) ResponseBodyXMLGet(ctx context.Context) (*operations.ResponseBodyXMLGetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/xml"
 
@@ -664,7 +664,7 @@ func (s *responseBodies) ResponseBodyXMLGet(ctx context.Context) (*operations.Re
 	return res, nil
 }
 
-func (s *responseBodies) ResponseBodyZeroValueComplexTypePtrsPost(ctx context.Context, request shared.ObjWithZeroValueComplexTypePtrs) (*operations.ResponseBodyZeroValueComplexTypePtrsPostResponse, error) {
+func (s *ResponseBodies) ResponseBodyZeroValueComplexTypePtrsPost(ctx context.Context, request shared.ObjWithZeroValueComplexTypePtrs) (*operations.ResponseBodyZeroValueComplexTypePtrsPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/responseBodies/zeroValueComplexTypePtrs"
 
@@ -713,12 +713,12 @@ func (s *responseBodies) ResponseBodyZeroValueComplexTypePtrsPost(ctx context.Co
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON
+			var out operations.ResponseBodyZeroValueComplexTypePtrsPostResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}

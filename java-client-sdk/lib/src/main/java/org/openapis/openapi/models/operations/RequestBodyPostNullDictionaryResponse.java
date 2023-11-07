@@ -46,10 +46,10 @@ public class RequestBodyPostNullDictionaryResponse {
      * OK
      */
     
-    public RequestBodyPostNullDictionary200ApplicationJSON requestBodyPostNullDictionary200ApplicationJSONObject;
+    public RequestBodyPostNullDictionaryResponseBody object;
 
-    public RequestBodyPostNullDictionaryResponse withRequestBodyPostNullDictionary200ApplicationJSONObject(RequestBodyPostNullDictionary200ApplicationJSON requestBodyPostNullDictionary200ApplicationJSONObject) {
-        this.requestBodyPostNullDictionary200ApplicationJSONObject = requestBodyPostNullDictionary200ApplicationJSONObject;
+    public RequestBodyPostNullDictionaryResponse withObject(RequestBodyPostNullDictionaryResponseBody object) {
+        this.object = object;
         return this;
     }
     

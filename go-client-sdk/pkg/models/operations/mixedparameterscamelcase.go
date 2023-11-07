@@ -33,22 +33,22 @@ func (o *MixedParametersCamelCaseRequest) GetQueryStringParam() string {
 	return o.QueryStringParam
 }
 
-type MixedParametersCamelCaseResArgs struct {
+type MixedParametersCamelCaseArgs struct {
 	QueryStringParam string `json:"query_string_param"`
 }
 
-func (o *MixedParametersCamelCaseResArgs) GetQueryStringParam() string {
+func (o *MixedParametersCamelCaseArgs) GetQueryStringParam() string {
 	if o == nil {
 		return ""
 	}
 	return o.QueryStringParam
 }
 
-type MixedParametersCamelCaseResHeaders struct {
+type MixedParametersCamelCaseHeaders struct {
 	HeaderParam string `json:"Header-Param"`
 }
 
-func (o *MixedParametersCamelCaseResHeaders) GetHeaderParam() string {
+func (o *MixedParametersCamelCaseHeaders) GetHeaderParam() string {
 	if o == nil {
 		return ""
 	}
@@ -57,21 +57,21 @@ func (o *MixedParametersCamelCaseResHeaders) GetHeaderParam() string {
 
 // MixedParametersCamelCaseRes - OK
 type MixedParametersCamelCaseRes struct {
-	Args    MixedParametersCamelCaseResArgs    `json:"args"`
-	Headers MixedParametersCamelCaseResHeaders `json:"headers"`
-	URL     string                             `json:"url"`
+	Args    MixedParametersCamelCaseArgs    `json:"args"`
+	Headers MixedParametersCamelCaseHeaders `json:"headers"`
+	URL     string                          `json:"url"`
 }
 
-func (o *MixedParametersCamelCaseRes) GetArgs() MixedParametersCamelCaseResArgs {
+func (o *MixedParametersCamelCaseRes) GetArgs() MixedParametersCamelCaseArgs {
 	if o == nil {
-		return MixedParametersCamelCaseResArgs{}
+		return MixedParametersCamelCaseArgs{}
 	}
 	return o.Args
 }
 
-func (o *MixedParametersCamelCaseRes) GetHeaders() MixedParametersCamelCaseResHeaders {
+func (o *MixedParametersCamelCaseRes) GetHeaders() MixedParametersCamelCaseHeaders {
 	if o == nil {
-		return MixedParametersCamelCaseResHeaders{}
+		return MixedParametersCamelCaseHeaders{}
 	}
 	return o.Headers
 }

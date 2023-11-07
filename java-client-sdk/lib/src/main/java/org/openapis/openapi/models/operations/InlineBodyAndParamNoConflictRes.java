@@ -20,14 +20,14 @@ public class InlineBodyAndParamNoConflictRes {
     }
     
     @JsonProperty("json")
-    public InlineBodyAndParamNoConflictResJson json;
+    public InlineBodyAndParamNoConflictJson json;
 
-    public InlineBodyAndParamNoConflictRes withJson(InlineBodyAndParamNoConflictResJson json) {
+    public InlineBodyAndParamNoConflictRes withJson(InlineBodyAndParamNoConflictJson json) {
         this.json = json;
         return this;
     }
     
-    public InlineBodyAndParamNoConflictRes(@JsonProperty("args") java.util.Map<String, String> args, @JsonProperty("json") InlineBodyAndParamNoConflictResJson json) {
+    public InlineBodyAndParamNoConflictRes(@JsonProperty("args") java.util.Map<String, String> args, @JsonProperty("json") InlineBodyAndParamNoConflictJson json) {
         this.args = args;
         this.json = json;
   }

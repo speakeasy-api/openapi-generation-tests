@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
-export class ReadWriteObjectInput extends SpeakeasyBase {
+export class ReadWriteObject extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "num1" })
     num1: number;

@@ -17,13 +17,13 @@ export class MixedParametersCamelCaseRequest extends SpeakeasyBase {
     queryStringParam: string;
 }
 
-export class MixedParametersCamelCaseResArgs extends SpeakeasyBase {
+export class MixedParametersCamelCaseArgs extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "query_string_param" })
     queryStringParam: string;
 }
 
-export class MixedParametersCamelCaseResHeaders extends SpeakeasyBase {
+export class MixedParametersCamelCaseHeaders extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "Header-Param" })
     headerParam: string;
@@ -35,13 +35,13 @@ export class MixedParametersCamelCaseResHeaders extends SpeakeasyBase {
 export class MixedParametersCamelCaseRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "args" })
-    @Type(() => MixedParametersCamelCaseResArgs)
-    args: MixedParametersCamelCaseResArgs;
+    @Type(() => MixedParametersCamelCaseArgs)
+    args: MixedParametersCamelCaseArgs;
 
     @SpeakeasyMetadata()
     @Expose({ name: "headers" })
-    @Type(() => MixedParametersCamelCaseResHeaders)
-    headers: MixedParametersCamelCaseResHeaders;
+    @Type(() => MixedParametersCamelCaseHeaders)
+    headers: MixedParametersCamelCaseHeaders;
 
     @SpeakeasyMetadata()
     @Expose({ name: "url" })

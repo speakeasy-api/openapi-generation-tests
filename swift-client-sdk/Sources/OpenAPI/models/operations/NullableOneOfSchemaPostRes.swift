@@ -5,12 +5,12 @@ import Foundation
 extension Operations {
     /// OK
     public struct NullableOneOfSchemaPostRes {
-        public let json: Operations.NullableOneOfSchemaPostResJson
+        public let json: Operations.NullableOneOfSchemaPostJson
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(json: Operations.NullableOneOfSchemaPostResJson) {
+        public init(json: Operations.NullableOneOfSchemaPostJson) {
             self.json = json
         }
     }

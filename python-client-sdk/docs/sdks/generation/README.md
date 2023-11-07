@@ -1,5 +1,5 @@
 # Generation
-(*generation*)
+(*.generation*)
 
 ## Overview
 
@@ -123,8 +123,8 @@ if res.valid_circular_reference_object is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from sdk.models import operations, shared
 
 s = sdk.SDK(
@@ -160,8 +160,8 @@ if res.status_code == 200:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from sdk.models import operations, shared
 
 s = sdk.SDK(
@@ -285,7 +285,7 @@ s = sdk.SDK(
 
 res = s.generation.deprecated_object_in_schema_get()
 
-if res.deprecated_object_in_schema_get_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -460,7 +460,7 @@ s = sdk.SDK(
 
 res = s.generation.global_name_overridden()
 
-if res.get_global_name_override_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -490,7 +490,7 @@ s = sdk.SDK(
 
 res = s.generation.ignored_generation_get()
 
-if res.ignored_generation_get_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```
@@ -518,7 +518,7 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.ignores_post(request_body=operations.IgnoresPostApplicationJSON(), test_param='string')
+res = s.generation.ignores_post(request_body=operations.IgnoresPostRequestBody(), test_param='string')
 
 if res.http_bin_simple_json_object is not None:
     # handle response
@@ -527,10 +527,10 @@ if res.http_bin_simple_json_object is not None:
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `request_body`                                                                                 | [operations.IgnoresPostApplicationJSON](../../models/operations/ignorespostapplicationjson.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `test_param`                                                                                   | *Optional[str]*                                                                                | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request_body`                                                                         | [operations.IgnoresPostRequestBody](../../models/operations/ignorespostrequestbody.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `test_param`                                                                           | *Optional[str]*                                                                        | :heavy_minus_sign:                                                                     | N/A                                                                                    |
 
 
 ### Response
@@ -555,7 +555,7 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.name_override(test_enum_query_param=operations.NameOverrideGetEnumNameOverride.VALUE3, test_query_param='example')
+res = s.generation.name_override(test_enum_query_param=operations.EnumNameOverride.VALUE3, test_query_param='example')
 
 if res.overridden_response is not None:
     # handle response
@@ -564,10 +564,10 @@ if res.overridden_response is not None:
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              | Example                                                                                                  |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `test_enum_query_param`                                                                                  | [operations.NameOverrideGetEnumNameOverride](../../models/operations/nameoverridegetenumnameoverride.md) | :heavy_check_mark:                                                                                       | An enum type                                                                                             | value3                                                                                                   |
-| `test_query_param`                                                                                       | *str*                                                                                                    | :heavy_check_mark:                                                                                       | N/A                                                                                                      | example                                                                                                  |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                | Example                                                                    |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `test_enum_query_param`                                                    | [operations.EnumNameOverride](../../models/operations/enumnameoverride.md) | :heavy_check_mark:                                                         | An enum type                                                               | value3                                                                     |
+| `test_query_param`                                                         | *str*                                                                      | :heavy_check_mark:                                                         | N/A                                                                        | example                                                                    |
 
 
 ### Response
@@ -640,8 +640,8 @@ if res.one_of_circular_reference_object is not None:
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import operations, shared
 
@@ -654,7 +654,7 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.typed_parameter_generation_get(bigint=879275, date_=dateutil.parser.parse('2023-11-18').date(), decimal=Decimal('3346.96'), obj=operations.TypedParameterGenerationGetObj(
+res = s.generation.typed_parameter_generation_get(bigint=879275, date_=dateutil.parser.parse('2023-11-18').date(), decimal=Decimal('3346.96'), obj=operations.Obj(
     bool=False,
     num=4778.06,
     str_='string',
@@ -667,12 +667,12 @@ if res.status_code == 200:
 
 ### Parameters
 
-| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `bigint`                                                                                                         | *Optional[int]*                                                                                                  | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
-| `date_`                                                                                                          | [datetime](https://docs.python.org/3/library/datetime.html#datetime-objects)                                     | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
-| `decimal`                                                                                                        | *Optional[Decimal]*                                                                                              | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
-| `obj`                                                                                                            | [Optional[operations.TypedParameterGenerationGetObj]](../../models/operations/typedparametergenerationgetobj.md) | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `bigint`                                                                     | *Optional[int]*                                                              | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `date_`                                                                      | [datetime](https://docs.python.org/3/library/datetime.html#datetime-objects) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `decimal`                                                                    | *Optional[Decimal]*                                                          | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `obj`                                                                        | [Optional[operations.Obj]](../../models/operations/obj.md)                   | :heavy_minus_sign:                                                           | N/A                                                                          |
 
 
 ### Response
@@ -690,8 +690,8 @@ Usage example docs
 ### Example Usage
 
 ```python
-import sdk
 import dateutil.parser
+import sdk
 from decimal import Decimal
 from sdk.models import operations, shared
 
@@ -718,8 +718,8 @@ req = operations.UsageExamplePostRequest(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
             str_opt='testOptional',
@@ -734,13 +734,13 @@ req = operations.UsageExamplePostRequest(
     decimal_parameter=Decimal('5223.72'),
     decimal_str_parameter=Decimal('2911.37'),
     double_parameter=6946.59,
-    enum_parameter=operations.UsageExamplePostEnumParameter.VALUE1,
+    enum_parameter=operations.EnumParameter.VALUE1,
     falsey_number_parameter=0,
     float32_parameter=1029.75,
     float_parameter=5669.99,
     int64_parameter=195232,
     int_parameter=569663,
-    opt_enum_parameter=operations.UsageExamplePostOptEnumParameter.VALUE3,
+    opt_enum_parameter=operations.OptEnumParameter.VALUE3,
     str_parameter='example 1',
 )
 
@@ -749,7 +749,7 @@ res = s.generation.usage_example_post(req, operations.UsageExamplePostSecurity(
     username="YOUR_USERNAME",
 ))
 
-if res.usage_example_post_200_application_json_object is not None:
+if res.object is not None:
     # handle response
     pass
 ```

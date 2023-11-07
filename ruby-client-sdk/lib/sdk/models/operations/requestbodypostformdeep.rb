@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class RequestBodyPostFormDeepResForm < OpenApiSDK::Utils::FieldAugmented
+    class Form < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -45,10 +45,10 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :form, Operations::RequestBodyPostFormDeepResForm, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('form') } }
+      field :form, Operations::Form, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('form') } }
 
 
-      sig { params(form: Operations::RequestBodyPostFormDeepResForm).void }
+      sig { params(form: Operations::Form).void }
       def initialize(form: nil)
         @form = form
       end

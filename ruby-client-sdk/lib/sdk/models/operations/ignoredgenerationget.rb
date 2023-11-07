@@ -10,7 +10,7 @@ require_relative '../shared/simpleobject'
 module OpenApiSDK
   module Operations
     # A successful response that contains the simpleObject sent in the request body
-    class IgnoredGenerationGet200ApplicationJSON < OpenApiSDK::Utils::FieldAugmented
+    class IgnoredGenerationGetResponseBody < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # A simple object that uses all our supported primitive types and enums and has optional properties.
@@ -33,16 +33,16 @@ module OpenApiSDK
       # HTTP response status code for this operation
       field :status_code, Integer
       # A successful response that contains the simpleObject sent in the request body
-      field :ignored_generation_get_200_application_json_object, T.nilable(Operations::IgnoredGenerationGet200ApplicationJSON)
+      field :object, T.nilable(Operations::IgnoredGenerationGetResponseBody)
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, ignored_generation_get_200_application_json_object: T.nilable(Operations::IgnoredGenerationGet200ApplicationJSON), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, ignored_generation_get_200_application_json_object: nil, raw_response: nil)
+      sig { params(content_type: String, status_code: Integer, object: T.nilable(Operations::IgnoredGenerationGetResponseBody), raw_response: T.nilable(Faraday::Response)).void }
+      def initialize(content_type: nil, status_code: nil, object: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code
-        @ignored_generation_get_200_application_json_object = ignored_generation_get_200_application_json_object
+        @object = object
         @raw_response = raw_response
       end
     end

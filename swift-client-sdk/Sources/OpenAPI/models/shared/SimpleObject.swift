@@ -25,9 +25,9 @@ extension Shared {
         /// An int32 property.
         public let int32: Int
         /// An int32 enum property.
-        public let int32Enum: Shared.SimpleObjectInt32Enum
+        public let int32Enum: Shared.Int32Enum
         /// An integer enum property.
-        public let intEnum: Shared.SimpleObjectIntEnum
+        public let intEnum: Shared.IntEnum
         /// A number property.
         @DecimalSerialized
         public private(set) var num: Double
@@ -67,7 +67,7 @@ extension Shared {
         /// - Parameter numOptNull: An optional number property will be null for tests.
         /// - Parameter strOpt: An optional string property.
         ///
-        public init(any: AnyValue, bool: Bool, date: Date, dateTime: Date, `enum`: Shared.Enum, float32: Double, int: Int, int32: Int, int32Enum: Shared.SimpleObjectInt32Enum, intEnum: Shared.SimpleObjectIntEnum, num: Double, str: String, bigint: Int? = nil, bigintStr: String? = nil, boolOpt: Bool? = nil, decimal: Double? = nil, decimalStr: String? = nil, intOptNull: Int? = nil, numOptNull: Double? = nil, strOpt: String? = nil) {
+        public init(any: AnyValue, bool: Bool, date: Date, dateTime: Date, `enum`: Shared.Enum, float32: Double, int: Int, int32: Int, int32Enum: Shared.Int32Enum, intEnum: Shared.IntEnum, num: Double, str: String, bigint: Int? = nil, bigintStr: String? = nil, boolOpt: Bool? = nil, decimal: Double? = nil, decimalStr: String? = nil, intOptNull: Int? = nil, numOptNull: Double? = nil, strOpt: String? = nil) {
             self.any = any
             self.bool = bool
             self._date = DateOnly<Date>(wrappedValue: date)
@@ -126,8 +126,8 @@ extension Shared.SimpleObject: Codable {
         self._float32 = try container.decode(DecimalSerialized<Double>.self, forKey: .float32)
         self.int = try container.decode(Int.self, forKey: .int)
         self.int32 = try container.decode(Int.self, forKey: .int32)
-        self.int32Enum = try container.decode(Shared.SimpleObjectInt32Enum.self, forKey: .int32Enum)
-        self.intEnum = try container.decode(Shared.SimpleObjectIntEnum.self, forKey: .intEnum)
+        self.int32Enum = try container.decode(Shared.Int32Enum.self, forKey: .int32Enum)
+        self.intEnum = try container.decode(Shared.IntEnum.self, forKey: .intEnum)
         self._num = try container.decode(DecimalSerialized<Double>.self, forKey: .num)
         self.str = try container.decode(String.self, forKey: .str)
         self.bigint = try container.decodeIfPresent(Int.self, forKey: .bigint)

@@ -12,7 +12,7 @@ import (
 	"time"
 	"unsafe"
 
-	"openapi/pkg/types"
+	"openapi/v2/pkg/types"
 
 	"github.com/ericlagergren/decimal"
 )

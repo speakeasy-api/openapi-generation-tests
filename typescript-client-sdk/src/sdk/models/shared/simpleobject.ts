@@ -3,14 +3,14 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { RFCDate } from "../../types";
+import { RFCDate } from "../../../sdk/types";
 import { Enum } from "./enum";
 import { Expose, Transform, Type } from "class-transformer";
 
 /**
  * An int32 enum property.
  */
-export enum SimpleObjectInt32Enum {
+export enum Int32Enum {
     FiftyFive = 55,
     SixtyNine = 69,
     OneHundredAndEightyOne = 181,
@@ -19,7 +19,7 @@ export enum SimpleObjectInt32Enum {
 /**
  * An integer enum property.
  */
-export enum SimpleObjectIntEnum {
+export enum IntEnum {
     First = 1,
     Second = 2,
     Third = 3,
@@ -146,7 +146,7 @@ export class SimpleObject extends SpeakeasyBase {
         data: "header, name=int32Enum, pathParam, name=int32Enum, queryParam, name=int32Enum, form, name=int32Enum, multipart_form, name=int32Enum",
     })
     @Expose({ name: "int32Enum" })
-    int32Enum: SimpleObjectInt32Enum;
+    int32Enum: Int32Enum;
 
     /**
      * An integer enum property.
@@ -155,7 +155,7 @@ export class SimpleObject extends SpeakeasyBase {
         data: "header, name=intEnum, pathParam, name=intEnum, queryParam, name=intEnum, form, name=intEnum, multipart_form, name=intEnum",
     })
     @Expose({ name: "intEnum" })
-    intEnum: SimpleObjectIntEnum;
+    intEnum: IntEnum;
 
     /**
      * An optional integer property will be null for tests.

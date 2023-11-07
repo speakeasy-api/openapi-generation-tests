@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
@@ -21,7 +21,7 @@ export class FormQueryParamsObjectRequest extends SpeakeasyBase {
     objParam?: shared.SimpleObject;
 }
 
-export class FormQueryParamsObjectResArgs extends SpeakeasyBase {
+export class FormQueryParamsObjectArgs extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "any" })
     any: string;
@@ -113,8 +113,8 @@ export class FormQueryParamsObjectResArgs extends SpeakeasyBase {
 export class FormQueryParamsObjectRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "args" })
-    @Type(() => FormQueryParamsObjectResArgs)
-    args: FormQueryParamsObjectResArgs;
+    @Type(() => FormQueryParamsObjectArgs)
+    args: FormQueryParamsObjectArgs;
 
     @SpeakeasyMetadata()
     @Expose({ name: "url" })

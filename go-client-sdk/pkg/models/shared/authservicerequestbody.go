@@ -2,38 +2,38 @@
 
 package shared
 
-type AuthServiceRequestBodyBasicAuth struct {
+type BasicAuth struct {
 	Password string `json:"password"`
 	Username string `json:"username"`
 }
 
-func (o *AuthServiceRequestBodyBasicAuth) GetPassword() string {
+func (o *BasicAuth) GetPassword() string {
 	if o == nil {
 		return ""
 	}
 	return o.Password
 }
 
-func (o *AuthServiceRequestBodyBasicAuth) GetUsername() string {
+func (o *BasicAuth) GetUsername() string {
 	if o == nil {
 		return ""
 	}
 	return o.Username
 }
 
-type AuthServiceRequestBodyHeaderAuth struct {
+type HeaderAuth struct {
 	ExpectedValue string `json:"expectedValue"`
 	HeaderName    string `json:"headerName"`
 }
 
-func (o *AuthServiceRequestBodyHeaderAuth) GetExpectedValue() string {
+func (o *HeaderAuth) GetExpectedValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.ExpectedValue
 }
 
-func (o *AuthServiceRequestBodyHeaderAuth) GetHeaderName() string {
+func (o *HeaderAuth) GetHeaderName() string {
 	if o == nil {
 		return ""
 	}
@@ -41,18 +41,18 @@ func (o *AuthServiceRequestBodyHeaderAuth) GetHeaderName() string {
 }
 
 type AuthServiceRequestBody struct {
-	BasicAuth  *AuthServiceRequestBodyBasicAuth   `json:"basicAuth,omitempty"`
-	HeaderAuth []AuthServiceRequestBodyHeaderAuth `json:"headerAuth,omitempty"`
+	BasicAuth  *BasicAuth   `json:"basicAuth,omitempty"`
+	HeaderAuth []HeaderAuth `json:"headerAuth,omitempty"`
 }
 
-func (o *AuthServiceRequestBody) GetBasicAuth() *AuthServiceRequestBodyBasicAuth {
+func (o *AuthServiceRequestBody) GetBasicAuth() *BasicAuth {
 	if o == nil {
 		return nil
 	}
 	return o.BasicAuth
 }
 
-func (o *AuthServiceRequestBody) GetHeaderAuth() []AuthServiceRequestBodyHeaderAuth {
+func (o *AuthServiceRequestBody) GetHeaderAuth() []HeaderAuth {
 	if o == nil {
 		return nil
 	}

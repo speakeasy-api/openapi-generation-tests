@@ -3,13 +3,13 @@
 import Foundation
 
 extension Operations {
-    /// A request model
+    /// A model object
     public struct MixedParametersPrimitivesRequest: APIValue {
         public let headerParam: String
         public let pathParam: String
         public let queryStringParam: String
 
-        /// Creates a request model with the specified parameters
+        /// Creates an object with the specified parameters
         ///
         ///
         public init(headerParam: String, pathParam: String, queryStringParam: String) {

@@ -8,7 +8,7 @@ import { AxiosResponse } from "axios";
 /**
  * OK
  */
-export class EmptyResponseObjectWithCommentGet200ApplicationOctetStream extends SpeakeasyBase {}
+export class EmptyResponseObjectWithCommentGetResponseBody extends SpeakeasyBase {}
 
 export class EmptyResponseObjectWithCommentGetResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()

@@ -104,7 +104,7 @@ def test_response_body_override_accept_header():
     assert res is not None
     assert res.status_code == 200
     assert "text/plain" in res.content_type
-    assert res.response_body_optional_get_200_text_plain_string.decode(
+    assert res.res.decode(
         "utf-8") == "Success"
 
 
@@ -134,7 +134,7 @@ def test_response_body_additional_properties():
     res = s.response_bodies.response_body_additional_properties_post(req)
     assert res is not None
     assert res.status_code == 200
-    assert res.response_body_additional_properties_post_200_application_json_object.json == req
+    assert res.object.json == req
 
     dic = {
         'normal_field': "string",
@@ -145,11 +145,12 @@ def test_response_body_additional_properties():
         }
     }
     req = shared.ObjWithStringAdditionalProperties.from_dict(dic)
-    assert req.additional_properties == {'extra1': "value1", 'extra2': 2, 'extra3': None}
+    assert req.additional_properties == {
+        'extra1': "value1", 'extra2': 2, 'extra3': None}
     res = s.response_bodies.response_body_additional_properties_post(req)
     assert res is not None
     assert res.status_code == 200
-    assert res.response_body_additional_properties_post_200_application_json_object.json == req
+    assert res.object.json == req
 
 
 def test_response_body_additional_properties_date():
@@ -165,7 +166,7 @@ def test_response_body_additional_properties_date():
     req = shared.ObjWithDateAdditionalProperties.from_dict(dic)
     assert req.additional_properties == {}
     res = s.response_bodies.response_body_additional_properties_date_post(req)
-    assert res.response_body_additional_properties_date_post_200_application_json_object.json == req
+    assert res.object.json == req
 
     today = date.today()
     dic = {
@@ -175,12 +176,12 @@ def test_response_body_additional_properties_date():
         }
     }
     req = shared.ObjWithDateAdditionalProperties.from_dict(dic)
-    assert req.additional_properties ==  {'today': today}
+    assert req.additional_properties == {'today': today}
     assert type(req.additional_properties['today']) == date
     res = s.response_bodies.response_body_additional_properties_date_post(req)
     assert res is not None
     assert res.status_code == 200
-    assert res.response_body_additional_properties_date_post_200_application_json_object.json == req
+    assert res.object.json == req
 
 
 def test_response_body_additional_properties_complex_numbers():
@@ -198,10 +199,11 @@ def test_response_body_additional_properties_complex_numbers():
     req = shared.ObjWithComplexNumbersAdditionalProperties.from_dict(dic)
     assert req.additional_properties['bigint'] == 123456789012345678901234567890
     assert type(req.additional_properties['bigint']) == int
-    res = s.response_bodies.response_body_additional_properties_complex_numbers_post(req)
+    res = s.response_bodies.response_body_additional_properties_complex_numbers_post(
+        req)
     assert res is not None
     assert res.status_code == 200
-    assert res.response_body_additional_properties_complex_numbers_post_200_application_json_object.json == req
+    assert res.object.json == req
 
 
 def test_response_body_additional_properties_object():
@@ -216,16 +218,16 @@ def test_response_body_additional_properties_object():
         additional_properties=[1, 2, 3],
         additional_properties_t={
             'obj1': obj
-            }
+        }
     )
 
-    res = s.response_bodies.response_body_additional_properties_object_post(req)
+    res = s.response_bodies.response_body_additional_properties_object_post(
+        req)
     assert res is not None
     assert res.status_code == 200
-    json = res.response_body_additional_properties_object_post_200_application_json_object.json
+    json = res.object.json
     assert json == req
     assert type(json.datetime_) == datetime
     obj1 = json.additional_properties_t['obj1']
     assert type(obj1) == shared.SimpleObject
     compare_simple_object(obj1, obj)
-

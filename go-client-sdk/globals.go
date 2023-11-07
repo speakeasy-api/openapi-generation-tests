@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"openapi/pkg/models/operations"
-	"openapi/pkg/models/sdkerrors"
-	"openapi/pkg/utils"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/sdkerrors"
+	"openapi/v2/pkg/utils"
 	"strings"
 )
 
-// globals - Endpoints for testing global parameters.
-type globals struct {
+// Globals - Endpoints for testing global parameters.
+type Globals struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newGlobals(sdkConfig sdkConfiguration) *globals {
-	return &globals{
+func newGlobals(sdkConfig sdkConfiguration) *Globals {
+	return &Globals{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *globals) GlobalPathParameterGet(ctx context.Context, globalPathParam *int64) (*operations.GlobalPathParameterGetResponse, error) {
+func (s *Globals) GlobalPathParameterGet(ctx context.Context, globalPathParam *int64) (*operations.GlobalPathParameterGetResponse, error) {
 	request := operations.GlobalPathParameterGetRequest{
 		GlobalPathParam: globalPathParam,
 	}
@@ -89,7 +89,7 @@ func (s *globals) GlobalPathParameterGet(ctx context.Context, globalPathParam *i
 	return res, nil
 }
 
-func (s *globals) GlobalsQueryParameterGet(ctx context.Context, globalQueryParam *string) (*operations.GlobalsQueryParameterGetResponse, error) {
+func (s *Globals) GlobalsQueryParameterGet(ctx context.Context, globalQueryParam *string) (*operations.GlobalsQueryParameterGetResponse, error) {
 	request := operations.GlobalsQueryParameterGetRequest{
 		GlobalQueryParam: globalQueryParam,
 	}

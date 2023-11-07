@@ -50,58 +50,39 @@ public class SDK {
 	
   	
     /**
-     * Endpoints for testing authentication.
+     * Endpoints for purely testing valid generation behavior.
      */
-    public Auth auth;
-    /**
-     * Endpoints for testing authentication.
-     */
-    public AuthNew authNew;
-    /**
-     * Testing for documentation extensions and tooling.
-     */
-    public Documentation documentation;
+    public Generation generation;
     /**
      * Endpoints for testing error responses.
      */
     public Errors errors;
-    public First first;
+    /**
+     * Endpoints for testing union types.
+     */
+    public Unions unions;
     /**
      * Endpoints for testing flattening through request body and parameter combinations.
      */
     public Flattening flattening;
     /**
-     * Endpoints for purely testing valid generation behavior.
-     */
-    public Generation generation;
-    /**
      * Endpoints for testing global parameters.
      */
     public Globals globals;
-    public Nest nest;
-    public Nested nested;
-    /**
-     * Endpoints for testing the pagination extension
-     */
-    public Pagination pagination;
     /**
      * Endpoints for testing parameters.
      */
     public Parameters parameters;
+    public Nest nest;
+    public Nested nested;
     /**
      * Endpoints for testing request bodies.
      */
     public RequestBodies requestBodies;
-    public Resource resource;
     /**
      * Endpoints for testing response bodies.
      */
     public ResponseBodies responseBodies;
-    /**
-     * Endpoints for testing retries.
-     */
-    public Retries retries;
-    public Second second;
     /**
      * Endpoints for testing servers.
      */
@@ -111,9 +92,28 @@ public class SDK {
      */
     public Telemetry telemetry;
     /**
-     * Endpoints for testing union types.
+     * Endpoints for testing authentication.
      */
-    public Unions unions;	
+    public AuthNew authNew;
+    /**
+     * Endpoints for testing authentication.
+     */
+    public Auth auth;
+    /**
+     * Testing for documentation extensions and tooling.
+     */
+    public Documentation documentation;
+    public Resource resource;
+    public First first;
+    public Second second;
+    /**
+     * Endpoints for testing the pagination extension
+     */
+    public Pagination pagination;
+    /**
+     * Endpoints for testing retries.
+     */
+    public Retries retries;	
 
 	private SDKConfiguration sdkConfiguration;
 
@@ -330,45 +330,45 @@ public class SDK {
 	private SDK(SDKConfiguration sdkConfiguration) throws Exception {
 		this.sdkConfiguration = sdkConfiguration;
 		
-		this.auth = new Auth(this.sdkConfiguration);
-		
-		this.authNew = new AuthNew(this.sdkConfiguration);
-		
-		this.documentation = new Documentation(this.sdkConfiguration);
+		this.generation = new Generation(this.sdkConfiguration);
 		
 		this.errors = new Errors(this.sdkConfiguration);
 		
-		this.first = new First(this.sdkConfiguration);
+		this.unions = new Unions(this.sdkConfiguration);
 		
 		this.flattening = new Flattening(this.sdkConfiguration);
 		
-		this.generation = new Generation(this.sdkConfiguration);
-		
 		this.globals = new Globals(this.sdkConfiguration);
+		
+		this.parameters = new Parameters(this.sdkConfiguration);
 		
 		this.nest = new Nest(this.sdkConfiguration);
 		
 		this.nested = new Nested(this.sdkConfiguration);
 		
-		this.pagination = new Pagination(this.sdkConfiguration);
-		
-		this.parameters = new Parameters(this.sdkConfiguration);
-		
 		this.requestBodies = new RequestBodies(this.sdkConfiguration);
 		
-		this.resource = new Resource(this.sdkConfiguration);
-		
 		this.responseBodies = new ResponseBodies(this.sdkConfiguration);
-		
-		this.retries = new Retries(this.sdkConfiguration);
-		
-		this.second = new Second(this.sdkConfiguration);
 		
 		this.servers = new Servers(this.sdkConfiguration);
 		
 		this.telemetry = new Telemetry(this.sdkConfiguration);
 		
-		this.unions = new Unions(this.sdkConfiguration);
+		this.authNew = new AuthNew(this.sdkConfiguration);
+		
+		this.auth = new Auth(this.sdkConfiguration);
+		
+		this.documentation = new Documentation(this.sdkConfiguration);
+		
+		this.resource = new Resource(this.sdkConfiguration);
+		
+		this.first = new First(this.sdkConfiguration);
+		
+		this.second = new Second(this.sdkConfiguration);
+		
+		this.pagination = new Pagination(this.sdkConfiguration);
+		
+		this.retries = new Retries(this.sdkConfiguration);
 	}
 
     public org.openapis.openapi.models.operations.PutAnythingIgnoredGenerationResponse putAnythingIgnoredGeneration(String request) throws Exception {
@@ -394,15 +394,15 @@ public class SDK {
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
         org.openapis.openapi.models.operations.PutAnythingIgnoredGenerationResponse res = new org.openapis.openapi.models.operations.PutAnythingIgnoredGenerationResponse(contentType, httpRes.statusCode()) {{
-            putAnythingIgnoredGeneration200ApplicationJSONObject = null;
+            object = null;
         }};
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
-                org.openapis.openapi.models.operations.PutAnythingIgnoredGeneration200ApplicationJSON out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.PutAnythingIgnoredGeneration200ApplicationJSON.class);
-                res.putAnythingIgnoredGeneration200ApplicationJSONObject = out;
+                org.openapis.openapi.models.operations.PutAnythingIgnoredGenerationResponseBody out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.PutAnythingIgnoredGenerationResponseBody.class);
+                res.object = out;
             }
         }
 

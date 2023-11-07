@@ -15,7 +15,7 @@ class UnionBigIntDecimalRequestBody:
 
 
 @dataclasses.dataclass
-class UnionBigIntDecimalResJSON:
+class UnionBigIntDecimalJSON:
     pass
 
 
@@ -23,7 +23,7 @@ class UnionBigIntDecimalResJSON:
 @dataclasses.dataclass
 class UnionBigIntDecimalRes:
     r"""OK"""
-    json: Union[int, Decimal] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'encoder': utils.union_encoder({int: utils.bigintencoder(True), Decimal: utils.decimalencoder(True, False)}), 'decoder': utils.union_decoder([utils.bigintdecoder,utils.decimaldecoder]) }})
+    json: Union[int, Decimal] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'encoder': utils.union_encoder({int: utils.bigintencoder(False), Decimal: utils.decimalencoder(False, False)}), 'decoder': utils.union_decoder([utils.bigintdecoder,utils.decimaldecoder]) }})
     
 
 
