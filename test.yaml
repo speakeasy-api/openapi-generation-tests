@@ -6144,9 +6144,21 @@ components:
           type: string
         name:
           type: string
+          x-speakeasy-conflicts-with: name_prefix
+        name_prefix:
+          type: string
+          x-speakeasy-conflicts-with:
+            - name
+            - id
         createdAt:
           type: string
           format: date-time
+        inlineObject:
+          type: object
+          properties:
+            inline_name:
+              type: string
+              x-speakeasy-conflicts-with: "../name"
         mapOfString:
           type: object
           additionalProperties:
