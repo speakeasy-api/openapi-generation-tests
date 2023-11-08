@@ -30,7 +30,6 @@ const globalPathParam: number = 719830;
 
   const res = await sdk.globals.globalPathParameterGet(globalPathParam);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -48,7 +47,11 @@ const globalPathParam: number = 719830;
 ### Response
 
 **Promise<[operations.GlobalPathParameterGetResponse](../../models/operations/globalpathparametergetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## globalsQueryParameterGet
 
@@ -70,7 +73,6 @@ const globalQueryParam: string = "string";
 
   const res = await sdk.globals.globalsQueryParameterGet(globalQueryParam);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -88,4 +90,8 @@ const globalQueryParam: string = "string";
 ### Response
 
 **Promise<[operations.GlobalsQueryParameterGetResponse](../../models/operations/globalsqueryparametergetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

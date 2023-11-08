@@ -60,4 +60,6 @@ func main() {
 ### Response
 
 **[*operations.GetDocumentationPerLanguageResponse](../../models/operations/getdocumentationperlanguageresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

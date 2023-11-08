@@ -527,6 +527,12 @@ import { GlobalsQueryParameterGetRequest } from "openapi/dist/sdk/models/operati
 
 Handling errors in your SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
 
+| Error Object                                 | Status Code                                  | Content Type                                 |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| errors.ErrorT                                | 500                                          | application/json                             |
+| errors.StatusGetXSpeakeasyErrorsResponseBody | 501                                          | application/json                             |
+| errors.SDKError                              | 400-600                                      | */*                                          |
+
 
 ## Example
 
@@ -534,34 +540,34 @@ Handling errors in your SDK should largely match your expectations.  All operati
 import { SDK } from "openapi";
 import { StatusGetXSpeakeasyErrorsRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
-    security: {
-      apiKeyAuth: "Token YOUR_API_KEY",
-    },
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
-  });
-const statusCode: number = 385913;
+(async () => {
+    const sdk = new SDK({
+        security: {
+            apiKeyAuth: "Token YOUR_API_KEY",
+        },
+        globalPathParam: 100,
+        globalQueryParam: "some example global query param",
+    });
+    const statusCode: number = 385913;
 
-  
-  let res;
-  try {
-    res = await sdk.errors.statusGetXSpeakeasyErrors(statusCode);
-  } catch (e) { 
-    } else if (e instanceof error) {
-      console.error(e) // handle exception 
-    
-    } else if (e instanceof 501_application/json_object) {
-      console.error(e) // handle exception 
+    let res;
+    try {
+        res = await sdk.errors.statusGetXSpeakeasyErrors(statusCode);
+    } catch (e) {
+        if (e instanceof errors.ErrorT) {
+            console.error(e); // handle exception
+        } else if (e instanceof errors.StatusGetXSpeakeasyErrorsResponseBody) {
+            console.error(e); // handle exception
+        } else if (e instanceof errors.SDKError) {
+            console.error(e); // handle exception
+        }
     }
-  }
 
-
-  if (res.statusCode == 200) {
-    // handle response
-  }
+    if (res.statusCode == 200) {
+        // handle response
+    }
 })();
+
 ```
 <!-- End Error Handling -->
 
@@ -746,43 +752,40 @@ If you'd like to override the default retry strategy for all operations that sup
 import { SDK } from "openapi";
 import { RetriesGetRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
-    retry_config: {
-        strategy: "backoff",
-        backoff: {
-          initialInterval: 1,
-          maxInterval: 50,
-          exponent: 1.1,
-          maxElapsedTime: 100,
+(async () => {
+    const sdk = new SDK({
+        retry_config: {
+            strategy: "backoff",
+            backoff: {
+                initialInterval: 1,
+                maxInterval: 50,
+                exponent: 1.1,
+                maxElapsedTime: 100,
+            },
+            retryConnectionErrors: false,
         },
-        retryConnectionErrors: false,
-      }
-    security: {
-      apiKeyAuth: "Token YOUR_API_KEY",
-    },
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
-  });
-const requestId: string = "string";
-const numRetries: number = 75342;
+        security: {
+            apiKeyAuth: "Token YOUR_API_KEY",
+        },
+        globalPathParam: 100,
+        globalQueryParam: "some example global query param",
+    });
+    const requestId: string = "string";
+    const numRetries: number = 75342;
 
-  const res = await sdk.retries.retriesGet(requestId, numRetries);
+    const res = await sdk.retries.retriesGet(requestId, numRetries);
 
-
-  if (res.statusCode == 200) {
-    // handle response
-  }
+    if (res.statusCode == 200) {
+        // handle response
+    }
 })();
+
 ```
-
-
 <!-- End Retries -->
 
 
 
 <!-- Start Authentication -->
-
 # Authentication
 
 ## Per-Client Security Schemes

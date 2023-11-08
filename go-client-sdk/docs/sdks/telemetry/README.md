@@ -59,7 +59,9 @@ func main() {
 ### Response
 
 **[*operations.TelemetrySpeakeasyUserAgentGetResponse](../../models/operations/telemetryspeakeasyuseragentgetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## TelemetryUserAgentGet
 
@@ -106,4 +108,6 @@ func main() {
 ### Response
 
 **[*operations.TelemetryUserAgentGetResponse](../../models/operations/telemetryuseragentgetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

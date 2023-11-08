@@ -46,7 +46,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.generation.anchorTypesGet();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -63,7 +62,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.AnchorTypesGetResponse](../../models/operations/anchortypesgetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## arrayCircularReferenceGet
 
@@ -83,7 +86,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.generation.arrayCircularReferenceGet();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -100,7 +102,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.ArrayCircularReferenceGetResponse](../../models/operations/arraycircularreferencegetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## circularReferenceGet
 
@@ -120,7 +126,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.generation.circularReferenceGet();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -137,7 +142,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.CircularReferenceGetResponse](../../models/operations/circularreferencegetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## dateParamWithDefault
 
@@ -160,7 +169,6 @@ const dateInput: RFCDate = new RFCDate("2021-11-30");
 
   const res = await sdk.generation.dateParamWithDefault(dateInput);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -178,7 +186,11 @@ const dateInput: RFCDate = new RFCDate("2021-11-30");
 ### Response
 
 **Promise<[operations.DateParamWithDefaultResponse](../../models/operations/dateparamwithdefaultresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## dateTimeParamWithDefault
 
@@ -200,7 +212,6 @@ const dateTimeInput: Date = new Date("2023-02-09T21:53:21.077Z");
 
   const res = await sdk.generation.dateTimeParamWithDefault(dateTimeInput);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -218,7 +229,11 @@ const dateTimeInput: Date = new Date("2023-02-09T21:53:21.077Z");
 ### Response
 
 **Promise<[operations.DateTimeParamWithDefaultResponse](../../models/operations/datetimeparamwithdefaultresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## decimalParamWithDefault
 
@@ -240,7 +255,6 @@ const decimalInput: number = 4060.06;
 
   const res = await sdk.generation.decimalParamWithDefault(decimalInput);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -258,7 +272,11 @@ const decimalInput: number = 4060.06;
 ### Response
 
 **Promise<[operations.DecimalParamWithDefaultResponse](../../models/operations/decimalparamwithdefaultresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## deprecatedFieldInSchemaPost
 
@@ -279,7 +297,6 @@ import { DeprecatedEnum } from "openapi/dist/sdk/models/shared";
 
   const res = await sdk.generation.deprecatedFieldInSchemaPost({});
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -297,7 +314,11 @@ import { DeprecatedEnum } from "openapi/dist/sdk/models/shared";
 ### Response
 
 **Promise<[operations.DeprecatedFieldInSchemaPostResponse](../../models/operations/deprecatedfieldinschemapostresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## deprecatedObjectInSchemaGet
 
@@ -317,7 +338,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.generation.deprecatedObjectInSchemaGet();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -334,7 +354,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.DeprecatedObjectInSchemaGetResponse](../../models/operations/deprecatedobjectinschemagetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## ~~deprecatedOperationNoCommentsGet~~
 
@@ -358,7 +382,6 @@ const deprecatedParameter: string = "string";
 
   const res = await sdk.generation.deprecatedOperationNoCommentsGet(deprecatedParameter);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -376,7 +399,11 @@ const deprecatedParameter: string = "string";
 ### Response
 
 **Promise<[operations.DeprecatedOperationNoCommentsGetResponse](../../models/operations/deprecatedoperationnocommentsgetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## ~~deprecatedOperationWithCommentsGet~~
 
@@ -403,7 +430,6 @@ const newParameter: string = "string";
 
   const res = await sdk.generation.deprecatedOperationWithCommentsGet(deprecatedParameter, newParameter);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -422,7 +448,11 @@ const newParameter: string = "string";
 ### Response
 
 **Promise<[operations.DeprecatedOperationWithCommentsGetResponse](../../models/operations/deprecatedoperationwithcommentsgetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## emptyObjectGet
 
@@ -445,7 +475,6 @@ const emptyObject: EmptyObjectParam = {};
 
   const res = await sdk.generation.emptyObjectGet(emptyObject);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -463,7 +492,11 @@ const emptyObject: EmptyObjectParam = {};
 ### Response
 
 **Promise<[operations.EmptyObjectGetResponse](../../models/operations/emptyobjectgetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## emptyResponseObjectWithCommentGet
 
@@ -483,7 +516,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.generation.emptyResponseObjectWithCommentGet();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -500,7 +532,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.EmptyResponseObjectWithCommentGetResponse](../../models/operations/emptyresponseobjectwithcommentgetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## globalNameOverridden
 
@@ -520,7 +556,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.generation.globalNameOverridden();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -537,7 +572,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.GetGlobalNameOverrideResponse](../../models/operations/getglobalnameoverrideresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## ignoredGenerationGet
 
@@ -557,7 +596,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.generation.ignoredGenerationGet();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -574,7 +612,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.IgnoredGenerationGetResponse](../../models/operations/ignoredgenerationgetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## ignoresPost
 
@@ -597,7 +639,6 @@ const testParam: string = "string";
 
   const res = await sdk.generation.ignoresPost(requestBody, testParam);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -616,7 +657,11 @@ const testParam: string = "string";
 ### Response
 
 **Promise<[operations.IgnoresPostResponse](../../models/operations/ignorespostresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## nameOverride
 
@@ -639,7 +684,6 @@ const testQueryParam: string = "example";
 
   const res = await sdk.generation.nameOverride(testEnumQueryParam, testQueryParam);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -658,7 +702,11 @@ const testQueryParam: string = "example";
 ### Response
 
 **Promise<[operations.NameOverrideGetResponse](../../models/operations/nameoverridegetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## objectCircularReferenceGet
 
@@ -678,7 +726,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.generation.objectCircularReferenceGet();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -695,7 +742,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.ObjectCircularReferenceGetResponse](../../models/operations/objectcircularreferencegetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## oneOfCircularReferenceGet
 
@@ -715,7 +766,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.generation.oneOfCircularReferenceGet();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -732,7 +782,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.OneOfCircularReferenceGetResponse](../../models/operations/oneofcircularreferencegetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## typedParameterGenerationGet
 
@@ -762,7 +816,6 @@ const obj: Obj = {
 
   const res = await sdk.generation.typedParameterGenerationGet(bigint, date, decimal, obj);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -783,7 +836,11 @@ const obj: Obj = {
 ### Response
 
 **Promise<[operations.TypedParameterGenerationGetResponse](../../models/operations/typedparametergenerationgetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## usageExamplePost
 
@@ -854,7 +911,6 @@ const operationSecurity: UsageExamplePostSecurity = {
     strParameter: "example 1",
   }, operationSecurity);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -873,4 +929,8 @@ const operationSecurity: UsageExamplePostSecurity = {
 ### Response
 
 **Promise<[operations.UsageExamplePostResponse](../../models/operations/usageexamplepostresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

@@ -502,6 +502,12 @@ if res.res is not None:
 
 Handling errors in your SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
 
+| Error Object                                 | Status Code                                  | Content Type                                 |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| errors.Error                                 | 500                                          | application/json                             |
+| errors.StatusGetXSpeakeasyErrorsResponseBody | 501                                          | application/json                             |
+| errors.SDKError                              | 400-600                                      | */*                                          |
+
 
 ## Example
 
@@ -522,11 +528,13 @@ res = None
 try:
     res = s.errors.status_get_x_speakeasy_errors(status_code=385913)
 
+except (errors.Error) as e:
+    print(e) # handle exception
+except (errors.StatusGetXSpeakeasyErrorsResponseBody) as e:
+    print(e) # handle exception
+except (errors.SDKError) as e:
+    print(e) # handle exception
 
-except (error) as e:
-    print(e) # handle exception
-except (501_application/json_object) as e:
-    print(e) # handle exception
 
 if res.status_code == 200:
     # handle response
@@ -717,14 +725,11 @@ if res.retries is not None:
     # handle response
     pass
 ```
-
-
 <!-- End Retries -->
 
 
 
 <!-- Start Authentication -->
-
 # Authentication
 
 ## Per-Client Security Schemes

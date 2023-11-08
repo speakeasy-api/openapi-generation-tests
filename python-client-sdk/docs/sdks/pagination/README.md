@@ -57,7 +57,11 @@ if res.res is not None:
 ### Response
 
 **[operations.PaginationCursorBodyResponse](../../models/operations/paginationcursorbodyresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## pagination_cursor_params
 
@@ -99,7 +103,11 @@ if res.res is not None:
 ### Response
 
 **[operations.PaginationCursorParamsResponse](../../models/operations/paginationcursorparamsresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## pagination_limit_offset_offset_body
 
@@ -142,7 +150,11 @@ if res.res is not None:
 ### Response
 
 **[operations.PaginationLimitOffsetOffsetBodyResponse](../../models/operations/paginationlimitoffsetoffsetbodyresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## pagination_limit_offset_offset_params
 
@@ -185,7 +197,11 @@ if res.res is not None:
 ### Response
 
 **[operations.PaginationLimitOffsetOffsetParamsResponse](../../models/operations/paginationlimitoffsetoffsetparamsresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## pagination_limit_offset_page_body
 
@@ -228,7 +244,11 @@ if res.res is not None:
 ### Response
 
 **[operations.PaginationLimitOffsetPageBodyResponse](../../models/operations/paginationlimitoffsetpagebodyresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## pagination_limit_offset_page_params
 
@@ -270,4 +290,8 @@ if res.res is not None:
 ### Response
 
 **[operations.PaginationLimitOffsetPageParamsResponse](../../models/operations/paginationlimitoffsetpageparamsresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

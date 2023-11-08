@@ -30,7 +30,6 @@ const numRetries: number = 75342;
 
   const res = await sdk.retries.retriesGet(requestId, numRetries);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -51,4 +50,8 @@ const numRetries: number = 75342;
 ### Response
 
 **Promise<[operations.RetriesGetResponse](../../models/operations/retriesgetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

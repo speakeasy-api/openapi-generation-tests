@@ -42,7 +42,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.SelectGlobalServerResponse](../../models/operations/selectglobalserverresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## select_server_with_id
 
@@ -80,7 +84,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.SelectServerWithIDResponse](../../models/operations/selectserverwithidresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## server_with_protocol_template
 
@@ -116,7 +124,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.ServerWithProtocolTemplateResponse](../../models/operations/serverwithprotocoltemplateresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## server_with_templates
 
@@ -152,7 +164,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.ServerWithTemplatesResponse](../../models/operations/serverwithtemplatesresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## server_with_templates_global
 
@@ -182,7 +198,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.ServerWithTemplatesGlobalResponse](../../models/operations/serverwithtemplatesglobalresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## servers_by_id_with_templates
 
@@ -218,4 +238,8 @@ if res.status_code == 200:
 ### Response
 
 **[operations.ServersByIDWithTemplatesResponse](../../models/operations/serversbyidwithtemplatesresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

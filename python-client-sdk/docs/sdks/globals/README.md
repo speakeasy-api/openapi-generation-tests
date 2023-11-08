@@ -44,7 +44,11 @@ if res.res is not None:
 ### Response
 
 **[operations.GlobalPathParameterGetResponse](../../models/operations/globalpathparametergetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## globals_query_parameter_get
 
@@ -80,4 +84,8 @@ if res.res is not None:
 ### Response
 
 **[operations.GlobalsQueryParameterGetResponse](../../models/operations/globalsqueryparametergetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

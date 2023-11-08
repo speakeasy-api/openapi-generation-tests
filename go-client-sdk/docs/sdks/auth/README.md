@@ -64,7 +64,9 @@ func main() {
 ### Response
 
 **[*operations.APIKeyAuthResponse](../../models/operations/apikeyauthresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## APIKeyAuthGlobal
 
@@ -111,7 +113,9 @@ func main() {
 ### Response
 
 **[*operations.APIKeyAuthGlobalResponse](../../models/operations/apikeyauthglobalresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## BasicAuth
 
@@ -168,7 +172,9 @@ func main() {
 ### Response
 
 **[*operations.BasicAuthResponse](../../models/operations/basicauthresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## BearerAuth
 
@@ -218,7 +224,9 @@ func main() {
 ### Response
 
 **[*operations.BearerAuthResponse](../../models/operations/bearerauthresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## GlobalBearerAuth
 
@@ -265,7 +273,9 @@ func main() {
 ### Response
 
 **[*operations.GlobalBearerAuthResponse](../../models/operations/globalbearerauthresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## Oauth2Auth
 
@@ -315,7 +325,9 @@ func main() {
 ### Response
 
 **[*operations.Oauth2AuthResponse](../../models/operations/oauth2authresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## Oauth2Override
 
@@ -365,7 +377,9 @@ func main() {
 ### Response
 
 **[*operations.Oauth2OverrideResponse](../../models/operations/oauth2overrideresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## OpenIDConnectAuth
 
@@ -415,4 +429,6 @@ func main() {
 ### Response
 
 **[*operations.OpenIDConnectAuthResponse](../../models/operations/openidconnectauthresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

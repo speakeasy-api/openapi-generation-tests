@@ -34,7 +34,6 @@ import { SDK } from "openapi";
     cursor: 868337,
   });
 
-
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -57,7 +56,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.PaginationCursorBodyResponse](../../models/operations/paginationcursorbodyresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## paginationCursorParams
 
@@ -78,7 +81,6 @@ import { PaginationCursorParamsRequest } from "openapi/dist/sdk/models/operation
 const cursor: number = 24812;
 
   const res = await sdk.pagination.paginationCursorParams(cursor);
-
 
   if (res.statusCode == 200) {
     do {
@@ -102,7 +104,11 @@ const cursor: number = 24812;
 ### Response
 
 **Promise<[operations.PaginationCursorParamsResponse](../../models/operations/paginationcursorparamsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## paginationLimitOffsetOffsetBody
 
@@ -121,7 +127,6 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.pagination.paginationLimitOffsetOffsetBody({});
-
 
   if (res.statusCode == 200) {
     do {
@@ -145,7 +150,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.PaginationLimitOffsetOffsetBodyResponse](../../models/operations/paginationlimitoffsetoffsetbodyresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## paginationLimitOffsetOffsetParams
 
@@ -167,7 +176,6 @@ const limit: number = 661976;
 const offset: number = 600173;
 
   const res = await sdk.pagination.paginationLimitOffsetOffsetParams(limit, offset);
-
 
   if (res.statusCode == 200) {
     do {
@@ -192,7 +200,11 @@ const offset: number = 600173;
 ### Response
 
 **Promise<[operations.PaginationLimitOffsetOffsetParamsResponse](../../models/operations/paginationlimitoffsetoffsetparamsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## paginationLimitOffsetPageBody
 
@@ -211,7 +223,6 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.pagination.paginationLimitOffsetPageBody({});
-
 
   if (res.statusCode == 200) {
     do {
@@ -235,7 +246,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.PaginationLimitOffsetPageBodyResponse](../../models/operations/paginationlimitoffsetpagebodyresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## paginationLimitOffsetPageParams
 
@@ -256,7 +271,6 @@ import { PaginationLimitOffsetPageParamsRequest } from "openapi/dist/sdk/models/
 const page: number = 1177;
 
   const res = await sdk.pagination.paginationLimitOffsetPageParams(page);
-
 
   if (res.statusCode == 200) {
     do {
@@ -280,4 +294,8 @@ const page: number = 1177;
 ### Response
 
 **Promise<[operations.PaginationLimitOffsetPageParamsResponse](../../models/operations/paginationlimitoffsetpageparamsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

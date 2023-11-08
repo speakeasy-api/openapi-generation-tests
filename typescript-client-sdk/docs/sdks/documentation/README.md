@@ -31,7 +31,6 @@ const language: string = "string";
 
   const res = await sdk.documentation.getDocumentationPerLanguage(language);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -49,4 +48,8 @@ const language: string = "string";
 ### Response
 
 **Promise<[operations.GetDocumentationPerLanguageResponse](../../models/operations/getdocumentationperlanguageresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

@@ -55,7 +55,6 @@ const str: string = "string";
 
   const res = await sdk.flattening.componentBodyAndParamConflict(simpleObject, str);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -74,7 +73,11 @@ const str: string = "string";
 ### Response
 
 **Promise<[operations.ComponentBodyAndParamConflictResponse](../../models/operations/componentbodyandparamconflictresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## componentBodyAndParamNoConflict
 
@@ -118,7 +121,6 @@ const simpleObject: SimpleObject = {
 
   const res = await sdk.flattening.componentBodyAndParamNoConflict(paramStr, simpleObject);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -137,7 +139,11 @@ const simpleObject: SimpleObject = {
 ### Response
 
 **Promise<[operations.ComponentBodyAndParamNoConflictResponse](../../models/operations/componentbodyandparamnoconflictresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## conflictingParams
 
@@ -160,7 +166,6 @@ const strQueryParameter: string = "string";
 
   const res = await sdk.flattening.conflictingParams(strPathParameter, strQueryParameter);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -179,7 +184,11 @@ const strQueryParameter: string = "string";
 ### Response
 
 **Promise<[operations.ConflictingParamsResponse](../../models/operations/conflictingparamsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## inlineBodyAndParamConflict
 
@@ -204,7 +213,6 @@ const str: string = "string";
 
   const res = await sdk.flattening.inlineBodyAndParamConflict(requestBody, str);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -223,7 +231,11 @@ const str: string = "string";
 ### Response
 
 **Promise<[operations.InlineBodyAndParamConflictResponse](../../models/operations/inlinebodyandparamconflictresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## inlineBodyAndParamNoConflict
 
@@ -248,7 +260,6 @@ const paramStr: string = "string";
 
   const res = await sdk.flattening.inlineBodyAndParamNoConflict(requestBody, paramStr);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -267,4 +278,8 @@ const paramStr: string = "string";
 ### Response
 
 **Promise<[operations.InlineBodyAndParamNoConflictResponse](../../models/operations/inlinebodyandparamnoconflictresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

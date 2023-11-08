@@ -78,7 +78,11 @@ if res.res is not None:
 ### Response
 
 **[operations.DeepObjectQueryParamsMapResponse](../../models/operations/deepobjectqueryparamsmapresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## deep_object_query_params_object
 
@@ -141,7 +145,11 @@ if res.res is not None:
 ### Response
 
 **[operations.DeepObjectQueryParamsObjectResponse](../../models/operations/deepobjectqueryparamsobjectresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## duplicate_param
 
@@ -177,7 +185,11 @@ if res.duplicate_param_response is not None:
 ### Response
 
 **[operations.DuplicateParamResponse](../../models/operations/duplicateparamresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## form_query_params_array
 
@@ -220,7 +232,11 @@ if res.res is not None:
 ### Response
 
 **[operations.FormQueryParamsArrayResponse](../../models/operations/formqueryparamsarrayresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## form_query_params_camel_object
 
@@ -263,7 +279,11 @@ if res.res is not None:
 ### Response
 
 **[operations.FormQueryParamsCamelObjectResponse](../../models/operations/formqueryparamscamelobjectresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## form_query_params_map
 
@@ -306,7 +326,11 @@ if res.res is not None:
 ### Response
 
 **[operations.FormQueryParamsMapResponse](../../models/operations/formqueryparamsmapresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## form_query_params_object
 
@@ -383,7 +407,11 @@ if res.res is not None:
 ### Response
 
 **[operations.FormQueryParamsObjectResponse](../../models/operations/formqueryparamsobjectresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## form_query_params_primitive
 
@@ -422,7 +450,11 @@ if res.res is not None:
 ### Response
 
 **[operations.FormQueryParamsPrimitiveResponse](../../models/operations/formqueryparamsprimitiveresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## form_query_params_ref_param_object
 
@@ -469,7 +501,11 @@ if res.res is not None:
 ### Response
 
 **[operations.FormQueryParamsRefParamObjectResponse](../../models/operations/formqueryparamsrefparamobjectresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## header_params_array
 
@@ -508,7 +544,11 @@ if res.res is not None:
 ### Response
 
 **[operations.HeaderParamsArrayResponse](../../models/operations/headerparamsarrayresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## header_params_map
 
@@ -531,8 +571,8 @@ res = s.parameters.header_params_map(x_header_map={
     "key1": 'value1',
     "key2": 'value2',
 }, x_header_map_explode={
-    "test1": 'val1',
     "test2": 'val2',
+    "test1": 'val1',
 })
 
 if res.res is not None:
@@ -551,7 +591,11 @@ if res.res is not None:
 ### Response
 
 **[operations.HeaderParamsMapResponse](../../models/operations/headerparamsmapresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## header_params_object
 
@@ -628,7 +672,11 @@ if res.res is not None:
 ### Response
 
 **[operations.HeaderParamsObjectResponse](../../models/operations/headerparamsobjectresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## header_params_primitive
 
@@ -667,7 +715,11 @@ if res.res is not None:
 ### Response
 
 **[operations.HeaderParamsPrimitiveResponse](../../models/operations/headerparamsprimitiveresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## json_query_params_object
 
@@ -854,7 +906,11 @@ if res.res is not None:
 ### Response
 
 **[operations.JSONQueryParamsObjectResponse](../../models/operations/jsonqueryparamsobjectresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## mixed_parameters_camel_case
 
@@ -892,7 +948,11 @@ if res.res is not None:
 ### Response
 
 **[operations.MixedParametersCamelCaseResponse](../../models/operations/mixedparameterscamelcaseresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## mixed_parameters_primitives
 
@@ -930,7 +990,11 @@ if res.res is not None:
 ### Response
 
 **[operations.MixedParametersPrimitivesResponse](../../models/operations/mixedparametersprimitivesresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## mixed_query_params
 
@@ -1027,7 +1091,11 @@ if res.res is not None:
 ### Response
 
 **[operations.MixedQueryParamsResponse](../../models/operations/mixedqueryparamsresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## path_parameter_json
 
@@ -1084,7 +1152,11 @@ if res.res is not None:
 ### Response
 
 **[operations.PathParameterJSONResponse](../../models/operations/pathparameterjsonresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## pipe_delimited_query_params_array
 
@@ -1153,7 +1225,11 @@ if res.res is not None:
 ### Response
 
 **[operations.PipeDelimitedQueryParamsArrayResponse](../../models/operations/pipedelimitedqueryparamsarrayresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## simple_path_parameter_arrays
 
@@ -1192,7 +1268,11 @@ if res.res is not None:
 ### Response
 
 **[operations.SimplePathParameterArraysResponse](../../models/operations/simplepathparameterarraysresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## simple_path_parameter_maps
 
@@ -1235,7 +1315,11 @@ if res.res is not None:
 ### Response
 
 **[operations.SimplePathParameterMapsResponse](../../models/operations/simplepathparametermapsresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## simple_path_parameter_objects
 
@@ -1312,7 +1396,11 @@ if res.res is not None:
 ### Response
 
 **[operations.SimplePathParameterObjectsResponse](../../models/operations/simplepathparameterobjectsresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## simple_path_parameter_primitives
 
@@ -1351,4 +1439,8 @@ if res.res is not None:
 ### Response
 
 **[operations.SimplePathParameterPrimitivesResponse](../../models/operations/simplepathparameterprimitivesresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

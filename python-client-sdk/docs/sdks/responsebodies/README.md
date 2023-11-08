@@ -59,7 +59,11 @@ if res.object is not None:
 ### Response
 
 **[operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse](../../models/operations/responsebodyadditionalpropertiescomplexnumberspostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## response_body_additional_properties_date_post
 
@@ -102,7 +106,11 @@ if res.object is not None:
 ### Response
 
 **[operations.ResponseBodyAdditionalPropertiesDatePostResponse](../../models/operations/responsebodyadditionalpropertiesdatepostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## response_body_additional_properties_object_post
 
@@ -168,7 +176,11 @@ if res.object is not None:
 ### Response
 
 **[operations.ResponseBodyAdditionalPropertiesObjectPostResponse](../../models/operations/responsebodyadditionalpropertiesobjectpostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## response_body_additional_properties_post
 
@@ -210,7 +222,11 @@ if res.object is not None:
 ### Response
 
 **[operations.ResponseBodyAdditionalPropertiesPostResponse](../../models/operations/responsebodyadditionalpropertiespostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## response_body_bytes_get
 
@@ -240,7 +256,11 @@ if res.bytes is not None:
 ### Response
 
 **[operations.ResponseBodyBytesGetResponse](../../models/operations/responsebodybytesgetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## response_body_empty_with_headers
 
@@ -277,7 +297,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.ResponseBodyEmptyWithHeadersResponse](../../models/operations/responsebodyemptywithheadersresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## response_body_optional_get
 
@@ -313,7 +337,11 @@ if res.typed_object1 is not None:
 ### Response
 
 **[operations.ResponseBodyOptionalGetResponse](../../models/operations/responsebodyoptionalgetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## response_body_read_only
 
@@ -349,7 +377,11 @@ if res.read_only_object is not None:
 ### Response
 
 **[operations.ResponseBodyReadOnlyResponse](../../models/operations/responsebodyreadonlyresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## response_body_string_get
 
@@ -379,7 +411,11 @@ if res.html is not None:
 ### Response
 
 **[operations.ResponseBodyStringGetResponse](../../models/operations/responsebodystringgetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## response_body_xml_get
 
@@ -409,7 +445,11 @@ if res.xml is not None:
 ### Response
 
 **[operations.ResponseBodyXMLGetResponse](../../models/operations/responsebodyxmlgetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## response_body_zero_value_complex_type_ptrs_post
 
@@ -451,4 +491,8 @@ if res.object is not None:
 ### Response
 
 **[operations.ResponseBodyZeroValueComplexTypePtrsPostResponse](../../models/operations/responsebodyzerovaluecomplextypeptrspostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

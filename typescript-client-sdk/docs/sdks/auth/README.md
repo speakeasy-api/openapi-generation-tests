@@ -35,7 +35,6 @@ const operationSecurity: ApiKeyAuthSecurity = {
 
   const res = await sdk.auth.apiKeyAuth(operationSecurity);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -53,7 +52,11 @@ const operationSecurity: ApiKeyAuthSecurity = {
 ### Response
 
 **Promise<[operations.ApiKeyAuthResponse](../../models/operations/apikeyauthresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## apiKeyAuthGlobal
 
@@ -73,7 +76,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.auth.apiKeyAuthGlobal();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -90,7 +92,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.ApiKeyAuthGlobalResponse](../../models/operations/apikeyauthglobalresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## basicAuth
 
@@ -114,7 +120,6 @@ const operationSecurity: BasicAuthSecurity = {
 
   const res = await sdk.auth.basicAuth(operationSecurity, passwd, user);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -134,7 +139,11 @@ const operationSecurity: BasicAuthSecurity = {
 ### Response
 
 **Promise<[operations.BasicAuthResponse](../../models/operations/basicauthresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## bearerAuth
 
@@ -155,7 +164,6 @@ const operationSecurity: BearerAuthSecurity = {
 
   const res = await sdk.auth.bearerAuth(operationSecurity);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -173,7 +181,11 @@ const operationSecurity: BearerAuthSecurity = {
 ### Response
 
 **Promise<[operations.BearerAuthResponse](../../models/operations/bearerauthresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## globalBearerAuth
 
@@ -193,7 +205,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.auth.globalBearerAuth();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -210,7 +221,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.GlobalBearerAuthResponse](../../models/operations/globalbearerauthresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## oauth2Auth
 
@@ -231,7 +246,6 @@ const operationSecurity: Oauth2AuthSecurity = {
 
   const res = await sdk.auth.oauth2Auth(operationSecurity);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -249,7 +263,11 @@ const operationSecurity: Oauth2AuthSecurity = {
 ### Response
 
 **Promise<[operations.Oauth2AuthResponse](../../models/operations/oauth2authresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## oauth2Override
 
@@ -270,7 +288,6 @@ const operationSecurity: Oauth2OverrideSecurity = {
 
   const res = await sdk.auth.oauth2Override(operationSecurity);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -288,7 +305,11 @@ const operationSecurity: Oauth2OverrideSecurity = {
 ### Response
 
 **Promise<[operations.Oauth2OverrideResponse](../../models/operations/oauth2overrideresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## openIdConnectAuth
 
@@ -309,7 +330,6 @@ const operationSecurity: OpenIdConnectAuthSecurity = {
 
   const res = await sdk.auth.openIdConnectAuth(operationSecurity);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -327,4 +347,8 @@ const operationSecurity: OpenIdConnectAuthSecurity = {
 ### Response
 
 **Promise<[operations.OpenIdConnectAuthResponse](../../models/operations/openidconnectauthresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

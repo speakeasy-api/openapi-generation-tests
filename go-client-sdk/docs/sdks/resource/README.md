@@ -61,7 +61,9 @@ func main() {
 ### Response
 
 **[*operations.CreateFileResponse](../../models/operations/createfileresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## CreateResource
 
@@ -138,7 +140,9 @@ func main() {
 ### Response
 
 **[*operations.CreateResourceResponse](../../models/operations/createresourceresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## DeleteResource
 
@@ -189,7 +193,9 @@ func main() {
 ### Response
 
 **[*operations.DeleteResourceResponse](../../models/operations/deleteresourceresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## GetResource
 
@@ -240,7 +246,9 @@ func main() {
 ### Response
 
 **[*operations.GetResourceResponse](../../models/operations/getresourceresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## UpdateResource
 
@@ -291,4 +299,6 @@ func main() {
 ### Response
 
 **[*operations.UpdateResourceResponse](../../models/operations/updateresourceresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

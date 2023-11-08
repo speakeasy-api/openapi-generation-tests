@@ -48,7 +48,11 @@ if res.object is not None:
 ### Response
 
 **[operations.PutAnythingIgnoredGenerationResponse](../../models/operations/putanythingignoredgenerationresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## response_body_json_get
 
@@ -78,4 +82,8 @@ if res.http_bin_simple_json_object is not None:
 ### Response
 
 **[operations.ResponseBodyJSONGetResponse](../../models/operations/responsebodyjsongetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

@@ -45,7 +45,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.ConnectionErrorGetResponse](../../models/operations/connectionerrorgetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## status_get_error
 
@@ -81,7 +85,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.StatusGetErrorResponse](../../models/operations/statusgeterrorresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## status_get_x_speakeasy_errors
 
@@ -118,4 +126,10 @@ if res.status_code == 200:
 ### Response
 
 **[operations.StatusGetXSpeakeasyErrorsResponse](../../models/operations/statusgetxspeakeasyerrorsresponse.md)**
+### Errors
 
+| Error Object                                 | Status Code                                  | Content Type                                 |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| errors.Error                                 | 500                                          | application/json                             |
+| errors.StatusGetXSpeakeasyErrorsResponseBody | 501                                          | application/json                             |
+| errors.SDKError                              | 400-600                                      | */*                                          |

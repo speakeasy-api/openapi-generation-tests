@@ -62,4 +62,6 @@ func main() {
 ### Response
 
 **[*operations.RetriesGetResponse](../../models/operations/retriesgetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

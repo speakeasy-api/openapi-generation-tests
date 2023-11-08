@@ -32,7 +32,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.servers.selectGlobalServer();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -49,7 +48,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.SelectGlobalServerResponse](../../models/operations/selectglobalserverresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## selectServerWithID
 
@@ -71,7 +74,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.servers.selectServerWithID();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -89,7 +91,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.SelectServerWithIDResponse](../../models/operations/selectserverwithidresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## serverWithProtocolTemplate
 
@@ -109,7 +115,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.servers.serverWithProtocolTemplate();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -127,7 +132,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.ServerWithProtocolTemplateResponse](../../models/operations/serverwithprotocoltemplateresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## serverWithTemplates
 
@@ -147,7 +156,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.servers.serverWithTemplates();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -165,7 +173,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.ServerWithTemplatesResponse](../../models/operations/serverwithtemplatesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## serverWithTemplatesGlobal
 
@@ -185,7 +197,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.servers.serverWithTemplatesGlobal();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -202,7 +213,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.ServerWithTemplatesGlobalResponse](../../models/operations/serverwithtemplatesglobalresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## serversByIDWithTemplates
 
@@ -222,7 +237,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.servers.serversByIDWithTemplates();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -240,4 +254,8 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.ServersByIDWithTemplatesResponse](../../models/operations/serversbyidwithtemplatesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

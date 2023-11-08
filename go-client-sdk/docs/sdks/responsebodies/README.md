@@ -71,7 +71,9 @@ func main() {
 ### Response
 
 **[*operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse](../../models/operations/responsebodyadditionalpropertiescomplexnumberspostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ResponseBodyAdditionalPropertiesDatePost
 
@@ -125,7 +127,9 @@ func main() {
 ### Response
 
 **[*operations.ResponseBodyAdditionalPropertiesDatePostResponse](../../models/operations/responsebodyadditionalpropertiesdatepostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ResponseBodyAdditionalPropertiesObjectPost
 
@@ -202,7 +206,9 @@ func main() {
 ### Response
 
 **[*operations.ResponseBodyAdditionalPropertiesObjectPostResponse](../../models/operations/responsebodyadditionalpropertiesobjectpostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ResponseBodyAdditionalPropertiesPost
 
@@ -255,7 +261,9 @@ func main() {
 ### Response
 
 **[*operations.ResponseBodyAdditionalPropertiesPostResponse](../../models/operations/responsebodyadditionalpropertiespostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ResponseBodyBytesGet
 
@@ -302,7 +310,9 @@ func main() {
 ### Response
 
 **[*operations.ResponseBodyBytesGetResponse](../../models/operations/responsebodybytesgetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ResponseBodyEmptyWithHeaders
 
@@ -356,7 +366,9 @@ func main() {
 ### Response
 
 **[*operations.ResponseBodyEmptyWithHeadersResponse](../../models/operations/responsebodyemptywithheadersresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ResponseBodyOptionalGet
 
@@ -404,7 +416,9 @@ func main() {
 ### Response
 
 **[*operations.ResponseBodyOptionalGetResponse](../../models/operations/responsebodyoptionalgetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ResponseBodyReadOnly
 
@@ -452,7 +466,9 @@ func main() {
 ### Response
 
 **[*operations.ResponseBodyReadOnlyResponse](../../models/operations/responsebodyreadonlyresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ResponseBodyStringGet
 
@@ -499,7 +515,9 @@ func main() {
 ### Response
 
 **[*operations.ResponseBodyStringGetResponse](../../models/operations/responsebodystringgetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ResponseBodyXMLGet
 
@@ -546,7 +564,9 @@ func main() {
 ### Response
 
 **[*operations.ResponseBodyXMLGetResponse](../../models/operations/responsebodyxmlgetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ResponseBodyZeroValueComplexTypePtrsPost
 
@@ -598,4 +618,6 @@ func main() {
 ### Response
 
 **[*operations.ResponseBodyZeroValueComplexTypePtrsPostResponse](../../models/operations/responsebodyzerovaluecomplextypeptrspostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

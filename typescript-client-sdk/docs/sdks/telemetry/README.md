@@ -30,7 +30,6 @@ const userAgent: string = "string";
 
   const res = await sdk.telemetry.telemetrySpeakeasyUserAgentGet(userAgent);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -48,7 +47,11 @@ const userAgent: string = "string";
 ### Response
 
 **Promise<[operations.TelemetrySpeakeasyUserAgentGetResponse](../../models/operations/telemetryspeakeasyuseragentgetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## telemetryUserAgentGet
 
@@ -68,7 +71,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.telemetry.telemetryUserAgentGet();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -85,4 +87,8 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.TelemetryUserAgentGetResponse](../../models/operations/telemetryuseragentgetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

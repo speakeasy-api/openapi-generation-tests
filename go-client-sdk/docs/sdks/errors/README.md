@@ -57,7 +57,9 @@ func main() {
 ### Response
 
 **[*operations.ConnectionErrorGetResponse](../../models/operations/connectionerrorgetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## StatusGetError
 
@@ -108,7 +110,9 @@ func main() {
 ### Response
 
 **[*operations.StatusGetErrorResponse](../../models/operations/statusgeterrorresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## StatusGetXSpeakeasyErrors
 
@@ -160,4 +164,8 @@ func main() {
 ### Response
 
 **[*operations.StatusGetXSpeakeasyErrorsResponse](../../models/operations/statusgetxspeakeasyerrorsresponse.md), error**
-
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| sdkerrors.Error                                 | 500                                             | application/json                                |
+| sdkerrors.StatusGetXSpeakeasyErrorsResponseBody | 501                                             | application/json                                |
+| sdkerrors.SDKError                              | 400-600                                         | */*                                             |

@@ -86,7 +86,9 @@ func main() {
 ### Response
 
 **[*operations.ComponentBodyAndParamConflictResponse](../../models/operations/componentbodyandparamconflictresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ComponentBodyAndParamNoConflict
 
@@ -161,7 +163,9 @@ func main() {
 ### Response
 
 **[*operations.ComponentBodyAndParamNoConflictResponse](../../models/operations/componentbodyandparamnoconflictresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ConflictingParams
 
@@ -215,7 +219,9 @@ func main() {
 ### Response
 
 **[*operations.ConflictingParamsResponse](../../models/operations/conflictingparamsresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## InlineBodyAndParamConflict
 
@@ -272,7 +278,9 @@ func main() {
 ### Response
 
 **[*operations.InlineBodyAndParamConflictResponse](../../models/operations/inlinebodyandparamconflictresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## InlineBodyAndParamNoConflict
 
@@ -329,4 +337,6 @@ func main() {
 ### Response
 
 **[*operations.InlineBodyAndParamNoConflictResponse](../../models/operations/inlinebodyandparamnoconflictresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

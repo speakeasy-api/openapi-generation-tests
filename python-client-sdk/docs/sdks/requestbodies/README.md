@@ -126,7 +126,11 @@ if res.res is not None:
 ### Response
 
 **[operations.NullableObjectPostResponse](../../models/operations/nullableobjectpostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## nullable_required_empty_object_post
 
@@ -167,7 +171,11 @@ if res.res is not None:
 ### Response
 
 **[operations.NullableRequiredEmptyObjectPostResponse](../../models/operations/nullablerequiredemptyobjectpostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## nullable_required_property_post
 
@@ -210,7 +218,11 @@ if res.res is not None:
 ### Response
 
 **[operations.NullableRequiredPropertyPostResponse](../../models/operations/nullablerequiredpropertypostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## nullable_required_shared_object_post
 
@@ -254,7 +266,11 @@ if res.res is not None:
 ### Response
 
 **[operations.NullableRequiredSharedObjectPostResponse](../../models/operations/nullablerequiredsharedobjectpostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_array
 
@@ -315,7 +331,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONArrayResponse](../../models/operations/requestbodypostapplicationjsonarrayresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_array_camel_case
 
@@ -374,7 +394,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONArrayCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonarraycamelcaseresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_array_obj
 
@@ -434,7 +458,11 @@ if res.arr_obj_value is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONArrayObjResponse](../../models/operations/requestbodypostapplicationjsonarrayobjresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_array_obj_camel_case
 
@@ -492,7 +520,11 @@ if res.arr_obj_value_camel_case is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONArrayObjCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonarrayobjcamelcaseresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_array_of_array
 
@@ -555,7 +587,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONArrayOfArrayResponse](../../models/operations/requestbodypostapplicationjsonarrayofarrayresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_array_of_array_camel_case
 
@@ -616,7 +652,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONArrayOfArrayCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonarrayofarraycamelcaseresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_array_of_array_of_primitive
 
@@ -658,7 +698,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse](../../models/operations/requestbodypostapplicationjsonarrayofarrayofprimitiveresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_array_of_map
 
@@ -721,7 +765,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONArrayOfMapResponse](../../models/operations/requestbodypostapplicationjsonarrayofmapresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_array_of_map_camel_case
 
@@ -782,7 +830,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONArrayOfMapCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonarrayofmapcamelcaseresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_array_of_primitive
 
@@ -822,7 +874,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONArrayOfPrimitiveResponse](../../models/operations/requestbodypostapplicationjsonarrayofprimitiveresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_deep
 
@@ -990,7 +1046,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONDeepResponse](../../models/operations/requestbodypostapplicationjsondeepresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_deep_camel_case
 
@@ -1110,7 +1170,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONDeepCamelCaseResponse](../../models/operations/requestbodypostapplicationjsondeepcamelcaseresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_map
 
@@ -1171,7 +1235,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONMapResponse](../../models/operations/requestbodypostapplicationjsonmapresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_map_camel_case
 
@@ -1230,7 +1298,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONMapCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonmapcamelcaseresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_map_obj
 
@@ -1290,7 +1362,11 @@ if res.map_obj_value is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONMapObjResponse](../../models/operations/requestbodypostapplicationjsonmapobjresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_map_obj_camel_case
 
@@ -1348,7 +1424,11 @@ if res.map_obj_value_camel_case is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONMapObjCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonmapobjcamelcaseresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_map_of_array
 
@@ -1411,7 +1491,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONMapOfArrayResponse](../../models/operations/requestbodypostapplicationjsonmapofarrayresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_map_of_array_camel_case
 
@@ -1472,7 +1556,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONMapOfArrayCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonmapofarraycamelcaseresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_map_of_map
 
@@ -1535,7 +1623,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONMapOfMapResponse](../../models/operations/requestbodypostapplicationjsonmapofmapresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_map_of_map_camel_case
 
@@ -1596,7 +1688,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONMapOfMapCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonmapofmapcamelcaseresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_map_of_map_of_primitive
 
@@ -1638,7 +1734,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONMapOfMapOfPrimitiveResponse](../../models/operations/requestbodypostapplicationjsonmapofmapofprimitiveresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_map_of_primitive
 
@@ -1678,7 +1778,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONMapOfPrimitiveResponse](../../models/operations/requestbodypostapplicationjsonmapofprimitiveresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_multiple_json_filtered
 
@@ -1736,7 +1840,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONMultipleJSONFilteredResponse](../../models/operations/requestbodypostapplicationjsonmultiplejsonfilteredresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_simple
 
@@ -1794,7 +1902,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONSimpleResponse](../../models/operations/requestbodypostapplicationjsonsimpleresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_application_json_simple_camel_case
 
@@ -1850,7 +1962,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONSimpleCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonsimplecamelcaseresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_complex_number_types
 
@@ -1903,7 +2019,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostComplexNumberTypesResponse](../../models/operations/requestbodypostcomplexnumbertypesresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_defaults_and_consts
 
@@ -1957,7 +2077,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostDefaultsAndConstsResponse](../../models/operations/requestbodypostdefaultsandconstsresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_empty_object
 
@@ -1997,7 +2121,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostEmptyObjectResponse](../../models/operations/requestbodypostemptyobjectresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_form_deep
 
@@ -2083,7 +2211,7 @@ req = shared.DeepObject(
     bool=True,
     int=1,
     map={
-        "key2": shared.SimpleObject(
+        "key": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
@@ -2103,7 +2231,7 @@ req = shared.DeepObject(
             str_='test',
             str_opt='testOptional',
         ),
-        "key": shared.SimpleObject(
+        "key2": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
@@ -2165,7 +2293,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostFormDeepResponse](../../models/operations/requestbodypostformdeepresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_form_map_primitive
 
@@ -2204,7 +2336,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostFormMapPrimitiveResponse](../../models/operations/requestbodypostformmapprimitiveresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_form_simple
 
@@ -2262,7 +2398,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostFormSimpleResponse](../../models/operations/requestbodypostformsimpleresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_json_data_types_array_big_int
 
@@ -2301,7 +2441,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostJSONDataTypesArrayBigIntResponse](../../models/operations/requestbodypostjsondatatypesarraybigintresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_json_data_types_array_date
 
@@ -2340,7 +2484,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostJSONDataTypesArrayDateResponse](../../models/operations/requestbodypostjsondatatypesarraydateresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_json_data_types_array_decimal_str
 
@@ -2379,7 +2527,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostJSONDataTypesArrayDecimalStrResponse](../../models/operations/requestbodypostjsondatatypesarraydecimalstrresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_json_data_types_big_int
 
@@ -2416,7 +2568,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostJSONDataTypesBigIntResponse](../../models/operations/requestbodypostjsondatatypesbigintresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_json_data_types_big_int_str
 
@@ -2453,7 +2609,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostJSONDataTypesBigIntStrResponse](../../models/operations/requestbodypostjsondatatypesbigintstrresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_json_data_types_boolean
 
@@ -2490,7 +2650,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostJSONDataTypesBooleanResponse](../../models/operations/requestbodypostjsondatatypesbooleanresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_json_data_types_date
 
@@ -2527,7 +2691,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostJSONDataTypesDateResponse](../../models/operations/requestbodypostjsondatatypesdateresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_json_data_types_date_time
 
@@ -2564,7 +2732,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostJSONDataTypesDateTimeResponse](../../models/operations/requestbodypostjsondatatypesdatetimeresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_json_data_types_decimal
 
@@ -2601,7 +2773,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostJSONDataTypesDecimalResponse](../../models/operations/requestbodypostjsondatatypesdecimalresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_json_data_types_decimal_str
 
@@ -2638,7 +2814,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostJSONDataTypesDecimalStrResponse](../../models/operations/requestbodypostjsondatatypesdecimalstrresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_json_data_types_float32
 
@@ -2675,7 +2855,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostJSONDataTypesFloat32Response](../../models/operations/requestbodypostjsondatatypesfloat32response.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_json_data_types_int32
 
@@ -2712,7 +2896,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostJSONDataTypesInt32Response](../../models/operations/requestbodypostjsondatatypesint32response.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_json_data_types_integer
 
@@ -2749,7 +2937,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostJSONDataTypesIntegerResponse](../../models/operations/requestbodypostjsondatatypesintegerresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_json_data_types_map_big_int_str
 
@@ -2788,7 +2980,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostJSONDataTypesMapBigIntStrResponse](../../models/operations/requestbodypostjsondatatypesmapbigintstrresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_json_data_types_map_date_time
 
@@ -2827,7 +3023,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostJSONDataTypesMapDateTimeResponse](../../models/operations/requestbodypostjsondatatypesmapdatetimeresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_json_data_types_map_decimal
 
@@ -2866,7 +3066,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostJSONDataTypesMapDecimalResponse](../../models/operations/requestbodypostjsondatatypesmapdecimalresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_json_data_types_number
 
@@ -2903,7 +3107,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostJSONDataTypesNumberResponse](../../models/operations/requestbodypostjsondatatypesnumberresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_json_data_types_string
 
@@ -2940,7 +3148,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostJSONDataTypesStringResponse](../../models/operations/requestbodypostjsondatatypesstringresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_multiple_content_types_component_filtered
 
@@ -2998,7 +3210,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostMultipleContentTypesComponentFilteredResponse](../../models/operations/requestbodypostmultiplecontenttypescomponentfilteredresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_multiple_content_types_inline_filtered
 
@@ -3039,7 +3255,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse](../../models/operations/requestbodypostmultiplecontenttypesinlinefilteredresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_multiple_content_types_split_param_form
 
@@ -3080,7 +3300,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse](../../models/operations/requestbodypostmultiplecontenttypessplitparamformresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_multiple_content_types_split_param_json
 
@@ -3121,7 +3345,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostMultipleContentTypesSplitParamJSONResponse](../../models/operations/requestbodypostmultiplecontenttypessplitparamjsonresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_multiple_content_types_split_param_multipart
 
@@ -3162,7 +3390,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse](../../models/operations/requestbodypostmultiplecontenttypessplitparammultipartresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_multiple_content_types_split_form
 
@@ -3203,7 +3435,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostMultipleContentTypesSplitFormResponse](../../models/operations/requestbodypostmultiplecontenttypessplitformresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_multiple_content_types_split_json
 
@@ -3244,7 +3480,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostMultipleContentTypesSplitJSONResponse](../../models/operations/requestbodypostmultiplecontenttypessplitjsonresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_multiple_content_types_split_multipart
 
@@ -3285,7 +3525,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse](../../models/operations/requestbodypostmultiplecontenttypessplitmultipartresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_not_nullable_not_required_string_body
 
@@ -3322,7 +3566,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostNotNullableNotRequiredStringBodyResponse](../../models/operations/requestbodypostnotnullablenotrequiredstringbodyresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_null_array
 
@@ -3361,7 +3609,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostNullArrayResponse](../../models/operations/requestbodypostnullarrayresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_null_dictionary
 
@@ -3400,7 +3652,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostNullDictionaryResponse](../../models/operations/requestbodypostnulldictionaryresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_nullable_not_required_string_body
 
@@ -3437,7 +3693,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostNullableNotRequiredStringBodyResponse](../../models/operations/requestbodypostnullablenotrequiredstringbodyresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_post_nullable_required_string_body
 
@@ -3474,7 +3734,11 @@ if res.object is not None:
 ### Response
 
 **[operations.RequestBodyPostNullableRequiredStringBodyResponse](../../models/operations/requestbodypostnullablerequiredstringbodyresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_put_bytes
 
@@ -3511,7 +3775,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPutBytesResponse](../../models/operations/requestbodyputbytesresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_put_bytes_with_params
 
@@ -3548,7 +3816,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPutBytesWithParamsResponse](../../models/operations/requestbodyputbyteswithparamsresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_put_multipart_deep
 
@@ -3716,7 +3988,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPutMultipartDeepResponse](../../models/operations/requestbodyputmultipartdeepresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_put_multipart_different_file_name
 
@@ -3758,7 +4034,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPutMultipartDifferentFileNameResponse](../../models/operations/requestbodyputmultipartdifferentfilenameresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_put_multipart_file
 
@@ -3800,7 +4080,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPutMultipartFileResponse](../../models/operations/requestbodyputmultipartfileresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_put_multipart_simple
 
@@ -3858,7 +4142,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPutMultipartSimpleResponse](../../models/operations/requestbodyputmultipartsimpleresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_put_string
 
@@ -3895,7 +4183,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPutStringResponse](../../models/operations/requestbodyputstringresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_put_string_with_params
 
@@ -3932,7 +4224,11 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPutStringWithParamsResponse](../../models/operations/requestbodyputstringwithparamsresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_read_and_write
 
@@ -3974,7 +4270,11 @@ if res.read_write_object is not None:
 ### Response
 
 **[operations.RequestBodyReadAndWriteResponse](../../models/operations/requestbodyreadandwriteresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_read_only_input
 
@@ -4012,7 +4312,11 @@ if res.read_only_object is not None:
 ### Response
 
 **[operations.RequestBodyReadOnlyInputResponse](../../models/operations/requestbodyreadonlyinputresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_read_only_union
 
@@ -4071,7 +4375,11 @@ if res.weakly_typed_one_of_read_only_object is not None:
 ### Response
 
 **[operations.RequestBodyReadOnlyUnionResponse](../../models/operations/requestbodyreadonlyunionresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_read_write_only_union
 
@@ -4115,7 +4423,11 @@ if res.weakly_typed_one_of_read_write_object is not None:
 ### Response
 
 **[operations.RequestBodyReadWriteOnlyUnionResponse](../../models/operations/requestbodyreadwriteonlyunionresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_write_only
 
@@ -4157,7 +4469,11 @@ if res.read_only_object is not None:
 ### Response
 
 **[operations.RequestBodyWriteOnlyResponse](../../models/operations/requestbodywriteonlyresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_write_only_output
 
@@ -4199,7 +4515,11 @@ if res.write_only_object is not None:
 ### Response
 
 **[operations.RequestBodyWriteOnlyOutputResponse](../../models/operations/requestbodywriteonlyoutputresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## request_body_write_only_union
 
@@ -4243,4 +4563,8 @@ if res.weakly_typed_one_of_write_only_object is not None:
 ### Response
 
 **[operations.RequestBodyWriteOnlyUnionResponse](../../models/operations/requestbodywriteonlyunionresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

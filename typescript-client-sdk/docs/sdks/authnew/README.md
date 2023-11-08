@@ -48,7 +48,6 @@ import { SDK } from "openapi";
     ],
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -67,7 +66,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.ApiKeyAuthGlobalNewResponse](../../models/operations/apikeyauthglobalnewresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## authGlobal
 
@@ -98,7 +101,6 @@ import { SDK } from "openapi";
     ],
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -117,7 +119,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.AuthGlobalResponse](../../models/operations/authglobalresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## basicAuthNew
 
@@ -150,7 +156,6 @@ const operationSecurity: BasicAuthNewSecurity = {
     ],
   }, operationSecurity);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -170,7 +175,11 @@ const operationSecurity: BasicAuthNewSecurity = {
 ### Response
 
 **Promise<[operations.BasicAuthNewResponse](../../models/operations/basicauthnewresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## multipleMixedOptionsAuth
 
@@ -202,7 +211,6 @@ const operationSecurity: MultipleMixedOptionsAuthSecurity = {
     ],
   }, operationSecurity);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -222,7 +230,11 @@ const operationSecurity: MultipleMixedOptionsAuthSecurity = {
 ### Response
 
 **Promise<[operations.MultipleMixedOptionsAuthResponse](../../models/operations/multiplemixedoptionsauthresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## multipleMixedSchemeAuth
 
@@ -258,7 +270,6 @@ const operationSecurity: MultipleMixedSchemeAuthSecurity = {
     ],
   }, operationSecurity);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -278,7 +289,11 @@ const operationSecurity: MultipleMixedSchemeAuthSecurity = {
 ### Response
 
 **Promise<[operations.MultipleMixedSchemeAuthResponse](../../models/operations/multiplemixedschemeauthresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## multipleOptionsWithMixedSchemesAuth
 
@@ -313,7 +328,6 @@ const operationSecurity: MultipleOptionsWithMixedSchemesAuthSecurity = {
     ],
   }, operationSecurity);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -333,7 +347,11 @@ const operationSecurity: MultipleOptionsWithMixedSchemesAuthSecurity = {
 ### Response
 
 **Promise<[operations.MultipleOptionsWithMixedSchemesAuthResponse](../../models/operations/multipleoptionswithmixedschemesauthresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## multipleOptionsWithSimpleSchemesAuth
 
@@ -368,7 +386,6 @@ const operationSecurity: MultipleOptionsWithSimpleSchemesAuthSecurity = {
     ],
   }, operationSecurity);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -388,7 +405,11 @@ const operationSecurity: MultipleOptionsWithSimpleSchemesAuthSecurity = {
 ### Response
 
 **Promise<[operations.MultipleOptionsWithSimpleSchemesAuthResponse](../../models/operations/multipleoptionswithsimpleschemesauthresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## multipleSimpleOptionsAuth
 
@@ -420,7 +441,6 @@ const operationSecurity: MultipleSimpleOptionsAuthSecurity = {
     ],
   }, operationSecurity);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -440,7 +460,11 @@ const operationSecurity: MultipleSimpleOptionsAuthSecurity = {
 ### Response
 
 **Promise<[operations.MultipleSimpleOptionsAuthResponse](../../models/operations/multiplesimpleoptionsauthresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## multipleSimpleSchemeAuth
 
@@ -473,7 +497,6 @@ const operationSecurity: MultipleSimpleSchemeAuthSecurity = {
     ],
   }, operationSecurity);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -493,7 +516,11 @@ const operationSecurity: MultipleSimpleSchemeAuthSecurity = {
 ### Response
 
 **Promise<[operations.MultipleSimpleSchemeAuthResponse](../../models/operations/multiplesimpleschemeauthresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## oauth2AuthNew
 
@@ -525,7 +552,6 @@ const operationSecurity: Oauth2AuthNewSecurity = {
     ],
   }, operationSecurity);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -545,7 +571,11 @@ const operationSecurity: Oauth2AuthNewSecurity = {
 ### Response
 
 **Promise<[operations.Oauth2AuthNewResponse](../../models/operations/oauth2authnewresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## openIdConnectAuthNew
 
@@ -577,7 +607,6 @@ const operationSecurity: OpenIdConnectAuthNewSecurity = {
     ],
   }, operationSecurity);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -597,4 +626,8 @@ const operationSecurity: OpenIdConnectAuthNewSecurity = {
 ### Response
 
 **Promise<[operations.OpenIdConnectAuthNewResponse](../../models/operations/openidconnectauthnewresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

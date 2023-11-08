@@ -49,7 +49,11 @@ if res.file_resource is not None:
 ### Response
 
 **[operations.CreateFileResponse](../../models/operations/createfileresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## create_resource
 
@@ -114,7 +118,11 @@ if res.example_resource is not None:
 ### Response
 
 **[operations.CreateResourceResponse](../../models/operations/createresourceresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## delete_resource
 
@@ -150,7 +158,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.DeleteResourceResponse](../../models/operations/deleteresourceresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## get_resource
 
@@ -186,7 +198,11 @@ if res.example_resource is not None:
 ### Response
 
 **[operations.GetResourceResponse](../../models/operations/getresourceresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## update_resource
 
@@ -222,4 +238,8 @@ if res.status_code == 200:
 ### Response
 
 **[operations.UpdateResourceResponse](../../models/operations/updateresourceresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

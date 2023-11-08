@@ -56,7 +56,11 @@ if res.type_from_anchor is not None:
 ### Response
 
 **[operations.AnchorTypesGetResponse](../../models/operations/anchortypesgetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## array_circular_reference_get
 
@@ -86,7 +90,11 @@ if res.array_circular_reference_object is not None:
 ### Response
 
 **[operations.ArrayCircularReferenceGetResponse](../../models/operations/arraycircularreferencegetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## circular_reference_get
 
@@ -116,7 +124,11 @@ if res.valid_circular_reference_object is not None:
 ### Response
 
 **[operations.CircularReferenceGetResponse](../../models/operations/circularreferencegetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## date_param_with_default
 
@@ -153,7 +165,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.DateParamWithDefaultResponse](../../models/operations/dateparamwithdefaultresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## date_time_param_with_default
 
@@ -190,7 +206,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.DateTimeParamWithDefaultResponse](../../models/operations/datetimeparamwithdefaultresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## decimal_param_with_default
 
@@ -227,7 +247,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.DecimalParamWithDefaultResponse](../../models/operations/decimalparamwithdefaultresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## deprecated_field_in_schema_post
 
@@ -264,7 +288,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.DeprecatedFieldInSchemaPostResponse](../../models/operations/deprecatedfieldinschemapostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## deprecated_object_in_schema_get
 
@@ -294,7 +322,11 @@ if res.object is not None:
 ### Response
 
 **[operations.DeprecatedObjectInSchemaGetResponse](../../models/operations/deprecatedobjectinschemagetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## ~~deprecated_operation_no_comments_get~~
 
@@ -332,7 +364,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.DeprecatedOperationNoCommentsGetResponse](../../models/operations/deprecatedoperationnocommentsgetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## ~~deprecated_operation_with_comments_get~~
 
@@ -373,7 +409,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.DeprecatedOperationWithCommentsGetResponse](../../models/operations/deprecatedoperationwithcommentsgetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## empty_object_get
 
@@ -409,7 +449,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.EmptyObjectGetResponse](../../models/operations/emptyobjectgetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## empty_response_object_with_comment_get
 
@@ -439,7 +483,11 @@ if res.body is not None:
 ### Response
 
 **[operations.EmptyResponseObjectWithCommentGetResponse](../../models/operations/emptyresponseobjectwithcommentgetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## global_name_overridden
 
@@ -469,7 +517,11 @@ if res.object is not None:
 ### Response
 
 **[operations.GetGlobalNameOverrideResponse](../../models/operations/getglobalnameoverrideresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## ignored_generation_get
 
@@ -499,7 +551,11 @@ if res.object is not None:
 ### Response
 
 **[operations.IgnoredGenerationGetResponse](../../models/operations/ignoredgenerationgetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## ignores_post
 
@@ -536,7 +592,11 @@ if res.http_bin_simple_json_object is not None:
 ### Response
 
 **[operations.IgnoresPostResponse](../../models/operations/ignorespostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## name_override
 
@@ -573,7 +633,11 @@ if res.overridden_response is not None:
 ### Response
 
 **[operations.NameOverrideGetResponse](../../models/operations/nameoverridegetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## object_circular_reference_get
 
@@ -603,7 +667,11 @@ if res.object_circular_reference_object is not None:
 ### Response
 
 **[operations.ObjectCircularReferenceGetResponse](../../models/operations/objectcircularreferencegetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## one_of_circular_reference_get
 
@@ -633,7 +701,11 @@ if res.one_of_circular_reference_object is not None:
 ### Response
 
 **[operations.OneOfCircularReferenceGetResponse](../../models/operations/oneofcircularreferencegetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## typed_parameter_generation_get
 
@@ -678,7 +750,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.TypedParameterGenerationGetResponse](../../models/operations/typedparametergenerationgetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## usage_example_post
 
@@ -765,4 +841,8 @@ if res.object is not None:
 ### Response
 
 **[operations.UsageExamplePostResponse](../../models/operations/usageexamplepostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

@@ -59,7 +59,9 @@ func main() {
 ### Response
 
 **[*operations.SelectGlobalServerResponse](../../models/operations/selectglobalserverresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## SelectServerWithID
 
@@ -109,7 +111,9 @@ func main() {
 ### Response
 
 **[*operations.SelectServerWithIDResponse](../../models/operations/selectserverwithidresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ServerWithProtocolTemplate
 
@@ -157,7 +161,9 @@ func main() {
 ### Response
 
 **[*operations.ServerWithProtocolTemplateResponse](../../models/operations/serverwithprotocoltemplateresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ServerWithTemplates
 
@@ -205,7 +211,9 @@ func main() {
 ### Response
 
 **[*operations.ServerWithTemplatesResponse](../../models/operations/serverwithtemplatesresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ServerWithTemplatesGlobal
 
@@ -252,7 +260,9 @@ func main() {
 ### Response
 
 **[*operations.ServerWithTemplatesGlobalResponse](../../models/operations/serverwithtemplatesglobalresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ServersByIDWithTemplates
 
@@ -300,4 +310,6 @@ func main() {
 ### Response
 
 **[*operations.ServersByIDWithTemplatesResponse](../../models/operations/serversbyidwithtemplatesresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

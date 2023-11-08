@@ -59,7 +59,9 @@ func main() {
 ### Response
 
 **[*operations.GlobalPathParameterGetResponse](../../models/operations/globalpathparametergetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## GlobalsQueryParameterGet
 
@@ -110,4 +112,6 @@ func main() {
 ### Response
 
 **[*operations.GlobalsQueryParameterGetResponse](../../models/operations/globalsqueryparametergetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

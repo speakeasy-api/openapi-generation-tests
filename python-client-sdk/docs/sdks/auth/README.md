@@ -49,7 +49,11 @@ if res.token is not None:
 ### Response
 
 **[operations.APIKeyAuthResponse](../../models/operations/apikeyauthresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## api_key_auth_global
 
@@ -79,7 +83,11 @@ if res.token is not None:
 ### Response
 
 **[operations.APIKeyAuthGlobalResponse](../../models/operations/apikeyauthglobalresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## basic_auth
 
@@ -117,7 +125,11 @@ if res.user is not None:
 ### Response
 
 **[operations.BasicAuthResponse](../../models/operations/basicauthresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## bearer_auth
 
@@ -152,7 +164,11 @@ if res.token is not None:
 ### Response
 
 **[operations.BearerAuthResponse](../../models/operations/bearerauthresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## global_bearer_auth
 
@@ -182,7 +198,11 @@ if res.token is not None:
 ### Response
 
 **[operations.GlobalBearerAuthResponse](../../models/operations/globalbearerauthresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## oauth2_auth
 
@@ -217,7 +237,11 @@ if res.token is not None:
 ### Response
 
 **[operations.Oauth2AuthResponse](../../models/operations/oauth2authresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## oauth2_override
 
@@ -252,7 +276,11 @@ if res.token is not None:
 ### Response
 
 **[operations.Oauth2OverrideResponse](../../models/operations/oauth2overrideresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## open_id_connect_auth
 
@@ -287,4 +315,8 @@ if res.token is not None:
 ### Response
 
 **[operations.OpenIDConnectAuthResponse](../../models/operations/openidconnectauthresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

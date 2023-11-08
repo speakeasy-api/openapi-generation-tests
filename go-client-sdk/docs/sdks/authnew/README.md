@@ -77,7 +77,9 @@ func main() {
 ### Response
 
 **[*operations.APIKeyAuthGlobalNewResponse](../../models/operations/apikeyauthglobalnewresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## AuthGlobal
 
@@ -137,7 +139,9 @@ func main() {
 ### Response
 
 **[*operations.AuthGlobalResponse](../../models/operations/authglobalresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## BasicAuthNew
 
@@ -202,7 +206,9 @@ func main() {
 ### Response
 
 **[*operations.BasicAuthNewResponse](../../models/operations/basicauthnewresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## MultipleMixedOptionsAuth
 
@@ -266,7 +272,9 @@ func main() {
 ### Response
 
 **[*operations.MultipleMixedOptionsAuthResponse](../../models/operations/multiplemixedoptionsauthresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## MultipleMixedSchemeAuth
 
@@ -334,7 +342,9 @@ func main() {
 ### Response
 
 **[*operations.MultipleMixedSchemeAuthResponse](../../models/operations/multiplemixedschemeauthresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## MultipleOptionsWithMixedSchemesAuth
 
@@ -401,7 +411,9 @@ func main() {
 ### Response
 
 **[*operations.MultipleOptionsWithMixedSchemesAuthResponse](../../models/operations/multipleoptionswithmixedschemesauthresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## MultipleOptionsWithSimpleSchemesAuth
 
@@ -468,7 +480,9 @@ func main() {
 ### Response
 
 **[*operations.MultipleOptionsWithSimpleSchemesAuthResponse](../../models/operations/multipleoptionswithsimpleschemesauthresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## MultipleSimpleOptionsAuth
 
@@ -532,7 +546,9 @@ func main() {
 ### Response
 
 **[*operations.MultipleSimpleOptionsAuthResponse](../../models/operations/multiplesimpleoptionsauthresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## MultipleSimpleSchemeAuth
 
@@ -597,7 +613,9 @@ func main() {
 ### Response
 
 **[*operations.MultipleSimpleSchemeAuthResponse](../../models/operations/multiplesimpleschemeauthresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## Oauth2AuthNew
 
@@ -661,7 +679,9 @@ func main() {
 ### Response
 
 **[*operations.Oauth2AuthNewResponse](../../models/operations/oauth2authnewresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## OpenIDConnectAuthNew
 
@@ -725,4 +745,6 @@ func main() {
 ### Response
 
 **[*operations.OpenIDConnectAuthNewResponse](../../models/operations/openidconnectauthnewresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

@@ -69,7 +69,11 @@ if res.res is not None:
 ### Response
 
 **[operations.ComponentBodyAndParamConflictResponse](../../models/operations/componentbodyandparamconflictresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## component_body_and_param_no_conflict
 
@@ -127,7 +131,11 @@ if res.res is not None:
 ### Response
 
 **[operations.ComponentBodyAndParamNoConflictResponse](../../models/operations/componentbodyandparamnoconflictresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## conflicting_params
 
@@ -164,7 +172,11 @@ if res.res is not None:
 ### Response
 
 **[operations.ConflictingParamsResponse](../../models/operations/conflictingparamsresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## inline_body_and_param_conflict
 
@@ -203,7 +215,11 @@ if res.res is not None:
 ### Response
 
 **[operations.InlineBodyAndParamConflictResponse](../../models/operations/inlinebodyandparamconflictresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## inline_body_and_param_no_conflict
 
@@ -242,4 +258,8 @@ if res.res is not None:
 ### Response
 
 **[operations.InlineBodyAndParamNoConflictResponse](../../models/operations/inlinebodyandparamnoconflictresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

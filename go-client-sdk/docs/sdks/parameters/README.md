@@ -56,8 +56,8 @@ func main() {
 
 
     mapParam := map[string]string{
-        "test2": "value2",
         "test": "value",
+        "test2": "value2",
     }
 
     mapArrParam := map[string][]string{
@@ -95,7 +95,9 @@ func main() {
 ### Response
 
 **[*operations.DeepObjectQueryParamsMapResponse](../../models/operations/deepobjectqueryparamsmapresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## DeepObjectQueryParamsObject
 
@@ -176,7 +178,9 @@ func main() {
 ### Response
 
 **[*operations.DeepObjectQueryParamsObjectResponse](../../models/operations/deepobjectqueryparamsobjectresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## DuplicateParam
 
@@ -227,7 +231,9 @@ func main() {
 ### Response
 
 **[*operations.DuplicateParamResponse](../../models/operations/duplicateparamresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## FormQueryParamsArray
 
@@ -287,7 +293,9 @@ func main() {
 ### Response
 
 **[*operations.FormQueryParamsArrayResponse](../../models/operations/formqueryparamsarrayresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## FormQueryParamsCamelObject
 
@@ -348,7 +356,9 @@ func main() {
 ### Response
 
 **[*operations.FormQueryParamsCamelObjectResponse](../../models/operations/formqueryparamscamelobjectresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## FormQueryParamsMap
 
@@ -408,7 +418,9 @@ func main() {
 ### Response
 
 **[*operations.FormQueryParamsMapResponse](../../models/operations/formqueryparamsmapresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## FormQueryParamsObject
 
@@ -502,7 +514,9 @@ func main() {
 ### Response
 
 **[*operations.FormQueryParamsObjectResponse](../../models/operations/formqueryparamsobjectresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## FormQueryParamsPrimitive
 
@@ -562,7 +576,9 @@ func main() {
 ### Response
 
 **[*operations.FormQueryParamsPrimitiveResponse](../../models/operations/formqueryparamsprimitiveresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## FormQueryParamsRefParamObject
 
@@ -626,7 +642,9 @@ func main() {
 ### Response
 
 **[*operations.FormQueryParamsRefParamObjectResponse](../../models/operations/formqueryparamsrefparamobjectresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## HeaderParamsArray
 
@@ -680,7 +698,9 @@ func main() {
 ### Response
 
 **[*operations.HeaderParamsArrayResponse](../../models/operations/headerparamsarrayresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## HeaderParamsMap
 
@@ -707,8 +727,8 @@ func main() {
 
 
     xHeaderMap := map[string]string{
-        "key2": "value2",
         "key1": "value1",
+        "key2": "value2",
     }
 
     xHeaderMapExplode := map[string]string{
@@ -740,7 +760,9 @@ func main() {
 ### Response
 
 **[*operations.HeaderParamsMapResponse](../../models/operations/headerparamsmapresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## HeaderParamsObject
 
@@ -834,7 +856,9 @@ func main() {
 ### Response
 
 **[*operations.HeaderParamsObjectResponse](../../models/operations/headerparamsobjectresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## HeaderParamsPrimitive
 
@@ -894,7 +918,9 @@ func main() {
 ### Response
 
 **[*operations.HeaderParamsPrimitiveResponse](../../models/operations/headerparamsprimitiveresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## JSONQueryParamsObject
 
@@ -1100,7 +1126,9 @@ func main() {
 ### Response
 
 **[*operations.JSONQueryParamsObjectResponse](../../models/operations/jsonqueryparamsobjectresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## MixedParametersCamelCase
 
@@ -1157,7 +1185,9 @@ func main() {
 ### Response
 
 **[*operations.MixedParametersCamelCaseResponse](../../models/operations/mixedparameterscamelcaseresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## MixedParametersPrimitives
 
@@ -1214,7 +1244,9 @@ func main() {
 ### Response
 
 **[*operations.MixedParametersPrimitivesResponse](../../models/operations/mixedparametersprimitivesresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## MixedQueryParams
 
@@ -1330,7 +1362,9 @@ func main() {
 ### Response
 
 **[*operations.MixedQueryParamsResponse](../../models/operations/mixedqueryparamsresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## PathParameterJSON
 
@@ -1402,7 +1436,9 @@ func main() {
 ### Response
 
 **[*operations.PathParameterJSONResponse](../../models/operations/pathparameterjsonresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## PipeDelimitedQueryParamsArray
 
@@ -1492,7 +1528,9 @@ func main() {
 ### Response
 
 **[*operations.PipeDelimitedQueryParamsArrayResponse](../../models/operations/pipedelimitedqueryparamsarrayresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## SimplePathParameterArrays
 
@@ -1546,7 +1584,9 @@ func main() {
 ### Response
 
 **[*operations.SimplePathParameterArraysResponse](../../models/operations/simplepathparameterarraysresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## SimplePathParameterMaps
 
@@ -1606,7 +1646,9 @@ func main() {
 ### Response
 
 **[*operations.SimplePathParameterMapsResponse](../../models/operations/simplepathparametermapsresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## SimplePathParameterObjects
 
@@ -1700,7 +1742,9 @@ func main() {
 ### Response
 
 **[*operations.SimplePathParameterObjectsResponse](../../models/operations/simplepathparameterobjectsresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## SimplePathParameterPrimitives
 
@@ -1760,4 +1804,6 @@ func main() {
 ### Response
 
 **[*operations.SimplePathParameterPrimitivesResponse](../../models/operations/simplepathparameterprimitivesresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

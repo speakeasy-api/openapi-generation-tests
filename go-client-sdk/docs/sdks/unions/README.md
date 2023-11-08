@@ -74,7 +74,9 @@ func main() {
 ### Response
 
 **[*operations.FlattenedTypedObjectPostResponse](../../models/operations/flattenedtypedobjectpostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## MixedTypeOneOfPost
 
@@ -127,7 +129,9 @@ func main() {
 ### Response
 
 **[*operations.MixedTypeOneOfPostResponse](../../models/operations/mixedtypeoneofpostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## NullableOneOfRefInObjectPost
 
@@ -192,7 +196,9 @@ func main() {
 ### Response
 
 **[*operations.NullableOneOfRefInObjectPostResponse](../../models/operations/nullableoneofrefinobjectpostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## NullableOneOfSchemaPost
 
@@ -246,7 +252,9 @@ func main() {
 ### Response
 
 **[*operations.NullableOneOfSchemaPostResponse](../../models/operations/nullableoneofschemapostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## NullableOneOfTypeInObjectPost
 
@@ -300,7 +308,9 @@ func main() {
 ### Response
 
 **[*operations.NullableOneOfTypeInObjectPostResponse](../../models/operations/nullableoneoftypeinobjectpostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## NullableTypedObjectPost
 
@@ -351,7 +361,9 @@ func main() {
 ### Response
 
 **[*operations.NullableTypedObjectPostResponse](../../models/operations/nullabletypedobjectpostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## PrimitiveTypeOneOfPost
 
@@ -402,7 +414,9 @@ func main() {
 ### Response
 
 **[*operations.PrimitiveTypeOneOfPostResponse](../../models/operations/primitivetypeoneofpostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## StronglyTypedOneOfPost
 
@@ -499,7 +513,7 @@ func main() {
                 Bool: true,
                 Int: 1,
                 Map: map[string]shared.SimpleObject{
-                    "key": shared.SimpleObject{
+                    "key2": shared.SimpleObject{
                         Any: "any",
                         Bigint: big.NewInt(8821239038968084),
                         BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
@@ -519,7 +533,7 @@ func main() {
                         Str: "test",
                         StrOpt: openapi.String("testOptional"),
                     },
-                    "key2": shared.SimpleObject{
+                    "key": shared.SimpleObject{
                         Any: "any",
                         Bigint: big.NewInt(8821239038968084),
                         BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
@@ -585,7 +599,9 @@ func main() {
 ### Response
 
 **[*operations.StronglyTypedOneOfPostResponse](../../models/operations/stronglytypedoneofpostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## TypedObjectNullableOneOfPost
 
@@ -638,7 +654,9 @@ func main() {
 ### Response
 
 **[*operations.TypedObjectNullableOneOfPostResponse](../../models/operations/typedobjectnullableoneofpostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## TypedObjectOneOfPost
 
@@ -691,7 +709,9 @@ func main() {
 ### Response
 
 **[*operations.TypedObjectOneOfPostResponse](../../models/operations/typedobjectoneofpostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## UnionBigIntDecimal
 
@@ -744,7 +764,9 @@ func main() {
 ### Response
 
 **[*operations.UnionBigIntDecimalResponse](../../models/operations/unionbigintdecimalresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## UnionDateNull
 
@@ -792,7 +814,9 @@ func main() {
 ### Response
 
 **[*operations.UnionDateNullResponse](../../models/operations/uniondatenullresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## UnionDateTimeBigInt
 
@@ -845,7 +869,9 @@ func main() {
 ### Response
 
 **[*operations.UnionDateTimeBigIntResponse](../../models/operations/uniondatetimebigintresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## UnionDateTimeNull
 
@@ -893,7 +919,9 @@ func main() {
 ### Response
 
 **[*operations.UnionDateTimeNullResponse](../../models/operations/uniondatetimenullresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## WeaklyTypedOneOfPost
 
@@ -964,4 +992,6 @@ func main() {
 ### Response
 
 **[*operations.WeaklyTypedOneOfPostResponse](../../models/operations/weaklytypedoneofpostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

@@ -50,4 +50,6 @@ func main() {
 ### Response
 
 **[*operations.NestedGetResponse](../../models/operations/nestedgetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

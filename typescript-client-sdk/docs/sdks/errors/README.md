@@ -29,7 +29,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.errors.connectionErrorGet();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -47,7 +46,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.ConnectionErrorGetResponse](../../models/operations/connectionerrorgetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## statusGetError
 
@@ -69,7 +72,6 @@ const statusCode: number = 458364;
 
   const res = await sdk.errors.statusGetError(statusCode);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -87,7 +89,11 @@ const statusCode: number = 458364;
 ### Response
 
 **Promise<[operations.StatusGetErrorResponse](../../models/operations/statusgeterrorresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## statusGetXSpeakeasyErrors
 
@@ -109,7 +115,6 @@ const statusCode: number = 385913;
 
   const res = await sdk.errors.statusGetXSpeakeasyErrors(statusCode);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -128,4 +133,10 @@ const statusCode: number = 385913;
 ### Response
 
 **Promise<[operations.StatusGetXSpeakeasyErrorsResponse](../../models/operations/statusgetxspeakeasyerrorsresponse.md)>**
+### Errors
 
+| Error Object                                 | Status Code                                  | Content Type                                 |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| errors.ErrorT                                | 500                                          | application/json                             |
+| errors.StatusGetXSpeakeasyErrorsResponseBody | 501                                          | application/json                             |
+| errors.SDKError                              | 400-600                                      | */*                                          |

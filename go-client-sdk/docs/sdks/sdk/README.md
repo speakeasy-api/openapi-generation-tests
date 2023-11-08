@@ -59,7 +59,9 @@ func main() {
 ### Response
 
 **[*operations.PutAnythingIgnoredGenerationResponse](../../models/operations/putanythingignoredgenerationresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ResponseBodyJSONGet
 
@@ -106,4 +108,6 @@ func main() {
 ### Response
 
 **[*operations.ResponseBodyJSONGetResponse](../../models/operations/responsebodyjsongetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

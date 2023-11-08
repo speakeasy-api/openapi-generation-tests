@@ -137,7 +137,9 @@ func main() {
 ### Response
 
 **[*operations.NullableObjectPostResponse](../../models/operations/nullableobjectpostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## NullableRequiredEmptyObjectPost
 
@@ -190,7 +192,9 @@ func main() {
 ### Response
 
 **[*operations.NullableRequiredEmptyObjectPostResponse](../../models/operations/nullablerequiredemptyobjectpostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## NullableRequiredPropertyPost
 
@@ -245,7 +249,9 @@ func main() {
 ### Response
 
 **[*operations.NullableRequiredPropertyPostResponse](../../models/operations/nullablerequiredpropertypostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## NullableRequiredSharedObjectPost
 
@@ -301,7 +307,9 @@ func main() {
 ### Response
 
 **[*operations.NullableRequiredSharedObjectPostResponse](../../models/operations/nullablerequiredsharedobjectpostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONArray
 
@@ -373,7 +381,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONArrayResponse](../../models/operations/requestbodypostapplicationjsonarrayresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONArrayCamelCase
 
@@ -442,7 +452,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONArrayCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonarraycamelcaseresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONArrayObj
 
@@ -513,7 +525,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONArrayObjResponse](../../models/operations/requestbodypostapplicationjsonarrayobjresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONArrayObjCamelCase
 
@@ -581,7 +595,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONArrayObjCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonarrayobjcamelcaseresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONArrayOfArray
 
@@ -655,7 +671,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONArrayOfArrayResponse](../../models/operations/requestbodypostapplicationjsonarrayofarrayresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONArrayOfArrayCamelCase
 
@@ -726,7 +744,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONArrayOfArrayCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonarrayofarraycamelcaseresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONArrayOfArrayOfPrimitive
 
@@ -779,7 +799,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse](../../models/operations/requestbodypostapplicationjsonarrayofarrayofprimitiveresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONArrayOfMap
 
@@ -853,7 +875,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONArrayOfMapResponse](../../models/operations/requestbodypostapplicationjsonarrayofmapresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONArrayOfMapCamelCase
 
@@ -924,7 +948,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONArrayOfMapCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonarrayofmapcamelcaseresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONArrayOfPrimitive
 
@@ -975,7 +1001,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONArrayOfPrimitiveResponse](../../models/operations/requestbodypostapplicationjsonarrayofprimitiveresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONDeep
 
@@ -1071,7 +1099,7 @@ func main() {
         Bool: true,
         Int: 1,
         Map: map[string]shared.SimpleObject{
-            "key2": shared.SimpleObject{
+            "key": shared.SimpleObject{
                 Any: "any",
                 Bigint: big.NewInt(8821239038968084),
                 BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
@@ -1091,7 +1119,7 @@ func main() {
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
             },
-            "key": shared.SimpleObject{
+            "key2": shared.SimpleObject{
                 Any: "any",
                 Bigint: big.NewInt(8821239038968084),
                 BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
@@ -1156,7 +1184,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONDeepResponse](../../models/operations/requestbodypostapplicationjsondeepresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONDeepCamelCase
 
@@ -1288,7 +1318,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONDeepCamelCaseResponse](../../models/operations/requestbodypostapplicationjsondeepcamelcaseresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONMap
 
@@ -1360,7 +1392,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONMapResponse](../../models/operations/requestbodypostapplicationjsonmapresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONMapCamelCase
 
@@ -1429,7 +1463,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONMapCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonmapcamelcaseresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONMapObj
 
@@ -1500,7 +1536,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONMapObjResponse](../../models/operations/requestbodypostapplicationjsonmapobjresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONMapObjCamelCase
 
@@ -1568,7 +1606,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONMapObjCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonmapobjcamelcaseresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONMapOfArray
 
@@ -1642,7 +1682,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONMapOfArrayResponse](../../models/operations/requestbodypostapplicationjsonmapofarrayresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONMapOfArrayCamelCase
 
@@ -1713,7 +1755,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONMapOfArrayCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonmapofarraycamelcaseresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONMapOfMap
 
@@ -1787,7 +1831,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONMapOfMapResponse](../../models/operations/requestbodypostapplicationjsonmapofmapresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONMapOfMapCamelCase
 
@@ -1858,7 +1904,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONMapOfMapCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonmapofmapcamelcaseresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONMapOfMapOfPrimitive
 
@@ -1911,7 +1959,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONMapOfMapOfPrimitiveResponse](../../models/operations/requestbodypostapplicationjsonmapofmapofprimitiveresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONMapOfPrimitive
 
@@ -1962,7 +2012,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONMapOfPrimitiveResponse](../../models/operations/requestbodypostapplicationjsonmapofprimitiveresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONMultipleJSONFiltered
 
@@ -2031,7 +2083,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONMultipleJSONFilteredResponse](../../models/operations/requestbodypostapplicationjsonmultiplejsonfilteredresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONSimple
 
@@ -2100,7 +2154,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONSimpleResponse](../../models/operations/requestbodypostapplicationjsonsimpleresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostApplicationJSONSimpleCamelCase
 
@@ -2166,7 +2222,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostApplicationJSONSimpleCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonsimplecamelcaseresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostComplexNumberTypes
 
@@ -2232,7 +2290,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostComplexNumberTypesResponse](../../models/operations/requestbodypostcomplexnumbertypesresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostDefaultsAndConsts
 
@@ -2297,7 +2357,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostDefaultsAndConstsResponse](../../models/operations/requestbodypostdefaultsandconstsresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostEmptyObject
 
@@ -2349,7 +2411,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostEmptyObjectResponse](../../models/operations/requestbodypostemptyobjectresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostFormDeep
 
@@ -2530,7 +2594,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostFormDeepResponse](../../models/operations/requestbodypostformdeepresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostFormMapPrimitive
 
@@ -2580,7 +2646,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostFormMapPrimitiveResponse](../../models/operations/requestbodypostformmapprimitiveresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostFormSimple
 
@@ -2649,7 +2717,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostFormSimpleResponse](../../models/operations/requestbodypostformsimpleresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostJSONDataTypesArrayBigInt
 
@@ -2699,7 +2769,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostJSONDataTypesArrayBigIntResponse](../../models/operations/requestbodypostjsondatatypesarraybigintresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostJSONDataTypesArrayDate
 
@@ -2749,7 +2821,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostJSONDataTypesArrayDateResponse](../../models/operations/requestbodypostjsondatatypesarraydateresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostJSONDataTypesArrayDecimalStr
 
@@ -2799,7 +2873,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostJSONDataTypesArrayDecimalStrResponse](../../models/operations/requestbodypostjsondatatypesarraydecimalstrresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostJSONDataTypesBigInt
 
@@ -2847,7 +2923,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostJSONDataTypesBigIntResponse](../../models/operations/requestbodypostjsondatatypesbigintresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostJSONDataTypesBigIntStr
 
@@ -2895,7 +2973,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostJSONDataTypesBigIntStrResponse](../../models/operations/requestbodypostjsondatatypesbigintstrresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostJSONDataTypesBoolean
 
@@ -2943,7 +3023,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostJSONDataTypesBooleanResponse](../../models/operations/requestbodypostjsondatatypesbooleanresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostJSONDataTypesDate
 
@@ -2991,7 +3073,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostJSONDataTypesDateResponse](../../models/operations/requestbodypostjsondatatypesdateresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostJSONDataTypesDateTime
 
@@ -3039,7 +3123,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostJSONDataTypesDateTimeResponse](../../models/operations/requestbodypostjsondatatypesdatetimeresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostJSONDataTypesDecimal
 
@@ -3087,7 +3173,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostJSONDataTypesDecimalResponse](../../models/operations/requestbodypostjsondatatypesdecimalresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostJSONDataTypesDecimalStr
 
@@ -3135,7 +3223,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostJSONDataTypesDecimalStrResponse](../../models/operations/requestbodypostjsondatatypesdecimalstrresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostJSONDataTypesFloat32
 
@@ -3183,7 +3273,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostJSONDataTypesFloat32Response](../../models/operations/requestbodypostjsondatatypesfloat32response.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostJSONDataTypesInt32
 
@@ -3231,7 +3323,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostJSONDataTypesInt32Response](../../models/operations/requestbodypostjsondatatypesint32response.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostJSONDataTypesInteger
 
@@ -3279,7 +3373,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostJSONDataTypesIntegerResponse](../../models/operations/requestbodypostjsondatatypesintegerresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostJSONDataTypesMapBigIntStr
 
@@ -3329,7 +3425,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostJSONDataTypesMapBigIntStrResponse](../../models/operations/requestbodypostjsondatatypesmapbigintstrresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostJSONDataTypesMapDateTime
 
@@ -3379,7 +3477,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostJSONDataTypesMapDateTimeResponse](../../models/operations/requestbodypostjsondatatypesmapdatetimeresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostJSONDataTypesMapDecimal
 
@@ -3429,7 +3529,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostJSONDataTypesMapDecimalResponse](../../models/operations/requestbodypostjsondatatypesmapdecimalresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostJSONDataTypesNumber
 
@@ -3477,7 +3579,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostJSONDataTypesNumberResponse](../../models/operations/requestbodypostjsondatatypesnumberresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostJSONDataTypesString
 
@@ -3525,7 +3629,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostJSONDataTypesStringResponse](../../models/operations/requestbodypostjsondatatypesstringresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostMultipleContentTypesComponentFiltered
 
@@ -3594,7 +3700,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostMultipleContentTypesComponentFilteredResponse](../../models/operations/requestbodypostmultiplecontenttypescomponentfilteredresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostMultipleContentTypesInlineFiltered
 
@@ -3647,7 +3755,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse](../../models/operations/requestbodypostmultiplecontenttypesinlinefilteredresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostMultipleContentTypesSplitParamForm
 
@@ -3706,7 +3816,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse](../../models/operations/requestbodypostmultiplecontenttypessplitparamformresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostMultipleContentTypesSplitParamJSON
 
@@ -3765,7 +3877,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostMultipleContentTypesSplitParamJSONResponse](../../models/operations/requestbodypostmultiplecontenttypessplitparamjsonresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostMultipleContentTypesSplitParamMultipart
 
@@ -3824,7 +3938,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse](../../models/operations/requestbodypostmultiplecontenttypessplitparammultipartresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostMultipleContentTypesSplitForm
 
@@ -3877,7 +3993,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostMultipleContentTypesSplitFormResponse](../../models/operations/requestbodypostmultiplecontenttypessplitformresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostMultipleContentTypesSplitJSON
 
@@ -3930,7 +4048,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostMultipleContentTypesSplitJSONResponse](../../models/operations/requestbodypostmultiplecontenttypessplitjsonresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostMultipleContentTypesSplitMultipart
 
@@ -3983,7 +4103,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse](../../models/operations/requestbodypostmultiplecontenttypessplitmultipartresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostNotNullableNotRequiredStringBody
 
@@ -4031,7 +4153,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostNotNullableNotRequiredStringBodyResponse](../../models/operations/requestbodypostnotnullablenotrequiredstringbodyresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostNullArray
 
@@ -4081,7 +4205,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostNullArrayResponse](../../models/operations/requestbodypostnullarrayresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostNullDictionary
 
@@ -4131,7 +4257,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostNullDictionaryResponse](../../models/operations/requestbodypostnulldictionaryresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostNullableNotRequiredStringBody
 
@@ -4179,7 +4307,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostNullableNotRequiredStringBodyResponse](../../models/operations/requestbodypostnullablenotrequiredstringbodyresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPostNullableRequiredStringBody
 
@@ -4227,7 +4357,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostNullableRequiredStringBodyResponse](../../models/operations/requestbodypostnullablerequiredstringbodyresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPutBytes
 
@@ -4275,7 +4407,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPutBytesResponse](../../models/operations/requestbodyputbytesresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPutBytesWithParams
 
@@ -4329,7 +4463,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPutBytesWithParamsResponse](../../models/operations/requestbodyputbyteswithparamsresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPutMultipartDeep
 
@@ -4510,7 +4646,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPutMultipartDeepResponse](../../models/operations/requestbodyputmultipartdeepresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPutMultipartDifferentFileName
 
@@ -4564,7 +4702,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPutMultipartDifferentFileNameResponse](../../models/operations/requestbodyputmultipartdifferentfilenameresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPutMultipartFile
 
@@ -4618,7 +4758,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPutMultipartFileResponse](../../models/operations/requestbodyputmultipartfileresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPutMultipartSimple
 
@@ -4687,7 +4829,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPutMultipartSimpleResponse](../../models/operations/requestbodyputmultipartsimpleresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPutString
 
@@ -4735,7 +4879,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPutStringResponse](../../models/operations/requestbodyputstringresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyPutStringWithParams
 
@@ -4789,7 +4935,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPutStringWithParamsResponse](../../models/operations/requestbodyputstringwithparamsresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyReadAndWrite
 
@@ -4842,7 +4990,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyReadAndWriteResponse](../../models/operations/requestbodyreadandwriteresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyReadOnlyInput
 
@@ -4891,7 +5041,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyReadOnlyInputResponse](../../models/operations/requestbodyreadonlyinputresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyReadOnlyUnion
 
@@ -4963,7 +5115,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyReadOnlyUnionResponse](../../models/operations/requestbodyreadonlyunionresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyReadWriteOnlyUnion
 
@@ -5020,7 +5174,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyReadWriteOnlyUnionResponse](../../models/operations/requestbodyreadwriteonlyunionresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyWriteOnly
 
@@ -5073,7 +5229,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyWriteOnlyResponse](../../models/operations/requestbodywriteonlyresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyWriteOnlyOutput
 
@@ -5126,7 +5284,9 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyWriteOnlyOutputResponse](../../models/operations/requestbodywriteonlyoutputresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## RequestBodyWriteOnlyUnion
 
@@ -5183,4 +5343,6 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyWriteOnlyUnionResponse](../../models/operations/requestbodywriteonlyunionresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

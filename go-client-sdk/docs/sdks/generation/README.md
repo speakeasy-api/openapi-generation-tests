@@ -73,7 +73,9 @@ func main() {
 ### Response
 
 **[*operations.AnchorTypesGetResponse](../../models/operations/anchortypesgetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ArrayCircularReferenceGet
 
@@ -120,7 +122,9 @@ func main() {
 ### Response
 
 **[*operations.ArrayCircularReferenceGetResponse](../../models/operations/arraycircularreferencegetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## CircularReferenceGet
 
@@ -167,7 +171,9 @@ func main() {
 ### Response
 
 **[*operations.CircularReferenceGetResponse](../../models/operations/circularreferencegetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## DateParamWithDefault
 
@@ -218,7 +224,9 @@ func main() {
 ### Response
 
 **[*operations.DateParamWithDefaultResponse](../../models/operations/dateparamwithdefaultresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## DateTimeParamWithDefault
 
@@ -269,7 +277,9 @@ func main() {
 ### Response
 
 **[*operations.DateTimeParamWithDefaultResponse](../../models/operations/datetimeparamwithdefaultresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## DecimalParamWithDefault
 
@@ -320,7 +330,9 @@ func main() {
 ### Response
 
 **[*operations.DecimalParamWithDefaultResponse](../../models/operations/decimalparamwithdefaultresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## DeprecatedFieldInSchemaPost
 
@@ -368,7 +380,9 @@ func main() {
 ### Response
 
 **[*operations.DeprecatedFieldInSchemaPostResponse](../../models/operations/deprecatedfieldinschemapostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## DeprecatedObjectInSchemaGet
 
@@ -415,7 +429,9 @@ func main() {
 ### Response
 
 **[*operations.DeprecatedObjectInSchemaGetResponse](../../models/operations/deprecatedobjectinschemagetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ~~DeprecatedOperationNoCommentsGet~~
 
@@ -468,7 +484,9 @@ func main() {
 ### Response
 
 **[*operations.DeprecatedOperationNoCommentsGetResponse](../../models/operations/deprecatedoperationnocommentsgetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ~~DeprecatedOperationWithCommentsGet~~
 
@@ -526,7 +544,9 @@ func main() {
 ### Response
 
 **[*operations.DeprecatedOperationWithCommentsGetResponse](../../models/operations/deprecatedoperationwithcommentsgetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## EmptyObjectGet
 
@@ -577,7 +597,9 @@ func main() {
 ### Response
 
 **[*operations.EmptyObjectGetResponse](../../models/operations/emptyobjectgetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## EmptyResponseObjectWithCommentGet
 
@@ -624,7 +646,9 @@ func main() {
 ### Response
 
 **[*operations.EmptyResponseObjectWithCommentGetResponse](../../models/operations/emptyresponseobjectwithcommentgetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## GlobalNameOverridden
 
@@ -671,7 +695,9 @@ func main() {
 ### Response
 
 **[*operations.GetGlobalNameOverrideResponse](../../models/operations/getglobalnameoverrideresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## IgnoredGenerationGet
 
@@ -719,7 +745,9 @@ func main() {
 ### Response
 
 **[*operations.IgnoredGenerationGetResponse](../../models/operations/ignoredgenerationgetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## IgnoresPost
 
@@ -774,7 +802,9 @@ func main() {
 ### Response
 
 **[*operations.IgnoresPostResponse](../../models/operations/ignorespostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## NameOverride
 
@@ -829,7 +859,9 @@ func main() {
 ### Response
 
 **[*operations.NameOverrideGetResponse](../../models/operations/nameoverridegetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## ObjectCircularReferenceGet
 
@@ -876,7 +908,9 @@ func main() {
 ### Response
 
 **[*operations.ObjectCircularReferenceGetResponse](../../models/operations/objectcircularreferencegetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## OneOfCircularReferenceGet
 
@@ -923,7 +957,9 @@ func main() {
 ### Response
 
 **[*operations.OneOfCircularReferenceGetResponse](../../models/operations/oneofcircularreferencegetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## TypedParameterGenerationGet
 
@@ -988,7 +1024,9 @@ func main() {
 ### Response
 
 **[*operations.TypedParameterGenerationGetResponse](../../models/operations/typedparametergenerationgetresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## UsageExamplePost
 
@@ -1090,4 +1128,6 @@ func main() {
 ### Response
 
 **[*operations.UsageExamplePostResponse](../../models/operations/usageexamplepostresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

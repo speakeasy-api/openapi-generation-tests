@@ -64,7 +64,6 @@ const mapArrParam: Record<string, string[]> = {
 
   const res = await sdk.parameters.deepObjectQueryParamsMap(mapParam, mapArrParam);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -83,7 +82,11 @@ const mapArrParam: Record<string, string[]> = {
 ### Response
 
 **Promise<[operations.DeepObjectQueryParamsMapResponse](../../models/operations/deepobjectqueryparamsmapresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## deepObjectQueryParamsObject
 
@@ -132,7 +135,6 @@ const objArrParam: ObjArrParam = {
 
   const res = await sdk.parameters.deepObjectQueryParamsObject(objParam, objArrParam);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -151,7 +153,11 @@ const objArrParam: ObjArrParam = {
 ### Response
 
 **Promise<[operations.DeepObjectQueryParamsObjectResponse](../../models/operations/deepobjectqueryparamsobjectresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## duplicateParam
 
@@ -173,7 +179,6 @@ const duplicateParamRequest: string = "string";
 
   const res = await sdk.parameters.duplicateParam(duplicateParamRequest);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -191,7 +196,11 @@ const duplicateParamRequest: string = "string";
 ### Response
 
 **Promise<[operations.DuplicateParamResponse](../../models/operations/duplicateparamresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## formQueryParamsArray
 
@@ -220,7 +229,6 @@ const arrParamExploded: number[] = [
 
   const res = await sdk.parameters.formQueryParamsArray(arrParam, arrParamExploded);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -239,7 +247,11 @@ const arrParamExploded: number[] = [
 ### Response
 
 **Promise<[operations.FormQueryParamsArrayResponse](../../models/operations/formqueryparamsarrayresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## formQueryParamsCamelObject
 
@@ -268,7 +280,6 @@ const objParam: ObjParam = {
 
   const res = await sdk.parameters.formQueryParamsCamelObject(objParamExploded, objParam);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -287,7 +298,11 @@ const objParam: ObjParam = {
 ### Response
 
 **Promise<[operations.FormQueryParamsCamelObjectResponse](../../models/operations/formqueryparamscamelobjectresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## formQueryParamsMap
 
@@ -316,7 +331,6 @@ const mapParamExploded: Record<string, number> = {
 
   const res = await sdk.parameters.formQueryParamsMap(mapParam, mapParamExploded);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -335,7 +349,11 @@ const mapParamExploded: Record<string, number> = {
 ### Response
 
 **Promise<[operations.FormQueryParamsMapResponse](../../models/operations/formqueryparamsmapresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## formQueryParamsObject
 
@@ -398,7 +416,6 @@ const objParam: SimpleObject = {
 
   const res = await sdk.parameters.formQueryParamsObject(objParamExploded, objParam);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -417,7 +434,11 @@ const objParam: SimpleObject = {
 ### Response
 
 **Promise<[operations.FormQueryParamsObjectResponse](../../models/operations/formqueryparamsobjectresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## formQueryParamsPrimitive
 
@@ -442,7 +463,6 @@ const strParam: string = "test";
 
   const res = await sdk.parameters.formQueryParamsPrimitive(boolParam, intParam, numParam, strParam);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -463,7 +483,11 @@ const strParam: string = "test";
 ### Response
 
 **Promise<[operations.FormQueryParamsPrimitiveResponse](../../models/operations/formqueryparamsprimitiveresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## formQueryParamsRefParamObject
 
@@ -497,7 +521,6 @@ const refObjParamExploded: RefQueryParamObjExploded = {
 
   const res = await sdk.parameters.formQueryParamsRefParamObject(refObjParam, refObjParamExploded);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -516,7 +539,11 @@ const refObjParamExploded: RefQueryParamObjExploded = {
 ### Response
 
 **Promise<[operations.FormQueryParamsRefParamObjectResponse](../../models/operations/formqueryparamsrefparamobjectresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## headerParamsArray
 
@@ -541,7 +568,6 @@ const xHeaderArray: string[] = [
 
   const res = await sdk.parameters.headerParamsArray(xHeaderArray);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -559,7 +585,11 @@ const xHeaderArray: string[] = [
 ### Response
 
 **Promise<[operations.HeaderParamsArrayResponse](../../models/operations/headerparamsarrayresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## headerParamsMap
 
@@ -588,7 +618,6 @@ const xHeaderMapExplode: Record<string, string> = {
 
   const res = await sdk.parameters.headerParamsMap(xHeaderMap, xHeaderMapExplode);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -607,7 +636,11 @@ const xHeaderMapExplode: Record<string, string> = {
 ### Response
 
 **Promise<[operations.HeaderParamsMapResponse](../../models/operations/headerparamsmapresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## headerParamsObject
 
@@ -670,7 +703,6 @@ const xHeaderObjExplode: SimpleObject = {
 
   const res = await sdk.parameters.headerParamsObject(xHeaderObj, xHeaderObjExplode);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -689,7 +721,11 @@ const xHeaderObjExplode: SimpleObject = {
 ### Response
 
 **Promise<[operations.HeaderParamsObjectResponse](../../models/operations/headerparamsobjectresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## headerParamsPrimitive
 
@@ -714,7 +750,6 @@ const xHeaderString: string = "test";
 
   const res = await sdk.parameters.headerParamsPrimitive(xHeaderBoolean, xHeaderInteger, xHeaderNumber, xHeaderString);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -735,7 +770,11 @@ const xHeaderString: string = "test";
 ### Response
 
 **Promise<[operations.HeaderParamsPrimitiveResponse](../../models/operations/headerparamsprimitiveresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## jsonQueryParamsObject
 
@@ -802,7 +841,7 @@ const deepObjParam: DeepObject = {
   bool: true,
   int: 1,
   map: {
-    "key2": {
+    "key": {
       any: "any",
       bigint: 8821239038968084,
       bigintStr: "9223372036854775808",
@@ -822,7 +861,7 @@ const deepObjParam: DeepObject = {
       str: "test",
       strOpt: "testOptional",
     },
-    "key": {
+    "key2": {
       any: "any",
       bigint: 8821239038968084,
       bigintStr: "9223372036854775808",
@@ -889,7 +928,6 @@ const simpleObjParam: SimpleObject = {
 
   const res = await sdk.parameters.jsonQueryParamsObject(deepObjParam, simpleObjParam);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -908,7 +946,11 @@ const simpleObjParam: SimpleObject = {
 ### Response
 
 **Promise<[operations.JsonQueryParamsObjectResponse](../../models/operations/jsonqueryparamsobjectresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## mixedParametersCamelCase
 
@@ -932,7 +974,6 @@ const queryStringParam: string = "queryValue";
 
   const res = await sdk.parameters.mixedParametersCamelCase(headerParam, pathParam, queryStringParam);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -952,7 +993,11 @@ const queryStringParam: string = "queryValue";
 ### Response
 
 **Promise<[operations.MixedParametersCamelCaseResponse](../../models/operations/mixedparameterscamelcaseresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## mixedParametersPrimitives
 
@@ -976,7 +1021,6 @@ const queryStringParam: string = "queryValue";
 
   const res = await sdk.parameters.mixedParametersPrimitives(headerParam, pathParam, queryStringParam);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -996,7 +1040,11 @@ const queryStringParam: string = "queryValue";
 ### Response
 
 **Promise<[operations.MixedParametersPrimitivesResponse](../../models/operations/mixedparametersprimitivesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## mixedQueryParams
 
@@ -1079,7 +1127,6 @@ const jsonParam: SimpleObject = {
 
   const res = await sdk.parameters.mixedQueryParams(deepObjectParam, formParam, jsonParam);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1099,7 +1146,11 @@ const jsonParam: SimpleObject = {
 ### Response
 
 **Promise<[operations.MixedQueryParamsResponse](../../models/operations/mixedqueryparamsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## pathParameterJson
 
@@ -1142,7 +1193,6 @@ const jsonObj: SimpleObject = {
 
   const res = await sdk.parameters.pathParameterJson(jsonObj);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1160,7 +1210,11 @@ const jsonObj: SimpleObject = {
 ### Response
 
 **Promise<[operations.PathParameterJsonResponse](../../models/operations/pathparameterjsonresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## pipeDelimitedQueryParamsArray
 
@@ -1215,7 +1269,6 @@ const objParam: SimpleObject = {
 
   const res = await sdk.parameters.pipeDelimitedQueryParamsArray(arrParam, arrParamExploded, mapParam, objParam);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1236,7 +1289,11 @@ const objParam: SimpleObject = {
 ### Response
 
 **Promise<[operations.PipeDelimitedQueryParamsArrayResponse](../../models/operations/pipedelimitedqueryparamsarrayresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## simplePathParameterArrays
 
@@ -1261,7 +1318,6 @@ const arrParam: string[] = [
 
   const res = await sdk.parameters.simplePathParameterArrays(arrParam);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1279,7 +1335,11 @@ const arrParam: string[] = [
 ### Response
 
 **Promise<[operations.SimplePathParameterArraysResponse](../../models/operations/simplepathparameterarraysresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## simplePathParameterMaps
 
@@ -1298,8 +1358,8 @@ import { SimplePathParameterMapsRequest } from "openapi/dist/sdk/models/operatio
     globalQueryParam: "some example global query param",
   });
 const mapParam: Record<string, string> = {
-  "test": "value",
   "test2": "value2",
+  "test": "value",
 };
 const mapParamExploded: Record<string, number> = {
   "test": 1,
@@ -1307,7 +1367,6 @@ const mapParamExploded: Record<string, number> = {
 };
 
   const res = await sdk.parameters.simplePathParameterMaps(mapParam, mapParamExploded);
-
 
   if (res.statusCode == 200) {
     // handle response
@@ -1327,7 +1386,11 @@ const mapParamExploded: Record<string, number> = {
 ### Response
 
 **Promise<[operations.SimplePathParameterMapsResponse](../../models/operations/simplepathparametermapsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## simplePathParameterObjects
 
@@ -1390,7 +1453,6 @@ const objParamExploded: SimpleObject = {
 
   const res = await sdk.parameters.simplePathParameterObjects(objParam, objParamExploded);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1409,7 +1471,11 @@ const objParamExploded: SimpleObject = {
 ### Response
 
 **Promise<[operations.SimplePathParameterObjectsResponse](../../models/operations/simplepathparameterobjectsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## simplePathParameterPrimitives
 
@@ -1434,7 +1500,6 @@ const strParam: string = "test";
 
   const res = await sdk.parameters.simplePathParameterPrimitives(boolParam, intParam, numParam, strParam);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1455,4 +1520,8 @@ const strParam: string = "test";
 ### Response
 
 **Promise<[operations.SimplePathParameterPrimitivesResponse](../../models/operations/simplepathparameterprimitivesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

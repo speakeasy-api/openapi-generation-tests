@@ -61,7 +61,11 @@ if res.res is not None:
 ### Response
 
 **[operations.FlattenedTypedObjectPostResponse](../../models/operations/flattenedtypedobjectpostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## mixed_type_one_of_post
 
@@ -100,7 +104,11 @@ if res.res is not None:
 ### Response
 
 **[operations.MixedTypeOneOfPostResponse](../../models/operations/mixedtypeoneofpostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## nullable_one_of_ref_in_object_post
 
@@ -150,7 +158,11 @@ if res.res is not None:
 ### Response
 
 **[operations.NullableOneOfRefInObjectPostResponse](../../models/operations/nullableoneofrefinobjectpostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## nullable_one_of_schema_post
 
@@ -190,7 +202,11 @@ if res.res is not None:
 ### Response
 
 **[operations.NullableOneOfSchemaPostResponse](../../models/operations/nullableoneofschemapostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## nullable_one_of_type_in_object_post
 
@@ -231,7 +247,11 @@ if res.res is not None:
 ### Response
 
 **[operations.NullableOneOfTypeInObjectPostResponse](../../models/operations/nullableoneoftypeinobjectpostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## nullable_typed_object_post
 
@@ -271,7 +291,11 @@ if res.res is not None:
 ### Response
 
 **[operations.NullableTypedObjectPostResponse](../../models/operations/nullabletypedobjectpostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## primitive_type_one_of_post
 
@@ -308,7 +332,11 @@ if res.res is not None:
 ### Response
 
 **[operations.PrimitiveTypeOneOfPostResponse](../../models/operations/primitivetypeoneofpostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## strongly_typed_one_of_post
 
@@ -476,7 +504,11 @@ if res.res is not None:
 ### Response
 
 **[operations.StronglyTypedOneOfPostResponse](../../models/operations/stronglytypedoneofpostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## typed_object_nullable_one_of_post
 
@@ -516,7 +548,11 @@ if res.res is not None:
 ### Response
 
 **[operations.TypedObjectNullableOneOfPostResponse](../../models/operations/typedobjectnullableoneofpostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## typed_object_one_of_post
 
@@ -556,7 +592,11 @@ if res.res is not None:
 ### Response
 
 **[operations.TypedObjectOneOfPostResponse](../../models/operations/typedobjectoneofpostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## union_big_int_decimal
 
@@ -593,7 +633,11 @@ if res.res is not None:
 ### Response
 
 **[operations.UnionBigIntDecimalResponse](../../models/operations/unionbigintdecimalresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## union_date_null
 
@@ -630,7 +674,11 @@ if res.res is not None:
 ### Response
 
 **[operations.UnionDateNullResponse](../../models/operations/uniondatenullresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## union_date_time_big_int
 
@@ -667,7 +715,11 @@ if res.res is not None:
 ### Response
 
 **[operations.UnionDateTimeBigIntResponse](../../models/operations/uniondatetimebigintresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## union_date_time_null
 
@@ -704,7 +756,11 @@ if res.res is not None:
 ### Response
 
 **[operations.UnionDateTimeNullResponse](../../models/operations/uniondatetimenullresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## weakly_typed_one_of_post
 
@@ -762,4 +818,8 @@ if res.res is not None:
 ### Response
 
 **[operations.WeaklyTypedOneOfPostResponse](../../models/operations/weaklytypedoneofpostresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

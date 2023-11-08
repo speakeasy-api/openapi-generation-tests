@@ -109,7 +109,6 @@ import { SDK } from "openapi";
     required: 302382,
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -127,7 +126,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.NullableObjectPostResponse](../../models/operations/nullableobjectpostresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## nullableRequiredEmptyObjectPost
 
@@ -151,7 +154,6 @@ import { SDK } from "openapi";
     requiredObj: {},
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -169,7 +171,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.NullableRequiredEmptyObjectPostResponse](../../models/operations/nullablerequiredemptyobjectpostresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## nullableRequiredPropertyPost
 
@@ -196,7 +202,6 @@ import { NullableRequiredEnum } from "openapi/dist/sdk/models/operations";
     nullableRequiredInt: 50266,
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -214,7 +219,11 @@ import { NullableRequiredEnum } from "openapi/dist/sdk/models/operations";
 ### Response
 
 **Promise<[operations.NullableRequiredPropertyPostResponse](../../models/operations/nullablerequiredpropertypostresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## nullableRequiredSharedObjectPost
 
@@ -241,7 +250,6 @@ import { SDK } from "openapi";
     },
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -259,7 +267,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.NullableRequiredSharedObjectPostResponse](../../models/operations/nullablerequiredsharedobjectpostresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonArray
 
@@ -302,7 +314,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   ]);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -321,7 +332,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonArrayResponse](../../models/operations/requestbodypostapplicationjsonarrayresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonArrayCamelCase
 
@@ -362,7 +377,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   ]);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -381,7 +395,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonArrayCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonarraycamelcaseresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonArrayObj
 
@@ -424,7 +442,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   ]);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -442,7 +459,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonArrayObjResponse](../../models/operations/requestbodypostapplicationjsonarrayobjresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonArrayObjCamelCase
 
@@ -483,7 +504,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   ]);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -501,7 +521,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonArrayObjCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonarrayobjcamelcaseresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonArrayOfArray
 
@@ -546,7 +570,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     ],
   ]);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -565,7 +588,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonArrayOfArrayResponse](../../models/operations/requestbodypostapplicationjsonarrayofarrayresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonArrayOfArrayCamelCase
 
@@ -608,7 +635,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     ],
   ]);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -627,7 +653,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonarrayofarraycamelcaseresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonArrayOfArrayOfPrimitive
 
@@ -651,7 +681,6 @@ import { SDK } from "openapi";
     ],
   ]);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -670,7 +699,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse](../../models/operations/requestbodypostapplicationjsonarrayofarrayofprimitiveresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonArrayOfMap
 
@@ -715,7 +748,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   ]);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -734,7 +766,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonArrayOfMapResponse](../../models/operations/requestbodypostapplicationjsonarrayofmapresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonArrayOfMapCamelCase
 
@@ -777,7 +813,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   ]);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -796,7 +831,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonarrayofmapcamelcaseresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonArrayOfPrimitive
 
@@ -818,7 +857,6 @@ import { SDK } from "openapi";
     "string",
   ]);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -837,7 +875,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonArrayOfPrimitiveResponse](../../models/operations/requestbodypostapplicationjsonarrayofprimitiveresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonDeep
 
@@ -904,7 +946,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     bool: true,
     int: 1,
     map: {
-      "key": {
+      "key2": {
         any: "any",
         bigint: 8821239038968084,
         bigintStr: "9223372036854775808",
@@ -924,7 +966,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         str: "test",
         strOpt: "testOptional",
       },
-      "key2": {
+      "key": {
         any: "any",
         bigint: 8821239038968084,
         bigintStr: "9223372036854775808",
@@ -969,7 +1011,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     str: "test",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -987,7 +1028,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonDeepResponse](../../models/operations/requestbodypostapplicationjsondeepresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonDeepCamelCase
 
@@ -1073,7 +1118,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     strVal: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1091,7 +1135,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonDeepCamelCaseResponse](../../models/operations/requestbodypostapplicationjsondeepcamelcaseresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonMap
 
@@ -1134,7 +1182,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1153,7 +1200,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonMapResponse](../../models/operations/requestbodypostapplicationjsonmapresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonMapCamelCase
 
@@ -1194,7 +1245,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1213,7 +1263,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonMapCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonmapcamelcaseresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonMapObj
 
@@ -1256,7 +1310,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1274,7 +1327,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonMapObjResponse](../../models/operations/requestbodypostapplicationjsonmapobjresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonMapObjCamelCase
 
@@ -1315,7 +1372,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1333,7 +1389,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonMapObjCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonmapobjcamelcaseresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonMapOfArray
 
@@ -1378,7 +1438,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     ],
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1397,7 +1456,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonMapOfArrayResponse](../../models/operations/requestbodypostapplicationjsonmapofarrayresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonMapOfArrayCamelCase
 
@@ -1440,7 +1503,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     ],
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1459,7 +1521,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonmapofarraycamelcaseresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonMapOfMap
 
@@ -1504,7 +1570,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1523,7 +1588,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonMapOfMapResponse](../../models/operations/requestbodypostapplicationjsonmapofmapresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonMapOfMapCamelCase
 
@@ -1566,7 +1635,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1585,7 +1653,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonmapofmapcamelcaseresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonMapOfMapOfPrimitive
 
@@ -1609,7 +1681,6 @@ import { SDK } from "openapi";
     },
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1628,7 +1699,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse](../../models/operations/requestbodypostapplicationjsonmapofmapofprimitiveresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonMapOfPrimitive
 
@@ -1650,7 +1725,6 @@ import { SDK } from "openapi";
     "key": "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1669,7 +1743,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonMapOfPrimitiveResponse](../../models/operations/requestbodypostapplicationjsonmapofprimitiveresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonMultipleJsonFiltered
 
@@ -1710,7 +1788,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     strOpt: "testOptional",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1728,7 +1805,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonMultipleJsonFilteredResponse](../../models/operations/requestbodypostapplicationjsonmultiplejsonfilteredresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonSimple
 
@@ -1769,7 +1850,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     strOpt: "testOptional",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1787,7 +1867,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonSimpleResponse](../../models/operations/requestbodypostapplicationjsonsimpleresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostApplicationJsonSimpleCamelCase
 
@@ -1826,7 +1910,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     strVal: "example",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1844,7 +1927,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostApplicationJsonSimpleCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonsimplecamelcaseresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostComplexNumberTypes
 
@@ -1879,7 +1966,6 @@ import { SDK } from "openapi";
     queryDecimalStr: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1897,7 +1983,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostComplexNumberTypesResponse](../../models/operations/requestbodypostcomplexnumbertypesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostDefaultsAndConsts
 
@@ -1934,7 +2024,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     normalField: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1952,7 +2041,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostDefaultsAndConstsResponse](../../models/operations/requestbodypostdefaultsandconstsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostEmptyObject
 
@@ -1975,7 +2068,6 @@ import { SDK } from "openapi";
     emptyWithEmptyProperties: {},
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1993,7 +2085,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostEmptyObjectResponse](../../models/operations/requestbodypostemptyobjectresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostFormDeep
 
@@ -2125,7 +2221,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     str: "test",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2143,7 +2238,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostFormDeepResponse](../../models/operations/requestbodypostformdeepresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostFormMapPrimitive
 
@@ -2165,7 +2264,6 @@ import { SDK } from "openapi";
     "key": "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2183,7 +2281,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostFormMapPrimitiveResponse](../../models/operations/requestbodypostformmapprimitiveresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostFormSimple
 
@@ -2224,7 +2326,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     strOpt: "testOptional",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2242,7 +2343,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostFormSimpleResponse](../../models/operations/requestbodypostformsimpleresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostJsonDataTypesArrayBigInt
 
@@ -2264,7 +2369,6 @@ import { SDK } from "openapi";
     564849,
   ]);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2282,7 +2386,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostJsonDataTypesArrayBigIntResponse](../../models/operations/requestbodypostjsondatatypesarraybigintresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostJsonDataTypesArrayDate
 
@@ -2304,7 +2412,6 @@ import { SDK } from "openapi";
     new RFCDate("2022-03-22"),
   ]);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2322,7 +2429,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostJsonDataTypesArrayDateResponse](../../models/operations/requestbodypostjsondatatypesarraydateresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostJsonDataTypesArrayDecimalStr
 
@@ -2344,7 +2455,6 @@ import { SDK } from "openapi";
     "string",
   ]);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2362,7 +2472,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostJsonDataTypesArrayDecimalStrResponse](../../models/operations/requestbodypostjsondatatypesarraydecimalstrresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostJsonDataTypesBigInt
 
@@ -2382,7 +2496,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesBigInt(687617);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2400,7 +2513,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostJsonDataTypesBigIntResponse](../../models/operations/requestbodypostjsondatatypesbigintresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostJsonDataTypesBigIntStr
 
@@ -2420,7 +2537,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesBigIntStr("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2438,7 +2554,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostJsonDataTypesBigIntStrResponse](../../models/operations/requestbodypostjsondatatypesbigintstrresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostJsonDataTypesBoolean
 
@@ -2458,7 +2578,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesBoolean(false);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2476,7 +2595,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostJsonDataTypesBooleanResponse](../../models/operations/requestbodypostjsondatatypesbooleanresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostJsonDataTypesDate
 
@@ -2496,7 +2619,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesDate(new RFCDate("2022-03-04"));
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2514,7 +2636,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostJsonDataTypesDateResponse](../../models/operations/requestbodypostjsondatatypesdateresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostJsonDataTypesDateTime
 
@@ -2534,7 +2660,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesDateTime(new Date("2023-03-04T01:33:15.031Z"));
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2552,7 +2677,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostJsonDataTypesDateTimeResponse](../../models/operations/requestbodypostjsondatatypesdatetimeresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostJsonDataTypesDecimal
 
@@ -2572,7 +2701,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesDecimal(1107.81);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2590,7 +2718,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostJsonDataTypesDecimalResponse](../../models/operations/requestbodypostjsondatatypesdecimalresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostJsonDataTypesDecimalStr
 
@@ -2610,7 +2742,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesDecimalStr("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2628,7 +2759,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostJsonDataTypesDecimalStrResponse](../../models/operations/requestbodypostjsondatatypesdecimalstrresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostJsonDataTypesFloat32
 
@@ -2648,7 +2783,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesFloat32(4464.34);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2666,7 +2800,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostJsonDataTypesFloat32Response](../../models/operations/requestbodypostjsondatatypesfloat32response.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostJsonDataTypesInt32
 
@@ -2686,7 +2824,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesInt32(22155);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2704,7 +2841,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostJsonDataTypesInt32Response](../../models/operations/requestbodypostjsondatatypesint32response.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostJsonDataTypesInteger
 
@@ -2724,7 +2865,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesInteger(273673);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2742,7 +2882,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostJsonDataTypesIntegerResponse](../../models/operations/requestbodypostjsondatatypesintegerresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostJsonDataTypesMapBigIntStr
 
@@ -2764,7 +2908,6 @@ import { SDK } from "openapi";
     "key": "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2782,7 +2925,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostJsonDataTypesMapBigIntStrResponse](../../models/operations/requestbodypostjsondatatypesmapbigintstrresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostJsonDataTypesMapDateTime
 
@@ -2804,7 +2951,6 @@ import { SDK } from "openapi";
     "key": new Date("2022-09-03T18:52:14.477Z"),
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2822,7 +2968,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostJsonDataTypesMapDateTimeResponse](../../models/operations/requestbodypostjsondatatypesmapdatetimeresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostJsonDataTypesMapDecimal
 
@@ -2844,7 +2994,6 @@ import { SDK } from "openapi";
     "key": 3472.82,
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2862,7 +3011,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostJsonDataTypesMapDecimalResponse](../../models/operations/requestbodypostjsondatatypesmapdecimalresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostJsonDataTypesNumber
 
@@ -2882,7 +3035,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesNumber(2193.66);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2900,7 +3052,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostJsonDataTypesNumberResponse](../../models/operations/requestbodypostjsondatatypesnumberresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostJsonDataTypesString
 
@@ -2920,7 +3076,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesString("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2938,7 +3093,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostJsonDataTypesStringResponse](../../models/operations/requestbodypostjsondatatypesstringresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostMultipleContentTypesComponentFiltered
 
@@ -2979,7 +3138,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     strOpt: "testOptional",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2997,7 +3155,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPostMultipleContentTypesComponentFilteredResponse](../../models/operations/requestbodypostmultiplecontenttypescomponentfilteredresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostMultipleContentTypesInlineFiltered
 
@@ -3021,7 +3183,6 @@ import { SDK } from "openapi";
     str: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3039,7 +3200,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse](../../models/operations/requestbodypostmultiplecontenttypesinlinefilteredresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostMultipleContentTypesSplitParamForm
 
@@ -3069,7 +3234,6 @@ const paramStr: string = "string";
 
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(requestBody, paramStr);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3088,7 +3252,11 @@ const paramStr: string = "string";
 ### Response
 
 **Promise<[operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse](../../models/operations/requestbodypostmultiplecontenttypessplitparamformresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostMultipleContentTypesSplitParamJson
 
@@ -3118,7 +3286,6 @@ const paramStr: string = "string";
 
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(requestBody, paramStr);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3137,7 +3304,11 @@ const paramStr: string = "string";
 ### Response
 
 **Promise<[operations.RequestBodyPostMultipleContentTypesSplitParamJsonResponse](../../models/operations/requestbodypostmultiplecontenttypessplitparamjsonresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostMultipleContentTypesSplitParamMultipart
 
@@ -3167,7 +3338,6 @@ const paramStr: string = "string";
 
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(requestBody, paramStr);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3186,7 +3356,11 @@ const paramStr: string = "string";
 ### Response
 
 **Promise<[operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse](../../models/operations/requestbodypostmultiplecontenttypessplitparammultipartresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostMultipleContentTypesSplitForm
 
@@ -3210,7 +3384,6 @@ import { SDK } from "openapi";
     str3: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3228,7 +3401,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostMultipleContentTypesSplitFormResponse](../../models/operations/requestbodypostmultiplecontenttypessplitformresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostMultipleContentTypesSplitJson
 
@@ -3252,7 +3429,6 @@ import { SDK } from "openapi";
     str: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3270,7 +3446,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostMultipleContentTypesSplitJsonResponse](../../models/operations/requestbodypostmultiplecontenttypessplitjsonresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostMultipleContentTypesSplitMultipart
 
@@ -3294,7 +3474,6 @@ import { SDK } from "openapi";
     str2: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3312,7 +3491,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse](../../models/operations/requestbodypostmultiplecontenttypessplitmultipartresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostNotNullableNotRequiredStringBody
 
@@ -3332,7 +3515,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostNotNullableNotRequiredStringBody("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3350,7 +3532,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostNotNullableNotRequiredStringBodyResponse](../../models/operations/requestbodypostnotnullablenotrequiredstringbodyresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostNullArray
 
@@ -3372,7 +3558,6 @@ import { SDK } from "openapi";
     "string",
   ]);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3390,7 +3575,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostNullArrayResponse](../../models/operations/requestbodypostnullarrayresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostNullDictionary
 
@@ -3412,7 +3601,6 @@ import { SDK } from "openapi";
     "key": "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3430,7 +3618,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostNullDictionaryResponse](../../models/operations/requestbodypostnulldictionaryresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostNullableNotRequiredStringBody
 
@@ -3450,7 +3642,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostNullableNotRequiredStringBody("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3468,7 +3659,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostNullableNotRequiredStringBodyResponse](../../models/operations/requestbodypostnullablenotrequiredstringbodyresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPostNullableRequiredStringBody
 
@@ -3488,7 +3683,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostNullableRequiredStringBody("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3506,7 +3700,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPostNullableRequiredStringBodyResponse](../../models/operations/requestbodypostnullablerequiredstringbodyresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPutBytes
 
@@ -3526,7 +3724,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPutBytes(new TextEncoder().encode("0x5DbFFb1Ff9"));
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3544,7 +3741,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPutBytesResponse](../../models/operations/requestbodyputbytesresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPutBytesWithParams
 
@@ -3567,7 +3768,6 @@ const queryStringParam: string = "string";
 
   const res = await sdk.requestBodies.requestBodyPutBytesWithParams(requestBody, queryStringParam);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3586,7 +3786,11 @@ const queryStringParam: string = "string";
 ### Response
 
 **Promise<[operations.RequestBodyPutBytesWithParamsResponse](../../models/operations/requestbodyputbyteswithparamsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPutMultipartDeep
 
@@ -3718,7 +3922,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     str: "test",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3736,7 +3939,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPutMultipartDeepResponse](../../models/operations/requestbodyputmultipartdeepresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPutMultipartDifferentFileName
 
@@ -3761,7 +3968,6 @@ import { SDK } from "openapi";
     },
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3779,7 +3985,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPutMultipartDifferentFileNameResponse](../../models/operations/requestbodyputmultipartdifferentfilenameresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPutMultipartFile
 
@@ -3804,7 +4014,6 @@ import { SDK } from "openapi";
     },
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3822,7 +4031,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPutMultipartFileResponse](../../models/operations/requestbodyputmultipartfileresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPutMultipartSimple
 
@@ -3863,7 +4076,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
     strOpt: "testOptional",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3881,7 +4093,11 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### Response
 
 **Promise<[operations.RequestBodyPutMultipartSimpleResponse](../../models/operations/requestbodyputmultipartsimpleresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPutString
 
@@ -3901,7 +4117,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPutString("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3919,7 +4134,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyPutStringResponse](../../models/operations/requestbodyputstringresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyPutStringWithParams
 
@@ -3942,7 +4161,6 @@ const queryStringParam: string = "string";
 
   const res = await sdk.requestBodies.requestBodyPutStringWithParams(requestBody, queryStringParam);
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3961,7 +4179,11 @@ const queryStringParam: string = "string";
 ### Response
 
 **Promise<[operations.RequestBodyPutStringWithParamsResponse](../../models/operations/requestbodyputstringwithparamsresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyReadAndWrite
 
@@ -3985,7 +4207,6 @@ import { SDK } from "openapi";
     num3: 459345,
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -4004,7 +4225,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyReadAndWriteResponse](../../models/operations/requestbodyreadandwriteresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyReadOnlyInput
 
@@ -4024,7 +4249,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyReadOnlyInput({});
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -4043,7 +4267,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyReadOnlyInputResponse](../../models/operations/requestbodyreadonlyinputresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyReadOnlyUnion
 
@@ -4063,7 +4291,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyReadOnlyUnion("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -4082,7 +4309,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyReadOnlyUnionResponse](../../models/operations/requestbodyreadonlyunionresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyReadWriteOnlyUnion
 
@@ -4102,7 +4333,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyReadWriteOnlyUnion("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -4121,7 +4351,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyReadWriteOnlyUnionResponse](../../models/operations/requestbodyreadwriteonlyunionresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyWriteOnly
 
@@ -4145,7 +4379,6 @@ import { SDK } from "openapi";
     string: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -4164,7 +4397,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyWriteOnlyResponse](../../models/operations/requestbodywriteonlyresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyWriteOnlyOutput
 
@@ -4188,7 +4425,6 @@ import { SDK } from "openapi";
     string: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -4207,7 +4443,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyWriteOnlyOutputResponse](../../models/operations/requestbodywriteonlyoutputresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## requestBodyWriteOnlyUnion
 
@@ -4227,7 +4467,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyWriteOnlyUnion("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -4246,4 +4485,8 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.RequestBodyWriteOnlyUnionResponse](../../models/operations/requestbodywriteonlyunionresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

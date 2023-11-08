@@ -31,7 +31,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.putAnythingIgnoredGeneration("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -49,7 +48,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.PutAnythingIgnoredGenerationResponse](../../models/operations/putanythingignoredgenerationresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## responseBodyJsonGet
 
@@ -69,7 +72,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.responseBodyJsonGet();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -86,4 +88,8 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.ResponseBodyJsonGetResponse](../../models/operations/responsebodyjsongetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

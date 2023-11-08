@@ -72,7 +72,9 @@ func main() {
 ### Response
 
 **[*operations.PaginationCursorBodyResponse](../../models/operations/paginationcursorbodyresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## PaginationCursorParams
 
@@ -132,7 +134,9 @@ func main() {
 ### Response
 
 **[*operations.PaginationCursorParamsResponse](../../models/operations/paginationcursorparamsresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## PaginationLimitOffsetOffsetBody
 
@@ -189,7 +193,9 @@ func main() {
 ### Response
 
 **[*operations.PaginationLimitOffsetOffsetBodyResponse](../../models/operations/paginationlimitoffsetoffsetbodyresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## PaginationLimitOffsetOffsetParams
 
@@ -252,7 +258,9 @@ func main() {
 ### Response
 
 **[*operations.PaginationLimitOffsetOffsetParamsResponse](../../models/operations/paginationlimitoffsetoffsetparamsresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## PaginationLimitOffsetPageBody
 
@@ -309,7 +317,9 @@ func main() {
 ### Response
 
 **[*operations.PaginationLimitOffsetPageBodyResponse](../../models/operations/paginationlimitoffsetpagebodyresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## PaginationLimitOffsetPageParams
 
@@ -369,4 +379,6 @@ func main() {
 ### Response
 
 **[*operations.PaginationLimitOffsetPageParamsResponse](../../models/operations/paginationlimitoffsetpageparamsresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

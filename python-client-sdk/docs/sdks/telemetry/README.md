@@ -44,7 +44,11 @@ if res.res is not None:
 ### Response
 
 **[operations.TelemetrySpeakeasyUserAgentGetResponse](../../models/operations/telemetryspeakeasyuseragentgetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## telemetry_user_agent_get
 
@@ -74,4 +78,8 @@ if res.res is not None:
 ### Response
 
 **[operations.TelemetryUserAgentGetResponse](../../models/operations/telemetryuseragentgetresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

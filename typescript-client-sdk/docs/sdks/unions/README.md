@@ -41,7 +41,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.unions.flattenedTypedObjectPost("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -59,7 +58,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.FlattenedTypedObjectPostResponse](../../models/operations/flattenedtypedobjectpostresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## mixedTypeOneOfPost
 
@@ -79,7 +82,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.unions.mixedTypeOneOfPost("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -97,7 +99,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.MixedTypeOneOfPostResponse](../../models/operations/mixedtypeoneofpostresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## nullableOneOfRefInObjectPost
 
@@ -125,7 +131,6 @@ import { TypeT } from "openapi/dist/sdk/models/shared";
     oneOfOne: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -143,7 +148,11 @@ import { TypeT } from "openapi/dist/sdk/models/shared";
 ### Response
 
 **Promise<[operations.NullableOneOfRefInObjectPostResponse](../../models/operations/nullableoneofrefinobjectpostresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## nullableOneOfSchemaPost
 
@@ -163,7 +172,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.unions.nullableOneOfSchemaPost("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -181,7 +189,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.NullableOneOfSchemaPostResponse](../../models/operations/nullableoneofschemapostresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## nullableOneOfTypeInObjectPost
 
@@ -205,7 +217,6 @@ import { SDK } from "openapi";
     oneOfOne: false,
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -223,7 +234,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.NullableOneOfTypeInObjectPostResponse](../../models/operations/nullableoneoftypeinobjectpostresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## nullableTypedObjectPost
 
@@ -247,7 +262,6 @@ import { TypeT } from "openapi/dist/sdk/models/shared";
     value: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -265,7 +279,11 @@ import { TypeT } from "openapi/dist/sdk/models/shared";
 ### Response
 
 **Promise<[operations.NullableTypedObjectPostResponse](../../models/operations/nullabletypedobjectpostresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## primitiveTypeOneOfPost
 
@@ -285,7 +303,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.unions.primitiveTypeOneOfPost("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -303,7 +320,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.PrimitiveTypeOneOfPostResponse](../../models/operations/primitivetypeoneofpostresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## stronglyTypedOneOfPost
 
@@ -323,7 +344,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.unions.stronglyTypedOneOfPost("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -341,7 +361,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.StronglyTypedOneOfPostResponse](../../models/operations/stronglytypedoneofpostresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## typedObjectNullableOneOfPost
 
@@ -361,7 +385,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.unions.typedObjectNullableOneOfPost("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -379,7 +402,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.TypedObjectNullableOneOfPostResponse](../../models/operations/typedobjectnullableoneofpostresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## typedObjectOneOfPost
 
@@ -399,7 +426,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.unions.typedObjectOneOfPost("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -417,7 +443,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.TypedObjectOneOfPostResponse](../../models/operations/typedobjectoneofpostresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## unionBigIntDecimal
 
@@ -437,7 +467,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.unions.unionBigIntDecimal("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -455,7 +484,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.UnionBigIntDecimalResponse](../../models/operations/unionbigintdecimalresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## unionDateNull
 
@@ -475,7 +508,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.unions.unionDateNull(new RFCDate("2022-11-25"));
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -493,7 +525,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.UnionDateNullResponse](../../models/operations/uniondatenullresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## unionDateTimeBigInt
 
@@ -513,7 +549,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.unions.unionDateTimeBigInt("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -531,7 +566,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.UnionDateTimeBigIntResponse](../../models/operations/uniondatetimebigintresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## unionDateTimeNull
 
@@ -551,7 +590,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.unions.unionDateTimeNull(new Date("2022-04-12T19:39:53.907Z"));
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -569,7 +607,11 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.UnionDateTimeNullResponse](../../models/operations/uniondatetimenullresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## weaklyTypedOneOfPost
 
@@ -589,7 +631,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.unions.weaklyTypedOneOfPost("string");
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -607,4 +648,8 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.WeaklyTypedOneOfPostResponse](../../models/operations/weaklytypedoneofpostresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

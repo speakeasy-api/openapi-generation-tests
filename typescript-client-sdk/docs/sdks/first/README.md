@@ -23,7 +23,6 @@ import { SDK } from "openapi";
 
   const res = await sdk.first.get();
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -40,4 +39,8 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.GroupFirstGetResponse](../../models/operations/groupfirstgetresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

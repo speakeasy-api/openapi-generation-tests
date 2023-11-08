@@ -66,7 +66,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.APIKeyAuthGlobalNewResponse](../../models/operations/apikeyauthglobalnewresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## auth_global
 
@@ -115,7 +119,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.AuthGlobalResponse](../../models/operations/authglobalresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## basic_auth_new
 
@@ -165,7 +173,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.BasicAuthNewResponse](../../models/operations/basicauthnewresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## multiple_mixed_options_auth
 
@@ -214,7 +226,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.MultipleMixedOptionsAuthResponse](../../models/operations/multiplemixedoptionsauthresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## multiple_mixed_scheme_auth
 
@@ -267,7 +283,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.MultipleMixedSchemeAuthResponse](../../models/operations/multiplemixedschemeauthresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## multiple_options_with_mixed_schemes_auth
 
@@ -319,7 +339,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.MultipleOptionsWithMixedSchemesAuthResponse](../../models/operations/multipleoptionswithmixedschemesauthresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## multiple_options_with_simple_schemes_auth
 
@@ -371,7 +395,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.MultipleOptionsWithSimpleSchemesAuthResponse](../../models/operations/multipleoptionswithsimpleschemesauthresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## multiple_simple_options_auth
 
@@ -420,7 +448,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.MultipleSimpleOptionsAuthResponse](../../models/operations/multiplesimpleoptionsauthresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## multiple_simple_scheme_auth
 
@@ -470,7 +502,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.MultipleSimpleSchemeAuthResponse](../../models/operations/multiplesimpleschemeauthresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## oauth2_auth_new
 
@@ -519,7 +555,11 @@ if res.status_code == 200:
 ### Response
 
 **[operations.Oauth2AuthNewResponse](../../models/operations/oauth2authnewresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## open_id_connect_auth_new
 
@@ -568,4 +608,8 @@ if res.status_code == 200:
 ### Response
 
 **[operations.OpenIDConnectAuthNewResponse](../../models/operations/openidconnectauthnewresponse.md)**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
