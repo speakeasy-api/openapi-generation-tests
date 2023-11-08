@@ -1,5 +1,5 @@
 # Servers
-(*.Servers*)
+(*Servers*)
 
 ## Overview
 
@@ -38,7 +38,7 @@ var res = await sdk.Servers.SelectGlobalServerAsync();
 
 ### Response
 
-**[SelectGlobalServerResponse](../../models/operations/SelectGlobalServerResponse.md)**
+**[SelectGlobalServerResponse](../../Models/Operations/SelectGlobalServerResponse.md)**
 
 
 ## SelectServerWithID
@@ -73,7 +73,7 @@ var res = await sdk.Servers.SelectServerWithIDAsync();
 
 ### Response
 
-**[SelectServerWithIDResponse](../../models/operations/SelectServerWithIDResponse.md)**
+**[SelectServerWithIDResponse](../../Models/Operations/SelectServerWithIDResponse.md)**
 
 
 ## ServerWithProtocolTemplate
@@ -106,7 +106,7 @@ var res = await sdk.Servers.ServerWithProtocolTemplateAsync();
 
 ### Response
 
-**[ServerWithProtocolTemplateResponse](../../models/operations/ServerWithProtocolTemplateResponse.md)**
+**[ServerWithProtocolTemplateResponse](../../Models/Operations/ServerWithProtocolTemplateResponse.md)**
 
 
 ## ServerWithTemplates
@@ -139,7 +139,7 @@ var res = await sdk.Servers.ServerWithTemplatesAsync();
 
 ### Response
 
-**[ServerWithTemplatesResponse](../../models/operations/ServerWithTemplatesResponse.md)**
+**[ServerWithTemplatesResponse](../../Models/Operations/ServerWithTemplatesResponse.md)**
 
 
 ## ServerWithTemplatesGlobal
@@ -166,7 +166,7 @@ var res = await sdk.Servers.ServerWithTemplatesGlobalAsync();
 
 ### Response
 
-**[ServerWithTemplatesGlobalResponse](../../models/operations/ServerWithTemplatesGlobalResponse.md)**
+**[ServerWithTemplatesGlobalResponse](../../Models/Operations/ServerWithTemplatesGlobalResponse.md)**
 
 
 ## ServersByIDWithTemplates
@@ -199,5 +199,5 @@ var res = await sdk.Servers.ServersByIDWithTemplatesAsync();
 
 ### Response
 
-**[ServersByIDWithTemplatesResponse](../../models/operations/ServersByIDWithTemplatesResponse.md)**
+**[ServersByIDWithTemplatesResponse](../../Models/Operations/ServersByIDWithTemplatesResponse.md)**
 

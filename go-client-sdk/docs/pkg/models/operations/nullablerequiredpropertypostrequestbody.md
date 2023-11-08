@@ -1,0 +1,11 @@
+# NullableRequiredPropertyPostRequestBody
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `NullableOptionalInt`                                                                     | **int64*                                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `NullableRequiredArray`                                                                   | []*float64*                                                                               | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `NullableRequiredEnum`                                                                    | [operations.NullableRequiredEnum](../../../pkg/models/operations/nullablerequiredenum.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `NullableRequiredInt`                                                                     | *int64*                                                                                   | :heavy_check_mark:                                                                        | N/A                                                                                       |

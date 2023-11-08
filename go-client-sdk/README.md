@@ -133,7 +133,7 @@ func main() {
 * [PutAnythingIgnoredGeneration](docs/sdks/sdk/README.md#putanythingignoredgeneration)
 * [ResponseBodyJSONGet](docs/sdks/sdk/README.md#responsebodyjsonget)
 
-### [.Generation](docs/sdks/generation/README.md)
+### [Generation](docs/sdks/generation/README.md)
 
 * [AnchorTypesGet](docs/sdks/generation/README.md#anchortypesget)
 * [ArrayCircularReferenceGet](docs/sdks/generation/README.md#arraycircularreferenceget)
@@ -156,13 +156,13 @@ func main() {
 * [TypedParameterGenerationGet](docs/sdks/generation/README.md#typedparametergenerationget)
 * [UsageExamplePost](docs/sdks/generation/README.md#usageexamplepost) - An operation used for testing usage examples
 
-### [.Errors](docs/sdks/errors/README.md)
+### [Errors](docs/sdks/errors/README.md)
 
 * [ConnectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
 * [StatusGetError](docs/sdks/errors/README.md#statusgeterror)
 * [StatusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
 
-### [.Unions](docs/sdks/unions/README.md)
+### [Unions](docs/sdks/unions/README.md)
 
 * [FlattenedTypedObjectPost](docs/sdks/unions/README.md#flattenedtypedobjectpost)
 * [MixedTypeOneOfPost](docs/sdks/unions/README.md#mixedtypeoneofpost)
@@ -180,7 +180,7 @@ func main() {
 * [UnionDateTimeNull](docs/sdks/unions/README.md#uniondatetimenull)
 * [WeaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
 
-### [.Flattening](docs/sdks/flattening/README.md)
+### [Flattening](docs/sdks/flattening/README.md)
 
 * [ComponentBodyAndParamConflict](docs/sdks/flattening/README.md#componentbodyandparamconflict)
 * [ComponentBodyAndParamNoConflict](docs/sdks/flattening/README.md#componentbodyandparamnoconflict)
@@ -188,12 +188,12 @@ func main() {
 * [InlineBodyAndParamConflict](docs/sdks/flattening/README.md#inlinebodyandparamconflict)
 * [InlineBodyAndParamNoConflict](docs/sdks/flattening/README.md#inlinebodyandparamnoconflict)
 
-### [.Globals](docs/sdks/globals/README.md)
+### [Globals](docs/sdks/globals/README.md)
 
 * [GlobalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
 * [GlobalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
 
-### [.Parameters](docs/sdks/parameters/README.md)
+### [Parameters](docs/sdks/parameters/README.md)
 
 * [DeepObjectQueryParamsMap](docs/sdks/parameters/README.md#deepobjectqueryparamsmap)
 * [DeepObjectQueryParamsObject](docs/sdks/parameters/README.md#deepobjectqueryparamsobject)
@@ -220,23 +220,23 @@ func main() {
 * [SimplePathParameterPrimitives](docs/sdks/parameters/README.md#simplepathparameterprimitives)
 
 
-### [.Nest.First](docs/sdks/sdkfirst/README.md)
+### [Nest.First](docs/sdks/sdkfirst/README.md)
 
 * [Get](docs/sdks/sdkfirst/README.md#get)
 
-### [.Nested](docs/sdks/nested/README.md)
+### [Nested](docs/sdks/nested/README.md)
 
 * [Get](docs/sdks/nested/README.md#get)
 
-### [.Nested.First](docs/sdks/sdknestedfirst/README.md)
+### [Nested.First](docs/sdks/sdknestedfirst/README.md)
 
 * [Get](docs/sdks/sdknestedfirst/README.md#get)
 
-### [.Nested.Second](docs/sdks/sdksecond/README.md)
+### [Nested.Second](docs/sdks/sdksecond/README.md)
 
 * [Get](docs/sdks/sdksecond/README.md#get)
 
-### [.RequestBodies](docs/sdks/requestbodies/README.md)
+### [RequestBodies](docs/sdks/requestbodies/README.md)
 
 * [NullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
 * [NullableRequiredEmptyObjectPost](docs/sdks/requestbodies/README.md#nullablerequiredemptyobjectpost)
@@ -320,7 +320,7 @@ func main() {
 * [RequestBodyWriteOnlyOutput](docs/sdks/requestbodies/README.md#requestbodywriteonlyoutput)
 * [RequestBodyWriteOnlyUnion](docs/sdks/requestbodies/README.md#requestbodywriteonlyunion)
 
-### [.ResponseBodies](docs/sdks/responsebodies/README.md)
+### [ResponseBodies](docs/sdks/responsebodies/README.md)
 
 * [ResponseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
 * [ResponseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
@@ -334,7 +334,7 @@ func main() {
 * [ResponseBodyXMLGet](docs/sdks/responsebodies/README.md#responsebodyxmlget)
 * [ResponseBodyZeroValueComplexTypePtrsPost](docs/sdks/responsebodies/README.md#responsebodyzerovaluecomplextypeptrspost)
 
-### [.Servers](docs/sdks/servers/README.md)
+### [Servers](docs/sdks/servers/README.md)
 
 * [SelectGlobalServer](docs/sdks/servers/README.md#selectglobalserver)
 * [SelectServerWithID](docs/sdks/servers/README.md#selectserverwithid) - Select a server by ID.
@@ -343,12 +343,12 @@ func main() {
 * [ServerWithTemplatesGlobal](docs/sdks/servers/README.md#serverwithtemplatesglobal)
 * [ServersByIDWithTemplates](docs/sdks/servers/README.md#serversbyidwithtemplates)
 
-### [.Telemetry](docs/sdks/telemetry/README.md)
+### [Telemetry](docs/sdks/telemetry/README.md)
 
 * [TelemetrySpeakeasyUserAgentGet](docs/sdks/telemetry/README.md#telemetryspeakeasyuseragentget)
 * [TelemetryUserAgentGet](docs/sdks/telemetry/README.md#telemetryuseragentget)
 
-### [.AuthNew](docs/sdks/authnew/README.md)
+### [AuthNew](docs/sdks/authnew/README.md)
 
 * [APIKeyAuthGlobalNew](docs/sdks/authnew/README.md#apikeyauthglobalnew)
 * [AuthGlobal](docs/sdks/authnew/README.md#authglobal)
@@ -362,7 +362,7 @@ func main() {
 * [Oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [OpenIDConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
-### [.Auth](docs/sdks/auth/README.md)
+### [Auth](docs/sdks/auth/README.md)
 
 * [APIKeyAuth](docs/sdks/auth/README.md#apikeyauth)
 * [APIKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
@@ -373,11 +373,11 @@ func main() {
 * [Oauth2Override](docs/sdks/auth/README.md#oauth2override)
 * [OpenIDConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
-### [.Documentation](docs/sdks/documentation/README.md)
+### [Documentation](docs/sdks/documentation/README.md)
 
 * [GetDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
 
-### [.Resource](docs/sdks/resource/README.md)
+### [Resource](docs/sdks/resource/README.md)
 
 * [CreateFile](docs/sdks/resource/README.md#createfile)
 * [CreateResource](docs/sdks/resource/README.md#createresource)
@@ -385,15 +385,15 @@ func main() {
 * [GetResource](docs/sdks/resource/README.md#getresource)
 * [UpdateResource](docs/sdks/resource/README.md#updateresource)
 
-### [.First](docs/sdks/first/README.md)
+### [First](docs/sdks/first/README.md)
 
 * [Get](docs/sdks/first/README.md#get)
 
-### [.Second](docs/sdks/second/README.md)
+### [Second](docs/sdks/second/README.md)
 
 * [Get](docs/sdks/second/README.md#get)
 
-### [.Pagination](docs/sdks/pagination/README.md)
+### [Pagination](docs/sdks/pagination/README.md)
 
 * [PaginationCursorBody](docs/sdks/pagination/README.md#paginationcursorbody)
 * [PaginationCursorParams](docs/sdks/pagination/README.md#paginationcursorparams)
@@ -402,7 +402,7 @@ func main() {
 * [PaginationLimitOffsetPageBody](docs/sdks/pagination/README.md#paginationlimitoffsetpagebody)
 * [PaginationLimitOffsetPageParams](docs/sdks/pagination/README.md#paginationlimitoffsetpageparams)
 
-### [.Retries](docs/sdks/retries/README.md)
+### [Retries](docs/sdks/retries/README.md)
 
 * [RetriesGet](docs/sdks/retries/README.md#retriesget)
 <!-- End SDK Available Operations -->
@@ -599,7 +599,7 @@ func main() {
 <!-- Start Error Handling -->
 # Error Handling
 
-Handling errors in your SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
 
 | Error Object                                    | Status Code                                     | Content Type                                    |
 | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
@@ -842,12 +842,12 @@ To change the default retry strategy for a single API call, simply provide a ret
 package main
 
 import (
-	"/pkg/models/operations"
-	"/pkg/utils"
 	"context"
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"pkg/models/operations"
+	"pkg/utils"
 )
 
 func main() {
@@ -894,12 +894,12 @@ If you'd like to override the default retry strategy for all operations that sup
 package main
 
 import (
-	"/pkg/models/operations"
-	"/pkg/utils"
 	"context"
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"pkg/models/operations"
+	"pkg/utils"
 )
 
 func main() {
@@ -946,7 +946,7 @@ func main() {
 
 ## Per-Client Security Schemes
 
-Your SDK supports the following security schemes globally:
+This SDK supports the following security schemes globally:
 
 | Name            | Type            | Scheme          |
 | --------------- | --------------- | --------------- |
@@ -990,7 +990,7 @@ func main() {
 
 ## Per-Operation Security Schemes
 
-Some operations in your SDK require the security scheme to be specified at the request level. For example:
+Some operations in this SDK require the security scheme to be specified at the request level. For example:
 ## Second
 Do this second
 ```go

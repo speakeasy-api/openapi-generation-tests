@@ -1,5 +1,5 @@
 # Telemetry
-(*.telemetry*)
+(*telemetry*)
 
 ## Overview
 

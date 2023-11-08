@@ -1,5 +1,5 @@
 # First
-(*.First*)
+(*First*)
 
 ### Available Operations
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Response
 
-**[*operations.GroupFirstGetResponse](../../models/operations/groupfirstgetresponse.md), error**
+**[*operations.GroupFirstGetResponse](../../pkg/models/operations/groupfirstgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |

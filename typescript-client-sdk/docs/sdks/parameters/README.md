@@ -1,5 +1,5 @@
 # ParametersT
-(*.parameters*)
+(*parameters*)
 
 ## Overview
 
@@ -48,8 +48,8 @@ import { DeepObjectQueryParamsMapRequest } from "openapi/dist/sdk/models/operati
     globalQueryParam: "some example global query param",
   });
 const mapParam: Record<string, string> = {
-  "test": "value",
   "test2": "value2",
+  "test": "value",
 };
 const mapArrParam: Record<string, string[]> = {
   "test": [
@@ -81,7 +81,7 @@ const mapArrParam: Record<string, string[]> = {
 
 ### Response
 
-**Promise<[operations.DeepObjectQueryParamsMapResponse](../../models/operations/deepobjectqueryparamsmapresponse.md)>**
+**Promise<[operations.DeepObjectQueryParamsMapResponse](../../sdk/models/operations/deepobjectqueryparamsmapresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -145,14 +145,14 @@ const objArrParam: ObjArrParam = {
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `objParam`                                                                                         | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `objArrParam`                                                                                      | [operations.ObjArrParam](../../models/operations/objarrparam.md)                                   | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `objParam`                                                                                         | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objArrParam`                                                                                      | [operations.ObjArrParam](../../../sdk/models/operations/objarrparam.md)                            | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
 
 
 ### Response
 
-**Promise<[operations.DeepObjectQueryParamsObjectResponse](../../models/operations/deepobjectqueryparamsobjectresponse.md)>**
+**Promise<[operations.DeepObjectQueryParamsObjectResponse](../../sdk/models/operations/deepobjectqueryparamsobjectresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -195,7 +195,7 @@ const duplicateParamRequest: string = "string";
 
 ### Response
 
-**Promise<[operations.DuplicateParamResponse](../../models/operations/duplicateparamresponse.md)>**
+**Promise<[operations.DuplicateParamResponse](../../sdk/models/operations/duplicateparamresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -246,7 +246,7 @@ const arrParamExploded: number[] = [
 
 ### Response
 
-**Promise<[operations.FormQueryParamsArrayResponse](../../models/operations/formqueryparamsarrayresponse.md)>**
+**Promise<[operations.FormQueryParamsArrayResponse](../../sdk/models/operations/formqueryparamsarrayresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -288,16 +288,16 @@ const objParam: ObjParam = {
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `objParamExploded`                                                         | [operations.ObjParamExploded](../../models/operations/objparamexploded.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `objParam`                                                                 | [operations.ObjParam](../../models/operations/objparam.md)                 | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `objParamExploded`                                                                | [operations.ObjParamExploded](../../../sdk/models/operations/objparamexploded.md) | :heavy_check_mark:                                                                | N/A                                                                               |
+| `objParam`                                                                        | [operations.ObjParam](../../../sdk/models/operations/objparam.md)                 | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `config`                                                                          | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                      | :heavy_minus_sign:                                                                | Available config options for making requests.                                     |
 
 
 ### Response
 
-**Promise<[operations.FormQueryParamsCamelObjectResponse](../../models/operations/formqueryparamscamelobjectresponse.md)>**
+**Promise<[operations.FormQueryParamsCamelObjectResponse](../../sdk/models/operations/formqueryparamscamelobjectresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -348,7 +348,7 @@ const mapParamExploded: Record<string, number> = {
 
 ### Response
 
-**Promise<[operations.FormQueryParamsMapResponse](../../models/operations/formqueryparamsmapresponse.md)>**
+**Promise<[operations.FormQueryParamsMapResponse](../../sdk/models/operations/formqueryparamsmapresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -426,14 +426,14 @@ const objParam: SimpleObject = {
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `objParamExploded`                                                                                 | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `objParam`                                                                                         | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objParamExploded`                                                                                 | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objParam`                                                                                         | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                  | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 | `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
 
 
 ### Response
 
-**Promise<[operations.FormQueryParamsObjectResponse](../../models/operations/formqueryparamsobjectresponse.md)>**
+**Promise<[operations.FormQueryParamsObjectResponse](../../sdk/models/operations/formqueryparamsobjectresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -482,7 +482,7 @@ const strParam: string = "test";
 
 ### Response
 
-**Promise<[operations.FormQueryParamsPrimitiveResponse](../../models/operations/formqueryparamsprimitiveresponse.md)>**
+**Promise<[operations.FormQueryParamsPrimitiveResponse](../../sdk/models/operations/formqueryparamsprimitiveresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -529,16 +529,16 @@ const refObjParamExploded: RefQueryParamObjExploded = {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `refObjParam`                                                                      | [shared.RefQueryParamObj](../../models/shared/refqueryparamobj.md)                 | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `refObjParamExploded`                                                              | [shared.RefQueryParamObjExploded](../../models/shared/refqueryparamobjexploded.md) | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `refObjParam`                                                                             | [shared.RefQueryParamObj](../../../sdk/models/shared/refqueryparamobj.md)                 | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `refObjParamExploded`                                                                     | [shared.RefQueryParamObjExploded](../../../sdk/models/shared/refqueryparamobjexploded.md) | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `config`                                                                                  | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                              | :heavy_minus_sign:                                                                        | Available config options for making requests.                                             |
 
 
 ### Response
 
-**Promise<[operations.FormQueryParamsRefParamObjectResponse](../../models/operations/formqueryparamsrefparamobjectresponse.md)>**
+**Promise<[operations.FormQueryParamsRefParamObjectResponse](../../sdk/models/operations/formqueryparamsrefparamobjectresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -584,7 +584,7 @@ const xHeaderArray: string[] = [
 
 ### Response
 
-**Promise<[operations.HeaderParamsArrayResponse](../../models/operations/headerparamsarrayresponse.md)>**
+**Promise<[operations.HeaderParamsArrayResponse](../../sdk/models/operations/headerparamsarrayresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -635,7 +635,7 @@ const xHeaderMapExplode: Record<string, string> = {
 
 ### Response
 
-**Promise<[operations.HeaderParamsMapResponse](../../models/operations/headerparamsmapresponse.md)>**
+**Promise<[operations.HeaderParamsMapResponse](../../sdk/models/operations/headerparamsmapresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -713,14 +713,14 @@ const xHeaderObjExplode: SimpleObject = {
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `xHeaderObj`                                                                                       | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `xHeaderObjExplode`                                                                                | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `xHeaderObj`                                                                                       | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `xHeaderObjExplode`                                                                                | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 | `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
 
 
 ### Response
 
-**Promise<[operations.HeaderParamsObjectResponse](../../models/operations/headerparamsobjectresponse.md)>**
+**Promise<[operations.HeaderParamsObjectResponse](../../sdk/models/operations/headerparamsobjectresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -769,7 +769,7 @@ const xHeaderString: string = "test";
 
 ### Response
 
-**Promise<[operations.HeaderParamsPrimitiveResponse](../../models/operations/headerparamsprimitiveresponse.md)>**
+**Promise<[operations.HeaderParamsPrimitiveResponse](../../sdk/models/operations/headerparamsprimitiveresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -841,7 +841,7 @@ const deepObjParam: DeepObject = {
   bool: true,
   int: 1,
   map: {
-    "key": {
+    "key2": {
       any: "any",
       bigint: 8821239038968084,
       bigintStr: "9223372036854775808",
@@ -861,7 +861,7 @@ const deepObjParam: DeepObject = {
       str: "test",
       strOpt: "testOptional",
     },
-    "key2": {
+    "key": {
       any: "any",
       bigint: 8821239038968084,
       bigintStr: "9223372036854775808",
@@ -938,14 +938,14 @@ const simpleObjParam: SimpleObject = {
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `deepObjParam`                                                                                     | [shared.DeepObject](../../models/shared/deepobject.md)                                             | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `simpleObjParam`                                                                                   | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `deepObjParam`                                                                                     | [shared.DeepObject](../../../sdk/models/shared/deepobject.md)                                      | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `simpleObjParam`                                                                                   | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 | `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
 
 
 ### Response
 
-**Promise<[operations.JsonQueryParamsObjectResponse](../../models/operations/jsonqueryparamsobjectresponse.md)>**
+**Promise<[operations.JsonQueryParamsObjectResponse](../../sdk/models/operations/jsonqueryparamsobjectresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -992,7 +992,7 @@ const queryStringParam: string = "queryValue";
 
 ### Response
 
-**Promise<[operations.MixedParametersCamelCaseResponse](../../models/operations/mixedparameterscamelcaseresponse.md)>**
+**Promise<[operations.MixedParametersCamelCaseResponse](../../sdk/models/operations/mixedparameterscamelcaseresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1039,7 +1039,7 @@ const queryStringParam: string = "queryValue";
 
 ### Response
 
-**Promise<[operations.MixedParametersPrimitivesResponse](../../models/operations/mixedparametersprimitivesresponse.md)>**
+**Promise<[operations.MixedParametersPrimitivesResponse](../../sdk/models/operations/mixedparametersprimitivesresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1137,15 +1137,15 @@ const jsonParam: SimpleObject = {
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `deepObjectParam`                                                                                  | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `formParam`                                                                                        | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `jsonParam`                                                                                        | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `deepObjectParam`                                                                                  | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `formParam`                                                                                        | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `jsonParam`                                                                                        | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 | `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
 
 
 ### Response
 
-**Promise<[operations.MixedQueryParamsResponse](../../models/operations/mixedqueryparamsresponse.md)>**
+**Promise<[operations.MixedQueryParamsResponse](../../sdk/models/operations/mixedqueryparamsresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1203,13 +1203,13 @@ const jsonObj: SimpleObject = {
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `jsonObj`                                                                                          | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `jsonObj`                                                                                          | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 | `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
 
 
 ### Response
 
-**Promise<[operations.PathParameterJsonResponse](../../models/operations/pathparameterjsonresponse.md)>**
+**Promise<[operations.PathParameterJsonResponse](../../sdk/models/operations/pathparameterjsonresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1282,13 +1282,13 @@ const objParam: SimpleObject = {
 | `arrParam`                                                                                         | *string*[]                                                                                         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `arrParamExploded`                                                                                 | *number*[]                                                                                         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `mapParam`                                                                                         | Record<string, *string*>                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
-| `objParam`                                                                                         | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
+| `objParam`                                                                                         | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                  | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 | `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |                                                                                                    |
 
 
 ### Response
 
-**Promise<[operations.PipeDelimitedQueryParamsArrayResponse](../../models/operations/pipedelimitedqueryparamsarrayresponse.md)>**
+**Promise<[operations.PipeDelimitedQueryParamsArrayResponse](../../sdk/models/operations/pipedelimitedqueryparamsarrayresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1334,7 +1334,7 @@ const arrParam: string[] = [
 
 ### Response
 
-**Promise<[operations.SimplePathParameterArraysResponse](../../models/operations/simplepathparameterarraysresponse.md)>**
+**Promise<[operations.SimplePathParameterArraysResponse](../../sdk/models/operations/simplepathparameterarraysresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1358,8 +1358,8 @@ import { SimplePathParameterMapsRequest } from "openapi/dist/sdk/models/operatio
     globalQueryParam: "some example global query param",
   });
 const mapParam: Record<string, string> = {
-  "test2": "value2",
   "test": "value",
+  "test2": "value2",
 };
 const mapParamExploded: Record<string, number> = {
   "test": 1,
@@ -1385,7 +1385,7 @@ const mapParamExploded: Record<string, number> = {
 
 ### Response
 
-**Promise<[operations.SimplePathParameterMapsResponse](../../models/operations/simplepathparametermapsresponse.md)>**
+**Promise<[operations.SimplePathParameterMapsResponse](../../sdk/models/operations/simplepathparametermapsresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1463,14 +1463,14 @@ const objParamExploded: SimpleObject = {
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `objParam`                                                                                         | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `objParamExploded`                                                                                 | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objParam`                                                                                         | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objParamExploded`                                                                                 | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 | `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
 
 
 ### Response
 
-**Promise<[operations.SimplePathParameterObjectsResponse](../../models/operations/simplepathparameterobjectsresponse.md)>**
+**Promise<[operations.SimplePathParameterObjectsResponse](../../sdk/models/operations/simplepathparameterobjectsresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1519,7 +1519,7 @@ const strParam: string = "test";
 
 ### Response
 
-**Promise<[operations.SimplePathParameterPrimitivesResponse](../../models/operations/simplepathparameterprimitivesresponse.md)>**
+**Promise<[operations.SimplePathParameterPrimitivesResponse](../../sdk/models/operations/simplepathparameterprimitivesresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -1,0 +1,10 @@
+# NullableRequiredEmptyObjectPostRequestBody
+
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `NullableOptionalObj`                                                                    | [*operations.NullableOptionalObj](../../../pkg/models/operations/nullableoptionalobj.md) | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `NullableRequiredObj`                                                                    | [operations.NullableRequiredObj](../../../pkg/models/operations/nullablerequiredobj.md)  | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `RequiredObj`                                                                            | [operations.RequiredObj](../../../pkg/models/operations/requiredobj.md)                  | :heavy_check_mark:                                                                       | N/A                                                                                      |

@@ -12,6 +12,7 @@ class Documentation:
         self.sdk_configuration = sdk_config
         
     
+    
     def get_documentation_per_language(self, language: str) -> operations.GetDocumentationPerLanguageResponse:
         r"""Get stuff in Python."""
         request = operations.GetDocumentationPerLanguageRequest(
@@ -26,7 +27,10 @@ class Documentation:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')

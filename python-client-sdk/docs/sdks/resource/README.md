@@ -1,5 +1,5 @@
 # Resource
-(*.resource*)
+(*resource*)
 
 ### Available Operations
 
@@ -85,6 +85,7 @@ req = shared.ExampleResource(
         ),
     ],
     id='<ID>',
+    inline_object=shared.InlineObject(),
     map_of_integer={
         "key": 271791,
     },

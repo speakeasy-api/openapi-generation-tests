@@ -45,10 +45,10 @@ test("Request Body Post Application JSON Simple Camel Case", async () => {
   expect(res.statusCode).toBe(200);
   expect(res.res).toBeDefined();
   const rawResponseData = JSON.parse(
-    new TextDecoder().decode(res.rawResponse?.data)
+    new TextDecoder().decode(res.rawResponse?.data),
   );
   expect(rawResponseData?.data).toMatchInlineSnapshot(
-    `"{"any_val":"any","bool_opt_val":true,"bool_val":true,"date_time_val":"2020-01-01T00:00:00.001Z","date_val":"2020-01-01","enum_val":"one","float32_val":1.1,"int32_enum_val":55,"int32_val":1,"int_enum_val":2,"int_val":1,"num_val":1.1,"str_opt_val":"testOptional","str_val":"test"}"`
+    `"{"any_val":"any","bool_opt_val":true,"bool_val":true,"date_time_val":"2020-01-01T00:00:00.001Z","date_val":"2020-01-01","enum_val":"one","float32_val":1.1,"int32_enum_val":55,"int32_val":1,"int_enum_val":2,"int_val":1,"num_val":1.1,"str_opt_val":"testOptional","str_val":"test"}"`,
   );
   expect(rawResponseData?.json).toMatchInlineSnapshot(`
 {
@@ -397,7 +397,7 @@ test("Request Body Post Application JSON Map of Map of Primitive", async () => {
 
 test("Request Body Post Application JSON Array of Array of Primitive", async () => {
   recordTest(
-    "request-bodies-post-application-json-array-of-array-of-primitive"
+    "request-bodies-post-application-json-array-of-array-of-primitive",
   );
 
   const s = new SDK({});
@@ -406,7 +406,7 @@ test("Request Body Post Application JSON Array of Array of Primitive", async () 
       [
         ["foo", "bar"],
         ["buzz", "bazz"],
-      ]
+      ],
     );
   expect(res.statusCode).toBe(200);
   expect(res.res).toBeDefined();
@@ -500,9 +500,8 @@ test("Request Body Post Application JSON Deep Camel Case", async () => {
 
   const s = new SDK({});
   const obj = createDeepObjectCamelCase();
-  const res = await s.requestBodies.requestBodyPostApplicationJsonDeepCamelCase(
-    obj
-  );
+  const res =
+    await s.requestBodies.requestBodyPostApplicationJsonDeepCamelCase(obj);
   expect(res.statusCode).toBe(200);
   expect(res.res).toBeDefined();
 
@@ -519,7 +518,7 @@ test("Request Body Post Application JSON Multiple JSON Filtered", async () => {
   const obj = createSimpleObject();
   const res =
     await s.requestBodies.requestBodyPostApplicationJsonMultipleJsonFiltered(
-      obj
+      obj,
     );
   expect(res.statusCode).toBe(200);
   expect(res.res).toBeDefined();
@@ -533,7 +532,7 @@ test("Request Body Post Multiple Content Types Component Filtered", async () => 
   const obj = createSimpleObject();
   const res =
     await s.requestBodies.requestBodyPostMultipleContentTypesComponentFiltered(
-      obj
+      obj,
     );
   expect(res.statusCode).toBe(200);
   expect(res.res).toBeDefined();
@@ -619,7 +618,7 @@ test("Request Body Post Multiple Content Types Split Form", async () => {
 
 test("Request Body Post Multiple Content Types Split JSON With Param", async () => {
   recordTest(
-    "request-bodies-post-multiple-content-types-split-json-with-param"
+    "request-bodies-post-multiple-content-types-split-json-with-param",
   );
 
   const s = new SDK({});
@@ -630,7 +629,7 @@ test("Request Body Post Multiple Content Types Split JSON With Param", async () 
         num: 1.1,
         str: "test body",
       },
-      "test param"
+      "test param",
     );
   expect(res.statusCode).toBe(200);
   expect(res.res).toBeDefined();
@@ -646,7 +645,7 @@ test("Request Body Post Multiple Content Types Split JSON With Param", async () 
 
 test("Request Body Post Multiple Content Types Split Multipart With Param", async () => {
   recordTest(
-    "request-bodies-post-multiple-content-types-split-multipart-with-param"
+    "request-bodies-post-multiple-content-types-split-multipart-with-param",
   );
 
   const s = new SDK({});
@@ -657,7 +656,7 @@ test("Request Body Post Multiple Content Types Split Multipart With Param", asyn
         num2: 1.1,
         str2: "test body",
       },
-      "test param"
+      "test param",
     );
   expect(res.statusCode).toBe(200);
   expect(res.res).toBeDefined();
@@ -673,7 +672,7 @@ test("Request Body Post Multiple Content Types Split Multipart With Param", asyn
 
 test("Request Body Post Multiple Content Types Split Form With Parameter", async () => {
   recordTest(
-    "request-bodies-post-multiple-content-types-split-form-with-param"
+    "request-bodies-post-multiple-content-types-split-form-with-param",
   );
 
   const s = new SDK({});
@@ -684,7 +683,7 @@ test("Request Body Post Multiple Content Types Split Form With Parameter", async
         num3: 1.1,
         str3: "test body",
       },
-      "test param"
+      "test param",
     );
   expect(res.statusCode).toBe(200);
   expect(res.res).toBeDefined();
@@ -794,7 +793,9 @@ test("Request Body Post Form Simple", async () => {
   const res = await s.requestBodies.requestBodyPostFormSimple(obj);
   expect(res.statusCode).toBe(200);
   expect(res.res).toBeDefined();
-  expect(res.res?.headers.contentType).toEqual("application/x-www-form-urlencoded");
+  expect(res.res?.headers.contentType).toEqual(
+    "application/x-www-form-urlencoded",
+  );
   expect(res.res?.form).toEqual({
     any: "any",
     bool: "true",
@@ -877,7 +878,7 @@ test("Request Body Put String With Params", async () => {
   const str = "Hello World";
   const res = await s.requestBodies.requestBodyPutStringWithParams(
     str,
-    "test param"
+    "test param",
   );
   expect(res.statusCode).toBe(200);
   expect(res.res).toBeDefined();
@@ -895,7 +896,7 @@ test("Request Body Put Bytes With Params", async () => {
 
   const res = await s.requestBodies.requestBodyPutBytesWithParams(
     data,
-    "test param"
+    "test param",
   );
   expect(res.statusCode).toBe(200);
   expect(res.res).toBeDefined();
@@ -918,7 +919,7 @@ test("Request Body Read Only Input", async () => {
 
   const s = new SDK({});
   const res = await s.requestBodies.requestBodyReadOnlyInput(
-    new ReadOnlyObjectInput()
+    new ReadOnlyObjectInput(),
   );
 
   expect(res.statusCode).toBe(200);
@@ -937,7 +938,7 @@ test("Request Body Write Only Output", async () => {
       bool: true,
       num: 1.0,
       string: "hello",
-    })
+    }),
   );
 
   expect(res.statusCode).toBe(200);
@@ -953,7 +954,7 @@ test("Request Body Write Only", async () => {
       bool: true,
       num: 1.0,
       string: "hello",
-    })
+    }),
   );
 
   expect(res.statusCode).toBe(200);
@@ -972,7 +973,7 @@ test("Request Body Read And Write", async () => {
       num1: 1,
       num2: 2,
       num3: 4,
-    })
+    }),
   );
 
   expect(res.statusCode).toBe(200);

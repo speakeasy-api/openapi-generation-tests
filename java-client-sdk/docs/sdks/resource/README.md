@@ -1,5 +1,5 @@
 # Resource
-(*.resource*)
+(*resource*)
 
 ### Available Operations
 
@@ -75,6 +75,7 @@ import org.openapis.openapi.models.shared.Chocolates;
 import org.openapis.openapi.models.shared.EnumNumber;
 import org.openapis.openapi.models.shared.EnumStr;
 import org.openapis.openapi.models.shared.ExampleResource;
+import org.openapis.openapi.models.shared.InlineObject;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
@@ -102,12 +103,16 @@ public class Application {
                 createdAt = OffsetDateTime.parse("2021-10-25T14:40:21.269Z");
                 enumNumber = EnumNumber.THREE;
                 enumStr = EnumStr.TWO;
+                inlineObject = new InlineObject(){{
+                    inlineName = "string";
+                }};
                 mapOfInteger = new java.util.HashMap<String, Long>(){{
                     put("key", 125983L);
                 }};
                 mapOfString = new java.util.HashMap<String, String>(){{
                     put("key", "string");
                 }};
+                namePrefix = "string";
                 updatedAt = OffsetDateTime.parse("2021-07-09T15:40:32.497Z");
             }};            
 

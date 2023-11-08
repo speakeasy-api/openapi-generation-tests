@@ -9,23 +9,6 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class SchemeBasicAuth < OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :password, String, { 'security': { 'field_name': 'password' } }
-
-      field :username, String, { 'security': { 'field_name': 'username' } }
-
-
-      sig { params(password: String, username: String).void }
-      def initialize(password: nil, username: nil)
-        @password = password
-        @username = username
-      end
-    end
-
-
     class Security < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 

@@ -39,5 +39,5 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\NestedFirstGetResponse](../../models/operations/NestedFirstGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\NestedFirstGetResponse](../../Models/Operations/NestedFirstGetResponse.md)**
 

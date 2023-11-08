@@ -1,5 +1,5 @@
 # SDKSecond
-(*.nested.second*)
+(*nested.second*)
 
 ### Available Operations
 
@@ -38,7 +38,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.NestedSecondGetResponse](../../models/operations/nestedsecondgetresponse.md)>**
+**Promise<[operations.NestedSecondGetResponse](../../sdk/models/operations/nestedsecondgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

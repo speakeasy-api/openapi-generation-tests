@@ -1,5 +1,5 @@
 # Flattening
-(*.flattening*)
+(*flattening*)
 
 ## Overview
 

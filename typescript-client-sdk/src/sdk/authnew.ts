@@ -33,7 +33,7 @@ export class AuthNew {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/auth#apiKeyAuthGlobal";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/auth#apiKeyAuthGlobal";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -65,7 +65,7 @@ export class AuthNew {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -115,7 +115,7 @@ export class AuthNew {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/auth#authGlobal";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/auth#authGlobal";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -147,7 +147,7 @@ export class AuthNew {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -197,7 +197,7 @@ export class AuthNew {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/auth#basicAuth";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/auth#basicAuth";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -225,7 +225,7 @@ export class AuthNew {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -278,7 +278,7 @@ export class AuthNew {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/auth#multipleMixedOptionsAuth";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/auth#multipleMixedOptionsAuth";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -306,7 +306,7 @@ export class AuthNew {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -360,7 +360,7 @@ export class AuthNew {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/auth#multipleMixedSchemeAuth";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/auth#multipleMixedSchemeAuth";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -388,7 +388,7 @@ export class AuthNew {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -442,7 +442,7 @@ export class AuthNew {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/auth#multipleOptionsWithMixedSchemesAuth";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -471,7 +471,7 @@ export class AuthNew {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -525,7 +525,7 @@ export class AuthNew {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/auth#multipleOptionsWithSimpleSchemesAuth";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -554,7 +554,7 @@ export class AuthNew {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -608,7 +608,7 @@ export class AuthNew {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/auth#multipleSimpleOptionsAuth";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/auth#multipleSimpleOptionsAuth";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -636,7 +636,7 @@ export class AuthNew {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -690,7 +690,7 @@ export class AuthNew {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/auth#multipleSimpleSchemeAuth";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/auth#multipleSimpleSchemeAuth";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -718,7 +718,7 @@ export class AuthNew {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -769,7 +769,7 @@ export class AuthNew {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/auth#oauth2Auth";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/auth#oauth2Auth";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -797,7 +797,7 @@ export class AuthNew {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -847,7 +847,7 @@ export class AuthNew {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/auth#openIdConnectAuth";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/auth#openIdConnectAuth";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -875,7 +875,7 @@ export class AuthNew {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",

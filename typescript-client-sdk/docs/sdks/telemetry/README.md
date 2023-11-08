@@ -1,5 +1,5 @@
 # Telemetry
-(*.telemetry*)
+(*telemetry*)
 
 ## Overview
 
@@ -46,7 +46,7 @@ const userAgent: string = "string";
 
 ### Response
 
-**Promise<[operations.TelemetrySpeakeasyUserAgentGetResponse](../../models/operations/telemetryspeakeasyuseragentgetresponse.md)>**
+**Promise<[operations.TelemetrySpeakeasyUserAgentGetResponse](../../sdk/models/operations/telemetryspeakeasyuseragentgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -86,7 +86,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.TelemetryUserAgentGetResponse](../../models/operations/telemetryuseragentgetresponse.md)>**
+**Promise<[operations.TelemetryUserAgentGetResponse](../../sdk/models/operations/telemetryuseragentgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

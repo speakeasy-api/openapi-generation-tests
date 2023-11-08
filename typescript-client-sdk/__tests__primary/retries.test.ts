@@ -48,66 +48,76 @@ test("Test Retries Timeout", async () => {
 });
 
 test("TestGlobalRetryConfigDisable", async () => {
-  recordTest("retries-global-config-disable")
+  recordTest("retries-global-config-disable");
 
-  const sdk = new SDK({retryConfig: {strategy: "none", retryConnectionErrors: false}});
+  const sdk = new SDK({
+    retryConfig: { strategy: "none", retryConnectionErrors: false },
+  });
 
   expect.assertions(2);
   try {
-    const res: RetriesGetResponse = await sdk.retries.retriesGet(pseudoUUID(), 2);
+    const res: RetriesGetResponse = await sdk.retries.retriesGet(
+      pseudoUUID(),
+      2,
+    );
   } catch (e) {
     expect(e).toBeInstanceOf(SDKError);
 
     const sdkErr = e as SDKError;
     expect(sdkErr.statusCode).toBe(503);
   }
-
 });
 
 test("TestGlobalRetryConfigSuccess", async () => {
-	recordTest("retries-global-config-success");
-  const sdk = new SDK({retryConfig: {
-    strategy: "backoff",
-    backoff: {
-      initialInterval: 1,
-      maxInterval: 50,
-      exponent: 1.1,
-      maxElapsedTime: 200,
+  recordTest("retries-global-config-success");
+  const sdk = new SDK({
+    retryConfig: {
+      strategy: "backoff",
+      backoff: {
+        initialInterval: 1,
+        maxInterval: 50,
+        exponent: 1.1,
+        maxElapsedTime: 200,
+      },
+      retryConnectionErrors: false,
     },
-    retryConnectionErrors: false,
-  }});
+  });
 
   const res: RetriesGetResponse = await sdk.retries.retriesGet(pseudoUUID(), 2);
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.retries?.retries).toBe(2);
-
 });
 
 test("TestGlobalRetryConfigTimeout", async () => {
   recordTest("retries-global-config-timeout");
-  const sdk = new SDK({retryConfig: {
-    strategy: "backoff",
-    backoff: {
-      initialInterval: 1,
-      maxInterval: 50,
-      exponent: 1.1,
-      maxElapsedTime: 100,
+  const sdk = new SDK({
+    retryConfig: {
+      strategy: "backoff",
+      backoff: {
+        initialInterval: 1,
+        maxInterval: 50,
+        exponent: 1.1,
+        maxElapsedTime: 100,
+      },
+      retryConnectionErrors: false,
     },
-    retryConnectionErrors: false,
-  }});
+  });
 
   expect.assertions(2);
   try {
-    const res: RetriesGetResponse = await sdk.retries.retriesGet(pseudoUUID(), 30);
+    const res: RetriesGetResponse = await sdk.retries.retriesGet(
+      pseudoUUID(),
+      30,
+    );
   } catch (e) {
     expect(e).toBeInstanceOf(SDKError);
 
     const sdkErr = e as SDKError;
     expect(sdkErr.statusCode).toBe(503);
   }
-})
+});
 
 function pseudoUUID() {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {

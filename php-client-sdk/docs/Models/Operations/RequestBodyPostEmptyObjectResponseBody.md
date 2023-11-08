@@ -1,0 +1,11 @@
+# RequestBodyPostEmptyObjectResponseBody
+
+OK
+
+
+## Fields
+
+| Field                                                                                                                             | Type                                                                                                                              | Required                                                                                                                          | Description                                                                                                                       |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `empty`                                                                                                                           | [?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostEmptyObjectEmpty](../../Models/Operations/RequestBodyPostEmptyObjectEmpty.md) | :heavy_minus_sign:                                                                                                                | N/A                                                                                                                               |
+| `emptyRespWithEmptyProperies`                                                                                                     | [?\OpenAPI\OpenAPI\Models\Operations\EmptyRespWithEmptyProperies](../../Models/Operations/EmptyRespWithEmptyProperies.md)         | :heavy_minus_sign:                                                                                                                | N/A                                                                                                                               |

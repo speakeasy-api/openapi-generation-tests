@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ...models.shared import readwriteobject as shared_readwriteobject
+from ...models.shared import readwriteobject_output as shared_readwriteobject_output
 from ...models.shared import simpleobject as shared_simpleobject
 from typing import Optional, Union
 
@@ -20,7 +20,7 @@ class RequestBodyReadWriteOnlyUnionResponse:
     r"""HTTP response status code for this operation"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    weakly_typed_one_of_read_write_object: Optional[Union[shared_simpleobject.SimpleObject, shared_readwriteobject.ReadWriteObjectOutput]] = dataclasses.field(default=None)
+    weakly_typed_one_of_read_write_object: Optional[Union[shared_simpleobject.SimpleObject, shared_readwriteobject_output.ReadWriteObjectOutput]] = dataclasses.field(default=None)
     r"""OK"""
     
 

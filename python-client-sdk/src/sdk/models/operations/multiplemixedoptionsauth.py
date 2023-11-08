@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ...models.shared import security as shared_security
+from ...models.shared import schemebasicauth as shared_schemebasicauth
 from typing import Optional
 
 MULTIPLE_MIXED_OPTIONS_AUTH_SERVERS = [
@@ -14,7 +14,7 @@ MULTIPLE_MIXED_OPTIONS_AUTH_SERVERS = [
 @dataclasses.dataclass
 class MultipleMixedOptionsAuthSecurity:
     api_key_auth_new: Optional[str] = dataclasses.field(default=None, metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'x-api-key' }})
-    basic_auth: Optional[shared_security.SchemeBasicAuth] = dataclasses.field(default=None, metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'basic' }})
+    basic_auth: Optional[shared_schemebasicauth.SchemeBasicAuth] = dataclasses.field(default=None, metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'basic' }})
     
 
 

@@ -1,5 +1,5 @@
 # ResponseBodies
-(*.ResponseBodies*)
+(*ResponseBodies*)
 
 ## Overview
 
@@ -51,7 +51,7 @@ var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesComplexNumber
 
 ### Response
 
-**[ResponseBodyAdditionalPropertiesComplexNumbersPostResponse](../../models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse.md)**
+**[ResponseBodyAdditionalPropertiesComplexNumbersPostResponse](../../Models/Operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse.md)**
 
 
 ## ResponseBodyAdditionalPropertiesDatePost
@@ -86,7 +86,7 @@ var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesDatePostAsync
 
 ### Response
 
-**[ResponseBodyAdditionalPropertiesDatePostResponse](../../models/operations/ResponseBodyAdditionalPropertiesDatePostResponse.md)**
+**[ResponseBodyAdditionalPropertiesDatePostResponse](../../Models/Operations/ResponseBodyAdditionalPropertiesDatePostResponse.md)**
 
 
 ## ResponseBodyAdditionalPropertiesObjectPost
@@ -136,12 +136,12 @@ var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesObjectPostAsy
 
 | Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `request`                                                               | Dictionary<String, [SimpleObject](../../models/shared/SimpleObject.md)> | :heavy_check_mark:                                                      | The request object to use for the request.                              |
+| `request`                                                               | Dictionary<String, [SimpleObject](../../Models/Shared/SimpleObject.md)> | :heavy_check_mark:                                                      | The request object to use for the request.                              |
 
 
 ### Response
 
-**[ResponseBodyAdditionalPropertiesObjectPostResponse](../../models/operations/ResponseBodyAdditionalPropertiesObjectPostResponse.md)**
+**[ResponseBodyAdditionalPropertiesObjectPostResponse](../../Models/Operations/ResponseBodyAdditionalPropertiesObjectPostResponse.md)**
 
 
 ## ResponseBodyAdditionalPropertiesPost
@@ -176,7 +176,7 @@ var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesPostAsync(new
 
 ### Response
 
-**[ResponseBodyAdditionalPropertiesPostResponse](../../models/operations/ResponseBodyAdditionalPropertiesPostResponse.md)**
+**[ResponseBodyAdditionalPropertiesPostResponse](../../Models/Operations/ResponseBodyAdditionalPropertiesPostResponse.md)**
 
 
 ## ResponseBodyBytesGet
@@ -203,7 +203,7 @@ var res = await sdk.ResponseBodies.ResponseBodyBytesGetAsync();
 
 ### Response
 
-**[ResponseBodyBytesGetResponse](../../models/operations/ResponseBodyBytesGetResponse.md)**
+**[ResponseBodyBytesGetResponse](../../Models/Operations/ResponseBodyBytesGetResponse.md)**
 
 
 ## ResponseBodyEmptyWithHeaders
@@ -238,7 +238,7 @@ var res = await sdk.ResponseBodies.ResponseBodyEmptyWithHeadersAsync(1751.8D, "s
 
 ### Response
 
-**[ResponseBodyEmptyWithHeadersResponse](../../models/operations/ResponseBodyEmptyWithHeadersResponse.md)**
+**[ResponseBodyEmptyWithHeadersResponse](../../Models/Operations/ResponseBodyEmptyWithHeadersResponse.md)**
 
 
 ## ResponseBodyOptionalGet
@@ -271,7 +271,7 @@ var res = await sdk.ResponseBodies.ResponseBodyOptionalGetAsync();
 
 ### Response
 
-**[ResponseBodyOptionalGetResponse](../../models/operations/ResponseBodyOptionalGetResponse.md)**
+**[ResponseBodyOptionalGetResponse](../../Models/Operations/ResponseBodyOptionalGetResponse.md)**
 
 
 ## ResponseBodyReadOnly
@@ -304,7 +304,7 @@ var res = await sdk.ResponseBodies.ResponseBodyReadOnlyAsync();
 
 ### Response
 
-**[ResponseBodyReadOnlyResponse](../../models/operations/ResponseBodyReadOnlyResponse.md)**
+**[ResponseBodyReadOnlyResponse](../../Models/Operations/ResponseBodyReadOnlyResponse.md)**
 
 
 ## ResponseBodyStringGet
@@ -331,7 +331,7 @@ var res = await sdk.ResponseBodies.ResponseBodyStringGetAsync();
 
 ### Response
 
-**[ResponseBodyStringGetResponse](../../models/operations/ResponseBodyStringGetResponse.md)**
+**[ResponseBodyStringGetResponse](../../Models/Operations/ResponseBodyStringGetResponse.md)**
 
 
 ## ResponseBodyXmlGet
@@ -358,7 +358,7 @@ var res = await sdk.ResponseBodies.ResponseBodyXmlGetAsync();
 
 ### Response
 
-**[ResponseBodyXmlGetResponse](../../models/operations/ResponseBodyXmlGetResponse.md)**
+**[ResponseBodyXmlGetResponse](../../Models/Operations/ResponseBodyXmlGetResponse.md)**
 
 
 ## ResponseBodyZeroValueComplexTypePtrsPost
@@ -390,10 +390,10 @@ var res = await sdk.ResponseBodies.ResponseBodyZeroValueComplexTypePtrsPostAsync
 
 | Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `request`                                                                                 | [ObjWithZeroValueComplexTypePtrs](../../models/shared/ObjWithZeroValueComplexTypePtrs.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
+| `request`                                                                                 | [ObjWithZeroValueComplexTypePtrs](../../Models/Shared/ObjWithZeroValueComplexTypePtrs.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
 
 
 ### Response
 
-**[ResponseBodyZeroValueComplexTypePtrsPostResponse](../../models/operations/ResponseBodyZeroValueComplexTypePtrsPostResponse.md)**
+**[ResponseBodyZeroValueComplexTypePtrsPostResponse](../../Models/Operations/ResponseBodyZeroValueComplexTypePtrsPostResponse.md)**
 

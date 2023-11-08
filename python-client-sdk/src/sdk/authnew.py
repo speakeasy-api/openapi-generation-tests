@@ -13,6 +13,7 @@ class AuthNew:
         self.sdk_configuration = sdk_config
         
     
+    
     def api_key_auth_global_new(self, request: shared.AuthServiceRequestBody, server_url: Optional[str] = None) -> operations.APIKeyAuthGlobalNewResponse:
         base_url = utils.template_url(operations.API_KEY_AUTH_GLOBAL_NEW_SERVERS[0], {
         })
@@ -29,7 +30,10 @@ class AuthNew:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -43,6 +47,7 @@ class AuthNew:
 
         return res
 
+    
     
     def auth_global(self, request: shared.AuthServiceRequestBody, server_url: Optional[str] = None) -> operations.AuthGlobalResponse:
         base_url = utils.template_url(operations.AUTH_GLOBAL_SERVERS[0], {
@@ -60,7 +65,10 @@ class AuthNew:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -74,6 +82,7 @@ class AuthNew:
 
         return res
 
+    
     
     def basic_auth_new(self, request: shared.AuthServiceRequestBody, security: operations.BasicAuthNewSecurity, server_url: Optional[str] = None) -> operations.BasicAuthNewResponse:
         base_url = utils.template_url(operations.BASIC_AUTH_NEW_SERVERS[0], {
@@ -106,6 +115,7 @@ class AuthNew:
         return res
 
     
+    
     def multiple_mixed_options_auth(self, request: shared.AuthServiceRequestBody, security: operations.MultipleMixedOptionsAuthSecurity, server_url: Optional[str] = None) -> operations.MultipleMixedOptionsAuthResponse:
         base_url = utils.template_url(operations.MULTIPLE_MIXED_OPTIONS_AUTH_SERVERS[0], {
         })
@@ -136,6 +146,7 @@ class AuthNew:
 
         return res
 
+    
     
     def multiple_mixed_scheme_auth(self, request: shared.AuthServiceRequestBody, security: operations.MultipleMixedSchemeAuthSecurity, server_url: Optional[str] = None) -> operations.MultipleMixedSchemeAuthResponse:
         base_url = utils.template_url(operations.MULTIPLE_MIXED_SCHEME_AUTH_SERVERS[0], {
@@ -168,6 +179,7 @@ class AuthNew:
         return res
 
     
+    
     def multiple_options_with_mixed_schemes_auth(self, request: shared.AuthServiceRequestBody, security: operations.MultipleOptionsWithMixedSchemesAuthSecurity, server_url: Optional[str] = None) -> operations.MultipleOptionsWithMixedSchemesAuthResponse:
         base_url = utils.template_url(operations.MULTIPLE_OPTIONS_WITH_MIXED_SCHEMES_AUTH_SERVERS[0], {
         })
@@ -198,6 +210,7 @@ class AuthNew:
 
         return res
 
+    
     
     def multiple_options_with_simple_schemes_auth(self, request: shared.AuthServiceRequestBody, security: operations.MultipleOptionsWithSimpleSchemesAuthSecurity, server_url: Optional[str] = None) -> operations.MultipleOptionsWithSimpleSchemesAuthResponse:
         base_url = utils.template_url(operations.MULTIPLE_OPTIONS_WITH_SIMPLE_SCHEMES_AUTH_SERVERS[0], {
@@ -230,6 +243,7 @@ class AuthNew:
         return res
 
     
+    
     def multiple_simple_options_auth(self, request: shared.AuthServiceRequestBody, security: operations.MultipleSimpleOptionsAuthSecurity, server_url: Optional[str] = None) -> operations.MultipleSimpleOptionsAuthResponse:
         base_url = utils.template_url(operations.MULTIPLE_SIMPLE_OPTIONS_AUTH_SERVERS[0], {
         })
@@ -260,6 +274,7 @@ class AuthNew:
 
         return res
 
+    
     
     def multiple_simple_scheme_auth(self, request: shared.AuthServiceRequestBody, security: operations.MultipleSimpleSchemeAuthSecurity, server_url: Optional[str] = None) -> operations.MultipleSimpleSchemeAuthResponse:
         base_url = utils.template_url(operations.MULTIPLE_SIMPLE_SCHEME_AUTH_SERVERS[0], {
@@ -292,6 +307,7 @@ class AuthNew:
         return res
 
     
+    
     def oauth2_auth_new(self, request: shared.AuthServiceRequestBody, security: operations.Oauth2AuthNewSecurity, server_url: Optional[str] = None) -> operations.Oauth2AuthNewResponse:
         base_url = utils.template_url(operations.OAUTH2_AUTH_NEW_SERVERS[0], {
         })
@@ -322,6 +338,7 @@ class AuthNew:
 
         return res
 
+    
     
     def open_id_connect_auth_new(self, request: shared.AuthServiceRequestBody, security: operations.OpenIDConnectAuthNewSecurity, server_url: Optional[str] = None) -> operations.OpenIDConnectAuthNewResponse:
         base_url = utils.template_url(operations.OPEN_ID_CONNECT_AUTH_NEW_SERVERS[0], {

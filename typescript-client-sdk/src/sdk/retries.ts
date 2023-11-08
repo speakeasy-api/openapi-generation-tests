@@ -35,7 +35,7 @@ export class Retries {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/retries";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/retries";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -67,7 +67,7 @@ export class Retries {
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
                 validateStatus: () => true,
-                url: url + queryParams,
+                url: operationUrl + queryParams,
                 method: "get",
                 headers: headers,
                 responseType: "arraybuffer",

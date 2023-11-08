@@ -9,16 +9,6 @@ from sdk import utils
 from typing import Optional, Union
 
 
-@dataclasses.dataclass
-class NullableOneOfTwo:
-    pass
-
-
-@dataclasses.dataclass
-class OneOfOne:
-    pass
-
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class NullableOneOfRefInObject:

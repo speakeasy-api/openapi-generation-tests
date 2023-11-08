@@ -1,5 +1,5 @@
 # SDKSecond
-(*.Nested.Second*)
+(*Nested.Second*)
 
 ### Available Operations
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Response
 
-**[*operations.NestedSecondGetResponse](../../models/operations/nestedsecondgetresponse.md), error**
+**[*operations.NestedSecondGetResponse](../../pkg/models/operations/nestedsecondgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |

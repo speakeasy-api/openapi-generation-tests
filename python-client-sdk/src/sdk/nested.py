@@ -20,6 +20,7 @@ class Nested:
         self.second = SDKSecond(self.sdk_configuration)
         
     
+    
     def get(self) -> operations.NestedGetResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -28,7 +29,10 @@ class Nested:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')

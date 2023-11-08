@@ -13,6 +13,7 @@ class Parameters:
         self.sdk_configuration = sdk_config
         
     
+    
     def deep_object_query_params_map(self, map_param: Dict[str, str], map_arr_param: Optional[Dict[str, List[str]]] = None) -> operations.DeepObjectQueryParamsMapResponse:
         request = operations.DeepObjectQueryParamsMapRequest(
             map_param=map_param,
@@ -27,7 +28,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -46,6 +50,7 @@ class Parameters:
         return res
 
     
+    
     def deep_object_query_params_object(self, obj_param: shared.SimpleObject, obj_arr_param: Optional[operations.ObjArrParam] = None) -> operations.DeepObjectQueryParamsObjectResponse:
         request = operations.DeepObjectQueryParamsObjectRequest(
             obj_param=obj_param,
@@ -60,7 +65,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -79,6 +87,7 @@ class Parameters:
         return res
 
     
+    
     def duplicate_param(self, duplicate_param_request: str) -> operations.DuplicateParamResponse:
         request = operations.DuplicateParamRequest(
             duplicate_param_request=duplicate_param_request,
@@ -91,7 +100,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -110,6 +122,7 @@ class Parameters:
         return res
 
     
+    
     def form_query_params_array(self, arr_param: Optional[List[str]] = None, arr_param_exploded: Optional[List[int]] = None) -> operations.FormQueryParamsArrayResponse:
         request = operations.FormQueryParamsArrayRequest(
             arr_param=arr_param,
@@ -124,7 +137,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -143,6 +159,7 @@ class Parameters:
         return res
 
     
+    
     def form_query_params_camel_object(self, obj_param_exploded: operations.ObjParamExploded, obj_param: Optional[operations.ObjParam] = None) -> operations.FormQueryParamsCamelObjectResponse:
         request = operations.FormQueryParamsCamelObjectRequest(
             obj_param_exploded=obj_param_exploded,
@@ -157,7 +174,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -176,6 +196,7 @@ class Parameters:
         return res
 
     
+    
     def form_query_params_map(self, map_param: Optional[Dict[str, str]] = None, map_param_exploded: Optional[Dict[str, int]] = None) -> operations.FormQueryParamsMapResponse:
         request = operations.FormQueryParamsMapRequest(
             map_param=map_param,
@@ -190,7 +211,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -209,6 +233,7 @@ class Parameters:
         return res
 
     
+    
     def form_query_params_object(self, obj_param_exploded: shared.SimpleObject, obj_param: Optional[shared.SimpleObject] = None) -> operations.FormQueryParamsObjectResponse:
         request = operations.FormQueryParamsObjectRequest(
             obj_param_exploded=obj_param_exploded,
@@ -223,7 +248,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -242,6 +270,7 @@ class Parameters:
         return res
 
     
+    
     def form_query_params_primitive(self, bool_param: bool, int_param: int, num_param: float, str_param: str) -> operations.FormQueryParamsPrimitiveResponse:
         request = operations.FormQueryParamsPrimitiveRequest(
             bool_param=bool_param,
@@ -258,7 +287,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -277,6 +309,7 @@ class Parameters:
         return res
 
     
+    
     def form_query_params_ref_param_object(self, ref_obj_param: Optional[shared.RefQueryParamObj] = None, ref_obj_param_exploded: Optional[shared.RefQueryParamObjExploded] = None) -> operations.FormQueryParamsRefParamObjectResponse:
         request = operations.FormQueryParamsRefParamObjectRequest(
             ref_obj_param=ref_obj_param,
@@ -291,7 +324,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -310,6 +346,7 @@ class Parameters:
         return res
 
     
+    
     def header_params_array(self, x_header_array: List[str]) -> operations.HeaderParamsArrayResponse:
         request = operations.HeaderParamsArrayRequest(
             x_header_array=x_header_array,
@@ -322,7 +359,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -341,6 +381,7 @@ class Parameters:
         return res
 
     
+    
     def header_params_map(self, x_header_map: Dict[str, str], x_header_map_explode: Dict[str, str]) -> operations.HeaderParamsMapResponse:
         request = operations.HeaderParamsMapRequest(
             x_header_map=x_header_map,
@@ -354,7 +395,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -373,6 +417,7 @@ class Parameters:
         return res
 
     
+    
     def header_params_object(self, x_header_obj: shared.SimpleObject, x_header_obj_explode: shared.SimpleObject) -> operations.HeaderParamsObjectResponse:
         request = operations.HeaderParamsObjectRequest(
             x_header_obj=x_header_obj,
@@ -386,7 +431,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -405,6 +453,7 @@ class Parameters:
         return res
 
     
+    
     def header_params_primitive(self, x_header_boolean: bool, x_header_integer: int, x_header_number: float, x_header_string: str) -> operations.HeaderParamsPrimitiveResponse:
         request = operations.HeaderParamsPrimitiveRequest(
             x_header_boolean=x_header_boolean,
@@ -420,7 +469,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -439,6 +491,7 @@ class Parameters:
         return res
 
     
+    
     def json_query_params_object(self, deep_obj_param: shared.DeepObject, simple_obj_param: shared.SimpleObject) -> operations.JSONQueryParamsObjectResponse:
         request = operations.JSONQueryParamsObjectRequest(
             deep_obj_param=deep_obj_param,
@@ -453,7 +506,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -472,6 +528,7 @@ class Parameters:
         return res
 
     
+    
     def mixed_parameters_camel_case(self, header_param: str, path_param: str, query_string_param: str) -> operations.MixedParametersCamelCaseResponse:
         request = operations.MixedParametersCamelCaseRequest(
             header_param=header_param,
@@ -487,7 +544,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -506,6 +566,7 @@ class Parameters:
         return res
 
     
+    
     def mixed_parameters_primitives(self, header_param: str, path_param: str, query_string_param: str) -> operations.MixedParametersPrimitivesResponse:
         request = operations.MixedParametersPrimitivesRequest(
             header_param=header_param,
@@ -521,7 +582,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -540,6 +604,7 @@ class Parameters:
         return res
 
     
+    
     def mixed_query_params(self, deep_object_param: shared.SimpleObject, form_param: shared.SimpleObject, json_param: shared.SimpleObject) -> operations.MixedQueryParamsResponse:
         request = operations.MixedQueryParamsRequest(
             deep_object_param=deep_object_param,
@@ -555,7 +620,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -574,6 +642,7 @@ class Parameters:
         return res
 
     
+    
     def path_parameter_json(self, json_obj: shared.SimpleObject) -> operations.PathParameterJSONResponse:
         request = operations.PathParameterJSONRequest(
             json_obj=json_obj,
@@ -586,7 +655,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -605,6 +677,7 @@ class Parameters:
         return res
 
     
+    
     def pipe_delimited_query_params_array(self, arr_param: Optional[List[str]] = None, arr_param_exploded: Optional[List[int]] = None, map_param: Optional[Dict[str, str]] = None, obj_param: Optional[shared.SimpleObject] = None) -> operations.PipeDelimitedQueryParamsArrayResponse:
         request = operations.PipeDelimitedQueryParamsArrayRequest(
             arr_param=arr_param,
@@ -621,7 +694,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -640,6 +716,7 @@ class Parameters:
         return res
 
     
+    
     def simple_path_parameter_arrays(self, arr_param: List[str]) -> operations.SimplePathParameterArraysResponse:
         request = operations.SimplePathParameterArraysRequest(
             arr_param=arr_param,
@@ -652,7 +729,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -671,6 +751,7 @@ class Parameters:
         return res
 
     
+    
     def simple_path_parameter_maps(self, map_param: Dict[str, str], map_param_exploded: Dict[str, int]) -> operations.SimplePathParameterMapsResponse:
         request = operations.SimplePathParameterMapsRequest(
             map_param=map_param,
@@ -684,7 +765,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -703,6 +787,7 @@ class Parameters:
         return res
 
     
+    
     def simple_path_parameter_objects(self, obj_param: shared.SimpleObject, obj_param_exploded: shared.SimpleObject) -> operations.SimplePathParameterObjectsResponse:
         request = operations.SimplePathParameterObjectsRequest(
             obj_param=obj_param,
@@ -716,7 +801,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -735,6 +823,7 @@ class Parameters:
         return res
 
     
+    
     def simple_path_parameter_primitives(self, bool_param: bool, int_param: int, num_param: float, str_param: str) -> operations.SimplePathParameterPrimitivesResponse:
         request = operations.SimplePathParameterPrimitivesRequest(
             bool_param=bool_param,
@@ -750,7 +839,10 @@ class Parameters:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')

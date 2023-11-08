@@ -31,7 +31,8 @@ export class Telemetry {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/telemetry/speakeasy-user-agent";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/anything/telemetry/speakeasy-user-agent";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -52,7 +53,7 @@ export class Telemetry {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -108,7 +109,7 @@ export class Telemetry {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/telemetry/user-agent";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/anything/telemetry/user-agent";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -125,7 +126,7 @@ export class Telemetry {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",

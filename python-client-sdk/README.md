@@ -107,7 +107,7 @@ if res.object is not None:
 * [put_anything_ignored_generation](docs/sdks/sdk/README.md#put_anything_ignored_generation)
 * [response_body_json_get](docs/sdks/sdk/README.md#response_body_json_get)
 
-### [.generation](docs/sdks/generation/README.md)
+### [generation](docs/sdks/generation/README.md)
 
 * [anchor_types_get](docs/sdks/generation/README.md#anchor_types_get)
 * [array_circular_reference_get](docs/sdks/generation/README.md#array_circular_reference_get)
@@ -130,13 +130,13 @@ if res.object is not None:
 * [typed_parameter_generation_get](docs/sdks/generation/README.md#typed_parameter_generation_get)
 * [usage_example_post](docs/sdks/generation/README.md#usage_example_post) - An operation used for testing usage examples
 
-### [.errors](docs/sdks/errors/README.md)
+### [errors](docs/sdks/errors/README.md)
 
 * [connection_error_get](docs/sdks/errors/README.md#connection_error_get)
 * [status_get_error](docs/sdks/errors/README.md#status_get_error)
 * [status_get_x_speakeasy_errors](docs/sdks/errors/README.md#status_get_x_speakeasy_errors)
 
-### [.unions](docs/sdks/unions/README.md)
+### [unions](docs/sdks/unions/README.md)
 
 * [flattened_typed_object_post](docs/sdks/unions/README.md#flattened_typed_object_post)
 * [mixed_type_one_of_post](docs/sdks/unions/README.md#mixed_type_one_of_post)
@@ -154,7 +154,7 @@ if res.object is not None:
 * [union_date_time_null](docs/sdks/unions/README.md#union_date_time_null)
 * [weakly_typed_one_of_post](docs/sdks/unions/README.md#weakly_typed_one_of_post)
 
-### [.flattening](docs/sdks/flattening/README.md)
+### [flattening](docs/sdks/flattening/README.md)
 
 * [component_body_and_param_conflict](docs/sdks/flattening/README.md#component_body_and_param_conflict)
 * [component_body_and_param_no_conflict](docs/sdks/flattening/README.md#component_body_and_param_no_conflict)
@@ -162,12 +162,12 @@ if res.object is not None:
 * [inline_body_and_param_conflict](docs/sdks/flattening/README.md#inline_body_and_param_conflict)
 * [inline_body_and_param_no_conflict](docs/sdks/flattening/README.md#inline_body_and_param_no_conflict)
 
-### [.globals](docs/sdks/globals/README.md)
+### [globals](docs/sdks/globals/README.md)
 
 * [global_path_parameter_get](docs/sdks/globals/README.md#global_path_parameter_get)
 * [globals_query_parameter_get](docs/sdks/globals/README.md#globals_query_parameter_get)
 
-### [.parameters](docs/sdks/parameters/README.md)
+### [parameters](docs/sdks/parameters/README.md)
 
 * [deep_object_query_params_map](docs/sdks/parameters/README.md#deep_object_query_params_map)
 * [deep_object_query_params_object](docs/sdks/parameters/README.md#deep_object_query_params_object)
@@ -194,23 +194,23 @@ if res.object is not None:
 * [simple_path_parameter_primitives](docs/sdks/parameters/README.md#simple_path_parameter_primitives)
 
 
-### [.nest.first](docs/sdks/sdkfirst/README.md)
+### [nest.first](docs/sdks/sdkfirst/README.md)
 
 * [get](docs/sdks/sdkfirst/README.md#get)
 
-### [.nested](docs/sdks/nested/README.md)
+### [nested](docs/sdks/nested/README.md)
 
 * [get](docs/sdks/nested/README.md#get)
 
-### [.nested.first](docs/sdks/sdknestedfirst/README.md)
+### [nested.first](docs/sdks/sdknestedfirst/README.md)
 
 * [get](docs/sdks/sdknestedfirst/README.md#get)
 
-### [.nested.second](docs/sdks/sdksecond/README.md)
+### [nested.second](docs/sdks/sdksecond/README.md)
 
 * [get](docs/sdks/sdksecond/README.md#get)
 
-### [.request_bodies](docs/sdks/requestbodies/README.md)
+### [request_bodies](docs/sdks/requestbodies/README.md)
 
 * [nullable_object_post](docs/sdks/requestbodies/README.md#nullable_object_post)
 * [nullable_required_empty_object_post](docs/sdks/requestbodies/README.md#nullable_required_empty_object_post)
@@ -294,7 +294,7 @@ if res.object is not None:
 * [request_body_write_only_output](docs/sdks/requestbodies/README.md#request_body_write_only_output)
 * [request_body_write_only_union](docs/sdks/requestbodies/README.md#request_body_write_only_union)
 
-### [.response_bodies](docs/sdks/responsebodies/README.md)
+### [response_bodies](docs/sdks/responsebodies/README.md)
 
 * [response_body_additional_properties_complex_numbers_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_complex_numbers_post)
 * [response_body_additional_properties_date_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_date_post)
@@ -308,7 +308,7 @@ if res.object is not None:
 * [response_body_xml_get](docs/sdks/responsebodies/README.md#response_body_xml_get)
 * [response_body_zero_value_complex_type_ptrs_post](docs/sdks/responsebodies/README.md#response_body_zero_value_complex_type_ptrs_post)
 
-### [.servers](docs/sdks/servers/README.md)
+### [servers](docs/sdks/servers/README.md)
 
 * [select_global_server](docs/sdks/servers/README.md#select_global_server)
 * [select_server_with_id](docs/sdks/servers/README.md#select_server_with_id) - Select a server by ID.
@@ -317,12 +317,12 @@ if res.object is not None:
 * [server_with_templates_global](docs/sdks/servers/README.md#server_with_templates_global)
 * [servers_by_id_with_templates](docs/sdks/servers/README.md#servers_by_id_with_templates)
 
-### [.telemetry](docs/sdks/telemetry/README.md)
+### [telemetry](docs/sdks/telemetry/README.md)
 
 * [telemetry_speakeasy_user_agent_get](docs/sdks/telemetry/README.md#telemetry_speakeasy_user_agent_get)
 * [telemetry_user_agent_get](docs/sdks/telemetry/README.md#telemetry_user_agent_get)
 
-### [.auth_new](docs/sdks/authnew/README.md)
+### [auth_new](docs/sdks/authnew/README.md)
 
 * [api_key_auth_global_new](docs/sdks/authnew/README.md#api_key_auth_global_new)
 * [auth_global](docs/sdks/authnew/README.md#auth_global)
@@ -336,7 +336,7 @@ if res.object is not None:
 * [oauth2_auth_new](docs/sdks/authnew/README.md#oauth2_auth_new)
 * [open_id_connect_auth_new](docs/sdks/authnew/README.md#open_id_connect_auth_new)
 
-### [.auth](docs/sdks/auth/README.md)
+### [auth](docs/sdks/auth/README.md)
 
 * [api_key_auth](docs/sdks/auth/README.md#api_key_auth)
 * [api_key_auth_global](docs/sdks/auth/README.md#api_key_auth_global)
@@ -347,11 +347,11 @@ if res.object is not None:
 * [oauth2_override](docs/sdks/auth/README.md#oauth2_override)
 * [open_id_connect_auth](docs/sdks/auth/README.md#open_id_connect_auth)
 
-### [.documentation](docs/sdks/documentation/README.md)
+### [documentation](docs/sdks/documentation/README.md)
 
 * [get_documentation_per_language](docs/sdks/documentation/README.md#get_documentation_per_language) - Gets documentation for some language, I guess.
 
-### [.resource](docs/sdks/resource/README.md)
+### [resource](docs/sdks/resource/README.md)
 
 * [create_file](docs/sdks/resource/README.md#create_file)
 * [create_resource](docs/sdks/resource/README.md#create_resource)
@@ -359,15 +359,15 @@ if res.object is not None:
 * [get_resource](docs/sdks/resource/README.md#get_resource)
 * [update_resource](docs/sdks/resource/README.md#update_resource)
 
-### [.first](docs/sdks/first/README.md)
+### [first](docs/sdks/first/README.md)
 
 * [get](docs/sdks/first/README.md#get)
 
-### [.second](docs/sdks/second/README.md)
+### [second](docs/sdks/second/README.md)
 
 * [get](docs/sdks/second/README.md#get)
 
-### [.pagination](docs/sdks/pagination/README.md)
+### [pagination](docs/sdks/pagination/README.md)
 
 * [pagination_cursor_body](docs/sdks/pagination/README.md#pagination_cursor_body)
 * [pagination_cursor_params](docs/sdks/pagination/README.md#pagination_cursor_params)
@@ -376,7 +376,7 @@ if res.object is not None:
 * [pagination_limit_offset_page_body](docs/sdks/pagination/README.md#pagination_limit_offset_page_body)
 * [pagination_limit_offset_page_params](docs/sdks/pagination/README.md#pagination_limit_offset_page_params)
 
-### [.retries](docs/sdks/retries/README.md)
+### [retries](docs/sdks/retries/README.md)
 
 * [retries_get](docs/sdks/retries/README.md#retries_get)
 <!-- End SDK Available Operations -->
@@ -500,7 +500,7 @@ if res.res is not None:
 <!-- Start Error Handling -->
 # Error Handling
 
-Handling errors in your SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
 
 | Error Object                                 | Status Code                                  | Content Type                                 |
 | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
@@ -653,7 +653,7 @@ if res.status_code == 200:
 The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
 
 
-For example, you could specify a header for every request that your sdk makes as follows:
+For example, you could specify a header for every request that this sdk makes as follows:
 
 ```python
 import sdk
@@ -680,7 +680,7 @@ To change the default retry strategy for a single API call, simply provide a ret
 ```python
 import sdk
 from sdk.models import operations, shared
-from undefined.utils import BackoffStrategy, RetryConfig
+from sdk.utils import BackoffStrategy, RetryConfig
 
 s = sdk.SDK(
     security=shared.Security(
@@ -707,7 +707,7 @@ If you'd like to override the default retry strategy for all operations that sup
 ```python
 import sdk
 from sdk.models import operations, shared
-from undefined.utils import BackoffStrategy, RetryConfig
+from sdk.utils import BackoffStrategy, RetryConfig
 
 s = sdk.SDK(
     retry_config=RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False)
@@ -734,7 +734,7 @@ if res.retries is not None:
 
 ## Per-Client Security Schemes
 
-Your SDK supports the following security schemes globally:
+This SDK supports the following security schemes globally:
 
 | Name               | Type               | Scheme             |
 | ------------------ | ------------------ | ------------------ |
@@ -767,7 +767,7 @@ if res.object is not None:
 
 ## Per-Operation Security Schemes
 
-Some operations in your SDK require the security scheme to be specified at the request level. For example:
+Some operations in this SDK require the security scheme to be specified at the request level. For example:
 ## Second
 Do this second
 ```python

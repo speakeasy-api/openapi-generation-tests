@@ -1,5 +1,5 @@
 # SDKFirst
-(*.Nest.First*)
+(*Nest.First*)
 
 ### Available Operations
 
@@ -29,5 +29,5 @@ var res = await sdk.Nest.First.GetAsync();
 
 ### Response
 
-**[NestFirstGetResponse](../../models/operations/NestFirstGetResponse.md)**
+**[NestFirstGetResponse](../../Models/Operations/NestFirstGetResponse.md)**
 

@@ -13,6 +13,7 @@ class Auth:
         self.sdk_configuration = sdk_config
         
     
+    
     def api_key_auth(self, security: operations.APIKeyAuthSecurity) -> operations.APIKeyAuthResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -40,6 +41,7 @@ class Auth:
         return res
 
     
+    
     def api_key_auth_global(self) -> operations.APIKeyAuthGlobalResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -48,7 +50,10 @@ class Auth:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -66,6 +71,7 @@ class Auth:
 
         return res
 
+    
     
     def basic_auth(self, security: operations.BasicAuthSecurity, passwd: str, user: str) -> operations.BasicAuthResponse:
         request = operations.BasicAuthRequest(
@@ -99,6 +105,7 @@ class Auth:
         return res
 
     
+    
     def bearer_auth(self, security: operations.BearerAuthSecurity) -> operations.BearerAuthResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -126,6 +133,7 @@ class Auth:
         return res
 
     
+    
     def global_bearer_auth(self) -> operations.GlobalBearerAuthResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -134,7 +142,10 @@ class Auth:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -152,6 +163,7 @@ class Auth:
 
         return res
 
+    
     
     def oauth2_auth(self, security: operations.Oauth2AuthSecurity) -> operations.Oauth2AuthResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -179,6 +191,7 @@ class Auth:
 
         return res
 
+    
     
     def oauth2_override(self, security: operations.Oauth2OverrideSecurity) -> operations.Oauth2OverrideResponse:
         request = operations.Oauth2OverrideRequest(
@@ -209,6 +222,7 @@ class Auth:
 
         return res
 
+    
     
     def open_id_connect_auth(self, security: operations.OpenIDConnectAuthSecurity) -> operations.OpenIDConnectAuthResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())

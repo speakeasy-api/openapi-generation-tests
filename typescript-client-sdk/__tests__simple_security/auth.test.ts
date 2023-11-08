@@ -6,17 +6,14 @@ import { expect, test } from "@jest/globals";
 
 import { SDK } from "../src/sdk";
 import { recordTest } from "./common_helpers";
-import {
-  ApiKeyAuthGlobalResponse,
-} from "../src/sdk/models/operations";
+import { ApiKeyAuthGlobalResponse } from "../src/sdk/models/operations";
 
+test("test global security flattening", async () => {
+  recordTest("auth-global-security-flattening");
 
-test("test global security flattening", async() => {
-  recordTest("auth-global-security-flattening")
+  const sdk = new SDK({ apiKeyAuth: "Bearer testToken" });
 
-  const sdk = new SDK({apiKeyAuth: "Bearer testToken"})
-
-  let res: ApiKeyAuthGlobalResponse = await sdk.auth.apiKeyAuthGlobal()
+  let res: ApiKeyAuthGlobalResponse = await sdk.auth.apiKeyAuthGlobal();
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
 });

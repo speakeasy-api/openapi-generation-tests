@@ -15,6 +15,7 @@ class RequestBodies:
         self.sdk_configuration = sdk_config
         
     
+    
     def nullable_object_post(self, request: shared.NullableObject) -> operations.NullableObjectPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -28,7 +29,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -47,6 +51,7 @@ class RequestBodies:
         return res
 
     
+    
     def nullable_required_empty_object_post(self, request: operations.NullableRequiredEmptyObjectPostRequestBody) -> operations.NullableRequiredEmptyObjectPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -60,7 +65,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -78,6 +86,7 @@ class RequestBodies:
         return res
 
     
+    
     def nullable_required_property_post(self, request: operations.NullableRequiredPropertyPostRequestBody) -> operations.NullableRequiredPropertyPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -91,7 +100,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -109,6 +121,7 @@ class RequestBodies:
         return res
 
     
+    
     def nullable_required_shared_object_post(self, request: operations.NullableRequiredSharedObjectPostRequestBody) -> operations.NullableRequiredSharedObjectPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -122,7 +135,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -140,6 +156,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_array(self, request: List[shared.SimpleObject], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_SERVERS[0], {
         })
@@ -156,7 +173,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -175,6 +195,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_array_camel_case(self, request: List[shared.SimpleObjectCamelCase], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayCamelCaseResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_CAMEL_CASE_SERVERS[0], {
         })
@@ -191,7 +212,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -210,6 +234,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_array_obj(self, request: List[shared.SimpleObject]) -> operations.RequestBodyPostApplicationJSONArrayObjResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -223,7 +248,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -242,6 +270,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_array_obj_camel_case(self, request: List[shared.SimpleObjectCamelCase]) -> operations.RequestBodyPostApplicationJSONArrayObjCamelCaseResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -255,7 +284,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -274,6 +306,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_array_of_array(self, request: List[List[shared.SimpleObject]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfArrayResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_SERVERS[0], {
         })
@@ -290,7 +323,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -309,6 +345,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_array_of_array_camel_case(self, request: List[List[shared.SimpleObjectCamelCase]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfArrayCamelCaseResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_CAMEL_CASE_SERVERS[0], {
         })
@@ -325,7 +362,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -344,6 +384,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_array_of_array_of_primitive(self, request: List[List[str]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_OF_PRIMITIVE_SERVERS[0], {
         })
@@ -360,7 +401,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -379,6 +423,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_array_of_map(self, request: List[Dict[str, shared.SimpleObject]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfMapResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_MAP_SERVERS[0], {
         })
@@ -395,7 +440,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -414,6 +462,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_array_of_map_camel_case(self, request: List[Dict[str, shared.SimpleObjectCamelCase]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfMapCamelCaseResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_MAP_CAMEL_CASE_SERVERS[0], {
         })
@@ -430,7 +479,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -449,6 +501,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_array_of_primitive(self, request: List[str], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfPrimitiveResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_PRIMITIVE_SERVERS[0], {
         })
@@ -465,7 +518,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -484,6 +540,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_deep(self, request: shared.DeepObject) -> operations.RequestBodyPostApplicationJSONDeepResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -497,7 +554,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -516,6 +576,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_deep_camel_case(self, request: shared.DeepObjectCamelCase) -> operations.RequestBodyPostApplicationJSONDeepCamelCaseResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -529,7 +590,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -548,6 +612,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_map(self, request: Dict[str, shared.SimpleObject], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_SERVERS[0], {
         })
@@ -564,7 +629,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -583,6 +651,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_map_camel_case(self, request: Dict[str, shared.SimpleObjectCamelCase], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapCamelCaseResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_CAMEL_CASE_SERVERS[0], {
         })
@@ -599,7 +668,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -618,6 +690,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_map_obj(self, request: Dict[str, shared.SimpleObject]) -> operations.RequestBodyPostApplicationJSONMapObjResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -631,7 +704,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -650,6 +726,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_map_obj_camel_case(self, request: Dict[str, shared.SimpleObjectCamelCase]) -> operations.RequestBodyPostApplicationJSONMapObjCamelCaseResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -663,7 +740,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -682,6 +762,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_map_of_array(self, request: Dict[str, List[shared.SimpleObject]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfArrayResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_SERVERS[0], {
         })
@@ -698,7 +779,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -717,6 +801,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_map_of_array_camel_case(self, request: Dict[str, List[shared.SimpleObjectCamelCase]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfArrayCamelCaseResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_CAMEL_CASE_SERVERS[0], {
         })
@@ -733,7 +818,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -752,6 +840,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_map_of_map(self, request: Dict[str, Dict[str, shared.SimpleObject]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfMapResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_SERVERS[0], {
         })
@@ -768,7 +857,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -787,6 +879,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_map_of_map_camel_case(self, request: Dict[str, Dict[str, shared.SimpleObjectCamelCase]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfMapCamelCaseResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_CAMEL_CASE_SERVERS[0], {
         })
@@ -803,7 +896,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -822,6 +918,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_map_of_map_of_primitive(self, request: Dict[str, Dict[str, str]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfMapOfPrimitiveResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_OF_PRIMITIVE_SERVERS[0], {
         })
@@ -838,7 +935,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -857,6 +957,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_map_of_primitive(self, request: Dict[str, str], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfPrimitiveResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_PRIMITIVE_SERVERS[0], {
         })
@@ -873,7 +974,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -892,6 +996,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_multiple_json_filtered(self, request: shared.SimpleObject) -> operations.RequestBodyPostApplicationJSONMultipleJSONFilteredResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -905,7 +1010,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -924,6 +1032,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_simple(self, request: shared.SimpleObject) -> operations.RequestBodyPostApplicationJSONSimpleResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -937,7 +1046,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -956,6 +1068,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_application_json_simple_camel_case(self, request: shared.SimpleObjectCamelCase) -> operations.RequestBodyPostApplicationJSONSimpleCamelCaseResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -969,7 +1082,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -988,6 +1104,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_complex_number_types(self, request: operations.RequestBodyPostComplexNumberTypesRequest) -> operations.RequestBodyPostComplexNumberTypesResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1002,7 +1119,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1021,6 +1141,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_defaults_and_consts(self, request: shared.DefaultsAndConsts) -> operations.RequestBodyPostDefaultsAndConstsResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1034,7 +1155,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1053,6 +1177,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_empty_object(self, request: operations.RequestBodyPostEmptyObjectRequestBody) -> operations.RequestBodyPostEmptyObjectResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1066,7 +1191,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1085,6 +1213,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_form_deep(self, request: shared.DeepObject) -> operations.RequestBodyPostFormDeepResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1098,7 +1227,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1117,6 +1249,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_form_map_primitive(self, request: Dict[str, str]) -> operations.RequestBodyPostFormMapPrimitiveResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1130,7 +1263,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1149,6 +1285,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_form_simple(self, request: shared.SimpleObject) -> operations.RequestBodyPostFormSimpleResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1162,7 +1299,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1181,6 +1321,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_json_data_types_array_big_int(self, request: List[int]) -> operations.RequestBodyPostJSONDataTypesArrayBigIntResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1194,7 +1335,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1213,6 +1357,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_json_data_types_array_date(self, request: List[date]) -> operations.RequestBodyPostJSONDataTypesArrayDateResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1226,7 +1371,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1245,6 +1393,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_json_data_types_array_decimal_str(self, request: List[Decimal]) -> operations.RequestBodyPostJSONDataTypesArrayDecimalStrResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1258,7 +1407,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1277,6 +1429,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_json_data_types_big_int(self, request: int) -> operations.RequestBodyPostJSONDataTypesBigIntResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1290,7 +1443,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1309,6 +1465,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_json_data_types_big_int_str(self, request: int) -> operations.RequestBodyPostJSONDataTypesBigIntStrResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1322,7 +1479,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1341,6 +1501,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_json_data_types_boolean(self, request: bool) -> operations.RequestBodyPostJSONDataTypesBooleanResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1354,7 +1515,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1373,6 +1537,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_json_data_types_date(self, request: date) -> operations.RequestBodyPostJSONDataTypesDateResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1386,7 +1551,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1405,6 +1573,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_json_data_types_date_time(self, request: datetime) -> operations.RequestBodyPostJSONDataTypesDateTimeResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1418,7 +1587,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1437,6 +1609,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_json_data_types_decimal(self, request: Decimal) -> operations.RequestBodyPostJSONDataTypesDecimalResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1450,7 +1623,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1469,6 +1645,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_json_data_types_decimal_str(self, request: Decimal) -> operations.RequestBodyPostJSONDataTypesDecimalStrResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1482,7 +1659,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1501,6 +1681,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_json_data_types_float32(self, request: float) -> operations.RequestBodyPostJSONDataTypesFloat32Response:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1514,7 +1695,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1533,6 +1717,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_json_data_types_int32(self, request: int) -> operations.RequestBodyPostJSONDataTypesInt32Response:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1546,7 +1731,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1565,6 +1753,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_json_data_types_integer(self, request: int) -> operations.RequestBodyPostJSONDataTypesIntegerResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1578,7 +1767,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1597,6 +1789,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_json_data_types_map_big_int_str(self, request: Dict[str, int]) -> operations.RequestBodyPostJSONDataTypesMapBigIntStrResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1610,7 +1803,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1629,6 +1825,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_json_data_types_map_date_time(self, request: Dict[str, datetime]) -> operations.RequestBodyPostJSONDataTypesMapDateTimeResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1642,7 +1839,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1661,6 +1861,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_json_data_types_map_decimal(self, request: Dict[str, Decimal]) -> operations.RequestBodyPostJSONDataTypesMapDecimalResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1674,7 +1875,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1693,6 +1897,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_json_data_types_number(self, request: float) -> operations.RequestBodyPostJSONDataTypesNumberResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1706,7 +1911,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1725,6 +1933,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_json_data_types_string(self, request: str) -> operations.RequestBodyPostJSONDataTypesStringResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1738,7 +1947,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1757,6 +1969,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_multiple_content_types_component_filtered(self, request: shared.SimpleObject) -> operations.RequestBodyPostMultipleContentTypesComponentFilteredResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1770,7 +1983,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1789,6 +2005,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_multiple_content_types_inline_filtered(self, request: operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody) -> operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1802,7 +2019,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1820,6 +2040,7 @@ class RequestBodies:
 
         return res
 
+    
     
     def request_body_post_multiple_content_types_split_param_form(self, request_body: operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody, param_str: str) -> operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse:
         request = operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest(
@@ -1840,7 +2061,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1858,6 +2082,7 @@ class RequestBodies:
 
         return res
 
+    
     
     def request_body_post_multiple_content_types_split_param_json(self, request_body: operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody, param_str: str) -> operations.RequestBodyPostMultipleContentTypesSplitParamJSONResponse:
         request = operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequest(
@@ -1878,7 +2103,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1896,6 +2124,7 @@ class RequestBodies:
 
         return res
 
+    
     
     def request_body_post_multiple_content_types_split_param_multipart(self, request_body: operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody, param_str: str) -> operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse:
         request = operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest(
@@ -1916,7 +2145,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1935,6 +2167,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_multiple_content_types_split_form(self, request: operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody) -> operations.RequestBodyPostMultipleContentTypesSplitFormResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1948,7 +2181,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1967,6 +2203,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_multiple_content_types_split_json(self, request: operations.RequestBodyPostMultipleContentTypesSplitJSONRequestBody) -> operations.RequestBodyPostMultipleContentTypesSplitJSONResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -1980,7 +2217,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -1999,6 +2239,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_multiple_content_types_split_multipart(self, request: operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody) -> operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -2012,7 +2253,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2031,6 +2275,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_not_nullable_not_required_string_body(self, request: str) -> operations.RequestBodyPostNotNullableNotRequiredStringBodyResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -2042,7 +2287,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2061,6 +2309,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_null_array(self, request: List[str]) -> operations.RequestBodyPostNullArrayResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -2074,7 +2323,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2093,6 +2345,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_null_dictionary(self, request: Dict[str, str]) -> operations.RequestBodyPostNullDictionaryResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -2106,7 +2359,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2125,6 +2381,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_nullable_not_required_string_body(self, request: str) -> operations.RequestBodyPostNullableNotRequiredStringBodyResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -2136,7 +2393,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2155,6 +2415,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_post_nullable_required_string_body(self, request: str) -> operations.RequestBodyPostNullableRequiredStringBodyResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -2168,7 +2429,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2187,6 +2451,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_put_bytes(self, request: bytes) -> operations.RequestBodyPutBytesResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -2200,7 +2465,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('PUT', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2218,6 +2486,7 @@ class RequestBodies:
 
         return res
 
+    
     
     def request_body_put_bytes_with_params(self, request_body: bytes, query_string_param: str) -> operations.RequestBodyPutBytesWithParamsResponse:
         request = operations.RequestBodyPutBytesWithParamsRequest(
@@ -2238,7 +2507,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2257,6 +2529,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_put_multipart_deep(self, request: shared.DeepObject) -> operations.RequestBodyPutMultipartDeepResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -2270,7 +2543,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('PUT', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2289,6 +2565,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_put_multipart_different_file_name(self, request: operations.RequestBodyPutMultipartDifferentFileNameRequestBody) -> operations.RequestBodyPutMultipartDifferentFileNameResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -2302,7 +2579,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('PUT', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2321,6 +2601,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_put_multipart_file(self, request: operations.RequestBodyPutMultipartFileRequestBody) -> operations.RequestBodyPutMultipartFileResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -2334,7 +2615,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('PUT', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2353,6 +2637,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_put_multipart_simple(self, request: shared.SimpleObject) -> operations.RequestBodyPutMultipartSimpleResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -2366,7 +2651,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('PUT', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2385,6 +2673,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_put_string(self, request: str) -> operations.RequestBodyPutStringResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -2398,7 +2687,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('PUT', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2416,6 +2708,7 @@ class RequestBodies:
 
         return res
 
+    
     
     def request_body_put_string_with_params(self, request_body: str, query_string_param: str) -> operations.RequestBodyPutStringWithParamsResponse:
         request = operations.RequestBodyPutStringWithParamsRequest(
@@ -2436,7 +2729,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2455,6 +2751,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_read_and_write(self, request: shared.ReadWriteObject, server_url: Optional[str] = None) -> operations.RequestBodyReadAndWriteResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_READ_AND_WRITE_SERVERS[0], {
         })
@@ -2471,7 +2768,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2490,6 +2790,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_read_only_input(self, request: shared.ReadOnlyObjectInput, server_url: Optional[str] = None) -> operations.RequestBodyReadOnlyInputResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_READ_ONLY_INPUT_SERVERS[0], {
         })
@@ -2506,7 +2807,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2525,6 +2829,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_read_only_union(self, request: Union[shared.SimpleObject, shared.ReadOnlyObjectInput], server_url: Optional[str] = None) -> operations.RequestBodyReadOnlyUnionResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_READ_ONLY_UNION_SERVERS[0], {
         })
@@ -2541,7 +2846,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2560,6 +2868,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_read_write_only_union(self, request: Union[shared.SimpleObject, shared.ReadWriteObject], server_url: Optional[str] = None) -> operations.RequestBodyReadWriteOnlyUnionResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_READ_WRITE_ONLY_UNION_SERVERS[0], {
         })
@@ -2576,7 +2885,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2595,6 +2907,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_write_only(self, request: shared.WriteOnlyObject, server_url: Optional[str] = None) -> operations.RequestBodyWriteOnlyResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_WRITE_ONLY_SERVERS[0], {
         })
@@ -2611,7 +2924,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2630,6 +2946,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_write_only_output(self, request: shared.WriteOnlyObject, server_url: Optional[str] = None) -> operations.RequestBodyWriteOnlyOutputResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_WRITE_ONLY_OUTPUT_SERVERS[0], {
         })
@@ -2646,7 +2963,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -2665,6 +2985,7 @@ class RequestBodies:
         return res
 
     
+    
     def request_body_write_only_union(self, request: Union[shared.SimpleObject, shared.WriteOnlyObject], server_url: Optional[str] = None) -> operations.RequestBodyWriteOnlyUnionResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_WRITE_ONLY_UNION_SERVERS[0], {
         })
@@ -2681,7 +3002,10 @@ class RequestBodies:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')

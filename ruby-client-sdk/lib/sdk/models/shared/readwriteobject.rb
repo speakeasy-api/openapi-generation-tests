@@ -27,22 +27,5 @@ module OpenApiSDK
         @num3 = num3
       end
     end
-
-
-    class ReadWriteObjectOutput < OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :num3, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('num3') } }
-
-      field :sum, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('sum') } }
-
-
-      sig { params(num3: Integer, sum: Integer).void }
-      def initialize(num3: nil, sum: nil)
-        @num3 = num3
-        @sum = sum
-      end
-    end
   end
 end

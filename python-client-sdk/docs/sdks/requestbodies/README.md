@@ -1,5 +1,5 @@
 # RequestBodies
-(*.request_bodies*)
+(*request_bodies*)
 
 ## Overview
 
@@ -322,10 +322,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                      | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `request`                                      | [List[shared.SimpleObject]](../../models//.md) | :heavy_check_mark:                             | The request object to use for the request.     |
-| `server_url`                                   | *Optional[str]*                                | :heavy_minus_sign:                             | An optional server URL to use.                 |
+| Parameter                                     | Type                                          | Required                                      | Description                                   |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| `request`                                     | [List[shared.SimpleObject]](../../models/.md) | :heavy_check_mark:                            | The request object to use for the request.    |
+| `server_url`                                  | *Optional[str]*                               | :heavy_minus_sign:                            | An optional server URL to use.                |
 
 
 ### Response
@@ -385,10 +385,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                               | Type                                                    | Required                                                | Description                                             |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `request`                                               | [List[shared.SimpleObjectCamelCase]](../../models//.md) | :heavy_check_mark:                                      | The request object to use for the request.              |
-| `server_url`                                            | *Optional[str]*                                         | :heavy_minus_sign:                                      | An optional server URL to use.                          |
+| Parameter                                              | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `request`                                              | [List[shared.SimpleObjectCamelCase]](../../models/.md) | :heavy_check_mark:                                     | The request object to use for the request.             |
+| `server_url`                                           | *Optional[str]*                                        | :heavy_minus_sign:                                     | An optional server URL to use.                         |
 
 
 ### Response
@@ -450,9 +450,9 @@ if res.arr_obj_value is not None:
 
 ### Parameters
 
-| Parameter                                      | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `request`                                      | [List[shared.SimpleObject]](../../models//.md) | :heavy_check_mark:                             | The request object to use for the request.     |
+| Parameter                                     | Type                                          | Required                                      | Description                                   |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| `request`                                     | [List[shared.SimpleObject]](../../models/.md) | :heavy_check_mark:                            | The request object to use for the request.    |
 
 
 ### Response
@@ -512,9 +512,9 @@ if res.arr_obj_value_camel_case is not None:
 
 ### Parameters
 
-| Parameter                                               | Type                                                    | Required                                                | Description                                             |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `request`                                               | [List[shared.SimpleObjectCamelCase]](../../models//.md) | :heavy_check_mark:                                      | The request object to use for the request.              |
+| Parameter                                              | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `request`                                              | [List[shared.SimpleObjectCamelCase]](../../models/.md) | :heavy_check_mark:                                     | The request object to use for the request.             |
 
 
 ### Response
@@ -578,10 +578,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                            | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `request`                                            | [List[List[shared.SimpleObject]]](../../models//.md) | :heavy_check_mark:                                   | The request object to use for the request.           |
-| `server_url`                                         | *Optional[str]*                                      | :heavy_minus_sign:                                   | An optional server URL to use.                       |
+| Parameter                                           | Type                                                | Required                                            | Description                                         |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `request`                                           | [List[List[shared.SimpleObject]]](../../models/.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
+| `server_url`                                        | *Optional[str]*                                     | :heavy_minus_sign:                                  | An optional server URL to use.                      |
 
 
 ### Response
@@ -643,10 +643,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `request`                                                     | [List[List[shared.SimpleObjectCamelCase]]](../../models//.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
-| `server_url`                                                  | *Optional[str]*                                               | :heavy_minus_sign:                                            | An optional server URL to use.                                |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [List[List[shared.SimpleObjectCamelCase]]](../../models/.md) | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `server_url`                                                 | *Optional[str]*                                              | :heavy_minus_sign:                                           | An optional server URL to use.                               |
 
 
 ### Response
@@ -691,7 +691,7 @@ if res.res is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [List[List[str]]](../../models//.md)       | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [List[List[str]]](../../models/.md)        | :heavy_check_mark:                         | The request object to use for the request. |
 | `server_url`                               | *Optional[str]*                            | :heavy_minus_sign:                         | An optional server URL to use.             |
 
 
@@ -756,10 +756,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                                 | Type                                                      | Required                                                  | Description                                               |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `request`                                                 | [List[Dict[str, shared.SimpleObject]]](../../models//.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
-| `server_url`                                              | *Optional[str]*                                           | :heavy_minus_sign:                                        | An optional server URL to use.                            |
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `request`                                                | [List[Dict[str, shared.SimpleObject]]](../../models/.md) | :heavy_check_mark:                                       | The request object to use for the request.               |
+| `server_url`                                             | *Optional[str]*                                          | :heavy_minus_sign:                                       | An optional server URL to use.                           |
 
 
 ### Response
@@ -821,10 +821,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `request`                                                          | [List[Dict[str, shared.SimpleObjectCamelCase]]](../../models//.md) | :heavy_check_mark:                                                 | The request object to use for the request.                         |
-| `server_url`                                                       | *Optional[str]*                                                    | :heavy_minus_sign:                                                 | An optional server URL to use.                                     |
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `request`                                                         | [List[Dict[str, shared.SimpleObjectCamelCase]]](../../models/.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
+| `server_url`                                                      | *Optional[str]*                                                   | :heavy_minus_sign:                                                | An optional server URL to use.                                    |
 
 
 ### Response
@@ -867,7 +867,7 @@ if res.res is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [List[str]](../../models//.md)             | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [List[str]](../../models/.md)              | :heavy_check_mark:                         | The request object to use for the request. |
 | `server_url`                               | *Optional[str]*                            | :heavy_minus_sign:                         | An optional server URL to use.             |
 
 
@@ -1226,10 +1226,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                           | Type                                                | Required                                            | Description                                         |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `request`                                           | [Dict[str, shared.SimpleObject]](../../models//.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
-| `server_url`                                        | *Optional[str]*                                     | :heavy_minus_sign:                                  | An optional server URL to use.                      |
+| Parameter                                          | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `request`                                          | [Dict[str, shared.SimpleObject]](../../models/.md) | :heavy_check_mark:                                 | The request object to use for the request.         |
+| `server_url`                                       | *Optional[str]*                                    | :heavy_minus_sign:                                 | An optional server URL to use.                     |
 
 
 ### Response
@@ -1289,10 +1289,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [Dict[str, shared.SimpleObjectCamelCase]](../../models//.md) | :heavy_check_mark:                                           | The request object to use for the request.                   |
-| `server_url`                                                 | *Optional[str]*                                              | :heavy_minus_sign:                                           | An optional server URL to use.                               |
+| Parameter                                                   | Type                                                        | Required                                                    | Description                                                 |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| `request`                                                   | [Dict[str, shared.SimpleObjectCamelCase]](../../models/.md) | :heavy_check_mark:                                          | The request object to use for the request.                  |
+| `server_url`                                                | *Optional[str]*                                             | :heavy_minus_sign:                                          | An optional server URL to use.                              |
 
 
 ### Response
@@ -1354,9 +1354,9 @@ if res.map_obj_value is not None:
 
 ### Parameters
 
-| Parameter                                           | Type                                                | Required                                            | Description                                         |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `request`                                           | [Dict[str, shared.SimpleObject]](../../models//.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
+| Parameter                                          | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `request`                                          | [Dict[str, shared.SimpleObject]](../../models/.md) | :heavy_check_mark:                                 | The request object to use for the request.         |
 
 
 ### Response
@@ -1416,9 +1416,9 @@ if res.map_obj_value_camel_case is not None:
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [Dict[str, shared.SimpleObjectCamelCase]](../../models//.md) | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| Parameter                                                   | Type                                                        | Required                                                    | Description                                                 |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| `request`                                                   | [Dict[str, shared.SimpleObjectCamelCase]](../../models/.md) | :heavy_check_mark:                                          | The request object to use for the request.                  |
 
 
 ### Response
@@ -1482,10 +1482,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                                 | Type                                                      | Required                                                  | Description                                               |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `request`                                                 | [Dict[str, List[shared.SimpleObject]]](../../models//.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
-| `server_url`                                              | *Optional[str]*                                           | :heavy_minus_sign:                                        | An optional server URL to use.                            |
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `request`                                                | [Dict[str, List[shared.SimpleObject]]](../../models/.md) | :heavy_check_mark:                                       | The request object to use for the request.               |
+| `server_url`                                             | *Optional[str]*                                          | :heavy_minus_sign:                                       | An optional server URL to use.                           |
 
 
 ### Response
@@ -1547,10 +1547,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `request`                                                          | [Dict[str, List[shared.SimpleObjectCamelCase]]](../../models//.md) | :heavy_check_mark:                                                 | The request object to use for the request.                         |
-| `server_url`                                                       | *Optional[str]*                                                    | :heavy_minus_sign:                                                 | An optional server URL to use.                                     |
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `request`                                                         | [Dict[str, List[shared.SimpleObjectCamelCase]]](../../models/.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
+| `server_url`                                                      | *Optional[str]*                                                   | :heavy_minus_sign:                                                | An optional server URL to use.                                    |
 
 
 ### Response
@@ -1614,10 +1614,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `request`                                                      | [Dict[str, Dict[str, shared.SimpleObject]]](../../models//.md) | :heavy_check_mark:                                             | The request object to use for the request.                     |
-| `server_url`                                                   | *Optional[str]*                                                | :heavy_minus_sign:                                             | An optional server URL to use.                                 |
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `request`                                                     | [Dict[str, Dict[str, shared.SimpleObject]]](../../models/.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
+| `server_url`                                                  | *Optional[str]*                                               | :heavy_minus_sign:                                            | An optional server URL to use.                                |
 
 
 ### Response
@@ -1679,10 +1679,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `request`                                                               | [Dict[str, Dict[str, shared.SimpleObjectCamelCase]]](../../models//.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
-| `server_url`                                                            | *Optional[str]*                                                         | :heavy_minus_sign:                                                      | An optional server URL to use.                                          |
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `request`                                                              | [Dict[str, Dict[str, shared.SimpleObjectCamelCase]]](../../models/.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
+| `server_url`                                                           | *Optional[str]*                                                        | :heavy_minus_sign:                                                     | An optional server URL to use.                                         |
 
 
 ### Response
@@ -1725,10 +1725,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                      | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `request`                                      | [Dict[str, Dict[str, str]]](../../models//.md) | :heavy_check_mark:                             | The request object to use for the request.     |
-| `server_url`                                   | *Optional[str]*                                | :heavy_minus_sign:                             | An optional server URL to use.                 |
+| Parameter                                     | Type                                          | Required                                      | Description                                   |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| `request`                                     | [Dict[str, Dict[str, str]]](../../models/.md) | :heavy_check_mark:                            | The request object to use for the request.    |
+| `server_url`                                  | *Optional[str]*                               | :heavy_minus_sign:                            | An optional server URL to use.                |
 
 
 ### Response
@@ -1771,7 +1771,7 @@ if res.res is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Dict[str, str]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [Dict[str, str]](../../models/.md)         | :heavy_check_mark:                         | The request object to use for the request. |
 | `server_url`                               | *Optional[str]*                            | :heavy_minus_sign:                         | An optional server URL to use.             |
 
 
@@ -2330,7 +2330,7 @@ if res.res is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Dict[str, str]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [Dict[str, str]](../../models/.md)         | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2435,7 +2435,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [List[int]](../../models//.md)             | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [List[int]](../../models/.md)              | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2478,7 +2478,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [List[date]](../../models//.md)            | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [List[date]](../../models/.md)             | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2521,7 +2521,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [List[Decimal]](../../models//.md)         | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [List[Decimal]](../../models/.md)          | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2562,7 +2562,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [int](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [int](../../models/.md)                    | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2603,7 +2603,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [int](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [int](../../models/.md)                    | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2644,7 +2644,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [bool](../../models//.md)                  | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [bool](../../models/.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2685,7 +2685,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [date](../../models//.md)                  | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [date](../../models/.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2726,7 +2726,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [datetime](../../models//.md)              | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [datetime](../../models/.md)               | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2767,7 +2767,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Decimal](../../models//.md)               | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [Decimal](../../models/.md)                | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2808,7 +2808,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Decimal](../../models//.md)               | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [Decimal](../../models/.md)                | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2849,7 +2849,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [float](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [float](../../models/.md)                  | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2890,7 +2890,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [int](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [int](../../models/.md)                    | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2931,7 +2931,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [int](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [int](../../models/.md)                    | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2974,7 +2974,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Dict[str, int]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [Dict[str, int]](../../models/.md)         | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -3017,7 +3017,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Dict[str, datetime]](../../models//.md)   | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [Dict[str, datetime]](../../models/.md)    | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -3060,7 +3060,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Dict[str, Decimal]](../../models//.md)    | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [Dict[str, Decimal]](../../models/.md)     | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -3101,7 +3101,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [float](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [float](../../models/.md)                  | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -3142,7 +3142,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [str](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [str](../../models/.md)                    | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -3560,7 +3560,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [str](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [str](../../models/.md)                    | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -3603,7 +3603,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [List[str]](../../models//.md)             | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [List[str]](../../models/.md)              | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -3646,7 +3646,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Dict[str, str]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [Dict[str, str]](../../models/.md)         | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -3687,7 +3687,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [str](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [str](../../models/.md)                    | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -3728,7 +3728,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [str](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [str](../../models/.md)                    | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -3769,7 +3769,7 @@ if res.res is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [bytes](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [bytes](../../models/.md)                  | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -4177,7 +4177,7 @@ if res.res is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [str](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [str](../../models/.md)                    | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response

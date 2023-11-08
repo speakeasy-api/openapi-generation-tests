@@ -14,6 +14,7 @@ class Pagination:
         self.sdk_configuration = sdk_config
         
     
+    
     def pagination_cursor_body(self, request: operations.PaginationCursorBodyRequestBody, server_url: Optional[str] = None) -> operations.PaginationCursorBodyResponse:
         base_url = utils.template_url(operations.PAGINATION_CURSOR_BODY_SERVERS[0], {
         })
@@ -30,7 +31,10 @@ class Pagination:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('PUT', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -64,6 +68,7 @@ class Pagination:
         return res
 
     
+    
     def pagination_cursor_params(self, cursor: int, server_url: Optional[str] = None) -> operations.PaginationCursorParamsResponse:
         request = operations.PaginationCursorParamsRequest(
             cursor=cursor,
@@ -80,7 +85,10 @@ class Pagination:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -112,6 +120,7 @@ class Pagination:
         return res
 
     
+    
     def pagination_limit_offset_offset_body(self, request: shared.LimitOffsetConfig, server_url: Optional[str] = None) -> operations.PaginationLimitOffsetOffsetBodyResponse:
         base_url = utils.template_url(operations.PAGINATION_LIMIT_OFFSET_OFFSET_BODY_SERVERS[0], {
         })
@@ -128,7 +137,10 @@ class Pagination:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('PUT', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -170,6 +182,7 @@ class Pagination:
         return res
 
     
+    
     def pagination_limit_offset_offset_params(self, limit: Optional[int] = None, offset: Optional[int] = None, server_url: Optional[str] = None) -> operations.PaginationLimitOffsetOffsetParamsResponse:
         request = operations.PaginationLimitOffsetOffsetParamsRequest(
             limit=limit,
@@ -187,7 +200,10 @@ class Pagination:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -226,6 +242,7 @@ class Pagination:
         return res
 
     
+    
     def pagination_limit_offset_page_body(self, request: shared.LimitOffsetConfig, server_url: Optional[str] = None) -> operations.PaginationLimitOffsetPageBodyResponse:
         base_url = utils.template_url(operations.PAGINATION_LIMIT_OFFSET_PAGE_BODY_SERVERS[0], {
         })
@@ -242,7 +259,10 @@ class Pagination:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('PUT', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -282,6 +302,7 @@ class Pagination:
         return res
 
     
+    
     def pagination_limit_offset_page_params(self, page: int, server_url: Optional[str] = None) -> operations.PaginationLimitOffsetPageParamsResponse:
         request = operations.PaginationLimitOffsetPageParamsRequest(
             page=page,
@@ -298,7 +319,10 @@ class Pagination:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')

@@ -18,5 +18,3 @@ export class WriteOnlyObject extends SpeakeasyBase {
     @Expose({ name: "string" })
     string: string;
 }
-
-export class WriteOnlyObjectOutput extends SpeakeasyBase {}

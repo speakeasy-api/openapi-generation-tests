@@ -13,6 +13,7 @@ class Flattening:
         self.sdk_configuration = sdk_config
         
     
+    
     def component_body_and_param_conflict(self, simple_object: shared.SimpleObject, str_: str) -> operations.ComponentBodyAndParamConflictResponse:
         request = operations.ComponentBodyAndParamConflictRequest(
             simple_object=simple_object,
@@ -32,7 +33,10 @@ class Flattening:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -50,6 +54,7 @@ class Flattening:
 
         return res
 
+    
     
     def component_body_and_param_no_conflict(self, param_str: str, simple_object: shared.SimpleObject) -> operations.ComponentBodyAndParamNoConflictResponse:
         request = operations.ComponentBodyAndParamNoConflictRequest(
@@ -70,7 +75,10 @@ class Flattening:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -89,6 +97,7 @@ class Flattening:
         return res
 
     
+    
     def conflicting_params(self, str_path_parameter: str, str_query_parameter: str) -> operations.ConflictingParamsResponse:
         request = operations.ConflictingParamsRequest(
             str_path_parameter=str_path_parameter,
@@ -103,7 +112,10 @@ class Flattening:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -121,6 +133,7 @@ class Flattening:
 
         return res
 
+    
     
     def inline_body_and_param_conflict(self, request_body: operations.InlineBodyAndParamConflictRequestBody, str_: str) -> operations.InlineBodyAndParamConflictResponse:
         request = operations.InlineBodyAndParamConflictRequest(
@@ -141,7 +154,10 @@ class Flattening:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -159,6 +175,7 @@ class Flattening:
 
         return res
 
+    
     
     def inline_body_and_param_no_conflict(self, request_body: operations.InlineBodyAndParamNoConflictRequestBody, param_str: str) -> operations.InlineBodyAndParamNoConflictResponse:
         request = operations.InlineBodyAndParamNoConflictRequest(
@@ -179,7 +196,10 @@ class Flattening:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')

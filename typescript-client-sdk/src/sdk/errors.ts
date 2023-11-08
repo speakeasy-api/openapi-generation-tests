@@ -28,7 +28,7 @@ export class Errors {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/connectionError";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/anything/connectionError";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -45,7 +45,7 @@ export class Errors {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -91,7 +91,7 @@ export class Errors {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/status/{statusCode}",
             req,
@@ -113,7 +113,7 @@ export class Errors {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -164,7 +164,7 @@ export class Errors {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/errors/{statusCode}",
             req,
@@ -186,7 +186,7 @@ export class Errors {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",

@@ -1,5 +1,5 @@
 # Servers
-(*.servers*)
+(*servers*)
 
 ## Overview
 

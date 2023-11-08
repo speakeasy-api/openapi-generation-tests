@@ -1,5 +1,5 @@
 # Flattening
-(*.Flattening*)
+(*Flattening*)
 
 ## Overview
 
@@ -59,13 +59,13 @@ var res = await sdk.Flattening.ComponentBodyAndParamConflictAsync(new SimpleObje
 
 | Parameter                                           | Type                                                | Required                                            | Description                                         |
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `SimpleObject`                                      | [SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                  | N/A                                                 |
+| `SimpleObject`                                      | [SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                  | N/A                                                 |
 | `Str`                                               | *string*                                            | :heavy_check_mark:                                  | N/A                                                 |
 
 
 ### Response
 
-**[ComponentBodyAndParamConflictResponse](../../models/operations/ComponentBodyAndParamConflictResponse.md)**
+**[ComponentBodyAndParamConflictResponse](../../Models/Operations/ComponentBodyAndParamConflictResponse.md)**
 
 
 ## ComponentBodyAndParamNoConflict
@@ -115,12 +115,12 @@ var res = await sdk.Flattening.ComponentBodyAndParamNoConflictAsync("string", ne
 | Parameter                                           | Type                                                | Required                                            | Description                                         |
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
 | `ParamStr`                                          | *string*                                            | :heavy_check_mark:                                  | N/A                                                 |
-| `SimpleObject`                                      | [SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                  | N/A                                                 |
+| `SimpleObject`                                      | [SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                  | N/A                                                 |
 
 
 ### Response
 
-**[ComponentBodyAndParamNoConflictResponse](../../models/operations/ComponentBodyAndParamNoConflictResponse.md)**
+**[ComponentBodyAndParamNoConflictResponse](../../Models/Operations/ComponentBodyAndParamNoConflictResponse.md)**
 
 
 ## ConflictingParams
@@ -155,7 +155,7 @@ var res = await sdk.Flattening.ConflictingParamsAsync("string", "string");
 
 ### Response
 
-**[ConflictingParamsResponse](../../models/operations/ConflictingParamsResponse.md)**
+**[ConflictingParamsResponse](../../Models/Operations/ConflictingParamsResponse.md)**
 
 
 ## InlineBodyAndParamConflict
@@ -186,13 +186,13 @@ var res = await sdk.Flattening.InlineBodyAndParamConflictAsync(new InlineBodyAnd
 
 | Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
 | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `RequestBody`                                                                                             | [InlineBodyAndParamConflictRequestBody](../../models/operations/InlineBodyAndParamConflictRequestBody.md) | :heavy_check_mark:                                                                                        | N/A                                                                                                       |
+| `RequestBody`                                                                                             | [InlineBodyAndParamConflictRequestBody](../../Models/Operations/InlineBodyAndParamConflictRequestBody.md) | :heavy_check_mark:                                                                                        | N/A                                                                                                       |
 | `Str`                                                                                                     | *string*                                                                                                  | :heavy_check_mark:                                                                                        | N/A                                                                                                       |
 
 
 ### Response
 
-**[InlineBodyAndParamConflictResponse](../../models/operations/InlineBodyAndParamConflictResponse.md)**
+**[InlineBodyAndParamConflictResponse](../../Models/Operations/InlineBodyAndParamConflictResponse.md)**
 
 
 ## InlineBodyAndParamNoConflict
@@ -223,11 +223,11 @@ var res = await sdk.Flattening.InlineBodyAndParamNoConflictAsync(new InlineBodyA
 
 | Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
 | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `RequestBody`                                                                                                 | [InlineBodyAndParamNoConflictRequestBody](../../models/operations/InlineBodyAndParamNoConflictRequestBody.md) | :heavy_check_mark:                                                                                            | N/A                                                                                                           |
+| `RequestBody`                                                                                                 | [InlineBodyAndParamNoConflictRequestBody](../../Models/Operations/InlineBodyAndParamNoConflictRequestBody.md) | :heavy_check_mark:                                                                                            | N/A                                                                                                           |
 | `ParamStr`                                                                                                    | *string*                                                                                                      | :heavy_check_mark:                                                                                            | N/A                                                                                                           |
 
 
 ### Response
 
-**[InlineBodyAndParamNoConflictResponse](../../models/operations/InlineBodyAndParamNoConflictResponse.md)**
+**[InlineBodyAndParamNoConflictResponse](../../Models/Operations/InlineBodyAndParamNoConflictResponse.md)**
 

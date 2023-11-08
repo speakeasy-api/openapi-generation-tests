@@ -1,5 +1,5 @@
 # First
-(*.first*)
+(*first*)
 
 ### Available Operations
 
@@ -38,7 +38,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.GroupFirstGetResponse](../../models/operations/groupfirstgetresponse.md)>**
+**Promise<[operations.GroupFirstGetResponse](../../sdk/models/operations/groupfirstgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -27,15 +27,5 @@ module OpenApiSDK
         @string = string
       end
     end
-
-
-    class WriteOnlyObjectOutput < OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-
-      
-      def initialize; end
-    end
   end
 end

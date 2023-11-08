@@ -370,3 +370,54 @@ def test_multiple_options_with_mixed_schemes_auth_second_option():
     ))
     assert res is not None
     assert res.status_code == 200
+
+
+def test_function_callbacks_for_o_auth_support_global_security():
+    record_test('auth-function-callbacks-oauth-global-security')
+
+    s = SDK(security=lambda: shared.Security(
+        oauth2="Bearer global"
+    ))
+    assert s is not None
+
+    res = s.auth.global_bearer_auth()
+    assert res is not None
+    assert res.status_code == 200
+    assert res.token is not None
+    assert res.token.token == "global"
+
+
+def test_function_callbacks_for_o_auth_support_operation_level_security_overrides():
+    record_test(
+        'auth-function-callbacks-oauth-global-security-with-local-override')
+
+    s = SDK(security=lambda: shared.Security(
+        oauth2="Bearer global"
+    ))
+    assert s is not None
+
+    res = s.auth.oauth2_auth(security=Oauth2AuthSecurity(
+        oauth2="Bearer local"
+    ))
+    assert res is not None
+    assert res.status_code == 200
+    assert res.token is not None
+    assert res.token.token == "local"
+
+
+def test_function_callbacks_for_o_auth_support_param_overrides():
+    record_test(
+        'auth-function-callbacks-oauth-global-security-with-param-override')
+
+    s = SDK(security=lambda: shared.Security(
+        oauth2="Bearer global"
+    ))
+    assert s is not None
+
+    res = s.auth.oauth2_override(security=Oauth2OverrideSecurity(
+        oauth2="Bearer overrideHeaders"
+    ))
+    assert res is not None
+    assert res.status_code == 200
+    assert res.token is not None
+    assert res.token.token == "overrideHeaders"

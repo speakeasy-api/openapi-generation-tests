@@ -41,13 +41,13 @@ import { SDK } from "openapi";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [string](../../models//.md)                                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [string](../../models/.md)                                   | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.PutAnythingIgnoredGenerationResponse](../../models/operations/putanythingignoredgenerationresponse.md)>**
+**Promise<[operations.PutAnythingIgnoredGenerationResponse](../../sdk/models/operations/putanythingignoredgenerationresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -87,7 +87,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.ResponseBodyJsonGetResponse](../../models/operations/responsebodyjsongetresponse.md)>**
+**Promise<[operations.ResponseBodyJsonGetResponse](../../sdk/models/operations/responsebodyjsongetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

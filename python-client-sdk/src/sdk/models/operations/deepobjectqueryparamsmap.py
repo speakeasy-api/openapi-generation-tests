@@ -16,11 +16,6 @@ class DeepObjectQueryParamsMapRequest:
 
 
 
-@dataclasses.dataclass
-class DeepObjectQueryParamsMapArgs:
-    pass
-
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class DeepObjectQueryParamsMapRes:

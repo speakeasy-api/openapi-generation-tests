@@ -1,5 +1,5 @@
 # Errors
-(*.errors*)
+(*errors*)
 
 ## Overview
 

@@ -1,0 +1,12 @@
+# MixedParametersPrimitivesRes
+
+OK
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     | Example                                                                                         |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `Args`                                                                                          | [MixedParametersPrimitivesArgs](../../Models/Operations/MixedParametersPrimitivesArgs.md)       | :heavy_check_mark:                                                                              | N/A                                                                                             |                                                                                                 |
+| `Headers`                                                                                       | [MixedParametersPrimitivesHeaders](../../Models/Operations/MixedParametersPrimitivesHeaders.md) | :heavy_check_mark:                                                                              | N/A                                                                                             |                                                                                                 |
+| `Url`                                                                                           | *string*                                                                                        | :heavy_check_mark:                                                                              | N/A                                                                                             | http://localhost:35123/anything/mixedParams/path/pathValue?queryStringParam=queryValue          |

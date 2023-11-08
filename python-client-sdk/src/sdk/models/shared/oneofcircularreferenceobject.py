@@ -8,11 +8,6 @@ from sdk import utils
 from typing import Union
 
 
-@dataclasses.dataclass
-class Child:
-    pass
-
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class OneOfCircularReferenceObject:

@@ -1,5 +1,5 @@
 # Pagination
-(*.Pagination*)
+(*Pagination*)
 
 ## Overview
 
@@ -42,13 +42,13 @@ var res = await sdk.Pagination.PaginationCursorBodyAsync(new PaginationCursorBod
 
 | Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `request`                                                                                     | [PaginationCursorBodyRequestBody](../../models/operations/PaginationCursorBodyRequestBody.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
+| `request`                                                                                     | [PaginationCursorBodyRequestBody](../../Models/Operations/PaginationCursorBodyRequestBody.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
 | `serverURL`                                                                                   | *string*                                                                                      | :heavy_minus_sign:                                                                            | An optional server URL to use.                                                                |
 
 
 ### Response
 
-**[PaginationCursorBodyResponse](../../models/operations/PaginationCursorBodyResponse.md)**
+**[PaginationCursorBodyResponse](../../Models/Operations/PaginationCursorBodyResponse.md)**
 
 
 ## PaginationCursorParams
@@ -83,7 +83,7 @@ var res = await sdk.Pagination.PaginationCursorParamsAsync(24812);
 
 ### Response
 
-**[PaginationCursorParamsResponse](../../models/operations/PaginationCursorParamsResponse.md)**
+**[PaginationCursorParamsResponse](../../Models/Operations/PaginationCursorParamsResponse.md)**
 
 
 ## PaginationLimitOffsetOffsetBody
@@ -111,13 +111,13 @@ var res = await sdk.Pagination.PaginationLimitOffsetOffsetBodyAsync(new LimitOff
 
 | Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `request`                                                     | [LimitOffsetConfig](../../models/shared/LimitOffsetConfig.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
+| `request`                                                     | [LimitOffsetConfig](../../Models/Shared/LimitOffsetConfig.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
 | `serverURL`                                                   | *string*                                                      | :heavy_minus_sign:                                            | An optional server URL to use.                                |
 
 
 ### Response
 
-**[PaginationLimitOffsetOffsetBodyResponse](../../models/operations/PaginationLimitOffsetOffsetBodyResponse.md)**
+**[PaginationLimitOffsetOffsetBodyResponse](../../Models/Operations/PaginationLimitOffsetOffsetBodyResponse.md)**
 
 
 ## PaginationLimitOffsetOffsetParams
@@ -153,7 +153,7 @@ var res = await sdk.Pagination.PaginationLimitOffsetOffsetParamsAsync(661976, 60
 
 ### Response
 
-**[PaginationLimitOffsetOffsetParamsResponse](../../models/operations/PaginationLimitOffsetOffsetParamsResponse.md)**
+**[PaginationLimitOffsetOffsetParamsResponse](../../Models/Operations/PaginationLimitOffsetOffsetParamsResponse.md)**
 
 
 ## PaginationLimitOffsetPageBody
@@ -181,13 +181,13 @@ var res = await sdk.Pagination.PaginationLimitOffsetPageBodyAsync(new LimitOffse
 
 | Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `request`                                                     | [LimitOffsetConfig](../../models/shared/LimitOffsetConfig.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
+| `request`                                                     | [LimitOffsetConfig](../../Models/Shared/LimitOffsetConfig.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
 | `serverURL`                                                   | *string*                                                      | :heavy_minus_sign:                                            | An optional server URL to use.                                |
 
 
 ### Response
 
-**[PaginationLimitOffsetPageBodyResponse](../../models/operations/PaginationLimitOffsetPageBodyResponse.md)**
+**[PaginationLimitOffsetPageBodyResponse](../../Models/Operations/PaginationLimitOffsetPageBodyResponse.md)**
 
 
 ## PaginationLimitOffsetPageParams
@@ -222,5 +222,5 @@ var res = await sdk.Pagination.PaginationLimitOffsetPageParamsAsync(1177);
 
 ### Response
 
-**[PaginationLimitOffsetPageParamsResponse](../../models/operations/PaginationLimitOffsetPageParamsResponse.md)**
+**[PaginationLimitOffsetPageParamsResponse](../../Models/Operations/PaginationLimitOffsetPageParamsResponse.md)**
 

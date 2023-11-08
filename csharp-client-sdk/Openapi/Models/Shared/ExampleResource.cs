@@ -44,11 +44,17 @@ namespace Openapi.Models.Shared
         [JsonProperty("enumStr")]
         public EnumStr? EnumStr { get; set; }
 
+        [JsonProperty("inlineObject")]
+        public InlineObject? InlineObject { get; set; }
+
         [JsonProperty("mapOfInteger")]
         public Dictionary<string, long>? MapOfInteger { get; set; }
 
         [JsonProperty("mapOfString")]
         public Dictionary<string, string>? MapOfString { get; set; }
+
+        [JsonProperty("name_prefix")]
+        public string? NamePrefix { get; set; }
 
         [JsonProperty("updatedAt")]
         public DateTime? UpdatedAt { get; set; }

@@ -1,5 +1,5 @@
 # SDKFirst
-(*.Nest.First*)
+(*Nest.First*)
 
 ### Available Operations
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Response
 
-**[*operations.NestFirstGetResponse](../../models/operations/nestfirstgetresponse.md), error**
+**[*operations.NestFirstGetResponse](../../pkg/models/operations/nestfirstgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |

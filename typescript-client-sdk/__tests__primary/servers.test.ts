@@ -48,7 +48,7 @@ test("Test Select Server With ID Valid", async () => {
 
   const sdk = new SDK();
   const res = await sdk.servers.selectServerWithID(
-    SelectServerWithIDServerList[SelectServerWithIDServerValid]
+    SelectServerWithIDServerList[SelectServerWithIDServerValid],
   );
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
@@ -60,7 +60,7 @@ test("Test Select Server With ID Broken", async () => {
   const sdk = new SDK();
   return sdk.servers
     .selectServerWithID(
-      SelectServerWithIDServerList[SelectServerWithIDServerBroken]
+      SelectServerWithIDServerList[SelectServerWithIDServerBroken],
     )
     .catch((err: AxiosError) => {
       expect(err.code).toMatch(/^(ENOTFOUND|EAI_AGAIN)$/);

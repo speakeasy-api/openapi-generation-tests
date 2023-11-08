@@ -1,5 +1,5 @@
 # Errors
-(*.Errors*)
+(*Errors*)
 
 ## Overview
 
@@ -41,7 +41,7 @@ var res = await sdk.Errors.ConnectionErrorGetAsync();
 
 ### Response
 
-**[ConnectionErrorGetResponse](../../models/operations/ConnectionErrorGetResponse.md)**
+**[ConnectionErrorGetResponse](../../Models/Operations/ConnectionErrorGetResponse.md)**
 
 
 ## StatusGetError
@@ -75,7 +75,7 @@ var res = await sdk.Errors.StatusGetErrorAsync(458364);
 
 ### Response
 
-**[StatusGetErrorResponse](../../models/operations/StatusGetErrorResponse.md)**
+**[StatusGetErrorResponse](../../Models/Operations/StatusGetErrorResponse.md)**
 
 
 ## StatusGetXSpeakeasyErrors
@@ -110,5 +110,5 @@ var res = await sdk.Errors.StatusGetXSpeakeasyErrorsAsync(385913);
 
 ### Response
 
-**[StatusGetXSpeakeasyErrorsResponse](../../models/operations/StatusGetXSpeakeasyErrorsResponse.md)**
+**[StatusGetXSpeakeasyErrorsResponse](../../Models/Operations/StatusGetXSpeakeasyErrorsResponse.md)**
 

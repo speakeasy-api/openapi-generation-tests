@@ -28,6 +28,3 @@ func (o *WriteOnlyObject) GetString() string {
 	}
 	return o.String
 }
-
-type WriteOnlyObjectOutput struct {
-}

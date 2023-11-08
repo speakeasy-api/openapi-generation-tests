@@ -58,12 +58,12 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesComplexNumbersPostResponse](../../models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesComplexNumbersPostResponse](../../Models/Operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse.md)**
 
 
 ## responseBodyAdditionalPropertiesDatePost
@@ -105,12 +105,12 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesDatePostResponse](../../models/operations/ResponseBodyAdditionalPropertiesDatePostResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesDatePostResponse](../../Models/Operations/ResponseBodyAdditionalPropertiesDatePostResponse.md)**
 
 
 ## responseBodyAdditionalPropertiesObjectPost
@@ -152,12 +152,12 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesObjectPostResponse](../../models/operations/ResponseBodyAdditionalPropertiesObjectPostResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesObjectPostResponse](../../Models/Operations/ResponseBodyAdditionalPropertiesObjectPostResponse.md)**
 
 
 ## responseBodyAdditionalPropertiesPost
@@ -199,12 +199,12 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesPostResponse](../../models/operations/ResponseBodyAdditionalPropertiesPostResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesPostResponse](../../Models/Operations/ResponseBodyAdditionalPropertiesPostResponse.md)**
 
 
 ## responseBodyBytesGet
@@ -241,7 +241,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyBytesGetResponse](../../models/operations/ResponseBodyBytesGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyBytesGetResponse](../../Models/Operations/ResponseBodyBytesGetResponse.md)**
 
 
 ## responseBodyEmptyWithHeaders
@@ -288,7 +288,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyEmptyWithHeadersResponse](../../models/operations/ResponseBodyEmptyWithHeadersResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyEmptyWithHeadersResponse](../../Models/Operations/ResponseBodyEmptyWithHeadersResponse.md)**
 
 
 ## responseBodyOptionalGet
@@ -331,7 +331,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyOptionalGetResponse](../../models/operations/ResponseBodyOptionalGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyOptionalGetResponse](../../Models/Operations/ResponseBodyOptionalGetResponse.md)**
 
 
 ## responseBodyReadOnly
@@ -374,7 +374,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyReadOnlyResponse](../../models/operations/ResponseBodyReadOnlyResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyReadOnlyResponse](../../Models/Operations/ResponseBodyReadOnlyResponse.md)**
 
 
 ## responseBodyStringGet
@@ -411,7 +411,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyStringGetResponse](../../models/operations/ResponseBodyStringGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyStringGetResponse](../../Models/Operations/ResponseBodyStringGetResponse.md)**
 
 
 ## responseBodyXmlGet
@@ -448,7 +448,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyXmlGetResponse](../../models/operations/ResponseBodyXmlGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyXmlGetResponse](../../Models/Operations/ResponseBodyXmlGetResponse.md)**
 
 
 ## responseBodyZeroValueComplexTypePtrsPost
@@ -493,10 +493,10 @@ try {
 
 | Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
 | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `$request`                                                                                                               | [\OpenAPI\OpenAPI\Models\Shared\ObjWithZeroValueComplexTypePtrs](../../models/shared/ObjWithZeroValueComplexTypePtrs.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
+| `$request`                                                                                                               | [\OpenAPI\OpenAPI\Models\Shared\ObjWithZeroValueComplexTypePtrs](../../Models/Shared/ObjWithZeroValueComplexTypePtrs.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyZeroValueComplexTypePtrsPostResponse](../../models/operations/ResponseBodyZeroValueComplexTypePtrsPostResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyZeroValueComplexTypePtrsPostResponse](../../Models/Operations/ResponseBodyZeroValueComplexTypePtrsPostResponse.md)**
 

@@ -1,5 +1,5 @@
 # Nested
-(*.Nested*)
+(*Nested*)
 
 ### Available Operations
 
@@ -29,5 +29,5 @@ var res = await sdk.Nested.GetAsync();
 
 ### Response
 
-**[NestedGetResponse](../../models/operations/NestedGetResponse.md)**
+**[NestedGetResponse](../../Models/Operations/NestedGetResponse.md)**
 

@@ -1,5 +1,5 @@
 # First
-(*.First*)
+(*First*)
 
 ### Available Operations
 
@@ -29,5 +29,5 @@ var res = await sdk.First.GetAsync();
 
 ### Response
 
-**[GroupFirstGetResponse](../../models/operations/GroupFirstGetResponse.md)**
+**[GroupFirstGetResponse](../../Models/Operations/GroupFirstGetResponse.md)**
 

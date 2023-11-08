@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ...models.shared import readwriteobject as shared_readwriteobject
+from ...models.shared import readwriteobject_output as shared_readwriteobject_output
 from typing import Optional
 
 REQUEST_BODY_READ_AND_WRITE_SERVERS = [
@@ -19,7 +19,7 @@ class RequestBodyReadAndWriteResponse:
     r"""HTTP response status code for this operation"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    read_write_object: Optional[shared_readwriteobject.ReadWriteObjectOutput] = dataclasses.field(default=None)
+    read_write_object: Optional[shared_readwriteobject_output.ReadWriteObjectOutput] = dataclasses.field(default=None)
     r"""OK"""
     
 

@@ -7,18 +7,8 @@ from enum import Enum
 from sdk import utils
 from typing import Any, Optional, Union
 
-
-@dataclasses.dataclass
-class OneOfFromArrayOfTypes:
-    pass
-
 class Two(str, Enum):
     LATEST = 'latest'
-
-
-@dataclasses.dataclass
-class OneOfSameType:
-    pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

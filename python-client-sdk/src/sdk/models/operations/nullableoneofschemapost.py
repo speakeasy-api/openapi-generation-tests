@@ -10,16 +10,6 @@ from sdk import utils
 from typing import Optional, Union
 
 
-@dataclasses.dataclass
-class NullableOneOfSchemaPostRequestBody:
-    pass
-
-
-@dataclasses.dataclass
-class NullableOneOfSchemaPostJSON:
-    pass
-
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class NullableOneOfSchemaPostRes:

@@ -1,5 +1,5 @@
 # Globals
-(*.globals*)
+(*globals*)
 
 ## Overview
 

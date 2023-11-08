@@ -23,6 +23,12 @@ export enum EnumStr {
     Three = "three",
 }
 
+export class InlineObject extends SpeakeasyBase {
+    @SpeakeasyMetadata()
+    @Expose({ name: "inline_name" })
+    inlineName?: string;
+}
+
 export class ExampleResource extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "arrayOfNumber" })
@@ -55,6 +61,11 @@ export class ExampleResource extends SpeakeasyBase {
     id: string;
 
     @SpeakeasyMetadata()
+    @Expose({ name: "inlineObject" })
+    @Type(() => InlineObject)
+    inlineObject?: InlineObject;
+
+    @SpeakeasyMetadata()
     @Expose({ name: "mapOfInteger" })
     mapOfInteger?: Record<string, number>;
 
@@ -65,6 +76,10 @@ export class ExampleResource extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "name" })
     name: string;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "name_prefix" })
+    namePrefix?: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "updatedAt" })

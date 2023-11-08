@@ -39,5 +39,5 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\GroupFirstGetResponse](../../models/operations/GroupFirstGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\GroupFirstGetResponse](../../Models/Operations/GroupFirstGetResponse.md)**
 

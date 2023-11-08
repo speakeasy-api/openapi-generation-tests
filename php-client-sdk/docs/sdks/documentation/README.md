@@ -54,5 +54,5 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\GetDocumentationPerLanguageResponse](../../models/operations/GetDocumentationPerLanguageResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\GetDocumentationPerLanguageResponse](../../Models/Operations/GetDocumentationPerLanguageResponse.md)**
 

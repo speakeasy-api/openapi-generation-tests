@@ -59,6 +59,11 @@ class ExampleResource
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $id;
     
+	#[\JMS\Serializer\Annotation\SerializedName('inlineObject')]
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\InlineObject')]
+    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    public ?InlineObject $inlineObject = null;
+    
     /**
      * $mapOfInteger
      * 
@@ -83,6 +88,11 @@ class ExampleResource
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $name;
     
+	#[\JMS\Serializer\Annotation\SerializedName('name_prefix')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    public ?string $namePrefix = null;
+    
 	#[\JMS\Serializer\Annotation\SerializedName('updatedAt')]
     #[\JMS\Serializer\Annotation\Type("DateTime<'Y-m-d\TH:i:s.up'>")]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
@@ -101,9 +111,11 @@ class ExampleResource
 		$this->enumNumber = null;
 		$this->enumStr = null;
 		$this->id = "";
+		$this->inlineObject = null;
 		$this->mapOfInteger = null;
 		$this->mapOfString = null;
 		$this->name = "";
+		$this->namePrefix = null;
 		$this->updatedAt = null;
 		$this->vehicle = null;
 	}

@@ -64,7 +64,7 @@ test("Test Status Get Error X-Speakeasy-Errors", async () => {
   } catch (e) {
     expect(e).toBeInstanceOf(SDKError);
     expect(`${e}`).toBe(
-      'SDKError: API error occurred: Status 400\n{"message":"an error occurred","code":"400","type":"internal"}\n'
+      'SDKError: API error occurred: Status 400\n{"message":"an error occurred","code":"400","type":"internal"}\n',
     );
 
     const sdkErr = e as SDKError;
@@ -78,7 +78,7 @@ test("Test Status Get Error X-Speakeasy-Errors", async () => {
   } catch (e) {
     expect(e).toBeInstanceOf(SDKError);
     expect(`${e}`).toBe(
-      'SDKError: API error occurred: Status 401\n{"message":"an error occurred","code":"401","type":"internal"}\n'
+      'SDKError: API error occurred: Status 401\n{"message":"an error occurred","code":"401","type":"internal"}\n',
     );
 
     const sdkErr = e as SDKError;
@@ -92,7 +92,7 @@ test("Test Status Get Error X-Speakeasy-Errors", async () => {
   } catch (e) {
     expect(e).toBeInstanceOf(SDKError);
     expect(`${e}`).toBe(
-      'SDKError: API error occurred: Status 402\n{"message":"an error occurred","code":"402","type":"internal"}\n'
+      'SDKError: API error occurred: Status 402\n{"message":"an error occurred","code":"402","type":"internal"}\n',
     );
 
     const sdkErr = e as SDKError;
@@ -117,7 +117,7 @@ test("Test Status Get Error X-Speakeasy-Errors", async () => {
   } catch (e) {
     expect(e).toBeInstanceOf(StatusGetXSpeakeasyErrorsResponseBody);
     expect(`${e}`).toBe(
-      'StatusGetXSpeakeasyErrorsResponseBody: {"code":"501","message":"an error occurred","type":"internal"}'
+      'StatusGetXSpeakeasyErrorsResponseBody: {"code":"501","message":"an error occurred","type":"internal"}',
     );
 
     const sdkErr = e as StatusGetXSpeakeasyErrorsResponseBody;

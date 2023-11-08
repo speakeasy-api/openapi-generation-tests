@@ -13,6 +13,7 @@ class Retries:
         self.sdk_configuration = sdk_config
         
     
+    
     def retries_get(self, request_id: str, num_retries: Optional[int] = None, retries: Optional[utils.RetryConfig] = None, server_url: Optional[str] = None) -> operations.RetriesGetResponse:
         request = operations.RetriesGetRequest(
             request_id=request_id,
@@ -30,7 +31,10 @@ class Retries:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         global_retry_config = self.sdk_configuration.retry_config
         retry_config = retries

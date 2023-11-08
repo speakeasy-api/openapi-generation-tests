@@ -1,5 +1,5 @@
 # Generation
-(*.Generation*)
+(*Generation*)
 
 ## Overview
 
@@ -72,7 +72,7 @@ func main() {
 
 ### Response
 
-**[*operations.AnchorTypesGetResponse](../../models/operations/anchortypesgetresponse.md), error**
+**[*operations.AnchorTypesGetResponse](../../pkg/models/operations/anchortypesgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -121,7 +121,7 @@ func main() {
 
 ### Response
 
-**[*operations.ArrayCircularReferenceGetResponse](../../models/operations/arraycircularreferencegetresponse.md), error**
+**[*operations.ArrayCircularReferenceGetResponse](../../pkg/models/operations/arraycircularreferencegetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -170,7 +170,7 @@ func main() {
 
 ### Response
 
-**[*operations.CircularReferenceGetResponse](../../models/operations/circularreferencegetresponse.md), error**
+**[*operations.CircularReferenceGetResponse](../../pkg/models/operations/circularreferencegetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -223,7 +223,7 @@ func main() {
 
 ### Response
 
-**[*operations.DateParamWithDefaultResponse](../../models/operations/dateparamwithdefaultresponse.md), error**
+**[*operations.DateParamWithDefaultResponse](../../pkg/models/operations/dateparamwithdefaultresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -276,7 +276,7 @@ func main() {
 
 ### Response
 
-**[*operations.DateTimeParamWithDefaultResponse](../../models/operations/datetimeparamwithdefaultresponse.md), error**
+**[*operations.DateTimeParamWithDefaultResponse](../../pkg/models/operations/datetimeparamwithdefaultresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -329,7 +329,7 @@ func main() {
 
 ### Response
 
-**[*operations.DecimalParamWithDefaultResponse](../../models/operations/decimalparamwithdefaultresponse.md), error**
+**[*operations.DecimalParamWithDefaultResponse](../../pkg/models/operations/decimalparamwithdefaultresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -371,15 +371,15 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
-| `request`                                                                        | [shared.DeprecatedFieldInObject](../../models/shared/deprecatedfieldinobject.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
+| `request`                                                                            | [shared.DeprecatedFieldInObject](../../pkg/models/shared/deprecatedfieldinobject.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
 
 
 ### Response
 
-**[*operations.DeprecatedFieldInSchemaPostResponse](../../models/operations/deprecatedfieldinschemapostresponse.md), error**
+**[*operations.DeprecatedFieldInSchemaPostResponse](../../pkg/models/operations/deprecatedfieldinschemapostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -428,7 +428,7 @@ func main() {
 
 ### Response
 
-**[*operations.DeprecatedObjectInSchemaGetResponse](../../models/operations/deprecatedobjectinschemagetresponse.md), error**
+**[*operations.DeprecatedObjectInSchemaGetResponse](../../pkg/models/operations/deprecatedobjectinschemagetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -483,7 +483,7 @@ func main() {
 
 ### Response
 
-**[*operations.DeprecatedOperationNoCommentsGetResponse](../../models/operations/deprecatedoperationnocommentsgetresponse.md), error**
+**[*operations.DeprecatedOperationNoCommentsGetResponse](../../pkg/models/operations/deprecatedoperationnocommentsgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -543,7 +543,7 @@ func main() {
 
 ### Response
 
-**[*operations.DeprecatedOperationWithCommentsGetResponse](../../models/operations/deprecatedoperationwithcommentsgetresponse.md), error**
+**[*operations.DeprecatedOperationWithCommentsGetResponse](../../pkg/models/operations/deprecatedoperationwithcommentsgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -588,15 +588,15 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `ctx`                                                              | [context.Context](https://pkg.go.dev/context#Context)              | :heavy_check_mark:                                                 | The context to use for the request.                                |
-| `emptyObject`                                                      | [shared.EmptyObjectParam](../../models/shared/emptyobjectparam.md) | :heavy_check_mark:                                                 | N/A                                                                |
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `ctx`                                                                     | [context.Context](https://pkg.go.dev/context#Context)                     | :heavy_check_mark:                                                        | The context to use for the request.                                       |
+| `emptyObject`                                                             | [shared.EmptyObjectParam](../../../pkg/models/shared/emptyobjectparam.md) | :heavy_check_mark:                                                        | N/A                                                                       |
 
 
 ### Response
 
-**[*operations.EmptyObjectGetResponse](../../models/operations/emptyobjectgetresponse.md), error**
+**[*operations.EmptyObjectGetResponse](../../pkg/models/operations/emptyobjectgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -645,7 +645,7 @@ func main() {
 
 ### Response
 
-**[*operations.EmptyResponseObjectWithCommentGetResponse](../../models/operations/emptyresponseobjectwithcommentgetresponse.md), error**
+**[*operations.EmptyResponseObjectWithCommentGetResponse](../../pkg/models/operations/emptyresponseobjectwithcommentgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -694,7 +694,7 @@ func main() {
 
 ### Response
 
-**[*operations.GetGlobalNameOverrideResponse](../../models/operations/getglobalnameoverrideresponse.md), error**
+**[*operations.GetGlobalNameOverrideResponse](../../pkg/models/operations/getglobalnameoverrideresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -744,7 +744,7 @@ func main() {
 
 ### Response
 
-**[*operations.IgnoredGenerationGetResponse](../../models/operations/ignoredgenerationgetresponse.md), error**
+**[*operations.IgnoredGenerationGetResponse](../../pkg/models/operations/ignoredgenerationgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -792,16 +792,16 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
-| `requestBody`                                                                          | [operations.IgnoresPostRequestBody](../../models/operations/ignorespostrequestbody.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `testParam`                                                                            | **string*                                                                              | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                         | [context.Context](https://pkg.go.dev/context#Context)                                         | :heavy_check_mark:                                                                            | The context to use for the request.                                                           |
+| `requestBody`                                                                                 | [operations.IgnoresPostRequestBody](../../../pkg/models/operations/ignorespostrequestbody.md) | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `testParam`                                                                                   | **string*                                                                                     | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 
 
 ### Response
 
-**[*operations.IgnoresPostResponse](../../models/operations/ignorespostresponse.md), error**
+**[*operations.IgnoresPostResponse](../../pkg/models/operations/ignorespostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -849,16 +849,16 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                | Example                                                                    |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |                                                                            |
-| `testEnumQueryParam`                                                       | [operations.EnumNameOverride](../../models/operations/enumnameoverride.md) | :heavy_check_mark:                                                         | An enum type                                                               | value3                                                                     |
-| `testQueryParam`                                                           | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        | example                                                                    |
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `ctx`                                                                             | [context.Context](https://pkg.go.dev/context#Context)                             | :heavy_check_mark:                                                                | The context to use for the request.                                               |                                                                                   |
+| `testEnumQueryParam`                                                              | [operations.EnumNameOverride](../../../pkg/models/operations/enumnameoverride.md) | :heavy_check_mark:                                                                | An enum type                                                                      | value3                                                                            |
+| `testQueryParam`                                                                  | *string*                                                                          | :heavy_check_mark:                                                                | N/A                                                                               | example                                                                           |
 
 
 ### Response
 
-**[*operations.NameOverrideGetResponse](../../models/operations/nameoverridegetresponse.md), error**
+**[*operations.NameOverrideGetResponse](../../pkg/models/operations/nameoverridegetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -907,7 +907,7 @@ func main() {
 
 ### Response
 
-**[*operations.ObjectCircularReferenceGetResponse](../../models/operations/objectcircularreferencegetresponse.md), error**
+**[*operations.ObjectCircularReferenceGetResponse](../../pkg/models/operations/objectcircularreferencegetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -956,7 +956,7 @@ func main() {
 
 ### Response
 
-**[*operations.OneOfCircularReferenceGetResponse](../../models/operations/oneofcircularreferencegetresponse.md), error**
+**[*operations.OneOfCircularReferenceGetResponse](../../pkg/models/operations/oneofcircularreferencegetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -1018,12 +1018,12 @@ func main() {
 | `bigint`                                                                | [*big.Int](https://pkg.go.dev/math/big#Int)                             | :heavy_minus_sign:                                                      | N/A                                                                     |
 | `date`                                                                  | [*types.Date](../../types/date.md)                                      | :heavy_minus_sign:                                                      | N/A                                                                     |
 | `decimal`                                                               | [*decimal.Big](https://pkg.go.dev/github.com/ericlagergren/decimal#Big) | :heavy_minus_sign:                                                      | N/A                                                                     |
-| `obj`                                                                   | [*operations.Obj](../../models/operations/obj.md)                       | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `obj`                                                                   | [*operations.Obj](../../../pkg/models/operations/obj.md)                | :heavy_minus_sign:                                                      | N/A                                                                     |
 
 
 ### Response
 
-**[*operations.TypedParameterGenerationGetResponse](../../models/operations/typedparametergenerationgetresponse.md), error**
+**[*operations.TypedParameterGenerationGetResponse](../../pkg/models/operations/typedparametergenerationgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -1118,16 +1118,16 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
-| `request`                                                                                  | [operations.UsageExamplePostRequest](../../models/operations/usageexamplepostrequest.md)   | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `security`                                                                                 | [operations.UsageExamplePostSecurity](../../models/operations/usageexamplepostsecurity.md) | :heavy_check_mark:                                                                         | The security requirements to use for the request.                                          |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |
+| `request`                                                                                      | [operations.UsageExamplePostRequest](../../pkg/models/operations/usageexamplepostrequest.md)   | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `security`                                                                                     | [operations.UsageExamplePostSecurity](../../pkg/models/operations/usageexamplepostsecurity.md) | :heavy_check_mark:                                                                             | The security requirements to use for the request.                                              |
 
 
 ### Response
 
-**[*operations.UsageExamplePostResponse](../../models/operations/usageexamplepostresponse.md), error**
+**[*operations.UsageExamplePostResponse](../../pkg/models/operations/usageexamplepostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |

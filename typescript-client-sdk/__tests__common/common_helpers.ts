@@ -5,6 +5,5 @@
 import * as fs from "fs";
 
 export function recordTest(id: string) {
-    fs.appendFileSync("test-typescript-record.txt", id + "\n");
-  }
-  
+  fs.appendFileSync("test-typescript-record.txt", id + "\n");
+}

@@ -1,5 +1,5 @@
 # Globals
-(*.Globals*)
+(*Globals*)
 
 ## Overview
 
@@ -58,7 +58,7 @@ func main() {
 
 ### Response
 
-**[*operations.GlobalPathParameterGetResponse](../../models/operations/globalpathparametergetresponse.md), error**
+**[*operations.GlobalPathParameterGetResponse](../../pkg/models/operations/globalpathparametergetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -111,7 +111,7 @@ func main() {
 
 ### Response
 
-**[*operations.GlobalsQueryParameterGetResponse](../../models/operations/globalsqueryparametergetresponse.md), error**
+**[*operations.GlobalsQueryParameterGetResponse](../../pkg/models/operations/globalsqueryparametergetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |

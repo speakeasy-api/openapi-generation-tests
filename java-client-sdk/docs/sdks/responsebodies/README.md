@@ -1,5 +1,5 @@
 # ResponseBodies
-(*.responseBodies*)
+(*responseBodies*)
 
 ## Overview
 

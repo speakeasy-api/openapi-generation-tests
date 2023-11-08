@@ -1,5 +1,5 @@
 # Second
-(*.second*)
+(*second*)
 
 ### Available Operations
 
@@ -38,7 +38,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.GroupSecondGetResponse](../../models/operations/groupsecondgetresponse.md)>**
+**Promise<[operations.GroupSecondGetResponse](../../sdk/models/operations/groupsecondgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -48,7 +48,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\SelectGlobalServerResponse](../../models/operations/SelectGlobalServerResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\SelectGlobalServerResponse](../../Models/Operations/SelectGlobalServerResponse.md)**
 
 
 ## selectServerWithID
@@ -93,7 +93,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\SelectServerWithIDResponse](../../models/operations/SelectServerWithIDResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\SelectServerWithIDResponse](../../Models/Operations/SelectServerWithIDResponse.md)**
 
 
 ## serverWithProtocolTemplate
@@ -136,7 +136,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ServerWithProtocolTemplateResponse](../../models/operations/ServerWithProtocolTemplateResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ServerWithProtocolTemplateResponse](../../Models/Operations/ServerWithProtocolTemplateResponse.md)**
 
 
 ## serverWithTemplates
@@ -179,7 +179,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ServerWithTemplatesResponse](../../models/operations/ServerWithTemplatesResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ServerWithTemplatesResponse](../../Models/Operations/ServerWithTemplatesResponse.md)**
 
 
 ## serverWithTemplatesGlobal
@@ -216,7 +216,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ServerWithTemplatesGlobalResponse](../../models/operations/ServerWithTemplatesGlobalResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ServerWithTemplatesGlobalResponse](../../Models/Operations/ServerWithTemplatesGlobalResponse.md)**
 
 
 ## serversByIDWithTemplates
@@ -259,5 +259,5 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ServersByIDWithTemplatesResponse](../../models/operations/ServersByIDWithTemplatesResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ServersByIDWithTemplatesResponse](../../Models/Operations/ServersByIDWithTemplatesResponse.md)**
 

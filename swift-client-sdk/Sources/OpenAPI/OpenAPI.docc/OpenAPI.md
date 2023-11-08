@@ -190,6 +190,7 @@ case .empty:
 - ``Shared/FlattenedTypedObject1``
 - ``Shared/HeaderAuth``
 - ``Shared/HttpBinSimpleJsonObject``
+- ``Shared/InlineObject``
 - ``Shared/IntEnumVal``
 - ``Shared/Int32EnumVal``
 - ``Shared/Int32Enum``

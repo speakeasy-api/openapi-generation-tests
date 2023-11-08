@@ -50,12 +50,12 @@ try {
 
 | Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `$request`                                                                                                   | [\OpenAPI\OpenAPI\Models\Operations\CreateFileRequestBody](../../models/operations/CreateFileRequestBody.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
+| `$request`                                                                                                   | [\OpenAPI\OpenAPI\Models\Operations\CreateFileRequestBody](../../Models/Operations/CreateFileRequestBody.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\CreateFileResponse](../../models/operations/CreateFileResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\CreateFileResponse](../../Models/Operations/CreateFileResponse.md)**
 
 
 ## createResource
@@ -93,6 +93,8 @@ try {
     $request->enumNumber = Shared\EnumNumber::One;
     $request->enumStr = Shared\EnumStr::One;
     $request->id = '<ID>';
+    $request->inlineObject = new Shared\InlineObject();
+    $request->inlineObject->inlineName = 'string';
     $request->mapOfInteger = [
         'Unbranded' => 967142,
     ];
@@ -100,6 +102,7 @@ try {
         'Elmo' => 'string',
     ];
     $request->name = 'string';
+    $request->namePrefix = 'string';
     $request->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-06-22T17:48:04.355Z');
     $request->vehicle = 'string';
 
@@ -117,12 +120,12 @@ try {
 
 | Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `$request`                                                                               | [\OpenAPI\OpenAPI\Models\Shared\ExampleResource](../../models/shared/ExampleResource.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `$request`                                                                               | [\OpenAPI\OpenAPI\Models\Shared\ExampleResource](../../Models/Shared/ExampleResource.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\CreateResourceResponse](../../models/operations/CreateResourceResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\CreateResourceResponse](../../Models/Operations/CreateResourceResponse.md)**
 
 
 ## deleteResource
@@ -168,7 +171,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DeleteResourceResponse](../../models/operations/DeleteResourceResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\DeleteResourceResponse](../../Models/Operations/DeleteResourceResponse.md)**
 
 
 ## getResource
@@ -214,7 +217,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\GetResourceResponse](../../models/operations/GetResourceResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\GetResourceResponse](../../Models/Operations/GetResourceResponse.md)**
 
 
 ## updateResource
@@ -260,5 +263,5 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\UpdateResourceResponse](../../models/operations/UpdateResourceResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\UpdateResourceResponse](../../Models/Operations/UpdateResourceResponse.md)**
 

@@ -33,7 +33,7 @@ export class Flattening {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/flattening/componentBodyAndParamConflict";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -67,7 +67,7 @@ export class Flattening {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -130,7 +130,7 @@ export class Flattening {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/flattening/componentBodyAndParamNoConflict";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -164,7 +164,7 @@ export class Flattening {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -227,7 +227,7 @@ export class Flattening {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/anything/flattening/conflictingParams/{str}",
             req,
@@ -250,7 +250,7 @@ export class Flattening {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -311,7 +311,7 @@ export class Flattening {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/flattening/inlineBodyAndParamConflict";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -345,7 +345,7 @@ export class Flattening {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -408,7 +408,7 @@ export class Flattening {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/flattening/inlineBodyAndParamNoConflict";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -442,7 +442,7 @@ export class Flattening {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",

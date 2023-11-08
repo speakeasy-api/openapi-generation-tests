@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 0c1717dc8f9e83b99bad896fa719645c
+  docChecksum: 4a241cbc362b64c4ad66293b1b11b985
   docVersion: 0.1.0
-  speakeasyVersion: 1.115.0
-  generationVersion: 2.183.0
+  speakeasyVersion: 1.116.0
+  generationVersion: 2.185.0
 generation:
   comments: {}
   sdkClassName: SDK
@@ -12,7 +12,7 @@ features:
   go:
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.1
-    core: 3.1.0
+    core: 3.1.2
     deprecations: 2.81.1
     docs: 0.3.10
     downloadStreams: 0.1.1
@@ -26,7 +26,7 @@ features:
     groups: 2.81.2
     ignores: 2.81.1
     includes: 2.81.1
-    inputOutputModels: 2.81.1
+    inputOutputModels: 2.82.0
     methodSecurity: 2.82.1
     methodServerURLs: 2.82.0
     nameOverrides: 2.81.1
@@ -36,7 +36,7 @@ features:
     tests: 0.0.0
     unions: 2.85.0
 go:
-  version: 2.0.1
+  version: 2.1.0
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   imports:
@@ -47,8 +47,10 @@ go:
       operations: pkg/models/operations
       shared: pkg/models/shared
       webhooks: pkg/models/webhooks
+  inputModelSuffix: input
   installationURL: https://github.com/speakeasy-api/openapi-generation-tests/go-client-sdk
   maxMethodParams: 5
+  outputModelSuffix: output
   packageName: openapi
   published: true
   repoSubDirectory: go-client-sdk

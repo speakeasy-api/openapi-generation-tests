@@ -62,7 +62,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\AnchorTypesGetResponse](../../models/operations/AnchorTypesGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\AnchorTypesGetResponse](../../Models/Operations/AnchorTypesGetResponse.md)**
 
 
 ## arrayCircularReferenceGet
@@ -99,7 +99,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ArrayCircularReferenceGetResponse](../../models/operations/ArrayCircularReferenceGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ArrayCircularReferenceGetResponse](../../Models/Operations/ArrayCircularReferenceGetResponse.md)**
 
 
 ## circularReferenceGet
@@ -136,7 +136,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\CircularReferenceGetResponse](../../models/operations/CircularReferenceGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\CircularReferenceGetResponse](../../Models/Operations/CircularReferenceGetResponse.md)**
 
 
 ## dateParamWithDefault
@@ -182,7 +182,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DateParamWithDefaultResponse](../../models/operations/DateParamWithDefaultResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\DateParamWithDefaultResponse](../../Models/Operations/DateParamWithDefaultResponse.md)**
 
 
 ## dateTimeParamWithDefault
@@ -228,7 +228,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DateTimeParamWithDefaultResponse](../../models/operations/DateTimeParamWithDefaultResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\DateTimeParamWithDefaultResponse](../../Models/Operations/DateTimeParamWithDefaultResponse.md)**
 
 
 ## decimalParamWithDefault
@@ -274,7 +274,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DecimalParamWithDefaultResponse](../../models/operations/DecimalParamWithDefaultResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\DecimalParamWithDefaultResponse](../../Models/Operations/DecimalParamWithDefaultResponse.md)**
 
 
 ## deprecatedFieldInSchemaPost
@@ -316,12 +316,12 @@ try {
 
 | Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
 | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                               | [\OpenAPI\OpenAPI\Models\Shared\DeprecatedFieldInObject](../../models/shared/DeprecatedFieldInObject.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| `$request`                                                                                               | [\OpenAPI\OpenAPI\Models\Shared\DeprecatedFieldInObject](../../Models/Shared/DeprecatedFieldInObject.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedFieldInSchemaPostResponse](../../models/operations/DeprecatedFieldInSchemaPostResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedFieldInSchemaPostResponse](../../Models/Operations/DeprecatedFieldInSchemaPostResponse.md)**
 
 
 ## deprecatedObjectInSchemaGet
@@ -358,7 +358,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedObjectInSchemaGetResponse](../../models/operations/DeprecatedObjectInSchemaGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedObjectInSchemaGetResponse](../../Models/Operations/DeprecatedObjectInSchemaGetResponse.md)**
 
 
 ## ~~deprecatedOperationNoCommentsGet~~
@@ -408,7 +408,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationNoCommentsGetResponse](../../models/operations/DeprecatedOperationNoCommentsGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationNoCommentsGetResponse](../../Models/Operations/DeprecatedOperationNoCommentsGetResponse.md)**
 
 
 ## ~~deprecatedOperationWithCommentsGet~~
@@ -459,7 +459,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationWithCommentsGetResponse](../../models/operations/DeprecatedOperationWithCommentsGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationWithCommentsGetResponse](../../Models/Operations/DeprecatedOperationWithCommentsGetResponse.md)**
 
 
 ## emptyObjectGet
@@ -500,12 +500,12 @@ try {
 
 | Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `emptyObject`                                                                              | [\OpenAPI\OpenAPI\Models\Shared\EmptyObjectParam](../../models/shared/EmptyObjectParam.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `emptyObject`                                                                              | [\OpenAPI\OpenAPI\Models\Shared\EmptyObjectParam](../../Models/Shared/EmptyObjectParam.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\EmptyObjectGetResponse](../../models/operations/EmptyObjectGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\EmptyObjectGetResponse](../../Models/Operations/EmptyObjectGetResponse.md)**
 
 
 ## emptyResponseObjectWithCommentGet
@@ -542,7 +542,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\EmptyResponseObjectWithCommentGetResponse](../../models/operations/EmptyResponseObjectWithCommentGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\EmptyResponseObjectWithCommentGetResponse](../../Models/Operations/EmptyResponseObjectWithCommentGetResponse.md)**
 
 
 ## globalNameOverridden
@@ -579,7 +579,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\GetGlobalNameOverrideResponse](../../models/operations/GetGlobalNameOverrideResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\GetGlobalNameOverrideResponse](../../Models/Operations/GetGlobalNameOverrideResponse.md)**
 
 
 ## ignoredGenerationGet
@@ -616,7 +616,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\IgnoredGenerationGetResponse](../../models/operations/IgnoredGenerationGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\IgnoredGenerationGetResponse](../../Models/Operations/IgnoredGenerationGetResponse.md)**
 
 
 ## ignoresPost
@@ -659,13 +659,13 @@ try {
 
 | Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
 | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                  | [\OpenAPI\OpenAPI\Models\Operations\IgnoresPostRequestBody](../../models/operations/IgnoresPostRequestBody.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `requestBody`                                                                                                  | [\OpenAPI\OpenAPI\Models\Operations\IgnoresPostRequestBody](../../Models/Operations/IgnoresPostRequestBody.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `testParam`                                                                                                    | *string*                                                                                                       | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\IgnoresPostResponse](../../models/operations/IgnoresPostResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\IgnoresPostResponse](../../Models/Operations/IgnoresPostResponse.md)**
 
 
 ## nameOverride
@@ -706,13 +706,13 @@ try {
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `testEnumQueryParam`                                                                               | [\OpenAPI\OpenAPI\Models\Operations\EnumNameOverride](../../models/operations/EnumNameOverride.md) | :heavy_check_mark:                                                                                 | An enum type                                                                                       | value3                                                                                             |
+| `testEnumQueryParam`                                                                               | [\OpenAPI\OpenAPI\Models\Operations\EnumNameOverride](../../Models/Operations/EnumNameOverride.md) | :heavy_check_mark:                                                                                 | An enum type                                                                                       | value3                                                                                             |
 | `testQueryParam`                                                                                   | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                | example                                                                                            |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\NameOverrideGetResponse](../../models/operations/NameOverrideGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\NameOverrideGetResponse](../../Models/Operations/NameOverrideGetResponse.md)**
 
 
 ## objectCircularReferenceGet
@@ -749,7 +749,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ObjectCircularReferenceGetResponse](../../models/operations/ObjectCircularReferenceGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ObjectCircularReferenceGetResponse](../../Models/Operations/ObjectCircularReferenceGetResponse.md)**
 
 
 ## oneOfCircularReferenceGet
@@ -786,7 +786,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\OneOfCircularReferenceGetResponse](../../models/operations/OneOfCircularReferenceGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\OneOfCircularReferenceGetResponse](../../Models/Operations/OneOfCircularReferenceGetResponse.md)**
 
 
 ## typedParameterGenerationGet
@@ -833,12 +833,12 @@ try {
 | `bigint`                                                                 | *int*                                                                    | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `date`                                                                   | [\DateTime](https://www.php.net/manual/en/class.datetime.php)            | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `decimal`                                                                | *float*                                                                  | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `obj`                                                                    | [\OpenAPI\OpenAPI\Models\Operations\Obj](../../models/operations/Obj.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `obj`                                                                    | [\OpenAPI\OpenAPI\Models\Operations\Obj](../../Models/Operations/Obj.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetResponse](../../models/operations/TypedParameterGenerationGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetResponse](../../Models/Operations/TypedParameterGenerationGetResponse.md)**
 
 
 ## usageExamplePost
@@ -1000,11 +1000,11 @@ try {
 
 | Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `$request`                                                                                                         | [\OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequest](../../models/operations/UsageExamplePostRequest.md)   | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
-| `security`                                                                                                         | [\OpenAPI\OpenAPI\Models\Operations\UsageExamplePostSecurity](../../models/operations/UsageExamplePostSecurity.md) | :heavy_check_mark:                                                                                                 | The security requirements to use for the request.                                                                  |
+| `$request`                                                                                                         | [\OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequest](../../Models/Operations/UsageExamplePostRequest.md)   | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
+| `security`                                                                                                         | [\OpenAPI\OpenAPI\Models\Operations\UsageExamplePostSecurity](../../Models/Operations/UsageExamplePostSecurity.md) | :heavy_check_mark:                                                                                                 | The security requirements to use for the request.                                                                  |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\UsageExamplePostResponse](../../models/operations/UsageExamplePostResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\UsageExamplePostResponse](../../Models/Operations/UsageExamplePostResponse.md)**
 

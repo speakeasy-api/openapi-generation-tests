@@ -1,5 +1,5 @@
 # Parameters
-(*.parameters*)
+(*parameters*)
 
 ## Overview
 
@@ -351,8 +351,8 @@ public class Application {
                 .build();
 
             FormQueryParamsMapResponse res = sdk.parameters.formQueryParamsMap(new java.util.HashMap<String, String>(){{
-                put("test", "value");
                 put("test2", "value2");
+                put("test", "value");
             }}, new java.util.HashMap<String, Long>(){{
                 put("test", 1L);
                 put("test2", 2L);
@@ -1422,8 +1422,8 @@ public class Application {
                 add(1L),
                 add(2L),
             }}, new java.util.HashMap<String, String>(){{
-                put("key1", "val1");
                 put("key2", "val2");
+                put("key1", "val1");
             }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
@@ -1544,8 +1544,8 @@ public class Application {
                 .build();
 
             SimplePathParameterMapsResponse res = sdk.parameters.simplePathParameterMaps(new java.util.HashMap<String, String>(){{
-                put("test2", "value2");
                 put("test", "value");
+                put("test2", "value2");
             }}, new java.util.HashMap<String, Long>(){{
                 put("test", 1L);
                 put("test2", 2L);

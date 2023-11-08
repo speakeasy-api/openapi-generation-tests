@@ -51,12 +51,12 @@ try {
 
 | Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
 | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `security`                                                                                             | [\OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthSecurity](../../models/operations/ApiKeyAuthSecurity.md) | :heavy_check_mark:                                                                                     | The security requirements to use for the request.                                                      |
+| `security`                                                                                             | [\OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthSecurity](../../Models/Operations/ApiKeyAuthSecurity.md) | :heavy_check_mark:                                                                                     | The security requirements to use for the request.                                                      |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthResponse](../../models/operations/ApiKeyAuthResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthResponse](../../Models/Operations/ApiKeyAuthResponse.md)**
 
 
 ## apiKeyAuthGlobal
@@ -93,7 +93,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthGlobalResponse](../../models/operations/ApiKeyAuthGlobalResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthGlobalResponse](../../Models/Operations/ApiKeyAuthGlobalResponse.md)**
 
 
 ## basicAuth
@@ -134,14 +134,14 @@ try {
 
 | Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
 | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `security`                                                                                           | [\OpenAPI\OpenAPI\Models\Operations\BasicAuthSecurity](../../models/operations/BasicAuthSecurity.md) | :heavy_check_mark:                                                                                   | The security requirements to use for the request.                                                    |
+| `security`                                                                                           | [\OpenAPI\OpenAPI\Models\Operations\BasicAuthSecurity](../../Models/Operations/BasicAuthSecurity.md) | :heavy_check_mark:                                                                                   | The security requirements to use for the request.                                                    |
 | `passwd`                                                                                             | *string*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
 | `user`                                                                                               | *string*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\BasicAuthResponse](../../models/operations/BasicAuthResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\BasicAuthResponse](../../Models/Operations/BasicAuthResponse.md)**
 
 
 ## bearerAuth
@@ -179,12 +179,12 @@ try {
 
 | Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
 | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `security`                                                                                             | [\OpenAPI\OpenAPI\Models\Operations\BearerAuthSecurity](../../models/operations/BearerAuthSecurity.md) | :heavy_check_mark:                                                                                     | The security requirements to use for the request.                                                      |
+| `security`                                                                                             | [\OpenAPI\OpenAPI\Models\Operations\BearerAuthSecurity](../../Models/Operations/BearerAuthSecurity.md) | :heavy_check_mark:                                                                                     | The security requirements to use for the request.                                                      |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\BearerAuthResponse](../../models/operations/BearerAuthResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\BearerAuthResponse](../../Models/Operations/BearerAuthResponse.md)**
 
 
 ## globalBearerAuth
@@ -221,7 +221,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\GlobalBearerAuthResponse](../../models/operations/GlobalBearerAuthResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\GlobalBearerAuthResponse](../../Models/Operations/GlobalBearerAuthResponse.md)**
 
 
 ## oauth2Auth
@@ -259,12 +259,12 @@ try {
 
 | Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
 | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `security`                                                                                             | [\OpenAPI\OpenAPI\Models\Operations\Oauth2AuthSecurity](../../models/operations/Oauth2AuthSecurity.md) | :heavy_check_mark:                                                                                     | The security requirements to use for the request.                                                      |
+| `security`                                                                                             | [\OpenAPI\OpenAPI\Models\Operations\Oauth2AuthSecurity](../../Models/Operations/Oauth2AuthSecurity.md) | :heavy_check_mark:                                                                                     | The security requirements to use for the request.                                                      |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\Oauth2AuthResponse](../../models/operations/Oauth2AuthResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\Oauth2AuthResponse](../../Models/Operations/Oauth2AuthResponse.md)**
 
 
 ## oauth2Override
@@ -304,12 +304,12 @@ try {
 
 | Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
 | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                     | [\OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideSecurity](../../models/operations/Oauth2OverrideSecurity.md) | :heavy_check_mark:                                                                                             | The security requirements to use for the request.                                                              |
+| `security`                                                                                                     | [\OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideSecurity](../../Models/Operations/Oauth2OverrideSecurity.md) | :heavy_check_mark:                                                                                             | The security requirements to use for the request.                                                              |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideResponse](../../models/operations/Oauth2OverrideResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideResponse](../../Models/Operations/Oauth2OverrideResponse.md)**
 
 
 ## openIdConnectAuth
@@ -347,10 +347,10 @@ try {
 
 | Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
 | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                           | [\OpenAPI\OpenAPI\Models\Operations\OpenIdConnectAuthSecurity](../../models/operations/OpenIdConnectAuthSecurity.md) | :heavy_check_mark:                                                                                                   | The security requirements to use for the request.                                                                    |
+| `security`                                                                                                           | [\OpenAPI\OpenAPI\Models\Operations\OpenIdConnectAuthSecurity](../../Models/Operations/OpenIdConnectAuthSecurity.md) | :heavy_check_mark:                                                                                                   | The security requirements to use for the request.                                                                    |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\OpenIdConnectAuthResponse](../../models/operations/OpenIdConnectAuthResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\OpenIdConnectAuthResponse](../../Models/Operations/OpenIdConnectAuthResponse.md)**
 

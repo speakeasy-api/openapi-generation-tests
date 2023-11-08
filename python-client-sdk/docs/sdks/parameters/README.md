@@ -1,5 +1,5 @@
 # Parameters
-(*.parameters*)
+(*parameters*)
 
 ## Overview
 
@@ -571,8 +571,8 @@ res = s.parameters.header_params_map(x_header_map={
     "key1": 'value1',
     "key2": 'value2',
 }, x_header_map_explode={
-    "test2": 'val2',
     "test1": 'val1',
+    "test2": 'val2',
 })
 
 if res.res is not None:

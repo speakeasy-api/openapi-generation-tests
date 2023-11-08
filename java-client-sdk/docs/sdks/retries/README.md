@@ -1,5 +1,5 @@
 # Retries
-(*.retries*)
+(*retries*)
 
 ## Overview
 

@@ -736,6 +736,7 @@ Sources/OpenAPI/models/shared/FileResource.swift
 Sources/OpenAPI/models/shared/FlattenedTypedObject1.swift
 Sources/OpenAPI/models/shared/HeaderAuth.swift
 Sources/OpenAPI/models/shared/HttpBinSimpleJsonObject.swift
+Sources/OpenAPI/models/shared/InlineObject.swift
 Sources/OpenAPI/models/shared/Int32Enum.swift
 Sources/OpenAPI/internal/models/Int32Enum+Serialization.swift
 Sources/OpenAPI/models/shared/Int32EnumVal.swift

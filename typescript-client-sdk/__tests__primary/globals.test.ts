@@ -55,7 +55,7 @@ test("Test Globals Path Parameter Get Uses Global", async () => {
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res?.url).toBe(
-    "http://localhost:35123/anything/globals/pathParameter/1"
+    "http://localhost:35123/anything/globals/pathParameter/1",
   );
 });
 
@@ -72,6 +72,6 @@ test("Test Globals Path Parameter Get Uses Local", async () => {
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res?.url).toBe(
-    "http://localhost:35123/anything/globals/pathParameter/2"
+    "http://localhost:35123/anything/globals/pathParameter/2",
   );
 });

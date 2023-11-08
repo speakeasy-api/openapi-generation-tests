@@ -1,5 +1,5 @@
 # Unions
-(*.Unions*)
+(*Unions*)
 
 ## Overview
 
@@ -53,7 +53,7 @@ var res = await sdk.Unions.FlattenedTypedObjectPostAsync("string");
 
 ### Response
 
-**[FlattenedTypedObjectPostResponse](../../models/operations/FlattenedTypedObjectPostResponse.md)**
+**[FlattenedTypedObjectPostResponse](../../Models/Operations/FlattenedTypedObjectPostResponse.md)**
 
 
 ## MixedTypeOneOfPost
@@ -86,7 +86,7 @@ var res = await sdk.Unions.MixedTypeOneOfPostAsync("string");
 
 ### Response
 
-**[MixedTypeOneOfPostResponse](../../models/operations/MixedTypeOneOfPostResponse.md)**
+**[MixedTypeOneOfPostResponse](../../Models/Operations/MixedTypeOneOfPostResponse.md)**
 
 
 ## NullableOneOfRefInObjectPost
@@ -121,12 +121,12 @@ var res = await sdk.Unions.NullableOneOfRefInObjectPostAsync(new NullableOneOfRe
 
 | Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
 | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `request`                                                                   | [NullableOneOfRefInObject](../../models/shared/NullableOneOfRefInObject.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+| `request`                                                                   | [NullableOneOfRefInObject](../../Models/Shared/NullableOneOfRefInObject.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
 
 
 ### Response
 
-**[NullableOneOfRefInObjectPostResponse](../../models/operations/NullableOneOfRefInObjectPostResponse.md)**
+**[NullableOneOfRefInObjectPostResponse](../../Models/Operations/NullableOneOfRefInObjectPostResponse.md)**
 
 
 ## NullableOneOfSchemaPost
@@ -159,7 +159,7 @@ var res = await sdk.Unions.NullableOneOfSchemaPostAsync("string");
 
 ### Response
 
-**[NullableOneOfSchemaPostResponse](../../models/operations/NullableOneOfSchemaPostResponse.md)**
+**[NullableOneOfSchemaPostResponse](../../Models/Operations/NullableOneOfSchemaPostResponse.md)**
 
 
 ## NullableOneOfTypeInObjectPost
@@ -191,12 +191,12 @@ var res = await sdk.Unions.NullableOneOfTypeInObjectPostAsync(new NullableOneOfT
 
 | Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `request`                                                                     | [NullableOneOfTypeInObject](../../models/shared/NullableOneOfTypeInObject.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
+| `request`                                                                     | [NullableOneOfTypeInObject](../../Models/Shared/NullableOneOfTypeInObject.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
 
 
 ### Response
 
-**[NullableOneOfTypeInObjectPostResponse](../../models/operations/NullableOneOfTypeInObjectPostResponse.md)**
+**[NullableOneOfTypeInObjectPostResponse](../../Models/Operations/NullableOneOfTypeInObjectPostResponse.md)**
 
 
 ## NullableTypedObjectPost
@@ -227,12 +227,12 @@ var res = await sdk.Unions.NullableTypedObjectPostAsync(new TypedObject1() {
 
 | Parameter                                           | Type                                                | Required                                            | Description                                         |
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `request`                                           | [TypedObject1](../../models/shared/TypedObject1.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
+| `request`                                           | [TypedObject1](../../Models/Shared/TypedObject1.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
 
 
 ### Response
 
-**[NullableTypedObjectPostResponse](../../models/operations/NullableTypedObjectPostResponse.md)**
+**[NullableTypedObjectPostResponse](../../Models/Operations/NullableTypedObjectPostResponse.md)**
 
 
 ## PrimitiveTypeOneOfPost
@@ -265,7 +265,7 @@ var res = await sdk.Unions.PrimitiveTypeOneOfPostAsync("string");
 
 ### Response
 
-**[PrimitiveTypeOneOfPostResponse](../../models/operations/PrimitiveTypeOneOfPostResponse.md)**
+**[PrimitiveTypeOneOfPostResponse](../../Models/Operations/PrimitiveTypeOneOfPostResponse.md)**
 
 
 ## StronglyTypedOneOfPost
@@ -298,7 +298,7 @@ var res = await sdk.Unions.StronglyTypedOneOfPostAsync("string");
 
 ### Response
 
-**[StronglyTypedOneOfPostResponse](../../models/operations/StronglyTypedOneOfPostResponse.md)**
+**[StronglyTypedOneOfPostResponse](../../Models/Operations/StronglyTypedOneOfPostResponse.md)**
 
 
 ## TypedObjectNullableOneOfPost
@@ -331,7 +331,7 @@ var res = await sdk.Unions.TypedObjectNullableOneOfPostAsync("string");
 
 ### Response
 
-**[TypedObjectNullableOneOfPostResponse](../../models/operations/TypedObjectNullableOneOfPostResponse.md)**
+**[TypedObjectNullableOneOfPostResponse](../../Models/Operations/TypedObjectNullableOneOfPostResponse.md)**
 
 
 ## TypedObjectOneOfPost
@@ -364,7 +364,7 @@ var res = await sdk.Unions.TypedObjectOneOfPostAsync("string");
 
 ### Response
 
-**[TypedObjectOneOfPostResponse](../../models/operations/TypedObjectOneOfPostResponse.md)**
+**[TypedObjectOneOfPostResponse](../../Models/Operations/TypedObjectOneOfPostResponse.md)**
 
 
 ## UnionBigIntDecimal
@@ -397,7 +397,7 @@ var res = await sdk.Unions.UnionBigIntDecimalAsync("string");
 
 ### Response
 
-**[UnionBigIntDecimalResponse](../../models/operations/UnionBigIntDecimalResponse.md)**
+**[UnionBigIntDecimalResponse](../../Models/Operations/UnionBigIntDecimalResponse.md)**
 
 
 ## UnionDateNull
@@ -430,7 +430,7 @@ var res = await sdk.Unions.UnionDateNullAsync(LocalDate.FromDateTime(System.Date
 
 ### Response
 
-**[UnionDateNullResponse](../../models/operations/UnionDateNullResponse.md)**
+**[UnionDateNullResponse](../../Models/Operations/UnionDateNullResponse.md)**
 
 
 ## UnionDateTimeBigInt
@@ -463,7 +463,7 @@ var res = await sdk.Unions.UnionDateTimeBigIntAsync("string");
 
 ### Response
 
-**[UnionDateTimeBigIntResponse](../../models/operations/UnionDateTimeBigIntResponse.md)**
+**[UnionDateTimeBigIntResponse](../../Models/Operations/UnionDateTimeBigIntResponse.md)**
 
 
 ## UnionDateTimeNull
@@ -496,7 +496,7 @@ var res = await sdk.Unions.UnionDateTimeNullAsync(System.DateTime.Parse("2022-04
 
 ### Response
 
-**[UnionDateTimeNullResponse](../../models/operations/UnionDateTimeNullResponse.md)**
+**[UnionDateTimeNullResponse](../../Models/Operations/UnionDateTimeNullResponse.md)**
 
 
 ## WeaklyTypedOneOfPost
@@ -529,5 +529,5 @@ var res = await sdk.Unions.WeaklyTypedOneOfPostAsync("string");
 
 ### Response
 
-**[WeaklyTypedOneOfPostResponse](../../models/operations/WeaklyTypedOneOfPostResponse.md)**
+**[WeaklyTypedOneOfPostResponse](../../Models/Operations/WeaklyTypedOneOfPostResponse.md)**
 

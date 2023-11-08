@@ -1,5 +1,5 @@
 # Nested
-(*.nested*)
+(*nested*)
 
 ### Available Operations
 
@@ -38,7 +38,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.NestedGetResponse](../../models/operations/nestedgetresponse.md)>**
+**Promise<[operations.NestedGetResponse](../../sdk/models/operations/nestedgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

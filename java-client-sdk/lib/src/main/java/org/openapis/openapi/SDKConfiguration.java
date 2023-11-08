@@ -35,9 +35,9 @@ class SDKConfiguration {
 	}};
 	public String language = "java";
 	public String openapiDocVersion = "0.1.0";
-	public String sdkVersion = "2.0.0";
-	public String genVersion = "2.181.1";
-	public String userAgent = "speakeasy-sdk/java 2.0.0 2.181.1 0.1.0 <no value>";
+	public String sdkVersion = "2.1.0";
+	public String genVersion = "2.185.0";
+	public String userAgent = "speakeasy-sdk/java 2.1.0 2.185.0 0.1.0 <no value>";
 	public Map<String, Map<String, Map<String, Object>>> globals = new HashMap<String, Map<String, Map<String, Object>>>(){{
 		put("parameters", new HashMap<String, Map<String, Object>>());
 	}};

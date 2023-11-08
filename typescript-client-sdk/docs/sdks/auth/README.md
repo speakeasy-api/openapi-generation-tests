@@ -1,5 +1,5 @@
 # Auth
-(*.auth*)
+(*auth*)
 
 ## Overview
 
@@ -43,15 +43,15 @@ const operationSecurity: ApiKeyAuthSecurity = {
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `security`                                                                     | [operations.ApiKeyAuthSecurity](../../models/operations/apikeyauthsecurity.md) | :heavy_check_mark:                                                             | The security requirements to use for the request.                              |
-| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `security`                                                                         | [operations.ApiKeyAuthSecurity](../../sdk/models/operations/apikeyauthsecurity.md) | :heavy_check_mark:                                                                 | The security requirements to use for the request.                                  |
+| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
 
 
 ### Response
 
-**Promise<[operations.ApiKeyAuthResponse](../../models/operations/apikeyauthresponse.md)>**
+**Promise<[operations.ApiKeyAuthResponse](../../sdk/models/operations/apikeyauthresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -91,7 +91,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.ApiKeyAuthGlobalResponse](../../models/operations/apikeyauthglobalresponse.md)>**
+**Promise<[operations.ApiKeyAuthGlobalResponse](../../sdk/models/operations/apikeyauthglobalresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -128,17 +128,17 @@ const operationSecurity: BasicAuthSecurity = {
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `security`                                                                   | [operations.BasicAuthSecurity](../../models/operations/basicauthsecurity.md) | :heavy_check_mark:                                                           | The security requirements to use for the request.                            |
-| `passwd`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `user`                                                                       | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `security`                                                                       | [operations.BasicAuthSecurity](../../sdk/models/operations/basicauthsecurity.md) | :heavy_check_mark:                                                               | The security requirements to use for the request.                                |
+| `passwd`                                                                         | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `user`                                                                           | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
 
 
 ### Response
 
-**Promise<[operations.BasicAuthResponse](../../models/operations/basicauthresponse.md)>**
+**Promise<[operations.BasicAuthResponse](../../sdk/models/operations/basicauthresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -172,15 +172,15 @@ const operationSecurity: BearerAuthSecurity = {
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `security`                                                                     | [operations.BearerAuthSecurity](../../models/operations/bearerauthsecurity.md) | :heavy_check_mark:                                                             | The security requirements to use for the request.                              |
-| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `security`                                                                         | [operations.BearerAuthSecurity](../../sdk/models/operations/bearerauthsecurity.md) | :heavy_check_mark:                                                                 | The security requirements to use for the request.                                  |
+| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
 
 
 ### Response
 
-**Promise<[operations.BearerAuthResponse](../../models/operations/bearerauthresponse.md)>**
+**Promise<[operations.BearerAuthResponse](../../sdk/models/operations/bearerauthresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -220,7 +220,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.GlobalBearerAuthResponse](../../models/operations/globalbearerauthresponse.md)>**
+**Promise<[operations.GlobalBearerAuthResponse](../../sdk/models/operations/globalbearerauthresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -254,15 +254,15 @@ const operationSecurity: Oauth2AuthSecurity = {
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `security`                                                                     | [operations.Oauth2AuthSecurity](../../models/operations/oauth2authsecurity.md) | :heavy_check_mark:                                                             | The security requirements to use for the request.                              |
-| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `security`                                                                         | [operations.Oauth2AuthSecurity](../../sdk/models/operations/oauth2authsecurity.md) | :heavy_check_mark:                                                                 | The security requirements to use for the request.                                  |
+| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
 
 
 ### Response
 
-**Promise<[operations.Oauth2AuthResponse](../../models/operations/oauth2authresponse.md)>**
+**Promise<[operations.Oauth2AuthResponse](../../sdk/models/operations/oauth2authresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -296,15 +296,15 @@ const operationSecurity: Oauth2OverrideSecurity = {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `security`                                                                             | [operations.Oauth2OverrideSecurity](../../models/operations/oauth2overridesecurity.md) | :heavy_check_mark:                                                                     | The security requirements to use for the request.                                      |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `security`                                                                                 | [operations.Oauth2OverrideSecurity](../../sdk/models/operations/oauth2overridesecurity.md) | :heavy_check_mark:                                                                         | The security requirements to use for the request.                                          |
+| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
 
 
 ### Response
 
-**Promise<[operations.Oauth2OverrideResponse](../../models/operations/oauth2overrideresponse.md)>**
+**Promise<[operations.Oauth2OverrideResponse](../../sdk/models/operations/oauth2overrideresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -338,15 +338,15 @@ const operationSecurity: OpenIdConnectAuthSecurity = {
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `security`                                                                                   | [operations.OpenIdConnectAuthSecurity](../../models/operations/openidconnectauthsecurity.md) | :heavy_check_mark:                                                                           | The security requirements to use for the request.                                            |
-| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `security`                                                                                       | [operations.OpenIdConnectAuthSecurity](../../sdk/models/operations/openidconnectauthsecurity.md) | :heavy_check_mark:                                                                               | The security requirements to use for the request.                                                |
+| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
 
 
 ### Response
 
-**Promise<[operations.OpenIdConnectAuthResponse](../../models/operations/openidconnectauthresponse.md)>**
+**Promise<[operations.OpenIdConnectAuthResponse](../../sdk/models/operations/openidconnectauthresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

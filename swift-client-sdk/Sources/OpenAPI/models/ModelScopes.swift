@@ -2,17 +2,17 @@
 
 import Foundation
 
-/// Top-level type used for grouping shared models
+/// Top-level type used for grouping callback models
 ///
 /// > Note: You do not need to interact with this type directly.
-public enum Shared {}
+public enum Callbacks {}
 
 /// Top-level type used for grouping operations models
 ///
 /// > Note: You do not need to interact with this type directly.
 public enum Operations {}
 
-/// Top-level type used for grouping callback models
+/// Top-level type used for grouping shared models
 ///
 /// > Note: You do not need to interact with this type directly.
-public enum Callbacks {}
+public enum Shared {}

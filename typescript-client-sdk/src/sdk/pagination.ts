@@ -34,7 +34,7 @@ export class Pagination {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/pagination/cursor";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/pagination/cursor";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -66,7 +66,7 @@ export class Pagination {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "put",
             headers: headers,
             responseType: "arraybuffer",
@@ -143,7 +143,7 @@ export class Pagination {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/pagination/cursor";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/pagination/cursor";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -161,7 +161,7 @@ export class Pagination {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -234,7 +234,7 @@ export class Pagination {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/pagination/limitoffset/offset";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/pagination/limitoffset/offset";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -266,7 +266,7 @@ export class Pagination {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "put",
             headers: headers,
             responseType: "arraybuffer",
@@ -358,7 +358,7 @@ export class Pagination {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/pagination/limitoffset/offset";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/pagination/limitoffset/offset";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -376,7 +376,7 @@ export class Pagination {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -465,7 +465,7 @@ export class Pagination {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/pagination/limitoffset/page";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/pagination/limitoffset/page";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -497,7 +497,7 @@ export class Pagination {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "put",
             headers: headers,
             responseType: "arraybuffer",
@@ -583,7 +583,7 @@ export class Pagination {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/pagination/limitoffset/page";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/pagination/limitoffset/page";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -601,7 +601,7 @@ export class Pagination {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",

@@ -1,5 +1,5 @@
 # SDKSecond
-(*.nested.second*)
+(*nested.second*)
 
 ### Available Operations
 

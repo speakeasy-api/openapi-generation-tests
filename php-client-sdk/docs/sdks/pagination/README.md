@@ -53,13 +53,13 @@ try {
 
 | Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
 | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                                       | [\OpenAPI\OpenAPI\Models\Operations\PaginationCursorBodyRequestBody](../../models/operations/PaginationCursorBodyRequestBody.md) | :heavy_check_mark:                                                                                                               | The request object to use for the request.                                                                                       |
+| `$request`                                                                                                                       | [\OpenAPI\OpenAPI\Models\Operations\PaginationCursorBodyRequestBody](../../Models/Operations/PaginationCursorBodyRequestBody.md) | :heavy_check_mark:                                                                                                               | The request object to use for the request.                                                                                       |
 | `$serverURL`                                                                                                                     | *string*                                                                                                                         | :heavy_minus_sign:                                                                                                               | An optional server URL to use.                                                                                                   |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\PaginationCursorBodyResponse](../../models/operations/PaginationCursorBodyResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\PaginationCursorBodyResponse](../../Models/Operations/PaginationCursorBodyResponse.md)**
 
 
 ## paginationCursorParams
@@ -106,7 +106,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\PaginationCursorParamsResponse](../../models/operations/PaginationCursorParamsResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\PaginationCursorParamsResponse](../../Models/Operations/PaginationCursorParamsResponse.md)**
 
 
 ## paginationLimitOffsetOffsetBody
@@ -149,13 +149,13 @@ try {
 
 | Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `$request`                                                                                   | [\OpenAPI\OpenAPI\Models\Shared\LimitOffsetConfig](../../models/shared/LimitOffsetConfig.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `$request`                                                                                   | [\OpenAPI\OpenAPI\Models\Shared\LimitOffsetConfig](../../Models/Shared/LimitOffsetConfig.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
 | `$serverURL`                                                                                 | *string*                                                                                     | :heavy_minus_sign:                                                                           | An optional server URL to use.                                                               |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\PaginationLimitOffsetOffsetBodyResponse](../../models/operations/PaginationLimitOffsetOffsetBodyResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\PaginationLimitOffsetOffsetBodyResponse](../../Models/Operations/PaginationLimitOffsetOffsetBodyResponse.md)**
 
 
 ## paginationLimitOffsetOffsetParams
@@ -203,7 +203,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\PaginationLimitOffsetOffsetParamsResponse](../../models/operations/PaginationLimitOffsetOffsetParamsResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\PaginationLimitOffsetOffsetParamsResponse](../../Models/Operations/PaginationLimitOffsetOffsetParamsResponse.md)**
 
 
 ## paginationLimitOffsetPageBody
@@ -246,13 +246,13 @@ try {
 
 | Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `$request`                                                                                   | [\OpenAPI\OpenAPI\Models\Shared\LimitOffsetConfig](../../models/shared/LimitOffsetConfig.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `$request`                                                                                   | [\OpenAPI\OpenAPI\Models\Shared\LimitOffsetConfig](../../Models/Shared/LimitOffsetConfig.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
 | `$serverURL`                                                                                 | *string*                                                                                     | :heavy_minus_sign:                                                                           | An optional server URL to use.                                                               |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\PaginationLimitOffsetPageBodyResponse](../../models/operations/PaginationLimitOffsetPageBodyResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\PaginationLimitOffsetPageBodyResponse](../../Models/Operations/PaginationLimitOffsetPageBodyResponse.md)**
 
 
 ## paginationLimitOffsetPageParams
@@ -299,5 +299,5 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\PaginationLimitOffsetPageParamsResponse](../../models/operations/PaginationLimitOffsetPageParamsResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\PaginationLimitOffsetPageParamsResponse](../../Models/Operations/PaginationLimitOffsetPageParamsResponse.md)**
 

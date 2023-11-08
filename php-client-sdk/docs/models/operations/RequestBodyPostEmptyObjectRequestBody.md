@@ -1,9 +1,0 @@
-# RequestBodyPostEmptyObjectRequestBody
-
-
-## Fields
-
-| Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `empty`                                                                                                             | [?\OpenAPI\OpenAPI\Models\Operations\EmptyT](../../models/operations/EmptyT.md)                                     | :heavy_minus_sign:                                                                                                  | N/A                                                                                                                 |
-| `emptyWithEmptyProperties`                                                                                          | [?\OpenAPI\OpenAPI\Models\Operations\EmptyWithEmptyProperties](../../models/operations/EmptyWithEmptyProperties.md) | :heavy_minus_sign:                                                                                                  | N/A                                                                                                                 |

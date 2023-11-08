@@ -1,5 +1,5 @@
 # RequestBodies
-(*.RequestBodies*)
+(*RequestBodies*)
 
 ## Overview
 
@@ -116,12 +116,12 @@ var res = await sdk.RequestBodies.NullableObjectPostAsync(new NullableObject() {
 
 | Parameter                                               | Type                                                    | Required                                                | Description                                             |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `request`                                               | [NullableObject](../../models/shared/NullableObject.md) | :heavy_check_mark:                                      | The request object to use for the request.              |
+| `request`                                               | [NullableObject](../../Models/Shared/NullableObject.md) | :heavy_check_mark:                                      | The request object to use for the request.              |
 
 
 ### Response
 
-**[NullableObjectPostResponse](../../models/operations/NullableObjectPostResponse.md)**
+**[NullableObjectPostResponse](../../Models/Operations/NullableObjectPostResponse.md)**
 
 
 ## NullableRequiredEmptyObjectPost
@@ -154,12 +154,12 @@ var res = await sdk.RequestBodies.NullableRequiredEmptyObjectPostAsync(new Nulla
 
 | Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                           | [NullableRequiredEmptyObjectPostRequestBody](../../models/operations/NullableRequiredEmptyObjectPostRequestBody.md) | :heavy_check_mark:                                                                                                  | The request object to use for the request.                                                                          |
+| `request`                                                                                                           | [NullableRequiredEmptyObjectPostRequestBody](../../Models/Operations/NullableRequiredEmptyObjectPostRequestBody.md) | :heavy_check_mark:                                                                                                  | The request object to use for the request.                                                                          |
 
 
 ### Response
 
-**[NullableRequiredEmptyObjectPostResponse](../../models/operations/NullableRequiredEmptyObjectPostResponse.md)**
+**[NullableRequiredEmptyObjectPostResponse](../../Models/Operations/NullableRequiredEmptyObjectPostResponse.md)**
 
 
 ## NullableRequiredPropertyPost
@@ -195,12 +195,12 @@ var res = await sdk.RequestBodies.NullableRequiredPropertyPostAsync(new Nullable
 
 | Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
 | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                     | [NullableRequiredPropertyPostRequestBody](../../models/operations/NullableRequiredPropertyPostRequestBody.md) | :heavy_check_mark:                                                                                            | The request object to use for the request.                                                                    |
+| `request`                                                                                                     | [NullableRequiredPropertyPostRequestBody](../../Models/Operations/NullableRequiredPropertyPostRequestBody.md) | :heavy_check_mark:                                                                                            | The request object to use for the request.                                                                    |
 
 
 ### Response
 
-**[NullableRequiredPropertyPostResponse](../../models/operations/NullableRequiredPropertyPostResponse.md)**
+**[NullableRequiredPropertyPostResponse](../../Models/Operations/NullableRequiredPropertyPostResponse.md)**
 
 
 ## NullableRequiredSharedObjectPost
@@ -236,12 +236,12 @@ var res = await sdk.RequestBodies.NullableRequiredSharedObjectPostAsync(new Null
 
 | Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
 | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                             | [NullableRequiredSharedObjectPostRequestBody](../../models/operations/NullableRequiredSharedObjectPostRequestBody.md) | :heavy_check_mark:                                                                                                    | The request object to use for the request.                                                                            |
+| `request`                                                                                                             | [NullableRequiredSharedObjectPostRequestBody](../../Models/Operations/NullableRequiredSharedObjectPostRequestBody.md) | :heavy_check_mark:                                                                                                    | The request object to use for the request.                                                                            |
 
 
 ### Response
 
-**[NullableRequiredSharedObjectPostResponse](../../models/operations/NullableRequiredSharedObjectPostResponse.md)**
+**[NullableRequiredSharedObjectPostResponse](../../Models/Operations/NullableRequiredSharedObjectPostResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonArray
@@ -291,13 +291,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayAsync(new L
 
 | Parameter                                                 | Type                                                      | Required                                                  | Description                                               |
 | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `request`                                                 | List<[SimpleObject](../../models/shared/SimpleObject.md)> | :heavy_check_mark:                                        | The request object to use for the request.                |
+| `request`                                                 | List<[SimpleObject](../../Models/Shared/SimpleObject.md)> | :heavy_check_mark:                                        | The request object to use for the request.                |
 | `serverURL`                                               | *string*                                                  | :heavy_minus_sign:                                        | An optional server URL to use.                            |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonArrayResponse](../../models/operations/RequestBodyPostApplicationJsonArrayResponse.md)**
+**[RequestBodyPostApplicationJsonArrayResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonArrayCamelCase
@@ -345,13 +345,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayCamelCaseAs
 
 | Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
 | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `request`                                                                   | List<[SimpleObjectCamelCase](../../models/shared/SimpleObjectCamelCase.md)> | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+| `request`                                                                   | List<[SimpleObjectCamelCase](../../Models/Shared/SimpleObjectCamelCase.md)> | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
 | `serverURL`                                                                 | *string*                                                                    | :heavy_minus_sign:                                                          | An optional server URL to use.                                              |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonArrayCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonArrayCamelCaseResponse.md)**
+**[RequestBodyPostApplicationJsonArrayCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayCamelCaseResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonArrayObj
@@ -401,12 +401,12 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayObjAsync(ne
 
 | Parameter                                                 | Type                                                      | Required                                                  | Description                                               |
 | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `request`                                                 | List<[SimpleObject](../../models/shared/SimpleObject.md)> | :heavy_check_mark:                                        | The request object to use for the request.                |
+| `request`                                                 | List<[SimpleObject](../../Models/Shared/SimpleObject.md)> | :heavy_check_mark:                                        | The request object to use for the request.                |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonArrayObjResponse](../../models/operations/RequestBodyPostApplicationJsonArrayObjResponse.md)**
+**[RequestBodyPostApplicationJsonArrayObjResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayObjResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonArrayObjCamelCase
@@ -454,12 +454,12 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayObjCamelCas
 
 | Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
 | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `request`                                                                   | List<[SimpleObjectCamelCase](../../models/shared/SimpleObjectCamelCase.md)> | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+| `request`                                                                   | List<[SimpleObjectCamelCase](../../Models/Shared/SimpleObjectCamelCase.md)> | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonArrayObjCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonArrayObjCamelCaseResponse.md)**
+**[RequestBodyPostApplicationJsonArrayObjCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayObjCamelCaseResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonArrayOfArray
@@ -511,13 +511,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfArrayAsyn
 
 | Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `request`                                                       | List<List<[SimpleObject](../../models/shared/SimpleObject.md)>> | :heavy_check_mark:                                              | The request object to use for the request.                      |
+| `request`                                                       | List<List<[SimpleObject](../../Models/Shared/SimpleObject.md)>> | :heavy_check_mark:                                              | The request object to use for the request.                      |
 | `serverURL`                                                     | *string*                                                        | :heavy_minus_sign:                                              | An optional server URL to use.                                  |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonArrayOfArrayResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfArrayResponse.md)**
+**[RequestBodyPostApplicationJsonArrayOfArrayResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfArrayResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonArrayOfArrayCamelCase
@@ -567,13 +567,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfArrayCame
 
 | Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `request`                                                                         | List<List<[SimpleObjectCamelCase](../../models/shared/SimpleObjectCamelCase.md)>> | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+| `request`                                                                         | List<List<[SimpleObjectCamelCase](../../Models/Shared/SimpleObjectCamelCase.md)>> | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
 | `serverURL`                                                                       | *string*                                                                          | :heavy_minus_sign:                                                                | An optional server URL to use.                                                    |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse.md)**
+**[RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonArrayOfArrayOfPrimitive
@@ -611,7 +611,7 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfArrayOfPr
 
 ### Response
 
-**[RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse.md)**
+**[RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonArrayOfMap
@@ -663,13 +663,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfMapAsync(
 
 | Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `request`                                                                     | List<Dictionary<String, [SimpleObject](../../models/shared/SimpleObject.md)>> | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
+| `request`                                                                     | List<Dictionary<String, [SimpleObject](../../Models/Shared/SimpleObject.md)>> | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
 | `serverURL`                                                                   | *string*                                                                      | :heavy_minus_sign:                                                            | An optional server URL to use.                                                |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonArrayOfMapResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfMapResponse.md)**
+**[RequestBodyPostApplicationJsonArrayOfMapResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfMapResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonArrayOfMapCamelCase
@@ -719,13 +719,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfMapCamelC
 
 | Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
 | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `request`                                                                                       | List<Dictionary<String, [SimpleObjectCamelCase](../../models/shared/SimpleObjectCamelCase.md)>> | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
+| `request`                                                                                       | List<Dictionary<String, [SimpleObjectCamelCase](../../Models/Shared/SimpleObjectCamelCase.md)>> | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
 | `serverURL`                                                                                     | *string*                                                                                        | :heavy_minus_sign:                                                                              | An optional server URL to use.                                                                  |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse.md)**
+**[RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonArrayOfPrimitive
@@ -761,7 +761,7 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfPrimitive
 
 ### Response
 
-**[RequestBodyPostApplicationJsonArrayOfPrimitiveResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfPrimitiveResponse.md)**
+**[RequestBodyPostApplicationJsonArrayOfPrimitiveResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfPrimitiveResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonDeep
@@ -829,7 +829,7 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(new De
     Bool = true,
     Int = 1,
     Map = new Dictionary<string, SimpleObject>() {
-        { "key", new SimpleObject() {
+        { "key2", new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
@@ -849,7 +849,7 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(new De
             DecimalStr = 3.14159265358979344719667586M,
             StrOpt = "testOptional",
         } },
-        { "key2", new SimpleObject() {
+        { "key", new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
@@ -901,12 +901,12 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(new De
 
 | Parameter                                       | Type                                            | Required                                        | Description                                     |
 | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| `request`                                       | [DeepObject](../../models/shared/DeepObject.md) | :heavy_check_mark:                              | The request object to use for the request.      |
+| `request`                                       | [DeepObject](../../Models/Shared/DeepObject.md) | :heavy_check_mark:                              | The request object to use for the request.      |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonDeepResponse](../../models/operations/RequestBodyPostApplicationJsonDeepResponse.md)**
+**[RequestBodyPostApplicationJsonDeepResponse](../../Models/Operations/RequestBodyPostApplicationJsonDeepResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonDeepCamelCase
@@ -1000,12 +1000,12 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepCamelCaseAsy
 
 | Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `request`                                                         | [DeepObjectCamelCase](../../models/shared/DeepObjectCamelCase.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
+| `request`                                                         | [DeepObjectCamelCase](../../Models/Shared/DeepObjectCamelCase.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonDeepCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonDeepCamelCaseResponse.md)**
+**[RequestBodyPostApplicationJsonDeepCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonDeepCamelCaseResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonMap
@@ -1055,13 +1055,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapAsync(new Dic
 
 | Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `request`                                                               | Dictionary<String, [SimpleObject](../../models/shared/SimpleObject.md)> | :heavy_check_mark:                                                      | The request object to use for the request.                              |
+| `request`                                                               | Dictionary<String, [SimpleObject](../../Models/Shared/SimpleObject.md)> | :heavy_check_mark:                                                      | The request object to use for the request.                              |
 | `serverURL`                                                             | *string*                                                                | :heavy_minus_sign:                                                      | An optional server URL to use.                                          |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonMapResponse](../../models/operations/RequestBodyPostApplicationJsonMapResponse.md)**
+**[RequestBodyPostApplicationJsonMapResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonMapCamelCase
@@ -1109,13 +1109,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapCamelCaseAsyn
 
 | Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `request`                                                                                 | Dictionary<String, [SimpleObjectCamelCase](../../models/shared/SimpleObjectCamelCase.md)> | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
+| `request`                                                                                 | Dictionary<String, [SimpleObjectCamelCase](../../Models/Shared/SimpleObjectCamelCase.md)> | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
 | `serverURL`                                                                               | *string*                                                                                  | :heavy_minus_sign:                                                                        | An optional server URL to use.                                                            |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonMapCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonMapCamelCaseResponse.md)**
+**[RequestBodyPostApplicationJsonMapCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapCamelCaseResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonMapObj
@@ -1165,12 +1165,12 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapObjAsync(new 
 
 | Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `request`                                                               | Dictionary<String, [SimpleObject](../../models/shared/SimpleObject.md)> | :heavy_check_mark:                                                      | The request object to use for the request.                              |
+| `request`                                                               | Dictionary<String, [SimpleObject](../../Models/Shared/SimpleObject.md)> | :heavy_check_mark:                                                      | The request object to use for the request.                              |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonMapObjResponse](../../models/operations/RequestBodyPostApplicationJsonMapObjResponse.md)**
+**[RequestBodyPostApplicationJsonMapObjResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapObjResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonMapObjCamelCase
@@ -1218,12 +1218,12 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapObjCamelCaseA
 
 | Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `request`                                                                                 | Dictionary<String, [SimpleObjectCamelCase](../../models/shared/SimpleObjectCamelCase.md)> | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
+| `request`                                                                                 | Dictionary<String, [SimpleObjectCamelCase](../../Models/Shared/SimpleObjectCamelCase.md)> | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonMapObjCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonMapObjCamelCaseResponse.md)**
+**[RequestBodyPostApplicationJsonMapObjCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapObjCamelCaseResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonMapOfArray
@@ -1275,13 +1275,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfArrayAsync(
 
 | Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `request`                                                                     | Dictionary<String, List<[SimpleObject](../../models/shared/SimpleObject.md)>> | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
+| `request`                                                                     | Dictionary<String, List<[SimpleObject](../../Models/Shared/SimpleObject.md)>> | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
 | `serverURL`                                                                   | *string*                                                                      | :heavy_minus_sign:                                                            | An optional server URL to use.                                                |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonMapOfArrayResponse](../../models/operations/RequestBodyPostApplicationJsonMapOfArrayResponse.md)**
+**[RequestBodyPostApplicationJsonMapOfArrayResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapOfArrayResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonMapOfArrayCamelCase
@@ -1331,13 +1331,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfArrayCamelC
 
 | Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
 | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `request`                                                                                       | Dictionary<String, List<[SimpleObjectCamelCase](../../models/shared/SimpleObjectCamelCase.md)>> | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
+| `request`                                                                                       | Dictionary<String, List<[SimpleObjectCamelCase](../../Models/Shared/SimpleObjectCamelCase.md)>> | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
 | `serverURL`                                                                                     | *string*                                                                                        | :heavy_minus_sign:                                                                              | An optional server URL to use.                                                                  |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse.md)**
+**[RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonMapOfMap
@@ -1389,13 +1389,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfMapAsync(ne
 
 | Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
 | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `request`                                                                                   | Dictionary<String, Dictionary<String, [SimpleObject](../../models/shared/SimpleObject.md)>> | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
+| `request`                                                                                   | Dictionary<String, Dictionary<String, [SimpleObject](../../Models/Shared/SimpleObject.md)>> | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
 | `serverURL`                                                                                 | *string*                                                                                    | :heavy_minus_sign:                                                                          | An optional server URL to use.                                                              |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonMapOfMapResponse](../../models/operations/RequestBodyPostApplicationJsonMapOfMapResponse.md)**
+**[RequestBodyPostApplicationJsonMapOfMapResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapOfMapResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonMapOfMapCamelCase
@@ -1445,13 +1445,13 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfMapCamelCas
 
 | Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
 | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                     | Dictionary<String, Dictionary<String, [SimpleObjectCamelCase](../../models/shared/SimpleObjectCamelCase.md)>> | :heavy_check_mark:                                                                                            | The request object to use for the request.                                                                    |
+| `request`                                                                                                     | Dictionary<String, Dictionary<String, [SimpleObjectCamelCase](../../Models/Shared/SimpleObjectCamelCase.md)>> | :heavy_check_mark:                                                                                            | The request object to use for the request.                                                                    |
 | `serverURL`                                                                                                   | *string*                                                                                                      | :heavy_minus_sign:                                                                                            | An optional server URL to use.                                                                                |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse.md)**
+**[RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonMapOfMapOfPrimitive
@@ -1489,7 +1489,7 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfMapOfPrimit
 
 ### Response
 
-**[RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse](../../models/operations/RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse.md)**
+**[RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonMapOfPrimitive
@@ -1525,7 +1525,7 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfPrimitiveAs
 
 ### Response
 
-**[RequestBodyPostApplicationJsonMapOfPrimitiveResponse](../../models/operations/RequestBodyPostApplicationJsonMapOfPrimitiveResponse.md)**
+**[RequestBodyPostApplicationJsonMapOfPrimitiveResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapOfPrimitiveResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonMultipleJsonFiltered
@@ -1573,12 +1573,12 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMultipleJsonFilt
 
 | Parameter                                           | Type                                                | Required                                            | Description                                         |
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `request`                                           | [SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
+| `request`                                           | [SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonMultipleJsonFilteredResponse](../../models/operations/RequestBodyPostApplicationJsonMultipleJsonFilteredResponse.md)**
+**[RequestBodyPostApplicationJsonMultipleJsonFilteredResponse](../../Models/Operations/RequestBodyPostApplicationJsonMultipleJsonFilteredResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonSimple
@@ -1626,12 +1626,12 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonSimpleAsync(new 
 
 | Parameter                                           | Type                                                | Required                                            | Description                                         |
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `request`                                           | [SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
+| `request`                                           | [SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonSimpleResponse](../../models/operations/RequestBodyPostApplicationJsonSimpleResponse.md)**
+**[RequestBodyPostApplicationJsonSimpleResponse](../../Models/Operations/RequestBodyPostApplicationJsonSimpleResponse.md)**
 
 
 ## RequestBodyPostApplicationJsonSimpleCamelCase
@@ -1677,12 +1677,12 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonSimpleCamelCaseA
 
 | Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `request`                                                             | [SimpleObjectCamelCase](../../models/shared/SimpleObjectCamelCase.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
+| `request`                                                             | [SimpleObjectCamelCase](../../Models/Shared/SimpleObjectCamelCase.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
 
 
 ### Response
 
-**[RequestBodyPostApplicationJsonSimpleCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonSimpleCamelCaseResponse.md)**
+**[RequestBodyPostApplicationJsonSimpleCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonSimpleCamelCaseResponse.md)**
 
 
 ## RequestBodyPostComplexNumberTypes
@@ -1726,12 +1726,12 @@ var res = await sdk.RequestBodies.RequestBodyPostComplexNumberTypesAsync(new Req
 
 | Parameter                                                                                                       | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
 | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                       | [RequestBodyPostComplexNumberTypesRequest](../../models/operations/RequestBodyPostComplexNumberTypesRequest.md) | :heavy_check_mark:                                                                                              | The request object to use for the request.                                                                      |
+| `request`                                                                                                       | [RequestBodyPostComplexNumberTypesRequest](../../Models/Operations/RequestBodyPostComplexNumberTypesRequest.md) | :heavy_check_mark:                                                                                              | The request object to use for the request.                                                                      |
 
 
 ### Response
 
-**[RequestBodyPostComplexNumberTypesResponse](../../models/operations/RequestBodyPostComplexNumberTypesResponse.md)**
+**[RequestBodyPostComplexNumberTypesResponse](../../Models/Operations/RequestBodyPostComplexNumberTypesResponse.md)**
 
 
 ## RequestBodyPostDefaultsAndConsts
@@ -1775,12 +1775,12 @@ var res = await sdk.RequestBodies.RequestBodyPostDefaultsAndConstsAsync(new Defa
 
 | Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `request`                                                     | [DefaultsAndConsts](../../models/shared/DefaultsAndConsts.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
+| `request`                                                     | [DefaultsAndConsts](../../Models/Shared/DefaultsAndConsts.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
 
 
 ### Response
 
-**[RequestBodyPostDefaultsAndConstsResponse](../../models/operations/RequestBodyPostDefaultsAndConstsResponse.md)**
+**[RequestBodyPostDefaultsAndConstsResponse](../../Models/Operations/RequestBodyPostDefaultsAndConstsResponse.md)**
 
 
 ## RequestBodyPostEmptyObject
@@ -1812,12 +1812,12 @@ var res = await sdk.RequestBodies.RequestBodyPostEmptyObjectAsync(new RequestBod
 
 | Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
 | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                 | [RequestBodyPostEmptyObjectRequestBody](../../models/operations/RequestBodyPostEmptyObjectRequestBody.md) | :heavy_check_mark:                                                                                        | The request object to use for the request.                                                                |
+| `request`                                                                                                 | [RequestBodyPostEmptyObjectRequestBody](../../Models/Operations/RequestBodyPostEmptyObjectRequestBody.md) | :heavy_check_mark:                                                                                        | The request object to use for the request.                                                                |
 
 
 ### Response
 
-**[RequestBodyPostEmptyObjectResponse](../../models/operations/RequestBodyPostEmptyObjectResponse.md)**
+**[RequestBodyPostEmptyObjectResponse](../../Models/Operations/RequestBodyPostEmptyObjectResponse.md)**
 
 
 ## RequestBodyPostFormDeep
@@ -1885,7 +1885,7 @@ var res = await sdk.RequestBodies.RequestBodyPostFormDeepAsync(new DeepObject() 
     Bool = true,
     Int = 1,
     Map = new Dictionary<string, SimpleObject>() {
-        { "key", new SimpleObject() {
+        { "key2", new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
@@ -1905,7 +1905,7 @@ var res = await sdk.RequestBodies.RequestBodyPostFormDeepAsync(new DeepObject() 
             DecimalStr = 3.14159265358979344719667586M,
             StrOpt = "testOptional",
         } },
-        { "key2", new SimpleObject() {
+        { "key", new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
@@ -1957,12 +1957,12 @@ var res = await sdk.RequestBodies.RequestBodyPostFormDeepAsync(new DeepObject() 
 
 | Parameter                                       | Type                                            | Required                                        | Description                                     |
 | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| `request`                                       | [DeepObject](../../models/shared/DeepObject.md) | :heavy_check_mark:                              | The request object to use for the request.      |
+| `request`                                       | [DeepObject](../../Models/Shared/DeepObject.md) | :heavy_check_mark:                              | The request object to use for the request.      |
 
 
 ### Response
 
-**[RequestBodyPostFormDeepResponse](../../models/operations/RequestBodyPostFormDeepResponse.md)**
+**[RequestBodyPostFormDeepResponse](../../Models/Operations/RequestBodyPostFormDeepResponse.md)**
 
 
 ## RequestBodyPostFormMapPrimitive
@@ -1997,7 +1997,7 @@ var res = await sdk.RequestBodies.RequestBodyPostFormMapPrimitiveAsync(new Dicti
 
 ### Response
 
-**[RequestBodyPostFormMapPrimitiveResponse](../../models/operations/RequestBodyPostFormMapPrimitiveResponse.md)**
+**[RequestBodyPostFormMapPrimitiveResponse](../../Models/Operations/RequestBodyPostFormMapPrimitiveResponse.md)**
 
 
 ## RequestBodyPostFormSimple
@@ -2045,12 +2045,12 @@ var res = await sdk.RequestBodies.RequestBodyPostFormSimpleAsync(new SimpleObjec
 
 | Parameter                                           | Type                                                | Required                                            | Description                                         |
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `request`                                           | [SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
+| `request`                                           | [SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
 
 
 ### Response
 
-**[RequestBodyPostFormSimpleResponse](../../models/operations/RequestBodyPostFormSimpleResponse.md)**
+**[RequestBodyPostFormSimpleResponse](../../Models/Operations/RequestBodyPostFormSimpleResponse.md)**
 
 
 ## RequestBodyPostJsonDataTypesArrayBigInt
@@ -2085,7 +2085,7 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayBigIntAsync(n
 
 ### Response
 
-**[RequestBodyPostJsonDataTypesArrayBigIntResponse](../../models/operations/RequestBodyPostJsonDataTypesArrayBigIntResponse.md)**
+**[RequestBodyPostJsonDataTypesArrayBigIntResponse](../../Models/Operations/RequestBodyPostJsonDataTypesArrayBigIntResponse.md)**
 
 
 ## RequestBodyPostJsonDataTypesArrayDate
@@ -2120,7 +2120,7 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayDateAsync(new
 
 ### Response
 
-**[RequestBodyPostJsonDataTypesArrayDateResponse](../../models/operations/RequestBodyPostJsonDataTypesArrayDateResponse.md)**
+**[RequestBodyPostJsonDataTypesArrayDateResponse](../../Models/Operations/RequestBodyPostJsonDataTypesArrayDateResponse.md)**
 
 
 ## RequestBodyPostJsonDataTypesArrayDecimalStr
@@ -2155,7 +2155,7 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayDecimalStrAsy
 
 ### Response
 
-**[RequestBodyPostJsonDataTypesArrayDecimalStrResponse](../../models/operations/RequestBodyPostJsonDataTypesArrayDecimalStrResponse.md)**
+**[RequestBodyPostJsonDataTypesArrayDecimalStrResponse](../../Models/Operations/RequestBodyPostJsonDataTypesArrayDecimalStrResponse.md)**
 
 
 ## RequestBodyPostJsonDataTypesBigInt
@@ -2188,7 +2188,7 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesBigIntAsync(687617
 
 ### Response
 
-**[RequestBodyPostJsonDataTypesBigIntResponse](../../models/operations/RequestBodyPostJsonDataTypesBigIntResponse.md)**
+**[RequestBodyPostJsonDataTypesBigIntResponse](../../Models/Operations/RequestBodyPostJsonDataTypesBigIntResponse.md)**
 
 
 ## RequestBodyPostJsonDataTypesBigIntStr
@@ -2221,7 +2221,7 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesBigIntStrAsync(649
 
 ### Response
 
-**[RequestBodyPostJsonDataTypesBigIntStrResponse](../../models/operations/RequestBodyPostJsonDataTypesBigIntStrResponse.md)**
+**[RequestBodyPostJsonDataTypesBigIntStrResponse](../../Models/Operations/RequestBodyPostJsonDataTypesBigIntStrResponse.md)**
 
 
 ## RequestBodyPostJsonDataTypesBoolean
@@ -2254,7 +2254,7 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesBooleanAsync(false
 
 ### Response
 
-**[RequestBodyPostJsonDataTypesBooleanResponse](../../models/operations/RequestBodyPostJsonDataTypesBooleanResponse.md)**
+**[RequestBodyPostJsonDataTypesBooleanResponse](../../Models/Operations/RequestBodyPostJsonDataTypesBooleanResponse.md)**
 
 
 ## RequestBodyPostJsonDataTypesDate
@@ -2287,7 +2287,7 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDateAsync(LocalDat
 
 ### Response
 
-**[RequestBodyPostJsonDataTypesDateResponse](../../models/operations/RequestBodyPostJsonDataTypesDateResponse.md)**
+**[RequestBodyPostJsonDataTypesDateResponse](../../Models/Operations/RequestBodyPostJsonDataTypesDateResponse.md)**
 
 
 ## RequestBodyPostJsonDataTypesDateTime
@@ -2320,7 +2320,7 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDateTimeAsync(Syst
 
 ### Response
 
-**[RequestBodyPostJsonDataTypesDateTimeResponse](../../models/operations/RequestBodyPostJsonDataTypesDateTimeResponse.md)**
+**[RequestBodyPostJsonDataTypesDateTimeResponse](../../Models/Operations/RequestBodyPostJsonDataTypesDateTimeResponse.md)**
 
 
 ## RequestBodyPostJsonDataTypesDecimal
@@ -2353,7 +2353,7 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDecimalAsync(1107.
 
 ### Response
 
-**[RequestBodyPostJsonDataTypesDecimalResponse](../../models/operations/RequestBodyPostJsonDataTypesDecimalResponse.md)**
+**[RequestBodyPostJsonDataTypesDecimalResponse](../../Models/Operations/RequestBodyPostJsonDataTypesDecimalResponse.md)**
 
 
 ## RequestBodyPostJsonDataTypesDecimalStr
@@ -2386,7 +2386,7 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDecimalStrAsync(54
 
 ### Response
 
-**[RequestBodyPostJsonDataTypesDecimalStrResponse](../../models/operations/RequestBodyPostJsonDataTypesDecimalStrResponse.md)**
+**[RequestBodyPostJsonDataTypesDecimalStrResponse](../../Models/Operations/RequestBodyPostJsonDataTypesDecimalStrResponse.md)**
 
 
 ## RequestBodyPostJsonDataTypesFloat32
@@ -2419,7 +2419,7 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesFloat32Async(4464.
 
 ### Response
 
-**[RequestBodyPostJsonDataTypesFloat32Response](../../models/operations/RequestBodyPostJsonDataTypesFloat32Response.md)**
+**[RequestBodyPostJsonDataTypesFloat32Response](../../Models/Operations/RequestBodyPostJsonDataTypesFloat32Response.md)**
 
 
 ## RequestBodyPostJsonDataTypesInt32
@@ -2452,7 +2452,7 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesInt32Async(22155);
 
 ### Response
 
-**[RequestBodyPostJsonDataTypesInt32Response](../../models/operations/RequestBodyPostJsonDataTypesInt32Response.md)**
+**[RequestBodyPostJsonDataTypesInt32Response](../../Models/Operations/RequestBodyPostJsonDataTypesInt32Response.md)**
 
 
 ## RequestBodyPostJsonDataTypesInteger
@@ -2485,7 +2485,7 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesIntegerAsync(27367
 
 ### Response
 
-**[RequestBodyPostJsonDataTypesIntegerResponse](../../models/operations/RequestBodyPostJsonDataTypesIntegerResponse.md)**
+**[RequestBodyPostJsonDataTypesIntegerResponse](../../Models/Operations/RequestBodyPostJsonDataTypesIntegerResponse.md)**
 
 
 ## RequestBodyPostJsonDataTypesMapBigIntStr
@@ -2520,7 +2520,7 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapBigIntStrAsync(
 
 ### Response
 
-**[RequestBodyPostJsonDataTypesMapBigIntStrResponse](../../models/operations/RequestBodyPostJsonDataTypesMapBigIntStrResponse.md)**
+**[RequestBodyPostJsonDataTypesMapBigIntStrResponse](../../Models/Operations/RequestBodyPostJsonDataTypesMapBigIntStrResponse.md)**
 
 
 ## RequestBodyPostJsonDataTypesMapDateTime
@@ -2555,7 +2555,7 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapDateTimeAsync(n
 
 ### Response
 
-**[RequestBodyPostJsonDataTypesMapDateTimeResponse](../../models/operations/RequestBodyPostJsonDataTypesMapDateTimeResponse.md)**
+**[RequestBodyPostJsonDataTypesMapDateTimeResponse](../../Models/Operations/RequestBodyPostJsonDataTypesMapDateTimeResponse.md)**
 
 
 ## RequestBodyPostJsonDataTypesMapDecimal
@@ -2590,7 +2590,7 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapDecimalAsync(ne
 
 ### Response
 
-**[RequestBodyPostJsonDataTypesMapDecimalResponse](../../models/operations/RequestBodyPostJsonDataTypesMapDecimalResponse.md)**
+**[RequestBodyPostJsonDataTypesMapDecimalResponse](../../Models/Operations/RequestBodyPostJsonDataTypesMapDecimalResponse.md)**
 
 
 ## RequestBodyPostJsonDataTypesNumber
@@ -2623,7 +2623,7 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesNumberAsync(2193.6
 
 ### Response
 
-**[RequestBodyPostJsonDataTypesNumberResponse](../../models/operations/RequestBodyPostJsonDataTypesNumberResponse.md)**
+**[RequestBodyPostJsonDataTypesNumberResponse](../../Models/Operations/RequestBodyPostJsonDataTypesNumberResponse.md)**
 
 
 ## RequestBodyPostJsonDataTypesString
@@ -2656,7 +2656,7 @@ var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesStringAsync("strin
 
 ### Response
 
-**[RequestBodyPostJsonDataTypesStringResponse](../../models/operations/RequestBodyPostJsonDataTypesStringResponse.md)**
+**[RequestBodyPostJsonDataTypesStringResponse](../../Models/Operations/RequestBodyPostJsonDataTypesStringResponse.md)**
 
 
 ## RequestBodyPostMultipleContentTypesComponentFiltered
@@ -2704,12 +2704,12 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesComponentFi
 
 | Parameter                                           | Type                                                | Required                                            | Description                                         |
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `request`                                           | [SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
+| `request`                                           | [SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
 
 
 ### Response
 
-**[RequestBodyPostMultipleContentTypesComponentFilteredResponse](../../models/operations/RequestBodyPostMultipleContentTypesComponentFilteredResponse.md)**
+**[RequestBodyPostMultipleContentTypesComponentFilteredResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesComponentFilteredResponse.md)**
 
 
 ## RequestBodyPostMultipleContentTypesInlineFiltered
@@ -2742,12 +2742,12 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesInlineFilte
 
 | Parameter                                                                                                                                               | Type                                                                                                                                                    | Required                                                                                                                                                | Description                                                                                                                                             |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                               | [RequestBodyPostMultipleContentTypesInlineFilteredRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesInlineFilteredRequestBody.md) | :heavy_check_mark:                                                                                                                                      | The request object to use for the request.                                                                                                              |
+| `request`                                                                                                                                               | [RequestBodyPostMultipleContentTypesInlineFilteredRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesInlineFilteredRequestBody.md) | :heavy_check_mark:                                                                                                                                      | The request object to use for the request.                                                                                                              |
 
 
 ### Response
 
-**[RequestBodyPostMultipleContentTypesInlineFilteredResponse](../../models/operations/RequestBodyPostMultipleContentTypesInlineFilteredResponse.md)**
+**[RequestBodyPostMultipleContentTypesInlineFilteredResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesInlineFilteredResponse.md)**
 
 
 ## RequestBodyPostMultipleContentTypesSplitParamForm
@@ -2780,13 +2780,13 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamF
 
 | Parameter                                                                                                                                               | Type                                                                                                                                                    | Required                                                                                                                                                | Description                                                                                                                                             |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `RequestBody`                                                                                                                                           | [RequestBodyPostMultipleContentTypesSplitParamFormRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamFormRequestBody.md) | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |
+| `RequestBody`                                                                                                                                           | [RequestBodyPostMultipleContentTypesSplitParamFormRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitParamFormRequestBody.md) | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |
 | `ParamStr`                                                                                                                                              | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |
 
 
 ### Response
 
-**[RequestBodyPostMultipleContentTypesSplitParamFormResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamFormResponse.md)**
+**[RequestBodyPostMultipleContentTypesSplitParamFormResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitParamFormResponse.md)**
 
 
 ## RequestBodyPostMultipleContentTypesSplitParamJson
@@ -2819,13 +2819,13 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamJ
 
 | Parameter                                                                                                                                               | Type                                                                                                                                                    | Required                                                                                                                                                | Description                                                                                                                                             |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `RequestBody`                                                                                                                                           | [RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody.md) | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |
+| `RequestBody`                                                                                                                                           | [RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody.md) | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |
 | `ParamStr`                                                                                                                                              | *string*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |
 
 
 ### Response
 
-**[RequestBodyPostMultipleContentTypesSplitParamJsonResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamJsonResponse.md)**
+**[RequestBodyPostMultipleContentTypesSplitParamJsonResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitParamJsonResponse.md)**
 
 
 ## RequestBodyPostMultipleContentTypesSplitParamMultipart
@@ -2858,13 +2858,13 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamM
 
 | Parameter                                                                                                                                                         | Type                                                                                                                                                              | Required                                                                                                                                                          | Description                                                                                                                                                       |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `RequestBody`                                                                                                                                                     | [RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody.md) | :heavy_check_mark:                                                                                                                                                | N/A                                                                                                                                                               |
+| `RequestBody`                                                                                                                                                     | [RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody.md) | :heavy_check_mark:                                                                                                                                                | N/A                                                                                                                                                               |
 | `ParamStr`                                                                                                                                                        | *string*                                                                                                                                                          | :heavy_check_mark:                                                                                                                                                | N/A                                                                                                                                                               |
 
 
 ### Response
 
-**[RequestBodyPostMultipleContentTypesSplitParamMultipartResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamMultipartResponse.md)**
+**[RequestBodyPostMultipleContentTypesSplitParamMultipartResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitParamMultipartResponse.md)**
 
 
 ## RequestBodyPostMultipleContentTypesSplitForm
@@ -2897,12 +2897,12 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitFormAs
 
 | Parameter                                                                                                                                     | Type                                                                                                                                          | Required                                                                                                                                      | Description                                                                                                                                   |
 | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                     | [RequestBodyPostMultipleContentTypesSplitFormRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitFormRequestBody.md) | :heavy_check_mark:                                                                                                                            | The request object to use for the request.                                                                                                    |
+| `request`                                                                                                                                     | [RequestBodyPostMultipleContentTypesSplitFormRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitFormRequestBody.md) | :heavy_check_mark:                                                                                                                            | The request object to use for the request.                                                                                                    |
 
 
 ### Response
 
-**[RequestBodyPostMultipleContentTypesSplitFormResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitFormResponse.md)**
+**[RequestBodyPostMultipleContentTypesSplitFormResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitFormResponse.md)**
 
 
 ## RequestBodyPostMultipleContentTypesSplitJson
@@ -2935,12 +2935,12 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitJsonAs
 
 | Parameter                                                                                                                                     | Type                                                                                                                                          | Required                                                                                                                                      | Description                                                                                                                                   |
 | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                     | [RequestBodyPostMultipleContentTypesSplitJsonRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitJsonRequestBody.md) | :heavy_check_mark:                                                                                                                            | The request object to use for the request.                                                                                                    |
+| `request`                                                                                                                                     | [RequestBodyPostMultipleContentTypesSplitJsonRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitJsonRequestBody.md) | :heavy_check_mark:                                                                                                                            | The request object to use for the request.                                                                                                    |
 
 
 ### Response
 
-**[RequestBodyPostMultipleContentTypesSplitJsonResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitJsonResponse.md)**
+**[RequestBodyPostMultipleContentTypesSplitJsonResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitJsonResponse.md)**
 
 
 ## RequestBodyPostMultipleContentTypesSplitMultipart
@@ -2973,12 +2973,12 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitMultip
 
 | Parameter                                                                                                                                               | Type                                                                                                                                                    | Required                                                                                                                                                | Description                                                                                                                                             |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                               | [RequestBodyPostMultipleContentTypesSplitMultipartRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitMultipartRequestBody.md) | :heavy_check_mark:                                                                                                                                      | The request object to use for the request.                                                                                                              |
+| `request`                                                                                                                                               | [RequestBodyPostMultipleContentTypesSplitMultipartRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitMultipartRequestBody.md) | :heavy_check_mark:                                                                                                                                      | The request object to use for the request.                                                                                                              |
 
 
 ### Response
 
-**[RequestBodyPostMultipleContentTypesSplitMultipartResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitMultipartResponse.md)**
+**[RequestBodyPostMultipleContentTypesSplitMultipartResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitMultipartResponse.md)**
 
 
 ## RequestBodyPostNotNullableNotRequiredStringBody
@@ -3011,7 +3011,7 @@ var res = await sdk.RequestBodies.RequestBodyPostNotNullableNotRequiredStringBod
 
 ### Response
 
-**[RequestBodyPostNotNullableNotRequiredStringBodyResponse](../../models/operations/RequestBodyPostNotNullableNotRequiredStringBodyResponse.md)**
+**[RequestBodyPostNotNullableNotRequiredStringBodyResponse](../../Models/Operations/RequestBodyPostNotNullableNotRequiredStringBodyResponse.md)**
 
 
 ## RequestBodyPostNullArray
@@ -3046,7 +3046,7 @@ var res = await sdk.RequestBodies.RequestBodyPostNullArrayAsync(new List<string>
 
 ### Response
 
-**[RequestBodyPostNullArrayResponse](../../models/operations/RequestBodyPostNullArrayResponse.md)**
+**[RequestBodyPostNullArrayResponse](../../Models/Operations/RequestBodyPostNullArrayResponse.md)**
 
 
 ## RequestBodyPostNullDictionary
@@ -3081,7 +3081,7 @@ var res = await sdk.RequestBodies.RequestBodyPostNullDictionaryAsync(new Diction
 
 ### Response
 
-**[RequestBodyPostNullDictionaryResponse](../../models/operations/RequestBodyPostNullDictionaryResponse.md)**
+**[RequestBodyPostNullDictionaryResponse](../../Models/Operations/RequestBodyPostNullDictionaryResponse.md)**
 
 
 ## RequestBodyPostNullableNotRequiredStringBody
@@ -3114,7 +3114,7 @@ var res = await sdk.RequestBodies.RequestBodyPostNullableNotRequiredStringBodyAs
 
 ### Response
 
-**[RequestBodyPostNullableNotRequiredStringBodyResponse](../../models/operations/RequestBodyPostNullableNotRequiredStringBodyResponse.md)**
+**[RequestBodyPostNullableNotRequiredStringBodyResponse](../../Models/Operations/RequestBodyPostNullableNotRequiredStringBodyResponse.md)**
 
 
 ## RequestBodyPostNullableRequiredStringBody
@@ -3147,7 +3147,7 @@ var res = await sdk.RequestBodies.RequestBodyPostNullableRequiredStringBodyAsync
 
 ### Response
 
-**[RequestBodyPostNullableRequiredStringBodyResponse](../../models/operations/RequestBodyPostNullableRequiredStringBodyResponse.md)**
+**[RequestBodyPostNullableRequiredStringBodyResponse](../../Models/Operations/RequestBodyPostNullableRequiredStringBodyResponse.md)**
 
 
 ## RequestBodyPutBytes
@@ -3180,7 +3180,7 @@ var res = await sdk.RequestBodies.RequestBodyPutBytesAsync("0x5DbFFb1Ff9 as byte
 
 ### Response
 
-**[RequestBodyPutBytesResponse](../../models/operations/RequestBodyPutBytesResponse.md)**
+**[RequestBodyPutBytesResponse](../../Models/Operations/RequestBodyPutBytesResponse.md)**
 
 
 ## RequestBodyPutBytesWithParams
@@ -3215,7 +3215,7 @@ var res = await sdk.RequestBodies.RequestBodyPutBytesWithParamsAsync("0xC1B9cA4e
 
 ### Response
 
-**[RequestBodyPutBytesWithParamsResponse](../../models/operations/RequestBodyPutBytesWithParamsResponse.md)**
+**[RequestBodyPutBytesWithParamsResponse](../../Models/Operations/RequestBodyPutBytesWithParamsResponse.md)**
 
 
 ## RequestBodyPutMultipartDeep
@@ -3355,12 +3355,12 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartDeepAsync(new DeepObjec
 
 | Parameter                                       | Type                                            | Required                                        | Description                                     |
 | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| `request`                                       | [DeepObject](../../models/shared/DeepObject.md) | :heavy_check_mark:                              | The request object to use for the request.      |
+| `request`                                       | [DeepObject](../../Models/Shared/DeepObject.md) | :heavy_check_mark:                              | The request object to use for the request.      |
 
 
 ### Response
 
-**[RequestBodyPutMultipartDeepResponse](../../models/operations/RequestBodyPutMultipartDeepResponse.md)**
+**[RequestBodyPutMultipartDeepResponse](../../Models/Operations/RequestBodyPutMultipartDeepResponse.md)**
 
 
 ## RequestBodyPutMultipartDifferentFileName
@@ -3394,12 +3394,12 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartDifferentFileNameAsync(
 
 | Parameter                                                                                                                             | Type                                                                                                                                  | Required                                                                                                                              | Description                                                                                                                           |
 | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                             | [RequestBodyPutMultipartDifferentFileNameRequestBody](../../models/operations/RequestBodyPutMultipartDifferentFileNameRequestBody.md) | :heavy_check_mark:                                                                                                                    | The request object to use for the request.                                                                                            |
+| `request`                                                                                                                             | [RequestBodyPutMultipartDifferentFileNameRequestBody](../../Models/Operations/RequestBodyPutMultipartDifferentFileNameRequestBody.md) | :heavy_check_mark:                                                                                                                    | The request object to use for the request.                                                                                            |
 
 
 ### Response
 
-**[RequestBodyPutMultipartDifferentFileNameResponse](../../models/operations/RequestBodyPutMultipartDifferentFileNameResponse.md)**
+**[RequestBodyPutMultipartDifferentFileNameResponse](../../Models/Operations/RequestBodyPutMultipartDifferentFileNameResponse.md)**
 
 
 ## RequestBodyPutMultipartFile
@@ -3433,12 +3433,12 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartFileAsync(new RequestBo
 
 | Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                   | [RequestBodyPutMultipartFileRequestBody](../../models/operations/RequestBodyPutMultipartFileRequestBody.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
+| `request`                                                                                                   | [RequestBodyPutMultipartFileRequestBody](../../Models/Operations/RequestBodyPutMultipartFileRequestBody.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
 
 
 ### Response
 
-**[RequestBodyPutMultipartFileResponse](../../models/operations/RequestBodyPutMultipartFileResponse.md)**
+**[RequestBodyPutMultipartFileResponse](../../Models/Operations/RequestBodyPutMultipartFileResponse.md)**
 
 
 ## RequestBodyPutMultipartSimple
@@ -3486,12 +3486,12 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartSimpleAsync(new SimpleO
 
 | Parameter                                           | Type                                                | Required                                            | Description                                         |
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `request`                                           | [SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
+| `request`                                           | [SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
 
 
 ### Response
 
-**[RequestBodyPutMultipartSimpleResponse](../../models/operations/RequestBodyPutMultipartSimpleResponse.md)**
+**[RequestBodyPutMultipartSimpleResponse](../../Models/Operations/RequestBodyPutMultipartSimpleResponse.md)**
 
 
 ## RequestBodyPutString
@@ -3524,7 +3524,7 @@ var res = await sdk.RequestBodies.RequestBodyPutStringAsync("string");
 
 ### Response
 
-**[RequestBodyPutStringResponse](../../models/operations/RequestBodyPutStringResponse.md)**
+**[RequestBodyPutStringResponse](../../Models/Operations/RequestBodyPutStringResponse.md)**
 
 
 ## RequestBodyPutStringWithParams
@@ -3559,7 +3559,7 @@ var res = await sdk.RequestBodies.RequestBodyPutStringWithParamsAsync("string", 
 
 ### Response
 
-**[RequestBodyPutStringWithParamsResponse](../../models/operations/RequestBodyPutStringWithParamsResponse.md)**
+**[RequestBodyPutStringWithParamsResponse](../../Models/Operations/RequestBodyPutStringWithParamsResponse.md)**
 
 
 ## RequestBodyReadAndWrite
@@ -3591,13 +3591,13 @@ var res = await sdk.RequestBodies.RequestBodyReadAndWriteAsync(new ReadWriteObje
 
 | Parameter                                                 | Type                                                      | Required                                                  | Description                                               |
 | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `request`                                                 | [ReadWriteObject](../../models/shared/ReadWriteObject.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
+| `request`                                                 | [ReadWriteObject](../../Models/Shared/ReadWriteObject.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
 | `serverURL`                                               | *string*                                                  | :heavy_minus_sign:                                        | An optional server URL to use.                            |
 
 
 ### Response
 
-**[RequestBodyReadAndWriteResponse](../../models/operations/RequestBodyReadAndWriteResponse.md)**
+**[RequestBodyReadAndWriteResponse](../../Models/Operations/RequestBodyReadAndWriteResponse.md)**
 
 
 ## RequestBodyReadOnlyInput
@@ -3625,13 +3625,13 @@ var res = await sdk.RequestBodies.RequestBodyReadOnlyInputAsync(new ReadOnlyObje
 
 | Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `request`                                                         | [ReadOnlyObjectInput](../../models/shared/ReadOnlyObjectInput.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
+| `request`                                                         | [ReadOnlyObjectInput](../../Models/Shared/ReadOnlyObjectInput.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
 | `serverURL`                                                       | *string*                                                          | :heavy_minus_sign:                                                | An optional server URL to use.                                    |
 
 
 ### Response
 
-**[RequestBodyReadOnlyInputResponse](../../models/operations/RequestBodyReadOnlyInputResponse.md)**
+**[RequestBodyReadOnlyInputResponse](../../Models/Operations/RequestBodyReadOnlyInputResponse.md)**
 
 
 ## RequestBodyReadOnlyUnion
@@ -3665,7 +3665,7 @@ var res = await sdk.RequestBodies.RequestBodyReadOnlyUnionAsync("string");
 
 ### Response
 
-**[RequestBodyReadOnlyUnionResponse](../../models/operations/RequestBodyReadOnlyUnionResponse.md)**
+**[RequestBodyReadOnlyUnionResponse](../../Models/Operations/RequestBodyReadOnlyUnionResponse.md)**
 
 
 ## RequestBodyReadWriteOnlyUnion
@@ -3699,7 +3699,7 @@ var res = await sdk.RequestBodies.RequestBodyReadWriteOnlyUnionAsync("string");
 
 ### Response
 
-**[RequestBodyReadWriteOnlyUnionResponse](../../models/operations/RequestBodyReadWriteOnlyUnionResponse.md)**
+**[RequestBodyReadWriteOnlyUnionResponse](../../Models/Operations/RequestBodyReadWriteOnlyUnionResponse.md)**
 
 
 ## RequestBodyWriteOnly
@@ -3731,13 +3731,13 @@ var res = await sdk.RequestBodies.RequestBodyWriteOnlyAsync(new WriteOnlyObject(
 
 | Parameter                                                 | Type                                                      | Required                                                  | Description                                               |
 | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `request`                                                 | [WriteOnlyObject](../../models/shared/WriteOnlyObject.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
+| `request`                                                 | [WriteOnlyObject](../../Models/Shared/WriteOnlyObject.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
 | `serverURL`                                               | *string*                                                  | :heavy_minus_sign:                                        | An optional server URL to use.                            |
 
 
 ### Response
 
-**[RequestBodyWriteOnlyResponse](../../models/operations/RequestBodyWriteOnlyResponse.md)**
+**[RequestBodyWriteOnlyResponse](../../Models/Operations/RequestBodyWriteOnlyResponse.md)**
 
 
 ## RequestBodyWriteOnlyOutput
@@ -3769,13 +3769,13 @@ var res = await sdk.RequestBodies.RequestBodyWriteOnlyOutputAsync(new WriteOnlyO
 
 | Parameter                                                 | Type                                                      | Required                                                  | Description                                               |
 | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `request`                                                 | [WriteOnlyObject](../../models/shared/WriteOnlyObject.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
+| `request`                                                 | [WriteOnlyObject](../../Models/Shared/WriteOnlyObject.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
 | `serverURL`                                               | *string*                                                  | :heavy_minus_sign:                                        | An optional server URL to use.                            |
 
 
 ### Response
 
-**[RequestBodyWriteOnlyOutputResponse](../../models/operations/RequestBodyWriteOnlyOutputResponse.md)**
+**[RequestBodyWriteOnlyOutputResponse](../../Models/Operations/RequestBodyWriteOnlyOutputResponse.md)**
 
 
 ## RequestBodyWriteOnlyUnion
@@ -3809,5 +3809,5 @@ var res = await sdk.RequestBodies.RequestBodyWriteOnlyUnionAsync("string");
 
 ### Response
 
-**[RequestBodyWriteOnlyUnionResponse](../../models/operations/RequestBodyWriteOnlyUnionResponse.md)**
+**[RequestBodyWriteOnlyUnionResponse](../../Models/Operations/RequestBodyWriteOnlyUnionResponse.md)**
 

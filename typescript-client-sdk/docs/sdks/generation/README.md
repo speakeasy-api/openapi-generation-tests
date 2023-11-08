@@ -1,5 +1,5 @@
 # Generation
-(*.generation*)
+(*generation*)
 
 ## Overview
 
@@ -61,7 +61,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.AnchorTypesGetResponse](../../models/operations/anchortypesgetresponse.md)>**
+**Promise<[operations.AnchorTypesGetResponse](../../sdk/models/operations/anchortypesgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -101,7 +101,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.ArrayCircularReferenceGetResponse](../../models/operations/arraycircularreferencegetresponse.md)>**
+**Promise<[operations.ArrayCircularReferenceGetResponse](../../sdk/models/operations/arraycircularreferencegetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -141,7 +141,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.CircularReferenceGetResponse](../../models/operations/circularreferencegetresponse.md)>**
+**Promise<[operations.CircularReferenceGetResponse](../../sdk/models/operations/circularreferencegetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -185,7 +185,7 @@ const dateInput: RFCDate = new RFCDate("2021-11-30");
 
 ### Response
 
-**Promise<[operations.DateParamWithDefaultResponse](../../models/operations/dateparamwithdefaultresponse.md)>**
+**Promise<[operations.DateParamWithDefaultResponse](../../sdk/models/operations/dateparamwithdefaultresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -228,7 +228,7 @@ const dateTimeInput: Date = new Date("2023-02-09T21:53:21.077Z");
 
 ### Response
 
-**Promise<[operations.DateTimeParamWithDefaultResponse](../../models/operations/datetimeparamwithdefaultresponse.md)>**
+**Promise<[operations.DateTimeParamWithDefaultResponse](../../sdk/models/operations/datetimeparamwithdefaultresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -271,7 +271,7 @@ const decimalInput: number = 4060.06;
 
 ### Response
 
-**Promise<[operations.DecimalParamWithDefaultResponse](../../models/operations/decimalparamwithdefaultresponse.md)>**
+**Promise<[operations.DecimalParamWithDefaultResponse](../../sdk/models/operations/decimalparamwithdefaultresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -305,15 +305,15 @@ import { DeprecatedEnum } from "openapi/dist/sdk/models/shared";
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [shared.DeprecatedFieldInObject](../../models/shared/deprecatedfieldinobject.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [shared.DeprecatedFieldInObject](../../sdk/models/shared/deprecatedfieldinobject.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
 
 
 ### Response
 
-**Promise<[operations.DeprecatedFieldInSchemaPostResponse](../../models/operations/deprecatedfieldinschemapostresponse.md)>**
+**Promise<[operations.DeprecatedFieldInSchemaPostResponse](../../sdk/models/operations/deprecatedfieldinschemapostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -353,7 +353,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.DeprecatedObjectInSchemaGetResponse](../../models/operations/deprecatedobjectinschemagetresponse.md)>**
+**Promise<[operations.DeprecatedObjectInSchemaGetResponse](../../sdk/models/operations/deprecatedobjectinschemagetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -398,7 +398,7 @@ const deprecatedParameter: string = "string";
 
 ### Response
 
-**Promise<[operations.DeprecatedOperationNoCommentsGetResponse](../../models/operations/deprecatedoperationnocommentsgetresponse.md)>**
+**Promise<[operations.DeprecatedOperationNoCommentsGetResponse](../../sdk/models/operations/deprecatedoperationnocommentsgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -447,7 +447,7 @@ const newParameter: string = "string";
 
 ### Response
 
-**Promise<[operations.DeprecatedOperationWithCommentsGetResponse](../../models/operations/deprecatedoperationwithcommentsgetresponse.md)>**
+**Promise<[operations.DeprecatedOperationWithCommentsGetResponse](../../sdk/models/operations/deprecatedoperationwithcommentsgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -483,15 +483,15 @@ const emptyObject: EmptyObjectParam = {};
 
 ### Parameters
 
-| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `emptyObject`                                                      | [shared.EmptyObjectParam](../../models/shared/emptyobjectparam.md) | :heavy_check_mark:                                                 | N/A                                                                |
-| `config`                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)       | :heavy_minus_sign:                                                 | Available config options for making requests.                      |
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `emptyObject`                                                             | [shared.EmptyObjectParam](../../../sdk/models/shared/emptyobjectparam.md) | :heavy_check_mark:                                                        | N/A                                                                       |
+| `config`                                                                  | [AxiosRequestConfig](https://axios-http.com/docs/req_config)              | :heavy_minus_sign:                                                        | Available config options for making requests.                             |
 
 
 ### Response
 
-**Promise<[operations.EmptyObjectGetResponse](../../models/operations/emptyobjectgetresponse.md)>**
+**Promise<[operations.EmptyObjectGetResponse](../../sdk/models/operations/emptyobjectgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -531,7 +531,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.EmptyResponseObjectWithCommentGetResponse](../../models/operations/emptyresponseobjectwithcommentgetresponse.md)>**
+**Promise<[operations.EmptyResponseObjectWithCommentGetResponse](../../sdk/models/operations/emptyresponseobjectwithcommentgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -571,7 +571,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.GetGlobalNameOverrideResponse](../../models/operations/getglobalnameoverrideresponse.md)>**
+**Promise<[operations.GetGlobalNameOverrideResponse](../../sdk/models/operations/getglobalnameoverrideresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -611,7 +611,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.IgnoredGenerationGetResponse](../../models/operations/ignoredgenerationgetresponse.md)>**
+**Promise<[operations.IgnoredGenerationGetResponse](../../sdk/models/operations/ignoredgenerationgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -647,16 +647,16 @@ const testParam: string = "string";
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `requestBody`                                                                          | [operations.IgnoresPostRequestBody](../../models/operations/ignorespostrequestbody.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `testParam`                                                                            | *string*                                                                               | :heavy_minus_sign:                                                                     | N/A                                                                                    |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                 | [operations.IgnoresPostRequestBody](../../../sdk/models/operations/ignorespostrequestbody.md) | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `testParam`                                                                                   | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `config`                                                                                      | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                  | :heavy_minus_sign:                                                                            | Available config options for making requests.                                                 |
 
 
 ### Response
 
-**Promise<[operations.IgnoresPostResponse](../../models/operations/ignorespostresponse.md)>**
+**Promise<[operations.IgnoresPostResponse](../../sdk/models/operations/ignorespostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -692,16 +692,16 @@ const testQueryParam: string = "example";
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                | Example                                                                    |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `testEnumQueryParam`                                                       | [operations.EnumNameOverride](../../models/operations/enumnameoverride.md) | :heavy_check_mark:                                                         | An enum type                                                               | value3                                                                     |
-| `testQueryParam`                                                           | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        | example                                                                    |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |                                                                            |
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `testEnumQueryParam`                                                              | [operations.EnumNameOverride](../../../sdk/models/operations/enumnameoverride.md) | :heavy_check_mark:                                                                | An enum type                                                                      | value3                                                                            |
+| `testQueryParam`                                                                  | *string*                                                                          | :heavy_check_mark:                                                                | N/A                                                                               | example                                                                           |
+| `config`                                                                          | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                      | :heavy_minus_sign:                                                                | Available config options for making requests.                                     |                                                                                   |
 
 
 ### Response
 
-**Promise<[operations.NameOverrideGetResponse](../../models/operations/nameoverridegetresponse.md)>**
+**Promise<[operations.NameOverrideGetResponse](../../sdk/models/operations/nameoverridegetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -741,7 +741,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.ObjectCircularReferenceGetResponse](../../models/operations/objectcircularreferencegetresponse.md)>**
+**Promise<[operations.ObjectCircularReferenceGetResponse](../../sdk/models/operations/objectcircularreferencegetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -781,7 +781,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.OneOfCircularReferenceGetResponse](../../models/operations/oneofcircularreferencegetresponse.md)>**
+**Promise<[operations.OneOfCircularReferenceGetResponse](../../sdk/models/operations/oneofcircularreferencegetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -829,13 +829,13 @@ const obj: Obj = {
 | `bigint`                                                     | *number*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
 | `date`                                                       | [RFCDate](../../types/rfcdate.md)                            | :heavy_minus_sign:                                           | N/A                                                          |
 | `decimal`                                                    | *number*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `obj`                                                        | [operations.Obj](../../models/operations/obj.md)             | :heavy_minus_sign:                                           | N/A                                                          |
+| `obj`                                                        | [operations.Obj](../../../sdk/models/operations/obj.md)      | :heavy_minus_sign:                                           | N/A                                                          |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.TypedParameterGenerationGetResponse](../../models/operations/typedparametergenerationgetresponse.md)>**
+**Promise<[operations.TypedParameterGenerationGetResponse](../../sdk/models/operations/typedparametergenerationgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -919,16 +919,16 @@ const operationSecurity: UsageExamplePostSecurity = {
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [operations.UsageExamplePostRequest](../../models/operations/usageexamplepostrequest.md)   | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `security`                                                                                 | [operations.UsageExamplePostSecurity](../../models/operations/usageexamplepostsecurity.md) | :heavy_check_mark:                                                                         | The security requirements to use for the request.                                          |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.UsageExamplePostRequest](../../sdk/models/operations/usageexamplepostrequest.md)   | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `security`                                                                                     | [operations.UsageExamplePostSecurity](../../sdk/models/operations/usageexamplepostsecurity.md) | :heavy_check_mark:                                                                             | The security requirements to use for the request.                                              |
+| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
 
 
 ### Response
 
-**Promise<[operations.UsageExamplePostResponse](../../models/operations/usageexamplepostresponse.md)>**
+**Promise<[operations.UsageExamplePostResponse](../../sdk/models/operations/usageexamplepostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -28,7 +28,7 @@ export class Resource {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/fileResource";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/fileResource";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -60,7 +60,7 @@ export class Resource {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -121,7 +121,7 @@ export class Resource {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/resource";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/resource";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -153,7 +153,7 @@ export class Resource {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -213,7 +213,7 @@ export class Resource {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/resource/{resourceId}",
             req,
@@ -235,7 +235,7 @@ export class Resource {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "delete",
             headers: headers,
             responseType: "arraybuffer",
@@ -280,7 +280,7 @@ export class Resource {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/resource/{resourceId}",
             req,
@@ -302,7 +302,7 @@ export class Resource {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -361,7 +361,7 @@ export class Resource {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/resource/{resourceId}",
             req,
@@ -383,7 +383,7 @@ export class Resource {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",

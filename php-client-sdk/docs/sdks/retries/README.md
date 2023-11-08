@@ -54,5 +54,5 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RetriesGetResponse](../../models/operations/RetriesGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\RetriesGetResponse](../../Models/Operations/RetriesGetResponse.md)**
 

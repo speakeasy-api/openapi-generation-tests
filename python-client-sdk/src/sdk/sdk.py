@@ -24,7 +24,7 @@ from .telemetry import Telemetry
 from .unions import Unions
 from sdk import utils
 from sdk.models import errors, operations, shared
-from typing import Dict, Optional
+from typing import Callable, Dict, Optional, Union
 
 class SDK:
     r"""Test: Test Summary
@@ -71,7 +71,7 @@ class SDK:
     sdk_configuration: SDKConfiguration
 
     def __init__(self,
-                 security: shared.Security = None,
+                 security: Union[shared.Security,Callable[[], shared.Security]] = None,
                  global_path_param: int = None,
                  global_query_param: str = None,
                  hostname: str = None,
@@ -87,7 +87,7 @@ class SDK:
         """Instantiates the SDK configuring it with the provided parameters.
         
         :param security: The security details required for authentication
-        :type security: shared.Security
+        :type security: Union[shared.Security,Callable[[], shared.Security]]
         :param global_path_param: Configures the global_path_param parameter for all supported operations
         :type global_path_param: int
         :param global_query_param: Configures the global_query_param parameter for all supported operations
@@ -114,10 +114,6 @@ class SDK:
         if client is None:
             client = requests_http.Session()
         
-        
-        security_client = utils.configure_security_client(client, security)
-        
-        
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
@@ -140,7 +136,7 @@ class SDK:
             },
         ]
 
-        self.sdk_configuration = SDKConfiguration(client, security_client, server_url, server_idx, server_defaults, {
+        self.sdk_configuration = SDKConfiguration(client, security, server_url, server_idx, server_defaults, {
             'parameters': {
                 'queryParam': {
                     'global_query_param': global_query_param,
@@ -175,6 +171,7 @@ class SDK:
         self.pagination = Pagination(self.sdk_configuration)
         self.retries = Retries(self.sdk_configuration)
     
+    
     def put_anything_ignored_generation(self, request: str) -> operations.PutAnythingIgnoredGenerationResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -188,7 +185,10 @@ class SDK:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('PUT', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -207,6 +207,7 @@ class SDK:
         return res
 
     
+    
     def response_body_json_get(self) -> operations.ResponseBodyJSONGetResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -215,7 +216,10 @@ class SDK:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')

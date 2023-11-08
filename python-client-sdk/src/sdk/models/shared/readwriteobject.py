@@ -14,12 +14,3 @@ class ReadWriteObject:
     num3: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('num3') }})
     
 
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class ReadWriteObjectOutput:
-    num3: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('num3') }})
-    sum: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sum') }})
-    
-

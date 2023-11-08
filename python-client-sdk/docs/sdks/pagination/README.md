@@ -1,5 +1,5 @@
 # Pagination
-(*.pagination*)
+(*pagination*)
 
 ## Overview
 

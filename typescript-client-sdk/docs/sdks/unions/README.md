@@ -1,5 +1,5 @@
 # Unions
-(*.unions*)
+(*unions*)
 
 ## Overview
 
@@ -51,13 +51,13 @@ import { SDK } from "openapi";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [any](../../models//.md)                                     | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [any](../../models/.md)                                      | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.FlattenedTypedObjectPostResponse](../../models/operations/flattenedtypedobjectpostresponse.md)>**
+**Promise<[operations.FlattenedTypedObjectPostResponse](../../sdk/models/operations/flattenedtypedobjectpostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -92,13 +92,13 @@ import { SDK } from "openapi";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [any](../../models//.md)                                     | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [any](../../models/.md)                                      | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.MixedTypeOneOfPostResponse](../../models/operations/mixedtypeoneofpostresponse.md)>**
+**Promise<[operations.MixedTypeOneOfPostResponse](../../sdk/models/operations/mixedtypeoneofpostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -139,15 +139,15 @@ import { TypeT } from "openapi/dist/sdk/models/shared";
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [shared.NullableOneOfRefInObject](../../models/shared/nullableoneofrefinobject.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [shared.NullableOneOfRefInObject](../../sdk/models/shared/nullableoneofrefinobject.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
 
-**Promise<[operations.NullableOneOfRefInObjectPostResponse](../../models/operations/nullableoneofrefinobjectpostresponse.md)>**
+**Promise<[operations.NullableOneOfRefInObjectPostResponse](../../sdk/models/operations/nullableoneofrefinobjectpostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -182,13 +182,13 @@ import { SDK } from "openapi";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [any](../../models//.md)                                     | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [any](../../models/.md)                                      | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.NullableOneOfSchemaPostResponse](../../models/operations/nullableoneofschemapostresponse.md)>**
+**Promise<[operations.NullableOneOfSchemaPostResponse](../../sdk/models/operations/nullableoneofschemapostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -225,15 +225,15 @@ import { SDK } from "openapi";
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [shared.NullableOneOfTypeInObject](../../models/shared/nullableoneoftypeinobject.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `request`                                                                                | [shared.NullableOneOfTypeInObject](../../sdk/models/shared/nullableoneoftypeinobject.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
 
 
 ### Response
 
-**Promise<[operations.NullableOneOfTypeInObjectPostResponse](../../models/operations/nullableoneoftypeinobjectpostresponse.md)>**
+**Promise<[operations.NullableOneOfTypeInObjectPostResponse](../../sdk/models/operations/nullableoneoftypeinobjectpostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -270,15 +270,15 @@ import { TypeT } from "openapi/dist/sdk/models/shared";
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [shared.TypedObject1](../../models/shared/typedobject1.md)   | :heavy_check_mark:                                           | The request object to use for the request.                   |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `request`                                                      | [shared.TypedObject1](../../sdk/models/shared/typedobject1.md) | :heavy_check_mark:                                             | The request object to use for the request.                     |
+| `config`                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)   | :heavy_minus_sign:                                             | Available config options for making requests.                  |
 
 
 ### Response
 
-**Promise<[operations.NullableTypedObjectPostResponse](../../models/operations/nullabletypedobjectpostresponse.md)>**
+**Promise<[operations.NullableTypedObjectPostResponse](../../sdk/models/operations/nullabletypedobjectpostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -313,13 +313,13 @@ import { SDK } from "openapi";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [any](../../models//.md)                                     | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [any](../../models/.md)                                      | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.PrimitiveTypeOneOfPostResponse](../../models/operations/primitivetypeoneofpostresponse.md)>**
+**Promise<[operations.PrimitiveTypeOneOfPostResponse](../../sdk/models/operations/primitivetypeoneofpostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -354,13 +354,13 @@ import { SDK } from "openapi";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [any](../../models//.md)                                     | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [any](../../models/.md)                                      | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.StronglyTypedOneOfPostResponse](../../models/operations/stronglytypedoneofpostresponse.md)>**
+**Promise<[operations.StronglyTypedOneOfPostResponse](../../sdk/models/operations/stronglytypedoneofpostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -395,13 +395,13 @@ import { SDK } from "openapi";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [any](../../models//.md)                                     | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [any](../../models/.md)                                      | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.TypedObjectNullableOneOfPostResponse](../../models/operations/typedobjectnullableoneofpostresponse.md)>**
+**Promise<[operations.TypedObjectNullableOneOfPostResponse](../../sdk/models/operations/typedobjectnullableoneofpostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -436,13 +436,13 @@ import { SDK } from "openapi";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [any](../../models//.md)                                     | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [any](../../models/.md)                                      | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.TypedObjectOneOfPostResponse](../../models/operations/typedobjectoneofpostresponse.md)>**
+**Promise<[operations.TypedObjectOneOfPostResponse](../../sdk/models/operations/typedobjectoneofpostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -477,13 +477,13 @@ import { SDK } from "openapi";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [any](../../models//.md)                                     | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [any](../../models/.md)                                      | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.UnionBigIntDecimalResponse](../../models/operations/unionbigintdecimalresponse.md)>**
+**Promise<[operations.UnionBigIntDecimalResponse](../../sdk/models/operations/unionbigintdecimalresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -518,13 +518,13 @@ import { SDK } from "openapi";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [RFCDate](../../models//.md)                                 | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [RFCDate](../../models/.md)                                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.UnionDateNullResponse](../../models/operations/uniondatenullresponse.md)>**
+**Promise<[operations.UnionDateNullResponse](../../sdk/models/operations/uniondatenullresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -559,13 +559,13 @@ import { SDK } from "openapi";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [any](../../models//.md)                                     | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [any](../../models/.md)                                      | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.UnionDateTimeBigIntResponse](../../models/operations/uniondatetimebigintresponse.md)>**
+**Promise<[operations.UnionDateTimeBigIntResponse](../../sdk/models/operations/uniondatetimebigintresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -600,13 +600,13 @@ import { SDK } from "openapi";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [Date](../../models//.md)                                    | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [Date](../../models/.md)                                     | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.UnionDateTimeNullResponse](../../models/operations/uniondatetimenullresponse.md)>**
+**Promise<[operations.UnionDateTimeNullResponse](../../sdk/models/operations/uniondatetimenullresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -641,13 +641,13 @@ import { SDK } from "openapi";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [any](../../models//.md)                                     | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [any](../../models/.md)                                      | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.WeaklyTypedOneOfPostResponse](../../models/operations/weaklytypedoneofpostresponse.md)>**
+**Promise<[operations.WeaklyTypedOneOfPostResponse](../../sdk/models/operations/weaklytypedoneofpostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

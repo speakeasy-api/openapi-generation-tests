@@ -1,5 +1,5 @@
 # ResponseBodies
-(*.responseBodies*)
+(*responseBodies*)
 
 ## Overview
 
@@ -49,13 +49,13 @@ import { SDK } from "openapi";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [Record<string, string>](../../models//.md)                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [Record<string, string>](../../models/.md)                   | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse](../../models/operations/responsebodyadditionalpropertiescomplexnumberspostresponse.md)>**
+**Promise<[operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse](../../sdk/models/operations/responsebodyadditionalpropertiescomplexnumberspostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -92,13 +92,13 @@ import { SDK } from "openapi";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [Record<string, RFCDate>](../../models//.md)                 | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [Record<string, RFCDate>](../../models/.md)                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.ResponseBodyAdditionalPropertiesDatePostResponse](../../models/operations/responsebodyadditionalpropertiesdatepostresponse.md)>**
+**Promise<[operations.ResponseBodyAdditionalPropertiesDatePostResponse](../../sdk/models/operations/responsebodyadditionalpropertiesdatepostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -156,13 +156,13 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [Record<string, shared.SimpleObject>](../../models//.md)     | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [Record<string, shared.SimpleObject>](../../models/.md)      | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.ResponseBodyAdditionalPropertiesObjectPostResponse](../../models/operations/responsebodyadditionalpropertiesobjectpostresponse.md)>**
+**Promise<[operations.ResponseBodyAdditionalPropertiesObjectPostResponse](../../sdk/models/operations/responsebodyadditionalpropertiesobjectpostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -199,13 +199,13 @@ import { SDK } from "openapi";
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [Record<string, string>](../../models//.md)                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [Record<string, string>](../../models/.md)                   | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.ResponseBodyAdditionalPropertiesPostResponse](../../models/operations/responsebodyadditionalpropertiespostresponse.md)>**
+**Promise<[operations.ResponseBodyAdditionalPropertiesPostResponse](../../sdk/models/operations/responsebodyadditionalpropertiespostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -245,7 +245,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.ResponseBodyBytesGetResponse](../../models/operations/responsebodybytesgetresponse.md)>**
+**Promise<[operations.ResponseBodyBytesGetResponse](../../sdk/models/operations/responsebodybytesgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -290,7 +290,7 @@ const xStringHeader: string = "string";
 
 ### Response
 
-**Promise<[operations.ResponseBodyEmptyWithHeadersResponse](../../models/operations/responsebodyemptywithheadersresponse.md)>**
+**Promise<[operations.ResponseBodyEmptyWithHeadersResponse](../../sdk/models/operations/responsebodyemptywithheadersresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -331,7 +331,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.ResponseBodyOptionalGetResponse](../../models/operations/responsebodyoptionalgetresponse.md)>**
+**Promise<[operations.ResponseBodyOptionalGetResponse](../../sdk/models/operations/responsebodyoptionalgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -372,7 +372,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.ResponseBodyReadOnlyResponse](../../models/operations/responsebodyreadonlyresponse.md)>**
+**Promise<[operations.ResponseBodyReadOnlyResponse](../../sdk/models/operations/responsebodyreadonlyresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -412,7 +412,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.ResponseBodyStringGetResponse](../../models/operations/responsebodystringgetresponse.md)>**
+**Promise<[operations.ResponseBodyStringGetResponse](../../sdk/models/operations/responsebodystringgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -452,7 +452,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.ResponseBodyXmlGetResponse](../../models/operations/responsebodyxmlgetresponse.md)>**
+**Promise<[operations.ResponseBodyXmlGetResponse](../../sdk/models/operations/responsebodyxmlgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -489,15 +489,15 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `request`                                                                                        | [shared.ObjWithZeroValueComplexTypePtrs](../../models/shared/objwithzerovaluecomplextypeptrs.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `request`                                                                                            | [shared.ObjWithZeroValueComplexTypePtrs](../../sdk/models/shared/objwithzerovaluecomplextypeptrs.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |
 
 
 ### Response
 
-**Promise<[operations.ResponseBodyZeroValueComplexTypePtrsPostResponse](../../models/operations/responsebodyzerovaluecomplextypeptrspostresponse.md)>**
+**Promise<[operations.ResponseBodyZeroValueComplexTypePtrsPostResponse](../../sdk/models/operations/responsebodyzerovaluecomplextypeptrspostresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

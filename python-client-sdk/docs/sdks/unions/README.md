@@ -1,5 +1,5 @@
 # Unions
-(*.unions*)
+(*unions*)
 
 ## Overview
 
@@ -422,7 +422,7 @@ req = shared.DeepObjectWithType(
     bool=True,
     int=1,
     map={
-        "key": shared.SimpleObject(
+        "key2": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
@@ -442,7 +442,7 @@ req = shared.DeepObjectWithType(
             str_='test',
             str_opt='testOptional',
         ),
-        "key2": shared.SimpleObject(
+        "key": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
@@ -668,7 +668,7 @@ if res.res is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [date](../../models//.md)                  | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [date](../../models/.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -750,7 +750,7 @@ if res.res is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [datetime](../../models//.md)              | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [datetime](../../models/.md)               | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response

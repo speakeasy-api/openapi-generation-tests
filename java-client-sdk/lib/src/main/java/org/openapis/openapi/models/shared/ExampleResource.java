@@ -79,6 +79,15 @@ public class ExampleResource {
     }
     
     @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("inlineObject")
+    public InlineObject inlineObject;
+
+    public ExampleResource withInlineObject(InlineObject inlineObject) {
+        this.inlineObject = inlineObject;
+        return this;
+    }
+    
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mapOfInteger")
     public java.util.Map<String, Long> mapOfInteger;
 
@@ -101,6 +110,15 @@ public class ExampleResource {
 
     public ExampleResource withName(String name) {
         this.name = name;
+        return this;
+    }
+    
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("name_prefix")
+    public String namePrefix;
+
+    public ExampleResource withNamePrefix(String namePrefix) {
+        this.namePrefix = namePrefix;
         return this;
     }
     

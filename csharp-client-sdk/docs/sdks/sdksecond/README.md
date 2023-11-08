@@ -1,5 +1,5 @@
 # SDKSecond
-(*.Nested.Second*)
+(*Nested.Second*)
 
 ### Available Operations
 
@@ -29,5 +29,5 @@ var res = await sdk.Nested.Second.GetAsync();
 
 ### Response
 
-**[NestedSecondGetResponse](../../models/operations/NestedSecondGetResponse.md)**
+**[NestedSecondGetResponse](../../Models/Operations/NestedSecondGetResponse.md)**
 

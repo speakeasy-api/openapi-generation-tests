@@ -7,11 +7,6 @@ from sdk import utils
 from typing import Optional, Union
 
 
-@dataclasses.dataclass
-class NullableOneOfTypeInObjectNullableOneOfTwo:
-    pass
-
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class NullableOneOfTypeInObject:

@@ -12,6 +12,7 @@ class Resource:
         self.sdk_configuration = sdk_config
         
     
+    
     def create_file(self, request: operations.CreateFileRequestBody) -> operations.CreateFileResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -25,7 +26,10 @@ class Resource:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -44,6 +48,7 @@ class Resource:
         return res
 
     
+    
     def create_resource(self, request: shared.ExampleResource) -> operations.CreateResourceResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -57,7 +62,10 @@ class Resource:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -76,6 +84,7 @@ class Resource:
         return res
 
     
+    
     def delete_resource(self, resource_id: str) -> operations.DeleteResourceResponse:
         request = operations.DeleteResourceRequest(
             resource_id=resource_id,
@@ -88,7 +97,10 @@ class Resource:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('DELETE', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -103,6 +115,7 @@ class Resource:
         return res
 
     
+    
     def get_resource(self, resource_id: str) -> operations.GetResourceResponse:
         request = operations.GetResourceRequest(
             resource_id=resource_id,
@@ -115,7 +128,10 @@ class Resource:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -134,6 +150,7 @@ class Resource:
         return res
 
     
+    
     def update_resource(self, resource_id: str) -> operations.UpdateResourceResponse:
         request = operations.UpdateResourceRequest(
             resource_id=resource_id,
@@ -146,7 +163,10 @@ class Resource:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')

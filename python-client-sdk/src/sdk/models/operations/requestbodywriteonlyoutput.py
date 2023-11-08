@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ...models.shared import writeonlyobject as shared_writeonlyobject
+from ...models.shared import writeonlyobject_output as shared_writeonlyobject_output
 from typing import Optional
 
 REQUEST_BODY_WRITE_ONLY_OUTPUT_SERVERS = [
@@ -19,7 +19,7 @@ class RequestBodyWriteOnlyOutputResponse:
     r"""HTTP response status code for this operation"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    write_only_object: Optional[shared_writeonlyobject.WriteOnlyObjectOutput] = dataclasses.field(default=None)
+    write_only_object: Optional[shared_writeonlyobject_output.WriteOnlyObjectOutput] = dataclasses.field(default=None)
     r"""OK"""
     
 

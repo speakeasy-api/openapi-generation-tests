@@ -1,5 +1,5 @@
 # Documentation
-(*.Documentation*)
+(*Documentation*)
 
 ## Overview
 
@@ -42,5 +42,5 @@ var res = await sdk.Documentation.GetDocumentationPerLanguageAsync("string");
 
 ### Response
 
-**[GetDocumentationPerLanguageResponse](../../models/operations/GetDocumentationPerLanguageResponse.md)**
+**[GetDocumentationPerLanguageResponse](../../Models/Operations/GetDocumentationPerLanguageResponse.md)**
 

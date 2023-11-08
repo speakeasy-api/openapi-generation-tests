@@ -1,5 +1,5 @@
 # Resource
-(*.Resource*)
+(*Resource*)
 
 ### Available Operations
 
@@ -52,15 +52,15 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
-| `request`                                                                            | [operations.CreateFileRequestBody](../../models/operations/createfilerequestbody.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |
+| `request`                                                                                | [operations.CreateFileRequestBody](../../pkg/models/operations/createfilerequestbody.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 
 
 ### Response
 
-**[*operations.CreateFileResponse](../../models/operations/createfileresponse.md), error**
+**[*operations.CreateFileResponse](../../pkg/models/operations/createfileresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -102,6 +102,7 @@ func main() {
             },
         },
         ID: "<ID>",
+        InlineObject: &shared.InlineObject{},
         MapOfInteger: map[string]int64{
             "key": 271791,
         },
@@ -131,15 +132,15 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `ctx`                                                            | [context.Context](https://pkg.go.dev/context#Context)            | :heavy_check_mark:                                               | The context to use for the request.                              |
-| `request`                                                        | [shared.ExampleResource](../../models/shared/exampleresource.md) | :heavy_check_mark:                                               | The request object to use for the request.                       |
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `ctx`                                                                | [context.Context](https://pkg.go.dev/context#Context)                | :heavy_check_mark:                                                   | The context to use for the request.                                  |
+| `request`                                                            | [shared.ExampleResource](../../pkg/models/shared/exampleresource.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
 
 
 ### Response
 
-**[*operations.CreateResourceResponse](../../models/operations/createresourceresponse.md), error**
+**[*operations.CreateResourceResponse](../../pkg/models/operations/createresourceresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -192,7 +193,7 @@ func main() {
 
 ### Response
 
-**[*operations.DeleteResourceResponse](../../models/operations/deleteresourceresponse.md), error**
+**[*operations.DeleteResourceResponse](../../pkg/models/operations/deleteresourceresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -245,7 +246,7 @@ func main() {
 
 ### Response
 
-**[*operations.GetResourceResponse](../../models/operations/getresourceresponse.md), error**
+**[*operations.GetResourceResponse](../../pkg/models/operations/getresourceresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -298,7 +299,7 @@ func main() {
 
 ### Response
 
-**[*operations.UpdateResourceResponse](../../models/operations/updateresourceresponse.md), error**
+**[*operations.UpdateResourceResponse](../../pkg/models/operations/updateresourceresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |

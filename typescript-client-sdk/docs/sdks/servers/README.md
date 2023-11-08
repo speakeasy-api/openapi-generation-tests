@@ -1,5 +1,5 @@
 # Servers
-(*.servers*)
+(*servers*)
 
 ## Overview
 
@@ -47,7 +47,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.SelectGlobalServerResponse](../../models/operations/selectglobalserverresponse.md)>**
+**Promise<[operations.SelectGlobalServerResponse](../../sdk/models/operations/selectglobalserverresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -90,7 +90,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.SelectServerWithIDResponse](../../models/operations/selectserverwithidresponse.md)>**
+**Promise<[operations.SelectServerWithIDResponse](../../sdk/models/operations/selectserverwithidresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -131,7 +131,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.ServerWithProtocolTemplateResponse](../../models/operations/serverwithprotocoltemplateresponse.md)>**
+**Promise<[operations.ServerWithProtocolTemplateResponse](../../sdk/models/operations/serverwithprotocoltemplateresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -172,7 +172,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.ServerWithTemplatesResponse](../../models/operations/serverwithtemplatesresponse.md)>**
+**Promise<[operations.ServerWithTemplatesResponse](../../sdk/models/operations/serverwithtemplatesresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -212,7 +212,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.ServerWithTemplatesGlobalResponse](../../models/operations/serverwithtemplatesglobalresponse.md)>**
+**Promise<[operations.ServerWithTemplatesGlobalResponse](../../sdk/models/operations/serverwithtemplatesglobalresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -253,7 +253,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.ServersByIDWithTemplatesResponse](../../models/operations/serversbyidwithtemplatesresponse.md)>**
+**Promise<[operations.ServersByIDWithTemplatesResponse](../../sdk/models/operations/serversbyidwithtemplatesresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

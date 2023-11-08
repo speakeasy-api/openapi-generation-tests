@@ -9,16 +9,6 @@ from sdk import utils
 from typing import Optional, Union
 
 
-@dataclasses.dataclass
-class MixedTypeOneOfPostRequestBody:
-    pass
-
-
-@dataclasses.dataclass
-class MixedTypeOneOfPostJSON:
-    pass
-
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class MixedTypeOneOfPostRes:

@@ -15,15 +15,17 @@ extension Shared {
         public private(set) var createdAt: Date?
         public let enumNumber: Shared.EnumNumber?
         public let enumStr: Shared.EnumStr?
+        public let inlineObject: Shared.InlineObject?
         public let mapOfInteger: [String: Int]?
         public let mapOfString: [String: String]?
+        public let namePrefix: String?
         @DateTime
         public private(set) var updatedAt: Date?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(chocolates: [Shared.Chocolates], id: String, name: String, vehicle: Shared.ExampleVehicle, arrayOfNumber: [Double]? = nil, arrayOfString: [String]? = nil, createdAt: Date? = nil, enumNumber: Shared.EnumNumber? = nil, enumStr: Shared.EnumStr? = nil, mapOfInteger: [String: Int]? = nil, mapOfString: [String: String]? = nil, updatedAt: Date? = nil) {
+        public init(chocolates: [Shared.Chocolates], id: String, name: String, vehicle: Shared.ExampleVehicle, arrayOfNumber: [Double]? = nil, arrayOfString: [String]? = nil, createdAt: Date? = nil, enumNumber: Shared.EnumNumber? = nil, enumStr: Shared.EnumStr? = nil, inlineObject: Shared.InlineObject? = nil, mapOfInteger: [String: Int]? = nil, mapOfString: [String: String]? = nil, namePrefix: String? = nil, updatedAt: Date? = nil) {
             self.chocolates = chocolates
             self.id = id
             self.name = name
@@ -33,8 +35,10 @@ extension Shared {
             self._createdAt = DateTime<Date?>(wrappedValue: createdAt)
             self.enumNumber = enumNumber
             self.enumStr = enumStr
+            self.inlineObject = inlineObject
             self.mapOfInteger = mapOfInteger
             self.mapOfString = mapOfString
+            self.namePrefix = namePrefix
             self._updatedAt = DateTime<Date?>(wrappedValue: updatedAt)
         }
     }
@@ -51,8 +55,10 @@ extension Shared.ExampleResource: Codable {
         case createdAt
         case enumNumber
         case enumStr
+        case inlineObject
         case mapOfInteger
         case mapOfString
+        case namePrefix = "name_prefix"
         case updatedAt
     }
 
@@ -67,8 +73,10 @@ extension Shared.ExampleResource: Codable {
         self._createdAt = try container.decodeIfPresent(DateTime<Date?>.self, forKey: .createdAt) ?? DateTime<Date?>(wrappedValue: nil)
         self.enumNumber = try container.decodeIfPresent(Shared.EnumNumber.self, forKey: .enumNumber)
         self.enumStr = try container.decodeIfPresent(Shared.EnumStr.self, forKey: .enumStr)
+        self.inlineObject = try container.decodeIfPresent(Shared.InlineObject.self, forKey: .inlineObject)
         self.mapOfInteger = try container.decodeIfPresent([String: Int].self, forKey: .mapOfInteger)
         self.mapOfString = try container.decodeIfPresent([String: String].self, forKey: .mapOfString)
+        self.namePrefix = try container.decodeIfPresent(String.self, forKey: .namePrefix)
         self._updatedAt = try container.decodeIfPresent(DateTime<Date?>.self, forKey: .updatedAt) ?? DateTime<Date?>(wrappedValue: nil)
     }
 
@@ -85,8 +93,10 @@ extension Shared.ExampleResource: Codable {
         }
         try container.encodeIfPresent(self.enumNumber, forKey: .enumNumber)
         try container.encodeIfPresent(self.enumStr, forKey: .enumStr)
+        try container.encodeIfPresent(self.inlineObject, forKey: .inlineObject)
         try container.encodeIfPresent(self.mapOfInteger, forKey: .mapOfInteger)
         try container.encodeIfPresent(self.mapOfString, forKey: .mapOfString)
+        try container.encodeIfPresent(self.namePrefix, forKey: .namePrefix)
         if self.updatedAt != nil {
             try container.encode(self._updatedAt, forKey: .updatedAt)
         }

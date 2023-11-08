@@ -2,25 +2,6 @@
 
 package shared
 
-type SchemeBasicAuth struct {
-	Password string `security:"name=password"`
-	Username string `security:"name=username"`
-}
-
-func (o *SchemeBasicAuth) GetPassword() string {
-	if o == nil {
-		return ""
-	}
-	return o.Password
-}
-
-func (o *SchemeBasicAuth) GetUsername() string {
-	if o == nil {
-		return ""
-	}
-	return o.Username
-}
-
 type Security struct {
 	APIKeyAuth    *string `security:"scheme,type=apiKey,subtype=header,name=Authorization"`
 	APIKeyAuthNew *string `security:"scheme,type=apiKey,subtype=header,name=x-api-key"`

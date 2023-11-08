@@ -8,148 +8,148 @@ import { expect, test } from "@jest/globals";
 import { SDK } from "../src/sdk";
 
 test("Test Pagination LimitOffset Page Params", async () => {
-    recordTest("pagination-limitOffset-page-params");
+  recordTest("pagination-limitOffset-page-params");
 
-    const sdk = new SDK({});
-    const serverLimit = 20;
+  const sdk = new SDK({});
+  const serverLimit = 20;
 
-    const res = await sdk.pagination.paginationLimitOffsetPageParams(1);
-    expect(res.statusCode).toBe(200);
-    expect(res.res).toBeDefined();
-    expect(res.res!.resultArray.length).toBe(serverLimit);
+  const res = await sdk.pagination.paginationLimitOffsetPageParams(1);
+  expect(res.statusCode).toBe(200);
+  expect(res.res).toBeDefined();
+  expect(res.res!.resultArray.length).toBe(serverLimit);
 
-    const nextRes = await res.next();
-    expect(nextRes).not.toBeNull();
-    expect(nextRes!.statusCode).toBe(200);
-    expect(nextRes!.res).toBeDefined();
-    expect(nextRes!.res!.resultArray.length).toBe(0);
+  const nextRes = await res.next();
+  expect(nextRes).not.toBeNull();
+  expect(nextRes!.statusCode).toBe(200);
+  expect(nextRes!.res).toBeDefined();
+  expect(nextRes!.res!.resultArray.length).toBe(0);
 
-    const nullRes = await nextRes!.next();
-    expect(nullRes).toBeNull();
+  const nullRes = await nextRes!.next();
+  expect(nullRes).toBeNull();
 });
 
 test("Test Pagination LimitOffset Page Body", async () => {
-    recordTest("pagination-limitOffset-page-body");
+  recordTest("pagination-limitOffset-page-body");
 
-    const sdk = new SDK({});
-    const limit = 15;
+  const sdk = new SDK({});
+  const limit = 15;
 
-    const res = await sdk.pagination.paginationLimitOffsetPageBody({
-        limit,
-        page: 1
-    });
-    expect(res.statusCode).toBe(200);
-    expect(res.res).toBeDefined();
-    expect(res.res!.resultArray.length).toBe(limit);
+  const res = await sdk.pagination.paginationLimitOffsetPageBody({
+    limit,
+    page: 1,
+  });
+  expect(res.statusCode).toBe(200);
+  expect(res.res).toBeDefined();
+  expect(res.res!.resultArray.length).toBe(limit);
 
-    const nextRes = await res.next();
-    expect(nextRes).not.toBeNull();
-    expect(nextRes!.statusCode).toBe(200);
-    expect(nextRes!.res).toBeDefined();
-    expect(nextRes!.res!.resultArray.length).toBe(20 - limit);
+  const nextRes = await res.next();
+  expect(nextRes).not.toBeNull();
+  expect(nextRes!.statusCode).toBe(200);
+  expect(nextRes!.res).toBeDefined();
+  expect(nextRes!.res!.resultArray.length).toBe(20 - limit);
 
-    const nullRes = await nextRes!.next();
-    expect(nullRes).toBeNull();
+  const nullRes = await nextRes!.next();
+  expect(nullRes).toBeNull();
 });
 
 test("Test Pagination LimitOffset Offset Params", async () => {
-    recordTest("pagination-limitOffset-offset-params");
+  recordTest("pagination-limitOffset-offset-params");
 
-    const sdk = new SDK({});
-    const limit = 15;
+  const sdk = new SDK({});
+  const limit = 15;
 
-    const res = await sdk.pagination.paginationLimitOffsetOffsetParams(limit, 0);
-    expect(res.statusCode).toBe(200);
-    expect(res.res).toBeDefined();
-    expect(res.res!.resultArray.length).toBe(limit);
+  const res = await sdk.pagination.paginationLimitOffsetOffsetParams(limit, 0);
+  expect(res.statusCode).toBe(200);
+  expect(res.res).toBeDefined();
+  expect(res.res!.resultArray.length).toBe(limit);
 
-    const nextRes = await res.next();
-    expect(nextRes).not.toBeNull();
-    expect(nextRes!.statusCode).toBe(200);
-    expect(nextRes!.res).toBeDefined();
-    expect(nextRes!.res!.resultArray.length).toBe(20 - limit);
+  const nextRes = await res.next();
+  expect(nextRes).not.toBeNull();
+  expect(nextRes!.statusCode).toBe(200);
+  expect(nextRes!.res).toBeDefined();
+  expect(nextRes!.res!.resultArray.length).toBe(20 - limit);
 
-    const nullRes = await nextRes!.next();
-    expect(nullRes).toBeNull();
+  const nullRes = await nextRes!.next();
+  expect(nullRes).toBeNull();
 });
 
 test("Test Pagination LimitOffset Offset Body", async () => {
-    recordTest("pagination-limitOffset-offset-body");
+  recordTest("pagination-limitOffset-offset-body");
 
-    const sdk = new SDK({});
-    const limit = 15;
+  const sdk = new SDK({});
+  const limit = 15;
 
-    const res = await sdk.pagination.paginationLimitOffsetOffsetBody({
-        limit,
-        offset: 0
-    });
-    expect(res.statusCode).toBe(200);
-    expect(res.res).toBeDefined();
-    expect(res.res!.resultArray.length).toBe(limit);
+  const res = await sdk.pagination.paginationLimitOffsetOffsetBody({
+    limit,
+    offset: 0,
+  });
+  expect(res.statusCode).toBe(200);
+  expect(res.res).toBeDefined();
+  expect(res.res!.resultArray.length).toBe(limit);
 
-    const nextRes = await res.next();
-    expect(nextRes).not.toBeNull();
-    expect(nextRes!.statusCode).toBe(200);
-    expect(nextRes!.res).toBeDefined();
-    expect(nextRes!.res!.resultArray.length).toBe(20 - limit);
+  const nextRes = await res.next();
+  expect(nextRes).not.toBeNull();
+  expect(nextRes!.statusCode).toBe(200);
+  expect(nextRes!.res).toBeDefined();
+  expect(nextRes!.res!.resultArray.length).toBe(20 - limit);
 
-    const nullRes = await nextRes!.next();
-    expect(nullRes).toBeNull();
+  const nullRes = await nextRes!.next();
+  expect(nullRes).toBeNull();
 });
 
 test("Test Pagination Cursor Params", async () => {
-    recordTest("pagination-cursor-params");
+  recordTest("pagination-cursor-params");
 
-    const sdk = new SDK({});
-    const limit = 15;
+  const sdk = new SDK({});
+  const limit = 15;
 
-    const res = await sdk.pagination.paginationCursorParams(-1);
+  const res = await sdk.pagination.paginationCursorParams(-1);
 
-    expect(res.statusCode).toBe(200);
-    expect(res.res).toBeDefined();
-    expect(res.res!.resultArray.length).toBe(limit);
+  expect(res.statusCode).toBe(200);
+  expect(res.res).toBeDefined();
+  expect(res.res!.resultArray.length).toBe(limit);
 
-    const nextRes = await res.next();
-    expect(nextRes).not.toBeNull();
-    expect(nextRes!.statusCode).toBe(200);
-    expect(nextRes!.res).toBeDefined();
-    expect(nextRes!.res!.resultArray.length).toBeLessThan(limit);
+  const nextRes = await res.next();
+  expect(nextRes).not.toBeNull();
+  expect(nextRes!.statusCode).toBe(200);
+  expect(nextRes!.res).toBeDefined();
+  expect(nextRes!.res!.resultArray.length).toBeLessThan(limit);
 
-    const penultimateRes = await nextRes!.next();
-    expect(penultimateRes).not.toBeNull();
-    expect(penultimateRes!.statusCode).toBe(200);
-    expect(penultimateRes!.res).toBeDefined();
-    expect(penultimateRes!.res!.resultArray.length).toBe(0);
+  const penultimateRes = await nextRes!.next();
+  expect(penultimateRes).not.toBeNull();
+  expect(penultimateRes!.statusCode).toBe(200);
+  expect(penultimateRes!.res).toBeDefined();
+  expect(penultimateRes!.res!.resultArray.length).toBe(0);
 
-    const nullRes = await penultimateRes!.next();
-    expect(nullRes).toBeNull();
+  const nullRes = await penultimateRes!.next();
+  expect(nullRes).toBeNull();
 });
 
 test("Test Pagination Cursor Body", async () => {
-    recordTest("pagination-cursor-body");
+  recordTest("pagination-cursor-body");
 
-    const sdk = new SDK({});
-    const limit = 15;
+  const sdk = new SDK({});
+  const limit = 15;
 
-    const res = await sdk.pagination.paginationCursorBody({
-        cursor: -1
-    });
-    expect(res.statusCode).toBe(200);
-    expect(res.res).toBeDefined();
-    expect(res.res!.resultArray.length).toBe(limit);
+  const res = await sdk.pagination.paginationCursorBody({
+    cursor: -1,
+  });
+  expect(res.statusCode).toBe(200);
+  expect(res.res).toBeDefined();
+  expect(res.res!.resultArray.length).toBe(limit);
 
-    const nextRes = await res.next();
-    expect(nextRes).not.toBeNull();
-    expect(nextRes!.statusCode).toBe(200);
-    expect(nextRes!.res).toBeDefined();
-    expect(nextRes!.res!.resultArray.length).toBeLessThan(limit);
+  const nextRes = await res.next();
+  expect(nextRes).not.toBeNull();
+  expect(nextRes!.statusCode).toBe(200);
+  expect(nextRes!.res).toBeDefined();
+  expect(nextRes!.res!.resultArray.length).toBeLessThan(limit);
 
-    const penultimateRes = await nextRes!.next();
-    expect(penultimateRes).not.toBeNull();
-    expect(penultimateRes!.statusCode).toBe(200);
-    expect(penultimateRes!.res).toBeDefined();
-    expect(penultimateRes!.res!.resultArray.length).toBe(0);
+  const penultimateRes = await nextRes!.next();
+  expect(penultimateRes).not.toBeNull();
+  expect(penultimateRes!.statusCode).toBe(200);
+  expect(penultimateRes!.res).toBeDefined();
+  expect(penultimateRes!.res!.resultArray.length).toBe(0);
 
-    const nullRes = await penultimateRes!.next();
-    expect(nullRes).toBeNull();
+  const nullRes = await penultimateRes!.next();
+  expect(nullRes).toBeNull();
 });

@@ -1,5 +1,5 @@
 # Retries
-(*.retries*)
+(*retries*)
 
 ## Overview
 
@@ -42,14 +42,14 @@ const numRetries: number = 75342;
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `requestId`                                                         | *string*                                                            | :heavy_check_mark:                                                  | N/A                                                                 |
 | `numRetries`                                                        | *number*                                                            | :heavy_minus_sign:                                                  | N/A                                                                 |
-| `retries`                                                           | [utils.RetryConfig](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+| `retries`                                                           | [utils.RetryConfig](../../internal/utils/retryconfig.md)            | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 | `serverURL`                                                         | *string*                                                            | :heavy_minus_sign:                                                  | An optional server URL to use.                                      |
 | `config`                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)        | :heavy_minus_sign:                                                  | Available config options for making requests.                       |
 
 
 ### Response
 
-**Promise<[operations.RetriesGetResponse](../../models/operations/retriesgetresponse.md)>**
+**Promise<[operations.RetriesGetResponse](../../sdk/models/operations/retriesgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

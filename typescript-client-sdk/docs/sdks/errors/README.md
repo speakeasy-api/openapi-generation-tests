@@ -1,5 +1,5 @@
 # Errors
-(*.errors*)
+(*errors*)
 
 ## Overview
 
@@ -45,7 +45,7 @@ import { SDK } from "openapi";
 
 ### Response
 
-**Promise<[operations.ConnectionErrorGetResponse](../../models/operations/connectionerrorgetresponse.md)>**
+**Promise<[operations.ConnectionErrorGetResponse](../../sdk/models/operations/connectionerrorgetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -88,7 +88,7 @@ const statusCode: number = 458364;
 
 ### Response
 
-**Promise<[operations.StatusGetErrorResponse](../../models/operations/statusgeterrorresponse.md)>**
+**Promise<[operations.StatusGetErrorResponse](../../sdk/models/operations/statusgeterrorresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -132,7 +132,7 @@ const statusCode: number = 385913;
 
 ### Response
 
-**Promise<[operations.StatusGetXSpeakeasyErrorsResponse](../../models/operations/statusgetxspeakeasyerrorsresponse.md)>**
+**Promise<[operations.StatusGetXSpeakeasyErrorsResponse](../../sdk/models/operations/statusgetxspeakeasyerrorsresponse.md)>**
 ### Errors
 
 | Error Object                                 | Status Code                                  | Content Type                                 |

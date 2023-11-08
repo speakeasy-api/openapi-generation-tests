@@ -17,13 +17,13 @@ test("Test Mixed Parameters Primitives", async () => {
   const res = await sdk.parameters.mixedParametersPrimitives(
     "headerValue",
     "pathValue",
-    "queryValue"
+    "queryValue",
   );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res!.url).toBe(
-    "http://localhost:35123/anything/mixedParams/path/pathValue?queryStringParam=queryValue"
+    "http://localhost:35123/anything/mixedParams/path/pathValue?queryStringParam=queryValue",
   );
   expect(res.res!.headers.headerparam).toBe("headerValue");
   expect(res.res!.args.queryStringParam).toBe("queryValue");
@@ -37,13 +37,13 @@ test("Test Mixed Parameters Camel Case", async () => {
   const res = await sdk.parameters.mixedParametersCamelCase(
     "headerValue",
     "pathValue",
-    "queryValue"
+    "queryValue",
   );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res!.url).toBe(
-    "http://localhost:35123/anything/mixedParams/path/pathValue/camelcase?query_string_param=queryValue"
+    "http://localhost:35123/anything/mixedParams/path/pathValue/camelcase?query_string_param=queryValue",
   );
   expect(res.res!.headers.headerParam).toBe("headerValue");
   expect(res.res!.args.queryStringParam).toBe("queryValue");
@@ -58,13 +58,13 @@ test("Test Simple Path Parameter Primitives", async () => {
     true,
     1,
     1.1,
-    "test"
+    "test",
   );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res!.url).toBe(
-    "http://localhost:35123/anything/pathParams/str/test/bool/true/int/1/num/1.1"
+    "http://localhost:35123/anything/pathParams/str/test/bool/true/int/1/num/1.1",
   );
 });
 
@@ -75,13 +75,13 @@ test("Test Simple Path Parameter Objects", async () => {
 
   const res = await sdk.parameters.simplePathParameterObjects(
     createSimpleObject(),
-    createSimpleObject()
+    createSimpleObject(),
   );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res!.url).toBe(
-    "http://localhost:35123/anything/pathParams/obj/any,any,bool,true,boolOpt,true,date,2020-01-01,dateTime,2020-01-01T00:00:00.001Z,enum,one,float32,1.1,int,1,int32,1,int32Enum,55,intEnum,2,num,1.1,str,test,strOpt,testOptional/objExploded/any=any,bool=true,boolOpt=true,date=2020-01-01,dateTime=2020-01-01T00:00:00.001Z,enum=one,float32=1.1,int=1,int32=1,int32Enum=55,intEnum=2,num=1.1,str=test,strOpt=testOptional"
+    "http://localhost:35123/anything/pathParams/obj/any,any,bool,true,boolOpt,true,date,2020-01-01,dateTime,2020-01-01T00:00:00.001Z,enum,one,float32,1.1,int,1,int32,1,int32Enum,55,intEnum,2,num,1.1,str,test,strOpt,testOptional/objExploded/any=any,bool=true,boolOpt=true,date=2020-01-01,dateTime=2020-01-01T00:00:00.001Z,enum=one,float32=1.1,int=1,int32=1,int32Enum=55,intEnum=2,num=1.1,str=test,strOpt=testOptional",
   );
 });
 
@@ -95,7 +95,7 @@ test("Test Simple Path Parameter Arrays", async () => {
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res!.url).toBe(
-    "http://localhost:35123/anything/pathParams/arr/test,test2"
+    "http://localhost:35123/anything/pathParams/arr/test,test2",
   );
 });
 
@@ -112,13 +112,13 @@ test("Test Simple Path Parameter Maps", async () => {
     {
       test: 1,
       test2: 2,
-    }
+    },
   );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res!.url).toBe(
-    "http://localhost:35123/anything/pathParams/map/test,value,test2,value2/mapExploded/test=1,test2=2"
+    "http://localhost:35123/anything/pathParams/map/test,value,test2,value2/mapExploded/test=1,test2=2",
   );
 });
 
@@ -132,7 +132,7 @@ test("Test Path Parameter JSON", async () => {
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res!.url).toBe(
-    'http://localhost:35123/anything/pathParams/json/{"any":"any","bool":true,"boolOpt":true,"date":"2020-01-01","dateTime":"2020-01-01T00:00:00.001Z","enum":"one","float32":1.1,"int":1,"int32":1,"int32Enum":55,"intEnum":2,"num":1.1,"str":"test","strOpt":"testOptional"}'
+    'http://localhost:35123/anything/pathParams/json/{"any":"any","bool":true,"boolOpt":true,"date":"2020-01-01","dateTime":"2020-01-01T00:00:00.001Z","enum":"one","float32":1.1,"int":1,"int32":1,"int32Enum":55,"intEnum":2,"num":1.1,"str":"test","strOpt":"testOptional"}',
   );
 });
 
@@ -145,13 +145,13 @@ test("Test Form Query Params Primitive", async () => {
     true,
     1,
     1.1,
-    "test"
+    "test",
   );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res!.url).toBe(
-    "http://localhost:35123/anything/queryParams/form/primitive?boolParam=true&intParam=1&numParam=1.1&strParam=test"
+    "http://localhost:35123/anything/queryParams/form/primitive?boolParam=true&intParam=1&numParam=1.1&strParam=test",
   );
   expect(res.res!.args.boolParam).toBe("true");
   expect(res.res!.args.intParam).toBe("1");
@@ -166,13 +166,13 @@ test("Test Form Query Params Object", async () => {
 
   const res = await sdk.parameters.formQueryParamsObject(
     createSimpleObject(),
-    createSimpleObject()
+    createSimpleObject(),
   );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res!.url).toBe(
-    "http://localhost:35123/anything/queryParams/form/obj?any=any&bool=true&boolOpt=true&date=2020-01-01&dateTime=2020-01-01T00%3A00%3A00.001Z&enum=one&float32=1.1&int=1&int32=1&int32Enum=55&intEnum=2&num=1.1&str=test&strOpt=testOptional&objParam=any%2Cany%2Cbool%2Ctrue%2CboolOpt%2Ctrue%2Cdate%2C2020-01-01%2CdateTime%2C2020-01-01T00%3A00%3A00.001Z%2Cenum%2Cone%2Cfloat32%2C1.1%2Cint%2C1%2Cint32%2C1%2Cint32Enum%2C55%2CintEnum%2C2%2Cnum%2C1.1%2Cstr%2Ctest%2CstrOpt%2CtestOptional"
+    "http://localhost:35123/anything/queryParams/form/obj?any=any&bool=true&boolOpt=true&date=2020-01-01&dateTime=2020-01-01T00%3A00%3A00.001Z&enum=one&float32=1.1&int=1&int32=1&int32Enum=55&intEnum=2&num=1.1&str=test&strOpt=testOptional&objParam=any%2Cany%2Cbool%2Ctrue%2CboolOpt%2Ctrue%2Cdate%2C2020-01-01%2CdateTime%2C2020-01-01T00%3A00%3A00.001Z%2Cenum%2Cone%2Cfloat32%2C1.1%2Cint%2C1%2Cint32%2C1%2Cint32Enum%2C55%2CintEnum%2C2%2Cnum%2C1.1%2Cstr%2Ctest%2CstrOpt%2CtestOptional",
   );
   expect(res.res!.args.any).toBe("any");
   expect(res.res!.args.bool).toBe("true");
@@ -191,7 +191,7 @@ test("Test Form Query Params Object", async () => {
   expect(res.res!.args.intOptNull).toBeUndefined();
   expect(res.res!.args.numOptNull).toBeUndefined();
   expect(res.res!.args.objParam).toBe(
-    "any,any,bool,true,boolOpt,true,date,2020-01-01,dateTime,2020-01-01T00:00:00.001Z,enum,one,float32,1.1,int,1,int32,1,int32Enum,55,intEnum,2,num,1.1,str,test,strOpt,testOptional"
+    "any,any,bool,true,boolOpt,true,date,2020-01-01,dateTime,2020-01-01T00:00:00.001Z,enum,one,float32,1.1,int,1,int32,1,int32Enum,55,intEnum,2,num,1.1,str,test,strOpt,testOptional",
   );
 });
 
@@ -201,13 +201,13 @@ test("Test Form Query Params Camel Object", async () => {
   const sdk = new SDK({});
   const response = await sdk.parameters.formQueryParamsCamelObject(
     { searchTerm: "foo", itemCount: "10" },
-    { encodedTerm: "bar", encodedCount: "11" }
+    { encodedTerm: "bar", encodedCount: "11" },
   );
 
   expect(response.statusCode).toBeDefined();
   expect(response.statusCode).toBe(200);
   expect(response.res!.url).toBe(
-    "http://localhost:35123/anything/queryParams/form/camelObj?item_count=10&search_term=foo&obj_param=encoded_count%2C11%2Cencoded_term%2Cbar"
+    "http://localhost:35123/anything/queryParams/form/camelObj?item_count=10&search_term=foo&obj_param=encoded_count%2C11%2Cencoded_term%2Cbar",
   );
   expect(response.res!.args.searchTerm).toEqual("foo");
   expect(response.res!.args.itemCount).toEqual("10");
@@ -230,13 +230,13 @@ test("Test Form Query Params Ref Param Object", async () => {
       int: 1,
       num: 1.1,
       str: "test",
-    }
+    },
   );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res!.url).toBe(
-    "http://localhost:35123/anything/queryParams/form/refParamObject?refObjParam=bool%2Ctrue%2Cint%2C1%2Cnum%2C1.1%2Cstr%2Ctest&bool=true&int=1&num=1.1&str=test"
+    "http://localhost:35123/anything/queryParams/form/refParamObject?refObjParam=bool%2Ctrue%2Cint%2C1%2Cnum%2C1.1%2Cstr%2Ctest&bool=true&int=1&num=1.1&str=test",
   );
   expect(res.res!.args.bool).toBe("true");
   expect(res.res!.args.int).toBe("1");
@@ -252,13 +252,13 @@ test("Test Form Query Params Array", async () => {
 
   const res = await sdk.parameters.formQueryParamsArray(
     ["test", "test2"],
-    [1, 2]
+    [1, 2],
   );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res!.url).toBe(
-    "http://localhost:35123/anything/queryParams/form/array?arrParam=test%2Ctest2&arrParamExploded=1&arrParamExploded=2"
+    "http://localhost:35123/anything/queryParams/form/array?arrParam=test%2Ctest2&arrParamExploded=1&arrParamExploded=2",
   );
   expect(res.res!.args.arrParam).toBe("test,test2");
   expect(res.res!.args.arrParamExploded).toStrictEqual(["1", "2"]);
@@ -273,13 +273,13 @@ test("Test PipeDelimited Query Params Array", async () => {
     ["test", "test2"],
     [1, 2],
     { key1: "val1", key2: "val2" },
-    createSimpleObject()
+    createSimpleObject(),
   );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res!.url).toBe(
-    "http://localhost:35123/anything/queryParams/pipe/array?arrParam=test|test2&arrParamExploded=1&arrParamExploded=2&mapParam=key1|val1|key2|val2&objParam=any|any|bool|true|boolOpt|true|date|2020-01-01|dateTime|2020-01-01T00%3A00%3A00.001Z|enum|one|float32|1.1|int|1|int32|1|int32Enum|55|intEnum|2|num|1.1|str|test|strOpt|testOptional"
+    "http://localhost:35123/anything/queryParams/pipe/array?arrParam=test|test2&arrParamExploded=1&arrParamExploded=2&mapParam=key1|val1|key2|val2&objParam=any|any|bool|true|boolOpt|true|date|2020-01-01|dateTime|2020-01-01T00%3A00%3A00.001Z|enum|one|float32|1.1|int|1|int32|1|int32Enum|55|intEnum|2|num|1.1|str|test|strOpt|testOptional",
   );
   expect(res.res!.args.arrParam).toBe("test|test2");
   expect(res.res!.args.arrParamExploded).toStrictEqual(["1", "2"]);
@@ -298,13 +298,13 @@ test("Test Form Query Params Map", async () => {
     {
       test: 1,
       test2: 2,
-    }
+    },
   );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res!.url).toBe(
-    "http://localhost:35123/anything/queryParams/form/map?mapParam=test%2Cvalue%2Ctest2%2Cvalue2&test=1&test2=2"
+    "http://localhost:35123/anything/queryParams/form/map?mapParam=test%2Cvalue%2Ctest2%2Cvalue2&test=1&test2=2",
   );
   expect(res.res!.args.mapParam).toBe("test,value,test2,value2");
 });
@@ -318,13 +318,13 @@ test("Test Deep Object Query Params Object", async () => {
     createSimpleObject(),
     {
       arr: ["test", "test2"],
-    }
+    },
   );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res!.url).toBe(
-    "http://localhost:35123/anything/queryParams/deepObject/obj?objParam[any]=any&objParam[bool]=true&objParam[boolOpt]=true&objParam[date]=2020-01-01&objParam[dateTime]=2020-01-01T00%3A00%3A00.001Z&objParam[enum]=one&objParam[float32]=1.1&objParam[int]=1&objParam[int32]=1&objParam[int32Enum]=55&objParam[intEnum]=2&objParam[num]=1.1&objParam[str]=test&objParam[strOpt]=testOptional&objArrParam[arr]=test&objArrParam[arr]=test2"
+    "http://localhost:35123/anything/queryParams/deepObject/obj?objParam[any]=any&objParam[bool]=true&objParam[boolOpt]=true&objParam[date]=2020-01-01&objParam[dateTime]=2020-01-01T00%3A00%3A00.001Z&objParam[enum]=one&objParam[float32]=1.1&objParam[int]=1&objParam[int32]=1&objParam[int32Enum]=55&objParam[intEnum]=2&objParam[num]=1.1&objParam[str]=test&objParam[strOpt]=testOptional&objArrParam[arr]=test&objArrParam[arr]=test2",
   );
   expect(res.res!.args.objParamAny).toBe("any");
   expect(res.res!.args.objParamBool).toBe("true");
@@ -356,13 +356,13 @@ test("Test Deep Object Query Params Map", async () => {
     {
       test: ["test", "test2"],
       test2: ["test3", "test4"],
-    }
+    },
   );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res!.url).toBe(
-    "http://localhost:35123/anything/queryParams/deepObject/map?mapParam[test]=value&mapParam[test2]=value2&mapArrParam[test]=test&mapArrParam[test]=test2&mapArrParam[test2]=test3&mapArrParam[test2]=test4"
+    "http://localhost:35123/anything/queryParams/deepObject/map?mapParam[test]=value&mapParam[test2]=value2&mapArrParam[test]=test&mapArrParam[test]=test2&mapArrParam[test2]=test3&mapArrParam[test2]=test4",
   );
   expect(res.res!.args).toEqual({
     "mapParam[test]": "value",
@@ -385,7 +385,7 @@ test("Test JSON Query Params Object", async () => {
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res!.url).toBe(
-    'http://localhost:35123/anything/queryParams/json/obj?deepObjParam={"any"%3A{"any"%3A"any"%2C"bool"%3Atrue%2C"boolOpt"%3Atrue%2C"date"%3A"2020-01-01"%2C"dateTime"%3A"2020-01-01T00%3A00%3A00.001Z"%2C"enum"%3A"one"%2C"float32"%3A1.1%2C"int"%3A1%2C"int32"%3A1%2C"int32Enum"%3A55%2C"intEnum"%3A2%2C"num"%3A1.1%2C"str"%3A"test"%2C"strOpt"%3A"testOptional"}%2C"arr"%3A[{"any"%3A"any"%2C"bool"%3Atrue%2C"boolOpt"%3Atrue%2C"date"%3A"2020-01-01"%2C"dateTime"%3A"2020-01-01T00%3A00%3A00.001Z"%2C"enum"%3A"one"%2C"float32"%3A1.1%2C"int"%3A1%2C"int32"%3A1%2C"int32Enum"%3A55%2C"intEnum"%3A2%2C"num"%3A1.1%2C"str"%3A"test"%2C"strOpt"%3A"testOptional"}%2C{"any"%3A"any"%2C"bool"%3Atrue%2C"boolOpt"%3Atrue%2C"date"%3A"2020-01-01"%2C"dateTime"%3A"2020-01-01T00%3A00%3A00.001Z"%2C"enum"%3A"one"%2C"float32"%3A1.1%2C"int"%3A1%2C"int32"%3A1%2C"int32Enum"%3A55%2C"intEnum"%3A2%2C"num"%3A1.1%2C"str"%3A"test"%2C"strOpt"%3A"testOptional"}]%2C"bool"%3Atrue%2C"int"%3A1%2C"map"%3A{"key"%3A{"any"%3A"any"%2C"bool"%3Atrue%2C"boolOpt"%3Atrue%2C"date"%3A"2020-01-01"%2C"dateTime"%3A"2020-01-01T00%3A00%3A00.001Z"%2C"enum"%3A"one"%2C"float32"%3A1.1%2C"int"%3A1%2C"int32"%3A1%2C"int32Enum"%3A55%2C"intEnum"%3A2%2C"num"%3A1.1%2C"str"%3A"test"%2C"strOpt"%3A"testOptional"}}%2C"num"%3A1.1%2C"obj"%3A{"any"%3A"any"%2C"bool"%3Atrue%2C"boolOpt"%3Atrue%2C"date"%3A"2020-01-01"%2C"dateTime"%3A"2020-01-01T00%3A00%3A00.001Z"%2C"enum"%3A"one"%2C"float32"%3A1.1%2C"int"%3A1%2C"int32"%3A1%2C"int32Enum"%3A55%2C"intEnum"%3A2%2C"num"%3A1.1%2C"str"%3A"test"%2C"strOpt"%3A"testOptional"}%2C"str"%3A"test"}&simpleObjParam={"any"%3A"any"%2C"bool"%3Atrue%2C"boolOpt"%3Atrue%2C"date"%3A"2020-01-01"%2C"dateTime"%3A"2020-01-01T00%3A00%3A00.001Z"%2C"enum"%3A"one"%2C"float32"%3A1.1%2C"int"%3A1%2C"int32"%3A1%2C"int32Enum"%3A55%2C"intEnum"%3A2%2C"num"%3A1.1%2C"str"%3A"test"%2C"strOpt"%3A"testOptional"}'
+    'http://localhost:35123/anything/queryParams/json/obj?deepObjParam={"any"%3A{"any"%3A"any"%2C"bool"%3Atrue%2C"boolOpt"%3Atrue%2C"date"%3A"2020-01-01"%2C"dateTime"%3A"2020-01-01T00%3A00%3A00.001Z"%2C"enum"%3A"one"%2C"float32"%3A1.1%2C"int"%3A1%2C"int32"%3A1%2C"int32Enum"%3A55%2C"intEnum"%3A2%2C"num"%3A1.1%2C"str"%3A"test"%2C"strOpt"%3A"testOptional"}%2C"arr"%3A[{"any"%3A"any"%2C"bool"%3Atrue%2C"boolOpt"%3Atrue%2C"date"%3A"2020-01-01"%2C"dateTime"%3A"2020-01-01T00%3A00%3A00.001Z"%2C"enum"%3A"one"%2C"float32"%3A1.1%2C"int"%3A1%2C"int32"%3A1%2C"int32Enum"%3A55%2C"intEnum"%3A2%2C"num"%3A1.1%2C"str"%3A"test"%2C"strOpt"%3A"testOptional"}%2C{"any"%3A"any"%2C"bool"%3Atrue%2C"boolOpt"%3Atrue%2C"date"%3A"2020-01-01"%2C"dateTime"%3A"2020-01-01T00%3A00%3A00.001Z"%2C"enum"%3A"one"%2C"float32"%3A1.1%2C"int"%3A1%2C"int32"%3A1%2C"int32Enum"%3A55%2C"intEnum"%3A2%2C"num"%3A1.1%2C"str"%3A"test"%2C"strOpt"%3A"testOptional"}]%2C"bool"%3Atrue%2C"int"%3A1%2C"map"%3A{"key"%3A{"any"%3A"any"%2C"bool"%3Atrue%2C"boolOpt"%3Atrue%2C"date"%3A"2020-01-01"%2C"dateTime"%3A"2020-01-01T00%3A00%3A00.001Z"%2C"enum"%3A"one"%2C"float32"%3A1.1%2C"int"%3A1%2C"int32"%3A1%2C"int32Enum"%3A55%2C"intEnum"%3A2%2C"num"%3A1.1%2C"str"%3A"test"%2C"strOpt"%3A"testOptional"}}%2C"num"%3A1.1%2C"obj"%3A{"any"%3A"any"%2C"bool"%3Atrue%2C"boolOpt"%3Atrue%2C"date"%3A"2020-01-01"%2C"dateTime"%3A"2020-01-01T00%3A00%3A00.001Z"%2C"enum"%3A"one"%2C"float32"%3A1.1%2C"int"%3A1%2C"int32"%3A1%2C"int32Enum"%3A55%2C"intEnum"%3A2%2C"num"%3A1.1%2C"str"%3A"test"%2C"strOpt"%3A"testOptional"}%2C"str"%3A"test"}&simpleObjParam={"any"%3A"any"%2C"bool"%3Atrue%2C"boolOpt"%3Atrue%2C"date"%3A"2020-01-01"%2C"dateTime"%3A"2020-01-01T00%3A00%3A00.001Z"%2C"enum"%3A"one"%2C"float32"%3A1.1%2C"int"%3A1%2C"int32"%3A1%2C"int32Enum"%3A55%2C"intEnum"%3A2%2C"num"%3A1.1%2C"str"%3A"test"%2C"strOpt"%3A"testOptional"}',
   );
   expect(res.res!.args.simpleObjParam).toEqual(JSON.stringify(simpleObj));
   expect(res.res!.args.deepObjParam).toEqual(JSON.stringify(deepObject));
@@ -403,7 +403,7 @@ test("Test Mixed Query Params", async () => {
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res!.url).toBe(
-    'http://localhost:35123/anything/queryParams/mixed?deepObjectParam[any]=any&deepObjectParam[bool]=true&deepObjectParam[boolOpt]=true&deepObjectParam[date]=2020-01-01&deepObjectParam[dateTime]=2020-01-01T00%3A00%3A00.001Z&deepObjectParam[enum]=one&deepObjectParam[float32]=1.1&deepObjectParam[int]=1&deepObjectParam[int32]=1&deepObjectParam[int32Enum]=55&deepObjectParam[intEnum]=2&deepObjectParam[num]=1.1&deepObjectParam[str]=test&deepObjectParam[strOpt]=testOptional&any=any&bool=true&boolOpt=true&date=2020-01-01&dateTime=2020-01-01T00%3A00%3A00.001Z&enum=one&float32=1.1&int=1&int32=1&int32Enum=55&intEnum=2&num=1.1&str=test&strOpt=testOptional&jsonParam={"any"%3A"any"%2C"bool"%3Atrue%2C"boolOpt"%3Atrue%2C"date"%3A"2020-01-01"%2C"dateTime"%3A"2020-01-01T00%3A00%3A00.001Z"%2C"enum"%3A"one"%2C"float32"%3A1.1%2C"int"%3A1%2C"int32"%3A1%2C"int32Enum"%3A55%2C"intEnum"%3A2%2C"num"%3A1.1%2C"str"%3A"test"%2C"strOpt"%3A"testOptional"}'
+    'http://localhost:35123/anything/queryParams/mixed?deepObjectParam[any]=any&deepObjectParam[bool]=true&deepObjectParam[boolOpt]=true&deepObjectParam[date]=2020-01-01&deepObjectParam[dateTime]=2020-01-01T00%3A00%3A00.001Z&deepObjectParam[enum]=one&deepObjectParam[float32]=1.1&deepObjectParam[int]=1&deepObjectParam[int32]=1&deepObjectParam[int32Enum]=55&deepObjectParam[intEnum]=2&deepObjectParam[num]=1.1&deepObjectParam[str]=test&deepObjectParam[strOpt]=testOptional&any=any&bool=true&boolOpt=true&date=2020-01-01&dateTime=2020-01-01T00%3A00%3A00.001Z&enum=one&float32=1.1&int=1&int32=1&int32Enum=55&intEnum=2&num=1.1&str=test&strOpt=testOptional&jsonParam={"any"%3A"any"%2C"bool"%3Atrue%2C"boolOpt"%3Atrue%2C"date"%3A"2020-01-01"%2C"dateTime"%3A"2020-01-01T00%3A00%3A00.001Z"%2C"enum"%3A"one"%2C"float32"%3A1.1%2C"int"%3A1%2C"int32"%3A1%2C"int32Enum"%3A55%2C"intEnum"%3A2%2C"num"%3A1.1%2C"str"%3A"test"%2C"strOpt"%3A"testOptional"}',
   );
   expect(res.res!.args).toEqual({
     any: "any",
@@ -465,10 +465,10 @@ test("Test Header Params Object", async () => {
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
   expect(res.res!.headers.xHeaderObj).toBe(
-    "any,any,bool,true,boolOpt,true,date,2020-01-01,dateTime,2020-01-01T00:00:00.001Z,enum,one,float32,1.1,int,1,int32,1,int32Enum,55,intEnum,2,num,1.1,str,test,strOpt,testOptional"
+    "any,any,bool,true,boolOpt,true,date,2020-01-01,dateTime,2020-01-01T00:00:00.001Z,enum,one,float32,1.1,int,1,int32,1,int32Enum,55,intEnum,2,num,1.1,str,test,strOpt,testOptional",
   );
   expect(res.res!.headers.xHeaderObjExplode).toBe(
-    "any=any,bool=true,boolOpt=true,date=2020-01-01,dateTime=2020-01-01T00:00:00.001Z,enum=one,float32=1.1,int=1,int32=1,int32Enum=55,intEnum=2,num=1.1,str=test,strOpt=testOptional"
+    "any=any,bool=true,boolOpt=true,date=2020-01-01,dateTime=2020-01-01T00:00:00.001Z,enum=one,float32=1.1,int=1,int32=1,int32Enum=55,intEnum=2,num=1.1,str=test,strOpt=testOptional",
   );
 });
 
@@ -485,7 +485,7 @@ test("Test Header Params Map", async () => {
     {
       test1: "val1",
       test2: "val2",
-    }
+    },
   );
 
   expect(res.statusCode).toBeDefined();

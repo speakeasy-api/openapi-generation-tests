@@ -18,5 +18,3 @@ export class ReadOnlyObject extends SpeakeasyBase {
     @Expose({ name: "string" })
     string: string;
 }
-
-export class ReadOnlyObjectInput extends SpeakeasyBase {}

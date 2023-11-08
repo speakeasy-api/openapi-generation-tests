@@ -13,6 +13,7 @@ class Errors:
         self.sdk_configuration = sdk_config
         
     
+    
     def connection_error_get(self, server_url: Optional[str] = None) -> operations.ConnectionErrorGetResponse:
         base_url = utils.template_url(operations.CONNECTION_ERROR_GET_SERVERS[0], {
         })
@@ -24,7 +25,10 @@ class Errors:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -39,6 +43,7 @@ class Errors:
         return res
 
     
+    
     def status_get_error(self, status_code: int) -> operations.StatusGetErrorResponse:
         request = operations.StatusGetErrorRequest(
             status_code=status_code,
@@ -51,7 +56,10 @@ class Errors:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -65,6 +73,7 @@ class Errors:
 
         return res
 
+    
     
     def status_get_x_speakeasy_errors(self, status_code: int, server_url: Optional[str] = None) -> operations.StatusGetXSpeakeasyErrorsResponse:
         request = operations.StatusGetXSpeakeasyErrorsRequest(
@@ -81,7 +90,10 @@ class Errors:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')

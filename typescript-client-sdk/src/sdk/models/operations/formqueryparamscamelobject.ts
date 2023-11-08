@@ -6,20 +6,20 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
-export class ObjParamExploded extends SpeakeasyBase {
-    @SpeakeasyMetadata({ data: "queryParam, name=item_count" })
-    itemCount?: string;
-
-    @SpeakeasyMetadata({ data: "queryParam, name=search_term" })
-    searchTerm?: string;
-}
-
 export class ObjParam extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "queryParam, name=encoded_count" })
     encodedCount?: string;
 
     @SpeakeasyMetadata({ data: "queryParam, name=encoded_term" })
     encodedTerm?: string;
+}
+
+export class ObjParamExploded extends SpeakeasyBase {
+    @SpeakeasyMetadata({ data: "queryParam, name=item_count" })
+    itemCount?: string;
+
+    @SpeakeasyMetadata({ data: "queryParam, name=search_term" })
+    searchTerm?: string;
 }
 
 export class FormQueryParamsCamelObjectRequest extends SpeakeasyBase {

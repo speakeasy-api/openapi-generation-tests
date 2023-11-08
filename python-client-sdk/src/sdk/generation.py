@@ -15,6 +15,7 @@ class Generation:
         self.sdk_configuration = sdk_config
         
     
+    
     def anchor_types_get(self) -> operations.AnchorTypesGetResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -23,7 +24,10 @@ class Generation:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -42,6 +46,7 @@ class Generation:
         return res
 
     
+    
     def array_circular_reference_get(self) -> operations.ArrayCircularReferenceGetResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -50,7 +55,10 @@ class Generation:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -69,6 +77,7 @@ class Generation:
         return res
 
     
+    
     def circular_reference_get(self) -> operations.CircularReferenceGetResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -77,7 +86,10 @@ class Generation:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -96,6 +108,7 @@ class Generation:
         return res
 
     
+    
     def date_param_with_default(self, date_input: date) -> operations.DateParamWithDefaultResponse:
         request = operations.DateParamWithDefaultRequest(
             date_input=date_input,
@@ -109,7 +122,10 @@ class Generation:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -124,6 +140,7 @@ class Generation:
         return res
 
     
+    
     def date_time_param_with_default(self, date_time_input: datetime) -> operations.DateTimeParamWithDefaultResponse:
         request = operations.DateTimeParamWithDefaultRequest(
             date_time_input=date_time_input,
@@ -137,7 +154,10 @@ class Generation:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -152,6 +172,7 @@ class Generation:
         return res
 
     
+    
     def decimal_param_with_default(self, decimal_input: Decimal) -> operations.DecimalParamWithDefaultResponse:
         request = operations.DecimalParamWithDefaultRequest(
             decimal_input=decimal_input,
@@ -165,7 +186,10 @@ class Generation:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -180,6 +204,7 @@ class Generation:
         return res
 
     
+    
     def deprecated_field_in_schema_post(self, request: shared.DeprecatedFieldInObject) -> operations.DeprecatedFieldInSchemaPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -193,7 +218,10 @@ class Generation:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -208,6 +236,7 @@ class Generation:
         return res
 
     
+    
     def deprecated_object_in_schema_get(self) -> operations.DeprecatedObjectInSchemaGetResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -216,7 +245,10 @@ class Generation:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -235,6 +267,7 @@ class Generation:
         return res
 
     
+    
     def deprecated_operation_no_comments_get(self, deprecated_parameter: Optional[str] = None) -> operations.DeprecatedOperationNoCommentsGetResponse:
         r"""Deprecated method: This will be removed in a future release, please migrate away from it as soon as possible."""
         request = operations.DeprecatedOperationNoCommentsGetRequest(
@@ -249,7 +282,10 @@ class Generation:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -263,6 +299,7 @@ class Generation:
 
         return res
 
+    
     
     def deprecated_operation_with_comments_get(self, deprecated_parameter: Optional[str] = None, new_parameter: Optional[str] = None) -> operations.DeprecatedOperationWithCommentsGetResponse:
         r"""This is an endpoint setup to test deprecation with comments
@@ -282,7 +319,10 @@ class Generation:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -297,6 +337,7 @@ class Generation:
         return res
 
     
+    
     def empty_object_get(self, empty_object: shared.EmptyObjectParam) -> operations.EmptyObjectGetResponse:
         request = operations.EmptyObjectGetRequest(
             empty_object=empty_object,
@@ -309,7 +350,10 @@ class Generation:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -324,6 +368,7 @@ class Generation:
         return res
 
     
+    
     def empty_response_object_with_comment_get(self) -> operations.EmptyResponseObjectWithCommentGetResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -332,7 +377,10 @@ class Generation:
         headers['Accept'] = 'application/octet-stream'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -350,6 +398,7 @@ class Generation:
         return res
 
     
+    
     def global_name_overridden(self) -> operations.GetGlobalNameOverrideResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -358,7 +407,10 @@ class Generation:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -377,6 +429,7 @@ class Generation:
         return res
 
     
+    
     def ignored_generation_get(self) -> operations.IgnoredGenerationGetResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -385,7 +438,10 @@ class Generation:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -403,6 +459,7 @@ class Generation:
 
         return res
 
+    
     
     def ignores_post(self, request_body: operations.IgnoresPostRequestBody, test_param: Optional[str] = None) -> operations.IgnoresPostResponse:
         request = operations.IgnoresPostRequest(
@@ -423,7 +480,10 @@ class Generation:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -442,6 +502,7 @@ class Generation:
         return res
 
     
+    
     def name_override(self, test_enum_query_param: operations.EnumNameOverride, test_query_param: str) -> operations.NameOverrideGetResponse:
         request = operations.NameOverrideGetRequest(
             test_enum_query_param=test_enum_query_param,
@@ -456,7 +517,10 @@ class Generation:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -475,6 +539,7 @@ class Generation:
         return res
 
     
+    
     def object_circular_reference_get(self) -> operations.ObjectCircularReferenceGetResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -483,7 +548,10 @@ class Generation:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -502,6 +570,7 @@ class Generation:
         return res
 
     
+    
     def one_of_circular_reference_get(self) -> operations.OneOfCircularReferenceGetResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -510,7 +579,10 @@ class Generation:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -529,6 +601,7 @@ class Generation:
         return res
 
     
+    
     def typed_parameter_generation_get(self, bigint: Optional[int] = None, date_: Optional[date] = None, decimal: Optional[Decimal] = None, obj: Optional[operations.Obj] = None) -> operations.TypedParameterGenerationGetResponse:
         request = operations.TypedParameterGenerationGetRequest(
             bigint=bigint,
@@ -545,7 +618,10 @@ class Generation:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -559,6 +635,7 @@ class Generation:
 
         return res
 
+    
     
     def usage_example_post(self, request: operations.UsageExamplePostRequest, security: operations.UsageExamplePostSecurity) -> operations.UsageExamplePostResponse:
         r"""An operation used for testing usage examples

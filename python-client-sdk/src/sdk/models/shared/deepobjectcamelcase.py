@@ -8,11 +8,6 @@ from sdk import utils
 from typing import Dict, List, Optional, Union
 
 
-@dataclasses.dataclass
-class AnyVal:
-    pass
-
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class DeepObjectCamelCase:

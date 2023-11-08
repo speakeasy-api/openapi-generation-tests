@@ -28,6 +28,3 @@ func (o *ReadOnlyObject) GetString() string {
 	}
 	return o.String
 }
-
-type ReadOnlyObjectInput struct {
-}

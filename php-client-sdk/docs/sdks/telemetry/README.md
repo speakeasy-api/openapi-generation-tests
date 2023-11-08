@@ -53,7 +53,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\TelemetrySpeakeasyUserAgentGetResponse](../../models/operations/TelemetrySpeakeasyUserAgentGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\TelemetrySpeakeasyUserAgentGetResponse](../../Models/Operations/TelemetrySpeakeasyUserAgentGetResponse.md)**
 
 
 ## telemetryUserAgentGet
@@ -90,5 +90,5 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\TelemetryUserAgentGetResponse](../../models/operations/TelemetryUserAgentGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\TelemetryUserAgentGetResponse](../../Models/Operations/TelemetryUserAgentGetResponse.md)**
 

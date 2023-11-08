@@ -13,6 +13,7 @@ class Servers:
         self.sdk_configuration = sdk_config
         
     
+    
     def select_global_server(self) -> operations.SelectGlobalServerResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -21,7 +22,10 @@ class Servers:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -37,6 +41,7 @@ class Servers:
         return res
 
     
+    
     def select_server_with_id(self, server_url: Optional[str] = None) -> operations.SelectServerWithIDResponse:
         r"""Select a server by ID."""
         base_url = utils.template_url(operations.SELECT_SERVER_WITH_ID_SERVERS[operations.SELECT_SERVER_WITH_ID_SERVER_VALID], {
@@ -49,7 +54,10 @@ class Servers:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -63,6 +71,7 @@ class Servers:
 
         return res
 
+    
     
     def server_with_protocol_template(self, server_url: Optional[str] = None) -> operations.ServerWithProtocolTemplateResponse:
         base_url = utils.template_url(operations.SERVER_WITH_PROTOCOL_TEMPLATE_SERVERS[operations.SERVER_WITH_PROTOCOL_TEMPLATE_SERVER_MAIN], {
@@ -78,7 +87,10 @@ class Servers:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -93,6 +105,7 @@ class Servers:
         return res
 
     
+    
     def server_with_templates(self, server_url: Optional[str] = None) -> operations.ServerWithTemplatesResponse:
         base_url = utils.template_url(operations.SERVER_WITH_TEMPLATES_SERVERS[0], {
             'hostname': 'localhost',
@@ -106,7 +119,10 @@ class Servers:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -121,6 +137,7 @@ class Servers:
         return res
 
     
+    
     def server_with_templates_global(self) -> operations.ServerWithTemplatesGlobalResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -129,7 +146,10 @@ class Servers:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -144,6 +164,7 @@ class Servers:
         return res
 
     
+    
     def servers_by_id_with_templates(self, server_url: Optional[str] = None) -> operations.ServersByIDWithTemplatesResponse:
         base_url = utils.template_url(operations.SERVERS_BY_ID_WITH_TEMPLATES_SERVERS[operations.SERVERS_BY_ID_WITH_TEMPLATES_SERVER_MAIN], {
             'hostname': 'localhost',
@@ -157,7 +178,10 @@ class Servers:
         headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')

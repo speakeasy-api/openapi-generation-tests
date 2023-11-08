@@ -1,5 +1,5 @@
 # Documentation
-(*.documentation*)
+(*documentation*)
 
 ## Overview
 

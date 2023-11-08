@@ -53,7 +53,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetResponse](../../models/operations/GlobalPathParameterGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetResponse](../../Models/Operations/GlobalPathParameterGetResponse.md)**
 
 
 ## globalsQueryParameterGet
@@ -99,5 +99,5 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetResponse](../../models/operations/GlobalsQueryParameterGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetResponse](../../Models/Operations/GlobalsQueryParameterGetResponse.md)**
 

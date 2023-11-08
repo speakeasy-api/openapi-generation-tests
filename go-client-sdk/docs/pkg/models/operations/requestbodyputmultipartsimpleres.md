@@ -1,0 +1,11 @@
+# RequestBodyPutMultipartSimpleRes
+
+OK
+
+
+## Fields
+
+| Field                                                                                                                     | Type                                                                                                                      | Required                                                                                                                  | Description                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `Form`                                                                                                                    | [operations.RequestBodyPutMultipartSimpleForm](../../../pkg/models/operations/requestbodyputmultipartsimpleform.md)       | :heavy_check_mark:                                                                                                        | N/A                                                                                                                       |
+| `Headers`                                                                                                                 | [operations.RequestBodyPutMultipartSimpleHeaders](../../../pkg/models/operations/requestbodyputmultipartsimpleheaders.md) | :heavy_check_mark:                                                                                                        | N/A                                                                                                                       |

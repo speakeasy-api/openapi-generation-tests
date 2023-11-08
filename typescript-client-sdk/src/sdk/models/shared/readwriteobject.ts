@@ -18,13 +18,3 @@ export class ReadWriteObject extends SpeakeasyBase {
     @Expose({ name: "num3" })
     num3: number;
 }
-
-export class ReadWriteObjectOutput extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    @Expose({ name: "num3" })
-    num3: number;
-
-    @SpeakeasyMetadata()
-    @Expose({ name: "sum" })
-    sum: number;
-}

@@ -1,5 +1,5 @@
 # Globals
-(*.Globals*)
+(*Globals*)
 
 ## Overview
 
@@ -41,7 +41,7 @@ var res = await sdk.Globals.GlobalPathParameterGetAsync(719830);
 
 ### Response
 
-**[GlobalPathParameterGetResponse](../../models/operations/GlobalPathParameterGetResponse.md)**
+**[GlobalPathParameterGetResponse](../../Models/Operations/GlobalPathParameterGetResponse.md)**
 
 
 ## GlobalsQueryParameterGet
@@ -75,5 +75,5 @@ var res = await sdk.Globals.GlobalsQueryParameterGetAsync("string");
 
 ### Response
 
-**[GlobalsQueryParameterGetResponse](../../models/operations/GlobalsQueryParameterGetResponse.md)**
+**[GlobalsQueryParameterGetResponse](../../Models/Operations/GlobalsQueryParameterGetResponse.md)**
 

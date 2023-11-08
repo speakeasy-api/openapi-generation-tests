@@ -1,5 +1,5 @@
 # Retries
-(*.Retries*)
+(*Retries*)
 
 ## Overview
 
@@ -42,5 +42,5 @@ var res = await sdk.Retries.RetriesGetAsync("string", 75342);
 
 ### Response
 
-**[RetriesGetResponse](../../models/operations/RetriesGetResponse.md)**
+**[RetriesGetResponse](../../Models/Operations/RetriesGetResponse.md)**
 

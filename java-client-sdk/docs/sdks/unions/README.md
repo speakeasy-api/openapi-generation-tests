@@ -1,5 +1,5 @@
 # Unions
-(*.unions*)
+(*unions*)
 
 ## Overview
 

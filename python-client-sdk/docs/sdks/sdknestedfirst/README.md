@@ -1,5 +1,5 @@
 # SDKNestedFirst
-(*.nested.first*)
+(*nested.first*)
 
 ### Available Operations
 

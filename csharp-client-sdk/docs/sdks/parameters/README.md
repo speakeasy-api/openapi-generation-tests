@@ -1,5 +1,5 @@
 # Parameters
-(*.Parameters*)
+(*Parameters*)
 
 ## Overview
 
@@ -76,7 +76,7 @@ var res = await sdk.Parameters.DeepObjectQueryParamsMapAsync(new Dictionary<stri
 
 ### Response
 
-**[DeepObjectQueryParamsMapResponse](../../models/operations/DeepObjectQueryParamsMapResponse.md)**
+**[DeepObjectQueryParamsMapResponse](../../Models/Operations/DeepObjectQueryParamsMapResponse.md)**
 
 
 ## DeepObjectQueryParamsObject
@@ -131,13 +131,13 @@ var res = await sdk.Parameters.DeepObjectQueryParamsObjectAsync(new SimpleObject
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `ObjParam`                                                                                         | [SimpleObject](../../models/shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `ObjArrParam`                                                                                      | [ObjArrParam](../../models/operations/ObjArrParam.md)                                              | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `ObjParam`                                                                                         | [SimpleObject](../../Models/Shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `ObjArrParam`                                                                                      | [ObjArrParam](../../Models/Operations/ObjArrParam.md)                                              | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 
 
 ### Response
 
-**[DeepObjectQueryParamsObjectResponse](../../models/operations/DeepObjectQueryParamsObjectResponse.md)**
+**[DeepObjectQueryParamsObjectResponse](../../Models/Operations/DeepObjectQueryParamsObjectResponse.md)**
 
 
 ## DuplicateParam
@@ -171,7 +171,7 @@ var res = await sdk.Parameters.DuplicateParamAsync("string");
 
 ### Response
 
-**[DuplicateParamResponse](../../models/operations/DuplicateParamResponse.md)**
+**[DuplicateParamResponse](../../Models/Operations/DuplicateParamResponse.md)**
 
 
 ## FormQueryParamsArray
@@ -213,7 +213,7 @@ var res = await sdk.Parameters.FormQueryParamsArrayAsync(new List<string>() {
 
 ### Response
 
-**[FormQueryParamsArrayResponse](../../models/operations/FormQueryParamsArrayResponse.md)**
+**[FormQueryParamsArrayResponse](../../Models/Operations/FormQueryParamsArrayResponse.md)**
 
 
 ## FormQueryParamsCamelObject
@@ -248,13 +248,13 @@ var res = await sdk.Parameters.FormQueryParamsCamelObjectAsync(new ObjParamExplo
 
 | Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `ObjParamExploded`                                              | [ObjParamExploded](../../models/operations/ObjParamExploded.md) | :heavy_check_mark:                                              | N/A                                                             |
-| `ObjParam`                                                      | [ObjParam](../../models/operations/ObjParam.md)                 | :heavy_minus_sign:                                              | N/A                                                             |
+| `ObjParamExploded`                                              | [ObjParamExploded](../../Models/Operations/ObjParamExploded.md) | :heavy_check_mark:                                              | N/A                                                             |
+| `ObjParam`                                                      | [ObjParam](../../Models/Operations/ObjParam.md)                 | :heavy_minus_sign:                                              | N/A                                                             |
 
 
 ### Response
 
-**[FormQueryParamsCamelObjectResponse](../../models/operations/FormQueryParamsCamelObjectResponse.md)**
+**[FormQueryParamsCamelObjectResponse](../../Models/Operations/FormQueryParamsCamelObjectResponse.md)**
 
 
 ## FormQueryParamsMap
@@ -279,8 +279,8 @@ var res = await sdk.Parameters.FormQueryParamsMapAsync(new Dictionary<string, st
     { "test", "value" },
     { "test2", "value2" },
 }, new Dictionary<string, long>() {
-    { "test2", 2 },
     { "test", 1 },
+    { "test2", 2 },
 });
 
 // handle response
@@ -296,7 +296,7 @@ var res = await sdk.Parameters.FormQueryParamsMapAsync(new Dictionary<string, st
 
 ### Response
 
-**[FormQueryParamsMapResponse](../../models/operations/FormQueryParamsMapResponse.md)**
+**[FormQueryParamsMapResponse](../../Models/Operations/FormQueryParamsMapResponse.md)**
 
 
 ## FormQueryParamsObject
@@ -364,13 +364,13 @@ var res = await sdk.Parameters.FormQueryParamsObjectAsync(new SimpleObject() {
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `ObjParamExploded`                                                                                 | [SimpleObject](../../models/shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `ObjParam`                                                                                         | [SimpleObject](../../models/shared/SimpleObject.md)                                                | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `ObjParamExploded`                                                                                 | [SimpleObject](../../Models/Shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `ObjParam`                                                                                         | [SimpleObject](../../Models/Shared/SimpleObject.md)                                                | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
 
-**[FormQueryParamsObjectResponse](../../models/operations/FormQueryParamsObjectResponse.md)**
+**[FormQueryParamsObjectResponse](../../Models/Operations/FormQueryParamsObjectResponse.md)**
 
 
 ## FormQueryParamsPrimitive
@@ -407,7 +407,7 @@ var res = await sdk.Parameters.FormQueryParamsPrimitiveAsync(true, 1, 1.1D, "tes
 
 ### Response
 
-**[FormQueryParamsPrimitiveResponse](../../models/operations/FormQueryParamsPrimitiveResponse.md)**
+**[FormQueryParamsPrimitiveResponse](../../Models/Operations/FormQueryParamsPrimitiveResponse.md)**
 
 
 ## FormQueryParamsRefParamObject
@@ -446,13 +446,13 @@ var res = await sdk.Parameters.FormQueryParamsRefParamObjectAsync(new RefQueryPa
 
 | Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
 | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `RefObjParam`                                                               | [RefQueryParamObj](../../models/shared/RefQueryParamObj.md)                 | :heavy_minus_sign:                                                          | N/A                                                                         |
-| `RefObjParamExploded`                                                       | [RefQueryParamObjExploded](../../models/shared/RefQueryParamObjExploded.md) | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `RefObjParam`                                                               | [RefQueryParamObj](../../Models/Shared/RefQueryParamObj.md)                 | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `RefObjParamExploded`                                                       | [RefQueryParamObjExploded](../../Models/Shared/RefQueryParamObjExploded.md) | :heavy_minus_sign:                                                          | N/A                                                                         |
 
 
 ### Response
 
-**[FormQueryParamsRefParamObjectResponse](../../models/operations/FormQueryParamsRefParamObjectResponse.md)**
+**[FormQueryParamsRefParamObjectResponse](../../Models/Operations/FormQueryParamsRefParamObjectResponse.md)**
 
 
 ## HeaderParamsArray
@@ -490,7 +490,7 @@ var res = await sdk.Parameters.HeaderParamsArrayAsync(new List<string>() {
 
 ### Response
 
-**[HeaderParamsArrayResponse](../../models/operations/HeaderParamsArrayResponse.md)**
+**[HeaderParamsArrayResponse](../../Models/Operations/HeaderParamsArrayResponse.md)**
 
 
 ## HeaderParamsMap
@@ -532,7 +532,7 @@ var res = await sdk.Parameters.HeaderParamsMapAsync(new Dictionary<string, strin
 
 ### Response
 
-**[HeaderParamsMapResponse](../../models/operations/HeaderParamsMapResponse.md)**
+**[HeaderParamsMapResponse](../../Models/Operations/HeaderParamsMapResponse.md)**
 
 
 ## HeaderParamsObject
@@ -600,13 +600,13 @@ var res = await sdk.Parameters.HeaderParamsObjectAsync(new SimpleObject() {
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `XHeaderObj`                                                                                       | [SimpleObject](../../models/shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `XHeaderObjExplode`                                                                                | [SimpleObject](../../models/shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `XHeaderObj`                                                                                       | [SimpleObject](../../Models/Shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `XHeaderObjExplode`                                                                                | [SimpleObject](../../Models/Shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
 
-**[HeaderParamsObjectResponse](../../models/operations/HeaderParamsObjectResponse.md)**
+**[HeaderParamsObjectResponse](../../Models/Operations/HeaderParamsObjectResponse.md)**
 
 
 ## HeaderParamsPrimitive
@@ -643,7 +643,7 @@ var res = await sdk.Parameters.HeaderParamsPrimitiveAsync(true, 1, 1.1D, "test")
 
 ### Response
 
-**[HeaderParamsPrimitiveResponse](../../models/operations/HeaderParamsPrimitiveResponse.md)**
+**[HeaderParamsPrimitiveResponse](../../Models/Operations/HeaderParamsPrimitiveResponse.md)**
 
 
 ## JsonQueryParamsObject
@@ -803,13 +803,13 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `DeepObjParam`                                                                                     | [DeepObject](../../models/shared/DeepObject.md)                                                    | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `SimpleObjParam`                                                                                   | [SimpleObject](../../models/shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `DeepObjParam`                                                                                     | [DeepObject](../../Models/Shared/DeepObject.md)                                                    | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `SimpleObjParam`                                                                                   | [SimpleObject](../../Models/Shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
 
-**[JsonQueryParamsObjectResponse](../../models/operations/JsonQueryParamsObjectResponse.md)**
+**[JsonQueryParamsObjectResponse](../../Models/Operations/JsonQueryParamsObjectResponse.md)**
 
 
 ## MixedParametersCamelCase
@@ -845,7 +845,7 @@ var res = await sdk.Parameters.MixedParametersCamelCaseAsync("headerValue", "pat
 
 ### Response
 
-**[MixedParametersCamelCaseResponse](../../models/operations/MixedParametersCamelCaseResponse.md)**
+**[MixedParametersCamelCaseResponse](../../Models/Operations/MixedParametersCamelCaseResponse.md)**
 
 
 ## MixedParametersPrimitives
@@ -881,7 +881,7 @@ var res = await sdk.Parameters.MixedParametersPrimitivesAsync("headerValue", "pa
 
 ### Response
 
-**[MixedParametersPrimitivesResponse](../../models/operations/MixedParametersPrimitivesResponse.md)**
+**[MixedParametersPrimitivesResponse](../../Models/Operations/MixedParametersPrimitivesResponse.md)**
 
 
 ## MixedQueryParams
@@ -968,14 +968,14 @@ var res = await sdk.Parameters.MixedQueryParamsAsync(new SimpleObject() {
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `DeepObjectParam`                                                                                  | [SimpleObject](../../models/shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `FormParam`                                                                                        | [SimpleObject](../../models/shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `JsonParam`                                                                                        | [SimpleObject](../../models/shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `DeepObjectParam`                                                                                  | [SimpleObject](../../Models/Shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `FormParam`                                                                                        | [SimpleObject](../../Models/Shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `JsonParam`                                                                                        | [SimpleObject](../../Models/Shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
 
-**[MixedQueryParamsResponse](../../models/operations/MixedQueryParamsResponse.md)**
+**[MixedQueryParamsResponse](../../Models/Operations/MixedQueryParamsResponse.md)**
 
 
 ## PathParameterJson
@@ -1024,12 +1024,12 @@ var res = await sdk.Parameters.PathParameterJsonAsync(new SimpleObject() {
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `JsonObj`                                                                                          | [SimpleObject](../../models/shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `JsonObj`                                                                                          | [SimpleObject](../../Models/Shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
 
-**[PathParameterJsonResponse](../../models/operations/PathParameterJsonResponse.md)**
+**[PathParameterJsonResponse](../../Models/Operations/PathParameterJsonResponse.md)**
 
 
 ## PipeDelimitedQueryParamsArray
@@ -1091,12 +1091,12 @@ var res = await sdk.Parameters.PipeDelimitedQueryParamsArrayAsync(new List<strin
 | `ArrParam`                                                                                         | List<*string*>                                                                                     | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `ArrParamExploded`                                                                                 | List<*long*>                                                                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `MapParam`                                                                                         | Dictionary<String, *string*>                                                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
-| `ObjParam`                                                                                         | [SimpleObject](../../models/shared/SimpleObject.md)                                                | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
+| `ObjParam`                                                                                         | [SimpleObject](../../Models/Shared/SimpleObject.md)                                                | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 
 
 ### Response
 
-**[PipeDelimitedQueryParamsArrayResponse](../../models/operations/PipeDelimitedQueryParamsArrayResponse.md)**
+**[PipeDelimitedQueryParamsArrayResponse](../../Models/Operations/PipeDelimitedQueryParamsArrayResponse.md)**
 
 
 ## SimplePathParameterArrays
@@ -1134,7 +1134,7 @@ var res = await sdk.Parameters.SimplePathParameterArraysAsync(new List<string>()
 
 ### Response
 
-**[SimplePathParameterArraysResponse](../../models/operations/SimplePathParameterArraysResponse.md)**
+**[SimplePathParameterArraysResponse](../../Models/Operations/SimplePathParameterArraysResponse.md)**
 
 
 ## SimplePathParameterMaps
@@ -1176,7 +1176,7 @@ var res = await sdk.Parameters.SimplePathParameterMapsAsync(new Dictionary<strin
 
 ### Response
 
-**[SimplePathParameterMapsResponse](../../models/operations/SimplePathParameterMapsResponse.md)**
+**[SimplePathParameterMapsResponse](../../Models/Operations/SimplePathParameterMapsResponse.md)**
 
 
 ## SimplePathParameterObjects
@@ -1244,13 +1244,13 @@ var res = await sdk.Parameters.SimplePathParameterObjectsAsync(new SimpleObject(
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `ObjParam`                                                                                         | [SimpleObject](../../models/shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `ObjParamExploded`                                                                                 | [SimpleObject](../../models/shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `ObjParam`                                                                                         | [SimpleObject](../../Models/Shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `ObjParamExploded`                                                                                 | [SimpleObject](../../Models/Shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
 
-**[SimplePathParameterObjectsResponse](../../models/operations/SimplePathParameterObjectsResponse.md)**
+**[SimplePathParameterObjectsResponse](../../Models/Operations/SimplePathParameterObjectsResponse.md)**
 
 
 ## SimplePathParameterPrimitives
@@ -1287,5 +1287,5 @@ var res = await sdk.Parameters.SimplePathParameterPrimitivesAsync(true, 1, 1.1D,
 
 ### Response
 
-**[SimplePathParameterPrimitivesResponse](../../models/operations/SimplePathParameterPrimitivesResponse.md)**
+**[SimplePathParameterPrimitivesResponse](../../Models/Operations/SimplePathParameterPrimitivesResponse.md)**
 

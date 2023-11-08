@@ -28,7 +28,7 @@ You can add `OpenAPI` to your project directly in Xcode `(File > Add Packages...
 
 ```bash
 dependencies: [
-    .package(url: "", .upToNextMajor(from: "0.2.0"))
+    .package(url: "", .upToNextMajor(from: "0.3.0"))
 ]
 ```
 <!-- End SDK Installation -->

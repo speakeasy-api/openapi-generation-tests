@@ -14,8 +14,3 @@ class WriteOnlyObject:
     string: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('string') }})
     
 
-
-
-@dataclasses.dataclass
-class WriteOnlyObjectOutput:
-    pass

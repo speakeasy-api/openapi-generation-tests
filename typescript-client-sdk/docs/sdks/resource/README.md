@@ -1,5 +1,5 @@
 # Resource
-(*.resource*)
+(*resource*)
 
 ### Available Operations
 
@@ -40,15 +40,15 @@ import { SDK } from "openapi";
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [operations.CreateFileRequestBody](../../models/operations/createfilerequestbody.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `request`                                                                                | [operations.CreateFileRequestBody](../../sdk/models/operations/createfilerequestbody.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
 
 
 ### Response
 
-**Promise<[operations.CreateFileResponse](../../models/operations/createfileresponse.md)>**
+**Promise<[operations.CreateFileResponse](../../sdk/models/operations/createfileresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -85,6 +85,7 @@ import { EnumNumber, EnumStr } from "openapi/dist/sdk/models/shared";
       },
     ],
     id: "<ID>",
+    inlineObject: {},
     mapOfInteger: {
       "key": 271791,
     },
@@ -103,15 +104,15 @@ import { EnumNumber, EnumStr } from "openapi/dist/sdk/models/shared";
 
 ### Parameters
 
-| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `request`                                                        | [shared.ExampleResource](../../models/shared/exampleresource.md) | :heavy_check_mark:                                               | The request object to use for the request.                       |
-| `config`                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)     | :heavy_minus_sign:                                               | Available config options for making requests.                    |
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `request`                                                            | [shared.ExampleResource](../../sdk/models/shared/exampleresource.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
+| `config`                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)         | :heavy_minus_sign:                                                   | Available config options for making requests.                        |
 
 
 ### Response
 
-**Promise<[operations.CreateResourceResponse](../../models/operations/createresourceresponse.md)>**
+**Promise<[operations.CreateResourceResponse](../../sdk/models/operations/createresourceresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -154,7 +155,7 @@ const resourceId: string = "string";
 
 ### Response
 
-**Promise<[operations.DeleteResourceResponse](../../models/operations/deleteresourceresponse.md)>**
+**Promise<[operations.DeleteResourceResponse](../../sdk/models/operations/deleteresourceresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -197,7 +198,7 @@ const resourceId: string = "string";
 
 ### Response
 
-**Promise<[operations.GetResourceResponse](../../models/operations/getresourceresponse.md)>**
+**Promise<[operations.GetResourceResponse](../../sdk/models/operations/getresourceresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -240,7 +241,7 @@ const resourceId: string = "string";
 
 ### Response
 
-**Promise<[operations.UpdateResourceResponse](../../models/operations/updateresourceresponse.md)>**
+**Promise<[operations.UpdateResourceResponse](../../sdk/models/operations/updateresourceresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

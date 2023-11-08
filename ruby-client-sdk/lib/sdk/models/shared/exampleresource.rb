@@ -43,6 +43,20 @@ module OpenApiSDK
 
 
 
+    class InlineObject < OpenApiSDK::Utils::FieldAugmented
+      extend T::Sig
+
+
+      field :inline_name, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('inline_name') } }
+
+
+      sig { params(inline_name: T.nilable(String)).void }
+      def initialize(inline_name: nil)
+        @inline_name = inline_name
+      end
+    end
+
+
     class ExampleResource < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
@@ -65,15 +79,19 @@ module OpenApiSDK
 
       field :enum_str, T.nilable(Shared::EnumStr), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('enumStr'), 'decoder': Utils.enum_from_string(Shared::EnumStr, true) } }
 
+      field :inline_object, T.nilable(Shared::InlineObject), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('inlineObject') } }
+
       field :map_of_integer, T.nilable(T::Hash[Symbol, Integer]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('mapOfInteger') } }
 
       field :map_of_string, T.nilable(T::Hash[Symbol, String]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('mapOfString') } }
 
+      field :name_prefix, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('name_prefix') } }
+
       field :updated_at, T.nilable(DateTime), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('updatedAt'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
 
-      sig { params(chocolates: T::Array[Shared::Chocolates], id: String, name: String, vehicle: Object, array_of_number: T.nilable(T::Array[Float]), array_of_string: T.nilable(T::Array[String]), created_at: T.nilable(DateTime), enum_number: T.nilable(Shared::EnumNumber), enum_str: T.nilable(Shared::EnumStr), map_of_integer: T.nilable(T::Hash[Symbol, Integer]), map_of_string: T.nilable(T::Hash[Symbol, String]), updated_at: T.nilable(DateTime)).void }
-      def initialize(chocolates: nil, id: nil, name: nil, vehicle: nil, array_of_number: nil, array_of_string: nil, created_at: nil, enum_number: nil, enum_str: nil, map_of_integer: nil, map_of_string: nil, updated_at: nil)
+      sig { params(chocolates: T::Array[Shared::Chocolates], id: String, name: String, vehicle: Object, array_of_number: T.nilable(T::Array[Float]), array_of_string: T.nilable(T::Array[String]), created_at: T.nilable(DateTime), enum_number: T.nilable(Shared::EnumNumber), enum_str: T.nilable(Shared::EnumStr), inline_object: T.nilable(Shared::InlineObject), map_of_integer: T.nilable(T::Hash[Symbol, Integer]), map_of_string: T.nilable(T::Hash[Symbol, String]), name_prefix: T.nilable(String), updated_at: T.nilable(DateTime)).void }
+      def initialize(chocolates: nil, id: nil, name: nil, vehicle: nil, array_of_number: nil, array_of_string: nil, created_at: nil, enum_number: nil, enum_str: nil, inline_object: nil, map_of_integer: nil, map_of_string: nil, name_prefix: nil, updated_at: nil)
         @chocolates = chocolates
         @id = id
         @name = name
@@ -83,8 +101,10 @@ module OpenApiSDK
         @created_at = created_at
         @enum_number = enum_number
         @enum_str = enum_str
+        @inline_object = inline_object
         @map_of_integer = map_of_integer
         @map_of_string = map_of_string
+        @name_prefix = name_prefix
         @updated_at = updated_at
       end
     end

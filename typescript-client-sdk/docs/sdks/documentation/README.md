@@ -1,5 +1,5 @@
 # Documentation
-(*.documentation*)
+(*documentation*)
 
 ## Overview
 
@@ -47,7 +47,7 @@ const language: string = "string";
 
 ### Response
 
-**Promise<[operations.GetDocumentationPerLanguageResponse](../../models/operations/getdocumentationperlanguageresponse.md)>**
+**Promise<[operations.GetDocumentationPerLanguageResponse](../../sdk/models/operations/getdocumentationperlanguageresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

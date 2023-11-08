@@ -19,17 +19,17 @@ test("Response Body JSON Get", async () => {
   expect(res.httpBinSimpleJsonObject).toBeDefined();
   expect(res.httpBinSimpleJsonObject?.slideshow.author).toBe("Yours Truly");
   expect(res.httpBinSimpleJsonObject?.slideshow.date).toBe(
-    "date of publication"
+    "date of publication",
   );
   expect(res.httpBinSimpleJsonObject?.slideshow.title).toBe(
-    "Sample Slide Show"
+    "Sample Slide Show",
   );
   expect(res.httpBinSimpleJsonObject?.slideshow.slides[0].title).toBe(
-    "Wake up to WonderWidgets!"
+    "Wake up to WonderWidgets!",
   );
   expect(res.httpBinSimpleJsonObject?.slideshow.slides[0].type).toBe("all");
   expect(res.httpBinSimpleJsonObject?.slideshow.slides[1].title).toBe(
-    "Overview"
+    "Overview",
   );
   expect(res.httpBinSimpleJsonObject?.slideshow.slides[1].type).toBe("all");
   const decoder = new TextDecoder();
@@ -54,7 +54,7 @@ test("Response Body JSON Get", async () => {
       "    ], \n" +
       '    "title": "Sample Slide Show"\n' +
       "  }\n" +
-      "}\n"
+      "}\n",
   );
 });
 
@@ -81,7 +81,7 @@ test("Response Body String Get", async () => {
       "        </p>\n" +
       "      </div>\n" +
       "  </body>\n" +
-      "</html>"
+      "</html>",
   );
 });
 
@@ -96,7 +96,7 @@ test("Response Body XML Get", async () => {
   expect(res.xml).toBeDefined();
 
   expect(res.xml).toBe(
-    '<?xml version=\'1.0\' encoding=\'us-ascii\'?>\n\n<!--  A SAMPLE set of slides  -->\n\n<slideshow \n    title="Sample Slide Show"\n    date="Date of publication"\n    author="Yours Truly"\n    >\n\n    <!-- TITLE SLIDE -->\n    <slide type="all">\n      <title>Wake up to WonderWidgets!</title>\n    </slide>\n\n    <!-- OVERVIEW -->\n    <slide type="all">\n        <title>Overview</title>\n        <item>Why <em>WonderWidgets</em> are great</item>\n        <item/>\n        <item>Who <em>buys</em> WonderWidgets</item>\n    </slide>\n\n</slideshow>'
+    '<?xml version=\'1.0\' encoding=\'us-ascii\'?>\n\n<!--  A SAMPLE set of slides  -->\n\n<slideshow \n    title="Sample Slide Show"\n    date="Date of publication"\n    author="Yours Truly"\n    >\n\n    <!-- TITLE SLIDE -->\n    <slide type="all">\n      <title>Wake up to WonderWidgets!</title>\n    </slide>\n\n    <!-- OVERVIEW -->\n    <slide type="all">\n        <title>Overview</title>\n        <item>Why <em>WonderWidgets</em> are great</item>\n        <item/>\n        <item>Who <em>buys</em> WonderWidgets</item>\n    </slide>\n\n</slideshow>',
   );
 });
 
@@ -117,7 +117,7 @@ test("Response Body Override Accept Header", async () => {
   const res = await s.responseBodies.responseBodyOptionalGet(
     undefined,
     undefined,
-    ResponseBodyOptionalGetAcceptEnum.textPlain
+    ResponseBodyOptionalGetAcceptEnum.textPlain,
   );
 
   expect(res.statusCode).toBe(200);

@@ -1,5 +1,5 @@
 # RequestBodies
-(*.requestBodies*)
+(*requestBodies*)
 
 ## Overview
 

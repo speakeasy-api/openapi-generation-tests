@@ -33,7 +33,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/nullableRequiredObject";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -66,7 +66,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -128,7 +128,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/nullableRequiredEmptyObject";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -161,7 +161,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -220,7 +220,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/nullableRequiredProperty";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -253,7 +253,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -312,7 +312,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/nullableRequiredSharedObject";
 
@@ -346,7 +346,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -405,7 +405,7 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#array";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/requestbody#array";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -437,7 +437,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -502,7 +502,7 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#arrayCamelCase";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/requestbody#arrayCamelCase";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -534,7 +534,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -595,7 +595,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/application/json/array/objResponse";
 
@@ -629,7 +629,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -687,7 +687,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/application/json/array/objResponseCamelCase";
 
@@ -721,7 +721,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -783,7 +783,7 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#arrayOfArrays";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/requestbody#arrayOfArrays";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -815,7 +815,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -880,7 +880,8 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#arrayOfArraysCamelCase";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/requestbody#arrayOfArraysCamelCase";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -912,7 +913,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -977,7 +978,8 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#arrayOfArraysOfPrimitives";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/requestbody#arrayOfArraysOfPrimitives";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -1009,7 +1011,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -1068,7 +1070,7 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#arrayOfMaps";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/requestbody#arrayOfMaps";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -1100,7 +1102,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -1165,7 +1167,8 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#arrayOfMapsCamelCase";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/requestbody#arrayOfMapsCamelCase";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -1197,7 +1200,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -1262,7 +1265,7 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#arrayOfPrimitives";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/requestbody#arrayOfPrimitives";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -1294,7 +1297,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -1353,7 +1356,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/application/json/deep";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -1386,7 +1389,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -1448,7 +1451,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/application/json/deep/camelcase";
 
@@ -1482,7 +1485,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -1544,7 +1547,7 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#map";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/requestbody#map";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -1576,7 +1579,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -1641,7 +1644,7 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#mapCamelCase";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/requestbody#mapCamelCase";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -1673,7 +1676,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -1734,7 +1737,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/application/json/map/objResponse";
 
@@ -1768,7 +1771,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -1826,7 +1829,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/application/json/map/objResponseCamelCase";
 
@@ -1860,7 +1863,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -1922,7 +1925,7 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#mapOfArrays";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/requestbody#mapOfArrays";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -1954,7 +1957,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -2019,7 +2022,8 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#mapOfArraysCamelCase";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/requestbody#mapOfArraysCamelCase";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -2051,7 +2055,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -2116,7 +2120,7 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#mapOfMaps";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/requestbody#mapOfMaps";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -2148,7 +2152,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -2213,7 +2217,7 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#mapOfMapsCamelCase";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/requestbody#mapOfMapsCamelCase";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -2245,7 +2249,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -2310,7 +2314,8 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#mapOfMapsOfPrimitives";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/requestbody#mapOfMapsOfPrimitives";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -2342,7 +2347,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -2401,7 +2406,7 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#mapOfPrimitives";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/requestbody#mapOfPrimitives";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -2433,7 +2438,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -2492,7 +2497,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/application/json/multiple/json/filtered";
 
@@ -2526,7 +2531,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -2588,7 +2593,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/application/json/simple";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -2621,7 +2626,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -2683,7 +2688,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/application/json/camelcase";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -2716,7 +2721,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -2778,7 +2783,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/anything/requestBodies/post/{pathBigInt}/{pathBigIntStr}/{pathDecimal}/{pathDecimalStr}/complex-number-types",
             req,
@@ -2820,7 +2825,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -2882,7 +2887,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/defaultsAndConsts";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -2915,7 +2920,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -2977,7 +2982,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/empty-object";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -3010,7 +3015,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -3072,7 +3077,8 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/form/deep";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/form/deep";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -3104,7 +3110,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -3162,7 +3168,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/form/map/primitive";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -3195,7 +3201,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -3257,7 +3263,8 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/form/simple";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/form/simple";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -3289,7 +3296,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -3347,7 +3354,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/array/bigInt";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -3380,7 +3387,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -3438,7 +3445,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/array/date";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -3471,7 +3478,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -3529,7 +3536,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/jsonDataTypes/array/decimalStr";
 
@@ -3563,7 +3570,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -3621,7 +3628,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/bigint";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -3654,7 +3661,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -3712,7 +3719,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/bigintStr";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -3745,7 +3752,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -3803,7 +3810,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/boolean";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -3836,7 +3843,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -3894,7 +3901,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/date";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -3927,7 +3934,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -3985,7 +3992,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/dateTime";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -4018,7 +4025,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -4076,7 +4083,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/decimal";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -4109,7 +4116,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -4167,7 +4174,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/decimalStr";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -4200,7 +4207,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -4258,7 +4265,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/float32";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -4291,7 +4298,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -4349,7 +4356,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/int32";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -4382,7 +4389,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -4440,7 +4447,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/integer";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -4473,7 +4480,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -4531,7 +4538,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/map/bigIntStr";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -4564,7 +4571,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -4622,7 +4629,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/map/dateTime";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -4655,7 +4662,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -4713,7 +4720,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/map/decimal";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -4746,7 +4753,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -4804,7 +4811,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/number";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -4837,7 +4844,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -4895,7 +4902,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/string";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -4928,7 +4935,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -4990,7 +4997,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/multiple/contentTypes/component/filtered";
 
@@ -5024,7 +5031,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -5086,7 +5093,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/multiple/contentTypes/inline/filtered";
 
@@ -5120,7 +5127,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -5183,7 +5190,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/multiple/contentTypes/split/param";
 
@@ -5218,7 +5225,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -5281,7 +5288,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/multiple/contentTypes/split/param";
 
@@ -5316,7 +5323,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -5379,7 +5386,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/multiple/contentTypes/split/param";
 
@@ -5414,7 +5421,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -5476,7 +5483,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/multiple/contentTypes/split";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -5509,7 +5516,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -5571,7 +5578,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/multiple/contentTypes/split";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -5604,7 +5611,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -5666,7 +5673,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/multiple/contentTypes/split";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -5699,7 +5706,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -5757,7 +5764,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/notnullable/notrequired/string";
 
@@ -5790,7 +5797,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -5848,7 +5855,8 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/null-array";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/null-array";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -5880,7 +5888,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -5938,7 +5946,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/null-dictionary";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -5971,7 +5979,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -6029,7 +6037,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/nullable/notrequired/string";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -6061,7 +6069,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -6119,7 +6127,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/nullable/required/string";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -6152,7 +6160,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -6210,7 +6218,8 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/requestBodies/put/bytes";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/put/bytes";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -6242,7 +6251,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "put",
             headers: headers,
             responseType: "arraybuffer",
@@ -6305,7 +6314,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/put/bytesWithParams";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -6339,7 +6348,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "put",
             headers: headers,
             responseType: "arraybuffer",
@@ -6401,7 +6410,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/put/multipart/deep";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -6434,7 +6443,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "put",
             headers: headers,
             responseType: "arraybuffer",
@@ -6496,7 +6505,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/put/multipart/differentFileName";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -6529,7 +6538,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "put",
             headers: headers,
             responseType: "arraybuffer",
@@ -6591,7 +6600,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/put/multipart/file";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -6624,7 +6633,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "put",
             headers: headers,
             responseType: "arraybuffer",
@@ -6686,7 +6695,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/put/multipart/simple";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -6719,7 +6728,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "put",
             headers: headers,
             responseType: "arraybuffer",
@@ -6777,7 +6786,8 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/requestBodies/put/string";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/put/string";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -6809,7 +6819,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "put",
             headers: headers,
             responseType: "arraybuffer",
@@ -6872,7 +6882,7 @@ export class RequestBodies {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/put/stringWithParams";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -6906,7 +6916,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "put",
             headers: headers,
             responseType: "arraybuffer",
@@ -6972,7 +6982,7 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/readonlyandwriteonly";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/readonlyandwriteonly";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -7004,7 +7014,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -7070,7 +7080,8 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/readonlyorwriteonly#readOnlyInput";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/readonlyorwriteonly#readOnlyInput";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -7102,7 +7113,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -7164,7 +7175,8 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/readonlyorwriteonly#readOnlyUnion";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/readonlyorwriteonly#readOnlyUnion";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -7196,7 +7208,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -7255,7 +7267,8 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/readonlyandwriteonly#readWriteOnlyUnion";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/readonlyandwriteonly#readWriteOnlyUnion";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -7287,7 +7300,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -7347,7 +7360,7 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/readonlyorwriteonly#writeOnly";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/readonlyorwriteonly#writeOnly";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -7379,7 +7392,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -7445,7 +7458,8 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/writeonlyoutput#writeOnlyOutput";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/writeonlyoutput#writeOnlyOutput";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -7477,7 +7491,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -7539,7 +7553,7 @@ export class RequestBodies {
         if (serverURL) {
             baseURL = serverURL;
         }
-        const url: string = baseURL.replace(/\/$/, "") + "/writeonlyoutput#writeOnlyUnion";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/writeonlyoutput#writeOnlyUnion";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -7571,7 +7585,7 @@ export class RequestBodies {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",

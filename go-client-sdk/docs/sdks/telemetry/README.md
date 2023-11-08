@@ -1,5 +1,5 @@
 # Telemetry
-(*.Telemetry*)
+(*Telemetry*)
 
 ## Overview
 
@@ -58,7 +58,7 @@ func main() {
 
 ### Response
 
-**[*operations.TelemetrySpeakeasyUserAgentGetResponse](../../models/operations/telemetryspeakeasyuseragentgetresponse.md), error**
+**[*operations.TelemetrySpeakeasyUserAgentGetResponse](../../pkg/models/operations/telemetryspeakeasyuseragentgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |
@@ -107,7 +107,7 @@ func main() {
 
 ### Response
 
-**[*operations.TelemetryUserAgentGetResponse](../../models/operations/telemetryuseragentgetresponse.md), error**
+**[*operations.TelemetryUserAgentGetResponse](../../pkg/models/operations/telemetryuseragentgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |

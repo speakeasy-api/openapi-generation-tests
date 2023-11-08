@@ -1,5 +1,5 @@
 # Second
-(*.Second*)
+(*Second*)
 
 ### Available Operations
 
@@ -29,5 +29,5 @@ var res = await sdk.Second.GetAsync();
 
 ### Response
 
-**[GroupSecondGetResponse](../../models/operations/GroupSecondGetResponse.md)**
+**[GroupSecondGetResponse](../../Models/Operations/GroupSecondGetResponse.md)**
 

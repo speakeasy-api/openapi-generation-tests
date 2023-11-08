@@ -29,7 +29,7 @@ export class Unions {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/flattenedTypedObject";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/anything/flattenedTypedObject";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -61,7 +61,7 @@ export class Unions {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -119,7 +119,7 @@ export class Unions {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/mixedTypeOneOf";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/anything/mixedTypeOneOf";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -151,7 +151,7 @@ export class Unions {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -213,7 +213,8 @@ export class Unions {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/nullableOneOfRefInObject";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/anything/nullableOneOfRefInObject";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -245,7 +246,7 @@ export class Unions {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -303,7 +304,7 @@ export class Unions {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/nullableOneOfSchema";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/anything/nullableOneOfSchema";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -335,7 +336,7 @@ export class Unions {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -397,7 +398,7 @@ export class Unions {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/nullableOneOfInObject";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/anything/nullableOneOfInObject";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -429,7 +430,7 @@ export class Unions {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -491,7 +492,7 @@ export class Unions {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/nullableTypedObject";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/anything/nullableTypedObject";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -523,7 +524,7 @@ export class Unions {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -581,7 +582,7 @@ export class Unions {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/primitiveTypeOneOf";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/anything/primitiveTypeOneOf";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -613,7 +614,7 @@ export class Unions {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -671,7 +672,7 @@ export class Unions {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/stronglyTypedOneOf";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/anything/stronglyTypedOneOf";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -703,7 +704,7 @@ export class Unions {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -761,7 +762,8 @@ export class Unions {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/typedObjectNullableOneOf";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/anything/typedObjectNullableOneOf";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -793,7 +795,7 @@ export class Unions {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -851,7 +853,7 @@ export class Unions {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/typedObjectOneOf";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/anything/typedObjectOneOf";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -883,7 +885,7 @@ export class Unions {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -941,7 +943,7 @@ export class Unions {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/unionBigIntDecimal";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/anything/unionBigIntDecimal";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -973,7 +975,7 @@ export class Unions {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -1031,7 +1033,7 @@ export class Unions {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/unionDateNull";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/anything/unionDateNull";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -1063,7 +1065,7 @@ export class Unions {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -1120,7 +1122,7 @@ export class Unions {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/unionDateTimeBigInt";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/anything/unionDateTimeBigInt";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -1152,7 +1154,7 @@ export class Unions {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -1210,7 +1212,7 @@ export class Unions {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/unionDateTimeNull";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/anything/unionDateTimeNull";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -1242,7 +1244,7 @@ export class Unions {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -1299,7 +1301,7 @@ export class Unions {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/weaklyTypedOneOf";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/anything/weaklyTypedOneOf";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -1331,7 +1333,7 @@ export class Unions {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",

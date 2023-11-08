@@ -15,6 +15,7 @@ class Unions:
         self.sdk_configuration = sdk_config
         
     
+    
     def flattened_typed_object_post(self, request: Union[shared.TypedObject1]) -> operations.FlattenedTypedObjectPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -28,7 +29,10 @@ class Unions:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -47,6 +51,7 @@ class Unions:
         return res
 
     
+    
     def mixed_type_one_of_post(self, request: Union[str, int, shared.SimpleObject]) -> operations.MixedTypeOneOfPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -60,7 +65,10 @@ class Unions:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -79,6 +87,7 @@ class Unions:
         return res
 
     
+    
     def nullable_one_of_ref_in_object_post(self, request: shared.NullableOneOfRefInObject) -> operations.NullableOneOfRefInObjectPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -92,7 +101,10 @@ class Unions:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -111,6 +123,7 @@ class Unions:
         return res
 
     
+    
     def nullable_one_of_schema_post(self, request: Union[shared.TypedObject1, shared.TypedObject2]) -> operations.NullableOneOfSchemaPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -124,7 +137,10 @@ class Unions:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -143,6 +159,7 @@ class Unions:
         return res
 
     
+    
     def nullable_one_of_type_in_object_post(self, request: shared.NullableOneOfTypeInObject) -> operations.NullableOneOfTypeInObjectPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -156,7 +173,10 @@ class Unions:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -175,6 +195,7 @@ class Unions:
         return res
 
     
+    
     def nullable_typed_object_post(self, request: shared.TypedObject1) -> operations.NullableTypedObjectPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -188,7 +209,10 @@ class Unions:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -207,6 +231,7 @@ class Unions:
         return res
 
     
+    
     def primitive_type_one_of_post(self, request: Union[str, int, float, bool]) -> operations.PrimitiveTypeOneOfPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -220,7 +245,10 @@ class Unions:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -239,6 +267,7 @@ class Unions:
         return res
 
     
+    
     def strongly_typed_one_of_post(self, request: Union[shared.SimpleObjectWithType, shared.DeepObjectWithType]) -> operations.StronglyTypedOneOfPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -252,7 +281,10 @@ class Unions:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -271,6 +303,7 @@ class Unions:
         return res
 
     
+    
     def typed_object_nullable_one_of_post(self, request: Union[shared.TypedObject1, shared.TypedObject2]) -> operations.TypedObjectNullableOneOfPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -284,7 +317,10 @@ class Unions:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -303,6 +339,7 @@ class Unions:
         return res
 
     
+    
     def typed_object_one_of_post(self, request: Union[shared.TypedObject1, shared.TypedObject2, shared.TypedObject3]) -> operations.TypedObjectOneOfPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -316,7 +353,10 @@ class Unions:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -335,6 +375,7 @@ class Unions:
         return res
 
     
+    
     def union_big_int_decimal(self, request: Union[int, Decimal]) -> operations.UnionBigIntDecimalResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -348,7 +389,10 @@ class Unions:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -367,6 +411,7 @@ class Unions:
         return res
 
     
+    
     def union_date_null(self, request: date) -> operations.UnionDateNullResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -380,7 +425,10 @@ class Unions:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -399,6 +447,7 @@ class Unions:
         return res
 
     
+    
     def union_date_time_big_int(self, request: Union[datetime, int]) -> operations.UnionDateTimeBigIntResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -412,7 +461,10 @@ class Unions:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -431,6 +483,7 @@ class Unions:
         return res
 
     
+    
     def union_date_time_null(self, request: datetime) -> operations.UnionDateTimeNullResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -444,7 +497,10 @@ class Unions:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -463,6 +519,7 @@ class Unions:
         return res
 
     
+    
     def weakly_typed_one_of_post(self, request: Union[shared.SimpleObject, shared.DeepObject]) -> operations.WeaklyTypedOneOfPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -476,7 +533,10 @@ class Unions:
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
-        client = self.sdk_configuration.security_client
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')

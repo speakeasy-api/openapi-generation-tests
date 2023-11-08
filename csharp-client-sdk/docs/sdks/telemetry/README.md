@@ -1,5 +1,5 @@
 # Telemetry
-(*.Telemetry*)
+(*Telemetry*)
 
 ## Overview
 
@@ -41,7 +41,7 @@ var res = await sdk.Telemetry.TelemetrySpeakeasyUserAgentGetAsync("string");
 
 ### Response
 
-**[TelemetrySpeakeasyUserAgentGetResponse](../../models/operations/TelemetrySpeakeasyUserAgentGetResponse.md)**
+**[TelemetrySpeakeasyUserAgentGetResponse](../../Models/Operations/TelemetrySpeakeasyUserAgentGetResponse.md)**
 
 
 ## TelemetryUserAgentGet
@@ -68,5 +68,5 @@ var res = await sdk.Telemetry.TelemetryUserAgentGetAsync();
 
 ### Response
 
-**[TelemetryUserAgentGetResponse](../../models/operations/TelemetryUserAgentGetResponse.md)**
+**[TelemetryUserAgentGetResponse](../../Models/Operations/TelemetryUserAgentGetResponse.md)**
 

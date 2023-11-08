@@ -87,6 +87,9 @@ req = Shared::ExampleResource.new(
     enum_number=Shared::EnumNumber::THREE,
     enum_str=Shared::EnumStr::TWO,
     id="<ID>",
+    inline_object=Shared::InlineObject.new(
+      inline_name="string",
+    ),
     map_of_integer=.new{
       "Florida": 967142,
     },
@@ -94,6 +97,7 @@ req = Shared::ExampleResource.new(
       "Elmo": "string",
     },
     name="string",
+    name_prefix="string",
     updated_at=DateTime.iso8601('2022-06-22T17:48:04.355Z'),
     vehicle="string",
   ),

@@ -51,7 +51,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ConnectionErrorGetResponse](../../models/operations/ConnectionErrorGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ConnectionErrorGetResponse](../../Models/Operations/ConnectionErrorGetResponse.md)**
 
 
 ## statusGetError
@@ -97,7 +97,7 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\StatusGetErrorResponse](../../models/operations/StatusGetErrorResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\StatusGetErrorResponse](../../Models/Operations/StatusGetErrorResponse.md)**
 
 
 ## statusGetXSpeakeasyErrors
@@ -144,5 +144,5 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\StatusGetXSpeakeasyErrorsResponse](../../models/operations/StatusGetXSpeakeasyErrorsResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\StatusGetXSpeakeasyErrorsResponse](../../Models/Operations/StatusGetXSpeakeasyErrorsResponse.md)**
 

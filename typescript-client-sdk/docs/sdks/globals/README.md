@@ -1,5 +1,5 @@
 # Globals
-(*.globals*)
+(*globals*)
 
 ## Overview
 
@@ -46,7 +46,7 @@ const globalPathParam: number = 719830;
 
 ### Response
 
-**Promise<[operations.GlobalPathParameterGetResponse](../../models/operations/globalpathparametergetresponse.md)>**
+**Promise<[operations.GlobalPathParameterGetResponse](../../sdk/models/operations/globalpathparametergetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -89,7 +89,7 @@ const globalQueryParam: string = "string";
 
 ### Response
 
-**Promise<[operations.GlobalsQueryParameterGetResponse](../../models/operations/globalsqueryparametergetresponse.md)>**
+**Promise<[operations.GlobalsQueryParameterGetResponse](../../sdk/models/operations/globalsqueryparametergetresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

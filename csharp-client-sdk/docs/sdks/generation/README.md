@@ -1,5 +1,5 @@
 # Generation
-(*.Generation*)
+(*Generation*)
 
 ## Overview
 
@@ -52,7 +52,7 @@ var res = await sdk.Generation.AnchorTypesGetAsync();
 
 ### Response
 
-**[AnchorTypesGetResponse](../../models/operations/AnchorTypesGetResponse.md)**
+**[AnchorTypesGetResponse](../../Models/Operations/AnchorTypesGetResponse.md)**
 
 
 ## ArrayCircularReferenceGet
@@ -79,7 +79,7 @@ var res = await sdk.Generation.ArrayCircularReferenceGetAsync();
 
 ### Response
 
-**[ArrayCircularReferenceGetResponse](../../models/operations/ArrayCircularReferenceGetResponse.md)**
+**[ArrayCircularReferenceGetResponse](../../Models/Operations/ArrayCircularReferenceGetResponse.md)**
 
 
 ## CircularReferenceGet
@@ -106,7 +106,7 @@ var res = await sdk.Generation.CircularReferenceGetAsync();
 
 ### Response
 
-**[CircularReferenceGetResponse](../../models/operations/CircularReferenceGetResponse.md)**
+**[CircularReferenceGetResponse](../../Models/Operations/CircularReferenceGetResponse.md)**
 
 
 ## DateParamWithDefault
@@ -141,7 +141,7 @@ var res = await sdk.Generation.DateParamWithDefaultAsync(LocalDate.FromDateTime(
 
 ### Response
 
-**[DateParamWithDefaultResponse](../../models/operations/DateParamWithDefaultResponse.md)**
+**[DateParamWithDefaultResponse](../../Models/Operations/DateParamWithDefaultResponse.md)**
 
 
 ## DateTimeParamWithDefault
@@ -175,7 +175,7 @@ var res = await sdk.Generation.DateTimeParamWithDefaultAsync(System.DateTime.Par
 
 ### Response
 
-**[DateTimeParamWithDefaultResponse](../../models/operations/DateTimeParamWithDefaultResponse.md)**
+**[DateTimeParamWithDefaultResponse](../../Models/Operations/DateTimeParamWithDefaultResponse.md)**
 
 
 ## DecimalParamWithDefault
@@ -209,7 +209,7 @@ var res = await sdk.Generation.DecimalParamWithDefaultAsync(4060.06M);
 
 ### Response
 
-**[DecimalParamWithDefaultResponse](../../models/operations/DecimalParamWithDefaultResponse.md)**
+**[DecimalParamWithDefaultResponse](../../Models/Operations/DecimalParamWithDefaultResponse.md)**
 
 
 ## DeprecatedFieldInSchemaPost
@@ -237,12 +237,12 @@ var res = await sdk.Generation.DeprecatedFieldInSchemaPostAsync(new DeprecatedFi
 
 | Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `request`                                                                 | [DeprecatedFieldInObject](../../models/shared/DeprecatedFieldInObject.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+| `request`                                                                 | [DeprecatedFieldInObject](../../Models/Shared/DeprecatedFieldInObject.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 
 
 ### Response
 
-**[DeprecatedFieldInSchemaPostResponse](../../models/operations/DeprecatedFieldInSchemaPostResponse.md)**
+**[DeprecatedFieldInSchemaPostResponse](../../Models/Operations/DeprecatedFieldInSchemaPostResponse.md)**
 
 
 ## DeprecatedObjectInSchemaGet
@@ -269,7 +269,7 @@ var res = await sdk.Generation.DeprecatedObjectInSchemaGetAsync();
 
 ### Response
 
-**[DeprecatedObjectInSchemaGetResponse](../../models/operations/DeprecatedObjectInSchemaGetResponse.md)**
+**[DeprecatedObjectInSchemaGetResponse](../../Models/Operations/DeprecatedObjectInSchemaGetResponse.md)**
 
 
 ## ~~DeprecatedOperationNoCommentsGet~~
@@ -305,7 +305,7 @@ var res = await sdk.Generation.DeprecatedOperationNoCommentsGetAsync("string");
 
 ### Response
 
-**[DeprecatedOperationNoCommentsGetResponse](../../models/operations/DeprecatedOperationNoCommentsGetResponse.md)**
+**[DeprecatedOperationNoCommentsGetResponse](../../Models/Operations/DeprecatedOperationNoCommentsGetResponse.md)**
 
 
 ## ~~DeprecatedOperationWithCommentsGet~~
@@ -344,7 +344,7 @@ var res = await sdk.Generation.DeprecatedOperationWithCommentsGetAsync("string",
 
 ### Response
 
-**[DeprecatedOperationWithCommentsGetResponse](../../models/operations/DeprecatedOperationWithCommentsGetResponse.md)**
+**[DeprecatedOperationWithCommentsGetResponse](../../Models/Operations/DeprecatedOperationWithCommentsGetResponse.md)**
 
 
 ## EmptyObjectGet
@@ -373,12 +373,12 @@ var res = await sdk.Generation.EmptyObjectGetAsync(new EmptyObjectParam() {});
 
 | Parameter                                                   | Type                                                        | Required                                                    | Description                                                 |
 | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `EmptyObject`                                               | [EmptyObjectParam](../../models/shared/EmptyObjectParam.md) | :heavy_check_mark:                                          | N/A                                                         |
+| `EmptyObject`                                               | [EmptyObjectParam](../../Models/Shared/EmptyObjectParam.md) | :heavy_check_mark:                                          | N/A                                                         |
 
 
 ### Response
 
-**[EmptyObjectGetResponse](../../models/operations/EmptyObjectGetResponse.md)**
+**[EmptyObjectGetResponse](../../Models/Operations/EmptyObjectGetResponse.md)**
 
 
 ## EmptyResponseObjectWithCommentGet
@@ -405,7 +405,7 @@ var res = await sdk.Generation.EmptyResponseObjectWithCommentGetAsync();
 
 ### Response
 
-**[EmptyResponseObjectWithCommentGetResponse](../../models/operations/EmptyResponseObjectWithCommentGetResponse.md)**
+**[EmptyResponseObjectWithCommentGetResponse](../../Models/Operations/EmptyResponseObjectWithCommentGetResponse.md)**
 
 
 ## GlobalNameOverridden
@@ -432,7 +432,7 @@ var res = await sdk.Generation.GlobalNameOverriddenAsync();
 
 ### Response
 
-**[GetGlobalNameOverrideResponse](../../models/operations/GetGlobalNameOverrideResponse.md)**
+**[GetGlobalNameOverrideResponse](../../Models/Operations/GetGlobalNameOverrideResponse.md)**
 
 
 ## IgnoredGenerationGet
@@ -460,7 +460,7 @@ var res = await sdk.Generation.IgnoredGenerationGetAsync();
 
 ### Response
 
-**[IgnoredGenerationGetResponse](../../models/operations/IgnoredGenerationGetResponse.md)**
+**[IgnoredGenerationGetResponse](../../Models/Operations/IgnoredGenerationGetResponse.md)**
 
 
 ## IgnoresPost
@@ -489,13 +489,13 @@ var res = await sdk.Generation.IgnoresPostAsync(new IgnoresPostRequestBody() {},
 
 | Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
 | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `RequestBody`                                                               | [IgnoresPostRequestBody](../../models/operations/IgnoresPostRequestBody.md) | :heavy_check_mark:                                                          | N/A                                                                         |
+| `RequestBody`                                                               | [IgnoresPostRequestBody](../../Models/Operations/IgnoresPostRequestBody.md) | :heavy_check_mark:                                                          | N/A                                                                         |
 | `TestParam`                                                                 | *string*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
 
 
 ### Response
 
-**[IgnoresPostResponse](../../models/operations/IgnoresPostResponse.md)**
+**[IgnoresPostResponse](../../Models/Operations/IgnoresPostResponse.md)**
 
 
 ## NameOverride
@@ -524,13 +524,13 @@ var res = await sdk.Generation.NameOverrideAsync(EnumNameOverride.Value3, "examp
 
 | Parameter                                                       | Type                                                            | Required                                                        | Description                                                     | Example                                                         |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `TestEnumQueryParam`                                            | [EnumNameOverride](../../models/operations/EnumNameOverride.md) | :heavy_check_mark:                                              | An enum type                                                    | value3                                                          |
+| `TestEnumQueryParam`                                            | [EnumNameOverride](../../Models/Operations/EnumNameOverride.md) | :heavy_check_mark:                                              | An enum type                                                    | value3                                                          |
 | `TestQueryParam`                                                | *string*                                                        | :heavy_check_mark:                                              | N/A                                                             | example                                                         |
 
 
 ### Response
 
-**[NameOverrideGetResponse](../../models/operations/NameOverrideGetResponse.md)**
+**[NameOverrideGetResponse](../../Models/Operations/NameOverrideGetResponse.md)**
 
 
 ## ObjectCircularReferenceGet
@@ -557,7 +557,7 @@ var res = await sdk.Generation.ObjectCircularReferenceGetAsync();
 
 ### Response
 
-**[ObjectCircularReferenceGetResponse](../../models/operations/ObjectCircularReferenceGetResponse.md)**
+**[ObjectCircularReferenceGetResponse](../../Models/Operations/ObjectCircularReferenceGetResponse.md)**
 
 
 ## OneOfCircularReferenceGet
@@ -584,7 +584,7 @@ var res = await sdk.Generation.OneOfCircularReferenceGetAsync();
 
 ### Response
 
-**[OneOfCircularReferenceGetResponse](../../models/operations/OneOfCircularReferenceGetResponse.md)**
+**[OneOfCircularReferenceGetResponse](../../Models/Operations/OneOfCircularReferenceGetResponse.md)**
 
 
 ## TypedParameterGenerationGet
@@ -621,12 +621,12 @@ var res = await sdk.Generation.TypedParameterGenerationGetAsync(879275, LocalDat
 | `Bigint`                                                            | *BigInteger*                                                        | :heavy_minus_sign:                                                  | N/A                                                                 |
 | `Date`                                                              | [LocalDate](https://nodatime.org/3.1.x/api/NodaTime.LocalDate.html) | :heavy_minus_sign:                                                  | N/A                                                                 |
 | `Decimal`                                                           | *decimal*                                                           | :heavy_minus_sign:                                                  | N/A                                                                 |
-| `Obj`                                                               | [Obj](../../models/operations/Obj.md)                               | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `Obj`                                                               | [Obj](../../Models/Operations/Obj.md)                               | :heavy_minus_sign:                                                  | N/A                                                                 |
 
 
 ### Response
 
-**[TypedParameterGenerationGetResponse](../../models/operations/TypedParameterGenerationGetResponse.md)**
+**[TypedParameterGenerationGetResponse](../../Models/Operations/TypedParameterGenerationGetResponse.md)**
 
 
 ## UsageExamplePost
@@ -701,13 +701,13 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `request`                                                                       | [UsageExamplePostRequest](../../models/operations/UsageExamplePostRequest.md)   | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
-| `security`                                                                      | [UsageExamplePostSecurity](../../models/operations/UsageExamplePostSecurity.md) | :heavy_check_mark:                                                              | The security requirements to use for the request.                               |
+| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                 | [UsageExamplePostRequest](../../Models/Operations/UsageExamplePostRequest.md)                             | :heavy_check_mark:                                                                                        | The request object to use for the request.                                                                |
+| `security`                                                                                                | [Openapi.Models.Operations.UsageExamplePostSecurity](../../Models/Operations/UsageExamplePostSecurity.md) | :heavy_check_mark:                                                                                        | The security requirements to use for the request.                                                         |
 
 
 ### Response
 
-**[UsageExamplePostResponse](../../models/operations/UsageExamplePostResponse.md)**
+**[UsageExamplePostResponse](../../Models/Operations/UsageExamplePostResponse.md)**
 

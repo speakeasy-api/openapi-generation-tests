@@ -1,5 +1,5 @@
 # Flattening
-(*.flattening*)
+(*flattening*)
 
 ## Overview
 
@@ -63,16 +63,16 @@ const str: string = "string";
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `simpleObject`                                               | [shared.SimpleObject](../../models/shared/simpleobject.md)   | :heavy_check_mark:                                           | N/A                                                          |
-| `str`                                                        | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `simpleObject`                                                    | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md) | :heavy_check_mark:                                                | N/A                                                               |
+| `str`                                                             | *string*                                                          | :heavy_check_mark:                                                | N/A                                                               |
+| `config`                                                          | [AxiosRequestConfig](https://axios-http.com/docs/req_config)      | :heavy_minus_sign:                                                | Available config options for making requests.                     |
 
 
 ### Response
 
-**Promise<[operations.ComponentBodyAndParamConflictResponse](../../models/operations/componentbodyandparamconflictresponse.md)>**
+**Promise<[operations.ComponentBodyAndParamConflictResponse](../../sdk/models/operations/componentbodyandparamconflictresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -129,16 +129,16 @@ const simpleObject: SimpleObject = {
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `paramStr`                                                   | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `simpleObject`                                               | [shared.SimpleObject](../../models/shared/simpleobject.md)   | :heavy_check_mark:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `paramStr`                                                        | *string*                                                          | :heavy_check_mark:                                                | N/A                                                               |
+| `simpleObject`                                                    | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md) | :heavy_check_mark:                                                | N/A                                                               |
+| `config`                                                          | [AxiosRequestConfig](https://axios-http.com/docs/req_config)      | :heavy_minus_sign:                                                | Available config options for making requests.                     |
 
 
 ### Response
 
-**Promise<[operations.ComponentBodyAndParamNoConflictResponse](../../models/operations/componentbodyandparamnoconflictresponse.md)>**
+**Promise<[operations.ComponentBodyAndParamNoConflictResponse](../../sdk/models/operations/componentbodyandparamnoconflictresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -183,7 +183,7 @@ const strQueryParameter: string = "string";
 
 ### Response
 
-**Promise<[operations.ConflictingParamsResponse](../../models/operations/conflictingparamsresponse.md)>**
+**Promise<[operations.ConflictingParamsResponse](../../sdk/models/operations/conflictingparamsresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -221,16 +221,16 @@ const str: string = "string";
 
 ### Parameters
 
-| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                        | [operations.InlineBodyAndParamConflictRequestBody](../../models/operations/inlinebodyandparamconflictrequestbody.md) | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
-| `str`                                                                                                                | *string*                                                                                                             | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
-| `config`                                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                         | :heavy_minus_sign:                                                                                                   | Available config options for making requests.                                                                        |
+| Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                                               | [operations.InlineBodyAndParamConflictRequestBody](../../../sdk/models/operations/inlinebodyandparamconflictrequestbody.md) | :heavy_check_mark:                                                                                                          | N/A                                                                                                                         |
+| `str`                                                                                                                       | *string*                                                                                                                    | :heavy_check_mark:                                                                                                          | N/A                                                                                                                         |
+| `config`                                                                                                                    | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                | :heavy_minus_sign:                                                                                                          | Available config options for making requests.                                                                               |
 
 
 ### Response
 
-**Promise<[operations.InlineBodyAndParamConflictResponse](../../models/operations/inlinebodyandparamconflictresponse.md)>**
+**Promise<[operations.InlineBodyAndParamConflictResponse](../../sdk/models/operations/inlinebodyandparamconflictresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -268,16 +268,16 @@ const paramStr: string = "string";
 
 ### Parameters
 
-| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `requestBody`                                                                                                            | [operations.InlineBodyAndParamNoConflictRequestBody](../../models/operations/inlinebodyandparamnoconflictrequestbody.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
-| `paramStr`                                                                                                               | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
-| `config`                                                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                             | :heavy_minus_sign:                                                                                                       | Available config options for making requests.                                                                            |
+| Parameter                                                                                                                       | Type                                                                                                                            | Required                                                                                                                        | Description                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                                                   | [operations.InlineBodyAndParamNoConflictRequestBody](../../../sdk/models/operations/inlinebodyandparamnoconflictrequestbody.md) | :heavy_check_mark:                                                                                                              | N/A                                                                                                                             |
+| `paramStr`                                                                                                                      | *string*                                                                                                                        | :heavy_check_mark:                                                                                                              | N/A                                                                                                                             |
+| `config`                                                                                                                        | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                    | :heavy_minus_sign:                                                                                                              | Available config options for making requests.                                                                                   |
 
 
 ### Response
 
-**Promise<[operations.InlineBodyAndParamNoConflictResponse](../../models/operations/inlinebodyandparamnoconflictresponse.md)>**
+**Promise<[operations.InlineBodyAndParamNoConflictResponse](../../sdk/models/operations/inlinebodyandparamnoconflictresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

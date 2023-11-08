@@ -50,12 +50,12 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [string](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+| `$request`                                 | [string](../../.md)                        | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\PutAnythingIgnoredGenerationResponse](../../models/operations/PutAnythingIgnoredGenerationResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\PutAnythingIgnoredGenerationResponse](../../Models/Operations/PutAnythingIgnoredGenerationResponse.md)**
 
 
 ## responseBodyJsonGet
@@ -92,5 +92,5 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyJsonGetResponse](../../models/operations/ResponseBodyJsonGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyJsonGetResponse](../../Models/Operations/ResponseBodyJsonGetResponse.md)**
 

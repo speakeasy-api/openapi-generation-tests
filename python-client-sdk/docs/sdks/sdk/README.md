@@ -42,7 +42,7 @@ if res.object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [str](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [str](../../models/.md)                    | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response

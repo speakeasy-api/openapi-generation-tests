@@ -1,5 +1,5 @@
 # Resource
-(*.Resource*)
+(*Resource*)
 
 ### Available Operations
 
@@ -40,12 +40,12 @@ var res = await sdk.Resource.CreateFileAsync(new CreateFileRequestBody() {
 
 | Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `request`                                                                 | [CreateFileRequestBody](../../models/operations/CreateFileRequestBody.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+| `request`                                                                 | [CreateFileRequestBody](../../Models/Operations/CreateFileRequestBody.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 
 
 ### Response
 
-**[CreateFileResponse](../../models/operations/CreateFileResponse.md)**
+**[CreateFileResponse](../../Models/Operations/CreateFileResponse.md)**
 
 
 ## CreateResource
@@ -80,6 +80,7 @@ var res = await sdk.Resource.CreateResourceAsync(new ExampleResource() {
     ArrayOfString = new List<string>() {
         "string",
     },
+    InlineObject = new InlineObject() {},
     MapOfInteger = new Dictionary<string, long>() {
         { "key", 271791 },
     },
@@ -95,12 +96,12 @@ var res = await sdk.Resource.CreateResourceAsync(new ExampleResource() {
 
 | Parameter                                                 | Type                                                      | Required                                                  | Description                                               |
 | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `request`                                                 | [ExampleResource](../../models/shared/ExampleResource.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
+| `request`                                                 | [ExampleResource](../../Models/Shared/ExampleResource.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
 
 
 ### Response
 
-**[CreateResourceResponse](../../models/operations/CreateResourceResponse.md)**
+**[CreateResourceResponse](../../Models/Operations/CreateResourceResponse.md)**
 
 
 ## DeleteResource
@@ -134,7 +135,7 @@ var res = await sdk.Resource.DeleteResourceAsync("string");
 
 ### Response
 
-**[DeleteResourceResponse](../../models/operations/DeleteResourceResponse.md)**
+**[DeleteResourceResponse](../../Models/Operations/DeleteResourceResponse.md)**
 
 
 ## GetResource
@@ -168,7 +169,7 @@ var res = await sdk.Resource.GetResourceAsync("string");
 
 ### Response
 
-**[GetResourceResponse](../../models/operations/GetResourceResponse.md)**
+**[GetResourceResponse](../../Models/Operations/GetResourceResponse.md)**
 
 
 ## UpdateResource
@@ -202,5 +203,5 @@ var res = await sdk.Resource.UpdateResourceAsync("string");
 
 ### Response
 
-**[UpdateResourceResponse](../../models/operations/UpdateResourceResponse.md)**
+**[UpdateResourceResponse](../../Models/Operations/UpdateResourceResponse.md)**
 

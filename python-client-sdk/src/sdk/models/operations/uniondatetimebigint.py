@@ -10,16 +10,6 @@ from sdk import utils
 from typing import Optional, Union
 
 
-@dataclasses.dataclass
-class UnionDateTimeBigIntRequestBody:
-    pass
-
-
-@dataclasses.dataclass
-class UnionDateTimeBigIntJSON:
-    pass
-
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class UnionDateTimeBigIntRes:

@@ -8,16 +8,6 @@ from sdk import utils
 from typing import Optional, Union
 
 
-@dataclasses.dataclass
-class PrimitiveTypeOneOfPostRequestBody:
-    pass
-
-
-@dataclasses.dataclass
-class PrimitiveTypeOneOfPostJSON:
-    pass
-
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class PrimitiveTypeOneOfPostRes:

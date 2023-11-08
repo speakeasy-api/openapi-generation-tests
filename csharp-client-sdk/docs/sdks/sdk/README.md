@@ -43,7 +43,7 @@ var res = await sdk.PutAnythingIgnoredGenerationAsync("string");
 
 ### Response
 
-**[PutAnythingIgnoredGenerationResponse](../../models/operations/PutAnythingIgnoredGenerationResponse.md)**
+**[PutAnythingIgnoredGenerationResponse](../../Models/Operations/PutAnythingIgnoredGenerationResponse.md)**
 
 
 ## ResponseBodyJsonGet
@@ -70,5 +70,5 @@ var res = await sdk.ResponseBodyJsonGetAsync();
 
 ### Response
 
-**[ResponseBodyJsonGetResponse](../../models/operations/ResponseBodyJsonGetResponse.md)**
+**[ResponseBodyJsonGetResponse](../../Models/Operations/ResponseBodyJsonGetResponse.md)**
 

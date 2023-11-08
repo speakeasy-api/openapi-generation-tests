@@ -80,6 +80,17 @@ func (e *EnumStr) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type InlineObject struct {
+	InlineName *string `json:"inline_name,omitempty"`
+}
+
+func (o *InlineObject) GetInlineName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.InlineName
+}
+
 type ExampleResource struct {
 	ArrayOfNumber []float64         `json:"arrayOfNumber,omitempty"`
 	ArrayOfString []string          `json:"arrayOfString,omitempty"`
@@ -88,9 +99,11 @@ type ExampleResource struct {
 	EnumNumber    *EnumNumber       `json:"enumNumber,omitempty"`
 	EnumStr       *EnumStr          `json:"enumStr,omitempty"`
 	ID            string            `json:"id"`
+	InlineObject  *InlineObject     `json:"inlineObject,omitempty"`
 	MapOfInteger  map[string]int64  `json:"mapOfInteger,omitempty"`
 	MapOfString   map[string]string `json:"mapOfString,omitempty"`
 	Name          string            `json:"name"`
+	NamePrefix    *string           `json:"name_prefix,omitempty"`
 	UpdatedAt     *time.Time        `json:"updatedAt,omitempty"`
 	Vehicle       ExampleVehicle    `json:"vehicle"`
 }
@@ -155,6 +168,13 @@ func (o *ExampleResource) GetID() string {
 	return o.ID
 }
 
+func (o *ExampleResource) GetInlineObject() *InlineObject {
+	if o == nil {
+		return nil
+	}
+	return o.InlineObject
+}
+
 func (o *ExampleResource) GetMapOfInteger() map[string]int64 {
 	if o == nil {
 		return nil
@@ -174,6 +194,13 @@ func (o *ExampleResource) GetName() string {
 		return ""
 	}
 	return o.Name
+}
+
+func (o *ExampleResource) GetNamePrefix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NamePrefix
 }
 
 func (o *ExampleResource) GetUpdatedAt() *time.Time {

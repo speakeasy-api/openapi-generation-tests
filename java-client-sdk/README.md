@@ -6,7 +6,7 @@
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:2.0.0'
+implementation 'org.openapis.openapi:openapi:2.1.0'
 ```
 <!-- End SDK Installation -->
 
@@ -192,7 +192,7 @@ public class Application {
 * [putAnythingIgnoredGeneration](docs/sdks/sdk/README.md#putanythingignoredgeneration)
 * [responseBodyJsonGet](docs/sdks/sdk/README.md#responsebodyjsonget)
 
-### [.generation](docs/sdks/generation/README.md)
+### [generation](docs/sdks/generation/README.md)
 
 * [anchorTypesGet](docs/sdks/generation/README.md#anchortypesget)
 * [arrayCircularReferenceGet](docs/sdks/generation/README.md#arraycircularreferenceget)
@@ -215,13 +215,13 @@ public class Application {
 * [typedParameterGenerationGet](docs/sdks/generation/README.md#typedparametergenerationget)
 * [usageExamplePost](docs/sdks/generation/README.md#usageexamplepost) - An operation used for testing usage examples
 
-### [.errors](docs/sdks/errors/README.md)
+### [errors](docs/sdks/errors/README.md)
 
 * [connectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
 * [statusGetError](docs/sdks/errors/README.md#statusgeterror)
 * [statusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
 
-### [.unions](docs/sdks/unions/README.md)
+### [unions](docs/sdks/unions/README.md)
 
 * [flattenedTypedObjectPost](docs/sdks/unions/README.md#flattenedtypedobjectpost)
 * [mixedTypeOneOfPost](docs/sdks/unions/README.md#mixedtypeoneofpost)
@@ -239,7 +239,7 @@ public class Application {
 * [unionDateTimeNull](docs/sdks/unions/README.md#uniondatetimenull)
 * [weaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
 
-### [.flattening](docs/sdks/flattening/README.md)
+### [flattening](docs/sdks/flattening/README.md)
 
 * [componentBodyAndParamConflict](docs/sdks/flattening/README.md#componentbodyandparamconflict)
 * [componentBodyAndParamNoConflict](docs/sdks/flattening/README.md#componentbodyandparamnoconflict)
@@ -247,12 +247,12 @@ public class Application {
 * [inlineBodyAndParamConflict](docs/sdks/flattening/README.md#inlinebodyandparamconflict)
 * [inlineBodyAndParamNoConflict](docs/sdks/flattening/README.md#inlinebodyandparamnoconflict)
 
-### [.globals](docs/sdks/globals/README.md)
+### [globals](docs/sdks/globals/README.md)
 
 * [globalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
 * [globalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
 
-### [.parameters](docs/sdks/parameters/README.md)
+### [parameters](docs/sdks/parameters/README.md)
 
 * [deepObjectQueryParamsMap](docs/sdks/parameters/README.md#deepobjectqueryparamsmap)
 * [deepObjectQueryParamsObject](docs/sdks/parameters/README.md#deepobjectqueryparamsobject)
@@ -279,23 +279,23 @@ public class Application {
 * [simplePathParameterPrimitives](docs/sdks/parameters/README.md#simplepathparameterprimitives)
 
 
-### [.nest.first](docs/sdks/sdkfirst/README.md)
+### [nest.first](docs/sdks/sdkfirst/README.md)
 
 * [get](docs/sdks/sdkfirst/README.md#get)
 
-### [.nested](docs/sdks/nested/README.md)
+### [nested](docs/sdks/nested/README.md)
 
 * [get](docs/sdks/nested/README.md#get)
 
-### [.nested.first](docs/sdks/sdknestedfirst/README.md)
+### [nested.first](docs/sdks/sdknestedfirst/README.md)
 
 * [get](docs/sdks/sdknestedfirst/README.md#get)
 
-### [.nested.second](docs/sdks/sdksecond/README.md)
+### [nested.second](docs/sdks/sdksecond/README.md)
 
 * [get](docs/sdks/sdksecond/README.md#get)
 
-### [.requestBodies](docs/sdks/requestbodies/README.md)
+### [requestBodies](docs/sdks/requestbodies/README.md)
 
 * [nullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
 * [nullableRequiredEmptyObjectPost](docs/sdks/requestbodies/README.md#nullablerequiredemptyobjectpost)
@@ -379,7 +379,7 @@ public class Application {
 * [requestBodyWriteOnlyOutput](docs/sdks/requestbodies/README.md#requestbodywriteonlyoutput)
 * [requestBodyWriteOnlyUnion](docs/sdks/requestbodies/README.md#requestbodywriteonlyunion)
 
-### [.responseBodies](docs/sdks/responsebodies/README.md)
+### [responseBodies](docs/sdks/responsebodies/README.md)
 
 * [responseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
 * [responseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
@@ -393,7 +393,7 @@ public class Application {
 * [responseBodyXmlGet](docs/sdks/responsebodies/README.md#responsebodyxmlget)
 * [responseBodyZeroValueComplexTypePtrsPost](docs/sdks/responsebodies/README.md#responsebodyzerovaluecomplextypeptrspost)
 
-### [.servers](docs/sdks/servers/README.md)
+### [servers](docs/sdks/servers/README.md)
 
 * [selectGlobalServer](docs/sdks/servers/README.md#selectglobalserver)
 * [selectServerWithID](docs/sdks/servers/README.md#selectserverwithid) - Select a server by ID.
@@ -402,12 +402,12 @@ public class Application {
 * [serverWithTemplatesGlobal](docs/sdks/servers/README.md#serverwithtemplatesglobal)
 * [serversByIDWithTemplates](docs/sdks/servers/README.md#serversbyidwithtemplates)
 
-### [.telemetry](docs/sdks/telemetry/README.md)
+### [telemetry](docs/sdks/telemetry/README.md)
 
 * [telemetrySpeakeasyUserAgentGet](docs/sdks/telemetry/README.md#telemetryspeakeasyuseragentget)
 * [telemetryUserAgentGet](docs/sdks/telemetry/README.md#telemetryuseragentget)
 
-### [.authNew](docs/sdks/authnew/README.md)
+### [authNew](docs/sdks/authnew/README.md)
 
 * [apiKeyAuthGlobalNew](docs/sdks/authnew/README.md#apikeyauthglobalnew)
 * [authGlobal](docs/sdks/authnew/README.md#authglobal)
@@ -421,7 +421,7 @@ public class Application {
 * [oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [openIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
-### [.auth](docs/sdks/auth/README.md)
+### [auth](docs/sdks/auth/README.md)
 
 * [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
 * [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
@@ -432,11 +432,11 @@ public class Application {
 * [oauth2Override](docs/sdks/auth/README.md#oauth2override)
 * [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
-### [.documentation](docs/sdks/documentation/README.md)
+### [documentation](docs/sdks/documentation/README.md)
 
 * [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
 
-### [.resource](docs/sdks/resource/README.md)
+### [resource](docs/sdks/resource/README.md)
 
 * [createFile](docs/sdks/resource/README.md#createfile)
 * [createResource](docs/sdks/resource/README.md#createresource)
@@ -444,15 +444,15 @@ public class Application {
 * [getResource](docs/sdks/resource/README.md#getresource)
 * [updateResource](docs/sdks/resource/README.md#updateresource)
 
-### [.first](docs/sdks/first/README.md)
+### [first](docs/sdks/first/README.md)
 
 * [get](docs/sdks/first/README.md#get)
 
-### [.second](docs/sdks/second/README.md)
+### [second](docs/sdks/second/README.md)
 
 * [get](docs/sdks/second/README.md#get)
 
-### [.pagination](docs/sdks/pagination/README.md)
+### [pagination](docs/sdks/pagination/README.md)
 
 * [paginationCursorBody](docs/sdks/pagination/README.md#paginationcursorbody)
 * [paginationCursorParams](docs/sdks/pagination/README.md#paginationcursorparams)
@@ -461,7 +461,7 @@ public class Application {
 * [paginationLimitOffsetPageBody](docs/sdks/pagination/README.md#paginationlimitoffsetpagebody)
 * [paginationLimitOffsetPageParams](docs/sdks/pagination/README.md#paginationlimitoffsetpageparams)
 
-### [.retries](docs/sdks/retries/README.md)
+### [retries](docs/sdks/retries/README.md)
 
 * [retriesGet](docs/sdks/retries/README.md#retriesget)
 <!-- End SDK Available Operations -->

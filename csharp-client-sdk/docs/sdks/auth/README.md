@@ -1,5 +1,5 @@
 # Auth
-(*.Auth*)
+(*Auth*)
 
 ## Overview
 
@@ -38,14 +38,14 @@ var res = await sdk.Auth.ApiKeyAuthAsync(new ApiKeyAuthSecurity() {
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `security`                                                          | [ApiKeyAuthSecurity](../../models/operations/ApiKeyAuthSecurity.md) | :heavy_check_mark:                                                  | The security requirements to use for the request.                   |
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `security`                                                                                    | [Openapi.Models.Operations.ApiKeyAuthSecurity](../../Models/Operations/ApiKeyAuthSecurity.md) | :heavy_check_mark:                                                                            | The security requirements to use for the request.                                             |
 
 
 ### Response
 
-**[ApiKeyAuthResponse](../../models/operations/ApiKeyAuthResponse.md)**
+**[ApiKeyAuthResponse](../../Models/Operations/ApiKeyAuthResponse.md)**
 
 
 ## ApiKeyAuthGlobal
@@ -72,7 +72,7 @@ var res = await sdk.Auth.ApiKeyAuthGlobalAsync();
 
 ### Response
 
-**[ApiKeyAuthGlobalResponse](../../models/operations/ApiKeyAuthGlobalResponse.md)**
+**[ApiKeyAuthGlobalResponse](../../Models/Operations/ApiKeyAuthGlobalResponse.md)**
 
 
 ## BasicAuth
@@ -98,16 +98,16 @@ var res = await sdk.Auth.BasicAuthAsync(new BasicAuthSecurity() {
 
 ### Parameters
 
-| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
-| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `security`                                                        | [BasicAuthSecurity](../../models/operations/BasicAuthSecurity.md) | :heavy_check_mark:                                                | The security requirements to use for the request.                 |
-| `Passwd`                                                          | *string*                                                          | :heavy_check_mark:                                                | N/A                                                               |
-| `User`                                                            | *string*                                                          | :heavy_check_mark:                                                | N/A                                                               |
+| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `security`                                                                                  | [Openapi.Models.Operations.BasicAuthSecurity](../../Models/Operations/BasicAuthSecurity.md) | :heavy_check_mark:                                                                          | The security requirements to use for the request.                                           |
+| `Passwd`                                                                                    | *string*                                                                                    | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `User`                                                                                      | *string*                                                                                    | :heavy_check_mark:                                                                          | N/A                                                                                         |
 
 
 ### Response
 
-**[BasicAuthResponse](../../models/operations/BasicAuthResponse.md)**
+**[BasicAuthResponse](../../Models/Operations/BasicAuthResponse.md)**
 
 
 ## BearerAuth
@@ -132,14 +132,14 @@ var res = await sdk.Auth.BearerAuthAsync(new BearerAuthSecurity() {
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `security`                                                          | [BearerAuthSecurity](../../models/operations/BearerAuthSecurity.md) | :heavy_check_mark:                                                  | The security requirements to use for the request.                   |
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `security`                                                                                    | [Openapi.Models.Operations.BearerAuthSecurity](../../Models/Operations/BearerAuthSecurity.md) | :heavy_check_mark:                                                                            | The security requirements to use for the request.                                             |
 
 
 ### Response
 
-**[BearerAuthResponse](../../models/operations/BearerAuthResponse.md)**
+**[BearerAuthResponse](../../Models/Operations/BearerAuthResponse.md)**
 
 
 ## GlobalBearerAuth
@@ -166,7 +166,7 @@ var res = await sdk.Auth.GlobalBearerAuthAsync();
 
 ### Response
 
-**[GlobalBearerAuthResponse](../../models/operations/GlobalBearerAuthResponse.md)**
+**[GlobalBearerAuthResponse](../../Models/Operations/GlobalBearerAuthResponse.md)**
 
 
 ## Oauth2Auth
@@ -191,14 +191,14 @@ var res = await sdk.Auth.Oauth2AuthAsync(new Oauth2AuthSecurity() {
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `security`                                                          | [Oauth2AuthSecurity](../../models/operations/Oauth2AuthSecurity.md) | :heavy_check_mark:                                                  | The security requirements to use for the request.                   |
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `security`                                                                                    | [Openapi.Models.Operations.Oauth2AuthSecurity](../../Models/Operations/Oauth2AuthSecurity.md) | :heavy_check_mark:                                                                            | The security requirements to use for the request.                                             |
 
 
 ### Response
 
-**[Oauth2AuthResponse](../../models/operations/Oauth2AuthResponse.md)**
+**[Oauth2AuthResponse](../../Models/Operations/Oauth2AuthResponse.md)**
 
 
 ## Oauth2Override
@@ -223,14 +223,14 @@ var res = await sdk.Auth.Oauth2OverrideAsync(new Oauth2OverrideSecurity() {
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `security`                                                                  | [Oauth2OverrideSecurity](../../models/operations/Oauth2OverrideSecurity.md) | :heavy_check_mark:                                                          | The security requirements to use for the request.                           |
+| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `security`                                                                                            | [Openapi.Models.Operations.Oauth2OverrideSecurity](../../Models/Operations/Oauth2OverrideSecurity.md) | :heavy_check_mark:                                                                                    | The security requirements to use for the request.                                                     |
 
 
 ### Response
 
-**[Oauth2OverrideResponse](../../models/operations/Oauth2OverrideResponse.md)**
+**[Oauth2OverrideResponse](../../Models/Operations/Oauth2OverrideResponse.md)**
 
 
 ## OpenIdConnectAuth
@@ -255,12 +255,12 @@ var res = await sdk.Auth.OpenIdConnectAuthAsync(new OpenIdConnectAuthSecurity() 
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `security`                                                                        | [OpenIdConnectAuthSecurity](../../models/operations/OpenIdConnectAuthSecurity.md) | :heavy_check_mark:                                                                | The security requirements to use for the request.                                 |
+| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                  | [Openapi.Models.Operations.OpenIdConnectAuthSecurity](../../Models/Operations/OpenIdConnectAuthSecurity.md) | :heavy_check_mark:                                                                                          | The security requirements to use for the request.                                                           |
 
 
 ### Response
 
-**[OpenIdConnectAuthResponse](../../models/operations/OpenIdConnectAuthResponse.md)**
+**[OpenIdConnectAuthResponse](../../Models/Operations/OpenIdConnectAuthResponse.md)**
 
