@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```go
 package main
 
@@ -33,9 +31,10 @@ func main() {
 
 ```
 
+### Second
 
-## Second
 Do this second
+
 ```go
 package main
 

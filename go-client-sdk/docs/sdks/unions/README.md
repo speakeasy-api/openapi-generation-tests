@@ -513,7 +513,7 @@ func main() {
                 Bool: true,
                 Int: 1,
                 Map: map[string]shared.SimpleObject{
-                    "key2": shared.SimpleObject{
+                    "key": shared.SimpleObject{
                         Any: "any",
                         Bigint: big.NewInt(8821239038968084),
                         BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
@@ -533,7 +533,7 @@ func main() {
                         Str: "test",
                         StrOpt: openapi.String("testOptional"),
                     },
-                    "key": shared.SimpleObject{
+                    "key2": shared.SimpleObject{
                         Any: "any",
                         Bigint: big.NewInt(8821239038968084),
                         BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
@@ -780,6 +780,7 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -885,6 +886,7 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {

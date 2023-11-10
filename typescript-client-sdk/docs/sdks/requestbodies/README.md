@@ -946,7 +946,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     bool: true,
     int: 1,
     map: {
-      "key2": {
+      "key": {
         any: "any",
         bigint: 8821239038968084,
         bigintStr: "9223372036854775808",
@@ -966,7 +966,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         str: "test",
         strOpt: "testOptional",
       },
-      "key": {
+      "key2": {
         any: "any",
         bigint: 8821239038968084,
         bigintStr: "9223372036854775808",
@@ -2008,19 +2008,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
   });
 
   const res = await sdk.requestBodies.requestBodyPostDefaultsAndConsts({
-    constBigInt: 559205,
-    constBigIntStr: "string",
-    constBool: false,
-    constDate: new RFCDate("2021-09-13"),
-    constDateTime: new Date("2022-12-15T04:16:08.794Z"),
-    constDecimal: 9160.69,
-    constDecimalStr: "string",
-    constEnumInt: ConstEnumInt.One,
-    constEnumStr: ConstEnumStr.Three,
-    constInt: 299545,
-    constNum: 4612.63,
-    constStr: "string",
-    constStrNull: "string",
     normalField: "string",
   });
 
@@ -3857,7 +3844,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     bool: true,
     int: 1,
     map: {
-      "key2": {
+      "key": {
         any: "any",
         bigint: 8821239038968084,
         bigintStr: "9223372036854775808",
@@ -3877,7 +3864,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         str: "test",
         strOpt: "testOptional",
       },
-      "key": {
+      "key2": {
         any: "any",
         bigint: 8821239038968084,
         bigintStr: "9223372036854775808",

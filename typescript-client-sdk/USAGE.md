@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```typescript
 import { SDK } from "openapi";
 
@@ -22,9 +20,10 @@ import { SDK } from "openapi";
 
 ```
 
+### Second
 
-## Second
 Do this second
+
 ```typescript
 import { SDK } from "openapi";
 import {

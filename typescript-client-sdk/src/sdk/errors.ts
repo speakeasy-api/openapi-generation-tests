@@ -52,7 +52,7 @@ export class Errors {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -61,7 +61,7 @@ export class Errors {
         const res: operations.ConnectionErrorGetResponse =
             new operations.ConnectionErrorGetResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         switch (true) {
@@ -120,7 +120,7 @@ export class Errors {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -128,7 +128,7 @@ export class Errors {
 
         const res: operations.StatusGetErrorResponse = new operations.StatusGetErrorResponse({
             statusCode: httpRes.status,
-            contentType: contentType,
+            contentType: responseContentType,
             rawResponse: httpRes,
         });
         switch (true) {
@@ -193,7 +193,7 @@ export class Errors {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -202,7 +202,7 @@ export class Errors {
         const res: operations.StatusGetXSpeakeasyErrorsResponse =
             new operations.StatusGetXSpeakeasyErrorsResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
@@ -219,13 +219,13 @@ export class Errors {
                     httpRes
                 );
             case httpRes?.status == 500:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     const err = utils.objectToClass(JSON.parse(decodedRes), errors.ErrorT);
                     err.rawResponse = httpRes;
                     throw new errors.ErrorT(err);
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes
@@ -233,7 +233,7 @@ export class Errors {
                 }
                 break;
             case httpRes?.status == 501:
-                if (utils.matchContentType(contentType, `application/json`)) {
+                if (utils.matchContentType(responseContentType, `application/json`)) {
                     const err = utils.objectToClass(
                         JSON.parse(decodedRes),
                         errors.StatusGetXSpeakeasyErrorsResponseBody
@@ -242,7 +242,7 @@ export class Errors {
                     throw new errors.StatusGetXSpeakeasyErrorsResponseBody(err);
                 } else {
                     throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
+                        "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
                         httpRes

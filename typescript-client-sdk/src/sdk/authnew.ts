@@ -73,7 +73,7 @@ export class AuthNew {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -82,7 +82,7 @@ export class AuthNew {
         const res: operations.ApiKeyAuthGlobalNewResponse =
             new operations.ApiKeyAuthGlobalNewResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         switch (true) {
@@ -155,7 +155,7 @@ export class AuthNew {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -163,7 +163,7 @@ export class AuthNew {
 
         const res: operations.AuthGlobalResponse = new operations.AuthGlobalResponse({
             statusCode: httpRes.status,
-            contentType: contentType,
+            contentType: responseContentType,
             rawResponse: httpRes,
         });
         switch (true) {
@@ -233,7 +233,7 @@ export class AuthNew {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -241,7 +241,7 @@ export class AuthNew {
 
         const res: operations.BasicAuthNewResponse = new operations.BasicAuthNewResponse({
             statusCode: httpRes.status,
-            contentType: contentType,
+            contentType: responseContentType,
             rawResponse: httpRes,
         });
         switch (true) {
@@ -314,7 +314,7 @@ export class AuthNew {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -323,7 +323,7 @@ export class AuthNew {
         const res: operations.MultipleMixedOptionsAuthResponse =
             new operations.MultipleMixedOptionsAuthResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         switch (true) {
@@ -396,7 +396,7 @@ export class AuthNew {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -405,7 +405,7 @@ export class AuthNew {
         const res: operations.MultipleMixedSchemeAuthResponse =
             new operations.MultipleMixedSchemeAuthResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         switch (true) {
@@ -479,7 +479,7 @@ export class AuthNew {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -488,7 +488,7 @@ export class AuthNew {
         const res: operations.MultipleOptionsWithMixedSchemesAuthResponse =
             new operations.MultipleOptionsWithMixedSchemesAuthResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         switch (true) {
@@ -562,7 +562,7 @@ export class AuthNew {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -571,7 +571,7 @@ export class AuthNew {
         const res: operations.MultipleOptionsWithSimpleSchemesAuthResponse =
             new operations.MultipleOptionsWithSimpleSchemesAuthResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         switch (true) {
@@ -644,7 +644,7 @@ export class AuthNew {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -653,7 +653,7 @@ export class AuthNew {
         const res: operations.MultipleSimpleOptionsAuthResponse =
             new operations.MultipleSimpleOptionsAuthResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         switch (true) {
@@ -726,7 +726,7 @@ export class AuthNew {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -735,7 +735,7 @@ export class AuthNew {
         const res: operations.MultipleSimpleSchemeAuthResponse =
             new operations.MultipleSimpleSchemeAuthResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         switch (true) {
@@ -805,7 +805,7 @@ export class AuthNew {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -813,7 +813,7 @@ export class AuthNew {
 
         const res: operations.Oauth2AuthNewResponse = new operations.Oauth2AuthNewResponse({
             statusCode: httpRes.status,
-            contentType: contentType,
+            contentType: responseContentType,
             rawResponse: httpRes,
         });
         switch (true) {
@@ -883,7 +883,7 @@ export class AuthNew {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -892,7 +892,7 @@ export class AuthNew {
         const res: operations.OpenIdConnectAuthNewResponse =
             new operations.OpenIdConnectAuthNewResponse({
                 statusCode: httpRes.status,
-                contentType: contentType,
+                contentType: responseContentType,
                 rawResponse: httpRes,
             });
         switch (true) {

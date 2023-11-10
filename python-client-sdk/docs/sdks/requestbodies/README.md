@@ -2044,19 +2044,6 @@ s = sdk.SDK(
 )
 
 req = shared.DefaultsAndConsts(
-    const_big_int=559205,
-    const_big_int_str=233601,
-    const_bool=False,
-    const_date=dateutil.parser.parse('2022-12-15').date(),
-    const_date_time=dateutil.parser.isoparse('2023-10-01T02:16:56.173Z'),
-    const_decimal=Decimal('1120.58'),
-    const_decimal_str=Decimal('8445.08'),
-    const_enum_int=shared.ConstEnumInt.ONE,
-    const_enum_str=shared.ConstEnumStr.TWO,
-    const_int=450379,
-    const_num=7742.71,
-    const_str='string',
-    const_str_null='string',
     normal_field='string',
 )
 
@@ -2211,7 +2198,7 @@ req = shared.DeepObject(
     bool=True,
     int=1,
     map={
-        "key": shared.SimpleObject(
+        "key2": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
@@ -2231,7 +2218,7 @@ req = shared.DeepObject(
             str_='test',
             str_opt='testOptional',
         ),
-        "key2": shared.SimpleObject(
+        "key": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,

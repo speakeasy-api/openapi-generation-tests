@@ -2306,8 +2306,6 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
-	"math/big"
-	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -2321,19 +2319,6 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostDefaultsAndConsts(ctx, shared.DefaultsAndConsts{
-        ConstBigInt: big.NewInt(559205),
-        ConstBigIntStr: big.NewInt(233601),
-        ConstBool: false,
-        ConstDate: types.MustDateFromString("2022-12-15"),
-        ConstDateTime: types.MustTimeFromString("2023-10-01T02:16:56.173Z"),
-        ConstDecimal: types.MustNewDecimalFromString("1120.58"),
-        ConstDecimalStr: types.MustNewDecimalFromString("8445.08"),
-        ConstEnumInt: shared.ConstEnumIntOne,
-        ConstEnumStr: shared.ConstEnumStrTwo,
-        ConstInt: 450379,
-        ConstNum: 7742.71,
-        ConstStr: "string",
-        ConstStrNull: "string",
         NormalField: "string",
     })
     if err != nil {
@@ -2509,7 +2494,7 @@ func main() {
         Bool: true,
         Int: 1,
         Map: map[string]shared.SimpleObject{
-            "key2": shared.SimpleObject{
+            "key": shared.SimpleObject{
                 Any: "any",
                 Bigint: big.NewInt(8821239038968084),
                 BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
@@ -2529,7 +2514,7 @@ func main() {
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
             },
-            "key": shared.SimpleObject{
+            "key2": shared.SimpleObject{
                 Any: "any",
                 Bigint: big.NewInt(8821239038968084),
                 BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
@@ -2733,6 +2718,7 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"math/big"
 )
 
 func main() {
@@ -2785,6 +2771,7 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -2837,6 +2824,7 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -2889,6 +2877,7 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"math/big"
 )
 
 func main() {
@@ -2939,6 +2928,7 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"math/big"
 )
 
 func main() {
@@ -3039,6 +3029,7 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -3089,6 +3080,7 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -3139,6 +3131,7 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -3189,6 +3182,7 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -3389,6 +3383,7 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"math/big"
 )
 
 func main() {
@@ -3441,6 +3436,7 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -3493,6 +3489,7 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {

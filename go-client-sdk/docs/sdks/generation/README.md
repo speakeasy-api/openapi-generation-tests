@@ -187,6 +187,7 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -240,6 +241,7 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -293,6 +295,7 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -711,7 +714,6 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/callbacks"
 )
 
 func main() {
@@ -973,6 +975,8 @@ import(
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"math/big"
+	"openapi/v2/pkg/types"
 	"openapi/v2/pkg/models/operations"
 )
 

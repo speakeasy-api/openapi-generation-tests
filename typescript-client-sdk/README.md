@@ -18,6 +18,8 @@ yarn add https://gitpkg.now.sh/speakeasy-api/openapi-generation-tests/typescript
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+### Example 1
+
 ```typescript
 import { SDK } from "openapi";
 
@@ -39,9 +41,10 @@ import { SDK } from "openapi";
 
 ```
 
+### Second
 
-## Second
 Do this second
+
 ```typescript
 import { SDK } from "openapi";
 import {
@@ -408,17 +411,13 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 
 <!-- Start Pagination -->
-# Pagination
+## Pagination
 
 Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
 returned response object will have a `next` method that can be called to pull down the next group of results. If the
 return value of `next` is `null`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
-
-
-## Example
-
 ```typescript
 import { SDK } from "openapi";
 
@@ -450,14 +449,14 @@ import { SDK } from "openapi";
 
 
 <!-- Start Global Parameters -->
-# Global Parameters
+## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
 For example, you can set `globalPathParam` to `100` at SDK initialization and then you do not have to pass the same value on calls to operations like `globalPathParameterGet`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
-## Available Globals
+### Available Globals
 
 The following global parameters are available. The required parameters must be set when you initialize the SDK client.
 
@@ -467,8 +466,7 @@ The following global parameters are available. The required parameters must be s
 | globalQueryParam | string | ✔️ | The globalQueryParam parameter. |
 
 
-
-## Example #1
+### Example
 
 ```typescript
 import { SDK } from "openapi";
@@ -492,38 +490,12 @@ import { GlobalPathParameterGetRequest } from "openapi/dist/sdk/models/operation
 })();
 
 ```
-
-
-## Example #2
-
-```typescript
-import { SDK } from "openapi";
-import { GlobalsQueryParameterGetRequest } from "openapi/dist/sdk/models/operations";
-
-(async () => {
-    const sdk = new SDK({
-        security: {
-            apiKeyAuth: "Token YOUR_API_KEY",
-        },
-        globalPathParam: 100,
-        globalQueryParam: "some example global query param",
-    });
-    const globalQueryParam: string = "string";
-
-    const res = await sdk.globals.globalsQueryParameterGet(globalQueryParam);
-
-    if (res.statusCode == 200) {
-        // handle response
-    }
-})();
-
-```
 <!-- End Global Parameters -->
 
 
 
 <!-- Start Error Handling -->
-# Error Handling
+## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
 
@@ -533,8 +505,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 | errors.StatusGetXSpeakeasyErrorsResponseBody | 501                                          | application/json                             |
 | errors.SDKError                              | 400-600                                      | */*                                          |
 
-
-## Example
+Example
 
 ```typescript
 import { SDK } from "openapi";
@@ -574,9 +545,9 @@ import { StatusGetXSpeakeasyErrorsRequest } from "openapi/dist/sdk/models/operat
 
 
 <!-- Start Server Selection -->
-# Server Selection
+## Server Selection
 
-## Select Server by Index
+### Select Server by Index
 
 You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
@@ -588,17 +559,7 @@ You can override the default server globally by passing a server index to the `s
 | 3 | `http://localhost:35123/anything/{something}` | `something` (default is `something`) |
 | 4 | `{protocol}://{hostname}:{port}` | `hostname` (default is `localhost`), `port` (default is `35123`), `protocol` (default is `http`) |
 
-
-Some of the server options above contain variables. If you want to set the values of those variables, the following options are provided for doing so:
- * `hostname: string`
-
- * `port: string`
-
- * `protocol: string`
-
- * `something: models.ServerSomething`
-
-For example:
+#### Example
 
 ```typescript
 import { SDK } from "openapi";
@@ -622,11 +583,17 @@ import { SDK } from "openapi";
 
 ```
 
+#### Variables
 
-## Override Server URL Per-Client
+Some of the server options above contain variables. If you want to set the values of those variables, the following optional parameters are available when initializing the SDK client instance:
+ * `hostname: string`
+ * `port: string`
+ * `protocol: string`
+ * `something: models.ServerSomething`
+
+### Override Server URL Per-Client
 
 The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
-
 ```typescript
 import { SDK } from "openapi";
 
@@ -649,10 +616,9 @@ import { SDK } from "openapi";
 
 ```
 
-## Override Server URL Per-Operation
+### Override Server URL Per-Operation
 
 The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
-
 ```typescript
 import { SDK } from "openapi";
 
@@ -678,10 +644,9 @@ import { SDK } from "openapi";
 
 
 <!-- Start Custom HTTP Client -->
-# Custom HTTP Client
+## Custom HTTP Client
 
 The Typescript SDK makes API calls using the (axios)[https://axios-http.com/docs/intro] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
-
 
 For example, you could specify a header for every request that your sdk makes as follows:
 
@@ -693,7 +658,6 @@ const httpClient = axios.create({
     headers: {'x-custom-header': 'someValue'}
 })
 
-
 const sdk = new SDK({defaultClient: httpClient});
 ```
 <!-- End Custom HTTP Client -->
@@ -701,15 +665,11 @@ const sdk = new SDK({defaultClient: httpClient});
 
 
 <!-- Start Retries -->
-# Retries
+## Retries
 
 Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
 
 To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
-
-
-## Example
-
 ```typescript
 import { SDK } from "openapi";
 import { RetriesGetRequest } from "openapi/dist/sdk/models/operations";
@@ -744,10 +704,6 @@ import { RetriesGetRequest } from "openapi/dist/sdk/models/operations";
 ```
 
 If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
-
-
-## Example
-
 ```typescript
 import { SDK } from "openapi";
 import { RetriesGetRequest } from "openapi/dist/sdk/models/operations";
@@ -786,9 +742,9 @@ import { RetriesGetRequest } from "openapi/dist/sdk/models/operations";
 
 
 <!-- Start Authentication -->
-# Authentication
+## Authentication
 
-## Per-Client Security Schemes
+### Per-Client Security Schemes
 
 This SDK supports the following security schemes globally:
 
@@ -799,7 +755,6 @@ This SDK supports the following security schemes globally:
 | `oauth2`        | oauth2          | OAuth2 token    |
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
-
 ```typescript
 import { SDK } from "openapi";
 
@@ -821,11 +776,9 @@ import { SDK } from "openapi";
 
 ```
 
-## Per-Operation Security Schemes
+### Per-Operation Security Schemes
 
 Some operations in this SDK require the security scheme to be specified at the request level. For example:
-## Second
-Do this second
 ```typescript
 import { SDK } from "openapi";
 import {

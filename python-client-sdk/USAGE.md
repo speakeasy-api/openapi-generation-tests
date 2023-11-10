@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```python
 import sdk
 from sdk.models import shared
@@ -21,9 +19,10 @@ if res.object is not None:
     pass
 ```
 
+### Second
 
-## Second
 Do this second
+
 ```python
 import dateutil.parser
 import sdk

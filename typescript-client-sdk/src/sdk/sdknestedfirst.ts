@@ -45,7 +45,7 @@ export class SDKNestedFirst {
             ...config,
         });
 
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
 
         if (httpRes?.status == null) {
             throw new Error(`status code not found in response: ${httpRes}`);
@@ -53,7 +53,7 @@ export class SDKNestedFirst {
 
         const res: operations.NestedFirstGetResponse = new operations.NestedFirstGetResponse({
             statusCode: httpRes.status,
-            contentType: contentType,
+            contentType: responseContentType,
             rawResponse: httpRes,
         });
         switch (true) {

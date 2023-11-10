@@ -10,6 +10,8 @@ go get github.com/speakeasy-api/openapi-generation-tests/go-client-sdk
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+### Example 1
+
 ```go
 package main
 
@@ -42,9 +44,10 @@ func main() {
 
 ```
 
+### Second
 
-## Second
 Do this second
+
 ```go
 package main
 
@@ -416,17 +419,13 @@ func main() {
 
 
 <!-- Start Pagination -->
-# Pagination
+## Pagination
 
 Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
 returned response object will have a `Next` method that can be called to pull down the next group of results. If the
 return value of `Next` is `nil`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
-
-
-## Example
-
 ```go
 package main
 
@@ -502,14 +501,14 @@ d6 := types.MustDateFromString("2019-01-01") // returns types.Date and panics on
 
 
 <!-- Start Global Parameters -->
-# Global Parameters
+## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
 For example, you can set `globalPathParam` to `100` at SDK initialization and then you do not have to pass the same value on calls to operations like `GlobalPathParameterGet`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
-## Available Globals
+### Available Globals
 
 The following global parameters are available. The required parameters must be set when you initialize the SDK client.
 
@@ -519,8 +518,7 @@ The following global parameters are available. The required parameters must be s
 | globalQueryParam | string | ✔️ | The globalQueryParam parameter. |
 
 
-
-## Example #1
+### Example
 
 ```go
 package main
@@ -555,49 +553,12 @@ func main() {
 }
 
 ```
-
-
-## Example #2
-
-```go
-package main
-
-import (
-	"context"
-	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-)
-
-func main() {
-	s := openapi.New(
-		openapi.WithSecurity(shared.Security{
-			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
-	)
-
-	var globalQueryParam *string = "string"
-
-	ctx := context.Background()
-	res, err := s.Globals.GlobalsQueryParameterGet(ctx, globalQueryParam)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	if res.Res != nil {
-		// handle response
-	}
-}
-
-```
 <!-- End Global Parameters -->
 
 
 
 <!-- Start Error Handling -->
-# Error Handling
+## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
 
@@ -607,8 +568,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 | sdkerrors.StatusGetXSpeakeasyErrorsResponseBody | 501                                             | application/json                                |
 | sdkerrors.SDKError                              | 400-600                                         | */*                                             |
 
-
-## Example
+### Example
 
 ```go
 package main
@@ -661,9 +621,9 @@ func main() {
 
 
 <!-- Start Server Selection -->
-# Server Selection
+## Server Selection
 
-## Select Server by Index
+### Select Server by Index
 
 You can override the default server globally using the `WithServerIndex` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
@@ -675,17 +635,7 @@ You can override the default server globally using the `WithServerIndex` option 
 | 3 | `http://localhost:35123/anything/{something}` | `something` (default is `something`) |
 | 4 | `{protocol}://{hostname}:{port}` | `hostname` (default is `localhost`), `port` (default is `35123`), `protocol` (default is `http`) |
 
-
-Some of the server options above contain variables. If you want to set the values of those variables, the following options are provided for doing so:
- * `WithHostname string`
-
- * `WithPort string`
-
- * `WithProtocol string`
-
- * `WithSomething openapi.ServerSomething`
-
-For example:
+#### Example
 
 ```go
 package main
@@ -720,11 +670,17 @@ func main() {
 
 ```
 
+#### Variables
 
-## Override Server URL Per-Client
+Some of the server options above contain variables. If you want to set the values of those variables, the following options are provided for doing so:
+ * `WithHostname string`
+ * `WithPort string`
+ * `WithProtocol string`
+ * `WithSomething openapi.ServerSomething`
+
+### Override Server URL Per-Client
 
 The default server can also be overridden globally using the `WithServerURL` option when initializing the SDK client instance. For example:
-
 ```go
 package main
 
@@ -758,10 +714,9 @@ func main() {
 
 ```
 
-## Override Server URL Per-Operation
+### Override Server URL Per-Operation
 
 The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
-
 ```go
 package main
 
@@ -798,7 +753,7 @@ func main() {
 
 
 <!-- Start Custom HTTP Client -->
-# Custom HTTP Client
+## Custom HTTP Client
 
 The Go SDK makes API calls that wrap an internal HTTP client. The requirements for the HTTP client are very simple. It must match this interface:
 
@@ -829,15 +784,11 @@ This can be a convenient way to configure timeouts, cookies, proxies, custom hea
 
 
 <!-- Start Retries -->
-# Retries
+## Retries
 
 Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
 
 To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
-
-
-## Example
-
 ```go
 package main
 
@@ -886,10 +837,6 @@ func main() {
 ```
 
 If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
-
-
-## Example
-
 ```go
 package main
 
@@ -942,9 +889,9 @@ func main() {
 
 
 <!-- Start Authentication -->
-# Authentication
+## Authentication
 
-## Per-Client Security Schemes
+### Per-Client Security Schemes
 
 This SDK supports the following security schemes globally:
 
@@ -955,7 +902,6 @@ This SDK supports the following security schemes globally:
 | `Oauth2`        | oauth2          | OAuth2 token    |
 
 You can set the security parameters through the `WithSecurity` option when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
-
 ```go
 package main
 
@@ -988,11 +934,9 @@ func main() {
 
 ```
 
-## Per-Operation Security Schemes
+### Per-Operation Security Schemes
 
 Some operations in this SDK require the security scheme to be specified at the request level. For example:
-## Second
-Do this second
 ```go
 package main
 

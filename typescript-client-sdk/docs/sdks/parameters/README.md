@@ -48,8 +48,8 @@ import { DeepObjectQueryParamsMapRequest } from "openapi/dist/sdk/models/operati
     globalQueryParam: "some example global query param",
   });
 const mapParam: Record<string, string> = {
-  "test2": "value2",
   "test": "value",
+  "test2": "value2",
 };
 const mapArrParam: Record<string, string[]> = {
   "test": [
@@ -321,8 +321,8 @@ import { FormQueryParamsMapRequest } from "openapi/dist/sdk/models/operations";
     globalQueryParam: "some example global query param",
   });
 const mapParam: Record<string, string> = {
-  "test": "value",
   "test2": "value2",
+  "test": "value",
 };
 const mapParamExploded: Record<string, number> = {
   "test": 1,
@@ -841,7 +841,7 @@ const deepObjParam: DeepObject = {
   bool: true,
   int: 1,
   map: {
-    "key2": {
+    "key": {
       any: "any",
       bigint: 8821239038968084,
       bigintStr: "9223372036854775808",
@@ -861,7 +861,7 @@ const deepObjParam: DeepObject = {
       str: "test",
       strOpt: "testOptional",
     },
-    "key": {
+    "key2": {
       any: "any",
       bigint: 8821239038968084,
       bigintStr: "9223372036854775808",

@@ -8,6 +8,8 @@ generation:
   comments: {}
   sdkClassName: SDK
   repoURL: https://github.com/speakeasy-api/openapi-generation-tests.git
+  usageSnippets:
+    optionalPropertyRendering: withExample
 features:
   java:
     core: 3.0.2
