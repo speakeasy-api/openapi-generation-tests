@@ -28,6 +28,7 @@ namespace Openapi
         Task<BasicAuthResponse> BasicAuthAsync(BasicAuthSecurity security, string passwd, string user);
         Task<BearerAuthResponse> BearerAuthAsync(BearerAuthSecurity security);
         Task<GlobalBearerAuthResponse> GlobalBearerAuthAsync();
+        Task<NoAuthResponse> NoAuthAsync();
         Task<Oauth2AuthResponse> Oauth2AuthAsync(Oauth2AuthSecurity security);
         Task<Oauth2OverrideResponse> Oauth2OverrideAsync(Oauth2OverrideSecurity security);
         Task<OpenIdConnectAuthResponse> OpenIdConnectAuthAsync(OpenIdConnectAuthSecurity security);
@@ -40,10 +41,10 @@ namespace Openapi
     {
         public SDKConfig Config { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.3.0";
-        private const string _sdkGenVersion = "2.185.0";
+        private const string _sdkVersion = "0.3.1";
+        private const string _sdkGenVersion = "2.188.3";
         private const string _openapiDocVersion = "0.1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.3.0 2.185.0 0.1.0 openapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -279,6 +280,42 @@ namespace Openapi
                 return response;
             }
             if((response.StatusCode == 401))
+            {
+                
+                return response;
+            }
+            return response;
+        }
+        
+
+        public async Task<NoAuthResponse> NoAuthAsync()
+        {
+            string baseUrl = _serverUrl;
+            if (baseUrl.EndsWith("/"))
+            {
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+            }
+            var urlString = baseUrl + "/anything/no-auth";
+            
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
+            
+            
+            var client = _securityClient;
+            
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new NoAuthResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            
+            if((response.StatusCode == 200))
             {
                 
                 return response;

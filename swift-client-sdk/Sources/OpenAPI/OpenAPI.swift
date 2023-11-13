@@ -29,12 +29,12 @@ import Foundation
 /// - ``nested``
 /// - ``nestedFirst``
 /// - ``nestedSecond``
+/// - ``auth``
 /// - ``requestBodies``
 /// - ``responseBodies``
 /// - ``servers``
 /// - ``telemetry``
 /// - ``authNew``
-/// - ``auth``
 /// - ``documentation``
 /// - ``resource``
 /// - ``first``
@@ -63,6 +63,8 @@ public protocol OpenAPI {
     var nested: NestedAPI { get }
     var nestedFirst: NestedFirstAPI { get }
     var nestedSecond: NestedSecondAPI { get }
+    /// Endpoints for testing authentication.
+    var auth: AuthAPI { get }
     /// Endpoints for testing request bodies.
     var requestBodies: RequestBodiesAPI { get }
     /// Endpoints for testing response bodies.
@@ -73,8 +75,6 @@ public protocol OpenAPI {
     var telemetry: TelemetryAPI { get }
     /// Endpoints for testing authentication.
     var authNew: AuthNewAPI { get }
-    /// Endpoints for testing authentication.
-    var auth: AuthAPI { get }
     /// Testing for documentation extensions and tooling.
     var documentation: DocumentationAPI { get }
     var resource: ResourceAPI { get }
@@ -487,6 +487,44 @@ public protocol NestedFirstAPI {
 ///
 public protocol NestedSecondAPI {
     func nestedSecondGet() async throws -> Response<Operations.NestedSecondGetResponse>
+}
+
+// MARK: - AuthAPI
+
+/// Endpoints for testing authentication.
+///
+/// ## Topics
+///
+/// ### API calls
+///
+/// - ``apiKeyAuth(security:)``
+/// - ``apiKeyAuthGlobal()``
+/// - ``basicAuth(request:security:)``
+/// - ``bearerAuth(security:)``
+/// - ``globalBearerAuth()``
+/// - ``noAuth()``
+/// - ``oauth2Auth(security:)``
+/// - ``oauth2Override(request:security:)``
+/// - ``openIdConnectAuth(security:)``
+///
+public protocol AuthAPI {
+    func apiKeyAuth(security: Operations.ApiKeyAuthSecurity) async throws -> Response<Operations.ApiKeyAuthResponse>
+
+    func apiKeyAuthGlobal() async throws -> Response<Operations.ApiKeyAuthGlobalResponse>
+
+    func basicAuth(request: Operations.BasicAuthRequest, security: Operations.BasicAuthSecurity) async throws -> Response<Operations.BasicAuthResponse>
+
+    func bearerAuth(security: Operations.BearerAuthSecurity) async throws -> Response<Operations.BearerAuthResponse>
+
+    func globalBearerAuth() async throws -> Response<Operations.GlobalBearerAuthResponse>
+
+    func noAuth() async throws -> Response<Operations.NoAuthResponse>
+
+    func oauth2Auth(security: Operations.Oauth2AuthSecurity) async throws -> Response<Operations.Oauth2AuthResponse>
+
+    func oauth2Override(request: Operations.Oauth2OverrideRequest, security: Operations.Oauth2OverrideSecurity) async throws -> Response<Operations.Oauth2OverrideResponse>
+
+    func openIdConnectAuth(security: Operations.OpenIdConnectAuthSecurity) async throws -> Response<Operations.OpenIdConnectAuthResponse>
 }
 
 // MARK: - RequestBodiesAPI
@@ -2296,41 +2334,6 @@ public protocol AuthNewAPI {
     func oauth2AuthNew(request: Shared.AuthServiceRequestBody, security: Operations.Oauth2AuthNewSecurity, server: AuthNewServers.Oauth2AuthNew?) async throws -> Response<Operations.Oauth2AuthNewResponse>
 
     func openIdConnectAuthNew(request: Shared.AuthServiceRequestBody, security: Operations.OpenIdConnectAuthNewSecurity, server: AuthNewServers.OpenIdConnectAuthNew?) async throws -> Response<Operations.OpenIdConnectAuthNewResponse>
-}
-
-// MARK: - AuthAPI
-
-/// Endpoints for testing authentication.
-///
-/// ## Topics
-///
-/// ### API calls
-///
-/// - ``apiKeyAuth(security:)``
-/// - ``apiKeyAuthGlobal()``
-/// - ``basicAuth(request:security:)``
-/// - ``bearerAuth(security:)``
-/// - ``globalBearerAuth()``
-/// - ``oauth2Auth(security:)``
-/// - ``oauth2Override(request:security:)``
-/// - ``openIdConnectAuth(security:)``
-///
-public protocol AuthAPI {
-    func apiKeyAuth(security: Operations.ApiKeyAuthSecurity) async throws -> Response<Operations.ApiKeyAuthResponse>
-
-    func apiKeyAuthGlobal() async throws -> Response<Operations.ApiKeyAuthGlobalResponse>
-
-    func basicAuth(request: Operations.BasicAuthRequest, security: Operations.BasicAuthSecurity) async throws -> Response<Operations.BasicAuthResponse>
-
-    func bearerAuth(security: Operations.BearerAuthSecurity) async throws -> Response<Operations.BearerAuthResponse>
-
-    func globalBearerAuth() async throws -> Response<Operations.GlobalBearerAuthResponse>
-
-    func oauth2Auth(security: Operations.Oauth2AuthSecurity) async throws -> Response<Operations.Oauth2AuthResponse>
-
-    func oauth2Override(request: Operations.Oauth2OverrideRequest, security: Operations.Oauth2OverrideSecurity) async throws -> Response<Operations.Oauth2OverrideResponse>
-
-    func openIdConnectAuth(security: Operations.OpenIdConnectAuthSecurity) async throws -> Response<Operations.OpenIdConnectAuthResponse>
 }
 
 // MARK: - DocumentationAPI

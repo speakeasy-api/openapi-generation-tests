@@ -98,6 +98,8 @@ type SDK struct {
 	Parameters *Parameters
 	Nest       *Nest
 	Nested     *Nested
+	// Endpoints for testing authentication.
+	Auth *Auth
 	// Endpoints for testing request bodies.
 	RequestBodies *RequestBodies
 	// Endpoints for testing response bodies.
@@ -108,8 +110,6 @@ type SDK struct {
 	Telemetry *Telemetry
 	// Endpoints for testing authentication.
 	AuthNew *AuthNew
-	// Endpoints for testing authentication.
-	Auth *Auth
 	// Testing for documentation extensions in Go.
 	Documentation *Documentation
 	Resource      *Resource
@@ -301,9 +301,9 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.1.0",
-			SDKVersion:        "2.1.1",
-			GenVersion:        "2.187.7",
-			UserAgent:         "speakeasy-sdk/go 2.1.1 2.187.7 0.1.0 openapi",
+			SDKVersion:        "2.1.2",
+			GenVersion:        "2.188.3",
+			UserAgent:         "speakeasy-sdk/go 2.1.2 2.188.3 0.1.0 openapi",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},
@@ -357,6 +357,8 @@ func New(opts ...SDKOption) *SDK {
 
 	sdk.Nested = newNested(sdk.sdkConfiguration)
 
+	sdk.Auth = newAuth(sdk.sdkConfiguration)
+
 	sdk.RequestBodies = newRequestBodies(sdk.sdkConfiguration)
 
 	sdk.ResponseBodies = newResponseBodies(sdk.sdkConfiguration)
@@ -366,8 +368,6 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Telemetry = newTelemetry(sdk.sdkConfiguration)
 
 	sdk.AuthNew = newAuthNew(sdk.sdkConfiguration)
-
-	sdk.Auth = newAuth(sdk.sdkConfiguration)
 
 	sdk.Documentation = newDocumentation(sdk.sdkConfiguration)
 

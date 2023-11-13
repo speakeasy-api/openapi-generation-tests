@@ -9,6 +9,8 @@ gem specific_install https://github.com/speakeasy-api/openapi-generation-tests -
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+### Example 1
+
 ```ruby
 require_relative openapi
 
@@ -29,9 +31,10 @@ end
 
 ```
 
+### Second
 
-## Second
 Do this second
+
 ```ruby
 require_relative openapi
 
@@ -386,6 +389,18 @@ end
 
 * [get](docs/sdks/nestedsecond/README.md#get)
 
+### [Auth](docs/sdks/auth/README.md)
+
+* [api_key_auth](docs/sdks/auth/README.md#api_key_auth)
+* [api_key_auth_global](docs/sdks/auth/README.md#api_key_auth_global)
+* [basic_auth](docs/sdks/auth/README.md#basic_auth)
+* [bearer_auth](docs/sdks/auth/README.md#bearer_auth)
+* [global_bearer_auth](docs/sdks/auth/README.md#global_bearer_auth)
+* [no_auth](docs/sdks/auth/README.md#no_auth)
+* [oauth2_auth](docs/sdks/auth/README.md#oauth2_auth)
+* [oauth2_override](docs/sdks/auth/README.md#oauth2_override)
+* [open_id_connect_auth](docs/sdks/auth/README.md#open_id_connect_auth)
+
 ### [RequestBodies](docs/sdks/requestbodies/README.md)
 
 * [nullable_object_post](docs/sdks/requestbodies/README.md#nullable_object_post)
@@ -512,17 +527,6 @@ end
 * [oauth2_auth_new](docs/sdks/authnew/README.md#oauth2_auth_new)
 * [open_id_connect_auth_new](docs/sdks/authnew/README.md#open_id_connect_auth_new)
 
-### [Auth](docs/sdks/auth/README.md)
-
-* [api_key_auth](docs/sdks/auth/README.md#api_key_auth)
-* [api_key_auth_global](docs/sdks/auth/README.md#api_key_auth_global)
-* [basic_auth](docs/sdks/auth/README.md#basic_auth)
-* [bearer_auth](docs/sdks/auth/README.md#bearer_auth)
-* [global_bearer_auth](docs/sdks/auth/README.md#global_bearer_auth)
-* [oauth2_auth](docs/sdks/auth/README.md#oauth2_auth)
-* [oauth2_override](docs/sdks/auth/README.md#oauth2_override)
-* [open_id_connect_auth](docs/sdks/auth/README.md#open_id_connect_auth)
-
 ### [Documentation](docs/sdks/documentation/README.md)
 
 * [get_documentation_per_language](docs/sdks/documentation/README.md#get_documentation_per_language) - Gets documentation for some language, I guess.
@@ -566,14 +570,14 @@ end
 
 
 <!-- Start Global Parameters -->
-# Global Parameters
+## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
 For example, you can set `globalPathParam` to `100` at SDK initialization and then you do not have to pass the same value on calls to operations like `global_path_parameter_get`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
-## Available Globals
+### Available Globals
 
 The following global parameters are available. The required parameters must be set when you initialize the SDK client.
 
@@ -583,8 +587,7 @@ The following global parameters are available. The required parameters must be s
 | globalQueryParam | String | ✔️ | The globalQueryParam parameter. |
 
 
-
-## Example #1
+### Example
 
 ```ruby
 require_relative openapi
@@ -603,33 +606,6 @@ req = Operations::GlobalPathParameterGetRequest.new(
 )
     
 res = s.globals.global_path_parameter_get(req)
-
-if ! res.res.nil?
-  # handle response
-end
-
-```
-
-
-## Example #2
-
-```ruby
-require_relative openapi
-
-
-s = OpenApiSDK::SDK.new
-s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
-  )
-)
-
-   
-req = Operations::GlobalsQueryParameterGetRequest.new(
-  query_params=Operations::GlobalsQueryParameterGetRequest.new(),
-)
-    
-res = s.globals.globals_query_parameter_get(req)
 
 if ! res.res.nil?
   # handle response

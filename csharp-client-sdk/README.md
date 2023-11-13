@@ -26,6 +26,8 @@ dotnet add package openapi
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+### Example 1
+
 ```csharp
 using Openapi;
 using Openapi.Models.Shared;
@@ -43,9 +45,10 @@ var res = await sdk.Generation.GlobalNameOverriddenAsync();
 // handle response
 ```
 
+### Second
 
-## Second
 Do this second
+
 ```csharp
 using Openapi;
 using Openapi.Models.Operations;
@@ -219,6 +222,18 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 
 * [Get](docs/sdks/sdksecond/README.md#get)
 
+### [Auth](docs/sdks/auth/README.md)
+
+* [ApiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
+* [ApiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
+* [BasicAuth](docs/sdks/auth/README.md#basicauth)
+* [BearerAuth](docs/sdks/auth/README.md#bearerauth)
+* [GlobalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
+* [NoAuth](docs/sdks/auth/README.md#noauth)
+* [Oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
+* [Oauth2Override](docs/sdks/auth/README.md#oauth2override)
+* [OpenIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
+
 ### [RequestBodies](docs/sdks/requestbodies/README.md)
 
 * [NullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
@@ -345,17 +360,6 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [Oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [OpenIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
-### [Auth](docs/sdks/auth/README.md)
-
-* [ApiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
-* [ApiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
-* [BasicAuth](docs/sdks/auth/README.md#basicauth)
-* [BearerAuth](docs/sdks/auth/README.md#bearerauth)
-* [GlobalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
-* [Oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
-* [Oauth2Override](docs/sdks/auth/README.md#oauth2override)
-* [OpenIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
-
 ### [Documentation](docs/sdks/documentation/README.md)
 
 * [GetDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
@@ -395,14 +399,14 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 <!-- End Dev Containers -->
 
 <!-- Start Global Parameters -->
-# Global Parameters
+## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
 For example, you can set `globalPathParam` to `100` at SDK initialization and then you do not have to pass the same value on calls to operations like `GlobalPathParameterGet`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
-## Available Globals
+### Available Globals
 
 The following global parameters are available. The required parameters must be set when you initialize the SDK client.
 
@@ -412,8 +416,7 @@ The following global parameters are available. The required parameters must be s
 | globalQueryParam | string | ✔️ | The globalQueryParam parameter. |
 
 
-
-## Example #1
+### Example
 
 ```csharp
 using Openapi;
@@ -429,27 +432,6 @@ var sdk = new SDK(
 );
 
 var res = await sdk.Globals.GlobalPathParameterGetAsync(719830);
-
-// handle response
-```
-
-
-## Example #2
-
-```csharp
-using Openapi;
-using Openapi.Models.Shared;
-using Openapi.Models.Operations;
-
-var sdk = new SDK(
-    security: new Security() {
-        ApiKeyAuth = "Token YOUR_API_KEY",
-    },
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
-
-var res = await sdk.Globals.GlobalsQueryParameterGetAsync("string");
 
 // handle response
 ```

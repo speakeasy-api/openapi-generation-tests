@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```php
 <?php
 
@@ -29,9 +27,10 @@ try {
 
 ```
 
+### Second
 
-## Second
 Do this second
+
 ```php
 <?php
 

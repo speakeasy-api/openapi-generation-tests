@@ -239,6 +239,18 @@ func main() {
 
 * [Get](docs/sdks/sdksecond/README.md#get)
 
+### [Auth](docs/sdks/auth/README.md)
+
+* [APIKeyAuth](docs/sdks/auth/README.md#apikeyauth)
+* [APIKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
+* [BasicAuth](docs/sdks/auth/README.md#basicauth)
+* [BearerAuth](docs/sdks/auth/README.md#bearerauth)
+* [GlobalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
+* [NoAuth](docs/sdks/auth/README.md#noauth)
+* [Oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
+* [Oauth2Override](docs/sdks/auth/README.md#oauth2override)
+* [OpenIDConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
+
 ### [RequestBodies](docs/sdks/requestbodies/README.md)
 
 * [NullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
@@ -364,17 +376,6 @@ func main() {
 * [MultipleSimpleSchemeAuth](docs/sdks/authnew/README.md#multiplesimpleschemeauth)
 * [Oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [OpenIDConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
-
-### [Auth](docs/sdks/auth/README.md)
-
-* [APIKeyAuth](docs/sdks/auth/README.md#apikeyauth)
-* [APIKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
-* [BasicAuth](docs/sdks/auth/README.md#basicauth)
-* [BearerAuth](docs/sdks/auth/README.md#bearerauth)
-* [GlobalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
-* [Oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
-* [Oauth2Override](docs/sdks/auth/README.md#oauth2override)
-* [OpenIDConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
 ### [Documentation](docs/sdks/documentation/README.md)
 

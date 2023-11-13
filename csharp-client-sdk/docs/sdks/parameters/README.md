@@ -1058,8 +1058,8 @@ var res = await sdk.Parameters.PipeDelimitedQueryParamsArrayAsync(new List<strin
     1,
     2,
 }, new Dictionary<string, string>() {
-    { "key1", "val1" },
     { "key2", "val2" },
+    { "key1", "val1" },
 }, new SimpleObject() {
     Any = "any",
     Bool = true,

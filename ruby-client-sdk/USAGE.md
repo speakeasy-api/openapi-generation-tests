@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```ruby
 require_relative openapi
 
@@ -21,9 +19,10 @@ end
 
 ```
 
+### Second
 
-## Second
 Do this second
+
 ```ruby
 require_relative openapi
 

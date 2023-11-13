@@ -76,6 +76,10 @@ public class SDK {
     public Nest nest;
     public Nested nested;
     /**
+     * Endpoints for testing authentication.
+     */
+    public Auth auth;
+    /**
      * Endpoints for testing request bodies.
      */
     public RequestBodies requestBodies;
@@ -95,10 +99,6 @@ public class SDK {
      * Endpoints for testing authentication.
      */
     public AuthNew authNew;
-    /**
-     * Endpoints for testing authentication.
-     */
-    public Auth auth;
     /**
      * Testing for documentation extensions and tooling.
      */
@@ -346,6 +346,8 @@ public class SDK {
 		
 		this.nested = new Nested(this.sdkConfiguration);
 		
+		this.auth = new Auth(this.sdkConfiguration);
+		
 		this.requestBodies = new RequestBodies(this.sdkConfiguration);
 		
 		this.responseBodies = new ResponseBodies(this.sdkConfiguration);
@@ -355,8 +357,6 @@ public class SDK {
 		this.telemetry = new Telemetry(this.sdkConfiguration);
 		
 		this.authNew = new AuthNew(this.sdkConfiguration);
-		
-		this.auth = new Auth(this.sdkConfiguration);
 		
 		this.documentation = new Documentation(this.sdkConfiguration);
 		

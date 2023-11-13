@@ -55,6 +55,15 @@ class _AuthAPI: AuthAPI {
         )
     }
     
+    public func noAuth() async throws -> Response<Operations.NoAuthResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureNoAuthRequest(with: configuration)
+            },
+            handleResponse: handleNoAuthResponse
+        )
+    }
+    
     public func oauth2Auth(security: Operations.Oauth2AuthSecurity) async throws -> Response<Operations.Oauth2AuthResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
@@ -116,6 +125,12 @@ private func configureBearerAuthRequest(with configuration: URLRequestConfigurat
 
 private func configureGlobalBearerAuthRequest(with configuration: URLRequestConfiguration) throws {
     configuration.path = "/bearer#global"
+    configuration.method = .get
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configureNoAuthRequest(with configuration: URLRequestConfiguration) throws {
+    configuration.path = "/anything/no-auth"
     configuration.method = .get
     configuration.telemetryHeader = .speakeasyUserAgent
 }
@@ -227,6 +242,16 @@ private func handleGlobalBearerAuthResponse(response: Client.APIResponse) throws
             }
         }
     } else if httpResponse.statusCode == 401 { 
+        return .empty
+    }
+
+    return .empty
+}
+
+private func handleNoAuthResponse(response: Client.APIResponse) throws -> Operations.NoAuthResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
         return .empty
     }
 

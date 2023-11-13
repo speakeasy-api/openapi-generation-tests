@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```java
 package hello.world;
 
@@ -31,9 +29,10 @@ public class Application {
 }
 ```
 
+### Second
 
-## Second
 Do this second
+
 ```java
 package hello.world;
 

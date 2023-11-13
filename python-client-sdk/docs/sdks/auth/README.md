@@ -12,6 +12,7 @@ Endpoints for testing authentication.
 * [basic_auth](#basic_auth)
 * [bearer_auth](#bearer_auth)
 * [global_bearer_auth](#global_bearer_auth)
+* [no_auth](#no_auth)
 * [oauth2_auth](#oauth2_auth)
 * [oauth2_override](#oauth2_override)
 * [open_id_connect_auth](#open_id_connect_auth)
@@ -198,6 +199,40 @@ if res.token is not None:
 ### Response
 
 **[operations.GlobalBearerAuthResponse](../../models/operations/globalbearerauthresponse.md)**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
+
+## no_auth
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.auth.no_auth()
+
+if res.status_code == 200:
+    # handle response
+    pass
+```
+
+
+### Response
+
+**[operations.NoAuthResponse](../../models/operations/noauthresponse.md)**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

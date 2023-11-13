@@ -52,13 +52,13 @@ const mapParam: Record<string, string> = {
   "test2": "value2",
 };
 const mapArrParam: Record<string, string[]> = {
-  "test": [
-    "test",
-    "test2",
-  ],
   "test2": [
     "test3",
     "test4",
+  ],
+  "test": [
+    "test",
+    "test2",
   ],
 };
 
@@ -321,8 +321,8 @@ import { FormQueryParamsMapRequest } from "openapi/dist/sdk/models/operations";
     globalQueryParam: "some example global query param",
   });
 const mapParam: Record<string, string> = {
-  "test2": "value2",
   "test": "value",
+  "test2": "value2",
 };
 const mapParamExploded: Record<string, number> = {
   "test": 1,
@@ -608,8 +608,8 @@ import { HeaderParamsMapRequest } from "openapi/dist/sdk/models/operations";
     globalQueryParam: "some example global query param",
   });
 const xHeaderMap: Record<string, string> = {
-  "key1": "value1",
   "key2": "value2",
+  "key1": "value1",
 };
 const xHeaderMapExplode: Record<string, string> = {
   "test1": "val1",

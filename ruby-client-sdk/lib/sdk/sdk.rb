@@ -12,7 +12,7 @@ module OpenApiSDK
   class SDK
     extend T::Sig
 
-    attr_accessor :generation, :errors, :unions, :flattening, :globals, :parameters, :nest_first, :nested, :nested_first, :nested_second, :request_bodies, :response_bodies, :servers, :telemetry, :auth_new, :auth, :documentation, :resource, :first, :second, :pagination, :retries
+    attr_accessor :generation, :errors, :unions, :flattening, :globals, :parameters, :nest_first, :nested, :nested_first, :nested_second, :auth, :request_bodies, :response_bodies, :servers, :telemetry, :auth_new, :documentation, :resource, :first, :second, :pagination, :retries
 
     attr_accessor :security, :language, :sdk_version, :gen_version
 
@@ -130,12 +130,12 @@ module OpenApiSDK
       @nested = Nested.new(@sdk_configuration)
       @nested_first = NestedFirst.new(@sdk_configuration)
       @nested_second = NestedSecond.new(@sdk_configuration)
+      @auth = Auth.new(@sdk_configuration)
       @request_bodies = RequestBodies.new(@sdk_configuration)
       @response_bodies = ResponseBodies.new(@sdk_configuration)
       @servers = Servers.new(@sdk_configuration)
       @telemetry = Telemetry.new(@sdk_configuration)
       @auth_new = AuthNew.new(@sdk_configuration)
-      @auth = Auth.new(@sdk_configuration)
       @documentation = Documentation.new(@sdk_configuration)
       @resource = Resource.new(@sdk_configuration)
       @first = First.new(@sdk_configuration)

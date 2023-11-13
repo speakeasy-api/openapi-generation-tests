@@ -85,6 +85,13 @@ class SDK
 	public NestedSecond $nestedSecond;
 	
     /**
+     * Endpoints for testing authentication.
+     * 
+     * @var Auth $$auth
+     */
+	public Auth $auth;
+	
+    /**
      * Endpoints for testing request bodies.
      * 
      * @var RequestBodies $$requestBodies
@@ -118,13 +125,6 @@ class SDK
      * @var AuthNew $$authNew
      */
 	public AuthNew $authNew;
-	
-    /**
-     * Endpoints for testing authentication.
-     * 
-     * @var Auth $$auth
-     */
-	public Auth $auth;
 	
     /**
      * Testing for documentation extensions and tooling.
@@ -192,6 +192,8 @@ class SDK
 		
 		$this->nestedSecond = new NestedSecond($this->sdkConfiguration);
 		
+		$this->auth = new Auth($this->sdkConfiguration);
+		
 		$this->requestBodies = new RequestBodies($this->sdkConfiguration);
 		
 		$this->responseBodies = new ResponseBodies($this->sdkConfiguration);
@@ -201,8 +203,6 @@ class SDK
 		$this->telemetry = new Telemetry($this->sdkConfiguration);
 		
 		$this->authNew = new AuthNew($this->sdkConfiguration);
-		
-		$this->auth = new Auth($this->sdkConfiguration);
 		
 		$this->documentation = new Documentation($this->sdkConfiguration);
 		

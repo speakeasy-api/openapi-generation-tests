@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```swift
 import Foundation
 import OpenAPI
@@ -20,9 +18,10 @@ case .empty:
 
 ```
 
+### Second
 
-## Second
 Do this second
+
 ```swift
 import Foundation
 import OpenAPI

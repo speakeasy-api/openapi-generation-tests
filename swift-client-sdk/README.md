@@ -28,13 +28,15 @@ You can add `OpenAPI` to your project directly in Xcode `(File > Add Packages...
 
 ```bash
 dependencies: [
-    .package(url: "", .upToNextMajor(from: "0.3.0"))
+    .package(url: "", .upToNextMajor(from: "0.3.1"))
 ]
 ```
 <!-- End SDK Installation -->
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+### Example 1
+
 ```swift
 import Foundation
 import OpenAPI
@@ -54,9 +56,10 @@ case .empty:
 
 ```
 
+### Second
 
-## Second
 Do this second
+
 ```swift
 import Foundation
 import OpenAPI
@@ -210,14 +213,14 @@ case .empty:
 <!-- End Dev Containers -->
 
 <!-- Start Global Parameters -->
-# Global Parameters
+## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
 For example, you can set `globalPathParam` to `100` at SDK initialization and then you do not have to pass the same value on calls to operations like `globalPathParameterGet`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
-## Available Globals
+### Available Globals
 
 The following global parameters are available. The required parameters must be set when you initialize the SDK client.
 
@@ -227,8 +230,7 @@ The following global parameters are available. The required parameters must be s
 | globalQueryParam | String | ✔️ | The globalQueryParam parameter. |
 
 
-
-## Example #1
+### Example
 
 ```swift
 import Foundation
@@ -238,30 +240,6 @@ let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
 
 let response = try await client.globals.globalPathParameterGet(
     request: Operations.GlobalPathParameterGetRequest()
-)
-
-switch response.data {
-case .res(let res):
-    // Handle response
-    break
-case .empty:
-    // Handle empty response
-    break
-}
-
-```
-
-
-## Example #2
-
-```swift
-import Foundation
-import OpenAPI
-
-let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
-
-let response = try await client.globals.globalsQueryParameterGet(
-    request: Operations.GlobalsQueryParameterGetRequest()
 )
 
 switch response.data {

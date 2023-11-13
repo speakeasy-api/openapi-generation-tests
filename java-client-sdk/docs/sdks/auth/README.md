@@ -12,6 +12,7 @@ Endpoints for testing authentication.
 * [basicAuth](#basicauth)
 * [bearerAuth](#bearerauth)
 * [globalBearerAuth](#globalbearerauth)
+* [noAuth](#noauth)
 * [oauth2Auth](#oauth2auth)
 * [oauth2Override](#oauth2override)
 * [openIdConnectAuth](#openidconnectauth)
@@ -236,6 +237,46 @@ public class Application {
 ### Response
 
 **[org.openapis.openapi.models.operations.GlobalBearerAuthResponse](../../models/operations/GlobalBearerAuthResponse.md)**
+
+
+## noAuth
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.NoAuthResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security(){{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            NoAuthResponse res = sdk.auth.noAuth();
+
+            if (res.statusCode == 200) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.NoAuthResponse](../../models/operations/NoAuthResponse.md)**
 
 
 ## oauth2Auth

@@ -46,6 +46,8 @@ class SDK:
     r"""Endpoints for testing parameters."""
     nest: Nest
     nested: Nested
+    auth: Auth
+    r"""Endpoints for testing authentication."""
     request_bodies: RequestBodies
     r"""Endpoints for testing request bodies."""
     response_bodies: ResponseBodies
@@ -55,8 +57,6 @@ class SDK:
     telemetry: Telemetry
     r"""Endpoints for testing telemetry."""
     auth_new: AuthNew
-    r"""Endpoints for testing authentication."""
-    auth: Auth
     r"""Endpoints for testing authentication."""
     documentation: Documentation
     r"""Testing for documentation extensions in Python."""
@@ -158,12 +158,12 @@ class SDK:
         self.parameters = Parameters(self.sdk_configuration)
         self.nest = Nest(self.sdk_configuration)
         self.nested = Nested(self.sdk_configuration)
+        self.auth = Auth(self.sdk_configuration)
         self.request_bodies = RequestBodies(self.sdk_configuration)
         self.response_bodies = ResponseBodies(self.sdk_configuration)
         self.servers = Servers(self.sdk_configuration)
         self.telemetry = Telemetry(self.sdk_configuration)
         self.auth_new = AuthNew(self.sdk_configuration)
-        self.auth = Auth(self.sdk_configuration)
         self.documentation = Documentation(self.sdk_configuration)
         self.resource = Resource(self.sdk_configuration)
         self.first = First(self.sdk_configuration)

@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 4a241cbc362b64c4ad66293b1b11b985
+  docChecksum: c14223b0265bb9d6105c24fe9e98c025
   docVersion: 0.1.0
-  speakeasyVersion: 1.118.3
-  generationVersion: 2.187.7
+  speakeasyVersion: 1.119.1
+  generationVersion: 2.188.3
 generation:
   comments: {}
   sdkClassName: SDK
@@ -38,7 +38,7 @@ features:
     tests: 0.0.0
     unions: 2.85.0
 go:
-  version: 2.1.1
+  version: 2.1.2
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   imports:

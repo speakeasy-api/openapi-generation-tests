@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```csharp
 using Openapi;
 using Openapi.Models.Shared;
@@ -18,9 +16,10 @@ var res = await sdk.Generation.GlobalNameOverriddenAsync();
 // handle response
 ```
 
+### Second
 
-## Second
 Do this second
+
 ```csharp
 using Openapi;
 using Openapi.Models.Operations;

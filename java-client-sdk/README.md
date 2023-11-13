@@ -6,12 +6,14 @@
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:2.1.0'
+implementation 'org.openapis.openapi:openapi:2.1.1'
 ```
 <!-- End SDK Installation -->
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+### Example 1
+
 ```java
 package hello.world;
 
@@ -42,9 +44,10 @@ public class Application {
 }
 ```
 
+### Second
 
-## Second
 Do this second
+
 ```java
 package hello.world;
 
@@ -295,6 +298,18 @@ public class Application {
 
 * [get](docs/sdks/sdksecond/README.md#get)
 
+### [auth](docs/sdks/auth/README.md)
+
+* [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
+* [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
+* [basicAuth](docs/sdks/auth/README.md#basicauth)
+* [bearerAuth](docs/sdks/auth/README.md#bearerauth)
+* [globalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
+* [noAuth](docs/sdks/auth/README.md#noauth)
+* [oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
+* [oauth2Override](docs/sdks/auth/README.md#oauth2override)
+* [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
+
 ### [requestBodies](docs/sdks/requestbodies/README.md)
 
 * [nullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
@@ -421,17 +436,6 @@ public class Application {
 * [oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [openIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
-### [auth](docs/sdks/auth/README.md)
-
-* [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
-* [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
-* [basicAuth](docs/sdks/auth/README.md#basicauth)
-* [bearerAuth](docs/sdks/auth/README.md#bearerauth)
-* [globalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
-* [oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
-* [oauth2Override](docs/sdks/auth/README.md#oauth2override)
-* [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
-
 ### [documentation](docs/sdks/documentation/README.md)
 
 * [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
@@ -475,14 +479,14 @@ public class Application {
 
 
 <!-- Start Global Parameters -->
-# Global Parameters
+## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
 For example, you can set `globalPathParam` to `100L` at SDK initialization and then you do not have to pass the same value on calls to operations like `globalPathParameterGet`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
-## Available Globals
+### Available Globals
 
 The following global parameters are available. The required parameters must be set when you initialize the SDK client.
 
@@ -492,8 +496,7 @@ The following global parameters are available. The required parameters must be s
 | globalQueryParam | String | ✔️ | The globalQueryParam parameter. |
 
 
-
-## Example #1
+### Example
 
 ```java
 package hello.world;
@@ -515,40 +518,6 @@ public class Application {
                 .build();
 
             GlobalPathParameterGetResponse res = sdk.globals.globalPathParameterGet(719830L);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
-    }
-}
-```
-
-
-## Example #2
-
-```java
-package hello.world;
-
-import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.GlobalsQueryParameterGetRequest;
-import org.openapis.openapi.models.operations.GlobalsQueryParameterGetResponse;
-import org.openapis.openapi.models.shared.Security;
-
-public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
-
-            GlobalsQueryParameterGetResponse res = sdk.globals.globalsQueryParameterGet("string");
 
             if (res.res != null) {
                 // handle response

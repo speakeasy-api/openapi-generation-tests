@@ -829,7 +829,7 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(new De
     Bool = true,
     Int = 1,
     Map = new Dictionary<string, SimpleObject>() {
-        { "key2", new SimpleObject() {
+        { "key", new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
@@ -849,7 +849,7 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(new De
             DecimalStr = 3.14159265358979344719667586M,
             StrOpt = "testOptional",
         } },
-        { "key", new SimpleObject() {
+        { "key2", new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
@@ -1752,19 +1752,6 @@ var sdk = new SDK(
 );
 
 var res = await sdk.RequestBodies.RequestBodyPostDefaultsAndConstsAsync(new DefaultsAndConsts() {
-    ConstBigInt = 559205,
-    ConstBigIntStr = 233601,
-    ConstBool = false,
-    ConstDate = LocalDate.FromDateTime(System.DateTime.Parse("2022-12-15")),
-    ConstDateTime = System.DateTime.Parse("2023-10-01T02:16:56.173Z"),
-    ConstDecimal = 1120.58M,
-    ConstDecimalStr = 8445.08M,
-    ConstEnumInt = ConstEnumInt.One,
-    ConstEnumStr = ConstEnumStr.Two,
-    ConstInt = 450379,
-    ConstNum = 7742.71D,
-    ConstStr = "string",
-    ConstStrNull = "string",
     NormalField = "string",
 });
 
@@ -1885,7 +1872,7 @@ var res = await sdk.RequestBodies.RequestBodyPostFormDeepAsync(new DeepObject() 
     Bool = true,
     Int = 1,
     Map = new Dictionary<string, SimpleObject>() {
-        { "key2", new SimpleObject() {
+        { "key", new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
@@ -1905,7 +1892,7 @@ var res = await sdk.RequestBodies.RequestBodyPostFormDeepAsync(new DeepObject() 
             DecimalStr = 3.14159265358979344719667586M,
             StrOpt = "testOptional",
         } },
-        { "key", new SimpleObject() {
+        { "key2", new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),

@@ -12,6 +12,7 @@ Endpoints for testing authentication.
 * [BasicAuth](#basicauth)
 * [BearerAuth](#bearerauth)
 * [GlobalBearerAuth](#globalbearerauth)
+* [NoAuth](#noauth)
 * [Oauth2Auth](#oauth2auth)
 * [Oauth2Override](#oauth2override)
 * [OpenIDConnectAuth](#openidconnectauth)
@@ -273,6 +274,55 @@ func main() {
 ### Response
 
 **[*operations.GlobalBearerAuthResponse](../../pkg/models/operations/globalbearerauthresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
+
+## NoAuth
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Auth.NoAuth(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.StatusCode == http.StatusOK {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+
+
+### Response
+
+**[*operations.NoAuthResponse](../../pkg/models/operations/noauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | sdkerrors.SDKError | 400-600            | */*                |

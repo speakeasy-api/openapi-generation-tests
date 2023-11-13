@@ -79,12 +79,12 @@ import FoundationNetworking
 /// - ``nested``
 /// - ``nestedFirst``
 /// - ``nestedSecond``
+/// - ``auth``
 /// - ``requestBodies``
 /// - ``responseBodies``
 /// - ``servers``
 /// - ``telemetry``
 /// - ``authNew``
-/// - ``auth``
 /// - ``documentation``
 /// - ``resource``
 /// - ``first``

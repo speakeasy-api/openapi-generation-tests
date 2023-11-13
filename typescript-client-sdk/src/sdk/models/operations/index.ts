@@ -70,6 +70,7 @@ export * from "./nestedfirstget";
 export * from "./nestedget";
 export * from "./nestedsecondget";
 export * from "./nestfirstget";
+export * from "./noauth";
 export * from "./nullableobjectpost";
 export * from "./nullableoneofrefinobjectpost";
 export * from "./nullableoneofschemapost";
