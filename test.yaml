@@ -205,6 +205,16 @@ paths:
       responses:
         "200":
           description: OK
+  /anything/no-auth:
+    get:
+      operationId: noAuth
+      tags:
+        - auth
+      security:
+        - {}
+      responses:
+        "200":
+          description: OK
   /basic-auth/{user}/{passwd}:
     get:
       operationId: basicAuth
@@ -4790,7 +4800,6 @@ paths:
       responses:
         "204":
           description: OK
-
   /anything/anchorTypes:
     get:
       operationId: anchorTypesGet
