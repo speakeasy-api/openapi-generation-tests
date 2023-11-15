@@ -14,6 +14,14 @@ class AuthTests: XCTestCase {
         }
     }
 
+    func testNoAuth() async throws {
+        try recordTest(named: "auth-no-auth")
+
+        let client = Client(security: .apiKeyAuth(""))
+        let response = try await client.auth.noAuth()
+        XCTAssertEqual(response.statusCode, 200, "Request should succeed")
+    }
+
     func testBasicAuth() async throws {
         try recordTest(named: "auth-basic-auth")
 

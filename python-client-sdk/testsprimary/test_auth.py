@@ -7,6 +7,16 @@ from sdk.models.operations import *
 from .common_helpers import *
 from .helpers import *
 
+def test_no_auth():
+    record_test('auth-no-auth')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.auth.no_auth()
+    assert res is not None
+    assert res.status_code == 200
+
 
 def test_basic_auth():
     record_test('auth-basic-auth')

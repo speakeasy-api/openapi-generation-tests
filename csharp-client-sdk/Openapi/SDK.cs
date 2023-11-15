@@ -66,11 +66,6 @@ namespace Openapi
         public INested Nested { get; }
 
         /// <summary>
-        /// Endpoints for testing authentication.
-        /// </summary>
-        public IAuth Auth { get; }
-
-        /// <summary>
         /// Endpoints for testing request bodies.
         /// </summary>
         public IRequestBodies RequestBodies { get; }
@@ -94,6 +89,11 @@ namespace Openapi
         /// Endpoints for testing authentication.
         /// </summary>
         public IAuthNew AuthNew { get; }
+
+        /// <summary>
+        /// Endpoints for testing authentication.
+        /// </summary>
+        public IAuth Auth { get; }
 
         /// <summary>
         /// Testing for documentation extensions and tooling.
@@ -145,10 +145,10 @@ namespace Openapi
         };
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.3.1";
-        private const string _sdkGenVersion = "2.188.3";
+        private const string _sdkVersion = "0.3.2";
+        private const string _sdkGenVersion = "2.191.3";
         private const string _openapiDocVersion = "0.1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.3.2 2.191.3 0.1.0 openapi";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -160,12 +160,12 @@ namespace Openapi
         public IParameters Parameters { get; private set; }
         public INest Nest { get; private set; }
         public INested Nested { get; private set; }
-        public IAuth Auth { get; private set; }
         public IRequestBodies RequestBodies { get; private set; }
         public IResponseBodies ResponseBodies { get; private set; }
         public IServers Servers { get; private set; }
         public ITelemetry Telemetry { get; private set; }
         public IAuthNew AuthNew { get; private set; }
+        public IAuth Auth { get; private set; }
         public IDocumentation Documentation { get; private set; }
         public IResource Resource { get; private set; }
         public IFirst First { get; private set; }
@@ -199,12 +199,12 @@ namespace Openapi
             Parameters = new Parameters(_defaultClient, _securityClient, _serverUrl, Config);
             Nest = new Nest(_defaultClient, _securityClient, _serverUrl, Config);
             Nested = new Nested(_defaultClient, _securityClient, _serverUrl, Config);
-            Auth = new Auth(_defaultClient, _securityClient, _serverUrl, Config);
             RequestBodies = new RequestBodies(_defaultClient, _securityClient, _serverUrl, Config);
             ResponseBodies = new ResponseBodies(_defaultClient, _securityClient, _serverUrl, Config);
             Servers = new Servers(_defaultClient, _securityClient, _serverUrl, Config);
             Telemetry = new Telemetry(_defaultClient, _securityClient, _serverUrl, Config);
             AuthNew = new AuthNew(_defaultClient, _securityClient, _serverUrl, Config);
+            Auth = new Auth(_defaultClient, _securityClient, _serverUrl, Config);
             Documentation = new Documentation(_defaultClient, _securityClient, _serverUrl, Config);
             Resource = new Resource(_defaultClient, _securityClient, _serverUrl, Config);
             First = new First(_defaultClient, _securityClient, _serverUrl, Config);

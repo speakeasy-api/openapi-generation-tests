@@ -65,10 +65,6 @@ extension Client: OpenAPI {
         return _NestedSecondAPI(client: self)
     }
 
-    public var auth: AuthAPI {
-        return _AuthAPI(client: self)
-    }
-
     public var requestBodies: RequestBodiesAPI {
         return _RequestBodiesAPI(client: self)
     }
@@ -87,6 +83,10 @@ extension Client: OpenAPI {
 
     public var authNew: AuthNewAPI {
         return _AuthNewAPI(client: self)
+    }
+
+    public var auth: AuthAPI {
+        return _AuthAPI(client: self)
     }
 
     public var documentation: DocumentationAPI {
