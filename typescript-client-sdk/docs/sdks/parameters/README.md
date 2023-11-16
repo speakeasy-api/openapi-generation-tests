@@ -52,13 +52,13 @@ const mapParam: Record<string, string> = {
   "test2": "value2",
 };
 const mapArrParam: Record<string, string[]> = {
-  "test2": [
-    "test3",
-    "test4",
-  ],
   "test": [
     "test",
     "test2",
+  ],
+  "test2": [
+    "test3",
+    "test4",
   ],
 };
 
@@ -608,8 +608,8 @@ import { HeaderParamsMapRequest } from "openapi/dist/sdk/models/operations";
     globalQueryParam: "some example global query param",
   });
 const xHeaderMap: Record<string, string> = {
-  "key2": "value2",
   "key1": "value1",
+  "key2": "value2",
 };
 const xHeaderMapExplode: Record<string, string> = {
   "test1": "val1",
@@ -841,7 +841,7 @@ const deepObjParam: DeepObject = {
   bool: true,
   int: 1,
   map: {
-    "key": {
+    "key2": {
       any: "any",
       bigint: 8821239038968084,
       bigintStr: "9223372036854775808",
@@ -861,7 +861,7 @@ const deepObjParam: DeepObject = {
       str: "test",
       strOpt: "testOptional",
     },
-    "key2": {
+    "key": {
       any: "any",
       bigint: 8821239038968084,
       bigintStr: "9223372036854775808",

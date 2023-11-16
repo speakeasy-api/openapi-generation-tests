@@ -279,8 +279,8 @@ var res = await sdk.Parameters.FormQueryParamsMapAsync(new Dictionary<string, st
     { "test", "value" },
     { "test2", "value2" },
 }, new Dictionary<string, long>() {
-    { "test", 1 },
     { "test2", 2 },
+    { "test", 1 },
 });
 
 // handle response

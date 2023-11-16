@@ -49,8 +49,8 @@ s = sdk.SDK(
 
 
 res = s.parameters.deep_object_query_params_map(map_param={
-    "test": 'value',
     "test2": 'value2',
+    "test": 'value',
 }, map_arr_param={
     "test": [
         'test',
@@ -306,8 +306,8 @@ res = s.parameters.form_query_params_map(map_param={
     "test": 'value',
     "test2": 'value2',
 }, map_param_exploded={
-    "test": 1,
     "test2": 2,
+    "test": 1,
 })
 
 if res.res is not None:
@@ -806,7 +806,7 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
     bool=True,
     int=1,
     map={
-        "key": shared.SimpleObject(
+        "key2": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
@@ -826,7 +826,7 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
             str_='test',
             str_opt='testOptional',
         ),
-        "key2": shared.SimpleObject(
+        "key": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
@@ -1292,8 +1292,8 @@ s = sdk.SDK(
 
 
 res = s.parameters.simple_path_parameter_maps(map_param={
-    "test2": 'value2',
     "test": 'value',
+    "test2": 'value2',
 }, map_param_exploded={
     "test": 1,
     "test2": 2,

@@ -354,8 +354,8 @@ public class Application {
                 put("test", "value");
                 put("test2", "value2");
             }}, new java.util.HashMap<String, Long>(){{
-                put("test", 1L);
                 put("test2", 2L);
+                put("test", 1L);
             }});
 
             if (res.res != null) {
