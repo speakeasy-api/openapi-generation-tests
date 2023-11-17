@@ -316,18 +316,6 @@ try {
 
 * [get](docs/sdks/nestedsecond/README.md#get)
 
-### [Auth](docs/sdks/auth/README.md)
-
-* [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
-* [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
-* [basicAuth](docs/sdks/auth/README.md#basicauth)
-* [bearerAuth](docs/sdks/auth/README.md#bearerauth)
-* [globalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
-* [noAuth](docs/sdks/auth/README.md#noauth)
-* [oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
-* [oauth2Override](docs/sdks/auth/README.md#oauth2override)
-* [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
-
 ### [RequestBodies](docs/sdks/requestbodies/README.md)
 
 * [nullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
@@ -453,6 +441,17 @@ try {
 * [multipleSimpleSchemeAuth](docs/sdks/authnew/README.md#multiplesimpleschemeauth)
 * [oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [openIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
+
+### [Auth](docs/sdks/auth/README.md)
+
+* [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
+* [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
+* [basicAuth](docs/sdks/auth/README.md#basicauth)
+* [bearerAuth](docs/sdks/auth/README.md#bearerauth)
+* [globalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
+* [oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
+* [oauth2Override](docs/sdks/auth/README.md#oauth2override)
+* [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
 ### [Documentation](docs/sdks/documentation/README.md)
 

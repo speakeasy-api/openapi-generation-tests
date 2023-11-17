@@ -24,8 +24,8 @@ func TestParameters_DeepObjectQueryParamsMap(t *testing.T) {
 	)
 
 	mapParam := map[string]string{
-		"test":  "value",
 		"test2": "value2",
+		"test":  "value",
 	}
 
 	mapArrParam := map[string][]string{
@@ -225,9 +225,9 @@ func TestParameters_FormQueryParamsMap(t *testing.T) {
 
 	assert.Equal(t, 200, res.StatusCode)
 	assert.Equal(t, map[string]string{
-		"test2":    "2",
 		"mapParam": "test,value,test2,value2",
 		"test":     "1",
+		"test2":    "2",
 	}, sortSerializedMaps(res.Res.Args, `(.*)`, ","))
 	assert.Equal(t, "http://localhost:35123/anything/queryParams/form/map?mapParam=test%2Cvalue%2Ctest2%2Cvalue2&test=1&test2=2", sortSerializedMaps(res.Res.URL, `.*?\?mapParam=(.*?)&(.*)`, "%2C"))
 }
@@ -827,43 +827,43 @@ func TestParameters_MixedQueryParams(t *testing.T) {
 
 	assert.Equal(t, 200, res.StatusCode)
 	assert.Equal(t, map[string]string{
-		"deepObjectParam[date]":       "2020-01-01",
-		"decimal":                     "3.141592653589793",
-		"strOpt":                      "testOptional",
-		"any":                         "any",
-		"dateTime":                    "2020-01-01T00:00:00.000000001Z",
-		"deepObjectParam[boolOpt]":    "true",
-		"float32":                     "1.1",
-		"deepObjectParam[enum]":       "one",
-		"deepObjectParam[decimal]":    "3.141592653589793",
 		"deepObjectParam[bigint]":     "8821239038968084",
+		"deepObjectParam[dateTime]":   "2020-01-01T00:00:00.000000001Z",
+		"deepObjectParam[int32Enum]":  "55",
+		"float32":                     "1.1",
+		"deepObjectParam[any]":        "any",
+		"deepObjectParam[strOpt]":     "testOptional",
+		"enum":                        "one",
+		"boolOpt":                     "true",
+		"int32Enum":                   "55",
+		"decimalStr":                  "3.14159265358979344719667586",
+		"deepObjectParam[intEnum]":    "2",
+		"bigintStr":                   "9223372036854775808",
+		"bool":                        "true",
+		"date":                        "2020-01-01",
 		"deepObjectParam[bool]":       "true",
 		"deepObjectParam[num]":        "1.1",
 		"deepObjectParam[decimalStr]": "3.14159265358979344719667586",
-		"deepObjectParam[strOpt]":     "testOptional",
-		"decimalStr":                  "3.14159265358979344719667586",
-		"str":                         "test",
-		"boolOpt":                     "true",
-		"date":                        "2020-01-01",
-		"deepObjectParam[intEnum]":    "2",
-		"int":                         "1",
-		"intEnum":                     "2",
-		"int32Enum":                   "55",
-		"deepObjectParam[bigintStr]":  "9223372036854775808",
-		"deepObjectParam[dateTime]":   "2020-01-01T00:00:00.000000001Z",
-		"deepObjectParam[float32]":    "1.1",
-		"deepObjectParam[int32]":      "1",
-		"deepObjectParam[int]":        "1",
-		"deepObjectParam[int32Enum]":  "55",
-		"int32":                       "1",
-		"bigintStr":                   "9223372036854775808",
-		"deepObjectParam[any]":        "any",
-		"num":                         "1.1",
 		"deepObjectParam[str]":        "test",
-		"enum":                        "one",
-		"jsonParam":                   "{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}",
 		"bigint":                      "8821239038968084",
-		"bool":                        "true",
+		"jsonParam":                   "{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}",
+		"int":                         "1",
+		"num":                         "1.1",
+		"deepObjectParam[boolOpt]":    "true",
+		"dateTime":                    "2020-01-01T00:00:00.000000001Z",
+		"deepObjectParam[bigintStr]":  "9223372036854775808",
+		"deepObjectParam[date]":       "2020-01-01",
+		"deepObjectParam[decimal]":    "3.141592653589793",
+		"int32":                       "1",
+		"intEnum":                     "2",
+		"str":                         "test",
+		"any":                         "any",
+		"strOpt":                      "testOptional",
+		"deepObjectParam[int32]":      "1",
+		"decimal":                     "3.141592653589793",
+		"deepObjectParam[enum]":       "one",
+		"deepObjectParam[int]":        "1",
+		"deepObjectParam[float32]":    "1.1",
 	}, res.Res.Args)
 	assert.Equal(t, "http://localhost:35123/anything/queryParams/mixed?any=any&bigint=8821239038968084&bigintStr=9223372036854775808&bool=true&boolOpt=true&date=2020-01-01&dateTime=2020-01-01T00%3A00%3A00.000000001Z&decimal=3.141592653589793&decimalStr=3.14159265358979344719667586&deepObjectParam[any]=any&deepObjectParam[bigintStr]=9223372036854775808&deepObjectParam[bigint]=8821239038968084&deepObjectParam[boolOpt]=true&deepObjectParam[bool]=true&deepObjectParam[dateTime]=2020-01-01T00%3A00%3A00.000000001Z&deepObjectParam[date]=2020-01-01&deepObjectParam[decimalStr]=3.14159265358979344719667586&deepObjectParam[decimal]=3.141592653589793&deepObjectParam[enum]=one&deepObjectParam[float32]=1.1&deepObjectParam[int32Enum]=55&deepObjectParam[int32]=1&deepObjectParam[intEnum]=2&deepObjectParam[int]=1&deepObjectParam[num]=1.1&deepObjectParam[strOpt]=testOptional&deepObjectParam[str]=test&enum=one&float32=1.1&int=1&int32=1&int32Enum=55&intEnum=2&jsonParam={\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.000000001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}&num=1.1&str=test&strOpt=testOptional", res.Res.URL)
 }
@@ -1004,8 +1004,8 @@ func TestParameters_SimplePathParameterMaps(t *testing.T) {
 	}
 
 	mapParamExploded := map[string]int64{
-		"test2": 2,
 		"test":  1,
+		"test2": 2,
 	}
 
 	ctx := context.Background()

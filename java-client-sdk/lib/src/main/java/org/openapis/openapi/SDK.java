@@ -76,10 +76,6 @@ public class SDK {
     public Nest nest;
     public Nested nested;
     /**
-     * Endpoints for testing authentication.
-     */
-    public Auth auth;
-    /**
      * Endpoints for testing request bodies.
      */
     public RequestBodies requestBodies;
@@ -99,6 +95,10 @@ public class SDK {
      * Endpoints for testing authentication.
      */
     public AuthNew authNew;
+    /**
+     * Endpoints for testing authentication.
+     */
+    public Auth auth;
     /**
      * Testing for documentation extensions and tooling.
      */
@@ -346,8 +346,6 @@ public class SDK {
 		
 		this.nested = new Nested(this.sdkConfiguration);
 		
-		this.auth = new Auth(this.sdkConfiguration);
-		
 		this.requestBodies = new RequestBodies(this.sdkConfiguration);
 		
 		this.responseBodies = new ResponseBodies(this.sdkConfiguration);
@@ -357,6 +355,8 @@ public class SDK {
 		this.telemetry = new Telemetry(this.sdkConfiguration);
 		
 		this.authNew = new AuthNew(this.sdkConfiguration);
+		
+		this.auth = new Auth(this.sdkConfiguration);
 		
 		this.documentation = new Documentation(this.sdkConfiguration);
 		
@@ -392,11 +392,10 @@ public class SDK {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.PutAnythingIgnoredGenerationResponse res = new org.openapis.openapi.models.operations.PutAnythingIgnoredGenerationResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.PutAnythingIgnoredGenerationResponse res = new org.openapis.openapi.models.operations.PutAnythingIgnoredGenerationResponse(contentType, httpRes.statusCode(), httpRes) {{
             object = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -425,11 +424,10 @@ public class SDK {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.ResponseBodyJsonGetResponse res = new org.openapis.openapi.models.operations.ResponseBodyJsonGetResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.ResponseBodyJsonGetResponse res = new org.openapis.openapi.models.operations.ResponseBodyJsonGetResponse(contentType, httpRes.statusCode(), httpRes) {{
             httpBinSimpleJsonObject = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {

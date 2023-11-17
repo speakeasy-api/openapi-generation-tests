@@ -3270,7 +3270,7 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartDeepAsync(new DeepObjec
     Bool = true,
     Int = 1,
     Map = new Dictionary<string, SimpleObject>() {
-        { "key", new SimpleObject() {
+        { "key2", new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
@@ -3290,7 +3290,7 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartDeepAsync(new DeepObjec
             DecimalStr = 3.14159265358979344719667586M,
             StrOpt = "testOptional",
         } },
-        { "key2", new SimpleObject() {
+        { "key", new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),

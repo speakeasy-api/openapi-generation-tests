@@ -52,13 +52,13 @@ const mapParam: Record<string, string> = {
   "test2": "value2",
 };
 const mapArrParam: Record<string, string[]> = {
-  "test2": [
-    "test3",
-    "test4",
-  ],
   "test": [
     "test",
     "test2",
+  ],
+  "test2": [
+    "test3",
+    "test4",
   ],
 };
 
@@ -325,8 +325,8 @@ const mapParam: Record<string, string> = {
   "test2": "value2",
 };
 const mapParamExploded: Record<string, number> = {
-  "test": 1,
   "test2": 2,
+  "test": 1,
 };
 
   const res = await sdk.parameters.formQueryParamsMap(mapParam, mapParamExploded);
@@ -608,8 +608,8 @@ import { HeaderParamsMapRequest } from "openapi/dist/sdk/models/operations";
     globalQueryParam: "some example global query param",
   });
 const xHeaderMap: Record<string, string> = {
-  "key2": "value2",
   "key1": "value1",
+  "key2": "value2",
 };
 const xHeaderMapExplode: Record<string, string> = {
   "test1": "val1",
