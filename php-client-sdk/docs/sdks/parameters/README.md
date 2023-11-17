@@ -113,7 +113,7 @@ try {
     $objParam->bool = true;
     $objParam->boolOpt = true;
     $objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $objParam->decimal = 3.141592653589793;
     $objParam->decimalStr = '3.14159265358979344719667586';
     $objParam->enum = Shared\Enum::One;
@@ -386,7 +386,7 @@ try {
     $objParamExploded->bool = true;
     $objParamExploded->boolOpt = true;
     $objParamExploded->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $objParamExploded->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $objParamExploded->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $objParamExploded->decimal = 3.141592653589793;
     $objParamExploded->decimalStr = '3.14159265358979344719667586';
     $objParamExploded->enum = Shared\Enum::One;
@@ -408,7 +408,7 @@ try {
     $objParam->bool = true;
     $objParam->boolOpt = true;
     $objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $objParam->decimal = 3.141592653589793;
     $objParam->decimalStr = '3.14159265358979344719667586';
     $objParam->enum = Shared\Enum::One;
@@ -680,7 +680,7 @@ try {
     $xHeaderObj->bool = true;
     $xHeaderObj->boolOpt = true;
     $xHeaderObj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $xHeaderObj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $xHeaderObj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $xHeaderObj->decimal = 3.141592653589793;
     $xHeaderObj->decimalStr = '3.14159265358979344719667586';
     $xHeaderObj->enum = Shared\Enum::One;
@@ -702,7 +702,7 @@ try {
     $xHeaderObjExplode->bool = true;
     $xHeaderObjExplode->boolOpt = true;
     $xHeaderObjExplode->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $xHeaderObjExplode->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $xHeaderObjExplode->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $xHeaderObjExplode->decimal = 3.141592653589793;
     $xHeaderObjExplode->decimalStr = '3.14159265358979344719667586';
     $xHeaderObjExplode->enum = Shared\Enum::One;
@@ -829,7 +829,7 @@ try {
     $deepObjParam->obj->bool = true;
     $deepObjParam->obj->boolOpt = true;
     $deepObjParam->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $deepObjParam->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $deepObjParam->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $deepObjParam->obj->decimal = 3.141592653589793;
     $deepObjParam->obj->decimalStr = '3.14159265358979344719667586';
     $deepObjParam->obj->enum = Shared\Enum::One;
@@ -853,7 +853,7 @@ try {
     $simpleObjParam->bool = true;
     $simpleObjParam->boolOpt = true;
     $simpleObjParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $simpleObjParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $simpleObjParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $simpleObjParam->decimal = 3.141592653589793;
     $simpleObjParam->decimalStr = '3.14159265358979344719667586';
     $simpleObjParam->enum = Shared\Enum::One;
@@ -1016,7 +1016,7 @@ try {
     $deepObjectParam->bool = true;
     $deepObjectParam->boolOpt = true;
     $deepObjectParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $deepObjectParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $deepObjectParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $deepObjectParam->decimal = 3.141592653589793;
     $deepObjectParam->decimalStr = '3.14159265358979344719667586';
     $deepObjectParam->enum = Shared\Enum::One;
@@ -1038,7 +1038,7 @@ try {
     $formParam->bool = true;
     $formParam->boolOpt = true;
     $formParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $formParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $formParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $formParam->decimal = 3.141592653589793;
     $formParam->decimalStr = '3.14159265358979344719667586';
     $formParam->enum = Shared\Enum::One;
@@ -1060,7 +1060,7 @@ try {
     $jsonParam->bool = true;
     $jsonParam->boolOpt = true;
     $jsonParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $jsonParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $jsonParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $jsonParam->decimal = 3.141592653589793;
     $jsonParam->decimalStr = '3.14159265358979344719667586';
     $jsonParam->enum = Shared\Enum::One;
@@ -1128,7 +1128,7 @@ try {
     $jsonObj->bool = true;
     $jsonObj->boolOpt = true;
     $jsonObj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $jsonObj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $jsonObj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $jsonObj->decimal = 3.141592653589793;
     $jsonObj->decimalStr = '3.14159265358979344719667586';
     $jsonObj->enum = Shared\Enum::One;
@@ -1194,7 +1194,7 @@ try {
     $objParam->bool = true;
     $objParam->boolOpt = true;
     $objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $objParam->decimal = 3.141592653589793;
     $objParam->decimalStr = '3.14159265358979344719667586';
     $objParam->enum = Shared\Enum::One;
@@ -1368,7 +1368,7 @@ try {
     $objParam->bool = true;
     $objParam->boolOpt = true;
     $objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $objParam->decimal = 3.141592653589793;
     $objParam->decimalStr = '3.14159265358979344719667586';
     $objParam->enum = Shared\Enum::One;
@@ -1390,7 +1390,7 @@ try {
     $objParamExploded->bool = true;
     $objParamExploded->boolOpt = true;
     $objParamExploded->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $objParamExploded->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $objParamExploded->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $objParamExploded->decimal = 3.141592653589793;
     $objParamExploded->decimalStr = '3.14159265358979344719667586';
     $objParamExploded->enum = Shared\Enum::One;

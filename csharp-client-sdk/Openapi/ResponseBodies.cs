@@ -46,25 +46,25 @@ namespace Openapi
     public class ResponseBodies: IResponseBodies
     {
         /**
-        * ResponseBodyOptionalGetSERVERS contains the list of server urls available to the SDK.
+        * ResponseBodyOptionalGetServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] ResponseBodyOptionalGetSERVERS = {
+        public static readonly string[] ResponseBodyOptionalGetServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * ResponseBodyReadOnlySERVERS contains the list of server urls available to the SDK.
+        * ResponseBodyReadOnlyServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] ResponseBodyReadOnlySERVERS = {
+        public static readonly string[] ResponseBodyReadOnlyServerList = {
             "http://localhost:35456",
         };
 
         public SDKConfig Config { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.3.1";
-        private const string _sdkGenVersion = "2.188.3";
+        private const string _sdkVersion = "0.4.0";
+        private const string _sdkGenVersion = "2.192.6";
         private const string _openapiDocVersion = "0.1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.0 2.192.6 0.1.0 openapi";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -80,14 +80,9 @@ namespace Openapi
 
         public async Task<ResponseBodyAdditionalPropertiesComplexNumbersPostResponse> ResponseBodyAdditionalPropertiesComplexNumbersPostAsync(Dictionary<string, BigInteger> request)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.Config.GetTemplatedServerDetails();
             var urlString = baseUrl + "/anything/responseBodies/additionalPropertiesComplexNumbers";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -129,14 +124,9 @@ namespace Openapi
 
         public async Task<ResponseBodyAdditionalPropertiesDatePostResponse> ResponseBodyAdditionalPropertiesDatePostAsync(Dictionary<string, LocalDate> request)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.Config.GetTemplatedServerDetails();
             var urlString = baseUrl + "/anything/responseBodies/additionalPropertiesDate";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -178,14 +168,9 @@ namespace Openapi
 
         public async Task<ResponseBodyAdditionalPropertiesObjectPostResponse> ResponseBodyAdditionalPropertiesObjectPostAsync(Dictionary<string, SimpleObject> request)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.Config.GetTemplatedServerDetails();
             var urlString = baseUrl + "/anything/responseBodies/additionalPropertiesObject";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -227,14 +212,9 @@ namespace Openapi
 
         public async Task<ResponseBodyAdditionalPropertiesPostResponse> ResponseBodyAdditionalPropertiesPostAsync(Dictionary<string, string> request)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.Config.GetTemplatedServerDetails();
             var urlString = baseUrl + "/anything/responseBodies/additionalProperties";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -276,14 +256,9 @@ namespace Openapi
 
         public async Task<ResponseBodyBytesGetResponse> ResponseBodyBytesGetAsync()
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.Config.GetTemplatedServerDetails();
             var urlString = baseUrl + "/bytes/100";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -321,14 +296,9 @@ namespace Openapi
                 XNumberHeader = xNumberHeader,
                 XStringHeader = xStringHeader,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.Config.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/response-headers", request);
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -357,17 +327,14 @@ namespace Openapi
 
         public async Task<ResponseBodyOptionalGetResponse> ResponseBodyOptionalGetAsync(string? serverUrl = null)
         {
-            string baseUrl = ResponseBodyOptionalGetSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(ResponseBodyOptionalGetServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/optional";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -404,17 +371,14 @@ namespace Openapi
 
         public async Task<ResponseBodyReadOnlyResponse> ResponseBodyReadOnlyAsync(string? serverUrl = null)
         {
-            string baseUrl = ResponseBodyReadOnlySERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(ResponseBodyReadOnlyServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/readonlyorwriteonly#readOnly";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -447,14 +411,9 @@ namespace Openapi
 
         public async Task<ResponseBodyStringGetResponse> ResponseBodyStringGetAsync()
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.Config.GetTemplatedServerDetails();
             var urlString = baseUrl + "/html";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -487,14 +446,9 @@ namespace Openapi
 
         public async Task<ResponseBodyXmlGetResponse> ResponseBodyXmlGetAsync()
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.Config.GetTemplatedServerDetails();
             var urlString = baseUrl + "/xml";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -527,14 +481,9 @@ namespace Openapi
 
         public async Task<ResponseBodyZeroValueComplexTypePtrsPostResponse> ResponseBodyZeroValueComplexTypePtrsPostAsync(ObjWithZeroValueComplexTypePtrs request)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.Config.GetTemplatedServerDetails();
             var urlString = baseUrl + "/anything/responseBodies/zeroValueComplexTypePtrs";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             

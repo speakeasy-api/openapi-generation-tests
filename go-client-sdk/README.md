@@ -84,7 +84,7 @@ func main() {
 				Bool:       true,
 				BoolOpt:    openapi.Bool(true),
 				Date:       types.MustDateFromString("2020-01-01"),
-				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
 				Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 				DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 				Enum:       shared.EnumOne,
@@ -239,18 +239,6 @@ func main() {
 
 * [Get](docs/sdks/sdksecond/README.md#get)
 
-### [Auth](docs/sdks/auth/README.md)
-
-* [APIKeyAuth](docs/sdks/auth/README.md#apikeyauth)
-* [APIKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
-* [BasicAuth](docs/sdks/auth/README.md#basicauth)
-* [BearerAuth](docs/sdks/auth/README.md#bearerauth)
-* [GlobalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
-* [NoAuth](docs/sdks/auth/README.md#noauth)
-* [Oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
-* [Oauth2Override](docs/sdks/auth/README.md#oauth2override)
-* [OpenIDConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
-
 ### [RequestBodies](docs/sdks/requestbodies/README.md)
 
 * [NullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
@@ -376,6 +364,17 @@ func main() {
 * [MultipleSimpleSchemeAuth](docs/sdks/authnew/README.md#multiplesimpleschemeauth)
 * [Oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [OpenIDConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
+
+### [Auth](docs/sdks/auth/README.md)
+
+* [APIKeyAuth](docs/sdks/auth/README.md#apikeyauth)
+* [APIKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
+* [BasicAuth](docs/sdks/auth/README.md#basicauth)
+* [BearerAuth](docs/sdks/auth/README.md#bearerauth)
+* [GlobalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
+* [Oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
+* [Oauth2Override](docs/sdks/auth/README.md#oauth2override)
+* [OpenIDConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
 ### [Documentation](docs/sdks/documentation/README.md)
 
@@ -576,8 +575,10 @@ package main
 
 import (
 	"context"
+	"errors"
 	"log"
 	openapi "openapi/v2"
+	"openapi/v2/pkg/models/sdkerrors"
 	"openapi/v2/pkg/models/shared"
 )
 
@@ -676,8 +677,8 @@ func main() {
 Some of the server options above contain variables. If you want to set the values of those variables, the following options are provided for doing so:
  * `WithHostname string`
  * `WithPort string`
- * `WithProtocol string`
  * `WithSomething openapi.ServerSomething`
+ * `WithProtocol string`
 
 ### Override Server URL Per-Client
 
@@ -724,6 +725,7 @@ package main
 import (
 	"context"
 	"log"
+	"net/http"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
 )
@@ -798,8 +800,8 @@ import (
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/utils"
 	"pkg/models/operations"
-	"pkg/utils"
 )
 
 func main() {
@@ -816,16 +818,17 @@ func main() {
 	var numRetries *int64 = 75342
 
 	ctx := context.Background()
-	res, err := s.Retries.RetriesGet(ctx, requestID, numRetries, operations.WithRetries(utils.RetryConfig{
-		Strategy: "backoff",
-		Backoff: &utils.BackoffStrategy{
-			InitialInterval: 1,
-			MaxInterval:     50,
-			Exponent:        1.1,
-			MaxElapsedTime:  100,
-		},
-		RetryConnectionErrors: false,
-	}))
+	res, err := s.Retries.RetriesGet(ctx, requestID, numRetries, operations.WithRetries(
+		utils.RetryConfig{
+			Strategy: "backoff",
+			Backoff: &utils.BackoffStrategy{
+				InitialInterval: 1,
+				MaxInterval:     50,
+				Exponent:        1.1,
+				MaxElapsedTime:  100,
+			},
+			RetryConnectionErrors: false,
+		}))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -846,22 +849,22 @@ import (
 	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
-	"pkg/models/operations"
-	"pkg/utils"
+	"openapi/v2/pkg/utils"
 )
 
 func main() {
 	s := openapi.New(
-		openapi.WithRetryConfig(utils.RetryConfig{
-			Strategy: "backoff",
-			Backoff: &utils.BackoffStrategy{
-				InitialInterval: 1,
-				MaxInterval:     50,
-				Exponent:        1.1,
-				MaxElapsedTime:  100,
-			},
-			RetryConnectionErrors: false,
-		}),
+		openapi.WithRetryConfig(
+			utils.RetryConfig{
+				Strategy: "backoff",
+				Backoff: &utils.BackoffStrategy{
+					InitialInterval: 1,
+					MaxInterval:     50,
+					Exponent:        1.1,
+					MaxElapsedTime:  100,
+				},
+				RetryConnectionErrors: false,
+			}),
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
@@ -974,7 +977,7 @@ func main() {
 				Bool:       true,
 				BoolOpt:    openapi.Bool(true),
 				Date:       types.MustDateFromString("2020-01-01"),
-				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
 				Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 				DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 				Enum:       shared.EnumOne,

@@ -20,6 +20,53 @@ namespace Openapi
     using System.Threading.Tasks;
     using System;
 
+
+
+    /// <summary>
+    /// Something is a variable for changing the root path
+    /// </summary>
+    public enum ServerSomething
+    {
+        [JsonProperty("something")]
+        Something,
+        [JsonProperty("somethingElse")]
+        SomethingElse,
+        [JsonProperty("somethingElseAgain")]
+        SomethingElseAgain,
+    }
+
+    public static class ServerSomethingExtension
+    {
+        public static string Value(this ServerSomething value)
+        {
+            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
+        }
+
+        public static ServerSomething ToEnum(this string value)
+        {
+            foreach(var field in typeof(ServerSomething).GetFields())
+            {
+                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
+                if (attributes.Length == 0)
+                {
+                    continue;
+                }
+
+                var attribute = attributes[0] as JsonPropertyAttribute;
+                if (attribute != null && attribute.PropertyName == value)
+                {
+                    var enumVal = field.GetValue(null);
+
+                    if (enumVal is ServerSomething)
+                    {
+                        return (ServerSomething)enumVal;
+                    }
+                }
+            }
+
+            throw new Exception($"Unknown value {value} for enum ServerSomething");
+        }
+    }
     /// <summary>
     /// Test: Test Summary
     /// 
@@ -66,11 +113,6 @@ namespace Openapi
         public INested Nested { get; }
 
         /// <summary>
-        /// Endpoints for testing authentication.
-        /// </summary>
-        public IAuth Auth { get; }
-
-        /// <summary>
         /// Endpoints for testing request bodies.
         /// </summary>
         public IRequestBodies RequestBodies { get; }
@@ -96,6 +138,11 @@ namespace Openapi
         public IAuthNew AuthNew { get; }
 
         /// <summary>
+        /// Endpoints for testing authentication.
+        /// </summary>
+        public IAuth Auth { get; }
+
+        /// <summary>
         /// Testing for documentation extensions and tooling.
         /// </summary>
         public IDocumentation Documentation { get; }
@@ -118,8 +165,29 @@ namespace Openapi
     
     public class SDKConfig
     {
+        public static string[] ServerList = new string[]
+        {
+            "http://localhost:35123",
+            "http://broken",
+            "http://{hostname}:{port}",
+            "http://localhost:35123/anything/{something}",
+            "{protocol}://{hostname}:{port}",
+        };
+        /// Contains the list of servers available to the SDK
+        public string serverUrl = "";
+        public int serverIndex = 0;
+        public List<Dictionary<string, string>> ServerDefaults = new List<Dictionary<string, string>>();
         public long? GlobalPathParam;
         public string? GlobalQueryParam;
+
+        public string GetTemplatedServerDetails()
+        {
+            if (!String.IsNullOrEmpty(this.serverUrl))
+            {
+                return Utilities.TemplateUrl(Utilities.RemoveSuffix(this.serverUrl, "/"), new Dictionary<string, string>());
+            }
+            return Utilities.TemplateUrl(SDKConfig.ServerList[this.serverIndex], this.ServerDefaults[this.serverIndex]);
+        }
     }
 
     /// <summary>
@@ -135,20 +203,12 @@ namespace Openapi
     public class SDK: ISDK
     {
         public SDKConfig Config { get; private set; }
-        public static List<string> ServerList = new List<string>()
-        {
-            "http://localhost:35123",
-            "http://broken",
-            "http://{hostname}:{port}",
-            "http://localhost:35123/anything/{something}",
-            "{protocol}://{hostname}:{port}",
-        };
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.3.1";
-        private const string _sdkGenVersion = "2.188.3";
+        private const string _sdkVersion = "0.4.0";
+        private const string _sdkGenVersion = "2.192.6";
         private const string _openapiDocVersion = "0.1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.0 2.192.6 0.1.0 openapi";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -160,12 +220,12 @@ namespace Openapi
         public IParameters Parameters { get; private set; }
         public INest Nest { get; private set; }
         public INested Nested { get; private set; }
-        public IAuth Auth { get; private set; }
         public IRequestBodies RequestBodies { get; private set; }
         public IResponseBodies ResponseBodies { get; private set; }
         public IServers Servers { get; private set; }
         public ITelemetry Telemetry { get; private set; }
         public IAuthNew AuthNew { get; private set; }
+        public IAuth Auth { get; private set; }
         public IDocumentation Documentation { get; private set; }
         public IResource Resource { get; private set; }
         public IFirst First { get; private set; }
@@ -173,9 +233,38 @@ namespace Openapi
         public IPagination Pagination { get; private set; }
         public IRetries Retries { get; private set; }
 
-        public SDK(Security? security = null, long? globalPathParam = null, string? globalQueryParam = null, string? serverUrl = null, ISpeakeasyHttpClient? client = null)
+        public SDK(Security? security = null, long? globalPathParam = null, string? globalQueryParam = null, int? serverIndex = null, string?  hostname = null, string?  port = null, ServerSomething? something = null, string?  protocol = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null)
         {
-            _serverUrl = serverUrl ?? SDK.ServerList[0];
+            if (serverUrl != null) {
+                if (urlParams != null) {
+                    serverUrl = Utilities.TemplateUrl(serverUrl, urlParams);
+                }
+                _serverUrl = serverUrl;
+            }
+            List<Dictionary<string, string>> serverDefaults = new List<Dictionary<string, string>>()
+            {
+                new Dictionary<string, string>()
+                {
+                },
+                new Dictionary<string, string>()
+                {
+                },
+                new Dictionary<string, string>()
+                {
+                    {"hostname", hostname == null ? "localhost" : hostname},
+                    {"port", port == null ? "35123" : port},
+                },
+                new Dictionary<string, string>()
+                {
+                    {"something", something == null ? "something" : ServerSomethingExtension.Value(something.Value)},
+                },
+                new Dictionary<string, string>()
+                {
+                    {"hostname", hostname == null ? "localhost" : hostname},
+                    {"port", port == null ? "35123" : port},
+                    {"protocol", protocol == null ? "http" : protocol},
+                },
+            };
 
             _defaultClient = new SpeakeasyHttpClient(client);
             _securityClient = _defaultClient;
@@ -189,6 +278,8 @@ namespace Openapi
             {
                 GlobalPathParam = globalPathParam,
                 GlobalQueryParam = globalQueryParam,
+                ServerDefaults = serverDefaults,
+                serverUrl = _serverUrl
             };
 
             Generation = new Generation(_defaultClient, _securityClient, _serverUrl, Config);
@@ -199,12 +290,12 @@ namespace Openapi
             Parameters = new Parameters(_defaultClient, _securityClient, _serverUrl, Config);
             Nest = new Nest(_defaultClient, _securityClient, _serverUrl, Config);
             Nested = new Nested(_defaultClient, _securityClient, _serverUrl, Config);
-            Auth = new Auth(_defaultClient, _securityClient, _serverUrl, Config);
             RequestBodies = new RequestBodies(_defaultClient, _securityClient, _serverUrl, Config);
             ResponseBodies = new ResponseBodies(_defaultClient, _securityClient, _serverUrl, Config);
             Servers = new Servers(_defaultClient, _securityClient, _serverUrl, Config);
             Telemetry = new Telemetry(_defaultClient, _securityClient, _serverUrl, Config);
             AuthNew = new AuthNew(_defaultClient, _securityClient, _serverUrl, Config);
+            Auth = new Auth(_defaultClient, _securityClient, _serverUrl, Config);
             Documentation = new Documentation(_defaultClient, _securityClient, _serverUrl, Config);
             Resource = new Resource(_defaultClient, _securityClient, _serverUrl, Config);
             First = new First(_defaultClient, _securityClient, _serverUrl, Config);
@@ -215,14 +306,9 @@ namespace Openapi
 
         public async Task<PutAnythingIgnoredGenerationResponse> PutAnythingIgnoredGenerationAsync(string request)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.Config.GetTemplatedServerDetails();
             var urlString = baseUrl + "/anything/ignoredGeneration";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -263,14 +349,9 @@ namespace Openapi
 
         public async Task<ResponseBodyJsonGetResponse> ResponseBodyJsonGetAsync()
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.Config.GetTemplatedServerDetails();
             var urlString = baseUrl + "/json";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
