@@ -214,7 +214,7 @@ components:
           type: string
           format: date-time
           description: "A date-time property."
-          example: "2020-01-01T00:00:00.000000001Z"
+          example: "2020-01-01T00:00:00.000001Z"
         any:
           description: "An any property."
           example: "any"
