@@ -58,7 +58,7 @@ req = operations.UsageExamplePostRequest(
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
             decimal=Decimal('3.141592653589793'),
             decimal_str=Decimal('3.14159265358979344719667586'),
             enum=shared.EnumT.ONE,
@@ -213,18 +213,6 @@ if res.object is not None:
 
 * [get](docs/sdks/sdksecond/README.md#get)
 
-### [auth](docs/sdks/auth/README.md)
-
-* [api_key_auth](docs/sdks/auth/README.md#api_key_auth)
-* [api_key_auth_global](docs/sdks/auth/README.md#api_key_auth_global)
-* [basic_auth](docs/sdks/auth/README.md#basic_auth)
-* [bearer_auth](docs/sdks/auth/README.md#bearer_auth)
-* [global_bearer_auth](docs/sdks/auth/README.md#global_bearer_auth)
-* [no_auth](docs/sdks/auth/README.md#no_auth)
-* [oauth2_auth](docs/sdks/auth/README.md#oauth2_auth)
-* [oauth2_override](docs/sdks/auth/README.md#oauth2_override)
-* [open_id_connect_auth](docs/sdks/auth/README.md#open_id_connect_auth)
-
 ### [request_bodies](docs/sdks/requestbodies/README.md)
 
 * [nullable_object_post](docs/sdks/requestbodies/README.md#nullable_object_post)
@@ -350,6 +338,17 @@ if res.object is not None:
 * [multiple_simple_scheme_auth](docs/sdks/authnew/README.md#multiple_simple_scheme_auth)
 * [oauth2_auth_new](docs/sdks/authnew/README.md#oauth2_auth_new)
 * [open_id_connect_auth_new](docs/sdks/authnew/README.md#open_id_connect_auth_new)
+
+### [auth](docs/sdks/auth/README.md)
+
+* [api_key_auth](docs/sdks/auth/README.md#api_key_auth)
+* [api_key_auth_global](docs/sdks/auth/README.md#api_key_auth_global)
+* [basic_auth](docs/sdks/auth/README.md#basic_auth)
+* [bearer_auth](docs/sdks/auth/README.md#bearer_auth)
+* [global_bearer_auth](docs/sdks/auth/README.md#global_bearer_auth)
+* [oauth2_auth](docs/sdks/auth/README.md#oauth2_auth)
+* [oauth2_override](docs/sdks/auth/README.md#oauth2_override)
+* [open_id_connect_auth](docs/sdks/auth/README.md#open_id_connect_auth)
 
 ### [documentation](docs/sdks/documentation/README.md)
 
@@ -565,8 +564,8 @@ if res.object is not None:
 Some of the server options above contain variables. If you want to set the values of those variables, the following optional parameters are available when initializing the SDK client instance:
  * `hostname: str`
  * `port: str`
- * `protocol: str`
  * `something: models.ServerSomething`
+ * `protocol: str`
 
 ### Override Server URL Per-Client
 
@@ -751,7 +750,7 @@ req = operations.UsageExamplePostRequest(
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
             decimal=Decimal('3.141592653589793'),
             decimal_str=Decimal('3.14159265358979344719667586'),
             enum=shared.EnumT.ONE,
