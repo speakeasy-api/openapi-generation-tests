@@ -6,7 +6,7 @@ from sdk import SDK
 from sdk.models import errors
 
 from .common_helpers import *
-from .helpers import *
+from .test_helpers import *
 
 
 def test_status_get_error_default_error_codes():
@@ -67,7 +67,7 @@ def test_status_get_x_speakeasy_errors():
 
     assert exc_info_500.value.code == "500"
 
-    with pytest.raises(errors.StatusGetXSpeakeasyErrorsResponseBody, match='{"code": "501", "message": "an error occurred", "type": "internal"}') as exc_info_501:
+    with pytest.raises(errors.StatusGetXSpeakeasyErrorsResponseBody, match='{"code":"501","message":"an error occurred","type":"internal"}') as exc_info_501:
         s.errors.status_get_x_speakeasy_errors(status_code=501)
 
     assert exc_info_501.value.code == "501"
