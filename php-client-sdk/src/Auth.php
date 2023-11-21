@@ -229,38 +229,6 @@ class Auth
     }
 	
     /**
-     * noAuth
-     * 
-     * @return \OpenAPI\OpenAPI\Models\Operations\NoAuthResponse
-     */
-	public function noAuth(
-    ): \OpenAPI\OpenAPI\Models\Operations\NoAuthResponse
-    {
-        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
-        $url = Utils\Utils::generateUrl($baseUrl, '/anything/no-auth');
-        
-        $options = ['http_errors' => false];
-        $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
-        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
-        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
-
-        $statusCode = $httpResponse->getStatusCode();
-
-        $response = new \OpenAPI\OpenAPI\Models\Operations\NoAuthResponse();
-        $response->statusCode = $statusCode;
-        $response->contentType = $contentType;
-        $response->rawResponse = $httpResponse;
-        
-        if ($httpResponse->getStatusCode() === 200) {
-        }
-
-        return $response;
-    }
-	
-    /**
      * oauth2Auth
      * 
      * @param \OpenAPI\OpenAPI\Models\Operations\Oauth2AuthSecurity $security

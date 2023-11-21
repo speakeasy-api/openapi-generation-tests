@@ -946,7 +946,7 @@ try {
     $request->requestBody->simpleObject->bool = true;
     $request->requestBody->simpleObject->boolOpt = true;
     $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $request->requestBody->simpleObject->decimal = 3.141592653589793;
     $request->requestBody->simpleObject->decimalStr = '3.14159265358979344719667586';
     $request->requestBody->simpleObject->enum = Shared\Enum::One;

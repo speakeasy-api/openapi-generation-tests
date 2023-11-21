@@ -93,13 +93,13 @@ req = shared.ExampleResource(
         "key": 'string',
     },
     name='string',
-    shared.ExampleCar(
-        make='string',
-        model='PT Cruiser',
-        name='string',
-        type=shared.ExampleCarType.CAR,
-        year=1259.83,
-    ),
+    vehicle=shared.ExampleCar(
+    make='string',
+    model='PT Cruiser',
+    name='string',
+    type=shared.ExampleCarType.CAR,
+    year=1259.83,
+),
 )
 
 res = s.resource.create_resource(req)
