@@ -53,7 +53,7 @@ class Pagination:
                 ),
                 server_url=server_url,
             )
-
+        
         res = operations.PaginationCursorBodyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
@@ -105,7 +105,7 @@ class Pagination:
                 cursor=next_cursor,
                 server_url=server_url,
             )
-
+        
         res = operations.PaginationCursorParamsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
@@ -167,7 +167,7 @@ class Pagination:
                 ),
                 server_url=server_url,
             )
-
+        
         res = operations.PaginationLimitOffsetOffsetBodyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
@@ -227,7 +227,7 @@ class Pagination:
                 offset=new_offset,
                 server_url=server_url,
             )
-
+        
         res = operations.PaginationLimitOffsetOffsetParamsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
@@ -287,7 +287,7 @@ class Pagination:
                 ),
                 server_url=server_url,
             )
-
+        
         res = operations.PaginationLimitOffsetPageBodyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
@@ -343,7 +343,7 @@ class Pagination:
                 page=new_page,
                 server_url=server_url,
             )
-
+        
         res = operations.PaginationLimitOffsetPageParamsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:

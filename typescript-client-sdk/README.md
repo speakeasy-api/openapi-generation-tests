@@ -77,7 +77,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
                     bool: true,
                     boolOpt: true,
                     date: new RFCDate("2020-01-01"),
-                    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+                    dateTime: new Date("2020-01-01T00:00:00.000001Z"),
                     decimal: 3.141592653589793,
                     decimalStr: "3.14159265358979344719667586",
                     enum: Enum.One,
@@ -231,18 +231,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 * [get](docs/sdks/sdksecond/README.md#get)
 
-### [auth](docs/sdks/auth/README.md)
-
-* [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
-* [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
-* [basicAuth](docs/sdks/auth/README.md#basicauth)
-* [bearerAuth](docs/sdks/auth/README.md#bearerauth)
-* [globalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
-* [noAuth](docs/sdks/auth/README.md#noauth)
-* [oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
-* [oauth2Override](docs/sdks/auth/README.md#oauth2override)
-* [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
-
 ### [requestBodies](docs/sdks/requestbodies/README.md)
 
 * [nullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
@@ -368,6 +356,17 @@ import { RFCDate } from "openapi/dist/sdk/types";
 * [multipleSimpleSchemeAuth](docs/sdks/authnew/README.md#multiplesimpleschemeauth)
 * [oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [openIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
+
+### [auth](docs/sdks/auth/README.md)
+
+* [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
+* [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
+* [basicAuth](docs/sdks/auth/README.md#basicauth)
+* [bearerAuth](docs/sdks/auth/README.md#bearerauth)
+* [globalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
+* [oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
+* [oauth2Override](docs/sdks/auth/README.md#oauth2override)
+* [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
 ### [documentation](docs/sdks/documentation/README.md)
 
@@ -589,8 +588,8 @@ import { SDK } from "openapi";
 Some of the server options above contain variables. If you want to set the values of those variables, the following optional parameters are available when initializing the SDK client instance:
  * `hostname: string`
  * `port: string`
- * `protocol: string`
  * `something: models.ServerSomething`
+ * `protocol: string`
 
 ### Override Server URL Per-Client
 
@@ -812,7 +811,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
                     bool: true,
                     boolOpt: true,
                     date: new RFCDate("2020-01-01"),
-                    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+                    dateTime: new Date("2020-01-01T00:00:00.000001Z"),
                     decimal: 3.141592653589793,
                     decimalStr: "3.14159265358979344719667586",
                     enum: Enum.One,
