@@ -26,7 +26,7 @@ export class RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse extends S
      * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
+    rawResponse: AxiosResponse;
 
     /**
      * OK

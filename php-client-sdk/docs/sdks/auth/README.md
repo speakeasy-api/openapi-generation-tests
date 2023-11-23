@@ -12,7 +12,6 @@ Endpoints for testing authentication.
 * [basicAuth](#basicauth)
 * [bearerAuth](#bearerauth)
 * [globalBearerAuth](#globalbearerauth)
-* [noAuth](#noauth)
 * [oauth2Auth](#oauth2auth)
 * [oauth2Override](#oauth2override)
 * [openIdConnectAuth](#openidconnectauth)
@@ -223,43 +222,6 @@ try {
 ### Response
 
 **[?\OpenAPI\OpenAPI\Models\Operations\GlobalBearerAuthResponse](../../Models/Operations/GlobalBearerAuthResponse.md)**
-
-
-## noAuth
-
-### Example Usage
-
-```php
-<?php
-
-declare(strict_types=1);
-require_once 'vendor/autoload.php';
-
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
-
-$sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
-
-try {
-    $response = $sdk->auth->noAuth();
-
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
-}
-```
-
-
-### Response
-
-**[?\OpenAPI\OpenAPI\Models\Operations\NoAuthResponse](../../Models/Operations/NoAuthResponse.md)**
 
 
 ## oauth2Auth

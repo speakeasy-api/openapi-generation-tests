@@ -8,7 +8,7 @@ from sdk import SDK
 from sdk.utils import utils
 
 from .common_helpers import *
-from .helpers import *
+from .test_helpers import *
 
 
 def test_strongly_typed_one_of_post_basic():
@@ -243,13 +243,13 @@ def test_nullable_one_of_type_in_object_post():
             name="Nullable fields set to null",
             obj=shared.NullableOneOfTypeInObject(
                 nullable_one_of_one=None, nullable_one_of_two=None, one_of_one=True),
-            want_json='{"NullableOneOfOne": null, "NullableOneOfTwo": null, "OneOfOne": true}',
+            want_json='{"NullableOneOfOne":null,"NullableOneOfTwo":null,"OneOfOne":true}',
         ),
         MicroMock(
             name="All fields set to non-null values",
             obj=shared.NullableOneOfTypeInObject(
                 nullable_one_of_one=True, nullable_one_of_two=2, one_of_one=True),
-            want_json='{"NullableOneOfOne": true, "NullableOneOfTwo": 2, "OneOfOne": true}',
+            want_json='{"NullableOneOfOne":true,"NullableOneOfTwo":2,"OneOfOne":true}',
         ),
     ]
 
