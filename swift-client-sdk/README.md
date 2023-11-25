@@ -28,7 +28,7 @@ You can add `OpenAPI` to your project directly in Xcode `(File > Add Packages...
 
 ```bash
 dependencies: [
-    .package(url: "", .upToNextMajor(from: "0.3.1"))
+    .package(url: "https://github.com/speakeasy-api/openapi-generation-tests.git", .upToNextMajor(from: "0.3.2"))
 ]
 ```
 <!-- End SDK Installation -->

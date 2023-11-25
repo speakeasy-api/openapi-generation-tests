@@ -42,11 +42,10 @@ public class Resource {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.CreateFileResponse res = new org.openapis.openapi.models.operations.CreateFileResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.CreateFileResponse res = new org.openapis.openapi.models.operations.CreateFileResponse(contentType, httpRes.statusCode(), httpRes) {{
             fileResource = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -80,11 +79,10 @@ public class Resource {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.CreateResourceResponse res = new org.openapis.openapi.models.operations.CreateResourceResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.CreateResourceResponse res = new org.openapis.openapi.models.operations.CreateResourceResponse(contentType, httpRes.statusCode(), httpRes) {{
             exampleResource = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -115,10 +113,9 @@ public class Resource {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.DeleteResourceResponse res = new org.openapis.openapi.models.operations.DeleteResourceResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.DeleteResourceResponse res = new org.openapis.openapi.models.operations.DeleteResourceResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 204) {
         }
@@ -144,11 +141,10 @@ public class Resource {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.GetResourceResponse res = new org.openapis.openapi.models.operations.GetResourceResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.GetResourceResponse res = new org.openapis.openapi.models.operations.GetResourceResponse(contentType, httpRes.statusCode(), httpRes) {{
             exampleResource = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -179,10 +175,9 @@ public class Resource {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.UpdateResourceResponse res = new org.openapis.openapi.models.operations.UpdateResourceResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.UpdateResourceResponse res = new org.openapis.openapi.models.operations.UpdateResourceResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 202) {
         }

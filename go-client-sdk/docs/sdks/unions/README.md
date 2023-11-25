@@ -31,10 +31,10 @@ Endpoints for testing union types.
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -86,13 +86,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
-	"math/big"
-	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -141,10 +138,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -208,11 +205,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -264,10 +260,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -320,10 +316,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -373,11 +369,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -426,12 +421,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -454,7 +449,7 @@ func main() {
                             Bool: true,
                             BoolOpt: openapi.Bool(true),
                             Date: types.MustDateFromString("2020-01-01"),
-                            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                             Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                             DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                             Enum: shared.EnumOne,
@@ -476,7 +471,7 @@ func main() {
                         Bool: true,
                         BoolOpt: openapi.Bool(true),
                         Date: types.MustDateFromString("2020-01-01"),
-                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                         Enum: shared.EnumOne,
@@ -496,7 +491,7 @@ func main() {
                         Bool: true,
                         BoolOpt: openapi.Bool(true),
                         Date: types.MustDateFromString("2020-01-01"),
-                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                         Enum: shared.EnumOne,
@@ -513,14 +508,14 @@ func main() {
                 Bool: true,
                 Int: 1,
                 Map: map[string]shared.SimpleObject{
-                    "key": shared.SimpleObject{
+                    "key2": shared.SimpleObject{
                         Any: "any",
                         Bigint: big.NewInt(8821239038968084),
                         BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
                         Bool: true,
                         BoolOpt: openapi.Bool(true),
                         Date: types.MustDateFromString("2020-01-01"),
-                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                         Enum: shared.EnumOne,
@@ -533,14 +528,14 @@ func main() {
                         Str: "test",
                         StrOpt: openapi.String("testOptional"),
                     },
-                    "key2": shared.SimpleObject{
+                    "key": shared.SimpleObject{
                         Any: "any",
                         Bigint: big.NewInt(8821239038968084),
                         BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
                         Bool: true,
                         BoolOpt: openapi.Bool(true),
                         Date: types.MustDateFromString("2020-01-01"),
-                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                         Enum: shared.EnumOne,
@@ -562,7 +557,7 @@ func main() {
                     Bool: true,
                     BoolOpt: openapi.Bool(true),
                     Date: types.MustDateFromString("2020-01-01"),
-                    DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                    DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                     Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                     DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                     Enum: shared.EnumOne,
@@ -611,10 +606,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -666,10 +661,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -721,13 +716,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
-	"math/big"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -776,11 +769,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -827,13 +820,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
-	"math/big"
+	"log"
 )
 
 func main() {
@@ -882,11 +873,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -933,12 +924,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -959,7 +950,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
