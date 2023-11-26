@@ -21,12 +21,12 @@ Endpoints for testing flattening through request body and parameter combinations
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"context"
+	"log"
 )
 
 func main() {
@@ -46,7 +46,7 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
@@ -98,12 +98,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"context"
+	"log"
 )
 
 func main() {
@@ -125,7 +125,7 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
@@ -175,10 +175,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -231,11 +231,11 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -290,11 +290,11 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
