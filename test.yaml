@@ -2747,7 +2747,7 @@ paths:
                 type: object
                 properties:
                   json:
-                    type: object
+                    type: [object, "null"]
                     additionalProperties: true
                   form:
                     type: object
@@ -2818,7 +2818,7 @@ paths:
                 type: object
                 properties:
                   json:
-                    type: object
+                    type: [object, "null"]
                     additionalProperties: true
                   form:
                     type: object
@@ -4875,11 +4875,17 @@ paths:
                   json:
                     $ref: "components.yaml#/components/schemas/simpleObject"
   /anything/globalNameOverride:
-    get:
+    post:
       x-speakeasy-usage-example: true
       operationId: getGlobalNameOverride
       tags:
         - generation
+      requestBody:
+        description: A request body that contains fields with different formats for testing example generation
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/simpleObject"
       responses:
         "200":
           description: A successful response that contains the simpleObject sent in the request body
