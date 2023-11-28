@@ -1,4 +1,4 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```csharp
 using Openapi;
 using Openapi.Models.Shared;
@@ -58,7 +58,7 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -80,4 +80,4 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 
 // handle response
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

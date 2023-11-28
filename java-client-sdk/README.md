@@ -1,17 +1,18 @@
 # openapi
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:2.1.1'
+implementation 'org.openapis.openapi:openapi:2.1.2'
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example 1
 
 ```java
@@ -153,7 +154,7 @@ public class Application {
                         username = "Mable76";
                         uuid = "16b919d6-51cd-4e97-81e2-5221b7b6969f";
                     }};
-                    simpleObject = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+                    simpleObject = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
                         boolOpt = true;
@@ -185,9 +186,9 @@ public class Application {
     }
 }
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [SDK](docs/sdks/sdk/README.md)
@@ -297,18 +298,6 @@ public class Application {
 ### [nested.second](docs/sdks/sdksecond/README.md)
 
 * [get](docs/sdks/sdksecond/README.md#get)
-
-### [auth](docs/sdks/auth/README.md)
-
-* [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
-* [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
-* [basicAuth](docs/sdks/auth/README.md#basicauth)
-* [bearerAuth](docs/sdks/auth/README.md#bearerauth)
-* [globalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
-* [noAuth](docs/sdks/auth/README.md#noauth)
-* [oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
-* [oauth2Override](docs/sdks/auth/README.md#oauth2override)
-* [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
 ### [requestBodies](docs/sdks/requestbodies/README.md)
 
@@ -436,6 +425,17 @@ public class Application {
 * [oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [openIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
+### [auth](docs/sdks/auth/README.md)
+
+* [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
+* [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
+* [basicAuth](docs/sdks/auth/README.md#basicauth)
+* [bearerAuth](docs/sdks/auth/README.md#bearerauth)
+* [globalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
+* [oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
+* [oauth2Override](docs/sdks/auth/README.md#oauth2override)
+* [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
+
 ### [documentation](docs/sdks/documentation/README.md)
 
 * [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
@@ -468,17 +468,13 @@ public class Application {
 ### [retries](docs/sdks/retries/README.md)
 
 * [retriesGet](docs/sdks/retries/README.md#retriesget)
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
 
 
-
-<!-- Start Global Parameters -->
+<!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
@@ -528,7 +524,7 @@ public class Application {
     }
 }
 ```
-<!-- End Global Parameters -->
+<!-- End Global Parameters [global-parameters] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

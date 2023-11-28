@@ -53,8 +53,9 @@ public class RequestBodyPostApplicationJsonMapObjCamelCaseResponse {
         return this;
     }
     
-    public RequestBodyPostApplicationJsonMapObjCamelCaseResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode) {
+    public RequestBodyPostApplicationJsonMapObjCamelCaseResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode, @JsonProperty("RawResponse") HttpResponse<byte[]> rawResponse) {
         this.contentType = contentType;
         this.statusCode = statusCode;
+        this.rawResponse = rawResponse;
   }
 }

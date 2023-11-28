@@ -1,6 +1,6 @@
 # openapi
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### NPM
@@ -14,10 +14,11 @@ npm add https://gitpkg.now.sh/speakeasy-api/openapi-generation-tests/typescript-
 ```bash
 yarn add https://gitpkg.now.sh/speakeasy-api/openapi-generation-tests/typescript-client-sdk
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example 1
 
 ```typescript
@@ -77,7 +78,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
                     bool: true,
                     boolOpt: true,
                     date: new RFCDate("2020-01-01"),
-                    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+                    dateTime: new Date("2020-01-01T00:00:00.000001Z"),
                     decimal: 3.141592653589793,
                     decimalStr: "3.14159265358979344719667586",
                     enum: Enum.One,
@@ -118,9 +119,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
 })();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [SDK](docs/sdks/sdk/README.md)
@@ -230,18 +231,6 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### [nested.second](docs/sdks/sdksecond/README.md)
 
 * [get](docs/sdks/sdksecond/README.md#get)
-
-### [auth](docs/sdks/auth/README.md)
-
-* [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
-* [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
-* [basicAuth](docs/sdks/auth/README.md#basicauth)
-* [bearerAuth](docs/sdks/auth/README.md#bearerauth)
-* [globalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
-* [noAuth](docs/sdks/auth/README.md#noauth)
-* [oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
-* [oauth2Override](docs/sdks/auth/README.md#oauth2override)
-* [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
 ### [requestBodies](docs/sdks/requestbodies/README.md)
 
@@ -369,6 +358,17 @@ import { RFCDate } from "openapi/dist/sdk/types";
 * [oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [openIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
+### [auth](docs/sdks/auth/README.md)
+
+* [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
+* [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
+* [basicAuth](docs/sdks/auth/README.md#basicauth)
+* [bearerAuth](docs/sdks/auth/README.md#bearerauth)
+* [globalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
+* [oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
+* [oauth2Override](docs/sdks/auth/README.md#oauth2override)
+* [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
+
 ### [documentation](docs/sdks/documentation/README.md)
 
 * [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
@@ -401,17 +401,13 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### [retries](docs/sdks/retries/README.md)
 
 * [retriesGet](docs/sdks/retries/README.md#retriesget)
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
 
 
-
-<!-- Start Pagination -->
+<!-- Start Pagination [pagination] -->
 ## Pagination
 
 Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
@@ -445,11 +441,11 @@ import { SDK } from "openapi";
 })();
 
 ```
-<!-- End Pagination -->
+<!-- End Pagination [pagination] -->
 
 
 
-<!-- Start Global Parameters -->
+<!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
@@ -491,11 +487,11 @@ import { GlobalPathParameterGetRequest } from "openapi/dist/sdk/models/operation
 })();
 
 ```
-<!-- End Global Parameters -->
+<!-- End Global Parameters [global-parameters] -->
 
 
 
-<!-- Start Error Handling -->
+<!-- Start Error Handling [errors] -->
 ## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
@@ -541,11 +537,11 @@ import { StatusGetXSpeakeasyErrorsRequest } from "openapi/dist/sdk/models/operat
 })();
 
 ```
-<!-- End Error Handling -->
+<!-- End Error Handling [errors] -->
 
 
 
-<!-- Start Server Selection -->
+<!-- Start Server Selection [server] -->
 ## Server Selection
 
 ### Select Server by Index
@@ -589,8 +585,8 @@ import { SDK } from "openapi";
 Some of the server options above contain variables. If you want to set the values of those variables, the following optional parameters are available when initializing the SDK client instance:
  * `hostname: string`
  * `port: string`
- * `protocol: string`
  * `something: models.ServerSomething`
+ * `protocol: string`
 
 ### Override Server URL Per-Client
 
@@ -640,11 +636,11 @@ import { SDK } from "openapi";
 })();
 
 ```
-<!-- End Server Selection -->
+<!-- End Server Selection [server] -->
 
 
 
-<!-- Start Custom HTTP Client -->
+<!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
 The Typescript SDK makes API calls using the (axios)[https://axios-http.com/docs/intro] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
@@ -661,11 +657,11 @@ const httpClient = axios.create({
 
 const sdk = new SDK({defaultClient: httpClient});
 ```
-<!-- End Custom HTTP Client -->
+<!-- End Custom HTTP Client [http-client] -->
 
 
 
-<!-- Start Retries -->
+<!-- Start Retries [retries] -->
 ## Retries
 
 Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
@@ -738,11 +734,11 @@ import { RetriesGetRequest } from "openapi/dist/sdk/models/operations";
 })();
 
 ```
-<!-- End Retries -->
+<!-- End Retries [retries] -->
 
 
 
-<!-- Start Authentication -->
+<!-- Start Authentication [security] -->
 ## Authentication
 
 ### Per-Client Security Schemes
@@ -812,7 +808,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
                     bool: true,
                     boolOpt: true,
                     date: new RFCDate("2020-01-01"),
-                    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+                    dateTime: new Date("2020-01-01T00:00:00.000001Z"),
                     decimal: 3.141592653589793,
                     decimalStr: "3.14159265358979344719667586",
                     enum: Enum.One,
@@ -853,7 +849,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 })();
 
 ```
-<!-- End Authentication -->
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

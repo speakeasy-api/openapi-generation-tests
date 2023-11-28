@@ -1,4 +1,4 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```typescript
 import { SDK } from "openapi";
 
@@ -56,7 +56,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
                     bool: true,
                     boolOpt: true,
                     date: new RFCDate("2020-01-01"),
-                    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+                    dateTime: new Date("2020-01-01T00:00:00.000001Z"),
                     decimal: 3.141592653589793,
                     decimalStr: "3.14159265358979344719667586",
                     enum: Enum.One,
@@ -97,4 +97,4 @@ import { RFCDate } from "openapi/dist/sdk/types";
 })();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

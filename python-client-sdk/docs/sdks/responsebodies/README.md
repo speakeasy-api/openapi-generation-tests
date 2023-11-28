@@ -37,7 +37,7 @@ s = sdk.SDK(
 
 req = shared.ObjWithComplexNumbersAdditionalProperties(
     additional_properties={
-        "key": 468801,
+        'key': 468801,
     },
     normal_field='string',
 )
@@ -84,7 +84,7 @@ s = sdk.SDK(
 
 req = shared.ObjWithDateAdditionalProperties(
     additional_properties={
-        "key": dateutil.parser.parse('2021-03-16').date(),
+        'key': dateutil.parser.parse('2021-03-16').date(),
     },
     normal_field='string',
 )
@@ -135,14 +135,14 @@ req = shared.ObjWithObjAdditionalProperties(
         617205,
     ],
     additional_properties_t={
-        "key": shared.SimpleObject(
+        'key': shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
             decimal=Decimal('3.141592653589793'),
             decimal_str=Decimal('3.14159265358979344719667586'),
             enum=shared.EnumT.ONE,
@@ -200,7 +200,7 @@ s = sdk.SDK(
 
 req = shared.ObjWithStringAdditionalProperties(
     additional_properties={
-        "key": 'string',
+        'key': 'string',
     },
     normal_field='string',
 )

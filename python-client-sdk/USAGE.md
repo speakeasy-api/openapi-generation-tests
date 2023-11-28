@@ -1,4 +1,4 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```python
 import sdk
 from sdk.models import shared
@@ -45,7 +45,7 @@ req = operations.UsageExamplePostRequest(
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
             decimal=Decimal('3.141592653589793'),
             decimal_str=Decimal('3.14159265358979344719667586'),
             enum=shared.EnumT.ONE,
@@ -87,4 +87,4 @@ if res.object is not None:
     # handle response
     pass
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

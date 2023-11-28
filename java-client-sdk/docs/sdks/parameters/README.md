@@ -80,10 +80,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                   | Type                        | Required                    | Description                 | Example                     |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `mapParam`                  | Map<String, *String*>       | :heavy_check_mark:          | N/A                         | [object Object]             |
-| `mapArrParam`               | Map<String, List<*String*>> | :heavy_minus_sign:          | N/A                         | [object Object]             |
+| Parameter                                           | Type                                                | Required                                            | Description                                         | Example                                             |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `mapParam`                                          | Map<String, *String*>                               | :heavy_check_mark:                                  | N/A                                                 | {"test":"value","test2":"value2"}                   |
+| `mapArrParam`                                       | Map<String, List<*String*>>                         | :heavy_minus_sign:                                  | N/A                                                 | {"test":["test","test2"],"test2":["test3","test4"]} |
 
 
 ### Response
@@ -121,14 +121,14 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeepObjectQueryParamsObjectResponse res = sdk.parameters.deepObjectQueryParamsObject(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            DeepObjectQueryParamsObjectResponse res = sdk.parameters.deepObjectQueryParamsObject(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                 decimal = 3.141592653589793d;
                 decimalStr = "3.14159265358979344719667586";
                 enum_ = Enum.ONE;
@@ -370,10 +370,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter             | Type                  | Required              | Description           | Example               |
-| --------------------- | --------------------- | --------------------- | --------------------- | --------------------- |
-| `mapParam`            | Map<String, *String*> | :heavy_minus_sign:    | N/A                   | [object Object]       |
-| `mapParamExploded`    | Map<String, *Long*>   | :heavy_minus_sign:    | N/A                   | [object Object]       |
+| Parameter                         | Type                              | Required                          | Description                       | Example                           |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `mapParam`                        | Map<String, *String*>             | :heavy_minus_sign:                | N/A                               | {"test":"value","test2":"value2"} |
+| `mapParamExploded`                | Map<String, *Long*>               | :heavy_minus_sign:                | N/A                               | {"test":1,"test2":2}              |
 
 
 ### Response
@@ -410,14 +410,14 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            FormQueryParamsObjectResponse res = sdk.parameters.formQueryParamsObject(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            FormQueryParamsObjectResponse res = sdk.parameters.formQueryParamsObject(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                 decimal = 3.141592653589793d;
                 decimalStr = "3.14159265358979344719667586";
                 enum_ = Enum.ONE;
@@ -429,14 +429,14 @@ public class Application {
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                 decimal = 3.141592653589793d;
                 decimalStr = "3.14159265358979344719667586";
                 enum_ = Enum.ONE;
@@ -676,10 +676,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter             | Type                  | Required              | Description           | Example               |
-| --------------------- | --------------------- | --------------------- | --------------------- | --------------------- |
-| `xHeaderMap`          | Map<String, *String*> | :heavy_check_mark:    | N/A                   | [object Object]       |
-| `xHeaderMapExplode`   | Map<String, *String*> | :heavy_check_mark:    | N/A                   | [object Object]       |
+| Parameter                         | Type                              | Required                          | Description                       | Example                           |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `xHeaderMap`                      | Map<String, *String*>             | :heavy_check_mark:                | N/A                               | {"key1":"value1","key2":"value2"} |
+| `xHeaderMapExplode`               | Map<String, *String*>             | :heavy_check_mark:                | N/A                               | {"test1":"val1","test2":"val2"}   |
 
 
 ### Response
@@ -716,14 +716,14 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            HeaderParamsObjectResponse res = sdk.parameters.headerParamsObject(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            HeaderParamsObjectResponse res = sdk.parameters.headerParamsObject(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                 decimal = 3.141592653589793d;
                 decimalStr = "3.14159265358979344719667586";
                 enum_ = Enum.ONE;
@@ -735,14 +735,14 @@ public class Application {
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                 decimal = 3.141592653589793d;
                 decimalStr = "3.14159265358979344719667586";
                 enum_ = Enum.ONE;
@@ -860,14 +860,14 @@ public class Application {
                 .build();
 
             JsonQueryParamsObjectResponse res = sdk.parameters.jsonQueryParamsObject(new DeepObject("anyOf[0]", new org.openapis.openapi.models.shared.SimpleObject[]{{
-                add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+                add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
                     bool = true;
                     boolOpt = true;
                     date = LocalDate.parse("2020-01-01");
-                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                     decimal = 3.141592653589793d;
                     decimalStr = "3.14159265358979344719667586";
                     enum_ = Enum.ONE;
@@ -880,14 +880,14 @@ public class Application {
                     str = "test";
                     strOpt = "testOptional";
                 }}),
-                add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+                add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
                     bool = true;
                     boolOpt = true;
                     date = LocalDate.parse("2020-01-01");
-                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                     decimal = 3.141592653589793d;
                     decimalStr = "3.14159265358979344719667586";
                     enum_ = Enum.ONE;
@@ -901,14 +901,14 @@ public class Application {
                     strOpt = "testOptional";
                 }}),
             }}, true, 1L, new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
                     bool = true;
                     boolOpt = true;
                     date = LocalDate.parse("2020-01-01");
-                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                     decimal = 3.141592653589793d;
                     decimalStr = "3.14159265358979344719667586";
                     enum_ = Enum.ONE;
@@ -921,14 +921,14 @@ public class Application {
                     str = "test";
                     strOpt = "testOptional";
                 }});
-                put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+                put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
                     bool = true;
                     boolOpt = true;
                     date = LocalDate.parse("2020-01-01");
-                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                     decimal = 3.141592653589793d;
                     decimalStr = "3.14159265358979344719667586";
                     enum_ = Enum.ONE;
@@ -941,7 +941,7 @@ public class Application {
                     str = "test";
                     strOpt = "testOptional";
                 }});
-            }}, 1.1d, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            }}, 1.1d, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
             bigint = 8821239038968084L;
             bigintStr = "9223372036854775808";
             boolOpt = true;
@@ -953,14 +953,14 @@ public class Application {
             }}, "test"){{
                 any = "anyOf[0]";
                 arr = new org.openapis.openapi.models.shared.SimpleObject[]{{
-                    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+                    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                         any = "any";
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
                         bool = true;
                         boolOpt = true;
                         date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                         decimal = 3.141592653589793d;
                         decimalStr = "3.14159265358979344719667586";
                         enum_ = Enum.ONE;
@@ -973,14 +973,14 @@ public class Application {
                         str = "test";
                         strOpt = "testOptional";
                     }}),
-                    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+                    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                         any = "any";
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
                         bool = true;
                         boolOpt = true;
                         date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                         decimal = 3.141592653589793d;
                         decimalStr = "3.14159265358979344719667586";
                         enum_ = Enum.ONE;
@@ -997,14 +997,14 @@ public class Application {
                 bool = true;
                 int_ = 1L;
                 map = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+                    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                         any = "any";
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
                         bool = true;
                         boolOpt = true;
                         date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                         decimal = 3.141592653589793d;
                         decimalStr = "3.14159265358979344719667586";
                         enum_ = Enum.ONE;
@@ -1017,14 +1017,14 @@ public class Application {
                         str = "test";
                         strOpt = "testOptional";
                     }});
-                    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+                    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                         any = "any";
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
                         bool = true;
                         boolOpt = true;
                         date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                         decimal = 3.141592653589793d;
                         decimalStr = "3.14159265358979344719667586";
                         enum_ = Enum.ONE;
@@ -1039,14 +1039,14 @@ public class Application {
                     }});
                 }};
                 num = 1.1d;
-                obj = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+                obj = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
                     bool = true;
                     boolOpt = true;
                     date = LocalDate.parse("2020-01-01");
-                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                     decimal = 3.141592653589793d;
                     decimalStr = "3.14159265358979344719667586";
                     enum_ = Enum.ONE;
@@ -1060,14 +1060,14 @@ public class Application {
                     strOpt = "testOptional";
                 }};
                 str = "test";
-            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                 decimal = 3.141592653589793d;
                 decimalStr = "3.14159265358979344719667586";
                 enum_ = Enum.ONE;
@@ -1231,14 +1231,14 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            MixedQueryParamsResponse res = sdk.parameters.mixedQueryParams(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            MixedQueryParamsResponse res = sdk.parameters.mixedQueryParams(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                 decimal = 3.141592653589793d;
                 decimalStr = "3.14159265358979344719667586";
                 enum_ = Enum.ONE;
@@ -1250,14 +1250,14 @@ public class Application {
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                 decimal = 3.141592653589793d;
                 decimalStr = "3.14159265358979344719667586";
                 enum_ = Enum.ONE;
@@ -1269,14 +1269,14 @@ public class Application {
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                 decimal = 3.141592653589793d;
                 decimalStr = "3.14159265358979344719667586";
                 enum_ = Enum.ONE;
@@ -1343,14 +1343,14 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            PathParameterJsonResponse res = sdk.parameters.pathParameterJson(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            PathParameterJsonResponse res = sdk.parameters.pathParameterJson(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                 decimal = 3.141592653589793d;
                 decimalStr = "3.14159265358979344719667586";
                 enum_ = Enum.ONE;
@@ -1424,14 +1424,14 @@ public class Application {
             }}, new java.util.HashMap<String, String>(){{
                 put("key1", "val1");
                 put("key2", "val2");
-            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                 decimal = 3.141592653589793d;
                 decimalStr = "3.14159265358979344719667586";
                 enum_ = Enum.ONE;
@@ -1461,7 +1461,7 @@ public class Application {
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `arrParam`                                                                                         | List<*String*>                                                                                     | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `arrParamExploded`                                                                                 | List<*Long*>                                                                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `mapParam`                                                                                         | Map<String, *String*>                                                                              | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
+| `mapParam`                                                                                         | Map<String, *String*>                                                                              | :heavy_minus_sign:                                                                                 | N/A                                                                                                | {"key1":"val1","key2":"val2"}                                                                      |
 | `objParam`                                                                                         | [org.openapis.openapi.models.shared.SimpleObject](../../models/shared/SimpleObject.md)             | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 
 
@@ -1563,10 +1563,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter             | Type                  | Required              | Description           | Example               |
-| --------------------- | --------------------- | --------------------- | --------------------- | --------------------- |
-| `mapParam`            | Map<String, *String*> | :heavy_check_mark:    | N/A                   | [object Object]       |
-| `mapParamExploded`    | Map<String, *Long*>   | :heavy_check_mark:    | N/A                   | [object Object]       |
+| Parameter                         | Type                              | Required                          | Description                       | Example                           |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `mapParam`                        | Map<String, *String*>             | :heavy_check_mark:                | N/A                               | {"test":"value","test2":"value2"} |
+| `mapParamExploded`                | Map<String, *Long*>               | :heavy_check_mark:                | N/A                               | {"test":1,"test2":2}              |
 
 
 ### Response
@@ -1603,14 +1603,14 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            SimplePathParameterObjectsResponse res = sdk.parameters.simplePathParameterObjects(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            SimplePathParameterObjectsResponse res = sdk.parameters.simplePathParameterObjects(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                 decimal = 3.141592653589793d;
                 decimalStr = "3.14159265358979344719667586";
                 enum_ = Enum.ONE;
@@ -1622,14 +1622,14 @@ public class Application {
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                 decimal = 3.141592653589793d;
                 decimalStr = "3.14159265358979344719667586";
                 enum_ = Enum.ONE;

@@ -1,4 +1,4 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```go
 package main
 
@@ -71,7 +71,7 @@ func main() {
 				Bool:       true,
 				BoolOpt:    openapi.Bool(true),
 				Date:       types.MustDateFromString("2020-01-01"),
-				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
 				Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 				DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 				Enum:       shared.EnumOne,
@@ -113,4 +113,4 @@ func main() {
 }
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

@@ -1,6 +1,6 @@
 # openapi/openapi
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### Composer
@@ -8,10 +8,11 @@
 ```bash
 composer require "openapi/openapi"
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example 1
 
 ```php
@@ -147,7 +148,7 @@ try {
     $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat(
         'Y-m-d\TH:i:s+',
-        '2020-01-01T00:00:00.000000001Z',
+        '2020-01-01T00:00:00.000001Z',
     );
     $request->requestBody->simpleObject->decimal = 3.141592653589793;
     $request->requestBody->simpleObject->decimalStr = '3.14159265358979344719667586';
@@ -204,9 +205,9 @@ try {
 }
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [SDK](docs/sdks/sdk/README.md)
@@ -315,18 +316,6 @@ try {
 ### [NestedSecond](docs/sdks/nestedsecond/README.md)
 
 * [get](docs/sdks/nestedsecond/README.md#get)
-
-### [Auth](docs/sdks/auth/README.md)
-
-* [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
-* [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
-* [basicAuth](docs/sdks/auth/README.md#basicauth)
-* [bearerAuth](docs/sdks/auth/README.md#bearerauth)
-* [globalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
-* [noAuth](docs/sdks/auth/README.md#noauth)
-* [oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
-* [oauth2Override](docs/sdks/auth/README.md#oauth2override)
-* [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
 ### [RequestBodies](docs/sdks/requestbodies/README.md)
 
@@ -454,6 +443,17 @@ try {
 * [oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [openIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
+### [Auth](docs/sdks/auth/README.md)
+
+* [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
+* [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
+* [basicAuth](docs/sdks/auth/README.md#basicauth)
+* [bearerAuth](docs/sdks/auth/README.md#bearerauth)
+* [globalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
+* [oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
+* [oauth2Override](docs/sdks/auth/README.md#oauth2override)
+* [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
+
 ### [Documentation](docs/sdks/documentation/README.md)
 
 * [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
@@ -486,17 +486,13 @@ try {
 ### [Retries](docs/sdks/retries/README.md)
 
 * [retriesGet](docs/sdks/retries/README.md#retriesget)
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
 
 
-
-<!-- Start Global Parameters -->
+<!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
@@ -544,7 +540,7 @@ try {
 }
 
 ```
-<!-- End Global Parameters -->
+<!-- End Global Parameters [global-parameters] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

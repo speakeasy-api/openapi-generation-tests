@@ -68,10 +68,10 @@ var res = await sdk.Parameters.DeepObjectQueryParamsMapAsync(new Dictionary<stri
 
 ### Parameters
 
-| Parameter                          | Type                               | Required                           | Description                        | Example                            |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `MapParam`                         | Dictionary<String, *string*>       | :heavy_check_mark:                 | N/A                                | [object Object]                    |
-| `MapArrParam`                      | Dictionary<String, List<*string*>> | :heavy_minus_sign:                 | N/A                                | [object Object]                    |
+| Parameter                                           | Type                                                | Required                                            | Description                                         | Example                                             |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `MapParam`                                          | Dictionary<String, *string*>                        | :heavy_check_mark:                                  | N/A                                                 | {"test":"value","test2":"value2"}                   |
+| `MapArrParam`                                       | Dictionary<String, List<*string*>>                  | :heavy_minus_sign:                                  | N/A                                                 | {"test":["test","test2"],"test2":["test3","test4"]} |
 
 
 ### Response
@@ -102,7 +102,7 @@ var res = await sdk.Parameters.DeepObjectQueryParamsObjectAsync(new SimpleObject
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -288,10 +288,10 @@ var res = await sdk.Parameters.FormQueryParamsMapAsync(new Dictionary<string, st
 
 ### Parameters
 
-| Parameter                    | Type                         | Required                     | Description                  | Example                      |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `MapParam`                   | Dictionary<String, *string*> | :heavy_minus_sign:           | N/A                          | [object Object]              |
-| `MapParamExploded`           | Dictionary<String, *long*>   | :heavy_minus_sign:           | N/A                          | [object Object]              |
+| Parameter                         | Type                              | Required                          | Description                       | Example                           |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `MapParam`                        | Dictionary<String, *string*>      | :heavy_minus_sign:                | N/A                               | {"test":"value","test2":"value2"} |
+| `MapParamExploded`                | Dictionary<String, *long*>        | :heavy_minus_sign:                | N/A                               | {"test":1,"test2":2}              |
 
 
 ### Response
@@ -321,7 +321,7 @@ var res = await sdk.Parameters.FormQueryParamsObjectAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -340,7 +340,7 @@ var res = await sdk.Parameters.FormQueryParamsObjectAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -524,10 +524,10 @@ var res = await sdk.Parameters.HeaderParamsMapAsync(new Dictionary<string, strin
 
 ### Parameters
 
-| Parameter                    | Type                         | Required                     | Description                  | Example                      |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `XHeaderMap`                 | Dictionary<String, *string*> | :heavy_check_mark:           | N/A                          | [object Object]              |
-| `XHeaderMapExplode`          | Dictionary<String, *string*> | :heavy_check_mark:           | N/A                          | [object Object]              |
+| Parameter                         | Type                              | Required                          | Description                       | Example                           |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `XHeaderMap`                      | Dictionary<String, *string*>      | :heavy_check_mark:                | N/A                               | {"key1":"value1","key2":"value2"} |
+| `XHeaderMapExplode`               | Dictionary<String, *string*>      | :heavy_check_mark:                | N/A                               | {"test1":"val1","test2":"val2"}   |
 
 
 ### Response
@@ -557,7 +557,7 @@ var res = await sdk.Parameters.HeaderParamsObjectAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -576,7 +576,7 @@ var res = await sdk.Parameters.HeaderParamsObjectAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -672,7 +672,7 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -692,7 +692,7 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -716,7 +716,7 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -736,7 +736,7 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -758,7 +758,7 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
         Any = "any",
         Bool = true,
         Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
         Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
@@ -779,7 +779,7 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -906,7 +906,7 @@ var res = await sdk.Parameters.MixedQueryParamsAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -925,7 +925,7 @@ var res = await sdk.Parameters.MixedQueryParamsAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -944,7 +944,7 @@ var res = await sdk.Parameters.MixedQueryParamsAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -1000,7 +1000,7 @@ var res = await sdk.Parameters.PathParameterJsonAsync(new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -1058,13 +1058,13 @@ var res = await sdk.Parameters.PipeDelimitedQueryParamsArrayAsync(new List<strin
     1,
     2,
 }, new Dictionary<string, string>() {
-    { "key2", "val2" },
     { "key1", "val1" },
+    { "key2", "val2" },
 }, new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -1090,7 +1090,7 @@ var res = await sdk.Parameters.PipeDelimitedQueryParamsArrayAsync(new List<strin
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `ArrParam`                                                                                         | List<*string*>                                                                                     | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `ArrParamExploded`                                                                                 | List<*long*>                                                                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `MapParam`                                                                                         | Dictionary<String, *string*>                                                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
+| `MapParam`                                                                                         | Dictionary<String, *string*>                                                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                | {"key1":"val1","key2":"val2"}                                                                      |
 | `ObjParam`                                                                                         | [SimpleObject](../../Models/Shared/SimpleObject.md)                                                | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 
 
@@ -1168,10 +1168,10 @@ var res = await sdk.Parameters.SimplePathParameterMapsAsync(new Dictionary<strin
 
 ### Parameters
 
-| Parameter                    | Type                         | Required                     | Description                  | Example                      |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `MapParam`                   | Dictionary<String, *string*> | :heavy_check_mark:           | N/A                          | [object Object]              |
-| `MapParamExploded`           | Dictionary<String, *long*>   | :heavy_check_mark:           | N/A                          | [object Object]              |
+| Parameter                         | Type                              | Required                          | Description                       | Example                           |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `MapParam`                        | Dictionary<String, *string*>      | :heavy_check_mark:                | N/A                               | {"test":"value","test2":"value2"} |
+| `MapParamExploded`                | Dictionary<String, *long*>        | :heavy_check_mark:                | N/A                               | {"test":1,"test2":2}              |
 
 
 ### Response
@@ -1201,7 +1201,7 @@ var res = await sdk.Parameters.SimplePathParameterObjectsAsync(new SimpleObject(
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -1220,7 +1220,7 @@ var res = await sdk.Parameters.SimplePathParameterObjectsAsync(new SimpleObject(
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,

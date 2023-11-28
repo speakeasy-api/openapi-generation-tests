@@ -1,15 +1,16 @@
 # openapi
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ```bash
 pip install git+https://github.com/speakeasy-api/openapi-generation-tests.git#subdirectory=python-client-sdk
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example 1
 
 ```python
@@ -58,7 +59,7 @@ req = operations.UsageExamplePostRequest(
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
             decimal=Decimal('3.141592653589793'),
             decimal_str=Decimal('3.14159265358979344719667586'),
             enum=shared.EnumT.ONE,
@@ -100,9 +101,9 @@ if res.object is not None:
     # handle response
     pass
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [SDK](docs/sdks/sdk/README.md)
@@ -212,18 +213,6 @@ if res.object is not None:
 ### [nested.second](docs/sdks/sdksecond/README.md)
 
 * [get](docs/sdks/sdksecond/README.md#get)
-
-### [auth](docs/sdks/auth/README.md)
-
-* [api_key_auth](docs/sdks/auth/README.md#api_key_auth)
-* [api_key_auth_global](docs/sdks/auth/README.md#api_key_auth_global)
-* [basic_auth](docs/sdks/auth/README.md#basic_auth)
-* [bearer_auth](docs/sdks/auth/README.md#bearer_auth)
-* [global_bearer_auth](docs/sdks/auth/README.md#global_bearer_auth)
-* [no_auth](docs/sdks/auth/README.md#no_auth)
-* [oauth2_auth](docs/sdks/auth/README.md#oauth2_auth)
-* [oauth2_override](docs/sdks/auth/README.md#oauth2_override)
-* [open_id_connect_auth](docs/sdks/auth/README.md#open_id_connect_auth)
 
 ### [request_bodies](docs/sdks/requestbodies/README.md)
 
@@ -351,6 +340,17 @@ if res.object is not None:
 * [oauth2_auth_new](docs/sdks/authnew/README.md#oauth2_auth_new)
 * [open_id_connect_auth_new](docs/sdks/authnew/README.md#open_id_connect_auth_new)
 
+### [auth](docs/sdks/auth/README.md)
+
+* [api_key_auth](docs/sdks/auth/README.md#api_key_auth)
+* [api_key_auth_global](docs/sdks/auth/README.md#api_key_auth_global)
+* [basic_auth](docs/sdks/auth/README.md#basic_auth)
+* [bearer_auth](docs/sdks/auth/README.md#bearer_auth)
+* [global_bearer_auth](docs/sdks/auth/README.md#global_bearer_auth)
+* [oauth2_auth](docs/sdks/auth/README.md#oauth2_auth)
+* [oauth2_override](docs/sdks/auth/README.md#oauth2_override)
+* [open_id_connect_auth](docs/sdks/auth/README.md#open_id_connect_auth)
+
 ### [documentation](docs/sdks/documentation/README.md)
 
 * [get_documentation_per_language](docs/sdks/documentation/README.md#get_documentation_per_language) - Gets documentation for some language, I guess.
@@ -383,17 +383,13 @@ if res.object is not None:
 ### [retries](docs/sdks/retries/README.md)
 
 * [retries_get](docs/sdks/retries/README.md#retries_get)
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
 
 
-
-<!-- Start Pagination -->
+<!-- Start Pagination [pagination] -->
 ## Pagination
 
 Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
@@ -428,11 +424,11 @@ if res.res is not None:
             break
 
 ```
-<!-- End Pagination -->
+<!-- End Pagination [pagination] -->
 
 
 
-<!-- Start Global Parameters -->
+<!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
@@ -471,11 +467,11 @@ if res.res is not None:
     # handle response
     pass
 ```
-<!-- End Global Parameters -->
+<!-- End Global Parameters [global-parameters] -->
 
 
 
-<!-- Start Error Handling -->
+<!-- Start Error Handling [errors] -->
 ## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
@@ -517,11 +513,11 @@ if res.status_code == 200:
     # handle response
     pass
 ```
-<!-- End Error Handling -->
+<!-- End Error Handling [errors] -->
 
 
 
-<!-- Start Server Selection -->
+<!-- Start Server Selection [server] -->
 ## Server Selection
 
 ### Select Server by Index
@@ -565,8 +561,8 @@ if res.object is not None:
 Some of the server options above contain variables. If you want to set the values of those variables, the following optional parameters are available when initializing the SDK client instance:
  * `hostname: str`
  * `port: str`
- * `protocol: str`
  * `something: models.ServerSomething`
+ * `protocol: str`
 
 ### Override Server URL Per-Client
 
@@ -615,11 +611,11 @@ if res.status_code == 200:
     # handle response
     pass
 ```
-<!-- End Server Selection -->
+<!-- End Server Selection [server] -->
 
 
 
-<!-- Start Custom HTTP Client -->
+<!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
 The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
@@ -633,11 +629,11 @@ http_client = requests.Session()
 http_client.headers.update({'x-custom-header': 'someValue'})
 s = sdk.SDK(client: http_client)
 ```
-<!-- End Custom HTTP Client -->
+<!-- End Custom HTTP Client [http-client] -->
 
 
 
-<!-- Start Retries -->
+<!-- Start Retries [retries] -->
 ## Retries
 
 Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
@@ -687,11 +683,11 @@ if res.retries is not None:
     # handle response
     pass
 ```
-<!-- End Retries -->
+<!-- End Retries [retries] -->
 
 
 
-<!-- Start Authentication -->
+<!-- Start Authentication [security] -->
 ## Authentication
 
 ### Per-Client Security Schemes
@@ -751,7 +747,7 @@ req = operations.UsageExamplePostRequest(
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
             decimal=Decimal('3.141592653589793'),
             decimal_str=Decimal('3.14159265358979344719667586'),
             enum=shared.EnumT.ONE,
@@ -793,7 +789,7 @@ if res.object is not None:
     # handle response
     pass
 ```
-<!-- End Authentication -->
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
