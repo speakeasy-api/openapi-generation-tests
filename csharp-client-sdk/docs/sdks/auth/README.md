@@ -12,7 +12,6 @@ Endpoints for testing authentication.
 * [BasicAuth](#basicauth)
 * [BearerAuth](#bearerauth)
 * [GlobalBearerAuth](#globalbearerauth)
-* [NoAuth](#noauth)
 * [Oauth2Auth](#oauth2auth)
 * [Oauth2Override](#oauth2override)
 * [OpenIdConnectAuth](#openidconnectauth)
@@ -168,33 +167,6 @@ var res = await sdk.Auth.GlobalBearerAuthAsync();
 ### Response
 
 **[GlobalBearerAuthResponse](../../Models/Operations/GlobalBearerAuthResponse.md)**
-
-
-## NoAuth
-
-### Example Usage
-
-```csharp
-using Openapi;
-using Openapi.Models.Shared;
-
-var sdk = new SDK(
-    security: new Security() {
-        ApiKeyAuth = "Token YOUR_API_KEY",
-    },
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
-
-var res = await sdk.Auth.NoAuthAsync();
-
-// handle response
-```
-
-
-### Response
-
-**[NoAuthResponse](../../Models/Operations/NoAuthResponse.md)**
 
 
 ## Oauth2Auth

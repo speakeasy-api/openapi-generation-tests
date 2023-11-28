@@ -415,6 +415,7 @@ var res = await sdk.Generation.EmptyResponseObjectWithCommentGetAsync();
 ```csharp
 using Openapi;
 using Openapi.Models.Shared;
+using NodaTime;
 
 var sdk = new SDK(
     security: new Security() {
@@ -424,10 +425,35 @@ var sdk = new SDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.Generation.GlobalNameOverriddenAsync();
+var res = await sdk.Generation.GlobalNameOverriddenAsync(new SimpleObject() {
+    Any = "any",
+    Bool = true,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
+    Enum = Enum.One,
+    Float32 = 1.1F,
+    Int = 1,
+    Int32 = 1,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
+    Num = 1.1D,
+    Str = "test",
+    Bigint = 8821239038968084,
+    BigintStr = 9223372036854775808,
+    BoolOpt = true,
+    Decimal = 3.141592653589793M,
+    DecimalStr = 3.14159265358979344719667586M,
+    StrOpt = "testOptional",
+});
 
 // handle response
 ```
+
+### Parameters
+
+| Parameter                                           | Type                                                | Required                                            | Description                                         |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `request`                                           | [SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
 
 
 ### Response
@@ -676,7 +702,7 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,

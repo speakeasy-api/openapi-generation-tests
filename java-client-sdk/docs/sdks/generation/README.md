@@ -581,9 +581,15 @@ public class Application {
 ```java
 package hello.world;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.GetGlobalNameOverrideResponse;
+import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.SimpleObject;
 
 public class Application {
     public static void main(String[] args) {
@@ -596,7 +602,18 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GetGlobalNameOverrideResponse res = sdk.generation.globalNameOverridden();
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+                bigint = 8821239038968084L;
+                bigintStr = "9223372036854775808";
+                boolOpt = true;
+                decimal = 3.141592653589793d;
+                decimalStr = "3.14159265358979344719667586";
+                intOptNull = 697039L;
+                numOptNull = 6448.77d;
+                strOpt = "testOptional";
+            }};            
+
+            GetGlobalNameOverrideResponse res = sdk.generation.globalNameOverridden(req);
 
             if (res.object != null) {
                 // handle response
@@ -607,6 +624,12 @@ public class Application {
     }
 }
 ```
+
+### Parameters
+
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [org.openapis.openapi.models.shared.SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
 
 
 ### Response
@@ -1006,7 +1029,7 @@ public class Application {
                         username = "Mable76";
                         uuid = "16b919d6-51cd-4e97-81e2-5221b7b6969f";
                     }};
-                    simpleObject = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+                    simpleObject = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
                         boolOpt = true;

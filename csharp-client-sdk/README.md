@@ -14,7 +14,7 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 - [ ] ♻️ Refine your SDK quickly by iterating locally with the [Speakeasy CLI](https://github.com/speakeasy-api/speakeasy)
 - [ ] 🎁 Publish your SDK to package managers by [configuring automatic publishing](https://www.speakeasyapi.dev/docs/productionize-sdks/publish-sdks)
 - [ ] ✨ When ready to productionize, delete this section from the README
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### Nuget
@@ -22,15 +22,17 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 ```bash
 dotnet add package openapi
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example 1
 
 ```csharp
 using Openapi;
 using Openapi.Models.Shared;
+using NodaTime;
 
 var sdk = new SDK(
     security: new Security() {
@@ -40,7 +42,26 @@ var sdk = new SDK(
     globalQueryParam: "some example global query param"
 );
 
-var res = await sdk.Generation.GlobalNameOverriddenAsync();
+var res = await sdk.Generation.GlobalNameOverriddenAsync(new SimpleObject() {
+    Any = "any",
+    Bool = true,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
+    Enum = Enum.One,
+    Float32 = 1.1F,
+    Int = 1,
+    Int32 = 1,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
+    Num = 1.1D,
+    Str = "test",
+    Bigint = 8821239038968084,
+    BigintStr = 9223372036854775808,
+    BoolOpt = true,
+    Decimal = 3.141592653589793M,
+    DecimalStr = 3.14159265358979344719667586M,
+    StrOpt = "testOptional",
+});
 
 // handle response
 ```
@@ -87,7 +108,7 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -109,9 +130,9 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 
 // handle response
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [SDK](docs/sdks/sdk/README.md)
@@ -221,18 +242,6 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 ### [Nested.Second](docs/sdks/sdksecond/README.md)
 
 * [Get](docs/sdks/sdksecond/README.md#get)
-
-### [Auth](docs/sdks/auth/README.md)
-
-* [ApiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
-* [ApiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
-* [BasicAuth](docs/sdks/auth/README.md#basicauth)
-* [BearerAuth](docs/sdks/auth/README.md#bearerauth)
-* [GlobalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
-* [NoAuth](docs/sdks/auth/README.md#noauth)
-* [Oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
-* [Oauth2Override](docs/sdks/auth/README.md#oauth2override)
-* [OpenIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
 ### [RequestBodies](docs/sdks/requestbodies/README.md)
 
@@ -360,6 +369,17 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [Oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [OpenIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
+### [Auth](docs/sdks/auth/README.md)
+
+* [ApiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
+* [ApiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
+* [BasicAuth](docs/sdks/auth/README.md#basicauth)
+* [BearerAuth](docs/sdks/auth/README.md#bearerauth)
+* [GlobalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
+* [Oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
+* [Oauth2Override](docs/sdks/auth/README.md#oauth2override)
+* [OpenIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
+
 ### [Documentation](docs/sdks/documentation/README.md)
 
 * [GetDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
@@ -392,13 +412,9 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 ### [Retries](docs/sdks/retries/README.md)
 
 * [RetriesGet](docs/sdks/retries/README.md#retriesget)
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
-
-<!-- Start Global Parameters -->
+<!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
@@ -435,7 +451,7 @@ var res = await sdk.Globals.GlobalPathParameterGetAsync(719830);
 
 // handle response
 ```
-<!-- End Global Parameters -->
+<!-- End Global Parameters [global-parameters] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

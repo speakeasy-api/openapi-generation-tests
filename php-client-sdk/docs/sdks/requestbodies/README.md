@@ -816,7 +816,7 @@ try {
     $request->obj->bool = true;
     $request->obj->boolOpt = true;
     $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $request->obj->decimal = 3.141592653589793;
     $request->obj->decimalStr = '3.14159265358979344719667586';
     $request->obj->enum = Shared\Enum::One;
@@ -1448,7 +1448,7 @@ try {
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $request->decimal = 3.141592653589793;
     $request->decimalStr = '3.14159265358979344719667586';
     $request->enum = Shared\Enum::One;
@@ -1513,7 +1513,7 @@ try {
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $request->decimal = 3.141592653589793;
     $request->decimalStr = '3.14159265358979344719667586';
     $request->enum = Shared\Enum::One;
@@ -1833,7 +1833,7 @@ try {
     $request->obj->bool = true;
     $request->obj->boolOpt = true;
     $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $request->obj->decimal = 3.141592653589793;
     $request->obj->decimalStr = '3.14159265358979344719667586';
     $request->obj->enum = Shared\Enum::One;
@@ -1947,7 +1947,7 @@ try {
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $request->decimal = 3.141592653589793;
     $request->decimalStr = '3.14159265358979344719667586';
     $request->enum = Shared\Enum::One;
@@ -2834,7 +2834,7 @@ try {
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $request->decimal = 3.141592653589793;
     $request->decimalStr = '3.14159265358979344719667586';
     $request->enum = Shared\Enum::One;
@@ -3577,7 +3577,7 @@ try {
     $request->obj->bool = true;
     $request->obj->boolOpt = true;
     $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $request->obj->decimal = 3.141592653589793;
     $request->obj->decimalStr = '3.14159265358979344719667586';
     $request->obj->enum = Shared\Enum::One;
@@ -3742,7 +3742,7 @@ try {
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $request->decimal = 3.141592653589793;
     $request->decimalStr = '3.14159265358979344719667586';
     $request->enum = Shared\Enum::One;

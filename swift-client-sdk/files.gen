@@ -8,12 +8,12 @@ Sources/OpenAPI/internal/api/_NestFirstAPI.swift
 Sources/OpenAPI/internal/api/_NestedAPI.swift
 Sources/OpenAPI/internal/api/_NestedFirstAPI.swift
 Sources/OpenAPI/internal/api/_NestedSecondAPI.swift
-Sources/OpenAPI/internal/api/_AuthAPI.swift
 Sources/OpenAPI/internal/api/_RequestBodiesAPI.swift
 Sources/OpenAPI/internal/api/_ResponseBodiesAPI.swift
 Sources/OpenAPI/internal/api/_ServersAPI.swift
 Sources/OpenAPI/internal/api/_TelemetryAPI.swift
 Sources/OpenAPI/internal/api/_AuthNewAPI.swift
+Sources/OpenAPI/internal/api/_AuthAPI.swift
 Sources/OpenAPI/internal/api/_DocumentationAPI.swift
 Sources/OpenAPI/internal/api/_ResourceAPI.swift
 Sources/OpenAPI/internal/api/_FirstAPI.swift
@@ -315,7 +315,6 @@ Sources/OpenAPI/models/operations/NestFirstGetResponse.swift
 Sources/OpenAPI/models/operations/NestedFirstGetResponse.swift
 Sources/OpenAPI/models/operations/NestedGetResponse.swift
 Sources/OpenAPI/models/operations/NestedSecondGetResponse.swift
-Sources/OpenAPI/models/operations/NoAuthResponse.swift
 Sources/OpenAPI/models/operations/NullableObjectPostRes.swift
 Sources/OpenAPI/models/operations/NullableObjectPostResponse.swift
 Sources/OpenAPI/models/operations/NullableOneOfRefInObjectPostRes.swift

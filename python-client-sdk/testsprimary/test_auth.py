@@ -5,7 +5,7 @@ from sdk import SDK
 from sdk.models.operations import *
 
 from .common_helpers import *
-from .helpers import *
+from .test_helpers import *
 
 
 def test_basic_auth():

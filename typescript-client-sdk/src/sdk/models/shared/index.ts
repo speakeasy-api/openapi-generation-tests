@@ -16,6 +16,7 @@ export * from "./deprecatedfieldinobject";
 export * from "./deprecatedobject";
 export * from "./emptyobjectparam";
 export * from "./enum";
+export * from "./errortype";
 export * from "./exampleresource";
 export * from "./fakerformattedstrings";
 export * from "./fakerstrings";

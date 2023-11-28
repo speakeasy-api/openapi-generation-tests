@@ -566,7 +566,29 @@ $sdk = OpenAPI\SDK::builder()
     ->build();
 
 try {
-    $response = $sdk->generation->globalNameOverridden();
+    $request = new Shared\SimpleObject();
+    $request->any = 'any';
+    $request->bigint = 8821239038968084;
+    $request->bigintStr = '9223372036854775808';
+    $request->bool = true;
+    $request->boolOpt = true;
+    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
+    $request->decimal = 3.141592653589793;
+    $request->decimalStr = '3.14159265358979344719667586';
+    $request->enum = Shared\Enum::One;
+    $request->float32 = 1.1;
+    $request->int = 1;
+    $request->int32 = 1;
+    $request->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $request->intEnum = Shared\IntEnum::Second;
+    $request->intOptNull = 930591;
+    $request->num = 1.1;
+    $request->numOptNull = 5244.22;
+    $request->str = 'test';
+    $request->strOpt = 'testOptional';
+
+    $response = $sdk->generation->globalNameOverridden($request);
 
     if ($response->object !== null) {
         // handle response
@@ -575,6 +597,12 @@ try {
     // handle exception
 }
 ```
+
+### Parameters
+
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `$request`                                                                         | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 
 
 ### Response
@@ -946,7 +974,7 @@ try {
     $request->requestBody->simpleObject->bool = true;
     $request->requestBody->simpleObject->boolOpt = true;
     $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $request->requestBody->simpleObject->decimal = 3.141592653589793;
     $request->requestBody->simpleObject->decimalStr = '3.14159265358979344719667586';
     $request->requestBody->simpleObject->enum = Shared\Enum::One;

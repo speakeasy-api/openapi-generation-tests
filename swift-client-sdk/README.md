@@ -19,8 +19,8 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 - [ ] ♻️ Refine your SDK quickly by iterating locally with the [Speakeasy CLI](https://github.com/speakeasy-api/speakeasy)
 - [ ] 🎁 Publish your SDK to package managers by [configuring automatic publishing](https://www.speakeasyapi.dev/docs/productionize-sdks/publish-sdks)
 - [ ] ✨ When ready to productionize, delete this section from the README
-<!-- Start SDK Installation -->
-## Installation
+<!-- Start SDK Installation [installation] -->
+## SDK Installation
 
 ### Swift Package Manager
 
@@ -28,13 +28,14 @@ You can add `OpenAPI` to your project directly in Xcode `(File > Add Packages...
 
 ```bash
 dependencies: [
-    .package(url: "", .upToNextMajor(from: "0.3.1"))
+    .package(url: "https://github.com/speakeasy-api/openapi-generation-tests.git", .upToNextMajor(from: "0.3.2"))
 ]
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example 1
 
 ```swift
@@ -43,7 +44,30 @@ import OpenAPI
 
 let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
 
-let response = try await client.generation.getGlobalNameOverride()
+let response = try await client.generation.getGlobalNameOverride(
+    request: Shared.SimpleObject(
+        any: AnyValue("any"), 
+        bool: true, 
+        date: Date(), 
+        dateTime: Date(), 
+        `enum`: .one, 
+        float32: 1.1, 
+        int: 1, 
+        int32: 1, 
+        int32Enum: .oneHundredAndEightyOne, 
+        intEnum: .second, 
+        num: 1.1, 
+        str: "test", 
+        bigint: 8821239038968084, 
+        bigintStr: "9223372036854775808", 
+        boolOpt: true, 
+        decimal: 3.141592653589793, 
+        decimalStr: "3.14159265358979344719667586", 
+        intOptNull: 930591, 
+        numOptNull: 5244.22, 
+        strOpt: "testOptional"
+    )
+)
 
 switch response.data {
 case .object(let object):
@@ -202,17 +226,13 @@ case .empty:
 }
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
+## Available Resources and Operations
+<!-- End Available Resources and Operations [operations] -->
 
-<!-- End SDK Available Operations -->
-
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
-
-<!-- Start Global Parameters -->
+<!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
@@ -252,7 +272,7 @@ case .empty:
 }
 
 ```
-<!-- End Global Parameters -->
+<!-- End Global Parameters [global-parameters] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
