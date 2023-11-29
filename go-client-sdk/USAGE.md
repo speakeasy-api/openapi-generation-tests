@@ -1,12 +1,14 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```go
 package main
 
 import (
 	"context"
 	"log"
+	"math/big"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -19,7 +21,26 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.Generation.GlobalNameOverridden(ctx)
+	res, err := s.Generation.GlobalNameOverridden(ctx, &shared.SimpleObject{
+		Any:        "any",
+		Bigint:     big.NewInt(8821239038968084),
+		BigintStr:  types.MustNewBigIntFromString("9223372036854775808"),
+		Bool:       true,
+		BoolOpt:    openapi.Bool(true),
+		Date:       types.MustDateFromString("2020-01-01"),
+		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+		Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
+		DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+		Enum:       shared.EnumOne,
+		Float32:    1.1,
+		Int:        1,
+		Int32:      1,
+		Int32Enum:  shared.Int32EnumFiftyFive,
+		IntEnum:    shared.IntEnumSecond,
+		Num:        1.1,
+		Str:        "test",
+		StrOpt:     openapi.String("testOptional"),
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -71,7 +92,7 @@ func main() {
 				Bool:       true,
 				BoolOpt:    openapi.Bool(true),
 				Date:       types.MustDateFromString("2020-01-01"),
-				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
 				Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 				DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 				Enum:       shared.EnumOne,
@@ -113,4 +134,4 @@ func main() {
 }
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

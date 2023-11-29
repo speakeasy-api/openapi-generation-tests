@@ -12,7 +12,6 @@ Endpoints for testing authentication.
 * [basic_auth](#basic_auth)
 * [bearer_auth](#bearer_auth)
 * [global_bearer_auth](#global_bearer_auth)
-* [no_auth](#no_auth)
 * [oauth2_auth](#oauth2_auth)
 * [oauth2_override](#oauth2_override)
 * [open_id_connect_auth](#open_id_connect_auth)
@@ -181,36 +180,6 @@ end
 ### Response
 
 **[T.nilable(Operations::GlobalBearerAuthResponse)](../../models/operations/globalbearerauthresponse.md)**
-
-
-## no_auth
-
-### Example Usage
-
-```ruby
-require_relative openapi
-
-
-s = OpenApiSDK::SDK.new
-s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
-  )
-)
-
-    
-res = s.auth.no_auth()
-
-if res.status == 200
-  # handle response
-end
-
-```
-
-
-### Response
-
-**[T.nilable(Operations::NoAuthResponse)](../../models/operations/noauthresponse.md)**
 
 
 ## oauth2_auth

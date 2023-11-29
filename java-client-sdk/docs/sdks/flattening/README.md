@@ -42,14 +42,14 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ComponentBodyAndParamConflictResponse res = sdk.flattening.componentBodyAndParamConflict(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            ComponentBodyAndParamConflictResponse res = sdk.flattening.componentBodyAndParamConflict(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                 decimal = 3.141592653589793d;
                 decimalStr = "3.14159265358979344719667586";
                 enum_ = Enum.ONE;
@@ -115,14 +115,14 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ComponentBodyAndParamNoConflictResponse res = sdk.flattening.componentBodyAndParamNoConflict("string", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            ComponentBodyAndParamNoConflictResponse res = sdk.flattening.componentBodyAndParamNoConflict("string", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                 decimal = 3.141592653589793d;
                 decimalStr = "3.14159265358979344719667586";
                 enum_ = Enum.ONE;
