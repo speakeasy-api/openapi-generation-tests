@@ -1,11 +1,34 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```swift
 import Foundation
 import OpenAPI
 
 let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
 
-let response = try await client.generation.getGlobalNameOverride()
+let response = try await client.generation.getGlobalNameOverride(
+    request: Shared.SimpleObject(
+        any: AnyValue("any"), 
+        bool: true, 
+        date: Date(), 
+        dateTime: Date(), 
+        `enum`: .one, 
+        float32: 1.1, 
+        int: 1, 
+        int32: 1, 
+        int32Enum: .oneHundredAndEightyOne, 
+        intEnum: .second, 
+        num: 1.1, 
+        str: "test", 
+        bigint: 8821239038968084, 
+        bigintStr: "9223372036854775808", 
+        boolOpt: true, 
+        decimal: 3.141592653589793, 
+        decimalStr: "3.14159265358979344719667586", 
+        intOptNull: 930591, 
+        numOptNull: 5244.22, 
+        strOpt: "testOptional"
+    )
+)
 
 switch response.data {
 case .object(let object):
@@ -164,4 +187,4 @@ case .empty:
 }
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

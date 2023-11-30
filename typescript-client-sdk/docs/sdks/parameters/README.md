@@ -52,13 +52,13 @@ const mapParam: Record<string, string> = {
   "test2": "value2",
 };
 const mapArrParam: Record<string, string[]> = {
-  "test2": [
-    "test3",
-    "test4",
-  ],
   "test": [
     "test",
     "test2",
+  ],
+  "test2": [
+    "test3",
+    "test4",
   ],
 };
 
@@ -74,8 +74,8 @@ const mapArrParam: Record<string, string[]> = {
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `mapParam`                                                   | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | [object Object]                                              |
-| `mapArrParam`                                                | Record<string, *string*[]>                                   | :heavy_minus_sign:                                           | N/A                                                          | [object Object]                                              |
+| `mapParam`                                                   | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | {"test":"value","test2":"value2"}                            |
+| `mapArrParam`                                                | Record<string, *string*[]>                                   | :heavy_minus_sign:                                           | N/A                                                          | {"test":["test","test2"],"test2":["test3","test4"]}          |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
@@ -113,7 +113,7 @@ const objParam: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -341,8 +341,8 @@ const mapParamExploded: Record<string, number> = {
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `mapParam`                                                   | Record<string, *string*>                                     | :heavy_minus_sign:                                           | N/A                                                          | [object Object]                                              |
-| `mapParamExploded`                                           | Record<string, *number*>                                     | :heavy_minus_sign:                                           | N/A                                                          | [object Object]                                              |
+| `mapParam`                                                   | Record<string, *string*>                                     | :heavy_minus_sign:                                           | N/A                                                          | {"test":"value","test2":"value2"}                            |
+| `mapParamExploded`                                           | Record<string, *number*>                                     | :heavy_minus_sign:                                           | N/A                                                          | {"test":1,"test2":2}                                         |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
@@ -380,7 +380,7 @@ const objParamExploded: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -400,7 +400,7 @@ const objParam: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -608,8 +608,8 @@ import { HeaderParamsMapRequest } from "openapi/dist/sdk/models/operations";
     globalQueryParam: "some example global query param",
   });
 const xHeaderMap: Record<string, string> = {
-  "key2": "value2",
   "key1": "value1",
+  "key2": "value2",
 };
 const xHeaderMapExplode: Record<string, string> = {
   "test1": "val1",
@@ -628,8 +628,8 @@ const xHeaderMapExplode: Record<string, string> = {
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `xHeaderMap`                                                 | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | [object Object]                                              |
-| `xHeaderMapExplode`                                          | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | [object Object]                                              |
+| `xHeaderMap`                                                 | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | {"key1":"value1","key2":"value2"}                            |
+| `xHeaderMapExplode`                                          | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | {"test1":"val1","test2":"val2"}                              |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
@@ -667,7 +667,7 @@ const xHeaderObj: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -687,7 +687,7 @@ const xHeaderObjExplode: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -804,7 +804,7 @@ const deepObjParam: DeepObject = {
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      dateTime: new Date("2020-01-01T00:00:00.000001Z"),
       decimal: 3.141592653589793,
       decimalStr: "3.14159265358979344719667586",
       enum: Enum.One,
@@ -824,7 +824,7 @@ const deepObjParam: DeepObject = {
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      dateTime: new Date("2020-01-01T00:00:00.000001Z"),
       decimal: 3.141592653589793,
       decimalStr: "3.14159265358979344719667586",
       enum: Enum.One,
@@ -848,7 +848,7 @@ const deepObjParam: DeepObject = {
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      dateTime: new Date("2020-01-01T00:00:00.000001Z"),
       decimal: 3.141592653589793,
       decimalStr: "3.14159265358979344719667586",
       enum: Enum.One,
@@ -868,7 +868,7 @@ const deepObjParam: DeepObject = {
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      dateTime: new Date("2020-01-01T00:00:00.000001Z"),
       decimal: 3.141592653589793,
       decimalStr: "3.14159265358979344719667586",
       enum: Enum.One,
@@ -890,7 +890,7 @@ const deepObjParam: DeepObject = {
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+    dateTime: new Date("2020-01-01T00:00:00.000001Z"),
     decimal: 3.141592653589793,
     decimalStr: "3.14159265358979344719667586",
     enum: Enum.One,
@@ -912,7 +912,7 @@ const simpleObjParam: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -1071,7 +1071,7 @@ const deepObjectParam: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -1091,7 +1091,7 @@ const formParam: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -1111,7 +1111,7 @@ const jsonParam: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -1177,7 +1177,7 @@ const jsonObj: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -1253,7 +1253,7 @@ const objParam: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -1281,7 +1281,7 @@ const objParam: SimpleObject = {
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `arrParam`                                                                                         | *string*[]                                                                                         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `arrParamExploded`                                                                                 | *number*[]                                                                                         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `mapParam`                                                                                         | Record<string, *string*>                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
+| `mapParam`                                                                                         | Record<string, *string*>                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                | {"key1":"val1","key2":"val2"}                                                                      |
 | `objParam`                                                                                         | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                  | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 | `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |                                                                                                    |
 
@@ -1378,8 +1378,8 @@ const mapParamExploded: Record<string, number> = {
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `mapParam`                                                   | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | [object Object]                                              |
-| `mapParamExploded`                                           | Record<string, *number*>                                     | :heavy_check_mark:                                           | N/A                                                          | [object Object]                                              |
+| `mapParam`                                                   | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | {"test":"value","test2":"value2"}                            |
+| `mapParamExploded`                                           | Record<string, *number*>                                     | :heavy_check_mark:                                           | N/A                                                          | {"test":1,"test2":2}                                         |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
@@ -1417,7 +1417,7 @@ const objParam: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -1437,7 +1437,7 @@ const objParamExploded: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,

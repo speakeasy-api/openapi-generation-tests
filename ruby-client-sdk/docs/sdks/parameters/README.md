@@ -70,10 +70,10 @@ end
 
 ### Parameters
 
-| Parameter                           | Type                                | Required                            | Description                         | Example                             |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `map_param`                         | T::Hash[Symbol, *String*]           | :heavy_check_mark:                  | N/A                                 | [object Object]                     |
-| `map_arr_param`                     | T::Hash[Symbol, T::Array<*String*>] | :heavy_minus_sign:                  | N/A                                 | [object Object]                     |
+| Parameter                                           | Type                                                | Required                                            | Description                                         | Example                                             |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `map_param`                                         | T::Hash[Symbol, *String*]                           | :heavy_check_mark:                                  | N/A                                                 | {"test":"value","test2":"value2"}                   |
+| `map_arr_param`                                     | T::Hash[Symbol, T::Array<*String*>]                 | :heavy_minus_sign:                                  | N/A                                                 | {"test":["test","test2"],"test2":["test3","test4"]} |
 
 
 ### Response
@@ -106,7 +106,7 @@ req = Operations::DeepObjectQueryParamsObjectRequest.new(
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
       decimal=3.141592653589793,
       decimal_str="3.14159265358979344719667586",
       enum=Shared::Enum::ONE,
@@ -327,10 +327,10 @@ end
 
 ### Parameters
 
-| Parameter                  | Type                       | Required                   | Description                | Example                    |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `map_param`                | T::Hash[Symbol, *String*]  | :heavy_minus_sign:         | N/A                        | [object Object]            |
-| `map_param_exploded`       | T::Hash[Symbol, *Integer*] | :heavy_minus_sign:         | N/A                        | [object Object]            |
+| Parameter                         | Type                              | Required                          | Description                       | Example                           |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `map_param`                       | T::Hash[Symbol, *String*]         | :heavy_minus_sign:                | N/A                               | {"test":"value","test2":"value2"} |
+| `map_param_exploded`              | T::Hash[Symbol, *Integer*]        | :heavy_minus_sign:                | N/A                               | {"test":1,"test2":2}              |
 
 
 ### Response
@@ -363,7 +363,7 @@ req = Operations::FormQueryParamsObjectRequest.new(
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
       decimal=3.141592653589793,
       decimal_str="3.14159265358979344719667586",
       enum=Shared::Enum::ONE,
@@ -385,7 +385,7 @@ req = Operations::FormQueryParamsObjectRequest.new(
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
       decimal=3.141592653589793,
       decimal_str="3.14159265358979344719667586",
       enum=Shared::Enum::ONE,
@@ -607,10 +607,10 @@ end
 
 ### Parameters
 
-| Parameter                 | Type                      | Required                  | Description               | Example                   |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `x_header_map`            | T::Hash[Symbol, *String*] | :heavy_check_mark:        | N/A                       | [object Object]           |
-| `x_header_map_explode`    | T::Hash[Symbol, *String*] | :heavy_check_mark:        | N/A                       | [object Object]           |
+| Parameter                         | Type                              | Required                          | Description                       | Example                           |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `x_header_map`                    | T::Hash[Symbol, *String*]         | :heavy_check_mark:                | N/A                               | {"key1":"value1","key2":"value2"} |
+| `x_header_map_explode`            | T::Hash[Symbol, *String*]         | :heavy_check_mark:                | N/A                               | {"test1":"val1","test2":"val2"}   |
 
 
 ### Response
@@ -643,7 +643,7 @@ req = Operations::HeaderParamsObjectRequest.new(
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
       decimal=3.141592653589793,
       decimal_str="3.14159265358979344719667586",
       enum=Shared::Enum::ONE,
@@ -665,7 +665,7 @@ req = Operations::HeaderParamsObjectRequest.new(
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
       decimal=3.141592653589793,
       decimal_str="3.14159265358979344719667586",
       enum=Shared::Enum::ONE,
@@ -780,7 +780,7 @@ req = Operations::JsonQueryParamsObjectRequest.new(
           bool=true,
           bool_opt=true,
           date=Date.parse("2020-01-01"),
-          date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+          date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
           decimal=3.141592653589793,
           decimal_str="3.14159265358979344719667586",
           enum=Shared::Enum::ONE,
@@ -806,7 +806,7 @@ req = Operations::JsonQueryParamsObjectRequest.new(
           bool=true,
           bool_opt=true,
           date=Date.parse("2020-01-01"),
-          date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+          date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
           decimal=3.141592653589793,
           decimal_str="3.14159265358979344719667586",
           enum=Shared::Enum::ONE,
@@ -830,7 +830,7 @@ req = Operations::JsonQueryParamsObjectRequest.new(
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
-        date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+        date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
         decimal=3.141592653589793,
         decimal_str="3.14159265358979344719667586",
         enum=Shared::Enum::ONE,
@@ -855,7 +855,7 @@ req = Operations::JsonQueryParamsObjectRequest.new(
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
       decimal=3.141592653589793,
       decimal_str="3.14159265358979344719667586",
       enum=Shared::Enum::ONE,
@@ -1031,7 +1031,7 @@ req = Operations::MixedQueryParamsRequest.new(
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
       decimal=3.141592653589793,
       decimal_str="3.14159265358979344719667586",
       enum=Shared::Enum::ONE,
@@ -1053,7 +1053,7 @@ req = Operations::MixedQueryParamsRequest.new(
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
       decimal=3.141592653589793,
       decimal_str="3.14159265358979344719667586",
       enum=Shared::Enum::ONE,
@@ -1075,7 +1075,7 @@ req = Operations::MixedQueryParamsRequest.new(
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
       decimal=3.141592653589793,
       decimal_str="3.14159265358979344719667586",
       enum=Shared::Enum::ONE,
@@ -1140,7 +1140,7 @@ req = Operations::PathParameterJsonRequest.new(
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
       decimal=3.141592653589793,
       decimal_str="3.14159265358979344719667586",
       enum=Shared::Enum::ONE,
@@ -1212,7 +1212,7 @@ req = Operations::PipeDelimitedQueryParamsArrayRequest.new(
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
       decimal=3.141592653589793,
       decimal_str="3.14159265358979344719667586",
       enum=Shared::Enum::ONE,
@@ -1244,7 +1244,7 @@ end
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `arr_param`                                                                                        | T::Array<*String*>                                                                                 | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `arr_param_exploded`                                                                               | T::Array<*Integer*>                                                                                | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `map_param`                                                                                        | T::Hash[Symbol, *String*]                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
+| `map_param`                                                                                        | T::Hash[Symbol, *String*]                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                | {"key1":"val1","key2":"val2"}                                                                      |
 | `obj_param`                                                                                        | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 
 
@@ -1334,10 +1334,10 @@ end
 
 ### Parameters
 
-| Parameter                  | Type                       | Required                   | Description                | Example                    |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `map_param`                | T::Hash[Symbol, *String*]  | :heavy_check_mark:         | N/A                        | [object Object]            |
-| `map_param_exploded`       | T::Hash[Symbol, *Integer*] | :heavy_check_mark:         | N/A                        | [object Object]            |
+| Parameter                         | Type                              | Required                          | Description                       | Example                           |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `map_param`                       | T::Hash[Symbol, *String*]         | :heavy_check_mark:                | N/A                               | {"test":"value","test2":"value2"} |
+| `map_param_exploded`              | T::Hash[Symbol, *Integer*]        | :heavy_check_mark:                | N/A                               | {"test":1,"test2":2}              |
 
 
 ### Response
@@ -1370,7 +1370,7 @@ req = Operations::SimplePathParameterObjectsRequest.new(
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
       decimal=3.141592653589793,
       decimal_str="3.14159265358979344719667586",
       enum=Shared::Enum::ONE,
@@ -1392,7 +1392,7 @@ req = Operations::SimplePathParameterObjectsRequest.new(
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
       decimal=3.141592653589793,
       decimal_str="3.14159265358979344719667586",
       enum=Shared::Enum::ONE,

@@ -1,4 +1,4 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```ruby
 require_relative openapi
 
@@ -10,8 +10,33 @@ s.config_security(
   )
 )
 
+   
+req = Shared::SimpleObject.new(
+  request=Shared::SimpleObject.new(
+    any="any",
+    bigint=8821239038968084,
+    bigint_str="9223372036854775808",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+    decimal=3.141592653589793,
+    decimal_str="3.14159265358979344719667586",
+    enum=Shared::Enum::ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=Shared::IntEnum::SECOND,
+    int_opt_null=930591,
+    num=1.1,
+    num_opt_null=5244.22,
+    str_="test",
+    str_opt="testOptional",
+  ),
+)
     
-res = s.generation.global_name_overridden()
+res = s.generation.global_name_overridden(req)
 
 if ! res.object.nil?
   # handle response
@@ -119,7 +144,7 @@ req = Operations::UsageExamplePostRequest.new(
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
-        date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+        date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
         decimal=3.141592653589793,
         decimal_str="3.14159265358979344719667586",
         enum=Shared::Enum::ONE,
@@ -240,7 +265,7 @@ req = Operations::UsageExamplePostRequest.new(
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
       decimal=3.141592653589793,
       decimal_str="3.14159265358979344719667586",
       enum=Shared::Enum::ONE,
@@ -265,4 +290,4 @@ if ! res.object.nil?
 end
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

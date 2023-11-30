@@ -1,14 +1,15 @@
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ```bash
 gem install specific_install
 gem specific_install https://github.com/speakeasy-api/openapi-generation-tests -d ruby-client-sdk 
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example 1
 
 ```ruby
@@ -22,8 +23,33 @@ s.config_security(
   )
 )
 
+   
+req = Shared::SimpleObject.new(
+  request=Shared::SimpleObject.new(
+    any="any",
+    bigint=8821239038968084,
+    bigint_str="9223372036854775808",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+    decimal=3.141592653589793,
+    decimal_str="3.14159265358979344719667586",
+    enum=Shared::Enum::ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=Shared::IntEnum::SECOND,
+    int_opt_null=930591,
+    num=1.1,
+    num_opt_null=5244.22,
+    str_="test",
+    str_opt="testOptional",
+  ),
+)
     
-res = s.generation.global_name_overridden()
+res = s.generation.global_name_overridden(req)
 
 if ! res.object.nil?
   # handle response
@@ -131,7 +157,7 @@ req = Operations::UsageExamplePostRequest.new(
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
-        date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+        date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
         decimal=3.141592653589793,
         decimal_str="3.14159265358979344719667586",
         enum=Shared::Enum::ONE,
@@ -252,7 +278,7 @@ req = Operations::UsageExamplePostRequest.new(
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
       decimal=3.141592653589793,
       decimal_str="3.14159265358979344719667586",
       enum=Shared::Enum::ONE,
@@ -277,9 +303,9 @@ if ! res.object.nil?
 end
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [SDK](docs/sdks/sdk/README.md)
@@ -388,18 +414,6 @@ end
 ### [NestedSecond](docs/sdks/nestedsecond/README.md)
 
 * [get](docs/sdks/nestedsecond/README.md#get)
-
-### [Auth](docs/sdks/auth/README.md)
-
-* [api_key_auth](docs/sdks/auth/README.md#api_key_auth)
-* [api_key_auth_global](docs/sdks/auth/README.md#api_key_auth_global)
-* [basic_auth](docs/sdks/auth/README.md#basic_auth)
-* [bearer_auth](docs/sdks/auth/README.md#bearer_auth)
-* [global_bearer_auth](docs/sdks/auth/README.md#global_bearer_auth)
-* [no_auth](docs/sdks/auth/README.md#no_auth)
-* [oauth2_auth](docs/sdks/auth/README.md#oauth2_auth)
-* [oauth2_override](docs/sdks/auth/README.md#oauth2_override)
-* [open_id_connect_auth](docs/sdks/auth/README.md#open_id_connect_auth)
 
 ### [RequestBodies](docs/sdks/requestbodies/README.md)
 
@@ -527,6 +541,17 @@ end
 * [oauth2_auth_new](docs/sdks/authnew/README.md#oauth2_auth_new)
 * [open_id_connect_auth_new](docs/sdks/authnew/README.md#open_id_connect_auth_new)
 
+### [Auth](docs/sdks/auth/README.md)
+
+* [api_key_auth](docs/sdks/auth/README.md#api_key_auth)
+* [api_key_auth_global](docs/sdks/auth/README.md#api_key_auth_global)
+* [basic_auth](docs/sdks/auth/README.md#basic_auth)
+* [bearer_auth](docs/sdks/auth/README.md#bearer_auth)
+* [global_bearer_auth](docs/sdks/auth/README.md#global_bearer_auth)
+* [oauth2_auth](docs/sdks/auth/README.md#oauth2_auth)
+* [oauth2_override](docs/sdks/auth/README.md#oauth2_override)
+* [open_id_connect_auth](docs/sdks/auth/README.md#open_id_connect_auth)
+
 ### [Documentation](docs/sdks/documentation/README.md)
 
 * [get_documentation_per_language](docs/sdks/documentation/README.md#get_documentation_per_language) - Gets documentation for some language, I guess.
@@ -559,17 +584,13 @@ end
 ### [Retries](docs/sdks/retries/README.md)
 
 * [retries_get](docs/sdks/retries/README.md#retries_get)
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
 
 
-
-<!-- Start Global Parameters -->
+<!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
@@ -612,7 +633,7 @@ if ! res.res.nil?
 end
 
 ```
-<!-- End Global Parameters -->
+<!-- End Global Parameters [global-parameters] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
