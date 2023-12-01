@@ -27,19 +27,20 @@ Endpoints for testing response bodies.
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = ::.new(
-  request=.new{
-    "ASCII": "string",
-  },
-)
+
+req = {
+  "ASCII": "string",
+}
     
 res = s.response_bodies.response_body_additional_properties_complex_numbers_post(req)
 
@@ -69,19 +70,20 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = ::.new(
-  request=.new{
-    "Bedfordshire": Date.parse("2021-04-22"),
-  },
-)
+
+req = {
+  "Bedfordshire": Date.parse("2021-04-22"),
+}
     
 res = s.response_bodies.response_body_additional_properties_date_post(req)
 
@@ -111,40 +113,39 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = ::.new(
-  request=.new{
-    "variant": Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::IntEnum::FIRST,
-      int_opt_null=957109,
-      num=1.1,
-      num_opt_null=7193.38,
-      str_="test",
-      str_opt="testOptional",
-    ),
-  },
-)
+
+req = {
+  "variant": Shared::SimpleObject.new(
+    any="any",
+    bigint=8821239038968084,
+    bigint_str="9223372036854775808",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+    decimal=3.141592653589793,
+    decimal_str="3.14159265358979344719667586",
+    enum=Shared::Enum::ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=Shared::IntEnum::FIRST,
+    num=1.1,
+    str_="test",
+    str_opt="testOptional",
+  ),
+}
     
 res = s.response_bodies.response_body_additional_properties_object_post(req)
 
@@ -174,19 +175,20 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = ::.new(
-  request=.new{
-    "Ergonomic": "string",
-  },
-)
+
+req = {
+  "Ergonomic": "string",
+}
     
 res = s.response_bodies.response_body_additional_properties_post(req)
 
@@ -216,10 +218,13 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
@@ -246,22 +251,23 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Operations::ResponseBodyEmptyWithHeadersRequest.new(
-  query_params=Operations::ResponseBodyEmptyWithHeadersRequest.new(
-    x_number_header=1751.8,
-    x_string_header="string",
-  ),
+  x_number_header=1751.8,
+  x_string_header="string",
 )
     
-res = s.response_bodies.response_body_empty_with_headers(req)
+res = s.response_bodies.response_body_empty_with_headers(x_number_header=245.04, x_string_header="string")
 
 if res.status == 200
   # handle response
@@ -290,10 +296,13 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
@@ -326,10 +335,13 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
@@ -362,10 +374,13 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
@@ -392,10 +407,13 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
@@ -422,22 +440,20 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Shared::ObjWithZeroValueComplexTypePtrs.new(
-  request=Shared::ObjWithZeroValueComplexTypePtrs.new(
-    bigint=438531,
-    bigint_str="string",
-    date=Date.parse("2020-01-01"),
-    date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-    decimal=4843.38,
-  ),
+  date=Date.parse("2020-01-01"),
+  date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
 )
     
 res = s.response_bodies.response_body_zero_value_complex_type_ptrs_post(req)

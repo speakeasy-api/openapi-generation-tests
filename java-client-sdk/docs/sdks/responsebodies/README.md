@@ -34,18 +34,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, String>(){{
+            java.util.Map<String, String> req = new java.util.HashMap<String, String>(
+            ){{
                 put("key", "string");
-            }};            
+            }};
 
-            ResponseBodyAdditionalPropertiesComplexNumbersPostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesComplexNumbersPost(req);
+            org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesComplexNumbersPost(req);
 
             if (res.object != null) {
                 // handle response
@@ -84,18 +86,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, LocalDate>(){{
+            java.util.Map<String, LocalDate> req = new java.util.HashMap<String, LocalDate>(
+            ){{
                 put("key", LocalDate.parse("2021-03-16"));
-            }};            
+            }};
 
-            ResponseBodyAdditionalPropertiesDatePostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesDatePost(req);
+            org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesDatePostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesDatePost(req);
 
             if (res.object != null) {
                 // handle response
@@ -140,22 +144,36 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject> req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(
+            ){{
+                put("key", new SimpleObject(
+                "any",
+                true,
+                LocalDate.parse("2020-01-01"),
+                OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                Enum.ONE,
+                1.1f,
+                1L,
+                1,
+                Int32Enum.FIFTY_FIVE,
+                IntEnum.Second,
+                1.1d,
+                "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
                     bool = true;
                     boolOpt = true;
                     date = LocalDate.parse("2020-01-01");
-                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                     decimal = 3.141592653589793d;
                     decimalStr = "3.14159265358979344719667586";
                     enum_ = Enum.ONE;
@@ -168,9 +186,9 @@ public class Application {
                     str = "test";
                     strOpt = "testOptional";
                 }});
-            }};            
+            }};
 
-            ResponseBodyAdditionalPropertiesObjectPostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesObjectPost(req);
+            org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesObjectPostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesObjectPost(req);
 
             if (res.object != null) {
                 // handle response
@@ -209,18 +227,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, String>(){{
+            java.util.Map<String, String> req = new java.util.HashMap<String, String>(
+            ){{
                 put("key", "string");
-            }};            
+            }};
 
-            ResponseBodyAdditionalPropertiesPostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesPost(req);
+            org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesPostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesPost(req);
 
             if (res.object != null) {
                 // handle response
@@ -259,14 +279,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ResponseBodyBytesGetResponse res = sdk.responseBodies.responseBodyBytesGet();
+            org.openapis.openapi.models.operations.ResponseBodyBytesGetResponse res = sdk.responseBodies.responseBodyBytesGet();
 
             if (res.bytes != null) {
                 // handle response
@@ -300,14 +321,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ResponseBodyEmptyWithHeadersResponse res = sdk.responseBodies.responseBodyEmptyWithHeaders(1751.8d, "string");
+            org.openapis.openapi.models.operations.ResponseBodyEmptyWithHeadersResponse res = sdk.responseBodies.responseBodyEmptyWithHeaders(1751.8d, "string");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -347,14 +369,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ResponseBodyOptionalGetResponse res = sdk.responseBodies.responseBodyOptionalGet();
+            org.openapis.openapi.models.operations.ResponseBodyOptionalGetResponse res = sdk.responseBodies.responseBodyOptionalGet();
 
             if (res.typedObject1 != null) {
                 // handle response
@@ -393,14 +416,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ResponseBodyReadOnlyResponse res = sdk.responseBodies.responseBodyReadOnly();
+            org.openapis.openapi.models.operations.ResponseBodyReadOnlyResponse res = sdk.responseBodies.responseBodyReadOnly();
 
             if (res.readOnlyObject != null) {
                 // handle response
@@ -439,14 +463,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ResponseBodyStringGetResponse res = sdk.responseBodies.responseBodyStringGet();
+            org.openapis.openapi.models.operations.ResponseBodyStringGetResponse res = sdk.responseBodies.responseBodyStringGet();
 
             if (res.html != null) {
                 // handle response
@@ -479,14 +504,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ResponseBodyXmlGetResponse res = sdk.responseBodies.responseBodyXmlGet();
+            org.openapis.openapi.models.operations.ResponseBodyXmlGetResponse res = sdk.responseBodies.responseBodyXmlGet();
 
             if (res.xml != null) {
                 // handle response
@@ -522,22 +548,25 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.ObjWithZeroValueComplexTypePtrs req = new ObjWithZeroValueComplexTypePtrs(){{
+            org.openapis.openapi.models.shared.ObjWithZeroValueComplexTypePtrs req = new ObjWithZeroValueComplexTypePtrs(
+){{
                 bigint = 438531L;
                 bigintStr = "string";
                 date = LocalDate.parse("2020-01-01");
                 dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                 decimal = 4843.38d;
-            }};            
 
-            ResponseBodyZeroValueComplexTypePtrsPostResponse res = sdk.responseBodies.responseBodyZeroValueComplexTypePtrsPost(req);
+            }};
+
+            org.openapis.openapi.models.operations.ResponseBodyZeroValueComplexTypePtrsPostResponse res = sdk.responseBodies.responseBodyZeroValueComplexTypePtrsPost(req);
 
             if (res.object != null) {
                 // handle response
