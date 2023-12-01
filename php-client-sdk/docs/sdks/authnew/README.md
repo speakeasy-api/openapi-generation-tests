@@ -36,17 +36,18 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'owsGgP4_AhRPMSJ';
     $request->basicAuth->username = 'Devonte_Bins';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $response = $sdk->authNew->apiKeyAuthGlobalNew($request);
 
@@ -88,17 +89,18 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'xvJcf9GiJNr7T2x';
     $request->basicAuth->username = 'Cory33';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $response = $sdk->authNew->authGlobal($request);
 
@@ -138,16 +140,18 @@ use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'Z2OStPksFyrcGeu';
     $request->basicAuth->username = 'Ashton.Steuber27';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $requestSecurity = new Operations\BasicAuthNewSecurity();
     $requestSecurity->password = 'YOUR_PASSWORD';
@@ -192,16 +196,18 @@ use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'Iq1JSzG1wqLDz4v';
     $request->basicAuth->username = 'Ismael.Emmerich';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $requestSecurity = new Operations\MultipleMixedOptionsAuthSecurity();
     $requestSecurity->apiKeyAuthNew = 'Token <YOUR_API_KEY>';
@@ -245,16 +251,18 @@ use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'OcWVV5608IiaWJQ';
     $request->basicAuth->username = 'Kameron42';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $requestSecurity = new Operations\MultipleMixedSchemeAuthSecurity();
     $requestSecurity->apiKeyAuthNew = 'Token <YOUR_API_KEY>';
@@ -300,16 +308,18 @@ use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'fpwNE90MyqKIrXk';
     $request->basicAuth->username = 'Caroline_Walsh';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $requestSecurity = new Operations\MultipleOptionsWithMixedSchemesAuthSecurity();
     $requestSecurity->option1 = new Operations\MultipleOptionsWithMixedSchemesAuthSecurityOption1();
@@ -355,16 +365,18 @@ use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'pibxDTiJSijK04Y';
     $request->basicAuth->username = 'Selena76';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $requestSecurity = new Operations\MultipleOptionsWithSimpleSchemesAuthSecurity();
     $requestSecurity->option1 = new Operations\MultipleOptionsWithSimpleSchemesAuthSecurityOption1();
@@ -410,16 +422,18 @@ use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'pzdKQgSGZSrUGNs';
     $request->basicAuth->username = 'Eryn51';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $requestSecurity = new Operations\MultipleSimpleOptionsAuthSecurity();
     $requestSecurity->apiKeyAuthNew = 'Token <YOUR_API_KEY>';
@@ -463,16 +477,18 @@ use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'UrAsw466AAaYtr1';
     $request->basicAuth->username = 'Kenya.Baumbach';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $requestSecurity = new Operations\MultipleSimpleSchemeAuthSecurity();
     $requestSecurity->apiKeyAuthNew = 'Token <YOUR_API_KEY>';
@@ -517,16 +533,18 @@ use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'V02sHy2onRTMRgS';
     $request->basicAuth->username = 'Polly.Aufderhar78';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $requestSecurity = new Operations\Oauth2AuthNewSecurity();
     $requestSecurity->oauth2 = 'Bearer YOUR_OAUTH2_TOKEN';
@@ -570,16 +588,18 @@ use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = '1_B3hNdr8HC3AeS';
     $request->basicAuth->username = 'Floy_Heller';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $requestSecurity = new Operations\OpenIdConnectAuthNewSecurity();
     $requestSecurity->openIdConnect = 'Bearer YOUR_OPENID_TOKEN';

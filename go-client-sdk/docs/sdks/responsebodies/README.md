@@ -7,6 +7,7 @@ Endpoints for testing response bodies.
 
 ### Available Operations
 
+* [ResponseBodyAdditionalPropertiesAnyPost](#responsebodyadditionalpropertiesanypost)
 * [ResponseBodyAdditionalPropertiesComplexNumbersPost](#responsebodyadditionalpropertiescomplexnumberspost)
 * [ResponseBodyAdditionalPropertiesDatePost](#responsebodyadditionalpropertiesdatepost)
 * [ResponseBodyAdditionalPropertiesObjectPost](#responsebodyadditionalpropertiesobjectpost)
@@ -19,6 +20,60 @@ Endpoints for testing response bodies.
 * [ResponseBodyXMLGet](#responsebodyxmlget)
 * [ResponseBodyZeroValueComplexTypePtrsPost](#responsebodyzerovaluecomplextypeptrspost)
 
+## ResponseBodyAdditionalPropertiesAnyPost
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
+	"log"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesAnyPost(ctx, shared.ObjWithAnyAdditionalProperties{
+        AdditionalProperties: map[string]interface{}{
+            "key": "string",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |
+| `request`                                                                                          | [shared.ObjWithAnyAdditionalProperties](../../pkg/models/shared/objwithanyadditionalproperties.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+
+
+### Response
+
+**[*operations.ResponseBodyAdditionalPropertiesAnyPostResponse](../../pkg/models/operations/responsebodyadditionalpropertiesanypostresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
+
 ## ResponseBodyAdditionalPropertiesComplexNumbersPost
 
 ### Example Usage
@@ -27,11 +82,11 @@ Endpoints for testing response bodies.
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
+	"log"
 )
 
 func main() {
@@ -83,11 +138,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -139,12 +194,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -169,7 +224,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -218,10 +273,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -273,10 +328,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -322,10 +377,11 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -378,10 +434,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -428,10 +484,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -478,10 +534,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -527,10 +583,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -576,11 +632,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {

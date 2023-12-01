@@ -35,7 +35,7 @@ class Parameters:
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.DeepObjectQueryParamsMapResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -72,7 +72,7 @@ class Parameters:
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.DeepObjectQueryParamsObjectResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -107,7 +107,7 @@ class Parameters:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.DuplicateParamResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -144,7 +144,7 @@ class Parameters:
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.FormQueryParamsArrayResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -181,7 +181,7 @@ class Parameters:
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.FormQueryParamsCamelObjectResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -218,7 +218,7 @@ class Parameters:
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.FormQueryParamsMapResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -255,7 +255,7 @@ class Parameters:
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.FormQueryParamsObjectResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -294,7 +294,7 @@ class Parameters:
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.FormQueryParamsPrimitiveResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -331,7 +331,7 @@ class Parameters:
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.FormQueryParamsRefParamObjectResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -366,7 +366,7 @@ class Parameters:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.HeaderParamsArrayResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -402,7 +402,7 @@ class Parameters:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.HeaderParamsMapResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -438,7 +438,7 @@ class Parameters:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.HeaderParamsObjectResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -476,7 +476,7 @@ class Parameters:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.HeaderParamsPrimitiveResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -513,7 +513,7 @@ class Parameters:
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.JSONQueryParamsObjectResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -551,7 +551,7 @@ class Parameters:
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.MixedParametersCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -589,7 +589,7 @@ class Parameters:
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.MixedParametersPrimitivesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -627,7 +627,7 @@ class Parameters:
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.MixedQueryParamsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -662,7 +662,7 @@ class Parameters:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.PathParameterJSONResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -701,7 +701,7 @@ class Parameters:
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.PipeDelimitedQueryParamsArrayResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -736,7 +736,7 @@ class Parameters:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.SimplePathParameterArraysResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -772,7 +772,7 @@ class Parameters:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.SimplePathParameterMapsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -808,7 +808,7 @@ class Parameters:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.SimplePathParameterObjectsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -846,7 +846,7 @@ class Parameters:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.SimplePathParameterPrimitivesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:

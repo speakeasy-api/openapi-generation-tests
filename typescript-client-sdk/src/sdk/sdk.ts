@@ -104,14 +104,14 @@ export type SDKProps = {
     port?: string;
 
     /**
-     * Allows setting the protocol variable for url substitution
-     */
-    protocol?: string;
-
-    /**
      * Allows setting the something variable for url substitution
      */
     something?: ServerSomething;
+
+    /**
+     * Allows setting the protocol variable for url substitution
+     */
+    protocol?: string;
 
     /**
      * Allows overriding the default server URL used by the SDK
@@ -130,9 +130,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.1.0";
-    sdkVersion = "2.1.2";
-    genVersion = "2.188.3";
-    userAgent = "speakeasy-sdk/typescript 2.1.2 2.188.3 0.1.0 openapi";
+    sdkVersion = "2.1.3";
+    genVersion = "2.205.0";
+    userAgent = "speakeasy-sdk/typescript 2.1.3 2.205.0 0.1.0 openapi";
     globals: any;
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
@@ -177,10 +177,6 @@ export class SDK {
     public nest: Nest;
     public nested: Nested;
     /**
-     * Endpoints for testing authentication.
-     */
-    public auth: Auth;
-    /**
      * Endpoints for testing request bodies.
      */
     public requestBodies: RequestBodies;
@@ -200,6 +196,10 @@ export class SDK {
      * Endpoints for testing authentication.
      */
     public authNew: AuthNew;
+    /**
+     * Endpoints for testing authentication.
+     */
+    public auth: Auth;
     /**
      * Testing for documentation extensions in TypeScript.
      */
@@ -272,12 +272,12 @@ export class SDK {
         this.parameters = new ParametersT(this.sdkConfiguration);
         this.nest = new Nest(this.sdkConfiguration);
         this.nested = new Nested(this.sdkConfiguration);
-        this.auth = new Auth(this.sdkConfiguration);
         this.requestBodies = new RequestBodies(this.sdkConfiguration);
         this.responseBodies = new ResponseBodies(this.sdkConfiguration);
         this.servers = new Servers(this.sdkConfiguration);
         this.telemetry = new Telemetry(this.sdkConfiguration);
         this.authNew = new AuthNew(this.sdkConfiguration);
+        this.auth = new Auth(this.sdkConfiguration);
         this.documentation = new Documentation(this.sdkConfiguration);
         this.resource = new Resource(this.sdkConfiguration);
         this.first = new First(this.sdkConfiguration);

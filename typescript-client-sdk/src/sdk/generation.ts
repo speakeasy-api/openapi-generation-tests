@@ -868,13 +868,28 @@ export class Generation {
     }
 
     async globalNameOverridden(
+        req: shared.SimpleObject,
         config?: AxiosRequestConfig
     ): Promise<operations.GetGlobalNameOverrideResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new shared.SimpleObject(req);
+        }
+
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
         const operationUrl: string = baseURL.replace(/\/$/, "") + "/anything/globalNameOverride";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -884,7 +899,11 @@ export class Generation {
             globalSecurity = new shared.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
-        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
+        const headers: RawAxiosRequestHeaders = {
+            ...reqBodyHeaders,
+            ...config?.headers,
+            ...properties.headers,
+        };
         headers["Accept"] = "application/json";
 
         headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
@@ -892,9 +911,10 @@ export class Generation {
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
             url: operationUrl,
-            method: "get",
+            method: "post",
             headers: headers,
             responseType: "arraybuffer",
+            data: reqBody,
             ...config,
         });
 
