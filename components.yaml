@@ -1189,6 +1189,12 @@ components:
         type: string
       required:
         - normalField
+    objWithAnyAdditionalProperties:
+      type: object
+      properties:
+        normalField:
+          type: string
+      additionalProperties: true
     objWithComplexNumbersAdditionalProperties:
       type: object
       properties:

@@ -4290,6 +4290,29 @@ paths:
                     $ref: "components.yaml#/components/schemas/objWithStringAdditionalProperties"
                 required:
                   - json
+  /anything/responseBodies/additionalPropertiesAny:
+    post:
+      operationId: responseBodyAdditionalPropertiesAnyPost
+      tags:
+        - responseBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/objWithAnyAdditionalProperties"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/objWithAnyAdditionalProperties"
+                required:
+                  - json
   /anything/responseBodies/additionalPropertiesComplexNumbers:
     post:
       operationId: responseBodyAdditionalPropertiesComplexNumbersPost
