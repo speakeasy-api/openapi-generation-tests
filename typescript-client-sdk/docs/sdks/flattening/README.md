@@ -23,7 +23,7 @@ import { ComponentBodyAndParamConflictRequest } from "openapi/dist/sdk/models/op
 import { Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -38,7 +38,7 @@ const simpleObject: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -58,7 +58,9 @@ const str: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -89,7 +91,7 @@ import { ComponentBodyAndParamNoConflictRequest } from "openapi/dist/sdk/models/
 import { Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -105,7 +107,7 @@ const simpleObject: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -124,7 +126,9 @@ const simpleObject: SimpleObject = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -153,7 +157,7 @@ const simpleObject: SimpleObject = {
 import { SDK } from "openapi";
 import { ConflictingParamsRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -169,7 +173,9 @@ const strQueryParameter: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -198,7 +204,7 @@ const strQueryParameter: string = "string";
 import { SDK } from "openapi";
 import { InlineBodyAndParamConflictRequest, InlineBodyAndParamConflictRequestBody } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -216,7 +222,9 @@ const str: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -245,7 +253,7 @@ const str: string = "string";
 import { SDK } from "openapi";
 import { InlineBodyAndParamNoConflictRequest, InlineBodyAndParamNoConflictRequestBody } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -263,7 +271,9 @@ const paramStr: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

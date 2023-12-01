@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: c14223b0265bb9d6105c24fe9e98c025
+  docChecksum: 685850d6b633e8b2b97b79f92ac444b2
   docVersion: 0.1.0
-  speakeasyVersion: 1.119.1
-  generationVersion: 2.188.3
+  speakeasyVersion: 1.124.2
+  generationVersion: 2.206.3
 generation:
   comments: {}
   sdkClassName: SDK
@@ -13,28 +13,28 @@ generation:
 features:
   typescript:
     acceptHeaders: 2.81.1
-    core: 3.1.3
+    core: 3.1.4
     deprecations: 2.81.1
-    docs: 0.3.11
+    docs: 0.3.13
     enums: 2.81.1
-    errors: 2.81.7
+    errors: 2.81.8
     examples: 2.81.3
     flattening: 2.81.1
     globalSecurity: 2.82.0
-    globalServerURLs: 2.82.0
+    globalServerURLs: 2.82.1
     globals: 2.81.1
     groups: 2.81.2
     ignores: 2.81.1
     includes: 2.81.1
     inputOutputModels: 2.82.0
     methodSecurity: 2.82.0
-    methodServerURLs: 2.82.0
+    methodServerURLs: 2.82.1
     nameOverrides: 2.81.1
     pagination: 2.81.3
     retries: 2.82.1
     serverIDs: 2.81.2
 typescript:
-  version: 2.1.2
+  version: 2.1.3
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false

@@ -13,12 +13,9 @@ import OpenAPI
 
 let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
 
-let response = try await client.putAnythingIgnoredGeneration()
+let response = try await client.servers.selectGlobalServer()
 
 switch response.data {
-case .object(let object):
-    // Handle response
-    break
 case .empty:
     // Handle empty response
     break
@@ -60,12 +57,12 @@ case .empty:
 - ``NestedAPI``
 - ``NestedFirstAPI``
 - ``NestedSecondAPI``
-- ``AuthAPI``
 - ``RequestBodiesAPI``
 - ``ResponseBodiesAPI``
 - ``ServersAPI``
 - ``TelemetryAPI``
 - ``AuthNewAPI``
+- ``AuthAPI``
 - ``DocumentationAPI``
 - ``ResourceAPI``
 - ``FirstAPI``
@@ -75,12 +72,6 @@ case .empty:
 
 ### Security configuration
 - ``Operations/UsageExamplePostSecurity``
-- ``Operations/ApiKeyAuthSecurity``
-- ``Operations/BasicAuthSecurity``
-- ``Operations/BearerAuthSecurity``
-- ``Operations/Oauth2AuthSecurity``
-- ``Operations/Oauth2OverrideSecurity``
-- ``Operations/OpenIdConnectAuthSecurity``
 - ``Operations/BasicAuthNewSecurity``
 - ``Operations/MultipleMixedOptionsAuthSecurity``
 - ``Operations/MultipleMixedSchemeAuthSecurity``
@@ -90,6 +81,12 @@ case .empty:
 - ``Operations/MultipleSimpleSchemeAuthSecurity``
 - ``Operations/Oauth2AuthNewSecurity``
 - ``Operations/OpenIdConnectAuthNewSecurity``
+- ``Operations/ApiKeyAuthSecurity``
+- ``Operations/BasicAuthSecurity``
+- ``Operations/BearerAuthSecurity``
+- ``Operations/Oauth2AuthSecurity``
+- ``Operations/Oauth2OverrideSecurity``
+- ``Operations/OpenIdConnectAuthSecurity``
 
 ### Server configuration
 - ``ErrorsServers/ConnectionErrorGet``
@@ -317,7 +314,6 @@ case .empty:
 - ``Operations/NestedGetResponse``
 - ``Operations/NestedSecondGetResponse``
 - ``Operations/NestFirstGetResponse``
-- ``Operations/NoAuthResponse``
 - ``Operations/NullableObjectPostResponse``
 - ``Operations/NullableOneOfRefInObjectPostResponse``
 - ``Operations/NullableOneOfSchemaPostResponse``
@@ -420,6 +416,7 @@ case .empty:
 - ``Operations/RequestBodyWriteOnlyResponse``
 - ``Operations/RequestBodyWriteOnlyOutputResponse``
 - ``Operations/RequestBodyWriteOnlyUnionResponse``
+- ``Operations/ResponseBodyAdditionalPropertiesAnyPostResponse``
 - ``Operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse``
 - ``Operations/ResponseBodyAdditionalPropertiesDatePostResponse``
 - ``Operations/ResponseBodyAdditionalPropertiesObjectPostResponse``
@@ -685,6 +682,7 @@ case .empty:
 - ``Operations/RequestBodyPutStringWithParamsRequest``
 - ``Operations/RequestBodyPutStringWithParamsRes``
 - ``Operations/RequiredObj``
+- ``Operations/ResponseBodyAdditionalPropertiesAnyPostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesDatePostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesObjectPostResponseBody``
