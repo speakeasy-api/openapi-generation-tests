@@ -115,6 +115,9 @@ paths:
   /anything/selectGlobalServer:
     get:
       operationId: selectGlobalServer
+      x-speakeasy-usage-example:
+        tags:
+          - usage
       tags:
         - servers
       responses:
