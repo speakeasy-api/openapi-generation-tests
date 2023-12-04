@@ -4,8 +4,18 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
+import { Expose } from "class-transformer";
 
-export class NoAuthResponse extends SpeakeasyBase {
+/**
+ * OK
+ */
+export class ResponseBodyAdditionalPropertiesAnyPostResponseBody extends SpeakeasyBase {
+    @SpeakeasyMetadata()
+    @Expose({ name: "json" })
+    json: Record<string, any>;
+}
+
+export class ResponseBodyAdditionalPropertiesAnyPostResponse extends SpeakeasyBase {
     /**
      * HTTP response content type for this operation
      */
@@ -22,5 +32,11 @@ export class NoAuthResponse extends SpeakeasyBase {
      * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
+    rawResponse: AxiosResponse;
+
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    object?: ResponseBodyAdditionalPropertiesAnyPostResponseBody;
 }
