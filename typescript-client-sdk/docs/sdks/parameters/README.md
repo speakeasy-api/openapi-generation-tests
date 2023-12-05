@@ -39,7 +39,7 @@ Endpoints for testing parameters.
 import { SDK } from "openapi";
 import { DeepObjectQueryParamsMapRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -52,13 +52,13 @@ const mapParam: Record<string, string> = {
   "test2": "value2",
 };
 const mapArrParam: Record<string, string[]> = {
-  "test2": [
-    "test3",
-    "test4",
-  ],
   "test": [
     "test",
     "test2",
+  ],
+  "test2": [
+    "test3",
+    "test4",
   ],
 };
 
@@ -67,15 +67,17 @@ const mapArrParam: Record<string, string[]> = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `mapParam`                                                   | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | [object Object]                                              |
-| `mapArrParam`                                                | Record<string, *string*[]>                                   | :heavy_minus_sign:                                           | N/A                                                          | [object Object]                                              |
+| `mapParam`                                                   | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | {"test":"value","test2":"value2"}                            |
+| `mapArrParam`                                                | Record<string, *string*[]>                                   | :heavy_minus_sign:                                           | N/A                                                          | {"test":["test","test2"],"test2":["test3","test4"]}          |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
@@ -98,7 +100,7 @@ import { DeepObjectQueryParamsObjectRequest, ObjArrParam } from "openapi/dist/sd
 import { Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -113,7 +115,7 @@ const objParam: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -138,7 +140,9 @@ const objArrParam: ObjArrParam = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -167,7 +171,7 @@ const objArrParam: ObjArrParam = {
 import { SDK } from "openapi";
 import { DuplicateParamRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -182,7 +186,9 @@ const duplicateParamRequest: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -210,7 +216,7 @@ const duplicateParamRequest: string = "string";
 import { SDK } from "openapi";
 import { FormQueryParamsArrayRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -232,7 +238,9 @@ const arrParamExploded: number[] = [
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -261,7 +269,7 @@ const arrParamExploded: number[] = [
 import { SDK } from "openapi";
 import { FormQueryParamsCamelObjectRequest, ObjParam, ObjParamExploded } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -283,7 +291,9 @@ const objParam: ObjParam = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -312,7 +322,7 @@ const objParam: ObjParam = {
 import { SDK } from "openapi";
 import { FormQueryParamsMapRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -334,15 +344,17 @@ const mapParamExploded: Record<string, number> = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `mapParam`                                                   | Record<string, *string*>                                     | :heavy_minus_sign:                                           | N/A                                                          | [object Object]                                              |
-| `mapParamExploded`                                           | Record<string, *number*>                                     | :heavy_minus_sign:                                           | N/A                                                          | [object Object]                                              |
+| `mapParam`                                                   | Record<string, *string*>                                     | :heavy_minus_sign:                                           | N/A                                                          | {"test":"value","test2":"value2"}                            |
+| `mapParamExploded`                                           | Record<string, *number*>                                     | :heavy_minus_sign:                                           | N/A                                                          | {"test":1,"test2":2}                                         |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
@@ -365,7 +377,7 @@ import { FormQueryParamsObjectRequest } from "openapi/dist/sdk/models/operations
 import { Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -380,7 +392,7 @@ const objParamExploded: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -400,7 +412,7 @@ const objParam: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -419,7 +431,9 @@ const objParam: SimpleObject = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -448,7 +462,7 @@ const objParam: SimpleObject = {
 import { SDK } from "openapi";
 import { FormQueryParamsPrimitiveRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -466,7 +480,9 @@ const strParam: string = "test";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -498,7 +514,7 @@ import { SDK } from "openapi";
 import { FormQueryParamsRefParamObjectRequest } from "openapi/dist/sdk/models/operations";
 import { RefQueryParamObj, RefQueryParamObjExploded } from "openapi/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -524,7 +540,9 @@ const refObjParamExploded: RefQueryParamObjExploded = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -553,7 +571,7 @@ const refObjParamExploded: RefQueryParamObjExploded = {
 import { SDK } from "openapi";
 import { HeaderParamsArrayRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -571,7 +589,9 @@ const xHeaderArray: string[] = [
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -599,7 +619,7 @@ const xHeaderArray: string[] = [
 import { SDK } from "openapi";
 import { HeaderParamsMapRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -608,8 +628,8 @@ import { HeaderParamsMapRequest } from "openapi/dist/sdk/models/operations";
     globalQueryParam: "some example global query param",
   });
 const xHeaderMap: Record<string, string> = {
-  "key2": "value2",
   "key1": "value1",
+  "key2": "value2",
 };
 const xHeaderMapExplode: Record<string, string> = {
   "test1": "val1",
@@ -621,15 +641,17 @@ const xHeaderMapExplode: Record<string, string> = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `xHeaderMap`                                                 | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | [object Object]                                              |
-| `xHeaderMapExplode`                                          | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | [object Object]                                              |
+| `xHeaderMap`                                                 | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | {"key1":"value1","key2":"value2"}                            |
+| `xHeaderMapExplode`                                          | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | {"test1":"val1","test2":"val2"}                              |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
@@ -652,7 +674,7 @@ import { HeaderParamsObjectRequest } from "openapi/dist/sdk/models/operations";
 import { Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -667,7 +689,7 @@ const xHeaderObj: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -687,7 +709,7 @@ const xHeaderObjExplode: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -706,7 +728,9 @@ const xHeaderObjExplode: SimpleObject = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -735,7 +759,7 @@ const xHeaderObjExplode: SimpleObject = {
 import { SDK } from "openapi";
 import { HeaderParamsPrimitiveRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -753,7 +777,9 @@ const xHeaderString: string = "test";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -786,7 +812,7 @@ import { JsonQueryParamsObjectRequest } from "openapi/dist/sdk/models/operations
 import { DeepObject, Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -804,7 +830,7 @@ const deepObjParam: DeepObject = {
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      dateTime: new Date("2020-01-01T00:00:00.000001Z"),
       decimal: 3.141592653589793,
       decimalStr: "3.14159265358979344719667586",
       enum: Enum.One,
@@ -824,7 +850,7 @@ const deepObjParam: DeepObject = {
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      dateTime: new Date("2020-01-01T00:00:00.000001Z"),
       decimal: 3.141592653589793,
       decimalStr: "3.14159265358979344719667586",
       enum: Enum.One,
@@ -848,7 +874,7 @@ const deepObjParam: DeepObject = {
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      dateTime: new Date("2020-01-01T00:00:00.000001Z"),
       decimal: 3.141592653589793,
       decimalStr: "3.14159265358979344719667586",
       enum: Enum.One,
@@ -868,7 +894,7 @@ const deepObjParam: DeepObject = {
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      dateTime: new Date("2020-01-01T00:00:00.000001Z"),
       decimal: 3.141592653589793,
       decimalStr: "3.14159265358979344719667586",
       enum: Enum.One,
@@ -890,7 +916,7 @@ const deepObjParam: DeepObject = {
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+    dateTime: new Date("2020-01-01T00:00:00.000001Z"),
     decimal: 3.141592653589793,
     decimalStr: "3.14159265358979344719667586",
     enum: Enum.One,
@@ -912,7 +938,7 @@ const simpleObjParam: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -931,7 +957,9 @@ const simpleObjParam: SimpleObject = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -960,7 +988,7 @@ const simpleObjParam: SimpleObject = {
 import { SDK } from "openapi";
 import { MixedParametersCamelCaseRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -977,7 +1005,9 @@ const queryStringParam: string = "queryValue";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1007,7 +1037,7 @@ const queryStringParam: string = "queryValue";
 import { SDK } from "openapi";
 import { MixedParametersPrimitivesRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1024,7 +1054,9 @@ const queryStringParam: string = "queryValue";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1056,7 +1088,7 @@ import { MixedQueryParamsRequest } from "openapi/dist/sdk/models/operations";
 import { Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1071,7 +1103,7 @@ const deepObjectParam: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -1091,7 +1123,7 @@ const formParam: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -1111,7 +1143,7 @@ const jsonParam: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -1130,7 +1162,9 @@ const jsonParam: SimpleObject = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1162,7 +1196,7 @@ import { PathParameterJsonRequest } from "openapi/dist/sdk/models/operations";
 import { Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1177,7 +1211,7 @@ const jsonObj: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -1196,7 +1230,9 @@ const jsonObj: SimpleObject = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1226,7 +1262,7 @@ import { PipeDelimitedQueryParamsArrayRequest } from "openapi/dist/sdk/models/op
 import { Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1253,7 +1289,7 @@ const objParam: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -1272,7 +1308,9 @@ const objParam: SimpleObject = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1281,7 +1319,7 @@ const objParam: SimpleObject = {
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `arrParam`                                                                                         | *string*[]                                                                                         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `arrParamExploded`                                                                                 | *number*[]                                                                                         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `mapParam`                                                                                         | Record<string, *string*>                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
+| `mapParam`                                                                                         | Record<string, *string*>                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                | {"key1":"val1","key2":"val2"}                                                                      |
 | `objParam`                                                                                         | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                  | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 | `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |                                                                                                    |
 
@@ -1303,7 +1341,7 @@ const objParam: SimpleObject = {
 import { SDK } from "openapi";
 import { SimplePathParameterArraysRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1321,7 +1359,9 @@ const arrParam: string[] = [
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1349,7 +1389,7 @@ const arrParam: string[] = [
 import { SDK } from "openapi";
 import { SimplePathParameterMapsRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1371,15 +1411,17 @@ const mapParamExploded: Record<string, number> = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `mapParam`                                                   | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | [object Object]                                              |
-| `mapParamExploded`                                           | Record<string, *number*>                                     | :heavy_check_mark:                                           | N/A                                                          | [object Object]                                              |
+| `mapParam`                                                   | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | {"test":"value","test2":"value2"}                            |
+| `mapParamExploded`                                           | Record<string, *number*>                                     | :heavy_check_mark:                                           | N/A                                                          | {"test":1,"test2":2}                                         |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
@@ -1402,7 +1444,7 @@ import { SimplePathParameterObjectsRequest } from "openapi/dist/sdk/models/opera
 import { Enum, Int32Enum, IntEnum, SimpleObject } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1417,7 +1459,7 @@ const objParam: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -1437,7 +1479,7 @@ const objParamExploded: SimpleObject = {
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  dateTime: new Date("2020-01-01T00:00:00.000001Z"),
   decimal: 3.141592653589793,
   decimalStr: "3.14159265358979344719667586",
   enum: Enum.One,
@@ -1456,7 +1498,9 @@ const objParamExploded: SimpleObject = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1485,7 +1529,7 @@ const objParamExploded: SimpleObject = {
 import { SDK } from "openapi";
 import { SimplePathParameterPrimitivesRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1503,7 +1547,9 @@ const strParam: string = "test";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

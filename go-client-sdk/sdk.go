@@ -98,8 +98,6 @@ type SDK struct {
 	Parameters *Parameters
 	Nest       *Nest
 	Nested     *Nested
-	// Endpoints for testing authentication.
-	Auth *Auth
 	// Endpoints for testing request bodies.
 	RequestBodies *RequestBodies
 	// Endpoints for testing response bodies.
@@ -110,6 +108,8 @@ type SDK struct {
 	Telemetry *Telemetry
 	// Endpoints for testing authentication.
 	AuthNew *AuthNew
+	// Endpoints for testing authentication.
+	Auth *Auth
 	// Testing for documentation extensions in Go.
 	Documentation *Documentation
 	Resource      *Resource
@@ -180,19 +180,6 @@ func WithPort(port string) SDKOption {
 	}
 }
 
-// WithProtocol allows setting the protocol variable for url substitution
-func WithProtocol(protocol string) SDKOption {
-	return func(sdk *SDK) {
-		for idx := range sdk.sdkConfiguration.ServerDefaults {
-			if _, ok := sdk.sdkConfiguration.ServerDefaults[idx]["protocol"]; !ok {
-				continue
-			}
-
-			sdk.sdkConfiguration.ServerDefaults[idx]["protocol"] = fmt.Sprintf("%v", protocol)
-		}
-	}
-}
-
 // ServerSomething - Something is a variable for changing the root path
 type ServerSomething string
 
@@ -233,6 +220,19 @@ func WithSomething(something ServerSomething) SDKOption {
 			}
 
 			sdk.sdkConfiguration.ServerDefaults[idx]["something"] = fmt.Sprintf("%v", something)
+		}
+	}
+}
+
+// WithProtocol allows setting the protocol variable for url substitution
+func WithProtocol(protocol string) SDKOption {
+	return func(sdk *SDK) {
+		for idx := range sdk.sdkConfiguration.ServerDefaults {
+			if _, ok := sdk.sdkConfiguration.ServerDefaults[idx]["protocol"]; !ok {
+				continue
+			}
+
+			sdk.sdkConfiguration.ServerDefaults[idx]["protocol"] = fmt.Sprintf("%v", protocol)
 		}
 	}
 }
@@ -301,9 +301,9 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.1.0",
-			SDKVersion:        "2.1.2",
-			GenVersion:        "2.188.3",
-			UserAgent:         "speakeasy-sdk/go 2.1.2 2.188.3 0.1.0 openapi",
+			SDKVersion:        "2.1.3",
+			GenVersion:        "2.210.3",
+			UserAgent:         "speakeasy-sdk/go 2.1.3 2.210.3 0.1.0 openapi",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},
@@ -357,8 +357,6 @@ func New(opts ...SDKOption) *SDK {
 
 	sdk.Nested = newNested(sdk.sdkConfiguration)
 
-	sdk.Auth = newAuth(sdk.sdkConfiguration)
-
 	sdk.RequestBodies = newRequestBodies(sdk.sdkConfiguration)
 
 	sdk.ResponseBodies = newResponseBodies(sdk.sdkConfiguration)
@@ -368,6 +366,8 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Telemetry = newTelemetry(sdk.sdkConfiguration)
 
 	sdk.AuthNew = newAuthNew(sdk.sdkConfiguration)
+
+	sdk.Auth = newAuth(sdk.sdkConfiguration)
 
 	sdk.Documentation = newDocumentation(sdk.sdkConfiguration)
 

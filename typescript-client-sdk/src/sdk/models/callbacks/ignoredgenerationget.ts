@@ -23,7 +23,7 @@ export class IgnoredGenerationGetSingledIgnoredCallbackOperationResponse extends
      * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
+    rawResponse: AxiosResponse;
 }
 
 export class IgnoredGenerationGetSingledIgnoredCallbackOperationRequestBody extends SpeakeasyBase {
@@ -49,7 +49,7 @@ export class IgnoredGenerationGetNotIgnoredCallbackResponse extends SpeakeasyBas
      * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
+    rawResponse: AxiosResponse;
 }
 
 export class IgnoredGenerationGetNotIgnoredCallbackRequestBody extends SpeakeasyBase {

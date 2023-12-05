@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyMetadata } from "../../../internal/utils";
-import { ErrorType } from "./errortype";
+import * as shared from "../../../sdk/models/shared";
 import { Expose } from "class-transformer";
 
 export class ErrorT extends Error {
@@ -17,7 +17,7 @@ export class ErrorT extends Error {
 
     @SpeakeasyMetadata()
     @Expose({ name: "type" })
-    type?: ErrorType;
+    type?: shared.ErrorType;
 
     constructor(err?: ErrorT) {
         super();

@@ -5,7 +5,7 @@ from sdk.models.operations import *
 from sdk.utils import *
 
 from .common_helpers import *
-from .helpers import *
+from .test_helpers import *
 
 
 def test_select_global_server_valid():

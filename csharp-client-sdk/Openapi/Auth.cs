@@ -28,7 +28,6 @@ namespace Openapi
         Task<BasicAuthResponse> BasicAuthAsync(BasicAuthSecurity security, string passwd, string user);
         Task<BearerAuthResponse> BearerAuthAsync(BearerAuthSecurity security);
         Task<GlobalBearerAuthResponse> GlobalBearerAuthAsync();
-        Task<NoAuthResponse> NoAuthAsync();
         Task<Oauth2AuthResponse> Oauth2AuthAsync(Oauth2AuthSecurity security);
         Task<Oauth2OverrideResponse> Oauth2OverrideAsync(Oauth2OverrideSecurity security);
         Task<OpenIdConnectAuthResponse> OpenIdConnectAuthAsync(OpenIdConnectAuthSecurity security);
@@ -39,12 +38,12 @@ namespace Openapi
     /// </summary>
     public class Auth: IAuth
     {
-        public SDKConfig Config { get; private set; }
+        public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.3.1";
-        private const string _sdkGenVersion = "2.188.3";
+        private const string _sdkVersion = "0.4.0";
+        private const string _sdkGenVersion = "2.210.3";
         private const string _openapiDocVersion = "0.1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.0 2.210.3 0.1.0 openapi";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -54,20 +53,15 @@ namespace Openapi
             _defaultClient = defaultClient;
             _securityClient = securityClient;
             _serverUrl = serverUrl;
-            Config = config;
+            SDKConfiguration = config;
         }
         
 
         public async Task<ApiKeyAuthResponse> ApiKeyAuthAsync(ApiKeyAuthSecurity security)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/bearer#operation";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -105,14 +99,9 @@ namespace Openapi
 
         public async Task<ApiKeyAuthGlobalResponse> ApiKeyAuthGlobalAsync()
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/bearer";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -155,14 +144,9 @@ namespace Openapi
                 Passwd = passwd,
                 User = user,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/basic-auth/{user}/{passwd}", request);
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -200,14 +184,9 @@ namespace Openapi
 
         public async Task<BearerAuthResponse> BearerAuthAsync(BearerAuthSecurity security)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/bearer#bearer";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -245,14 +224,9 @@ namespace Openapi
 
         public async Task<GlobalBearerAuthResponse> GlobalBearerAuthAsync()
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/bearer#global";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -288,52 +262,11 @@ namespace Openapi
         }
         
 
-        public async Task<NoAuthResponse> NoAuthAsync()
-        {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
-            var urlString = baseUrl + "/anything/no-auth";
-            
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
-            var httpResponse = await client.SendAsync(httpRequest);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
-            var response = new NoAuthResponse
-            {
-                StatusCode = (int)httpResponse.StatusCode,
-                ContentType = contentType,
-                RawResponse = httpResponse
-            };
-            
-            if((response.StatusCode == 200))
-            {
-                
-                return response;
-            }
-            return response;
-        }
-        
-
         public async Task<Oauth2AuthResponse> Oauth2AuthAsync(Oauth2AuthSecurity security)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/bearer#oauth2";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -374,14 +307,9 @@ namespace Openapi
             var request = new Oauth2OverrideRequest()
             {
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/bearer#oauth2AuthOverride";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
@@ -420,14 +348,9 @@ namespace Openapi
 
         public async Task<OpenIdConnectAuthResponse> OpenIdConnectAuthAsync(OpenIdConnectAuthSecurity security)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/bearer#openIdConnect";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             

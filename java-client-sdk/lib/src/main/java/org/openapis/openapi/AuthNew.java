@@ -126,10 +126,9 @@ public class AuthNew {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.ApiKeyAuthGlobalNewResponse res = new org.openapis.openapi.models.operations.ApiKeyAuthGlobalNewResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.ApiKeyAuthGlobalNewResponse res = new org.openapis.openapi.models.operations.ApiKeyAuthGlobalNewResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200 || httpRes.statusCode() == 401) {
         }
@@ -166,10 +165,9 @@ public class AuthNew {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.AuthGlobalResponse res = new org.openapis.openapi.models.operations.AuthGlobalResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.AuthGlobalResponse res = new org.openapis.openapi.models.operations.AuthGlobalResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200 || httpRes.statusCode() == 401) {
         }
@@ -206,10 +204,9 @@ public class AuthNew {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.BasicAuthNewResponse res = new org.openapis.openapi.models.operations.BasicAuthNewResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.BasicAuthNewResponse res = new org.openapis.openapi.models.operations.BasicAuthNewResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200 || httpRes.statusCode() == 401) {
         }
@@ -246,10 +243,9 @@ public class AuthNew {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.MultipleMixedOptionsAuthResponse res = new org.openapis.openapi.models.operations.MultipleMixedOptionsAuthResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.MultipleMixedOptionsAuthResponse res = new org.openapis.openapi.models.operations.MultipleMixedOptionsAuthResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200 || httpRes.statusCode() == 401) {
         }
@@ -286,10 +282,9 @@ public class AuthNew {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.MultipleMixedSchemeAuthResponse res = new org.openapis.openapi.models.operations.MultipleMixedSchemeAuthResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.MultipleMixedSchemeAuthResponse res = new org.openapis.openapi.models.operations.MultipleMixedSchemeAuthResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200 || httpRes.statusCode() == 401) {
         }
@@ -326,10 +321,9 @@ public class AuthNew {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthResponse res = new org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthResponse res = new org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200 || httpRes.statusCode() == 401) {
         }
@@ -366,10 +360,9 @@ public class AuthNew {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthResponse res = new org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthResponse res = new org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200 || httpRes.statusCode() == 401) {
         }
@@ -406,10 +399,9 @@ public class AuthNew {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.MultipleSimpleOptionsAuthResponse res = new org.openapis.openapi.models.operations.MultipleSimpleOptionsAuthResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.MultipleSimpleOptionsAuthResponse res = new org.openapis.openapi.models.operations.MultipleSimpleOptionsAuthResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200 || httpRes.statusCode() == 401) {
         }
@@ -446,10 +438,9 @@ public class AuthNew {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.MultipleSimpleSchemeAuthResponse res = new org.openapis.openapi.models.operations.MultipleSimpleSchemeAuthResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.MultipleSimpleSchemeAuthResponse res = new org.openapis.openapi.models.operations.MultipleSimpleSchemeAuthResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200 || httpRes.statusCode() == 401) {
         }
@@ -486,10 +477,9 @@ public class AuthNew {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.Oauth2AuthNewResponse res = new org.openapis.openapi.models.operations.Oauth2AuthNewResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.Oauth2AuthNewResponse res = new org.openapis.openapi.models.operations.Oauth2AuthNewResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200 || httpRes.statusCode() == 401) {
         }
@@ -526,10 +516,9 @@ public class AuthNew {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.OpenIdConnectAuthNewResponse res = new org.openapis.openapi.models.operations.OpenIdConnectAuthNewResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.OpenIdConnectAuthNewResponse res = new org.openapis.openapi.models.operations.OpenIdConnectAuthNewResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200 || httpRes.statusCode() == 401) {
         }
