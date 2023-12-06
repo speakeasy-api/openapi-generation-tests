@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-class NoAuthResponse
+class ResponseBodyAdditionalPropertiesAnyPostResponse
 {
     /**
      * HTTP response content type for this operation
@@ -33,12 +33,21 @@ class NoAuthResponse
      * @var ?\Psr\Http\Message\ResponseInterface $rawResponse
      */
 	
-    public ?\Psr\Http\Message\ResponseInterface $rawResponse = null;
+    public ?\Psr\Http\Message\ResponseInterface $rawResponse;
+    
+    /**
+     * OK
+     * 
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesAnyPostResponseBody $object
+     */
+	
+    public ?ResponseBodyAdditionalPropertiesAnyPostResponseBody $object = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
+		$this->object = null;
 	}
 }

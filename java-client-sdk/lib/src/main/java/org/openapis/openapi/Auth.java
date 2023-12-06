@@ -38,11 +38,10 @@ public class Auth {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.ApiKeyAuthResponse res = new org.openapis.openapi.models.operations.ApiKeyAuthResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.ApiKeyAuthResponse res = new org.openapis.openapi.models.operations.ApiKeyAuthResponse(contentType, httpRes.statusCode(), httpRes) {{
             token = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -73,11 +72,10 @@ public class Auth {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.ApiKeyAuthGlobalResponse res = new org.openapis.openapi.models.operations.ApiKeyAuthGlobalResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.ApiKeyAuthGlobalResponse res = new org.openapis.openapi.models.operations.ApiKeyAuthGlobalResponse(contentType, httpRes.statusCode(), httpRes) {{
             token = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -110,11 +108,10 @@ public class Auth {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.BasicAuthResponse res = new org.openapis.openapi.models.operations.BasicAuthResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.BasicAuthResponse res = new org.openapis.openapi.models.operations.BasicAuthResponse(contentType, httpRes.statusCode(), httpRes) {{
             user = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -145,11 +142,10 @@ public class Auth {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.BearerAuthResponse res = new org.openapis.openapi.models.operations.BearerAuthResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.BearerAuthResponse res = new org.openapis.openapi.models.operations.BearerAuthResponse(contentType, httpRes.statusCode(), httpRes) {{
             token = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -180,11 +176,10 @@ public class Auth {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.GlobalBearerAuthResponse res = new org.openapis.openapi.models.operations.GlobalBearerAuthResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.GlobalBearerAuthResponse res = new org.openapis.openapi.models.operations.GlobalBearerAuthResponse(contentType, httpRes.statusCode(), httpRes) {{
             token = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -194,33 +189,6 @@ public class Auth {
             }
         }
         else if (httpRes.statusCode() == 401) {
-        }
-
-        return res;
-    }
-
-    public org.openapis.openapi.models.operations.NoAuthResponse noAuth() throws Exception {
-        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
-        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/no-auth");
-        
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("GET");
-        req.setURL(url);
-
-        req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
-        
-        HTTPClient client = this.sdkConfiguration.securityClient;
-        
-        HttpResponse<byte[]> httpRes = client.send(req);
-
-        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.NoAuthResponse res = new org.openapis.openapi.models.operations.NoAuthResponse(contentType, httpRes.statusCode()) {{
-        }};
-        res.rawResponse = httpRes;
-        
-        if (httpRes.statusCode() == 200) {
         }
 
         return res;
@@ -242,11 +210,10 @@ public class Auth {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.Oauth2AuthResponse res = new org.openapis.openapi.models.operations.Oauth2AuthResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.Oauth2AuthResponse res = new org.openapis.openapi.models.operations.Oauth2AuthResponse(contentType, httpRes.statusCode(), httpRes) {{
             token = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -287,11 +254,10 @@ public class Auth {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.Oauth2OverrideResponse res = new org.openapis.openapi.models.operations.Oauth2OverrideResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.Oauth2OverrideResponse res = new org.openapis.openapi.models.operations.Oauth2OverrideResponse(contentType, httpRes.statusCode(), httpRes) {{
             token = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -322,11 +288,10 @@ public class Auth {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.OpenIdConnectAuthResponse res = new org.openapis.openapi.models.operations.OpenIdConnectAuthResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.OpenIdConnectAuthResponse res = new org.openapis.openapi.models.operations.OpenIdConnectAuthResponse(contentType, httpRes.statusCode(), httpRes) {{
             token = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {

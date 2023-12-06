@@ -87,19 +87,19 @@ req = shared.ExampleResource(
     id='<ID>',
     inline_object=shared.InlineObject(),
     map_of_integer={
-        "key": 271791,
+        'key': 271791,
     },
     map_of_string={
-        "key": 'string',
+        'key': 'string',
     },
     name='string',
-    shared.ExampleCar(
-        make='string',
-        model='PT Cruiser',
-        name='string',
-        type=shared.ExampleCarType.CAR,
-        year=1259.83,
-    ),
+    vehicle=shared.ExampleCar(
+    make='string',
+    model='PT Cruiser',
+    name='string',
+    type=shared.ExampleCarType.CAR,
+    year=1259.83,
+),
 )
 
 res = s.resource.create_resource(req)
