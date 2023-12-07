@@ -18,7 +18,7 @@ Endpoints for testing error responses.
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -32,7 +32,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -60,7 +62,7 @@ import { SDK } from "openapi";
 import { SDK } from "openapi";
 import { StatusGetErrorRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -75,7 +77,9 @@ const statusCode: number = 458364;
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -103,7 +107,7 @@ const statusCode: number = 458364;
 import { SDK } from "openapi";
 import { StatusGetXSpeakeasyErrorsRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -118,7 +122,9 @@ const statusCode: number = 385913;
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

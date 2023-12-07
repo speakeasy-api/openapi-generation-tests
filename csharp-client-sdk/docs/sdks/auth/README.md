@@ -12,7 +12,6 @@ Endpoints for testing authentication.
 * [BasicAuth](#basicauth)
 * [BearerAuth](#bearerauth)
 * [GlobalBearerAuth](#globalbearerauth)
-* [NoAuth](#noauth)
 * [Oauth2Auth](#oauth2auth)
 * [Oauth2Override](#oauth2override)
 * [OpenIdConnectAuth](#openidconnectauth)
@@ -27,8 +26,7 @@ using Openapi.Models.Operations;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Auth.ApiKeyAuthAsync(new ApiKeyAuthSecurity() {
     ApiKeyAuth = "Token YOUR_API_KEY",
@@ -62,8 +60,7 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Auth.ApiKeyAuthGlobalAsync();
 
@@ -86,13 +83,12 @@ using Openapi.Models.Operations;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Auth.BasicAuthAsync(new BasicAuthSecurity() {
     Password = "YOUR_PASSWORD",
     Username = "YOUR_USERNAME",
-}, "string", "string");
+}, Passwd: "string", User: "string");
 
 // handle response
 ```
@@ -121,8 +117,7 @@ using Openapi.Models.Operations;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Auth.BearerAuthAsync(new BearerAuthSecurity() {
     BearerAuth = "YOUR_JWT",
@@ -156,8 +151,7 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Auth.GlobalBearerAuthAsync();
 
@@ -170,33 +164,6 @@ var res = await sdk.Auth.GlobalBearerAuthAsync();
 **[GlobalBearerAuthResponse](../../Models/Operations/GlobalBearerAuthResponse.md)**
 
 
-## NoAuth
-
-### Example Usage
-
-```csharp
-using Openapi;
-using Openapi.Models.Shared;
-
-var sdk = new SDK(
-    security: new Security() {
-        ApiKeyAuth = "Token YOUR_API_KEY",
-    },
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
-
-var res = await sdk.Auth.NoAuthAsync();
-
-// handle response
-```
-
-
-### Response
-
-**[NoAuthResponse](../../Models/Operations/NoAuthResponse.md)**
-
-
 ## Oauth2Auth
 
 ### Example Usage
@@ -207,8 +174,7 @@ using Openapi.Models.Operations;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Auth.Oauth2AuthAsync(new Oauth2AuthSecurity() {
     Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
@@ -239,8 +205,7 @@ using Openapi.Models.Operations;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Auth.Oauth2OverrideAsync(new Oauth2OverrideSecurity() {
     Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
@@ -271,8 +236,7 @@ using Openapi.Models.Operations;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Auth.OpenIdConnectAuthAsync(new OpenIdConnectAuthSecurity() {
     OpenIdConnect = "Bearer YOUR_OPENID_TOKEN",

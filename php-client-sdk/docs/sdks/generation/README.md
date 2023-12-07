@@ -45,8 +45,9 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
     $response = $sdk->generation->anchorTypesGet();
@@ -82,8 +83,9 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
     $response = $sdk->generation->arrayCircularReferenceGet();
@@ -119,8 +121,9 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
     $response = $sdk->generation->circularReferenceGet();
@@ -157,11 +160,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->generation->dateParamWithDefault(DateTime::createFromFormat('Y-m-d', '2021-11-30'));
 
@@ -203,11 +207,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->generation->dateTimeParamWithDefault(DateTime::createFromFormat('Y-m-d\TH:i:s+', '2023-02-09T21:53:21.077Z'));
 
@@ -249,11 +254,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->generation->decimalParamWithDefault(4060.06);
 
@@ -294,13 +300,14 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\DeprecatedFieldInObject();
+        $request = new Shared\DeprecatedFieldInObject();
     $request->deprecatedField = 'string';
-    $request->newField = 'string';
+    $request->newField = 'string';;
 
     $response = $sdk->generation->deprecatedFieldInSchemaPost($request);
 
@@ -341,8 +348,9 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
     $response = $sdk->generation->deprecatedObjectInSchemaGet();
@@ -383,11 +391,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->generation->deprecatedOperationNoCommentsGet('string');
 
@@ -433,11 +442,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->generation->deprecatedOperationWithCommentsGet('string', 'string');
 
@@ -480,11 +490,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $emptyObject = new Shared\EmptyObjectParam();
+        $emptyObject = new Shared\EmptyObjectParam();
 
     $response = $sdk->generation->emptyObjectGet($emptyObject);
 
@@ -525,8 +536,9 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
     $response = $sdk->generation->emptyResponseObjectWithCommentGet();
@@ -562,11 +574,34 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $response = $sdk->generation->globalNameOverridden();
+        $request = new Shared\SimpleObject();
+    $request->any = 'any';
+    $request->bigint = 8821239038968084;
+    $request->bigintStr = '9223372036854775808';
+    $request->bool = true;
+    $request->boolOpt = true;
+    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
+    $request->decimal = 3.141592653589793;
+    $request->decimalStr = '3.14159265358979344719667586';
+    $request->enum = Shared\Enum::One;
+    $request->float32 = 1.1;
+    $request->int = 1;
+    $request->int32 = 1;
+    $request->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $request->intEnum = Shared\IntEnum::Second;
+    $request->intOptNull = 930591;
+    $request->num = 1.1;
+    $request->numOptNull = 5244.22;
+    $request->str = 'test';
+    $request->strOpt = 'testOptional';;
+
+    $response = $sdk->generation->globalNameOverridden($request);
 
     if ($response->object !== null) {
         // handle response
@@ -575,6 +610,12 @@ try {
     // handle exception
 }
 ```
+
+### Parameters
+
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `$request`                                                                         | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 
 
 ### Response
@@ -599,8 +640,9 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
     $response = $sdk->generation->ignoredGenerationGet();
@@ -637,11 +679,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $requestBody = new Operations\IgnoresPostRequestBody();
+        $requestBody = new Operations\IgnoresPostRequestBody();
     $requestBody->callbackUrl = 'http://diligent-activist.biz';
     $requestBody->testProp = 'string';
 
@@ -686,11 +729,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->generation->nameOverride(Operations\EnumNameOverride::Value3, 'example');
 
@@ -732,8 +776,9 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
     $response = $sdk->generation->objectCircularReferenceGet();
@@ -769,8 +814,9 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
     $response = $sdk->generation->oneOfCircularReferenceGet();
@@ -807,11 +853,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $obj = new Operations\Obj();
+        $obj = new Operations\Obj();
     $obj->bool = false;
     $obj->num = 8792.75;
     $obj->str = 'string';
@@ -861,10 +908,12 @@ use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-    $request = new Operations\UsageExamplePostRequest();
+        $request = new Operations\UsageExamplePostRequest();
     $request->requestBody = new Operations\UsageExamplePostRequestBody();
     $request->requestBody->fakerFormattedStrings = new Shared\FakerFormattedStrings();
     $request->requestBody->fakerFormattedStrings->addressFormat = '48525 Maude Fall';
@@ -946,7 +995,7 @@ try {
     $request->requestBody->simpleObject->bool = true;
     $request->requestBody->simpleObject->boolOpt = true;
     $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $request->requestBody->simpleObject->decimal = 3.141592653589793;
     $request->requestBody->simpleObject->decimalStr = '3.14159265358979344719667586';
     $request->requestBody->simpleObject->enum = Shared\Enum::One;
@@ -980,7 +1029,7 @@ try {
     $request->int64Parameter = 101970;
     $request->intParameter = 938852;
     $request->optEnumParameter = Operations\OptEnumParameter::Value3;
-    $request->strParameter = 'example 3';
+    $request->strParameter = 'example 3';;
 
     $requestSecurity = new Operations\UsageExamplePostSecurity();
     $requestSecurity->password = 'YOUR_PASSWORD';

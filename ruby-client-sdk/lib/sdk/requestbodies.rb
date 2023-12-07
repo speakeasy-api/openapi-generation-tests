@@ -88,6 +88,7 @@ module OpenApiSDK
       )
       if r.status == 200
         res.res = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
+      
       end
       res
     end
@@ -124,6 +125,7 @@ module OpenApiSDK
       )
       if r.status == 200
         res.res = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
+      
       end
       res
     end
@@ -160,6 +162,7 @@ module OpenApiSDK
       )
       if r.status == 200
         res.res = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
+      
       end
       res
     end

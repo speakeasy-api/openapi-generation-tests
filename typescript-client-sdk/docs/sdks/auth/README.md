@@ -12,7 +12,6 @@ Endpoints for testing authentication.
 * [basicAuth](#basicauth)
 * [bearerAuth](#bearerauth)
 * [globalBearerAuth](#globalbearerauth)
-* [noAuth](#noauth)
 * [oauth2Auth](#oauth2auth)
 * [oauth2Override](#oauth2override)
 * [openIdConnectAuth](#openidconnectauth)
@@ -25,7 +24,7 @@ Endpoints for testing authentication.
 import { SDK } from "openapi";
 import { ApiKeyAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
@@ -39,7 +38,9 @@ const operationSecurity: ApiKeyAuthSecurity = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -66,7 +67,7 @@ const operationSecurity: ApiKeyAuthSecurity = {
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -80,7 +81,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -107,7 +110,7 @@ import { SDK } from "openapi";
 import { SDK } from "openapi";
 import { BasicAuthRequest, BasicAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
@@ -124,7 +127,9 @@ const operationSecurity: BasicAuthSecurity = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -154,7 +159,7 @@ const operationSecurity: BasicAuthSecurity = {
 import { SDK } from "openapi";
 import { BearerAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
@@ -168,7 +173,9 @@ const operationSecurity: BearerAuthSecurity = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -195,7 +202,7 @@ const operationSecurity: BearerAuthSecurity = {
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -209,7 +216,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -228,46 +237,6 @@ import { SDK } from "openapi";
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 400-600         | */*             |
 
-## noAuth
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-
-(async() => {
-  const sdk = new SDK({
-    security: {
-      apiKeyAuth: "Token YOUR_API_KEY",
-    },
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
-  });
-
-  const res = await sdk.auth.noAuth();
-
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
-
-
-### Response
-
-**Promise<[operations.NoAuthResponse](../../sdk/models/operations/noauthresponse.md)>**
-### Errors
-
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
-
 ## oauth2Auth
 
 ### Example Usage
@@ -276,7 +245,7 @@ import { SDK } from "openapi";
 import { SDK } from "openapi";
 import { Oauth2AuthSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
@@ -290,7 +259,9 @@ const operationSecurity: Oauth2AuthSecurity = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -318,7 +289,7 @@ const operationSecurity: Oauth2AuthSecurity = {
 import { SDK } from "openapi";
 import { Oauth2OverrideRequest, Oauth2OverrideSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
@@ -332,7 +303,9 @@ const operationSecurity: Oauth2OverrideSecurity = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -360,7 +333,7 @@ const operationSecurity: Oauth2OverrideSecurity = {
 import { SDK } from "openapi";
 import { OpenIdConnectAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
@@ -374,7 +347,9 @@ const operationSecurity: OpenIdConnectAuthSecurity = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
