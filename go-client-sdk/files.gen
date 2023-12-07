@@ -225,6 +225,7 @@ tests/parameters_test.go
 /pkg/models/operations/requestbodywriteonly.go
 /pkg/models/operations/requestbodywriteonlyoutput.go
 /pkg/models/operations/requestbodywriteonlyunion.go
+/pkg/models/operations/responsebodyadditionalpropertiesanypost.go
 /pkg/models/operations/responsebodyadditionalpropertiescomplexnumberspost.go
 /pkg/models/operations/responsebodyadditionalpropertiesdatepost.go
 /pkg/models/operations/responsebodyadditionalpropertiesobjectpost.go
@@ -282,6 +283,7 @@ tests/parameters_test.go
 /pkg/models/shared/oneofcircularreferenceobject.go
 /pkg/models/shared/fakerstrings.go
 /pkg/models/shared/fakerformattedstrings.go
+/pkg/models/shared/errortype.go
 /pkg/models/shared/flattenedtypedobject1.go
 /pkg/models/shared/typedobject1.go
 /pkg/models/shared/nullableoneofrefinobject.go
@@ -319,6 +321,7 @@ tests/parameters_test.go
 /pkg/models/shared/writeonlyobjectoutput.go
 /pkg/models/shared/weaklytypedoneofwriteonlyobjectoutput.go
 /pkg/models/shared/weaklytypedoneofwriteonlyobject.go
+/pkg/models/shared/objwithanyadditionalproperties.go
 /pkg/models/shared/objwithcomplexnumbersadditionalproperties.go
 /pkg/models/shared/objwithdateadditionalproperties.go
 /pkg/models/shared/objwithobjadditionalproperties.go
@@ -340,9 +343,7 @@ tests/parameters_test.go
 /pkg/models/shared/unsupportedenums.go
 /pkg/models/callbacks/ignoredgenerationget.go
 /pkg/models/sdkerrors/error.go
-/pkg/models/sdkerrors/errortype.go
 /pkg/models/sdkerrors/statusgetxspeakeasyerrors.go
-USAGE.md
 docs/pkg/models/operations/putanythingignoredgenerationresponsebody.md
 docs/pkg/models/operations/putanythingignoredgenerationresponse.md
 docs/pkg/models/operations/responsebodyjsongetresponse.md
@@ -750,6 +751,8 @@ docs/pkg/models/operations/requestbodyreadwriteonlyunionresponse.md
 docs/pkg/models/operations/requestbodywriteonlyresponse.md
 docs/pkg/models/operations/requestbodywriteonlyoutputresponse.md
 docs/pkg/models/operations/requestbodywriteonlyunionresponse.md
+docs/pkg/models/operations/responsebodyadditionalpropertiesanypostresponsebody.md
+docs/pkg/models/operations/responsebodyadditionalpropertiesanypostresponse.md
 docs/pkg/models/operations/responsebodyadditionalpropertiescomplexnumberspostresponsebody.md
 docs/pkg/models/operations/responsebodyadditionalpropertiescomplexnumberspostresponse.md
 docs/pkg/models/operations/responsebodyadditionalpropertiesdatepostresponsebody.md
@@ -853,6 +856,7 @@ docs/pkg/models/shared/child.md
 docs/pkg/models/shared/oneofcircularreferenceobject.md
 docs/pkg/models/shared/fakerstrings.md
 docs/pkg/models/shared/fakerformattedstrings.md
+docs/pkg/models/shared/errortype.md
 docs/pkg/models/shared/flattenedtypedobject1.md
 docs/pkg/models/shared/typedobject1type.md
 docs/pkg/models/shared/typedobject1.md
@@ -911,6 +915,7 @@ docs/pkg/models/shared/writeonlyobject.md
 docs/pkg/models/shared/writeonlyobjectoutput.md
 docs/pkg/models/shared/weaklytypedoneofwriteonlyobjectoutput.md
 docs/pkg/models/shared/weaklytypedoneofwriteonlyobject.md
+docs/pkg/models/shared/objwithanyadditionalproperties.md
 docs/pkg/models/shared/objwithcomplexnumbersadditionalproperties.md
 docs/pkg/models/shared/objwithdateadditionalproperties.md
 docs/pkg/models/shared/objwithobjadditionalproperties.md
@@ -946,7 +951,6 @@ docs/pkg/models/callbacks/ignoredgenerationgetsingledignoredcallbackoperationreq
 docs/pkg/models/callbacks/ignoredgenerationgetnotignoredcallbackresponse.md
 docs/pkg/models/callbacks/ignoredgenerationgetnotignoredcallbackrequestbody.md
 docs/pkg/models/sdkerrors/error.md
-docs/pkg/models/sdkerrors/errortype.md
 docs/pkg/models/sdkerrors/statusgetxspeakeasyerrorsresponsebody.md
 docs/sdks/sdk/README.md
 docs/sdks/generation/README.md
@@ -973,5 +977,6 @@ docs/sdks/first/README.md
 docs/sdks/second/README.md
 docs/sdks/pagination/README.md
 docs/sdks/retries/README.md
+USAGE.md
 pkg/models/operations/options.go
 .gitattributes
