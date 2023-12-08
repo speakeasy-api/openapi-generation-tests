@@ -32,6 +32,8 @@ use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
@@ -77,8 +79,9 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
     $response = $sdk->auth->apiKeyAuthGlobal();
@@ -112,10 +115,12 @@ use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-
+    
 
     $requestSecurity = new Operations\BasicAuthSecurity();
     $requestSecurity->password = 'YOUR_PASSWORD';
@@ -160,6 +165,8 @@ use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
@@ -205,8 +212,9 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
     $response = $sdk->auth->globalBearerAuth();
@@ -242,8 +250,9 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
     $response = $sdk->auth->noAuth();
@@ -277,6 +286,8 @@ use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
@@ -320,10 +331,12 @@ use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-
+    
 
     $requestSecurity = new Operations\Oauth2OverrideSecurity();
     $requestSecurity->oauth2 = 'Bearer YOUR_OAUTH2_TOKEN';
@@ -365,6 +378,8 @@ use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {

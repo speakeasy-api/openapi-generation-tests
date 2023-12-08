@@ -13,12 +13,9 @@ import OpenAPI
 
 let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
 
-let response = try await client.putAnythingIgnoredGeneration()
+let response = try await client.servers.selectGlobalServer()
 
 switch response.data {
-case .object(let object):
-    // Handle response
-    break
 case .empty:
     // Handle empty response
     break
@@ -420,6 +417,7 @@ case .empty:
 - ``Operations/RequestBodyWriteOnlyResponse``
 - ``Operations/RequestBodyWriteOnlyOutputResponse``
 - ``Operations/RequestBodyWriteOnlyUnionResponse``
+- ``Operations/ResponseBodyAdditionalPropertiesAnyPostResponse``
 - ``Operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse``
 - ``Operations/ResponseBodyAdditionalPropertiesDatePostResponse``
 - ``Operations/ResponseBodyAdditionalPropertiesObjectPostResponse``
@@ -685,6 +683,7 @@ case .empty:
 - ``Operations/RequestBodyPutStringWithParamsRequest``
 - ``Operations/RequestBodyPutStringWithParamsRes``
 - ``Operations/RequiredObj``
+- ``Operations/ResponseBodyAdditionalPropertiesAnyPostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesDatePostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesObjectPostResponseBody``

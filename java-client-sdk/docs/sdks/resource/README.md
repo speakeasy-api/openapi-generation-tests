@@ -26,18 +26,23 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            CreateFileRequestBody req = new CreateFileRequestBody(){{
-                file = new CreateFileFile("0xf10df1a3b9".getBytes(), "string");
-            }};            
+            org.openapis.openapi.models.operations.CreateFileRequestBody req = new CreateFileRequestBody(
+){{
+                file = new CreateFileFile(
+                    "0xf10df1a3b9".getBytes(),
+                    "string");
 
-            CreateFileResponse res = sdk.resource.createFile(req);
+            }};
+
+            org.openapis.openapi.models.operations.CreateFileResponse res = sdk.resource.createFile(req);
 
             if (res.fileResource != null) {
                 // handle response
@@ -82,18 +87,24 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.ExampleResource req = new ExampleResource(new org.openapis.openapi.models.shared.Chocolates[]{{
-    add(new Chocolates("string"){{
-        description = "Digitized optimal archive";
-    }}),
-}}, "string", "string", "string"){{
+            org.openapis.openapi.models.shared.ExampleResource req = new ExampleResource(
+                new org.openapis.openapi.models.shared.Chocolates[]{{
+                    add(new Chocolates(
+                    "string"){{
+                        description = "Digitized optimal archive";
+                    }}),
+                }},
+                "string",
+                "string",
+                "string"){{
                 arrayOfNumber = new Double[]{{
                     add(1124.19d),
                 }};
@@ -103,20 +114,25 @@ public class Application {
                 createdAt = OffsetDateTime.parse("2021-10-25T14:40:21.269Z");
                 enumNumber = EnumNumber.THREE;
                 enumStr = EnumStr.TWO;
-                inlineObject = new InlineObject(){{
+                inlineObject = new InlineObject(
+){{
                     inlineName = "string";
+
                 }};
-                mapOfInteger = new java.util.HashMap<String, Long>(){{
+                mapOfInteger = new java.util.HashMap<String, Long>(
+                ){{
                     put("key", 125983L);
                 }};
-                mapOfString = new java.util.HashMap<String, String>(){{
+                mapOfString = new java.util.HashMap<String, String>(
+                ){{
                     put("key", "string");
                 }};
                 namePrefix = "string";
                 updatedAt = OffsetDateTime.parse("2021-07-09T15:40:32.497Z");
-            }};            
 
-            CreateResourceResponse res = sdk.resource.createResource(req);
+            }};
+
+            org.openapis.openapi.models.operations.CreateResourceResponse res = sdk.resource.createResource(req);
 
             if (res.exampleResource != null) {
                 // handle response
@@ -156,14 +172,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeleteResourceResponse res = sdk.resource.deleteResource("string");
+            org.openapis.openapi.models.operations.DeleteResourceResponse res = sdk.resource.deleteResource("string");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -203,14 +220,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GetResourceResponse res = sdk.resource.getResource("string");
+            org.openapis.openapi.models.operations.GetResourceResponse res = sdk.resource.getResource("string");
 
             if (res.exampleResource != null) {
                 // handle response
@@ -250,14 +268,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UpdateResourceResponse res = sdk.resource.updateResource("string");
+            org.openapis.openapi.models.operations.UpdateResourceResponse res = sdk.resource.updateResource("string");
 
             if (res.statusCode == 200) {
                 // handle response
