@@ -71,11 +71,10 @@ public class Retries {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.RetriesGetResponse res = new org.openapis.openapi.models.operations.RetriesGetResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.RetriesGetResponse res = new org.openapis.openapi.models.operations.RetriesGetResponse(contentType, httpRes.statusCode(), httpRes) {{
             retries = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {

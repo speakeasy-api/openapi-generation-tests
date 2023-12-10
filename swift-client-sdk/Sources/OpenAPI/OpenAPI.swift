@@ -106,7 +106,7 @@ public protocol OpenAPI {
 /// - ``deprecatedOperationWithCommentsGet(request:)``
 /// - ``emptyObjectGet(request:)``
 /// - ``emptyResponseObjectWithCommentGet()``
-/// - ``getGlobalNameOverride()``
+/// - ``getGlobalNameOverride(request:)``
 /// - ``ignoredGenerationGet()``
 /// - ``ignoresPost(request:)``
 /// - ``nameOverrideGet(request:)``
@@ -151,7 +151,7 @@ public protocol GenerationAPI {
 
     func emptyResponseObjectWithCommentGet() async throws -> Response<Operations.EmptyResponseObjectWithCommentGetResponse>
 
-    func getGlobalNameOverride() async throws -> Response<Operations.GetGlobalNameOverrideResponse>
+    func getGlobalNameOverride(request: Shared.SimpleObject) async throws -> Response<Operations.GetGlobalNameOverrideResponse>
 
     func ignoredGenerationGet() async throws -> Response<Operations.IgnoredGenerationGetResponse>
 
@@ -1668,6 +1668,7 @@ public enum ResponseBodiesServers {
 ///
 /// ### API calls
 ///
+/// - ``responseBodyAdditionalPropertiesAnyPost(request:)``
 /// - ``responseBodyAdditionalPropertiesComplexNumbersPost(request:)``
 /// - ``responseBodyAdditionalPropertiesDatePost(request:)``
 /// - ``responseBodyAdditionalPropertiesObjectPost(request:)``
@@ -1681,6 +1682,8 @@ public enum ResponseBodiesServers {
 /// - ``responseBodyZeroValueComplexTypePtrsPost(request:)``
 ///
 public protocol ResponseBodiesAPI {
+    func responseBodyAdditionalPropertiesAnyPost(request: [String: AnyValue]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesAnyPostResponse>
+
     func responseBodyAdditionalPropertiesComplexNumbersPost(request: [String: String]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse>
 
     func responseBodyAdditionalPropertiesDatePost(request: [String: Date]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesDatePostResponse>

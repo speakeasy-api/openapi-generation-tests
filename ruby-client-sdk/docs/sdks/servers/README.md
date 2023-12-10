@@ -22,10 +22,13 @@ Endpoints for testing servers.
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
@@ -54,10 +57,13 @@ Select a server by ID.
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
@@ -90,10 +96,13 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
@@ -126,10 +135,13 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
@@ -162,10 +174,13 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
@@ -192,10 +207,13 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
