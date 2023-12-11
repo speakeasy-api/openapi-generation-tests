@@ -478,19 +478,25 @@ class Generation
     /**
      * globalNameOverridden
      * 
+     * @param \OpenAPI\OpenAPI\Models\Shared\SimpleObject $request
      * @return \OpenAPI\OpenAPI\Models\Operations\GetGlobalNameOverrideResponse
      */
 	public function globalNameOverridden(
+        ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $request,
     ): \OpenAPI\OpenAPI\Models\Operations\GetGlobalNameOverrideResponse
     {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/globalNameOverride');
         
         $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body !== null) {
+            $options = array_merge_recursive($options, $body);
+        }
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
         
-        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 

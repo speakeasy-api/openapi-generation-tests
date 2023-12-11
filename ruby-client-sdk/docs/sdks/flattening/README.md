@@ -21,40 +21,18 @@ Endpoints for testing flattening through request body and parameter combinations
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Operations::ComponentBodyAndParamConflictRequest.new(
-  query_params=Operations::ComponentBodyAndParamConflictRequest.new(
-    simple_object=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::IntEnum::SECOND,
-      int_opt_null=843322,
-      num=1.1,
-      num_opt_null=7126.06,
-      str_="test",
-      str_opt="testOptional",
-    ),
-    str_="string",
-  ),
   simple_object=Shared::SimpleObject.new(
     any="any",
     bigint=8821239038968084,
@@ -62,24 +40,42 @@ req = Operations::ComponentBodyAndParamConflictRequest.new(
     bool=true,
     bool_opt=true,
     date=Date.parse("2020-01-01"),
-    date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
     decimal=3.141592653589793,
     decimal_str="3.14159265358979344719667586",
     enum=Shared::Enum::ONE,
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=Shared::Int32Enum::FIFTY_FIVE,
+    int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
     int_enum=Shared::IntEnum::SECOND,
-    int_opt_null=845828,
     num=1.1,
-    num_opt_null=2573.18,
     str_="test",
     str_opt="testOptional",
   ),
+  str_="string",
 )
     
-res = s.flattening.component_body_and_param_conflict(req)
+res = s.flattening.component_body_and_param_conflict(simple_object=Shared::SimpleObject.new(
+    any="any",
+    bigint=8821239038968084,
+    bigint_str="9223372036854775808",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+    decimal=3.141592653589793,
+    decimal_str="3.14159265358979344719667586",
+    enum=Shared::Enum::ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=Shared::IntEnum::THIRD,
+    num=1.1,
+    str_="test",
+    str_opt="testOptional",
+  ), str_="string")
 
 if ! res.res.nil?
   # handle response
@@ -108,40 +104,19 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Operations::ComponentBodyAndParamNoConflictRequest.new(
-  query_params=Operations::ComponentBodyAndParamNoConflictRequest.new(
-    param_str="string",
-    simple_object=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::IntEnum::THIRD,
-      int_opt_null=758827,
-      num=1.1,
-      num_opt_null=1702.8,
-      str_="test",
-      str_opt="testOptional",
-    ),
-  ),
+  param_str="string",
   simple_object=Shared::SimpleObject.new(
     any="any",
     bigint=8821239038968084,
@@ -149,24 +124,41 @@ req = Operations::ComponentBodyAndParamNoConflictRequest.new(
     bool=true,
     bool_opt=true,
     date=Date.parse("2020-01-01"),
-    date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
     decimal=3.141592653589793,
     decimal_str="3.14159265358979344719667586",
     enum=Shared::Enum::ONE,
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=Shared::Int32Enum::SIXTY_NINE,
-    int_enum=Shared::IntEnum::SECOND,
-    int_opt_null=836157,
+    int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=Shared::IntEnum::THIRD,
     num=1.1,
-    num_opt_null=2914.21,
     str_="test",
     str_opt="testOptional",
   ),
 )
     
-res = s.flattening.component_body_and_param_no_conflict(req)
+res = s.flattening.component_body_and_param_no_conflict(param_str="string", simple_object=Shared::SimpleObject.new(
+    any="any",
+    bigint=8821239038968084,
+    bigint_str="9223372036854775808",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+    decimal=3.141592653589793,
+    decimal_str="3.14159265358979344719667586",
+    enum=Shared::Enum::ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=Shared::IntEnum::FIRST,
+    num=1.1,
+    str_="test",
+    str_opt="testOptional",
+  ))
 
 if ! res.res.nil?
   # handle response
@@ -195,26 +187,23 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Operations::ConflictingParamsRequest.new(
-  path_params=Operations::ConflictingParamsRequest.new(
-    str_path_parameter="string",
-    str_query_parameter="string",
-  ),
-  query_params=Operations::ConflictingParamsRequest.new(
-    str_path_parameter="string",
-    str_query_parameter="string",
-  ),
+  str_path_parameter="string",
+  str_query_parameter="string",
 )
     
-res = s.flattening.conflicting_params(req)
+res = s.flattening.conflicting_params(str_path_parameter="string", str_query_parameter="string")
 
 if ! res.res.nil?
   # handle response
@@ -243,27 +232,27 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Operations::InlineBodyAndParamConflictRequest.new(
-  query_params=Operations::InlineBodyAndParamConflictRequest.new(
-    request_body=Operations::InlineBodyAndParamConflictRequestBody.new(
-      str_="string",
-    ),
-    str_="string",
-  ),
   request_body=Operations::InlineBodyAndParamConflictRequestBody.new(
     str_="string",
   ),
+  str_="string",
 )
     
-res = s.flattening.inline_body_and_param_conflict(req)
+res = s.flattening.inline_body_and_param_conflict(request_body=Operations::InlineBodyAndParamConflictRequestBody.new(
+    str_="string",
+  ), str_="string")
 
 if ! res.res.nil?
   # handle response
@@ -292,27 +281,27 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Operations::InlineBodyAndParamNoConflictRequest.new(
-  query_params=Operations::InlineBodyAndParamNoConflictRequest.new(
-    request_body=Operations::InlineBodyAndParamNoConflictRequestBody.new(
-      body_str="string",
-    ),
-    param_str="string",
-  ),
   request_body=Operations::InlineBodyAndParamNoConflictRequestBody.new(
     body_str="string",
   ),
+  param_str="string",
 )
     
-res = s.flattening.inline_body_and_param_no_conflict(req)
+res = s.flattening.inline_body_and_param_no_conflict(request_body=Operations::InlineBodyAndParamNoConflictRequestBody.new(
+    body_str="string",
+  ), param_str="string")
 
 if ! res.res.nil?
   # handle response
