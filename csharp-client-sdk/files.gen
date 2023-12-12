@@ -40,6 +40,7 @@ Tests/CommonHelpers.cs
 Tests/Tests.csproj
 TestsCommon/CommonHelpers.cs
 TestsCommon/Tests.csproj
+TestsHoistedSecurity/AuthShould.cs
 TestsPrimary/AuthShould.cs
 TestsPrimary/FlatteningShould.cs
 TestsPrimary/GlobalsShould.cs
@@ -449,6 +450,8 @@ Openapi/Models/Operations/RequestBodyReadWriteOnlyUnionResponse.cs
 Openapi/Models/Operations/RequestBodyWriteOnlyResponse.cs
 Openapi/Models/Operations/RequestBodyWriteOnlyOutputResponse.cs
 Openapi/Models/Operations/RequestBodyWriteOnlyUnionResponse.cs
+Openapi/Models/Operations/ResponseBodyAdditionalPropertiesAnyPostResponseBody.cs
+Openapi/Models/Operations/ResponseBodyAdditionalPropertiesAnyPostResponse.cs
 Openapi/Models/Operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody.cs
 Openapi/Models/Operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse.cs
 Openapi/Models/Operations/ResponseBodyAdditionalPropertiesDatePostResponseBody.cs
@@ -606,7 +609,6 @@ Openapi/Models/Callbacks/IgnoredGenerationGetSingledIgnoredCallbackOperationResp
 Openapi/Models/Callbacks/IgnoredGenerationGetSingledIgnoredCallbackOperationRequestBody.cs
 Openapi/Models/Callbacks/IgnoredGenerationGetNotIgnoredCallbackResponse.cs
 Openapi/Models/Callbacks/IgnoredGenerationGetNotIgnoredCallbackRequestBody.cs
-USAGE.md
 docs/Models/Operations/PutAnythingIgnoredGenerationResponseBody.md
 docs/Models/Operations/PutAnythingIgnoredGenerationResponse.md
 docs/Models/Operations/ResponseBodyJsonGetResponse.md
@@ -1003,6 +1005,8 @@ docs/Models/Operations/RequestBodyReadWriteOnlyUnionResponse.md
 docs/Models/Operations/RequestBodyWriteOnlyResponse.md
 docs/Models/Operations/RequestBodyWriteOnlyOutputResponse.md
 docs/Models/Operations/RequestBodyWriteOnlyUnionResponse.md
+docs/Models/Operations/ResponseBodyAdditionalPropertiesAnyPostResponseBody.md
+docs/Models/Operations/ResponseBodyAdditionalPropertiesAnyPostResponse.md
 docs/Models/Operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody.md
 docs/Models/Operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse.md
 docs/Models/Operations/ResponseBodyAdditionalPropertiesDatePostResponseBody.md
@@ -1184,4 +1188,5 @@ docs/sdks/first/README.md
 docs/sdks/second/README.md
 docs/sdks/pagination/README.md
 docs/sdks/retries/README.md
+USAGE.md
 .gitattributes

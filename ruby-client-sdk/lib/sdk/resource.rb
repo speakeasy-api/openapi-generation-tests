@@ -125,8 +125,7 @@ module OpenApiSDK
       res = Operations::DeleteResourceResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if r.status == 204
-      end
+      
       res
     end
 
@@ -199,8 +198,7 @@ module OpenApiSDK
       res = Operations::UpdateResourceResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if r.status == 202
-      end
+      
       res
     end
   end

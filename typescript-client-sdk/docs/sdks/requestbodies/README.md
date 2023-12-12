@@ -96,7 +96,7 @@ Endpoints for testing request bodies.
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -112,7 +112,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -139,7 +141,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -157,7 +159,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -185,7 +189,7 @@ import { SDK } from "openapi";
 import { SDK } from "openapi";
 import { NullableRequiredEnum } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -205,7 +209,9 @@ import { NullableRequiredEnum } from "openapi/dist/sdk/models/operations";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -232,7 +238,7 @@ import { NullableRequiredEnum } from "openapi/dist/sdk/models/operations";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -253,7 +259,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -282,7 +290,7 @@ import { SDK } from "openapi";
 import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -299,7 +307,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      dateTime: new Date("2020-01-01T00:00:00.000001Z"),
       decimal: 3.141592653589793,
       decimalStr: "3.14159265358979344719667586",
       enum: Enum.One,
@@ -317,7 +325,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -347,7 +357,7 @@ import { SDK } from "openapi";
 import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -380,7 +390,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -410,7 +422,7 @@ import { SDK } from "openapi";
 import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -427,7 +439,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      dateTime: new Date("2020-01-01T00:00:00.000001Z"),
       decimal: 3.141592653589793,
       decimalStr: "3.14159265358979344719667586",
       enum: Enum.One,
@@ -445,7 +457,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -474,7 +488,7 @@ import { SDK } from "openapi";
 import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -507,7 +521,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -536,7 +552,7 @@ import { SDK } from "openapi";
 import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -554,7 +570,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         bool: true,
         boolOpt: true,
         date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
         decimal: 3.141592653589793,
         decimalStr: "3.14159265358979344719667586",
         enum: Enum.One,
@@ -573,7 +589,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -603,7 +621,7 @@ import { SDK } from "openapi";
 import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -638,7 +656,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -666,7 +686,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -684,7 +704,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -714,7 +736,7 @@ import { SDK } from "openapi";
 import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -732,7 +754,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         bool: true,
         boolOpt: true,
         date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
         decimal: 3.141592653589793,
         decimalStr: "3.14159265358979344719667586",
         enum: Enum.One,
@@ -751,7 +773,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -781,7 +805,7 @@ import { SDK } from "openapi";
 import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -816,7 +840,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -844,7 +870,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -860,7 +886,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -890,7 +918,7 @@ import { SDK } from "openapi";
 import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -909,7 +937,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         bool: true,
         boolOpt: true,
         date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
         decimal: 3.141592653589793,
         decimalStr: "3.14159265358979344719667586",
         enum: Enum.One,
@@ -929,7 +957,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         bool: true,
         boolOpt: true,
         date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
         decimal: 3.141592653589793,
         decimalStr: "3.14159265358979344719667586",
         enum: Enum.One,
@@ -953,7 +981,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         bool: true,
         boolOpt: true,
         date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
         decimal: 3.141592653589793,
         decimalStr: "3.14159265358979344719667586",
         enum: Enum.One,
@@ -973,7 +1001,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         bool: true,
         boolOpt: true,
         date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
         decimal: 3.141592653589793,
         decimalStr: "3.14159265358979344719667586",
         enum: Enum.One,
@@ -995,7 +1023,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      dateTime: new Date("2020-01-01T00:00:00.000001Z"),
       decimal: 3.141592653589793,
       decimalStr: "3.14159265358979344719667586",
       enum: Enum.One,
@@ -1014,7 +1042,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1043,7 +1073,7 @@ import { SDK } from "openapi";
 import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1121,7 +1151,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1150,7 +1182,7 @@ import { SDK } from "openapi";
 import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1167,7 +1199,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      dateTime: new Date("2020-01-01T00:00:00.000001Z"),
       decimal: 3.141592653589793,
       decimalStr: "3.14159265358979344719667586",
       enum: Enum.One,
@@ -1185,7 +1217,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1215,7 +1249,7 @@ import { SDK } from "openapi";
 import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1248,7 +1282,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1278,7 +1314,7 @@ import { SDK } from "openapi";
 import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1295,7 +1331,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      dateTime: new Date("2020-01-01T00:00:00.000001Z"),
       decimal: 3.141592653589793,
       decimalStr: "3.14159265358979344719667586",
       enum: Enum.One,
@@ -1313,7 +1349,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1342,7 +1380,7 @@ import { SDK } from "openapi";
 import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1375,7 +1413,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1404,7 +1444,7 @@ import { SDK } from "openapi";
 import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1422,7 +1462,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         bool: true,
         boolOpt: true,
         date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
         decimal: 3.141592653589793,
         decimalStr: "3.14159265358979344719667586",
         enum: Enum.One,
@@ -1441,7 +1481,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1471,7 +1513,7 @@ import { SDK } from "openapi";
 import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1506,7 +1548,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1536,7 +1580,7 @@ import { SDK } from "openapi";
 import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1554,7 +1598,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         bool: true,
         boolOpt: true,
         date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
         decimal: 3.141592653589793,
         decimalStr: "3.14159265358979344719667586",
         enum: Enum.One,
@@ -1573,7 +1617,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1603,7 +1649,7 @@ import { SDK } from "openapi";
 import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1638,7 +1684,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1666,7 +1714,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1684,7 +1732,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1712,7 +1762,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1728,7 +1778,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1758,7 +1810,7 @@ import { SDK } from "openapi";
 import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1774,7 +1826,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+    dateTime: new Date("2020-01-01T00:00:00.000001Z"),
     decimal: 3.141592653589793,
     decimalStr: "3.14159265358979344719667586",
     enum: Enum.One,
@@ -1791,7 +1843,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1820,7 +1874,7 @@ import { SDK } from "openapi";
 import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1836,7 +1890,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+    dateTime: new Date("2020-01-01T00:00:00.000001Z"),
     decimal: 3.141592653589793,
     decimalStr: "3.14159265358979344719667586",
     enum: Enum.One,
@@ -1853,7 +1907,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1882,7 +1938,7 @@ import { SDK } from "openapi";
 import { Enum, Int32EnumVal, IntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1913,7 +1969,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1940,7 +1998,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -1969,7 +2027,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1998,7 +2058,7 @@ import { SDK } from "openapi";
 import { ConstEnumInt, ConstEnumStr, DefaultEnumInt, DefaultEnumStr } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2014,7 +2074,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2041,7 +2103,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2058,7 +2120,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2087,7 +2151,7 @@ import { SDK } from "openapi";
 import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2106,7 +2170,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         bool: true,
         boolOpt: true,
         date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
         decimal: 3.141592653589793,
         decimalStr: "3.14159265358979344719667586",
         enum: Enum.One,
@@ -2126,7 +2190,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         bool: true,
         boolOpt: true,
         date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
         decimal: 3.141592653589793,
         decimalStr: "3.14159265358979344719667586",
         enum: Enum.One,
@@ -2150,7 +2214,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         bool: true,
         boolOpt: true,
         date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
         decimal: 3.141592653589793,
         decimalStr: "3.14159265358979344719667586",
         enum: Enum.One,
@@ -2170,7 +2234,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         bool: true,
         boolOpt: true,
         date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
         decimal: 3.141592653589793,
         decimalStr: "3.14159265358979344719667586",
         enum: Enum.One,
@@ -2192,7 +2256,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      dateTime: new Date("2020-01-01T00:00:00.000001Z"),
       decimal: 3.141592653589793,
       decimalStr: "3.14159265358979344719667586",
       enum: Enum.One,
@@ -2211,7 +2275,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2238,7 +2304,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2254,7 +2320,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2283,7 +2351,7 @@ import { SDK } from "openapi";
 import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2299,7 +2367,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+    dateTime: new Date("2020-01-01T00:00:00.000001Z"),
     decimal: 3.141592653589793,
     decimalStr: "3.14159265358979344719667586",
     enum: Enum.One,
@@ -2316,7 +2384,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2343,7 +2413,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2359,7 +2429,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2386,7 +2458,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2402,7 +2474,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2429,7 +2503,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2445,7 +2519,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2472,7 +2548,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2486,7 +2562,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2513,7 +2591,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2527,7 +2605,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2554,7 +2634,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2568,7 +2648,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2595,7 +2677,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2609,7 +2691,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2636,7 +2720,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2650,7 +2734,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2677,7 +2763,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2691,7 +2777,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2718,7 +2806,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2732,7 +2820,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2759,7 +2849,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2773,7 +2863,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2800,7 +2892,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2814,7 +2906,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2841,7 +2935,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2855,7 +2949,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2882,7 +2978,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2898,7 +2994,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2925,7 +3023,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2941,7 +3039,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -2968,7 +3068,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -2984,7 +3084,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -3011,7 +3113,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3025,7 +3127,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -3052,7 +3156,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3066,7 +3170,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -3095,7 +3201,7 @@ import { SDK } from "openapi";
 import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3111,7 +3217,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+    dateTime: new Date("2020-01-01T00:00:00.000001Z"),
     decimal: 3.141592653589793,
     decimalStr: "3.14159265358979344719667586",
     enum: Enum.One,
@@ -3128,7 +3234,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -3155,7 +3263,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3173,7 +3281,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -3204,7 +3314,7 @@ import {
   RequestBodyPostMultipleContentTypesSplitParamFormRequestBody,
 } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3224,16 +3334,18 @@ const paramStr: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                                                 | Type                                                                                                                                                                      | Required                                                                                                                                                                  | Description                                                                                                                                                               |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                                                                             | [operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody](../../../sdk/models/operations/requestbodypostmultiplecontenttypessplitparamformrequestbody.md) | :heavy_check_mark:                                                                                                                                                        | N/A                                                                                                                                                                       |
-| `paramStr`                                                                                                                                                                | *string*                                                                                                                                                                  | :heavy_check_mark:                                                                                                                                                        | N/A                                                                                                                                                                       |
-| `config`                                                                                                                                                                  | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                              | :heavy_minus_sign:                                                                                                                                                        | Available config options for making requests.                                                                                                                             |
+| Parameter                                                                                                                                                              | Type                                                                                                                                                                   | Required                                                                                                                                                               | Description                                                                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                                                                                          | [operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody](../../sdk/models/operations/requestbodypostmultiplecontenttypessplitparamformrequestbody.md) | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
+| `paramStr`                                                                                                                                                             | *string*                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
+| `config`                                                                                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                           | :heavy_minus_sign:                                                                                                                                                     | Available config options for making requests.                                                                                                                          |
 
 
 ### Response
@@ -3256,7 +3368,7 @@ import {
   RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody,
 } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3276,16 +3388,18 @@ const paramStr: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                                                 | Type                                                                                                                                                                      | Required                                                                                                                                                                  | Description                                                                                                                                                               |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                                                                             | [operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody](../../../sdk/models/operations/requestbodypostmultiplecontenttypessplitparamjsonrequestbody.md) | :heavy_check_mark:                                                                                                                                                        | N/A                                                                                                                                                                       |
-| `paramStr`                                                                                                                                                                | *string*                                                                                                                                                                  | :heavy_check_mark:                                                                                                                                                        | N/A                                                                                                                                                                       |
-| `config`                                                                                                                                                                  | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                              | :heavy_minus_sign:                                                                                                                                                        | Available config options for making requests.                                                                                                                             |
+| Parameter                                                                                                                                                              | Type                                                                                                                                                                   | Required                                                                                                                                                               | Description                                                                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                                                                                          | [operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody](../../sdk/models/operations/requestbodypostmultiplecontenttypessplitparamjsonrequestbody.md) | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
+| `paramStr`                                                                                                                                                             | *string*                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
+| `config`                                                                                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                           | :heavy_minus_sign:                                                                                                                                                     | Available config options for making requests.                                                                                                                          |
 
 
 ### Response
@@ -3308,7 +3422,7 @@ import {
   RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody,
 } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3328,16 +3442,18 @@ const paramStr: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                                                           | Type                                                                                                                                                                                | Required                                                                                                                                                                            | Description                                                                                                                                                                         |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                                                                                       | [operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody](../../../sdk/models/operations/requestbodypostmultiplecontenttypessplitparammultipartrequestbody.md) | :heavy_check_mark:                                                                                                                                                                  | N/A                                                                                                                                                                                 |
-| `paramStr`                                                                                                                                                                          | *string*                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                  | N/A                                                                                                                                                                                 |
-| `config`                                                                                                                                                                            | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                  | Available config options for making requests.                                                                                                                                       |
+| Parameter                                                                                                                                                                        | Type                                                                                                                                                                             | Required                                                                                                                                                                         | Description                                                                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                                                                                                    | [operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody](../../sdk/models/operations/requestbodypostmultiplecontenttypessplitparammultipartrequestbody.md) | :heavy_check_mark:                                                                                                                                                               | N/A                                                                                                                                                                              |
+| `paramStr`                                                                                                                                                                       | *string*                                                                                                                                                                         | :heavy_check_mark:                                                                                                                                                               | N/A                                                                                                                                                                              |
+| `config`                                                                                                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                                     | :heavy_minus_sign:                                                                                                                                                               | Available config options for making requests.                                                                                                                                    |
 
 
 ### Response
@@ -3356,7 +3472,7 @@ const paramStr: string = "string";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3374,7 +3490,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -3401,7 +3519,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3419,7 +3537,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -3446,7 +3566,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3464,7 +3584,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -3491,7 +3613,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3505,7 +3627,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -3532,7 +3656,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3548,7 +3672,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -3575,7 +3701,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3591,7 +3717,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -3618,7 +3746,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3632,7 +3760,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -3659,7 +3789,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3673,7 +3803,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -3700,7 +3832,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3714,7 +3846,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -3742,7 +3876,7 @@ import { SDK } from "openapi";
 import { SDK } from "openapi";
 import { RequestBodyPutBytesWithParamsRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3758,7 +3892,9 @@ const queryStringParam: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -3788,7 +3924,7 @@ import { SDK } from "openapi";
 import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3807,7 +3943,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         bool: true,
         boolOpt: true,
         date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
         decimal: 3.141592653589793,
         decimalStr: "3.14159265358979344719667586",
         enum: Enum.One,
@@ -3827,7 +3963,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         bool: true,
         boolOpt: true,
         date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
         decimal: 3.141592653589793,
         decimalStr: "3.14159265358979344719667586",
         enum: Enum.One,
@@ -3851,7 +3987,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         bool: true,
         boolOpt: true,
         date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
         decimal: 3.141592653589793,
         decimalStr: "3.14159265358979344719667586",
         enum: Enum.One,
@@ -3871,7 +4007,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         bool: true,
         boolOpt: true,
         date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
         decimal: 3.141592653589793,
         decimalStr: "3.14159265358979344719667586",
         enum: Enum.One,
@@ -3893,7 +4029,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      dateTime: new Date("2020-01-01T00:00:00.000001Z"),
       decimal: 3.141592653589793,
       decimalStr: "3.14159265358979344719667586",
       enum: Enum.One,
@@ -3912,7 +4048,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -3939,7 +4077,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -3958,7 +4096,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -3985,7 +4125,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -4004,7 +4144,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -4033,7 +4175,7 @@ import { SDK } from "openapi";
 import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -4049,7 +4191,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+    dateTime: new Date("2020-01-01T00:00:00.000001Z"),
     decimal: 3.141592653589793,
     decimalStr: "3.14159265358979344719667586",
     enum: Enum.One,
@@ -4066,7 +4208,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -4093,7 +4237,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -4107,7 +4251,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -4135,7 +4281,7 @@ import { SDK } from "openapi";
 import { SDK } from "openapi";
 import { RequestBodyPutStringWithParamsRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -4151,7 +4297,9 @@ const queryStringParam: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -4179,7 +4327,7 @@ const queryStringParam: string = "string";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -4197,7 +4345,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -4225,7 +4375,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -4239,7 +4389,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -4267,7 +4419,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -4281,7 +4433,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -4309,7 +4463,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -4323,7 +4477,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -4351,7 +4507,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -4369,7 +4525,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -4397,7 +4555,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -4415,7 +4573,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -4443,7 +4603,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -4457,7 +4617,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

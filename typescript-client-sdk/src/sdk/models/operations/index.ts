@@ -173,6 +173,7 @@ export * from "./requestbodyreadwriteonlyunion";
 export * from "./requestbodywriteonly";
 export * from "./requestbodywriteonlyoutput";
 export * from "./requestbodywriteonlyunion";
+export * from "./responsebodyadditionalpropertiesanypost";
 export * from "./responsebodyadditionalpropertiescomplexnumberspost";
 export * from "./responsebodyadditionalpropertiesdatepost";
 export * from "./responsebodyadditionalpropertiesobjectpost";

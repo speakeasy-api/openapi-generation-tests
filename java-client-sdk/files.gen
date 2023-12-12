@@ -54,6 +54,7 @@ lib/src/main/java/org/openapis/openapi/utils/Utils.java
 settings.gradle
 lib/src/test/java/org/openapis/openapi/CommonHelpers.java
 lib/src/test/java/org/openapis/openapicommon/CommonHelpers.java
+lib/src/test/java/org/openapis/openapihoisted_security/AuthTests.java
 lib/src/test/java/org/openapis/openapiprimary/AuthTests.java
 lib/src/test/java/org/openapis/openapiprimary/FlatteningTests.java
 lib/src/test/java/org/openapis/openapiprimary/GlobalsTests.java
@@ -469,6 +470,8 @@ lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyReadWriteOnl
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyWriteOnlyResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyWriteOnlyOutputResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyWriteOnlyUnionResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyAdditionalPropertiesAnyPostResponseBody.java
+lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyAdditionalPropertiesAnyPostResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody.java
 lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyAdditionalPropertiesDatePostResponseBody.java
@@ -626,7 +629,6 @@ lib/src/main/java/org/openapis/openapi/models/callbacks/IgnoredGenerationGetSing
 lib/src/main/java/org/openapis/openapi/models/callbacks/IgnoredGenerationGetSingledIgnoredCallbackOperationRequestBody.java
 lib/src/main/java/org/openapis/openapi/models/callbacks/IgnoredGenerationGetNotIgnoredCallbackResponse.java
 lib/src/main/java/org/openapis/openapi/models/callbacks/IgnoredGenerationGetNotIgnoredCallbackRequestBody.java
-USAGE.md
 docs/models/operations/PutAnythingIgnoredGenerationResponseBody.md
 docs/models/operations/PutAnythingIgnoredGenerationResponse.md
 docs/models/operations/ResponseBodyJsonGetResponse.md
@@ -1023,6 +1025,8 @@ docs/models/operations/RequestBodyReadWriteOnlyUnionResponse.md
 docs/models/operations/RequestBodyWriteOnlyResponse.md
 docs/models/operations/RequestBodyWriteOnlyOutputResponse.md
 docs/models/operations/RequestBodyWriteOnlyUnionResponse.md
+docs/models/operations/ResponseBodyAdditionalPropertiesAnyPostResponseBody.md
+docs/models/operations/ResponseBodyAdditionalPropertiesAnyPostResponse.md
 docs/models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody.md
 docs/models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse.md
 docs/models/operations/ResponseBodyAdditionalPropertiesDatePostResponseBody.md
@@ -1204,3 +1208,4 @@ docs/sdks/first/README.md
 docs/sdks/second/README.md
 docs/sdks/pagination/README.md
 docs/sdks/retries/README.md
+USAGE.md

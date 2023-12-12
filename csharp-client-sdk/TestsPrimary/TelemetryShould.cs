@@ -23,7 +23,7 @@ public class TelemetryShould
         var res = await sdk.Telemetry.TelemetryUserAgentGetAsync();
 
         Assert.Equal(200, res.StatusCode);
-        Assert.Equal("speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi", res.Res.Headers["X-Speakeasy-User-Agent"]);
+        Assert.Equal("speakeasy-sdk/csharp 0.4.0 2.213.3 0.1.0 openapi", res.Res.Headers["X-Speakeasy-User-Agent"]);
     }
 
     [Fact]
@@ -39,6 +39,6 @@ public class TelemetryShould
 
         Assert.Equal(200, res.StatusCode);
         Assert.Equal(userAgent, res.Res.Headers["User-Agent"]);
-        Assert.Equal("speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi", res.Res.Headers["X-Speakeasy-User-Agent"]);
+        Assert.Equal("speakeasy-sdk/csharp 0.4.0 2.213.3 0.1.0 openapi", res.Res.Headers["X-Speakeasy-User-Agent"]);
     }
 }

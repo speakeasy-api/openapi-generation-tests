@@ -47,6 +47,7 @@ Tests/OpenAPITests/utils/TestData.swift
 Tests/OpenAPITests/utils/TestRecording.swift
 Tests/OpenAPITests/utils/TestUtils.swift
 Tests/OpenAPITests/testdata/testUpload.json
+Tests/OpenAPITests/testshoisted_security/AuthTest.swift
 Tests/OpenAPITests/testsprimary/AuthTests.swift
 Tests/OpenAPITests/testsprimary/FlatteningTests.swift
 Tests/OpenAPITests/testsprimary/GlobalsTests.swift
@@ -576,6 +577,8 @@ Sources/OpenAPI/models/operations/RequestBodyWriteOnlyResponse.swift
 Sources/OpenAPI/models/operations/RequestBodyWriteOnlyUnionResponse.swift
 Sources/OpenAPI/models/operations/RequiredObj.swift
 Sources/OpenAPI/internal/models/RequiredObj+Serialization.swift
+Sources/OpenAPI/models/operations/ResponseBodyAdditionalPropertiesAnyPostResponse.swift
+Sources/OpenAPI/models/operations/ResponseBodyAdditionalPropertiesAnyPostResponseBody.swift
 Sources/OpenAPI/models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse.swift
 Sources/OpenAPI/models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody.swift
 Sources/OpenAPI/models/operations/ResponseBodyAdditionalPropertiesDatePostResponse.swift
