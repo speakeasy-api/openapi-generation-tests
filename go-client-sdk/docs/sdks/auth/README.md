@@ -25,10 +25,10 @@ Endpoints for testing authentication.
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
+	"log"
 )
 
 func main() {
@@ -77,10 +77,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -126,10 +126,10 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
+	"log"
 )
 
 func main() {
@@ -185,10 +185,10 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
+	"log"
 )
 
 func main() {
@@ -237,10 +237,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -286,17 +286,14 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
@@ -335,10 +332,10 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
+	"log"
 )
 
 func main() {
@@ -387,10 +384,10 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
+	"log"
 )
 
 func main() {
@@ -439,10 +436,10 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
+	"log"
 )
 
 func main() {
