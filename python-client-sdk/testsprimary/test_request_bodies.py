@@ -8,7 +8,7 @@ from sdk.models.shared import simpleobject as shared_simpleobject
 from sdk.utils import *
 
 from .common_helpers import *
-from .helpers import *
+from .test_helpers import *
 
 
 def test_request_body_post_application_json_simple():
@@ -548,12 +548,12 @@ def test_request_body_put_multipart_deep():
     assert res is not None
     assert res.status_code == 200
     assert res.res is not None
-    assert res.res.form.arr == marshal_json(obj.arr)
+    assert res.res.form.arr == marshal_json(obj.arr, type(obj.arr))
     assert res.res.form.bool == 'true'
     assert res.res.form.int == '1'
-    assert res.res.form.map == marshal_json(obj.map)
+    assert res.res.form.map == marshal_json(obj.map, type(obj.map))
     assert res.res.form.num == '1.1'
-    assert res.res.form.obj == marshal_json(obj.obj)
+    assert res.res.form.obj == marshal_json(obj.obj, type(obj.obj))
     assert res.res.form.str_ == 'test'
 
 
@@ -647,12 +647,12 @@ def test_request_body_post_form_deep():
     assert res is not None
     assert res.status_code == 200
     assert res.res is not None
-    assert res.res.form.arr == marshal_json(obj.arr)
+    assert res.res.form.arr == marshal_json(obj.arr, type(obj.arr))
     assert res.res.form.bool == 'true'
     assert res.res.form.int == '1'
-    assert res.res.form.map == marshal_json(obj.map)
+    assert res.res.form.map == marshal_json(obj.map, type(obj.map))
     assert res.res.form.num == '1.1'
-    assert res.res.form.obj == marshal_json(obj.obj)
+    assert res.res.form.obj == marshal_json(obj.obj, type(obj.obj))
     assert res.res.form.str_ == 'test'
 
 
@@ -1102,7 +1102,7 @@ def test_request_body_post_json_data_types_map_date_time():
     assert res is not None
     assert res.status_code == 200
     assert res.object.json == req
-    assert res.object.data == '{"test": "2020-01-01T00:00:00.000001Z"}'
+    assert res.object.data == '{"test":"2020-01-01T00:00:00.000001Z"}'
 
 
 def test_request_body_post_json_data_types_map_big_int_str():
@@ -1119,7 +1119,7 @@ def test_request_body_post_json_data_types_map_big_int_str():
     assert res is not None
     assert res.status_code == 200
     assert res.object.json == req
-    assert res.object.data == '{"test": "1"}'
+    assert res.object.data == '{"test":"1"}'
 
 
 def test_request_body_post_json_data_types_map_decimal():
@@ -1136,7 +1136,7 @@ def test_request_body_post_json_data_types_map_decimal():
     assert res is not None
     assert res.status_code == 200
     assert res.object.json == req
-    assert res.object.data == '{"test": 1.1}'
+    assert res.object.data == '{"test":1.1}'
 
 
 def test_request_body_post_json_data_types_array_date():

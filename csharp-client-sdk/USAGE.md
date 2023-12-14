@@ -1,4 +1,42 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
+```csharp
+using Openapi;
+using Openapi.Models.Shared;
+using NodaTime;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+SimpleObject req = new SimpleObject() {
+    Any = "any",
+    Bool = true,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
+    Enum = Enum.One,
+    Float32 = 1.1F,
+    Int = 1,
+    Int32 = 1,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
+    Num = 1.1D,
+    Str = "test",
+    Bigint = 8821239038968084,
+    BigintStr = 9223372036854775808,
+    BoolOpt = true,
+    Decimal = 3.141592653589793M,
+    DecimalStr = 3.14159265358979344719667586M,
+    StrOpt = "testOptional",
+};
+
+var res = await sdk.Generation.GlobalNameOverriddenAsync(req);
+
+// handle response
+```
+
 ```csharp
 using Openapi;
 using Openapi.Models.Shared;
@@ -8,10 +46,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.GlobalNameOverriddenAsync();
+var res = await sdk.Servers.SelectGlobalServerAsync();
 
 // handle response
 ```
@@ -28,13 +65,9 @@ using NodaTime;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurity() {
-    Password = "YOUR_PASSWORD",
-    Username = "YOUR_USERNAME",
-}, new UsageExamplePostRequest() {
+UsageExamplePostRequest req = new UsageExamplePostRequest() {
     BigintParameter = 168827,
     BigintStrParameter = 446729,
     BoolParameter = false,
@@ -58,7 +91,7 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -76,8 +109,13 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
         },
     },
     OptEnumParameter = OptEnumParameter.Value3,
-});
+};
+
+var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurity() {
+    Password = "YOUR_PASSWORD",
+    Username = "YOUR_USERNAME",
+}, req);
 
 // handle response
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
