@@ -105,18 +105,21 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.NullableObject req = new NullableObject(302382L){{
+            org.openapis.openapi.models.shared.NullableObject req = new NullableObject(
+                302382L){{
                 optional = "string";
-            }};            
 
-            NullableObjectPostResponse res = sdk.requestBodies.nullableObjectPost(req);
+            }};
+
+            org.openapis.openapi.models.operations.NullableObjectPostResponse res = sdk.requestBodies.nullableObjectPost(req);
 
             if (res.res != null) {
                 // handle response
@@ -159,18 +162,25 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            NullableRequiredEmptyObjectPostRequestBody req = new NullableRequiredEmptyObjectPostRequestBody(new NullableRequiredObj(), new RequiredObj()){{
-                nullableOptionalObj = new NullableOptionalObj();
-            }};            
+            org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostRequestBody req = new NullableRequiredEmptyObjectPostRequestBody(
+                new NullableRequiredObj(
+),
+                new RequiredObj(
+)){{
+                nullableOptionalObj = new NullableOptionalObj(
+);
 
-            NullableRequiredEmptyObjectPostResponse res = sdk.requestBodies.nullableRequiredEmptyObjectPost(req);
+            }};
+
+            org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostResponse res = sdk.requestBodies.nullableRequiredEmptyObjectPost(req);
 
             if (res.res != null) {
                 // handle response
@@ -211,20 +221,25 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            NullableRequiredPropertyPostRequestBody req = new NullableRequiredPropertyPostRequestBody(new Double[]{{
-    add(2355.17d),
-}}, NullableRequiredEnum.SECOND, 50266L){{
+            org.openapis.openapi.models.operations.NullableRequiredPropertyPostRequestBody req = new NullableRequiredPropertyPostRequestBody(
+                new Double[]{{
+                    add(2355.17d),
+                }},
+                NullableRequiredEnum.SECOND,
+                50266L){{
                 nullableOptionalInt = 282026L;
-            }};            
 
-            NullableRequiredPropertyPostResponse res = sdk.requestBodies.nullableRequiredPropertyPost(req);
+            }};
+
+            org.openapis.openapi.models.operations.NullableRequiredPropertyPostResponse res = sdk.requestBodies.nullableRequiredPropertyPost(req);
 
             if (res.res != null) {
                 // handle response
@@ -265,22 +280,29 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            NullableRequiredSharedObjectPostRequestBody req = new NullableRequiredSharedObjectPostRequestBody(new NullableObject(86533L){{
-optional = "string";
-}}){{
-                nullableOptionalObj = new NullableObject(964394L){{
+            org.openapis.openapi.models.operations.NullableRequiredSharedObjectPostRequestBody req = new NullableRequiredSharedObjectPostRequestBody(
+                new NullableObject(
+                    86533L){{
                     optional = "string";
-                }};
-            }};            
 
-            NullableRequiredSharedObjectPostResponse res = sdk.requestBodies.nullableRequiredSharedObjectPost(req);
+                }}){{
+                nullableOptionalObj = new NullableObject(
+                    964394L){{
+                    optional = "string";
+
+                }};
+
+            }};
+
+            org.openapis.openapi.models.operations.NullableRequiredSharedObjectPostResponse res = sdk.requestBodies.nullableRequiredSharedObjectPost(req);
 
             if (res.res != null) {
                 // handle response
@@ -325,22 +347,35 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new org.openapis.openapi.models.shared.SimpleObject[]{{
-                add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            org.openapis.openapi.models.shared.SimpleObject[] req = new org.openapis.openapi.models.shared.SimpleObject[]{{
+                add(new SimpleObject(
+                "any",
+                true,
+                LocalDate.parse("2020-01-01"),
+                OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                Enum.ONE,
+                1.1f,
+                1L,
+                1,
+                Int32Enum.FIFTY_FIVE,
+                IntEnum.Second,
+                1.1d,
+                "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
                     bool = true;
                     boolOpt = true;
                     date = LocalDate.parse("2020-01-01");
-                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                     decimal = 3.141592653589793d;
                     decimalStr = "3.14159265358979344719667586";
                     enum_ = Enum.ONE;
@@ -353,9 +388,9 @@ public class Application {
                     str = "test";
                     strOpt = "testOptional";
                 }}),
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonArrayResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArray(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArray(req);
 
             if (res.res != null) {
                 // handle response
@@ -401,15 +436,28 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
+            org.openapis.openapi.models.shared.SimpleObjectCamelCase[] req = new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
+                add(new SimpleObjectCamelCase(
+                "any example",
+                true,
+                OffsetDateTime.parse("2020-01-01T00:00:00Z"),
+                LocalDate.parse("2020-01-01"),
+                Enum.ONE,
+                2.2222222f,
+                Int32EnumVal.SIXTY_NINE,
+                1,
+                IntEnumVal.Third,
+                999999L,
+                1.1d,
+                "example"){{
                     anyVal = "any example";
                     boolOptVal = true;
                     boolVal = true;
@@ -427,9 +475,9 @@ public class Application {
                     strOptVal = "optional example";
                     strVal = "example";
                 }}),
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonArrayCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayCamelCase(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayCamelCase(req);
 
             if (res.res != null) {
                 // handle response
@@ -475,22 +523,35 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new org.openapis.openapi.models.shared.SimpleObject[]{{
-                add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            org.openapis.openapi.models.shared.SimpleObject[] req = new org.openapis.openapi.models.shared.SimpleObject[]{{
+                add(new SimpleObject(
+                "any",
+                true,
+                LocalDate.parse("2020-01-01"),
+                OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                Enum.ONE,
+                1.1f,
+                1L,
+                1,
+                Int32Enum.FIFTY_FIVE,
+                IntEnum.Second,
+                1.1d,
+                "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
                     bool = true;
                     boolOpt = true;
                     date = LocalDate.parse("2020-01-01");
-                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                     decimal = 3.141592653589793d;
                     decimalStr = "3.14159265358979344719667586";
                     enum_ = Enum.ONE;
@@ -503,9 +564,9 @@ public class Application {
                     str = "test";
                     strOpt = "testOptional";
                 }}),
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonArrayObjResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayObj(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayObjResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayObj(req);
 
             if (res.arrObjValue != null) {
                 // handle response
@@ -550,15 +611,28 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
+            org.openapis.openapi.models.shared.SimpleObjectCamelCase[] req = new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
+                add(new SimpleObjectCamelCase(
+                "any example",
+                true,
+                OffsetDateTime.parse("2020-01-01T00:00:00Z"),
+                LocalDate.parse("2020-01-01"),
+                Enum.ONE,
+                2.2222222f,
+                Int32EnumVal.SIXTY_NINE,
+                1,
+                IntEnumVal.Third,
+                999999L,
+                1.1d,
+                "example"){{
                     anyVal = "any example";
                     boolOptVal = true;
                     boolVal = true;
@@ -576,9 +650,9 @@ public class Application {
                     strOptVal = "optional example";
                     strVal = "example";
                 }}),
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonArrayObjCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayObjCamelCase(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayObjCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayObjCamelCase(req);
 
             if (res.arrObjValueCamelCase != null) {
                 // handle response
@@ -623,23 +697,36 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new org.openapis.openapi.models.shared.SimpleObject[][]{{
+            org.openapis.openapi.models.shared.SimpleObject[][] req = new org.openapis.openapi.models.shared.SimpleObject[][]{{
                 add(new org.openapis.openapi.models.shared.SimpleObject[]{{
-                    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+                    add(new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
                         any = "any";
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
                         bool = true;
                         boolOpt = true;
                         date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                         decimal = 3.141592653589793d;
                         decimalStr = "3.14159265358979344719667586";
                         enum_ = Enum.ONE;
@@ -653,9 +740,9 @@ public class Application {
                         strOpt = "testOptional";
                     }}),
                 }}),
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonArrayOfArrayResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArray(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArray(req);
 
             if (res.res != null) {
                 // handle response
@@ -701,16 +788,29 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new org.openapis.openapi.models.shared.SimpleObjectCamelCase[][]{{
+            org.openapis.openapi.models.shared.SimpleObjectCamelCase[][] req = new org.openapis.openapi.models.shared.SimpleObjectCamelCase[][]{{
                 add(new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                    add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
+                    add(new SimpleObjectCamelCase(
+                    "any example",
+                    true,
+                    OffsetDateTime.parse("2020-01-01T00:00:00Z"),
+                    LocalDate.parse("2020-01-01"),
+                    Enum.ONE,
+                    2.2222222f,
+                    Int32EnumVal.SIXTY_NINE,
+                    1,
+                    IntEnumVal.Third,
+                    999999L,
+                    1.1d,
+                    "example"){{
                         anyVal = "any example";
                         boolOptVal = true;
                         boolVal = true;
@@ -729,9 +829,9 @@ public class Application {
                         strVal = "example";
                     }}),
                 }}),
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayCamelCase(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayCamelCase(req);
 
             if (res.res != null) {
                 // handle response
@@ -771,20 +871,21 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new String[][]{{
+            String[][] req = new String[][]{{
                 add(new String[]{{
                     add("string"),
                 }}),
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayOfPrimitive(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayOfPrimitive(req);
 
             if (res.res != null) {
                 // handle response
@@ -830,23 +931,37 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>[]{{
-                add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject>[] req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>[]{{
+                add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(
+                ){{
+                    put("key", new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
                         any = "any";
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
                         bool = true;
                         boolOpt = true;
                         date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                         decimal = 3.141592653589793d;
                         decimalStr = "3.14159265358979344719667586";
                         enum_ = Enum.ONE;
@@ -860,9 +975,9 @@ public class Application {
                         strOpt = "testOptional";
                     }});
                 }}),
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonArrayOfMapResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMap(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfMapResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMap(req);
 
             if (res.res != null) {
                 // handle response
@@ -908,16 +1023,30 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>[]{{
-                add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(){{
-                    put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
+            java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>[] req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>[]{{
+                add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(
+                ){{
+                    put("key", new SimpleObjectCamelCase(
+                    "any example",
+                    true,
+                    OffsetDateTime.parse("2020-01-01T00:00:00Z"),
+                    LocalDate.parse("2020-01-01"),
+                    Enum.ONE,
+                    2.2222222f,
+                    Int32EnumVal.SIXTY_NINE,
+                    1,
+                    IntEnumVal.Third,
+                    999999L,
+                    1.1d,
+                    "example"){{
                         anyVal = "any example";
                         boolOptVal = true;
                         boolVal = true;
@@ -936,9 +1065,9 @@ public class Application {
                         strVal = "example";
                     }});
                 }}),
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMapCamelCase(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMapCamelCase(req);
 
             if (res.res != null) {
                 // handle response
@@ -978,18 +1107,19 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new String[]{{
+            String[] req = new String[]{{
                 add("string"),
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonArrayOfPrimitiveResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfPrimitive(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfPrimitiveResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfPrimitive(req);
 
             if (res.res != null) {
                 // handle response
@@ -1036,109 +1166,181 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.DeepObject req = new DeepObject("anyOf[0]", new org.openapis.openapi.models.shared.SimpleObject[]{{
-    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }}),
-    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }}),
-}}, true, 1L, new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }});
-    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }});
-}}, 1.1d, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-bigint = 8821239038968084L;
-bigintStr = "9223372036854775808";
-boolOpt = true;
-decimal = 3.141592653589793d;
-decimalStr = "3.14159265358979344719667586";
-intOptNull = 949502L;
-numOptNull = 5521.28d;
-strOpt = "testOptional";
-}}, "test"){{
-                type = "string";
-            }};            
+            org.openapis.openapi.models.shared.DeepObject req = new DeepObject(
+                "anyOf[0]",
+                new org.openapis.openapi.models.shared.SimpleObject[]{{
+                    add(new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
+                        any = "any";
+                        bigint = 8821239038968084L;
+                        bigintStr = "9223372036854775808";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
+                        decimal = 3.141592653589793d;
+                        decimalStr = "3.14159265358979344719667586";
+                        enum_ = Enum.ONE;
+                        float32 = 1.1f;
+                        int_ = 1L;
+                        int32 = 1;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
+                        num = 1.1d;
+                        str = "test";
+                        strOpt = "testOptional";
+                    }}),
+                    add(new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
+                        any = "any";
+                        bigint = 8821239038968084L;
+                        bigintStr = "9223372036854775808";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
+                        decimal = 3.141592653589793d;
+                        decimalStr = "3.14159265358979344719667586";
+                        enum_ = Enum.ONE;
+                        float32 = 1.1f;
+                        int_ = 1L;
+                        int32 = 1;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
+                        num = 1.1d;
+                        str = "test";
+                        strOpt = "testOptional";
+                    }}),
+                }},
+                true,
+                1L,
+                new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(
+                ){{
+                    put("key", new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
+                        any = "any";
+                        bigint = 8821239038968084L;
+                        bigintStr = "9223372036854775808";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
+                        decimal = 3.141592653589793d;
+                        decimalStr = "3.14159265358979344719667586";
+                        enum_ = Enum.ONE;
+                        float32 = 1.1f;
+                        int_ = 1L;
+                        int32 = 1;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
+                        num = 1.1d;
+                        str = "test";
+                        strOpt = "testOptional";
+                    }});
+                    put("key2", new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
+                        any = "any";
+                        bigint = 8821239038968084L;
+                        bigintStr = "9223372036854775808";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
+                        decimal = 3.141592653589793d;
+                        decimalStr = "3.14159265358979344719667586";
+                        enum_ = Enum.ONE;
+                        float32 = 1.1f;
+                        int_ = 1L;
+                        int32 = 1;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
+                        num = 1.1d;
+                        str = "test";
+                        strOpt = "testOptional";
+                    }});
+                }},
+                1.1d,
+                new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
+                    bigint = 8821239038968084L;
+                    bigintStr = "9223372036854775808";
+                    boolOpt = true;
+                    decimal = 3.141592653589793d;
+                    decimalStr = "3.14159265358979344719667586";
+                    intOptNull = 949502L;
+                    numOptNull = 5521.28d;
+                    strOpt = "testOptional";
 
-            RequestBodyPostApplicationJsonDeepResponse res = sdk.requestBodies.requestBodyPostApplicationJsonDeep(req);
+                }},
+                "test"){{
+                type = "string";
+
+            }};
+
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonDeepResponse res = sdk.requestBodies.requestBodyPostApplicationJsonDeep(req);
 
             if (res.res != null) {
                 // handle response
@@ -1184,64 +1386,112 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.DeepObjectCamelCase req = new DeepObjectCamelCase("string", new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-    add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
-        anyVal = "any example";
-        boolOptVal = true;
-        boolVal = true;
-        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-        dateVal = LocalDate.parse("2020-01-01");
-        enumVal = Enum.ONE;
-        float32Val = 2.2222222f;
-        int32EnumVal = Int32EnumVal.SIXTY_NINE;
-        int32Val = 1;
-        intEnumVal = IntEnumVal.Third;
-        intOptNullVal = 999999L;
-        intVal = 999999L;
-        numOptNullVal = 1.1d;
-        numVal = 1.1d;
-        strOptVal = "optional example";
-        strVal = "example";
-    }}),
-}}, false, 66469L, new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(){{
-    put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
-        anyVal = "any example";
-        boolOptVal = true;
-        boolVal = true;
-        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-        dateVal = LocalDate.parse("2020-01-01");
-        enumVal = Enum.ONE;
-        float32Val = 2.2222222f;
-        int32EnumVal = Int32EnumVal.SIXTY_NINE;
-        int32Val = 1;
-        intEnumVal = IntEnumVal.Third;
-        intOptNullVal = 999999L;
-        intVal = 999999L;
-        numOptNullVal = 1.1d;
-        numVal = 1.1d;
-        strOptVal = "optional example";
-        strVal = "example";
-    }});
-}}, 9629.09d, new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
-bigintStrVal = "string";
-bigintVal = 206440L;
-boolOptVal = true;
-decimalVal = 4241.4d;
-intOptNullVal = 999999L;
-numOptNullVal = 1.1d;
-strOptVal = "optional example";
-}}, "string"){{
-                type = "string";
-            }};            
+            org.openapis.openapi.models.shared.DeepObjectCamelCase req = new DeepObjectCamelCase(
+                "string",
+                new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
+                    add(new SimpleObjectCamelCase(
+                    "any example",
+                    true,
+                    OffsetDateTime.parse("2020-01-01T00:00:00Z"),
+                    LocalDate.parse("2020-01-01"),
+                    Enum.ONE,
+                    2.2222222f,
+                    Int32EnumVal.SIXTY_NINE,
+                    1,
+                    IntEnumVal.Third,
+                    999999L,
+                    1.1d,
+                    "example"){{
+                        anyVal = "any example";
+                        boolOptVal = true;
+                        boolVal = true;
+                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        dateVal = LocalDate.parse("2020-01-01");
+                        enumVal = Enum.ONE;
+                        float32Val = 2.2222222f;
+                        int32EnumVal = Int32EnumVal.SIXTY_NINE;
+                        int32Val = 1;
+                        intEnumVal = IntEnumVal.Third;
+                        intOptNullVal = 999999L;
+                        intVal = 999999L;
+                        numOptNullVal = 1.1d;
+                        numVal = 1.1d;
+                        strOptVal = "optional example";
+                        strVal = "example";
+                    }}),
+                }},
+                false,
+                66469L,
+                new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(
+                ){{
+                    put("key", new SimpleObjectCamelCase(
+                    "any example",
+                    true,
+                    OffsetDateTime.parse("2020-01-01T00:00:00Z"),
+                    LocalDate.parse("2020-01-01"),
+                    Enum.ONE,
+                    2.2222222f,
+                    Int32EnumVal.SIXTY_NINE,
+                    1,
+                    IntEnumVal.Third,
+                    999999L,
+                    1.1d,
+                    "example"){{
+                        anyVal = "any example";
+                        boolOptVal = true;
+                        boolVal = true;
+                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        dateVal = LocalDate.parse("2020-01-01");
+                        enumVal = Enum.ONE;
+                        float32Val = 2.2222222f;
+                        int32EnumVal = Int32EnumVal.SIXTY_NINE;
+                        int32Val = 1;
+                        intEnumVal = IntEnumVal.Third;
+                        intOptNullVal = 999999L;
+                        intVal = 999999L;
+                        numOptNullVal = 1.1d;
+                        numVal = 1.1d;
+                        strOptVal = "optional example";
+                        strVal = "example";
+                    }});
+                }},
+                9629.09d,
+                new SimpleObjectCamelCase(
+                    "any example",
+                    true,
+                    OffsetDateTime.parse("2020-01-01T00:00:00Z"),
+                    LocalDate.parse("2020-01-01"),
+                    Enum.ONE,
+                    2.2222222f,
+                    Int32EnumVal.SIXTY_NINE,
+                    1,
+                    IntEnumVal.Third,
+                    999999L,
+                    1.1d,
+                    "example"){{
+                    bigintStrVal = "string";
+                    bigintVal = 206440L;
+                    boolOptVal = true;
+                    decimalVal = 4241.4d;
+                    intOptNullVal = 999999L;
+                    numOptNullVal = 1.1d;
+                    strOptVal = "optional example";
 
-            RequestBodyPostApplicationJsonDeepCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonDeepCamelCase(req);
+                }},
+                "string"){{
+                type = "string";
+
+            }};
+
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonDeepCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonDeepCamelCase(req);
 
             if (res.res != null) {
                 // handle response
@@ -1286,22 +1536,36 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject> req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(
+            ){{
+                put("key", new SimpleObject(
+                "any",
+                true,
+                LocalDate.parse("2020-01-01"),
+                OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                Enum.ONE,
+                1.1f,
+                1L,
+                1,
+                Int32Enum.FIFTY_FIVE,
+                IntEnum.Second,
+                1.1d,
+                "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
                     bool = true;
                     boolOpt = true;
                     date = LocalDate.parse("2020-01-01");
-                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                     decimal = 3.141592653589793d;
                     decimalStr = "3.14159265358979344719667586";
                     enum_ = Enum.ONE;
@@ -1314,9 +1578,9 @@ public class Application {
                     str = "test";
                     strOpt = "testOptional";
                 }});
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonMapResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMap(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMap(req);
 
             if (res.res != null) {
                 // handle response
@@ -1362,15 +1626,29 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(){{
-                put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
+            java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase> req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(
+            ){{
+                put("key", new SimpleObjectCamelCase(
+                "any example",
+                true,
+                OffsetDateTime.parse("2020-01-01T00:00:00Z"),
+                LocalDate.parse("2020-01-01"),
+                Enum.ONE,
+                2.2222222f,
+                Int32EnumVal.SIXTY_NINE,
+                1,
+                IntEnumVal.Third,
+                999999L,
+                1.1d,
+                "example"){{
                     anyVal = "any example";
                     boolOptVal = true;
                     boolVal = true;
@@ -1388,9 +1666,9 @@ public class Application {
                     strOptVal = "optional example";
                     strVal = "example";
                 }});
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonMapCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapCamelCase(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapCamelCase(req);
 
             if (res.res != null) {
                 // handle response
@@ -1436,22 +1714,36 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject> req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(
+            ){{
+                put("key", new SimpleObject(
+                "any",
+                true,
+                LocalDate.parse("2020-01-01"),
+                OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                Enum.ONE,
+                1.1f,
+                1L,
+                1,
+                Int32Enum.FIFTY_FIVE,
+                IntEnum.Second,
+                1.1d,
+                "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
                     bool = true;
                     boolOpt = true;
                     date = LocalDate.parse("2020-01-01");
-                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                     decimal = 3.141592653589793d;
                     decimalStr = "3.14159265358979344719667586";
                     enum_ = Enum.ONE;
@@ -1464,9 +1756,9 @@ public class Application {
                     str = "test";
                     strOpt = "testOptional";
                 }});
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonMapObjResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapObj(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapObjResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapObj(req);
 
             if (res.mapObjValue != null) {
                 // handle response
@@ -1511,15 +1803,29 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(){{
-                put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
+            java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase> req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(
+            ){{
+                put("key", new SimpleObjectCamelCase(
+                "any example",
+                true,
+                OffsetDateTime.parse("2020-01-01T00:00:00Z"),
+                LocalDate.parse("2020-01-01"),
+                Enum.ONE,
+                2.2222222f,
+                Int32EnumVal.SIXTY_NINE,
+                1,
+                IntEnumVal.Third,
+                999999L,
+                1.1d,
+                "example"){{
                     anyVal = "any example";
                     boolOptVal = true;
                     boolVal = true;
@@ -1537,9 +1843,9 @@ public class Application {
                     strOptVal = "optional example";
                     strVal = "example";
                 }});
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonMapObjCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapObjCamelCase(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapObjCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapObjCamelCase(req);
 
             if (res.mapObjValueCamelCase != null) {
                 // handle response
@@ -1584,23 +1890,37 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject[]>(){{
+            java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject[]> req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject[]>(
+            ){{
                 put("key", new org.openapis.openapi.models.shared.SimpleObject[]{{
-                    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+                    add(new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
                         any = "any";
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
                         bool = true;
                         boolOpt = true;
                         date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                         decimal = 3.141592653589793d;
                         decimalStr = "3.14159265358979344719667586";
                         enum_ = Enum.ONE;
@@ -1614,9 +1934,9 @@ public class Application {
                         strOpt = "testOptional";
                     }}),
                 }});
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonMapOfArrayResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfArray(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfArrayResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfArray(req);
 
             if (res.res != null) {
                 // handle response
@@ -1662,16 +1982,30 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase[]>(){{
+            java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase[]> req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase[]>(
+            ){{
                 put("key", new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                    add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
+                    add(new SimpleObjectCamelCase(
+                    "any example",
+                    true,
+                    OffsetDateTime.parse("2020-01-01T00:00:00Z"),
+                    LocalDate.parse("2020-01-01"),
+                    Enum.ONE,
+                    2.2222222f,
+                    Int32EnumVal.SIXTY_NINE,
+                    1,
+                    IntEnumVal.Third,
+                    999999L,
+                    1.1d,
+                    "example"){{
                         anyVal = "any example";
                         boolOptVal = true;
                         boolVal = true;
@@ -1690,9 +2024,9 @@ public class Application {
                         strVal = "example";
                     }}),
                 }});
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfArrayCamelCase(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfArrayCamelCase(req);
 
             if (res.res != null) {
                 // handle response
@@ -1738,23 +2072,38 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>>(){{
-                put("key", new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            java.util.Map<String, java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject>> req = new java.util.HashMap<String, java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>>(
+            ){{
+                put("key", new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(
+                ){{
+                    put("key", new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
                         any = "any";
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
                         bool = true;
                         boolOpt = true;
                         date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                         decimal = 3.141592653589793d;
                         decimalStr = "3.14159265358979344719667586";
                         enum_ = Enum.ONE;
@@ -1768,9 +2117,9 @@ public class Application {
                         strOpt = "testOptional";
                     }});
                 }});
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonMapOfMapResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfMap(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfMap(req);
 
             if (res.res != null) {
                 // handle response
@@ -1816,16 +2165,31 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>>(){{
-                put("key", new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(){{
-                    put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
+            java.util.Map<String, java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>> req = new java.util.HashMap<String, java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>>(
+            ){{
+                put("key", new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(
+                ){{
+                    put("key", new SimpleObjectCamelCase(
+                    "any example",
+                    true,
+                    OffsetDateTime.parse("2020-01-01T00:00:00Z"),
+                    LocalDate.parse("2020-01-01"),
+                    Enum.ONE,
+                    2.2222222f,
+                    Int32EnumVal.SIXTY_NINE,
+                    1,
+                    IntEnumVal.Third,
+                    999999L,
+                    1.1d,
+                    "example"){{
                         anyVal = "any example";
                         boolOptVal = true;
                         boolVal = true;
@@ -1844,9 +2208,9 @@ public class Application {
                         strVal = "example";
                     }});
                 }});
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapCamelCase(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapCamelCase(req);
 
             if (res.res != null) {
                 // handle response
@@ -1886,20 +2250,23 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, java.util.HashMap<String, String>>(){{
-                put("key", new java.util.HashMap<String, String>(){{
+            java.util.Map<String, java.util.Map<String, String>> req = new java.util.HashMap<String, java.util.HashMap<String, String>>(
+            ){{
+                put("key", new java.util.HashMap<String, String>(
+                ){{
                     put("key", "string");
                 }});
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapOfPrimitive(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapOfPrimitive(req);
 
             if (res.res != null) {
                 // handle response
@@ -1939,18 +2306,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, String>(){{
+            java.util.Map<String, String> req = new java.util.HashMap<String, String>(
+            ){{
                 put("key", "string");
-            }};            
+            }};
 
-            RequestBodyPostApplicationJsonMapOfPrimitiveResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfPrimitive(req);
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfPrimitiveResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfPrimitive(req);
 
             if (res.res != null) {
                 // handle response
@@ -1996,14 +2365,27 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject(
+                "any",
+                true,
+                LocalDate.parse("2020-01-01"),
+                OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                Enum.ONE,
+                1.1f,
+                1L,
+                1,
+                Int32Enum.FIFTY_FIVE,
+                IntEnum.Second,
+                1.1d,
+                "test"){{
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 boolOpt = true;
@@ -2012,9 +2394,10 @@ public class Application {
                 intOptNull = 543193L;
                 numOptNull = 1244.08d;
                 strOpt = "testOptional";
-            }};            
 
-            RequestBodyPostApplicationJsonMultipleJsonFilteredResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMultipleJsonFiltered(req);
+            }};
+
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMultipleJsonFilteredResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMultipleJsonFiltered(req);
 
             if (res.res != null) {
                 // handle response
@@ -2059,14 +2442,27 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject(
+                "any",
+                true,
+                LocalDate.parse("2020-01-01"),
+                OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                Enum.ONE,
+                1.1f,
+                1L,
+                1,
+                Int32Enum.FIFTY_FIVE,
+                IntEnum.Second,
+                1.1d,
+                "test"){{
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 boolOpt = true;
@@ -2075,9 +2471,10 @@ public class Application {
                 intOptNull = 30389L;
                 numOptNull = 3765.71d;
                 strOpt = "testOptional";
-            }};            
 
-            RequestBodyPostApplicationJsonSimpleResponse res = sdk.requestBodies.requestBodyPostApplicationJsonSimple(req);
+            }};
+
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonSimpleResponse res = sdk.requestBodies.requestBodyPostApplicationJsonSimple(req);
 
             if (res.res != null) {
                 // handle response
@@ -2122,14 +2519,27 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObjectCamelCase req = new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
+            org.openapis.openapi.models.shared.SimpleObjectCamelCase req = new SimpleObjectCamelCase(
+                "any example",
+                true,
+                OffsetDateTime.parse("2020-01-01T00:00:00Z"),
+                LocalDate.parse("2020-01-01"),
+                Enum.ONE,
+                2.2222222f,
+                Int32EnumVal.SIXTY_NINE,
+                1,
+                IntEnumVal.Third,
+                999999L,
+                1.1d,
+                "example"){{
                 bigintStrVal = "string";
                 bigintVal = 281697L;
                 boolOptVal = true;
@@ -2137,9 +2547,10 @@ public class Application {
                 intOptNullVal = 999999L;
                 numOptNullVal = 1.1d;
                 strOptVal = "optional example";
-            }};            
 
-            RequestBodyPostApplicationJsonSimpleCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonSimpleCamelCase(req);
+            }};
+
+            org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonSimpleCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonSimpleCamelCase(req);
 
             if (res.res != null) {
                 // handle response
@@ -2180,16 +2591,30 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostComplexNumberTypesRequest req = new RequestBodyPostComplexNumberTypesRequest(new ComplexNumberTypes(765757L, "string", 9344.87d, "string"), 250514L, "string", 6831.11d, "string", 500580L, "string", 7419.03d, "string");            
+            org.openapis.openapi.models.operations.RequestBodyPostComplexNumberTypesRequest req = new RequestBodyPostComplexNumberTypesRequest(
+                new ComplexNumberTypes(
+                    765757L,
+                    "string",
+                    9344.87d,
+                    "string"),
+                250514L,
+                "string",
+                6831.11d,
+                "string",
+                500580L,
+                "string",
+                7419.03d,
+                "string");
 
-            RequestBodyPostComplexNumberTypesResponse res = sdk.requestBodies.requestBodyPostComplexNumberTypes(req);
+            org.openapis.openapi.models.operations.RequestBodyPostComplexNumberTypesResponse res = sdk.requestBodies.requestBodyPostComplexNumberTypes(req);
 
             if (res.object != null) {
                 // handle response
@@ -2235,14 +2660,29 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.DefaultsAndConsts req = new DefaultsAndConsts(559205L, "string", false, LocalDate.parse("2021-09-13"), OffsetDateTime.parse("2022-12-15T04:16:08.794Z"), 9160.69d, "string", ConstEnumInt.ONE, ConstEnumStr.THREE, 299545L, 4612.63d, "string", "string", "string"){{
+            org.openapis.openapi.models.shared.DefaultsAndConsts req = new DefaultsAndConsts(
+                559205L,
+                "string",
+                false,
+                LocalDate.parse("2021-09-13"),
+                OffsetDateTime.parse("2022-12-15T04:16:08.794Z"),
+                9160.69d,
+                "string",
+                ConstEnumInt.ONE,
+                ConstEnumStr.THREE,
+                299545L,
+                4612.63d,
+                "string",
+                "string",
+                "string"){{
                 defaultBigInt = 450379L;
                 defaultBigIntStr = "string";
                 defaultBool = false;
@@ -2257,9 +2697,10 @@ public class Application {
                 defaultStr = "string";
                 defaultStrNullable = "string";
                 defaultStrOptional = "string";
-            }};            
 
-            RequestBodyPostDefaultsAndConstsResponse res = sdk.requestBodies.requestBodyPostDefaultsAndConsts(req);
+            }};
+
+            org.openapis.openapi.models.operations.RequestBodyPostDefaultsAndConstsResponse res = sdk.requestBodies.requestBodyPostDefaultsAndConsts(req);
 
             if (res.object != null) {
                 // handle response
@@ -2301,19 +2742,24 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostEmptyObjectRequestBody req = new RequestBodyPostEmptyObjectRequestBody(){{
-                empty = new Empty();
-                emptyWithEmptyProperties = new EmptyWithEmptyProperties();
-            }};            
+            org.openapis.openapi.models.operations.RequestBodyPostEmptyObjectRequestBody req = new RequestBodyPostEmptyObjectRequestBody(
+){{
+                empty = new Empty(
+);
+                emptyWithEmptyProperties = new EmptyWithEmptyProperties(
+);
 
-            RequestBodyPostEmptyObjectResponse res = sdk.requestBodies.requestBodyPostEmptyObject(req);
+            }};
+
+            org.openapis.openapi.models.operations.RequestBodyPostEmptyObjectResponse res = sdk.requestBodies.requestBodyPostEmptyObject(req);
 
             if (res.object != null) {
                 // handle response
@@ -2359,109 +2805,181 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.DeepObject req = new DeepObject("anyOf[0]", new org.openapis.openapi.models.shared.SimpleObject[]{{
-    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }}),
-    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }}),
-}}, true, 1L, new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }});
-    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }});
-}}, 1.1d, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-bigint = 8821239038968084L;
-bigintStr = "9223372036854775808";
-boolOpt = true;
-decimal = 3.141592653589793d;
-decimalStr = "3.14159265358979344719667586";
-intOptNull = 919389L;
-numOptNull = 467.92d;
-strOpt = "testOptional";
-}}, "test"){{
-                type = "string";
-            }};            
+            org.openapis.openapi.models.shared.DeepObject req = new DeepObject(
+                "anyOf[0]",
+                new org.openapis.openapi.models.shared.SimpleObject[]{{
+                    add(new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
+                        any = "any";
+                        bigint = 8821239038968084L;
+                        bigintStr = "9223372036854775808";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
+                        decimal = 3.141592653589793d;
+                        decimalStr = "3.14159265358979344719667586";
+                        enum_ = Enum.ONE;
+                        float32 = 1.1f;
+                        int_ = 1L;
+                        int32 = 1;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
+                        num = 1.1d;
+                        str = "test";
+                        strOpt = "testOptional";
+                    }}),
+                    add(new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
+                        any = "any";
+                        bigint = 8821239038968084L;
+                        bigintStr = "9223372036854775808";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
+                        decimal = 3.141592653589793d;
+                        decimalStr = "3.14159265358979344719667586";
+                        enum_ = Enum.ONE;
+                        float32 = 1.1f;
+                        int_ = 1L;
+                        int32 = 1;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
+                        num = 1.1d;
+                        str = "test";
+                        strOpt = "testOptional";
+                    }}),
+                }},
+                true,
+                1L,
+                new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(
+                ){{
+                    put("key", new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
+                        any = "any";
+                        bigint = 8821239038968084L;
+                        bigintStr = "9223372036854775808";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
+                        decimal = 3.141592653589793d;
+                        decimalStr = "3.14159265358979344719667586";
+                        enum_ = Enum.ONE;
+                        float32 = 1.1f;
+                        int_ = 1L;
+                        int32 = 1;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
+                        num = 1.1d;
+                        str = "test";
+                        strOpt = "testOptional";
+                    }});
+                    put("key2", new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
+                        any = "any";
+                        bigint = 8821239038968084L;
+                        bigintStr = "9223372036854775808";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
+                        decimal = 3.141592653589793d;
+                        decimalStr = "3.14159265358979344719667586";
+                        enum_ = Enum.ONE;
+                        float32 = 1.1f;
+                        int_ = 1L;
+                        int32 = 1;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
+                        num = 1.1d;
+                        str = "test";
+                        strOpt = "testOptional";
+                    }});
+                }},
+                1.1d,
+                new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
+                    bigint = 8821239038968084L;
+                    bigintStr = "9223372036854775808";
+                    boolOpt = true;
+                    decimal = 3.141592653589793d;
+                    decimalStr = "3.14159265358979344719667586";
+                    intOptNull = 919389L;
+                    numOptNull = 467.92d;
+                    strOpt = "testOptional";
 
-            RequestBodyPostFormDeepResponse res = sdk.requestBodies.requestBodyPostFormDeep(req);
+                }},
+                "test"){{
+                type = "string";
+
+            }};
+
+            org.openapis.openapi.models.operations.RequestBodyPostFormDeepResponse res = sdk.requestBodies.requestBodyPostFormDeep(req);
 
             if (res.res != null) {
                 // handle response
@@ -2500,18 +3018,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, String>(){{
+            java.util.Map<String, String> req = new java.util.HashMap<String, String>(
+            ){{
                 put("key", "string");
-            }};            
+            }};
 
-            RequestBodyPostFormMapPrimitiveResponse res = sdk.requestBodies.requestBodyPostFormMapPrimitive(req);
+            org.openapis.openapi.models.operations.RequestBodyPostFormMapPrimitiveResponse res = sdk.requestBodies.requestBodyPostFormMapPrimitive(req);
 
             if (res.res != null) {
                 // handle response
@@ -2556,14 +3076,27 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject(
+                "any",
+                true,
+                LocalDate.parse("2020-01-01"),
+                OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                Enum.ONE,
+                1.1f,
+                1L,
+                1,
+                Int32Enum.FIFTY_FIVE,
+                IntEnum.Second,
+                1.1d,
+                "test"){{
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 boolOpt = true;
@@ -2572,9 +3105,10 @@ public class Application {
                 intOptNull = 654105L;
                 numOptNull = 2933.88d;
                 strOpt = "testOptional";
-            }};            
 
-            RequestBodyPostFormSimpleResponse res = sdk.requestBodies.requestBodyPostFormSimple(req);
+            }};
+
+            org.openapis.openapi.models.operations.RequestBodyPostFormSimpleResponse res = sdk.requestBodies.requestBodyPostFormSimple(req);
 
             if (res.res != null) {
                 // handle response
@@ -2613,18 +3147,19 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new Long[]{{
+            Long[] req = new Long[]{{
                 add(564849L),
-            }};            
+            }};
 
-            RequestBodyPostJsonDataTypesArrayBigIntResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesArrayBigInt(req);
+            org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesArrayBigIntResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesArrayBigInt(req);
 
             if (res.object != null) {
                 // handle response
@@ -2663,18 +3198,19 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new LocalDate[]{{
+            LocalDate[] req = new LocalDate[]{{
                 add(LocalDate.parse("2022-03-22")),
-            }};            
+            }};
 
-            RequestBodyPostJsonDataTypesArrayDateResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesArrayDate(req);
+            org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesArrayDateResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesArrayDate(req);
 
             if (res.object != null) {
                 // handle response
@@ -2713,18 +3249,19 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new String[]{{
+            String[] req = new String[]{{
                 add("string"),
-            }};            
+            }};
 
-            RequestBodyPostJsonDataTypesArrayDecimalStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesArrayDecimalStr(req);
+            org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesArrayDecimalStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesArrayDecimalStr(req);
 
             if (res.object != null) {
                 // handle response
@@ -2763,16 +3300,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = 687617L;            
+            Long req = 687617L;
 
-            RequestBodyPostJsonDataTypesBigIntResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesBigInt(req);
+            org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesBigIntResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesBigInt(req);
 
             if (res.object != null) {
                 // handle response
@@ -2811,16 +3349,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            String req = "string";
 
-            RequestBodyPostJsonDataTypesBigIntStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesBigIntStr(req);
+            org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesBigIntStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesBigIntStr(req);
 
             if (res.object != null) {
                 // handle response
@@ -2859,16 +3398,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = false;            
+            Boolean req = false;
 
-            RequestBodyPostJsonDataTypesBooleanResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesBoolean(req);
+            org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesBooleanResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesBoolean(req);
 
             if (res.object != null) {
                 // handle response
@@ -2907,16 +3447,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = LocalDate.parse("2022-03-04");            
+            LocalDate req = LocalDate.parse("2022-03-04");
 
-            RequestBodyPostJsonDataTypesDateResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesDate(req);
+            org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesDateResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesDate(req);
 
             if (res.object != null) {
                 // handle response
@@ -2955,16 +3496,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = OffsetDateTime.parse("2023-03-04T01:33:15.031Z");            
+            OffsetDateTime req = OffsetDateTime.parse("2023-03-04T01:33:15.031Z");
 
-            RequestBodyPostJsonDataTypesDateTimeResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesDateTime(req);
+            org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesDateTimeResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesDateTime(req);
 
             if (res.object != null) {
                 // handle response
@@ -3003,16 +3545,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = 1107.81d;            
+            Double req = 1107.81d;
 
-            RequestBodyPostJsonDataTypesDecimalResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesDecimal(req);
+            org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesDecimalResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesDecimal(req);
 
             if (res.object != null) {
                 // handle response
@@ -3051,16 +3594,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            String req = "string";
 
-            RequestBodyPostJsonDataTypesDecimalStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesDecimalStr(req);
+            org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesDecimalStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesDecimalStr(req);
 
             if (res.object != null) {
                 // handle response
@@ -3099,16 +3643,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = 4464.34d;            
+            Double req = 4464.34d;
 
-            RequestBodyPostJsonDataTypesFloat32Response res = sdk.requestBodies.requestBodyPostJsonDataTypesFloat32(req);
+            org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesFloat32Response res = sdk.requestBodies.requestBodyPostJsonDataTypesFloat32(req);
 
             if (res.object != null) {
                 // handle response
@@ -3147,16 +3692,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = 22155;            
+            Integer req = 22155;
 
-            RequestBodyPostJsonDataTypesInt32Response res = sdk.requestBodies.requestBodyPostJsonDataTypesInt32(req);
+            org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesInt32Response res = sdk.requestBodies.requestBodyPostJsonDataTypesInt32(req);
 
             if (res.object != null) {
                 // handle response
@@ -3195,16 +3741,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = 273673L;            
+            Long req = 273673L;
 
-            RequestBodyPostJsonDataTypesIntegerResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesInteger(req);
+            org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesIntegerResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesInteger(req);
 
             if (res.object != null) {
                 // handle response
@@ -3243,18 +3790,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, String>(){{
+            java.util.Map<String, String> req = new java.util.HashMap<String, String>(
+            ){{
                 put("key", "string");
-            }};            
+            }};
 
-            RequestBodyPostJsonDataTypesMapBigIntStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesMapBigIntStr(req);
+            org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesMapBigIntStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesMapBigIntStr(req);
 
             if (res.object != null) {
                 // handle response
@@ -3293,18 +3842,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, OffsetDateTime>(){{
+            java.util.Map<String, OffsetDateTime> req = new java.util.HashMap<String, OffsetDateTime>(
+            ){{
                 put("key", OffsetDateTime.parse("2022-09-03T18:52:14.477Z"));
-            }};            
+            }};
 
-            RequestBodyPostJsonDataTypesMapDateTimeResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesMapDateTime(req);
+            org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesMapDateTimeResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesMapDateTime(req);
 
             if (res.object != null) {
                 // handle response
@@ -3343,18 +3894,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, Double>(){{
+            java.util.Map<String, Double> req = new java.util.HashMap<String, Double>(
+            ){{
                 put("key", 3472.82d);
-            }};            
+            }};
 
-            RequestBodyPostJsonDataTypesMapDecimalResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesMapDecimal(req);
+            org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesMapDecimalResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesMapDecimal(req);
 
             if (res.object != null) {
                 // handle response
@@ -3393,16 +3946,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = 2193.66d;            
+            Double req = 2193.66d;
 
-            RequestBodyPostJsonDataTypesNumberResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesNumber(req);
+            org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesNumberResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesNumber(req);
 
             if (res.object != null) {
                 // handle response
@@ -3441,16 +3995,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            String req = "string";
 
-            RequestBodyPostJsonDataTypesStringResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesString(req);
+            org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesStringResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesString(req);
 
             if (res.object != null) {
                 // handle response
@@ -3495,14 +4050,27 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject(
+                "any",
+                true,
+                LocalDate.parse("2020-01-01"),
+                OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                Enum.ONE,
+                1.1f,
+                1L,
+                1,
+                Int32Enum.FIFTY_FIVE,
+                IntEnum.Second,
+                1.1d,
+                "test"){{
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 boolOpt = true;
@@ -3511,9 +4079,10 @@ public class Application {
                 intOptNull = 239797L;
                 numOptNull = 9512.65d;
                 strOpt = "testOptional";
-            }};            
 
-            RequestBodyPostMultipleContentTypesComponentFilteredResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesComponentFiltered(req);
+            }};
+
+            org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesComponentFilteredResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesComponentFiltered(req);
 
             if (res.res != null) {
                 // handle response
@@ -3553,16 +4122,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesInlineFilteredRequestBody req = new RequestBodyPostMultipleContentTypesInlineFilteredRequestBody(false, 3558.41d, "string");            
+            org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody req = new RequestBodyPostMultipleContentTypesInlineFilteredRequestBody(
+                false,
+                3558.41d,
+                "string");
 
-            RequestBodyPostMultipleContentTypesInlineFilteredResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesInlineFiltered(req);
+            org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesInlineFiltered(req);
 
             if (res.res != null) {
                 // handle response
@@ -3603,14 +4176,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitParamFormResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(new RequestBodyPostMultipleContentTypesSplitParamFormRequestBody(false, 1802.67d, "string"){{
+            org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(new RequestBodyPostMultipleContentTypesSplitParamFormRequestBody(
+            false,
+            1802.67d,
+            "string"){{
                 bool3 = false;
                 num3 = 8693.24d;
                 str3 = "string";
@@ -3656,14 +4233,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitParamJsonResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(new RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody(false, 5784.1d, "string"){{
+            org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(new RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody(
+            false,
+            5784.1d,
+            "string"){{
                 bool = false;
                 num = 9771.91d;
                 str = "string";
@@ -3709,14 +4290,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitParamMultipartResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(new RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody(false, 6115.78d, "string"){{
+            org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(new RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody(
+            false,
+            6115.78d,
+            "string"){{
                 bool2 = false;
                 num2 = 7000.76d;
                 str2 = "string";
@@ -3761,16 +4346,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitFormRequestBody req = new RequestBodyPostMultipleContentTypesSplitFormRequestBody(false, 7842.07d, "string");            
+            org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody req = new RequestBodyPostMultipleContentTypesSplitFormRequestBody(
+                false,
+                7842.07d,
+                "string");
 
-            RequestBodyPostMultipleContentTypesSplitFormResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitForm(req);
+            org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitFormResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitForm(req);
 
             if (res.res != null) {
                 // handle response
@@ -3810,16 +4399,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitJsonRequestBody req = new RequestBodyPostMultipleContentTypesSplitJsonRequestBody(false, 2445.56d, "string");            
+            org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitJsonRequestBody req = new RequestBodyPostMultipleContentTypesSplitJsonRequestBody(
+                false,
+                2445.56d,
+                "string");
 
-            RequestBodyPostMultipleContentTypesSplitJsonResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitJson(req);
+            org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitJsonResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitJson(req);
 
             if (res.res != null) {
                 // handle response
@@ -3859,16 +4452,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitMultipartRequestBody req = new RequestBodyPostMultipleContentTypesSplitMultipartRequestBody(false, 2079.2d, "string");            
+            org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody req = new RequestBodyPostMultipleContentTypesSplitMultipartRequestBody(
+                false,
+                2079.2d,
+                "string");
 
-            RequestBodyPostMultipleContentTypesSplitMultipartResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitMultipart(req);
+            org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitMultipart(req);
 
             if (res.res != null) {
                 // handle response
@@ -3907,16 +4504,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            String req = "string";
 
-            RequestBodyPostNotNullableNotRequiredStringBodyResponse res = sdk.requestBodies.requestBodyPostNotNullableNotRequiredStringBody(req);
+            org.openapis.openapi.models.operations.RequestBodyPostNotNullableNotRequiredStringBodyResponse res = sdk.requestBodies.requestBodyPostNotNullableNotRequiredStringBody(req);
 
             if (res.object != null) {
                 // handle response
@@ -3955,18 +4553,19 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new String[]{{
+            String[] req = new String[]{{
                 add("string"),
-            }};            
+            }};
 
-            RequestBodyPostNullArrayResponse res = sdk.requestBodies.requestBodyPostNullArray(req);
+            org.openapis.openapi.models.operations.RequestBodyPostNullArrayResponse res = sdk.requestBodies.requestBodyPostNullArray(req);
 
             if (res.object != null) {
                 // handle response
@@ -4005,18 +4604,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, String>(){{
+            java.util.Map<String, String> req = new java.util.HashMap<String, String>(
+            ){{
                 put("key", "string");
-            }};            
+            }};
 
-            RequestBodyPostNullDictionaryResponse res = sdk.requestBodies.requestBodyPostNullDictionary(req);
+            org.openapis.openapi.models.operations.RequestBodyPostNullDictionaryResponse res = sdk.requestBodies.requestBodyPostNullDictionary(req);
 
             if (res.object != null) {
                 // handle response
@@ -4055,16 +4656,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            String req = "string";
 
-            RequestBodyPostNullableNotRequiredStringBodyResponse res = sdk.requestBodies.requestBodyPostNullableNotRequiredStringBody(req);
+            org.openapis.openapi.models.operations.RequestBodyPostNullableNotRequiredStringBodyResponse res = sdk.requestBodies.requestBodyPostNullableNotRequiredStringBody(req);
 
             if (res.object != null) {
                 // handle response
@@ -4103,16 +4705,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            String req = "string";
 
-            RequestBodyPostNullableRequiredStringBodyResponse res = sdk.requestBodies.requestBodyPostNullableRequiredStringBody(req);
+            org.openapis.openapi.models.operations.RequestBodyPostNullableRequiredStringBodyResponse res = sdk.requestBodies.requestBodyPostNullableRequiredStringBody(req);
 
             if (res.object != null) {
                 // handle response
@@ -4151,16 +4754,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "0x5DbFFb1Ff9".getBytes();            
+            byte[] req = "0x5DbFFb1Ff9".getBytes();
 
-            RequestBodyPutBytesResponse res = sdk.requestBodies.requestBodyPutBytes(req);
+            org.openapis.openapi.models.operations.RequestBodyPutBytesResponse res = sdk.requestBodies.requestBodyPutBytes(req);
 
             if (res.res != null) {
                 // handle response
@@ -4200,14 +4804,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPutBytesWithParamsResponse res = sdk.requestBodies.requestBodyPutBytesWithParams("0xC1B9cA4eb5".getBytes(), "string");
+            org.openapis.openapi.models.operations.RequestBodyPutBytesWithParamsResponse res = sdk.requestBodies.requestBodyPutBytesWithParams("0xC1B9cA4eb5".getBytes(), "string");
 
             if (res.res != null) {
                 // handle response
@@ -4254,109 +4859,181 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.DeepObject req = new DeepObject("anyOf[0]", new org.openapis.openapi.models.shared.SimpleObject[]{{
-    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }}),
-    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }}),
-}}, true, 1L, new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }});
-    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }});
-}}, 1.1d, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-bigint = 8821239038968084L;
-bigintStr = "9223372036854775808";
-boolOpt = true;
-decimal = 3.141592653589793d;
-decimalStr = "3.14159265358979344719667586";
-intOptNull = 827095L;
-numOptNull = 2043.79d;
-strOpt = "testOptional";
-}}, "test"){{
-                type = "string";
-            }};            
+            org.openapis.openapi.models.shared.DeepObject req = new DeepObject(
+                "anyOf[0]",
+                new org.openapis.openapi.models.shared.SimpleObject[]{{
+                    add(new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
+                        any = "any";
+                        bigint = 8821239038968084L;
+                        bigintStr = "9223372036854775808";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
+                        decimal = 3.141592653589793d;
+                        decimalStr = "3.14159265358979344719667586";
+                        enum_ = Enum.ONE;
+                        float32 = 1.1f;
+                        int_ = 1L;
+                        int32 = 1;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
+                        num = 1.1d;
+                        str = "test";
+                        strOpt = "testOptional";
+                    }}),
+                    add(new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
+                        any = "any";
+                        bigint = 8821239038968084L;
+                        bigintStr = "9223372036854775808";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
+                        decimal = 3.141592653589793d;
+                        decimalStr = "3.14159265358979344719667586";
+                        enum_ = Enum.ONE;
+                        float32 = 1.1f;
+                        int_ = 1L;
+                        int32 = 1;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
+                        num = 1.1d;
+                        str = "test";
+                        strOpt = "testOptional";
+                    }}),
+                }},
+                true,
+                1L,
+                new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(
+                ){{
+                    put("key", new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
+                        any = "any";
+                        bigint = 8821239038968084L;
+                        bigintStr = "9223372036854775808";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
+                        decimal = 3.141592653589793d;
+                        decimalStr = "3.14159265358979344719667586";
+                        enum_ = Enum.ONE;
+                        float32 = 1.1f;
+                        int_ = 1L;
+                        int32 = 1;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
+                        num = 1.1d;
+                        str = "test";
+                        strOpt = "testOptional";
+                    }});
+                    put("key2", new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
+                        any = "any";
+                        bigint = 8821239038968084L;
+                        bigintStr = "9223372036854775808";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
+                        decimal = 3.141592653589793d;
+                        decimalStr = "3.14159265358979344719667586";
+                        enum_ = Enum.ONE;
+                        float32 = 1.1f;
+                        int_ = 1L;
+                        int32 = 1;
+                        int32Enum = Int32Enum.FIFTY_FIVE;
+                        intEnum = IntEnum.Second;
+                        num = 1.1d;
+                        str = "test";
+                        strOpt = "testOptional";
+                    }});
+                }},
+                1.1d,
+                new SimpleObject(
+                    "any",
+                    true,
+                    LocalDate.parse("2020-01-01"),
+                    OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                    Enum.ONE,
+                    1.1f,
+                    1L,
+                    1,
+                    Int32Enum.FIFTY_FIVE,
+                    IntEnum.Second,
+                    1.1d,
+                    "test"){{
+                    bigint = 8821239038968084L;
+                    bigintStr = "9223372036854775808";
+                    boolOpt = true;
+                    decimal = 3.141592653589793d;
+                    decimalStr = "3.14159265358979344719667586";
+                    intOptNull = 827095L;
+                    numOptNull = 2043.79d;
+                    strOpt = "testOptional";
 
-            RequestBodyPutMultipartDeepResponse res = sdk.requestBodies.requestBodyPutMultipartDeep(req);
+                }},
+                "test"){{
+                type = "string";
+
+            }};
+
+            org.openapis.openapi.models.operations.RequestBodyPutMultipartDeepResponse res = sdk.requestBodies.requestBodyPutMultipartDeep(req);
 
             if (res.res != null) {
                 // handle response
@@ -4397,18 +5074,23 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPutMultipartDifferentFileNameRequestBody req = new RequestBodyPutMultipartDifferentFileNameRequestBody(){{
-                differentFileName = new DifferentFileName("0xdF19d43dd2".getBytes(), "string");
-            }};            
+            org.openapis.openapi.models.operations.RequestBodyPutMultipartDifferentFileNameRequestBody req = new RequestBodyPutMultipartDifferentFileNameRequestBody(
+){{
+                differentFileName = new DifferentFileName(
+                    "0xdF19d43dd2".getBytes(),
+                    "string");
 
-            RequestBodyPutMultipartDifferentFileNameResponse res = sdk.requestBodies.requestBodyPutMultipartDifferentFileName(req);
+            }};
+
+            org.openapis.openapi.models.operations.RequestBodyPutMultipartDifferentFileNameResponse res = sdk.requestBodies.requestBodyPutMultipartDifferentFileName(req);
 
             if (res.res != null) {
                 // handle response
@@ -4449,18 +5131,23 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPutMultipartFileRequestBody req = new RequestBodyPutMultipartFileRequestBody(){{
-                file = new File("0xa9f2Ee38c3".getBytes(), "string");
-            }};            
+            org.openapis.openapi.models.operations.RequestBodyPutMultipartFileRequestBody req = new RequestBodyPutMultipartFileRequestBody(
+){{
+                file = new File(
+                    "0xa9f2Ee38c3".getBytes(),
+                    "string");
 
-            RequestBodyPutMultipartFileResponse res = sdk.requestBodies.requestBodyPutMultipartFile(req);
+            }};
+
+            org.openapis.openapi.models.operations.RequestBodyPutMultipartFileResponse res = sdk.requestBodies.requestBodyPutMultipartFile(req);
 
             if (res.res != null) {
                 // handle response
@@ -4505,14 +5192,27 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject(
+                "any",
+                true,
+                LocalDate.parse("2020-01-01"),
+                OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                Enum.ONE,
+                1.1f,
+                1L,
+                1,
+                Int32Enum.FIFTY_FIVE,
+                IntEnum.Second,
+                1.1d,
+                "test"){{
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 boolOpt = true;
@@ -4521,9 +5221,10 @@ public class Application {
                 intOptNull = 298848L;
                 numOptNull = 9034.69d;
                 strOpt = "testOptional";
-            }};            
 
-            RequestBodyPutMultipartSimpleResponse res = sdk.requestBodies.requestBodyPutMultipartSimple(req);
+            }};
+
+            org.openapis.openapi.models.operations.RequestBodyPutMultipartSimpleResponse res = sdk.requestBodies.requestBodyPutMultipartSimple(req);
 
             if (res.res != null) {
                 // handle response
@@ -4562,16 +5263,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            String req = "string";
 
-            RequestBodyPutStringResponse res = sdk.requestBodies.requestBodyPutString(req);
+            org.openapis.openapi.models.operations.RequestBodyPutStringResponse res = sdk.requestBodies.requestBodyPutString(req);
 
             if (res.res != null) {
                 // handle response
@@ -4611,14 +5313,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPutStringWithParamsResponse res = sdk.requestBodies.requestBodyPutStringWithParams("string", "string");
+            org.openapis.openapi.models.operations.RequestBodyPutStringWithParamsResponse res = sdk.requestBodies.requestBodyPutStringWithParams("string", "string");
 
             if (res.res != null) {
                 // handle response
@@ -4659,16 +5362,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.ReadWriteObject req = new ReadWriteObject(797612L, 89374L, 459345L);            
+            org.openapis.openapi.models.shared.ReadWriteObject req = new ReadWriteObject(
+                797612L,
+                89374L,
+                459345L);
 
-            RequestBodyReadAndWriteResponse res = sdk.requestBodies.requestBodyReadAndWrite(req);
+            org.openapis.openapi.models.operations.RequestBodyReadAndWriteResponse res = sdk.requestBodies.requestBodyReadAndWrite(req);
 
             if (res.readWriteObject != null) {
                 // handle response
@@ -4709,16 +5416,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.ReadOnlyObjectInput req = new ReadOnlyObjectInput();            
+            org.openapis.openapi.models.shared.ReadOnlyObjectInput req = new ReadOnlyObjectInput(
+);
 
-            RequestBodyReadOnlyInputResponse res = sdk.requestBodies.requestBodyReadOnlyInput(req);
+            org.openapis.openapi.models.operations.RequestBodyReadOnlyInputResponse res = sdk.requestBodies.requestBodyReadOnlyInput(req);
 
             if (res.readOnlyObject != null) {
                 // handle response
@@ -4758,16 +5467,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            Object req = "string";
 
-            RequestBodyReadOnlyUnionResponse res = sdk.requestBodies.requestBodyReadOnlyUnion(req);
+            org.openapis.openapi.models.operations.RequestBodyReadOnlyUnionResponse res = sdk.requestBodies.requestBodyReadOnlyUnion(req);
 
             if (res.weaklyTypedOneOfReadOnlyObject != null) {
                 // handle response
@@ -4807,16 +5517,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            Object req = "string";
 
-            RequestBodyReadWriteOnlyUnionResponse res = sdk.requestBodies.requestBodyReadWriteOnlyUnion(req);
+            org.openapis.openapi.models.operations.RequestBodyReadWriteOnlyUnionResponse res = sdk.requestBodies.requestBodyReadWriteOnlyUnion(req);
 
             if (res.weaklyTypedOneOfReadWriteObject != null) {
                 // handle response
@@ -4857,16 +5568,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.WriteOnlyObject req = new WriteOnlyObject(false, 3888.42d, "string");            
+            org.openapis.openapi.models.shared.WriteOnlyObject req = new WriteOnlyObject(
+                false,
+                3888.42d,
+                "string");
 
-            RequestBodyWriteOnlyResponse res = sdk.requestBodies.requestBodyWriteOnly(req);
+            org.openapis.openapi.models.operations.RequestBodyWriteOnlyResponse res = sdk.requestBodies.requestBodyWriteOnly(req);
 
             if (res.readOnlyObject != null) {
                 // handle response
@@ -4907,16 +5622,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.WriteOnlyObject req = new WriteOnlyObject(false, 3867.69d, "string");            
+            org.openapis.openapi.models.shared.WriteOnlyObject req = new WriteOnlyObject(
+                false,
+                3867.69d,
+                "string");
 
-            RequestBodyWriteOnlyOutputResponse res = sdk.requestBodies.requestBodyWriteOnlyOutput(req);
+            org.openapis.openapi.models.operations.RequestBodyWriteOnlyOutputResponse res = sdk.requestBodies.requestBodyWriteOnlyOutput(req);
 
             if (res.writeOnlyObject != null) {
                 // handle response
@@ -4956,16 +5675,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            Object req = "string";
 
-            RequestBodyWriteOnlyUnionResponse res = sdk.requestBodies.requestBodyWriteOnlyUnion(req);
+            org.openapis.openapi.models.operations.RequestBodyWriteOnlyUnionResponse res = sdk.requestBodies.requestBodyWriteOnlyUnion(req);
 
             if (res.weaklyTypedOneOfWriteOnlyObject != null) {
                 // handle response
