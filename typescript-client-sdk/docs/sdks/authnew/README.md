@@ -26,7 +26,7 @@ Endpoints for testing authentication.
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -51,7 +51,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -79,7 +81,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -104,7 +106,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -133,7 +137,7 @@ import { SDK } from "openapi";
 import { SDK } from "openapi";
 import { BasicAuthNewSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
@@ -159,7 +163,9 @@ const operationSecurity: BasicAuthNewSecurity = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -189,7 +195,7 @@ const operationSecurity: BasicAuthNewSecurity = {
 import { SDK } from "openapi";
 import { MultipleMixedOptionsAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
@@ -214,7 +220,9 @@ const operationSecurity: MultipleMixedOptionsAuthSecurity = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -244,7 +252,7 @@ const operationSecurity: MultipleMixedOptionsAuthSecurity = {
 import { SDK } from "openapi";
 import { MultipleMixedSchemeAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
@@ -273,7 +281,9 @@ const operationSecurity: MultipleMixedSchemeAuthSecurity = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -303,7 +313,7 @@ const operationSecurity: MultipleMixedSchemeAuthSecurity = {
 import { SDK } from "openapi";
 import { MultipleOptionsWithMixedSchemesAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
@@ -331,7 +341,9 @@ const operationSecurity: MultipleOptionsWithMixedSchemesAuthSecurity = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -361,7 +373,7 @@ const operationSecurity: MultipleOptionsWithMixedSchemesAuthSecurity = {
 import { SDK } from "openapi";
 import { MultipleOptionsWithSimpleSchemesAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
@@ -389,7 +401,9 @@ const operationSecurity: MultipleOptionsWithSimpleSchemesAuthSecurity = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -419,7 +433,7 @@ const operationSecurity: MultipleOptionsWithSimpleSchemesAuthSecurity = {
 import { SDK } from "openapi";
 import { MultipleSimpleOptionsAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
@@ -444,7 +458,9 @@ const operationSecurity: MultipleSimpleOptionsAuthSecurity = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -474,7 +490,7 @@ const operationSecurity: MultipleSimpleOptionsAuthSecurity = {
 import { SDK } from "openapi";
 import { MultipleSimpleSchemeAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
@@ -500,7 +516,9 @@ const operationSecurity: MultipleSimpleSchemeAuthSecurity = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -530,7 +548,7 @@ const operationSecurity: MultipleSimpleSchemeAuthSecurity = {
 import { SDK } from "openapi";
 import { Oauth2AuthNewSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
@@ -555,7 +573,9 @@ const operationSecurity: Oauth2AuthNewSecurity = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -585,7 +605,7 @@ const operationSecurity: Oauth2AuthNewSecurity = {
 import { SDK } from "openapi";
 import { OpenIdConnectAuthNewSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
@@ -610,7 +630,9 @@ const operationSecurity: OpenIdConnectAuthNewSecurity = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
