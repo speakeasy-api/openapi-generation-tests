@@ -2928,6 +2928,42 @@ paths:
                       type: string
                 required:
                   - files
+  /anything/requestBodies/put/multipart/optionalRequestBody:
+    put:
+      operationId: requestBodyPutMultipartOptionalRequestBody
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                sampleField:
+                  type: string
+                sampleFile:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  form:
+                    type: object
+                    properties:
+                      sampleField:
+                        type: string
+                  files:
+                    type: object
+                    additionalProperties:
+                      type: string
+                required:
+                  - files
   /anything/requestBodies/post/form/simple:
     post:
       operationId: requestBodyPostFormSimple
