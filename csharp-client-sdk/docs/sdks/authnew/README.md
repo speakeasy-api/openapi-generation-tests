@@ -33,10 +33,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.ApiKeyAuthGlobalNewAsync(new AuthServiceRequestBody() {
+AuthServiceRequestBody req = new AuthServiceRequestBody() {
     BasicAuth = new BasicAuth() {
         Password = "owsGgP4_AhRPMSJ",
         Username = "Devonte_Bins",
@@ -47,7 +46,9 @@ var res = await sdk.AuthNew.ApiKeyAuthGlobalNewAsync(new AuthServiceRequestBody(
             HeaderName = "string",
         },
     },
-});
+};
+
+var res = await sdk.AuthNew.ApiKeyAuthGlobalNewAsync(req);
 
 // handle response
 ```
@@ -79,10 +80,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.AuthGlobalAsync(new AuthServiceRequestBody() {
+AuthServiceRequestBody req = new AuthServiceRequestBody() {
     BasicAuth = new BasicAuth() {
         Password = "xvJcf9GiJNr7T2x",
         Username = "Cory33",
@@ -93,7 +93,9 @@ var res = await sdk.AuthNew.AuthGlobalAsync(new AuthServiceRequestBody() {
             HeaderName = "string",
         },
     },
-});
+};
+
+var res = await sdk.AuthNew.AuthGlobalAsync(req);
 
 // handle response
 ```
@@ -123,13 +125,9 @@ using Openapi.Models.Operations;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.BasicAuthNewAsync(new BasicAuthNewSecurity() {
-    Password = "YOUR_PASSWORD",
-    Username = "YOUR_USERNAME",
-}, new AuthServiceRequestBody() {
+AuthServiceRequestBody req = new AuthServiceRequestBody() {
     BasicAuth = new BasicAuth() {
         Password = "Z2OStPksFyrcGeu",
         Username = "Ashton.Steuber27",
@@ -140,7 +138,12 @@ var res = await sdk.AuthNew.BasicAuthNewAsync(new BasicAuthNewSecurity() {
             HeaderName = "string",
         },
     },
-});
+};
+
+var res = await sdk.AuthNew.BasicAuthNewAsync(new BasicAuthNewSecurity() {
+    Password = "YOUR_PASSWORD",
+    Username = "YOUR_USERNAME",
+}, req);
 
 // handle response
 ```
@@ -171,12 +174,9 @@ using Openapi.Models.Operations;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.MultipleMixedOptionsAuthAsync(new MultipleMixedOptionsAuthSecurity() {
-    ApiKeyAuthNew = "Token <YOUR_API_KEY>",
-}, new AuthServiceRequestBody() {
+AuthServiceRequestBody req = new AuthServiceRequestBody() {
     BasicAuth = new BasicAuth() {
         Password = "Iq1JSzG1wqLDz4v",
         Username = "Ismael.Emmerich",
@@ -187,7 +187,11 @@ var res = await sdk.AuthNew.MultipleMixedOptionsAuthAsync(new MultipleMixedOptio
             HeaderName = "string",
         },
     },
-});
+};
+
+var res = await sdk.AuthNew.MultipleMixedOptionsAuthAsync(new MultipleMixedOptionsAuthSecurity() {
+    ApiKeyAuthNew = "Token <YOUR_API_KEY>",
+}, req);
 
 // handle response
 ```
@@ -218,16 +222,9 @@ using Openapi.Models.Operations;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.MultipleMixedSchemeAuthAsync(new MultipleMixedSchemeAuthSecurity() {
-    ApiKeyAuthNew = "Token <YOUR_API_KEY>",
-    BasicAuth = new SchemeBasicAuth() {
-        Password = "YOUR_PASSWORD",
-        Username = "YOUR_USERNAME",
-    },
-}, new AuthServiceRequestBody() {
+AuthServiceRequestBody req = new AuthServiceRequestBody() {
     BasicAuth = new BasicAuth() {
         Password = "OcWVV5608IiaWJQ",
         Username = "Kameron42",
@@ -238,7 +235,15 @@ var res = await sdk.AuthNew.MultipleMixedSchemeAuthAsync(new MultipleMixedScheme
             HeaderName = "string",
         },
     },
-});
+};
+
+var res = await sdk.AuthNew.MultipleMixedSchemeAuthAsync(new MultipleMixedSchemeAuthSecurity() {
+    ApiKeyAuthNew = "Token <YOUR_API_KEY>",
+    BasicAuth = new SchemeBasicAuth() {
+        Password = "YOUR_PASSWORD",
+        Username = "YOUR_USERNAME",
+    },
+}, req);
 
 // handle response
 ```
@@ -269,15 +274,9 @@ using Openapi.Models.Operations;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.MultipleOptionsWithMixedSchemesAuthAsync(new MultipleOptionsWithMixedSchemesAuthSecurity() {
-    Option1 = new MultipleOptionsWithMixedSchemesAuthSecurityOption1() {
-        ApiKeyAuthNew = "Token <YOUR_API_KEY>",
-        Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
-    },
-}, new AuthServiceRequestBody() {
+AuthServiceRequestBody req = new AuthServiceRequestBody() {
     BasicAuth = new BasicAuth() {
         Password = "fpwNE90MyqKIrXk",
         Username = "Caroline_Walsh",
@@ -288,7 +287,14 @@ var res = await sdk.AuthNew.MultipleOptionsWithMixedSchemesAuthAsync(new Multipl
             HeaderName = "string",
         },
     },
-});
+};
+
+var res = await sdk.AuthNew.MultipleOptionsWithMixedSchemesAuthAsync(new MultipleOptionsWithMixedSchemesAuthSecurity() {
+    Option1 = new MultipleOptionsWithMixedSchemesAuthSecurityOption1() {
+        ApiKeyAuthNew = "Token <YOUR_API_KEY>",
+        Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
+    },
+}, req);
 
 // handle response
 ```
@@ -319,15 +325,9 @@ using Openapi.Models.Operations;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.MultipleOptionsWithSimpleSchemesAuthAsync(new MultipleOptionsWithSimpleSchemesAuthSecurity() {
-    Option1 = new MultipleOptionsWithSimpleSchemesAuthSecurityOption1() {
-        ApiKeyAuthNew = "Token <YOUR_API_KEY>",
-        Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
-    },
-}, new AuthServiceRequestBody() {
+AuthServiceRequestBody req = new AuthServiceRequestBody() {
     BasicAuth = new BasicAuth() {
         Password = "pibxDTiJSijK04Y",
         Username = "Selena76",
@@ -338,7 +338,14 @@ var res = await sdk.AuthNew.MultipleOptionsWithSimpleSchemesAuthAsync(new Multip
             HeaderName = "string",
         },
     },
-});
+};
+
+var res = await sdk.AuthNew.MultipleOptionsWithSimpleSchemesAuthAsync(new MultipleOptionsWithSimpleSchemesAuthSecurity() {
+    Option1 = new MultipleOptionsWithSimpleSchemesAuthSecurityOption1() {
+        ApiKeyAuthNew = "Token <YOUR_API_KEY>",
+        Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
+    },
+}, req);
 
 // handle response
 ```
@@ -369,12 +376,9 @@ using Openapi.Models.Operations;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.MultipleSimpleOptionsAuthAsync(new MultipleSimpleOptionsAuthSecurity() {
-    ApiKeyAuthNew = "Token <YOUR_API_KEY>",
-}, new AuthServiceRequestBody() {
+AuthServiceRequestBody req = new AuthServiceRequestBody() {
     BasicAuth = new BasicAuth() {
         Password = "pzdKQgSGZSrUGNs",
         Username = "Eryn51",
@@ -385,7 +389,11 @@ var res = await sdk.AuthNew.MultipleSimpleOptionsAuthAsync(new MultipleSimpleOpt
             HeaderName = "string",
         },
     },
-});
+};
+
+var res = await sdk.AuthNew.MultipleSimpleOptionsAuthAsync(new MultipleSimpleOptionsAuthSecurity() {
+    ApiKeyAuthNew = "Token <YOUR_API_KEY>",
+}, req);
 
 // handle response
 ```
@@ -416,13 +424,9 @@ using Openapi.Models.Operations;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.MultipleSimpleSchemeAuthAsync(new MultipleSimpleSchemeAuthSecurity() {
-    ApiKeyAuthNew = "Token <YOUR_API_KEY>",
-    Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
-}, new AuthServiceRequestBody() {
+AuthServiceRequestBody req = new AuthServiceRequestBody() {
     BasicAuth = new BasicAuth() {
         Password = "UrAsw466AAaYtr1",
         Username = "Kenya.Baumbach",
@@ -433,7 +437,12 @@ var res = await sdk.AuthNew.MultipleSimpleSchemeAuthAsync(new MultipleSimpleSche
             HeaderName = "string",
         },
     },
-});
+};
+
+var res = await sdk.AuthNew.MultipleSimpleSchemeAuthAsync(new MultipleSimpleSchemeAuthSecurity() {
+    ApiKeyAuthNew = "Token <YOUR_API_KEY>",
+    Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
+}, req);
 
 // handle response
 ```
@@ -464,12 +473,9 @@ using Openapi.Models.Operations;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.Oauth2AuthNewAsync(new Oauth2AuthNewSecurity() {
-    Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
-}, new AuthServiceRequestBody() {
+AuthServiceRequestBody req = new AuthServiceRequestBody() {
     BasicAuth = new BasicAuth() {
         Password = "V02sHy2onRTMRgS",
         Username = "Polly.Aufderhar78",
@@ -480,7 +486,11 @@ var res = await sdk.AuthNew.Oauth2AuthNewAsync(new Oauth2AuthNewSecurity() {
             HeaderName = "string",
         },
     },
-});
+};
+
+var res = await sdk.AuthNew.Oauth2AuthNewAsync(new Oauth2AuthNewSecurity() {
+    Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
+}, req);
 
 // handle response
 ```
@@ -511,12 +521,9 @@ using Openapi.Models.Operations;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.OpenIdConnectAuthNewAsync(new OpenIdConnectAuthNewSecurity() {
-    OpenIdConnect = "Bearer YOUR_OPENID_TOKEN",
-}, new AuthServiceRequestBody() {
+AuthServiceRequestBody req = new AuthServiceRequestBody() {
     BasicAuth = new BasicAuth() {
         Password = "1_B3hNdr8HC3AeS",
         Username = "Floy_Heller",
@@ -527,7 +534,11 @@ var res = await sdk.AuthNew.OpenIdConnectAuthNewAsync(new OpenIdConnectAuthNewSe
             HeaderName = "string",
         },
     },
-});
+};
+
+var res = await sdk.AuthNew.OpenIdConnectAuthNewAsync(new OpenIdConnectAuthNewSecurity() {
+    OpenIdConnect = "Bearer YOUR_OPENID_TOKEN",
+}, req);
 
 // handle response
 ```

@@ -25,10 +25,15 @@ Endpoints for testing authentication.
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 
     
-res = s.auth.api_key_auth()
+res = s.auth.api_key_auth(Operations::ApiKeyAuthSecurity.new(
+    api_key_auth="Token YOUR_API_KEY",
+  ))
 
 if ! res.token.nil?
   # handle response
@@ -56,10 +61,13 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
@@ -86,21 +94,21 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 
-   
+
 req = Operations::BasicAuthRequest.new(
-  security=Operations::BasicAuthSecurity.new(
-    password="YOUR_PASSWORD",
-    username="YOUR_USERNAME",
-  ),
-  path_params=Operations::BasicAuthRequest.new(
-    passwd="WcNBKmWbsjBqGmg",
-    user="Kara99",
-  ),
+  passwd="WcNBKmWbsjBqGmg",
+  user="Kara99",
 )
     
-res = s.auth.basic_auth(req)
+res = s.auth.basic_auth(Operations::BasicAuthSecurity.new(
+    password="YOUR_PASSWORD",
+    username="YOUR_USERNAME",
+  ), passwd="string", user="string")
 
 if ! res.user.nil?
   # handle response
@@ -130,10 +138,15 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 
     
-res = s.auth.bearer_auth()
+res = s.auth.bearer_auth(Operations::BearerAuthSecurity.new(
+    bearer_auth="YOUR_JWT",
+  ))
 
 if ! res.token.nil?
   # handle response
@@ -161,10 +174,13 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
@@ -191,12 +207,10 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
-s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
-  )
-)
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 
     
 res = s.auth.no_auth()
@@ -221,10 +235,15 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 
     
-res = s.auth.oauth2_auth()
+res = s.auth.oauth2_auth(Operations::Oauth2AuthSecurity.new(
+    oauth2="Bearer YOUR_OAUTH2_TOKEN",
+  ))
 
 if ! res.token.nil?
   # handle response
@@ -252,17 +271,17 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 
-   
-req = Operations::Oauth2OverrideRequest.new(
-  security=Operations::Oauth2OverrideSecurity.new(
-    oauth2="Bearer YOUR_OAUTH2_TOKEN",
-  ),
-  headers=Operations::Oauth2OverrideRequest.new(),
-)
+
+req = Operations::Oauth2OverrideRequest.new()
     
-res = s.auth.oauth2_override(req)
+res = s.auth.oauth2_override(Operations::Oauth2OverrideSecurity.new(
+    oauth2="Bearer YOUR_OAUTH2_TOKEN",
+  ))
 
 if ! res.token.nil?
   # handle response
@@ -290,10 +309,15 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 
     
-res = s.auth.open_id_connect_auth()
+res = s.auth.open_id_connect_auth(Operations::OpenIdConnectAuthSecurity.new(
+    open_id_connect="Bearer YOUR_OPENID_TOKEN",
+  ))
 
 if ! res.token.nil?
   # handle response
