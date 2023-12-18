@@ -36,10 +36,10 @@ Endpoints for purely testing valid generation behavior.
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -85,10 +85,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -134,10 +134,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -183,11 +183,12 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/types"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/types"
+	"net/http"
 )
 
 func main() {
@@ -237,11 +238,13 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"time"
+	"openapi/v2/pkg/types"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/types"
+	"net/http"
 )
 
 func main() {
@@ -291,11 +294,13 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"github.com/ericlagergren/decimal"
+	"openapi/v2/pkg/types"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/types"
+	"net/http"
 )
 
 func main() {
@@ -345,10 +350,11 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -395,10 +401,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -446,10 +452,11 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -503,10 +510,11 @@ This is an endpoint setup to test deprecation with comments
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -559,10 +567,11 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -591,10 +600,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `ctx`                                                                     | [context.Context](https://pkg.go.dev/context#Context)                     | :heavy_check_mark:                                                        | The context to use for the request.                                       |
-| `emptyObject`                                                             | [shared.EmptyObjectParam](../../../pkg/models/shared/emptyobjectparam.md) | :heavy_check_mark:                                                        | N/A                                                                       |
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `ctx`                                                                  | [context.Context](https://pkg.go.dev/context#Context)                  | :heavy_check_mark:                                                     | The context to use for the request.                                    |
+| `emptyObject`                                                          | [shared.EmptyObjectParam](../../pkg/models/shared/emptyobjectparam.md) | :heavy_check_mark:                                                     | N/A                                                                    |
 
 
 ### Response
@@ -612,10 +621,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -661,10 +670,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
+	"math/big"
+	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -677,7 +688,26 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Generation.GlobalNameOverridden(ctx)
+    res, err := s.Generation.GlobalNameOverridden(ctx, &shared.SimpleObject{
+        Any: "any",
+        Bigint: big.NewInt(8821239038968084),
+        BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+        Bool: true,
+        BoolOpt: openapi.Bool(true),
+        Date: types.MustDateFromString("2020-01-01"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+        Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+        DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+        Enum: shared.EnumOne,
+        Float32: 1.1,
+        Int: 1,
+        Int32: 1,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        IntEnum: shared.IntEnumSecond,
+        Num: 1.1,
+        Str: "test",
+        StrOpt: openapi.String("testOptional"),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -690,9 +720,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `ctx`                                                          | [context.Context](https://pkg.go.dev/context#Context)          | :heavy_check_mark:                                             | The context to use for the request.                            |
+| `request`                                                      | [shared.SimpleObject](../../pkg/models/shared/simpleobject.md) | :heavy_check_mark:                                             | The request object to use for the request.                     |
 
 
 ### Response
@@ -710,10 +741,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -759,11 +790,11 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -794,11 +825,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                         | [context.Context](https://pkg.go.dev/context#Context)                                         | :heavy_check_mark:                                                                            | The context to use for the request.                                                           |
-| `requestBody`                                                                                 | [operations.IgnoresPostRequestBody](../../../pkg/models/operations/ignorespostrequestbody.md) | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `testParam`                                                                                   | **string*                                                                                     | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
+| `requestBody`                                                                              | [operations.IgnoresPostRequestBody](../../pkg/models/operations/ignorespostrequestbody.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `testParam`                                                                                | **string*                                                                                  | :heavy_minus_sign:                                                                         | N/A                                                                                        |
 
 
 ### Response
@@ -816,11 +847,11 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -851,11 +882,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `ctx`                                                                             | [context.Context](https://pkg.go.dev/context#Context)                             | :heavy_check_mark:                                                                | The context to use for the request.                                               |                                                                                   |
-| `testEnumQueryParam`                                                              | [operations.EnumNameOverride](../../../pkg/models/operations/enumnameoverride.md) | :heavy_check_mark:                                                                | An enum type                                                                      | value3                                                                            |
-| `testQueryParam`                                                                  | *string*                                                                          | :heavy_check_mark:                                                                | N/A                                                                               | example                                                                           |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |                                                                                |
+| `testEnumQueryParam`                                                           | [operations.EnumNameOverride](../../pkg/models/operations/enumnameoverride.md) | :heavy_check_mark:                                                             | An enum type                                                                   | value3                                                                         |
+| `testQueryParam`                                                               | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            | example                                                                        |
 
 
 ### Response
@@ -873,10 +904,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -922,10 +953,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -971,13 +1002,15 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"github.com/ericlagergren/decimal"
 	"openapi/v2/pkg/models/operations"
+	"context"
+	"log"
+	"net/http"
 )
 
 func main() {
@@ -1022,7 +1055,7 @@ func main() {
 | `bigint`                                                                | [*big.Int](https://pkg.go.dev/math/big#Int)                             | :heavy_minus_sign:                                                      | N/A                                                                     |
 | `date`                                                                  | [*types.Date](../../types/date.md)                                      | :heavy_minus_sign:                                                      | N/A                                                                     |
 | `decimal`                                                               | [*decimal.Big](https://pkg.go.dev/github.com/ericlagergren/decimal#Big) | :heavy_minus_sign:                                                      | N/A                                                                     |
-| `obj`                                                                   | [*operations.Obj](../../../pkg/models/operations/obj.md)                | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `obj`                                                                   | [*operations.Obj](../../pkg/models/operations/obj.md)                   | :heavy_minus_sign:                                                      | N/A                                                                     |
 
 
 ### Response
@@ -1045,13 +1078,13 @@ Usage example docs
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
 	"openapi/v2/pkg/models/shared"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -1078,7 +1111,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,

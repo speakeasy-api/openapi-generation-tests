@@ -16,7 +16,7 @@
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -35,7 +35,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -63,7 +65,7 @@ import { SDK } from "openapi";
 import { SDK } from "openapi";
 import { EnumNumber, EnumStr } from "openapi/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -99,7 +101,9 @@ import { EnumNumber, EnumStr } from "openapi/dist/sdk/models/shared";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -127,7 +131,7 @@ import { EnumNumber, EnumStr } from "openapi/dist/sdk/models/shared";
 import { SDK } from "openapi";
 import { DeleteResourceRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -142,7 +146,9 @@ const resourceId: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -170,7 +176,7 @@ const resourceId: string = "string";
 import { SDK } from "openapi";
 import { GetResourceRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -185,7 +191,9 @@ const resourceId: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -213,7 +221,7 @@ const resourceId: string = "string";
 import { SDK } from "openapi";
 import { UpdateResourceRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -228,7 +236,9 @@ const resourceId: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
