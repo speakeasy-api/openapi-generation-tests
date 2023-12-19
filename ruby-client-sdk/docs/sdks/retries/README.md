@@ -17,22 +17,22 @@ Endpoints for testing retries.
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Operations::RetriesGetRequest.new(
-  query_params=Operations::RetriesGetRequest.new(
-    request_id="string",
-    num_retries=75342,
-  ),
+  request_id="string",
 )
     
-res = s.retries.retries_get(req)
+res = s.retries.retries_get(request_id="string", num_retries=75342)
 
 if ! res.retries.nil?
   # handle response

@@ -10,6 +10,15 @@ class _ResponseBodiesAPI: ResponseBodiesAPI {
         self.client = client
     }
     
+    public func responseBodyAdditionalPropertiesAnyPost(request: [String: AnyValue]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesAnyPostResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureResponseBodyAdditionalPropertiesAnyPostRequest(with: configuration, request: request)
+            },
+            handleResponse: handleResponseBodyAdditionalPropertiesAnyPostResponse
+        )
+    }
+    
     public func responseBodyAdditionalPropertiesComplexNumbersPost(request: [String: String]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
@@ -115,6 +124,17 @@ class _ResponseBodiesAPI: ResponseBodiesAPI {
 
 // MARK: - Request Configuration
 
+private func configureResponseBodyAdditionalPropertiesAnyPostRequest(with configuration: URLRequestConfiguration, request: [String: AnyValue]) throws {
+    configuration.path = "/anything/responseBodies/additionalPropertiesAny"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
 private func configureResponseBodyAdditionalPropertiesComplexNumbersPostRequest(with configuration: URLRequestConfiguration, request: [String: String]) throws {
     configuration.path = "/anything/responseBodies/additionalPropertiesComplexNumbers"
     configuration.method = .post
@@ -208,6 +228,22 @@ private func configureResponseBodyZeroValueComplexTypePtrsPostRequest(with confi
 }
 
 // MARK: - Response Handlers
+
+private func handleResponseBodyAdditionalPropertiesAnyPostResponse(response: Client.APIResponse) throws -> Operations.ResponseBodyAdditionalPropertiesAnyPostResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .object(try JSONDecoder().decode(Operations.ResponseBodyAdditionalPropertiesAnyPostResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
 
 private func handleResponseBodyAdditionalPropertiesComplexNumbersPostResponse(response: Client.APIResponse) throws -> Operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse {
     let httpResponse = response.httpResponse

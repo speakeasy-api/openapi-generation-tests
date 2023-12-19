@@ -48,8 +48,7 @@ module OpenApiSDK
       res = Operations::ApiKeyAuthGlobalNewResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if [200, 401].include?(r.status)
-      end
+      
       res
     end
 
@@ -84,8 +83,7 @@ module OpenApiSDK
       res = Operations::AuthGlobalResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if [200, 401].include?(r.status)
-      end
+      
       res
     end
 
@@ -120,8 +118,7 @@ module OpenApiSDK
       res = Operations::BasicAuthNewResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if [200, 401].include?(r.status)
-      end
+      
       res
     end
 
@@ -156,8 +153,7 @@ module OpenApiSDK
       res = Operations::MultipleMixedOptionsAuthResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if [200, 401].include?(r.status)
-      end
+      
       res
     end
 
@@ -192,8 +188,7 @@ module OpenApiSDK
       res = Operations::MultipleMixedSchemeAuthResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if [200, 401].include?(r.status)
-      end
+      
       res
     end
 
@@ -228,8 +223,7 @@ module OpenApiSDK
       res = Operations::MultipleOptionsWithMixedSchemesAuthResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if [200, 401].include?(r.status)
-      end
+      
       res
     end
 
@@ -264,8 +258,7 @@ module OpenApiSDK
       res = Operations::MultipleOptionsWithSimpleSchemesAuthResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if [200, 401].include?(r.status)
-      end
+      
       res
     end
 
@@ -300,8 +293,7 @@ module OpenApiSDK
       res = Operations::MultipleSimpleOptionsAuthResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if [200, 401].include?(r.status)
-      end
+      
       res
     end
 
@@ -336,8 +328,7 @@ module OpenApiSDK
       res = Operations::MultipleSimpleSchemeAuthResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if [200, 401].include?(r.status)
-      end
+      
       res
     end
 
@@ -372,8 +363,7 @@ module OpenApiSDK
       res = Operations::Oauth2AuthNewResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if [200, 401].include?(r.status)
-      end
+      
       res
     end
 
@@ -408,8 +398,7 @@ module OpenApiSDK
       res = Operations::OpenIdConnectAuthNewResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if [200, 401].include?(r.status)
-      end
+      
       res
     end
   end

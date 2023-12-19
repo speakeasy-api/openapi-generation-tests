@@ -20,12 +20,12 @@ namespace Openapi
 
     public class Nest: INest
     {
-        public SDKConfig Config { get; private set; }
+        public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.3.1";
-        private const string _sdkGenVersion = "2.188.3";
+        private const string _sdkVersion = "0.4.0";
+        private const string _sdkGenVersion = "2.220.0";
         private const string _openapiDocVersion = "0.1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.0 2.220.0 0.1.0 openapi";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -36,8 +36,8 @@ namespace Openapi
             _defaultClient = defaultClient;
             _securityClient = securityClient;
             _serverUrl = serverUrl;
-            Config = config;
-            First = new SDKFirst(_defaultClient, _securityClient, _serverUrl, Config);
+            SDKConfiguration = config;
+            First = new SDKFirst(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
         }
         
     }

@@ -21,7 +21,7 @@ test("Test Telemetry User Agent Get", async () => {
     expect(res.statusCode).toBeDefined();
     expect(res.statusCode).toBe(200);
     expect(res.res?.headers["X-Speakeasy-User-Agent"]).toBe(
-        "speakeasy-sdk/typescript 2.1.2 2.188.3 0.1.0 openapi"
+        "speakeasy-sdk/typescript 2.2.0 2.220.0 0.1.0 openapi"
     );
 });
 
@@ -39,6 +39,6 @@ test("Test Telemetry Speakeasy User Agent Get", async () => {
     expect(res.statusCode).toBe(200);
     expect(res.res?.headers["User-Agent"]).toBe(userAgent);
     expect(res.res?.headers["X-Speakeasy-User-Agent"]).toBe(
-        "speakeasy-sdk/typescript 2.1.2 2.188.3 0.1.0 openapi"
+        "speakeasy-sdk/typescript 2.2.0 2.220.0 0.1.0 openapi"
     );
 });

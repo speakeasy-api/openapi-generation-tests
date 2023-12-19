@@ -13,12 +13,9 @@ import OpenAPI
 
 let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
 
-let response = try await client.putAnythingIgnoredGeneration()
+let response = try await client.servers.selectGlobalServer()
 
 switch response.data {
-case .object(let object):
-    // Handle response
-    break
 case .empty:
     // Handle empty response
     break
@@ -410,6 +407,7 @@ case .empty:
 - ``Operations/RequestBodyPutMultipartDeepResponse``
 - ``Operations/RequestBodyPutMultipartDifferentFileNameResponse``
 - ``Operations/RequestBodyPutMultipartFileResponse``
+- ``Operations/RequestBodyPutMultipartOptionalRequestBodyResponse``
 - ``Operations/RequestBodyPutMultipartSimpleResponse``
 - ``Operations/RequestBodyPutStringResponse``
 - ``Operations/RequestBodyPutStringWithParamsResponse``
@@ -420,6 +418,7 @@ case .empty:
 - ``Operations/RequestBodyWriteOnlyResponse``
 - ``Operations/RequestBodyWriteOnlyOutputResponse``
 - ``Operations/RequestBodyWriteOnlyUnionResponse``
+- ``Operations/ResponseBodyAdditionalPropertiesAnyPostResponse``
 - ``Operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse``
 - ``Operations/ResponseBodyAdditionalPropertiesDatePostResponse``
 - ``Operations/ResponseBodyAdditionalPropertiesObjectPostResponse``
@@ -677,6 +676,9 @@ case .empty:
 - ``Operations/RequestBodyPutMultipartDifferentFileNameRes``
 - ``Operations/RequestBodyPutMultipartFileRequestBody``
 - ``Operations/RequestBodyPutMultipartFileRes``
+- ``Operations/RequestBodyPutMultipartOptionalRequestBodyForm``
+- ``Operations/RequestBodyPutMultipartOptionalRequestBodyRequestBody``
+- ``Operations/RequestBodyPutMultipartOptionalRequestBodyRes``
 - ``Operations/RequestBodyPutMultipartSimpleForm``
 - ``Operations/RequestBodyPutMultipartSimpleHeaders``
 - ``Operations/RequestBodyPutMultipartSimpleRes``
@@ -685,6 +687,7 @@ case .empty:
 - ``Operations/RequestBodyPutStringWithParamsRequest``
 - ``Operations/RequestBodyPutStringWithParamsRes``
 - ``Operations/RequiredObj``
+- ``Operations/ResponseBodyAdditionalPropertiesAnyPostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesDatePostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesObjectPostResponseBody``
@@ -693,6 +696,7 @@ case .empty:
 - ``Operations/ResponseBodyZeroValueComplexTypePtrsPostResponseBody``
 - ``Operations/RetriesGetRequest``
 - ``Operations/RetriesGetRetries``
+- ``Operations/SampleFile``
 - ``Operations/SimplePathParameterArraysRequest``
 - ``Operations/SimplePathParameterArraysRes``
 - ``Operations/SimplePathParameterMapsRequest``

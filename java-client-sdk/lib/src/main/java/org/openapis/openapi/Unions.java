@@ -46,11 +46,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.FlattenedTypedObjectPostResponse res = new org.openapis.openapi.models.operations.FlattenedTypedObjectPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.FlattenedTypedObjectPostResponse res = new org.openapis.openapi.models.operations.FlattenedTypedObjectPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -84,11 +83,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.MixedTypeOneOfPostResponse res = new org.openapis.openapi.models.operations.MixedTypeOneOfPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.MixedTypeOneOfPostResponse res = new org.openapis.openapi.models.operations.MixedTypeOneOfPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -122,11 +120,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.NullableOneOfRefInObjectPostResponse res = new org.openapis.openapi.models.operations.NullableOneOfRefInObjectPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.NullableOneOfRefInObjectPostResponse res = new org.openapis.openapi.models.operations.NullableOneOfRefInObjectPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -160,11 +157,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.NullableOneOfSchemaPostResponse res = new org.openapis.openapi.models.operations.NullableOneOfSchemaPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.NullableOneOfSchemaPostResponse res = new org.openapis.openapi.models.operations.NullableOneOfSchemaPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -198,11 +194,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.NullableOneOfTypeInObjectPostResponse res = new org.openapis.openapi.models.operations.NullableOneOfTypeInObjectPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.NullableOneOfTypeInObjectPostResponse res = new org.openapis.openapi.models.operations.NullableOneOfTypeInObjectPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -236,11 +231,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.NullableTypedObjectPostResponse res = new org.openapis.openapi.models.operations.NullableTypedObjectPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.NullableTypedObjectPostResponse res = new org.openapis.openapi.models.operations.NullableTypedObjectPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -274,11 +268,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.PrimitiveTypeOneOfPostResponse res = new org.openapis.openapi.models.operations.PrimitiveTypeOneOfPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.PrimitiveTypeOneOfPostResponse res = new org.openapis.openapi.models.operations.PrimitiveTypeOneOfPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -312,11 +305,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.StronglyTypedOneOfPostResponse res = new org.openapis.openapi.models.operations.StronglyTypedOneOfPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.StronglyTypedOneOfPostResponse res = new org.openapis.openapi.models.operations.StronglyTypedOneOfPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -350,11 +342,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.TypedObjectNullableOneOfPostResponse res = new org.openapis.openapi.models.operations.TypedObjectNullableOneOfPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.TypedObjectNullableOneOfPostResponse res = new org.openapis.openapi.models.operations.TypedObjectNullableOneOfPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -388,11 +379,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.TypedObjectOneOfPostResponse res = new org.openapis.openapi.models.operations.TypedObjectOneOfPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.TypedObjectOneOfPostResponse res = new org.openapis.openapi.models.operations.TypedObjectOneOfPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -426,11 +416,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.UnionBigIntDecimalResponse res = new org.openapis.openapi.models.operations.UnionBigIntDecimalResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.UnionBigIntDecimalResponse res = new org.openapis.openapi.models.operations.UnionBigIntDecimalResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -464,11 +453,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.UnionDateNullResponse res = new org.openapis.openapi.models.operations.UnionDateNullResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.UnionDateNullResponse res = new org.openapis.openapi.models.operations.UnionDateNullResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -502,11 +490,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.UnionDateTimeBigIntResponse res = new org.openapis.openapi.models.operations.UnionDateTimeBigIntResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.UnionDateTimeBigIntResponse res = new org.openapis.openapi.models.operations.UnionDateTimeBigIntResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -540,11 +527,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.UnionDateTimeNullResponse res = new org.openapis.openapi.models.operations.UnionDateTimeNullResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.UnionDateTimeNullResponse res = new org.openapis.openapi.models.operations.UnionDateTimeNullResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -578,11 +564,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.WeaklyTypedOneOfPostResponse res = new org.openapis.openapi.models.operations.WeaklyTypedOneOfPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.WeaklyTypedOneOfPostResponse res = new org.openapis.openapi.models.operations.WeaklyTypedOneOfPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {

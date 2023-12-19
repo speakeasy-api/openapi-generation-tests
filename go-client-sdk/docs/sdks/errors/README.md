@@ -19,10 +19,11 @@ Endpoints for testing error responses.
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -59,7 +60,7 @@ func main() {
 **[*operations.ConnectionErrorGetResponse](../../pkg/models/operations/connectionerrorgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## StatusGetError
 
@@ -69,10 +70,11 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -112,7 +114,7 @@ func main() {
 **[*operations.StatusGetErrorResponse](../../pkg/models/operations/statusgeterrorresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## StatusGetXSpeakeasyErrors
 
@@ -122,10 +124,11 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -168,4 +171,4 @@ func main() {
 | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
 | sdkerrors.Error                                 | 500                                             | application/json                                |
 | sdkerrors.StatusGetXSpeakeasyErrorsResponseBody | 501                                             | application/json                                |
-| sdkerrors.SDKError                              | 400-600                                         | */*                                             |
+| sdkerrors.SDKError                              | 4xx-5xx                                         | */*                                             |
