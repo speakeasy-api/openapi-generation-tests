@@ -88,6 +88,7 @@ module OpenApiSDK
       )
       if r.status == 200
         res.res = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
+      
       end
       res
     end
@@ -124,6 +125,7 @@ module OpenApiSDK
       )
       if r.status == 200
         res.res = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
+      
       end
       res
     end
@@ -160,6 +162,7 @@ module OpenApiSDK
       )
       if r.status == 200
         res.res = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
+      
       end
       res
     end
@@ -2821,6 +2824,44 @@ module OpenApiSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Operations::RequestBodyPutMultipartFileRes)
+          res.res = out
+        end
+      end
+      res
+    end
+
+    sig { params(request: T.nilable(Operations::RequestBodyPutMultipartOptionalRequestBodyRequestBody)).returns(Utils::FieldAugmented) }
+    def request_body_put_multipart_optional_request_body(request)
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/put/multipart/optionalRequestBody"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :multipart)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.put(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyPutMultipartOptionalRequestBodyResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::RequestBodyPutMultipartOptionalRequestBodyRes)
           res.res = out
         end
       end

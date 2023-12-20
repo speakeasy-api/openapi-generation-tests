@@ -18,7 +18,7 @@ Endpoints for testing global parameters.
 import { SDK } from "openapi";
 import { GlobalPathParameterGetRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -33,7 +33,9 @@ const globalPathParam: number = 719830;
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -51,7 +53,7 @@ const globalPathParam: number = 719830;
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## globalsQueryParameterGet
 
@@ -61,7 +63,7 @@ const globalPathParam: number = 719830;
 import { SDK } from "openapi";
 import { GlobalsQueryParameterGetRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -76,7 +78,9 @@ const globalQueryParam: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -94,4 +98,4 @@ const globalQueryParam: string = "string";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

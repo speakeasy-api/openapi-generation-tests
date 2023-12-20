@@ -17,6 +17,19 @@ using System.Threading.Tasks;
 public class AuthShould
 {
     [Fact]
+    public async Task NoAuth()
+    {
+        CommonHelpers.RecordTest("auth-no-auth");
+
+        var sdk = new SDK();
+
+        var res = await sdk.Auth.NoAuthAsync();
+
+        Assert.NotNull(res);
+        Assert.Equal(200, res.StatusCode);
+    }
+
+    [Fact]
     public async Task BasicAuth()
     {
         CommonHelpers.RecordTest("auth-basic-auth");
