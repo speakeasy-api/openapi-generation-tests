@@ -43,14 +43,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            AnchorTypesGetResponse res = sdk.generation.anchorTypesGet();
+            org.openapis.openapi.models.operations.AnchorTypesGetResponse res = sdk.generation.anchorTypesGet();
 
             if (res.typeFromAnchor != null) {
                 // handle response
@@ -83,14 +84,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ArrayCircularReferenceGetResponse res = sdk.generation.arrayCircularReferenceGet();
+            org.openapis.openapi.models.operations.ArrayCircularReferenceGetResponse res = sdk.generation.arrayCircularReferenceGet();
 
             if (res.arrayCircularReferenceObject != null) {
                 // handle response
@@ -123,14 +125,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            CircularReferenceGetResponse res = sdk.generation.circularReferenceGet();
+            org.openapis.openapi.models.operations.CircularReferenceGetResponse res = sdk.generation.circularReferenceGet();
 
             if (res.validCircularReferenceObject != null) {
                 // handle response
@@ -165,14 +168,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DateParamWithDefaultResponse res = sdk.generation.dateParamWithDefault(LocalDate.parse("2021-11-30"));
+            org.openapis.openapi.models.operations.DateParamWithDefaultResponse res = sdk.generation.dateParamWithDefault(LocalDate.parse("2021-11-30"));
 
             if (res.statusCode == 200) {
                 // handle response
@@ -213,14 +217,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DateTimeParamWithDefaultResponse res = sdk.generation.dateTimeParamWithDefault(OffsetDateTime.parse("2023-02-09T21:53:21.077Z"));
+            org.openapis.openapi.models.operations.DateTimeParamWithDefaultResponse res = sdk.generation.dateTimeParamWithDefault(OffsetDateTime.parse("2023-02-09T21:53:21.077Z"));
 
             if (res.statusCode == 200) {
                 // handle response
@@ -260,14 +265,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DecimalParamWithDefaultResponse res = sdk.generation.decimalParamWithDefault(4060.06d);
+            org.openapis.openapi.models.operations.DecimalParamWithDefaultResponse res = sdk.generation.decimalParamWithDefault(4060.06d);
 
             if (res.statusCode == 200) {
                 // handle response
@@ -308,20 +314,23 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.DeprecatedFieldInObject req = new DeprecatedFieldInObject(){{
+            org.openapis.openapi.models.shared.DeprecatedFieldInObject req = new DeprecatedFieldInObject(
+){{
                 deprecatedEnum = DeprecatedEnum.B;
                 deprecatedField = "string";
                 newField = "string";
-            }};            
 
-            DeprecatedFieldInSchemaPostResponse res = sdk.generation.deprecatedFieldInSchemaPost(req);
+            }};
+
+            org.openapis.openapi.models.operations.DeprecatedFieldInSchemaPostResponse res = sdk.generation.deprecatedFieldInSchemaPost(req);
 
             if (res.statusCode == 200) {
                 // handle response
@@ -360,14 +369,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeprecatedObjectInSchemaGetResponse res = sdk.generation.deprecatedObjectInSchemaGet();
+            org.openapis.openapi.models.operations.DeprecatedObjectInSchemaGetResponse res = sdk.generation.deprecatedObjectInSchemaGet();
 
             if (res.object != null) {
                 // handle response
@@ -403,14 +413,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeprecatedOperationNoCommentsGetResponse res = sdk.generation.deprecatedOperationNoCommentsGet("string");
+            org.openapis.openapi.models.operations.DeprecatedOperationNoCommentsGetResponse res = sdk.generation.deprecatedOperationNoCommentsGet("string");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -454,14 +465,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeprecatedOperationWithCommentsGetResponse res = sdk.generation.deprecatedOperationWithCommentsGet("string", "string");
+            org.openapis.openapi.models.operations.DeprecatedOperationWithCommentsGetResponse res = sdk.generation.deprecatedOperationWithCommentsGet("string", "string");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -503,14 +515,16 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            EmptyObjectGetResponse res = sdk.generation.emptyObjectGet(new EmptyObjectParam(){{}});
+            org.openapis.openapi.models.operations.EmptyObjectGetResponse res = sdk.generation.emptyObjectGet(new EmptyObjectParam(
+            ){{}});
 
             if (res.statusCode == 200) {
                 // handle response
@@ -549,14 +563,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            EmptyResponseObjectWithCommentGetResponse res = sdk.generation.emptyResponseObjectWithCommentGet();
+            org.openapis.openapi.models.operations.EmptyResponseObjectWithCommentGetResponse res = sdk.generation.emptyResponseObjectWithCommentGet();
 
             if (res.body != null) {
                 // handle response
@@ -581,22 +596,53 @@ public class Application {
 ```java
 package hello.world;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.GetGlobalNameOverrideResponse;
+import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.SimpleObject;
 
 public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GetGlobalNameOverrideResponse res = sdk.generation.globalNameOverridden();
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject(
+                "any",
+                true,
+                LocalDate.parse("2020-01-01"),
+                OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                Enum.ONE,
+                1.1f,
+                1L,
+                1,
+                Int32Enum.FIFTY_FIVE,
+                IntEnum.Second,
+                1.1d,
+                "test"){{
+                bigint = 8821239038968084L;
+                bigintStr = "9223372036854775808";
+                boolOpt = true;
+                decimal = 3.141592653589793d;
+                decimalStr = "3.14159265358979344719667586";
+                intOptNull = 697039L;
+                numOptNull = 6448.77d;
+                strOpt = "testOptional";
+
+            }};
+
+            org.openapis.openapi.models.operations.GetGlobalNameOverrideResponse res = sdk.generation.globalNameOverridden(req);
 
             if (res.object != null) {
                 // handle response
@@ -607,6 +653,12 @@ public class Application {
     }
 }
 ```
+
+### Parameters
+
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [org.openapis.openapi.models.shared.SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
 
 
 ### Response
@@ -633,14 +685,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            IgnoredGenerationGetResponse res = sdk.generation.ignoredGenerationGet();
+            org.openapis.openapi.models.operations.IgnoredGenerationGetResponse res = sdk.generation.ignoredGenerationGet();
 
             if (res.object != null) {
                 // handle response
@@ -675,14 +728,16 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            IgnoresPostResponse res = sdk.generation.ignoresPost(new IgnoresPostRequestBody(){{}}, "string");
+            org.openapis.openapi.models.operations.IgnoresPostResponse res = sdk.generation.ignoresPost(new IgnoresPostRequestBody(
+            ){{}}, "string");
 
             if (res.httpBinSimpleJsonObject != null) {
                 // handle response
@@ -724,14 +779,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            NameOverrideGetResponse res = sdk.generation.nameOverride(EnumNameOverride.VALUE3, "example");
+            org.openapis.openapi.models.operations.NameOverrideGetResponse res = sdk.generation.nameOverride(EnumNameOverride.VALUE3, "example");
 
             if (res.overriddenResponse != null) {
                 // handle response
@@ -771,14 +827,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ObjectCircularReferenceGetResponse res = sdk.generation.objectCircularReferenceGet();
+            org.openapis.openapi.models.operations.ObjectCircularReferenceGetResponse res = sdk.generation.objectCircularReferenceGet();
 
             if (res.objectCircularReferenceObject != null) {
                 // handle response
@@ -811,14 +868,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            OneOfCircularReferenceGetResponse res = sdk.generation.oneOfCircularReferenceGet();
+            org.openapis.openapi.models.operations.OneOfCircularReferenceGetResponse res = sdk.generation.oneOfCircularReferenceGet();
 
             if (res.oneOfCircularReferenceObject != null) {
                 // handle response
@@ -854,14 +912,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            TypedParameterGenerationGetResponse res = sdk.generation.typedParameterGenerationGet(879275L, LocalDate.parse("2023-11-18"), 3346.96d, new Obj(false, 8948.31d, "string"){{
+            org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse res = sdk.generation.typedParameterGenerationGet(879275L, LocalDate.parse("2023-11-18"), 3346.96d, new Obj(
+            false,
+            8948.31d,
+            "string"){{
                 bool = false;
                 num = 4778.06d;
                 str = "string";
@@ -929,9 +991,27 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(168827L, "string", false, LocalDate.parse("2022-05-05"), OffsetDateTime.parse("2023-06-11T00:39:45.412Z"), OffsetDateTime.parse("2022-07-22T13:16:48.221Z"), 2679.33d, "string", 5223.72d, EnumParameter.VALUE1, 0d, 6946.59f, 2286.22d, 102975L, 566999, "example 1"){{
-                requestBody = new UsageExamplePostRequestBody(){{
-                    fakerFormattedStrings = new FakerFormattedStrings(){{
+            org.openapis.openapi.models.operations.UsageExamplePostRequest req = new UsageExamplePostRequest(
+                168827L,
+                "string",
+                false,
+                LocalDate.parse("2022-05-05"),
+                OffsetDateTime.parse("2023-06-11T00:39:45.412Z"),
+                OffsetDateTime.parse("2022-07-22T13:16:48.221Z"),
+                2679.33d,
+                "string",
+                5223.72d,
+                EnumParameter.VALUE1,
+                0d,
+                6946.59f,
+                2286.22d,
+                102975L,
+                566999,
+                "example 1"){{
+                requestBody = new UsageExamplePostRequestBody(
+){{
+                    fakerFormattedStrings = new FakerFormattedStrings(
+){{
                         addressFormat = "2344 Aufderhar Corner";
                         directoryFormat = "/etc/defaults";
                         domainFormat = "fatal-cutting.name";
@@ -950,8 +1030,10 @@ public class Application {
                         urlFormat = "https://wilted-cytoplasm.biz";
                         uuidFormat = "e0f62de2-e2d4-47a9-bf10-0f753b9b364b";
                         zipcodeFormat = "73625";
+
                     }};
-                    fakerStrings = new FakerStrings(){{
+                    fakerStrings = new FakerStrings(
+){{
                         city = "Schuppecester";
                         iban = "NO0300631256004";
                         id = "<ID>";
@@ -1005,8 +1087,21 @@ public class Application {
                         url = "https://crooked-dulcimer.name";
                         username = "Mable76";
                         uuid = "16b919d6-51cd-4e97-81e2-5221b7b6969f";
+
                     }};
-                    simpleObject = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+                    simpleObject = new SimpleObject(
+                        "any",
+                        true,
+                        LocalDate.parse("2020-01-01"),
+                        OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                        Enum.ONE,
+                        1.1f,
+                        1L,
+                        1,
+                        Int32Enum.FIFTY_FIVE,
+                        IntEnum.Second,
+                        1.1d,
+                        "test"){{
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
                         boolOpt = true;
@@ -1015,16 +1110,21 @@ public class Application {
                         intOptNull = 809796L;
                         numOptNull = 4812.91d;
                         strOpt = "testOptional";
+
                     }};
+
                 }};
                 bigintParameterOptional = 165468L;
                 bigintStrParameterOptional = "string";
                 decimalParameterOptional = 5944.32d;
                 decimalStrParameterOptional = "string";
                 optEnumParameter = OptEnumParameter.VALUE3;
-            }};            
 
-            UsageExamplePostResponse res = sdk.generation.usageExamplePost(req, new UsageExamplePostSecurity("YOUR_PASSWORD", "YOUR_USERNAME"){{
+            }};
+
+            org.openapis.openapi.models.operations.UsageExamplePostResponse res = sdk.generation.usageExamplePost(req, new UsageExamplePostSecurity(
+            "YOUR_PASSWORD",
+            "YOUR_USERNAME"){{
                 password = "YOUR_PASSWORD";
                 username = "YOUR_USERNAME";
             }});

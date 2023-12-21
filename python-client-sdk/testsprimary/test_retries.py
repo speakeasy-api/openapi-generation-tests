@@ -9,7 +9,7 @@ from sdk.models.operations import *
 from sdk.utils import BackoffStrategy, RetryConfig
 
 from .common_helpers import *
-from .helpers import *
+from .test_helpers import *
 
 
 def test_retries_succeeds():

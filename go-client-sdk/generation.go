@@ -696,16 +696,23 @@ func (s *Generation) EmptyResponseObjectWithCommentGet(ctx context.Context) (*op
 	return res, nil
 }
 
-func (s *Generation) GlobalNameOverridden(ctx context.Context) (*operations.GetGlobalNameOverrideResponse, error) {
+func (s *Generation) GlobalNameOverridden(ctx context.Context, request *shared.SimpleObject) (*operations.GetGlobalNameOverrideResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/globalNameOverride"
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+
+	req.Header.Set("Content-Type", reqContentType)
 
 	client := s.sdkConfiguration.SecurityClient
 
