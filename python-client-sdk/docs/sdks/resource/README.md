@@ -53,7 +53,7 @@ if res.file_resource is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## create_resource
 
@@ -87,19 +87,19 @@ req = shared.ExampleResource(
     id='<ID>',
     inline_object=shared.InlineObject(),
     map_of_integer={
-        "key": 271791,
+        'key': 271791,
     },
     map_of_string={
-        "key": 'string',
+        'key': 'string',
     },
     name='string',
-    shared.ExampleCar(
-        make='string',
-        model='PT Cruiser',
-        name='string',
-        type=shared.ExampleCarType.CAR,
-        year=1259.83,
-    ),
+    vehicle=shared.ExampleCar(
+    make='string',
+    model='PT Cruiser',
+    name='string',
+    type=shared.ExampleCarType.CAR,
+    year=1259.83,
+),
 )
 
 res = s.resource.create_resource(req)
@@ -123,7 +123,7 @@ if res.example_resource is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## delete_resource
 
@@ -163,7 +163,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## get_resource
 
@@ -203,7 +203,7 @@ if res.example_resource is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## update_resource
 
@@ -243,4 +243,4 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |

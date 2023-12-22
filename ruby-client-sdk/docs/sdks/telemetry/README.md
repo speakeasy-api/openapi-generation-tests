@@ -18,21 +18,22 @@ Endpoints for testing telemetry.
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Operations::TelemetrySpeakeasyUserAgentGetRequest.new(
-  headers=Operations::TelemetrySpeakeasyUserAgentGetRequest.new(
-    user_agent="string",
-  ),
+  user_agent="string",
 )
     
-res = s.telemetry.telemetry_speakeasy_user_agent_get(req)
+res = s.telemetry.telemetry_speakeasy_user_agent_get(user_agent="string")
 
 if ! res.res.nil?
   # handle response
@@ -60,10 +61,13 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 

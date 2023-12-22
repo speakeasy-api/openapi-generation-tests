@@ -30,19 +30,20 @@ src/sdk/utils/__init__.py
 src/sdk/utils/retries.py
 src/sdk/utils/utils.py
 src/sdk/models/errors/sdkerror.py
+tests/helpers.py
 tests/__init__.py
 tests/common_helpers.py
 testscommon/__init__.py
 testscommon/common_helpers.py
-testsprimary/helpers.py
+testshoisted_security/test_auth.py
 testsprimary/testUpload.json
 testsprimary/test_auth.py
 testsprimary/test_errors.py
 testsprimary/test_flattening.py
 testsprimary/test_globals.py
+testsprimary/test_helpers.py
 testsprimary/test_multi_level.py
 testsprimary/test_pagination.py
-testsprimary/test_parameters.py
 testsprimary/test_request_bodies.py
 testsprimary/test_response_bodies.py
 testsprimary/test_retries.py
@@ -52,6 +53,7 @@ testsprimary/test_unions.py
 testssimple_security/test_auth.py
 ../../testprojects/python/pylintrc
 ../../testprojects/python/setup.py
+tests/test_parameters.py
 src/sdk/models/operations/put_anything_ignoredgeneration.py
 src/sdk/models/operations/responsebodyjsonget.py
 src/sdk/models/operations/anchortypesget.py
@@ -206,6 +208,7 @@ src/sdk/models/operations/requestbodyputbyteswithparams.py
 src/sdk/models/operations/requestbodyputmultipartdeep.py
 src/sdk/models/operations/requestbodyputmultipartdifferentfilename.py
 src/sdk/models/operations/requestbodyputmultipartfile.py
+src/sdk/models/operations/requestbodyputmultipartoptionalrequestbody.py
 src/sdk/models/operations/requestbodyputmultipartsimple.py
 src/sdk/models/operations/requestbodyputstring.py
 src/sdk/models/operations/requestbodyputstringwithparams.py
@@ -216,6 +219,7 @@ src/sdk/models/operations/requestbodyreadwriteonlyunion.py
 src/sdk/models/operations/requestbodywriteonly.py
 src/sdk/models/operations/requestbodywriteonlyoutput.py
 src/sdk/models/operations/requestbodywriteonlyunion.py
+src/sdk/models/operations/responsebodyadditionalpropertiesanypost.py
 src/sdk/models/operations/responsebodyadditionalpropertiescomplexnumberspost.py
 src/sdk/models/operations/responsebodyadditionalpropertiesdatepost.py
 src/sdk/models/operations/responsebodyadditionalpropertiesobjectpost.py
@@ -273,6 +277,7 @@ src/sdk/models/shared/objectcircularreferenceobject.py
 src/sdk/models/shared/oneofcircularreferenceobject.py
 src/sdk/models/shared/fakerstrings.py
 src/sdk/models/shared/fakerformattedstrings.py
+src/sdk/models/shared/errortype.py
 src/sdk/models/shared/typedobject1.py
 src/sdk/models/shared/nullableoneofrefinobject.py
 src/sdk/models/shared/typedobject2.py
@@ -299,6 +304,7 @@ src/sdk/models/shared/readonlyobject.py
 src/sdk/models/shared/readonlyobject_input.py
 src/sdk/models/shared/writeonlyobject.py
 src/sdk/models/shared/writeonlyobject_output.py
+src/sdk/models/shared/objwithanyadditionalproperties.py
 src/sdk/models/shared/objwithcomplexnumbersadditionalproperties.py
 src/sdk/models/shared/objwithdateadditionalproperties.py
 src/sdk/models/shared/objwithobjadditionalproperties.py
@@ -317,14 +323,12 @@ src/sdk/models/shared/oneofgenerationstresstest.py
 src/sdk/models/shared/unsupportedenums.py
 src/sdk/models/callbacks/ignoredgenerationget.py
 src/sdk/models/errors/error.py
-src/sdk/models/errors/errortype.py
 src/sdk/models/errors/statusgetxspeakeasyerrors.py
 src/sdk/models/__init__.py
 src/sdk/models/errors/__init__.py
 src/sdk/models/operations/__init__.py
 src/sdk/models/shared/__init__.py
 src/sdk/models/callbacks/__init__.py
-USAGE.md
 docs/models/operations/putanythingignoredgenerationresponsebody.md
 docs/models/operations/putanythingignoredgenerationresponse.md
 docs/models/operations/responsebodyjsongetresponse.md
@@ -714,6 +718,11 @@ docs/models/operations/file.md
 docs/models/operations/requestbodyputmultipartfilerequestbody.md
 docs/models/operations/requestbodyputmultipartfileres.md
 docs/models/operations/requestbodyputmultipartfileresponse.md
+docs/models/operations/samplefile.md
+docs/models/operations/requestbodyputmultipartoptionalrequestbodyrequestbody.md
+docs/models/operations/requestbodyputmultipartoptionalrequestbodyform.md
+docs/models/operations/requestbodyputmultipartoptionalrequestbodyres.md
+docs/models/operations/requestbodyputmultipartoptionalrequestbodyresponse.md
 docs/models/operations/requestbodyputmultipartsimpleform.md
 docs/models/operations/requestbodyputmultipartsimpleheaders.md
 docs/models/operations/requestbodyputmultipartsimpleres.md
@@ -731,6 +740,8 @@ docs/models/operations/requestbodyreadwriteonlyunionresponse.md
 docs/models/operations/requestbodywriteonlyresponse.md
 docs/models/operations/requestbodywriteonlyoutputresponse.md
 docs/models/operations/requestbodywriteonlyunionresponse.md
+docs/models/operations/responsebodyadditionalpropertiesanypostresponsebody.md
+docs/models/operations/responsebodyadditionalpropertiesanypostresponse.md
 docs/models/operations/responsebodyadditionalpropertiescomplexnumberspostresponsebody.md
 docs/models/operations/responsebodyadditionalpropertiescomplexnumberspostresponse.md
 docs/models/operations/responsebodyadditionalpropertiesdatepostresponsebody.md
@@ -834,6 +845,7 @@ docs/models/shared/child.md
 docs/models/shared/oneofcircularreferenceobject.md
 docs/models/shared/fakerstrings.md
 docs/models/shared/fakerformattedstrings.md
+docs/models/shared/errortype.md
 docs/models/shared/flattenedtypedobject1.md
 docs/models/shared/typedobject1type.md
 docs/models/shared/typedobject1.md
@@ -892,6 +904,7 @@ docs/models/shared/writeonlyobject.md
 docs/models/shared/writeonlyobjectoutput.md
 docs/models/shared/weaklytypedoneofwriteonlyobjectoutput.md
 docs/models/shared/weaklytypedoneofwriteonlyobject.md
+docs/models/shared/objwithanyadditionalproperties.md
 docs/models/shared/objwithcomplexnumbersadditionalproperties.md
 docs/models/shared/objwithdateadditionalproperties.md
 docs/models/shared/objwithobjadditionalproperties.md
@@ -927,7 +940,6 @@ docs/models/callbacks/ignoredgenerationgetsingledignoredcallbackoperationrequest
 docs/models/callbacks/ignoredgenerationgetnotignoredcallbackresponse.md
 docs/models/callbacks/ignoredgenerationgetnotignoredcallbackrequestbody.md
 docs/models/errors/error.md
-docs/models/errors/errortype.md
 docs/models/errors/statusgetxspeakeasyerrorsresponsebody.md
 docs/sdks/sdk/README.md
 docs/sdks/generation/README.md
@@ -954,4 +966,5 @@ docs/sdks/second/README.md
 docs/sdks/pagination/README.md
 docs/models/utils/retryconfig.md
 docs/sdks/retries/README.md
+USAGE.md
 .gitattributes

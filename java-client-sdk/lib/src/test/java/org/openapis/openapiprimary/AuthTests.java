@@ -14,6 +14,19 @@ import org.openapis.openapi.models.shared.*;
 
 public class AuthTests {
     @Test
+    void testNoAuth() throws Exception {
+        CommonHelpers.recordTest("auth-no-auth");
+
+        SDK s = SDK.builder().build();
+        assertNotNull(s);
+
+        NoAuthResponse res = s.auth.noAuth();
+
+        assertNotNull(res);
+        assertEquals(200, res.statusCode);
+    }
+
+    @Test
     void testBasicAuth() throws Exception {
         CommonHelpers.recordTest("auth-basic-auth");
 

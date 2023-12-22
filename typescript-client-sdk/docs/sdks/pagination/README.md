@@ -21,7 +21,7 @@ Endpoints for testing the pagination extension
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -41,7 +41,9 @@ import { SDK } from "openapi";
       res = res.next();
     } while (res);
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -60,7 +62,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## paginationCursorParams
 
@@ -70,7 +72,7 @@ import { SDK } from "openapi";
 import { SDK } from "openapi";
 import { PaginationCursorParamsRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -89,7 +91,9 @@ const cursor: number = 24812;
       res = res.next();
     } while (res);
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -108,7 +112,7 @@ const cursor: number = 24812;
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## paginationLimitOffsetOffsetBody
 
@@ -117,7 +121,7 @@ const cursor: number = 24812;
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -135,7 +139,9 @@ import { SDK } from "openapi";
       res = res.next();
     } while (res);
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -154,7 +160,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## paginationLimitOffsetOffsetParams
 
@@ -164,7 +170,7 @@ import { SDK } from "openapi";
 import { SDK } from "openapi";
 import { PaginationLimitOffsetOffsetParamsRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -184,7 +190,9 @@ const offset: number = 600173;
       res = res.next();
     } while (res);
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -204,7 +212,7 @@ const offset: number = 600173;
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## paginationLimitOffsetPageBody
 
@@ -213,7 +221,7 @@ const offset: number = 600173;
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -231,7 +239,9 @@ import { SDK } from "openapi";
       res = res.next();
     } while (res);
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -250,7 +260,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## paginationLimitOffsetPageParams
 
@@ -260,7 +270,7 @@ import { SDK } from "openapi";
 import { SDK } from "openapi";
 import { PaginationLimitOffsetPageParamsRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -279,7 +289,9 @@ const page: number = 1177;
       res = res.next();
     } while (res);
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -298,4 +310,4 @@ const page: number = 1177;
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
