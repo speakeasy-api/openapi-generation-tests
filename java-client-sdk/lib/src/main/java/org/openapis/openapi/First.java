@@ -32,10 +32,9 @@ public class First {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.GroupFirstGetResponse res = new org.openapis.openapi.models.operations.GroupFirstGetResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.GroupFirstGetResponse res = new org.openapis.openapi.models.operations.GroupFirstGetResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
         }

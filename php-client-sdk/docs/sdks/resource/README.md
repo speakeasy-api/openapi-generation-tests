@@ -27,14 +27,15 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Operations\CreateFileRequestBody();
+        $request = new Operations\CreateFileRequestBody();
     $request->file = new Operations\CreateFileFile();
     $request->file->content = '0xf10df1a3b9';
-    $request->file->fileName = 'rap_national.mp4v';
+    $request->file->fileName = 'rap_national.mp4v';;
 
     $response = $sdk->resource->createFile($request);
 
@@ -75,11 +76,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\ExampleResource();
+        $request = new Shared\ExampleResource();
     $request->arrayOfNumber = [
         1867.47,
     ];
@@ -104,7 +106,7 @@ try {
     $request->name = 'string';
     $request->namePrefix = 'string';
     $request->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-06-22T17:48:04.355Z');
-    $request->vehicle = 'string';
+    $request->vehicle = 'string';;
 
     $response = $sdk->resource->createResource($request);
 
@@ -146,11 +148,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->resource->deleteResource('string');
 
@@ -192,11 +195,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->resource->getResource('string');
 
@@ -238,11 +242,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->resource->updateResource('string');
 
