@@ -47,6 +47,7 @@ Tests/OpenAPITests/utils/TestData.swift
 Tests/OpenAPITests/utils/TestRecording.swift
 Tests/OpenAPITests/utils/TestUtils.swift
 Tests/OpenAPITests/testdata/testUpload.json
+Tests/OpenAPITests/testshoisted_security/AuthTest.swift
 Tests/OpenAPITests/testsprimary/AuthTests.swift
 Tests/OpenAPITests/testsprimary/FlatteningTests.swift
 Tests/OpenAPITests/testsprimary/GlobalsTests.swift
@@ -556,6 +557,11 @@ Sources/OpenAPI/models/operations/RequestBodyPutMultipartFileRequestBody.swift
 Sources/OpenAPI/internal/models/RequestBodyPutMultipartFileRequestBody+Serialization.swift
 Sources/OpenAPI/models/operations/RequestBodyPutMultipartFileRes.swift
 Sources/OpenAPI/models/operations/RequestBodyPutMultipartFileResponse.swift
+Sources/OpenAPI/models/operations/RequestBodyPutMultipartOptionalRequestBodyForm.swift
+Sources/OpenAPI/models/operations/RequestBodyPutMultipartOptionalRequestBodyRequestBody.swift
+Sources/OpenAPI/internal/models/RequestBodyPutMultipartOptionalRequestBodyRequestBody+Serialization.swift
+Sources/OpenAPI/models/operations/RequestBodyPutMultipartOptionalRequestBodyRes.swift
+Sources/OpenAPI/models/operations/RequestBodyPutMultipartOptionalRequestBodyResponse.swift
 Sources/OpenAPI/models/operations/RequestBodyPutMultipartSimpleForm.swift
 Sources/OpenAPI/models/operations/RequestBodyPutMultipartSimpleHeaders.swift
 Sources/OpenAPI/models/operations/RequestBodyPutMultipartSimpleRes.swift
@@ -576,6 +582,8 @@ Sources/OpenAPI/models/operations/RequestBodyWriteOnlyResponse.swift
 Sources/OpenAPI/models/operations/RequestBodyWriteOnlyUnionResponse.swift
 Sources/OpenAPI/models/operations/RequiredObj.swift
 Sources/OpenAPI/internal/models/RequiredObj+Serialization.swift
+Sources/OpenAPI/models/operations/ResponseBodyAdditionalPropertiesAnyPostResponse.swift
+Sources/OpenAPI/models/operations/ResponseBodyAdditionalPropertiesAnyPostResponseBody.swift
 Sources/OpenAPI/models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse.swift
 Sources/OpenAPI/models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody.swift
 Sources/OpenAPI/models/operations/ResponseBodyAdditionalPropertiesDatePostResponse.swift
@@ -599,6 +607,8 @@ Sources/OpenAPI/models/operations/RetriesGetRequest.swift
 Sources/OpenAPI/internal/models/RetriesGetRequest+Serialization.swift
 Sources/OpenAPI/models/operations/RetriesGetResponse.swift
 Sources/OpenAPI/models/operations/RetriesGetRetries.swift
+Sources/OpenAPI/models/operations/SampleFile.swift
+Sources/OpenAPI/internal/models/SampleFile+Serialization.swift
 Sources/OpenAPI/models/operations/SelectGlobalServerResponse.swift
 Sources/OpenAPI/models/operations/SelectServerWithIDResponse.swift
 Sources/OpenAPI/models/operations/ServerWithProtocolTemplateResponse.swift

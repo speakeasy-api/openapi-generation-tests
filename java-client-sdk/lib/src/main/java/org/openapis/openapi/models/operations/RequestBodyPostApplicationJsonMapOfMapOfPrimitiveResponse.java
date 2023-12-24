@@ -53,8 +53,9 @@ public class RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse {
         return this;
     }
     
-    public RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode) {
+    public RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode, @JsonProperty("RawResponse") HttpResponse<byte[]> rawResponse) {
         this.contentType = contentType;
         this.statusCode = statusCode;
+        this.rawResponse = rawResponse;
   }
 }

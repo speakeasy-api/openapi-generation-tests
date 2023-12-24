@@ -43,6 +43,7 @@ src/sdk/types/rfcdate.ts
 tsconfig.json
 __tests__/common_helpers.ts
 __tests__common/common_helpers.ts
+__tests__hoisted_security/auth.test.ts
 __tests__primary/auth.test.ts
 __tests__primary/errors.test.ts
 __tests__primary/flattening.test.ts
@@ -215,6 +216,7 @@ src/sdk/models/operations/requestbodyputbyteswithparams.ts
 src/sdk/models/operations/requestbodyputmultipartdeep.ts
 src/sdk/models/operations/requestbodyputmultipartdifferentfilename.ts
 src/sdk/models/operations/requestbodyputmultipartfile.ts
+src/sdk/models/operations/requestbodyputmultipartoptionalrequestbody.ts
 src/sdk/models/operations/requestbodyputmultipartsimple.ts
 src/sdk/models/operations/requestbodyputstring.ts
 src/sdk/models/operations/requestbodyputstringwithparams.ts
@@ -225,6 +227,7 @@ src/sdk/models/operations/requestbodyreadwriteonlyunion.ts
 src/sdk/models/operations/requestbodywriteonly.ts
 src/sdk/models/operations/requestbodywriteonlyoutput.ts
 src/sdk/models/operations/requestbodywriteonlyunion.ts
+src/sdk/models/operations/responsebodyadditionalpropertiesanypost.ts
 src/sdk/models/operations/responsebodyadditionalpropertiescomplexnumberspost.ts
 src/sdk/models/operations/responsebodyadditionalpropertiesdatepost.ts
 src/sdk/models/operations/responsebodyadditionalpropertiesobjectpost.ts
@@ -282,6 +285,7 @@ src/sdk/models/shared/objectcircularreferenceobject.ts
 src/sdk/models/shared/oneofcircularreferenceobject.ts
 src/sdk/models/shared/fakerstrings.ts
 src/sdk/models/shared/fakerformattedstrings.ts
+src/sdk/models/shared/errortype.ts
 src/sdk/models/shared/nullableoneofrefinobject.ts
 src/sdk/models/shared/typedobject1.ts
 src/sdk/models/shared/nullableoneoftypeinobject.ts
@@ -316,13 +320,11 @@ src/sdk/models/shared/oneofgenerationstresstest.ts
 src/sdk/models/shared/unsupportedenums.ts
 src/sdk/models/callbacks/ignoredgenerationget.ts
 src/sdk/models/errors/error.ts
-src/sdk/models/errors/errortype.ts
 src/sdk/models/errors/statusgetxspeakeasyerrors.ts
 src/sdk/models/errors/index.ts
 src/sdk/models/operations/index.ts
 src/sdk/models/shared/index.ts
 src/sdk/models/callbacks/index.ts
-USAGE.md
 docs/sdk/models/operations/putanythingignoredgenerationresponsebody.md
 docs/sdk/models/operations/putanythingignoredgenerationresponse.md
 docs/sdk/models/operations/responsebodyjsongetresponse.md
@@ -702,6 +704,11 @@ docs/sdk/models/operations/file.md
 docs/sdk/models/operations/requestbodyputmultipartfilerequestbody.md
 docs/sdk/models/operations/requestbodyputmultipartfileres.md
 docs/sdk/models/operations/requestbodyputmultipartfileresponse.md
+docs/sdk/models/operations/samplefile.md
+docs/sdk/models/operations/requestbodyputmultipartoptionalrequestbodyrequestbody.md
+docs/sdk/models/operations/requestbodyputmultipartoptionalrequestbodyform.md
+docs/sdk/models/operations/requestbodyputmultipartoptionalrequestbodyres.md
+docs/sdk/models/operations/requestbodyputmultipartoptionalrequestbodyresponse.md
 docs/sdk/models/operations/requestbodyputmultipartsimpleform.md
 docs/sdk/models/operations/requestbodyputmultipartsimpleheaders.md
 docs/sdk/models/operations/requestbodyputmultipartsimpleres.md
@@ -719,6 +726,8 @@ docs/sdk/models/operations/requestbodyreadwriteonlyunionresponse.md
 docs/sdk/models/operations/requestbodywriteonlyresponse.md
 docs/sdk/models/operations/requestbodywriteonlyoutputresponse.md
 docs/sdk/models/operations/requestbodywriteonlyunionresponse.md
+docs/sdk/models/operations/responsebodyadditionalpropertiesanypostresponsebody.md
+docs/sdk/models/operations/responsebodyadditionalpropertiesanypostresponse.md
 docs/sdk/models/operations/responsebodyadditionalpropertiescomplexnumberspostresponsebody.md
 docs/sdk/models/operations/responsebodyadditionalpropertiescomplexnumberspostresponse.md
 docs/sdk/models/operations/responsebodyadditionalpropertiesdatepostresponsebody.md
@@ -821,6 +830,7 @@ docs/sdk/models/shared/objectcircularreferenceobject.md
 docs/sdk/models/shared/oneofcircularreferenceobject.md
 docs/sdk/models/shared/fakerstrings.md
 docs/sdk/models/shared/fakerformattedstrings.md
+docs/sdk/models/shared/errortype.md
 docs/sdk/models/shared/nullableoneofrefinobject.md
 docs/sdk/models/shared/typet.md
 docs/sdk/models/shared/typedobject1.md
@@ -875,7 +885,6 @@ docs/sdk/models/callbacks/ignoredgenerationgetsingledignoredcallbackoperationreq
 docs/sdk/models/callbacks/ignoredgenerationgetnotignoredcallbackresponse.md
 docs/sdk/models/callbacks/ignoredgenerationgetnotignoredcallbackrequestbody.md
 docs/sdk/models/errors/errort.md
-docs/sdk/models/errors/errortype.md
 docs/sdk/models/errors/statusgetxspeakeasyerrorsresponsebody.md
 docs/sdks/sdk/README.md
 docs/sdks/generation/README.md
@@ -902,4 +911,5 @@ docs/sdks/second/README.md
 docs/sdks/pagination/README.md
 docs/internal/utils/retryconfig.md
 docs/sdks/retries/README.md
+USAGE.md
 .gitattributes
