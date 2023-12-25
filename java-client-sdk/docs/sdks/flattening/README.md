@@ -35,21 +35,34 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ComponentBodyAndParamConflictResponse res = sdk.flattening.componentBodyAndParamConflict(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            org.openapis.openapi.models.operations.ComponentBodyAndParamConflictResponse res = sdk.flattening.componentBodyAndParamConflict(new SimpleObject(
+            "any",
+            true,
+            LocalDate.parse("2020-01-01"),
+            OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+            Enum.ONE,
+            1.1f,
+            1L,
+            1,
+            Int32Enum.FIFTY_FIVE,
+            IntEnum.Second,
+            1.1d,
+            "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                 decimal = 3.141592653589793d;
                 decimalStr = "3.14159265358979344719667586";
                 enum_ = Enum.ONE;
@@ -108,21 +121,34 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ComponentBodyAndParamNoConflictResponse res = sdk.flattening.componentBodyAndParamNoConflict("string", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+            org.openapis.openapi.models.operations.ComponentBodyAndParamNoConflictResponse res = sdk.flattening.componentBodyAndParamNoConflict("string", new SimpleObject(
+            "any",
+            true,
+            LocalDate.parse("2020-01-01"),
+            OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+            Enum.ONE,
+            1.1f,
+            1L,
+            1,
+            Int32Enum.FIFTY_FIVE,
+            IntEnum.Second,
+            1.1d,
+            "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000001Z");
                 decimal = 3.141592653589793d;
                 decimalStr = "3.14159265358979344719667586";
                 enum_ = Enum.ONE;
@@ -175,14 +201,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ConflictingParamsResponse res = sdk.flattening.conflictingParams("string", "string");
+            org.openapis.openapi.models.operations.ConflictingParamsResponse res = sdk.flattening.conflictingParams("string", "string");
 
             if (res.res != null) {
                 // handle response
@@ -224,14 +251,16 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            InlineBodyAndParamConflictResponse res = sdk.flattening.inlineBodyAndParamConflict(new InlineBodyAndParamConflictRequestBody("string"){{
+            org.openapis.openapi.models.operations.InlineBodyAndParamConflictResponse res = sdk.flattening.inlineBodyAndParamConflict(new InlineBodyAndParamConflictRequestBody(
+            "string"){{
                 str = "string";
             }}, "string");
 
@@ -275,14 +304,16 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            InlineBodyAndParamNoConflictResponse res = sdk.flattening.inlineBodyAndParamNoConflict(new InlineBodyAndParamNoConflictRequestBody("string"){{
+            org.openapis.openapi.models.operations.InlineBodyAndParamNoConflictResponse res = sdk.flattening.inlineBodyAndParamNoConflict(new InlineBodyAndParamNoConflictRequestBody(
+            "string"){{
                 bodyStr = "string";
             }}, "string");
 
