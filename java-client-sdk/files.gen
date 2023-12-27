@@ -54,6 +54,7 @@ lib/src/main/java/org/openapis/openapi/utils/Utils.java
 settings.gradle
 lib/src/test/java/org/openapis/openapi/CommonHelpers.java
 lib/src/test/java/org/openapis/openapicommon/CommonHelpers.java
+lib/src/test/java/org/openapis/openapihoisted_security/AuthTests.java
 lib/src/test/java/org/openapis/openapiprimary/AuthTests.java
 lib/src/test/java/org/openapis/openapiprimary/FlatteningTests.java
 lib/src/test/java/org/openapis/openapiprimary/GlobalsTests.java
@@ -452,6 +453,11 @@ lib/src/main/java/org/openapis/openapi/models/operations/File.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartFileRequestBody.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartFileRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartFileResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/SampleFile.java
+lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartOptionalRequestBodyRequestBody.java
+lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartOptionalRequestBodyForm.java
+lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartOptionalRequestBodyRes.java
+lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartOptionalRequestBodyResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartSimpleForm.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartSimpleHeaders.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartSimpleRes.java
@@ -469,6 +475,8 @@ lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyReadWriteOnl
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyWriteOnlyResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyWriteOnlyOutputResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyWriteOnlyUnionResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyAdditionalPropertiesAnyPostResponseBody.java
+lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyAdditionalPropertiesAnyPostResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody.java
 lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyAdditionalPropertiesDatePostResponseBody.java
@@ -626,7 +634,6 @@ lib/src/main/java/org/openapis/openapi/models/callbacks/IgnoredGenerationGetSing
 lib/src/main/java/org/openapis/openapi/models/callbacks/IgnoredGenerationGetSingledIgnoredCallbackOperationRequestBody.java
 lib/src/main/java/org/openapis/openapi/models/callbacks/IgnoredGenerationGetNotIgnoredCallbackResponse.java
 lib/src/main/java/org/openapis/openapi/models/callbacks/IgnoredGenerationGetNotIgnoredCallbackRequestBody.java
-USAGE.md
 docs/models/operations/PutAnythingIgnoredGenerationResponseBody.md
 docs/models/operations/PutAnythingIgnoredGenerationResponse.md
 docs/models/operations/ResponseBodyJsonGetResponse.md
@@ -1006,6 +1013,11 @@ docs/models/operations/File.md
 docs/models/operations/RequestBodyPutMultipartFileRequestBody.md
 docs/models/operations/RequestBodyPutMultipartFileRes.md
 docs/models/operations/RequestBodyPutMultipartFileResponse.md
+docs/models/operations/SampleFile.md
+docs/models/operations/RequestBodyPutMultipartOptionalRequestBodyRequestBody.md
+docs/models/operations/RequestBodyPutMultipartOptionalRequestBodyForm.md
+docs/models/operations/RequestBodyPutMultipartOptionalRequestBodyRes.md
+docs/models/operations/RequestBodyPutMultipartOptionalRequestBodyResponse.md
 docs/models/operations/RequestBodyPutMultipartSimpleForm.md
 docs/models/operations/RequestBodyPutMultipartSimpleHeaders.md
 docs/models/operations/RequestBodyPutMultipartSimpleRes.md
@@ -1023,6 +1035,8 @@ docs/models/operations/RequestBodyReadWriteOnlyUnionResponse.md
 docs/models/operations/RequestBodyWriteOnlyResponse.md
 docs/models/operations/RequestBodyWriteOnlyOutputResponse.md
 docs/models/operations/RequestBodyWriteOnlyUnionResponse.md
+docs/models/operations/ResponseBodyAdditionalPropertiesAnyPostResponseBody.md
+docs/models/operations/ResponseBodyAdditionalPropertiesAnyPostResponse.md
 docs/models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody.md
 docs/models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse.md
 docs/models/operations/ResponseBodyAdditionalPropertiesDatePostResponseBody.md
@@ -1204,3 +1218,4 @@ docs/sdks/first/README.md
 docs/sdks/second/README.md
 docs/sdks/pagination/README.md
 docs/sdks/retries/README.md
+USAGE.md
