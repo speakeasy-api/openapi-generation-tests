@@ -109,10 +109,9 @@ public class Servers {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.SelectGlobalServerResponse res = new org.openapis.openapi.models.operations.SelectGlobalServerResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.SelectGlobalServerResponse res = new org.openapis.openapi.models.operations.SelectGlobalServerResponse(contentType, null, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             res.headers = httpRes.headers().map().keySet().stream().collect(Collectors.toMap(Function.identity(), k -> httpRes.headers().allValues(k).toArray(new String[0])));
@@ -157,10 +156,9 @@ public class Servers {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.SelectServerWithIDResponse res = new org.openapis.openapi.models.operations.SelectServerWithIDResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.SelectServerWithIDResponse res = new org.openapis.openapi.models.operations.SelectServerWithIDResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
         }
@@ -196,10 +194,9 @@ public class Servers {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.ServerWithProtocolTemplateResponse res = new org.openapis.openapi.models.operations.ServerWithProtocolTemplateResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.ServerWithProtocolTemplateResponse res = new org.openapis.openapi.models.operations.ServerWithProtocolTemplateResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
         }
@@ -234,10 +231,9 @@ public class Servers {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.ServerWithTemplatesResponse res = new org.openapis.openapi.models.operations.ServerWithTemplatesResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.ServerWithTemplatesResponse res = new org.openapis.openapi.models.operations.ServerWithTemplatesResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
         }
@@ -261,10 +257,9 @@ public class Servers {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.ServerWithTemplatesGlobalResponse res = new org.openapis.openapi.models.operations.ServerWithTemplatesGlobalResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.ServerWithTemplatesGlobalResponse res = new org.openapis.openapi.models.operations.ServerWithTemplatesGlobalResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
         }
@@ -299,10 +294,9 @@ public class Servers {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.ServersByIDWithTemplatesResponse res = new org.openapis.openapi.models.operations.ServersByIDWithTemplatesResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.ServersByIDWithTemplatesResponse res = new org.openapis.openapi.models.operations.ServersByIDWithTemplatesResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
         }
