@@ -37,7 +37,7 @@ export class DeprecatedObjectInSchemaGetResponse extends SpeakeasyBase {
      * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
+    rawResponse: AxiosResponse;
 
     /**
      * A successful response that contains a deprecatedObject sent in the request body
