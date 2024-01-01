@@ -16,6 +16,16 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func TestNoAuth(t *testing.T) {
+	recordTest("auth-no-auth")
+
+	s := sdk.New()
+	res, err := s.Auth.NoAuth(context.Background())
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+}
+
 func TestBasicAuth(t *testing.T) {
 	recordTest("auth-basic-auth")
 

@@ -31,10 +31,10 @@ Endpoints for testing union types.
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -76,7 +76,7 @@ func main() {
 **[*operations.FlattenedTypedObjectPostResponse](../../pkg/models/operations/flattenedtypedobjectpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MixedTypeOneOfPost
 
@@ -86,13 +86,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
-	"math/big"
-	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -131,7 +128,7 @@ func main() {
 **[*operations.MixedTypeOneOfPostResponse](../../pkg/models/operations/mixedtypeoneofpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## NullableOneOfRefInObjectPost
 
@@ -141,10 +138,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -198,7 +195,7 @@ func main() {
 **[*operations.NullableOneOfRefInObjectPostResponse](../../pkg/models/operations/nullableoneofrefinobjectpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## NullableOneOfSchemaPost
 
@@ -208,11 +205,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -254,7 +250,7 @@ func main() {
 **[*operations.NullableOneOfSchemaPostResponse](../../pkg/models/operations/nullableoneofschemapostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## NullableOneOfTypeInObjectPost
 
@@ -264,10 +260,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -310,7 +306,7 @@ func main() {
 **[*operations.NullableOneOfTypeInObjectPostResponse](../../pkg/models/operations/nullableoneoftypeinobjectpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## NullableTypedObjectPost
 
@@ -320,10 +316,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -363,7 +359,7 @@ func main() {
 **[*operations.NullableTypedObjectPostResponse](../../pkg/models/operations/nullabletypedobjectpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## PrimitiveTypeOneOfPost
 
@@ -373,11 +369,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -416,7 +411,7 @@ func main() {
 **[*operations.PrimitiveTypeOneOfPostResponse](../../pkg/models/operations/primitivetypeoneofpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## StronglyTypedOneOfPost
 
@@ -426,12 +421,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -454,7 +449,7 @@ func main() {
                             Bool: true,
                             BoolOpt: openapi.Bool(true),
                             Date: types.MustDateFromString("2020-01-01"),
-                            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                             Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                             DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                             Enum: shared.EnumOne,
@@ -476,7 +471,7 @@ func main() {
                         Bool: true,
                         BoolOpt: openapi.Bool(true),
                         Date: types.MustDateFromString("2020-01-01"),
-                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                         Enum: shared.EnumOne,
@@ -496,7 +491,7 @@ func main() {
                         Bool: true,
                         BoolOpt: openapi.Bool(true),
                         Date: types.MustDateFromString("2020-01-01"),
-                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                         Enum: shared.EnumOne,
@@ -520,7 +515,7 @@ func main() {
                         Bool: true,
                         BoolOpt: openapi.Bool(true),
                         Date: types.MustDateFromString("2020-01-01"),
-                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                         Enum: shared.EnumOne,
@@ -540,7 +535,7 @@ func main() {
                         Bool: true,
                         BoolOpt: openapi.Bool(true),
                         Date: types.MustDateFromString("2020-01-01"),
-                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                         Enum: shared.EnumOne,
@@ -562,7 +557,7 @@ func main() {
                     Bool: true,
                     BoolOpt: openapi.Bool(true),
                     Date: types.MustDateFromString("2020-01-01"),
-                    DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                    DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                     Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                     DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                     Enum: shared.EnumOne,
@@ -601,7 +596,7 @@ func main() {
 **[*operations.StronglyTypedOneOfPostResponse](../../pkg/models/operations/stronglytypedoneofpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## TypedObjectNullableOneOfPost
 
@@ -611,10 +606,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -656,7 +651,7 @@ func main() {
 **[*operations.TypedObjectNullableOneOfPostResponse](../../pkg/models/operations/typedobjectnullableoneofpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## TypedObjectOneOfPost
 
@@ -666,10 +661,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -711,7 +706,7 @@ func main() {
 **[*operations.TypedObjectOneOfPostResponse](../../pkg/models/operations/typedobjectoneofpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UnionBigIntDecimal
 
@@ -721,13 +716,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
-	"math/big"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -766,7 +759,7 @@ func main() {
 **[*operations.UnionBigIntDecimalResponse](../../pkg/models/operations/unionbigintdecimalresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UnionDateNull
 
@@ -776,11 +769,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -793,7 +786,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Unions.UnionDateNull(ctx, &types.MustDateFromString("2022-11-25"))
+    res, err := s.Unions.UnionDateNull(ctx, &types.MustDateFromString("2023-11-26"))
     if err != nil {
         log.Fatal(err)
     }
@@ -817,7 +810,7 @@ func main() {
 **[*operations.UnionDateNullResponse](../../pkg/models/operations/uniondatenullresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UnionDateTimeBigInt
 
@@ -827,13 +820,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
-	"math/big"
+	"log"
 )
 
 func main() {
@@ -847,7 +838,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Unions.UnionDateTimeBigInt(ctx, operations.CreateUnionDateTimeBigIntRequestBodyDateTime(
-    types.MustTimeFromString("2021-06-19T18:26:42.874Z"),
+    types.MustTimeFromString("2022-06-19T22:09:58.311Z"),
     ))
     if err != nil {
         log.Fatal(err)
@@ -872,7 +863,7 @@ func main() {
 **[*operations.UnionDateTimeBigIntResponse](../../pkg/models/operations/uniondatetimebigintresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UnionDateTimeNull
 
@@ -882,11 +873,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -899,7 +890,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Unions.UnionDateTimeNull(ctx, &types.MustTimeFromString("2022-04-12T19:39:53.907Z"))
+    res, err := s.Unions.UnionDateTimeNull(ctx, &types.MustTimeFromString("2023-04-13T05:53:47.874Z"))
     if err != nil {
         log.Fatal(err)
     }
@@ -923,7 +914,7 @@ func main() {
 **[*operations.UnionDateTimeNullResponse](../../pkg/models/operations/uniondatetimenullresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## WeaklyTypedOneOfPost
 
@@ -933,12 +924,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -959,7 +950,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -996,4 +987,4 @@ func main() {
 **[*operations.WeaklyTypedOneOfPostResponse](../../pkg/models/operations/weaklytypedoneofpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

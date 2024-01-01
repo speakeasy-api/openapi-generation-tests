@@ -24,7 +24,7 @@ class Flattening:
         
         url = base_url + '/anything/flattening/componentBodyAndParamConflict'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "simple_object", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.ComponentBodyAndParamConflictRequest, "simple_object", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -40,7 +40,7 @@ class Flattening:
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ComponentBodyAndParamConflictResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -66,7 +66,7 @@ class Flattening:
         
         url = base_url + '/anything/flattening/componentBodyAndParamNoConflict'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "simple_object", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.ComponentBodyAndParamNoConflictRequest, "simple_object", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -82,7 +82,7 @@ class Flattening:
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ComponentBodyAndParamNoConflictResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -119,7 +119,7 @@ class Flattening:
         
         http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ConflictingParamsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -145,7 +145,7 @@ class Flattening:
         
         url = base_url + '/anything/flattening/inlineBodyAndParamConflict'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.InlineBodyAndParamConflictRequest, "request_body", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -161,7 +161,7 @@ class Flattening:
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.InlineBodyAndParamConflictResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -187,7 +187,7 @@ class Flattening:
         
         url = base_url + '/anything/flattening/inlineBodyAndParamNoConflict'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.InlineBodyAndParamNoConflictRequest, "request_body", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -203,7 +203,7 @@ class Flattening:
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.InlineBodyAndParamNoConflictResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
