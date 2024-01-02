@@ -1,8 +1,10 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```typescript
 import { SDK } from "openapi";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
+import { RFCDate } from "openapi/dist/sdk/types";
 
-(async () => {
+async function run() {
     const sdk = new SDK({
         security: {
             apiKeyAuth: "Token YOUR_API_KEY",
@@ -11,12 +13,56 @@ import { SDK } from "openapi";
         globalQueryParam: "some example global query param",
     });
 
-    const res = await sdk.generation.globalNameOverridden();
+    const res = await sdk.generation.globalNameOverridden({
+        any: "any",
+        bigint: 8821239038968084,
+        bigintStr: "9223372036854775808",
+        bool: true,
+        boolOpt: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
+        decimal: 3.141592653589793,
+        decimalStr: "3.14159265358979344719667586",
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
+        num: 1.1,
+        str: "test",
+        strOpt: "testOptional",
+    });
 
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
+
+```
+
+```typescript
+import { SDK } from "openapi";
+
+async function run() {
+    const sdk = new SDK({
+        security: {
+            apiKeyAuth: "Token YOUR_API_KEY",
+        },
+        globalPathParam: 100,
+        globalQueryParam: "some example global query param",
+    });
+
+    const res = await sdk.servers.selectGlobalServer();
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+}
+
+run();
 
 ```
 
@@ -34,7 +80,7 @@ import {
 import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async () => {
+async function run() {
     const sdk = new SDK({
         globalPathParam: 100,
         globalQueryParam: "some example global query param",
@@ -56,7 +102,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
                     bool: true,
                     boolOpt: true,
                     date: new RFCDate("2020-01-01"),
-                    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+                    dateTime: new Date("2020-01-01T00:00:00.000001Z"),
                     decimal: 3.141592653589793,
                     decimalStr: "3.14159265358979344719667586",
                     enum: Enum.One,
@@ -73,9 +119,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
             bigintParameter: 168827,
             bigintStrParameter: "string",
             boolParameter: false,
-            dateParameter: new RFCDate("2022-05-05"),
-            dateTimeDefaultParameter: new Date("2023-06-11T00:39:45.412Z"),
-            dateTimeParameter: new Date("2022-07-22T13:16:48.221Z"),
+            dateParameter: new RFCDate("2023-05-05"),
+            dateTimeDefaultParameter: new Date("2024-06-10T20:11:31.153Z"),
+            dateTimeParameter: new Date("2023-07-23T01:43:10.512Z"),
             decimalParameter: 2679.33,
             decimalStrParameter: "string",
             doubleParameter: 5223.72,
@@ -94,7 +140,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

@@ -46,11 +46,10 @@ public class Globals {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.GlobalPathParameterGetResponse res = new org.openapis.openapi.models.operations.GlobalPathParameterGetResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.GlobalPathParameterGetResponse res = new org.openapis.openapi.models.operations.GlobalPathParameterGetResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -92,11 +91,10 @@ public class Globals {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.GlobalsQueryParameterGetResponse res = new org.openapis.openapi.models.operations.GlobalsQueryParameterGetResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.GlobalsQueryParameterGetResponse res = new org.openapis.openapi.models.operations.GlobalsQueryParameterGetResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
