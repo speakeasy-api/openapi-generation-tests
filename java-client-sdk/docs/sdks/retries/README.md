@@ -25,14 +25,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RetriesGetResponse res = sdk.retries.retriesGet("string", 75342L);
+            org.openapis.openapi.models.operations.RetriesGetResponse res = sdk.retries.retriesGet("string", 75342L);
 
             if (res.retries != null) {
                 // handle response
