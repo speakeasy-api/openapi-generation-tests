@@ -37,7 +37,8 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ApiKeyAuthResponse res = sdk.auth.apiKeyAuth(new ApiKeyAuthSecurity("Token YOUR_API_KEY"){{
+            org.openapis.openapi.models.operations.ApiKeyAuthResponse res = sdk.auth.apiKeyAuth(new ApiKeyAuthSecurity(
+            "Token YOUR_API_KEY"){{
                 apiKeyAuth = "Token YOUR_API_KEY";
             }});
 
@@ -78,14 +79,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ApiKeyAuthGlobalResponse res = sdk.auth.apiKeyAuthGlobal();
+            org.openapis.openapi.models.operations.ApiKeyAuthGlobalResponse res = sdk.auth.apiKeyAuthGlobal();
 
             if (res.token != null) {
                 // handle response
@@ -124,7 +126,9 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            BasicAuthResponse res = sdk.auth.basicAuth(new BasicAuthSecurity("YOUR_PASSWORD", "YOUR_USERNAME"){{
+            org.openapis.openapi.models.operations.BasicAuthResponse res = sdk.auth.basicAuth(new BasicAuthSecurity(
+            "YOUR_PASSWORD",
+            "YOUR_USERNAME"){{
                 password = "YOUR_PASSWORD";
                 username = "YOUR_USERNAME";
             }}, "string", "string");
@@ -173,7 +177,8 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            BearerAuthResponse res = sdk.auth.bearerAuth(new BearerAuthSecurity("YOUR_JWT"){{
+            org.openapis.openapi.models.operations.BearerAuthResponse res = sdk.auth.bearerAuth(new BearerAuthSecurity(
+            "YOUR_JWT"){{
                 bearerAuth = "YOUR_JWT";
             }});
 
@@ -214,14 +219,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GlobalBearerAuthResponse res = sdk.auth.globalBearerAuth();
+            org.openapis.openapi.models.operations.GlobalBearerAuthResponse res = sdk.auth.globalBearerAuth();
 
             if (res.token != null) {
                 // handle response
@@ -254,14 +260,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            NoAuthResponse res = sdk.auth.noAuth();
+            org.openapis.openapi.models.operations.NoAuthResponse res = sdk.auth.noAuth();
 
             if (res.statusCode == 200) {
                 // handle response
@@ -299,7 +306,8 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            Oauth2AuthResponse res = sdk.auth.oauth2Auth(new Oauth2AuthSecurity("Bearer YOUR_OAUTH2_TOKEN"){{
+            org.openapis.openapi.models.operations.Oauth2AuthResponse res = sdk.auth.oauth2Auth(new Oauth2AuthSecurity(
+            "Bearer YOUR_OAUTH2_TOKEN"){{
                 oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
             }});
 
@@ -346,7 +354,8 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            Oauth2OverrideResponse res = sdk.auth.oauth2Override(new Oauth2OverrideSecurity("Bearer YOUR_OAUTH2_TOKEN"){{
+            org.openapis.openapi.models.operations.Oauth2OverrideResponse res = sdk.auth.oauth2Override(new Oauth2OverrideSecurity(
+            "Bearer YOUR_OAUTH2_TOKEN"){{
                 oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
             }});
 
@@ -392,7 +401,8 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            OpenIdConnectAuthResponse res = sdk.auth.openIdConnectAuth(new OpenIdConnectAuthSecurity("Bearer YOUR_OPENID_TOKEN"){{
+            org.openapis.openapi.models.operations.OpenIdConnectAuthResponse res = sdk.auth.openIdConnectAuth(new OpenIdConnectAuthSecurity(
+            "Bearer YOUR_OPENID_TOKEN"){{
                 openIdConnect = "Bearer YOUR_OPENID_TOKEN";
             }});
 

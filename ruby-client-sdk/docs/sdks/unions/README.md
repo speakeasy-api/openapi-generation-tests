@@ -31,17 +31,18 @@ Endpoints for testing union types.
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = ::.new(
-  request="string",
-)
+
+req = "string"
     
 res = s.unions.flattened_typed_object_post(req)
 
@@ -71,17 +72,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = ::.new(
-  request="string",
-)
+
+req = "string"
     
 res = s.unions.mixed_type_one_of_post(req)
 
@@ -111,23 +113,24 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Shared::NullableOneOfRefInObject.new(
-  request=Shared::NullableOneOfRefInObject.new(
-    nullable_one_of_one=Shared::TypedObject1.new(
-      type=Shared::Type::OBJ1,
-      value="string",
-    ),
-    nullable_one_of_two="string",
-    one_of_one="string",
+  nullable_one_of_one=Shared::TypedObject1.new(
+    type=Shared::Type::OBJ1,
+    value="string",
   ),
+  nullable_one_of_two="string",
+  one_of_one="string",
 )
     
 res = s.unions.nullable_one_of_ref_in_object_post(req)
@@ -158,17 +161,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = ::.new(
-  request="string",
-)
+
+req = "string"
     
 res = s.unions.nullable_one_of_schema_post(req)
 
@@ -198,20 +202,21 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Shared::NullableOneOfTypeInObject.new(
-  request=Shared::NullableOneOfTypeInObject.new(
-    nullable_one_of_one=false,
-    nullable_one_of_two="string",
-    one_of_one=false,
-  ),
+  nullable_one_of_one=false,
+  nullable_one_of_two="string",
+  one_of_one=false,
 )
     
 res = s.unions.nullable_one_of_type_in_object_post(req)
@@ -242,19 +247,20 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Shared::TypedObject1.new(
-  request=Shared::TypedObject1.new(
-    type=Shared::Type::OBJ1,
-    value="string",
-  ),
+  type=Shared::Type::OBJ1,
+  value="string",
 )
     
 res = s.unions.nullable_typed_object_post(req)
@@ -285,17 +291,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = ::.new(
-  request="string",
-)
+
+req = "string"
     
 res = s.unions.primitive_type_one_of_post(req)
 
@@ -325,17 +332,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = ::.new(
-  request="string",
-)
+
+req = "string"
     
 res = s.unions.strongly_typed_one_of_post(req)
 
@@ -365,17 +373,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = ::.new(
-  request="string",
-)
+
+req = "string"
     
 res = s.unions.typed_object_nullable_one_of_post(req)
 
@@ -405,17 +414,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = ::.new(
-  request="string",
-)
+
+req = "string"
     
 res = s.unions.typed_object_one_of_post(req)
 
@@ -445,17 +455,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = ::.new(
-  request="string",
-)
+
+req = "string"
     
 res = s.unions.union_big_int_decimal(req)
 
@@ -485,17 +496,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = ::.new(
-  request=Date.parse("2022-11-25"),
-)
+
+req = Date.parse("2023-11-26")
     
 res = s.unions.union_date_null(req)
 
@@ -525,17 +537,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = ::.new(
-  request="string",
-)
+
+req = "string"
     
 res = s.unions.union_date_time_big_int(req)
 
@@ -565,17 +578,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = ::.new(
-  request=DateTime.iso8601('2022-04-12T19:39:53.907Z'),
-)
+
+req = DateTime.iso8601('2023-04-13T05:53:47.874Z')
     
 res = s.unions.union_date_time_null(req)
 
@@ -605,17 +619,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = ::.new(
-  request="string",
-)
+
+req = "string"
     
 res = s.unions.weakly_typed_one_of_post(req)
 
