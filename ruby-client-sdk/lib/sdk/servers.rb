@@ -64,8 +64,7 @@ module OpenApiSDK
       res = Operations::SelectServerWithIDResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if r.status == 200
-      end
+      
       res
     end
 
@@ -93,8 +92,7 @@ module OpenApiSDK
       res = Operations::ServerWithProtocolTemplateResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if r.status == 200
-      end
+      
       res
     end
 
@@ -121,8 +119,7 @@ module OpenApiSDK
       res = Operations::ServerWithTemplatesResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if r.status == 200
-      end
+      
       res
     end
 
@@ -146,8 +143,7 @@ module OpenApiSDK
       res = Operations::ServerWithTemplatesGlobalResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if r.status == 200
-      end
+      
       res
     end
 
@@ -174,8 +170,7 @@ module OpenApiSDK
       res = Operations::ServersByIDWithTemplatesResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if r.status == 200
-      end
+      
       res
     end
   end

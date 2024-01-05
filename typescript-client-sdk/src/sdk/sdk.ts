@@ -104,14 +104,14 @@ export type SDKProps = {
     port?: string;
 
     /**
-     * Allows setting the protocol variable for url substitution
-     */
-    protocol?: string;
-
-    /**
      * Allows setting the something variable for url substitution
      */
     something?: ServerSomething;
+
+    /**
+     * Allows setting the protocol variable for url substitution
+     */
+    protocol?: string;
 
     /**
      * Allows overriding the default server URL used by the SDK
@@ -130,9 +130,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.1.0";
-    sdkVersion = "2.1.2";
-    genVersion = "2.188.3";
-    userAgent = "speakeasy-sdk/typescript 2.1.2 2.188.3 0.1.0 openapi";
+    sdkVersion = "3.0.0";
+    genVersion = "2.226.1";
+    userAgent = "speakeasy-sdk/typescript 3.0.0 2.226.1 0.1.0 openapi";
     globals: any;
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
@@ -200,11 +200,11 @@ export class SDK {
      * Endpoints for testing authentication.
      */
     public authNew: AuthNew;
+    public resource: Resource;
     /**
      * Testing for documentation extensions in TypeScript.
      */
     public documentation: Documentation;
-    public resource: Resource;
     public first: First;
     public second: Second;
     /**
@@ -278,8 +278,8 @@ export class SDK {
         this.servers = new Servers(this.sdkConfiguration);
         this.telemetry = new Telemetry(this.sdkConfiguration);
         this.authNew = new AuthNew(this.sdkConfiguration);
-        this.documentation = new Documentation(this.sdkConfiguration);
         this.resource = new Resource(this.sdkConfiguration);
+        this.documentation = new Documentation(this.sdkConfiguration);
         this.first = new First(this.sdkConfiguration);
         this.second = new Second(this.sdkConfiguration);
         this.pagination = new Pagination(this.sdkConfiguration);

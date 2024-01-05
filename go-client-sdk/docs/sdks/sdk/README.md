@@ -21,10 +21,10 @@ Speakeasy Docs
 package main
 
 import(
+	"openapi/v3/pkg/models/shared"
+	openapi "openapi/v3"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -61,7 +61,7 @@ func main() {
 **[*operations.PutAnythingIgnoredGenerationResponse](../../pkg/models/operations/putanythingignoredgenerationresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ResponseBodyJSONGet
 
@@ -71,10 +71,10 @@ func main() {
 package main
 
 import(
+	"openapi/v3/pkg/models/shared"
+	openapi "openapi/v3"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -110,4 +110,4 @@ func main() {
 **[*operations.ResponseBodyJSONGetResponse](../../pkg/models/operations/responsebodyjsongetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

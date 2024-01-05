@@ -4,7 +4,7 @@ package shared
 
 import (
 	"math/big"
-	"openapi/v2/pkg/utils"
+	"openapi/v3/pkg/utils"
 )
 
 type ObjWithComplexNumbersAdditionalProperties struct {

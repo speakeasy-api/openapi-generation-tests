@@ -22,11 +22,11 @@ Endpoints for testing the pagination extension
 package main
 
 import(
+	"openapi/v3/pkg/models/shared"
+	openapi "openapi/v3"
 	"context"
+	"openapi/v3/pkg/models/operations"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -74,7 +74,7 @@ func main() {
 **[*operations.PaginationCursorBodyResponse](../../pkg/models/operations/paginationcursorbodyresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## PaginationCursorParams
 
@@ -84,10 +84,10 @@ func main() {
 package main
 
 import(
+	"openapi/v3/pkg/models/shared"
+	openapi "openapi/v3"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -136,7 +136,7 @@ func main() {
 **[*operations.PaginationCursorParamsResponse](../../pkg/models/operations/paginationcursorparamsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## PaginationLimitOffsetOffsetBody
 
@@ -146,10 +146,10 @@ func main() {
 package main
 
 import(
+	"openapi/v3/pkg/models/shared"
+	openapi "openapi/v3"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -195,7 +195,7 @@ func main() {
 **[*operations.PaginationLimitOffsetOffsetBodyResponse](../../pkg/models/operations/paginationlimitoffsetoffsetbodyresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## PaginationLimitOffsetOffsetParams
 
@@ -205,10 +205,10 @@ func main() {
 package main
 
 import(
+	"openapi/v3/pkg/models/shared"
+	openapi "openapi/v3"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -260,7 +260,7 @@ func main() {
 **[*operations.PaginationLimitOffsetOffsetParamsResponse](../../pkg/models/operations/paginationlimitoffsetoffsetparamsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## PaginationLimitOffsetPageBody
 
@@ -270,10 +270,10 @@ func main() {
 package main
 
 import(
+	"openapi/v3/pkg/models/shared"
+	openapi "openapi/v3"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -319,7 +319,7 @@ func main() {
 **[*operations.PaginationLimitOffsetPageBodyResponse](../../pkg/models/operations/paginationlimitoffsetpagebodyresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## PaginationLimitOffsetPageParams
 
@@ -329,10 +329,10 @@ func main() {
 package main
 
 import(
+	"openapi/v3/pkg/models/shared"
+	openapi "openapi/v3"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -381,4 +381,4 @@ func main() {
 **[*operations.PaginationLimitOffsetPageParamsResponse](../../pkg/models/operations/paginationlimitoffsetpageparamsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

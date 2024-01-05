@@ -6,6 +6,7 @@
 * [create_file](#create_file)
 * [create_resource](#create_resource)
 * [delete_resource](#delete_resource)
+* [get_array_data_source](#get_array_data_source)
 * [get_resource](#get_resource)
 * [update_resource](#update_resource)
 
@@ -17,20 +18,21 @@
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Operations::CreateFileRequestBody.new(
-  request=Operations::CreateFileRequestBody.new(
-    file=Operations::CreateFileFile.new(
-      content="0xf10df1a3b9".encode(),
-      file_name="rap_national.mp4v",
-    ),
+  file=Operations::CreateFileFile.new(
+    content="0xf10df1a3b9".encode(),
+    file_name="rap_national.mp4v",
   ),
 )
     
@@ -62,45 +64,39 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Shared::ExampleResource.new(
-  request=Shared::ExampleResource.new(
-    array_of_number=.new[
-      1867.47,
-    ],
-    array_of_string=.new[
-      "string",
-    ],
-    chocolates=.new[
-      Shared::Chocolates.new(
-        description="Re-engineered asynchronous array",
-      ),
-    ],
-    created_at=DateTime.iso8601('2021-10-25T14:40:21.269Z'),
-    enum_number=Shared::EnumNumber::THREE,
-    enum_str=Shared::EnumStr::TWO,
-    id="<ID>",
-    inline_object=Shared::InlineObject.new(
-      inline_name="string",
+  array_of_number=[
+    1867.47,
+  ],
+  array_of_string=[
+    "string",
+  ],
+  chocolates=[
+    Shared::Chocolates.new(
+      description="Re-engineered asynchronous array",
     ),
-    map_of_integer=.new{
-      "Florida": 967142,
-    },
-    map_of_string=.new{
-      "Elmo": "string",
-    },
-    name="string",
-    name_prefix="string",
-    updated_at=DateTime.iso8601('2022-06-22T17:48:04.355Z'),
-    vehicle="string",
-  ),
+  ],
+  id="<ID>",
+  inline_object=Shared::InlineObject.new(),
+  map_of_integer={
+    "Unbranded": 967142,
+  },
+  map_of_string={
+    "Elmo": "string",
+  },
+  name="string",
+  vehicle="string",
 )
     
 res = s.resource.create_resource(req)
@@ -131,21 +127,22 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Operations::DeleteResourceRequest.new(
-  path_params=Operations::DeleteResourceRequest.new(
-    resource_id="string",
-  ),
+  resource_id="string",
 )
     
-res = s.resource.delete_resource(req)
+res = s.resource.delete_resource(resource_id="string")
 
 if res.status == 200
   # handle response
@@ -165,6 +162,49 @@ end
 **[T.nilable(Operations::DeleteResourceResponse)](../../models/operations/deleteresourceresponse.md)**
 
 
+## get_array_data_source
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth="Token YOUR_API_KEY",
+  )
+)
+
+
+req = Operations::GetArrayDataSourceRequest.new(
+  filter="string",
+)
+    
+res = s.resource.get_array_data_source(filter="string")
+
+if ! res.array_data_source.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `filter`           | *String*           | :heavy_check_mark: | N/A                |
+
+
+### Response
+
+**[T.nilable(Operations::GetArrayDataSourceResponse)](../../models/operations/getarraydatasourceresponse.md)**
+
+
 ## get_resource
 
 ### Example Usage
@@ -173,21 +213,22 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Operations::GetResourceRequest.new(
-  path_params=Operations::GetResourceRequest.new(
-    resource_id="string",
-  ),
+  resource_id="string",
 )
     
-res = s.resource.get_resource(req)
+res = s.resource.get_resource(resource_id="string")
 
 if ! res.example_resource.nil?
   # handle response
@@ -215,21 +256,23 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Operations::UpdateResourceRequest.new(
-  path_params=Operations::UpdateResourceRequest.new(
-    resource_id="string",
-  ),
+  augment="string",
+  resource_id="string",
 )
     
-res = s.resource.update_resource(req)
+res = s.resource.update_resource(augment="string", resource_id="string")
 
 if res.status == 200
   # handle response
@@ -241,6 +284,7 @@ end
 
 | Parameter          | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `augment`          | *String*           | :heavy_check_mark: | N/A                |
 | `resource_id`      | *String*           | :heavy_check_mark: | N/A                |
 
 
