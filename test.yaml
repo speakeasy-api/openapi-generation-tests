@@ -6046,7 +6046,26 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/FileResource"
-  /resource/{resourceId}:
+  /datasource/array:
+    get:
+      x-speakeasy-entity-operation: ArrayDataSource#read
+      operationId: getArrayDataSource
+      tags:
+        - resource
+      parameters:
+        - name: filter
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ArrayDataSource"
+  /resource/object/{resourceId}:
     get:
       x-speakeasy-entity-operation: ExampleResource#read
       operationId: getResource
@@ -6067,7 +6086,9 @@ paths:
               schema:
                 $ref: "#/components/schemas/ExampleResource"
     post:
-      x-speakeasy-entity-operation: ExampleResource#update
+      x-speakeasy-entity-operation:
+        - ExampleResource#create#2
+        - ExampleResource#update
       operationId: updateResource
       tags:
         - resource
@@ -6075,6 +6096,11 @@ paths:
         - name: resourceId
           in: path
           x-speakeasy-match: id
+          schema:
+            type: string
+          required: true
+        - name: augment
+          in: query
           schema:
             type: string
           required: true
@@ -6241,6 +6267,11 @@ components:
           type: string
       required:
         - id
+    ArrayDataSource:
+      x-speakeasy-entity: ArrayDataSource
+      type: array
+      items:
+        type: string
     ExampleResource:
       x-speakeasy-entity: ExampleResource
       type: object
