@@ -104,14 +104,14 @@ export type SDKProps = {
     port?: string;
 
     /**
-     * Allows setting the protocol variable for url substitution
-     */
-    protocol?: string;
-
-    /**
      * Allows setting the something variable for url substitution
      */
     something?: ServerSomething;
+
+    /**
+     * Allows setting the protocol variable for url substitution
+     */
+    protocol?: string;
 
     /**
      * Allows overriding the default server URL used by the SDK
@@ -131,8 +131,8 @@ export class SDKConfiguration {
     language = "typescript";
     openapiDocVersion = "0.1.0";
     sdkVersion = "2.1.2";
-    genVersion = "2.188.3";
-    userAgent = "speakeasy-sdk/typescript 2.1.2 2.188.3 0.1.0 openapi";
+    genVersion = "2.225.2";
+    userAgent = "speakeasy-sdk/typescript 2.1.2 2.225.2 0.1.0 openapi";
     globals: any;
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
