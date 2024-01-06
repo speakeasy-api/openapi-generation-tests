@@ -27,27 +27,28 @@ Endpoints for testing authentication.
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Shared::AuthServiceRequestBody.new(
-  request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::BasicAuth.new(
-      password="owsGgP4_AhRPMSJ",
-      username="Devonte_Bins",
-    ),
-    header_auth=.new[
-      Shared::HeaderAuth.new(
-        expected_value="string",
-        header_name="string",
-      ),
-    ],
+  basic_auth=Shared::BasicAuth.new(
+    password="owsGgP4_AhRPMSJ",
+    username="Devonte_Bins",
   ),
+  header_auth=[
+    Shared::HeaderAuth.new(
+      expected_value="string",
+      header_name="string",
+    ),
+  ],
 )
     
 res = s.auth_new.api_key_auth_global_new(req)
@@ -79,27 +80,28 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Shared::AuthServiceRequestBody.new(
-  request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::BasicAuth.new(
-      password="xvJcf9GiJNr7T2x",
-      username="Cory33",
-    ),
-    header_auth=.new[
-      Shared::HeaderAuth.new(
-        expected_value="string",
-        header_name="string",
-      ),
-    ],
+  basic_auth=Shared::BasicAuth.new(
+    password="xvJcf9GiJNr7T2x",
+    username="Cory33",
   ),
+  header_auth=[
+    Shared::HeaderAuth.new(
+      expected_value="string",
+      header_name="string",
+    ),
+  ],
 )
     
 res = s.auth_new.auth_global(req)
@@ -131,29 +133,29 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 
-   
+
 req = Shared::AuthServiceRequestBody.new(
-  security=Operations::BasicAuthNewSecurity.new(
-    password="YOUR_PASSWORD",
-    username="YOUR_USERNAME",
+  basic_auth=Shared::BasicAuth.new(
+    password="Z2OStPksFyrcGeu",
+    username="Ashton.Steuber27",
   ),
-  request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::BasicAuth.new(
-      password="Z2OStPksFyrcGeu",
-      username="Ashton.Steuber27",
+  header_auth=[
+    Shared::HeaderAuth.new(
+      expected_value="string",
+      header_name="string",
     ),
-    header_auth=.new[
-      Shared::HeaderAuth.new(
-        expected_value="string",
-        header_name="string",
-      ),
-    ],
-  ),
+  ],
 )
     
-res = s.auth_new.basic_auth_new(req)
+res = s.auth_new.basic_auth_new(req, Operations::BasicAuthNewSecurity.new(
+    password="YOUR_PASSWORD",
+    username="YOUR_USERNAME",
+  ))
 
 if res.status == 200
   # handle response
@@ -183,28 +185,28 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 
-   
+
 req = Shared::AuthServiceRequestBody.new(
-  security=Operations::MultipleMixedOptionsAuthSecurity.new(
-    api_key_auth_new=.foo"Token <YOUR_API_KEY>",
+  basic_auth=Shared::BasicAuth.new(
+    password="Iq1JSzG1wqLDz4v",
+    username="Ismael.Emmerich",
   ),
-  request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::BasicAuth.new(
-      password="Iq1JSzG1wqLDz4v",
-      username="Ismael.Emmerich",
+  header_auth=[
+    Shared::HeaderAuth.new(
+      expected_value="string",
+      header_name="string",
     ),
-    header_auth=.new[
-      Shared::HeaderAuth.new(
-        expected_value="string",
-        header_name="string",
-      ),
-    ],
-  ),
+  ],
 )
     
-res = s.auth_new.multiple_mixed_options_auth(req)
+res = s.auth_new.multiple_mixed_options_auth(req, Operations::MultipleMixedOptionsAuthSecurity.new(
+    api_key_auth_new="Token <YOUR_API_KEY>",
+  ))
 
 if res.status == 200
   # handle response
@@ -234,32 +236,32 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 
-   
+
 req = Shared::AuthServiceRequestBody.new(
-  security=Operations::MultipleMixedSchemeAuthSecurity.new(
-    api_key_auth_new=.foo"Token <YOUR_API_KEY>",
+  basic_auth=Shared::BasicAuth.new(
+    password="OcWVV5608IiaWJQ",
+    username="Kameron42",
+  ),
+  header_auth=[
+    Shared::HeaderAuth.new(
+      expected_value="string",
+      header_name="string",
+    ),
+  ],
+)
+    
+res = s.auth_new.multiple_mixed_scheme_auth(req, Operations::MultipleMixedSchemeAuthSecurity.new(
+    api_key_auth_new="Token <YOUR_API_KEY>",
     basic_auth=Shared::SchemeBasicAuth.new(
       password="YOUR_PASSWORD",
       username="YOUR_USERNAME",
     ),
-  ),
-  request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::BasicAuth.new(
-      password="OcWVV5608IiaWJQ",
-      username="Kameron42",
-    ),
-    header_auth=.new[
-      Shared::HeaderAuth.new(
-        expected_value="string",
-        header_name="string",
-      ),
-    ],
-  ),
-)
-    
-res = s.auth_new.multiple_mixed_scheme_auth(req)
+  ))
 
 if res.status == 200
   # handle response
@@ -289,31 +291,31 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 
-   
+
 req = Shared::AuthServiceRequestBody.new(
-  security=Operations::MultipleOptionsWithMixedSchemesAuthSecurity.new(
-    option1=Operations::MultipleOptionsWithMixedSchemesAuthSecurityOption1.new(
-      api_key_auth_new=.foo"Token <YOUR_API_KEY>",
-      oauth2="Bearer YOUR_OAUTH2_TOKEN",
-    ),
+  basic_auth=Shared::BasicAuth.new(
+    password="fpwNE90MyqKIrXk",
+    username="Caroline_Walsh",
   ),
-  request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::BasicAuth.new(
-      password="fpwNE90MyqKIrXk",
-      username="Caroline_Walsh",
+  header_auth=[
+    Shared::HeaderAuth.new(
+      expected_value="string",
+      header_name="string",
     ),
-    header_auth=.new[
-      Shared::HeaderAuth.new(
-        expected_value="string",
-        header_name="string",
-      ),
-    ],
-  ),
+  ],
 )
     
-res = s.auth_new.multiple_options_with_mixed_schemes_auth(req)
+res = s.auth_new.multiple_options_with_mixed_schemes_auth(req, Operations::MultipleOptionsWithMixedSchemesAuthSecurity.new(
+    option1=Operations::MultipleOptionsWithMixedSchemesAuthSecurityOption1.new(
+      api_key_auth_new="Token <YOUR_API_KEY>",
+      oauth2="Bearer YOUR_OAUTH2_TOKEN",
+    ),
+  ))
 
 if res.status == 200
   # handle response
@@ -343,31 +345,31 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 
-   
+
 req = Shared::AuthServiceRequestBody.new(
-  security=Operations::MultipleOptionsWithSimpleSchemesAuthSecurity.new(
-    option1=Operations::MultipleOptionsWithSimpleSchemesAuthSecurityOption1.new(
-      api_key_auth_new=.foo"Token <YOUR_API_KEY>",
-      oauth2="Bearer YOUR_OAUTH2_TOKEN",
-    ),
+  basic_auth=Shared::BasicAuth.new(
+    password="pibxDTiJSijK04Y",
+    username="Selena76",
   ),
-  request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::BasicAuth.new(
-      password="pibxDTiJSijK04Y",
-      username="Selena76",
+  header_auth=[
+    Shared::HeaderAuth.new(
+      expected_value="string",
+      header_name="string",
     ),
-    header_auth=.new[
-      Shared::HeaderAuth.new(
-        expected_value="string",
-        header_name="string",
-      ),
-    ],
-  ),
+  ],
 )
     
-res = s.auth_new.multiple_options_with_simple_schemes_auth(req)
+res = s.auth_new.multiple_options_with_simple_schemes_auth(req, Operations::MultipleOptionsWithSimpleSchemesAuthSecurity.new(
+    option1=Operations::MultipleOptionsWithSimpleSchemesAuthSecurityOption1.new(
+      api_key_auth_new="Token <YOUR_API_KEY>",
+      oauth2="Bearer YOUR_OAUTH2_TOKEN",
+    ),
+  ))
 
 if res.status == 200
   # handle response
@@ -397,28 +399,28 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 
-   
+
 req = Shared::AuthServiceRequestBody.new(
-  security=Operations::MultipleSimpleOptionsAuthSecurity.new(
-    api_key_auth_new=.foo"Token <YOUR_API_KEY>",
+  basic_auth=Shared::BasicAuth.new(
+    password="pzdKQgSGZSrUGNs",
+    username="Eryn51",
   ),
-  request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::BasicAuth.new(
-      password="pzdKQgSGZSrUGNs",
-      username="Eryn51",
+  header_auth=[
+    Shared::HeaderAuth.new(
+      expected_value="string",
+      header_name="string",
     ),
-    header_auth=.new[
-      Shared::HeaderAuth.new(
-        expected_value="string",
-        header_name="string",
-      ),
-    ],
-  ),
+  ],
 )
     
-res = s.auth_new.multiple_simple_options_auth(req)
+res = s.auth_new.multiple_simple_options_auth(req, Operations::MultipleSimpleOptionsAuthSecurity.new(
+    api_key_auth_new="Token <YOUR_API_KEY>",
+  ))
 
 if res.status == 200
   # handle response
@@ -448,29 +450,29 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 
-   
+
 req = Shared::AuthServiceRequestBody.new(
-  security=Operations::MultipleSimpleSchemeAuthSecurity.new(
-    api_key_auth_new=.foo"Token <YOUR_API_KEY>",
-    oauth2="Bearer YOUR_OAUTH2_TOKEN",
+  basic_auth=Shared::BasicAuth.new(
+    password="UrAsw466AAaYtr1",
+    username="Kenya.Baumbach",
   ),
-  request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::BasicAuth.new(
-      password="UrAsw466AAaYtr1",
-      username="Kenya.Baumbach",
+  header_auth=[
+    Shared::HeaderAuth.new(
+      expected_value="string",
+      header_name="string",
     ),
-    header_auth=.new[
-      Shared::HeaderAuth.new(
-        expected_value="string",
-        header_name="string",
-      ),
-    ],
-  ),
+  ],
 )
     
-res = s.auth_new.multiple_simple_scheme_auth(req)
+res = s.auth_new.multiple_simple_scheme_auth(req, Operations::MultipleSimpleSchemeAuthSecurity.new(
+    api_key_auth_new="Token <YOUR_API_KEY>",
+    oauth2="Bearer YOUR_OAUTH2_TOKEN",
+  ))
 
 if res.status == 200
   # handle response
@@ -500,28 +502,28 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 
-   
+
 req = Shared::AuthServiceRequestBody.new(
-  security=Operations::Oauth2AuthNewSecurity.new(
-    oauth2="Bearer YOUR_OAUTH2_TOKEN",
+  basic_auth=Shared::BasicAuth.new(
+    password="V02sHy2onRTMRgS",
+    username="Polly.Aufderhar78",
   ),
-  request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::BasicAuth.new(
-      password="V02sHy2onRTMRgS",
-      username="Polly.Aufderhar78",
+  header_auth=[
+    Shared::HeaderAuth.new(
+      expected_value="string",
+      header_name="string",
     ),
-    header_auth=.new[
-      Shared::HeaderAuth.new(
-        expected_value="string",
-        header_name="string",
-      ),
-    ],
-  ),
+  ],
 )
     
-res = s.auth_new.oauth2_auth_new(req)
+res = s.auth_new.oauth2_auth_new(req, Operations::Oauth2AuthNewSecurity.new(
+    oauth2="Bearer YOUR_OAUTH2_TOKEN",
+  ))
 
 if res.status == 200
   # handle response
@@ -551,28 +553,28 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 
-   
+
 req = Shared::AuthServiceRequestBody.new(
-  security=Operations::OpenIdConnectAuthNewSecurity.new(
-    open_id_connect="Bearer YOUR_OPENID_TOKEN",
+  basic_auth=Shared::BasicAuth.new(
+    password="1_B3hNdr8HC3AeS",
+    username="Floy_Heller",
   ),
-  request=Shared::AuthServiceRequestBody.new(
-    basic_auth=Shared::BasicAuth.new(
-      password="1_B3hNdr8HC3AeS",
-      username="Floy_Heller",
+  header_auth=[
+    Shared::HeaderAuth.new(
+      expected_value="string",
+      header_name="string",
     ),
-    header_auth=.new[
-      Shared::HeaderAuth.new(
-        expected_value="string",
-        header_name="string",
-      ),
-    ],
-  ),
+  ],
 )
     
-res = s.auth_new.open_id_connect_auth_new(req)
+res = s.auth_new.open_id_connect_auth_new(req, Operations::OpenIdConnectAuthNewSecurity.new(
+    open_id_connect="Bearer YOUR_OPENID_TOKEN",
+  ))
 
 if res.status == 200
   # handle response
