@@ -17,11 +17,23 @@ import {
   MultipleOptionsWithMixedSchemesAuthResponse,
   MultipleOptionsWithSimpleSchemesAuthResponse,
   MultipleSimpleSchemeAuthResponse,
+  NoAuthResponse,
   Oauth2AuthNewResponse,
   Oauth2OverrideSecurity,
   BearerAuthResponse,
 } from "../src/sdk/models/operations";
 import * as shared from "../src/sdk/models/shared";
+
+test("Test No Auth", async () => {
+  recordTest("auth-no-auth");
+
+  const sdk = new SDK({});
+
+  const res: NoAuthResponse = await sdk.auth.noAuth();
+
+  expect(res.statusCode).toBeDefined();
+  expect(res.statusCode).toBe(200);
+});
 
 test("Test Basic Auth", async () => {
   recordTest("auth-basic-auth");

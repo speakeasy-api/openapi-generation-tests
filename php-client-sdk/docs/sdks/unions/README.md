@@ -40,11 +40,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    'string';
 
     $response = $sdk->unions->flattenedTypedObjectPost($request);
 
@@ -85,11 +86,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    'string';
 
     $response = $sdk->unions->mixedTypeOneOfPost($request);
 
@@ -130,16 +132,17 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\NullableOneOfRefInObject();
+        $request = new Shared\NullableOneOfRefInObject();
     $request->nullableOneOfOne = new Shared\TypedObject1();
     $request->nullableOneOfOne->type = Shared\Type::Obj1;
     $request->nullableOneOfOne->value = 'string';
     $request->nullableOneOfTwo = 'string';
-    $request->oneOfOne = 'string';
+    $request->oneOfOne = 'string';;
 
     $response = $sdk->unions->nullableOneOfRefInObjectPost($request);
 
@@ -180,11 +183,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    'string';
 
     $response = $sdk->unions->nullableOneOfSchemaPost($request);
 
@@ -225,14 +229,15 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\NullableOneOfTypeInObject();
+        $request = new Shared\NullableOneOfTypeInObject();
     $request->nullableOneOfOne = false;
     $request->nullableOneOfTwo = 'string';
-    $request->oneOfOne = false;
+    $request->oneOfOne = false;;
 
     $response = $sdk->unions->nullableOneOfTypeInObjectPost($request);
 
@@ -273,13 +278,14 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\TypedObject1();
+        $request = new Shared\TypedObject1();
     $request->type = Shared\Type::Obj1;
-    $request->value = 'string';
+    $request->value = 'string';;
 
     $response = $sdk->unions->nullableTypedObjectPost($request);
 
@@ -320,11 +326,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    'string';
 
     $response = $sdk->unions->primitiveTypeOneOfPost($request);
 
@@ -365,11 +372,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    'string';
 
     $response = $sdk->unions->stronglyTypedOneOfPost($request);
 
@@ -410,11 +418,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    'string';
 
     $response = $sdk->unions->typedObjectNullableOneOfPost($request);
 
@@ -455,11 +464,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    'string';
 
     $response = $sdk->unions->typedObjectOneOfPost($request);
 
@@ -500,11 +510,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    'string';
 
     $response = $sdk->unions->unionBigIntDecimal($request);
 
@@ -545,11 +556,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-DateTime::createFromFormat('Y-m-d', '2022-11-25')
+    DateTime::createFromFormat('Y-m-d', '2023-11-26');
 
     $response = $sdk->unions->unionDateNull($request);
 
@@ -590,11 +602,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    'string';
 
     $response = $sdk->unions->unionDateTimeBigInt($request);
 
@@ -635,11 +648,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-04-12T19:39:53.907Z')
+    DateTime::createFromFormat('Y-m-d\TH:i:s+', '2023-04-13T05:53:47.874Z');
 
     $response = $sdk->unions->unionDateTimeNull($request);
 
@@ -680,11 +694,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    'string';
 
     $response = $sdk->unions->weaklyTypedOneOfPost($request);
 

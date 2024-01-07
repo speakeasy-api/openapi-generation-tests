@@ -28,7 +28,7 @@ final class TelemetryTest extends TestCase
         $this->assertNotNull($response);
         $this->assertEquals(200, $response->statusCode);
         $this->assertEquals(
-            'speakeasy-sdk/php 2.1.1 2.188.3 0.1.0 openapi/openapi',
+            'speakeasy-sdk/php 3.0.0 2.228.1 0.1.0 openapi/openapi',
             $response->res->headers['X-Speakeasy-User-Agent'],
         );
     }
@@ -49,7 +49,7 @@ final class TelemetryTest extends TestCase
         $this->assertEquals(200, $response->statusCode);
         $this->assertEquals($userAgent, $response->res->headers['User-Agent']);
         $this->assertEquals(
-            'speakeasy-sdk/php 2.1.1 2.188.3 0.1.0 openapi/openapi',
+            'speakeasy-sdk/php 3.0.0 2.228.1 0.1.0 openapi/openapi',
             $response->res->headers['X-Speakeasy-User-Agent'],
         );
     }
