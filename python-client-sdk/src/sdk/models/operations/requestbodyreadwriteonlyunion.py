@@ -16,10 +16,10 @@ REQUEST_BODY_READ_WRITE_ONLY_UNION_SERVERS = [
 class RequestBodyReadWriteOnlyUnionResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    r"""Raw HTTP response; suitable for custom response parsing"""
     weakly_typed_one_of_read_write_object: Optional[Union[shared_simpleobject.SimpleObject, shared_readwriteobject_output.ReadWriteObjectOutput]] = dataclasses.field(default=None)
     r"""OK"""
     

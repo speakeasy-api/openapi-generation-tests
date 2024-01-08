@@ -121,7 +121,7 @@ class Resource
         $request->resourceId = $resourceId;
         
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
-        $url = Utils\Utils::generateUrl($baseUrl, '/resource/{resourceId}', \OpenAPI\OpenAPI\Models\Operations\DeleteResourceRequest::class, $request, $this->sdkConfiguration->globals);
+        $url = Utils\Utils::generateUrl($baseUrl, '/resource/object/{resourceId}', \OpenAPI\OpenAPI\Models\Operations\DeleteResourceRequest::class, $request, $this->sdkConfiguration->globals);
         
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = '*/*';
@@ -145,6 +145,48 @@ class Resource
     }
 	
     /**
+     * getArrayDataSource
+     * 
+     * @param string $filter
+     * @return \OpenAPI\OpenAPI\Models\Operations\GetArrayDataSourceResponse
+     */
+	public function getArrayDataSource(
+        string $filter,
+    ): \OpenAPI\OpenAPI\Models\Operations\GetArrayDataSourceResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\GetArrayDataSourceRequest();
+        $request->filter = $filter;
+        
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/datasource/array');
+        
+        $options = ['http_errors' => false];
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\GetArrayDataSourceRequest::class, $request, $this->sdkConfiguration->globals));
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\GetArrayDataSourceResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->arrayDataSource = $serializer->deserialize((string)$httpResponse->getBody(), 'array<string>', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * getResource
      * 
      * @param string $resourceId
@@ -158,7 +200,7 @@ class Resource
         $request->resourceId = $resourceId;
         
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
-        $url = Utils\Utils::generateUrl($baseUrl, '/resource/{resourceId}', \OpenAPI\OpenAPI\Models\Operations\GetResourceRequest::class, $request, $this->sdkConfiguration->globals);
+        $url = Utils\Utils::generateUrl($baseUrl, '/resource/object/{resourceId}', \OpenAPI\OpenAPI\Models\Operations\GetResourceRequest::class, $request, $this->sdkConfiguration->globals);
         
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = 'application/json';
@@ -188,20 +230,24 @@ class Resource
     /**
      * updateResource
      * 
+     * @param string $augment
      * @param string $resourceId
      * @return \OpenAPI\OpenAPI\Models\Operations\UpdateResourceResponse
      */
 	public function updateResource(
+        string $augment,
         string $resourceId,
     ): \OpenAPI\OpenAPI\Models\Operations\UpdateResourceResponse
     {
         $request = new \OpenAPI\OpenAPI\Models\Operations\UpdateResourceRequest();
+        $request->augment = $augment;
         $request->resourceId = $resourceId;
         
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
-        $url = Utils\Utils::generateUrl($baseUrl, '/resource/{resourceId}', \OpenAPI\OpenAPI\Models\Operations\UpdateResourceRequest::class, $request, $this->sdkConfiguration->globals);
+        $url = Utils\Utils::generateUrl($baseUrl, '/resource/object/{resourceId}', \OpenAPI\OpenAPI\Models\Operations\UpdateResourceRequest::class, $request, $this->sdkConfiguration->globals);
         
         $options = ['http_errors' => false];
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\UpdateResourceRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
         

@@ -64,3 +64,9 @@ Layout/EmptyLinesAroundClassBody:
   Enabled: false
 Style/WordArray:
   Enabled: false
+Style/RedundantReturn: # https://github.com/rubocop/rubocop/issues/12394
+  Enabled: false
+Style/RedundantAssignment:
+  Enabled: false
+Lint/LiteralAsCondition:
+  Enabled: false
