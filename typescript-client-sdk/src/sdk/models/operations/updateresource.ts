@@ -6,6 +6,9 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 
 export class UpdateResourceRequest extends SpeakeasyBase {
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=augment" })
+    augment: string;
+
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=resourceId" })
     resourceId: string;
 }
@@ -27,5 +30,5 @@ export class UpdateResourceResponse extends SpeakeasyBase {
      * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
+    rawResponse: AxiosResponse;
 }
