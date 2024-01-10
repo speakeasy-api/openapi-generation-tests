@@ -57,6 +57,17 @@ components:
         - $ref: "#/components/schemas/deepObjectWithType"
       discriminator:
         propertyName: type
+    stronglyTypedOneOfDiscriminatedObject:
+      oneOf:
+        - $ref: "#/components/schemas/taggedObject1"
+        - $ref: "#/components/schemas/taggedObject2"
+        - $ref: "#/components/schemas/taggedObject3"
+      discriminator:
+        propertyName: tag
+        mapping:
+          tag1: "#/components/schemas/taggedObject1"
+          tag2: "#/components/schemas/taggedObject2"
+          tag3: "#/components/schemas/taggedObject3"
     weaklyTypedOneOfObject:
       oneOf:
         - $ref: "#/components/schemas/simpleObject"
@@ -126,6 +137,39 @@ components:
       required:
         - type
         - value
+    taggedObject1:
+      type: object
+      properties:
+        tag:
+          type: string
+          enum: [tag1]
+        imageURL:
+          type: string
+      required:
+        - tag
+        - imageURL
+    taggedObject2:
+      type: object
+      properties:
+        tag:
+          type: string
+          enum: [tag2]
+        profileId:
+          type: string
+      required:
+        - tag
+        - profileId
+    taggedObject3:
+      type: object
+      properties:
+        tag:
+          type: string
+          const: tag3
+        phone:
+          type: string
+      required:
+        - tag
+        - phone
     httpBinSimpleJsonObject:
       type: object
       properties:
