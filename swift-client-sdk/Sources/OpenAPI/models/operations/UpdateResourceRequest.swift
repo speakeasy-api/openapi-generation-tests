@@ -5,12 +5,14 @@ import Foundation
 extension Operations {
     /// A model object
     public struct UpdateResourceRequest: APIValue {
+        public let augment: String
         public let resourceId: String
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(resourceId: String) {
+        public init(augment: String, resourceId: String) {
+            self.augment = augment
             self.resourceId = resourceId
         }
     }

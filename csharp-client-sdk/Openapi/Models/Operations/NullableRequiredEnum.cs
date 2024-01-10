@@ -53,4 +53,5 @@ namespace Openapi.Models.Operations
             throw new Exception($"Unknown value {value} for enum NullableRequiredEnum");
         }
     }
+
 }
