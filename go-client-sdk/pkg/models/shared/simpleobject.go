@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"github.com/ericlagergren/decimal"
 	"math/big"
-	"openapi/v2/pkg/types"
-	"openapi/v2/pkg/utils"
+	"openapi/v3/pkg/types"
+	"openapi/v3/pkg/utils"
 	"time"
 )
 

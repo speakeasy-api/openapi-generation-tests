@@ -5,7 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"openapi/v2/pkg/utils"
+	"openapi/v3/pkg/utils"
 	"time"
 )
 
