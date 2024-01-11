@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"openapi/v2/pkg/utils"
+	"openapi/v3/pkg/utils"
 )
 
 type OneOfFromArrayOfTypesType string

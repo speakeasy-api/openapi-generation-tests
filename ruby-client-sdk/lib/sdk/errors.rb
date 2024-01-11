@@ -38,8 +38,7 @@ module OpenApiSDK
       res = Operations::ConnectionErrorGetResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if r.status == 200
-      end
+      
       res
     end
 
@@ -73,8 +72,7 @@ module OpenApiSDK
       res = Operations::StatusGetErrorResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if [200, 300, 400, 500].include?(r.status)
-      end
+      
       res
     end
 

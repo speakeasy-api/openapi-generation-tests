@@ -53,8 +53,9 @@ public class RequestBodyPostNullDictionaryResponse {
         return this;
     }
     
-    public RequestBodyPostNullDictionaryResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode) {
+    public RequestBodyPostNullDictionaryResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode, @JsonProperty("RawResponse") HttpResponse<byte[]> rawResponse) {
         this.contentType = contentType;
         this.statusCode = statusCode;
+        this.rawResponse = rawResponse;
   }
 }

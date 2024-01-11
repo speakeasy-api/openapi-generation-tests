@@ -15,6 +15,9 @@ namespace Openapi.Models.Operations
     public class UpdateResourceRequest
     {
 
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=augment")]
+        public string Augment { get; set; } = default!;
+
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=resourceId")]
         public string ResourceId { get; set; } = default!;
     }
