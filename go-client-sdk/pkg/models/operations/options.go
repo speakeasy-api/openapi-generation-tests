@@ -4,7 +4,7 @@ package operations
 
 import (
 	"errors"
-	"openapi/v2/pkg/utils"
+	"openapi/v3/pkg/utils"
 )
 
 var ErrUnsupportedOption = errors.New("unsupported option")

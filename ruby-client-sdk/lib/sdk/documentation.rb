@@ -43,8 +43,7 @@ module OpenApiSDK
       res = Operations::GetDocumentationPerLanguageResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if r.status == 200
-      end
+      
       res
     end
   end

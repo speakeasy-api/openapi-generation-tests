@@ -9,6 +9,14 @@ import org.openapis.openapi.utils.SpeakeasyMetadata;
 
 
 public class UpdateResourceRequest {
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=augment")
+    public String augment;
+
+    public UpdateResourceRequest withAugment(String augment) {
+        this.augment = augment;
+        return this;
+    }
+    
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=resourceId")
     public String resourceId;
 
@@ -17,7 +25,8 @@ public class UpdateResourceRequest {
         return this;
     }
     
-    public UpdateResourceRequest(@JsonProperty("resourceId") String resourceId) {
+    public UpdateResourceRequest(@JsonProperty("augment") String augment, @JsonProperty("resourceId") String resourceId) {
+        this.augment = augment;
         this.resourceId = resourceId;
   }
 }
