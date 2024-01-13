@@ -21,12 +21,12 @@ Endpoints for testing flattening through request body and parameter combinations
 package main
 
 import(
+	"openapi/v3/pkg/models/shared"
+	openapi "openapi/v3"
+	"math/big"
+	"openapi/v3/pkg/types"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"math/big"
-	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -46,7 +46,7 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
@@ -76,11 +76,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
-| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `ctx`                                                             | [context.Context](https://pkg.go.dev/context#Context)             | :heavy_check_mark:                                                | The context to use for the request.                               |
-| `simpleObject`                                                    | [shared.SimpleObject](../../../pkg/models/shared/simpleobject.md) | :heavy_check_mark:                                                | N/A                                                               |
-| `str`                                                             | *string*                                                          | :heavy_check_mark:                                                | N/A                                                               |
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `ctx`                                                          | [context.Context](https://pkg.go.dev/context#Context)          | :heavy_check_mark:                                             | The context to use for the request.                            |
+| `simpleObject`                                                 | [shared.SimpleObject](../../pkg/models/shared/simpleobject.md) | :heavy_check_mark:                                             | N/A                                                            |
+| `str`                                                          | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
 
 
 ### Response
@@ -88,7 +88,7 @@ func main() {
 **[*operations.ComponentBodyAndParamConflictResponse](../../pkg/models/operations/componentbodyandparamconflictresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ComponentBodyAndParamNoConflict
 
@@ -98,12 +98,12 @@ func main() {
 package main
 
 import(
+	"openapi/v3/pkg/models/shared"
+	openapi "openapi/v3"
+	"math/big"
+	"openapi/v3/pkg/types"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"math/big"
-	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -125,7 +125,7 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
@@ -153,11 +153,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
-| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `ctx`                                                             | [context.Context](https://pkg.go.dev/context#Context)             | :heavy_check_mark:                                                | The context to use for the request.                               |
-| `paramStr`                                                        | *string*                                                          | :heavy_check_mark:                                                | N/A                                                               |
-| `simpleObject`                                                    | [shared.SimpleObject](../../../pkg/models/shared/simpleobject.md) | :heavy_check_mark:                                                | N/A                                                               |
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `ctx`                                                          | [context.Context](https://pkg.go.dev/context#Context)          | :heavy_check_mark:                                             | The context to use for the request.                            |
+| `paramStr`                                                     | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `simpleObject`                                                 | [shared.SimpleObject](../../pkg/models/shared/simpleobject.md) | :heavy_check_mark:                                             | N/A                                                            |
 
 
 ### Response
@@ -165,7 +165,7 @@ func main() {
 **[*operations.ComponentBodyAndParamNoConflictResponse](../../pkg/models/operations/componentbodyandparamnoconflictresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ConflictingParams
 
@@ -175,10 +175,10 @@ func main() {
 package main
 
 import(
+	"openapi/v3/pkg/models/shared"
+	openapi "openapi/v3"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -221,7 +221,7 @@ func main() {
 **[*operations.ConflictingParamsResponse](../../pkg/models/operations/conflictingparamsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## InlineBodyAndParamConflict
 
@@ -231,11 +231,11 @@ func main() {
 package main
 
 import(
+	"openapi/v3/pkg/models/shared"
+	openapi "openapi/v3"
+	"openapi/v3/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -268,11 +268,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
-| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                       | [context.Context](https://pkg.go.dev/context#Context)                                                                       | :heavy_check_mark:                                                                                                          | The context to use for the request.                                                                                         |
-| `requestBody`                                                                                                               | [operations.InlineBodyAndParamConflictRequestBody](../../../pkg/models/operations/inlinebodyandparamconflictrequestbody.md) | :heavy_check_mark:                                                                                                          | N/A                                                                                                                         |
-| `str`                                                                                                                       | *string*                                                                                                                    | :heavy_check_mark:                                                                                                          | N/A                                                                                                                         |
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                    | :heavy_check_mark:                                                                                                       | The context to use for the request.                                                                                      |
+| `requestBody`                                                                                                            | [operations.InlineBodyAndParamConflictRequestBody](../../pkg/models/operations/inlinebodyandparamconflictrequestbody.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
+| `str`                                                                                                                    | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
 
 
 ### Response
@@ -280,7 +280,7 @@ func main() {
 **[*operations.InlineBodyAndParamConflictResponse](../../pkg/models/operations/inlinebodyandparamconflictresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## InlineBodyAndParamNoConflict
 
@@ -290,11 +290,11 @@ func main() {
 package main
 
 import(
+	"openapi/v3/pkg/models/shared"
+	openapi "openapi/v3"
+	"openapi/v3/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -327,11 +327,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                       | Type                                                                                                                            | Required                                                                                                                        | Description                                                                                                                     |
-| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                           | [context.Context](https://pkg.go.dev/context#Context)                                                                           | :heavy_check_mark:                                                                                                              | The context to use for the request.                                                                                             |
-| `requestBody`                                                                                                                   | [operations.InlineBodyAndParamNoConflictRequestBody](../../../pkg/models/operations/inlinebodyandparamnoconflictrequestbody.md) | :heavy_check_mark:                                                                                                              | N/A                                                                                                                             |
-| `paramStr`                                                                                                                      | *string*                                                                                                                        | :heavy_check_mark:                                                                                                              | N/A                                                                                                                             |
+| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                                        | :heavy_check_mark:                                                                                                           | The context to use for the request.                                                                                          |
+| `requestBody`                                                                                                                | [operations.InlineBodyAndParamNoConflictRequestBody](../../pkg/models/operations/inlinebodyandparamnoconflictrequestbody.md) | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
+| `paramStr`                                                                                                                   | *string*                                                                                                                     | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |
 
 
 ### Response
@@ -339,4 +339,4 @@ func main() {
 **[*operations.InlineBodyAndParamNoConflictResponse](../../pkg/models/operations/inlinebodyandparamnoconflictresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

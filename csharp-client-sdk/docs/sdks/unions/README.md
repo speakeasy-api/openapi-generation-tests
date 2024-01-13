@@ -14,6 +14,7 @@ Endpoints for testing union types.
 * [NullableOneOfTypeInObjectPost](#nullableoneoftypeinobjectpost)
 * [NullableTypedObjectPost](#nullabletypedobjectpost)
 * [PrimitiveTypeOneOfPost](#primitivetypeoneofpost)
+* [StronglyTypedOneOfDiscriminatedPost](#stronglytypedoneofdiscriminatedpost)
 * [StronglyTypedOneOfPost](#stronglytypedoneofpost)
 * [TypedObjectNullableOneOfPost](#typedobjectnullableoneofpost)
 * [TypedObjectOneOfPost](#typedobjectoneofpost)
@@ -36,10 +37,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Unions.FlattenedTypedObjectPostAsync("string");
+object req = "string";
+
+var res = await sdk.Unions.FlattenedTypedObjectPostAsync(req);
 
 // handle response
 ```
@@ -69,10 +71,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Unions.MixedTypeOneOfPostAsync("string");
+object req = "string";
+
+var res = await sdk.Unions.MixedTypeOneOfPostAsync(req);
 
 // handle response
 ```
@@ -102,17 +105,18 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Unions.NullableOneOfRefInObjectPostAsync(new NullableOneOfRefInObject() {
+NullableOneOfRefInObject req = new NullableOneOfRefInObject() {
     NullableOneOfOne = new TypedObject1() {
         Type = Type.Obj1,
         Value = "string",
     },
     NullableOneOfTwo = "string",
     OneOfOne = "string",
-});
+};
+
+var res = await sdk.Unions.NullableOneOfRefInObjectPostAsync(req);
 
 // handle response
 ```
@@ -142,10 +146,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Unions.NullableOneOfSchemaPostAsync("string");
+object req = "string";
+
+var res = await sdk.Unions.NullableOneOfSchemaPostAsync(req);
 
 // handle response
 ```
@@ -175,14 +180,15 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Unions.NullableOneOfTypeInObjectPostAsync(new NullableOneOfTypeInObject() {
+NullableOneOfTypeInObject req = new NullableOneOfTypeInObject() {
     NullableOneOfOne = false,
     NullableOneOfTwo = "string",
     OneOfOne = false,
-});
+};
+
+var res = await sdk.Unions.NullableOneOfTypeInObjectPostAsync(req);
 
 // handle response
 ```
@@ -212,13 +218,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Unions.NullableTypedObjectPostAsync(new TypedObject1() {
+TypedObject1 req = new TypedObject1() {
     Type = Type.Obj1,
     Value = "string",
-});
+};
+
+var res = await sdk.Unions.NullableTypedObjectPostAsync(req);
 
 // handle response
 ```
@@ -248,10 +255,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Unions.PrimitiveTypeOneOfPostAsync("string");
+object req = "string";
+
+var res = await sdk.Unions.PrimitiveTypeOneOfPostAsync(req);
 
 // handle response
 ```
@@ -268,6 +276,40 @@ var res = await sdk.Unions.PrimitiveTypeOneOfPostAsync("string");
 **[PrimitiveTypeOneOfPostResponse](../../Models/Operations/PrimitiveTypeOneOfPostResponse.md)**
 
 
+## StronglyTypedOneOfDiscriminatedPost
+
+### Example Usage
+
+```csharp
+using Openapi;
+using Openapi.Models.Shared;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+object req = "string";
+
+var res = await sdk.Unions.StronglyTypedOneOfDiscriminatedPostAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | *object*                                   | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[StronglyTypedOneOfDiscriminatedPostResponse](../../Models/Operations/StronglyTypedOneOfDiscriminatedPostResponse.md)**
+
+
 ## StronglyTypedOneOfPost
 
 ### Example Usage
@@ -281,10 +323,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Unions.StronglyTypedOneOfPostAsync("string");
+object req = "string";
+
+var res = await sdk.Unions.StronglyTypedOneOfPostAsync(req);
 
 // handle response
 ```
@@ -314,10 +357,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Unions.TypedObjectNullableOneOfPostAsync("string");
+object req = "string";
+
+var res = await sdk.Unions.TypedObjectNullableOneOfPostAsync(req);
 
 // handle response
 ```
@@ -347,10 +391,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Unions.TypedObjectOneOfPostAsync("string");
+object req = "string";
+
+var res = await sdk.Unions.TypedObjectOneOfPostAsync(req);
 
 // handle response
 ```
@@ -380,10 +425,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Unions.UnionBigIntDecimalAsync("string");
+object req = "string";
+
+var res = await sdk.Unions.UnionBigIntDecimalAsync(req);
 
 // handle response
 ```
@@ -413,10 +459,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Unions.UnionDateNullAsync(LocalDate.FromDateTime(System.DateTime.Parse("2022-11-25")));
+LocalDate req = LocalDate.FromDateTime(System.DateTime.Parse("2023-11-26"));
+
+var res = await sdk.Unions.UnionDateNullAsync(req);
 
 // handle response
 ```
@@ -446,10 +493,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Unions.UnionDateTimeBigIntAsync("string");
+object req = "string";
+
+var res = await sdk.Unions.UnionDateTimeBigIntAsync(req);
 
 // handle response
 ```
@@ -479,10 +527,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Unions.UnionDateTimeNullAsync(System.DateTime.Parse("2022-04-12T19:39:53.907Z"));
+DateTime req = System.DateTime.Parse("2023-04-13T05:53:47.874Z");
+
+var res = await sdk.Unions.UnionDateTimeNullAsync(req);
 
 // handle response
 ```
@@ -512,10 +561,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Unions.WeaklyTypedOneOfPostAsync("string");
+object req = "string";
+
+var res = await sdk.Unions.WeaklyTypedOneOfPostAsync(req);
 
 // handle response
 ```
