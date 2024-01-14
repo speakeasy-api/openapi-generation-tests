@@ -53,8 +53,9 @@ public class ResponseBodyAdditionalPropertiesDatePostResponse {
         return this;
     }
     
-    public ResponseBodyAdditionalPropertiesDatePostResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode) {
+    public ResponseBodyAdditionalPropertiesDatePostResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode, @JsonProperty("RawResponse") HttpResponse<byte[]> rawResponse) {
         this.contentType = contentType;
         this.statusCode = statusCode;
+        this.rawResponse = rawResponse;
   }
 }

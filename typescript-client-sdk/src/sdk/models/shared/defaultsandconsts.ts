@@ -88,58 +88,58 @@ export class DefaultsAndConsts extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "defaultBigInt" })
-    defaultBigInt?: number;
+    defaultBigInt: number;
 
     @SpeakeasyMetadata()
     @Expose({ name: "defaultBigIntStr" })
-    defaultBigIntStr?: string;
+    defaultBigIntStr: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "defaultBool" })
-    defaultBool?: boolean;
+    defaultBool: boolean;
 
     @SpeakeasyMetadata()
     @Expose({ name: "defaultDate" })
     @Type(() => String)
     @Transform(({ value }) => new RFCDate(value), { toClassOnly: true })
-    defaultDate?: RFCDate;
+    defaultDate: RFCDate;
 
     @SpeakeasyMetadata()
     @Expose({ name: "defaultDateTime" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
-    defaultDateTime?: Date;
+    defaultDateTime: Date;
 
     @SpeakeasyMetadata()
     @Expose({ name: "defaultDecimal" })
-    defaultDecimal?: number;
+    defaultDecimal: number;
 
     @SpeakeasyMetadata()
     @Expose({ name: "defaultDecimalStr" })
-    defaultDecimalStr?: string;
+    defaultDecimalStr: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "defaultEnumInt" })
-    defaultEnumInt?: DefaultEnumInt;
+    defaultEnumInt: DefaultEnumInt;
 
     @SpeakeasyMetadata()
     @Expose({ name: "defaultEnumStr" })
-    defaultEnumStr?: DefaultEnumStr;
+    defaultEnumStr: DefaultEnumStr;
 
     @SpeakeasyMetadata()
     @Expose({ name: "defaultInt" })
-    defaultInt?: number;
+    defaultInt: number;
 
     @SpeakeasyMetadata()
     @Expose({ name: "defaultNum" })
-    defaultNum?: number;
+    defaultNum: number;
 
     @SpeakeasyMetadata()
     @Expose({ name: "defaultStr" })
-    defaultStr?: string;
+    defaultStr: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "defaultStrNullable" })
-    defaultStrNullable?: string;
+    defaultStrNullable: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "defaultStrOptional" })
