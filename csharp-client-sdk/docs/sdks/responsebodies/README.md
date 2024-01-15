@@ -7,6 +7,7 @@ Endpoints for testing response bodies.
 
 ### Available Operations
 
+* [ResponseBodyAdditionalPropertiesAnyPost](#responsebodyadditionalpropertiesanypost)
 * [ResponseBodyAdditionalPropertiesComplexNumbersPost](#responsebodyadditionalpropertiescomplexnumberspost)
 * [ResponseBodyAdditionalPropertiesDatePost](#responsebodyadditionalpropertiesdatepost)
 * [ResponseBodyAdditionalPropertiesObjectPost](#responsebodyadditionalpropertiesobjectpost)
@@ -18,6 +19,42 @@ Endpoints for testing response bodies.
 * [ResponseBodyStringGet](#responsebodystringget)
 * [ResponseBodyXmlGet](#responsebodyxmlget)
 * [ResponseBodyZeroValueComplexTypePtrsPost](#responsebodyzerovaluecomplextypeptrspost)
+
+## ResponseBodyAdditionalPropertiesAnyPost
+
+### Example Usage
+
+```csharp
+using Openapi;
+using Openapi.Models.Shared;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+Dictionary<string, object> req = new Dictionary<string, object>() {
+    { "key", "string" },
+};
+
+var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesAnyPostAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | Dictionary<String, *object*>               | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[ResponseBodyAdditionalPropertiesAnyPostResponse](../../Models/Operations/ResponseBodyAdditionalPropertiesAnyPostResponse.md)**
+
 
 ## ResponseBodyAdditionalPropertiesComplexNumbersPost
 
@@ -32,12 +69,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesComplexNumbersPostAsync(new Dictionary<string, BigInteger>() {
+Dictionary<string, BigInteger> req = new Dictionary<string, BigInteger>() {
     { "key", 468801 },
-});
+};
+
+var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesComplexNumbersPostAsync(req);
 
 // handle response
 ```
@@ -67,12 +105,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesDatePostAsync(new Dictionary<string, LocalDate>() {
-    { "key", LocalDate.FromDateTime(System.DateTime.Parse("2021-03-16")) },
-});
+Dictionary<string, LocalDate> req = new Dictionary<string, LocalDate>() {
+    { "key", LocalDate.FromDateTime(System.DateTime.Parse("2022-03-16")) },
+};
+
+var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesDatePostAsync(req);
 
 // handle response
 ```
@@ -103,15 +142,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesObjectPostAsync(new Dictionary<string, SimpleObject>() {
+Dictionary<string, SimpleObject> req = new Dictionary<string, SimpleObject>() {
     { "key", new SimpleObject() {
         Any = "any",
         Bool = true,
         Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
         Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
@@ -127,7 +165,9 @@ var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesObjectPostAsy
         DecimalStr = 3.14159265358979344719667586M,
         StrOpt = "testOptional",
     } },
-});
+};
+
+var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesObjectPostAsync(req);
 
 // handle response
 ```
@@ -157,12 +197,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesPostAsync(new Dictionary<string, string>() {
+Dictionary<string, string> req = new Dictionary<string, string>() {
     { "key", "string" },
-});
+};
+
+var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesPostAsync(req);
 
 // handle response
 ```
@@ -192,8 +233,7 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.ResponseBodies.ResponseBodyBytesGetAsync();
 
@@ -220,10 +260,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.ResponseBodies.ResponseBodyEmptyWithHeadersAsync(1751.8D, "string");
+var res = await sdk.ResponseBodies.ResponseBodyEmptyWithHeadersAsync(XNumberHeader: 1751.8D, XStringHeader: "string");
 
 // handle response
 ```
@@ -254,8 +293,7 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.ResponseBodies.ResponseBodyOptionalGetAsync();
 
@@ -287,8 +325,7 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.ResponseBodies.ResponseBodyReadOnlyAsync();
 
@@ -320,8 +357,7 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.ResponseBodies.ResponseBodyStringGetAsync();
 
@@ -347,8 +383,7 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.ResponseBodies.ResponseBodyXmlGetAsync();
 
@@ -375,13 +410,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.ResponseBodies.ResponseBodyZeroValueComplexTypePtrsPostAsync(new ObjWithZeroValueComplexTypePtrs() {
+ObjWithZeroValueComplexTypePtrs req = new ObjWithZeroValueComplexTypePtrs() {
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
     DateTime = System.DateTime.Parse("2020-01-01T00:00:00Z"),
-});
+};
+
+var res = await sdk.ResponseBodies.ResponseBodyZeroValueComplexTypePtrsPostAsync(req);
 
 // handle response
 ```

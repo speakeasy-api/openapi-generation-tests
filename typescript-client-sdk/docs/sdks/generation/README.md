@@ -35,7 +35,7 @@ Endpoints for purely testing valid generation behavior.
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -49,7 +49,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -66,7 +68,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## arrayCircularReferenceGet
 
@@ -75,7 +77,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -89,7 +91,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -106,7 +110,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## circularReferenceGet
 
@@ -115,7 +119,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -129,7 +133,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -146,7 +152,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## dateParamWithDefault
 
@@ -157,7 +163,7 @@ import { SDK } from "openapi";
 import { DateParamWithDefaultRequest } from "openapi/dist/sdk/models/operations";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -165,14 +171,16 @@ import { RFCDate } from "openapi/dist/sdk/types";
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const dateInput: RFCDate = new RFCDate("2021-11-30");
+const dateInput: RFCDate = new RFCDate("2022-11-30");
 
   const res = await sdk.generation.dateParamWithDefault(dateInput);
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -190,7 +198,7 @@ const dateInput: RFCDate = new RFCDate("2021-11-30");
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## dateTimeParamWithDefault
 
@@ -200,7 +208,7 @@ const dateInput: RFCDate = new RFCDate("2021-11-30");
 import { SDK } from "openapi";
 import { DateTimeParamWithDefaultRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -208,14 +216,16 @@ import { DateTimeParamWithDefaultRequest } from "openapi/dist/sdk/models/operati
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const dateTimeInput: Date = new Date("2023-02-09T21:53:21.077Z");
+const dateTimeInput: Date = new Date("2024-02-10T14:45:50.302Z");
 
   const res = await sdk.generation.dateTimeParamWithDefault(dateTimeInput);
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -233,7 +243,7 @@ const dateTimeInput: Date = new Date("2023-02-09T21:53:21.077Z");
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## decimalParamWithDefault
 
@@ -243,7 +253,7 @@ const dateTimeInput: Date = new Date("2023-02-09T21:53:21.077Z");
 import { SDK } from "openapi";
 import { DecimalParamWithDefaultRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -258,7 +268,9 @@ const decimalInput: number = 4060.06;
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -276,7 +288,7 @@ const decimalInput: number = 4060.06;
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## deprecatedFieldInSchemaPost
 
@@ -286,7 +298,7 @@ const decimalInput: number = 4060.06;
 import { SDK } from "openapi";
 import { DeprecatedEnum } from "openapi/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -300,7 +312,9 @@ import { DeprecatedEnum } from "openapi/dist/sdk/models/shared";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -318,7 +332,7 @@ import { DeprecatedEnum } from "openapi/dist/sdk/models/shared";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## deprecatedObjectInSchemaGet
 
@@ -327,7 +341,7 @@ import { DeprecatedEnum } from "openapi/dist/sdk/models/shared";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -341,7 +355,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -358,7 +374,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## ~~deprecatedOperationNoCommentsGet~~
 
@@ -370,7 +386,7 @@ import { SDK } from "openapi";
 import { SDK } from "openapi";
 import { DeprecatedOperationNoCommentsGetRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -385,7 +401,9 @@ const deprecatedParameter: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -403,7 +421,7 @@ const deprecatedParameter: string = "string";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## ~~deprecatedOperationWithCommentsGet~~
 
@@ -417,7 +435,7 @@ This is an endpoint setup to test deprecation with comments
 import { SDK } from "openapi";
 import { DeprecatedOperationWithCommentsGetRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -433,7 +451,9 @@ const newParameter: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -452,7 +472,7 @@ const newParameter: string = "string";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## emptyObjectGet
 
@@ -463,7 +483,7 @@ import { SDK } from "openapi";
 import { EmptyObjectGetRequest } from "openapi/dist/sdk/models/operations";
 import { EmptyObjectParam } from "openapi/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -478,15 +498,17 @@ const emptyObject: EmptyObjectParam = {};
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `emptyObject`                                                             | [shared.EmptyObjectParam](../../../sdk/models/shared/emptyobjectparam.md) | :heavy_check_mark:                                                        | N/A                                                                       |
-| `config`                                                                  | [AxiosRequestConfig](https://axios-http.com/docs/req_config)              | :heavy_minus_sign:                                                        | Available config options for making requests.                             |
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `emptyObject`                                                          | [shared.EmptyObjectParam](../../sdk/models/shared/emptyobjectparam.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |
 
 
 ### Response
@@ -496,7 +518,7 @@ const emptyObject: EmptyObjectParam = {};
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## emptyResponseObjectWithCommentGet
 
@@ -505,7 +527,7 @@ const emptyObject: EmptyObjectParam = {};
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -519,7 +541,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -536,7 +560,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## globalNameOverridden
 
@@ -544,8 +568,10 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
+import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
+import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -554,19 +580,41 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.generation.globalNameOverridden();
+  const res = await sdk.generation.globalNameOverridden({
+    any: "any",
+    bigint: 8821239038968084,
+    bigintStr: "9223372036854775808",
+    bool: true,
+    boolOpt: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00.000001Z"),
+    decimal: 3.141592653589793,
+    decimalStr: "3.14159265358979344719667586",
+    enum: Enum.One,
+    float32: 1.1,
+    int: 1,
+    int32: 1,
+    int32Enum: Int32Enum.FiftyFive,
+    intEnum: IntEnum.Second,
+    num: 1.1,
+    str: "test",
+    strOpt: "testOptional",
+  });
 
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `request`                                                      | [shared.SimpleObject](../../sdk/models/shared/simpleobject.md) | :heavy_check_mark:                                             | The request object to use for the request.                     |
+| `config`                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)   | :heavy_minus_sign:                                             | Available config options for making requests.                  |
 
 
 ### Response
@@ -576,7 +624,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## ignoredGenerationGet
 
@@ -585,7 +633,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -599,7 +647,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -616,7 +666,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## ignoresPost
 
@@ -626,7 +676,7 @@ import { SDK } from "openapi";
 import { SDK } from "openapi";
 import { IgnoresPostRequest, IgnoresPostRequestBody } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -642,16 +692,18 @@ const testParam: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                 | [operations.IgnoresPostRequestBody](../../../sdk/models/operations/ignorespostrequestbody.md) | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `testParam`                                                                                   | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
-| `config`                                                                                      | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                  | :heavy_minus_sign:                                                                            | Available config options for making requests.                                                 |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `requestBody`                                                                              | [operations.IgnoresPostRequestBody](../../sdk/models/operations/ignorespostrequestbody.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `testParam`                                                                                | *string*                                                                                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
 
 
 ### Response
@@ -661,7 +713,7 @@ const testParam: string = "string";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## nameOverride
 
@@ -671,7 +723,7 @@ const testParam: string = "string";
 import { SDK } from "openapi";
 import { EnumNameOverride, NameOverrideGetRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -687,16 +739,18 @@ const testQueryParam: string = "example";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `testEnumQueryParam`                                                              | [operations.EnumNameOverride](../../../sdk/models/operations/enumnameoverride.md) | :heavy_check_mark:                                                                | An enum type                                                                      | value3                                                                            |
-| `testQueryParam`                                                                  | *string*                                                                          | :heavy_check_mark:                                                                | N/A                                                                               | example                                                                           |
-| `config`                                                                          | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                      | :heavy_minus_sign:                                                                | Available config options for making requests.                                     |                                                                                   |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `testEnumQueryParam`                                                           | [operations.EnumNameOverride](../../sdk/models/operations/enumnameoverride.md) | :heavy_check_mark:                                                             | An enum type                                                                   | value3                                                                         |
+| `testQueryParam`                                                               | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            | example                                                                        |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |                                                                                |
 
 
 ### Response
@@ -706,7 +760,7 @@ const testQueryParam: string = "example";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## objectCircularReferenceGet
 
@@ -715,7 +769,7 @@ const testQueryParam: string = "example";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -729,7 +783,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -746,7 +802,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## oneOfCircularReferenceGet
 
@@ -755,7 +811,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -769,7 +825,9 @@ import { SDK } from "openapi";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -786,7 +844,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## typedParameterGenerationGet
 
@@ -797,7 +855,7 @@ import { SDK } from "openapi";
 import { Obj, TypedParameterGenerationGetRequest } from "openapi/dist/sdk/models/operations";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -806,7 +864,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     globalQueryParam: "some example global query param",
   });
 const bigint: number = 879275;
-const date: RFCDate = new RFCDate("2023-11-18");
+const date: RFCDate = new RFCDate("2024-11-18");
 const decimal: number = 3346.96;
 const obj: Obj = {
   bool: false,
@@ -819,7 +877,9 @@ const obj: Obj = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -829,7 +889,7 @@ const obj: Obj = {
 | `bigint`                                                     | *number*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
 | `date`                                                       | [RFCDate](../../types/rfcdate.md)                            | :heavy_minus_sign:                                           | N/A                                                          |
 | `decimal`                                                    | *number*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `obj`                                                        | [operations.Obj](../../../sdk/models/operations/obj.md)      | :heavy_minus_sign:                                           | N/A                                                          |
+| `obj`                                                        | [operations.Obj](../../sdk/models/operations/obj.md)         | :heavy_minus_sign:                                           | N/A                                                          |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
@@ -840,7 +900,7 @@ const obj: Obj = {
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## usageExamplePost
 
@@ -857,7 +917,7 @@ import { EnumParameter, OptEnumParameter, UsageExamplePostSecurity } from "opena
 import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
@@ -878,7 +938,7 @@ const operationSecurity: UsageExamplePostSecurity = {
         bool: true,
         boolOpt: true,
         date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
         decimal: 3.141592653589793,
         decimalStr: "3.14159265358979344719667586",
         enum: Enum.One,
@@ -895,9 +955,9 @@ const operationSecurity: UsageExamplePostSecurity = {
     bigintParameter: 168827,
     bigintStrParameter: "string",
     boolParameter: false,
-    dateParameter: new RFCDate("2022-05-05"),
-    dateTimeDefaultParameter: new Date("2023-06-11T00:39:45.412Z"),
-    dateTimeParameter: new Date("2022-07-22T13:16:48.221Z"),
+    dateParameter: new RFCDate("2023-05-05"),
+    dateTimeDefaultParameter: new Date("2024-06-10T20:11:31.153Z"),
+    dateTimeParameter: new Date("2023-07-23T01:43:10.512Z"),
     decimalParameter: 2679.33,
     decimalStrParameter: "string",
     doubleParameter: 5223.72,
@@ -914,7 +974,9 @@ const operationSecurity: UsageExamplePostSecurity = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -933,4 +995,4 @@ const operationSecurity: UsageExamplePostSecurity = {
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
