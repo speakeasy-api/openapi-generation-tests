@@ -1296,6 +1296,95 @@ components:
             type: integer
       additionalProperties:
         $ref: "components.yaml#/components/schemas/simpleObject"
+    jsonEvent:
+      description: Represents a single event in a json stream
+      type: object
+      required: [data]
+      properties:
+        data:
+          type: object
+          required: [content]
+          properties:
+            content:
+              type: string
+    textEvent:
+      description: Represents a single event in a text stream
+      type: object
+      required: [data]
+      properties:
+        data:
+          type: string
+    richStream:
+      oneOf:
+        - $ref: "#/components/schemas/richCompletionEvent"
+        - $ref: "#/components/schemas/heartbeatEvent"
+      discriminator:
+        propertyName: event
+        mapping:
+          completion: "#/components/schemas/richCompletionEvent"
+          heartbeat: "#/components/schemas/heartbeatEvent"
+    richCompletionEvent:
+      description: Represents a single event in a completion stream
+      type: object
+      required: [id, event, data]
+      properties:
+        id:
+          type: string
+        event:
+          type: string
+          const: completion
+        data:
+          type: object
+          required: [completion, stop_reason]
+          properties:
+            completion:
+              type: string
+            stop_reason:
+              type: [string, "null"]
+              enum: [stop_sequence, max_tokens, null]
+            model:
+              type: string
+    heartbeatEvent: 
+      description: Represents a single heartbeat event
+      type: object
+      required: [event, data]
+      properties:
+        event:
+          type: string
+          const: heartbeat
+        data:
+          type: string
+        retry:
+          type: integer
+    chatCompletionResult:
+      type: array
+      items:
+        oneOf:
+          - $ref: "#/components/schemas/chatCompletionEvent"
+          - $ref: "#/components/schemas/sentinelEvent"
+    chatCompletionStream:
+      oneOf:
+        - $ref: "#/components/schemas/chatCompletionEvent"
+        - $ref: "#/components/schemas/sentinelEvent"
+    chatCompletionEvent:
+      description: Represents a chat completion event which contains printable content
+      type: object
+      required: [data]
+      properties:
+        data:
+          type: object
+          required: [content]
+          properties:
+            content:
+              type: string
+    sentinelEvent:
+      description: Represents the final event in an event stream
+      type: object
+      required: [data]
+      properties:
+        data:
+          type: string
+          const: "[DONE]"
   responses:
     tokenAuthResponse:
       description: Successful authentication.
