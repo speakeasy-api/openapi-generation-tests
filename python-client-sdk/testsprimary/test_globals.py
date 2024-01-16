@@ -3,8 +3,9 @@
 from sdk import SDK
 from sdk.models.operations import *
 
-from .helpers import *
 from .common_helpers import *
+from .test_helpers import *
+
 
 def test_globals_query_parameter_get_uses_global():
     record_test('globals-query-parameter-get-uses-global')

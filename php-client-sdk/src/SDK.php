@@ -126,14 +126,14 @@ class SDK
      */
 	public AuthNew $authNew;
 	
+	public Resource $resource;
+	
     /**
      * Testing for documentation extensions and tooling.
      * 
      * @var Documentation $$documentation
      */
 	public Documentation $documentation;
-	
-	public Resource $resource;
 	
 	public First $first;
 	
@@ -204,9 +204,9 @@ class SDK
 		
 		$this->authNew = new AuthNew($this->sdkConfiguration);
 		
-		$this->documentation = new Documentation($this->sdkConfiguration);
-		
 		$this->resource = new Resource($this->sdkConfiguration);
+		
+		$this->documentation = new Documentation($this->sdkConfiguration);
 		
 		$this->first = new First($this->sdkConfiguration);
 		

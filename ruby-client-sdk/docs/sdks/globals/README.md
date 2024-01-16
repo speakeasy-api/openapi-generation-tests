@@ -18,19 +18,20 @@ Endpoints for testing global parameters.
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::GlobalPathParameterGetRequest.new(
-  path_params=Operations::GlobalPathParameterGetRequest.new(),
-)
+
+req = Operations::GlobalPathParameterGetRequest.new()
     
-res = s.globals.global_path_parameter_get(req)
+res = s.globals.global_path_parameter_get(global_path_param=719830)
 
 if ! res.res.nil?
   # handle response
@@ -58,19 +59,20 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::GlobalsQueryParameterGetRequest.new(
-  query_params=Operations::GlobalsQueryParameterGetRequest.new(),
-)
+
+req = Operations::GlobalsQueryParameterGetRequest.new()
     
-res = s.globals.globals_query_parameter_get(req)
+res = s.globals.globals_query_parameter_get(global_query_param="string")
 
 if ! res.res.nil?
   # handle response
