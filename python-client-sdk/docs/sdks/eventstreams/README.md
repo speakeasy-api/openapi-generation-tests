@@ -1,0 +1,218 @@
+# Eventstreams
+(*eventstreams*)
+
+## Overview
+
+Endpoints for testing server-sent events streaming
+
+### Available Operations
+
+* [chat](#chat)
+* [json](#json)
+* [multiline](#multiline)
+* [rich](#rich)
+* [text](#text)
+
+## chat
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import operations, shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = operations.ChatRequestBody(
+    prompt='string',
+)
+
+res = s.eventstreams.chat(req)
+
+if res.chat_completion_result is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `request`                                                                | [operations.ChatRequestBody](../../models/operations/chatrequestbody.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
+| `server_url`                                                             | *Optional[str]*                                                          | :heavy_minus_sign:                                                       | An optional server URL to use.                                           |
+
+
+### Response
+
+**[operations.ChatResponse](../../models/operations/chatresponse.md)**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4x-5xx          | */*             |
+
+## json
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.eventstreams.json()
+
+if res.body is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                      | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `server_url`                   | *Optional[str]*                | :heavy_minus_sign:             | An optional server URL to use. |
+
+
+### Response
+
+**[operations.JSONResponse](../../models/operations/jsonresponse.md)**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4x-5xx          | */*             |
+
+## multiline
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.eventstreams.multiline()
+
+if res.body is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                      | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `server_url`                   | *Optional[str]*                | :heavy_minus_sign:             | An optional server URL to use. |
+
+
+### Response
+
+**[operations.MultilineResponse](../../models/operations/multilineresponse.md)**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4x-5xx          | */*             |
+
+## rich
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.eventstreams.rich()
+
+if res.body is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                      | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `server_url`                   | *Optional[str]*                | :heavy_minus_sign:             | An optional server URL to use. |
+
+
+### Response
+
+**[operations.RichResponse](../../models/operations/richresponse.md)**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4x-5xx          | */*             |
+
+## text
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.eventstreams.text()
+
+if res.body is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                      | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `server_url`                   | *Optional[str]*                | :heavy_minus_sign:             | An optional server URL to use. |
+
+
+### Response
+
+**[operations.TextResponse](../../models/operations/textresponse.md)**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4x-5xx          | */*             |

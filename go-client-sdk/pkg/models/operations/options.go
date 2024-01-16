@@ -4,7 +4,7 @@ package operations
 
 import (
 	"errors"
-	"openapi/v2/pkg/utils"
+	"openapi/v3/pkg/utils"
 )
 
 var ErrUnsupportedOption = errors.New("unsupported option")
@@ -24,6 +24,7 @@ const (
 	AcceptHeaderEnumTextPlain              AcceptHeaderEnum = "text/plain"
 	AcceptHeaderEnumTextHtml               AcceptHeaderEnum = "text/html"
 	AcceptHeaderEnumApplicationXml         AcceptHeaderEnum = "application/xml"
+	AcceptHeaderEnumTextEventStream        AcceptHeaderEnum = "text/event-stream"
 )
 
 func (e AcceptHeaderEnum) ToPointer() *AcceptHeaderEnum {

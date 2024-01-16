@@ -41,53 +41,53 @@ namespace Openapi
     public class Pagination: IPagination
     {
         /**
-        * PaginationCursorBodySERVERS contains the list of server urls available to the SDK.
+        * PaginationCursorBodyServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] PaginationCursorBodySERVERS = {
+        public static readonly string[] PaginationCursorBodyServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * PaginationCursorParamsSERVERS contains the list of server urls available to the SDK.
+        * PaginationCursorParamsServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] PaginationCursorParamsSERVERS = {
+        public static readonly string[] PaginationCursorParamsServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * PaginationLimitOffsetOffsetBodySERVERS contains the list of server urls available to the SDK.
+        * PaginationLimitOffsetOffsetBodyServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] PaginationLimitOffsetOffsetBodySERVERS = {
+        public static readonly string[] PaginationLimitOffsetOffsetBodyServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * PaginationLimitOffsetOffsetParamsSERVERS contains the list of server urls available to the SDK.
+        * PaginationLimitOffsetOffsetParamsServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] PaginationLimitOffsetOffsetParamsSERVERS = {
+        public static readonly string[] PaginationLimitOffsetOffsetParamsServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * PaginationLimitOffsetPageBodySERVERS contains the list of server urls available to the SDK.
+        * PaginationLimitOffsetPageBodyServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] PaginationLimitOffsetPageBodySERVERS = {
+        public static readonly string[] PaginationLimitOffsetPageBodyServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * PaginationLimitOffsetPageParamsSERVERS contains the list of server urls available to the SDK.
+        * PaginationLimitOffsetPageParamsServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] PaginationLimitOffsetPageParamsSERVERS = {
+        public static readonly string[] PaginationLimitOffsetPageParamsServerList = {
             "http://localhost:35456",
         };
 
-        public SDKConfig Config { get; private set; }
+        public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.3.1";
-        private const string _sdkGenVersion = "2.188.3";
+        private const string _sdkVersion = "0.4.0";
+        private const string _sdkGenVersion = "2.233.6";
         private const string _openapiDocVersion = "0.1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.0 2.233.6 0.1.0 openapi";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -97,23 +97,20 @@ namespace Openapi
             _defaultClient = defaultClient;
             _securityClient = securityClient;
             _serverUrl = serverUrl;
-            Config = config;
+            SDKConfiguration = config;
         }
         
 
         public async Task<PaginationCursorBodyResponse> PaginationCursorBodyAsync(PaginationCursorBodyRequestBody request, string? serverUrl = null)
         {
-            string baseUrl = PaginationCursorBodySERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(PaginationCursorBodyServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/pagination/cursor";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -184,17 +181,14 @@ namespace Openapi
             {
                 Cursor = cursor,
             };
-            string baseUrl = PaginationCursorParamsSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(PaginationCursorParamsServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = URLBuilder.Build(baseUrl, "/pagination/cursor", request);
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -250,17 +244,14 @@ namespace Openapi
 
         public async Task<PaginationLimitOffsetOffsetBodyResponse> PaginationLimitOffsetOffsetBodyAsync(LimitOffsetConfig request, string? serverUrl = null)
         {
-            string baseUrl = PaginationLimitOffsetOffsetBodySERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(PaginationLimitOffsetOffsetBodyServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/pagination/limitoffset/offset";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -341,17 +332,14 @@ namespace Openapi
                 Limit = limit,
                 Offset = offset,
             };
-            string baseUrl = PaginationLimitOffsetOffsetParamsSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(PaginationLimitOffsetOffsetParamsServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = URLBuilder.Build(baseUrl, "/pagination/limitoffset/offset", request);
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -415,17 +403,14 @@ namespace Openapi
 
         public async Task<PaginationLimitOffsetPageBodyResponse> PaginationLimitOffsetPageBodyAsync(LimitOffsetConfig request, string? serverUrl = null)
         {
-            string baseUrl = PaginationLimitOffsetPageBodySERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(PaginationLimitOffsetPageBodyServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/pagination/limitoffset/page";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -499,17 +484,14 @@ namespace Openapi
             {
                 Page = page,
             };
-            string baseUrl = PaginationLimitOffsetPageParamsSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(PaginationLimitOffsetPageParamsServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = URLBuilder.Build(baseUrl, "/pagination/limitoffset/page", request);
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             

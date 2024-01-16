@@ -27,10 +27,11 @@ Endpoints for testing authentication.
 package main
 
 import(
+	"openapi/v3/pkg/models/shared"
+	openapi "openapi/v3"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -79,7 +80,7 @@ func main() {
 **[*operations.APIKeyAuthGlobalNewResponse](../../pkg/models/operations/apikeyauthglobalnewresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## AuthGlobal
 
@@ -89,10 +90,11 @@ func main() {
 package main
 
 import(
+	"openapi/v3/pkg/models/shared"
+	openapi "openapi/v3"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -141,7 +143,7 @@ func main() {
 **[*operations.AuthGlobalResponse](../../pkg/models/operations/authglobalresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## BasicAuthNew
 
@@ -151,11 +153,12 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v3"
+	"openapi/v3/pkg/models/operations"
 	"context"
+	"openapi/v3/pkg/models/shared"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -208,7 +211,7 @@ func main() {
 **[*operations.BasicAuthNewResponse](../../pkg/models/operations/basicauthnewresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MultipleMixedOptionsAuth
 
@@ -218,11 +221,12 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v3"
+	"openapi/v3/pkg/models/operations"
 	"context"
+	"openapi/v3/pkg/models/shared"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -274,7 +278,7 @@ func main() {
 **[*operations.MultipleMixedOptionsAuthResponse](../../pkg/models/operations/multiplemixedoptionsauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MultipleMixedSchemeAuth
 
@@ -284,11 +288,12 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v3"
+	"openapi/v3/pkg/models/operations"
+	"openapi/v3/pkg/models/shared"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -344,7 +349,7 @@ func main() {
 **[*operations.MultipleMixedSchemeAuthResponse](../../pkg/models/operations/multiplemixedschemeauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MultipleOptionsWithMixedSchemesAuth
 
@@ -354,11 +359,12 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v3"
+	"openapi/v3/pkg/models/operations"
 	"context"
+	"openapi/v3/pkg/models/shared"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -413,7 +419,7 @@ func main() {
 **[*operations.MultipleOptionsWithMixedSchemesAuthResponse](../../pkg/models/operations/multipleoptionswithmixedschemesauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MultipleOptionsWithSimpleSchemesAuth
 
@@ -423,11 +429,12 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v3"
+	"openapi/v3/pkg/models/operations"
 	"context"
+	"openapi/v3/pkg/models/shared"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -482,7 +489,7 @@ func main() {
 **[*operations.MultipleOptionsWithSimpleSchemesAuthResponse](../../pkg/models/operations/multipleoptionswithsimpleschemesauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MultipleSimpleOptionsAuth
 
@@ -492,11 +499,12 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v3"
+	"openapi/v3/pkg/models/operations"
 	"context"
+	"openapi/v3/pkg/models/shared"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -548,7 +556,7 @@ func main() {
 **[*operations.MultipleSimpleOptionsAuthResponse](../../pkg/models/operations/multiplesimpleoptionsauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MultipleSimpleSchemeAuth
 
@@ -558,11 +566,12 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v3"
+	"openapi/v3/pkg/models/operations"
 	"context"
+	"openapi/v3/pkg/models/shared"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -615,7 +624,7 @@ func main() {
 **[*operations.MultipleSimpleSchemeAuthResponse](../../pkg/models/operations/multiplesimpleschemeauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Oauth2AuthNew
 
@@ -625,11 +634,12 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v3"
+	"openapi/v3/pkg/models/operations"
 	"context"
+	"openapi/v3/pkg/models/shared"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -681,7 +691,7 @@ func main() {
 **[*operations.Oauth2AuthNewResponse](../../pkg/models/operations/oauth2authnewresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## OpenIDConnectAuthNew
 
@@ -691,11 +701,12 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v3"
+	"openapi/v3/pkg/models/operations"
 	"context"
+	"openapi/v3/pkg/models/shared"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -747,4 +758,4 @@ func main() {
 **[*operations.OpenIDConnectAuthNewResponse](../../pkg/models/operations/openidconnectauthnewresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

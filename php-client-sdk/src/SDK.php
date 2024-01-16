@@ -126,6 +126,8 @@ class SDK
      */
 	public AuthNew $authNew;
 	
+	public Resource $resource;
+	
     /**
      * Testing for documentation extensions and tooling.
      * 
@@ -133,7 +135,12 @@ class SDK
      */
 	public Documentation $documentation;
 	
-	public Resource $resource;
+    /**
+     * Endpoints for testing server-sent events streaming
+     * 
+     * @var Eventstreams $$eventstreams
+     */
+	public Eventstreams $eventstreams;
 	
 	public First $first;
 	
@@ -204,9 +211,11 @@ class SDK
 		
 		$this->authNew = new AuthNew($this->sdkConfiguration);
 		
+		$this->resource = new Resource($this->sdkConfiguration);
+		
 		$this->documentation = new Documentation($this->sdkConfiguration);
 		
-		$this->resource = new Resource($this->sdkConfiguration);
+		$this->eventstreams = new Eventstreams($this->sdkConfiguration);
 		
 		$this->first = new First($this->sdkConfiguration);
 		

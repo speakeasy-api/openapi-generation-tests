@@ -35,8 +35,9 @@ import Foundation
 /// - ``servers``
 /// - ``telemetry``
 /// - ``authNew``
-/// - ``documentation``
 /// - ``resource``
+/// - ``documentation``
+/// - ``eventstreams``
 /// - ``first``
 /// - ``second``
 /// - ``pagination``
@@ -75,9 +76,11 @@ public protocol OpenAPI {
     var telemetry: TelemetryAPI { get }
     /// Endpoints for testing authentication.
     var authNew: AuthNewAPI { get }
+    var resource: ResourceAPI { get }
     /// Testing for documentation extensions and tooling.
     var documentation: DocumentationAPI { get }
-    var resource: ResourceAPI { get }
+    /// Endpoints for testing server-sent events streaming
+    var eventstreams: EventstreamsAPI { get }
     var first: FirstAPI { get }
     var second: SecondAPI { get }
     /// Endpoints for testing the pagination extension
@@ -106,7 +109,7 @@ public protocol OpenAPI {
 /// - ``deprecatedOperationWithCommentsGet(request:)``
 /// - ``emptyObjectGet(request:)``
 /// - ``emptyResponseObjectWithCommentGet()``
-/// - ``getGlobalNameOverride()``
+/// - ``getGlobalNameOverride(request:)``
 /// - ``ignoredGenerationGet()``
 /// - ``ignoresPost(request:)``
 /// - ``nameOverrideGet(request:)``
@@ -151,7 +154,7 @@ public protocol GenerationAPI {
 
     func emptyResponseObjectWithCommentGet() async throws -> Response<Operations.EmptyResponseObjectWithCommentGetResponse>
 
-    func getGlobalNameOverride() async throws -> Response<Operations.GetGlobalNameOverrideResponse>
+    func getGlobalNameOverride(request: Shared.SimpleObject) async throws -> Response<Operations.GetGlobalNameOverrideResponse>
 
     func ignoredGenerationGet() async throws -> Response<Operations.IgnoredGenerationGetResponse>
 
@@ -281,6 +284,7 @@ public protocol ErrorsAPI {
 /// - ``nullableOneOfTypeInObjectPost(request:)``
 /// - ``nullableTypedObjectPost(request:)``
 /// - ``primitiveTypeOneOfPost(request:)``
+/// - ``stronglyTypedOneOfDiscriminatedPost(request:)``
 /// - ``stronglyTypedOneOfPost(request:)``
 /// - ``typedObjectNullableOneOfPost(request:)``
 /// - ``typedObjectOneOfPost(request:)``
@@ -304,6 +308,8 @@ public protocol UnionsAPI {
     func nullableTypedObjectPost(request: Shared.TypedObject1) async throws -> Response<Operations.NullableTypedObjectPostResponse>
 
     func primitiveTypeOneOfPost(request: Operations.PrimitiveTypeOneOfPostRequestBody) async throws -> Response<Operations.PrimitiveTypeOneOfPostResponse>
+
+    func stronglyTypedOneOfDiscriminatedPost(request: Shared.StronglyTypedOneOfDiscriminatedObject) async throws -> Response<Operations.StronglyTypedOneOfDiscriminatedPostResponse>
 
     func stronglyTypedOneOfPost(request: Shared.StronglyTypedOneOfObject) async throws -> Response<Operations.StronglyTypedOneOfPostResponse>
 
@@ -1413,6 +1419,7 @@ public enum RequestBodiesServers {
 /// - ``requestBodyPutMultipartDeep(request:)``
 /// - ``requestBodyPutMultipartDifferentFileName(request:)``
 /// - ``requestBodyPutMultipartFile(request:)``
+/// - ``requestBodyPutMultipartOptionalRequestBody(request:)``
 /// - ``requestBodyPutMultipartSimple(request:)``
 /// - ``requestBodyPutString(request:)``
 /// - ``requestBodyPutStringWithParams(request:)``
@@ -1567,6 +1574,8 @@ public protocol RequestBodiesAPI {
 
     func requestBodyPutMultipartFile(request: Operations.RequestBodyPutMultipartFileRequestBody) async throws -> Response<Operations.RequestBodyPutMultipartFileResponse>
 
+    func requestBodyPutMultipartOptionalRequestBody(request: Operations.RequestBodyPutMultipartOptionalRequestBodyRequestBody) async throws -> Response<Operations.RequestBodyPutMultipartOptionalRequestBodyResponse>
+
     func requestBodyPutMultipartSimple(request: Shared.SimpleObject) async throws -> Response<Operations.RequestBodyPutMultipartSimpleResponse>
 
     func requestBodyPutString(request: String) async throws -> Response<Operations.RequestBodyPutStringResponse>
@@ -1668,6 +1677,7 @@ public enum ResponseBodiesServers {
 ///
 /// ### API calls
 ///
+/// - ``responseBodyAdditionalPropertiesAnyPost(request:)``
 /// - ``responseBodyAdditionalPropertiesComplexNumbersPost(request:)``
 /// - ``responseBodyAdditionalPropertiesDatePost(request:)``
 /// - ``responseBodyAdditionalPropertiesObjectPost(request:)``
@@ -1681,6 +1691,8 @@ public enum ResponseBodiesServers {
 /// - ``responseBodyZeroValueComplexTypePtrsPost(request:)``
 ///
 public protocol ResponseBodiesAPI {
+    func responseBodyAdditionalPropertiesAnyPost(request: [String: AnyValue]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesAnyPostResponse>
+
     func responseBodyAdditionalPropertiesComplexNumbersPost(request: [String: String]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse>
 
     func responseBodyAdditionalPropertiesDatePost(request: [String: Date]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesDatePostResponse>
@@ -2336,6 +2348,32 @@ public protocol AuthNewAPI {
     func openIdConnectAuthNew(request: Shared.AuthServiceRequestBody, security: Operations.OpenIdConnectAuthNewSecurity, server: AuthNewServers.OpenIdConnectAuthNew?) async throws -> Response<Operations.OpenIdConnectAuthNewResponse>
 }
 
+// MARK: - ResourceAPI
+/// ## Topics
+///
+/// ### API calls
+///
+/// - ``createFile(request:)``
+/// - ``createResource(request:)``
+/// - ``deleteResource(request:)``
+/// - ``getArrayDataSource(request:)``
+/// - ``getResource(request:)``
+/// - ``updateResource(request:)``
+///
+public protocol ResourceAPI {
+    func createFile(request: Operations.CreateFileRequestBody) async throws -> Response<Operations.CreateFileResponse>
+
+    func createResource(request: Shared.ExampleResource) async throws -> Response<Operations.CreateResourceResponse>
+
+    func deleteResource(request: Operations.DeleteResourceRequest) async throws -> Response<Operations.DeleteResourceResponse>
+
+    func getArrayDataSource(request: Operations.GetArrayDataSourceRequest) async throws -> Response<Operations.GetArrayDataSourceResponse>
+
+    func getResource(request: Operations.GetResourceRequest) async throws -> Response<Operations.GetResourceResponse>
+
+    func updateResource(request: Operations.UpdateResourceRequest) async throws -> Response<Operations.UpdateResourceResponse>
+}
+
 // MARK: - DocumentationAPI
 
 /// Testing for documentation extensions and tooling.
@@ -2355,27 +2393,207 @@ public protocol DocumentationAPI {
     func getDocumentationPerLanguage(request: Operations.GetDocumentationPerLanguageRequest) async throws -> Response<Operations.GetDocumentationPerLanguageResponse>
 }
 
-// MARK: - ResourceAPI
+// MARK: - EventstreamsAPI
+public enum EventstreamsServers {
+
+/// Describes the available servers that can be used when making 'chat' requests.
+///
+/// Use this type when making calls to ``EventstreamsAPI/chat(request:server:)`` to customize the server which is used.
+    public enum Chat: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:35456`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:35456"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:35456"
+        ]
+
+        static func `default`() throws -> Server {
+            return try EventstreamsServers.Chat.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
+
+/// Describes the available servers that can be used when making 'json' requests.
+///
+/// Use this type when making calls to ``EventstreamsAPI/json(server:)`` to customize the server which is used.
+    public enum Json: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:35456`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:35456"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:35456"
+        ]
+
+        static func `default`() throws -> Server {
+            return try EventstreamsServers.Json.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
+
+/// Describes the available servers that can be used when making 'multiline' requests.
+///
+/// Use this type when making calls to ``EventstreamsAPI/multiline(server:)`` to customize the server which is used.
+    public enum Multiline: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:35456`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:35456"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:35456"
+        ]
+
+        static func `default`() throws -> Server {
+            return try EventstreamsServers.Multiline.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
+
+/// Describes the available servers that can be used when making 'rich' requests.
+///
+/// Use this type when making calls to ``EventstreamsAPI/rich(server:)`` to customize the server which is used.
+    public enum Rich: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:35456`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:35456"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:35456"
+        ]
+
+        static func `default`() throws -> Server {
+            return try EventstreamsServers.Rich.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
+
+/// Describes the available servers that can be used when making 'text' requests.
+///
+/// Use this type when making calls to ``EventstreamsAPI/text(server:)`` to customize the server which is used.
+    public enum Text: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:35456`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:35456"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:35456"
+        ]
+
+        static func `default`() throws -> Server {
+            return try EventstreamsServers.Text.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
+}
+
+/// Endpoints for testing server-sent events streaming
+///
 /// ## Topics
 ///
 /// ### API calls
 ///
-/// - ``createFile(request:)``
-/// - ``createResource(request:)``
-/// - ``deleteResource(request:)``
-/// - ``getResource(request:)``
-/// - ``updateResource(request:)``
+/// - ``chat(request:server:)``
+/// - ``json(server:)``
+/// - ``multiline(server:)``
+/// - ``rich(server:)``
+/// - ``text(server:)``
 ///
-public protocol ResourceAPI {
-    func createFile(request: Operations.CreateFileRequestBody) async throws -> Response<Operations.CreateFileResponse>
+public protocol EventstreamsAPI {
+    func chat(request: Operations.ChatRequestBody, server: EventstreamsServers.Chat?) async throws -> Response<Operations.ChatResponse>
 
-    func createResource(request: Shared.ExampleResource) async throws -> Response<Operations.CreateResourceResponse>
+    func json(server: EventstreamsServers.Json?) async throws -> Response<Operations.JsonResponse>
 
-    func deleteResource(request: Operations.DeleteResourceRequest) async throws -> Response<Operations.DeleteResourceResponse>
+    func multiline(server: EventstreamsServers.Multiline?) async throws -> Response<Operations.MultilineResponse>
 
-    func getResource(request: Operations.GetResourceRequest) async throws -> Response<Operations.GetResourceResponse>
+    func rich(server: EventstreamsServers.Rich?) async throws -> Response<Operations.RichResponse>
 
-    func updateResource(request: Operations.UpdateResourceRequest) async throws -> Response<Operations.UpdateResourceResponse>
+    func text(server: EventstreamsServers.Text?) async throws -> Response<Operations.TextResponse>
 }
 
 // MARK: - FirstAPI

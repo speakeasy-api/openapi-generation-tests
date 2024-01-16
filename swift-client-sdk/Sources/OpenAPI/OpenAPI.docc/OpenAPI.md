@@ -13,12 +13,9 @@ import OpenAPI
 
 let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
 
-let response = try await client.putAnythingIgnoredGeneration()
+let response = try await client.servers.selectGlobalServer()
 
 switch response.data {
-case .object(let object):
-    // Handle response
-    break
 case .empty:
     // Handle empty response
     break
@@ -66,8 +63,9 @@ case .empty:
 - ``ServersAPI``
 - ``TelemetryAPI``
 - ``AuthNewAPI``
-- ``DocumentationAPI``
 - ``ResourceAPI``
+- ``DocumentationAPI``
+- ``EventstreamsAPI``
 - ``FirstAPI``
 - ``SecondAPI``
 - ``PaginationAPI``
@@ -134,6 +132,11 @@ case .empty:
 - ``AuthNewServers/MultipleSimpleSchemeAuth``
 - ``AuthNewServers/Oauth2AuthNew``
 - ``AuthNewServers/OpenIdConnectAuthNew``
+- ``EventstreamsServers/Chat``
+- ``EventstreamsServers/Json``
+- ``EventstreamsServers/Multiline``
+- ``EventstreamsServers/Rich``
+- ``EventstreamsServers/Text``
 - ``PaginationServers/PaginationCursorBody``
 - ``PaginationServers/PaginationCursorParams``
 - ``PaginationServers/PaginationLimitOffsetOffsetBody``
@@ -152,11 +155,15 @@ case .empty:
 - ``Shared/ArrObjValueCamelCase``
 - ``Shared/AuthServiceRequestBody``
 - ``Shared/BasicAuth``
+- ``Shared/ChatCompletionEvent``
+- ``Shared/ChatCompletionResult``
+- ``Shared/ChatCompletionStream``
 - ``Shared/Child``
 - ``Shared/Chocolates``
 - ``Shared/ComplexNumberTypes``
 - ``Shared/ConstEnumInt``
 - ``Shared/ConstEnumStr``
+- ``Shared/Data``
 - ``Shared/DeepObject``
 - ``Shared/DeepObjectCamelCase``
 - ``Shared/DeepObjectWithType``
@@ -188,12 +195,15 @@ case .empty:
 - ``Shared/FileResource``
 - ``Shared/FlattenedTypedObject1``
 - ``Shared/HeaderAuth``
+- ``Shared/HeartbeatEvent``
 - ``Shared/HttpBinSimpleJsonObject``
 - ``Shared/InlineObject``
 - ``Shared/IntEnumVal``
 - ``Shared/Int32EnumVal``
 - ``Shared/Int32Enum``
 - ``Shared/IntEnum``
+- ``Shared/JsonEvent``
+- ``Shared/JsonEventData``
 - ``Shared/LimitOffsetConfig``
 - ``Shared/MapObjValue``
 - ``Shared/MapObjValueCamelCase``
@@ -216,7 +226,11 @@ case .empty:
 - ``Shared/ReadWriteObjectOutput``
 - ``Shared/RefQueryParamObj``
 - ``Shared/RefQueryParamObjExploded``
+- ``Shared/RichCompletionEvent``
+- ``Shared/RichCompletionEventData``
+- ``Shared/RichStream``
 - ``Shared/SchemeBasicAuth``
+- ``Shared/SentinelEvent``
 - ``Shared/SimpleObject``
 - ``Shared/SimpleObjectCamelCase``
 - ``Shared/SimpleObjectWithType``
@@ -224,7 +238,15 @@ case .empty:
 - ``Shared/SimpleObjectWithTypeIntEnum``
 - ``Shared/Slides``
 - ``Shared/Slideshow``
+- ``Shared/StopReason``
+- ``Shared/StronglyTypedOneOfDiscriminatedObject``
 - ``Shared/StronglyTypedOneOfObject``
+- ``Shared/Tag``
+- ``Shared/TaggedObject1``
+- ``Shared/TaggedObject2``
+- ``Shared/TaggedObject2Tag``
+- ``Shared/TaggedObject3``
+- ``Shared/TextEvent``
 - ``Shared/TypeModel``
 - ``Shared/TypedObject1``
 - ``Shared/TypedObject1Type``
@@ -258,6 +280,7 @@ case .empty:
 - ``Operations/BasicAuthResponse``
 - ``Operations/BasicAuthNewResponse``
 - ``Operations/BearerAuthResponse``
+- ``Operations/ChatResponse``
 - ``Operations/CircularReferenceGetResponse``
 - ``Operations/ComponentBodyAndParamConflictResponse``
 - ``Operations/ComponentBodyAndParamNoConflictResponse``
@@ -285,6 +308,7 @@ case .empty:
 - ``Operations/FormQueryParamsObjectResponse``
 - ``Operations/FormQueryParamsPrimitiveResponse``
 - ``Operations/FormQueryParamsRefParamObjectResponse``
+- ``Operations/GetArrayDataSourceResponse``
 - ``Operations/GetDocumentationPerLanguageResponse``
 - ``Operations/GetGlobalNameOverrideResponse``
 - ``Operations/GetResourceResponse``
@@ -301,11 +325,13 @@ case .empty:
 - ``Operations/IgnoresPostResponse``
 - ``Operations/InlineBodyAndParamConflictResponse``
 - ``Operations/InlineBodyAndParamNoConflictResponse``
+- ``Operations/JsonResponse``
 - ``Operations/JsonQueryParamsObjectResponse``
 - ``Operations/MixedParametersCamelCaseResponse``
 - ``Operations/MixedParametersPrimitivesResponse``
 - ``Operations/MixedQueryParamsResponse``
 - ``Operations/MixedTypeOneOfPostResponse``
+- ``Operations/MultilineResponse``
 - ``Operations/MultipleMixedOptionsAuthResponse``
 - ``Operations/MultipleMixedSchemeAuthResponse``
 - ``Operations/MultipleOptionsWithMixedSchemesAuthResponse``
@@ -410,6 +436,7 @@ case .empty:
 - ``Operations/RequestBodyPutMultipartDeepResponse``
 - ``Operations/RequestBodyPutMultipartDifferentFileNameResponse``
 - ``Operations/RequestBodyPutMultipartFileResponse``
+- ``Operations/RequestBodyPutMultipartOptionalRequestBodyResponse``
 - ``Operations/RequestBodyPutMultipartSimpleResponse``
 - ``Operations/RequestBodyPutStringResponse``
 - ``Operations/RequestBodyPutStringWithParamsResponse``
@@ -420,6 +447,7 @@ case .empty:
 - ``Operations/RequestBodyWriteOnlyResponse``
 - ``Operations/RequestBodyWriteOnlyOutputResponse``
 - ``Operations/RequestBodyWriteOnlyUnionResponse``
+- ``Operations/ResponseBodyAdditionalPropertiesAnyPostResponse``
 - ``Operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse``
 - ``Operations/ResponseBodyAdditionalPropertiesDatePostResponse``
 - ``Operations/ResponseBodyAdditionalPropertiesObjectPostResponse``
@@ -433,6 +461,7 @@ case .empty:
 - ``Operations/ResponseBodyXmlGetResponse``
 - ``Operations/ResponseBodyZeroValueComplexTypePtrsPostResponse``
 - ``Operations/RetriesGetResponse``
+- ``Operations/RichResponse``
 - ``Operations/SelectGlobalServerResponse``
 - ``Operations/SelectServerWithIDResponse``
 - ``Operations/ServersByIDWithTemplatesResponse``
@@ -445,9 +474,11 @@ case .empty:
 - ``Operations/SimplePathParameterPrimitivesResponse``
 - ``Operations/StatusGetErrorResponse``
 - ``Operations/StatusGetXSpeakeasyErrorsResponse``
+- ``Operations/StronglyTypedOneOfDiscriminatedPostResponse``
 - ``Operations/StronglyTypedOneOfPostResponse``
 - ``Operations/TelemetrySpeakeasyUserAgentGetResponse``
 - ``Operations/TelemetryUserAgentGetResponse``
+- ``Operations/TextResponse``
 - ``Operations/TypedObjectNullableOneOfPostResponse``
 - ``Operations/TypedObjectOneOfPostResponse``
 - ``Operations/TypedParameterGenerationGetResponse``
@@ -469,6 +500,7 @@ case .empty:
 - ``Operations/BasicAuthRequest``
 - ``Operations/BasicAuthUser``
 - ``Operations/BearerAuthToken``
+- ``Operations/ChatRequestBody``
 - ``Operations/ComponentBodyAndParamConflictRequest``
 - ``Operations/ComponentBodyAndParamConflictRes``
 - ``Operations/ComponentBodyAndParamNoConflictRequest``
@@ -520,6 +552,7 @@ case .empty:
 - ``Operations/FormQueryParamsRefParamObjectArgs``
 - ``Operations/FormQueryParamsRefParamObjectRequest``
 - ``Operations/FormQueryParamsRefParamObjectRes``
+- ``Operations/GetArrayDataSourceRequest``
 - ``Operations/GetDocumentationPerLanguageRequest``
 - ``Operations/GetGlobalNameOverrideResponseBody``
 - ``Operations/GetResourceRequest``
@@ -677,6 +710,9 @@ case .empty:
 - ``Operations/RequestBodyPutMultipartDifferentFileNameRes``
 - ``Operations/RequestBodyPutMultipartFileRequestBody``
 - ``Operations/RequestBodyPutMultipartFileRes``
+- ``Operations/RequestBodyPutMultipartOptionalRequestBodyForm``
+- ``Operations/RequestBodyPutMultipartOptionalRequestBodyRequestBody``
+- ``Operations/RequestBodyPutMultipartOptionalRequestBodyRes``
 - ``Operations/RequestBodyPutMultipartSimpleForm``
 - ``Operations/RequestBodyPutMultipartSimpleHeaders``
 - ``Operations/RequestBodyPutMultipartSimpleRes``
@@ -685,6 +721,7 @@ case .empty:
 - ``Operations/RequestBodyPutStringWithParamsRequest``
 - ``Operations/RequestBodyPutStringWithParamsRes``
 - ``Operations/RequiredObj``
+- ``Operations/ResponseBodyAdditionalPropertiesAnyPostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesDatePostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesObjectPostResponseBody``
@@ -693,6 +730,7 @@ case .empty:
 - ``Operations/ResponseBodyZeroValueComplexTypePtrsPostResponseBody``
 - ``Operations/RetriesGetRequest``
 - ``Operations/RetriesGetRetries``
+- ``Operations/SampleFile``
 - ``Operations/SimplePathParameterArraysRequest``
 - ``Operations/SimplePathParameterArraysRes``
 - ``Operations/SimplePathParameterMapsRequest``
@@ -704,6 +742,7 @@ case .empty:
 - ``Operations/StatusGetErrorRequest``
 - ``Operations/StatusGetXSpeakeasyErrorsRequest``
 - ``Operations/StatusGetXSpeakeasyErrorsResponseBody``
+- ``Operations/StronglyTypedOneOfDiscriminatedPostRes``
 - ``Operations/StronglyTypedOneOfPostRes``
 - ``Operations/TelemetrySpeakeasyUserAgentGetRequest``
 - ``Operations/TelemetrySpeakeasyUserAgentGetRes``
