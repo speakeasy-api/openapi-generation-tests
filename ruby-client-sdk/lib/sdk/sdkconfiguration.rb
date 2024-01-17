@@ -29,7 +29,7 @@ module OpenApiSDK
   end
 
 
-  class SDKConfiguration < OpenApiSDK::Utils::FieldAugmented
+  class SDKConfiguration < ::OpenApiSDK::Utils::FieldAugmented
     extend T::Sig
 
     field :client, T.nilable(Faraday::Connection)
@@ -54,9 +54,9 @@ module OpenApiSDK
       @globals = globals.nil? ? {} : globals
       @language = 'ruby'
       @openapi_doc_version = '0.1.0'
-      @sdk_version = '2.1.1'
-      @gen_version = '2.188.3'
-      @user_agent = 'speakeasy-sdk/ruby 2.1.1 2.188.3 0.1.0 openapi'
+      @sdk_version = '3.0.0'
+      @gen_version = '2.234.3'
+      @user_agent = 'speakeasy-sdk/ruby 3.0.0 2.234.3 0.1.0 openapi'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }

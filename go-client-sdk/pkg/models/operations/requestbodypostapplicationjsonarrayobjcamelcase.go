@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"openapi/v2/pkg/models/shared"
+	"openapi/v3/pkg/models/shared"
 )
 
 type RequestBodyPostApplicationJSONArrayObjCamelCaseResponse struct {

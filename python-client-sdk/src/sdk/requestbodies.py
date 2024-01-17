@@ -16,12 +16,12 @@ class RequestBodies:
         
     
     
-    def nullable_object_post(self, request: shared.NullableObject) -> operations.NullableObjectPostResponse:
+    def nullable_object_post(self, request: Optional[shared.NullableObject]) -> operations.NullableObjectPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/nullableRequiredObject'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", True, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Optional[shared.NullableObject], "request", True, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -36,7 +36,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.NullableObjectPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -57,7 +57,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/nullableRequiredEmptyObject'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.NullableRequiredEmptyObjectPostRequestBody, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -72,7 +72,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.NullableRequiredEmptyObjectPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -92,7 +92,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/nullableRequiredProperty'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.NullableRequiredPropertyPostRequestBody, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -107,7 +107,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.NullableRequiredPropertyPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -127,7 +127,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/nullableRequiredSharedObject'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.NullableRequiredSharedObjectPostRequestBody, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -142,7 +142,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.NullableRequiredSharedObjectPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -165,7 +165,7 @@ class RequestBodies:
         
         url = base_url + '/requestbody#array'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, List[shared.SimpleObject], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -180,7 +180,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONArrayResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -204,7 +204,7 @@ class RequestBodies:
         
         url = base_url + '/requestbody#arrayCamelCase'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, List[shared.SimpleObjectCamelCase], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -219,7 +219,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONArrayCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -240,7 +240,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/application/json/array/objResponse'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, List[shared.SimpleObject], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -255,7 +255,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONArrayObjResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -276,7 +276,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/application/json/array/objResponseCamelCase'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, List[shared.SimpleObjectCamelCase], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -291,7 +291,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONArrayObjCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -315,7 +315,7 @@ class RequestBodies:
         
         url = base_url + '/requestbody#arrayOfArrays'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, List[List[shared.SimpleObject]], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -330,7 +330,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONArrayOfArrayResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -354,7 +354,7 @@ class RequestBodies:
         
         url = base_url + '/requestbody#arrayOfArraysCamelCase'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, List[List[shared.SimpleObjectCamelCase]], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -369,7 +369,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONArrayOfArrayCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -393,7 +393,7 @@ class RequestBodies:
         
         url = base_url + '/requestbody#arrayOfArraysOfPrimitives'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, List[List[str]], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -408,7 +408,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -432,7 +432,7 @@ class RequestBodies:
         
         url = base_url + '/requestbody#arrayOfMaps'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, List[Dict[str, shared.SimpleObject]], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -447,7 +447,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONArrayOfMapResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -471,7 +471,7 @@ class RequestBodies:
         
         url = base_url + '/requestbody#arrayOfMapsCamelCase'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, List[Dict[str, shared.SimpleObjectCamelCase]], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -486,7 +486,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONArrayOfMapCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -510,7 +510,7 @@ class RequestBodies:
         
         url = base_url + '/requestbody#arrayOfPrimitives'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, List[str], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -525,7 +525,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONArrayOfPrimitiveResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -546,7 +546,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/application/json/deep'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.DeepObject, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -561,7 +561,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONDeepResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -582,7 +582,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/application/json/deep/camelcase'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.DeepObjectCamelCase, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -597,7 +597,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONDeepCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -621,7 +621,7 @@ class RequestBodies:
         
         url = base_url + '/requestbody#map'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Dict[str, shared.SimpleObject], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -636,7 +636,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONMapResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -660,7 +660,7 @@ class RequestBodies:
         
         url = base_url + '/requestbody#mapCamelCase'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Dict[str, shared.SimpleObjectCamelCase], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -675,7 +675,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONMapCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -696,7 +696,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/application/json/map/objResponse'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Dict[str, shared.SimpleObject], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -711,7 +711,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONMapObjResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -732,7 +732,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/application/json/map/objResponseCamelCase'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Dict[str, shared.SimpleObjectCamelCase], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -747,7 +747,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONMapObjCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -771,7 +771,7 @@ class RequestBodies:
         
         url = base_url + '/requestbody#mapOfArrays'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Dict[str, List[shared.SimpleObject]], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -786,7 +786,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONMapOfArrayResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -810,7 +810,7 @@ class RequestBodies:
         
         url = base_url + '/requestbody#mapOfArraysCamelCase'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Dict[str, List[shared.SimpleObjectCamelCase]], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -825,7 +825,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONMapOfArrayCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -849,7 +849,7 @@ class RequestBodies:
         
         url = base_url + '/requestbody#mapOfMaps'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Dict[str, Dict[str, shared.SimpleObject]], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -864,7 +864,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONMapOfMapResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -888,7 +888,7 @@ class RequestBodies:
         
         url = base_url + '/requestbody#mapOfMapsCamelCase'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Dict[str, Dict[str, shared.SimpleObjectCamelCase]], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -903,7 +903,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONMapOfMapCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -927,7 +927,7 @@ class RequestBodies:
         
         url = base_url + '/requestbody#mapOfMapsOfPrimitives'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Dict[str, Dict[str, str]], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -942,7 +942,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONMapOfMapOfPrimitiveResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -966,7 +966,7 @@ class RequestBodies:
         
         url = base_url + '/requestbody#mapOfPrimitives'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Dict[str, str], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -981,7 +981,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONMapOfPrimitiveResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1002,7 +1002,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/application/json/multiple/json/filtered'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.SimpleObject, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1017,7 +1017,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONMultipleJSONFilteredResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1038,7 +1038,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/application/json/simple'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.SimpleObject, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1053,7 +1053,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONSimpleResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1074,7 +1074,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/application/json/camelcase'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.SimpleObjectCamelCase, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1089,7 +1089,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostApplicationJSONSimpleCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1110,7 +1110,7 @@ class RequestBodies:
         
         url = utils.generate_url(operations.RequestBodyPostComplexNumberTypesRequest, base_url, '/anything/requestBodies/post/{pathBigInt}/{pathBigIntStr}/{pathDecimal}/{pathDecimalStr}/complex-number-types', request, self.sdk_configuration.globals)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "complex_number_types", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.RequestBodyPostComplexNumberTypesRequest, "complex_number_types", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1126,7 +1126,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostComplexNumberTypesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1147,7 +1147,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/defaultsAndConsts'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.DefaultsAndConsts, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1162,7 +1162,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostDefaultsAndConstsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1183,7 +1183,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/empty-object'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.RequestBodyPostEmptyObjectRequestBody, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1198,7 +1198,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostEmptyObjectResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1219,7 +1219,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/form/deep'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'form')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.DeepObject, "request", False, False, 'form')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1234,7 +1234,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostFormDeepResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1255,7 +1255,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/form/map/primitive'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'form')
+        req_content_type, data, form = utils.serialize_request_body(request, Dict[str, str], "request", False, False, 'form')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1270,7 +1270,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostFormMapPrimitiveResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1291,7 +1291,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/form/simple'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'form')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.SimpleObject, "request", False, False, 'form')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1306,7 +1306,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostFormSimpleResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1327,7 +1327,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/array/bigInt'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, List[int], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1342,7 +1342,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostJSONDataTypesArrayBigIntResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1363,7 +1363,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/array/date'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.list_encoder(False, utils.dateisoformat(False)))
+        req_content_type, data, form = utils.serialize_request_body(request, List[date], "request", False, False, 'json', utils.list_encoder(False, utils.dateisoformat(False)))
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1378,7 +1378,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostJSONDataTypesArrayDateResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1399,7 +1399,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/array/decimalStr'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.list_encoder(False, utils.decimalencoder(False, True)))
+        req_content_type, data, form = utils.serialize_request_body(request, List[Decimal], "request", False, False, 'json', utils.list_encoder(False, utils.decimalencoder(False, True)))
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1414,7 +1414,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostJSONDataTypesArrayDecimalStrResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1435,7 +1435,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/bigint'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, int, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1450,7 +1450,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostJSONDataTypesBigIntResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1471,7 +1471,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/bigintStr'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.bigintencoder(False))
+        req_content_type, data, form = utils.serialize_request_body(request, int, "request", False, False, 'json', utils.bigintencoder(False))
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1486,7 +1486,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostJSONDataTypesBigIntStrResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1507,7 +1507,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/boolean'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, bool, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1522,7 +1522,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostJSONDataTypesBooleanResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1543,7 +1543,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/date'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.dateisoformat(False))
+        req_content_type, data, form = utils.serialize_request_body(request, date, "request", False, False, 'json', utils.dateisoformat(False))
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1558,7 +1558,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostJSONDataTypesDateResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1579,7 +1579,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/dateTime'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.datetimeisoformat(False))
+        req_content_type, data, form = utils.serialize_request_body(request, datetime, "request", False, False, 'json', utils.datetimeisoformat(False))
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1594,7 +1594,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostJSONDataTypesDateTimeResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1615,7 +1615,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/decimal'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.decimalencoder(False, False))
+        req_content_type, data, form = utils.serialize_request_body(request, Decimal, "request", False, False, 'json', utils.decimalencoder(False, False))
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1630,7 +1630,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostJSONDataTypesDecimalResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1651,7 +1651,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/decimalStr'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.decimalencoder(False, True))
+        req_content_type, data, form = utils.serialize_request_body(request, Decimal, "request", False, False, 'json', utils.decimalencoder(False, True))
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1666,7 +1666,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostJSONDataTypesDecimalStrResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1687,7 +1687,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/float32'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, float, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1702,7 +1702,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostJSONDataTypesFloat32Response(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1723,7 +1723,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/int32'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, int, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1738,7 +1738,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostJSONDataTypesInt32Response(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1759,7 +1759,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/integer'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, int, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1774,7 +1774,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostJSONDataTypesIntegerResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1795,7 +1795,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/map/bigIntStr'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.map_encoder(False, utils.bigintencoder(False)))
+        req_content_type, data, form = utils.serialize_request_body(request, Dict[str, int], "request", False, False, 'json', utils.map_encoder(False, utils.bigintencoder(False)))
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1810,7 +1810,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostJSONDataTypesMapBigIntStrResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1831,7 +1831,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/map/dateTime'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.map_encoder(False, utils.datetimeisoformat(False)))
+        req_content_type, data, form = utils.serialize_request_body(request, Dict[str, datetime], "request", False, False, 'json', utils.map_encoder(False, utils.datetimeisoformat(False)))
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1846,7 +1846,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostJSONDataTypesMapDateTimeResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1867,7 +1867,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/map/decimal'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.map_encoder(False, utils.decimalencoder(False, False)))
+        req_content_type, data, form = utils.serialize_request_body(request, Dict[str, Decimal], "request", False, False, 'json', utils.map_encoder(False, utils.decimalencoder(False, False)))
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1882,7 +1882,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostJSONDataTypesMapDecimalResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1903,7 +1903,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/number'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, float, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1918,7 +1918,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostJSONDataTypesNumberResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1939,7 +1939,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/string'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, str, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1954,7 +1954,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostJSONDataTypesStringResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -1975,7 +1975,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/multiple/contentTypes/component/filtered'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.SimpleObject, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -1990,7 +1990,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostMultipleContentTypesComponentFilteredResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2011,7 +2011,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/multiple/contentTypes/inline/filtered'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2026,7 +2026,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2052,7 +2052,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/multiple/contentTypes/split/param'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, False, 'form')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest, "request_body", False, False, 'form')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2068,7 +2068,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2094,7 +2094,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/multiple/contentTypes/split/param'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequest, "request_body", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2110,7 +2110,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostMultipleContentTypesSplitParamJSONResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2136,7 +2136,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/multiple/contentTypes/split/param'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, False, 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest, "request_body", False, False, 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2152,7 +2152,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2173,7 +2173,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/multiple/contentTypes/split'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'form')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody, "request", False, False, 'form')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2188,7 +2188,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostMultipleContentTypesSplitFormResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2209,7 +2209,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/multiple/contentTypes/split'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.RequestBodyPostMultipleContentTypesSplitJSONRequestBody, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2224,7 +2224,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostMultipleContentTypesSplitJSONResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2245,7 +2245,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/multiple/contentTypes/split'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody, "request", False, False, 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2260,7 +2260,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2276,12 +2276,12 @@ class RequestBodies:
 
     
     
-    def request_body_post_not_nullable_not_required_string_body(self, request: str) -> operations.RequestBodyPostNotNullableNotRequiredStringBodyResponse:
+    def request_body_post_not_nullable_not_required_string_body(self, request: Optional[str]) -> operations.RequestBodyPostNotNullableNotRequiredStringBodyResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/notnullable/notrequired/string'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Optional[str], "request", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
@@ -2294,7 +2294,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostNotNullableNotRequiredStringBodyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2315,7 +2315,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/null-array'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, List[str], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2330,7 +2330,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostNullArrayResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2351,7 +2351,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/post/null-dictionary'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Dict[str, str], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2366,7 +2366,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostNullDictionaryResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2382,12 +2382,12 @@ class RequestBodies:
 
     
     
-    def request_body_post_nullable_not_required_string_body(self, request: str) -> operations.RequestBodyPostNullableNotRequiredStringBodyResponse:
+    def request_body_post_nullable_not_required_string_body(self, request: Optional[str]) -> operations.RequestBodyPostNullableNotRequiredStringBodyResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/nullable/notrequired/string'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", True, True, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Optional[str], "request", True, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
@@ -2400,7 +2400,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostNullableNotRequiredStringBodyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2416,12 +2416,12 @@ class RequestBodies:
 
     
     
-    def request_body_post_nullable_required_string_body(self, request: str) -> operations.RequestBodyPostNullableRequiredStringBodyResponse:
+    def request_body_post_nullable_required_string_body(self, request: Optional[str]) -> operations.RequestBodyPostNullableRequiredStringBodyResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/nullable/required/string'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", True, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Optional[str], "request", True, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2436,7 +2436,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPostNullableRequiredStringBodyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2457,7 +2457,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/put/bytes'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'raw')
+        req_content_type, data, form = utils.serialize_request_body(request, bytes, "request", False, False, 'raw')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2472,7 +2472,7 @@ class RequestBodies:
         
         http_res = client.request('PUT', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPutBytesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2498,7 +2498,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/put/bytesWithParams'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, False, 'raw')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.RequestBodyPutBytesWithParamsRequest, "request_body", False, False, 'raw')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2514,7 +2514,7 @@ class RequestBodies:
         
         http_res = client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPutBytesWithParamsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2535,7 +2535,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/put/multipart/deep'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.DeepObject, "request", False, False, 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2550,7 +2550,7 @@ class RequestBodies:
         
         http_res = client.request('PUT', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPutMultipartDeepResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2571,7 +2571,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/put/multipart/differentFileName'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.RequestBodyPutMultipartDifferentFileNameRequestBody, "request", False, False, 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2586,7 +2586,7 @@ class RequestBodies:
         
         http_res = client.request('PUT', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPutMultipartDifferentFileNameResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2607,7 +2607,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/put/multipart/file'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.RequestBodyPutMultipartFileRequestBody, "request", False, False, 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2622,7 +2622,7 @@ class RequestBodies:
         
         http_res = client.request('PUT', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPutMultipartFileResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2638,12 +2638,46 @@ class RequestBodies:
 
     
     
+    def request_body_put_multipart_optional_request_body(self, request: Optional[operations.RequestBodyPutMultipartOptionalRequestBodyRequestBody]) -> operations.RequestBodyPutMultipartOptionalRequestBodyResponse:
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = base_url + '/anything/requestBodies/put/multipart/optionalRequestBody'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, Optional[operations.RequestBodyPutMultipartOptionalRequestBodyRequestBody], "request", False, True, 'multipart')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
+        
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
+        
+        http_res = client.request('PUT', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+        
+        res = operations.RequestBodyPutMultipartOptionalRequestBodyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPutMultipartOptionalRequestBodyRes])
+                res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    
     def request_body_put_multipart_simple(self, request: shared.SimpleObject) -> operations.RequestBodyPutMultipartSimpleResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/put/multipart/simple'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.SimpleObject, "request", False, False, 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2658,7 +2692,7 @@ class RequestBodies:
         
         http_res = client.request('PUT', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPutMultipartSimpleResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2679,7 +2713,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/put/string'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'string')
+        req_content_type, data, form = utils.serialize_request_body(request, str, "request", False, False, 'string')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2694,7 +2728,7 @@ class RequestBodies:
         
         http_res = client.request('PUT', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPutStringResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2720,7 +2754,7 @@ class RequestBodies:
         
         url = base_url + '/anything/requestBodies/put/stringWithParams'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, False, 'string')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.RequestBodyPutStringWithParamsRequest, "request_body", False, False, 'string')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2736,7 +2770,7 @@ class RequestBodies:
         
         http_res = client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyPutStringWithParamsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2760,7 +2794,7 @@ class RequestBodies:
         
         url = base_url + '/readonlyandwriteonly'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.ReadWriteObject, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2775,7 +2809,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyReadAndWriteResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2799,7 +2833,7 @@ class RequestBodies:
         
         url = base_url + '/readonlyorwriteonly#readOnlyInput'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.ReadOnlyObjectInput, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2814,7 +2848,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyReadOnlyInputResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2838,7 +2872,7 @@ class RequestBodies:
         
         url = base_url + '/readonlyorwriteonly#readOnlyUnion'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Union[shared.SimpleObject, shared.ReadOnlyObjectInput], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2853,7 +2887,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyReadOnlyUnionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2877,7 +2911,7 @@ class RequestBodies:
         
         url = base_url + '/readonlyandwriteonly#readWriteOnlyUnion'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Union[shared.SimpleObject, shared.ReadWriteObject], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2892,7 +2926,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyReadWriteOnlyUnionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2916,7 +2950,7 @@ class RequestBodies:
         
         url = base_url + '/readonlyorwriteonly#writeOnly'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.WriteOnlyObject, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2931,7 +2965,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyWriteOnlyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2955,7 +2989,7 @@ class RequestBodies:
         
         url = base_url + '/writeonlyoutput#writeOnlyOutput'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.WriteOnlyObject, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -2970,7 +3004,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyWriteOnlyOutputResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -2994,7 +3028,7 @@ class RequestBodies:
         
         url = base_url + '/writeonlyoutput#writeOnlyUnion'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Union[shared.SimpleObject, shared.WriteOnlyObject], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -3009,7 +3043,7 @@ class RequestBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.RequestBodyWriteOnlyUnionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:

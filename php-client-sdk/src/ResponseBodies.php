@@ -30,6 +30,49 @@ class ResponseBodies
 	}
 	
     /**
+     * responseBodyAdditionalPropertiesAnyPost
+     * 
+     * @param array<string, mixed> $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesAnyPostResponse
+     */
+	public function responseBodyAdditionalPropertiesAnyPost(
+        array $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesAnyPostResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/responseBodies/additionalPropertiesAny');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesAnyPostResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->object = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesAnyPostResponseBody', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * responseBodyAdditionalPropertiesComplexNumbersPost
      * 
      * @param array<string, string> $request

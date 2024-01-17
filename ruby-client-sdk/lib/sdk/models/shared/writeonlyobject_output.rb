@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class WriteOnlyObjectOutput < OpenApiSDK::Utils::FieldAugmented
+    class WriteOnlyObjectOutput < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 

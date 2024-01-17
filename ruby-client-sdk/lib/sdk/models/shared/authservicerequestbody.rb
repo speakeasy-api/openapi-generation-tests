@@ -9,13 +9,13 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class BasicAuth < OpenApiSDK::Utils::FieldAugmented
+    class BasicAuth < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :password, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('password') } }
+      field :password, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('password') } }
 
-      field :username, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('username') } }
+      field :username, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('username') } }
 
 
       sig { params(password: String, username: String).void }
@@ -26,13 +26,13 @@ module OpenApiSDK
     end
 
 
-    class HeaderAuth < OpenApiSDK::Utils::FieldAugmented
+    class HeaderAuth < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :expected_value, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('expectedValue') } }
+      field :expected_value, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('expectedValue') } }
 
-      field :header_name, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('headerName') } }
+      field :header_name, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('headerName') } }
 
 
       sig { params(expected_value: String, header_name: String).void }
@@ -43,13 +43,13 @@ module OpenApiSDK
     end
 
 
-    class AuthServiceRequestBody < OpenApiSDK::Utils::FieldAugmented
+    class AuthServiceRequestBody < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :basic_auth, T.nilable(Shared::BasicAuth), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('basicAuth') } }
+      field :basic_auth, T.nilable(Shared::BasicAuth), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('basicAuth') } }
 
-      field :header_auth, T.nilable(T::Array[Shared::HeaderAuth]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('headerAuth') } }
+      field :header_auth, T.nilable(T::Array[Shared::HeaderAuth]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('headerAuth') } }
 
 
       sig { params(basic_auth: T.nilable(Shared::BasicAuth), header_auth: T.nilable(T::Array[Shared::HeaderAuth])).void }

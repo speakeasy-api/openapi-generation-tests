@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.time.OffsetDateTime;
+import org.apache.http.NameValuePair;
 import org.openapis.openapi.utils.HTTPClient;
 import org.openapis.openapi.utils.HTTPRequest;
 import org.openapis.openapi.utils.JSON;
@@ -42,11 +43,10 @@ public class Resource {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.CreateFileResponse res = new org.openapis.openapi.models.operations.CreateFileResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.CreateFileResponse res = new org.openapis.openapi.models.operations.CreateFileResponse(contentType, httpRes.statusCode(), httpRes) {{
             fileResource = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -80,11 +80,10 @@ public class Resource {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.CreateResourceResponse res = new org.openapis.openapi.models.operations.CreateResourceResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.CreateResourceResponse res = new org.openapis.openapi.models.operations.CreateResourceResponse(contentType, httpRes.statusCode(), httpRes) {{
             exampleResource = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -101,7 +100,7 @@ public class Resource {
         org.openapis.openapi.models.operations.DeleteResourceRequest request = new org.openapis.openapi.models.operations.DeleteResourceRequest(resourceId);
         
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
-        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.DeleteResourceRequest.class, baseUrl, "/resource/{resourceId}", request, this.sdkConfiguration.globals);
+        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.DeleteResourceRequest.class, baseUrl, "/resource/object/{resourceId}", request, this.sdkConfiguration.globals);
         
         HTTPRequest req = new HTTPRequest();
         req.setMethod("DELETE");
@@ -115,12 +114,51 @@ public class Resource {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.DeleteResourceResponse res = new org.openapis.openapi.models.operations.DeleteResourceResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.DeleteResourceResponse res = new org.openapis.openapi.models.operations.DeleteResourceResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 204) {
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.GetArrayDataSourceResponse getArrayDataSource(String filter) throws Exception {
+        org.openapis.openapi.models.operations.GetArrayDataSourceRequest request = new org.openapis.openapi.models.operations.GetArrayDataSourceRequest(filter);
+        
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/datasource/array");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("GET");
+        req.setURL(url);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.GetArrayDataSourceRequest.class, request, this.sdkConfiguration.globals);
+        if (queryParams != null) {
+            for (NameValuePair queryParam : queryParams) {
+                req.addQueryParam(queryParam);
+            }
+        }
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+        
+        org.openapis.openapi.models.operations.GetArrayDataSourceResponse res = new org.openapis.openapi.models.operations.GetArrayDataSourceResponse(contentType, httpRes.statusCode(), httpRes) {{
+            arrayDataSource = null;
+        }};
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                String[] out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), String[].class);
+                res.arrayDataSource = out;
+            }
         }
 
         return res;
@@ -130,7 +168,7 @@ public class Resource {
         org.openapis.openapi.models.operations.GetResourceRequest request = new org.openapis.openapi.models.operations.GetResourceRequest(resourceId);
         
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
-        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.GetResourceRequest.class, baseUrl, "/resource/{resourceId}", request, this.sdkConfiguration.globals);
+        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.GetResourceRequest.class, baseUrl, "/resource/object/{resourceId}", request, this.sdkConfiguration.globals);
         
         HTTPRequest req = new HTTPRequest();
         req.setMethod("GET");
@@ -144,11 +182,10 @@ public class Resource {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.GetResourceResponse res = new org.openapis.openapi.models.operations.GetResourceResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.GetResourceResponse res = new org.openapis.openapi.models.operations.GetResourceResponse(contentType, httpRes.statusCode(), httpRes) {{
             exampleResource = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -161,11 +198,11 @@ public class Resource {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.UpdateResourceResponse updateResource(String resourceId) throws Exception {
-        org.openapis.openapi.models.operations.UpdateResourceRequest request = new org.openapis.openapi.models.operations.UpdateResourceRequest(resourceId);
+    public org.openapis.openapi.models.operations.UpdateResourceResponse updateResource(String augment, String resourceId) throws Exception {
+        org.openapis.openapi.models.operations.UpdateResourceRequest request = new org.openapis.openapi.models.operations.UpdateResourceRequest(augment, resourceId);
         
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
-        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.UpdateResourceRequest.class, baseUrl, "/resource/{resourceId}", request, this.sdkConfiguration.globals);
+        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.UpdateResourceRequest.class, baseUrl, "/resource/object/{resourceId}", request, this.sdkConfiguration.globals);
         
         HTTPRequest req = new HTTPRequest();
         req.setMethod("POST");
@@ -173,16 +210,21 @@ public class Resource {
 
         req.addHeader("Accept", "*/*");
         req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.UpdateResourceRequest.class, request, this.sdkConfiguration.globals);
+        if (queryParams != null) {
+            for (NameValuePair queryParam : queryParams) {
+                req.addQueryParam(queryParam);
+            }
+        }
         
         HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.UpdateResourceResponse res = new org.openapis.openapi.models.operations.UpdateResourceResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.UpdateResourceResponse res = new org.openapis.openapi.models.operations.UpdateResourceResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 202) {
         }

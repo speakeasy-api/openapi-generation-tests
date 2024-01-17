@@ -9,7 +9,7 @@ from sdk.models.operations import *
 from sdk.utils import BackoffStrategy, RetryConfig
 
 from .common_helpers import *
-from .helpers import *
+from .test_helpers import *
 
 
 def test_retries_succeeds():
@@ -52,19 +52,19 @@ def test_global_retry_config_success():
     record_test("retries-global-config-success")
 
     s = SDK(retry_config=RetryConfig(
-        "backoff", BackoffStrategy(1, 50, 1.0, 100), False))
+        "backoff", BackoffStrategy(1, 50, 1.1, 1000), False))
 
-    res = s.retries.retries_get(str(uuid.uuid4()), 2)
+    res = s.retries.retries_get(str(uuid.uuid4()), 10)
     assert res is not None
     assert res.status_code == 200
-    assert res.retries.retries == 2
+    assert res.retries.retries == 10
 
 
 def test_global_retry_config_timeout():
     record_test("retries-global-config-timeout")
 
     s = SDK(retry_config=RetryConfig(
-        "backoff", BackoffStrategy(1, 50, 1.0, 100), False))
+        "backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
     with pytest.raises(errors.SDKError, match="API error occurred: Status 503") as exc_info:
         res = s.retries.retries_get(str(uuid.uuid4()), 30)
