@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class FormQueryParamsPrimitiveRequest < OpenApiSDK::Utils::FieldAugmented
+    class FormQueryParamsPrimitiveRequest < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -32,17 +32,17 @@ module OpenApiSDK
     end
 
 
-    class FormQueryParamsPrimitiveArgs < OpenApiSDK::Utils::FieldAugmented
+    class FormQueryParamsPrimitiveArgs < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :bool_param, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('boolParam') } }
+      field :bool_param, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('boolParam') } }
 
-      field :int_param, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('intParam') } }
+      field :int_param, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('intParam') } }
 
-      field :num_param, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('numParam') } }
+      field :num_param, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('numParam') } }
 
-      field :str_param, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('strParam') } }
+      field :str_param, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('strParam') } }
 
 
       sig { params(bool_param: String, int_param: String, num_param: String, str_param: String).void }
@@ -55,13 +55,13 @@ module OpenApiSDK
     end
 
     # OK
-    class FormQueryParamsPrimitiveRes < OpenApiSDK::Utils::FieldAugmented
+    class FormQueryParamsPrimitiveRes < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :args, Operations::FormQueryParamsPrimitiveArgs, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
+      field :args, Operations::FormQueryParamsPrimitiveArgs, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('args') } }
 
-      field :url, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('url') } }
+      field :url, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('url') } }
 
 
       sig { params(args: Operations::FormQueryParamsPrimitiveArgs, url: String).void }
@@ -72,24 +72,24 @@ module OpenApiSDK
     end
 
 
-    class FormQueryParamsPrimitiveResponse < OpenApiSDK::Utils::FieldAugmented
+    class FormQueryParamsPrimitiveResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
       # OK
       field :res, T.nilable(Operations::FormQueryParamsPrimitiveRes)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), res: T.nilable(Operations::FormQueryParamsPrimitiveRes)).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil, res: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, res: T.nilable(Operations::FormQueryParamsPrimitiveRes)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, res: nil)
         @content_type = content_type
-        @status_code = status_code
         @raw_response = raw_response
+        @status_code = status_code
         @res = res
       end
     end

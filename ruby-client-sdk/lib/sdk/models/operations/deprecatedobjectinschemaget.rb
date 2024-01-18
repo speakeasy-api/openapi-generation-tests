@@ -10,11 +10,11 @@ require_relative '../shared/deprecatedobject'
 module OpenApiSDK
   module Operations
     # A successful response that contains a deprecatedObject sent in the request body
-    class DeprecatedObjectInSchemaGetResponseBody < OpenApiSDK::Utils::FieldAugmented
+    class DeprecatedObjectInSchemaGetResponseBody < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # @deprecated  true: This object is deprecated.
-      field :json, T.nilable(Shared::DeprecatedObject), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
+      field :json, T.nilable(Shared::DeprecatedObject), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('json') } }
 
 
       sig { params(json: T.nilable(Shared::DeprecatedObject)).void }
@@ -24,25 +24,25 @@ module OpenApiSDK
     end
 
 
-    class DeprecatedObjectInSchemaGetResponse < OpenApiSDK::Utils::FieldAugmented
+    class DeprecatedObjectInSchemaGetResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
       # A successful response that contains a deprecatedObject sent in the request body
       field :object, T.nilable(Operations::DeprecatedObjectInSchemaGetResponseBody)
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, object: T.nilable(Operations::DeprecatedObjectInSchemaGetResponseBody), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, object: nil, raw_response: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, object: T.nilable(Operations::DeprecatedObjectInSchemaGetResponseBody)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, object: nil)
         @content_type = content_type
+        @raw_response = raw_response
         @status_code = status_code
         @object = object
-        @raw_response = raw_response
       end
     end
   end

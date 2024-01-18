@@ -39,7 +39,7 @@ res = s.flattening.component_body_and_param_conflict(simple_object=shared.Simple
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
     decimal=Decimal('3.141592653589793'),
     decimal_str=Decimal('3.14159265358979344719667586'),
     enum=shared.EnumT.ONE,
@@ -73,7 +73,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## component_body_and_param_no_conflict
 
@@ -101,7 +101,7 @@ res = s.flattening.component_body_and_param_no_conflict(param_str='string', simp
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
     decimal=Decimal('3.141592653589793'),
     decimal_str=Decimal('3.14159265358979344719667586'),
     enum=shared.EnumT.ONE,
@@ -135,7 +135,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## conflicting_params
 
@@ -176,7 +176,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## inline_body_and_param_conflict
 
@@ -219,7 +219,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## inline_body_and_param_no_conflict
 
@@ -262,4 +262,4 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |

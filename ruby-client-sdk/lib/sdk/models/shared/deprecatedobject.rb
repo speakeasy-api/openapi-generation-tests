@@ -9,11 +9,11 @@ require 'faraday'
 module OpenApiSDK
   module Shared
     # @deprecated  class: This object is deprecated.
-    class DeprecatedObject < OpenApiSDK::Utils::FieldAugmented
+    class DeprecatedObject < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :str_, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('str') } }
+      field :str_, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('str') } }
 
 
       sig { params(str_: T.nilable(String)).void }

@@ -9,19 +9,19 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class ObjWithZeroValueComplexTypePtrs < OpenApiSDK::Utils::FieldAugmented
+    class ObjWithZeroValueComplexTypePtrs < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :bigint, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('bigint') } }
+      field :bigint, T.nilable(Integer), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('bigint') } }
 
-      field :bigint_str, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('bigintStr') } }
+      field :bigint_str, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('bigintStr') } }
       # A date property.
-      field :date, T.nilable(Date), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('date'), 'decoder': Utils.date_from_iso_format(true) } }
+      field :date, T.nilable(Date), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('date'), 'decoder': Utils.date_from_iso_format(true) } }
       # A date-time property.
-      field :date_time, T.nilable(DateTime), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('dateTime'), 'decoder': Utils.datetime_from_iso_format(true) } }
+      field :date_time, T.nilable(DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('dateTime'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-      field :decimal, T.nilable(Float), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('decimal') } }
+      field :decimal, T.nilable(Float), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('decimal') } }
 
 
       sig { params(bigint: T.nilable(Integer), bigint_str: T.nilable(String), date: T.nilable(Date), date_time: T.nilable(DateTime), decimal: T.nilable(Float)).void }
