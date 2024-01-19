@@ -22,7 +22,7 @@ func sortSerializedMaps(input interface{}, regex string, delim string) interface
 				if strings.Contains(match, "=") {
 					pairs = strings.Split(match, delim)
 
-					sort.Slice(pairs, func(i, j int) bool {
+					sort.SliceStable(pairs, func(i, j int) bool {
 						return strings.Split(pairs[i], "=")[0] < strings.Split(pairs[j], "=")[0]
 					})
 				} else {
@@ -37,7 +37,7 @@ func sortSerializedMaps(input interface{}, regex string, delim string) interface
 						}
 					}
 
-					sort.Slice(pairs, func(i, j int) bool {
+					sort.SliceStable(pairs, func(i, j int) bool {
 						return strings.Split(pairs[i], delim)[0] < strings.Split(pairs[j], delim)[0]
 					})
 				}
@@ -88,4 +88,21 @@ func replaceAllStringSubmatchFunc(re *regexp.Regexp, str string, repl func([]str
 	}
 
 	return result + str[lastIndex:]
+}
+
+func sortQueryParameters(url string) string {
+	parts := strings.Split(url, "?")
+
+	if len(parts) == 1 {
+		return url
+	}
+
+	query := parts[1]
+	params := strings.Split(query, "&")
+
+	sort.SliceStable(params, func(i, j int) bool {
+		return strings.Split(params[i], "=")[0] < strings.Split(params[j], "=")[0]
+	})
+
+	return parts[0] + "?" + strings.Join(params, "&")
 }

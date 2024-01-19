@@ -23,10 +23,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Retries.RetriesGetAsync("string", 75342);
+var res = await sdk.Retries.RetriesGetAsync(RequestId: "string", NumRetries: 75342);
 
 // handle response
 ```

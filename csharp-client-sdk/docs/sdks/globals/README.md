@@ -24,10 +24,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Globals.GlobalPathParameterGetAsync(719830);
+var res = await sdk.Globals.GlobalPathParameterGetAsync(GlobalPathParam: 719830);
 
 // handle response
 ```
@@ -58,10 +57,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Globals.GlobalsQueryParameterGetAsync("string");
+var res = await sdk.Globals.GlobalsQueryParameterGetAsync(GlobalQueryParam: "string");
 
 // handle response
 ```

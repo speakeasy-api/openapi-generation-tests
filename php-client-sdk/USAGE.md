@@ -1,4 +1,4 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```php
 <?php
 
@@ -12,13 +12,67 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->setSecurity($security)
     ->build();
 
 try {
-    $response = $sdk->generation->globalNameOverridden();
+    $request = new Shared\SimpleObject();
+    $request->any = 'any';
+    $request->bigint = 8821239038968084;
+    $request->bigintStr = '9223372036854775808';
+    $request->bool = true;
+    $request->boolOpt = true;
+    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
+    $request->decimal = 3.141592653589793;
+    $request->decimalStr = '3.14159265358979344719667586';
+    $request->enum = Shared\Enum::One;
+    $request->float32 = 1.1;
+    $request->int = 1;
+    $request->int32 = 1;
+    $request->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $request->intEnum = Shared\IntEnum::Second;
+    $request->intOptNull = 930591;
+    $request->num = 1.1;
+    $request->numOptNull = 5244.22;
+    $request->str = 'test';
+    $request->strOpt = 'testOptional';
+
+    $response = $sdk->generation->globalNameOverridden($request);
 
     if ($response->object !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+
+```
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)
+    ->build();
+
+try {
+    $response = $sdk->servers->selectGlobalServer();
+
+    if ($response->statusCode === 200) {
         // handle response
     }
 } catch (Exception $e) {
@@ -41,7 +95,10 @@ use OpenAPI\OpenAPI;
 use OpenAPI\OpenAPI\Models\Shared;
 use OpenAPI\OpenAPI\Models\Operations;
 
-$sdk = OpenAPI\SDK::builder()->build();
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
 
 try {
     $request = new Operations\UsageExamplePostRequest();
@@ -132,7 +189,7 @@ try {
     $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat(
         'Y-m-d\TH:i:s+',
-        '2020-01-01T00:00:00.000000001Z',
+        '2020-01-01T00:00:00.000001Z',
     );
     $request->requestBody->simpleObject->decimal = 3.141592653589793;
     $request->requestBody->simpleObject->decimalStr = '3.14159265358979344719667586';
@@ -152,14 +209,14 @@ try {
     $request->bigintStrParameter = 'string';
     $request->bigintStrParameterOptional = 'string';
     $request->boolParameter = false;
-    $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2023-12-21');
+    $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2024-12-21');
     $request->dateTimeDefaultParameter = DateTime::createFromFormat(
         'Y-m-d\TH:i:s+',
-        '2021-03-16T01:25:42.471Z',
+        '2022-03-16T03:03:06.071Z',
     );
     $request->dateTimeParameter = DateTime::createFromFormat(
         'Y-m-d\TH:i:s+',
-        '2023-05-24T07:01:53.326Z',
+        '2024-05-24T02:10:19.731Z',
     );
     $request->decimalParameter = 4713.96;
     $request->decimalParameterOptional = 9349.54;
@@ -189,4 +246,4 @@ try {
 }
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

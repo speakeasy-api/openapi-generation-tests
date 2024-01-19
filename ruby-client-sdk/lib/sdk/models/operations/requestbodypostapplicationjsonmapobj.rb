@@ -10,25 +10,25 @@ require_relative '../shared/mapobjvalue'
 module OpenApiSDK
   module Operations
 
-    class RequestBodyPostApplicationJsonMapObjResponse < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostApplicationJsonMapObjResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
       # OK
       field :map_obj_value, T.nilable(Shared::MapObjValue)
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, map_obj_value: T.nilable(Shared::MapObjValue), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, map_obj_value: nil, raw_response: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, map_obj_value: T.nilable(Shared::MapObjValue)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, map_obj_value: nil)
         @content_type = content_type
+        @raw_response = raw_response
         @status_code = status_code
         @map_obj_value = map_obj_value
-        @raw_response = raw_response
       end
     end
   end

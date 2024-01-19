@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class RequestBodyPostMultipleContentTypesSplitParamFormRequestBody < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostMultipleContentTypesSplitParamFormRequestBody < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -29,7 +29,7 @@ module OpenApiSDK
     end
 
 
-    class RequestBodyPostMultipleContentTypesSplitParamFormRequest < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostMultipleContentTypesSplitParamFormRequest < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -46,15 +46,15 @@ module OpenApiSDK
     end
 
     # OK
-    class RequestBodyPostMultipleContentTypesSplitParamFormRes < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostMultipleContentTypesSplitParamFormRes < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :args, T.nilable(T::Hash[Symbol, String]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
+      field :args, T.nilable(T::Hash[Symbol, String]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('args') } }
 
-      field :form, T.nilable(T::Hash[Symbol, Object]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('form') } }
+      field :form, T.nilable(T::Hash[Symbol, Object]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('form') } }
 
-      field :json, T.nilable(T::Hash[Symbol, Object]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
+      field :json, T.nilable(T::Hash[Symbol, Object]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('json') } }
 
 
       sig { params(args: T.nilable(T::Hash[Symbol, String]), form: T.nilable(T::Hash[Symbol, Object]), json: T.nilable(T::Hash[Symbol, Object])).void }
@@ -66,24 +66,24 @@ module OpenApiSDK
     end
 
 
-    class RequestBodyPostMultipleContentTypesSplitParamFormResponse < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostMultipleContentTypesSplitParamFormResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
       # OK
       field :res, T.nilable(Operations::RequestBodyPostMultipleContentTypesSplitParamFormRes)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), res: T.nilable(Operations::RequestBodyPostMultipleContentTypesSplitParamFormRes)).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil, res: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, res: T.nilable(Operations::RequestBodyPostMultipleContentTypesSplitParamFormRes)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, res: nil)
         @content_type = content_type
-        @status_code = status_code
         @raw_response = raw_response
+        @status_code = status_code
         @res = res
       end
     end
