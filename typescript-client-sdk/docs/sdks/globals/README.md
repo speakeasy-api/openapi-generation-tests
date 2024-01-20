@@ -16,9 +16,8 @@ Endpoints for testing global parameters.
 
 ```typescript
 import { SDK } from "openapi";
-import { GlobalPathParameterGetRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -26,22 +25,25 @@ import { GlobalPathParameterGetRequest } from "openapi/dist/sdk/models/operation
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const globalPathParam: number = 719830;
 
-  const res = await sdk.globals.globalPathParameterGet(globalPathParam);
+  const globalPathParam = 719830;
+  
+  const result = await sdk.globals.globalPathParameterGet(globalPathParam);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `globalPathParam`                                            | *number*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `globalPathParam`                                                                                                                                                              | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -51,7 +53,7 @@ const globalPathParam: number = 719830;
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## globalsQueryParameterGet
 
@@ -59,9 +61,8 @@ const globalPathParam: number = 719830;
 
 ```typescript
 import { SDK } from "openapi";
-import { GlobalsQueryParameterGetRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -69,22 +70,25 @@ import { GlobalsQueryParameterGetRequest } from "openapi/dist/sdk/models/operati
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const globalQueryParam: string = "string";
 
-  const res = await sdk.globals.globalsQueryParameterGet(globalQueryParam);
+  const globalQueryParam = "string";
+  
+  const result = await sdk.globals.globalsQueryParameterGet(globalQueryParam);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `globalQueryParam`                                           | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `globalQueryParam`                                                                                                                                                             | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -94,4 +98,4 @@ const globalQueryParam: string = "string";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

@@ -14,7 +14,7 @@ module OpenApiSDK
       'http://localhost:35456'
     ].freeze
 
-    class StatusGetXSpeakeasyErrorsRequest < OpenApiSDK::Utils::FieldAugmented
+    class StatusGetXSpeakeasyErrorsRequest < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -28,15 +28,15 @@ module OpenApiSDK
     end
 
     # Not Implemented
-    class StatusGetXSpeakeasyErrorsResponseBody < OpenApiSDK::Utils::FieldAugmented
+    class StatusGetXSpeakeasyErrorsResponseBody < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :code, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('code') } }
+      field :code, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('code') } }
 
-      field :message, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('message') } }
+      field :message, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('message') } }
 
-      field :type, T.nilable(Shared::ErrorType), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('type'), 'decoder': Utils.enum_from_string(Shared::ErrorType, true) } }
+      field :type, T.nilable(Shared::ErrorType), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('type'), 'decoder': Utils.enum_from_string(Shared::ErrorType, true) } }
 
 
       sig { params(code: T.nilable(String), message: T.nilable(String), type: T.nilable(Shared::ErrorType)).void }
@@ -48,28 +48,28 @@ module OpenApiSDK
     end
 
 
-    class StatusGetXSpeakeasyErrorsResponse < OpenApiSDK::Utils::FieldAugmented
+    class StatusGetXSpeakeasyErrorsResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
       # Internal Server Error
       field :error, T.nilable(Shared::Error)
       # Not Implemented
       field :object, T.nilable(Operations::StatusGetXSpeakeasyErrorsResponseBody)
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, error: T.nilable(Shared::Error), object: T.nilable(Operations::StatusGetXSpeakeasyErrorsResponseBody), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, error: nil, object: nil, raw_response: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, error: T.nilable(Shared::Error), object: T.nilable(Operations::StatusGetXSpeakeasyErrorsResponseBody)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, error: nil, object: nil)
         @content_type = content_type
+        @raw_response = raw_response
         @status_code = status_code
         @error = error
         @object = object
-        @raw_response = raw_response
       end
     end
   end

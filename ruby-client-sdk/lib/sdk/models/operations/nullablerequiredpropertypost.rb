@@ -18,17 +18,17 @@ module OpenApiSDK
 
 
 
-    class NullableRequiredPropertyPostRequestBody < OpenApiSDK::Utils::FieldAugmented
+    class NullableRequiredPropertyPostRequestBody < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :nullable_required_array, T::Array[Float], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('NullableRequiredArray') } }
+      field :nullable_required_array, T::Array[Float], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('NullableRequiredArray') } }
 
-      field :nullable_required_enum, Operations::NullableRequiredEnum, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('NullableRequiredEnum'), 'decoder': Utils.enum_from_string(Operations::NullableRequiredEnum, false) } }
+      field :nullable_required_enum, Operations::NullableRequiredEnum, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('NullableRequiredEnum'), 'decoder': Utils.enum_from_string(Operations::NullableRequiredEnum, false) } }
 
-      field :nullable_required_int, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('NullableRequiredInt') } }
+      field :nullable_required_int, Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('NullableRequiredInt') } }
 
-      field :nullable_optional_int, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('NullableOptionalInt') } }
+      field :nullable_optional_int, T.nilable(Integer), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('NullableOptionalInt') } }
 
 
       sig { params(nullable_required_array: T::Array[Float], nullable_required_enum: Operations::NullableRequiredEnum, nullable_required_int: Integer, nullable_optional_int: T.nilable(Integer)).void }
@@ -41,24 +41,24 @@ module OpenApiSDK
     end
 
 
-    class NullableRequiredPropertyPostResponse < OpenApiSDK::Utils::FieldAugmented
+    class NullableRequiredPropertyPostResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
       # OK
       field :res, T.nilable(String)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), res: T.nilable(String)).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil, res: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, res: T.nilable(String)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, res: nil)
         @content_type = content_type
-        @status_code = status_code
         @raw_response = raw_response
+        @status_code = status_code
         @res = res
       end
     end

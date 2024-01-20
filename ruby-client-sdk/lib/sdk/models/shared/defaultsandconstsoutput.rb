@@ -49,65 +49,65 @@ module OpenApiSDK
 
 
 
-    class DefaultsAndConstsOutput < OpenApiSDK::Utils::FieldAugmented
+    class DefaultsAndConstsOutput < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :const_big_int, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constBigInt') } }
+      field :const_big_int, Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('constBigInt') } }
 
-      field :const_big_int_str, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constBigIntStr') } }
+      field :const_big_int_str, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('constBigIntStr') } }
 
-      field :const_bool, T::Boolean, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constBool') } }
+      field :const_bool, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('constBool') } }
 
-      field :const_date, Date, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constDate'), 'decoder': Utils.date_from_iso_format(false) } }
+      field :const_date, Date, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('constDate'), 'decoder': Utils.date_from_iso_format(false) } }
 
-      field :const_date_time, DateTime, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constDateTime'), 'decoder': Utils.datetime_from_iso_format(false) } }
+      field :const_date_time, DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('constDateTime'), 'decoder': Utils.datetime_from_iso_format(false) } }
 
-      field :const_decimal, Float, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constDecimal') } }
+      field :const_decimal, Float, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('constDecimal') } }
 
-      field :const_decimal_str, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constDecimalStr') } }
+      field :const_decimal_str, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('constDecimalStr') } }
 
-      field :const_enum_int, Shared::DefaultsAndConstsOutputConstEnumInt, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constEnumInt'), 'decoder': Utils.enum_from_string(Shared::DefaultsAndConstsOutputConstEnumInt, false) } }
+      field :const_enum_int, Shared::DefaultsAndConstsOutputConstEnumInt, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('constEnumInt'), 'decoder': Utils.enum_from_string(Shared::DefaultsAndConstsOutputConstEnumInt, false) } }
 
-      field :const_enum_str, Shared::DefaultsAndConstsOutputConstEnumStr, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constEnumStr'), 'decoder': Utils.enum_from_string(Shared::DefaultsAndConstsOutputConstEnumStr, false) } }
+      field :const_enum_str, Shared::DefaultsAndConstsOutputConstEnumStr, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('constEnumStr'), 'decoder': Utils.enum_from_string(Shared::DefaultsAndConstsOutputConstEnumStr, false) } }
 
-      field :const_int, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constInt') } }
+      field :const_int, Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('constInt') } }
 
-      field :const_num, Float, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constNum') } }
+      field :const_num, Float, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('constNum') } }
 
-      field :const_str, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constStr') } }
+      field :const_str, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('constStr') } }
 
-      field :const_str_null, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('constStrNull') } }
+      field :const_str_null, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('constStrNull') } }
 
-      field :default_big_int, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultBigInt') } }
+      field :default_big_int, Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('defaultBigInt') } }
 
-      field :default_big_int_str, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultBigIntStr') } }
+      field :default_big_int_str, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('defaultBigIntStr') } }
 
-      field :default_bool, T::Boolean, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultBool') } }
+      field :default_bool, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('defaultBool') } }
 
-      field :default_date, Date, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultDate'), 'decoder': Utils.date_from_iso_format(false) } }
+      field :default_date, Date, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('defaultDate'), 'decoder': Utils.date_from_iso_format(false) } }
 
-      field :default_date_time, DateTime, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultDateTime'), 'decoder': Utils.datetime_from_iso_format(false) } }
+      field :default_date_time, DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('defaultDateTime'), 'decoder': Utils.datetime_from_iso_format(false) } }
 
-      field :default_decimal, Float, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultDecimal') } }
+      field :default_decimal, Float, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('defaultDecimal') } }
 
-      field :default_decimal_str, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultDecimalStr') } }
+      field :default_decimal_str, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('defaultDecimalStr') } }
 
-      field :default_enum_int, Shared::DefaultsAndConstsOutputDefaultEnumInt, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultEnumInt'), 'decoder': Utils.enum_from_string(Shared::DefaultsAndConstsOutputDefaultEnumInt, false) } }
+      field :default_enum_int, Shared::DefaultsAndConstsOutputDefaultEnumInt, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('defaultEnumInt'), 'decoder': Utils.enum_from_string(Shared::DefaultsAndConstsOutputDefaultEnumInt, false) } }
 
-      field :default_enum_str, Shared::DefaultsAndConstsOutputDefaultEnumStr, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultEnumStr'), 'decoder': Utils.enum_from_string(Shared::DefaultsAndConstsOutputDefaultEnumStr, false) } }
+      field :default_enum_str, Shared::DefaultsAndConstsOutputDefaultEnumStr, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('defaultEnumStr'), 'decoder': Utils.enum_from_string(Shared::DefaultsAndConstsOutputDefaultEnumStr, false) } }
 
-      field :default_int, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultInt') } }
+      field :default_int, Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('defaultInt') } }
 
-      field :default_num, Float, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultNum') } }
+      field :default_num, Float, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('defaultNum') } }
 
-      field :default_str, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultStr') } }
+      field :default_str, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('defaultStr') } }
 
-      field :default_str_nullable, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultStrNullable') } }
+      field :default_str_nullable, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('defaultStrNullable') } }
 
-      field :normal_field, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('normalField') } }
+      field :normal_field, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('normalField') } }
 
-      field :default_str_optional, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultStrOptional') } }
+      field :default_str_optional, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('defaultStrOptional') } }
 
 
       sig { params(const_big_int: Integer, const_big_int_str: String, const_bool: T::Boolean, const_date: Date, const_date_time: DateTime, const_decimal: Float, const_decimal_str: String, const_enum_int: Shared::DefaultsAndConstsOutputConstEnumInt, const_enum_str: Shared::DefaultsAndConstsOutputConstEnumStr, const_int: Integer, const_num: Float, const_str: String, const_str_null: String, default_big_int: Integer, default_big_int_str: String, default_bool: T::Boolean, default_date: Date, default_date_time: DateTime, default_decimal: Float, default_decimal_str: String, default_enum_int: Shared::DefaultsAndConstsOutputDefaultEnumInt, default_enum_str: Shared::DefaultsAndConstsOutputDefaultEnumStr, default_int: Integer, default_num: Float, default_str: String, default_str_nullable: String, normal_field: String, default_str_optional: T.nilable(String)).void }

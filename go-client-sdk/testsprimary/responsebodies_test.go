@@ -234,3 +234,31 @@ func TestResponseBodyAdditionalPropertiesObjectPost(t *testing.T) {
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.Equal(t, req, res.Object.JSON)
 }
+
+func TestResponseBodyAdditionalPropertiesObjectAnyValues(t *testing.T) {
+	recordTest("response-bodies-additional-properties-any-values")
+
+	s := sdk.New()
+
+	req := shared.ObjWithAnyAdditionalProperties{
+		AdditionalProperties: map[string]interface{}{
+			"key1": "value2",
+			"key2": nil,
+			"key3": map[string]interface{}{
+				"foo": "bar",
+				"subkey1": map[string]interface{}{
+					"foo": "bar",
+				},
+			},
+			"key4": []interface{}{
+				"foo", "bar",
+			},
+		},
+	}
+
+	res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesAnyPost(context.Background(), req)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.EqualValues(t, req, res.Object.JSON)
+}

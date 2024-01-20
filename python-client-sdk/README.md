@@ -1,16 +1,61 @@
 # openapi
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ```bash
 pip install git+https://github.com/speakeasy-api/openapi-generation-tests.git#subdirectory=python-client-sdk
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example 1
+
+```python
+import dateutil.parser
+import sdk
+from decimal import Decimal
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = shared.SimpleObject(
+    any='any',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool=True,
+    bool_opt=True,
+    date_=dateutil.parser.parse('2020-01-01').date(),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    enum=shared.EnumT.ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
+    num=1.1,
+    str_='test',
+    str_opt='testOptional',
+)
+
+res = s.generation.global_name_overridden(req)
+
+if res.object is not None:
+    # handle response
+    pass
+```
+
+### Example 2
 
 ```python
 import sdk
@@ -25,9 +70,9 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.global_name_overridden()
+res = s.servers.select_global_server()
 
-if res.object is not None:
+if res.status_code == 200:
     # handle response
     pass
 ```
@@ -58,7 +103,7 @@ req = operations.UsageExamplePostRequest(
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
             decimal=Decimal('3.141592653589793'),
             decimal_str=Decimal('3.14159265358979344719667586'),
             enum=shared.EnumT.ONE,
@@ -75,9 +120,9 @@ req = operations.UsageExamplePostRequest(
     bigint_parameter=168827,
     bigint_str_parameter=446729,
     bool_parameter=False,
-    date_parameter=dateutil.parser.parse('2023-06-11').date(),
-    date_time_default_parameter=dateutil.parser.isoparse('2022-07-22T13:16:48.221Z'),
-    date_time_parameter=dateutil.parser.isoparse('2021-10-21T09:16:58.799Z'),
+    date_parameter=dateutil.parser.parse('2024-06-10').date(),
+    date_time_default_parameter=dateutil.parser.isoparse('2023-07-23T01:43:10.512Z'),
+    date_time_parameter=dateutil.parser.isoparse('2022-10-21T15:42:48.223Z'),
     decimal_parameter=Decimal('5223.72'),
     decimal_str_parameter=Decimal('2911.37'),
     double_parameter=6946.59,
@@ -100,9 +145,9 @@ if res.object is not None:
     # handle response
     pass
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [SDK](docs/sdks/sdk/README.md)
@@ -148,6 +193,7 @@ if res.object is not None:
 * [nullable_one_of_type_in_object_post](docs/sdks/unions/README.md#nullable_one_of_type_in_object_post)
 * [nullable_typed_object_post](docs/sdks/unions/README.md#nullable_typed_object_post)
 * [primitive_type_one_of_post](docs/sdks/unions/README.md#primitive_type_one_of_post)
+* [strongly_typed_one_of_discriminated_post](docs/sdks/unions/README.md#strongly_typed_one_of_discriminated_post)
 * [strongly_typed_one_of_post](docs/sdks/unions/README.md#strongly_typed_one_of_post)
 * [typed_object_nullable_one_of_post](docs/sdks/unions/README.md#typed_object_nullable_one_of_post)
 * [typed_object_one_of_post](docs/sdks/unions/README.md#typed_object_one_of_post)
@@ -298,6 +344,7 @@ if res.object is not None:
 * [request_body_put_multipart_deep](docs/sdks/requestbodies/README.md#request_body_put_multipart_deep)
 * [request_body_put_multipart_different_file_name](docs/sdks/requestbodies/README.md#request_body_put_multipart_different_file_name)
 * [request_body_put_multipart_file](docs/sdks/requestbodies/README.md#request_body_put_multipart_file)
+* [request_body_put_multipart_optional_request_body](docs/sdks/requestbodies/README.md#request_body_put_multipart_optional_request_body)
 * [request_body_put_multipart_simple](docs/sdks/requestbodies/README.md#request_body_put_multipart_simple)
 * [request_body_put_string](docs/sdks/requestbodies/README.md#request_body_put_string)
 * [request_body_put_string_with_params](docs/sdks/requestbodies/README.md#request_body_put_string_with_params)
@@ -311,6 +358,7 @@ if res.object is not None:
 
 ### [response_bodies](docs/sdks/responsebodies/README.md)
 
+* [response_body_additional_properties_any_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_any_post)
 * [response_body_additional_properties_complex_numbers_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_complex_numbers_post)
 * [response_body_additional_properties_date_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_date_post)
 * [response_body_additional_properties_object_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_object_post)
@@ -351,17 +399,18 @@ if res.object is not None:
 * [oauth2_auth_new](docs/sdks/authnew/README.md#oauth2_auth_new)
 * [open_id_connect_auth_new](docs/sdks/authnew/README.md#open_id_connect_auth_new)
 
-### [documentation](docs/sdks/documentation/README.md)
-
-* [get_documentation_per_language](docs/sdks/documentation/README.md#get_documentation_per_language) - Gets documentation for some language, I guess.
-
 ### [resource](docs/sdks/resource/README.md)
 
 * [create_file](docs/sdks/resource/README.md#create_file)
 * [create_resource](docs/sdks/resource/README.md#create_resource)
 * [delete_resource](docs/sdks/resource/README.md#delete_resource)
+* [get_array_data_source](docs/sdks/resource/README.md#get_array_data_source)
 * [get_resource](docs/sdks/resource/README.md#get_resource)
 * [update_resource](docs/sdks/resource/README.md#update_resource)
+
+### [documentation](docs/sdks/documentation/README.md)
+
+* [get_documentation_per_language](docs/sdks/documentation/README.md#get_documentation_per_language) - Gets documentation for some language, I guess.
 
 ### [first](docs/sdks/first/README.md)
 
@@ -383,17 +432,13 @@ if res.object is not None:
 ### [retries](docs/sdks/retries/README.md)
 
 * [retries_get](docs/sdks/retries/README.md#retries_get)
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
 
 
-
-<!-- Start Pagination -->
+<!-- Start Pagination [pagination] -->
 ## Pagination
 
 Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
@@ -428,11 +473,11 @@ if res.res is not None:
             break
 
 ```
-<!-- End Pagination -->
+<!-- End Pagination [pagination] -->
 
 
 
-<!-- Start Global Parameters -->
+<!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
@@ -446,8 +491,8 @@ The following global parameters are available. The required parameters must be s
 
 | Name | Type | Required | Description |
 | ---- | ---- |:--------:| ----------- |
-| globalPathParam | int | ✔️ | The globalPathParam parameter. |
-| globalQueryParam | str | ✔️ | The globalQueryParam parameter. |
+| global_path_param | int | ✔️ | The global_path_param parameter. |
+| global_query_param | str | ✔️ | The global_query_param parameter. |
 
 
 ### Example
@@ -471,11 +516,11 @@ if res.res is not None:
     # handle response
     pass
 ```
-<!-- End Global Parameters -->
+<!-- End Global Parameters [global-parameters] -->
 
 
 
-<!-- Start Error Handling -->
+<!-- Start Error Handling [errors] -->
 ## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
@@ -484,7 +529,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
 | errors.Error                                 | 500                                          | application/json                             |
 | errors.StatusGetXSpeakeasyErrorsResponseBody | 501                                          | application/json                             |
-| errors.SDKError                              | 400-600                                      | */*                                          |
+| errors.SDKError                              | 4x-5xx                                       | */*                                          |
 
 ### Example
 
@@ -504,24 +549,25 @@ s = sdk.SDK(
 res = None
 try:
     res = s.errors.status_get_x_speakeasy_errors(status_code=385913)
-
-except (errors.Error) as e:
-    print(e) # handle exception
-except (errors.StatusGetXSpeakeasyErrorsResponseBody) as e:
-    print(e) # handle exception
-except (errors.SDKError) as e:
-    print(e) # handle exception
-
+except errors.Error as e:
+    print(e)  # handle exception
+    raise(e)
+except errors.StatusGetXSpeakeasyErrorsResponseBody as e:
+    print(e)  # handle exception
+    raise(e)
+except errors.SDKError as e:
+    print(e)  # handle exception
+    raise(e)
 
 if res.status_code == 200:
     # handle response
     pass
 ```
-<!-- End Error Handling -->
+<!-- End Error Handling [errors] -->
 
 
 
-<!-- Start Server Selection -->
+<!-- Start Server Selection [server] -->
 ## Server Selection
 
 ### Select Server by Index
@@ -565,8 +611,8 @@ if res.object is not None:
 Some of the server options above contain variables. If you want to set the values of those variables, the following optional parameters are available when initializing the SDK client instance:
  * `hostname: str`
  * `port: str`
- * `protocol: str`
  * `something: models.ServerSomething`
+ * `protocol: str`
 
 ### Override Server URL Per-Client
 
@@ -615,14 +661,14 @@ if res.status_code == 200:
     # handle response
     pass
 ```
-<!-- End Server Selection -->
+<!-- End Server Selection [server] -->
 
 
 
-<!-- Start Custom HTTP Client -->
+<!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
-The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
+The Python SDK makes API calls using the [requests](https://pypi.org/project/requests/) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
 
 For example, you could specify a header for every request that this sdk makes as follows:
 ```python
@@ -633,16 +679,16 @@ http_client = requests.Session()
 http_client.headers.update({'x-custom-header': 'someValue'})
 s = sdk.SDK(client: http_client)
 ```
-<!-- End Custom HTTP Client -->
+<!-- End Custom HTTP Client [http-client] -->
 
 
 
-<!-- Start Retries -->
+<!-- Start Retries [retries] -->
 ## Retries
 
-Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
 
-To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
 ```python
 import sdk
 from sdk.models import operations, shared
@@ -665,7 +711,7 @@ if res.retries is not None:
     pass
 ```
 
-If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
 ```python
 import sdk
 from sdk.models import operations, shared
@@ -687,11 +733,11 @@ if res.retries is not None:
     # handle response
     pass
 ```
-<!-- End Retries -->
+<!-- End Retries [retries] -->
 
 
 
-<!-- Start Authentication -->
+<!-- Start Authentication [security] -->
 ## Authentication
 
 ### Per-Client Security Schemes
@@ -751,7 +797,7 @@ req = operations.UsageExamplePostRequest(
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
             decimal=Decimal('3.141592653589793'),
             decimal_str=Decimal('3.14159265358979344719667586'),
             enum=shared.EnumT.ONE,
@@ -768,9 +814,9 @@ req = operations.UsageExamplePostRequest(
     bigint_parameter=168827,
     bigint_str_parameter=446729,
     bool_parameter=False,
-    date_parameter=dateutil.parser.parse('2023-06-11').date(),
-    date_time_default_parameter=dateutil.parser.isoparse('2022-07-22T13:16:48.221Z'),
-    date_time_parameter=dateutil.parser.isoparse('2021-10-21T09:16:58.799Z'),
+    date_parameter=dateutil.parser.parse('2024-06-10').date(),
+    date_time_default_parameter=dateutil.parser.isoparse('2023-07-23T01:43:10.512Z'),
+    date_time_parameter=dateutil.parser.isoparse('2022-10-21T15:42:48.223Z'),
     decimal_parameter=Decimal('5223.72'),
     decimal_str_parameter=Decimal('2911.37'),
     double_parameter=6946.59,
@@ -793,7 +839,7 @@ if res.object is not None:
     # handle response
     pass
 ```
-<!-- End Authentication -->
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

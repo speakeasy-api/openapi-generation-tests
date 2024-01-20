@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class NullableOptionalObj < OpenApiSDK::Utils::FieldAugmented
+    class NullableOptionalObj < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -19,7 +19,7 @@ module OpenApiSDK
     end
 
 
-    class NullableRequiredObj < OpenApiSDK::Utils::FieldAugmented
+    class NullableRequiredObj < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -29,7 +29,7 @@ module OpenApiSDK
     end
 
 
-    class RequiredObj < OpenApiSDK::Utils::FieldAugmented
+    class RequiredObj < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -39,15 +39,15 @@ module OpenApiSDK
     end
 
 
-    class NullableRequiredEmptyObjectPostRequestBody < OpenApiSDK::Utils::FieldAugmented
+    class NullableRequiredEmptyObjectPostRequestBody < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :nullable_required_obj, Operations::NullableRequiredObj, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('NullableRequiredObj') } }
+      field :nullable_required_obj, Operations::NullableRequiredObj, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('NullableRequiredObj') } }
 
-      field :required_obj, Operations::RequiredObj, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('RequiredObj') } }
+      field :required_obj, Operations::RequiredObj, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('RequiredObj') } }
 
-      field :nullable_optional_obj, T.nilable(Operations::NullableOptionalObj), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('NullableOptionalObj') } }
+      field :nullable_optional_obj, T.nilable(Operations::NullableOptionalObj), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('NullableOptionalObj') } }
 
 
       sig { params(nullable_required_obj: Operations::NullableRequiredObj, required_obj: Operations::RequiredObj, nullable_optional_obj: T.nilable(Operations::NullableOptionalObj)).void }
@@ -59,24 +59,24 @@ module OpenApiSDK
     end
 
 
-    class NullableRequiredEmptyObjectPostResponse < OpenApiSDK::Utils::FieldAugmented
+    class NullableRequiredEmptyObjectPostResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
       # OK
       field :res, T.nilable(String)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), res: T.nilable(String)).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil, res: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, res: T.nilable(String)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, res: nil)
         @content_type = content_type
-        @status_code = status_code
         @raw_response = raw_response
+        @status_code = status_code
         @res = res
       end
     end

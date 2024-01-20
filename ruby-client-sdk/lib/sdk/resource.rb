@@ -107,7 +107,7 @@ module OpenApiSDK
       url = Utils.generate_url(
         Operations::DeleteResourceRequest,
         base_url,
-        '/resource/{resourceId}',
+        '/resource/object/{resourceId}',
         request,
         @sdk_configuration.globals
       )
@@ -125,7 +125,41 @@ module OpenApiSDK
       res = Operations::DeleteResourceResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if r.status == 204
+      
+      res
+    end
+
+    sig { params(filter: String).returns(Utils::FieldAugmented) }
+    def get_array_data_source(filter)
+
+      request = Operations::GetArrayDataSourceRequest.new(
+        
+        filter: filter
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/datasource/array"
+      headers = {}
+      query_params = Utils.get_query_params(Operations::GetArrayDataSourceRequest, request, @sdk_configuration.globals)
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        req.params = query_params
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::GetArrayDataSourceResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, T::Array[String])
+          res.array_data_source = out
+        end
       end
       res
     end
@@ -142,7 +176,7 @@ module OpenApiSDK
       url = Utils.generate_url(
         Operations::GetResourceRequest,
         base_url,
-        '/resource/{resourceId}',
+        '/resource/object/{resourceId}',
         request,
         @sdk_configuration.globals
       )
@@ -169,11 +203,12 @@ module OpenApiSDK
       res
     end
 
-    sig { params(resource_id: String).returns(Utils::FieldAugmented) }
-    def update_resource(resource_id)
+    sig { params(augment: String, resource_id: String).returns(Utils::FieldAugmented) }
+    def update_resource(augment, resource_id)
 
       request = Operations::UpdateResourceRequest.new(
         
+        augment: augment,
         resource_id: resource_id
       )
       url, params = @sdk_configuration.get_server_details
@@ -181,16 +216,18 @@ module OpenApiSDK
       url = Utils.generate_url(
         Operations::UpdateResourceRequest,
         base_url,
-        '/resource/{resourceId}',
+        '/resource/object/{resourceId}',
         request,
         @sdk_configuration.globals
       )
       headers = {}
+      query_params = Utils.get_query_params(Operations::UpdateResourceRequest, request, @sdk_configuration.globals)
       headers['Accept'] = '*/*'
       headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
+        req.params = query_params
         Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
@@ -199,8 +236,7 @@ module OpenApiSDK
       res = Operations::UpdateResourceResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if r.status == 202
-      end
+      
       res
     end
   end
