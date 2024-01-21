@@ -3,7 +3,7 @@
 from sdk import SDK
 
 from .common_helpers import *
-from .helpers import *
+from .test_helpers import *
 
 
 def test_multi_level_grouping():

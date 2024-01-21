@@ -10,28 +10,28 @@ require_relative '../shared/simpleobject'
 module OpenApiSDK
   module Shared
 
-    class DeepObject < OpenApiSDK::Utils::FieldAugmented
+    class DeepObject < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :any, Object, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('any') }, 'form': { 'field_name': 'any', 'json': true }, 'multipart_form': { 'field_name': 'any', 'json': true } }
+      field :any, Object, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('any') }, 'form': { 'field_name': 'any', 'json': true }, 'multipart_form': { 'field_name': 'any', 'json': true } }
 
-      field :arr, T::Array[Shared::SimpleObject], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('arr') }, 'form': { 'field_name': 'arr', 'json': true }, 'multipart_form': { 'field_name': 'arr', 'json': true } }
+      field :arr, T::Array[Shared::SimpleObject], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('arr') }, 'form': { 'field_name': 'arr', 'json': true }, 'multipart_form': { 'field_name': 'arr', 'json': true } }
 
-      field :bool, T::Boolean, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('bool') }, 'form': { 'field_name': 'bool' }, 'multipart_form': { 'field_name': 'bool' } }
+      field :bool, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('bool') }, 'form': { 'field_name': 'bool' }, 'multipart_form': { 'field_name': 'bool' } }
 
-      field :int, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int') }, 'form': { 'field_name': 'int' }, 'multipart_form': { 'field_name': 'int' } }
+      field :int, Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('int') }, 'form': { 'field_name': 'int' }, 'multipart_form': { 'field_name': 'int' } }
 
-      field :map, T::Hash[Symbol, Shared::SimpleObject], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('map') }, 'form': { 'field_name': 'map', 'json': true }, 'multipart_form': { 'field_name': 'map', 'json': true } }
+      field :map, T::Hash[Symbol, Shared::SimpleObject], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('map') }, 'form': { 'field_name': 'map', 'json': true }, 'multipart_form': { 'field_name': 'map', 'json': true } }
 
-      field :num, Float, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('num') }, 'form': { 'field_name': 'num' }, 'multipart_form': { 'field_name': 'num' } }
+      field :num, Float, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('num') }, 'form': { 'field_name': 'num' }, 'multipart_form': { 'field_name': 'num' } }
       # A simple object that uses all our supported primitive types and enums and has optional properties.
       # https://docs.speakeasyapi.dev - A link to the external docs.
-      field :obj, Shared::SimpleObject, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('obj') }, 'form': { 'field_name': 'obj', 'json': true }, 'multipart_form': { 'field_name': 'obj', 'json': true } }
+      field :obj, Shared::SimpleObject, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('obj') }, 'form': { 'field_name': 'obj', 'json': true }, 'multipart_form': { 'field_name': 'obj', 'json': true } }
 
-      field :str_, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('str') }, 'form': { 'field_name': 'str' }, 'multipart_form': { 'field_name': 'str' } }
+      field :str_, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('str') }, 'form': { 'field_name': 'str' }, 'multipart_form': { 'field_name': 'str' } }
 
-      field :type, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('type') }, 'form': { 'field_name': 'type' }, 'multipart_form': { 'field_name': 'type' } }
+      field :type, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('type') }, 'form': { 'field_name': 'type' }, 'multipart_form': { 'field_name': 'type' } }
 
 
       sig { params(any: Object, arr: T::Array[Shared::SimpleObject], bool: T::Boolean, int: Integer, map: T::Hash[Symbol, Shared::SimpleObject], num: Float, obj: Shared::SimpleObject, str_: String, type: T.nilable(String)).void }

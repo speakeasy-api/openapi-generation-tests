@@ -15,6 +15,7 @@ from .deprecatedfieldinobject import *
 from .deprecatedobject import *
 from .emptyobjectparam import *
 from .enum import *
+from .errortype import *
 from .exampleboat import *
 from .examplecar import *
 from .exampleresource import *
@@ -29,6 +30,7 @@ from .nullableobject import *
 from .nullableoneofrefinobject import *
 from .nullableoneoftypeinobject import *
 from .objectcircularreferenceobject import *
+from .objwithanyadditionalproperties import *
 from .objwithcomplexnumbersadditionalproperties import *
 from .objwithdateadditionalproperties import *
 from .objwithobjadditionalproperties import *
@@ -47,6 +49,9 @@ from .security import *
 from .simpleobject import *
 from .simpleobjectcamelcase import *
 from .simpleobjectwithtype import *
+from .taggedobject1 import *
+from .taggedobject2 import *
+from .taggedobject3 import *
 from .typedobject1 import *
 from .typedobject2 import *
 from .typedobject3 import *
@@ -55,4 +60,4 @@ from .validcircularreferenceobject import *
 from .writeonlyobject import *
 from .writeonlyobject_output import *
 
-__all__ = ["AllOfToAllOf","ArrObjValue","ArrObjValueCamelCase","ArrayCircularReferenceObject","AuthServiceRequestBody","BasicAuth","Chocolates","ComplexNumberTypes","ConstEnumInt","ConstEnumStr","DeepObject","DeepObjectCamelCase","DeepObjectWithType","DefaultEnumInt","DefaultEnumStr","DefaultsAndConsts","DefaultsAndConstsOutput","DefaultsAndConstsOutputConstEnumInt","DefaultsAndConstsOutputConstEnumStr","DefaultsAndConstsOutputDefaultEnumInt","DefaultsAndConstsOutputDefaultEnumStr","DeprecatedEnum","DeprecatedFieldInObject","DeprecatedObject","EmptyObjectParam","EnumNumber","EnumStr","EnumT","ExampleBoat","ExampleCar","ExampleCarType","ExampleResource","FakerFormattedStrings","FakerStrings","FileResource","HTTPBinSimpleJSONObject","HeaderAuth","InlineObject","Int32Enum","Int32EnumVal","IntEnum","IntEnumVal","LimitOffsetConfig","MapObjValue","MapObjValueCamelCase","NullableObject","NullableOneOfRefInObject","NullableOneOfTypeInObject","ObjWithComplexNumbersAdditionalProperties","ObjWithDateAdditionalProperties","ObjWithObjAdditionalProperties","ObjWithStringAdditionalProperties","ObjWithZeroValueComplexTypePtrs","ObjectCircularReferenceObject","OneOfCircularReferenceObject","OneOfGenerationStressTest","ReadOnlyObject","ReadOnlyObjectInput","ReadWriteObject","ReadWriteObjectOutput","RefQueryParamObj","RefQueryParamObjExploded","SchemeBasicAuth","Security","SimpleObject","SimpleObjectCamelCase","SimpleObjectWithType","SimpleObjectWithTypeInt32Enum","SimpleObjectWithTypeIntEnum","Slides","Slideshow","Two","Type","TypedObject1","TypedObject1Type","TypedObject2","TypedObject2Type","TypedObject3","TypedObject3Type","UnsupportedEnums","ValidCircularReferenceObject","WriteOnlyObject","WriteOnlyObjectOutput"]
+__all__ = ["AllOfToAllOf","ArrObjValue","ArrObjValueCamelCase","ArrayCircularReferenceObject","AuthServiceRequestBody","BasicAuth","Chocolates","ComplexNumberTypes","ConstEnumInt","ConstEnumStr","DeepObject","DeepObjectCamelCase","DeepObjectWithType","DefaultEnumInt","DefaultEnumStr","DefaultsAndConsts","DefaultsAndConstsOutput","DefaultsAndConstsOutputConstEnumInt","DefaultsAndConstsOutputConstEnumStr","DefaultsAndConstsOutputDefaultEnumInt","DefaultsAndConstsOutputDefaultEnumStr","DeprecatedEnum","DeprecatedFieldInObject","DeprecatedObject","EmptyObjectParam","EnumNumber","EnumStr","EnumT","ErrorType","ExampleBoat","ExampleCar","ExampleCarType","ExampleResource","FakerFormattedStrings","FakerStrings","FileResource","HTTPBinSimpleJSONObject","HeaderAuth","InlineObject","Int32Enum","Int32EnumVal","IntEnum","IntEnumVal","LimitOffsetConfig","MapObjValue","MapObjValueCamelCase","NullableObject","NullableOneOfRefInObject","NullableOneOfTypeInObject","ObjWithAnyAdditionalProperties","ObjWithComplexNumbersAdditionalProperties","ObjWithDateAdditionalProperties","ObjWithObjAdditionalProperties","ObjWithStringAdditionalProperties","ObjWithZeroValueComplexTypePtrs","ObjectCircularReferenceObject","OneOfCircularReferenceObject","OneOfGenerationStressTest","ReadOnlyObject","ReadOnlyObjectInput","ReadWriteObject","ReadWriteObjectOutput","RefQueryParamObj","RefQueryParamObjExploded","SchemeBasicAuth","Security","SimpleObject","SimpleObjectCamelCase","SimpleObjectWithType","SimpleObjectWithTypeInt32Enum","SimpleObjectWithTypeIntEnum","Slides","Slideshow","Tag","TaggedObject1","TaggedObject2","TaggedObject2Tag","TaggedObject3","Two","Type","TypedObject1","TypedObject1Type","TypedObject2","TypedObject2Type","TypedObject3","TypedObject3Type","UnsupportedEnums","ValidCircularReferenceObject","WriteOnlyObject","WriteOnlyObjectOutput"]

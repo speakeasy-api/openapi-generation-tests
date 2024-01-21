@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"testing"
 
-	sdk "openapi/v2"
+	sdk "openapi/v3"
 
 	"github.com/AlekSi/pointer"
 	"github.com/stretchr/testify/assert"

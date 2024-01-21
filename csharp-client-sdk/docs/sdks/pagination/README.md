@@ -28,12 +28,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Pagination.PaginationCursorBodyAsync(new PaginationCursorBodyRequestBody() {
+PaginationCursorBodyRequestBody req = new PaginationCursorBodyRequestBody() {
     Cursor = 868337,
-});
+};
+
+var res = await sdk.Pagination.PaginationCursorBodyAsync(req);
 
 // handle response
 ```
@@ -65,10 +66,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Pagination.PaginationCursorParamsAsync(24812);
+var res = await sdk.Pagination.PaginationCursorParamsAsync(Cursor: 24812);
 
 // handle response
 ```
@@ -99,10 +99,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Pagination.PaginationLimitOffsetOffsetBodyAsync(new LimitOffsetConfig() {});
+LimitOffsetConfig req = new LimitOffsetConfig() {};
+
+var res = await sdk.Pagination.PaginationLimitOffsetOffsetBodyAsync(req);
 
 // handle response
 ```
@@ -134,10 +135,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Pagination.PaginationLimitOffsetOffsetParamsAsync(661976, 600173);
+var res = await sdk.Pagination.PaginationLimitOffsetOffsetParamsAsync(Limit: 661976, Offset: 600173);
 
 // handle response
 ```
@@ -169,10 +169,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Pagination.PaginationLimitOffsetPageBodyAsync(new LimitOffsetConfig() {});
+LimitOffsetConfig req = new LimitOffsetConfig() {};
+
+var res = await sdk.Pagination.PaginationLimitOffsetPageBodyAsync(req);
 
 // handle response
 ```
@@ -204,10 +205,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Pagination.PaginationLimitOffsetPageParamsAsync(1177);
+var res = await sdk.Pagination.PaginationLimitOffsetPageParamsAsync(Page: 1177);
 
 // handle response
 ```

@@ -31,47 +31,47 @@ module OpenApiSDK
 
     # A simple object that uses all our supported primitive types and enums and has optional properties.
     # https://docs.speakeasyapi.dev - A link to the external docs.
-    class SimpleObjectCamelCase < OpenApiSDK::Utils::FieldAugmented
+    class SimpleObjectCamelCase < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # An any property.
-      field :any_val, Object, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('any_val') } }
+      field :any_val, Object, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('any_val') } }
       # A boolean property.
-      field :bool_val, T::Boolean, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('bool_val') } }
+      field :bool_val, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('bool_val') } }
       # A date-time property.
-      field :date_time_val, DateTime, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('date_time_val'), 'decoder': Utils.datetime_from_iso_format(false) } }
+      field :date_time_val, DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('date_time_val'), 'decoder': Utils.datetime_from_iso_format(false) } }
       # A date property.
-      field :date_val, Date, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('date_val'), 'decoder': Utils.date_from_iso_format(false) } }
+      field :date_val, Date, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('date_val'), 'decoder': Utils.date_from_iso_format(false) } }
       # A string based enum
-      field :enum_val, Shared::Enum, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('enum_val'), 'decoder': Utils.enum_from_string(Shared::Enum, false) } }
+      field :enum_val, Shared::Enum, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('enum_val'), 'decoder': Utils.enum_from_string(Shared::Enum, false) } }
       # A float32 property.
-      field :float32_val, Float, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('float32_val') } }
+      field :float32_val, Float, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('float32_val') } }
       # An integer enum property.
-      field :int_enum_val, Shared::IntEnumVal, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int_enum_val'), 'decoder': Utils.enum_from_string(Shared::IntEnumVal, false) } }
+      field :int_enum_val, Shared::IntEnumVal, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('int_enum_val'), 'decoder': Utils.enum_from_string(Shared::IntEnumVal, false) } }
       # An integer property.
-      field :int_val, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int_val') } }
+      field :int_val, Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('int_val') } }
       # An int32 enum property.
-      field :int32_enum_val, Shared::Int32EnumVal, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int32_enum_val'), 'decoder': Utils.enum_from_string(Shared::Int32EnumVal, false) } }
+      field :int32_enum_val, Shared::Int32EnumVal, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('int32_enum_val'), 'decoder': Utils.enum_from_string(Shared::Int32EnumVal, false) } }
       # An int32 property.
-      field :int32_val, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int32_val') } }
+      field :int32_val, Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('int32_val') } }
       # A number property.
-      field :num_val, Float, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('num_val') } }
+      field :num_val, Float, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('num_val') } }
       # A string property.
-      field :str_val, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('str_val') } }
+      field :str_val, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('str_val') } }
 
-      field :bigint_str_val, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('bigint_str_val') } }
+      field :bigint_str_val, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('bigint_str_val') } }
 
-      field :bigint_val, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('bigint_val') } }
+      field :bigint_val, T.nilable(Integer), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('bigint_val') } }
       # An optional boolean property.
-      field :bool_opt_val, T.nilable(T::Boolean), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('bool_opt_val') } }
+      field :bool_opt_val, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('bool_opt_val') } }
 
-      field :decimal_val, T.nilable(Float), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('decimal_val') } }
+      field :decimal_val, T.nilable(Float), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('decimal_val') } }
       # An optional integer property will be null for tests.
-      field :int_opt_null_val, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int_opt_null_val') } }
+      field :int_opt_null_val, T.nilable(Integer), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('int_opt_null_val') } }
       # An optional number property will be null for tests.
-      field :num_opt_null_val, T.nilable(Float), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('num_opt_null_val') } }
+      field :num_opt_null_val, T.nilable(Float), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('num_opt_null_val') } }
       # An optional string property.
-      field :str_opt_val, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('str_opt_val') } }
+      field :str_opt_val, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('str_opt_val') } }
 
 
       sig { params(any_val: Object, bool_val: T::Boolean, date_time_val: DateTime, date_val: Date, enum_val: Shared::Enum, float32_val: Float, int_enum_val: Shared::IntEnumVal, int_val: Integer, int32_enum_val: Shared::Int32EnumVal, int32_val: Integer, num_val: Float, str_val: String, bigint_str_val: T.nilable(String), bigint_val: T.nilable(Integer), bool_opt_val: T.nilable(T::Boolean), decimal_val: T.nilable(Float), int_opt_null_val: T.nilable(Integer), num_opt_null_val: T.nilable(Float), str_opt_val: T.nilable(String)).void }
