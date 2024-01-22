@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class Security < OpenApiSDK::Utils::FieldAugmented
+    class Security < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 

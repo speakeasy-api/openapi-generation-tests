@@ -28,16 +28,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            String req = "string";
 
-            PutAnythingIgnoredGenerationResponse res = sdk.putAnythingIgnoredGeneration(req);
+            org.openapis.openapi.models.operations.PutAnythingIgnoredGenerationResponse res = sdk.putAnythingIgnoredGeneration(req);
 
             if (res.object != null) {
                 // handle response
@@ -76,14 +77,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ResponseBodyJsonGetResponse res = sdk.responseBodyJsonGet();
+            org.openapis.openapi.models.operations.ResponseBodyJsonGetResponse res = sdk.responseBodyJsonGet();
 
             if (res.httpBinSimpleJsonObject != null) {
                 // handle response

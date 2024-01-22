@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class HeaderParamsMapRequest < OpenApiSDK::Utils::FieldAugmented
+    class HeaderParamsMapRequest < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -26,13 +26,13 @@ module OpenApiSDK
     end
 
 
-    class HeaderParamsMapHeaders < OpenApiSDK::Utils::FieldAugmented
+    class HeaderParamsMapHeaders < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :x_header_map, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('X-Header-Map') } }
+      field :x_header_map, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('X-Header-Map') } }
 
-      field :x_header_map_explode, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('X-Header-Map-Explode') } }
+      field :x_header_map_explode, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('X-Header-Map-Explode') } }
 
 
       sig { params(x_header_map: String, x_header_map_explode: String).void }
@@ -43,11 +43,11 @@ module OpenApiSDK
     end
 
     # OK
-    class HeaderParamsMapRes < OpenApiSDK::Utils::FieldAugmented
+    class HeaderParamsMapRes < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :headers, Operations::HeaderParamsMapHeaders, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('headers') } }
+      field :headers, Operations::HeaderParamsMapHeaders, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('headers') } }
 
 
       sig { params(headers: Operations::HeaderParamsMapHeaders).void }
@@ -57,24 +57,24 @@ module OpenApiSDK
     end
 
 
-    class HeaderParamsMapResponse < OpenApiSDK::Utils::FieldAugmented
+    class HeaderParamsMapResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
       # OK
       field :res, T.nilable(Operations::HeaderParamsMapRes)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), res: T.nilable(Operations::HeaderParamsMapRes)).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil, res: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, res: T.nilable(Operations::HeaderParamsMapRes)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, res: nil)
         @content_type = content_type
-        @status_code = status_code
         @raw_response = raw_response
+        @status_code = status_code
         @res = res
       end
     end

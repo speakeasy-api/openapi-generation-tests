@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"testing"
 
-	sdk "openapi/v2"
+	sdk "openapi/v3"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -22,7 +22,7 @@ func TestTelemetryUserAgentGet(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, "speakeasy-sdk/go 2.1.2 2.188.3 0.1.0 openapi", res.Res.Headers["X-Speakeasy-User-Agent"])
+	assert.Equal(t, "speakeasy-sdk/go 3.0.0 2.237.3 0.1.0 openapi", res.Res.Headers["X-Speakeasy-User-Agent"])
 }
 
 func TestTelemetrySpeakeasyUserAgentGet(t *testing.T) {
@@ -37,5 +37,5 @@ func TestTelemetrySpeakeasyUserAgentGet(t *testing.T) {
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.Equal(t, userAgent, res.Res.Headers["User-Agent"])
-	assert.Equal(t, "speakeasy-sdk/go 2.1.2 2.188.3 0.1.0 openapi", res.Res.Headers["X-Speakeasy-User-Agent"])
+	assert.Equal(t, "speakeasy-sdk/go 3.0.0 2.237.3 0.1.0 openapi", res.Res.Headers["X-Speakeasy-User-Agent"])
 }
