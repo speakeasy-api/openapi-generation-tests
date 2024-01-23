@@ -279,8 +279,8 @@ module OpenApiSDK
       params
     end
 
-    sig { params(clazz: Class, server_url: String, path: String, path_params: FieldAugmented, gbls: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).returns(String) }
-    def self.generate_url(clazz, server_url, path, path_params, gbls)
+    sig { params(clazz: Class, server_url: String, path: String, path_params: FieldAugmented, gbls: T.nilable(T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]])).returns(String) }
+    def self.generate_url(clazz, server_url, path, path_params, gbls = nil)
       clazz.fields.each do |f|
         param_metadata = f.metadata[:path_param]
         next if param_metadata.nil?
@@ -448,9 +448,9 @@ module OpenApiSDK
           raise StandardError, 'not supported'
         end
       when 'openIdConnect'
-        req.headers[header_name] = value
+        req.headers[header_name] = value.downcase.start_with?('bearer ') ? value : "Bearer #{value}"
       when 'oauth2'
-        req.headers[header_name] = value
+        req.headers[header_name] = value.downcase.start_with?('bearer ') ? value : "Bearer #{value}"
       when 'http'
         if sub_type == 'bearer'
           req.headers[header_name] = value.downcase.start_with?('bearer ') ? value : "Bearer #{value}"
@@ -718,7 +718,7 @@ module OpenApiSDK
       url_with_params
     end
 
-    sig { params(param_name: Symbol, value: Object, param_type: String, gbls: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).returns(Object) }
+    sig { params(param_name: Symbol, value: Object, param_type: String, gbls: T.nilable(T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]])).returns(Object) }
     def self._populate_from_globals(param_name, value, param_type, gbls)
       if value.nil? && !gbls.nil?
         global_value = gbls.dig(:parameters, param_type.to_sym, param_name.to_sym)

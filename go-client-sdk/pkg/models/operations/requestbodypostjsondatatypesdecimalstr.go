@@ -5,7 +5,7 @@ package operations
 import (
 	"github.com/ericlagergren/decimal"
 	"net/http"
-	"openapi/v2/pkg/utils"
+	"openapi/v3/pkg/utils"
 )
 
 // RequestBodyPostJSONDataTypesDecimalStrResponseBody - OK

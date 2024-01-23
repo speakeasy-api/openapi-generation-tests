@@ -3,7 +3,6 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from typing import Optional
 
 STATUS_GET_X_SPEAKEASY_ERRORS_SERVERS = [
 	"http://localhost:35456",
@@ -21,9 +20,9 @@ class StatusGetXSpeakeasyErrorsRequest:
 class StatusGetXSpeakeasyErrorsResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

@@ -243,7 +243,7 @@ class Auth
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
         
-        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        $httpResponse = $this->sdkConfiguration->defaultClient->request('GET', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 

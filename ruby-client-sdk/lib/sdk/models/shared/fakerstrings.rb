@@ -9,115 +9,115 @@ require 'faraday'
 module OpenApiSDK
   module Shared
     # A set of strings with fieldnames that lead to relevant examples being generated for them
-    class FakerStrings < OpenApiSDK::Utils::FieldAugmented
+    class FakerStrings < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :account, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('account') } }
+      field :account, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('account') } }
 
-      field :address, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('address') } }
+      field :address, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('address') } }
 
-      field :amount, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('amount') } }
+      field :amount, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('amount') } }
 
-      field :avatar, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('avatar') } }
+      field :avatar, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('avatar') } }
 
-      field :city, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('City') } }
+      field :city, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('City') } }
 
-      field :color, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('color') } }
+      field :color, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('color') } }
 
-      field :comment, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('comment') } }
+      field :comment, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('comment') } }
 
-      field :company, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('company') } }
+      field :company, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('company') } }
 
-      field :country, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('country') } }
+      field :country, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('country') } }
 
-      field :country_code, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('country_code') } }
+      field :country_code, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('country_code') } }
 
-      field :currency, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('currency') } }
+      field :currency, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('currency') } }
 
-      field :datatype, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('datatype') } }
+      field :datatype, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('datatype') } }
 
-      field :default, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('default') } }
+      field :default, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('default') } }
 
-      field :description, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('description') } }
+      field :description, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('description') } }
 
-      field :directory, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('directory') } }
+      field :directory, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('directory') } }
 
-      field :domain_name, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('domainName') } }
+      field :domain_name, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('domainName') } }
 
-      field :email_addr, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('emailAddr') } }
+      field :email_addr, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('emailAddr') } }
 
-      field :extension, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('extension') } }
+      field :extension, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('extension') } }
 
-      field :filename, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('filename') } }
+      field :filename, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('filename') } }
 
-      field :filepath, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('filepath') } }
+      field :filepath, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('filepath') } }
 
-      field :filetype, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('filetype') } }
+      field :filetype, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('filetype') } }
 
-      field :first_name, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('firstName') } }
+      field :first_name, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('firstName') } }
 
-      field :full_name, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('fullName') } }
+      field :full_name, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('fullName') } }
 
-      field :gender, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('gender') } }
+      field :gender, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('gender') } }
 
-      field :iban, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('IBAN') } }
+      field :iban, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('IBAN') } }
 
-      field :id, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('ID') } }
+      field :id, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('ID') } }
 
-      field :i_pv4, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('IPv4') } }
+      field :i_pv4, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('IPv4') } }
 
-      field :i_pv6, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('IPv6') } }
+      field :i_pv6, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('IPv6') } }
 
-      field :job, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('job') } }
+      field :job, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('job') } }
 
-      field :json, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
+      field :json, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('json') } }
 
-      field :key, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('key') } }
+      field :key, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('key') } }
 
-      field :last_name, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('lastName') } }
+      field :last_name, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('lastName') } }
 
-      field :latitude, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('latitude') } }
+      field :latitude, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('latitude') } }
 
-      field :locale, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('locale') } }
+      field :locale, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('locale') } }
 
-      field :longitude, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('longitude') } }
+      field :longitude, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('longitude') } }
 
-      field :mac, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('mac') } }
+      field :mac, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('mac') } }
 
-      field :manufacturer, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('manufacturer') } }
+      field :manufacturer, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('manufacturer') } }
 
-      field :material, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('material') } }
+      field :material, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('material') } }
 
-      field :middle_name, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('middleName') } }
+      field :middle_name, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('middleName') } }
 
-      field :model, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('model') } }
+      field :model, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('model') } }
 
-      field :password, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('password') } }
+      field :password, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('password') } }
 
-      field :phone, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('phone') } }
+      field :phone, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('phone') } }
 
-      field :pin, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('pin') } }
+      field :pin, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('pin') } }
 
-      field :postal_code, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('postal-code') } }
+      field :postal_code, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('postal-code') } }
 
-      field :price, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('price') } }
+      field :price, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('price') } }
 
-      field :product, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('product') } }
+      field :product, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('product') } }
 
-      field :sex, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('sex') } }
+      field :sex, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('sex') } }
 
-      field :street, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('street') } }
+      field :street, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('street') } }
 
-      field :timezone, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('timezone') } }
+      field :timezone, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('timezone') } }
 
-      field :unit, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('unit') } }
+      field :unit, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('unit') } }
 
-      field :url, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('url') } }
+      field :url, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('url') } }
 
-      field :username, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('username') } }
+      field :username, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('username') } }
 
-      field :uuid, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('uuid') } }
+      field :uuid, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('uuid') } }
 
 
       sig { params(account: T.nilable(String), address: T.nilable(String), amount: T.nilable(String), avatar: T.nilable(String), city: T.nilable(String), color: T.nilable(String), comment: T.nilable(String), company: T.nilable(String), country: T.nilable(String), country_code: T.nilable(String), currency: T.nilable(String), datatype: T.nilable(String), default: T.nilable(String), description: T.nilable(String), directory: T.nilable(String), domain_name: T.nilable(String), email_addr: T.nilable(String), extension: T.nilable(String), filename: T.nilable(String), filepath: T.nilable(String), filetype: T.nilable(String), first_name: T.nilable(String), full_name: T.nilable(String), gender: T.nilable(String), iban: T.nilable(String), id: T.nilable(String), i_pv4: T.nilable(String), i_pv6: T.nilable(String), job: T.nilable(String), json: T.nilable(String), key: T.nilable(String), last_name: T.nilable(String), latitude: T.nilable(String), locale: T.nilable(String), longitude: T.nilable(String), mac: T.nilable(String), manufacturer: T.nilable(String), material: T.nilable(String), middle_name: T.nilable(String), model: T.nilable(String), password: T.nilable(String), phone: T.nilable(String), pin: T.nilable(String), postal_code: T.nilable(String), price: T.nilable(String), product: T.nilable(String), sex: T.nilable(String), street: T.nilable(String), timezone: T.nilable(String), unit: T.nilable(String), url: T.nilable(String), username: T.nilable(String), uuid: T.nilable(String)).void }

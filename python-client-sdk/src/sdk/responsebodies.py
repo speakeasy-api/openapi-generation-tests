@@ -19,12 +19,12 @@ class ResponseBodies:
         
     
     
-    def response_body_additional_properties_complex_numbers_post(self, request: shared.ObjWithComplexNumbersAdditionalProperties) -> operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse:
+    def response_body_additional_properties_any_post(self, request: shared.ObjWithAnyAdditionalProperties) -> operations.ResponseBodyAdditionalPropertiesAnyPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = base_url + '/anything/responseBodies/additionalPropertiesComplexNumbers'
+        url = base_url + '/anything/responseBodies/additionalPropertiesAny'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.ObjWithAnyAdditionalProperties, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -39,7 +39,43 @@ class ResponseBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
+        
+        res = operations.ResponseBodyAdditionalPropertiesAnyPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ResponseBodyAdditionalPropertiesAnyPostResponseBody])
+                res.object = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
+        return res
+
+    
+    
+    def response_body_additional_properties_complex_numbers_post(self, request: shared.ObjWithComplexNumbersAdditionalProperties) -> operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse:
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = base_url + '/anything/responseBodies/additionalPropertiesComplexNumbers'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, shared.ObjWithComplexNumbersAdditionalProperties, "request", False, False, 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        if data is None and form is None:
+            raise Exception('request body is required')
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
+        
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+        
         res = operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -60,7 +96,7 @@ class ResponseBodies:
         
         url = base_url + '/anything/responseBodies/additionalPropertiesDate'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.ObjWithDateAdditionalProperties, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -75,7 +111,7 @@ class ResponseBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ResponseBodyAdditionalPropertiesDatePostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -96,7 +132,7 @@ class ResponseBodies:
         
         url = base_url + '/anything/responseBodies/additionalPropertiesObject'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.ObjWithObjAdditionalProperties, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -111,7 +147,7 @@ class ResponseBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ResponseBodyAdditionalPropertiesObjectPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -132,7 +168,7 @@ class ResponseBodies:
         
         url = base_url + '/anything/responseBodies/additionalProperties'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.ObjWithStringAdditionalProperties, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -147,7 +183,7 @@ class ResponseBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ResponseBodyAdditionalPropertiesPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -178,7 +214,7 @@ class ResponseBodies:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ResponseBodyBytesGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -214,8 +250,8 @@ class ResponseBodies:
         
         http_res = client.request('POST', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
-        res = operations.ResponseBodyEmptyWithHeadersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        res = operations.ResponseBodyEmptyWithHeadersResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, headers=None)
         
         if http_res.status_code == 200:
             res.headers = http_res.headers
@@ -248,7 +284,7 @@ class ResponseBodies:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ResponseBodyOptionalGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -284,7 +320,7 @@ class ResponseBodies:
         
         http_res = client.request('POST', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ResponseBodyReadOnlyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -315,7 +351,7 @@ class ResponseBodies:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ResponseBodyStringGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -345,7 +381,7 @@ class ResponseBodies:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ResponseBodyXMLGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -365,7 +401,7 @@ class ResponseBodies:
         
         url = base_url + '/anything/responseBodies/zeroValueComplexTypePtrs'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.ObjWithZeroValueComplexTypePtrs, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -380,7 +416,7 @@ class ResponseBodies:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ResponseBodyZeroValueComplexTypePtrsPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:

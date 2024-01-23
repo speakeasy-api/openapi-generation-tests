@@ -9,13 +9,13 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class NullableObject < OpenApiSDK::Utils::FieldAugmented
+    class NullableObject < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :required, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('required') } }
+      field :required, Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('required') } }
 
-      field :optional, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('optional') } }
+      field :optional, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('optional') } }
 
 
       sig { params(required: Integer, optional: T.nilable(String)).void }
