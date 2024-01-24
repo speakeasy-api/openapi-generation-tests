@@ -4210,6 +4210,18 @@ paths:
                 required:
                   - url
                   - args
+  /anything/conflictingEnum/:
+    post:
+      operationId: conflictingEnum
+      description: Test potential namespace conflicts with java.lang.Object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/conflictingEnum"
+      responses:
+        "200":
+          description: OK
   /json:
     get:
       operationId: responseBodyJsonGet

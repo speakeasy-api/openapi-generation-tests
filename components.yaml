@@ -897,6 +897,14 @@ components:
             - $ref: "#/components/schemas/simpleObject"
       required:
         - child
+    conflictingEnum:
+      type: object
+      properties:
+          object:
+            type: string
+            enum:
+              - OBJ1
+              - OBJ2
     deprecatedObject:
       type: object
       deprecated: true
