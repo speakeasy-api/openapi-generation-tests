@@ -20,7 +20,7 @@ module OpenApiSDK
 
 
 
-    class NameOverrideGetRequest < OpenApiSDK::Utils::FieldAugmented
+    class NameOverrideGetRequest < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # An enum type
@@ -37,12 +37,12 @@ module OpenApiSDK
     end
 
     # A successful response that contains the simpleObject sent in the request body
-    class NameOverrideGetOverriddenResponse < OpenApiSDK::Utils::FieldAugmented
+    class NameOverrideGetOverriddenResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # A simple object that uses all our supported primitive types and enums and has optional properties.
       # https://docs.speakeasyapi.dev - A link to the external docs.
-      field :json, T.nilable(Shared::SimpleObject), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
+      field :json, T.nilable(Shared::SimpleObject), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('json') } }
 
 
       sig { params(json: T.nilable(Shared::SimpleObject)).void }
@@ -52,25 +52,25 @@ module OpenApiSDK
     end
 
 
-    class NameOverrideGetResponse < OpenApiSDK::Utils::FieldAugmented
+    class NameOverrideGetResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
       # A successful response that contains the simpleObject sent in the request body
       field :overridden_response, T.nilable(Operations::NameOverrideGetOverriddenResponse)
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, overridden_response: T.nilable(Operations::NameOverrideGetOverriddenResponse), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, overridden_response: nil, raw_response: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, overridden_response: T.nilable(Operations::NameOverrideGetOverriddenResponse)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, overridden_response: nil)
         @content_type = content_type
+        @raw_response = raw_response
         @status_code = status_code
         @overridden_response = overridden_response
-        @raw_response = raw_response
       end
     end
   end

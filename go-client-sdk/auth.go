@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/sdkerrors"
-	"openapi/v2/pkg/utils"
+	"openapi/v3/pkg/models/operations"
+	"openapi/v3/pkg/models/sdkerrors"
+	"openapi/v3/pkg/utils"
 	"strings"
 )
 
@@ -339,7 +339,7 @@ func (s *Auth) NoAuth(ctx context.Context) (*operations.NoAuthResponse, error) {
 	req.Header.Set("Accept", "*/*")
 	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
 
-	client := s.sdkConfiguration.SecurityClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

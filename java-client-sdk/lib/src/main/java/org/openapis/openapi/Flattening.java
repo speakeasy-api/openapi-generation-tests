@@ -55,11 +55,10 @@ public class Flattening {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.ComponentBodyAndParamConflictResponse res = new org.openapis.openapi.models.operations.ComponentBodyAndParamConflictResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.ComponentBodyAndParamConflictResponse res = new org.openapis.openapi.models.operations.ComponentBodyAndParamConflictResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -101,11 +100,10 @@ public class Flattening {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.ComponentBodyAndParamNoConflictResponse res = new org.openapis.openapi.models.operations.ComponentBodyAndParamNoConflictResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.ComponentBodyAndParamNoConflictResponse res = new org.openapis.openapi.models.operations.ComponentBodyAndParamNoConflictResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -142,11 +140,10 @@ public class Flattening {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.ConflictingParamsResponse res = new org.openapis.openapi.models.operations.ConflictingParamsResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.ConflictingParamsResponse res = new org.openapis.openapi.models.operations.ConflictingParamsResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -188,11 +185,10 @@ public class Flattening {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.InlineBodyAndParamConflictResponse res = new org.openapis.openapi.models.operations.InlineBodyAndParamConflictResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.InlineBodyAndParamConflictResponse res = new org.openapis.openapi.models.operations.InlineBodyAndParamConflictResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -234,11 +230,10 @@ public class Flattening {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.InlineBodyAndParamNoConflictResponse res = new org.openapis.openapi.models.operations.InlineBodyAndParamNoConflictResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.InlineBodyAndParamNoConflictResponse res = new org.openapis.openapi.models.operations.InlineBodyAndParamNoConflictResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {

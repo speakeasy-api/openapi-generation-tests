@@ -89,12 +89,12 @@ extension Client: OpenAPI {
         return _AuthNewAPI(client: self)
     }
 
-    public var documentation: DocumentationAPI {
-        return _DocumentationAPI(client: self)
-    }
-
     public var resource: ResourceAPI {
         return _ResourceAPI(client: self)
+    }
+
+    public var documentation: DocumentationAPI {
+        return _DocumentationAPI(client: self)
     }
 
     public var first: FirstAPI {

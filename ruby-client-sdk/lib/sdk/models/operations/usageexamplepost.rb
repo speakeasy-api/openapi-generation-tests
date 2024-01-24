@@ -12,7 +12,7 @@ require_relative '../shared/simpleobject'
 module OpenApiSDK
   module Operations
 
-    class UsageExamplePostSecurity < OpenApiSDK::Utils::FieldAugmented
+    class UsageExamplePostSecurity < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -29,16 +29,16 @@ module OpenApiSDK
     end
 
     # A request body that contains fields with different formats for testing example generation
-    class UsageExamplePostRequestBody < OpenApiSDK::Utils::FieldAugmented
+    class UsageExamplePostRequestBody < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # A set of strings with format values that lead to relevant examples being generated for them
-      field :faker_formatted_strings, T.nilable(Shared::FakerFormattedStrings), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('fakerFormattedStrings') } }
+      field :faker_formatted_strings, T.nilable(Shared::FakerFormattedStrings), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('fakerFormattedStrings') } }
       # A set of strings with fieldnames that lead to relevant examples being generated for them
-      field :faker_strings, T.nilable(Shared::FakerStrings), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('fakerStrings') } }
+      field :faker_strings, T.nilable(Shared::FakerStrings), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('fakerStrings') } }
       # A simple object that uses all our supported primitive types and enums and has optional properties.
       # https://docs.speakeasyapi.dev - A link to the external docs.
-      field :simple_object, T.nilable(Shared::SimpleObject), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('simpleObject') } }
+      field :simple_object, T.nilable(Shared::SimpleObject), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('simpleObject') } }
 
 
       sig { params(faker_formatted_strings: T.nilable(Shared::FakerFormattedStrings), faker_strings: T.nilable(Shared::FakerStrings), simple_object: T.nilable(Shared::SimpleObject)).void }
@@ -70,7 +70,7 @@ module OpenApiSDK
 
 
 
-    class UsageExamplePostRequest < OpenApiSDK::Utils::FieldAugmented
+    class UsageExamplePostRequest < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # An bigint parameter
@@ -147,16 +147,16 @@ module OpenApiSDK
     end
 
 
-    class UsageExamplePostJson < OpenApiSDK::Utils::FieldAugmented
+    class UsageExamplePostJson < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # A set of strings with format values that lead to relevant examples being generated for them
-      field :faker_formatted_strings, T.nilable(Shared::FakerFormattedStrings), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('fakerFormattedStrings') } }
+      field :faker_formatted_strings, T.nilable(Shared::FakerFormattedStrings), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('fakerFormattedStrings') } }
       # A set of strings with fieldnames that lead to relevant examples being generated for them
-      field :faker_strings, T.nilable(Shared::FakerStrings), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('fakerStrings') } }
+      field :faker_strings, T.nilable(Shared::FakerStrings), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('fakerStrings') } }
       # A simple object that uses all our supported primitive types and enums and has optional properties.
       # https://docs.speakeasyapi.dev - A link to the external docs.
-      field :simple_object, T.nilable(Shared::SimpleObject), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('simpleObject') } }
+      field :simple_object, T.nilable(Shared::SimpleObject), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('simpleObject') } }
 
 
       sig { params(faker_formatted_strings: T.nilable(Shared::FakerFormattedStrings), faker_strings: T.nilable(Shared::FakerStrings), simple_object: T.nilable(Shared::SimpleObject)).void }
@@ -168,11 +168,11 @@ module OpenApiSDK
     end
 
     # A response body that contains the simpleObject sent in the request body
-    class UsageExamplePostResponseBody < OpenApiSDK::Utils::FieldAugmented
+    class UsageExamplePostResponseBody < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :json, Operations::UsageExamplePostJson, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
+      field :json, Operations::UsageExamplePostJson, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('json') } }
 
 
       sig { params(json: Operations::UsageExamplePostJson).void }
@@ -182,25 +182,25 @@ module OpenApiSDK
     end
 
 
-    class UsageExamplePostResponse < OpenApiSDK::Utils::FieldAugmented
+    class UsageExamplePostResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
       # A successful response that contains the simpleObject sent in the request body
       field :object, T.nilable(Operations::UsageExamplePostResponseBody)
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, object: T.nilable(Operations::UsageExamplePostResponseBody), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, object: nil, raw_response: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, object: T.nilable(Operations::UsageExamplePostResponseBody)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, object: nil)
         @content_type = content_type
+        @raw_response = raw_response
         @status_code = status_code
         @object = object
-        @raw_response = raw_response
       end
     end
   end

@@ -53,8 +53,9 @@ public class RequestBodyPostJsonDataTypesBooleanResponse {
         return this;
     }
     
-    public RequestBodyPostJsonDataTypesBooleanResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode) {
+    public RequestBodyPostJsonDataTypesBooleanResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode, @JsonProperty("RawResponse") HttpResponse<byte[]> rawResponse) {
         this.contentType = contentType;
         this.statusCode = statusCode;
+        this.rawResponse = rawResponse;
   }
 }
