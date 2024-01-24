@@ -10,15 +10,15 @@ require_relative '../shared/typedobject1'
 module OpenApiSDK
   module Shared
 
-    class NullableOneOfRefInObject < OpenApiSDK::Utils::FieldAugmented
+    class NullableOneOfRefInObject < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :nullable_one_of_one, Shared::TypedObject1, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('NullableOneOfOne') } }
+      field :nullable_one_of_one, Shared::TypedObject1, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('NullableOneOfOne') } }
 
-      field :nullable_one_of_two, Object, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('NullableOneOfTwo') } }
+      field :nullable_one_of_two, Object, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('NullableOneOfTwo') } }
 
-      field :one_of_one, Object, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('OneOfOne') } }
+      field :one_of_one, Object, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('OneOfOne') } }
 
 
       sig { params(nullable_one_of_one: Shared::TypedObject1, nullable_one_of_two: Object, one_of_one: Object).void }

@@ -5,7 +5,7 @@ package operations
 import (
 	"math/big"
 	"net/http"
-	"openapi/v2/pkg/utils"
+	"openapi/v3/pkg/utils"
 )
 
 // RequestBodyPostJSONDataTypesBigIntResponseBody - OK

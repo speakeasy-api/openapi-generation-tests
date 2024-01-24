@@ -39,28 +39,24 @@ Endpoints for testing parameters.
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::DeepObjectQueryParamsMapRequest.new(
-  query_params=Operations::DeepObjectQueryParamsMapRequest.new(
-    map_param=.new{
-      "compress": "string",
-    },
-    map_arr_param=.new{
-      "of": .new[
-        "string",
-      ],
-    },
-  ),
-)
     
-res = s.parameters.deep_object_query_params_map(req)
+res = s.parameters.deep_object_query_params_map(map_param={
+    "compress": "string",
+  }, map_arr_param={
+    "of": [
+      "string",
+    ],
+  })
 
 if ! res.res.nil?
   # handle response
@@ -70,10 +66,10 @@ end
 
 ### Parameters
 
-| Parameter                           | Type                                | Required                            | Description                         | Example                             |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `map_param`                         | T::Hash[Symbol, *String*]           | :heavy_check_mark:                  | N/A                                 | [object Object]                     |
-| `map_arr_param`                     | T::Hash[Symbol, T::Array<*String*>] | :heavy_minus_sign:                  | N/A                                 | [object Object]                     |
+| Parameter                                           | Type                                                | Required                                            | Description                                         | Example                                             |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `map_param`                                         | T::Hash[Symbol, *String*]                           | :heavy_check_mark:                                  | N/A                                                 | {"test":"value","test2":"value2"}                   |
+| `map_arr_param`                                     | T::Hash[Symbol, T::Array<*String*>]                 | :heavy_minus_sign:                                  | N/A                                                 | {"test":["test","test2"],"test2":["test3","test4"]} |
 
 
 ### Response
@@ -89,47 +85,41 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::DeepObjectQueryParamsObjectRequest.new(
-  query_params=Operations::DeepObjectQueryParamsObjectRequest.new(
-    obj_param=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::SIXTY_NINE,
-      int_enum=Shared::IntEnum::SECOND,
-      int_opt_null=303001,
-      num=1.1,
-      num_opt_null=5571.55,
-      str_="test",
-      str_opt="testOptional",
-    ),
-    obj_arr_param=Operations::ObjArrParam.new(
-      arr=.new[
-        "test",
-      ],
-    ),
-  ),
-)
     
-res = s.parameters.deep_object_query_params_object(req)
+res = s.parameters.deep_object_query_params_object(obj_param=Shared::SimpleObject.new(
+    any="any",
+    bigint=8821239038968084,
+    bigint_str="9223372036854775808",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+    decimal=3.141592653589793,
+    decimal_str="3.14159265358979344719667586",
+    enum=Shared::Enum::ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=Shared::Int32Enum::SIXTY_NINE,
+    int_enum=Shared::IntEnum::SECOND,
+    num=1.1,
+    str_="test",
+    str_opt="testOptional",
+  ), obj_arr_param=Operations::ObjArrParam.new(
+    arr=[
+      "test",
+    ],
+  ))
 
 if ! res.res.nil?
   # handle response
@@ -158,21 +148,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::DuplicateParamRequest.new(
-  path_params=Operations::DuplicateParamRequest.new(
-    duplicate_param_request="string",
-  ),
-)
     
-res = s.parameters.duplicate_param(req)
+res = s.parameters.duplicate_param(duplicate_param_request="string")
 
 if ! res.duplicate_param_response.nil?
   # handle response
@@ -200,26 +187,22 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::FormQueryParamsArrayRequest.new(
-  query_params=Operations::FormQueryParamsArrayRequest.new(
-    arr_param=.new[
-      "test",
-    ],
-    arr_param_exploded=.new[
-      2,
-    ],
-  ),
-)
     
-res = s.parameters.form_query_params_array(req)
+res = s.parameters.form_query_params_array(arr_param=[
+    "test",
+  ], arr_param_exploded=[
+    2,
+  ])
 
 if ! res.res.nil?
   # handle response
@@ -248,28 +231,24 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::FormQueryParamsCamelObjectRequest.new(
-  query_params=Operations::FormQueryParamsCamelObjectRequest.new(
-    obj_param_exploded=Operations::ObjParamExploded.new(
-      item_count="10",
-      search_term="foo",
-    ),
-    obj_param=Operations::ObjParam.new(
-      encoded_count="11",
-      encoded_term="bar",
-    ),
-  ),
-)
     
-res = s.parameters.form_query_params_camel_object(req)
+res = s.parameters.form_query_params_camel_object(obj_param_exploded=Operations::ObjParamExploded.new(
+    item_count="10",
+    search_term="foo",
+  ), obj_param=Operations::ObjParam.new(
+    encoded_count="11",
+    encoded_term="bar",
+  ))
 
 if ! res.res.nil?
   # handle response
@@ -298,26 +277,22 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::FormQueryParamsMapRequest.new(
-  query_params=Operations::FormQueryParamsMapRequest.new(
-    map_param=.new{
-      "male": "string",
-    },
-    map_param_exploded=.new{
-      "Reggae": 355695,
-    },
-  ),
-)
     
-res = s.parameters.form_query_params_map(req)
+res = s.parameters.form_query_params_map(map_param={
+    "male": "string",
+  }, map_param_exploded={
+    "Reggae": 355695,
+  })
 
 if ! res.res.nil?
   # handle response
@@ -327,10 +302,10 @@ end
 
 ### Parameters
 
-| Parameter                  | Type                       | Required                   | Description                | Example                    |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `map_param`                | T::Hash[Symbol, *String*]  | :heavy_minus_sign:         | N/A                        | [object Object]            |
-| `map_param_exploded`       | T::Hash[Symbol, *Integer*] | :heavy_minus_sign:         | N/A                        | [object Object]            |
+| Parameter                         | Type                              | Required                          | Description                       | Example                           |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `map_param`                       | T::Hash[Symbol, *String*]         | :heavy_minus_sign:                | N/A                               | {"test":"value","test2":"value2"} |
+| `map_param_exploded`              | T::Hash[Symbol, *Integer*]        | :heavy_minus_sign:                | N/A                               | {"test":1,"test2":2}              |
 
 
 ### Response
@@ -346,64 +321,56 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::FormQueryParamsObjectRequest.new(
-  query_params=Operations::FormQueryParamsObjectRequest.new(
-    obj_param_exploded=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::IntEnum::SECOND,
-      int_opt_null=645228,
-      num=1.1,
-      num_opt_null=7602.31,
-      str_="test",
-      str_opt="testOptional",
-    ),
-    obj_param=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::SIXTY_NINE,
-      int_enum=Shared::IntEnum::FIRST,
-      int_opt_null=973554,
-      num=1.1,
-      num_opt_null=873.54,
-      str_="test",
-      str_opt="testOptional",
-    ),
-  ),
-)
     
-res = s.parameters.form_query_params_object(req)
+res = s.parameters.form_query_params_object(obj_param_exploded=Shared::SimpleObject.new(
+    any="any",
+    bigint=8821239038968084,
+    bigint_str="9223372036854775808",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+    decimal=3.141592653589793,
+    decimal_str="3.14159265358979344719667586",
+    enum=Shared::Enum::ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=Shared::IntEnum::SECOND,
+    num=1.1,
+    str_="test",
+    str_opt="testOptional",
+  ), obj_param=Shared::SimpleObject.new(
+    any="any",
+    bigint=8821239038968084,
+    bigint_str="9223372036854775808",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+    decimal=3.141592653589793,
+    decimal_str="3.14159265358979344719667586",
+    enum=Shared::Enum::ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=Shared::Int32Enum::SIXTY_NINE,
+    int_enum=Shared::IntEnum::THIRD,
+    num=1.1,
+    str_="test",
+    str_opt="testOptional",
+  ))
 
 if ! res.res.nil?
   # handle response
@@ -432,24 +399,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::FormQueryParamsPrimitiveRequest.new(
-  query_params=Operations::FormQueryParamsPrimitiveRequest.new(
-    bool_param=true,
-    int_param=1,
-    num_param=1.1,
-    str_param="test",
-  ),
-)
     
-res = s.parameters.form_query_params_primitive(req)
+res = s.parameters.form_query_params_primitive(bool_param=true, int_param=1, num_param=1.1, str_param="test")
 
 if ! res.res.nil?
   # handle response
@@ -480,32 +441,28 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::FormQueryParamsRefParamObjectRequest.new(
-  query_params=Operations::FormQueryParamsRefParamObjectRequest.new(
-    ref_obj_param=Shared::RefQueryParamObj.new(
-      bool=true,
-      int=1,
-      num=1.1,
-      str_="test",
-    ),
-    ref_obj_param_exploded=Shared::RefQueryParamObjExploded.new(
-      bool=true,
-      int=1,
-      num=1.1,
-      str_="test",
-    ),
-  ),
-)
     
-res = s.parameters.form_query_params_ref_param_object(req)
+res = s.parameters.form_query_params_ref_param_object(ref_obj_param=Shared::RefQueryParamObj.new(
+    bool=true,
+    int=1,
+    num=1.1,
+    str_="test",
+  ), ref_obj_param_exploded=Shared::RefQueryParamObjExploded.new(
+    bool=true,
+    int=1,
+    num=1.1,
+    str_="test",
+  ))
 
 if ! res.res.nil?
   # handle response
@@ -534,23 +491,20 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::HeaderParamsArrayRequest.new(
-  headers=Operations::HeaderParamsArrayRequest.new(
-    x_header_array=.new[
-      "test1",
-    ],
-  ),
-)
     
-res = s.parameters.header_params_array(req)
+res = s.parameters.header_params_array(x_header_array=[
+    "test1",
+  ])
 
 if ! res.res.nil?
   # handle response
@@ -578,26 +532,22 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::HeaderParamsMapRequest.new(
-  headers=Operations::HeaderParamsMapRequest.new(
-    x_header_map=.new{
-      "Ball": "string",
-    },
-    x_header_map_explode=.new{
-      "Account": "string",
-    },
-  ),
-)
     
-res = s.parameters.header_params_map(req)
+res = s.parameters.header_params_map(x_header_map={
+    "Ball": "string",
+  }, x_header_map_explode={
+    "Account": "string",
+  })
 
 if ! res.res.nil?
   # handle response
@@ -607,10 +557,10 @@ end
 
 ### Parameters
 
-| Parameter                 | Type                      | Required                  | Description               | Example                   |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `x_header_map`            | T::Hash[Symbol, *String*] | :heavy_check_mark:        | N/A                       | [object Object]           |
-| `x_header_map_explode`    | T::Hash[Symbol, *String*] | :heavy_check_mark:        | N/A                       | [object Object]           |
+| Parameter                         | Type                              | Required                          | Description                       | Example                           |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `x_header_map`                    | T::Hash[Symbol, *String*]         | :heavy_check_mark:                | N/A                               | {"key1":"value1","key2":"value2"} |
+| `x_header_map_explode`            | T::Hash[Symbol, *String*]         | :heavy_check_mark:                | N/A                               | {"test1":"val1","test2":"val2"}   |
 
 
 ### Response
@@ -626,64 +576,56 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::HeaderParamsObjectRequest.new(
-  headers=Operations::HeaderParamsObjectRequest.new(
-    x_header_obj=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::SIXTY_NINE,
-      int_enum=Shared::IntEnum::THIRD,
-      int_opt_null=590416,
-      num=1.1,
-      num_opt_null=144.68,
-      str_="test",
-      str_opt="testOptional",
-    ),
-    x_header_obj_explode=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::FIFTY_FIVE,
-      int_enum=Shared::IntEnum::SECOND,
-      int_opt_null=54344,
-      num=1.1,
-      num_opt_null=6940.18,
-      str_="test",
-      str_opt="testOptional",
-    ),
-  ),
-)
     
-res = s.parameters.header_params_object(req)
+res = s.parameters.header_params_object(x_header_obj=Shared::SimpleObject.new(
+    any="any",
+    bigint=8821239038968084,
+    bigint_str="9223372036854775808",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+    decimal=3.141592653589793,
+    decimal_str="3.14159265358979344719667586",
+    enum=Shared::Enum::ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=Shared::Int32Enum::SIXTY_NINE,
+    int_enum=Shared::IntEnum::THIRD,
+    num=1.1,
+    str_="test",
+    str_opt="testOptional",
+  ), x_header_obj_explode=Shared::SimpleObject.new(
+    any="any",
+    bigint=8821239038968084,
+    bigint_str="9223372036854775808",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+    decimal=3.141592653589793,
+    decimal_str="3.14159265358979344719667586",
+    enum=Shared::Enum::ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=Shared::Int32Enum::SIXTY_NINE,
+    int_enum=Shared::IntEnum::FIRST,
+    num=1.1,
+    str_="test",
+    str_opt="testOptional",
+  ))
 
 if ! res.res.nil?
   # handle response
@@ -712,24 +654,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::HeaderParamsPrimitiveRequest.new(
-  headers=Operations::HeaderParamsPrimitiveRequest.new(
-    x_header_boolean=true,
-    x_header_integer=1,
-    x_header_number=1.1,
-    x_header_string="test",
-  ),
-)
     
-res = s.parameters.header_params_primitive(req)
+res = s.parameters.header_params_primitive(x_header_boolean=true, x_header_integer=1, x_header_number=1.1, x_header_string="test")
 
 if ! res.res.nil?
   # handle response
@@ -760,77 +696,28 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::JsonQueryParamsObjectRequest.new(
-  query_params=Operations::JsonQueryParamsObjectRequest.new(
-    deep_obj_param=Shared::DeepObject.new(
-      any="anyOf[0]",
-      arr=.new[
-        Shared::SimpleObject.new(
-          any="any",
-          bigint=8821239038968084,
-          bigint_str="9223372036854775808",
-          bool=true,
-          bool_opt=true,
-          date=Date.parse("2020-01-01"),
-          date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-          decimal=3.141592653589793,
-          decimal_str="3.14159265358979344719667586",
-          enum=Shared::Enum::ONE,
-          float32=1.1,
-          int=1,
-          int32=1,
-          int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-          int_enum=Shared::IntEnum::THIRD,
-          int_opt_null=740671,
-          num=1.1,
-          num_opt_null=8661.35,
-          str_="test",
-          str_opt="testOptional",
-        ),
-      ],
-      bool=true,
-      int=1,
-      map=.new{
-        "damp": Shared::SimpleObject.new(
-          any="any",
-          bigint=8821239038968084,
-          bigint_str="9223372036854775808",
-          bool=true,
-          bool_opt=true,
-          date=Date.parse("2020-01-01"),
-          date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-          decimal=3.141592653589793,
-          decimal_str="3.14159265358979344719667586",
-          enum=Shared::Enum::ONE,
-          float32=1.1,
-          int=1,
-          int32=1,
-          int32_enum=Shared::Int32Enum::FIFTY_FIVE,
-          int_enum=Shared::IntEnum::FIRST,
-          int_opt_null=835122,
-          num=1.1,
-          num_opt_null=9111.59,
-          str_="test",
-          str_opt="testOptional",
-        ),
-      },
-      num=1.1,
-      obj=Shared::SimpleObject.new(
+    
+res = s.parameters.json_query_params_object(deep_obj_param=Shared::DeepObject.new(
+    any="anyOf[0]",
+    arr=[
+      Shared::SimpleObject.new(
         any="any",
         bigint=8821239038968084,
         bigint_str="9223372036854775808",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
-        date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+        date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
         decimal=3.141592653589793,
         decimal_str="3.14159265358979344719667586",
         enum=Shared::Enum::ONE,
@@ -839,41 +726,77 @@ req = Operations::JsonQueryParamsObjectRequest.new(
         int32=1,
         int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
         int_enum=Shared::IntEnum::THIRD,
-        int_opt_null=416807,
         num=1.1,
-        num_opt_null=8525.86,
         str_="test",
         str_opt="testOptional",
       ),
-      str_="test",
-      type="string",
-    ),
-    simple_obj_param=Shared::SimpleObject.new(
+    ],
+    bool=true,
+    int=1,
+    map={
+      "weber": Shared::SimpleObject.new(
+        any="any",
+        bigint=8821239038968084,
+        bigint_str="9223372036854775808",
+        bool=true,
+        bool_opt=true,
+        date=Date.parse("2020-01-01"),
+        date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+        decimal=3.141592653589793,
+        decimal_str="3.14159265358979344719667586",
+        enum=Shared::Enum::ONE,
+        float32=1.1,
+        int=1,
+        int32=1,
+        int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int_enum=Shared::IntEnum::FIRST,
+        num=1.1,
+        str_="test",
+        str_opt="testOptional",
+      ),
+    },
+    num=1.1,
+    obj=Shared::SimpleObject.new(
       any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
       decimal=3.141592653589793,
       decimal_str="3.14159265358979344719667586",
       enum=Shared::Enum::ONE,
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int32_enum=Shared::Int32Enum::FIFTY_FIVE,
       int_enum=Shared::IntEnum::FIRST,
-      int_opt_null=488845,
       num=1.1,
-      num_opt_null=5405.85,
       str_="test",
       str_opt="testOptional",
     ),
-  ),
-)
-    
-res = s.parameters.json_query_params_object(req)
+    str_="test",
+  ), simple_obj_param=Shared::SimpleObject.new(
+    any="any",
+    bigint=8821239038968084,
+    bigint_str="9223372036854775808",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+    decimal=3.141592653589793,
+    decimal_str="3.14159265358979344719667586",
+    enum=Shared::Enum::ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=Shared::IntEnum::THIRD,
+    num=1.1,
+    str_="test",
+    str_opt="testOptional",
+  ))
 
 if ! res.res.nil?
   # handle response
@@ -902,33 +825,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::MixedParametersCamelCaseRequest.new(
-  path_params=Operations::MixedParametersCamelCaseRequest.new(
-    header_param="headerValue",
-    path_param="pathValue",
-    query_string_param="queryValue",
-  ),
-  query_params=Operations::MixedParametersCamelCaseRequest.new(
-    header_param="headerValue",
-    path_param="pathValue",
-    query_string_param="queryValue",
-  ),
-  headers=Operations::MixedParametersCamelCaseRequest.new(
-    header_param="headerValue",
-    path_param="pathValue",
-    query_string_param="queryValue",
-  ),
-)
     
-res = s.parameters.mixed_parameters_camel_case(req)
+res = s.parameters.mixed_parameters_camel_case(header_param="headerValue", path_param="pathValue", query_string_param="queryValue")
 
 if ! res.res.nil?
   # handle response
@@ -958,33 +866,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::MixedParametersPrimitivesRequest.new(
-  path_params=Operations::MixedParametersPrimitivesRequest.new(
-    header_param="headerValue",
-    path_param="pathValue",
-    query_string_param="queryValue",
-  ),
-  query_params=Operations::MixedParametersPrimitivesRequest.new(
-    header_param="headerValue",
-    path_param="pathValue",
-    query_string_param="queryValue",
-  ),
-  headers=Operations::MixedParametersPrimitivesRequest.new(
-    header_param="headerValue",
-    path_param="pathValue",
-    query_string_param="queryValue",
-  ),
-)
     
-res = s.parameters.mixed_parameters_primitives(req)
+res = s.parameters.mixed_parameters_primitives(header_param="headerValue", path_param="pathValue", query_string_param="queryValue")
 
 if ! res.res.nil?
   # handle response
@@ -1014,86 +907,75 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::MixedQueryParamsRequest.new(
-  query_params=Operations::MixedQueryParamsRequest.new(
-    deep_object_param=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::IntEnum::SECOND,
-      int_opt_null=89281,
-      num=1.1,
-      num_opt_null=2132.48,
-      str_="test",
-      str_opt="testOptional",
-    ),
-    form_param=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::FIFTY_FIVE,
-      int_enum=Shared::IntEnum::SECOND,
-      int_opt_null=218100,
-      num=1.1,
-      num_opt_null=75.58,
-      str_="test",
-      str_opt="testOptional",
-    ),
-    json_param=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::FIFTY_FIVE,
-      int_enum=Shared::IntEnum::THIRD,
-      int_opt_null=387493,
-      num=1.1,
-      num_opt_null=5641.93,
-      str_="test",
-      str_opt="testOptional",
-    ),
-  ),
-)
     
-res = s.parameters.mixed_query_params(req)
+res = s.parameters.mixed_query_params(deep_object_param=Shared::SimpleObject.new(
+    any="any",
+    bigint=8821239038968084,
+    bigint_str="9223372036854775808",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+    decimal=3.141592653589793,
+    decimal_str="3.14159265358979344719667586",
+    enum=Shared::Enum::ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=Shared::IntEnum::SECOND,
+    num=1.1,
+    str_="test",
+    str_opt="testOptional",
+  ), form_param=Shared::SimpleObject.new(
+    any="any",
+    bigint=8821239038968084,
+    bigint_str="9223372036854775808",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+    decimal=3.141592653589793,
+    decimal_str="3.14159265358979344719667586",
+    enum=Shared::Enum::ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=Shared::Int32Enum::FIFTY_FIVE,
+    int_enum=Shared::IntEnum::FIRST,
+    num=1.1,
+    str_="test",
+    str_opt="testOptional",
+  ), json_param=Shared::SimpleObject.new(
+    any="any",
+    bigint=8821239038968084,
+    bigint_str="9223372036854775808",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+    decimal=3.141592653589793,
+    decimal_str="3.14159265358979344719667586",
+    enum=Shared::Enum::ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=Shared::Int32Enum::FIFTY_FIVE,
+    int_enum=Shared::IntEnum::SECOND,
+    num=1.1,
+    str_="test",
+    str_opt="testOptional",
+  ))
 
 if ! res.res.nil?
   # handle response
@@ -1123,42 +1005,37 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::PathParameterJsonRequest.new(
-  path_params=Operations::PathParameterJsonRequest.new(
-    json_obj=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::SIXTY_NINE,
-      int_enum=Shared::IntEnum::SECOND,
-      int_opt_null=355762,
-      num=1.1,
-      num_opt_null=5955.49,
-      str_="test",
-      str_opt="testOptional",
-    ),
-  ),
-)
     
-res = s.parameters.path_parameter_json(req)
+res = s.parameters.path_parameter_json(json_obj=Shared::SimpleObject.new(
+    any="any",
+    bigint=8821239038968084,
+    bigint_str="9223372036854775808",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+    decimal=3.141592653589793,
+    decimal_str="3.14159265358979344719667586",
+    enum=Shared::Enum::ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=Shared::Int32Enum::SIXTY_NINE,
+    int_enum=Shared::IntEnum::SECOND,
+    num=1.1,
+    str_="test",
+    str_opt="testOptional",
+  ))
 
 if ! res.res.nil?
   # handle response
@@ -1186,51 +1063,43 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::PipeDelimitedQueryParamsArrayRequest.new(
-  query_params=Operations::PipeDelimitedQueryParamsArrayRequest.new(
-    arr_param=.new[
-      "test2",
-    ],
-    arr_param_exploded=.new[
-      1,
-    ],
-    map_param=.new{
-      "Northeast": "string",
-    },
-    obj_param=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::IntEnum::THIRD,
-      int_opt_null=161819,
-      num=1.1,
-      num_opt_null=722.43,
-      str_="test",
-      str_opt="testOptional",
-    ),
-  ),
-)
     
-res = s.parameters.pipe_delimited_query_params_array(req)
+res = s.parameters.pipe_delimited_query_params_array(arr_param=[
+    "test2",
+  ], arr_param_exploded=[
+    1,
+  ], map_param={
+    "Northeast": "string",
+  }, obj_param=Shared::SimpleObject.new(
+    any="any",
+    bigint=8821239038968084,
+    bigint_str="9223372036854775808",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+    decimal=3.141592653589793,
+    decimal_str="3.14159265358979344719667586",
+    enum=Shared::Enum::ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=Shared::IntEnum::THIRD,
+    num=1.1,
+    str_="test",
+    str_opt="testOptional",
+  ))
 
 if ! res.res.nil?
   # handle response
@@ -1244,7 +1113,7 @@ end
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `arr_param`                                                                                        | T::Array<*String*>                                                                                 | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `arr_param_exploded`                                                                               | T::Array<*Integer*>                                                                                | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `map_param`                                                                                        | T::Hash[Symbol, *String*]                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
+| `map_param`                                                                                        | T::Hash[Symbol, *String*]                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                | {"key1":"val1","key2":"val2"}                                                                      |
 | `obj_param`                                                                                        | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 
 
@@ -1261,23 +1130,20 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::SimplePathParameterArraysRequest.new(
-  path_params=Operations::SimplePathParameterArraysRequest.new(
-    arr_param=.new[
-      "test",
-    ],
-  ),
-)
     
-res = s.parameters.simple_path_parameter_arrays(req)
+res = s.parameters.simple_path_parameter_arrays(arr_param=[
+    "test",
+  ])
 
 if ! res.res.nil?
   # handle response
@@ -1305,26 +1171,22 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::SimplePathParameterMapsRequest.new(
-  path_params=Operations::SimplePathParameterMapsRequest.new(
-    map_param=.new{
-      "weber": "string",
-    },
-    map_param_exploded=.new{
-      "Sausages": 157687,
-    },
-  ),
-)
     
-res = s.parameters.simple_path_parameter_maps(req)
+res = s.parameters.simple_path_parameter_maps(map_param={
+    "weber": "string",
+  }, map_param_exploded={
+    "Sausages": 157687,
+  })
 
 if ! res.res.nil?
   # handle response
@@ -1334,10 +1196,10 @@ end
 
 ### Parameters
 
-| Parameter                  | Type                       | Required                   | Description                | Example                    |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `map_param`                | T::Hash[Symbol, *String*]  | :heavy_check_mark:         | N/A                        | [object Object]            |
-| `map_param_exploded`       | T::Hash[Symbol, *Integer*] | :heavy_check_mark:         | N/A                        | [object Object]            |
+| Parameter                         | Type                              | Required                          | Description                       | Example                           |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `map_param`                       | T::Hash[Symbol, *String*]         | :heavy_check_mark:                | N/A                               | {"test":"value","test2":"value2"} |
+| `map_param_exploded`              | T::Hash[Symbol, *Integer*]        | :heavy_check_mark:                | N/A                               | {"test":1,"test2":2}              |
 
 
 ### Response
@@ -1353,64 +1215,56 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::SimplePathParameterObjectsRequest.new(
-  path_params=Operations::SimplePathParameterObjectsRequest.new(
-    obj_param=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::FIFTY_FIVE,
-      int_enum=Shared::IntEnum::THIRD,
-      int_opt_null=384918,
-      num=1.1,
-      num_opt_null=9559.93,
-      str_="test",
-      str_opt="testOptional",
-    ),
-    obj_param_exploded=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::IntEnum::SECOND,
-      int_opt_null=678638,
-      num=1.1,
-      num_opt_null=5865.54,
-      str_="test",
-      str_opt="testOptional",
-    ),
-  ),
-)
     
-res = s.parameters.simple_path_parameter_objects(req)
+res = s.parameters.simple_path_parameter_objects(obj_param=Shared::SimpleObject.new(
+    any="any",
+    bigint=8821239038968084,
+    bigint_str="9223372036854775808",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+    decimal=3.141592653589793,
+    decimal_str="3.14159265358979344719667586",
+    enum=Shared::Enum::ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=Shared::Int32Enum::FIFTY_FIVE,
+    int_enum=Shared::IntEnum::THIRD,
+    num=1.1,
+    str_="test",
+    str_opt="testOptional",
+  ), obj_param_exploded=Shared::SimpleObject.new(
+    any="any",
+    bigint=8821239038968084,
+    bigint_str="9223372036854775808",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00.000001Z'),
+    decimal=3.141592653589793,
+    decimal_str="3.14159265358979344719667586",
+    enum=Shared::Enum::ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=Shared::Int32Enum::SIXTY_NINE,
+    int_enum=Shared::IntEnum::THIRD,
+    num=1.1,
+    str_="test",
+    str_opt="testOptional",
+  ))
 
 if ! res.res.nil?
   # handle response
@@ -1439,24 +1293,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::SimplePathParameterPrimitivesRequest.new(
-  path_params=Operations::SimplePathParameterPrimitivesRequest.new(
-    bool_param=true,
-    int_param=1,
-    num_param=1.1,
-    str_param="test",
-  ),
-)
     
-res = s.parameters.simple_path_parameter_primitives(req)
+res = s.parameters.simple_path_parameter_primitives(bool_param=true, int_param=1, num_param=1.1, str_param="test")
 
 if ! res.res.nil?
   # handle response

@@ -14,6 +14,7 @@ namespace Openapi
     using Openapi.Models.Operations;
     using Openapi.Models.Shared;
     using Openapi.Utils;
+    using System.Collections.Generic;
     using System.Net.Http.Headers;
     using System.Net.Http;
     using System.Threading.Tasks;
@@ -24,18 +25,19 @@ namespace Openapi
         Task<CreateFileResponse> CreateFileAsync(CreateFileRequestBody request);
         Task<CreateResourceResponse> CreateResourceAsync(ExampleResource request);
         Task<DeleteResourceResponse> DeleteResourceAsync(string resourceId);
+        Task<GetArrayDataSourceResponse> GetArrayDataSourceAsync(string filter);
         Task<GetResourceResponse> GetResourceAsync(string resourceId);
-        Task<UpdateResourceResponse> UpdateResourceAsync(string resourceId);
+        Task<UpdateResourceResponse> UpdateResourceAsync(string augment, string resourceId);
     }
 
     public class Resource: IResource
     {
-        public SDKConfig Config { get; private set; }
+        public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.3.1";
-        private const string _sdkGenVersion = "2.188.3";
+        private const string _sdkVersion = "0.4.0";
+        private const string _sdkGenVersion = "2.239.1";
         private const string _openapiDocVersion = "0.1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.0 2.239.1 0.1.0 openapi";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -45,20 +47,15 @@ namespace Openapi
             _defaultClient = defaultClient;
             _securityClient = securityClient;
             _serverUrl = serverUrl;
-            Config = config;
+            SDKConfiguration = config;
         }
         
 
         public async Task<CreateFileResponse> CreateFileAsync(CreateFileRequestBody request)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/fileResource";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -100,14 +97,9 @@ namespace Openapi
 
         public async Task<CreateResourceResponse> CreateResourceAsync(ExampleResource request)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/resource";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -153,14 +145,9 @@ namespace Openapi
             {
                 ResourceId = resourceId,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
-            var urlString = URLBuilder.Build(baseUrl, "/resource/{resourceId}", request);
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+            var urlString = URLBuilder.Build(baseUrl, "/resource/object/{resourceId}", request);
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -187,20 +174,54 @@ namespace Openapi
         }
         
 
+        public async Task<GetArrayDataSourceResponse> GetArrayDataSourceAsync(string filter)
+        {
+            var request = new GetArrayDataSourceRequest()
+            {
+                Filter = filter,
+            };
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+            var urlString = URLBuilder.Build(baseUrl, "/datasource/array", request);
+            
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
+            
+            
+            var client = _securityClient;
+            
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new GetArrayDataSourceResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.ArrayDataSource = JsonConvert.DeserializeObject<List<string>>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                }
+                
+                return response;
+            }
+            return response;
+        }
+        
+
         public async Task<GetResourceResponse> GetResourceAsync(string resourceId)
         {
             var request = new GetResourceRequest()
             {
                 ResourceId = resourceId,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
-            var urlString = URLBuilder.Build(baseUrl, "/resource/{resourceId}", request);
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+            var urlString = URLBuilder.Build(baseUrl, "/resource/object/{resourceId}", request);
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
@@ -231,20 +252,16 @@ namespace Openapi
         }
         
 
-        public async Task<UpdateResourceResponse> UpdateResourceAsync(string resourceId)
+        public async Task<UpdateResourceResponse> UpdateResourceAsync(string augment, string resourceId)
         {
             var request = new UpdateResourceRequest()
             {
+                Augment = augment,
                 ResourceId = resourceId,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
-            var urlString = URLBuilder.Build(baseUrl, "/resource/{resourceId}", request);
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+            var urlString = URLBuilder.Build(baseUrl, "/resource/object/{resourceId}", request);
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             

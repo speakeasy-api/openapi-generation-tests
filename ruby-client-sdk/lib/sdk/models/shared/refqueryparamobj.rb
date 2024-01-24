@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class RefQueryParamObj < OpenApiSDK::Utils::FieldAugmented
+    class RefQueryParamObj < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 

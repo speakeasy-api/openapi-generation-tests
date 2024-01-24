@@ -9,13 +9,13 @@ require 'faraday'
 module OpenApiSDK
   module Operations
     # OK
-    class RequestBodyPostJsonDataTypesDateTimeResponseBody < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostJsonDataTypesDateTimeResponseBody < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :data, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('data') } }
+      field :data, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('data') } }
 
-      field :json, DateTime, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json'), 'decoder': Utils.datetime_from_iso_format(false) } }
+      field :json, DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('json'), 'decoder': Utils.datetime_from_iso_format(false) } }
 
 
       sig { params(data: String, json: DateTime).void }
@@ -26,25 +26,25 @@ module OpenApiSDK
     end
 
 
-    class RequestBodyPostJsonDataTypesDateTimeResponse < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostJsonDataTypesDateTimeResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
       # OK
       field :object, T.nilable(Operations::RequestBodyPostJsonDataTypesDateTimeResponseBody)
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, object: T.nilable(Operations::RequestBodyPostJsonDataTypesDateTimeResponseBody), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, object: nil, raw_response: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, object: T.nilable(Operations::RequestBodyPostJsonDataTypesDateTimeResponseBody)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, object: nil)
         @content_type = content_type
+        @raw_response = raw_response
         @status_code = status_code
         @object = object
-        @raw_response = raw_response
       end
     end
   end
