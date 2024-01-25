@@ -19,10 +19,13 @@ Endpoints for testing error responses.
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
@@ -55,21 +58,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::StatusGetErrorRequest.new(
-  path_params=Operations::StatusGetErrorRequest.new(
-    status_code=458364,
-  ),
-)
     
-res = s.errors.status_get_error(req)
+res = s.errors.status_get_error(status_code=458364)
 
 if res.status == 200
   # handle response
@@ -97,21 +97,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::StatusGetXSpeakeasyErrorsRequest.new(
-  path_params=Operations::StatusGetXSpeakeasyErrorsRequest.new(
-    status_code=385913,
-  ),
-)
     
-res = s.errors.status_get_x_speakeasy_errors(req)
+res = s.errors.status_get_x_speakeasy_errors(status_code=385913)
 
 if res.status == 200
   # handle response

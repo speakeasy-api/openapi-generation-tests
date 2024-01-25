@@ -10,15 +10,15 @@ require_relative '../shared/errortype'
 module OpenApiSDK
   module Shared
 
-    class Error < OpenApiSDK::Utils::FieldAugmented
+    class Error < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :code, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('code') } }
+      field :code, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('code') } }
 
-      field :message, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('message') } }
+      field :message, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('message') } }
 
-      field :type, T.nilable(Shared::ErrorType), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('type'), 'decoder': Utils.enum_from_string(Shared::ErrorType, true) } }
+      field :type, T.nilable(Shared::ErrorType), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('type'), 'decoder': Utils.enum_from_string(Shared::ErrorType, true) } }
 
 
       sig { params(code: T.nilable(String), message: T.nilable(String), type: T.nilable(Shared::ErrorType)).void }

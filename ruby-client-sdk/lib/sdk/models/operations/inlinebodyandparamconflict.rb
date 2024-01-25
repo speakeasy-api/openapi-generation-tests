@@ -9,11 +9,11 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class InlineBodyAndParamConflictRequestBody < OpenApiSDK::Utils::FieldAugmented
+    class InlineBodyAndParamConflictRequestBody < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :str_, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('str') } }
+      field :str_, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('str') } }
 
 
       sig { params(str_: String).void }
@@ -23,7 +23,7 @@ module OpenApiSDK
     end
 
 
-    class InlineBodyAndParamConflictRequest < OpenApiSDK::Utils::FieldAugmented
+    class InlineBodyAndParamConflictRequest < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -40,11 +40,11 @@ module OpenApiSDK
     end
 
 
-    class Json < OpenApiSDK::Utils::FieldAugmented
+    class Json < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :str_, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('str') } }
+      field :str_, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('str') } }
 
 
       sig { params(str_: String).void }
@@ -54,13 +54,13 @@ module OpenApiSDK
     end
 
     # OK
-    class InlineBodyAndParamConflictRes < OpenApiSDK::Utils::FieldAugmented
+    class InlineBodyAndParamConflictRes < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :args, T::Hash[Symbol, String], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
+      field :args, T::Hash[Symbol, String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('args') } }
 
-      field :json, Operations::Json, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
+      field :json, Operations::Json, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('json') } }
 
 
       sig { params(args: T::Hash[Symbol, String], json: Operations::Json).void }
@@ -71,24 +71,24 @@ module OpenApiSDK
     end
 
 
-    class InlineBodyAndParamConflictResponse < OpenApiSDK::Utils::FieldAugmented
+    class InlineBodyAndParamConflictResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
       # OK
       field :res, T.nilable(Operations::InlineBodyAndParamConflictRes)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), res: T.nilable(Operations::InlineBodyAndParamConflictRes)).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil, res: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, res: T.nilable(Operations::InlineBodyAndParamConflictRes)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, res: nil)
         @content_type = content_type
-        @status_code = status_code
         @raw_response = raw_response
+        @status_code = status_code
         @res = res
       end
     end

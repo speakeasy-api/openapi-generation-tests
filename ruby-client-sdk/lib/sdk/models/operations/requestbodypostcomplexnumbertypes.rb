@@ -10,7 +10,7 @@ require_relative '../shared/complexnumbertypes'
 module OpenApiSDK
   module Operations
 
-    class RequestBodyPostComplexNumberTypesRequest < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostComplexNumberTypesRequest < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -48,13 +48,13 @@ module OpenApiSDK
     end
 
     # OK
-    class RequestBodyPostComplexNumberTypesResponseBody < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostComplexNumberTypesResponseBody < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :json, Shared::ComplexNumberTypes, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
+      field :json, Shared::ComplexNumberTypes, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('json') } }
 
-      field :url, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('url') } }
+      field :url, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('url') } }
 
 
       sig { params(json: Shared::ComplexNumberTypes, url: String).void }
@@ -65,25 +65,25 @@ module OpenApiSDK
     end
 
 
-    class RequestBodyPostComplexNumberTypesResponse < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostComplexNumberTypesResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
       # OK
       field :object, T.nilable(Operations::RequestBodyPostComplexNumberTypesResponseBody)
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, object: T.nilable(Operations::RequestBodyPostComplexNumberTypesResponseBody), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, object: nil, raw_response: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, object: T.nilable(Operations::RequestBodyPostComplexNumberTypesResponseBody)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, object: nil)
         @content_type = content_type
+        @raw_response = raw_response
         @status_code = status_code
         @object = object
-        @raw_response = raw_response
       end
     end
   end
