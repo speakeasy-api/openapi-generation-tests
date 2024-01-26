@@ -9,11 +9,11 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class AllOfToAllOf < OpenApiSDK::Utils::FieldAugmented
+    class AllOfToAllOf < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :id, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('id') } }
+      field :id, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
 
 
       sig { params(id: T.nilable(String)).void }

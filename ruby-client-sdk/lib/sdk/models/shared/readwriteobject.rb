@@ -9,15 +9,15 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class ReadWriteObject < OpenApiSDK::Utils::FieldAugmented
+    class ReadWriteObject < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :num1, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('num1') } }
+      field :num1, Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('num1') } }
 
-      field :num2, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('num2') } }
+      field :num2, Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('num2') } }
 
-      field :num3, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('num3') } }
+      field :num3, Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('num3') } }
 
 
       sig { params(num1: Integer, num2: Integer, num3: Integer).void }

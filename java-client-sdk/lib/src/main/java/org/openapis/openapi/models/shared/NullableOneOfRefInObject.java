@@ -17,22 +17,22 @@ public class NullableOneOfRefInObject {
     }
     
     @JsonProperty("NullableOneOfTwo")
-    public Object nullableOneOfTwo;
+    public java.lang.Object nullableOneOfTwo;
 
-    public NullableOneOfRefInObject withNullableOneOfTwo(Object nullableOneOfTwo) {
+    public NullableOneOfRefInObject withNullableOneOfTwo(java.lang.Object nullableOneOfTwo) {
         this.nullableOneOfTwo = nullableOneOfTwo;
         return this;
     }
     
     @JsonProperty("OneOfOne")
-    public Object oneOfOne;
+    public java.lang.Object oneOfOne;
 
-    public NullableOneOfRefInObject withOneOfOne(Object oneOfOne) {
+    public NullableOneOfRefInObject withOneOfOne(java.lang.Object oneOfOne) {
         this.oneOfOne = oneOfOne;
         return this;
     }
     
-    public NullableOneOfRefInObject(@JsonProperty("NullableOneOfOne") TypedObject1 nullableOneOfOne, @JsonProperty("NullableOneOfTwo") Object nullableOneOfTwo, @JsonProperty("OneOfOne") Object oneOfOne) {
+    public NullableOneOfRefInObject(@JsonProperty("NullableOneOfOne") TypedObject1 nullableOneOfOne, @JsonProperty("NullableOneOfTwo") java.lang.Object nullableOneOfTwo, @JsonProperty("OneOfOne") java.lang.Object oneOfOne) {
         this.nullableOneOfOne = nullableOneOfOne;
         this.nullableOneOfTwo = nullableOneOfTwo;
         this.oneOfOne = oneOfOne;

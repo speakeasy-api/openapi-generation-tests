@@ -17,7 +17,7 @@ module OpenApiSDK
       @sdk_configuration = sdk_config
     end
 
-    sig { returns(Utils::FieldAugmented) }
+    sig { returns(::OpenApiSDK::Utils::FieldAugmented) }
     def select_global_server
 
       url, params = @sdk_configuration.get_server_details
@@ -64,8 +64,7 @@ module OpenApiSDK
       res = Operations::SelectServerWithIDResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if r.status == 200
-      end
+      
       res
     end
 
@@ -93,8 +92,7 @@ module OpenApiSDK
       res = Operations::ServerWithProtocolTemplateResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if r.status == 200
-      end
+      
       res
     end
 
@@ -121,12 +119,11 @@ module OpenApiSDK
       res = Operations::ServerWithTemplatesResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if r.status == 200
-      end
+      
       res
     end
 
-    sig { returns(Utils::FieldAugmented) }
+    sig { returns(::OpenApiSDK::Utils::FieldAugmented) }
     def server_with_templates_global
 
       url, params = @sdk_configuration.get_server_details
@@ -146,8 +143,7 @@ module OpenApiSDK
       res = Operations::ServerWithTemplatesGlobalResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if r.status == 200
-      end
+      
       res
     end
 
@@ -174,8 +170,7 @@ module OpenApiSDK
       res = Operations::ServersByIDWithTemplatesResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if r.status == 200
-      end
+      
       res
     end
   end
