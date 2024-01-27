@@ -12,14 +12,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UnionBigIntDecimalRes {
     @JsonProperty("json")
-    public Object json;
+    public java.lang.Object json;
 
-    public UnionBigIntDecimalRes withJson(Object json) {
+    public UnionBigIntDecimalRes withJson(java.lang.Object json) {
         this.json = json;
         return this;
     }
     
-    public UnionBigIntDecimalRes(@JsonProperty("json") Object json) {
+    public UnionBigIntDecimalRes(@JsonProperty("json") java.lang.Object json) {
         this.json = json;
   }
 }

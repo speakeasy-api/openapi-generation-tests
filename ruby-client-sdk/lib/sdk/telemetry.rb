@@ -50,7 +50,7 @@ module OpenApiSDK
       res
     end
 
-    sig { returns(Utils::FieldAugmented) }
+    sig { returns(::OpenApiSDK::Utils::FieldAugmented) }
     def telemetry_user_agent_get
 
       url, params = @sdk_configuration.get_server_details

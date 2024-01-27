@@ -26,14 +26,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ConnectionErrorGetResponse res = sdk.errors.connectionErrorGet();
+            org.openapis.openapi.models.operations.ConnectionErrorGetResponse res = sdk.errors.connectionErrorGet();
 
             if (res.statusCode == 200) {
                 // handle response
@@ -73,14 +74,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            StatusGetErrorResponse res = sdk.errors.statusGetError(458364L);
+            org.openapis.openapi.models.operations.StatusGetErrorResponse res = sdk.errors.statusGetError(458364L);
 
             if (res.statusCode == 200) {
                 // handle response
@@ -120,14 +122,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            StatusGetXSpeakeasyErrorsResponse res = sdk.errors.statusGetXSpeakeasyErrors(385913L);
+            org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsResponse res = sdk.errors.statusGetXSpeakeasyErrors(385913L);
 
             if (res.statusCode == 200) {
                 // handle response
