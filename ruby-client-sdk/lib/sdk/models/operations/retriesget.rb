@@ -12,7 +12,7 @@ module OpenApiSDK
       'http://localhost:35456'
     ].freeze
 
-    class RetriesGetRequest < OpenApiSDK::Utils::FieldAugmented
+    class RetriesGetRequest < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -29,11 +29,11 @@ module OpenApiSDK
     end
 
     # OK
-    class RetriesGetRetries < OpenApiSDK::Utils::FieldAugmented
+    class RetriesGetRetries < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :retries, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('retries') } }
+      field :retries, Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('retries') } }
 
 
       sig { params(retries: Integer).void }
@@ -43,24 +43,24 @@ module OpenApiSDK
     end
 
 
-    class RetriesGetResponse < OpenApiSDK::Utils::FieldAugmented
+    class RetriesGetResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
       # OK
       field :retries, T.nilable(Operations::RetriesGetRetries)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), retries: T.nilable(Operations::RetriesGetRetries)).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil, retries: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, retries: T.nilable(Operations::RetriesGetRetries)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, retries: nil)
         @content_type = content_type
-        @status_code = status_code
         @raw_response = raw_response
+        @status_code = status_code
         @retries = retries
       end
     end

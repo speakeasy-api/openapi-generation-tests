@@ -9,15 +9,15 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class Slides < OpenApiSDK::Utils::FieldAugmented
+    class Slides < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :title, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('title') } }
+      field :title, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('title') } }
 
-      field :type, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('type') } }
+      field :type, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('type') } }
 
-      field :items, T.nilable(T::Array[String]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('items') } }
+      field :items, T.nilable(T::Array[String]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('items') } }
 
 
       sig { params(title: String, type: String, items: T.nilable(T::Array[String])).void }
@@ -29,17 +29,17 @@ module OpenApiSDK
     end
 
 
-    class Slideshow < OpenApiSDK::Utils::FieldAugmented
+    class Slideshow < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :author, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('author') } }
+      field :author, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('author') } }
 
-      field :date, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('date') } }
+      field :date, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('date') } }
 
-      field :slides, T::Array[Shared::Slides], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('slides') } }
+      field :slides, T::Array[Shared::Slides], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('slides') } }
 
-      field :title, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('title') } }
+      field :title, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('title') } }
 
 
       sig { params(author: String, date: String, slides: T::Array[Shared::Slides], title: String).void }
@@ -52,11 +52,11 @@ module OpenApiSDK
     end
 
 
-    class HttpBinSimpleJsonObject < OpenApiSDK::Utils::FieldAugmented
+    class HttpBinSimpleJsonObject < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :slideshow, Shared::Slideshow, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('slideshow') } }
+      field :slideshow, Shared::Slideshow, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('slideshow') } }
 
 
       sig { params(slideshow: Shared::Slideshow).void }

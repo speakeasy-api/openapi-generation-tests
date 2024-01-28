@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class ObjParam < OpenApiSDK::Utils::FieldAugmented
+    class ObjParam < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -26,7 +26,7 @@ module OpenApiSDK
     end
 
 
-    class ObjParamExploded < OpenApiSDK::Utils::FieldAugmented
+    class ObjParamExploded < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -43,7 +43,7 @@ module OpenApiSDK
     end
 
 
-    class FormQueryParamsCamelObjectRequest < OpenApiSDK::Utils::FieldAugmented
+    class FormQueryParamsCamelObjectRequest < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -60,13 +60,13 @@ module OpenApiSDK
     end
 
 
-    class FormQueryParamsCamelObjectArgs < OpenApiSDK::Utils::FieldAugmented
+    class FormQueryParamsCamelObjectArgs < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :item_count, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('item_count') } }
+      field :item_count, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('item_count') } }
 
-      field :search_term, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('search_term') } }
+      field :search_term, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('search_term') } }
 
 
       sig { params(item_count: String, search_term: String).void }
@@ -77,13 +77,13 @@ module OpenApiSDK
     end
 
     # OK
-    class FormQueryParamsCamelObjectRes < OpenApiSDK::Utils::FieldAugmented
+    class FormQueryParamsCamelObjectRes < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :args, Operations::FormQueryParamsCamelObjectArgs, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
+      field :args, Operations::FormQueryParamsCamelObjectArgs, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('args') } }
 
-      field :url, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('url') } }
+      field :url, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('url') } }
 
 
       sig { params(args: Operations::FormQueryParamsCamelObjectArgs, url: String).void }
@@ -94,24 +94,24 @@ module OpenApiSDK
     end
 
 
-    class FormQueryParamsCamelObjectResponse < OpenApiSDK::Utils::FieldAugmented
+    class FormQueryParamsCamelObjectResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
       # OK
       field :res, T.nilable(Operations::FormQueryParamsCamelObjectRes)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), res: T.nilable(Operations::FormQueryParamsCamelObjectRes)).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil, res: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, res: T.nilable(Operations::FormQueryParamsCamelObjectRes)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, res: nil)
         @content_type = content_type
-        @status_code = status_code
         @raw_response = raw_response
+        @status_code = status_code
         @res = res
       end
     end

@@ -32,12 +32,13 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Operations\PaginationCursorBodyRequestBody();
-    $request->cursor = 868337;
+        $request = new Operations\PaginationCursorBodyRequestBody();
+    $request->cursor = 868337;;
 
     $response = $sdk->pagination->paginationCursorBody($request);
 
@@ -80,11 +81,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->pagination->paginationCursorParams(24812);
 
@@ -126,14 +128,15 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\LimitOffsetConfig();
+        $request = new Shared\LimitOffsetConfig();
     $request->limit = 189971;
     $request->offset = 995974;
-    $request->page = 329413;
+    $request->page = 329413;;
 
     $response = $sdk->pagination->paginationLimitOffsetOffsetBody($request);
 
@@ -176,11 +179,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->pagination->paginationLimitOffsetOffsetParams(661976, 600173);
 
@@ -223,14 +227,15 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\LimitOffsetConfig();
+        $request = new Shared\LimitOffsetConfig();
     $request->limit = 479052;
     $request->offset = 716379;
-    $request->page = 911806;
+    $request->page = 911806;;
 
     $response = $sdk->pagination->paginationLimitOffsetPageBody($request);
 
@@ -273,11 +278,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->pagination->paginationLimitOffsetPageParams(1177);
 

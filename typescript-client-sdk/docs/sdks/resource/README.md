@@ -6,6 +6,7 @@
 * [createFile](#createfile)
 * [createResource](#createresource)
 * [deleteResource](#deleteresource)
+* [getArrayDataSource](#getarraydatasource)
 * [getResource](#getresource)
 * [updateResource](#updateresource)
 
@@ -14,9 +15,10 @@
 ### Example Usage
 
 ```typescript
+import { openAsBlob } from "node:fs";
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -25,25 +27,24 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.resource.createFile({
-    file: {
-      content: new TextEncoder().encode("0xf10df1a3b9"),
-      fileName: "rap_national.mp4v",
-    },
+  const result = await sdk.resource.createFile({
+    file: await openAsBlob("./sample-file"),
   });
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [operations.CreateFileRequestBody](../../sdk/models/operations/createfilerequestbody.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.CreateFileRequestBody](../../sdk/models/operations/createfilerequestbody.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -53,7 +54,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## createResource
 
@@ -61,9 +62,9 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { EnumNumber, EnumStr } from "openapi/dist/sdk/models/shared";
+import { EnumNumber, EnumStr } from "openapi/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -72,7 +73,7 @@ import { EnumNumber, EnumStr } from "openapi/dist/sdk/models/shared";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.resource.createResource({
+  const result = await sdk.resource.createResource({
     arrayOfNumber: [
       1867.47,
     ],
@@ -93,21 +94,22 @@ import { EnumNumber, EnumStr } from "openapi/dist/sdk/models/shared";
       "key": "string",
     },
     name: "string",
-    vehicle: "string",
   });
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `request`                                                            | [shared.ExampleResource](../../sdk/models/shared/exampleresource.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
-| `config`                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)         | :heavy_minus_sign:                                                   | Available config options for making requests.                        |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [shared.ExampleResource](../../sdk/models/shared/exampleresource.md)                                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -117,7 +119,7 @@ import { EnumNumber, EnumStr } from "openapi/dist/sdk/models/shared";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## deleteResource
 
@@ -125,9 +127,8 @@ import { EnumNumber, EnumStr } from "openapi/dist/sdk/models/shared";
 
 ```typescript
 import { SDK } from "openapi";
-import { DeleteResourceRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -135,22 +136,25 @@ import { DeleteResourceRequest } from "openapi/dist/sdk/models/operations";
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const resourceId: string = "string";
 
-  const res = await sdk.resource.deleteResource(resourceId);
+  const resourceId = "string";
+  
+  const result = await sdk.resource.deleteResource(resourceId);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `resourceId`                                                 | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `resourceId`                                                                                                                                                                   | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -160,17 +164,16 @@ const resourceId: string = "string";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
-## getResource
+## getArrayDataSource
 
 ### Example Usage
 
 ```typescript
 import { SDK } from "openapi";
-import { GetResourceRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -178,22 +181,70 @@ import { GetResourceRequest } from "openapi/dist/sdk/models/operations";
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const resourceId: string = "string";
 
-  const res = await sdk.resource.getResource(resourceId);
+  const filter = "string";
+  
+  const result = await sdk.resource.getArrayDataSource(filter);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `resourceId`                                                 | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `filter`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.GetArrayDataSourceResponse](../../sdk/models/operations/getarraydatasourceresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## getResource
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+
+async function run() {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const resourceId = "string";
+  
+  const result = await sdk.resource.getResource(resourceId);
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `resourceId`                                                                                                                                                                   | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -203,7 +254,7 @@ const resourceId: string = "string";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## updateResource
 
@@ -211,9 +262,8 @@ const resourceId: string = "string";
 
 ```typescript
 import { SDK } from "openapi";
-import { UpdateResourceRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -221,22 +271,27 @@ import { UpdateResourceRequest } from "openapi/dist/sdk/models/operations";
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const resourceId: string = "string";
 
-  const res = await sdk.resource.updateResource(resourceId);
+  const augment = "string";
+  const resourceId = "string";
+  
+  const result = await sdk.resource.updateResource(augment, resourceId);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `resourceId`                                                 | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `augment`                                                                                                                                                                      | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `resourceId`                                                                                                                                                                   | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -246,4 +301,4 @@ const resourceId: string = "string";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
