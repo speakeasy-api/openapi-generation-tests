@@ -17,7 +17,7 @@ module OpenApiSDK
       @sdk_configuration = sdk_config
     end
 
-    sig { returns(Utils::FieldAugmented) }
+    sig { returns(::OpenApiSDK::Utils::FieldAugmented) }
     def get
 
       url, params = @sdk_configuration.get_server_details
@@ -37,8 +37,7 @@ module OpenApiSDK
       res = Operations::NestedFirstGetResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if r.status == 200
-      end
+      
       res
     end
   end

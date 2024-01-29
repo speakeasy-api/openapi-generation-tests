@@ -6,7 +6,7 @@ import (
 	"errors"
 	"github.com/ericlagergren/decimal"
 	"math/big"
-	"openapi/v2/pkg/utils"
+	"openapi/v3/pkg/utils"
 )
 
 type NumericUnionType string

@@ -9,11 +9,11 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class ObjectCircularReferenceObject < OpenApiSDK::Utils::FieldAugmented
+    class ObjectCircularReferenceObject < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :circular, T.nilable(Shared::ObjectCircularReferenceObject), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('circular') } }
+      field :circular, T.nilable(Shared::ObjectCircularReferenceObject), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('circular') } }
 
 
       sig { params(circular: T.nilable(Shared::ObjectCircularReferenceObject)).void }

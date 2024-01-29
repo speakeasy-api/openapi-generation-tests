@@ -54,11 +54,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.DeepObjectQueryParamsMapResponse res = new org.openapis.openapi.models.operations.DeepObjectQueryParamsMapResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.DeepObjectQueryParamsMapResponse res = new org.openapis.openapi.models.operations.DeepObjectQueryParamsMapResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -100,11 +99,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectResponse res = new org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectResponse res = new org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -135,11 +133,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.DuplicateParamResponse res = new org.openapis.openapi.models.operations.DuplicateParamResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.DuplicateParamResponse res = new org.openapis.openapi.models.operations.DuplicateParamResponse(contentType, httpRes.statusCode(), httpRes) {{
             duplicateParamResponse = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -186,11 +183,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.FormQueryParamsArrayResponse res = new org.openapis.openapi.models.operations.FormQueryParamsArrayResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.FormQueryParamsArrayResponse res = new org.openapis.openapi.models.operations.FormQueryParamsArrayResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -232,11 +228,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.FormQueryParamsCamelObjectResponse res = new org.openapis.openapi.models.operations.FormQueryParamsCamelObjectResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.FormQueryParamsCamelObjectResponse res = new org.openapis.openapi.models.operations.FormQueryParamsCamelObjectResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -283,11 +278,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.FormQueryParamsMapResponse res = new org.openapis.openapi.models.operations.FormQueryParamsMapResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.FormQueryParamsMapResponse res = new org.openapis.openapi.models.operations.FormQueryParamsMapResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -329,11 +323,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.FormQueryParamsObjectResponse res = new org.openapis.openapi.models.operations.FormQueryParamsObjectResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.FormQueryParamsObjectResponse res = new org.openapis.openapi.models.operations.FormQueryParamsObjectResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -370,11 +363,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.FormQueryParamsPrimitiveResponse res = new org.openapis.openapi.models.operations.FormQueryParamsPrimitiveResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.FormQueryParamsPrimitiveResponse res = new org.openapis.openapi.models.operations.FormQueryParamsPrimitiveResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -425,11 +417,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.FormQueryParamsRefParamObjectResponse res = new org.openapis.openapi.models.operations.FormQueryParamsRefParamObjectResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.FormQueryParamsRefParamObjectResponse res = new org.openapis.openapi.models.operations.FormQueryParamsRefParamObjectResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -468,11 +459,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.HeaderParamsArrayResponse res = new org.openapis.openapi.models.operations.HeaderParamsArrayResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.HeaderParamsArrayResponse res = new org.openapis.openapi.models.operations.HeaderParamsArrayResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -511,11 +501,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.HeaderParamsMapResponse res = new org.openapis.openapi.models.operations.HeaderParamsMapResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.HeaderParamsMapResponse res = new org.openapis.openapi.models.operations.HeaderParamsMapResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -554,11 +543,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.HeaderParamsObjectResponse res = new org.openapis.openapi.models.operations.HeaderParamsObjectResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.HeaderParamsObjectResponse res = new org.openapis.openapi.models.operations.HeaderParamsObjectResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -597,11 +585,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.HeaderParamsPrimitiveResponse res = new org.openapis.openapi.models.operations.HeaderParamsPrimitiveResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.HeaderParamsPrimitiveResponse res = new org.openapis.openapi.models.operations.HeaderParamsPrimitiveResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -638,11 +625,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.JsonQueryParamsObjectResponse res = new org.openapis.openapi.models.operations.JsonQueryParamsObjectResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.JsonQueryParamsObjectResponse res = new org.openapis.openapi.models.operations.JsonQueryParamsObjectResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -687,11 +673,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.MixedParametersCamelCaseResponse res = new org.openapis.openapi.models.operations.MixedParametersCamelCaseResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.MixedParametersCamelCaseResponse res = new org.openapis.openapi.models.operations.MixedParametersCamelCaseResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -736,11 +721,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.MixedParametersPrimitivesResponse res = new org.openapis.openapi.models.operations.MixedParametersPrimitivesResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.MixedParametersPrimitivesResponse res = new org.openapis.openapi.models.operations.MixedParametersPrimitivesResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -777,11 +761,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.MixedQueryParamsResponse res = new org.openapis.openapi.models.operations.MixedQueryParamsResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.MixedQueryParamsResponse res = new org.openapis.openapi.models.operations.MixedQueryParamsResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -812,11 +795,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.PathParameterJsonResponse res = new org.openapis.openapi.models.operations.PathParameterJsonResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.PathParameterJsonResponse res = new org.openapis.openapi.models.operations.PathParameterJsonResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -901,11 +883,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayResponse res = new org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayResponse res = new org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -936,11 +917,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.SimplePathParameterArraysResponse res = new org.openapis.openapi.models.operations.SimplePathParameterArraysResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.SimplePathParameterArraysResponse res = new org.openapis.openapi.models.operations.SimplePathParameterArraysResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -971,11 +951,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.SimplePathParameterMapsResponse res = new org.openapis.openapi.models.operations.SimplePathParameterMapsResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.SimplePathParameterMapsResponse res = new org.openapis.openapi.models.operations.SimplePathParameterMapsResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -1006,11 +985,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.SimplePathParameterObjectsResponse res = new org.openapis.openapi.models.operations.SimplePathParameterObjectsResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.SimplePathParameterObjectsResponse res = new org.openapis.openapi.models.operations.SimplePathParameterObjectsResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -1041,11 +1019,10 @@ public class Parameters {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.SimplePathParameterPrimitivesResponse res = new org.openapis.openapi.models.operations.SimplePathParameterPrimitivesResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.SimplePathParameterPrimitivesResponse res = new org.openapis.openapi.models.operations.SimplePathParameterPrimitivesResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {

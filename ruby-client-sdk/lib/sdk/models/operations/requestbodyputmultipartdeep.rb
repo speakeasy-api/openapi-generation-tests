@@ -9,23 +9,23 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class RequestBodyPutMultipartDeepForm < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPutMultipartDeepForm < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :arr, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('arr') } }
+      field :arr, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('arr') } }
 
-      field :bool, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('bool') } }
+      field :bool, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('bool') } }
 
-      field :int, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int') } }
+      field :int, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('int') } }
 
-      field :map, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('map') } }
+      field :map, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('map') } }
 
-      field :num, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('num') } }
+      field :num, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('num') } }
 
-      field :obj, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('obj') } }
+      field :obj, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('obj') } }
 
-      field :str_, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('str') } }
+      field :str_, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('str') } }
 
 
       sig { params(arr: String, bool: String, int: String, map: String, num: String, obj: String, str_: String).void }
@@ -41,11 +41,11 @@ module OpenApiSDK
     end
 
     # OK
-    class RequestBodyPutMultipartDeepRes < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPutMultipartDeepRes < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :form, Operations::RequestBodyPutMultipartDeepForm, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('form') } }
+      field :form, Operations::RequestBodyPutMultipartDeepForm, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('form') } }
 
 
       sig { params(form: Operations::RequestBodyPutMultipartDeepForm).void }
@@ -55,24 +55,24 @@ module OpenApiSDK
     end
 
 
-    class RequestBodyPutMultipartDeepResponse < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPutMultipartDeepResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
       # OK
       field :res, T.nilable(Operations::RequestBodyPutMultipartDeepRes)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), res: T.nilable(Operations::RequestBodyPutMultipartDeepRes)).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil, res: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, res: T.nilable(Operations::RequestBodyPutMultipartDeepRes)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, res: nil)
         @content_type = content_type
-        @status_code = status_code
         @raw_response = raw_response
+        @status_code = status_code
         @res = res
       end
     end

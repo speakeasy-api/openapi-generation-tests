@@ -9,15 +9,15 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class WriteOnlyObject < OpenApiSDK::Utils::FieldAugmented
+    class WriteOnlyObject < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :bool, T::Boolean, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('bool') } }
+      field :bool, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('bool') } }
 
-      field :num, Float, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('num') } }
+      field :num, Float, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('num') } }
 
-      field :string, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('string') } }
+      field :string, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('string') } }
 
 
       sig { params(bool: T::Boolean, num: Float, string: String).void }

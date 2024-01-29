@@ -50,10 +50,9 @@ public class Documentation {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.GetDocumentationPerLanguageResponse res = new org.openapis.openapi.models.operations.GetDocumentationPerLanguageResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.GetDocumentationPerLanguageResponse res = new org.openapis.openapi.models.operations.GetDocumentationPerLanguageResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
         }

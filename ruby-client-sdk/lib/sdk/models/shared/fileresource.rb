@@ -9,11 +9,11 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class FileResource < OpenApiSDK::Utils::FieldAugmented
+    class FileResource < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('id') } }
+      field :id, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
 
 
       sig { params(id: String).void }

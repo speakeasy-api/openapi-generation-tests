@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class Oauth2OverrideSecurity < OpenApiSDK::Utils::FieldAugmented
+    class Oauth2OverrideSecurity < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -23,7 +23,7 @@ module OpenApiSDK
     end
 
 
-    class Oauth2OverrideRequest < OpenApiSDK::Utils::FieldAugmented
+    class Oauth2OverrideRequest < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -33,13 +33,13 @@ module OpenApiSDK
     end
 
     # Successful authentication.
-    class Oauth2OverrideToken < OpenApiSDK::Utils::FieldAugmented
+    class Oauth2OverrideToken < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :authenticated, T::Boolean, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('authenticated') } }
+      field :authenticated, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('authenticated') } }
 
-      field :token, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('token') } }
+      field :token, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('token') } }
 
 
       sig { params(authenticated: T::Boolean, token: String).void }
@@ -50,24 +50,24 @@ module OpenApiSDK
     end
 
 
-    class Oauth2OverrideResponse < OpenApiSDK::Utils::FieldAugmented
+    class Oauth2OverrideResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
       # Successful authentication.
       field :token, T.nilable(Operations::Oauth2OverrideToken)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), token: T.nilable(Operations::Oauth2OverrideToken)).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil, token: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, token: T.nilable(Operations::Oauth2OverrideToken)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, token: nil)
         @content_type = content_type
-        @status_code = status_code
         @raw_response = raw_response
+        @status_code = status_code
         @token = token
       end
     end
