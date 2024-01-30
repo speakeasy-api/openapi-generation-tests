@@ -14,6 +14,7 @@ Endpoints for testing union types.
 * [nullableOneOfTypeInObjectPost](#nullableoneoftypeinobjectpost)
 * [nullableTypedObjectPost](#nullabletypedobjectpost)
 * [primitiveTypeOneOfPost](#primitivetypeoneofpost)
+* [stronglyTypedOneOfDiscriminatedPost](#stronglytypedoneofdiscriminatedpost)
 * [stronglyTypedOneOfPost](#stronglytypedoneofpost)
 * [typedObjectNullableOneOfPost](#typedobjectnullableoneofpost)
 * [typedObjectOneOfPost](#typedobjectoneofpost)
@@ -38,16 +39,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            java.lang.Object req = "string";
 
-            FlattenedTypedObjectPostResponse res = sdk.unions.flattenedTypedObjectPost(req);
+            org.openapis.openapi.models.operations.FlattenedTypedObjectPostResponse res = sdk.unions.flattenedTypedObjectPost(req);
 
             if (res.res != null) {
                 // handle response
@@ -63,7 +65,7 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [java.lang.Object](../../models//.md)      | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -86,16 +88,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            java.lang.Object req = "string";
 
-            MixedTypeOneOfPostResponse res = sdk.unions.mixedTypeOneOfPost(req);
+            org.openapis.openapi.models.operations.MixedTypeOneOfPostResponse res = sdk.unions.mixedTypeOneOfPost(req);
 
             if (res.res != null) {
                 // handle response
@@ -111,7 +114,7 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [java.lang.Object](../../models//.md)      | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -137,16 +140,22 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.NullableOneOfRefInObject req = new NullableOneOfRefInObject(new TypedObject1(Type.OBJ1, "string"), "string", "string");            
+            org.openapis.openapi.models.shared.NullableOneOfRefInObject req = new NullableOneOfRefInObject(
+                new TypedObject1(
+                    Type.OBJ1,
+                    "string"),
+                "string",
+                "string");
 
-            NullableOneOfRefInObjectPostResponse res = sdk.unions.nullableOneOfRefInObjectPost(req);
+            org.openapis.openapi.models.operations.NullableOneOfRefInObjectPostResponse res = sdk.unions.nullableOneOfRefInObjectPost(req);
 
             if (res.res != null) {
                 // handle response
@@ -185,16 +194,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            java.lang.Object req = "string";
 
-            NullableOneOfSchemaPostResponse res = sdk.unions.nullableOneOfSchemaPost(req);
+            org.openapis.openapi.models.operations.NullableOneOfSchemaPostResponse res = sdk.unions.nullableOneOfSchemaPost(req);
 
             if (res.res != null) {
                 // handle response
@@ -210,7 +220,7 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [java.lang.Object](../../models//.md)      | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -234,16 +244,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.NullableOneOfTypeInObject req = new NullableOneOfTypeInObject(false, "string", false);            
+            org.openapis.openapi.models.shared.NullableOneOfTypeInObject req = new NullableOneOfTypeInObject(
+                false,
+                "string",
+                false);
 
-            NullableOneOfTypeInObjectPostResponse res = sdk.unions.nullableOneOfTypeInObjectPost(req);
+            org.openapis.openapi.models.operations.NullableOneOfTypeInObjectPostResponse res = sdk.unions.nullableOneOfTypeInObjectPost(req);
 
             if (res.res != null) {
                 // handle response
@@ -284,16 +298,19 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.TypedObject1 req = new TypedObject1(Type.OBJ1, "string");            
+            org.openapis.openapi.models.shared.TypedObject1 req = new TypedObject1(
+                Type.OBJ1,
+                "string");
 
-            NullableTypedObjectPostResponse res = sdk.unions.nullableTypedObjectPost(req);
+            org.openapis.openapi.models.operations.NullableTypedObjectPostResponse res = sdk.unions.nullableTypedObjectPost(req);
 
             if (res.res != null) {
                 // handle response
@@ -332,16 +349,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            java.lang.Object req = "string";
 
-            PrimitiveTypeOneOfPostResponse res = sdk.unions.primitiveTypeOneOfPost(req);
+            org.openapis.openapi.models.operations.PrimitiveTypeOneOfPostResponse res = sdk.unions.primitiveTypeOneOfPost(req);
 
             if (res.res != null) {
                 // handle response
@@ -357,12 +375,61 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [java.lang.Object](../../models//.md)      | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
 
 **[org.openapis.openapi.models.operations.PrimitiveTypeOneOfPostResponse](../../models/operations/PrimitiveTypeOneOfPostResponse.md)**
+
+
+## stronglyTypedOneOfDiscriminatedPost
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.StronglyTypedOneOfDiscriminatedPostResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security(
+                ){{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            java.lang.Object req = "string";
+
+            org.openapis.openapi.models.operations.StronglyTypedOneOfDiscriminatedPostResponse res = sdk.unions.stronglyTypedOneOfDiscriminatedPost(req);
+
+            if (res.res != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [java.lang.Object](../../models//.md)      | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.StronglyTypedOneOfDiscriminatedPostResponse](../../models/operations/StronglyTypedOneOfDiscriminatedPostResponse.md)**
 
 
 ## stronglyTypedOneOfPost
@@ -380,16 +447,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            java.lang.Object req = "string";
 
-            StronglyTypedOneOfPostResponse res = sdk.unions.stronglyTypedOneOfPost(req);
+            org.openapis.openapi.models.operations.StronglyTypedOneOfPostResponse res = sdk.unions.stronglyTypedOneOfPost(req);
 
             if (res.res != null) {
                 // handle response
@@ -405,7 +473,7 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [java.lang.Object](../../models//.md)      | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -428,16 +496,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            java.lang.Object req = "string";
 
-            TypedObjectNullableOneOfPostResponse res = sdk.unions.typedObjectNullableOneOfPost(req);
+            org.openapis.openapi.models.operations.TypedObjectNullableOneOfPostResponse res = sdk.unions.typedObjectNullableOneOfPost(req);
 
             if (res.res != null) {
                 // handle response
@@ -453,7 +522,7 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [java.lang.Object](../../models//.md)      | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -476,16 +545,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            java.lang.Object req = "string";
 
-            TypedObjectOneOfPostResponse res = sdk.unions.typedObjectOneOfPost(req);
+            org.openapis.openapi.models.operations.TypedObjectOneOfPostResponse res = sdk.unions.typedObjectOneOfPost(req);
 
             if (res.res != null) {
                 // handle response
@@ -501,7 +571,7 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [java.lang.Object](../../models//.md)      | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -524,16 +594,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            java.lang.Object req = "string";
 
-            UnionBigIntDecimalResponse res = sdk.unions.unionBigIntDecimal(req);
+            org.openapis.openapi.models.operations.UnionBigIntDecimalResponse res = sdk.unions.unionBigIntDecimal(req);
 
             if (res.res != null) {
                 // handle response
@@ -549,7 +620,7 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [java.lang.Object](../../models//.md)      | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -572,16 +643,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = LocalDate.parse("2022-11-25");            
+            LocalDate req = LocalDate.parse("2023-11-26");
 
-            UnionDateNullResponse res = sdk.unions.unionDateNull(req);
+            org.openapis.openapi.models.operations.UnionDateNullResponse res = sdk.unions.unionDateNull(req);
 
             if (res.res != null) {
                 // handle response
@@ -620,16 +692,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            java.lang.Object req = "string";
 
-            UnionDateTimeBigIntResponse res = sdk.unions.unionDateTimeBigInt(req);
+            org.openapis.openapi.models.operations.UnionDateTimeBigIntResponse res = sdk.unions.unionDateTimeBigInt(req);
 
             if (res.res != null) {
                 // handle response
@@ -645,7 +718,7 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [java.lang.Object](../../models//.md)      | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -668,16 +741,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = OffsetDateTime.parse("2022-04-12T19:39:53.907Z");            
+            OffsetDateTime req = OffsetDateTime.parse("2023-04-13T05:53:47.874Z");
 
-            UnionDateTimeNullResponse res = sdk.unions.unionDateTimeNull(req);
+            org.openapis.openapi.models.operations.UnionDateTimeNullResponse res = sdk.unions.unionDateTimeNull(req);
 
             if (res.res != null) {
                 // handle response
@@ -716,16 +790,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+            java.lang.Object req = "string";
 
-            WeaklyTypedOneOfPostResponse res = sdk.unions.weaklyTypedOneOfPost(req);
+            org.openapis.openapi.models.operations.WeaklyTypedOneOfPostResponse res = sdk.unions.weaklyTypedOneOfPost(req);
 
             if (res.res != null) {
                 // handle response
@@ -741,7 +816,7 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [java.lang.Object](../../models//.md)      | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response

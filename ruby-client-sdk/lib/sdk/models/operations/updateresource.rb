@@ -9,36 +9,39 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class UpdateResourceRequest < OpenApiSDK::Utils::FieldAugmented
+    class UpdateResourceRequest < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
+
+      field :augment, String, { 'query_param': { 'field_name': 'augment', 'style': 'form', 'explode': true } }
 
       field :resource_id, String, { 'path_param': { 'field_name': 'resourceId', 'style': 'simple', 'explode': false } }
 
 
-      sig { params(resource_id: String).void }
-      def initialize(resource_id: nil)
+      sig { params(augment: String, resource_id: String).void }
+      def initialize(augment: nil, resource_id: nil)
+        @augment = augment
         @resource_id = resource_id
       end
     end
 
 
-    class UpdateResourceResponse < OpenApiSDK::Utils::FieldAugmented
+    class UpdateResourceResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil)
         @content_type = content_type
-        @status_code = status_code
         @raw_response = raw_response
+        @status_code = status_code
       end
     end
   end

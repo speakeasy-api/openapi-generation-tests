@@ -10,13 +10,13 @@ require_relative '../shared/httpbinsimplejsonobject'
 module OpenApiSDK
   module Operations
 
-    class IgnoresPostRequestBody < OpenApiSDK::Utils::FieldAugmented
+    class IgnoresPostRequestBody < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :callback_url, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('callbackUrl') } }
+      field :callback_url, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('callbackUrl') } }
 
-      field :test_prop, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('testProp') } }
+      field :test_prop, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('testProp') } }
 
 
       sig { params(callback_url: T.nilable(String), test_prop: T.nilable(String)).void }
@@ -27,7 +27,7 @@ module OpenApiSDK
     end
 
 
-    class IgnoresPostRequest < OpenApiSDK::Utils::FieldAugmented
+    class IgnoresPostRequest < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -44,25 +44,25 @@ module OpenApiSDK
     end
 
 
-    class IgnoresPostResponse < OpenApiSDK::Utils::FieldAugmented
+    class IgnoresPostResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
       # OK
       field :http_bin_simple_json_object, T.nilable(Shared::HttpBinSimpleJsonObject)
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, http_bin_simple_json_object: T.nilable(Shared::HttpBinSimpleJsonObject), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, http_bin_simple_json_object: nil, raw_response: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, http_bin_simple_json_object: T.nilable(Shared::HttpBinSimpleJsonObject)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, http_bin_simple_json_object: nil)
         @content_type = content_type
+        @raw_response = raw_response
         @status_code = status_code
         @http_bin_simple_json_object = http_bin_simple_json_object
-        @raw_response = raw_response
       end
     end
   end

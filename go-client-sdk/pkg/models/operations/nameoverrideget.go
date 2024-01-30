@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"openapi/v2/pkg/models/shared"
+	"openapi/v3/pkg/models/shared"
 )
 
 // EnumNameOverride - An enum type
