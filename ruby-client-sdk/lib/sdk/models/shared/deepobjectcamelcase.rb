@@ -10,28 +10,28 @@ require_relative '../shared/simpleobjectcamelcase'
 module OpenApiSDK
   module Shared
 
-    class DeepObjectCamelCase < OpenApiSDK::Utils::FieldAugmented
+    class DeepObjectCamelCase < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :any_val, Object, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('any_val') } }
+      field :any_val, Object, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('any_val') } }
 
-      field :arr_val, T::Array[Shared::SimpleObjectCamelCase], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('arr_val') } }
+      field :arr_val, T::Array[Shared::SimpleObjectCamelCase], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('arr_val') } }
 
-      field :bool_val, T::Boolean, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('bool_val') } }
+      field :bool_val, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('bool_val') } }
 
-      field :int_val, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int_val') } }
+      field :int_val, Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('int_val') } }
 
-      field :map_val, T::Hash[Symbol, Shared::SimpleObjectCamelCase], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('map_val') } }
+      field :map_val, T::Hash[Symbol, Shared::SimpleObjectCamelCase], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('map_val') } }
 
-      field :num_val, Float, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('num_val') } }
+      field :num_val, Float, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('num_val') } }
       # A simple object that uses all our supported primitive types and enums and has optional properties.
       # https://docs.speakeasyapi.dev - A link to the external docs.
-      field :obj_val, Shared::SimpleObjectCamelCase, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('obj_val') } }
+      field :obj_val, Shared::SimpleObjectCamelCase, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('obj_val') } }
 
-      field :str_val, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('str_val') } }
+      field :str_val, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('str_val') } }
 
-      field :type, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('type') } }
+      field :type, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('type') } }
 
 
       sig { params(any_val: Object, arr_val: T::Array[Shared::SimpleObjectCamelCase], bool_val: T::Boolean, int_val: Integer, map_val: T::Hash[Symbol, Shared::SimpleObjectCamelCase], num_val: Float, obj_val: Shared::SimpleObjectCamelCase, str_val: String, type: T.nilable(String)).void }

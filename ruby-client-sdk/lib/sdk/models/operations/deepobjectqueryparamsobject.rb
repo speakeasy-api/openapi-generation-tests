@@ -10,7 +10,7 @@ require_relative '../shared/simpleobject'
 module OpenApiSDK
   module Operations
 
-    class ObjArrParam < OpenApiSDK::Utils::FieldAugmented
+    class ObjArrParam < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -24,7 +24,7 @@ module OpenApiSDK
     end
 
 
-    class DeepObjectQueryParamsObjectRequest < OpenApiSDK::Utils::FieldAugmented
+    class DeepObjectQueryParamsObjectRequest < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # A simple object that uses all our supported primitive types and enums and has optional properties.
@@ -41,47 +41,47 @@ module OpenApiSDK
     end
 
 
-    class DeepObjectQueryParamsObjectArgs < OpenApiSDK::Utils::FieldAugmented
+    class DeepObjectQueryParamsObjectArgs < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :obj_arr_param_arr, T::Array[String], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objArrParam[arr]') } }
+      field :obj_arr_param_arr, T::Array[String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objArrParam[arr]') } }
 
-      field :obj_param_any, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[any]') } }
+      field :obj_param_any, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objParam[any]') } }
 
-      field :obj_param_bool, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[bool]') } }
+      field :obj_param_bool, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objParam[bool]') } }
 
-      field :obj_param_bool_opt, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[boolOpt]') } }
+      field :obj_param_bool_opt, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objParam[boolOpt]') } }
 
-      field :obj_param_date, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[date]') } }
+      field :obj_param_date, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objParam[date]') } }
 
-      field :obj_param_date_time, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[dateTime]') } }
+      field :obj_param_date_time, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objParam[dateTime]') } }
 
-      field :obj_param_enum, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[enum]') } }
+      field :obj_param_enum, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objParam[enum]') } }
 
-      field :obj_param_float32, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[float32]') } }
+      field :obj_param_float32, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objParam[float32]') } }
 
-      field :obj_param_int, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[int]') } }
+      field :obj_param_int, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objParam[int]') } }
 
-      field :obj_param_int32, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[int32]') } }
+      field :obj_param_int32, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objParam[int32]') } }
 
-      field :obj_param_int32_enum, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[int32Enum]') } }
+      field :obj_param_int32_enum, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objParam[int32Enum]') } }
 
-      field :obj_param_int_enum, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[intEnum]') } }
+      field :obj_param_int_enum, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objParam[intEnum]') } }
 
-      field :obj_param_num, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[num]') } }
+      field :obj_param_num, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objParam[num]') } }
 
-      field :obj_param_str, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[str]') } }
+      field :obj_param_str, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objParam[str]') } }
 
-      field :obj_param_str_opt, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[strOpt]') } }
+      field :obj_param_str_opt, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objParam[strOpt]') } }
 
-      field :obj_param_bigint, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[bigint]') } }
+      field :obj_param_bigint, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objParam[bigint]') } }
 
-      field :obj_param_bigint_str, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[bigintStr]') } }
+      field :obj_param_bigint_str, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objParam[bigintStr]') } }
 
-      field :obj_param_decimal, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[decimal]') } }
+      field :obj_param_decimal, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objParam[decimal]') } }
 
-      field :obj_param_decimal_str, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[decimalStr]') } }
+      field :obj_param_decimal_str, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('objParam[decimalStr]') } }
 
 
       sig { params(obj_arr_param_arr: T::Array[String], obj_param_any: String, obj_param_bool: String, obj_param_bool_opt: String, obj_param_date: String, obj_param_date_time: String, obj_param_enum: String, obj_param_float32: String, obj_param_int: String, obj_param_int32: String, obj_param_int32_enum: String, obj_param_int_enum: String, obj_param_num: String, obj_param_str: String, obj_param_str_opt: String, obj_param_bigint: T.nilable(String), obj_param_bigint_str: T.nilable(String), obj_param_decimal: T.nilable(String), obj_param_decimal_str: T.nilable(String)).void }
@@ -109,13 +109,13 @@ module OpenApiSDK
     end
 
     # OK
-    class DeepObjectQueryParamsObjectRes < OpenApiSDK::Utils::FieldAugmented
+    class DeepObjectQueryParamsObjectRes < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :args, Operations::DeepObjectQueryParamsObjectArgs, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
+      field :args, Operations::DeepObjectQueryParamsObjectArgs, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('args') } }
 
-      field :url, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('url') } }
+      field :url, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('url') } }
 
 
       sig { params(args: Operations::DeepObjectQueryParamsObjectArgs, url: String).void }
@@ -126,24 +126,24 @@ module OpenApiSDK
     end
 
 
-    class DeepObjectQueryParamsObjectResponse < OpenApiSDK::Utils::FieldAugmented
+    class DeepObjectQueryParamsObjectResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
       # OK
       field :res, T.nilable(Operations::DeepObjectQueryParamsObjectRes)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), res: T.nilable(Operations::DeepObjectQueryParamsObjectRes)).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil, res: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, res: T.nilable(Operations::DeepObjectQueryParamsObjectRes)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, res: nil)
         @content_type = content_type
-        @status_code = status_code
         @raw_response = raw_response
+        @status_code = status_code
         @res = res
       end
     end

@@ -21,7 +21,7 @@ class Unions:
         
         url = base_url + '/anything/flattenedTypedObject'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Union[shared.TypedObject1], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -36,7 +36,7 @@ class Unions:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.FlattenedTypedObjectPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -57,7 +57,7 @@ class Unions:
         
         url = base_url + '/anything/mixedTypeOneOf'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Union[str, int, shared.SimpleObject], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -72,7 +72,7 @@ class Unions:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.MixedTypeOneOfPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -93,7 +93,7 @@ class Unions:
         
         url = base_url + '/anything/nullableOneOfRefInObject'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.NullableOneOfRefInObject, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -108,7 +108,7 @@ class Unions:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.NullableOneOfRefInObjectPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -124,12 +124,12 @@ class Unions:
 
     
     
-    def nullable_one_of_schema_post(self, request: Union[shared.TypedObject1, shared.TypedObject2]) -> operations.NullableOneOfSchemaPostResponse:
+    def nullable_one_of_schema_post(self, request: Optional[Union[shared.TypedObject1, shared.TypedObject2]]) -> operations.NullableOneOfSchemaPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/nullableOneOfSchema'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", True, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Optional[Union[shared.TypedObject1, shared.TypedObject2]], "request", True, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -144,7 +144,7 @@ class Unions:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.NullableOneOfSchemaPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -165,7 +165,7 @@ class Unions:
         
         url = base_url + '/anything/nullableOneOfInObject'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.NullableOneOfTypeInObject, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -180,7 +180,7 @@ class Unions:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.NullableOneOfTypeInObjectPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -196,12 +196,12 @@ class Unions:
 
     
     
-    def nullable_typed_object_post(self, request: shared.TypedObject1) -> operations.NullableTypedObjectPostResponse:
+    def nullable_typed_object_post(self, request: Optional[shared.TypedObject1]) -> operations.NullableTypedObjectPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/nullableTypedObject'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", True, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Optional[shared.TypedObject1], "request", True, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -216,7 +216,7 @@ class Unions:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.NullableTypedObjectPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -237,7 +237,7 @@ class Unions:
         
         url = base_url + '/anything/primitiveTypeOneOf'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Union[str, int, float, bool], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -252,7 +252,7 @@ class Unions:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.PrimitiveTypeOneOfPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -268,12 +268,12 @@ class Unions:
 
     
     
-    def strongly_typed_one_of_post(self, request: Union[shared.SimpleObjectWithType, shared.DeepObjectWithType]) -> operations.StronglyTypedOneOfPostResponse:
+    def strongly_typed_one_of_discriminated_post(self, request: Union[shared.TaggedObject1, shared.TaggedObject2, shared.TaggedObject3]) -> operations.StronglyTypedOneOfDiscriminatedPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = base_url + '/anything/stronglyTypedOneOf'
+        url = base_url + '/anything/stronglyTypedOneOfDiscriminated'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Union[shared.TaggedObject1, shared.TaggedObject2, shared.TaggedObject3], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -288,7 +288,43 @@ class Unions:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
+        
+        res = operations.StronglyTypedOneOfDiscriminatedPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.StronglyTypedOneOfDiscriminatedPostRes])
+                res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
 
+        return res
+
+    
+    
+    def strongly_typed_one_of_post(self, request: Union[shared.SimpleObjectWithType, shared.DeepObjectWithType]) -> operations.StronglyTypedOneOfPostResponse:
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = base_url + '/anything/stronglyTypedOneOf'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, Union[shared.SimpleObjectWithType, shared.DeepObjectWithType], "request", False, False, 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        if data is None and form is None:
+            raise Exception('request body is required')
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
+        
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+        
         res = operations.StronglyTypedOneOfPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -304,12 +340,12 @@ class Unions:
 
     
     
-    def typed_object_nullable_one_of_post(self, request: Union[shared.TypedObject1, shared.TypedObject2]) -> operations.TypedObjectNullableOneOfPostResponse:
+    def typed_object_nullable_one_of_post(self, request: Optional[Union[shared.TypedObject1, shared.TypedObject2]]) -> operations.TypedObjectNullableOneOfPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/typedObjectNullableOneOf'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", True, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Optional[Union[shared.TypedObject1, shared.TypedObject2]], "request", True, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -324,7 +360,7 @@ class Unions:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.TypedObjectNullableOneOfPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -345,7 +381,7 @@ class Unions:
         
         url = base_url + '/anything/typedObjectOneOf'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Union[shared.TypedObject1, shared.TypedObject2, shared.TypedObject3], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -360,7 +396,7 @@ class Unions:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.TypedObjectOneOfPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -381,7 +417,7 @@ class Unions:
         
         url = base_url + '/anything/unionBigIntDecimal'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.union_encoder({int: utils.bigintencoder(False), Decimal: utils.decimalencoder(False, False)}))
+        req_content_type, data, form = utils.serialize_request_body(request, Union[int, Decimal], "request", False, False, 'json', utils.union_encoder({int: utils.bigintencoder(False), Decimal: utils.decimalencoder(False, False)}))
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -396,7 +432,7 @@ class Unions:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.UnionBigIntDecimalResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -412,12 +448,12 @@ class Unions:
 
     
     
-    def union_date_null(self, request: date) -> operations.UnionDateNullResponse:
+    def union_date_null(self, request: Optional[date]) -> operations.UnionDateNullResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/unionDateNull'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", True, False, 'json', utils.dateisoformat(False))
+        req_content_type, data, form = utils.serialize_request_body(request, Optional[date], "request", True, False, 'json', utils.dateisoformat(False))
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -432,7 +468,7 @@ class Unions:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.UnionDateNullResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -453,7 +489,7 @@ class Unions:
         
         url = base_url + '/anything/unionDateTimeBigInt'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.union_encoder({datetime: utils.datetimeisoformat(False)}))
+        req_content_type, data, form = utils.serialize_request_body(request, Union[datetime, int], "request", False, False, 'json', utils.union_encoder({datetime: utils.datetimeisoformat(False)}))
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -468,7 +504,7 @@ class Unions:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.UnionDateTimeBigIntResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -484,12 +520,12 @@ class Unions:
 
     
     
-    def union_date_time_null(self, request: datetime) -> operations.UnionDateTimeNullResponse:
+    def union_date_time_null(self, request: Optional[datetime]) -> operations.UnionDateTimeNullResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/unionDateTimeNull'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", True, False, 'json', utils.datetimeisoformat(False))
+        req_content_type, data, form = utils.serialize_request_body(request, Optional[datetime], "request", True, False, 'json', utils.datetimeisoformat(False))
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -504,7 +540,7 @@ class Unions:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.UnionDateTimeNullResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -525,7 +561,7 @@ class Unions:
         
         url = base_url + '/anything/weaklyTypedOneOf'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, Union[shared.SimpleObject, shared.DeepObject], "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -540,7 +576,7 @@ class Unions:
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.WeaklyTypedOneOfPostResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:

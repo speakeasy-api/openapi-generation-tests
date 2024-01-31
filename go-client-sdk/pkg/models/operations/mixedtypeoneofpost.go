@@ -5,8 +5,8 @@ package operations
 import (
 	"errors"
 	"net/http"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/utils"
+	"openapi/v3/pkg/models/shared"
+	"openapi/v3/pkg/utils"
 )
 
 type MixedTypeOneOfPostRequestBodyType string

@@ -9,37 +9,37 @@ require 'faraday'
 module OpenApiSDK
   module Operations
 
-    class RequestBodyPostFormSimpleForm < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostFormSimpleForm < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :any, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('any') } }
+      field :any, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('any') } }
 
-      field :bool, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('bool') } }
+      field :bool, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('bool') } }
 
-      field :date, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('date') } }
+      field :date, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('date') } }
 
-      field :date_time, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('dateTime') } }
+      field :date_time, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('dateTime') } }
 
-      field :enum, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('enum') } }
+      field :enum, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('enum') } }
 
-      field :float32, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('float32') } }
+      field :float32, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('float32') } }
 
-      field :int, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int') } }
+      field :int, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('int') } }
 
-      field :int32, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int32') } }
+      field :int32, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('int32') } }
 
-      field :num, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('num') } }
+      field :num, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('num') } }
 
-      field :str_, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('str') } }
+      field :str_, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('str') } }
 
-      field :bool_opt, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('boolOpt') } }
+      field :bool_opt, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('boolOpt') } }
 
-      field :int_opt_null, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('intOptNull') } }
+      field :int_opt_null, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('intOptNull') } }
 
-      field :num_opt_null, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('numOptNull') } }
+      field :num_opt_null, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('numOptNull') } }
 
-      field :str_opt, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('strOpt') } }
+      field :str_opt, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('strOpt') } }
 
 
       sig { params(any: String, bool: String, date: String, date_time: String, enum: String, float32: String, int: String, int32: String, num: String, str_: String, bool_opt: T.nilable(String), int_opt_null: T.nilable(String), num_opt_null: T.nilable(String), str_opt: T.nilable(String)).void }
@@ -62,11 +62,11 @@ module OpenApiSDK
     end
 
 
-    class RequestBodyPostFormSimpleHeaders < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostFormSimpleHeaders < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :content_type, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('Content-Type') } }
+      field :content_type, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('Content-Type') } }
 
 
       sig { params(content_type: String).void }
@@ -76,13 +76,13 @@ module OpenApiSDK
     end
 
     # OK
-    class RequestBodyPostFormSimpleRes < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostFormSimpleRes < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :form, Operations::RequestBodyPostFormSimpleForm, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('form') } }
+      field :form, Operations::RequestBodyPostFormSimpleForm, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('form') } }
 
-      field :headers, Operations::RequestBodyPostFormSimpleHeaders, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('headers') } }
+      field :headers, Operations::RequestBodyPostFormSimpleHeaders, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('headers') } }
 
 
       sig { params(form: Operations::RequestBodyPostFormSimpleForm, headers: Operations::RequestBodyPostFormSimpleHeaders).void }
@@ -93,24 +93,24 @@ module OpenApiSDK
     end
 
 
-    class RequestBodyPostFormSimpleResponse < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostFormSimpleResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
       # OK
       field :res, T.nilable(Operations::RequestBodyPostFormSimpleRes)
 
 
-      sig { params(content_type: String, status_code: Integer, raw_response: T.nilable(Faraday::Response), res: T.nilable(Operations::RequestBodyPostFormSimpleRes)).void }
-      def initialize(content_type: nil, status_code: nil, raw_response: nil, res: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, res: T.nilable(Operations::RequestBodyPostFormSimpleRes)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, res: nil)
         @content_type = content_type
-        @status_code = status_code
         @raw_response = raw_response
+        @status_code = status_code
         @res = res
       end
     end
