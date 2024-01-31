@@ -9,11 +9,11 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class Chocolates < OpenApiSDK::Utils::FieldAugmented
+    class Chocolates < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :description, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('description') } }
+      field :description, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('description') } }
 
 
       sig { params(description: String).void }
@@ -43,11 +43,11 @@ module OpenApiSDK
 
 
 
-    class InlineObject < OpenApiSDK::Utils::FieldAugmented
+    class InlineObject < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :inline_name, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('inline_name') } }
+      field :inline_name, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('inline_name') } }
 
 
       sig { params(inline_name: T.nilable(String)).void }
@@ -57,37 +57,37 @@ module OpenApiSDK
     end
 
 
-    class ExampleResource < OpenApiSDK::Utils::FieldAugmented
+    class ExampleResource < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :chocolates, T::Array[Shared::Chocolates], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('chocolates') } }
+      field :chocolates, T::Array[Shared::Chocolates], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('chocolates') } }
 
-      field :id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('id') } }
+      field :id, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
 
-      field :name, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('name') } }
+      field :name, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('name') } }
 
-      field :vehicle, Object, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('vehicle') } }
+      field :vehicle, Object, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('vehicle') } }
 
-      field :array_of_number, T.nilable(T::Array[Float]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('arrayOfNumber') } }
+      field :array_of_number, T.nilable(T::Array[Float]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('arrayOfNumber') } }
 
-      field :array_of_string, T.nilable(T::Array[String]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('arrayOfString') } }
+      field :array_of_string, T.nilable(T::Array[String]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('arrayOfString') } }
 
-      field :created_at, T.nilable(DateTime), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('createdAt'), 'decoder': Utils.datetime_from_iso_format(true) } }
+      field :created_at, T.nilable(DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('createdAt'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-      field :enum_number, T.nilable(Shared::EnumNumber), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('enumNumber'), 'decoder': Utils.enum_from_string(Shared::EnumNumber, true) } }
+      field :enum_number, T.nilable(Shared::EnumNumber), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('enumNumber'), 'decoder': Utils.enum_from_string(Shared::EnumNumber, true) } }
 
-      field :enum_str, T.nilable(Shared::EnumStr), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('enumStr'), 'decoder': Utils.enum_from_string(Shared::EnumStr, true) } }
+      field :enum_str, T.nilable(Shared::EnumStr), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('enumStr'), 'decoder': Utils.enum_from_string(Shared::EnumStr, true) } }
 
-      field :inline_object, T.nilable(Shared::InlineObject), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('inlineObject') } }
+      field :inline_object, T.nilable(Shared::InlineObject), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('inlineObject') } }
 
-      field :map_of_integer, T.nilable(T::Hash[Symbol, Integer]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('mapOfInteger') } }
+      field :map_of_integer, T.nilable(T::Hash[Symbol, Integer]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('mapOfInteger') } }
 
-      field :map_of_string, T.nilable(T::Hash[Symbol, String]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('mapOfString') } }
+      field :map_of_string, T.nilable(T::Hash[Symbol, String]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('mapOfString') } }
 
-      field :name_prefix, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('name_prefix') } }
+      field :name_prefix, T.nilable(String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('name_prefix') } }
 
-      field :updated_at, T.nilable(DateTime), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('updatedAt'), 'decoder': Utils.datetime_from_iso_format(true) } }
+      field :updated_at, T.nilable(DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('updatedAt'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
 
       sig { params(chocolates: T::Array[Shared::Chocolates], id: String, name: String, vehicle: Object, array_of_number: T.nilable(T::Array[Float]), array_of_string: T.nilable(T::Array[String]), created_at: T.nilable(DateTime), enum_number: T.nilable(Shared::EnumNumber), enum_str: T.nilable(Shared::EnumStr), inline_object: T.nilable(Shared::InlineObject), map_of_integer: T.nilable(T::Hash[Symbol, Integer]), map_of_string: T.nilable(T::Hash[Symbol, String]), name_prefix: T.nilable(String), updated_at: T.nilable(DateTime)).void }
