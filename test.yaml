@@ -4900,7 +4900,7 @@ paths:
             type: number
             format: decimal
             description: A decimal type
-            default: "903275809834567386763"
+            default: 903275809834567386763
       responses:
         "204":
           description: OK
