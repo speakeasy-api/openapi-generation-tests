@@ -16,18 +16,18 @@ using System.Threading.Tasks;
 
 public class AuthShould
 {
-    // TODO:
-    // [Fact]
-    // public async Task TestGlobalSecurityFlattening()
-	// recordTest("auth-global-security-flattening")
+    [Fact]
+    public async Task TestGlobalSecurityFlattening()
+    {
+        CommonHelpers.RecordTest("auth-global-security-flattening");
 
-	// s := sdk.New(sdk.WithSecurity("Bearer testToken"))
+        var sdk = new SDK(apiKeyAuth: "Bearer testToken");
 
-	// res, err := s.Auth.APIKeyAuthGlobal(context.Background())
-	// require.NoError(t, err)
-	// require.NotNil(t, res)
-	// assert.Equal(t, http.StatusOK, res.StatusCode)
-	// assert.True(t, res.Token.Authenticated)
-	// assert.Equal(t, "testToken", res.Token.Token)
-    // }
+        var res = await sdk.Auth.ApiKeyAuthGlobalAsync();
+
+        Assert.NotNull(res);
+        Assert.Equal(200, res.StatusCode);
+        Assert.True(res.Token.Authenticated);
+        Assert.Equal("testToken", res.Token.Token);
+    }
 }

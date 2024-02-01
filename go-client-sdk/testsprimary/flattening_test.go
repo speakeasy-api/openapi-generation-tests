@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"testing"
 
-	"openapi/v2/pkg/models/operations"
+	"openapi/v3/pkg/models/operations"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

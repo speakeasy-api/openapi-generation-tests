@@ -9,17 +9,17 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class ComplexNumberTypes < OpenApiSDK::Utils::FieldAugmented
+    class ComplexNumberTypes < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :bigint, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('bigint') } }
+      field :bigint, Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('bigint') } }
 
-      field :bigint_str, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('bigintStr') } }
+      field :bigint_str, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('bigintStr') } }
 
-      field :decimal, Float, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('decimal') } }
+      field :decimal, Float, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('decimal') } }
 
-      field :decimal_str, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('decimalStr') } }
+      field :decimal_str, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('decimalStr') } }
 
 
       sig { params(bigint: Integer, bigint_str: String, decimal: Float, decimal_str: String).void }

@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class ReadOnlyObjectInput < OpenApiSDK::Utils::FieldAugmented
+    class ReadOnlyObjectInput < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 

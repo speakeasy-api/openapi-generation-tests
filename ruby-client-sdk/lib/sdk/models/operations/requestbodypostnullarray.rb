@@ -9,11 +9,11 @@ require 'faraday'
 module OpenApiSDK
   module Operations
     # OK
-    class RequestBodyPostNullArrayResponseBody < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostNullArrayResponseBody < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :data, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('data') } }
+      field :data, String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('data') } }
 
 
       sig { params(data: String).void }
@@ -23,25 +23,25 @@ module OpenApiSDK
     end
 
 
-    class RequestBodyPostNullArrayResponse < OpenApiSDK::Utils::FieldAugmented
+    class RequestBodyPostNullArrayResponse < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
       # OK
       field :object, T.nilable(Operations::RequestBodyPostNullArrayResponseBody)
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, object: T.nilable(Operations::RequestBodyPostNullArrayResponseBody), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, object: nil, raw_response: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, object: T.nilable(Operations::RequestBodyPostNullArrayResponseBody)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, object: nil)
         @content_type = content_type
+        @raw_response = raw_response
         @status_code = status_code
         @object = object
-        @raw_response = raw_response
       end
     end
   end
