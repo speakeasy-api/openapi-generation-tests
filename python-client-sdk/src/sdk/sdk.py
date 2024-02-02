@@ -5,6 +5,7 @@ from .auth import Auth
 from .authnew import AuthNew
 from .documentation import Documentation
 from .errors import Errors
+from .eventstreams import Eventstreams
 from .first import First
 from .flattening import Flattening
 from .generation import Generation
@@ -58,9 +59,11 @@ class SDK:
     r"""Endpoints for testing telemetry."""
     auth_new: AuthNew
     r"""Endpoints for testing authentication."""
+    resource: Resource
     documentation: Documentation
     r"""Testing for documentation extensions in Python."""
-    resource: Resource
+    eventstreams: Eventstreams
+    r"""Endpoints for testing server-sent events streaming"""
     first: First
     second: Second
     pagination: Pagination
@@ -76,8 +79,8 @@ class SDK:
                  global_query_param: str = None,
                  hostname: str = None,
                  port: str = None,
-                 protocol: str = None,
                  something: ServerSomething = None,
+                 protocol: str = None,
                  server_idx: int = None,
                  server_url: str = None,
                  url_params: Dict[str, str] = None,
@@ -96,10 +99,10 @@ class SDK:
         :type hostname: 
         :param port: Allows setting the port variable for url substitution
         :type port: 
-        :param protocol: Allows setting the protocol variable for url substitution
-        :type protocol: 
         :param something: Allows setting the something variable for url substitution
         :type something: ServerSomethingmodels.ServerSomething
+        :param protocol: Allows setting the protocol variable for url substitution
+        :type protocol: 
         :param server_idx: The index of the server to use for all operations
         :type server_idx: int
         :param server_url: The server URL to use for all operations
@@ -164,12 +167,44 @@ class SDK:
         self.servers = Servers(self.sdk_configuration)
         self.telemetry = Telemetry(self.sdk_configuration)
         self.auth_new = AuthNew(self.sdk_configuration)
-        self.documentation = Documentation(self.sdk_configuration)
         self.resource = Resource(self.sdk_configuration)
+        self.documentation = Documentation(self.sdk_configuration)
+        self.eventstreams = Eventstreams(self.sdk_configuration)
         self.first = First(self.sdk_configuration)
         self.second = Second(self.sdk_configuration)
         self.pagination = Pagination(self.sdk_configuration)
         self.retries = Retries(self.sdk_configuration)
+    
+    
+    def conflicting_enum(self, request: Optional[shared.ConflictingEnum]) -> operations.ConflictingEnumResponse:
+        r"""Test potential namespace conflicts with java.lang.Object"""
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = base_url + '/anything/conflictingEnum/'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, Optional[shared.ConflictingEnum], "request", False, True, 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = '*/*'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
+        
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+        
+        res = operations.ConflictingEnumResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            pass
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+
+        return res
+
     
     
     def put_anything_ignored_generation(self, request: str) -> operations.PutAnythingIgnoredGenerationResponse:
@@ -177,7 +212,7 @@ class SDK:
         
         url = base_url + '/anything/ignoredGeneration'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, str, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -192,7 +227,7 @@ class SDK:
         
         http_res = client.request('PUT', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.PutAnythingIgnoredGenerationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -223,7 +258,7 @@ class SDK:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ResponseBodyJSONGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:

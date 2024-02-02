@@ -14,6 +14,20 @@ use PHPUnit\Framework\TestCase;
 
 final class AuthTest extends TestCase
 {
+    public function testNoAuth(): void
+    {
+        CommonHelpers::recordTest('auth-no-auth');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
+
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $response = $sdk->auth->noAuth();
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+    }
+
     public function testBasicAuth(): void
     {
         CommonHelpers::recordTest('auth-basic-auth');

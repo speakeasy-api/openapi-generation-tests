@@ -41,8 +41,7 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Generation.AnchorTypesGetAsync();
 
@@ -68,8 +67,7 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Generation.ArrayCircularReferenceGetAsync();
 
@@ -95,8 +93,7 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Generation.CircularReferenceGetAsync();
 
@@ -124,10 +121,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.DateParamWithDefaultAsync(LocalDate.FromDateTime(System.DateTime.Parse("2021-11-30")));
+var res = await sdk.Generation.DateParamWithDefaultAsync(dateInput: LocalDate.FromDateTime(System.DateTime.Parse("2022-11-30")));
 
 // handle response
 ```
@@ -158,10 +154,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.DateTimeParamWithDefaultAsync(System.DateTime.Parse("2023-02-09T21:53:21.077Z"));
+var res = await sdk.Generation.DateTimeParamWithDefaultAsync(dateTimeInput: System.DateTime.Parse("2024-02-10T14:45:50.302Z"));
 
 // handle response
 ```
@@ -192,10 +187,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.DecimalParamWithDefaultAsync(4060.06M);
+var res = await sdk.Generation.DecimalParamWithDefaultAsync(decimalInput: 4060.06M);
 
 // handle response
 ```
@@ -225,10 +219,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.DeprecatedFieldInSchemaPostAsync(new DeprecatedFieldInObject() {});
+DeprecatedFieldInObject req = new DeprecatedFieldInObject() {};
+
+var res = await sdk.Generation.DeprecatedFieldInSchemaPostAsync(req);
 
 // handle response
 ```
@@ -258,8 +253,7 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Generation.DeprecatedObjectInSchemaGetAsync();
 
@@ -288,10 +282,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.DeprecatedOperationNoCommentsGetAsync("string");
+var res = await sdk.Generation.DeprecatedOperationNoCommentsGetAsync(deprecatedParameter: "string");
 
 // handle response
 ```
@@ -326,10 +319,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.DeprecatedOperationWithCommentsGetAsync("string", "string");
+var res = await sdk.Generation.DeprecatedOperationWithCommentsGetAsync(
+    deprecatedParameter: "string",
+    newParameter: "string");
 
 // handle response
 ```
@@ -361,10 +355,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.EmptyObjectGetAsync(new EmptyObjectParam() {});
+var res = await sdk.Generation.EmptyObjectGetAsync(emptyObject: new EmptyObjectParam() {});
 
 // handle response
 ```
@@ -394,8 +387,7 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Generation.EmptyResponseObjectWithCommentGetAsync();
 
@@ -415,19 +407,46 @@ var res = await sdk.Generation.EmptyResponseObjectWithCommentGetAsync();
 ```csharp
 using Openapi;
 using Openapi.Models.Shared;
+using NodaTime;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.GlobalNameOverriddenAsync();
+SimpleObject req = new SimpleObject() {
+    Any = "any",
+    Bool = true,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
+    Enum = Enum.One,
+    Float32 = 1.1F,
+    Int = 1,
+    Int32 = 1,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
+    Num = 1.1D,
+    Str = "test",
+    Bigint = 8821239038968084,
+    BigintStr = 9223372036854775808,
+    BoolOpt = true,
+    Decimal = 3.141592653589793M,
+    DecimalStr = 3.14159265358979344719667586M,
+    StrOpt = "testOptional",
+};
+
+var res = await sdk.Generation.GlobalNameOverriddenAsync(req);
 
 // handle response
 ```
+
+### Parameters
+
+| Parameter                                           | Type                                                | Required                                            | Description                                         |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `request`                                           | [SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
 
 
 ### Response
@@ -449,8 +468,7 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Generation.IgnoredGenerationGetAsync();
 
@@ -477,10 +495,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.IgnoresPostAsync(new IgnoresPostRequestBody() {}, "string");
+var res = await sdk.Generation.IgnoresPostAsync(
+    requestBody: new IgnoresPostRequestBody() {},
+    testParam: "string");
 
 // handle response
 ```
@@ -512,10 +531,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.NameOverrideAsync(EnumNameOverride.Value3, "example");
+var res = await sdk.Generation.NameOverrideAsync(
+    testEnumQueryParam: EnumNameOverride.Value3,
+    testQueryParam: "example");
 
 // handle response
 ```
@@ -546,8 +566,7 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Generation.ObjectCircularReferenceGetAsync();
 
@@ -573,8 +592,7 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Generation.OneOfCircularReferenceGetAsync();
 
@@ -602,10 +620,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.TypedParameterGenerationGetAsync(879275, LocalDate.FromDateTime(System.DateTime.Parse("2023-11-18")), 3346.96M, new Obj() {
+var res = await sdk.Generation.TypedParameterGenerationGetAsync(
+    bigint: 879275,
+    date: LocalDate.FromDateTime(System.DateTime.Parse("2024-11-18")),
+    decimal: 3346.96M,
+    obj: new Obj() {
     Bool = false,
     Num = 4778.06D,
     Str = "string",
@@ -646,19 +667,15 @@ using NodaTime;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurity() {
-    Password = "YOUR_PASSWORD",
-    Username = "YOUR_USERNAME",
-}, new UsageExamplePostRequest() {
+UsageExamplePostRequest req = new UsageExamplePostRequest() {
     BigintParameter = 168827,
     BigintStrParameter = 446729,
     BoolParameter = false,
-    DateParameter = LocalDate.FromDateTime(System.DateTime.Parse("2023-06-11")),
-    DateTimeDefaultParameter = System.DateTime.Parse("2022-07-22T13:16:48.221Z"),
-    DateTimeParameter = System.DateTime.Parse("2021-10-21T09:16:58.799Z"),
+    DateParameter = LocalDate.FromDateTime(System.DateTime.Parse("2024-06-10")),
+    DateTimeDefaultParameter = System.DateTime.Parse("2023-07-23T01:43:10.512Z"),
+    DateTimeParameter = System.DateTime.Parse("2022-10-21T15:42:48.223Z"),
     DecimalParameter = 5223.72M,
     DecimalStrParameter = 2911.37M,
     DoubleParameter = 6946.59D,
@@ -676,7 +693,7 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -694,7 +711,14 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
         },
     },
     OptEnumParameter = OptEnumParameter.Value3,
-});
+};
+
+var res = await sdk.Generation.UsageExamplePostAsync(
+    security: new UsageExamplePostSecurity() {
+    Password = "YOUR_PASSWORD",
+    Username = "YOUR_USERNAME",
+},
+    req);
 
 // handle response
 ```

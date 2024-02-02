@@ -7,7 +7,9 @@ import (
 	"net/http"
 	"testing"
 
-	sdk "openapi/v2"
+	sdk "openapi/v3"
+
+	"openapi/v3/pkg/models/shared"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -17,6 +19,23 @@ func TestGlobalSecurityFlattening(t *testing.T) {
 	recordTest("auth-global-security-flattening")
 
 	s := sdk.New(sdk.WithSecurity("Bearer testToken"))
+
+	res, err := s.Auth.APIKeyAuthGlobal(context.Background())
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.True(t, res.Token.Authenticated)
+	assert.Equal(t, "testToken", res.Token.Token)
+}
+
+func TestGlobalSecurityFlatteningCallback(t *testing.T) {
+	recordTest("auth-global-security-flattening-callback")
+
+	s := sdk.New(sdk.WithSecuritySource(func(ctx context.Context) (shared.Security, error) {
+		return shared.Security{
+			APIKeyAuth: "Bearer testToken",
+		}, nil
+	}))
 
 	res, err := s.Auth.APIKeyAuthGlobal(context.Background())
 	require.NoError(t, err)

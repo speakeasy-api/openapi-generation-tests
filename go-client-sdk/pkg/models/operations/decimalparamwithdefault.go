@@ -5,12 +5,12 @@ package operations
 import (
 	"github.com/ericlagergren/decimal"
 	"net/http"
-	"openapi/v2/pkg/utils"
+	"openapi/v3/pkg/utils"
 )
 
 type DecimalParamWithDefaultRequest struct {
 	// A decimal parameter with a default value
-	DecimalInput *decimal.Big `default:"903275809834567386763" decimal:"number" queryParam:"style=form,explode=true,name=decimalInput"`
+	DecimalInput *decimal.Big `default:"903275809834567300000" decimal:"number" queryParam:"style=form,explode=true,name=decimalInput"`
 }
 
 func (d DecimalParamWithDefaultRequest) MarshalJSON() ([]byte, error) {

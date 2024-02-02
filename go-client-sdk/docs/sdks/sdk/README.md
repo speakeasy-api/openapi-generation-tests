@@ -10,8 +10,62 @@ Speakeasy Docs
 <https://speakeasyapi.dev/docs/home>
 ### Available Operations
 
+* [ConflictingEnum](#conflictingenum) - Test potential namespace conflicts with java.lang.Object
 * [PutAnythingIgnoredGeneration](#putanythingignoredgeneration)
 * [ResponseBodyJSONGet](#responsebodyjsonget)
+
+## ConflictingEnum
+
+Test potential namespace conflicts with java.lang.Object
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"openapi/v3/pkg/models/shared"
+	openapi "openapi/v3"
+	"context"
+	"log"
+	"net/http"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.ConflictingEnum(ctx, &shared.ConflictingEnum{})
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.StatusCode == http.StatusOK {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `ctx`                                                                | [context.Context](https://pkg.go.dev/context#Context)                | :heavy_check_mark:                                                   | The context to use for the request.                                  |
+| `request`                                                            | [shared.ConflictingEnum](../../pkg/models/shared/conflictingenum.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
+
+
+### Response
+
+**[*operations.ConflictingEnumResponse](../../pkg/models/operations/conflictingenumresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## PutAnythingIgnoredGeneration
 
@@ -21,10 +75,10 @@ Speakeasy Docs
 package main
 
 import(
+	"openapi/v3/pkg/models/shared"
+	openapi "openapi/v3"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -61,7 +115,7 @@ func main() {
 **[*operations.PutAnythingIgnoredGenerationResponse](../../pkg/models/operations/putanythingignoredgenerationresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ResponseBodyJSONGet
 
@@ -71,10 +125,10 @@ func main() {
 package main
 
 import(
+	"openapi/v3/pkg/models/shared"
+	openapi "openapi/v3"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -110,4 +164,4 @@ func main() {
 **[*operations.ResponseBodyJSONGetResponse](../../pkg/models/operations/responsebodyjsongetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
