@@ -3,6 +3,5 @@
  */
 
 export * from "./error";
-export * from "./errortype";
 export * from "./sdkerror";
 export * from "./statusgetxspeakeasyerrors";

@@ -12,7 +12,7 @@ module OpenApiSDK
   class SDK
     extend T::Sig
 
-    attr_accessor :generation, :errors, :unions, :flattening, :globals, :parameters, :nest_first, :nested, :nested_first, :nested_second, :auth, :request_bodies, :response_bodies, :servers, :telemetry, :auth_new, :documentation, :resource, :first, :second, :pagination, :retries
+    attr_accessor :generation, :errors, :unions, :flattening, :globals, :parameters, :nest_first, :nested, :nested_first, :nested_second, :auth, :request_bodies, :response_bodies, :servers, :telemetry, :auth_new, :resource, :documentation, :first, :second, :pagination, :retries
 
     attr_accessor :security, :language, :sdk_version, :gen_version
 
@@ -22,8 +22,8 @@ module OpenApiSDK
              global_query_param: String,
              hostname: T.nilable(String),
              port: T.nilable(String),
-             protocol: T.nilable(String),
              something: T.nilable(ServerSomething),
+             protocol: T.nilable(String),
              server_idx: Integer,
              server_url: String,
              url_params: T::Hash[Symbol, String],
@@ -34,8 +34,8 @@ module OpenApiSDK
                    global_query_param: nil,
                    hostname: nil,
                    port: nil,
-                   protocol: nil,
                    something: nil,
+                   protocol: nil,
                    server_idx: nil,
                    server_url: nil,
                    url_params: nil,
@@ -47,8 +47,8 @@ module OpenApiSDK
       # @param [String] global_query_param: Configures the global_query_param parameter for all supported operations
       # @param [T.nilable(String)] hostname: Allows setting the hostname variable for url substitution
       # @param [T.nilable(String)] port: Allows setting the port variable for url substitution
-      # @param [T.nilable(String)] protocol: Allows setting the protocol variable for url substitution
       # @param [T.nilable(ServerSomething)] something: Allows setting the something variable for url substitution
+      # @param [T.nilable(String)] protocol: Allows setting the protocol variable for url substitution
       # @param [Integer] server_idx The index of the server to use for all operations
       # @param [String] server_url The server URL to use for all operations
       # @param [Hash<Symbol, String>] url_params Parameters to optionally template the server URL with
@@ -136,12 +136,46 @@ module OpenApiSDK
       @servers = Servers.new(@sdk_configuration)
       @telemetry = Telemetry.new(@sdk_configuration)
       @auth_new = AuthNew.new(@sdk_configuration)
-      @documentation = Documentation.new(@sdk_configuration)
       @resource = Resource.new(@sdk_configuration)
+      @documentation = Documentation.new(@sdk_configuration)
       @first = First.new(@sdk_configuration)
       @second = Second.new(@sdk_configuration)
       @pagination = Pagination.new(@sdk_configuration)
       @retries = Retries.new(@sdk_configuration)
+    end
+
+    
+    sig { params(request: T.nilable(Shared::ConflictingEnum)).returns(Utils::FieldAugmented) }
+    def conflicting_enum(request)
+      # conflicting_enum - Test potential namespace conflicts with java.lang.Object
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/conflictingEnum/"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = '*/*'
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::ConflictingEnumResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      
+      res
     end
 
     
@@ -185,7 +219,7 @@ module OpenApiSDK
     end
 
     
-    sig { returns(Utils::FieldAugmented) }
+    sig { returns(::OpenApiSDK::Utils::FieldAugmented) }
     def response_body_json_get
 
       url, params = @sdk_configuration.get_server_details

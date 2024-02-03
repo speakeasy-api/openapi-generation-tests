@@ -22,18 +22,19 @@ Endpoints for testing the pagination extension
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
+
 req = Operations::PaginationCursorBodyRequestBody.new(
-  request=Operations::PaginationCursorBodyRequestBody.new(
-    cursor=868337,
-  ),
+  cursor=868337,
 )
     
 res = s.pagination.pagination_cursor_body(req)
@@ -65,21 +66,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::PaginationCursorParamsRequest.new(
-  query_params=Operations::PaginationCursorParamsRequest.new(
-    cursor=24812,
-  ),
-)
     
-res = s.pagination.pagination_cursor_params(req)
+res = s.pagination.pagination_cursor_params(cursor=24812)
 
 if ! res.res.nil?
   # handle response
@@ -108,21 +106,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Shared::LimitOffsetConfig.new(
-  request=Shared::LimitOffsetConfig.new(
-    limit=189971,
-    offset=995974,
-    page=329413,
-  ),
-)
+
+req = Shared::LimitOffsetConfig.new()
     
 res = s.pagination.pagination_limit_offset_offset_body(req)
 
@@ -153,22 +148,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::PaginationLimitOffsetOffsetParamsRequest.new(
-  query_params=Operations::PaginationLimitOffsetOffsetParamsRequest.new(
-    limit=661976,
-    offset=600173,
-  ),
-)
     
-res = s.pagination.pagination_limit_offset_offset_params(req)
+res = s.pagination.pagination_limit_offset_offset_params(limit=661976, offset=600173)
 
 if ! res.res.nil?
   # handle response
@@ -198,21 +189,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Shared::LimitOffsetConfig.new(
-  request=Shared::LimitOffsetConfig.new(
-    limit=479052,
-    offset=716379,
-    page=911806,
-  ),
-)
+
+req = Shared::LimitOffsetConfig.new()
     
 res = s.pagination.pagination_limit_offset_page_body(req)
 
@@ -243,21 +231,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
   security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::PaginationLimitOffsetPageParamsRequest.new(
-  query_params=Operations::PaginationLimitOffsetPageParamsRequest.new(
-    page=1177,
-  ),
-)
     
-res = s.pagination.pagination_limit_offset_page_params(req)
+res = s.pagination.pagination_limit_offset_page_params(page=1177)
 
 if ! res.res.nil?
   # handle response

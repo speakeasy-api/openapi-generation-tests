@@ -9,17 +9,17 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class OneOfGenerationStressTest < OpenApiSDK::Utils::FieldAugmented
+    class OneOfGenerationStressTest < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :any, Object, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('any') } }
+      field :any, Object, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('any') } }
 
-      field :nullable_any, Object, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('nullableAny') } }
+      field :nullable_any, Object, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('nullableAny') } }
 
-      field :one_of_from_array_of_types, Object, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('oneOfFromArrayOfTypes') } }
+      field :one_of_from_array_of_types, Object, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('oneOfFromArrayOfTypes') } }
 
-      field :one_of_same_type, Object, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('oneOfSameType') } }
+      field :one_of_same_type, Object, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('oneOfSameType') } }
 
 
       sig { params(any: Object, nullable_any: Object, one_of_from_array_of_types: Object, one_of_same_type: Object).void }
