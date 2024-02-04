@@ -21,9 +21,9 @@ public class ArrObjValueCamelCase {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("required")
-    public Object required;
+    public java.lang.Object required;
 
-    public ArrObjValueCamelCase withRequired(Object required) {
+    public ArrObjValueCamelCase withRequired(java.lang.Object required) {
         this.required = required;
         return this;
     }

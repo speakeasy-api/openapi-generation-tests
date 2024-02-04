@@ -60,10 +60,9 @@ public class Errors {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.ConnectionErrorGetResponse res = new org.openapis.openapi.models.operations.ConnectionErrorGetResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.ConnectionErrorGetResponse res = new org.openapis.openapi.models.operations.ConnectionErrorGetResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
         }
@@ -89,10 +88,9 @@ public class Errors {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.StatusGetErrorResponse res = new org.openapis.openapi.models.operations.StatusGetErrorResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.StatusGetErrorResponse res = new org.openapis.openapi.models.operations.StatusGetErrorResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200 || httpRes.statusCode() == 300 || httpRes.statusCode() == 400 || httpRes.statusCode() == 500) {
         }
@@ -126,12 +124,11 @@ public class Errors {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsResponse res = new org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsResponse res = new org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsResponse(contentType, httpRes.statusCode(), httpRes) {{
             error = null;
             object = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200 || httpRes.statusCode() == 300 || httpRes.statusCode() == 400) {
         }

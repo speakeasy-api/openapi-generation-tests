@@ -14,7 +14,7 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 - [ ] ♻️ Refine your SDK quickly by iterating locally with the [Speakeasy CLI](https://github.com/speakeasy-api/speakeasy)
 - [ ] 🎁 Publish your SDK to package managers by [configuring automatic publishing](https://www.speakeasyapi.dev/docs/productionize-sdks/publish-sdks)
 - [ ] ✨ When ready to productionize, delete this section from the README
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### Nuget
@@ -22,11 +22,52 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 ```bash
 dotnet add package openapi
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example 1
+
+```csharp
+using Openapi;
+using Openapi.Models.Shared;
+using NodaTime;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+SimpleObject req = new SimpleObject() {
+    Any = "any",
+    Bool = true,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
+    Enum = Enum.One,
+    Float32 = 1.1F,
+    Int = 1,
+    Int32 = 1,
+    Int32Enum = Int32Enum.FiftyFive,
+    IntEnum = IntEnum.Two,
+    Num = 1.1D,
+    Str = "test",
+    Bigint = 8821239038968084,
+    BigintStr = 9223372036854775808,
+    BoolOpt = true,
+    Decimal = 3.141592653589793M,
+    DecimalStr = 3.14159265358979344719667586M,
+    StrOpt = "testOptional",
+};
+
+var res = await sdk.Generation.GlobalNameOverriddenAsync(req);
+
+// handle response
+```
+
+### Example 2
 
 ```csharp
 using Openapi;
@@ -37,10 +78,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.GlobalNameOverriddenAsync();
+var res = await sdk.Servers.SelectGlobalServerAsync();
 
 // handle response
 ```
@@ -57,19 +97,15 @@ using NodaTime;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurity() {
-    Password = "YOUR_PASSWORD",
-    Username = "YOUR_USERNAME",
-}, new UsageExamplePostRequest() {
+UsageExamplePostRequest req = new UsageExamplePostRequest() {
     BigintParameter = 168827,
     BigintStrParameter = 446729,
     BoolParameter = false,
-    DateParameter = LocalDate.FromDateTime(System.DateTime.Parse("2023-06-11")),
-    DateTimeDefaultParameter = System.DateTime.Parse("2022-07-22T13:16:48.221Z"),
-    DateTimeParameter = System.DateTime.Parse("2021-10-21T09:16:58.799Z"),
+    DateParameter = LocalDate.FromDateTime(System.DateTime.Parse("2024-06-10")),
+    DateTimeDefaultParameter = System.DateTime.Parse("2023-07-23T01:43:10.512Z"),
+    DateTimeParameter = System.DateTime.Parse("2022-10-21T15:42:48.223Z"),
     DecimalParameter = 5223.72M,
     DecimalStrParameter = 2911.37M,
     DoubleParameter = 6946.59D,
@@ -87,7 +123,7 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -105,17 +141,25 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
         },
     },
     OptEnumParameter = OptEnumParameter.Value3,
-});
+};
+
+var res = await sdk.Generation.UsageExamplePostAsync(
+    security: new UsageExamplePostSecurity() {
+    Password = "YOUR_PASSWORD",
+    Username = "YOUR_USERNAME",
+},
+    req);
 
 // handle response
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [SDK](docs/sdks/sdk/README.md)
 
+* [ConflictingEnum](docs/sdks/sdk/README.md#conflictingenum) - Test potential namespace conflicts with java.lang.Object
 * [PutAnythingIgnoredGeneration](docs/sdks/sdk/README.md#putanythingignoredgeneration)
 * [ResponseBodyJsonGet](docs/sdks/sdk/README.md#responsebodyjsonget)
 
@@ -157,6 +201,7 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [NullableOneOfTypeInObjectPost](docs/sdks/unions/README.md#nullableoneoftypeinobjectpost)
 * [NullableTypedObjectPost](docs/sdks/unions/README.md#nullabletypedobjectpost)
 * [PrimitiveTypeOneOfPost](docs/sdks/unions/README.md#primitivetypeoneofpost)
+* [StronglyTypedOneOfDiscriminatedPost](docs/sdks/unions/README.md#stronglytypedoneofdiscriminatedpost)
 * [StronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
 * [TypedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
 * [TypedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
@@ -307,6 +352,7 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [RequestBodyPutMultipartDeep](docs/sdks/requestbodies/README.md#requestbodyputmultipartdeep)
 * [RequestBodyPutMultipartDifferentFileName](docs/sdks/requestbodies/README.md#requestbodyputmultipartdifferentfilename)
 * [RequestBodyPutMultipartFile](docs/sdks/requestbodies/README.md#requestbodyputmultipartfile)
+* [RequestBodyPutMultipartOptionalRequestBody](docs/sdks/requestbodies/README.md#requestbodyputmultipartoptionalrequestbody)
 * [RequestBodyPutMultipartSimple](docs/sdks/requestbodies/README.md#requestbodyputmultipartsimple)
 * [RequestBodyPutString](docs/sdks/requestbodies/README.md#requestbodyputstring)
 * [RequestBodyPutStringWithParams](docs/sdks/requestbodies/README.md#requestbodyputstringwithparams)
@@ -320,6 +366,7 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 
 ### [ResponseBodies](docs/sdks/responsebodies/README.md)
 
+* [ResponseBodyAdditionalPropertiesAnyPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesanypost)
 * [ResponseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
 * [ResponseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
 * [ResponseBodyAdditionalPropertiesObjectPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesobjectpost)
@@ -360,17 +407,18 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [Oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [OpenIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
-### [Documentation](docs/sdks/documentation/README.md)
-
-* [GetDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
-
 ### [Resource](docs/sdks/resource/README.md)
 
 * [CreateFile](docs/sdks/resource/README.md#createfile)
 * [CreateResource](docs/sdks/resource/README.md#createresource)
 * [DeleteResource](docs/sdks/resource/README.md#deleteresource)
+* [GetArrayDataSource](docs/sdks/resource/README.md#getarraydatasource)
 * [GetResource](docs/sdks/resource/README.md#getresource)
 * [UpdateResource](docs/sdks/resource/README.md#updateresource)
+
+### [Documentation](docs/sdks/documentation/README.md)
+
+* [GetDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
 
 ### [First](docs/sdks/first/README.md)
 
@@ -392,13 +440,11 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 ### [Retries](docs/sdks/retries/README.md)
 
 * [RetriesGet](docs/sdks/retries/README.md#retriesget)
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
-<!-- Start Dev Containers -->
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
 
-<!-- End Dev Containers -->
-
-<!-- Start Global Parameters -->
 ## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
@@ -412,8 +458,8 @@ The following global parameters are available. The required parameters must be s
 
 | Name | Type | Required | Description |
 | ---- | ---- |:--------:| ----------- |
-| globalPathParam | long | ✔️ | The globalPathParam parameter. |
-| globalQueryParam | string | ✔️ | The globalQueryParam parameter. |
+| globalPathParam | long | ✔️ | The GlobalPathParam parameter. |
+| globalQueryParam | string | ✔️ | The GlobalQueryParam parameter. |
 
 
 ### Example
@@ -428,14 +474,204 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Globals.GlobalPathParameterGetAsync(719830);
+var res = await sdk.Globals.GlobalPathParameterGetAsync(globalPathParam: 719830);
 
 // handle response
 ```
-<!-- End Global Parameters -->
+<!-- End Global Parameters [global-parameters] -->
+
+<!-- Start Pagination [pagination] -->
+## Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
+returned response object will have a `Next` method that can be called to pull down the next group of results. If the
+return value of `Next` is `null`, then there are no more pages to be fetched.
+
+Here's an example of one such pagination call:
+```csharp
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+PaginationCursorBodyRequestBody req = new PaginationCursorBodyRequestBody() {
+    Cursor = 868337,
+};
+
+var res = await sdk.Pagination.PaginationCursorBodyAsync(req);
+
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res != null)
+    {
+        break;
+    }
+}
+```
+<!-- End Pagination [pagination] -->
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+## Server Selection
+
+### Select Server by Index
+
+You can override the default server globally by passing a server index to the `serverIndex: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `http://localhost:35123` | None |
+| 1 | `http://broken` | None |
+| 2 | `http://{hostname}:{port}` | `hostname` (default is `localhost`), `port` (default is `35123`) |
+| 3 | `http://localhost:35123/anything/{something}` | `something` (default is `something`) |
+| 4 | `{protocol}://{hostname}:{port}` | `hostname` (default is `localhost`), `port` (default is `35123`), `protocol` (default is `http`) |
+
+
+
+#### Variables
+
+Some of the server options above contain variables. If you want to set the values of those variables, the following options are provided for doing so:
+ * `hostname: string`
+ * `port: string`
+ * `something: ServerSomething`
+ * `protocol: string`
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `serverUrl: str` optional parameter when initializing the SDK client instance. For example:
+
+
+### Override Server URL Per-Operation
+
+The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
+```csharp
+using Openapi;
+using Openapi.Models.Shared;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+var res = await sdk.Errors.ConnectionErrorGetAsync(serverUrl: "http://somebrokenapi.broken");
+
+// handle response
+```
+<!-- End Server Selection [server] -->
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security schemes globally:
+
+| Name            | Type            | Scheme          |
+| --------------- | --------------- | --------------- |
+| `apiKeyAuth`    | apiKey          | API key         |
+| `apiKeyAuthNew` | apiKey          | API key         |
+| `oauth2`        | oauth2          | OAuth2 token    |
+
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
+```csharp
+using Openapi;
+using Openapi.Models.Shared;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+ConflictingEnum req = new ConflictingEnum() {};
+
+var res = await sdk.ConflictingEnumAsync(req);
+
+// handle response
+```
+
+### Per-Operation Security Schemes
+
+Some operations in this SDK require the security scheme to be specified at the request level. For example:
+```csharp
+using Openapi;
+using Openapi.Models.Operations;
+using Openapi.Models.Shared;
+using NodaTime;
+
+var sdk = new SDK(
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+UsageExamplePostRequest req = new UsageExamplePostRequest() {
+    BigintParameter = 168827,
+    BigintStrParameter = 446729,
+    BoolParameter = false,
+    DateParameter = LocalDate.FromDateTime(System.DateTime.Parse("2024-06-10")),
+    DateTimeDefaultParameter = System.DateTime.Parse("2023-07-23T01:43:10.512Z"),
+    DateTimeParameter = System.DateTime.Parse("2022-10-21T15:42:48.223Z"),
+    DecimalParameter = 5223.72M,
+    DecimalStrParameter = 2911.37M,
+    DoubleParameter = 6946.59D,
+    EnumParameter = EnumParameter.Value1,
+    FalseyNumberParameter = 0D,
+    Float32Parameter = 1029.75F,
+    FloatParameter = 5669.99D,
+    Int64Parameter = 195232,
+    IntParameter = 569663,
+    StrParameter = "example 1",
+    RequestBody = new UsageExamplePostRequestBody() {
+        FakerFormattedStrings = new FakerFormattedStrings() {},
+        FakerStrings = new FakerStrings() {},
+        SimpleObject = new SimpleObject() {
+            Any = "any",
+            Bool = true,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
+            Enum = Enum.One,
+            Float32 = 1.1F,
+            Int = 1,
+            Int32 = 1,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
+            Num = 1.1D,
+            Str = "test",
+            Bigint = 8821239038968084,
+            BigintStr = 9223372036854775808,
+            BoolOpt = true,
+            Decimal = 3.141592653589793M,
+            DecimalStr = 3.14159265358979344719667586M,
+            StrOpt = "testOptional",
+        },
+    },
+    OptEnumParameter = OptEnumParameter.Value3,
+};
+
+var res = await sdk.Generation.UsageExamplePostAsync(
+    security: new UsageExamplePostSecurity() {
+    Password = "YOUR_PASSWORD",
+    Username = "YOUR_USERNAME",
+},
+    req);
+
+// handle response
+```
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

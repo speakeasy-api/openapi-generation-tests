@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class SchemeBasicAuth < OpenApiSDK::Utils::FieldAugmented
+    class SchemeBasicAuth < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 

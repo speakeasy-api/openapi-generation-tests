@@ -47,7 +47,7 @@ module OpenApiSDK
       res
     end
 
-    sig { returns(Utils::FieldAugmented) }
+    sig { returns(::OpenApiSDK::Utils::FieldAugmented) }
     def api_key_auth_global
 
       url, params = @sdk_configuration.get_server_details
@@ -148,7 +148,7 @@ module OpenApiSDK
       res
     end
 
-    sig { returns(Utils::FieldAugmented) }
+    sig { returns(::OpenApiSDK::Utils::FieldAugmented) }
     def global_bearer_auth
 
       url, params = @sdk_configuration.get_server_details
@@ -178,7 +178,7 @@ module OpenApiSDK
       res
     end
 
-    sig { returns(Utils::FieldAugmented) }
+    sig { returns(::OpenApiSDK::Utils::FieldAugmented) }
     def no_auth
 
       url, params = @sdk_configuration.get_server_details
@@ -190,7 +190,6 @@ module OpenApiSDK
 
       r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -198,8 +197,7 @@ module OpenApiSDK
       res = Operations::NoAuthResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
-      if r.status == 200
-      end
+      
       res
     end
 

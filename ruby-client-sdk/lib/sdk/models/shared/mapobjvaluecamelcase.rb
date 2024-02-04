@@ -9,13 +9,13 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class MapObjValueCamelCase < OpenApiSDK::Utils::FieldAugmented
+    class MapObjValueCamelCase < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :json, T.nilable(T::Hash[Symbol, Shared::SimpleObjectCamelCase]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
+      field :json, T.nilable(T::Hash[Symbol, Shared::SimpleObjectCamelCase]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('json') } }
 
-      field :required, T.nilable(Object), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('required') } }
+      field :required, T.nilable(Object), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('required') } }
 
 
       sig { params(json: T.nilable(T::Hash[Symbol, Shared::SimpleObjectCamelCase]), required: T.nilable(Object)).void }

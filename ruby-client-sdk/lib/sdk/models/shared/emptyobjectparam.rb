@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class EmptyObjectParam < OpenApiSDK::Utils::FieldAugmented
+    class EmptyObjectParam < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 

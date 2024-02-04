@@ -11,11 +11,15 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class UpdateResourceRequest
 {
+	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=augment')]
+    public string $augment;
+    
 	#[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=resourceId')]
     public string $resourceId;
     
 	public function __construct()
 	{
+		$this->augment = "";
 		$this->resourceId = "";
 	}
 }
