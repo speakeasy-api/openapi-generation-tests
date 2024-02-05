@@ -979,6 +979,12 @@ components:
         constStr:
           type: string
           const: "const"
+        constStrDQuotes:
+          type: string
+          const: 'const with "double quotes"'
+        constStrSQuotes:
+          type: string
+          const: "const with 'single quotes'"
         constStrNull:
           type: string
           const: null
@@ -1033,6 +1039,12 @@ components:
         defaultStr:
           type: string
           default: "default"
+        defaultStrDQuotes:
+          type: string
+          default: 'default with "double quotes"'
+        defaultStrSQuotes:
+          type: string
+          default: "default with 'single quotes'"
         defaultStrNullable:
           type: string
           default: null
@@ -1091,6 +1103,8 @@ components:
         - normalField
         - constStr
         - constStrNull
+        - constStrDQuotes
+        - constStrSQuotes
         - constInt
         - constNum
         - constBool
@@ -1104,6 +1118,8 @@ components:
         - constDecimalStr
         - defaultStr
         - defaultStrNullable
+        - defaultStrDQuotes
+        - defaultStrSQuotes
         - defaultInt
         - defaultNum
         - defaultBool
@@ -1121,6 +1137,10 @@ components:
         normalField:
           type: string
         constStr:
+          type: string
+        constStrDQuotes:
+          type: string
+        constStrSQuotes:
           type: string
         constStrNull:
           type: string
@@ -1162,6 +1182,10 @@ components:
           type: string
           format: decimal
         defaultStr:
+          type: string
+        defaultStrDQuotes:
+          type: string
+        defaultStrSQuotes:
           type: string
         defaultStrNullable:
           type: string
@@ -1207,6 +1231,8 @@ components:
       required:
         - normalField
         - constStr
+        - constStrDQuotes
+        - constStrSQuotes
         - constStrNull
         - constInt
         - constNum
@@ -1220,6 +1246,8 @@ components:
         - constDecimal
         - constDecimalStr
         - defaultStr
+        - defaultStrDQuotes
+        - defaultStrSQuotes
         - defaultStrNullable
         - defaultInt
         - defaultNum
