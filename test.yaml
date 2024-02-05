@@ -6261,6 +6261,20 @@ paths:
             text/event-stream:
               schema:
                 $ref: "components.yaml#/components/schemas/richStream"
+  /eventstreams/differentdataschemas:
+    post:
+      tags:
+        - eventstreams
+      operationId: differentDataSchemas
+      servers:
+        - url: http://localhost:35456
+      responses:
+        "200":
+          description: Ok
+          content:
+            text/event-stream:
+              schema:
+                $ref: "components.yaml#/components/schemas/differentDataSchemas"
   /eventstreams/chat:
     post:
       tags:
