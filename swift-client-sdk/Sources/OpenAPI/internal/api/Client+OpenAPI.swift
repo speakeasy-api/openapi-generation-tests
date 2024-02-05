@@ -5,6 +5,20 @@ import Foundation
 extension Client: OpenAPI {
     // MARK: - Root operations 
     
+    /// Test potential namespace conflicts with java.lang.Object
+    /// 
+    /// - Parameter request: A ``Shared/ConflictingEnum`` object describing the input to the API operation
+    /// - Returns: A ``Operations/ConflictingEnumResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``OpenAPIError``
+    public func conflictingEnum(request: Shared.ConflictingEnum) async throws -> Response<Operations.ConflictingEnumResponse> {
+        return try await makeRequest(
+            configureRequest: { configuration in
+                try configureConflictingEnumRequest(with: configuration, request: request)
+            },
+            handleResponse: handleConflictingEnumResponse
+        )
+    }
+    
     public func putAnythingIgnoredGeneration(request: String) async throws -> Response<Operations.PutAnythingIgnoredGenerationResponse> {
         return try await makeRequest(
             configureRequest: { configuration in
@@ -89,12 +103,12 @@ extension Client: OpenAPI {
         return _AuthNewAPI(client: self)
     }
 
-    public var documentation: DocumentationAPI {
-        return _DocumentationAPI(client: self)
-    }
-
     public var resource: ResourceAPI {
         return _ResourceAPI(client: self)
+    }
+
+    public var documentation: DocumentationAPI {
+        return _DocumentationAPI(client: self)
     }
 
     public var first: FirstAPI {
@@ -116,6 +130,14 @@ extension Client: OpenAPI {
 
 // MARK: - Request Configuration
 
+private func configureConflictingEnumRequest(with configuration: URLRequestConfiguration, request: Shared.ConflictingEnum) throws {
+    configuration.path = "/anything/conflictingEnum/"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
 private func configurePutAnythingIgnoredGenerationRequest(with configuration: URLRequestConfiguration, request: String) throws {
     configuration.path = "/anything/ignoredGeneration"
     configuration.method = .put
@@ -134,6 +156,16 @@ private func configureResponseBodyJsonGetRequest(with configuration: URLRequestC
 }
 
 // MARK: - Response Handlers
+
+private func handleConflictingEnumResponse(response: Client.APIResponse) throws -> Operations.ConflictingEnumResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        return .empty
+    }
+
+    return .empty
+}
 
 private func handlePutAnythingIgnoredGenerationResponse(response: Client.APIResponse) throws -> Operations.PutAnythingIgnoredGenerationResponse {
     let httpResponse = response.httpResponse

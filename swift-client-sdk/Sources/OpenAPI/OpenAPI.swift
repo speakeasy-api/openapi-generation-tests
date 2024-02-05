@@ -12,6 +12,7 @@ import Foundation
 ///
 /// These methods allow you to make requests to the API.
 ///
+/// - ``conflictingEnum(request:)``
 /// - ``putAnythingIgnoredGeneration(request:)``
 /// - ``responseBodyJsonGet()``
 ///
@@ -35,14 +36,20 @@ import Foundation
 /// - ``servers``
 /// - ``telemetry``
 /// - ``authNew``
-/// - ``documentation``
 /// - ``resource``
+/// - ``documentation``
 /// - ``first``
 /// - ``second``
 /// - ``pagination``
 /// - ``retries``
 ///
 public protocol OpenAPI {
+    /// Test potential namespace conflicts with java.lang.Object
+    /// 
+    /// - Parameter request: A ``Shared/ConflictingEnum`` object describing the input to the API operation
+    /// - Returns: A ``Operations/ConflictingEnumResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``OpenAPIError``
+    func conflictingEnum(request: Shared.ConflictingEnum) async throws -> Response<Operations.ConflictingEnumResponse>
     func putAnythingIgnoredGeneration(request: String) async throws -> Response<Operations.PutAnythingIgnoredGenerationResponse>
     func responseBodyJsonGet() async throws -> Response<Operations.ResponseBodyJsonGetResponse>
 
@@ -75,9 +82,9 @@ public protocol OpenAPI {
     var telemetry: TelemetryAPI { get }
     /// Endpoints for testing authentication.
     var authNew: AuthNewAPI { get }
+    var resource: ResourceAPI { get }
     /// Testing for documentation extensions and tooling.
     var documentation: DocumentationAPI { get }
-    var resource: ResourceAPI { get }
     var first: FirstAPI { get }
     var second: SecondAPI { get }
     /// Endpoints for testing the pagination extension
@@ -106,7 +113,7 @@ public protocol OpenAPI {
 /// - ``deprecatedOperationWithCommentsGet(request:)``
 /// - ``emptyObjectGet(request:)``
 /// - ``emptyResponseObjectWithCommentGet()``
-/// - ``getGlobalNameOverride()``
+/// - ``getGlobalNameOverride(request:)``
 /// - ``ignoredGenerationGet()``
 /// - ``ignoresPost(request:)``
 /// - ``nameOverrideGet(request:)``
@@ -151,7 +158,7 @@ public protocol GenerationAPI {
 
     func emptyResponseObjectWithCommentGet() async throws -> Response<Operations.EmptyResponseObjectWithCommentGetResponse>
 
-    func getGlobalNameOverride() async throws -> Response<Operations.GetGlobalNameOverrideResponse>
+    func getGlobalNameOverride(request: Shared.SimpleObject) async throws -> Response<Operations.GetGlobalNameOverrideResponse>
 
     func ignoredGenerationGet() async throws -> Response<Operations.IgnoredGenerationGetResponse>
 
@@ -281,6 +288,7 @@ public protocol ErrorsAPI {
 /// - ``nullableOneOfTypeInObjectPost(request:)``
 /// - ``nullableTypedObjectPost(request:)``
 /// - ``primitiveTypeOneOfPost(request:)``
+/// - ``stronglyTypedOneOfDiscriminatedPost(request:)``
 /// - ``stronglyTypedOneOfPost(request:)``
 /// - ``typedObjectNullableOneOfPost(request:)``
 /// - ``typedObjectOneOfPost(request:)``
@@ -304,6 +312,8 @@ public protocol UnionsAPI {
     func nullableTypedObjectPost(request: Shared.TypedObject1) async throws -> Response<Operations.NullableTypedObjectPostResponse>
 
     func primitiveTypeOneOfPost(request: Operations.PrimitiveTypeOneOfPostRequestBody) async throws -> Response<Operations.PrimitiveTypeOneOfPostResponse>
+
+    func stronglyTypedOneOfDiscriminatedPost(request: Shared.StronglyTypedOneOfDiscriminatedObject) async throws -> Response<Operations.StronglyTypedOneOfDiscriminatedPostResponse>
 
     func stronglyTypedOneOfPost(request: Shared.StronglyTypedOneOfObject) async throws -> Response<Operations.StronglyTypedOneOfPostResponse>
 
@@ -1413,6 +1423,7 @@ public enum RequestBodiesServers {
 /// - ``requestBodyPutMultipartDeep(request:)``
 /// - ``requestBodyPutMultipartDifferentFileName(request:)``
 /// - ``requestBodyPutMultipartFile(request:)``
+/// - ``requestBodyPutMultipartOptionalRequestBody(request:)``
 /// - ``requestBodyPutMultipartSimple(request:)``
 /// - ``requestBodyPutString(request:)``
 /// - ``requestBodyPutStringWithParams(request:)``
@@ -1567,6 +1578,8 @@ public protocol RequestBodiesAPI {
 
     func requestBodyPutMultipartFile(request: Operations.RequestBodyPutMultipartFileRequestBody) async throws -> Response<Operations.RequestBodyPutMultipartFileResponse>
 
+    func requestBodyPutMultipartOptionalRequestBody(request: Operations.RequestBodyPutMultipartOptionalRequestBodyRequestBody) async throws -> Response<Operations.RequestBodyPutMultipartOptionalRequestBodyResponse>
+
     func requestBodyPutMultipartSimple(request: Shared.SimpleObject) async throws -> Response<Operations.RequestBodyPutMultipartSimpleResponse>
 
     func requestBodyPutString(request: String) async throws -> Response<Operations.RequestBodyPutStringResponse>
@@ -1668,6 +1681,7 @@ public enum ResponseBodiesServers {
 ///
 /// ### API calls
 ///
+/// - ``responseBodyAdditionalPropertiesAnyPost(request:)``
 /// - ``responseBodyAdditionalPropertiesComplexNumbersPost(request:)``
 /// - ``responseBodyAdditionalPropertiesDatePost(request:)``
 /// - ``responseBodyAdditionalPropertiesObjectPost(request:)``
@@ -1681,6 +1695,8 @@ public enum ResponseBodiesServers {
 /// - ``responseBodyZeroValueComplexTypePtrsPost(request:)``
 ///
 public protocol ResponseBodiesAPI {
+    func responseBodyAdditionalPropertiesAnyPost(request: [String: AnyValue]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesAnyPostResponse>
+
     func responseBodyAdditionalPropertiesComplexNumbersPost(request: [String: String]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse>
 
     func responseBodyAdditionalPropertiesDatePost(request: [String: Date]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesDatePostResponse>
@@ -2336,6 +2352,32 @@ public protocol AuthNewAPI {
     func openIdConnectAuthNew(request: Shared.AuthServiceRequestBody, security: Operations.OpenIdConnectAuthNewSecurity, server: AuthNewServers.OpenIdConnectAuthNew?) async throws -> Response<Operations.OpenIdConnectAuthNewResponse>
 }
 
+// MARK: - ResourceAPI
+/// ## Topics
+///
+/// ### API calls
+///
+/// - ``createFile(request:)``
+/// - ``createResource(request:)``
+/// - ``deleteResource(request:)``
+/// - ``getArrayDataSource(request:)``
+/// - ``getResource(request:)``
+/// - ``updateResource(request:)``
+///
+public protocol ResourceAPI {
+    func createFile(request: Operations.CreateFileRequestBody) async throws -> Response<Operations.CreateFileResponse>
+
+    func createResource(request: Shared.ExampleResource) async throws -> Response<Operations.CreateResourceResponse>
+
+    func deleteResource(request: Operations.DeleteResourceRequest) async throws -> Response<Operations.DeleteResourceResponse>
+
+    func getArrayDataSource(request: Operations.GetArrayDataSourceRequest) async throws -> Response<Operations.GetArrayDataSourceResponse>
+
+    func getResource(request: Operations.GetResourceRequest) async throws -> Response<Operations.GetResourceResponse>
+
+    func updateResource(request: Operations.UpdateResourceRequest) async throws -> Response<Operations.UpdateResourceResponse>
+}
+
 // MARK: - DocumentationAPI
 
 /// Testing for documentation extensions and tooling.
@@ -2353,29 +2395,6 @@ public protocol DocumentationAPI {
     /// - Returns: A ``Operations/GetDocumentationPerLanguageResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``OpenAPIError``
     func getDocumentationPerLanguage(request: Operations.GetDocumentationPerLanguageRequest) async throws -> Response<Operations.GetDocumentationPerLanguageResponse>
-}
-
-// MARK: - ResourceAPI
-/// ## Topics
-///
-/// ### API calls
-///
-/// - ``createFile(request:)``
-/// - ``createResource(request:)``
-/// - ``deleteResource(request:)``
-/// - ``getResource(request:)``
-/// - ``updateResource(request:)``
-///
-public protocol ResourceAPI {
-    func createFile(request: Operations.CreateFileRequestBody) async throws -> Response<Operations.CreateFileResponse>
-
-    func createResource(request: Shared.ExampleResource) async throws -> Response<Operations.CreateResourceResponse>
-
-    func deleteResource(request: Operations.DeleteResourceRequest) async throws -> Response<Operations.DeleteResourceResponse>
-
-    func getResource(request: Operations.GetResourceRequest) async throws -> Response<Operations.GetResourceResponse>
-
-    func updateResource(request: Operations.UpdateResourceRequest) async throws -> Response<Operations.UpdateResourceResponse>
 }
 
 // MARK: - FirstAPI

@@ -9,15 +9,15 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class LimitOffsetConfig < OpenApiSDK::Utils::FieldAugmented
+    class LimitOffsetConfig < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :limit, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('limit') } }
+      field :limit, T.nilable(Integer), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('limit') } }
 
-      field :offset, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('offset') } }
+      field :offset, T.nilable(Integer), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('offset') } }
 
-      field :page, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('page') } }
+      field :page, T.nilable(Integer), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('page') } }
 
 
       sig { params(limit: T.nilable(Integer), offset: T.nilable(Integer), page: T.nilable(Integer)).void }

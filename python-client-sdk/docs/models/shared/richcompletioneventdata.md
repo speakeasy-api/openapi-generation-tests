@@ -1,0 +1,10 @@
+# RichCompletionEventData
+
+
+## Fields
+
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `completion`                                                     | *str*                                                            | :heavy_check_mark:                                               | N/A                                                              |
+| `model`                                                          | *Optional[str]*                                                  | :heavy_minus_sign:                                               | N/A                                                              |
+| `stop_reason`                                                    | [Optional[shared.StopReason]](../../models/shared/stopreason.md) | :heavy_check_mark:                                               | N/A                                                              |
