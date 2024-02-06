@@ -10,6 +10,15 @@ module OpenApiSDK
       @sdk = OpenApiSDK::SDK.new
     end
 
+    def test_no_auth
+      record_test('auth-no-auth')
+
+      res = @sdk.auth.no_auth
+
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+
+    end
 
     def test_basic_auth
       record_test('auth-basic-auth')
@@ -165,7 +174,6 @@ module OpenApiSDK
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
     end
-
 
     def test_multiple_mixed_scheme_auth
       record_test('auth-multiple-mixed-scheme-auth')

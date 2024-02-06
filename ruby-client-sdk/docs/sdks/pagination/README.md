@@ -22,18 +22,19 @@ Endpoints for testing the pagination extension
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  security=::OpenApiSDK::Shared::Security.new(
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::PaginationCursorBodyRequestBody.new(
-  request=Operations::PaginationCursorBodyRequestBody.new(
-    cursor=868337,
-  ),
+
+req = ::OpenApiSDK::Operations::PaginationCursorBodyRequestBody.new(
+  cursor=868337,
 )
     
 res = s.pagination.pagination_cursor_body(req)
@@ -46,15 +47,15 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
-| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                 | [Operations::PaginationCursorBodyRequestBody](../../models/operations/paginationcursorbodyrequestbody.md) | :heavy_check_mark:                                                                                        | The request object to use for the request.                                                                |
-| `server_url`                                                                                              | *String*                                                                                                  | :heavy_minus_sign:                                                                                        | An optional server URL to use.                                                                            |
+| Parameter                                                                                                               | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                               | [::OpenApiSDK::Operations::PaginationCursorBodyRequestBody](../../models/operations/paginationcursorbodyrequestbody.md) | :heavy_check_mark:                                                                                                      | The request object to use for the request.                                                                              |
+| `server_url`                                                                                                            | *String*                                                                                                                | :heavy_minus_sign:                                                                                                      | An optional server URL to use.                                                                                          |
 
 
 ### Response
 
-**[T.nilable(Operations::PaginationCursorBodyResponse)](../../models/operations/paginationcursorbodyresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::PaginationCursorBodyResponse)](../../models/operations/paginationcursorbodyresponse.md)**
 
 
 ## pagination_cursor_params
@@ -65,21 +66,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  security=::OpenApiSDK::Shared::Security.new(
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::PaginationCursorParamsRequest.new(
-  query_params=Operations::PaginationCursorParamsRequest.new(
-    cursor=24812,
-  ),
-)
     
-res = s.pagination.pagination_cursor_params(req)
+res = s.pagination.pagination_cursor_params(cursor=24812)
 
 if ! res.res.nil?
   # handle response
@@ -91,13 +89,13 @@ end
 
 | Parameter                      | Type                           | Required                       | Description                    |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `cursor`                       | *Integer*                      | :heavy_check_mark:             | N/A                            |
+| `cursor`                       | *::Integer*                    | :heavy_check_mark:             | N/A                            |
 | `server_url`                   | *String*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
 
 ### Response
 
-**[T.nilable(Operations::PaginationCursorParamsResponse)](../../models/operations/paginationcursorparamsresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::PaginationCursorParamsResponse)](../../models/operations/paginationcursorparamsresponse.md)**
 
 
 ## pagination_limit_offset_offset_body
@@ -108,21 +106,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  security=::OpenApiSDK::Shared::Security.new(
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Shared::LimitOffsetConfig.new(
-  request=Shared::LimitOffsetConfig.new(
-    limit=189971,
-    offset=995974,
-    page=329413,
-  ),
-)
+
+req = ::OpenApiSDK::Shared::LimitOffsetConfig.new()
     
 res = s.pagination.pagination_limit_offset_offset_body(req)
 
@@ -134,15 +129,15 @@ end
 
 ### Parameters
 
-| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `request`                                                             | [Shared::LimitOffsetConfig](../../models/shared/limitoffsetconfig.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
-| `server_url`                                                          | *String*                                                              | :heavy_minus_sign:                                                    | An optional server URL to use.                                        |
+| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `request`                                                                           | [::OpenApiSDK::Shared::LimitOffsetConfig](../../models/shared/limitoffsetconfig.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
+| `server_url`                                                                        | *String*                                                                            | :heavy_minus_sign:                                                                  | An optional server URL to use.                                                      |
 
 
 ### Response
 
-**[T.nilable(Operations::PaginationLimitOffsetOffsetBodyResponse)](../../models/operations/paginationlimitoffsetoffsetbodyresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::PaginationLimitOffsetOffsetBodyResponse)](../../models/operations/paginationlimitoffsetoffsetbodyresponse.md)**
 
 
 ## pagination_limit_offset_offset_params
@@ -153,22 +148,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  security=::OpenApiSDK::Shared::Security.new(
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::PaginationLimitOffsetOffsetParamsRequest.new(
-  query_params=Operations::PaginationLimitOffsetOffsetParamsRequest.new(
-    limit=661976,
-    offset=600173,
-  ),
-)
     
-res = s.pagination.pagination_limit_offset_offset_params(req)
+res = s.pagination.pagination_limit_offset_offset_params(limit=661976, offset=600173)
 
 if ! res.res.nil?
   # handle response
@@ -180,14 +171,14 @@ end
 
 | Parameter                      | Type                           | Required                       | Description                    |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `limit`                        | *Integer*                      | :heavy_minus_sign:             | N/A                            |
-| `offset`                       | *Integer*                      | :heavy_minus_sign:             | N/A                            |
+| `limit`                        | *::Integer*                    | :heavy_minus_sign:             | N/A                            |
+| `offset`                       | *::Integer*                    | :heavy_minus_sign:             | N/A                            |
 | `server_url`                   | *String*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
 
 ### Response
 
-**[T.nilable(Operations::PaginationLimitOffsetOffsetParamsResponse)](../../models/operations/paginationlimitoffsetoffsetparamsresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::PaginationLimitOffsetOffsetParamsResponse)](../../models/operations/paginationlimitoffsetoffsetparamsresponse.md)**
 
 
 ## pagination_limit_offset_page_body
@@ -198,21 +189,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  security=::OpenApiSDK::Shared::Security.new(
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Shared::LimitOffsetConfig.new(
-  request=Shared::LimitOffsetConfig.new(
-    limit=479052,
-    offset=716379,
-    page=911806,
-  ),
-)
+
+req = ::OpenApiSDK::Shared::LimitOffsetConfig.new()
     
 res = s.pagination.pagination_limit_offset_page_body(req)
 
@@ -224,15 +212,15 @@ end
 
 ### Parameters
 
-| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `request`                                                             | [Shared::LimitOffsetConfig](../../models/shared/limitoffsetconfig.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
-| `server_url`                                                          | *String*                                                              | :heavy_minus_sign:                                                    | An optional server URL to use.                                        |
+| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `request`                                                                           | [::OpenApiSDK::Shared::LimitOffsetConfig](../../models/shared/limitoffsetconfig.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
+| `server_url`                                                                        | *String*                                                                            | :heavy_minus_sign:                                                                  | An optional server URL to use.                                                      |
 
 
 ### Response
 
-**[T.nilable(Operations::PaginationLimitOffsetPageBodyResponse)](../../models/operations/paginationlimitoffsetpagebodyresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::PaginationLimitOffsetPageBodyResponse)](../../models/operations/paginationlimitoffsetpagebodyresponse.md)**
 
 
 ## pagination_limit_offset_page_params
@@ -243,21 +231,18 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  security=::OpenApiSDK::Shared::Security.new(
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::PaginationLimitOffsetPageParamsRequest.new(
-  query_params=Operations::PaginationLimitOffsetPageParamsRequest.new(
-    page=1177,
-  ),
-)
     
-res = s.pagination.pagination_limit_offset_page_params(req)
+res = s.pagination.pagination_limit_offset_page_params(page=1177)
 
 if ! res.res.nil?
   # handle response
@@ -269,11 +254,11 @@ end
 
 | Parameter                      | Type                           | Required                       | Description                    |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `page`                         | *Integer*                      | :heavy_check_mark:             | N/A                            |
+| `page`                         | *::Integer*                    | :heavy_check_mark:             | N/A                            |
 | `server_url`                   | *String*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
 
 ### Response
 
-**[T.nilable(Operations::PaginationLimitOffsetPageParamsResponse)](../../models/operations/paginationlimitoffsetpageparamsresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::PaginationLimitOffsetPageParamsResponse)](../../models/operations/paginationlimitoffsetpageparamsresponse.md)**
 

@@ -43,119 +43,116 @@ namespace Openapi
     public class AuthNew: IAuthNew
     {
         /**
-        * ApiKeyAuthGlobalNewSERVERS contains the list of server urls available to the SDK.
+        * ApiKeyAuthGlobalNewServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] ApiKeyAuthGlobalNewSERVERS = {
+        public static readonly string[] ApiKeyAuthGlobalNewServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * AuthGlobalSERVERS contains the list of server urls available to the SDK.
+        * AuthGlobalServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] AuthGlobalSERVERS = {
+        public static readonly string[] AuthGlobalServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * BasicAuthNewSERVERS contains the list of server urls available to the SDK.
+        * BasicAuthNewServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] BasicAuthNewSERVERS = {
+        public static readonly string[] BasicAuthNewServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * MultipleMixedOptionsAuthSERVERS contains the list of server urls available to the SDK.
+        * MultipleMixedOptionsAuthServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] MultipleMixedOptionsAuthSERVERS = {
+        public static readonly string[] MultipleMixedOptionsAuthServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * MultipleMixedSchemeAuthSERVERS contains the list of server urls available to the SDK.
+        * MultipleMixedSchemeAuthServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] MultipleMixedSchemeAuthSERVERS = {
+        public static readonly string[] MultipleMixedSchemeAuthServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * MultipleOptionsWithMixedSchemesAuthSERVERS contains the list of server urls available to the SDK.
+        * MultipleOptionsWithMixedSchemesAuthServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] MultipleOptionsWithMixedSchemesAuthSERVERS = {
+        public static readonly string[] MultipleOptionsWithMixedSchemesAuthServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * MultipleOptionsWithSimpleSchemesAuthSERVERS contains the list of server urls available to the SDK.
+        * MultipleOptionsWithSimpleSchemesAuthServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] MultipleOptionsWithSimpleSchemesAuthSERVERS = {
+        public static readonly string[] MultipleOptionsWithSimpleSchemesAuthServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * MultipleSimpleOptionsAuthSERVERS contains the list of server urls available to the SDK.
+        * MultipleSimpleOptionsAuthServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] MultipleSimpleOptionsAuthSERVERS = {
+        public static readonly string[] MultipleSimpleOptionsAuthServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * MultipleSimpleSchemeAuthSERVERS contains the list of server urls available to the SDK.
+        * MultipleSimpleSchemeAuthServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] MultipleSimpleSchemeAuthSERVERS = {
+        public static readonly string[] MultipleSimpleSchemeAuthServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * Oauth2AuthNewSERVERS contains the list of server urls available to the SDK.
+        * Oauth2AuthNewServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] Oauth2AuthNewSERVERS = {
+        public static readonly string[] Oauth2AuthNewServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * OpenIdConnectAuthNewSERVERS contains the list of server urls available to the SDK.
+        * OpenIdConnectAuthNewServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] OpenIdConnectAuthNewSERVERS = {
+        public static readonly string[] OpenIdConnectAuthNewServerList = {
             "http://localhost:35456",
         };
 
-        public SDKConfig Config { get; private set; }
+        public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.3.1";
-        private const string _sdkGenVersion = "2.188.3";
+        private const string _sdkVersion = "0.4.0";
+        private const string _sdkGenVersion = "2.250.2";
         private const string _openapiDocVersion = "0.1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.0 2.250.2 0.1.0 openapi";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
-        private ISpeakeasyHttpClient _securityClient;
+        private Func<Security>? _securitySource;
 
-        public AuthNew(ISpeakeasyHttpClient defaultClient, ISpeakeasyHttpClient securityClient, string serverUrl, SDKConfig config)
+        public AuthNew(ISpeakeasyHttpClient defaultClient, Func<Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _defaultClient = defaultClient;
-            _securityClient = securityClient;
+            _securitySource = securitySource;
             _serverUrl = serverUrl;
-            Config = config;
+            SDKConfiguration = config;
         }
         
 
         public async Task<ApiKeyAuthGlobalNewResponse> ApiKeyAuthGlobalNewAsync(AuthServiceRequestBody request, string? serverUrl = null)
         {
-            string baseUrl = ApiKeyAuthGlobalNewSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(ApiKeyAuthGlobalNewServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/auth#apiKeyAuthGlobal";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json");
-            if (serializedBody == null) 
+            if (serializedBody == null)
             {
                 throw new ArgumentNullException("request body is required");
             }
@@ -164,8 +161,12 @@ namespace Openapi
                 httpRequest.Content = serializedBody;
             }
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -179,31 +180,29 @@ namespace Openapi
             
             if((response.StatusCode == 200) || (response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<AuthGlobalResponse> AuthGlobalAsync(AuthServiceRequestBody request, string? serverUrl = null)
         {
-            string baseUrl = AuthGlobalSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(AuthGlobalServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/auth#authGlobal";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json");
-            if (serializedBody == null) 
+            if (serializedBody == null)
             {
                 throw new ArgumentNullException("request body is required");
             }
@@ -212,8 +211,12 @@ namespace Openapi
                 httpRequest.Content = serializedBody;
             }
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -227,31 +230,29 @@ namespace Openapi
             
             if((response.StatusCode == 200) || (response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<BasicAuthNewResponse> BasicAuthNewAsync(BasicAuthNewSecurity security, AuthServiceRequestBody request, string? serverUrl = null)
         {
-            string baseUrl = BasicAuthNewSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(BasicAuthNewServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/auth#basicAuth";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json");
-            if (serializedBody == null) 
+            if (serializedBody == null)
             {
                 throw new ArgumentNullException("request body is required");
             }
@@ -260,8 +261,8 @@ namespace Openapi
                 httpRequest.Content = serializedBody;
             }
             
-            var client = SecuritySerializer.Apply(_defaultClient, security);
-            
+            var client = SecuritySerializer.Apply(_defaultClient, () => security);
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -275,31 +276,29 @@ namespace Openapi
             
             if((response.StatusCode == 200) || (response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<MultipleMixedOptionsAuthResponse> MultipleMixedOptionsAuthAsync(MultipleMixedOptionsAuthSecurity security, AuthServiceRequestBody request, string? serverUrl = null)
         {
-            string baseUrl = MultipleMixedOptionsAuthSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(MultipleMixedOptionsAuthServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/auth#multipleMixedOptionsAuth";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json");
-            if (serializedBody == null) 
+            if (serializedBody == null)
             {
                 throw new ArgumentNullException("request body is required");
             }
@@ -308,8 +307,8 @@ namespace Openapi
                 httpRequest.Content = serializedBody;
             }
             
-            var client = SecuritySerializer.Apply(_defaultClient, security);
-            
+            var client = SecuritySerializer.Apply(_defaultClient, () => security);
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -323,31 +322,29 @@ namespace Openapi
             
             if((response.StatusCode == 200) || (response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<MultipleMixedSchemeAuthResponse> MultipleMixedSchemeAuthAsync(MultipleMixedSchemeAuthSecurity security, AuthServiceRequestBody request, string? serverUrl = null)
         {
-            string baseUrl = MultipleMixedSchemeAuthSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(MultipleMixedSchemeAuthServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/auth#multipleMixedSchemeAuth";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json");
-            if (serializedBody == null) 
+            if (serializedBody == null)
             {
                 throw new ArgumentNullException("request body is required");
             }
@@ -356,8 +353,8 @@ namespace Openapi
                 httpRequest.Content = serializedBody;
             }
             
-            var client = SecuritySerializer.Apply(_defaultClient, security);
-            
+            var client = SecuritySerializer.Apply(_defaultClient, () => security);
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -371,31 +368,29 @@ namespace Openapi
             
             if((response.StatusCode == 200) || (response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<MultipleOptionsWithMixedSchemesAuthResponse> MultipleOptionsWithMixedSchemesAuthAsync(MultipleOptionsWithMixedSchemesAuthSecurity security, AuthServiceRequestBody request, string? serverUrl = null)
         {
-            string baseUrl = MultipleOptionsWithMixedSchemesAuthSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(MultipleOptionsWithMixedSchemesAuthServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/auth#multipleOptionsWithMixedSchemesAuth";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json");
-            if (serializedBody == null) 
+            if (serializedBody == null)
             {
                 throw new ArgumentNullException("request body is required");
             }
@@ -404,8 +399,8 @@ namespace Openapi
                 httpRequest.Content = serializedBody;
             }
             
-            var client = SecuritySerializer.Apply(_defaultClient, security);
-            
+            var client = SecuritySerializer.Apply(_defaultClient, () => security);
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -419,31 +414,29 @@ namespace Openapi
             
             if((response.StatusCode == 200) || (response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<MultipleOptionsWithSimpleSchemesAuthResponse> MultipleOptionsWithSimpleSchemesAuthAsync(MultipleOptionsWithSimpleSchemesAuthSecurity security, AuthServiceRequestBody request, string? serverUrl = null)
         {
-            string baseUrl = MultipleOptionsWithSimpleSchemesAuthSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(MultipleOptionsWithSimpleSchemesAuthServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/auth#multipleOptionsWithSimpleSchemesAuth";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json");
-            if (serializedBody == null) 
+            if (serializedBody == null)
             {
                 throw new ArgumentNullException("request body is required");
             }
@@ -452,8 +445,8 @@ namespace Openapi
                 httpRequest.Content = serializedBody;
             }
             
-            var client = SecuritySerializer.Apply(_defaultClient, security);
-            
+            var client = SecuritySerializer.Apply(_defaultClient, () => security);
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -467,31 +460,29 @@ namespace Openapi
             
             if((response.StatusCode == 200) || (response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<MultipleSimpleOptionsAuthResponse> MultipleSimpleOptionsAuthAsync(MultipleSimpleOptionsAuthSecurity security, AuthServiceRequestBody request, string? serverUrl = null)
         {
-            string baseUrl = MultipleSimpleOptionsAuthSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(MultipleSimpleOptionsAuthServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/auth#multipleSimpleOptionsAuth";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json");
-            if (serializedBody == null) 
+            if (serializedBody == null)
             {
                 throw new ArgumentNullException("request body is required");
             }
@@ -500,8 +491,8 @@ namespace Openapi
                 httpRequest.Content = serializedBody;
             }
             
-            var client = SecuritySerializer.Apply(_defaultClient, security);
-            
+            var client = SecuritySerializer.Apply(_defaultClient, () => security);
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -515,31 +506,29 @@ namespace Openapi
             
             if((response.StatusCode == 200) || (response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<MultipleSimpleSchemeAuthResponse> MultipleSimpleSchemeAuthAsync(MultipleSimpleSchemeAuthSecurity security, AuthServiceRequestBody request, string? serverUrl = null)
         {
-            string baseUrl = MultipleSimpleSchemeAuthSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(MultipleSimpleSchemeAuthServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/auth#multipleSimpleSchemeAuth";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json");
-            if (serializedBody == null) 
+            if (serializedBody == null)
             {
                 throw new ArgumentNullException("request body is required");
             }
@@ -548,8 +537,8 @@ namespace Openapi
                 httpRequest.Content = serializedBody;
             }
             
-            var client = SecuritySerializer.Apply(_defaultClient, security);
-            
+            var client = SecuritySerializer.Apply(_defaultClient, () => security);
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -563,31 +552,29 @@ namespace Openapi
             
             if((response.StatusCode == 200) || (response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<Oauth2AuthNewResponse> Oauth2AuthNewAsync(Oauth2AuthNewSecurity security, AuthServiceRequestBody request, string? serverUrl = null)
         {
-            string baseUrl = Oauth2AuthNewSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(Oauth2AuthNewServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/auth#oauth2Auth";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json");
-            if (serializedBody == null) 
+            if (serializedBody == null)
             {
                 throw new ArgumentNullException("request body is required");
             }
@@ -596,8 +583,8 @@ namespace Openapi
                 httpRequest.Content = serializedBody;
             }
             
-            var client = SecuritySerializer.Apply(_defaultClient, security);
-            
+            var client = SecuritySerializer.Apply(_defaultClient, () => security);
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -611,31 +598,29 @@ namespace Openapi
             
             if((response.StatusCode == 200) || (response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<OpenIdConnectAuthNewResponse> OpenIdConnectAuthNewAsync(OpenIdConnectAuthNewSecurity security, AuthServiceRequestBody request, string? serverUrl = null)
         {
-            string baseUrl = OpenIdConnectAuthNewSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(OpenIdConnectAuthNewServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/auth#openIdConnectAuth";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json");
-            if (serializedBody == null) 
+            if (serializedBody == null)
             {
                 throw new ArgumentNullException("request body is required");
             }
@@ -644,8 +629,8 @@ namespace Openapi
                 httpRequest.Content = serializedBody;
             }
             
-            var client = SecuritySerializer.Apply(_defaultClient, security);
-            
+            var client = SecuritySerializer.Apply(_defaultClient, () => security);
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -659,11 +644,12 @@ namespace Openapi
             
             if((response.StatusCode == 200) || (response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
     }
 }

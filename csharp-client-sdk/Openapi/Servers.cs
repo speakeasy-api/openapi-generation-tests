@@ -11,6 +11,7 @@
 namespace Openapi
 {
     using Openapi.Models.Operations;
+    using Openapi.Models.Shared;
     using Openapi.Utils;
     using System.Collections.Generic;
     using System.Net.Http;
@@ -48,9 +49,9 @@ namespace Openapi
         }
 
         /**
-        * SelectServerWithIDSERVERS contains the list of server urls available to the SDK.
+        * SelectServerWithIDServerList contains the list of server urls available to the SDK.
         */
-        public static readonly Dictionary<SelectServerWithIDServers, string> SelectServerWithIDSERVERS = new Dictionary<SelectServerWithIDServers, string>()
+        public static readonly Dictionary<SelectServerWithIDServers, string> SelectServerWithIDServerList = new Dictionary<SelectServerWithIDServers, string>()
         {
             { SelectServerWithIDServers.Valid, "http://localhost:35123" },
             { SelectServerWithIDServers.Broken, "http://broken" },
@@ -63,16 +64,16 @@ namespace Openapi
         }
 
         /**
-        * ServerWithProtocolTemplateSERVERS contains the list of server urls available to the SDK.
+        * ServerWithProtocolTemplateServerList contains the list of server urls available to the SDK.
         */
-        public static readonly Dictionary<ServerWithProtocolTemplateServers, string> ServerWithProtocolTemplateSERVERS = new Dictionary<ServerWithProtocolTemplateServers, string>()
+        public static readonly Dictionary<ServerWithProtocolTemplateServers, string> ServerWithProtocolTemplateServerList = new Dictionary<ServerWithProtocolTemplateServers, string>()
         {
             { ServerWithProtocolTemplateServers.Main, "{protocol}://{hostname}:{port}" },
         };
         /**
-        * ServerWithTemplatesSERVERS contains the list of server urls available to the SDK.
+        * ServerWithTemplatesServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] ServerWithTemplatesSERVERS = {
+        public static readonly string[] ServerWithTemplatesServerList = {
             "http://{hostname}:{port}",
         };
 
@@ -84,47 +85,46 @@ namespace Openapi
         }
 
         /**
-        * SERVERSByIDWithTemplatesSERVERS contains the list of server urls available to the SDK.
+        * ServersByIDWithTemplatesServerList contains the list of server urls available to the SDK.
         */
-        public static readonly Dictionary<ServersByIDWithTemplatesServers, string> SERVERSByIDWithTemplatesSERVERS = new Dictionary<ServersByIDWithTemplatesServers, string>()
+        public static readonly Dictionary<ServersByIDWithTemplatesServers, string> ServersByIDWithTemplatesServerList = new Dictionary<ServersByIDWithTemplatesServers, string>()
         {
             { ServersByIDWithTemplatesServers.Main, "http://{hostname}:{port}" },
         };
-        public SDKConfig Config { get; private set; }
+        public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.3.1";
-        private const string _sdkGenVersion = "2.188.3";
+        private const string _sdkVersion = "0.4.0";
+        private const string _sdkGenVersion = "2.250.2";
         private const string _openapiDocVersion = "0.1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.0 2.250.2 0.1.0 openapi";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
-        private ISpeakeasyHttpClient _securityClient;
+        private Func<Security>? _securitySource;
 
-        public Servers(ISpeakeasyHttpClient defaultClient, ISpeakeasyHttpClient securityClient, string serverUrl, SDKConfig config)
+        public Servers(ISpeakeasyHttpClient defaultClient, Func<Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _defaultClient = defaultClient;
-            _securityClient = securityClient;
+            _securitySource = securitySource;
             _serverUrl = serverUrl;
-            Config = config;
+            SDKConfiguration = config;
         }
         
 
         public async Task<SelectGlobalServerResponse> SelectGlobalServerAsync()
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/anything/selectGlobalServer";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -138,32 +138,34 @@ namespace Openapi
             
             if((response.StatusCode == 200))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<SelectServerWithIDResponse> SelectServerWithIDAsync(string? serverUrl = null)
         {
-            string baseUrl = SelectServerWithIDSERVERS[SelectServerWithIDServers.Valid];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(SelectServerWithIDServerList[SelectServerWithIDServers.Valid], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/anything/selectServerWithID";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -177,32 +179,37 @@ namespace Openapi
             
             if((response.StatusCode == 200))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<ServerWithProtocolTemplateResponse> ServerWithProtocolTemplateAsync(string? serverUrl = null)
         {
-            string baseUrl = ServerWithProtocolTemplateSERVERS[ServerWithProtocolTemplateServers.Main];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(ServerWithProtocolTemplateServerList[ServerWithProtocolTemplateServers.Main], new Dictionary<string, string>(){
+                {"hostname", "localhost"},
+                {"port", "35123"},
+                {"protocol", "http"},
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/anything/serverWithProtocolTemplate";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -216,32 +223,36 @@ namespace Openapi
             
             if((response.StatusCode == 200))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<ServerWithTemplatesResponse> ServerWithTemplatesAsync(string? serverUrl = null)
         {
-            string baseUrl = ServerWithTemplatesSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(ServerWithTemplatesServerList[0], new Dictionary<string, string>(){
+            {"hostname", "localhost"},
+            {"port", "35123"},
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/anything/serverWithTemplates";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -255,29 +266,29 @@ namespace Openapi
             
             if((response.StatusCode == 200))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<ServerWithTemplatesGlobalResponse> ServerWithTemplatesGlobalAsync()
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/anything/serverWithTemplatesGlobal";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -291,32 +302,36 @@ namespace Openapi
             
             if((response.StatusCode == 200))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<ServersByIDWithTemplatesResponse> ServersByIDWithTemplatesAsync(string? serverUrl = null)
         {
-            string baseUrl = SERVERSByIDWithTemplatesSERVERS[ServersByIDWithTemplatesServers.Main];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(ServersByIDWithTemplatesServerList[ServersByIDWithTemplatesServers.Main], new Dictionary<string, string>(){
+                {"hostname", "localhost"},
+                {"port", "35123"},
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/anything/serversByIDWithTemplates";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -330,11 +345,12 @@ namespace Openapi
             
             if((response.StatusCode == 200))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
     }
 }
