@@ -57,6 +57,12 @@ components:
         - $ref: "#/components/schemas/deepObjectWithType"
       discriminator:
         propertyName: type
+    stronglyTypedOneOfObjectWithNonStandardDiscriminatorName:
+      oneOf:
+        - $ref: "#/components/schemas/simpleObjectWithNonStandardTypeName"
+        - $ref: "#/components/schemas/deepObjectWithNonStandardTypeName"
+      discriminator:
+        propertyName: 'obj.type'
     stronglyTypedOneOfDiscriminatedObject:
       oneOf:
         - $ref: "#/components/schemas/taggedObject1"
@@ -442,6 +448,15 @@ components:
               type: string
           required:
             - type
+    simpleObjectWithNonStandardTypeName:
+      allOf:
+        - $ref: "#/components/schemas/simpleObject"
+        - type: object
+          properties:
+            'obj.type':
+              type: string
+          required:
+            - 'obj.type'
     deepObject:
       type: object
       properties:
@@ -527,6 +542,13 @@ components:
         - type: object
           properties:
             type:
+              type: string
+    deepObjectWithNonStandardTypeName:
+      allOf:
+        - $ref: "#/components/schemas/deepObject"
+        - type: object
+          properties:
+            'obj.type':
               type: string
     fakerFormattedStrings:
       type: object

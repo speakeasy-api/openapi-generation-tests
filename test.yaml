@@ -5306,6 +5306,30 @@ paths:
                     $ref: "components.yaml#/components/schemas/stronglyTypedOneOfObject"
                 required:
                   - json
+  /anything/stronglyTypedOneOfWithNonStandardDiscriminatorName:
+    post:
+      operationId: stronglyTypedOneOfPostWithNonStandardDiscriminatorName
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/stronglyTypedOneOfObjectWithNonStandardDiscriminatorName"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/stronglyTypedOneOfObjectWithNonStandardDiscriminatorName"
+                required:
+                  - json
   /anything/stronglyTypedOneOfDiscriminated:
     post:
       operationId: stronglyTypedOneOfDiscriminatedPost
