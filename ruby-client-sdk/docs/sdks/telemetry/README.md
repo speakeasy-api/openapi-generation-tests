@@ -18,21 +18,18 @@ Endpoints for testing telemetry.
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  security=::OpenApiSDK::Shared::Security.new(
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::TelemetrySpeakeasyUserAgentGetRequest.new(
-  headers=Operations::TelemetrySpeakeasyUserAgentGetRequest.new(
-    user_agent="string",
-  ),
-)
     
-res = s.telemetry.telemetry_speakeasy_user_agent_get(req)
+res = s.telemetry.telemetry_speakeasy_user_agent_get(user_agent="string")
 
 if ! res.res.nil?
   # handle response
@@ -44,12 +41,12 @@ end
 
 | Parameter          | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `user_agent`       | *String*           | :heavy_check_mark: | N/A                |
+| `user_agent`       | *::String*         | :heavy_check_mark: | N/A                |
 
 
 ### Response
 
-**[T.nilable(Operations::TelemetrySpeakeasyUserAgentGetResponse)](../../models/operations/telemetryspeakeasyuseragentgetresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::TelemetrySpeakeasyUserAgentGetResponse)](../../models/operations/telemetryspeakeasyuseragentgetresponse.md)**
 
 
 ## telemetry_user_agent_get
@@ -60,10 +57,13 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  security=::OpenApiSDK::Shared::Security.new(
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
@@ -79,5 +79,5 @@ end
 
 ### Response
 
-**[T.nilable(Operations::TelemetryUserAgentGetResponse)](../../models/operations/telemetryuseragentgetresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::TelemetryUserAgentGetResponse)](../../models/operations/telemetryuseragentgetresponse.md)**
 

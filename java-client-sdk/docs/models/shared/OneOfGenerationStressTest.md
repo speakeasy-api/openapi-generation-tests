@@ -5,7 +5,7 @@
 
 | Field                   | Type                    | Required                | Description             |
 | ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `any`                   | *Object*                | :heavy_check_mark:      | N/A                     |
-| `nullableAny`           | *Object*                | :heavy_check_mark:      | N/A                     |
-| `oneOfFromArrayOfTypes` | *Object*                | :heavy_check_mark:      | N/A                     |
-| `oneOfSameType`         | *Object*                | :heavy_check_mark:      | N/A                     |
+| `any`                   | *java.lang.Object*      | :heavy_check_mark:      | N/A                     |
+| `nullableAny`           | *java.lang.Object*      | :heavy_check_mark:      | N/A                     |
+| `oneOfFromArrayOfTypes` | *java.lang.Object*      | :heavy_check_mark:      | N/A                     |
+| `oneOfSameType`         | *java.lang.Object*      | :heavy_check_mark:      | N/A                     |

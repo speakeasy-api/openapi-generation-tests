@@ -11,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DeepObjectCamelCase {
     @JsonProperty("any_val")
-    public Object anyVal;
+    public java.lang.Object anyVal;
 
-    public DeepObjectCamelCase withAnyVal(Object anyVal) {
+    public DeepObjectCamelCase withAnyVal(java.lang.Object anyVal) {
         this.anyVal = anyVal;
         return this;
     }
@@ -87,7 +87,7 @@ public class DeepObjectCamelCase {
         return this;
     }
     
-    public DeepObjectCamelCase(@JsonProperty("any_val") Object anyVal, @JsonProperty("arr_val") SimpleObjectCamelCase[] arrVal, @JsonProperty("bool_val") Boolean boolVal, @JsonProperty("int_val") Long intVal, @JsonProperty("map_val") java.util.Map<String, SimpleObjectCamelCase> mapVal, @JsonProperty("num_val") Double numVal, @JsonProperty("obj_val") SimpleObjectCamelCase objVal, @JsonProperty("str_val") String strVal) {
+    public DeepObjectCamelCase(@JsonProperty("any_val") java.lang.Object anyVal, @JsonProperty("arr_val") SimpleObjectCamelCase[] arrVal, @JsonProperty("bool_val") Boolean boolVal, @JsonProperty("int_val") Long intVal, @JsonProperty("map_val") java.util.Map<String, SimpleObjectCamelCase> mapVal, @JsonProperty("num_val") Double numVal, @JsonProperty("obj_val") SimpleObjectCamelCase objVal, @JsonProperty("str_val") String strVal) {
         this.anyVal = anyVal;
         this.arrVal = arrVal;
         this.boolVal = boolVal;

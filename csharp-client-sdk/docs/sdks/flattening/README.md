@@ -28,14 +28,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Flattening.ComponentBodyAndParamConflictAsync(new SimpleObject() {
+var res = await sdk.Flattening.ComponentBodyAndParamConflictAsync(
+    simpleObject: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -50,7 +50,8 @@ var res = await sdk.Flattening.ComponentBodyAndParamConflictAsync(new SimpleObje
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
     StrOpt = "testOptional",
-}, "string");
+},
+    str: "string");
 
 // handle response
 ```
@@ -83,14 +84,15 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Flattening.ComponentBodyAndParamNoConflictAsync("string", new SimpleObject() {
+var res = await sdk.Flattening.ComponentBodyAndParamNoConflictAsync(
+    paramStr: "string",
+    simpleObject: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -137,10 +139,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Flattening.ConflictingParamsAsync("string", "string");
+var res = await sdk.Flattening.ConflictingParamsAsync(
+    strPathParameter: "string",
+    strQueryParameter: "string");
 
 // handle response
 ```
@@ -172,12 +175,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Flattening.InlineBodyAndParamConflictAsync(new InlineBodyAndParamConflictRequestBody() {
+var res = await sdk.Flattening.InlineBodyAndParamConflictAsync(
+    requestBody: new InlineBodyAndParamConflictRequestBody() {
     Str = "string",
-}, "string");
+},
+    str: "string");
 
 // handle response
 ```
@@ -209,12 +213,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Flattening.InlineBodyAndParamNoConflictAsync(new InlineBodyAndParamNoConflictRequestBody() {
+var res = await sdk.Flattening.InlineBodyAndParamNoConflictAsync(
+    requestBody: new InlineBodyAndParamNoConflictRequestBody() {
     BodyStr = "string",
-}, "string");
+},
+    paramStr: "string");
 
 // handle response
 ```

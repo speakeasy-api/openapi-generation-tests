@@ -10,8 +10,52 @@ Speakeasy Docs
 <https://speakeasyapi.dev/docs/home>
 ### Available Operations
 
+* [conflicting_enum](#conflicting_enum) - Test potential namespace conflicts with java.lang.Object
 * [put_anything_ignored_generation](#put_anything_ignored_generation)
 * [response_body_json_get](#response_body_json_get)
+
+## conflicting_enum
+
+Test potential namespace conflicts with java.lang.Object
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
+s.config_security(
+  security=::OpenApiSDK::Shared::Security.new(
+    api_key_auth="Token YOUR_API_KEY",
+  )
+)
+
+
+req = ::OpenApiSDK::Shared::ConflictingEnum.new()
+    
+res = s.conflicting_enum(req)
+
+if res.status == 200
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `request`                                                                       | [::OpenApiSDK::Shared::ConflictingEnum](../../models/shared/conflictingenum.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
+
+
+### Response
+
+**[T.nilable(::OpenApiSDK::Operations::ConflictingEnumResponse)](../../models/operations/conflictingenumresponse.md)**
+
 
 ## put_anything_ignored_generation
 
@@ -21,17 +65,18 @@ Speakeasy Docs
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  security=::OpenApiSDK::Shared::Security.new(
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
-   
-req = ::.new(
-  request="string",
-)
+
+req = "string"
     
 res = s.put_anything_ignored_generation(req)
 
@@ -45,12 +90,12 @@ end
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [String](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [::String](../../models//.md)              | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
 
-**[T.nilable(Operations::PutAnythingIgnoredGenerationResponse)](../../models/operations/putanythingignoredgenerationresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::PutAnythingIgnoredGenerationResponse)](../../models/operations/putanythingignoredgenerationresponse.md)**
 
 
 ## response_body_json_get
@@ -61,10 +106,13 @@ end
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  security=::OpenApiSDK::Shared::Security.new(
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
@@ -80,5 +128,5 @@ end
 
 ### Response
 
-**[T.nilable(Operations::ResponseBodyJsonGetResponse)](../../models/operations/responsebodyjsongetresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::ResponseBodyJsonGetResponse)](../../models/operations/responsebodyjsongetresponse.md)**
 
