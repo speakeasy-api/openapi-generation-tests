@@ -3303,6 +3303,48 @@ class RequestBodies
     }
 	
     /**
+     * requestBodyPutMultipartOptionalRequestBody
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartOptionalRequestBodyRequestBody $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartOptionalRequestBodyResponse
+     */
+	public function requestBodyPutMultipartOptionalRequestBody(
+        ?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartOptionalRequestBodyRequestBody $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartOptionalRequestBodyResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/requestBodies/put/multipart/optionalRequestBody');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "multipart");
+        if ($body !== null) {
+            $options = array_merge_recursive($options, $body);
+        }
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('PUT', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartOptionalRequestBodyResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartOptionalRequestBodyRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * requestBodyPutMultipartSimple
      * 
      * @param \OpenAPI\OpenAPI\Models\Shared\SimpleObject $request

@@ -13,10 +13,13 @@
 require_relative openapi
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_path_param=100,
+      global_query_param="some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  security=::OpenApiSDK::Shared::Security.new(
+    api_key_auth="Token YOUR_API_KEY",
   )
 )
 
@@ -32,5 +35,5 @@ end
 
 ### Response
 
-**[T.nilable(Operations::NestedGetResponse)](../../models/operations/nestedgetresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::NestedGetResponse)](../../models/operations/nestedgetresponse.md)**
 

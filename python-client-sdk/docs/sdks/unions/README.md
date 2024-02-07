@@ -14,7 +14,9 @@ Endpoints for testing union types.
 * [nullable_one_of_type_in_object_post](#nullable_one_of_type_in_object_post)
 * [nullable_typed_object_post](#nullable_typed_object_post)
 * [primitive_type_one_of_post](#primitive_type_one_of_post)
+* [strongly_typed_one_of_discriminated_post](#strongly_typed_one_of_discriminated_post)
 * [strongly_typed_one_of_post](#strongly_typed_one_of_post)
+* [strongly_typed_one_of_post_with_non_standard_discriminator_name](#strongly_typed_one_of_post_with_non_standard_discriminator_name)
 * [typed_object_nullable_one_of_post](#typed_object_nullable_one_of_post)
 * [typed_object_one_of_post](#typed_object_one_of_post)
 * [union_big_int_decimal](#union_big_int_decimal)
@@ -65,7 +67,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## mixed_type_one_of_post
 
@@ -108,7 +110,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## nullable_one_of_ref_in_object_post
 
@@ -131,14 +133,14 @@ req = shared.NullableOneOfRefInObject(
         type=shared.TypedObject1Type.OBJ1,
         value='string',
     ),
-    shared.TypedObject2(
-        type=shared.TypedObject2Type.OBJ2,
-        value='string',
-    ),
-    shared.TypedObject1(
-        type=shared.TypedObject1Type.OBJ1,
-        value='string',
-    ),
+    nullable_one_of_two=shared.TypedObject2(
+    type=shared.TypedObject2Type.OBJ2,
+    value='string',
+),
+    one_of_one=shared.TypedObject1(
+    type=shared.TypedObject1Type.OBJ1,
+    value='string',
+),
 )
 
 res = s.unions.nullable_one_of_ref_in_object_post(req)
@@ -162,7 +164,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## nullable_one_of_schema_post
 
@@ -206,7 +208,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## nullable_one_of_type_in_object_post
 
@@ -226,7 +228,7 @@ s = sdk.SDK(
 
 req = shared.NullableOneOfTypeInObject(
     nullable_one_of_one=False,
-873677,
+    nullable_one_of_two=873677,
     one_of_one=False,
 )
 
@@ -251,7 +253,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## nullable_typed_object_post
 
@@ -295,7 +297,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## primitive_type_one_of_post
 
@@ -336,7 +338,51 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
+
+## strongly_typed_one_of_discriminated_post
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = shared.TaggedObject1(
+    image_url='string',
+    tag=shared.Tag.TAG1,
+)
+
+res = s.unions.strongly_typed_one_of_discriminated_post(req)
+
+if res.res is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                                                                                                               | Type                                                                                                                                    | Required                                                                                                                                | Description                                                                                                                             |
+| --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                               | [Union[shared.TaggedObject1, shared.TaggedObject2, shared.TaggedObject3]](../../models/shared/stronglytypedoneofdiscriminatedobject.md) | :heavy_check_mark:                                                                                                                      | The request object to use for the request.                                                                                              |
+
+
+### Response
+
+**[operations.StronglyTypedOneOfDiscriminatedPostResponse](../../models/operations/stronglytypedoneofdiscriminatedpostresponse.md)**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## strongly_typed_one_of_post
 
@@ -357,37 +403,32 @@ s = sdk.SDK(
 )
 
 req = shared.DeepObjectWithType(
-    shared.SimpleObject(
-        any='any',
-        bigint=8821239038968084,
-        bigint_str=9223372036854775808,
-        bool=True,
-        bool_opt=True,
-        date_=dateutil.parser.parse('2020-01-01').date(),
-        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-        decimal=Decimal('3.141592653589793'),
-        decimal_str=Decimal('3.14159265358979344719667586'),
-        enum=shared.EnumT.ONE,
-        float32=1.1,
-        int=1,
-        int32=1,
-        int32_enum=shared.Int32Enum.FIFTY_FIVE,
-        int_enum=shared.IntEnum.SECOND,
-        num=1.1,
-        str_='test',
-        str_opt='testOptional',
-    ),
+    any=shared.SimpleObject(
+    any='any',
+    bool=True,
+    date_=dateutil.parser.parse('2020-01-01').date(),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
+    enum=shared.EnumT.ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
+    num=1.1,
+    str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    str_opt='testOptional',
+),
     arr=[
         shared.SimpleObject(
             any='any',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
             bool=True,
-            bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
             enum=shared.EnumT.ONE,
             float32=1.1,
             int=1,
@@ -396,18 +437,18 @@ req = shared.DeepObjectWithType(
             int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool_opt=True,
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
             str_opt='testOptional',
         ),
         shared.SimpleObject(
             any='any',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
             bool=True,
-            bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
             enum=shared.EnumT.ONE,
             float32=1.1,
             int=1,
@@ -416,22 +457,22 @@ req = shared.DeepObjectWithType(
             int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool_opt=True,
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
             str_opt='testOptional',
         ),
     ],
     bool=True,
     int=1,
     map={
-        "key": shared.SimpleObject(
+        'key': shared.SimpleObject(
             any='any',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
             bool=True,
-            bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
             enum=shared.EnumT.ONE,
             float32=1.1,
             int=1,
@@ -440,18 +481,18 @@ req = shared.DeepObjectWithType(
             int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool_opt=True,
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
             str_opt='testOptional',
         ),
-        "key2": shared.SimpleObject(
+        'key2': shared.SimpleObject(
             any='any',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
             bool=True,
-            bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
             enum=shared.EnumT.ONE,
             float32=1.1,
             int=1,
@@ -460,20 +501,20 @@ req = shared.DeepObjectWithType(
             int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool_opt=True,
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
             str_opt='testOptional',
         ),
     },
     num=1.1,
     obj=shared.SimpleObject(
         any='any',
-        bigint=8821239038968084,
-        bigint_str=9223372036854775808,
         bool=True,
-        bool_opt=True,
         date_=dateutil.parser.parse('2020-01-01').date(),
-        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-        decimal=Decimal('3.141592653589793'),
-        decimal_str=Decimal('3.14159265358979344719667586'),
+        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
         enum=shared.EnumT.ONE,
         float32=1.1,
         int=1,
@@ -482,6 +523,11 @@ req = shared.DeepObjectWithType(
         int_enum=shared.IntEnum.SECOND,
         num=1.1,
         str_='test',
+        bigint=8821239038968084,
+        bigint_str=9223372036854775808,
+        bool_opt=True,
+        decimal=Decimal('3.141592653589793'),
+        decimal_str=Decimal('3.14159265358979344719667586'),
         str_opt='testOptional',
     ),
     str_='test',
@@ -508,7 +554,70 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
+
+## strongly_typed_one_of_post_with_non_standard_discriminator_name
+
+### Example Usage
+
+```python
+import dateutil.parser
+import sdk
+from decimal import Decimal
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = shared.SimpleObjectWithNonStandardTypeName(
+    any='any',
+    bool=True,
+    date_=dateutil.parser.parse('2020-01-01').date(),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
+    enum=shared.EnumT.ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=shared.SimpleObjectWithNonStandardTypeNameInt32Enum.FIFTY_FIVE,
+    int_enum=shared.SimpleObjectWithNonStandardTypeNameIntEnum.SECOND,
+    num=1.1,
+    obj_type='string',
+    str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    str_opt='testOptional',
+)
+
+res = s.unions.strongly_typed_one_of_post_with_non_standard_discriminator_name(req)
+
+if res.res is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [Union[shared.SimpleObjectWithNonStandardTypeName, shared.DeepObjectWithNonStandardTypeName]](../../models/shared/stronglytypedoneofobjectwithnonstandarddiscriminatorname.md) | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+
+
+### Response
+
+**[operations.StronglyTypedOneOfPostWithNonStandardDiscriminatorNameResponse](../../models/operations/stronglytypedoneofpostwithnonstandarddiscriminatornameresponse.md)**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## typed_object_nullable_one_of_post
 
@@ -552,7 +661,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## typed_object_one_of_post
 
@@ -596,7 +705,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## union_big_int_decimal
 
@@ -637,7 +746,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## union_date_null
 
@@ -655,7 +764,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = dateutil.parser.parse('2022-11-25').date()
+req = dateutil.parser.parse('2023-11-26').date()
 
 res = s.unions.union_date_null(req)
 
@@ -678,7 +787,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## union_date_time_big_int
 
@@ -696,7 +805,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = dateutil.parser.isoparse('2021-06-19T18:26:42.874Z')
+req = dateutil.parser.isoparse('2022-06-19T22:09:58.311Z')
 
 res = s.unions.union_date_time_big_int(req)
 
@@ -719,7 +828,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## union_date_time_null
 
@@ -737,7 +846,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = dateutil.parser.isoparse('2022-04-12T19:39:53.907Z')
+req = dateutil.parser.isoparse('2023-04-13T05:53:47.874Z')
 
 res = s.unions.union_date_time_null(req)
 
@@ -760,7 +869,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## weakly_typed_one_of_post
 
@@ -782,14 +891,9 @@ s = sdk.SDK(
 
 req = shared.SimpleObject(
     any='any',
-    bigint=8821239038968084,
-    bigint_str=9223372036854775808,
     bool=True,
-    bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-    decimal=Decimal('3.141592653589793'),
-    decimal_str=Decimal('3.14159265358979344719667586'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000001Z'),
     enum=shared.EnumT.ONE,
     float32=1.1,
     int=1,
@@ -798,6 +902,11 @@ req = shared.SimpleObject(
     int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
     str_opt='testOptional',
 )
 
@@ -822,4 +931,4 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |

@@ -109,12 +109,14 @@ type SDK struct {
 	// Endpoints for testing telemetry.
 	Telemetry *Telemetry
 	// Endpoints for testing authentication.
-	AuthNew *AuthNew
+	AuthNew  *AuthNew
+	Resource *Resource
 	// Testing for documentation extensions in Go.
 	Documentation *Documentation
-	Resource      *Resource
-	First         *First
-	Second        *Second
+	// Endpoints for testing server-sent events streaming
+	Eventstreams *Eventstreams
+	First        *First
+	Second       *Second
 	// Endpoints for testing the pagination extension
 	Pagination *Pagination
 	// Endpoints for testing retries.
@@ -180,19 +182,6 @@ func WithPort(port string) SDKOption {
 	}
 }
 
-// WithProtocol allows setting the protocol variable for url substitution
-func WithProtocol(protocol string) SDKOption {
-	return func(sdk *SDK) {
-		for idx := range sdk.sdkConfiguration.ServerDefaults {
-			if _, ok := sdk.sdkConfiguration.ServerDefaults[idx]["protocol"]; !ok {
-				continue
-			}
-
-			sdk.sdkConfiguration.ServerDefaults[idx]["protocol"] = fmt.Sprintf("%v", protocol)
-		}
-	}
-}
-
 // ServerSomething - Something is a variable for changing the root path
 type ServerSomething string
 
@@ -237,6 +226,19 @@ func WithSomething(something ServerSomething) SDKOption {
 	}
 }
 
+// WithProtocol allows setting the protocol variable for url substitution
+func WithProtocol(protocol string) SDKOption {
+	return func(sdk *SDK) {
+		for idx := range sdk.sdkConfiguration.ServerDefaults {
+			if _, ok := sdk.sdkConfiguration.ServerDefaults[idx]["protocol"]; !ok {
+				continue
+			}
+
+			sdk.sdkConfiguration.ServerDefaults[idx]["protocol"] = fmt.Sprintf("%v", protocol)
+		}
+	}
+}
+
 // WithClient allows the overriding of the default HTTP client used by the SDK
 func WithClient(client HTTPClient) SDKOption {
 	return func(sdk *SDK) {
@@ -251,7 +253,6 @@ func withSecurity(security interface{}) func(context.Context) (interface{}, erro
 }
 
 // WithSecurity configures the SDK to use the provided security details
-
 func WithSecurity(security shared.Security) SDKOption {
 	return func(sdk *SDK) {
 		sdk.sdkConfiguration.Security = withSecurity(security)
@@ -301,9 +302,9 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.1.0",
-			SDKVersion:        "2.1.2",
-			GenVersion:        "2.188.3",
-			UserAgent:         "speakeasy-sdk/go 2.1.2 2.188.3 0.1.0 openapi",
+			SDKVersion:        "2.2.0",
+			GenVersion:        "2.250.12",
+			UserAgent:         "speakeasy-sdk/go 2.2.0 2.250.12 0.1.0 openapi",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},
@@ -369,9 +370,11 @@ func New(opts ...SDKOption) *SDK {
 
 	sdk.AuthNew = newAuthNew(sdk.sdkConfiguration)
 
+	sdk.Resource = newResource(sdk.sdkConfiguration)
+
 	sdk.Documentation = newDocumentation(sdk.sdkConfiguration)
 
-	sdk.Resource = newResource(sdk.sdkConfiguration)
+	sdk.Eventstreams = newEventstreams(sdk.sdkConfiguration)
 
 	sdk.First = newFirst(sdk.sdkConfiguration)
 
@@ -382,6 +385,60 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Retries = newRetries(sdk.sdkConfiguration)
 
 	return sdk
+}
+
+// ConflictingEnum - Test potential namespace conflicts with java.lang.Object
+func (s *SDK) ConflictingEnum(ctx context.Context, request *shared.ConflictingEnum) (*operations.ConflictingEnumResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/conflictingEnum/"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "*/*")
+	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.ConflictingEnumResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+	switch {
+	case httpRes.StatusCode == 200:
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
 }
 
 func (s *SDK) PutAnythingIgnoredGeneration(ctx context.Context, request string) (*operations.PutAnythingIgnoredGenerationResponse, error) {

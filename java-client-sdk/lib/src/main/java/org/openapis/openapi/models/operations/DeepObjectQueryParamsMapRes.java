@@ -12,9 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DeepObjectQueryParamsMapRes {
     @JsonProperty("args")
-    public java.util.Map<String, Object> args;
+    public java.util.Map<String, java.lang.Object> args;
 
-    public DeepObjectQueryParamsMapRes withArgs(java.util.Map<String, Object> args) {
+    public DeepObjectQueryParamsMapRes withArgs(java.util.Map<String, java.lang.Object> args) {
         this.args = args;
         return this;
     }
@@ -27,7 +27,7 @@ public class DeepObjectQueryParamsMapRes {
         return this;
     }
     
-    public DeepObjectQueryParamsMapRes(@JsonProperty("args") java.util.Map<String, Object> args, @JsonProperty("url") String url) {
+    public DeepObjectQueryParamsMapRes(@JsonProperty("args") java.util.Map<String, java.lang.Object> args, @JsonProperty("url") String url) {
         this.args = args;
         this.url = url;
   }

@@ -1241,6 +1241,8 @@ func TestRequestBodyPostDefaultsAndConsts(t *testing.T) {
 	assert.Equal(t, int64(123), req.GetConstInt())
 	assert.Equal(t, float64(123.456), req.GetConstNum())
 	assert.Equal(t, "const", req.GetConstStr())
+	assert.Equal(t, "const with \"double quotes\"", req.GetConstStrDQuotes())
+	assert.Equal(t, "const with 'single quotes'", req.GetConstStrSQuotes())
 	assert.Equal(t, (*string)(nil), req.GetConstStrNull())
 
 	res, err := s.RequestBodies.RequestBodyPostDefaultsAndConsts(context.Background(), req)
@@ -1261,6 +1263,8 @@ func TestRequestBodyPostDefaultsAndConsts(t *testing.T) {
 	assert.Equal(t, int64(123), res.Object.JSON.ConstInt)
 	assert.Equal(t, float64(123.456), res.Object.JSON.ConstNum)
 	assert.Equal(t, "const", res.Object.JSON.ConstStr)
+	assert.Equal(t, "const with \"double quotes\"", res.Object.JSON.ConstStrDQuotes)
+	assert.Equal(t, "const with 'single quotes'", res.Object.JSON.ConstStrSQuotes)
 	assert.Equal(t, (*string)(nil), res.Object.JSON.ConstStrNull)
 
 	assert.Equal(t, types.MustNewBigIntFromString("9007199254740991"), res.Object.JSON.DefaultBigInt)
@@ -1277,6 +1281,8 @@ func TestRequestBodyPostDefaultsAndConsts(t *testing.T) {
 	assert.Equal(t, "not default", res.Object.JSON.DefaultStr)
 	assert.Equal(t, (*string)(nil), res.Object.JSON.DefaultStrNullable)
 	assert.Equal(t, "default", *res.Object.JSON.DefaultStrOptional)
+	assert.Equal(t, "default with \"double quotes\"", res.Object.JSON.DefaultStrDQuotes)
+	assert.Equal(t, "default with 'single quotes'", res.Object.JSON.DefaultStrSQuotes)
 }
 
 func TestRequestBodyPostJsonDataTypesString(t *testing.T) {
