@@ -46,13 +46,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.DeepObjectQueryParamsMapAsync(new Dictionary<string, string>() {
+var res = await sdk.Parameters.DeepObjectQueryParamsMapAsync(
+    mapParam: new Dictionary<string, string>() {
     { "test", "value" },
     { "test2", "value2" },
-}, new Dictionary<string, List<string>>() {
+},
+    mapArrParam: new Dictionary<string, List<string>>() {
     { "test", new List<string>() {
         "test",
         "test2",
@@ -68,10 +69,10 @@ var res = await sdk.Parameters.DeepObjectQueryParamsMapAsync(new Dictionary<stri
 
 ### Parameters
 
-| Parameter                          | Type                               | Required                           | Description                        | Example                            |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `MapParam`                         | Dictionary<String, *string*>       | :heavy_check_mark:                 | N/A                                | [object Object]                    |
-| `MapArrParam`                      | Dictionary<String, List<*string*>> | :heavy_minus_sign:                 | N/A                                | [object Object]                    |
+| Parameter                                           | Type                                                | Required                                            | Description                                         | Example                                             |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `MapParam`                                          | Dictionary<String, *string*>                        | :heavy_check_mark:                                  | N/A                                                 | {"test":"value","test2":"value2"}                   |
+| `MapArrParam`                                       | Dictionary<String, List<*string*>>                  | :heavy_minus_sign:                                  | N/A                                                 | {"test":["test","test2"],"test2":["test3","test4"]} |
 
 
 ### Response
@@ -95,14 +96,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.DeepObjectQueryParamsObjectAsync(new SimpleObject() {
+var res = await sdk.Parameters.DeepObjectQueryParamsObjectAsync(
+    objParam: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -117,7 +118,8 @@ var res = await sdk.Parameters.DeepObjectQueryParamsObjectAsync(new SimpleObject
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
     StrOpt = "testOptional",
-}, new ObjArrParam() {
+},
+    objArrParam: new ObjArrParam() {
     Arr = new List<string>() {
         "test",
         "test2",
@@ -154,10 +156,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.DuplicateParamAsync("string");
+var res = await sdk.Parameters.DuplicateParamAsync(duplicateParamRequest: "string");
 
 // handle response
 ```
@@ -189,13 +190,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.FormQueryParamsArrayAsync(new List<string>() {
+var res = await sdk.Parameters.FormQueryParamsArrayAsync(
+    arrParam: new List<string>() {
     "test",
     "test2",
-}, new List<long>() {
+},
+    arrParamExploded: new List<long>() {
     1,
     2,
 });
@@ -230,13 +232,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.FormQueryParamsCamelObjectAsync(new ObjParamExploded() {
+var res = await sdk.Parameters.FormQueryParamsCamelObjectAsync(
+    objParamExploded: new ObjParamExploded() {
     ItemCount = "10",
     SearchTerm = "foo",
-}, new ObjParam() {
+},
+    objParam: new ObjParam() {
     EncodedCount = "11",
     EncodedTerm = "bar",
 });
@@ -272,13 +275,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.FormQueryParamsMapAsync(new Dictionary<string, string>() {
+var res = await sdk.Parameters.FormQueryParamsMapAsync(
+    mapParam: new Dictionary<string, string>() {
     { "test", "value" },
     { "test2", "value2" },
-}, new Dictionary<string, long>() {
+},
+    mapParamExploded: new Dictionary<string, long>() {
     { "test", 1 },
     { "test2", 2 },
 });
@@ -288,10 +292,10 @@ var res = await sdk.Parameters.FormQueryParamsMapAsync(new Dictionary<string, st
 
 ### Parameters
 
-| Parameter                    | Type                         | Required                     | Description                  | Example                      |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `MapParam`                   | Dictionary<String, *string*> | :heavy_minus_sign:           | N/A                          | [object Object]              |
-| `MapParamExploded`           | Dictionary<String, *long*>   | :heavy_minus_sign:           | N/A                          | [object Object]              |
+| Parameter                         | Type                              | Required                          | Description                       | Example                           |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `MapParam`                        | Dictionary<String, *string*>      | :heavy_minus_sign:                | N/A                               | {"test":"value","test2":"value2"} |
+| `MapParamExploded`                | Dictionary<String, *long*>        | :heavy_minus_sign:                | N/A                               | {"test":1,"test2":2}              |
 
 
 ### Response
@@ -314,14 +318,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.FormQueryParamsObjectAsync(new SimpleObject() {
+var res = await sdk.Parameters.FormQueryParamsObjectAsync(
+    objParamExploded: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -336,11 +340,12 @@ var res = await sdk.Parameters.FormQueryParamsObjectAsync(new SimpleObject() {
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
     StrOpt = "testOptional",
-}, new SimpleObject() {
+},
+    objParam: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -387,10 +392,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.FormQueryParamsPrimitiveAsync(true, 1, 1.1D, "test");
+var res = await sdk.Parameters.FormQueryParamsPrimitiveAsync(
+    boolParam: true,
+    intParam: 1,
+    numParam: 1.1D,
+    strParam: "test");
 
 // handle response
 ```
@@ -424,15 +432,16 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.FormQueryParamsRefParamObjectAsync(new RefQueryParamObj() {
+var res = await sdk.Parameters.FormQueryParamsRefParamObjectAsync(
+    refObjParam: new RefQueryParamObj() {
     Bool = true,
     Int = 1,
     Num = 1.1D,
     Str = "test",
-}, new RefQueryParamObjExploded() {
+},
+    refObjParamExploded: new RefQueryParamObjExploded() {
     Bool = true,
     Int = 1,
     Num = 1.1D,
@@ -470,10 +479,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.HeaderParamsArrayAsync(new List<string>() {
+var res = await sdk.Parameters.HeaderParamsArrayAsync(xHeaderArray: new List<string>() {
     "test1",
     "test2",
 });
@@ -508,13 +516,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.HeaderParamsMapAsync(new Dictionary<string, string>() {
+var res = await sdk.Parameters.HeaderParamsMapAsync(
+    xHeaderMap: new Dictionary<string, string>() {
     { "key1", "value1" },
     { "key2", "value2" },
-}, new Dictionary<string, string>() {
+},
+    xHeaderMapExplode: new Dictionary<string, string>() {
     { "test1", "val1" },
     { "test2", "val2" },
 });
@@ -524,10 +533,10 @@ var res = await sdk.Parameters.HeaderParamsMapAsync(new Dictionary<string, strin
 
 ### Parameters
 
-| Parameter                    | Type                         | Required                     | Description                  | Example                      |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `XHeaderMap`                 | Dictionary<String, *string*> | :heavy_check_mark:           | N/A                          | [object Object]              |
-| `XHeaderMapExplode`          | Dictionary<String, *string*> | :heavy_check_mark:           | N/A                          | [object Object]              |
+| Parameter                         | Type                              | Required                          | Description                       | Example                           |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `XHeaderMap`                      | Dictionary<String, *string*>      | :heavy_check_mark:                | N/A                               | {"key1":"value1","key2":"value2"} |
+| `XHeaderMapExplode`               | Dictionary<String, *string*>      | :heavy_check_mark:                | N/A                               | {"test1":"val1","test2":"val2"}   |
 
 
 ### Response
@@ -550,14 +559,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.HeaderParamsObjectAsync(new SimpleObject() {
+var res = await sdk.Parameters.HeaderParamsObjectAsync(
+    xHeaderObj: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -572,11 +581,12 @@ var res = await sdk.Parameters.HeaderParamsObjectAsync(new SimpleObject() {
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
     StrOpt = "testOptional",
-}, new SimpleObject() {
+},
+    xHeaderObjExplode: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -623,10 +633,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.HeaderParamsPrimitiveAsync(true, 1, 1.1D, "test");
+var res = await sdk.Parameters.HeaderParamsPrimitiveAsync(
+    xHeaderBoolean: true,
+    xHeaderInteger: 1,
+    xHeaderNumber: 1.1D,
+    xHeaderString: "test");
 
 // handle response
 ```
@@ -662,17 +675,17 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
+var res = await sdk.Parameters.JsonQueryParamsObjectAsync(
+    deepObjParam: new DeepObject() {
     Any = "anyOf[0]",
     Arr = new List<SimpleObject>() {
         new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -692,7 +705,7 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -716,7 +729,7 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -736,7 +749,7 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -758,7 +771,7 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
         Any = "any",
         Bool = true,
         Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
         Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
@@ -775,11 +788,12 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
         StrOpt = "testOptional",
     },
     Str = "test",
-}, new SimpleObject() {
+},
+    simpleObjParam: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -826,10 +840,12 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.MixedParametersCamelCaseAsync("headerValue", "pathValue", "queryValue");
+var res = await sdk.Parameters.MixedParametersCamelCaseAsync(
+    headerParam: "headerValue",
+    pathParam: "pathValue",
+    queryStringParam: "queryValue");
 
 // handle response
 ```
@@ -862,10 +878,12 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.MixedParametersPrimitivesAsync("headerValue", "pathValue", "queryValue");
+var res = await sdk.Parameters.MixedParametersPrimitivesAsync(
+    headerParam: "headerValue",
+    pathParam: "pathValue",
+    queryStringParam: "queryValue");
 
 // handle response
 ```
@@ -899,14 +917,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.MixedQueryParamsAsync(new SimpleObject() {
+var res = await sdk.Parameters.MixedQueryParamsAsync(
+    deepObjectParam: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -921,11 +939,12 @@ var res = await sdk.Parameters.MixedQueryParamsAsync(new SimpleObject() {
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
     StrOpt = "testOptional",
-}, new SimpleObject() {
+},
+    formParam: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -940,11 +959,12 @@ var res = await sdk.Parameters.MixedQueryParamsAsync(new SimpleObject() {
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
     StrOpt = "testOptional",
-}, new SimpleObject() {
+},
+    jsonParam: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -993,14 +1013,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.PathParameterJsonAsync(new SimpleObject() {
+var res = await sdk.Parameters.PathParameterJsonAsync(jsonObj: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -1048,23 +1067,26 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.PipeDelimitedQueryParamsArrayAsync(new List<string>() {
+var res = await sdk.Parameters.PipeDelimitedQueryParamsArrayAsync(
+    arrParam: new List<string>() {
     "test",
     "test2",
-}, new List<long>() {
+},
+    arrParamExploded: new List<long>() {
     1,
     2,
-}, new Dictionary<string, string>() {
-    { "key2", "val2" },
+},
+    mapParam: new Dictionary<string, string>() {
     { "key1", "val1" },
-}, new SimpleObject() {
+    { "key2", "val2" },
+},
+    objParam: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -1090,7 +1112,7 @@ var res = await sdk.Parameters.PipeDelimitedQueryParamsArrayAsync(new List<strin
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `ArrParam`                                                                                         | List<*string*>                                                                                     | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `ArrParamExploded`                                                                                 | List<*long*>                                                                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `MapParam`                                                                                         | Dictionary<String, *string*>                                                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
+| `MapParam`                                                                                         | Dictionary<String, *string*>                                                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                | {"key1":"val1","key2":"val2"}                                                                      |
 | `ObjParam`                                                                                         | [SimpleObject](../../Models/Shared/SimpleObject.md)                                                | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 
 
@@ -1114,10 +1136,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.SimplePathParameterArraysAsync(new List<string>() {
+var res = await sdk.Parameters.SimplePathParameterArraysAsync(arrParam: new List<string>() {
     "test",
     "test2",
 });
@@ -1152,13 +1173,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.SimplePathParameterMapsAsync(new Dictionary<string, string>() {
+var res = await sdk.Parameters.SimplePathParameterMapsAsync(
+    mapParam: new Dictionary<string, string>() {
     { "test", "value" },
     { "test2", "value2" },
-}, new Dictionary<string, long>() {
+},
+    mapParamExploded: new Dictionary<string, long>() {
     { "test", 1 },
     { "test2", 2 },
 });
@@ -1168,10 +1190,10 @@ var res = await sdk.Parameters.SimplePathParameterMapsAsync(new Dictionary<strin
 
 ### Parameters
 
-| Parameter                    | Type                         | Required                     | Description                  | Example                      |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `MapParam`                   | Dictionary<String, *string*> | :heavy_check_mark:           | N/A                          | [object Object]              |
-| `MapParamExploded`           | Dictionary<String, *long*>   | :heavy_check_mark:           | N/A                          | [object Object]              |
+| Parameter                         | Type                              | Required                          | Description                       | Example                           |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `MapParam`                        | Dictionary<String, *string*>      | :heavy_check_mark:                | N/A                               | {"test":"value","test2":"value2"} |
+| `MapParamExploded`                | Dictionary<String, *long*>        | :heavy_check_mark:                | N/A                               | {"test":1,"test2":2}              |
 
 
 ### Response
@@ -1194,14 +1216,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.SimplePathParameterObjectsAsync(new SimpleObject() {
+var res = await sdk.Parameters.SimplePathParameterObjectsAsync(
+    objParam: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -1216,11 +1238,12 @@ var res = await sdk.Parameters.SimplePathParameterObjectsAsync(new SimpleObject(
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
     StrOpt = "testOptional",
-}, new SimpleObject() {
+},
+    objParamExploded: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -1267,10 +1290,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.SimplePathParameterPrimitivesAsync(true, 1, 1.1D, "test");
+var res = await sdk.Parameters.SimplePathParameterPrimitivesAsync(
+    boolParam: true,
+    intParam: 1,
+    numParam: 1.1D,
+    strParam: "test");
 
 // handle response
 ```

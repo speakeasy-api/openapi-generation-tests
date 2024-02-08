@@ -12,6 +12,7 @@ namespace Openapi
 {
     using Newtonsoft.Json;
     using Openapi.Models.Operations;
+    using Openapi.Models.Shared;
     using Openapi.Utils;
     using System.Net.Http.Headers;
     using System.Net.Http;
@@ -39,41 +40,36 @@ namespace Openapi
     /// </summary>
     public class Auth: IAuth
     {
-        public SDKConfig Config { get; private set; }
+        public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.3.1";
-        private const string _sdkGenVersion = "2.188.3";
+        private const string _sdkVersion = "0.4.0";
+        private const string _sdkGenVersion = "2.250.16";
         private const string _openapiDocVersion = "0.1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.0 2.250.16 0.1.0 openapi";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
-        private ISpeakeasyHttpClient _securityClient;
+        private Func<Security>? _securitySource;
 
-        public Auth(ISpeakeasyHttpClient defaultClient, ISpeakeasyHttpClient securityClient, string serverUrl, SDKConfig config)
+        public Auth(ISpeakeasyHttpClient defaultClient, Func<Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _defaultClient = defaultClient;
-            _securityClient = securityClient;
+            _securitySource = securitySource;
             _serverUrl = serverUrl;
-            Config = config;
+            SDKConfiguration = config;
         }
         
 
         public async Task<ApiKeyAuthResponse> ApiKeyAuthAsync(ApiKeyAuthSecurity security)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/bearer#operation";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             
-            var client = SecuritySerializer.Apply(_defaultClient, security);
-            
+            var client = SecuritySerializer.Apply(_defaultClient, () => security);
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -91,34 +87,34 @@ namespace Openapi
                 {
                     response.Token = JsonConvert.DeserializeObject<ApiKeyAuthToken>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             if((response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<ApiKeyAuthGlobalResponse> ApiKeyAuthGlobalAsync()
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/bearer";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -136,16 +132,17 @@ namespace Openapi
                 {
                     response.Token = JsonConvert.DeserializeObject<ApiKeyAuthGlobalToken>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             if((response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<BasicAuthResponse> BasicAuthAsync(BasicAuthSecurity security, string passwd, string user)
@@ -155,20 +152,15 @@ namespace Openapi
                 Passwd = passwd,
                 User = user,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/basic-auth/{user}/{passwd}", request);
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             
-            var client = SecuritySerializer.Apply(_defaultClient, security);
-            
+            var client = SecuritySerializer.Apply(_defaultClient, () => security);
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -186,34 +178,30 @@ namespace Openapi
                 {
                     response.User = JsonConvert.DeserializeObject<BasicAuthUser>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             if((response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<BearerAuthResponse> BearerAuthAsync(BearerAuthSecurity security)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/bearer#bearer";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             
-            var client = SecuritySerializer.Apply(_defaultClient, security);
-            
+            var client = SecuritySerializer.Apply(_defaultClient, () => security);
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -231,34 +219,34 @@ namespace Openapi
                 {
                     response.Token = JsonConvert.DeserializeObject<BearerAuthToken>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             if((response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<GlobalBearerAuthResponse> GlobalBearerAuthAsync()
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/bearer#global";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -276,34 +264,30 @@ namespace Openapi
                 {
                     response.Token = JsonConvert.DeserializeObject<GlobalBearerAuthToken>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             if((response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<NoAuthResponse> NoAuthAsync()
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/anything/no-auth";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -317,29 +301,25 @@ namespace Openapi
             
             if((response.StatusCode == 200))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<Oauth2AuthResponse> Oauth2AuthAsync(Oauth2AuthSecurity security)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/bearer#oauth2";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             
-            var client = SecuritySerializer.Apply(_defaultClient, security);
-            
+            var client = SecuritySerializer.Apply(_defaultClient, () => security);
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -357,16 +337,17 @@ namespace Openapi
                 {
                     response.Token = JsonConvert.DeserializeObject<Oauth2AuthToken>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             if((response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<Oauth2OverrideResponse> Oauth2OverrideAsync(Oauth2OverrideSecurity security)
@@ -374,21 +355,16 @@ namespace Openapi
             var request = new Oauth2OverrideRequest()
             {
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/bearer#oauth2AuthOverride";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
             
             
-            var client = SecuritySerializer.Apply(_defaultClient, security);
-            
+            var client = SecuritySerializer.Apply(_defaultClient, () => security);
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -406,34 +382,30 @@ namespace Openapi
                 {
                     response.Token = JsonConvert.DeserializeObject<Oauth2OverrideToken>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             if((response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<OpenIdConnectAuthResponse> OpenIdConnectAuthAsync(OpenIdConnectAuthSecurity security)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/bearer#openIdConnect";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             
-            var client = SecuritySerializer.Apply(_defaultClient, security);
-            
+            var client = SecuritySerializer.Apply(_defaultClient, () => security);
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -451,16 +423,17 @@ namespace Openapi
                 {
                     response.Token = JsonConvert.DeserializeObject<OpenIdConnectAuthToken>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             if((response.StatusCode == 401))
             {
-                
+
                 return response;
             }
             return response;
         }
+
         
     }
 }
