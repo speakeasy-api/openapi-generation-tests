@@ -19,8 +19,8 @@ class RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody:
 
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesSplitParamMultipartRequest:
-    param_str: str = dataclasses.field(metadata={'query_param': { 'field_name': 'paramStr', 'style': 'form', 'explode': True }})
     request_body: RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'multipart/form-data' }})
+    param_str: str = dataclasses.field(metadata={'query_param': { 'field_name': 'paramStr', 'style': 'form', 'explode': True }})
     
 
 
@@ -31,7 +31,7 @@ class RequestBodyPostMultipleContentTypesSplitParamMultipartRes:
     r"""OK"""
     args: Optional[Dict[str, str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args'), 'exclude': lambda f: f is None }})
     form: Optional[Dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form'), 'exclude': lambda f: f is None }})
-    json: Optional[Dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
+    json: Optional[Dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
 
 
@@ -42,7 +42,7 @@ class RequestBodyPostMultipleContentTypesSplitParamMultipartResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
     res: Optional[RequestBodyPostMultipleContentTypesSplitParamMultipartRes] = dataclasses.field(default=None)
     r"""OK"""

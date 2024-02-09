@@ -13,9 +13,9 @@ import org.openapis.openapi.utils.SpeakeasyMetadata;
 public class DeepObject {
     @JsonProperty("any")
     @SpeakeasyMetadata("form:name=any,json multipartForm:name=any,json")
-    public Object any;
+    public java.lang.Object any;
 
-    public DeepObject withAny(Object any) {
+    public DeepObject withAny(java.lang.Object any) {
         this.any = any;
         return this;
     }
@@ -97,7 +97,7 @@ public class DeepObject {
         return this;
     }
     
-    public DeepObject(@JsonProperty("any") Object any, @JsonProperty("arr") SimpleObject[] arr, @JsonProperty("bool") Boolean bool, @JsonProperty("int") Long int_, @JsonProperty("map") java.util.Map<String, SimpleObject> map, @JsonProperty("num") Double num, @JsonProperty("obj") SimpleObject obj, @JsonProperty("str") String str) {
+    public DeepObject(@JsonProperty("any") java.lang.Object any, @JsonProperty("arr") SimpleObject[] arr, @JsonProperty("bool") Boolean bool, @JsonProperty("int") Long int_, @JsonProperty("map") java.util.Map<String, SimpleObject> map, @JsonProperty("num") Double num, @JsonProperty("obj") SimpleObject obj, @JsonProperty("str") String str) {
         this.any = any;
         this.arr = arr;
         this.bool = bool;

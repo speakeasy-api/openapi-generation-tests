@@ -13,12 +13,9 @@ import OpenAPI
 
 let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
 
-let response = try await client.putAnythingIgnoredGeneration()
+let response = try await client.servers.selectGlobalServer()
 
 switch response.data {
-case .object(let object):
-    // Handle response
-    break
 case .empty:
     // Handle empty response
     break
@@ -66,8 +63,8 @@ case .empty:
 - ``ServersAPI``
 - ``TelemetryAPI``
 - ``AuthNewAPI``
-- ``DocumentationAPI``
 - ``ResourceAPI``
+- ``DocumentationAPI``
 - ``FirstAPI``
 - ``SecondAPI``
 - ``PaginationAPI``
@@ -141,6 +138,7 @@ case .empty:
 - ``PaginationServers/PaginationLimitOffsetPageBody``
 - ``PaginationServers/PaginationLimitOffsetPageParams``
 - ``RetriesServers/RetriesGet``
+- ``RetriesServers/RetriesPost``
 
 ### Shared models
 - ``Shared/Two``
@@ -155,10 +153,13 @@ case .empty:
 - ``Shared/Child``
 - ``Shared/Chocolates``
 - ``Shared/ComplexNumberTypes``
+- ``Shared/ConflictingEnum``
 - ``Shared/ConstEnumInt``
 - ``Shared/ConstEnumStr``
 - ``Shared/DeepObject``
 - ``Shared/DeepObjectCamelCase``
+- ``Shared/DeepObjectWithNonStandardTypeName``
+- ``Shared/DeepObjectWithNonStandardTypeNameAny``
 - ``Shared/DeepObjectWithType``
 - ``Shared/DeepObjectWithTypeAny``
 - ``Shared/DefaultEnumInt``
@@ -202,6 +203,7 @@ case .empty:
 - ``Shared/NullableOneOfTwo``
 - ``Shared/NullableOneOfTypeInObject``
 - ``Shared/NullableOneOfTypeInObjectNullableOneOfTwo``
+- ``Shared/Object``
 - ``Shared/ObjectCircularReferenceObject``
 - ``Shared/ObjWithZeroValueComplexTypePtrs``
 - ``Shared/OneOfCircularReferenceObject``
@@ -219,12 +221,22 @@ case .empty:
 - ``Shared/SchemeBasicAuth``
 - ``Shared/SimpleObject``
 - ``Shared/SimpleObjectCamelCase``
+- ``Shared/SimpleObjectWithNonStandardTypeName``
+- ``Shared/SimpleObjectWithNonStandardTypeNameInt32Enum``
+- ``Shared/SimpleObjectWithNonStandardTypeNameIntEnum``
 - ``Shared/SimpleObjectWithType``
 - ``Shared/SimpleObjectWithTypeInt32Enum``
 - ``Shared/SimpleObjectWithTypeIntEnum``
 - ``Shared/Slides``
 - ``Shared/Slideshow``
+- ``Shared/StronglyTypedOneOfDiscriminatedObject``
 - ``Shared/StronglyTypedOneOfObject``
+- ``Shared/StronglyTypedOneOfObjectWithNonStandardDiscriminatorName``
+- ``Shared/Tag``
+- ``Shared/TaggedObject1``
+- ``Shared/TaggedObject2``
+- ``Shared/TaggedObject2Tag``
+- ``Shared/TaggedObject3``
 - ``Shared/TypeModel``
 - ``Shared/TypedObject1``
 - ``Shared/TypedObject1Type``
@@ -261,6 +273,7 @@ case .empty:
 - ``Operations/CircularReferenceGetResponse``
 - ``Operations/ComponentBodyAndParamConflictResponse``
 - ``Operations/ComponentBodyAndParamNoConflictResponse``
+- ``Operations/ConflictingEnumResponse``
 - ``Operations/ConflictingParamsResponse``
 - ``Operations/ConnectionErrorGetResponse``
 - ``Operations/CreateFileResponse``
@@ -285,6 +298,7 @@ case .empty:
 - ``Operations/FormQueryParamsObjectResponse``
 - ``Operations/FormQueryParamsPrimitiveResponse``
 - ``Operations/FormQueryParamsRefParamObjectResponse``
+- ``Operations/GetArrayDataSourceResponse``
 - ``Operations/GetDocumentationPerLanguageResponse``
 - ``Operations/GetGlobalNameOverrideResponse``
 - ``Operations/GetResourceResponse``
@@ -410,6 +424,7 @@ case .empty:
 - ``Operations/RequestBodyPutMultipartDeepResponse``
 - ``Operations/RequestBodyPutMultipartDifferentFileNameResponse``
 - ``Operations/RequestBodyPutMultipartFileResponse``
+- ``Operations/RequestBodyPutMultipartOptionalRequestBodyResponse``
 - ``Operations/RequestBodyPutMultipartSimpleResponse``
 - ``Operations/RequestBodyPutStringResponse``
 - ``Operations/RequestBodyPutStringWithParamsResponse``
@@ -420,6 +435,7 @@ case .empty:
 - ``Operations/RequestBodyWriteOnlyResponse``
 - ``Operations/RequestBodyWriteOnlyOutputResponse``
 - ``Operations/RequestBodyWriteOnlyUnionResponse``
+- ``Operations/ResponseBodyAdditionalPropertiesAnyPostResponse``
 - ``Operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse``
 - ``Operations/ResponseBodyAdditionalPropertiesDatePostResponse``
 - ``Operations/ResponseBodyAdditionalPropertiesObjectPostResponse``
@@ -433,6 +449,7 @@ case .empty:
 - ``Operations/ResponseBodyXmlGetResponse``
 - ``Operations/ResponseBodyZeroValueComplexTypePtrsPostResponse``
 - ``Operations/RetriesGetResponse``
+- ``Operations/RetriesPostResponse``
 - ``Operations/SelectGlobalServerResponse``
 - ``Operations/SelectServerWithIDResponse``
 - ``Operations/ServersByIDWithTemplatesResponse``
@@ -445,7 +462,9 @@ case .empty:
 - ``Operations/SimplePathParameterPrimitivesResponse``
 - ``Operations/StatusGetErrorResponse``
 - ``Operations/StatusGetXSpeakeasyErrorsResponse``
+- ``Operations/StronglyTypedOneOfDiscriminatedPostResponse``
 - ``Operations/StronglyTypedOneOfPostResponse``
+- ``Operations/StronglyTypedOneOfPostWithNonStandardDiscriminatorNameResponse``
 - ``Operations/TelemetrySpeakeasyUserAgentGetResponse``
 - ``Operations/TelemetryUserAgentGetResponse``
 - ``Operations/TypedObjectNullableOneOfPostResponse``
@@ -520,6 +539,7 @@ case .empty:
 - ``Operations/FormQueryParamsRefParamObjectArgs``
 - ``Operations/FormQueryParamsRefParamObjectRequest``
 - ``Operations/FormQueryParamsRefParamObjectRes``
+- ``Operations/GetArrayDataSourceRequest``
 - ``Operations/GetDocumentationPerLanguageRequest``
 - ``Operations/GetGlobalNameOverrideResponseBody``
 - ``Operations/GetResourceRequest``
@@ -677,6 +697,9 @@ case .empty:
 - ``Operations/RequestBodyPutMultipartDifferentFileNameRes``
 - ``Operations/RequestBodyPutMultipartFileRequestBody``
 - ``Operations/RequestBodyPutMultipartFileRes``
+- ``Operations/RequestBodyPutMultipartOptionalRequestBodyForm``
+- ``Operations/RequestBodyPutMultipartOptionalRequestBodyRequestBody``
+- ``Operations/RequestBodyPutMultipartOptionalRequestBodyRes``
 - ``Operations/RequestBodyPutMultipartSimpleForm``
 - ``Operations/RequestBodyPutMultipartSimpleHeaders``
 - ``Operations/RequestBodyPutMultipartSimpleRes``
@@ -685,6 +708,7 @@ case .empty:
 - ``Operations/RequestBodyPutStringWithParamsRequest``
 - ``Operations/RequestBodyPutStringWithParamsRes``
 - ``Operations/RequiredObj``
+- ``Operations/ResponseBodyAdditionalPropertiesAnyPostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesDatePostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesObjectPostResponseBody``
@@ -693,6 +717,10 @@ case .empty:
 - ``Operations/ResponseBodyZeroValueComplexTypePtrsPostResponseBody``
 - ``Operations/RetriesGetRequest``
 - ``Operations/RetriesGetRetries``
+- ``Operations/RetriesPostRequest``
+- ``Operations/RetriesPostRequestBody``
+- ``Operations/RetriesPostRetries``
+- ``Operations/SampleFile``
 - ``Operations/SimplePathParameterArraysRequest``
 - ``Operations/SimplePathParameterArraysRes``
 - ``Operations/SimplePathParameterMapsRequest``
@@ -704,7 +732,9 @@ case .empty:
 - ``Operations/StatusGetErrorRequest``
 - ``Operations/StatusGetXSpeakeasyErrorsRequest``
 - ``Operations/StatusGetXSpeakeasyErrorsResponseBody``
+- ``Operations/StronglyTypedOneOfDiscriminatedPostRes``
 - ``Operations/StronglyTypedOneOfPostRes``
+- ``Operations/StronglyTypedOneOfPostWithNonStandardDiscriminatorNameRes``
 - ``Operations/TelemetrySpeakeasyUserAgentGetRequest``
 - ``Operations/TelemetrySpeakeasyUserAgentGetRes``
 - ``Operations/TelemetryUserAgentGetRes``

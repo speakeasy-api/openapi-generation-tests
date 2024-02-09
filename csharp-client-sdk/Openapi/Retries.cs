@@ -12,6 +12,7 @@ namespace Openapi
 {
     using Newtonsoft.Json;
     using Openapi.Models.Operations;
+    using Openapi.Models.Shared;
     using Openapi.Utils;
     using System.Collections.Generic;
     using System.Net.Http.Headers;
@@ -25,6 +26,7 @@ namespace Openapi
     public interface IRetries
     {
         Task<RetriesGetResponse> RetriesGetAsync(string requestId, long? numRetries = null, string? serverUrl = null);
+        Task<RetriesPostResponse> RetriesPostAsync(string requestId, RetriesPostRequestBody? requestBody = null, long? numRetries = null, string? serverUrl = null);
     }
 
     /// <summary>
@@ -33,28 +35,35 @@ namespace Openapi
     public class Retries: IRetries
     {
         /**
-        * RetriesGetSERVERS contains the list of server urls available to the SDK.
+        * RetriesGetServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] RetriesGetSERVERS = {
+        public static readonly string[] RetriesGetServerList = {
             "http://localhost:35456",
         };
 
-        public SDKConfig Config { get; private set; }
+        /**
+        * RetriesPostServerList contains the list of server urls available to the SDK.
+        */
+        public static readonly string[] RetriesPostServerList = {
+            "http://localhost:35456",
+        };
+
+        public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.3.1";
-        private const string _sdkGenVersion = "2.188.3";
+        private const string _sdkVersion = "0.4.0";
+        private const string _sdkGenVersion = "2.250.22";
         private const string _openapiDocVersion = "0.1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.0 2.250.22 0.1.0 openapi";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
-        private ISpeakeasyHttpClient _securityClient;
+        private Func<Security>? _securitySource;
 
-        public Retries(ISpeakeasyHttpClient defaultClient, ISpeakeasyHttpClient securityClient, string serverUrl, SDKConfig config)
+        public Retries(ISpeakeasyHttpClient defaultClient, Func<Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _defaultClient = defaultClient;
-            _securityClient = securityClient;
+            _securitySource = securitySource;
             _serverUrl = serverUrl;
-            Config = config;
+            SDKConfiguration = config;
         }
         
 
@@ -65,23 +74,24 @@ namespace Openapi
                 RequestId = requestId,
                 NumRetries = numRetries,
             };
-            string baseUrl = RetriesGetSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(RetriesGetServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = URLBuilder.Build(baseUrl, "/retries", request);
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -99,11 +109,68 @@ namespace Openapi
                 {
                     response.Retries = JsonConvert.DeserializeObject<RetriesGetRetries>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
+        
+
+        public async Task<RetriesPostResponse> RetriesPostAsync(string requestId, RetriesPostRequestBody? requestBody = null, long? numRetries = null, string? serverUrl = null)
+        {
+            var request = new RetriesPostRequest()
+            {
+                RequestId = requestId,
+                RequestBody = requestBody,
+                NumRetries = numRetries,
+            };
+            string baseUrl = Utilities.TemplateUrl(RetriesPostServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
+            {
+                baseUrl = serverUrl;
+            }
+            var urlString = URLBuilder.Build(baseUrl, "/retries", request);
+            
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
+            
+            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json");
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
+            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new RetriesPostResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.Retries = JsonConvert.DeserializeObject<RetriesPostRetries>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                }
+
+                return response;
+            }
+            return response;
+        }
+
         
     }
 }
