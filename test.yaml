@@ -6229,6 +6229,55 @@ paths:
         statusCodes:
           - 503
         retryConnectionErrors: false
+    post:
+      operationId: retriesPost
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: request-id
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: num-retries
+          in: query
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                field_one: # This is an example field, replace with your actual field names and types
+                  type: string
+              required:
+                - field_one
+      tags:
+        - retries
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: retries
+                type: object
+                properties:
+                  retries:
+                    type: integer
+                required:
+                  - retries
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 10 # 10 ms
+          maxInterval: 200 # 200 ms
+          maxElapsedTime: 1000 # 1 seconds
+          exponent: 1.5
+        statusCodes:
+          - 503
+        retryConnectionErrors: false
   /eventstreams/json:
     post:
       tags:
