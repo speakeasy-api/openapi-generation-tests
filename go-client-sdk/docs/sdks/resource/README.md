@@ -6,6 +6,7 @@
 * [CreateFile](#createfile)
 * [CreateResource](#createresource)
 * [DeleteResource](#deleteresource)
+* [GetArrayDataSource](#getarraydatasource)
 * [GetResource](#getresource)
 * [UpdateResource](#updateresource)
 
@@ -17,11 +18,11 @@
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -63,7 +64,7 @@ func main() {
 **[*operations.CreateFileResponse](../../pkg/models/operations/createfileresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## CreateResource
 
@@ -73,10 +74,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -143,7 +144,7 @@ func main() {
 **[*operations.CreateResourceResponse](../../pkg/models/operations/createresourceresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## DeleteResource
 
@@ -153,10 +154,11 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -196,7 +198,60 @@ func main() {
 **[*operations.DeleteResourceResponse](../../pkg/models/operations/deleteresourceresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
+
+## GetArrayDataSource
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
+	"log"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+
+    var filter string = "string"
+
+    ctx := context.Background()
+    res, err := s.Resource.GetArrayDataSource(ctx, filter)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.ArrayDataSource != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `filter`                                              | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
+
+
+### Response
+
+**[*operations.GetArrayDataSourceResponse](../../pkg/models/operations/getarraydatasourceresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetResource
 
@@ -206,10 +261,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -249,7 +304,7 @@ func main() {
 **[*operations.GetResourceResponse](../../pkg/models/operations/getresourceresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UpdateResource
 
@@ -259,10 +314,11 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -275,10 +331,12 @@ func main() {
     )
 
 
+    var augment string = "string"
+
     var resourceID string = "string"
 
     ctx := context.Background()
-    res, err := s.Resource.UpdateResource(ctx, resourceID)
+    res, err := s.Resource.UpdateResource(ctx, augment, resourceID)
     if err != nil {
         log.Fatal(err)
     }
@@ -294,6 +352,7 @@ func main() {
 | Parameter                                             | Type                                                  | Required                                              | Description                                           |
 | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
 | `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `augment`                                             | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
 | `resourceID`                                          | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
 
 
@@ -302,4 +361,4 @@ func main() {
 **[*operations.UpdateResourceResponse](../../pkg/models/operations/updateresourceresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

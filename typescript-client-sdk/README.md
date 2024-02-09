@@ -1,6 +1,6 @@
 # openapi
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### NPM
@@ -14,16 +14,19 @@ npm add https://gitpkg.now.sh/speakeasy-api/openapi-generation-tests/typescript-
 ```bash
 yarn add https://gitpkg.now.sh/speakeasy-api/openapi-generation-tests/typescript-client-sdk
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example 1
 
 ```typescript
 import { SDK } from "openapi";
+import { Enum, Int32Enum, IntEnum } from "openapi/sdk/models/shared";
+import { Decimal, RFCDate } from "openapi/sdk/types";
 
-(async () => {
+async function run() {
     const sdk = new SDK({
         security: {
             apiKeyAuth: "Token YOUR_API_KEY",
@@ -32,12 +35,56 @@ import { SDK } from "openapi";
         globalQueryParam: "some example global query param",
     });
 
-    const res = await sdk.generation.globalNameOverridden();
+    const result = await sdk.generation.globalNameOverridden({
+        bool: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Int32Enum.FiftyFive,
+        intEnum: IntEnum.Second,
+        num: 1.1,
+        str: "test",
+        any: "any",
+        bigint: 8821239038968084n,
+        bigintStr: 9223372036854775808n,
+        boolOpt: true,
+        decimal: new Decimal("3.141592653589793"),
+        decimalStr: new Decimal("3.14159265358979344719667586"),
+        strOpt: "testOptional",
+    });
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
-})();
+    // Handle the result
+    console.log(result);
+}
+
+run();
+
+```
+
+### Example 2
+
+```typescript
+import { SDK } from "openapi";
+
+async function run() {
+    const sdk = new SDK({
+        security: {
+            apiKeyAuth: "Token YOUR_API_KEY",
+        },
+        globalPathParam: 100,
+        globalQueryParam: "some example global query param",
+    });
+
+    const result = await sdk.servers.selectGlobalServer();
+
+    // Handle the result
+    console.log(result);
+}
+
+run();
 
 ```
 
@@ -51,35 +98,30 @@ import {
     EnumParameter,
     OptEnumParameter,
     UsageExamplePostSecurity,
-} from "openapi/dist/sdk/models/operations";
-import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
-import { RFCDate } from "openapi/dist/sdk/types";
+} from "openapi/sdk/models/operations";
+import { Enum, Int32Enum, IntEnum } from "openapi/sdk/models/shared";
+import { Decimal, RFCDate } from "openapi/sdk/types";
 
-(async () => {
+async function run() {
     const sdk = new SDK({
         globalPathParam: 100,
         globalQueryParam: "some example global query param",
     });
+
     const operationSecurity: UsageExamplePostSecurity = {
         password: "YOUR_PASSWORD",
         username: "YOUR_USERNAME",
     };
 
-    const res = await sdk.generation.usageExamplePost(
+    const result = await sdk.generation.usageExamplePost(
         {
             requestBody: {
                 fakerFormattedStrings: {},
                 fakerStrings: {},
                 simpleObject: {
-                    any: "any",
-                    bigint: 8821239038968084,
-                    bigintStr: "9223372036854775808",
                     bool: true,
-                    boolOpt: true,
                     date: new RFCDate("2020-01-01"),
-                    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-                    decimal: 3.141592653589793,
-                    decimalStr: "3.14159265358979344719667586",
+                    dateTime: new Date("2020-01-01T00:00:00.000001Z"),
                     enum: Enum.One,
                     float32: 1.1,
                     int: 1,
@@ -88,43 +130,51 @@ import { RFCDate } from "openapi/dist/sdk/types";
                     intEnum: IntEnum.Second,
                     num: 1.1,
                     str: "test",
+                    any: "any",
+                    bigint: 8821239038968084n,
+                    bigintStr: 9223372036854775808n,
+                    boolOpt: true,
+                    decimal: new Decimal("3.141592653589793"),
+                    decimalStr: new Decimal("3.14159265358979344719667586"),
                     strOpt: "testOptional",
                 },
             },
-            bigintParameter: 168827,
-            bigintStrParameter: "string",
+            bigintParameter: 168827n,
+            bigintStrParameter: 446729n,
             boolParameter: false,
-            dateParameter: new RFCDate("2022-05-05"),
-            dateTimeDefaultParameter: new Date("2023-06-11T00:39:45.412Z"),
-            dateTimeParameter: new Date("2022-07-22T13:16:48.221Z"),
-            decimalParameter: 2679.33,
-            decimalStrParameter: "string",
-            doubleParameter: 5223.72,
+            dateParameter: new RFCDate("2024-06-10"),
+            dateTimeDefaultParameter: new Date("2023-07-23T01:43:10.512Z"),
+            dateTimeParameter: new Date("2022-10-21T15:42:48.223Z"),
+            decimalParameter: new Decimal("5223.72"),
+            decimalStrParameter: new Decimal("2911.37"),
+            doubleParameter: 6946.59,
             enumParameter: EnumParameter.Value1,
             falseyNumberParameter: 0,
-            float32Parameter: 6946.59,
-            floatParameter: 2286.22,
-            int64Parameter: 102975,
-            intParameter: 566999,
+            float32Parameter: 1029.75,
+            floatParameter: 5669.99,
+            int64Parameter: 195232,
+            intParameter: 569663,
             optEnumParameter: OptEnumParameter.Value3,
             strParameter: "example 1",
         },
         operationSecurity
     );
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
-})();
+    // Handle the result
+    console.log(result);
+}
+
+run();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [SDK](docs/sdks/sdk/README.md)
 
+* [conflictingEnum](docs/sdks/sdk/README.md#conflictingenum) - Test potential namespace conflicts with java.lang.Object
 * [putAnythingIgnoredGeneration](docs/sdks/sdk/README.md#putanythingignoredgeneration)
 * [responseBodyJsonGet](docs/sdks/sdk/README.md#responsebodyjsonget)
 
@@ -166,7 +216,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
 * [nullableOneOfTypeInObjectPost](docs/sdks/unions/README.md#nullableoneoftypeinobjectpost)
 * [nullableTypedObjectPost](docs/sdks/unions/README.md#nullabletypedobjectpost)
 * [primitiveTypeOneOfPost](docs/sdks/unions/README.md#primitivetypeoneofpost)
+* [stronglyTypedOneOfDiscriminatedPost](docs/sdks/unions/README.md#stronglytypedoneofdiscriminatedpost)
 * [stronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
+* [stronglyTypedOneOfPostWithNonStandardDiscriminatorName](docs/sdks/unions/README.md#stronglytypedoneofpostwithnonstandarddiscriminatorname)
 * [typedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
 * [typedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
 * [unionBigIntDecimal](docs/sdks/unions/README.md#unionbigintdecimal)
@@ -316,6 +368,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 * [requestBodyPutMultipartDeep](docs/sdks/requestbodies/README.md#requestbodyputmultipartdeep)
 * [requestBodyPutMultipartDifferentFileName](docs/sdks/requestbodies/README.md#requestbodyputmultipartdifferentfilename)
 * [requestBodyPutMultipartFile](docs/sdks/requestbodies/README.md#requestbodyputmultipartfile)
+* [requestBodyPutMultipartOptionalRequestBody](docs/sdks/requestbodies/README.md#requestbodyputmultipartoptionalrequestbody)
 * [requestBodyPutMultipartSimple](docs/sdks/requestbodies/README.md#requestbodyputmultipartsimple)
 * [requestBodyPutString](docs/sdks/requestbodies/README.md#requestbodyputstring)
 * [requestBodyPutStringWithParams](docs/sdks/requestbodies/README.md#requestbodyputstringwithparams)
@@ -329,6 +382,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 ### [responseBodies](docs/sdks/responsebodies/README.md)
 
+* [responseBodyAdditionalPropertiesAnyPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesanypost)
 * [responseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
 * [responseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
 * [responseBodyAdditionalPropertiesObjectPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesobjectpost)
@@ -369,17 +423,27 @@ import { RFCDate } from "openapi/dist/sdk/types";
 * [oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [openIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
-### [documentation](docs/sdks/documentation/README.md)
-
-* [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
-
 ### [resource](docs/sdks/resource/README.md)
 
 * [createFile](docs/sdks/resource/README.md#createfile)
 * [createResource](docs/sdks/resource/README.md#createresource)
 * [deleteResource](docs/sdks/resource/README.md#deleteresource)
+* [getArrayDataSource](docs/sdks/resource/README.md#getarraydatasource)
 * [getResource](docs/sdks/resource/README.md#getresource)
 * [updateResource](docs/sdks/resource/README.md#updateresource)
+
+### [documentation](docs/sdks/documentation/README.md)
+
+* [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
+
+### [eventstreams](docs/sdks/eventstreams/README.md)
+
+* [chat](docs/sdks/eventstreams/README.md#chat)
+* [differentDataSchemas](docs/sdks/eventstreams/README.md#differentdataschemas)
+* [json](docs/sdks/eventstreams/README.md#json)
+* [multiline](docs/sdks/eventstreams/README.md#multiline)
+* [rich](docs/sdks/eventstreams/README.md#rich)
+* [text](docs/sdks/eventstreams/README.md#text)
 
 ### [first](docs/sdks/first/README.md)
 
@@ -401,28 +465,28 @@ import { RFCDate } from "openapi/dist/sdk/types";
 ### [retries](docs/sdks/retries/README.md)
 
 * [retriesGet](docs/sdks/retries/README.md#retriesget)
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
 
 
-
-<!-- Start Pagination -->
+<!-- Start Pagination [pagination] -->
 ## Pagination
 
-Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
-returned response object will have a `next` method that can be called to pull down the next group of results. If the
-return value of `next` is `null`, then there are no more pages to be fetched.
+Some of the endpoints in this SDK support pagination. To use pagination, you
+make your SDK calls as usual, but the returned response object will also be an
+async iterable that can be consumed using the [`for await...of`][for-await-of]
+syntax.
+
+[for-await-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
 
 Here's an example of one such pagination call:
+
 ```typescript
 import { SDK } from "openapi";
 
-(async () => {
+async function run() {
     const sdk = new SDK({
         security: {
             apiKeyAuth: "Token YOUR_API_KEY",
@@ -431,25 +495,23 @@ import { SDK } from "openapi";
         globalQueryParam: "some example global query param",
     });
 
-    const res = await sdk.pagination.paginationCursorBody({
+    const result = await sdk.pagination.paginationCursorBody({
         cursor: 868337,
     });
 
-    if (res.statusCode == 200) {
-        do {
-            // handle items
-
-            res = res.next();
-        } while (res);
+    for await (const page of result) {
+        // handle page
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Pagination -->
+<!-- End Pagination [pagination] -->
 
 
 
-<!-- Start Global Parameters -->
+<!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
@@ -471,9 +533,8 @@ The following global parameters are available. The required parameters must be s
 
 ```typescript
 import { SDK } from "openapi";
-import { GlobalPathParameterGetRequest } from "openapi/dist/sdk/models/operations";
 
-(async () => {
+async function run() {
     const sdk = new SDK({
         security: {
             apiKeyAuth: "Token YOUR_API_KEY",
@@ -481,38 +542,40 @@ import { GlobalPathParameterGetRequest } from "openapi/dist/sdk/models/operation
         globalPathParam: 100,
         globalQueryParam: "some example global query param",
     });
-    const globalPathParam: number = 719830;
 
-    const res = await sdk.globals.globalPathParameterGet(globalPathParam);
+    const globalPathParam = 719830;
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
-})();
+    const result = await sdk.globals.globalPathParameterGet(globalPathParam);
+
+    // Handle the result
+    console.log(result);
+}
+
+run();
 
 ```
-<!-- End Global Parameters -->
+<!-- End Global Parameters [global-parameters] -->
 
 
 
-<!-- Start Error Handling -->
+<!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
+All SDK methods return a response object or throw an error. If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
 
 | Error Object                                 | Status Code                                  | Content Type                                 |
 | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
 | errors.ErrorT                                | 500                                          | application/json                             |
 | errors.StatusGetXSpeakeasyErrorsResponseBody | 501                                          | application/json                             |
-| errors.SDKError                              | 400-600                                      | */*                                          |
+| errors.SDKError                              | 4xx-5xx                                      | */*                                          |
 
 Example
 
 ```typescript
 import { SDK } from "openapi";
-import { StatusGetXSpeakeasyErrorsRequest } from "openapi/dist/sdk/models/operations";
+import * as errors from "openapi/sdk/models/errors";
 
-(async () => {
+async function run() {
     const sdk = new SDK({
         security: {
             apiKeyAuth: "Token YOUR_API_KEY",
@@ -520,37 +583,45 @@ import { StatusGetXSpeakeasyErrorsRequest } from "openapi/dist/sdk/models/operat
         globalPathParam: 100,
         globalQueryParam: "some example global query param",
     });
-    const statusCode: number = 385913;
 
-    let res;
+    const statusCode = 385913;
+
+    let result;
     try {
-        res = await sdk.errors.statusGetXSpeakeasyErrors(statusCode);
-    } catch (e) {
-        if (e instanceof errors.ErrorT) {
-            console.error(e); // handle exception
-        } else if (e instanceof errors.StatusGetXSpeakeasyErrorsResponseBody) {
-            console.error(e); // handle exception
-        } else if (e instanceof errors.SDKError) {
-            console.error(e); // handle exception
+        result = await sdk.errors.statusGetXSpeakeasyErrors(statusCode);
+    } catch (err) {
+        switch (true) {
+            case err instanceof errors.ErrorT: {
+                console.error(err); // handle exception
+                return;
+            }
+            case err instanceof errors.StatusGetXSpeakeasyErrorsResponseBody: {
+                console.error(err); // handle exception
+                return;
+            }
+            default: {
+                throw err;
+            }
         }
     }
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
-})();
+    // Handle the result
+    console.log(result);
+}
+
+run();
 
 ```
-<!-- End Error Handling -->
+<!-- End Error Handling [errors] -->
 
 
 
-<!-- Start Server Selection -->
+<!-- Start Server Selection [server] -->
 ## Server Selection
 
 ### Select Server by Index
 
-You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+You can override the default server globally by passing a server index to the `serverIdx` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
 | # | Server | Variables |
 | - | ------ | --------- |
@@ -560,12 +631,11 @@ You can override the default server globally by passing a server index to the `s
 | 3 | `http://localhost:35123/anything/{something}` | `something` (default is `something`) |
 | 4 | `{protocol}://{hostname}:{port}` | `hostname` (default is `localhost`), `port` (default is `35123`), `protocol` (default is `http`) |
 
-#### Example
-
 ```typescript
 import { SDK } from "openapi";
+import { ObjectT } from "openapi/sdk/models/shared";
 
-(async () => {
+async function run() {
     const sdk = new SDK({
         serverIdx: 4,
         security: {
@@ -575,12 +645,13 @@ import { SDK } from "openapi";
         globalQueryParam: "some example global query param",
     });
 
-    const res = await sdk.putAnythingIgnoredGeneration("string");
+    const result = await sdk.conflictingEnum({});
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
-})();
+    // Handle the result
+    console.log(result);
+}
+
+run();
 
 ```
 
@@ -589,16 +660,18 @@ import { SDK } from "openapi";
 Some of the server options above contain variables. If you want to set the values of those variables, the following optional parameters are available when initializing the SDK client instance:
  * `hostname: string`
  * `port: string`
- * `protocol: string`
  * `something: models.ServerSomething`
+ * `protocol: string`
 
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
+The default server can also be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
+
 ```typescript
 import { SDK } from "openapi";
+import { ObjectT } from "openapi/sdk/models/shared";
 
-(async () => {
+async function run() {
     const sdk = new SDK({
         serverURL: "http://localhost:35123",
         security: {
@@ -608,22 +681,23 @@ import { SDK } from "openapi";
         globalQueryParam: "some example global query param",
     });
 
-    const res = await sdk.putAnythingIgnoredGeneration("string");
+    const result = await sdk.conflictingEnum({});
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
-})();
+    // Handle the result
+    console.log(result);
+}
+
+run();
 
 ```
-
 ### Override Server URL Per-Operation
 
 The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
+
 ```typescript
 import { SDK } from "openapi";
 
-(async () => {
+async function run() {
     const sdk = new SDK({
         security: {
             apiKeyAuth: "Token YOUR_API_KEY",
@@ -632,40 +706,73 @@ import { SDK } from "openapi";
         globalQueryParam: "some example global query param",
     });
 
-    const res = await sdk.errors.connectionErrorGet("http://somebrokenapi.broken");
+    const result = await sdk.errors.connectionErrorGet({
+        serverURL: "http://somebrokenapi.broken",
+    });
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
-})();
+    // Handle the result
+    console.log(result);
+}
+
+run();
 
 ```
-<!-- End Server Selection -->
+<!-- End Server Selection [server] -->
 
 
 
-<!-- Start Custom HTTP Client -->
+<!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
-The Typescript SDK makes API calls using the (axios)[https://axios-http.com/docs/intro] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
+The TypeScript SDK makes API calls using an `HTTPClient` that wraps the native
+[Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). This
+client is a thin wrapper around `fetch` and provides the ability to attach hooks
+around the request lifecycle that can be used to modify the request or handle
+errors and response.
 
-For example, you could specify a header for every request that your sdk makes as follows:
+The `HTTPClient` constructor takes an optional `fetcher` argument that can be
+used to integrate a third-party HTTP client or when writing tests to mock out
+the HTTP client and feed in fixtures.
+
+The following example shows how to use the `"beforeRequest"` hook to to add a
+custom header and a timeout to requests and how to use the `"requestError"` hook
+to log errors:
 
 ```typescript
-from openapi import SDK;
-import axios;
+import { SDK } from "openapi";
+import { HTTPClient } from "openapi/lib/http";
 
-const httpClient = axios.create({
-    headers: {'x-custom-header': 'someValue'}
-})
+const httpClient = new HTTPClient({
+  // fetcher takes a function that has the same signature as native `fetch`.
+  fetcher: (request) => {
+    return fetch(request);
+  }
+});
 
-const sdk = new SDK({defaultClient: httpClient});
+httpClient.addHook("beforeRequest", (request) => {
+  const nextRequest = new Request(request, {
+    signal: request.signal || AbortSignal.timeout(5000);
+  });
+
+  nextRequest.headers.set("x-custom-header", "custom value");
+
+  return nextRequest;
+});
+
+httpClient.addHook("requestError", (error, request) => {
+  console.group("Request Error");
+  console.log("Reason:", `${error}`);
+  console.log("Endpoint:", `${request.method} ${request.url}`);
+  console.groupEnd();
+});
+
+const sdk = new SDK({ httpClient });
 ```
-<!-- End Custom HTTP Client -->
+<!-- End Custom HTTP Client [http-client] -->
 
 
 
-<!-- Start Retries -->
+<!-- Start Retries [retries] -->
 ## Retries
 
 Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
@@ -673,9 +780,8 @@ Some of the endpoints in this SDK support retries.  If you use the SDK without a
 To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
 ```typescript
 import { SDK } from "openapi";
-import { RetriesGetRequest } from "openapi/dist/sdk/models/operations";
 
-(async () => {
+async function run() {
     const sdk = new SDK({
         security: {
             apiKeyAuth: "Token YOUR_API_KEY",
@@ -683,35 +789,38 @@ import { RetriesGetRequest } from "openapi/dist/sdk/models/operations";
         globalPathParam: 100,
         globalQueryParam: "some example global query param",
     });
-    const requestId: string = "string";
-    const numRetries: number = 75342;
 
-    const res = await sdk.retries.retriesGet(requestId, numRetries, {
-        strategy: "backoff",
-        backoff: {
-            initialInterval: 1,
-            maxInterval: 50,
-            exponent: 1.1,
-            maxElapsedTime: 100,
+    const requestId = "string";
+    const numRetries = 75342;
+
+    const result = await sdk.retries.retriesGet(requestId, numRetries, {
+        retries: {
+            strategy: "backoff",
+            backoff: {
+                initialInterval: 1,
+                maxInterval: 50,
+                exponent: 1.1,
+                maxElapsedTime: 100,
+            },
+            retryConnectionErrors: false,
         },
-        retryConnectionErrors: false,
     });
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
-})();
+    // Handle the result
+    console.log(result);
+}
+
+run();
 
 ```
 
 If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
 ```typescript
 import { SDK } from "openapi";
-import { RetriesGetRequest } from "openapi/dist/sdk/models/operations";
 
-(async () => {
+async function run() {
     const sdk = new SDK({
-        retry_config: {
+        retryConfig: {
             strategy: "backoff",
             backoff: {
                 initialInterval: 1,
@@ -727,22 +836,24 @@ import { RetriesGetRequest } from "openapi/dist/sdk/models/operations";
         globalPathParam: 100,
         globalQueryParam: "some example global query param",
     });
-    const requestId: string = "string";
-    const numRetries: number = 75342;
 
-    const res = await sdk.retries.retriesGet(requestId, numRetries);
+    const requestId = "string";
+    const numRetries = 75342;
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
-})();
+    const result = await sdk.retries.retriesGet(requestId, numRetries);
+
+    // Handle the result
+    console.log(result);
+}
+
+run();
 
 ```
-<!-- End Retries -->
+<!-- End Retries [retries] -->
 
 
 
-<!-- Start Authentication -->
+<!-- Start Authentication [security] -->
 ## Authentication
 
 ### Per-Client Security Schemes
@@ -758,8 +869,9 @@ This SDK supports the following security schemes globally:
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```typescript
 import { SDK } from "openapi";
+import { ObjectT } from "openapi/sdk/models/shared";
 
-(async () => {
+async function run() {
     const sdk = new SDK({
         security: {
             apiKeyAuth: "Token YOUR_API_KEY",
@@ -768,12 +880,13 @@ import { SDK } from "openapi";
         globalQueryParam: "some example global query param",
     });
 
-    const res = await sdk.putAnythingIgnoredGeneration("string");
+    const result = await sdk.conflictingEnum({});
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
-})();
+    // Handle the result
+    console.log(result);
+}
+
+run();
 
 ```
 
@@ -786,35 +899,30 @@ import {
     EnumParameter,
     OptEnumParameter,
     UsageExamplePostSecurity,
-} from "openapi/dist/sdk/models/operations";
-import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
-import { RFCDate } from "openapi/dist/sdk/types";
+} from "openapi/sdk/models/operations";
+import { Enum, Int32Enum, IntEnum } from "openapi/sdk/models/shared";
+import { Decimal, RFCDate } from "openapi/sdk/types";
 
-(async () => {
+async function run() {
     const sdk = new SDK({
         globalPathParam: 100,
         globalQueryParam: "some example global query param",
     });
+
     const operationSecurity: UsageExamplePostSecurity = {
         password: "YOUR_PASSWORD",
         username: "YOUR_USERNAME",
     };
 
-    const res = await sdk.generation.usageExamplePost(
+    const result = await sdk.generation.usageExamplePost(
         {
             requestBody: {
                 fakerFormattedStrings: {},
                 fakerStrings: {},
                 simpleObject: {
-                    any: "any",
-                    bigint: 8821239038968084,
-                    bigintStr: "9223372036854775808",
                     bool: true,
-                    boolOpt: true,
                     date: new RFCDate("2020-01-01"),
-                    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-                    decimal: 3.141592653589793,
-                    decimalStr: "3.14159265358979344719667586",
+                    dateTime: new Date("2020-01-01T00:00:00.000001Z"),
                     enum: Enum.One,
                     float32: 1.1,
                     int: 1,
@@ -823,37 +931,131 @@ import { RFCDate } from "openapi/dist/sdk/types";
                     intEnum: IntEnum.Second,
                     num: 1.1,
                     str: "test",
+                    any: "any",
+                    bigint: 8821239038968084n,
+                    bigintStr: 9223372036854775808n,
+                    boolOpt: true,
+                    decimal: new Decimal("3.141592653589793"),
+                    decimalStr: new Decimal("3.14159265358979344719667586"),
                     strOpt: "testOptional",
                 },
             },
-            bigintParameter: 168827,
-            bigintStrParameter: "string",
+            bigintParameter: 168827n,
+            bigintStrParameter: 446729n,
             boolParameter: false,
-            dateParameter: new RFCDate("2022-05-05"),
-            dateTimeDefaultParameter: new Date("2023-06-11T00:39:45.412Z"),
-            dateTimeParameter: new Date("2022-07-22T13:16:48.221Z"),
-            decimalParameter: 2679.33,
-            decimalStrParameter: "string",
-            doubleParameter: 5223.72,
+            dateParameter: new RFCDate("2024-06-10"),
+            dateTimeDefaultParameter: new Date("2023-07-23T01:43:10.512Z"),
+            dateTimeParameter: new Date("2022-10-21T15:42:48.223Z"),
+            decimalParameter: new Decimal("5223.72"),
+            decimalStrParameter: new Decimal("2911.37"),
+            doubleParameter: 6946.59,
             enumParameter: EnumParameter.Value1,
             falseyNumberParameter: 0,
-            float32Parameter: 6946.59,
-            floatParameter: 2286.22,
-            int64Parameter: 102975,
-            intParameter: 566999,
+            float32Parameter: 1029.75,
+            floatParameter: 5669.99,
+            int64Parameter: 195232,
+            intParameter: 569663,
             optEnumParameter: OptEnumParameter.Value3,
             strParameter: "example 1",
         },
         operationSecurity
     );
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
-})();
+    // Handle the result
+    console.log(result);
+}
+
+run();
 
 ```
-<!-- End Authentication -->
+<!-- End Authentication [security] -->
+
+<!-- Start Requirements [requirements] -->
+## Requirements
+
+For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
+<!-- End Requirements [requirements] -->
+
+<!-- Start Server-sent event streaming [eventstream] -->
+## Server-sent event streaming
+
+[Server-sent events][mdn-sse] are used to stream content from certain
+operations. These operations will expose the stream as an async iterable that
+can be consumed using a [`for await...of`][mdn-for-await-of] loop. The loop will
+terminate when the server no longer has any events to send and closes the
+underlying connection.
+
+```typescript
+import { SDK } from "openapi";
+
+async function run() {
+    const sdk = new SDK({
+        security: {
+            apiKeyAuth: "Token YOUR_API_KEY",
+        },
+        globalPathParam: 100,
+        globalQueryParam: "some example global query param",
+    });
+
+    const result = await sdk.eventstreams.chat({
+        prompt: "string",
+    });
+
+    if (res.chatCompletionResult == null) {
+        throw new Error("failed to create stream: received null value");
+    }
+
+    for await (const event of res.chatCompletionResult) {
+        // Handle the event
+    }
+}
+
+run();
+
+```
+
+[mdn-sse]: https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
+[mdn-for-await-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
+<!-- End Server-sent event streaming [eventstream] -->
+
+<!-- Start File uploads [file-upload] -->
+## File uploads
+
+Certain SDK methods accept files as part of a multi-part request. It is possible and typically recommended to upload files as a stream rather than reading the entire contents into memory. This avoids excessive memory consumption and potentially crashing with out-of-memory errors when working with very large files. The following example demonstrates how to attach a file stream to a request.
+
+> [!TIP]
+>
+> Depending on your JavaScript runtime, there are convenient utilities that return a handle to a file without reading the entire contents into memory:
+>
+> - **Node.js v20+:** Since v20, Node.js comes with a native `openAsBlob` function in [`node:fs`](https://nodejs.org/docs/latest-v20.x/api/fs.html#fsopenasblobpath-options).
+> - **Bun:** The native [`Bun.file`](https://bun.sh/docs/api/file-io#reading-files-bun-file) function produces a file handle that can be used for streaming file uploads.
+> - **Browsers:** All supported browsers return an instance to a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) when reading the value from an `<input type="file">` element.
+> - **Node.js v18:** A file stream can be created using the `fileFrom` helper from [`fetch-blob/from.js`](https://www.npmjs.com/package/fetch-blob).
+
+```typescript
+import { SDK } from "openapi";
+
+async function run() {
+    const sdk = new SDK({
+        security: {
+            apiKeyAuth: "Token YOUR_API_KEY",
+        },
+        globalPathParam: 100,
+        globalQueryParam: "some example global query param",
+    });
+
+    const result = await sdk.requestBodies.requestBodyPutBytes(
+        new TextEncoder().encode("0x5DbFFb1Ff9")
+    );
+
+    // Handle the result
+    console.log(result);
+}
+
+run();
+
+```
+<!-- End File uploads [file-upload] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

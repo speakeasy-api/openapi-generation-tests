@@ -339,7 +339,7 @@ func (s *Auth) NoAuth(ctx context.Context) (*operations.NoAuthResponse, error) {
 	req.Header.Set("Accept", "*/*")
 	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
 
-	client := s.sdkConfiguration.SecurityClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

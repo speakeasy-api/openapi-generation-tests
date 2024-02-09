@@ -1,40 +1,105 @@
 # openapi
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:2.1.1'
+implementation 'org.openapis.openapi:openapi:2.2.0'
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example 1
 
 ```java
 package hello.world;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.GetGlobalNameOverrideResponse;
+import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.SimpleObject;
 
 public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GetGlobalNameOverrideResponse res = sdk.generation.globalNameOverridden();
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject(
+                "any",
+                true,
+                LocalDate.parse("2020-01-01"),
+                OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                Enum.ONE,
+                1.1f,
+                1L,
+                1,
+                Int32Enum.FIFTY_FIVE,
+                IntEnum.Second,
+                1.1d,
+                "test"){{
+                bigint = 8821239038968084L;
+                bigintStr = "9223372036854775808";
+                boolOpt = true;
+                decimal = 3.141592653589793d;
+                decimalStr = "3.14159265358979344719667586";
+                intOptNull = 697039L;
+                numOptNull = 6448.77d;
+                strOpt = "testOptional";
+
+            }};
+
+            org.openapis.openapi.models.operations.GetGlobalNameOverrideResponse res = sdk.generation.globalNameOverridden(req);
 
             if (res.object != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Example 2
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.SelectGlobalServerResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security(
+                ){{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            org.openapis.openapi.models.operations.SelectGlobalServerResponse res = sdk.servers.selectGlobalServer();
+
+            if (res.statusCode == 200) {
                 // handle response
             }
         } catch (Exception e) {
@@ -76,9 +141,27 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(168827L, "string", false, LocalDate.parse("2022-05-05"), OffsetDateTime.parse("2023-06-11T00:39:45.412Z"), OffsetDateTime.parse("2022-07-22T13:16:48.221Z"), 2679.33d, "string", 5223.72d, EnumParameter.VALUE1, 0d, 6946.59f, 2286.22d, 102975L, 566999, "example 1"){{
-                requestBody = new UsageExamplePostRequestBody(){{
-                    fakerFormattedStrings = new FakerFormattedStrings(){{
+            org.openapis.openapi.models.operations.UsageExamplePostRequest req = new UsageExamplePostRequest(
+                168827L,
+                "string",
+                false,
+                LocalDate.parse("2023-05-05"),
+                OffsetDateTime.parse("2024-06-10T20:11:31.153Z"),
+                OffsetDateTime.parse("2023-07-23T01:43:10.512Z"),
+                2679.33d,
+                "string",
+                5223.72d,
+                EnumParameter.VALUE1,
+                0d,
+                6946.59f,
+                2286.22d,
+                102975L,
+                566999,
+                "example 1"){{
+                requestBody = new UsageExamplePostRequestBody(
+){{
+                    fakerFormattedStrings = new FakerFormattedStrings(
+){{
                         addressFormat = "2344 Aufderhar Corner";
                         directoryFormat = "/etc/defaults";
                         domainFormat = "fatal-cutting.name";
@@ -97,8 +180,10 @@ public class Application {
                         urlFormat = "https://wilted-cytoplasm.biz";
                         uuidFormat = "e0f62de2-e2d4-47a9-bf10-0f753b9b364b";
                         zipcodeFormat = "73625";
+
                     }};
-                    fakerStrings = new FakerStrings(){{
+                    fakerStrings = new FakerStrings(
+){{
                         city = "Schuppecester";
                         iban = "NO0300631256004";
                         id = "<ID>";
@@ -152,8 +237,21 @@ public class Application {
                         url = "https://crooked-dulcimer.name";
                         username = "Mable76";
                         uuid = "16b919d6-51cd-4e97-81e2-5221b7b6969f";
+
                     }};
-                    simpleObject = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+                    simpleObject = new SimpleObject(
+                        "any",
+                        true,
+                        LocalDate.parse("2020-01-01"),
+                        OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                        Enum.ONE,
+                        1.1f,
+                        1L,
+                        1,
+                        Int32Enum.FIFTY_FIVE,
+                        IntEnum.Second,
+                        1.1d,
+                        "test"){{
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
                         boolOpt = true;
@@ -162,16 +260,21 @@ public class Application {
                         intOptNull = 809796L;
                         numOptNull = 4812.91d;
                         strOpt = "testOptional";
+
                     }};
+
                 }};
                 bigintParameterOptional = 165468L;
                 bigintStrParameterOptional = "string";
                 decimalParameterOptional = 5944.32d;
                 decimalStrParameterOptional = "string";
                 optEnumParameter = OptEnumParameter.VALUE3;
-            }};            
 
-            UsageExamplePostResponse res = sdk.generation.usageExamplePost(req, new UsageExamplePostSecurity("YOUR_PASSWORD", "YOUR_USERNAME"){{
+            }};
+
+            org.openapis.openapi.models.operations.UsageExamplePostResponse res = sdk.generation.usageExamplePost(req, new UsageExamplePostSecurity(
+            "YOUR_PASSWORD",
+            "YOUR_USERNAME"){{
                 password = "YOUR_PASSWORD";
                 username = "YOUR_USERNAME";
             }});
@@ -185,13 +288,14 @@ public class Application {
     }
 }
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [SDK](docs/sdks/sdk/README.md)
 
+* [conflictingEnum](docs/sdks/sdk/README.md#conflictingenum) - Test potential namespace conflicts with java.lang.Object
 * [putAnythingIgnoredGeneration](docs/sdks/sdk/README.md#putanythingignoredgeneration)
 * [responseBodyJsonGet](docs/sdks/sdk/README.md#responsebodyjsonget)
 
@@ -233,7 +337,9 @@ public class Application {
 * [nullableOneOfTypeInObjectPost](docs/sdks/unions/README.md#nullableoneoftypeinobjectpost)
 * [nullableTypedObjectPost](docs/sdks/unions/README.md#nullabletypedobjectpost)
 * [primitiveTypeOneOfPost](docs/sdks/unions/README.md#primitivetypeoneofpost)
+* [stronglyTypedOneOfDiscriminatedPost](docs/sdks/unions/README.md#stronglytypedoneofdiscriminatedpost)
 * [stronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
+* [stronglyTypedOneOfPostWithNonStandardDiscriminatorName](docs/sdks/unions/README.md#stronglytypedoneofpostwithnonstandarddiscriminatorname)
 * [typedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
 * [typedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
 * [unionBigIntDecimal](docs/sdks/unions/README.md#unionbigintdecimal)
@@ -383,6 +489,7 @@ public class Application {
 * [requestBodyPutMultipartDeep](docs/sdks/requestbodies/README.md#requestbodyputmultipartdeep)
 * [requestBodyPutMultipartDifferentFileName](docs/sdks/requestbodies/README.md#requestbodyputmultipartdifferentfilename)
 * [requestBodyPutMultipartFile](docs/sdks/requestbodies/README.md#requestbodyputmultipartfile)
+* [requestBodyPutMultipartOptionalRequestBody](docs/sdks/requestbodies/README.md#requestbodyputmultipartoptionalrequestbody)
 * [requestBodyPutMultipartSimple](docs/sdks/requestbodies/README.md#requestbodyputmultipartsimple)
 * [requestBodyPutString](docs/sdks/requestbodies/README.md#requestbodyputstring)
 * [requestBodyPutStringWithParams](docs/sdks/requestbodies/README.md#requestbodyputstringwithparams)
@@ -396,6 +503,7 @@ public class Application {
 
 ### [responseBodies](docs/sdks/responsebodies/README.md)
 
+* [responseBodyAdditionalPropertiesAnyPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesanypost)
 * [responseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
 * [responseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
 * [responseBodyAdditionalPropertiesObjectPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesobjectpost)
@@ -436,17 +544,18 @@ public class Application {
 * [oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [openIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
-### [documentation](docs/sdks/documentation/README.md)
-
-* [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
-
 ### [resource](docs/sdks/resource/README.md)
 
 * [createFile](docs/sdks/resource/README.md#createfile)
 * [createResource](docs/sdks/resource/README.md#createresource)
 * [deleteResource](docs/sdks/resource/README.md#deleteresource)
+* [getArrayDataSource](docs/sdks/resource/README.md#getarraydatasource)
 * [getResource](docs/sdks/resource/README.md#getresource)
 * [updateResource](docs/sdks/resource/README.md#updateresource)
+
+### [documentation](docs/sdks/documentation/README.md)
+
+* [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
 
 ### [first](docs/sdks/first/README.md)
 
@@ -468,17 +577,13 @@ public class Application {
 ### [retries](docs/sdks/retries/README.md)
 
 * [retriesGet](docs/sdks/retries/README.md#retriesget)
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
 
 
-
-<!-- Start Global Parameters -->
+<!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
@@ -510,14 +615,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GlobalPathParameterGetResponse res = sdk.globals.globalPathParameterGet(719830L);
+            org.openapis.openapi.models.operations.GlobalPathParameterGetResponse res = sdk.globals.globalPathParameterGet(719830L);
 
             if (res.res != null) {
                 // handle response
@@ -528,7 +634,74 @@ public class Application {
     }
 }
 ```
-<!-- End Global Parameters -->
+<!-- End Global Parameters [global-parameters] -->
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+## Server Selection
+
+### Select Server by Index
+
+You can override the default server globally using the `setServerIndex` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `http://localhost:35123` | None |
+| 1 | `http://broken` | None |
+| 2 | `http://{hostname}:{port}` | `0` (default is `localhost`), `1` (default is `35123`) |
+| 3 | `http://localhost:35123/anything/{something}` | `0` (default is `something`) |
+| 4 | `{protocol}://{hostname}:{port}` | `0` (default is `localhost`), `1` (default is `35123`), `2` (default is `http`) |
+
+
+
+#### Variables
+
+Some of the server options above contain variables. If you want to set the values of those variables, the following options are provided for doing so:
+ * `setZero String`
+ * `setOne String`
+ * `setTwo ServerSomething`
+ * `setThree String`
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally using the `setServerURL` option when initializing the SDK client instance. For example:
+
+
+### Override Server URL Per-Operation
+
+The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.ConnectionErrorGetResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security(
+                ){{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            org.openapis.openapi.models.operations.ConnectionErrorGetResponse res = sdk.errors.connectionErrorGet(serverUrl="http://somebrokenapi.broken");
+
+            if (res.statusCode == 200) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+<!-- End Server Selection [server] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
