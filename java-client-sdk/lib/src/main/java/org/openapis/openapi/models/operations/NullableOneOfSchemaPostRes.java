@@ -12,14 +12,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class NullableOneOfSchemaPostRes {
     @JsonProperty("json")
-    public Object json;
+    public java.lang.Object json;
 
-    public NullableOneOfSchemaPostRes withJson(Object json) {
+    public NullableOneOfSchemaPostRes withJson(java.lang.Object json) {
         this.json = json;
         return this;
     }
     
-    public NullableOneOfSchemaPostRes(@JsonProperty("json") Object json) {
+    public NullableOneOfSchemaPostRes(@JsonProperty("json") java.lang.Object json) {
         this.json = json;
   }
 }

@@ -21,9 +21,9 @@ public class ArrObjValue {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("required")
-    public Object required;
+    public java.lang.Object required;
 
-    public ArrObjValue withRequired(Object required) {
+    public ArrObjValue withRequired(java.lang.Object required) {
         this.required = required;
         return this;
     }
