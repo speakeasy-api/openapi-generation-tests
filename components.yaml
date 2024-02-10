@@ -6,12 +6,15 @@ components:
         string:
           type: string
           readOnly: true
+          example: "hello"
         bool:
           type: boolean
           readOnly: true
+          example: true
         num:
           type: number
           readOnly: true
+          example: 1.0
       required:
         - string
         - bool
@@ -22,12 +25,15 @@ components:
         string:
           type: string
           writeOnly: true
+          example: "hello"
         bool:
           type: boolean
           writeOnly: true
+          example: true
         num:
           type: number
           writeOnly: true
+          example: 1.0
       required:
         - string
         - bool
@@ -38,14 +44,18 @@ components:
         num1:
           type: integer
           writeOnly: true
+          example: 1
         num2:
           type: integer
           writeOnly: true
+          example: 2
         num3:
           type: integer
+          example: 4
         sum:
           type: integer
           readOnly: true
+          example: 7
       required:
         - num1
         - num2
@@ -505,22 +515,28 @@ components:
       properties:
         str_val:
           type: string
+          example: "test"
         bool_val:
           type: boolean
+          example: true
         int_val:
           type: integer
+          example: 1
         num_val:
           type: number
+          example: 1.1
         obj_val:
           $ref: "#/components/schemas/simpleObjectCamelCase"
         map_val:
           type: object
           additionalProperties:
             $ref: "#/components/schemas/simpleObjectCamelCase"
+          example: { "key": "..." }
         arr_val:
           type: array
           items:
             $ref: "#/components/schemas/simpleObjectCamelCase"
+          example: ["...", "..."]
         any_val:
           anyOf:
             - $ref: "#/components/schemas/simpleObjectCamelCase"
@@ -788,6 +804,7 @@ components:
           items:
             $ref: "#/components/schemas/simpleObject"
           type: array
+          example: ["...", "..."]
         required:
           - json
     arrObjValueCamelCase:
@@ -797,28 +814,33 @@ components:
           items:
             $ref: "#/components/schemas/simpleObjectCamelCase"
           type: array
+          example: ["...", "..."]
         required:
           - json
     mapValue:
       type: object
       additionalProperties:
         $ref: "#/components/schemas/simpleObject"
+      example: { "mapElem1": "...", "mapElem2": "..." }
     mapValueCamelCase:
       type: object
       additionalProperties:
         $ref: "#/components/schemas/simpleObjectCamelCase"
+      example: { "mapElem1": "...", "mapElem2": "..." }
     mapMapValue:
       type: object
       additionalProperties:
         type: object
         additionalProperties:
           $ref: "#/components/schemas/simpleObject"
+      example: { "mapElem1" : {"subMapElem1": "...", "subMapElem2": "..."}, "mapElem2" : {"subMapElem1": "...", "subMapElem2": "..."}}
     mapMapValueCamelCase:
       type: object
       additionalProperties:
         type: object
         additionalProperties:
           $ref: "#/components/schemas/simpleObjectCamelCase"
+      example: { "mapElem1" : {"subMapElem1": "...", "subMapElem2": "..."}, "mapElem2" : {"subMapElem1": "...", "subMapElem2": "..."}}
     mapObjValue:
       type: object
       properties:
@@ -826,6 +848,7 @@ components:
           type: object
           additionalProperties:
             $ref: "#/components/schemas/simpleObject"
+          example: { "mapElem1": "...", "mapElem2": "..." }
         required:
           - json
     mapObjValueCamelCase:
@@ -835,6 +858,7 @@ components:
           type: object
           additionalProperties:
             $ref: "#/components/schemas/simpleObjectCamelCase"
+          example: { "mapElem1": "...", "mapElem2": "..." }
         required:
           - json
     arrMapValue:
@@ -843,44 +867,52 @@ components:
         type: object
         additionalProperties:
           $ref: "#/components/schemas/simpleObject"
+      example: [{"mapElem1": "...", "mapElem2": "..."}, {"mapElem1": "...", "mapElem2": "..."}]
     arrMapValueCamelCase:
       type: array
       items:
         type: object
         additionalProperties:
           $ref: "#/components/schemas/simpleObjectCamelCase"
+      example: [{"mapElem1": "...", "mapElem2": "..."}, {"mapElem1": "...", "mapElem2": "..."}]
     mapArrValue:
       type: object
       additionalProperties:
         type: array
         items:
           $ref: "#/components/schemas/simpleObject"
+      example: { "mapElem1": ["...", "..."], "mapElem2": ["...", "..."] }
     mapArrValueCamelCase:
       type: object
       additionalProperties:
         type: array
         items:
           $ref: "#/components/schemas/simpleObjectCamelCase"
+      example: { "mapElem1": ["...", "..."], "mapElem2": ["...", "..."] }
     arrPrimitiveValue:
       type: array
       items:
         type: string
+      example: ["hello", "world"]
     mapPrimitiveValue:
       type: object
       additionalProperties:
         type: string
+      example: { "mapElem1": "hello", "mapElem2": "world" }
     arrArrPrimitiveValue:
       type: array
       items:
         type: array
         items:
           type: string
+      example: [["foo", "bar"], ["buzz", "bazz"]]
     mapMapPrimitiveValue:
       type: object
       additionalProperties:
         type: object
         additionalProperties:
           type: string
+      example: { "mapElem1" : {"subMapElem1": "foo", "subMapElem2": "bar"}, "mapElem2" : {"subMapElem1": "buzz", "subMapElem2": "bazz"}}
     orphanedObject:
       x-speakeasy-include: true
       type: object
@@ -979,15 +1011,19 @@ components:
         bigintStr:
           type: string
           format: bigint
+          example: "9223372036854775808"
         bigint:
           type: integer
           format: bigint
+          example: 8821239038968084
         decimal:
           type: number
           format: decimal
+          example: 3.141592653589793
         decimalStr:
           type: string
           format: decimal
+          example: "3.14159265358979344719667586"
       required:
         - bigintStr
         - bigint
@@ -998,6 +1034,7 @@ components:
       properties:
         normalField:
           type: string
+          example: "test"
         constStr:
           type: string
           const: "const"
@@ -1158,98 +1195,130 @@ components:
       properties:
         normalField:
           type: string
+          example: "test"
         constStr:
           type: string
+          example: "const"
         constStrDQuotes:
           type: string
+          example: 'const with "double quotes"'
         constStrSQuotes:
           type: string
+          example: "const with 'single quotes'"
         constStrNull:
           type: string
           nullable: true
+          example: null
         constInt:
           type: integer
+          example: 123
         constNum:
           type: number
+          example: 123.456
         constBool:
           type: boolean
+          example: true
         constDate:
           type: string
           format: date
+          example: "2020-01-01"
         constDateTime:
           type: string
           format: date-time
+          example: "2020-01-01T00:00:00Z"
         constEnumStr:
           type: string
           enum:
             - "one"
             - "two"
             - "three"
+          example: "two"
         constEnumInt:
           type: integer
           enum:
             - 1
             - 2
             - 3
+          example: 2
         constBigInt:
           type: integer
           format: bigint
+          example: 9007199254740991
         constBigIntStr:
           type: string
           format: bigint
+          example: "9223372036854775807"
         constDecimal:
           type: number
           format: decimal
+          example: 3.141592653589793
         constDecimalStr:
           type: string
           format: decimal
+          example: "3.141592653589793238462643383279"
         defaultStr:
           type: string
+          example: "default"
         defaultStrDQuotes:
           type: string
+          example: 'default with "double quotes"'
         defaultStrSQuotes:
           type: string
+          example: "default with 'single quotes'"
         defaultStrNullable:
           type: string
           nullable: true
+          example: null
         defaultStrOptional:
           type: string
+          example: "default"
         defaultInt:
           type: integer
+          example: 123
         defaultNum:
           type: number
+          example: 123.456
         defaultBool:
           type: boolean
+          example: true
         defaultDate:
           type: string
           format: date
+          example: "2020-01-01"
         defaultDateTime:
           type: string
           format: date-time
+          example: "2020-01-01T00:00:00Z"
         defaultEnumStr:
           type: string
           enum:
             - "one"
             - "two"
             - "three"
+          example: "two"
         defaultEnumInt:
           type: integer
           enum:
             - 1
             - 2
             - 3
+          example: 2
         defaultBigInt:
           type: integer
           format: bigint
+          example: 9007199254740991
         defaultBigIntStr:
           type: string
           format: bigint
+          example: "9223372036854775807"
         defaultDecimal:
           type: number
           format: decimal
+          example: 3.141592653589793
         defaultDecimalStr:
           type: string
           format: decimal
+          example: "3.141592653589793238462643383279"
       required:
         - normalField
         - constStr
@@ -1503,6 +1572,7 @@ components:
                   Content-Type:
                     title: contentType
                     type: string
+                    x-speakeasy-test-ignore: true
                 required:
                   - Content-Type
               form:
@@ -1510,32 +1580,62 @@ components:
                 properties:
                   str:
                     type: string
+                    example: "test"
                   bool:
                     type: string
+                    example: "true"
                   int:
                     type: string
+                    example: "1"
                   int32:
                     type: string
+                    example: "1"
                   num:
                     type: string
+                    example: "1.1"
                   float32:
                     type: string
+                    example: "1.1"
                   enum:
                     type: string
+                    example: "one"
                   date:
                     type: string
+                    example: "2020-01-01"
                   dateTime:
                     type: string
+                    example: "2020-01-01T00:00:00.000001Z"
                   any:
                     type: string
+                    example: "any"
                   strOpt:
                     type: string
+                    example: "testOptional"
                   boolOpt:
                     type: string
+                    example: "true"
                   intOptNull:
                     type: string
                   numOptNull:
                     type: string
+                  intEnum:
+                    type: string
+                    example: "2"
+                  int32Enum:
+                    type: string
+                    example: "55"
+                  bigint:
+                    type: string
+                    example: "8821239038968084"
+                  bigintStr:
+                    type: string
+                    example: "9223372036854775808"
+                  decimal:
+                    type: string
+                    example: "3.141592653589793"
+                  decimalStr:
+                    type: string
+                    example: "3.14159265358979344719667586"
                 required:
                   - str
                   - bool
@@ -1547,6 +1647,8 @@ components:
                   - date
                   - dateTime
                   - any
+                  - intEnum
+                  - int32Enum
             required:
               - form
               - headers
@@ -1563,18 +1665,25 @@ components:
                 properties:
                   str:
                     type: string
+                    example: "test"
                   bool:
                     type: string
+                    example: "true"
                   int:
                     type: string
+                    example: "1"
                   num:
                     type: string
+                    example: "1.1"
                   obj:
                     type: string
+                    example: "{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}"
                   map:
                     type: string
+                    example: "{\"key\":{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"},\"key2\":{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}}"
                   arr:
                     type: string
+                    example: "[{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"},{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}]"
                 required:
                   - str
                   - bool
