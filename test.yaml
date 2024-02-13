@@ -108,6 +108,8 @@ tags:
         description: Testing for documentation extensions in Python.
       typescript:
         description: Testing for documentation extensions in TypeScript.
+  - name: hooks
+    description: Endpoints for testing hooks
 security:
   - apiKeyAuth: []
   - apiKeyAuthNew: []
@@ -6752,6 +6754,71 @@ paths:
               description: Python is OK
             typescript:
               description: TypeScript is OK
+  /anything/hooks:
+    get:
+      operationId: testHooks
+      x-speakeasy-test: ["go"]
+      x-speakeasy-test-internal-id: test-hooks
+      tags:
+        - hooks
+      parameters:
+        - name: someParam
+          in: query
+          required: true
+          schema:
+            type: string
+            example: someInitialValue
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  args:
+                    type: object
+                    properties:
+                      someParam:
+                        type: string
+                        example: overriddenParam
+                    required:
+                      - someParam
+                  headers:
+                    type: object
+                    properties:
+                      Idempotency-Key:
+                        type: string
+                        example: "some-key"
+                      Client-Level-Header:
+                        type: string
+                        example: "added by client"
+                  url:
+                    type: string
+                    example: http://localhost:35123/anything/hooks?someParam=overriddenParam
+                required:
+                  - args
+                  - headers
+                  - url
+  /anything/hooks/afterResponseValidation:
+    get:
+      operationId: testHooksAfterResponse
+      tags:
+        - hooks
+      responses:
+        "200":
+          description: OK
+  /status/400#testHooksError:
+    get:
+      operationId: testHooksError
+      tags:
+        - hooks
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
 components:
   schemas:
     ExampleVehicle:
