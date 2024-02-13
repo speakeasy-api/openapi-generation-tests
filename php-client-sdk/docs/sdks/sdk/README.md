@@ -10,8 +10,58 @@ Speakeasy Docs
 <https://speakeasyapi.dev/docs/home>
 ### Available Operations
 
+* [conflictingEnum](#conflictingenum) - Test potential namespace conflicts with java.lang.Object
 * [putAnythingIgnoredGeneration](#putanythingignoredgeneration)
 * [responseBodyJsonGet](#responsebodyjsonget)
+
+## conflictingEnum
+
+Test potential namespace conflicts with java.lang.Object
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
+
+try {
+        $request = new Shared\ConflictingEnum();
+    $request->object = Shared\Object::Obj1;;
+
+    $response = $sdk->conflictingEnum($request);
+
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+} catch (Throwable $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `$request`                                                                               | [\OpenAPI\OpenAPI\Models\Shared\ConflictingEnum](../../Models/Shared/ConflictingEnum.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\ConflictingEnumResponse](../../Models/Operations/ConflictingEnumResponse.md)**
+
 
 ## putAnythingIgnoredGeneration
 
@@ -30,18 +80,19 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    'string';
 
     $response = $sdk->putAnythingIgnoredGeneration($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -75,8 +126,9 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
     $response = $sdk->responseBodyJsonGet();
@@ -84,7 +136,7 @@ try {
     if ($response->httpBinSimpleJsonObject !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```

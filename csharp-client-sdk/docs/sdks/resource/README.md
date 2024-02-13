@@ -6,6 +6,7 @@
 * [CreateFile](#createfile)
 * [CreateResource](#createresource)
 * [DeleteResource](#deleteresource)
+* [GetArrayDataSource](#getarraydatasource)
 * [GetResource](#getresource)
 * [UpdateResource](#updateresource)
 
@@ -23,15 +24,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Resource.CreateFileAsync(new CreateFileRequestBody() {
-    File = new CreateFileFile() {
-        Content = "0xf10df1a3b9 as bytes <<<>>>",
-        FileName = "rap_national.mp4v",
-    },
-});
+CreateFileRequestBody req = new CreateFileRequestBody() {};
+
+var res = await sdk.Resource.CreateFileAsync(req);
 
 // handle response
 ```
@@ -62,10 +59,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Resource.CreateResourceAsync(new ExampleResource() {
+ExampleResource req = new ExampleResource() {
     Chocolates = new List<Chocolates>() {
         new Chocolates() {
             Description = "Digitized optimal archive",
@@ -74,20 +70,9 @@ var res = await sdk.Resource.CreateResourceAsync(new ExampleResource() {
     Id = "<ID>",
     Name = "string",
     Vehicle = "string",
-    ArrayOfNumber = new List<double>() {
-        1124.19D,
-    },
-    ArrayOfString = new List<string>() {
-        "string",
-    },
-    InlineObject = new InlineObject() {},
-    MapOfInteger = new Dictionary<string, long>() {
-        { "key", 271791 },
-    },
-    MapOfString = new Dictionary<string, string>() {
-        { "key", "string" },
-    },
-});
+};
+
+var res = await sdk.Resource.CreateResourceAsync(req);
 
 // handle response
 ```
@@ -118,10 +103,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Resource.DeleteResourceAsync("string");
+var res = await sdk.Resource.DeleteResourceAsync(resourceId: "string");
 
 // handle response
 ```
@@ -138,6 +122,39 @@ var res = await sdk.Resource.DeleteResourceAsync("string");
 **[DeleteResourceResponse](../../Models/Operations/DeleteResourceResponse.md)**
 
 
+## GetArrayDataSource
+
+### Example Usage
+
+```csharp
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+var res = await sdk.Resource.GetArrayDataSourceAsync(filter: "string");
+
+// handle response
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `Filter`           | *string*           | :heavy_check_mark: | N/A                |
+
+
+### Response
+
+**[GetArrayDataSourceResponse](../../Models/Operations/GetArrayDataSourceResponse.md)**
+
+
 ## GetResource
 
 ### Example Usage
@@ -152,10 +169,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Resource.GetResourceAsync("string");
+var res = await sdk.Resource.GetResourceAsync(resourceId: "string");
 
 // handle response
 ```
@@ -186,10 +202,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Resource.UpdateResourceAsync("string");
+var res = await sdk.Resource.UpdateResourceAsync(
+    augment: "string",
+    resourceId: "string");
 
 // handle response
 ```
@@ -198,6 +215,7 @@ var res = await sdk.Resource.UpdateResourceAsync("string");
 
 | Parameter          | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `Augment`          | *string*           | :heavy_check_mark: | N/A                |
 | `ResourceId`       | *string*           | :heavy_check_mark: | N/A                |
 
 

@@ -34,7 +34,7 @@ func createSimpleObject() shared.SimpleObject {
 		IntOptNull: nil,
 		NumOptNull: nil,
 		Bigint:     big.NewInt(8821239038968084),
-		BigintStr:  types.MustNewBigIntFromString("1344719667586153181419716641724567886890850696275767987106294472017884974410332069524504824747437757"),
+		BigintStr:  types.MustNewBigIntFromString("9223372036854775808"),
 	}
 }
 
@@ -57,7 +57,7 @@ func createSimpleObjectCamelCase() shared.SimpleObjectCamelCase {
 		IntOptNullVal: nil,
 		NumOptNullVal: nil,
 		BigintVal:     big.NewInt(8821239038968084),
-		BigintStrVal:  types.MustNewBigIntFromString("1344719667586153181419716641724567886890850696275767987106294472017884974410332069524504824747437757"),
+		BigintStrVal:  types.MustNewBigIntFromString("9223372036854775808"),
 	}
 }
 

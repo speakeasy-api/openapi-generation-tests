@@ -57,6 +57,42 @@ func TestStronglyTypedOneOfPost_Basic(t *testing.T) {
 	assert.Equal(t, obj, *res.Res.JSON.SimpleObjectWithType)
 }
 
+func TestStronglyTypedOneOfPostWithNonStandardDiscriminatorName(t *testing.T) {
+	recordTest("unions-strongly-typed-one-of-post-with-non-standard-discriminator-name")
+
+	s := sdk.New()
+
+	obj := shared.SimpleObjectWithNonStandardTypeName{
+		Str:        "test",
+		Bool:       true,
+		Int:        1,
+		Int32:      1,
+		IntEnum:    shared.SimpleObjectWithNonStandardTypeNameIntEnumSecond,
+		Int32Enum:  shared.SimpleObjectWithNonStandardTypeNameInt32EnumFiftyFive,
+		Num:        1.1,
+		Float32:    1.1,
+		Enum:       shared.EnumOne,
+		Any:        "any",
+		Date:       types.Date{time.Date(2020, 1, 1, 0, 0, 0, 0, time.UTC)},
+		DateTime:   time.Date(2020, 1, 1, 0, 0, 0, 1, time.UTC),
+		BoolOpt:    pointer.ToBool(true),
+		StrOpt:     pointer.ToString("testOptional"),
+		IntOptNull: nil,
+		NumOptNull: nil,
+	}
+
+	req := shared.CreateStronglyTypedOneOfObjectWithNonStandardDiscriminatorNameSimpleObjectWithNonStandardTypeName(obj)
+
+	res, err := s.Unions.StronglyTypedOneOfPostWithNonStandardDiscriminatorName(context.Background(), req)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, shared.StronglyTypedOneOfObjectWithNonStandardDiscriminatorNameTypeSimpleObjectWithNonStandardTypeName, res.Res.JSON.Type)
+
+	obj.ObjType = "simpleObjectWithNonStandardTypeName"
+	assert.Equal(t, obj, *res.Res.JSON.SimpleObjectWithNonStandardTypeName)
+}
+
 func TestStronglyTypedOneOfPost_Deep(t *testing.T) {
 	recordTest("unions-strongly-typed-one-of-post-deep")
 

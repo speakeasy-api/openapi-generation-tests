@@ -29,14 +29,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            SelectGlobalServerResponse res = sdk.servers.selectGlobalServer();
+            org.openapis.openapi.models.operations.SelectGlobalServerResponse res = sdk.servers.selectGlobalServer();
 
             if (res.statusCode == 200) {
                 // handle response
@@ -71,14 +72,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            SelectServerWithIDResponse res = sdk.servers.selectServerWithID();
+            org.openapis.openapi.models.operations.SelectServerWithIDResponse res = sdk.servers.selectServerWithID();
 
             if (res.statusCode == 200) {
                 // handle response
@@ -117,14 +119,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ServerWithProtocolTemplateResponse res = sdk.servers.serverWithProtocolTemplate();
+            org.openapis.openapi.models.operations.ServerWithProtocolTemplateResponse res = sdk.servers.serverWithProtocolTemplate();
 
             if (res.statusCode == 200) {
                 // handle response
@@ -163,14 +166,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ServerWithTemplatesResponse res = sdk.servers.serverWithTemplates();
+            org.openapis.openapi.models.operations.ServerWithTemplatesResponse res = sdk.servers.serverWithTemplates();
 
             if (res.statusCode == 200) {
                 // handle response
@@ -209,14 +213,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ServerWithTemplatesGlobalResponse res = sdk.servers.serverWithTemplatesGlobal();
+            org.openapis.openapi.models.operations.ServerWithTemplatesGlobalResponse res = sdk.servers.serverWithTemplatesGlobal();
 
             if (res.statusCode == 200) {
                 // handle response
@@ -249,14 +254,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ServersByIDWithTemplatesResponse res = sdk.servers.serversByIDWithTemplates();
+            org.openapis.openapi.models.operations.ServersByIDWithTemplatesResponse res = sdk.servers.serversByIDWithTemplates();
 
             if (res.statusCode == 200) {
                 // handle response

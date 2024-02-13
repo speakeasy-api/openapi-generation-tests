@@ -29,8 +29,8 @@ class Servers:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
-        res = operations.SelectGlobalServerResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        res = operations.SelectGlobalServerResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, headers=None)
         
         if http_res.status_code == 200:
             res.headers = http_res.headers
@@ -61,7 +61,7 @@ class Servers:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.SelectServerWithIDResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -94,7 +94,7 @@ class Servers:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ServerWithProtocolTemplateResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -126,7 +126,7 @@ class Servers:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ServerWithTemplatesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -153,7 +153,7 @@ class Servers:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ServerWithTemplatesGlobalResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
@@ -185,7 +185,7 @@ class Servers:
         
         http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
-
+        
         res = operations.ServersByIDWithTemplatesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:

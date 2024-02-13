@@ -54,7 +54,7 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## api_key_auth_global
 
@@ -88,7 +88,7 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## basic_auth
 
@@ -130,7 +130,7 @@ if res.user is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## bearer_auth
 
@@ -169,7 +169,7 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## global_bearer_auth
 
@@ -203,7 +203,7 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## no_auth
 
@@ -211,12 +211,8 @@ if res.token is not None:
 
 ```python
 import sdk
-from sdk.models import shared
 
 s = sdk.SDK(
-    security=shared.Security(
-        api_key_auth="Token YOUR_API_KEY",
-    ),
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -237,7 +233,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## oauth2_auth
 
@@ -276,7 +272,7 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## oauth2_override
 
@@ -315,7 +311,7 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## open_id_connect_auth
 
@@ -354,4 +350,4 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |

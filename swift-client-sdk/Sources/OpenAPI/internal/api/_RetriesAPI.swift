@@ -19,6 +19,16 @@ class _RetriesAPI: RetriesAPI {
             handleResponse: handleRetriesGetResponse
         )
     }
+    
+    public func retriesPost(request: Operations.RetriesPostRequest, server: RetriesServers.RetriesPost?) async throws -> Response<Operations.RetriesPostResponse> {
+        return try await client.makeRequest(
+            with: try server?.server() ?? RetriesServers.RetriesPost.default(),
+            configureRequest: { configuration in
+                try configureRetriesPostRequest(with: configuration, request: request)
+            },
+            handleResponse: handleRetriesPostResponse
+        )
+    }
 
 }
 
@@ -31,6 +41,15 @@ private func configureRetriesGetRequest(with configuration: URLRequestConfigurat
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
+private func configureRetriesPostRequest(with configuration: URLRequestConfiguration, request: Operations.RetriesPostRequest) throws {
+    configuration.path = "/retries"
+    configuration.method = .post
+    configuration.queryParameterSerializable = request
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request.requestBody)
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
 // MARK: - Response Handlers
 
 private func handleRetriesGetResponse(response: Client.APIResponse) throws -> Operations.RetriesGetResponse {
@@ -40,6 +59,22 @@ private func handleRetriesGetResponse(response: Client.APIResponse) throws -> Op
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .retries(try JSONDecoder().decode(Operations.RetriesGetRetries.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleRetriesPostResponse(response: Client.APIResponse) throws -> Operations.RetriesPostResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .retries(try JSONDecoder().decode(Operations.RetriesPostRetries.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
