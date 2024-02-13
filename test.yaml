@@ -4223,6 +4223,54 @@ paths:
                 required:
                   - json
                   - data
+  /anything/requestBodies/post/jsonDataTypes/complexNumberArrays:
+    post:
+      operationId: requestBodyPostJsonDataTypesComplexNumberArrays
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/complexNumberArrays"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/complexNumberArrays"
+                required:
+                  - json
+  /anything/requestBodies/post/jsonDataTypes/complexNumberMaps:
+    post:
+      operationId: requestBodyPostJsonDataTypesComplexNumberMaps
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/complexNumberMaps"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/complexNumberMaps"
+                required:
+                  - json
   /anything/requestBodies/post/nullable/required/string:
     post:
       operationId: requestBodyPostNullableRequiredStringBody

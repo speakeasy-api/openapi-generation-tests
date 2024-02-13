@@ -566,6 +566,52 @@ components:
           properties:
             'obj.type':
               type: string
+    complexNumberArrays:
+      type: object
+      properties:
+        bigintArray:
+            type: array
+            items:
+              type: integer
+              format: bigint
+        bigintStrArray:
+            type: array
+            items:
+              type: string
+              format: bigint
+        decimalArray:
+            type: array
+            items:
+              type: number
+              format: decimal
+        decimalStrArray:
+            type: array
+            items:
+              type: string
+              format: decimal
+    complexNumberMaps:
+      type: object
+      properties:
+        bigintMap:
+          type: object
+          additionalProperties:
+            type: integer
+            format: bigint
+        bigintStrMap:
+          type: object
+          additionalProperties:
+            type: string
+            format: bigint
+        decimalMap:
+          type: object
+          additionalProperties:
+            type: number
+            format: decimal
+        decimalStrMap:
+          type: object
+          additionalProperties:
+            type: string
+            format: decimal
     fakerFormattedStrings:
       type: object
       description: A set of strings with format values that lead to relevant examples being generated for them
