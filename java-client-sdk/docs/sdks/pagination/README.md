@@ -30,16 +30,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            PaginationCursorBodyRequestBody req = new PaginationCursorBodyRequestBody(868337L);            
+            org.openapis.openapi.models.operations.PaginationCursorBodyRequestBody req = new PaginationCursorBodyRequestBody(
+                868337L);
 
-            PaginationCursorBodyResponse res = sdk.pagination.paginationCursorBody(req);
+            org.openapis.openapi.models.operations.PaginationCursorBodyResponse res = sdk.pagination.paginationCursorBody(req);
 
             if (res.res != null) {
                 // handle response
@@ -80,14 +82,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            PaginationCursorParamsResponse res = sdk.pagination.paginationCursorParams(24812L);
+            org.openapis.openapi.models.operations.PaginationCursorParamsResponse res = sdk.pagination.paginationCursorParams(24812L);
 
             if (res.res != null) {
                 // handle response
@@ -128,20 +131,23 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.LimitOffsetConfig req = new LimitOffsetConfig(){{
+            org.openapis.openapi.models.shared.LimitOffsetConfig req = new LimitOffsetConfig(
+){{
                 limit = 189971L;
                 offset = 995974L;
                 page = 329413L;
-            }};            
 
-            PaginationLimitOffsetOffsetBodyResponse res = sdk.pagination.paginationLimitOffsetOffsetBody(req);
+            }};
+
+            org.openapis.openapi.models.operations.PaginationLimitOffsetOffsetBodyResponse res = sdk.pagination.paginationLimitOffsetOffsetBody(req);
 
             if (res.res != null) {
                 // handle response
@@ -182,14 +188,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            PaginationLimitOffsetOffsetParamsResponse res = sdk.pagination.paginationLimitOffsetOffsetParams(661976L, 600173L);
+            org.openapis.openapi.models.operations.PaginationLimitOffsetOffsetParamsResponse res = sdk.pagination.paginationLimitOffsetOffsetParams(661976L, 600173L);
 
             if (res.res != null) {
                 // handle response
@@ -231,20 +238,23 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.LimitOffsetConfig req = new LimitOffsetConfig(){{
+            org.openapis.openapi.models.shared.LimitOffsetConfig req = new LimitOffsetConfig(
+){{
                 limit = 479052L;
                 offset = 716379L;
                 page = 911806L;
-            }};            
 
-            PaginationLimitOffsetPageBodyResponse res = sdk.pagination.paginationLimitOffsetPageBody(req);
+            }};
+
+            org.openapis.openapi.models.operations.PaginationLimitOffsetPageBodyResponse res = sdk.pagination.paginationLimitOffsetPageBody(req);
 
             if (res.res != null) {
                 // handle response
@@ -285,14 +295,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            PaginationLimitOffsetPageParamsResponse res = sdk.pagination.paginationLimitOffsetPageParams(1177L);
+            org.openapis.openapi.models.operations.PaginationLimitOffsetPageParamsResponse res = sdk.pagination.paginationLimitOffsetPageParams(1177L);
 
             if (res.res != null) {
                 // handle response

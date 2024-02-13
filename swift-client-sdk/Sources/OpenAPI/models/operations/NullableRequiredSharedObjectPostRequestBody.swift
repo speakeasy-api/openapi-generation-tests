@@ -6,12 +6,12 @@ extension Operations {
     /// A model object
     public struct NullableRequiredSharedObjectPostRequestBody {
         public let nullableRequiredObj: Shared.NullableObject
-        public let nullableOptionalObj: Shared.NullableObject?
+        public let nullableOptionalObj: Shared.NullableOptionalObject?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(nullableRequiredObj: Shared.NullableObject, nullableOptionalObj: Shared.NullableObject? = nil) {
+        public init(nullableRequiredObj: Shared.NullableObject, nullableOptionalObj: Shared.NullableOptionalObject? = nil) {
             self.nullableRequiredObj = nullableRequiredObj
             self.nullableOptionalObj = nullableOptionalObj
         }

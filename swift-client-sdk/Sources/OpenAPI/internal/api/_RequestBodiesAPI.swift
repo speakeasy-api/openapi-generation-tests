@@ -665,6 +665,15 @@ class _RequestBodiesAPI: RequestBodiesAPI {
         )
     }
     
+    public func requestBodyPutMultipartOptionalRequestBody(request: Operations.RequestBodyPutMultipartOptionalRequestBodyRequestBody) async throws -> Response<Operations.RequestBodyPutMultipartOptionalRequestBodyResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureRequestBodyPutMultipartOptionalRequestBodyRequest(with: configuration, request: request)
+            },
+            handleResponse: handleRequestBodyPutMultipartOptionalRequestBodyResponse
+        )
+    }
+    
     public func requestBodyPutMultipartSimple(request: Shared.SimpleObject) async throws -> Response<Operations.RequestBodyPutMultipartSimpleResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
@@ -1552,6 +1561,15 @@ private func configureRequestBodyPutMultipartFileRequest(with configuration: URL
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
+private func configureRequestBodyPutMultipartOptionalRequestBodyRequest(with configuration: URLRequestConfiguration, request: Operations.RequestBodyPutMultipartOptionalRequestBodyRequestBody) throws {
+    configuration.path = "/anything/requestBodies/put/multipart/optionalRequestBody"
+    configuration.method = .put
+    let (boundary, formData) = try serializeMultipartFormData(with: request)
+    configuration.contentType = multipartContentType(with: boundary)
+    configuration.body = formData
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
 private func configureRequestBodyPutMultipartSimpleRequest(with configuration: URLRequestConfiguration, request: Shared.SimpleObject) throws {
     configuration.path = "/anything/requestBodies/put/multipart/simple"
     configuration.method = .put
@@ -1687,10 +1705,11 @@ private func handleNullableRequiredEmptyObjectPostResponse(response: Client.APIR
     
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
-            guard let string = String(data: data, encoding: .utf8) else {
-                throw ResponseHandlerError.failedToDecodeResponse
+            do {
+                return .object(try JSONDecoder().decode(Operations.NullableRequiredEmptyObjectPostResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
             }
-            return .res(string)
         }
     }
 
@@ -1702,10 +1721,11 @@ private func handleNullableRequiredPropertyPostResponse(response: Client.APIResp
     
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
-            guard let string = String(data: data, encoding: .utf8) else {
-                throw ResponseHandlerError.failedToDecodeResponse
+            do {
+                return .object(try JSONDecoder().decode(Operations.NullableRequiredPropertyPostResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
             }
-            return .res(string)
         }
     }
 
@@ -1717,10 +1737,11 @@ private func handleNullableRequiredSharedObjectPostResponse(response: Client.API
     
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
-            guard let string = String(data: data, encoding: .utf8) else {
-                throw ResponseHandlerError.failedToDecodeResponse
+            do {
+                return .object(try JSONDecoder().decode(Operations.NullableRequiredSharedObjectPostResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
             }
-            return .res(string)
         }
     }
 
@@ -2790,6 +2811,22 @@ private func handleRequestBodyPutMultipartFileResponse(response: Client.APIRespo
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .res(try JSONDecoder().decode(Operations.RequestBodyPutMultipartFileRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleRequestBodyPutMultipartOptionalRequestBodyResponse(response: Client.APIResponse) throws -> Operations.RequestBodyPutMultipartOptionalRequestBodyResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.RequestBodyPutMultipartOptionalRequestBodyRes.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

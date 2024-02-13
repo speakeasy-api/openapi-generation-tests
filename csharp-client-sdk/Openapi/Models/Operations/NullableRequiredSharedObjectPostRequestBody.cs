@@ -20,6 +20,6 @@ namespace Openapi.Models.Operations
         public NullableObject NullableRequiredObj { get; set; } = default!;
 
         [JsonProperty("NullableOptionalObj")]
-        public NullableObject? NullableOptionalObj { get; set; }
+        public NullableOptionalObject? NullableOptionalObj { get; set; }
     }
 }

@@ -78,6 +78,7 @@ Endpoints for testing request bodies.
 * [RequestBodyPutMultipartDeep](#requestbodyputmultipartdeep)
 * [RequestBodyPutMultipartDifferentFileName](#requestbodyputmultipartdifferentfilename)
 * [RequestBodyPutMultipartFile](#requestbodyputmultipartfile)
+* [RequestBodyPutMultipartOptionalRequestBody](#requestbodyputmultipartoptionalrequestbody)
 * [RequestBodyPutMultipartSimple](#requestbodyputmultipartsimple)
 * [RequestBodyPutString](#requestbodyputstring)
 * [RequestBodyPutStringWithParams](#requestbodyputstringwithparams)
@@ -102,12 +103,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.NullableObjectPostAsync(new NullableObject() {
-    Required = 302382,
-});
+NullableObject req = null;
+
+var res = await sdk.RequestBodies.NullableObjectPostAsync(req);
 
 // handle response
 ```
@@ -138,14 +138,15 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.NullableRequiredEmptyObjectPostAsync(new NullableRequiredEmptyObjectPostRequestBody() {
-    NullableRequiredObj = new NullableRequiredObj() {},
+NullableRequiredEmptyObjectPostRequestBody req = new NullableRequiredEmptyObjectPostRequestBody() {
+    NullableRequiredObj = null,
     RequiredObj = new RequiredObj() {},
     NullableOptionalObj = new NullableOptionalObj() {},
-});
+};
+
+var res = await sdk.RequestBodies.NullableRequiredEmptyObjectPostAsync(req);
 
 // handle response
 ```
@@ -177,16 +178,16 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.NullableRequiredPropertyPostAsync(new NullableRequiredPropertyPostRequestBody() {
-    NullableRequiredArray = new List<double>() {
-        2355.17D,
-    },
+NullableRequiredPropertyPostRequestBody req = new NullableRequiredPropertyPostRequestBody() {
+    NullableRequiredArray = null,
     NullableRequiredEnum = NullableRequiredEnum.Second,
-    NullableRequiredInt = 50266,
-});
+    NullableRequiredInt = null,
+    NullableOptionalInt = 0,
+};
+
+var res = await sdk.RequestBodies.NullableRequiredPropertyPostAsync(req);
 
 // handle response
 ```
@@ -217,17 +218,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.NullableRequiredSharedObjectPostAsync(new NullableRequiredSharedObjectPostRequestBody() {
-    NullableRequiredObj = new NullableObject() {
-        Required = 86533,
-    },
-    NullableOptionalObj = new NullableObject() {
-        Required = 964394,
-    },
-});
+NullableRequiredSharedObjectPostRequestBody req = new NullableRequiredSharedObjectPostRequestBody() {
+    NullableRequiredObj = null,
+};
+
+var res = await sdk.RequestBodies.NullableRequiredSharedObjectPostAsync(req);
 
 // handle response
 ```
@@ -258,15 +255,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayAsync(new List<SimpleObject>() {
+List<SimpleObject> req = new List<SimpleObject>() {
     new SimpleObject() {
         Any = "any",
         Bool = true,
         Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
         Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
@@ -282,7 +278,9 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayAsync(new L
         DecimalStr = 3.14159265358979344719667586M,
         StrOpt = "testOptional",
     },
-});
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayAsync(req);
 
 // handle response
 ```
@@ -314,10 +312,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayCamelCaseAsync(new List<SimpleObjectCamelCase>() {
+List<SimpleObjectCamelCase> req = new List<SimpleObjectCamelCase>() {
     new SimpleObjectCamelCase() {
         AnyVal = "any example",
         BoolVal = true,
@@ -336,7 +333,9 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayCamelCaseAs
         NumOptNullVal = 1.1D,
         StrOptVal = "optional example",
     },
-});
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayCamelCaseAsync(req);
 
 // handle response
 ```
@@ -368,15 +367,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayObjAsync(new List<SimpleObject>() {
+List<SimpleObject> req = new List<SimpleObject>() {
     new SimpleObject() {
         Any = "any",
         Bool = true,
         Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
         Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
@@ -392,7 +390,29 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayObjAsync(ne
         DecimalStr = 3.14159265358979344719667586M,
         StrOpt = "testOptional",
     },
-});
+    new SimpleObject() {
+        Any = "any",
+        Bool = true,
+        Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
+        Enum = Enum.One,
+        Float32 = 1.1F,
+        Int = 1,
+        Int32 = 1,
+        Int32Enum = Int32Enum.FiftyFive,
+        IntEnum = IntEnum.Two,
+        Num = 1.1D,
+        Str = "test",
+        Bigint = 8821239038968084,
+        BigintStr = 9223372036854775808,
+        BoolOpt = true,
+        Decimal = 3.141592653589793M,
+        DecimalStr = 3.14159265358979344719667586M,
+        StrOpt = "testOptional",
+    },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayObjAsync(req);
 
 // handle response
 ```
@@ -423,10 +443,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayObjCamelCaseAsync(new List<SimpleObjectCamelCase>() {
+List<SimpleObjectCamelCase> req = new List<SimpleObjectCamelCase>() {
     new SimpleObjectCamelCase() {
         AnyVal = "any example",
         BoolVal = true,
@@ -445,7 +464,27 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayObjCamelCas
         NumOptNullVal = 1.1D,
         StrOptVal = "optional example",
     },
-});
+    new SimpleObjectCamelCase() {
+        AnyVal = "any example",
+        BoolVal = true,
+        DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+        DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        EnumVal = Enum.One,
+        Float32Val = 2.2222222F,
+        Int32EnumVal = Int32EnumVal.SixtyNine,
+        Int32Val = 1,
+        IntEnumVal = IntEnumVal.Three,
+        IntVal = 999999,
+        NumVal = 1.1D,
+        StrVal = "example",
+        BoolOptVal = true,
+        IntOptNullVal = 999999,
+        NumOptNullVal = 1.1D,
+        StrOptVal = "optional example",
+    },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayObjCamelCaseAsync(req);
 
 // handle response
 ```
@@ -476,16 +515,15 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfArrayAsync(new List<List<SimpleObject>>() {
+List<List<SimpleObject>> req = new List<List<SimpleObject>>() {
     new List<SimpleObject>() {
         new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -502,7 +540,9 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfArrayAsyn
             StrOpt = "testOptional",
         },
     },
-});
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfArrayAsync(req);
 
 // handle response
 ```
@@ -534,10 +574,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfArrayCamelCaseAsync(new List<List<SimpleObjectCamelCase>>() {
+List<List<SimpleObjectCamelCase>> req = new List<List<SimpleObjectCamelCase>>() {
     new List<SimpleObjectCamelCase>() {
         new SimpleObjectCamelCase() {
             AnyVal = "any example",
@@ -558,7 +597,9 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfArrayCame
             StrOptVal = "optional example",
         },
     },
-});
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfArrayCamelCaseAsync(req);
 
 // handle response
 ```
@@ -589,14 +630,20 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveAsync(new List<List<string>>() {
+List<List<string>> req = new List<List<string>>() {
     new List<string>() {
-        "string",
+        "foo",
+        "bar",
     },
-});
+    new List<string>() {
+        "buzz",
+        "bazz",
+    },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveAsync(req);
 
 // handle response
 ```
@@ -628,16 +675,35 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfMapAsync(new List<Dictionary<string, SimpleObject>>() {
+List<Dictionary<string, SimpleObject>> req = new List<Dictionary<string, SimpleObject>>() {
     new Dictionary<string, SimpleObject>() {
-        { "key", new SimpleObject() {
+        { "mapElem1", new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
+            Enum = Enum.One,
+            Float32 = 1.1F,
+            Int = 1,
+            Int32 = 1,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
+            Num = 1.1D,
+            Str = "test",
+            Bigint = 8821239038968084,
+            BigintStr = 9223372036854775808,
+            BoolOpt = true,
+            Decimal = 3.141592653589793M,
+            DecimalStr = 3.14159265358979344719667586M,
+            StrOpt = "testOptional",
+        } },
+        { "mapElem2", new SimpleObject() {
+            Any = "any",
+            Bool = true,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -654,7 +720,51 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfMapAsync(
             StrOpt = "testOptional",
         } },
     },
-});
+    new Dictionary<string, SimpleObject>() {
+        { "mapElem1", new SimpleObject() {
+            Any = "any",
+            Bool = true,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
+            Enum = Enum.One,
+            Float32 = 1.1F,
+            Int = 1,
+            Int32 = 1,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
+            Num = 1.1D,
+            Str = "test",
+            Bigint = 8821239038968084,
+            BigintStr = 9223372036854775808,
+            BoolOpt = true,
+            Decimal = 3.141592653589793M,
+            DecimalStr = 3.14159265358979344719667586M,
+            StrOpt = "testOptional",
+        } },
+        { "mapElem2", new SimpleObject() {
+            Any = "any",
+            Bool = true,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
+            Enum = Enum.One,
+            Float32 = 1.1F,
+            Int = 1,
+            Int32 = 1,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
+            Num = 1.1D,
+            Str = "test",
+            Bigint = 8821239038968084,
+            BigintStr = 9223372036854775808,
+            BoolOpt = true,
+            Decimal = 3.141592653589793M,
+            DecimalStr = 3.14159265358979344719667586M,
+            StrOpt = "testOptional",
+        } },
+    },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfMapAsync(req);
 
 // handle response
 ```
@@ -686,12 +796,29 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfMapCamelCaseAsync(new List<Dictionary<string, SimpleObjectCamelCase>>() {
+List<Dictionary<string, SimpleObjectCamelCase>> req = new List<Dictionary<string, SimpleObjectCamelCase>>() {
     new Dictionary<string, SimpleObjectCamelCase>() {
-        { "key", new SimpleObjectCamelCase() {
+        { "mapElem1", new SimpleObjectCamelCase() {
+            AnyVal = "any example",
+            BoolVal = true,
+            DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+            DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            EnumVal = Enum.One,
+            Float32Val = 2.2222222F,
+            Int32EnumVal = Int32EnumVal.SixtyNine,
+            Int32Val = 1,
+            IntEnumVal = IntEnumVal.Three,
+            IntVal = 999999,
+            NumVal = 1.1D,
+            StrVal = "example",
+            BoolOptVal = true,
+            IntOptNullVal = 999999,
+            NumOptNullVal = 1.1D,
+            StrOptVal = "optional example",
+        } },
+        { "mapElem2", new SimpleObjectCamelCase() {
             AnyVal = "any example",
             BoolVal = true,
             DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
@@ -710,7 +837,47 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfMapCamelC
             StrOptVal = "optional example",
         } },
     },
-});
+    new Dictionary<string, SimpleObjectCamelCase>() {
+        { "mapElem1", new SimpleObjectCamelCase() {
+            AnyVal = "any example",
+            BoolVal = true,
+            DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+            DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            EnumVal = Enum.One,
+            Float32Val = 2.2222222F,
+            Int32EnumVal = Int32EnumVal.SixtyNine,
+            Int32Val = 1,
+            IntEnumVal = IntEnumVal.Three,
+            IntVal = 999999,
+            NumVal = 1.1D,
+            StrVal = "example",
+            BoolOptVal = true,
+            IntOptNullVal = 999999,
+            NumOptNullVal = 1.1D,
+            StrOptVal = "optional example",
+        } },
+        { "mapElem2", new SimpleObjectCamelCase() {
+            AnyVal = "any example",
+            BoolVal = true,
+            DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+            DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            EnumVal = Enum.One,
+            Float32Val = 2.2222222F,
+            Int32EnumVal = Int32EnumVal.SixtyNine,
+            Int32Val = 1,
+            IntEnumVal = IntEnumVal.Three,
+            IntVal = 999999,
+            NumVal = 1.1D,
+            StrVal = "example",
+            BoolOptVal = true,
+            IntOptNullVal = 999999,
+            NumOptNullVal = 1.1D,
+            StrOptVal = "optional example",
+        } },
+    },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfMapCamelCaseAsync(req);
 
 // handle response
 ```
@@ -741,12 +908,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfPrimitiveAsync(new List<string>() {
-    "string",
-});
+List<string> req = new List<string>() {
+    "hello",
+    "world",
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfPrimitiveAsync(req);
 
 // handle response
 ```
@@ -779,17 +948,16 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(new DeepObject() {
+DeepObject req = new DeepObject() {
     Any = "anyOf[0]",
     Arr = new List<SimpleObject>() {
         new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -809,7 +977,7 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(new De
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -833,7 +1001,7 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(new De
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -853,7 +1021,7 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(new De
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -875,7 +1043,7 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(new De
         Any = "any",
         Bool = true,
         Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
         Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
@@ -892,7 +1060,9 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(new De
         StrOpt = "testOptional",
     },
     Str = "test",
-});
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepAsync(req);
 
 // handle response
 ```
@@ -924,10 +1094,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepCamelCaseAsync(new DeepObjectCamelCase() {
+DeepObjectCamelCase req = new DeepObjectCamelCase() {
     AnyVal = "string",
     ArrVal = new List<SimpleObjectCamelCase>() {
         new SimpleObjectCamelCase() {
@@ -948,9 +1117,27 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepCamelCaseAsy
             NumOptNullVal = 1.1D,
             StrOptVal = "optional example",
         },
+        new SimpleObjectCamelCase() {
+            AnyVal = "any example",
+            BoolVal = true,
+            DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+            DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            EnumVal = Enum.One,
+            Float32Val = 2.2222222F,
+            Int32EnumVal = Int32EnumVal.SixtyNine,
+            Int32Val = 1,
+            IntEnumVal = IntEnumVal.Three,
+            IntVal = 999999,
+            NumVal = 1.1D,
+            StrVal = "example",
+            BoolOptVal = true,
+            IntOptNullVal = 999999,
+            NumOptNullVal = 1.1D,
+            StrOptVal = "optional example",
+        },
     },
-    BoolVal = false,
-    IntVal = 66469,
+    BoolVal = true,
+    IntVal = 1,
     MapVal = new Dictionary<string, SimpleObjectCamelCase>() {
         { "key", new SimpleObjectCamelCase() {
             AnyVal = "any example",
@@ -971,7 +1158,7 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepCamelCaseAsy
             StrOptVal = "optional example",
         } },
     },
-    NumVal = 9629.09D,
+    NumVal = 1.1D,
     ObjVal = new SimpleObjectCamelCase() {
         AnyVal = "any example",
         BoolVal = true,
@@ -990,8 +1177,10 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepCamelCaseAsy
         NumOptNullVal = 1.1D,
         StrOptVal = "optional example",
     },
-    StrVal = "string",
-});
+    StrVal = "test",
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepCamelCaseAsync(req);
 
 // handle response
 ```
@@ -1022,15 +1211,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapAsync(new Dictionary<string, SimpleObject>() {
-    { "key", new SimpleObject() {
+Dictionary<string, SimpleObject> req = new Dictionary<string, SimpleObject>() {
+    { "mapElem1", new SimpleObject() {
         Any = "any",
         Bool = true,
         Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
         Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
@@ -1046,7 +1234,29 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapAsync(new Dic
         DecimalStr = 3.14159265358979344719667586M,
         StrOpt = "testOptional",
     } },
-});
+    { "mapElem2", new SimpleObject() {
+        Any = "any",
+        Bool = true,
+        Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
+        Enum = Enum.One,
+        Float32 = 1.1F,
+        Int = 1,
+        Int32 = 1,
+        Int32Enum = Int32Enum.FiftyFive,
+        IntEnum = IntEnum.Two,
+        Num = 1.1D,
+        Str = "test",
+        Bigint = 8821239038968084,
+        BigintStr = 9223372036854775808,
+        BoolOpt = true,
+        Decimal = 3.141592653589793M,
+        DecimalStr = 3.14159265358979344719667586M,
+        StrOpt = "testOptional",
+    } },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapAsync(req);
 
 // handle response
 ```
@@ -1078,11 +1288,10 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapCamelCaseAsync(new Dictionary<string, SimpleObjectCamelCase>() {
-    { "key", new SimpleObjectCamelCase() {
+Dictionary<string, SimpleObjectCamelCase> req = new Dictionary<string, SimpleObjectCamelCase>() {
+    { "mapElem1", new SimpleObjectCamelCase() {
         AnyVal = "any example",
         BoolVal = true,
         DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
@@ -1100,7 +1309,27 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapCamelCaseAsyn
         NumOptNullVal = 1.1D,
         StrOptVal = "optional example",
     } },
-});
+    { "mapElem2", new SimpleObjectCamelCase() {
+        AnyVal = "any example",
+        BoolVal = true,
+        DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+        DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        EnumVal = Enum.One,
+        Float32Val = 2.2222222F,
+        Int32EnumVal = Int32EnumVal.SixtyNine,
+        Int32Val = 1,
+        IntEnumVal = IntEnumVal.Three,
+        IntVal = 999999,
+        NumVal = 1.1D,
+        StrVal = "example",
+        BoolOptVal = true,
+        IntOptNullVal = 999999,
+        NumOptNullVal = 1.1D,
+        StrOptVal = "optional example",
+    } },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapCamelCaseAsync(req);
 
 // handle response
 ```
@@ -1132,15 +1361,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapObjAsync(new Dictionary<string, SimpleObject>() {
-    { "key", new SimpleObject() {
+Dictionary<string, SimpleObject> req = new Dictionary<string, SimpleObject>() {
+    { "mapElem1", new SimpleObject() {
         Any = "any",
         Bool = true,
         Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
         Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
@@ -1156,7 +1384,29 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapObjAsync(new 
         DecimalStr = 3.14159265358979344719667586M,
         StrOpt = "testOptional",
     } },
-});
+    { "mapElem2", new SimpleObject() {
+        Any = "any",
+        Bool = true,
+        Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
+        Enum = Enum.One,
+        Float32 = 1.1F,
+        Int = 1,
+        Int32 = 1,
+        Int32Enum = Int32Enum.FiftyFive,
+        IntEnum = IntEnum.Two,
+        Num = 1.1D,
+        Str = "test",
+        Bigint = 8821239038968084,
+        BigintStr = 9223372036854775808,
+        BoolOpt = true,
+        Decimal = 3.141592653589793M,
+        DecimalStr = 3.14159265358979344719667586M,
+        StrOpt = "testOptional",
+    } },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapObjAsync(req);
 
 // handle response
 ```
@@ -1187,11 +1437,10 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapObjCamelCaseAsync(new Dictionary<string, SimpleObjectCamelCase>() {
-    { "key", new SimpleObjectCamelCase() {
+Dictionary<string, SimpleObjectCamelCase> req = new Dictionary<string, SimpleObjectCamelCase>() {
+    { "mapElem1", new SimpleObjectCamelCase() {
         AnyVal = "any example",
         BoolVal = true,
         DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
@@ -1209,7 +1458,27 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapObjCamelCaseA
         NumOptNullVal = 1.1D,
         StrOptVal = "optional example",
     } },
-});
+    { "mapElem2", new SimpleObjectCamelCase() {
+        AnyVal = "any example",
+        BoolVal = true,
+        DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+        DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        EnumVal = Enum.One,
+        Float32Val = 2.2222222F,
+        Int32EnumVal = Int32EnumVal.SixtyNine,
+        Int32Val = 1,
+        IntEnumVal = IntEnumVal.Three,
+        IntVal = 999999,
+        NumVal = 1.1D,
+        StrVal = "example",
+        BoolOptVal = true,
+        IntOptNullVal = 999999,
+        NumOptNullVal = 1.1D,
+        StrOptVal = "optional example",
+    } },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapObjCamelCaseAsync(req);
 
 // handle response
 ```
@@ -1240,16 +1509,35 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfArrayAsync(new Dictionary<string, List<SimpleObject>>() {
-    { "key", new List<SimpleObject>() {
+Dictionary<string, List<SimpleObject>> req = new Dictionary<string, List<SimpleObject>>() {
+    { "mapElem1", new List<SimpleObject>() {
         new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
+            Enum = Enum.One,
+            Float32 = 1.1F,
+            Int = 1,
+            Int32 = 1,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
+            Num = 1.1D,
+            Str = "test",
+            Bigint = 8821239038968084,
+            BigintStr = 9223372036854775808,
+            BoolOpt = true,
+            Decimal = 3.141592653589793M,
+            DecimalStr = 3.14159265358979344719667586M,
+            StrOpt = "testOptional",
+        },
+        new SimpleObject() {
+            Any = "any",
+            Bool = true,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -1266,7 +1554,51 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfArrayAsync(
             StrOpt = "testOptional",
         },
     } },
-});
+    { "mapElem2", new List<SimpleObject>() {
+        new SimpleObject() {
+            Any = "any",
+            Bool = true,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
+            Enum = Enum.One,
+            Float32 = 1.1F,
+            Int = 1,
+            Int32 = 1,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
+            Num = 1.1D,
+            Str = "test",
+            Bigint = 8821239038968084,
+            BigintStr = 9223372036854775808,
+            BoolOpt = true,
+            Decimal = 3.141592653589793M,
+            DecimalStr = 3.14159265358979344719667586M,
+            StrOpt = "testOptional",
+        },
+        new SimpleObject() {
+            Any = "any",
+            Bool = true,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
+            Enum = Enum.One,
+            Float32 = 1.1F,
+            Int = 1,
+            Int32 = 1,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
+            Num = 1.1D,
+            Str = "test",
+            Bigint = 8821239038968084,
+            BigintStr = 9223372036854775808,
+            BoolOpt = true,
+            Decimal = 3.141592653589793M,
+            DecimalStr = 3.14159265358979344719667586M,
+            StrOpt = "testOptional",
+        },
+    } },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfArrayAsync(req);
 
 // handle response
 ```
@@ -1298,11 +1630,28 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfArrayCamelCaseAsync(new Dictionary<string, List<SimpleObjectCamelCase>>() {
-    { "key", new List<SimpleObjectCamelCase>() {
+Dictionary<string, List<SimpleObjectCamelCase>> req = new Dictionary<string, List<SimpleObjectCamelCase>>() {
+    { "mapElem1", new List<SimpleObjectCamelCase>() {
+        new SimpleObjectCamelCase() {
+            AnyVal = "any example",
+            BoolVal = true,
+            DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+            DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            EnumVal = Enum.One,
+            Float32Val = 2.2222222F,
+            Int32EnumVal = Int32EnumVal.SixtyNine,
+            Int32Val = 1,
+            IntEnumVal = IntEnumVal.Three,
+            IntVal = 999999,
+            NumVal = 1.1D,
+            StrVal = "example",
+            BoolOptVal = true,
+            IntOptNullVal = 999999,
+            NumOptNullVal = 1.1D,
+            StrOptVal = "optional example",
+        },
         new SimpleObjectCamelCase() {
             AnyVal = "any example",
             BoolVal = true,
@@ -1322,7 +1671,47 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfArrayCamelC
             StrOptVal = "optional example",
         },
     } },
-});
+    { "mapElem2", new List<SimpleObjectCamelCase>() {
+        new SimpleObjectCamelCase() {
+            AnyVal = "any example",
+            BoolVal = true,
+            DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+            DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            EnumVal = Enum.One,
+            Float32Val = 2.2222222F,
+            Int32EnumVal = Int32EnumVal.SixtyNine,
+            Int32Val = 1,
+            IntEnumVal = IntEnumVal.Three,
+            IntVal = 999999,
+            NumVal = 1.1D,
+            StrVal = "example",
+            BoolOptVal = true,
+            IntOptNullVal = 999999,
+            NumOptNullVal = 1.1D,
+            StrOptVal = "optional example",
+        },
+        new SimpleObjectCamelCase() {
+            AnyVal = "any example",
+            BoolVal = true,
+            DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+            DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            EnumVal = Enum.One,
+            Float32Val = 2.2222222F,
+            Int32EnumVal = Int32EnumVal.SixtyNine,
+            Int32Val = 1,
+            IntEnumVal = IntEnumVal.Three,
+            IntVal = 999999,
+            NumVal = 1.1D,
+            StrVal = "example",
+            BoolOptVal = true,
+            IntOptNullVal = 999999,
+            NumOptNullVal = 1.1D,
+            StrOptVal = "optional example",
+        },
+    } },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfArrayCamelCaseAsync(req);
 
 // handle response
 ```
@@ -1354,16 +1743,35 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfMapAsync(new Dictionary<string, Dictionary<string, SimpleObject>>() {
-    { "key", new Dictionary<string, SimpleObject>() {
-        { "key", new SimpleObject() {
+Dictionary<string, Dictionary<string, SimpleObject>> req = new Dictionary<string, Dictionary<string, SimpleObject>>() {
+    { "mapElem1", new Dictionary<string, SimpleObject>() {
+        { "subMapElem1", new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
+            Enum = Enum.One,
+            Float32 = 1.1F,
+            Int = 1,
+            Int32 = 1,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
+            Num = 1.1D,
+            Str = "test",
+            Bigint = 8821239038968084,
+            BigintStr = 9223372036854775808,
+            BoolOpt = true,
+            Decimal = 3.141592653589793M,
+            DecimalStr = 3.14159265358979344719667586M,
+            StrOpt = "testOptional",
+        } },
+        { "subMapElem2", new SimpleObject() {
+            Any = "any",
+            Bool = true,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -1380,7 +1788,51 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfMapAsync(ne
             StrOpt = "testOptional",
         } },
     } },
-});
+    { "mapElem2", new Dictionary<string, SimpleObject>() {
+        { "subMapElem1", new SimpleObject() {
+            Any = "any",
+            Bool = true,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
+            Enum = Enum.One,
+            Float32 = 1.1F,
+            Int = 1,
+            Int32 = 1,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
+            Num = 1.1D,
+            Str = "test",
+            Bigint = 8821239038968084,
+            BigintStr = 9223372036854775808,
+            BoolOpt = true,
+            Decimal = 3.141592653589793M,
+            DecimalStr = 3.14159265358979344719667586M,
+            StrOpt = "testOptional",
+        } },
+        { "subMapElem2", new SimpleObject() {
+            Any = "any",
+            Bool = true,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
+            Enum = Enum.One,
+            Float32 = 1.1F,
+            Int = 1,
+            Int32 = 1,
+            Int32Enum = Int32Enum.FiftyFive,
+            IntEnum = IntEnum.Two,
+            Num = 1.1D,
+            Str = "test",
+            Bigint = 8821239038968084,
+            BigintStr = 9223372036854775808,
+            BoolOpt = true,
+            Decimal = 3.141592653589793M,
+            DecimalStr = 3.14159265358979344719667586M,
+            StrOpt = "testOptional",
+        } },
+    } },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfMapAsync(req);
 
 // handle response
 ```
@@ -1412,12 +1864,29 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfMapCamelCaseAsync(new Dictionary<string, Dictionary<string, SimpleObjectCamelCase>>() {
-    { "key", new Dictionary<string, SimpleObjectCamelCase>() {
-        { "key", new SimpleObjectCamelCase() {
+Dictionary<string, Dictionary<string, SimpleObjectCamelCase>> req = new Dictionary<string, Dictionary<string, SimpleObjectCamelCase>>() {
+    { "mapElem1", new Dictionary<string, SimpleObjectCamelCase>() {
+        { "subMapElem1", new SimpleObjectCamelCase() {
+            AnyVal = "any example",
+            BoolVal = true,
+            DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+            DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            EnumVal = Enum.One,
+            Float32Val = 2.2222222F,
+            Int32EnumVal = Int32EnumVal.SixtyNine,
+            Int32Val = 1,
+            IntEnumVal = IntEnumVal.Three,
+            IntVal = 999999,
+            NumVal = 1.1D,
+            StrVal = "example",
+            BoolOptVal = true,
+            IntOptNullVal = 999999,
+            NumOptNullVal = 1.1D,
+            StrOptVal = "optional example",
+        } },
+        { "subMapElem2", new SimpleObjectCamelCase() {
             AnyVal = "any example",
             BoolVal = true,
             DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
@@ -1436,7 +1905,47 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfMapCamelCas
             StrOptVal = "optional example",
         } },
     } },
-});
+    { "mapElem2", new Dictionary<string, SimpleObjectCamelCase>() {
+        { "subMapElem1", new SimpleObjectCamelCase() {
+            AnyVal = "any example",
+            BoolVal = true,
+            DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+            DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            EnumVal = Enum.One,
+            Float32Val = 2.2222222F,
+            Int32EnumVal = Int32EnumVal.SixtyNine,
+            Int32Val = 1,
+            IntEnumVal = IntEnumVal.Three,
+            IntVal = 999999,
+            NumVal = 1.1D,
+            StrVal = "example",
+            BoolOptVal = true,
+            IntOptNullVal = 999999,
+            NumOptNullVal = 1.1D,
+            StrOptVal = "optional example",
+        } },
+        { "subMapElem2", new SimpleObjectCamelCase() {
+            AnyVal = "any example",
+            BoolVal = true,
+            DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+            DateVal = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            EnumVal = Enum.One,
+            Float32Val = 2.2222222F,
+            Int32EnumVal = Int32EnumVal.SixtyNine,
+            Int32Val = 1,
+            IntEnumVal = IntEnumVal.Three,
+            IntVal = 999999,
+            NumVal = 1.1D,
+            StrVal = "example",
+            BoolOptVal = true,
+            IntOptNullVal = 999999,
+            NumOptNullVal = 1.1D,
+            StrOptVal = "optional example",
+        } },
+    } },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfMapCamelCaseAsync(req);
 
 // handle response
 ```
@@ -1467,14 +1976,20 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfMapOfPrimitiveAsync(new Dictionary<string, Dictionary<string, string>>() {
-    { "key", new Dictionary<string, string>() {
-        { "key", "string" },
+Dictionary<string, Dictionary<string, string>> req = new Dictionary<string, Dictionary<string, string>>() {
+    { "mapElem1", new Dictionary<string, string>() {
+        { "subMapElem1", "foo" },
+        { "subMapElem2", "bar" },
     } },
-});
+    { "mapElem2", new Dictionary<string, string>() {
+        { "subMapElem1", "buzz" },
+        { "subMapElem2", "bazz" },
+    } },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfMapOfPrimitiveAsync(req);
 
 // handle response
 ```
@@ -1505,12 +2020,14 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfPrimitiveAsync(new Dictionary<string, string>() {
-    { "key", "string" },
-});
+Dictionary<string, string> req = new Dictionary<string, string>() {
+    { "mapElem1", "hello" },
+    { "mapElem2", "world" },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfPrimitiveAsync(req);
 
 // handle response
 ```
@@ -1542,14 +2059,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMultipleJsonFilteredAsync(new SimpleObject() {
+SimpleObject req = new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -1564,7 +2080,9 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMultipleJsonFilt
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
     StrOpt = "testOptional",
-});
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMultipleJsonFilteredAsync(req);
 
 // handle response
 ```
@@ -1595,14 +2113,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonSimpleAsync(new SimpleObject() {
+SimpleObject req = new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -1617,7 +2134,9 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonSimpleAsync(new 
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
     StrOpt = "testOptional",
-});
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonSimpleAsync(req);
 
 // handle response
 ```
@@ -1648,10 +2167,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonSimpleCamelCaseAsync(new SimpleObjectCamelCase() {
+SimpleObjectCamelCase req = new SimpleObjectCamelCase() {
     AnyVal = "any example",
     BoolVal = true,
     DateTimeVal = System.DateTime.Parse("2020-01-01T00:00:00Z"),
@@ -1668,7 +2186,9 @@ var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonSimpleCamelCaseA
     IntOptNullVal = 999999,
     NumOptNullVal = 1.1D,
     StrOptVal = "optional example",
-});
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonSimpleCamelCaseAsync(req);
 
 // handle response
 ```
@@ -1699,25 +2219,26 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostComplexNumberTypesAsync(new RequestBodyPostComplexNumberTypesRequest() {
+RequestBodyPostComplexNumberTypesRequest req = new RequestBodyPostComplexNumberTypesRequest() {
     ComplexNumberTypes = new ComplexNumberTypes() {
-        Bigint = 765757,
-        BigintStr = 934487,
-        Decimal = 2505.14M,
-        DecimalStr = 6831.11M,
+        Bigint = 8821239038968084,
+        BigintStr = 9223372036854775808,
+        Decimal = 3.141592653589793M,
+        DecimalStr = 3.14159265358979344719667586M,
     },
-    PathBigInt = 500580,
-    PathBigIntStr = 741903,
-    PathDecimal = 8228.52M,
-    PathDecimalStr = 5491.78M,
-    QueryBigInt = 937395,
-    QueryBigIntStr = 178906,
-    QueryDecimal = 8260.68M,
-    QueryDecimalStr = 8253.58M,
-});
+    PathBigInt = 8821239038968084,
+    PathBigIntStr = 9223372036854775808,
+    PathDecimal = 3.141592653589793M,
+    PathDecimalStr = 3.14159265358979344719667586M,
+    QueryBigInt = 8821239038968084,
+    QueryBigIntStr = 9223372036854775808,
+    QueryDecimal = 3.141592653589793M,
+    QueryDecimalStr = 3.14159265358979344719667586M,
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostComplexNumberTypesAsync(req);
 
 // handle response
 ```
@@ -1748,12 +2269,43 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostDefaultsAndConstsAsync(new DefaultsAndConsts() {
-    NormalField = "string",
-});
+DefaultsAndConsts req = new DefaultsAndConsts() {
+    ConstBigInt = 559205,
+    ConstBigIntStr = 233601,
+    ConstBool = false,
+    ConstDate = LocalDate.FromDateTime(System.DateTime.Parse("2023-12-15")),
+    ConstDateTime = System.DateTime.Parse("2024-10-01T00:16:04.498Z"),
+    ConstDecimal = 1120.58M,
+    ConstDecimalStr = 8445.08M,
+    ConstEnumInt = ConstEnumInt.One,
+    ConstEnumStr = ConstEnumStr.Two,
+    ConstInt = 450379,
+    ConstNum = 7742.71D,
+    ConstStr = "string",
+    ConstStrDQuotes = "string",
+    ConstStrNull = "string",
+    ConstStrSQuotes = "string",
+    DefaultBigInt = 249739,
+    DefaultBigIntStr = 458594,
+    DefaultBool = false,
+    DefaultDate = LocalDate.FromDateTime(System.DateTime.Parse("2023-11-02")),
+    DefaultDateTime = System.DateTime.Parse("2022-08-26T17:04:51.151Z"),
+    DefaultDecimal = 7885.17M,
+    DefaultDecimalStr = 639.73M,
+    DefaultEnumInt = DefaultEnumInt.Two,
+    DefaultEnumStr = DefaultEnumStr.Two,
+    DefaultInt = 861805,
+    DefaultNum = 7250.54D,
+    DefaultStr = "string",
+    DefaultStrDQuotes = "string",
+    DefaultStrNullable = "string",
+    DefaultStrSQuotes = "string",
+    NormalField = "test",
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostDefaultsAndConstsAsync(req);
 
 // handle response
 ```
@@ -1784,13 +2336,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostEmptyObjectAsync(new RequestBodyPostEmptyObjectRequestBody() {
-    Empty = new Empty() {},
-    EmptyWithEmptyProperties = new EmptyWithEmptyProperties() {},
-});
+RequestBodyPostEmptyObjectRequestBody req = new RequestBodyPostEmptyObjectRequestBody() {};
+
+var res = await sdk.RequestBodies.RequestBodyPostEmptyObjectAsync(req);
 
 // handle response
 ```
@@ -1822,17 +2372,16 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostFormDeepAsync(new DeepObject() {
+DeepObject req = new DeepObject() {
     Any = "anyOf[0]",
     Arr = new List<SimpleObject>() {
         new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -1852,7 +2401,7 @@ var res = await sdk.RequestBodies.RequestBodyPostFormDeepAsync(new DeepObject() 
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -1876,7 +2425,7 @@ var res = await sdk.RequestBodies.RequestBodyPostFormDeepAsync(new DeepObject() 
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -1896,7 +2445,7 @@ var res = await sdk.RequestBodies.RequestBodyPostFormDeepAsync(new DeepObject() 
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -1918,7 +2467,7 @@ var res = await sdk.RequestBodies.RequestBodyPostFormDeepAsync(new DeepObject() 
         Any = "any",
         Bool = true,
         Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
         Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
@@ -1935,7 +2484,9 @@ var res = await sdk.RequestBodies.RequestBodyPostFormDeepAsync(new DeepObject() 
         StrOpt = "testOptional",
     },
     Str = "test",
-});
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostFormDeepAsync(req);
 
 // handle response
 ```
@@ -1965,12 +2516,15 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostFormMapPrimitiveAsync(new Dictionary<string, string>() {
-    { "key", "string" },
-});
+Dictionary<string, string> req = new Dictionary<string, string>() {
+    { "key1", "value1" },
+    { "key2", "value2" },
+    { "key3", "value3" },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostFormMapPrimitiveAsync(req);
 
 // handle response
 ```
@@ -2001,14 +2555,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostFormSimpleAsync(new SimpleObject() {
+SimpleObject req = new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -2023,7 +2576,9 @@ var res = await sdk.RequestBodies.RequestBodyPostFormSimpleAsync(new SimpleObjec
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
     StrOpt = "testOptional",
-});
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostFormSimpleAsync(req);
 
 // handle response
 ```
@@ -2053,12 +2608,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayBigIntAsync(new List<BigInteger>() {
-    564849,
-});
+List<BigInteger> req = new List<BigInteger>() {
+    1,
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayBigIntAsync(req);
 
 // handle response
 ```
@@ -2088,12 +2644,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayDateAsync(new List<LocalDate>() {
-    LocalDate.FromDateTime(System.DateTime.Parse("2022-03-22")),
-});
+List<LocalDate> req = new List<LocalDate>() {
+    LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayDateAsync(req);
 
 // handle response
 ```
@@ -2123,12 +2680,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayDecimalStrAsync(new List<decimal>() {
-    8083.93M,
-});
+List<decimal> req = new List<decimal>() {
+    3.141592653589793438462643383279M,
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayDecimalStrAsync(req);
 
 // handle response
 ```
@@ -2158,10 +2716,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesBigIntAsync(687617);
+BigInteger req = 1;
+
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesBigIntAsync(req);
 
 // handle response
 ```
@@ -2191,10 +2750,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesBigIntStrAsync(649473);
+BigInteger req = 1;
+
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesBigIntStrAsync(req);
 
 // handle response
 ```
@@ -2224,10 +2784,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesBooleanAsync(false);
+bool req = true;
+
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesBooleanAsync(req);
 
 // handle response
 ```
@@ -2257,10 +2818,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDateAsync(LocalDate.FromDateTime(System.DateTime.Parse("2022-03-04")));
+LocalDate req = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01"));
+
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDateAsync(req);
 
 // handle response
 ```
@@ -2290,10 +2852,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDateTimeAsync(System.DateTime.Parse("2023-03-04T01:33:15.031Z"));
+DateTime req = System.DateTime.Parse("2020-01-01T00:00:00Z");
+
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDateTimeAsync(req);
 
 // handle response
 ```
@@ -2323,10 +2886,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDecimalAsync(1107.81M);
+decimal req = 1.1M;
+
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDecimalAsync(req);
 
 // handle response
 ```
@@ -2356,10 +2920,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDecimalStrAsync(5432.92M);
+decimal req = 1.1M;
+
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDecimalStrAsync(req);
 
 // handle response
 ```
@@ -2389,10 +2954,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesFloat32Async(4464.34D);
+double req = 1.1D;
+
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesFloat32Async(req);
 
 // handle response
 ```
@@ -2422,10 +2988,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesInt32Async(22155);
+int req = 1;
+
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesInt32Async(req);
 
 // handle response
 ```
@@ -2455,10 +3022,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesIntegerAsync(273673);
+long req = 1;
+
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesIntegerAsync(req);
 
 // handle response
 ```
@@ -2488,12 +3056,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapBigIntStrAsync(new Dictionary<string, BigInteger>() {
-    { "key", 42384 },
-});
+Dictionary<string, BigInteger> req = new Dictionary<string, BigInteger>() {
+    { "test", 1 },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapBigIntStrAsync(req);
 
 // handle response
 ```
@@ -2523,12 +3092,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapDateTimeAsync(new Dictionary<string, DateTime>() {
-    { "key", System.DateTime.Parse("2022-09-03T18:52:14.477Z") },
-});
+Dictionary<string, DateTime> req = new Dictionary<string, DateTime>() {
+    { "test", System.DateTime.Parse("2020-01-01T00:00:00.000001Z") },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapDateTimeAsync(req);
 
 // handle response
 ```
@@ -2558,12 +3128,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapDecimalAsync(new Dictionary<string, decimal>() {
-    { "key", 3472.82M },
-});
+Dictionary<string, decimal> req = new Dictionary<string, decimal>() {
+    { "test", 3.141592653589793M },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapDecimalAsync(req);
 
 // handle response
 ```
@@ -2593,10 +3164,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesNumberAsync(2193.66D);
+double req = 1.1D;
+
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesNumberAsync(req);
 
 // handle response
 ```
@@ -2626,10 +3198,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesStringAsync("string");
+string req = "test";
+
+var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesStringAsync(req);
 
 // handle response
 ```
@@ -2660,14 +3233,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesComponentFilteredAsync(new SimpleObject() {
+SimpleObject req = new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -2682,7 +3254,9 @@ var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesComponentFi
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
     StrOpt = "testOptional",
-});
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesComponentFilteredAsync(req);
 
 // handle response
 ```
@@ -2713,14 +3287,15 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesInlineFilteredAsync(new RequestBodyPostMultipleContentTypesInlineFilteredRequestBody() {
-    Bool = false,
-    Num = 3558.41D,
-    Str = "string",
-});
+RequestBodyPostMultipleContentTypesInlineFilteredRequestBody req = new RequestBodyPostMultipleContentTypesInlineFilteredRequestBody() {
+    Bool = true,
+    Num = 1.1D,
+    Str = "test",
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesInlineFilteredAsync(req);
 
 // handle response
 ```
@@ -2751,14 +3326,15 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamFormAsync(new RequestBodyPostMultipleContentTypesSplitParamFormRequestBody() {
+var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamFormAsync(
+    requestBody: new RequestBodyPostMultipleContentTypesSplitParamFormRequestBody() {
     Bool3 = false,
     Num3 = 8693.24D,
     Str3 = "string",
-}, "string");
+},
+    paramStr: "string");
 
 // handle response
 ```
@@ -2790,14 +3366,15 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamJsonAsync(new RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody() {
+var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamJsonAsync(
+    requestBody: new RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody() {
     Bool = false,
     Num = 9771.91D,
     Str = "string",
-}, "string");
+},
+    paramStr: "string");
 
 // handle response
 ```
@@ -2829,14 +3406,15 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamMultipartAsync(new RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody() {
+var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamMultipartAsync(
+    requestBody: new RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody() {
     Bool2 = false,
     Num2 = 7000.76D,
     Str2 = "string",
-}, "string");
+},
+    paramStr: "string");
 
 // handle response
 ```
@@ -2868,14 +3446,15 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitFormAsync(new RequestBodyPostMultipleContentTypesSplitFormRequestBody() {
+RequestBodyPostMultipleContentTypesSplitFormRequestBody req = new RequestBodyPostMultipleContentTypesSplitFormRequestBody() {
     Bool3 = false,
     Num3 = 7842.07D,
     Str3 = "string",
-});
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitFormAsync(req);
 
 // handle response
 ```
@@ -2906,14 +3485,15 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitJsonAsync(new RequestBodyPostMultipleContentTypesSplitJsonRequestBody() {
+RequestBodyPostMultipleContentTypesSplitJsonRequestBody req = new RequestBodyPostMultipleContentTypesSplitJsonRequestBody() {
     Bool = false,
     Num = 2445.56D,
     Str = "string",
-});
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitJsonAsync(req);
 
 // handle response
 ```
@@ -2944,14 +3524,15 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitMultipartAsync(new RequestBodyPostMultipleContentTypesSplitMultipartRequestBody() {
+RequestBodyPostMultipleContentTypesSplitMultipartRequestBody req = new RequestBodyPostMultipleContentTypesSplitMultipartRequestBody() {
     Bool2 = false,
     Num2 = 2079.2D,
     Str2 = "string",
-});
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostMultipleContentTypesSplitMultipartAsync(req);
 
 // handle response
 ```
@@ -2981,10 +3562,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostNotNullableNotRequiredStringBodyAsync("string");
+string req = null;
+
+var res = await sdk.RequestBodies.RequestBodyPostNotNullableNotRequiredStringBodyAsync(req);
 
 // handle response
 ```
@@ -3014,12 +3596,15 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostNullArrayAsync(new List<string>() {
-    "string",
-});
+List<string> req = new List<string>() {
+    "value1",
+    "value2",
+    "value3",
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostNullArrayAsync(req);
 
 // handle response
 ```
@@ -3049,12 +3634,15 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostNullDictionaryAsync(new Dictionary<string, string>() {
-    { "key", "string" },
-});
+Dictionary<string, string> req = new Dictionary<string, string>() {
+    { "key1", "value1" },
+    { "key2", "value2" },
+    { "key3", "value3" },
+};
+
+var res = await sdk.RequestBodies.RequestBodyPostNullDictionaryAsync(req);
 
 // handle response
 ```
@@ -3084,10 +3672,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostNullableNotRequiredStringBodyAsync("string");
+string req = null;
+
+var res = await sdk.RequestBodies.RequestBodyPostNullableNotRequiredStringBodyAsync(req);
 
 // handle response
 ```
@@ -3117,10 +3706,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPostNullableRequiredStringBodyAsync("string");
+string req = null;
+
+var res = await sdk.RequestBodies.RequestBodyPostNullableRequiredStringBodyAsync(req);
 
 // handle response
 ```
@@ -3150,10 +3740,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPutBytesAsync("0x5DbFFb1Ff9 as bytes <<<>>>");
+byte[] req = "0x5DbFFb1Ff9 as bytes <<<>>>";
+
+var res = await sdk.RequestBodies.RequestBodyPutBytesAsync(req);
 
 // handle response
 ```
@@ -3184,10 +3775,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPutBytesWithParamsAsync("0xC1B9cA4eb5 as bytes <<<>>>", "string");
+var res = await sdk.RequestBodies.RequestBodyPutBytesWithParamsAsync(
+    requestBody: "0xC1B9cA4eb5 as bytes <<<>>>",
+    queryStringParam: "string");
 
 // handle response
 ```
@@ -3220,17 +3812,16 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPutMultipartDeepAsync(new DeepObject() {
+DeepObject req = new DeepObject() {
     Any = "anyOf[0]",
     Arr = new List<SimpleObject>() {
         new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -3250,7 +3841,7 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartDeepAsync(new DeepObjec
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -3274,7 +3865,7 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartDeepAsync(new DeepObjec
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -3294,7 +3885,7 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartDeepAsync(new DeepObjec
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
             Enum = Enum.One,
             Float32 = 1.1F,
             Int = 1,
@@ -3316,7 +3907,7 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartDeepAsync(new DeepObjec
         Any = "any",
         Bool = true,
         Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
         Enum = Enum.One,
         Float32 = 1.1F,
         Int = 1,
@@ -3333,7 +3924,9 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartDeepAsync(new DeepObjec
         StrOpt = "testOptional",
     },
     Str = "test",
-});
+};
+
+var res = await sdk.RequestBodies.RequestBodyPutMultipartDeepAsync(req);
 
 // handle response
 ```
@@ -3364,15 +3957,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPutMultipartDifferentFileNameAsync(new RequestBodyPutMultipartDifferentFileNameRequestBody() {
-    DifferentFileName = new DifferentFileName() {
-        Content = "0xdF19d43dd2 as bytes <<<>>>",
-        FileName = "west_tunisian.pdf",
-    },
-});
+RequestBodyPutMultipartDifferentFileNameRequestBody req = new RequestBodyPutMultipartDifferentFileNameRequestBody() {};
+
+var res = await sdk.RequestBodies.RequestBodyPutMultipartDifferentFileNameAsync(req);
 
 // handle response
 ```
@@ -3403,15 +3992,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPutMultipartFileAsync(new RequestBodyPutMultipartFileRequestBody() {
-    File = new File() {
-        Content = "0xa9f2Ee38c3 as bytes <<<>>>",
-        FileName = "bandwidth_sedan.pdf",
-    },
-});
+RequestBodyPutMultipartFileRequestBody req = new RequestBodyPutMultipartFileRequestBody() {};
+
+var res = await sdk.RequestBodies.RequestBodyPutMultipartFileAsync(req);
 
 // handle response
 ```
@@ -3428,6 +4013,41 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartFileAsync(new RequestBo
 **[RequestBodyPutMultipartFileResponse](../../Models/Operations/RequestBodyPutMultipartFileResponse.md)**
 
 
+## RequestBodyPutMultipartOptionalRequestBody
+
+### Example Usage
+
+```csharp
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+RequestBodyPutMultipartOptionalRequestBodyRequestBody req = new RequestBodyPutMultipartOptionalRequestBodyRequestBody() {};
+
+var res = await sdk.RequestBodies.RequestBodyPutMultipartOptionalRequestBodyAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                                 | Type                                                                                                                                      | Required                                                                                                                                  | Description                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                 | [RequestBodyPutMultipartOptionalRequestBodyRequestBody](../../Models/Operations/RequestBodyPutMultipartOptionalRequestBodyRequestBody.md) | :heavy_check_mark:                                                                                                                        | The request object to use for the request.                                                                                                |
+
+
+### Response
+
+**[RequestBodyPutMultipartOptionalRequestBodyResponse](../../Models/Operations/RequestBodyPutMultipartOptionalRequestBodyResponse.md)**
+
+
 ## RequestBodyPutMultipartSimple
 
 ### Example Usage
@@ -3442,14 +4062,13 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPutMultipartSimpleAsync(new SimpleObject() {
+SimpleObject req = new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000001Z"),
     Enum = Enum.One,
     Float32 = 1.1F,
     Int = 1,
@@ -3464,7 +4083,9 @@ var res = await sdk.RequestBodies.RequestBodyPutMultipartSimpleAsync(new SimpleO
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
     StrOpt = "testOptional",
-});
+};
+
+var res = await sdk.RequestBodies.RequestBodyPutMultipartSimpleAsync(req);
 
 // handle response
 ```
@@ -3494,10 +4115,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPutStringAsync("string");
+string req = "Hello World";
+
+var res = await sdk.RequestBodies.RequestBodyPutStringAsync(req);
 
 // handle response
 ```
@@ -3528,20 +4150,21 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyPutStringWithParamsAsync("string", "string");
+var res = await sdk.RequestBodies.RequestBodyPutStringWithParamsAsync(
+    requestBody: "Hello world",
+    queryStringParam: "test param");
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `RequestBody`      | *string*           | :heavy_check_mark: | N/A                |
-| `QueryStringParam` | *string*           | :heavy_check_mark: | N/A                |
+| Parameter          | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `RequestBody`      | *string*           | :heavy_check_mark: | N/A                | Hello world        |
+| `QueryStringParam` | *string*           | :heavy_check_mark: | N/A                | test param         |
 
 
 ### Response
@@ -3562,14 +4185,15 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyReadAndWriteAsync(new ReadWriteObject() {
-    Num1 = 797612,
-    Num2 = 89374,
-    Num3 = 459345,
-});
+ReadWriteObject req = new ReadWriteObject() {
+    Num1 = 1,
+    Num2 = 2,
+    Num3 = 4,
+};
+
+var res = await sdk.RequestBodies.RequestBodyReadAndWriteAsync(req);
 
 // handle response
 ```
@@ -3600,10 +4224,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyReadOnlyInputAsync(new ReadOnlyObjectInput() {});
+ReadOnlyObjectInput req = new ReadOnlyObjectInput() {};
+
+var res = await sdk.RequestBodies.RequestBodyReadOnlyInputAsync(req);
 
 // handle response
 ```
@@ -3634,10 +4259,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyReadOnlyUnionAsync("string");
+object req = "string";
+
+var res = await sdk.RequestBodies.RequestBodyReadOnlyUnionAsync(req);
 
 // handle response
 ```
@@ -3668,10 +4294,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyReadWriteOnlyUnionAsync("string");
+object req = "string";
+
+var res = await sdk.RequestBodies.RequestBodyReadWriteOnlyUnionAsync(req);
 
 // handle response
 ```
@@ -3702,14 +4329,15 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyWriteOnlyAsync(new WriteOnlyObject() {
-    Bool = false,
-    Num = 3888.42D,
-    String = "string",
-});
+WriteOnlyObject req = new WriteOnlyObject() {
+    Bool = true,
+    Num = 1D,
+    String = "hello",
+};
+
+var res = await sdk.RequestBodies.RequestBodyWriteOnlyAsync(req);
 
 // handle response
 ```
@@ -3740,14 +4368,15 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyWriteOnlyOutputAsync(new WriteOnlyObject() {
-    Bool = false,
-    Num = 3867.69D,
-    String = "string",
-});
+WriteOnlyObject req = new WriteOnlyObject() {
+    Bool = true,
+    Num = 1D,
+    String = "hello",
+};
+
+var res = await sdk.RequestBodies.RequestBodyWriteOnlyOutputAsync(req);
 
 // handle response
 ```
@@ -3778,10 +4407,11 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.RequestBodies.RequestBodyWriteOnlyUnionAsync("string");
+object req = "string";
+
+var res = await sdk.RequestBodies.RequestBodyWriteOnlyUnionAsync(req);
 
 // handle response
 ```

@@ -17,6 +17,19 @@ using System.Threading.Tasks;
 public class AuthShould
 {
     [Fact]
+    public async Task NoAuth()
+    {
+        CommonHelpers.RecordTest("auth-no-auth");
+
+        var sdk = new SDK();
+
+        var res = await sdk.Auth.NoAuthAsync();
+
+        Assert.NotNull(res);
+        Assert.Equal(200, res.StatusCode);
+    }
+
+    [Fact]
     public async Task BasicAuth()
     {
         CommonHelpers.RecordTest("auth-basic-auth");
@@ -479,5 +492,48 @@ public class AuthShould
         );
 
         Assert.Equal(200, res.StatusCode);
+    }
+
+    [Fact]
+    public async Task FunctionCallbacksOauthGlobalSecurity()
+    {
+        CommonHelpers.RecordTest("auth-function-callbacks-oauth-global-security");
+
+        var sdk = new SDK(securitySource: () => new Security() { Oauth2 = "Bearer global" });
+
+        var res = await sdk.Auth.GlobalBearerAuthAsync();
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal("global", res.Token.Token);
+    }
+
+    [Fact]
+    public async Task FunctionCallbacksOauthGlobalSecurityWithLocalOverride()
+    {
+        CommonHelpers.RecordTest("auth-function-callbacks-oauth-global-security-with-local-override");
+
+        var sdk = new SDK(securitySource: () => new Security() { Oauth2 = "Bearer global" });
+
+        var res = await sdk.Auth.Oauth2AuthAsync(
+            new Oauth2AuthSecurity() { Oauth2 = "Bearer local" }
+        );
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal("local", res.Token.Token);
+    }
+
+    [Fact]
+    public async Task FunctionCallbacksOauthGlobalSecurityWithParamOverride()
+    {
+        CommonHelpers.RecordTest("auth-function-callbacks-oauth-global-security-with-param-override");
+
+        var sdk = new SDK(securitySource: () => new Security() { Oauth2 = "Bearer global" });
+
+        var res = await sdk.Auth.Oauth2OverrideAsync(
+            new Oauth2OverrideSecurity() { Oauth2 = "Bearer overrideHeaders" }
+        );
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal("overrideHeaders", res.Token.Token);
     }
 }

@@ -35,18 +35,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.AuthServiceRequestBody(
-    basic_auth=shared.BasicAuth(
-        password='owsGgP4_AhRPMSJ',
-        username='Devonte_Bins',
-    ),
-    header_auth=[
-        shared.HeaderAuth(
-            expected_value='string',
-            header_name='string',
-        ),
-    ],
-)
+req = shared.AuthServiceRequestBody()
 
 res = s.auth_new.api_key_auth_global_new(req)
 
@@ -70,7 +59,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## auth_global
 
@@ -88,18 +77,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.AuthServiceRequestBody(
-    basic_auth=shared.BasicAuth(
-        password='xvJcf9GiJNr7T2x',
-        username='Cory33',
-    ),
-    header_auth=[
-        shared.HeaderAuth(
-            expected_value='string',
-            header_name='string',
-        ),
-    ],
-)
+req = shared.AuthServiceRequestBody()
 
 res = s.auth_new.auth_global(req)
 
@@ -123,7 +101,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## basic_auth_new
 
@@ -138,18 +116,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.AuthServiceRequestBody(
-    basic_auth=shared.BasicAuth(
-        password='Z2OStPksFyrcGeu',
-        username='Ashton.Steuber27',
-    ),
-    header_auth=[
-        shared.HeaderAuth(
-            expected_value='string',
-            header_name='string',
-        ),
-    ],
-)
+req = shared.AuthServiceRequestBody()
 
 res = s.auth_new.basic_auth_new(req, operations.BasicAuthNewSecurity(
     password="YOUR_PASSWORD",
@@ -177,7 +144,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## multiple_mixed_options_auth
 
@@ -192,18 +159,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.AuthServiceRequestBody(
-    basic_auth=shared.BasicAuth(
-        password='Iq1JSzG1wqLDz4v',
-        username='Ismael.Emmerich',
-    ),
-    header_auth=[
-        shared.HeaderAuth(
-            expected_value='string',
-            header_name='string',
-        ),
-    ],
-)
+req = shared.AuthServiceRequestBody()
 
 res = s.auth_new.multiple_mixed_options_auth(req, operations.MultipleMixedOptionsAuthSecurity(
     api_key_auth_new="Token <YOUR_API_KEY>",
@@ -230,7 +186,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## multiple_mixed_scheme_auth
 
@@ -245,18 +201,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.AuthServiceRequestBody(
-    basic_auth=shared.BasicAuth(
-        password='OcWVV5608IiaWJQ',
-        username='Kameron42',
-    ),
-    header_auth=[
-        shared.HeaderAuth(
-            expected_value='string',
-            header_name='string',
-        ),
-    ],
-)
+req = shared.AuthServiceRequestBody()
 
 res = s.auth_new.multiple_mixed_scheme_auth(req, operations.MultipleMixedSchemeAuthSecurity(
     api_key_auth_new="Token <YOUR_API_KEY>",
@@ -287,7 +232,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## multiple_options_with_mixed_schemes_auth
 
@@ -302,18 +247,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.AuthServiceRequestBody(
-    basic_auth=shared.BasicAuth(
-        password='fpwNE90MyqKIrXk',
-        username='Caroline_Walsh',
-    ),
-    header_auth=[
-        shared.HeaderAuth(
-            expected_value='string',
-            header_name='string',
-        ),
-    ],
-)
+req = shared.AuthServiceRequestBody()
 
 res = s.auth_new.multiple_options_with_mixed_schemes_auth(req, operations.MultipleOptionsWithMixedSchemesAuthSecurity(
     option1=operations.MultipleOptionsWithMixedSchemesAuthSecurityOption1(
@@ -343,7 +277,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## multiple_options_with_simple_schemes_auth
 
@@ -358,18 +292,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.AuthServiceRequestBody(
-    basic_auth=shared.BasicAuth(
-        password='pibxDTiJSijK04Y',
-        username='Selena76',
-    ),
-    header_auth=[
-        shared.HeaderAuth(
-            expected_value='string',
-            header_name='string',
-        ),
-    ],
-)
+req = shared.AuthServiceRequestBody()
 
 res = s.auth_new.multiple_options_with_simple_schemes_auth(req, operations.MultipleOptionsWithSimpleSchemesAuthSecurity(
     option1=operations.MultipleOptionsWithSimpleSchemesAuthSecurityOption1(
@@ -399,7 +322,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## multiple_simple_options_auth
 
@@ -414,18 +337,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.AuthServiceRequestBody(
-    basic_auth=shared.BasicAuth(
-        password='pzdKQgSGZSrUGNs',
-        username='Eryn51',
-    ),
-    header_auth=[
-        shared.HeaderAuth(
-            expected_value='string',
-            header_name='string',
-        ),
-    ],
-)
+req = shared.AuthServiceRequestBody()
 
 res = s.auth_new.multiple_simple_options_auth(req, operations.MultipleSimpleOptionsAuthSecurity(
     api_key_auth_new="Token <YOUR_API_KEY>",
@@ -452,7 +364,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## multiple_simple_scheme_auth
 
@@ -467,18 +379,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.AuthServiceRequestBody(
-    basic_auth=shared.BasicAuth(
-        password='UrAsw466AAaYtr1',
-        username='Kenya.Baumbach',
-    ),
-    header_auth=[
-        shared.HeaderAuth(
-            expected_value='string',
-            header_name='string',
-        ),
-    ],
-)
+req = shared.AuthServiceRequestBody()
 
 res = s.auth_new.multiple_simple_scheme_auth(req, operations.MultipleSimpleSchemeAuthSecurity(
     api_key_auth_new="Token <YOUR_API_KEY>",
@@ -506,7 +407,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## oauth2_auth_new
 
@@ -521,18 +422,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.AuthServiceRequestBody(
-    basic_auth=shared.BasicAuth(
-        password='V02sHy2onRTMRgS',
-        username='Polly.Aufderhar78',
-    ),
-    header_auth=[
-        shared.HeaderAuth(
-            expected_value='string',
-            header_name='string',
-        ),
-    ],
-)
+req = shared.AuthServiceRequestBody()
 
 res = s.auth_new.oauth2_auth_new(req, operations.Oauth2AuthNewSecurity(
     oauth2="Bearer YOUR_OAUTH2_TOKEN",
@@ -559,7 +449,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## open_id_connect_auth_new
 
@@ -574,18 +464,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.AuthServiceRequestBody(
-    basic_auth=shared.BasicAuth(
-        password='1_B3hNdr8HC3AeS',
-        username='Floy_Heller',
-    ),
-    header_auth=[
-        shared.HeaderAuth(
-            expected_value='string',
-            header_name='string',
-        ),
-    ],
-)
+req = shared.AuthServiceRequestBody()
 
 res = s.auth_new.open_id_connect_auth_new(req, operations.OpenIDConnectAuthNewSecurity(
     open_id_connect="Bearer YOUR_OPENID_TOKEN",
@@ -612,4 +491,4 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |

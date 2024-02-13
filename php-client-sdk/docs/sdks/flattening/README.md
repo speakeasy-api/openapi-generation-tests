@@ -31,18 +31,19 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $simpleObject = new Shared\SimpleObject();
+        $simpleObject = new Shared\SimpleObject();
     $simpleObject->any = 'any';
     $simpleObject->bigint = 8821239038968084;
     $simpleObject->bigintStr = '9223372036854775808';
     $simpleObject->bool = true;
     $simpleObject->boolOpt = true;
     $simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $simpleObject->decimal = 3.141592653589793;
     $simpleObject->decimalStr = '3.14159265358979344719667586';
     $simpleObject->enum = Shared\Enum::One;
@@ -62,7 +63,7 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -98,18 +99,19 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $simpleObject = new Shared\SimpleObject();
+        $simpleObject = new Shared\SimpleObject();
     $simpleObject->any = 'any';
     $simpleObject->bigint = 8821239038968084;
     $simpleObject->bigintStr = '9223372036854775808';
     $simpleObject->bool = true;
     $simpleObject->boolOpt = true;
     $simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
     $simpleObject->decimal = 3.141592653589793;
     $simpleObject->decimalStr = '3.14159265358979344719667586';
     $simpleObject->enum = Shared\Enum::One;
@@ -129,7 +131,7 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -165,18 +167,19 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->flattening->conflictingParams('string', 'string');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -212,11 +215,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $requestBody = new Operations\InlineBodyAndParamConflictRequestBody();
+        $requestBody = new Operations\InlineBodyAndParamConflictRequestBody();
     $requestBody->str = 'string';
 
     $response = $sdk->flattening->inlineBodyAndParamConflict($requestBody, 'string');
@@ -224,7 +228,7 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -260,11 +264,12 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $requestBody = new Operations\InlineBodyAndParamNoConflictRequestBody();
+        $requestBody = new Operations\InlineBodyAndParamNoConflictRequestBody();
     $requestBody->bodyStr = 'string';
 
     $response = $sdk->flattening->inlineBodyAndParamNoConflict($requestBody, 'string');
@@ -272,7 +277,7 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```

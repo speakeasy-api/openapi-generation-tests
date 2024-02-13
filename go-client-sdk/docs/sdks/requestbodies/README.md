@@ -78,6 +78,7 @@ Endpoints for testing request bodies.
 * [RequestBodyPutMultipartDeep](#requestbodyputmultipartdeep)
 * [RequestBodyPutMultipartDifferentFileName](#requestbodyputmultipartdifferentfilename)
 * [RequestBodyPutMultipartFile](#requestbodyputmultipartfile)
+* [RequestBodyPutMultipartOptionalRequestBody](#requestbodyputmultipartoptionalrequestbody)
 * [RequestBodyPutMultipartSimple](#requestbodyputmultipartsimple)
 * [RequestBodyPutString](#requestbodyputstring)
 * [RequestBodyPutStringWithParams](#requestbodyputstringwithparams)
@@ -97,10 +98,10 @@ Endpoints for testing request bodies.
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -113,9 +114,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.NullableObjectPost(ctx, &shared.NullableObject{
-        Required: 302382,
-    })
+    res, err := s.RequestBodies.NullableObjectPost(ctx, nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -139,7 +138,7 @@ func main() {
 **[*operations.NullableObjectPostResponse](../../pkg/models/operations/nullableobjectpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## NullableRequiredEmptyObjectPost
 
@@ -149,11 +148,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -168,14 +167,14 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.NullableRequiredEmptyObjectPost(ctx, operations.NullableRequiredEmptyObjectPostRequestBody{
         NullableOptionalObj: &operations.NullableOptionalObj{},
-        NullableRequiredObj: &operations.NullableRequiredObj{},
+        NullableRequiredObj: nil,
         RequiredObj: operations.RequiredObj{},
     })
     if err != nil {
         log.Fatal(err)
     }
 
-    if res.Res != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -194,7 +193,7 @@ func main() {
 **[*operations.NullableRequiredEmptyObjectPostResponse](../../pkg/models/operations/nullablerequiredemptyobjectpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## NullableRequiredPropertyPost
 
@@ -204,11 +203,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -222,17 +221,16 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.NullableRequiredPropertyPost(ctx, operations.NullableRequiredPropertyPostRequestBody{
-        NullableRequiredArray: []float64{
-            2355.17,
-        },
-        NullableRequiredEnum: operations.NullableRequiredEnumSecond,
-        NullableRequiredInt: 50266,
+        NullableOptionalInt: openapi.Int64(0),
+        NullableRequiredArray: nil,
+        NullableRequiredEnum: operations.NullableRequiredEnumSecond.ToPointer(),
+        NullableRequiredInt: nil,
     })
     if err != nil {
         log.Fatal(err)
     }
 
-    if res.Res != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -251,7 +249,7 @@ func main() {
 **[*operations.NullableRequiredPropertyPostResponse](../../pkg/models/operations/nullablerequiredpropertypostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## NullableRequiredSharedObjectPost
 
@@ -261,11 +259,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -279,18 +277,13 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.NullableRequiredSharedObjectPost(ctx, operations.NullableRequiredSharedObjectPostRequestBody{
-        NullableOptionalObj: &shared.NullableObject{
-            Required: 86533,
-        },
-        NullableRequiredObj: &shared.NullableObject{
-            Required: 964394,
-        },
+        NullableRequiredObj: nil,
     })
     if err != nil {
         log.Fatal(err)
     }
 
-    if res.Res != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -309,7 +302,7 @@ func main() {
 **[*operations.NullableRequiredSharedObjectPostResponse](../../pkg/models/operations/nullablerequiredsharedobjectpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONArray
 
@@ -319,12 +312,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -345,7 +338,7 @@ func main() {
             Bool: true,
             BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
-            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
             Decimal: types.MustNewDecimalFromString("3.141592653589793"),
             DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
             Enum: shared.EnumOne,
@@ -383,7 +376,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONArrayResponse](../../pkg/models/operations/requestbodypostapplicationjsonarrayresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONArrayCamelCase
 
@@ -393,11 +386,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -454,7 +447,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONArrayCamelCaseResponse](../../pkg/models/operations/requestbodypostapplicationjsonarraycamelcaseresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONArrayObj
 
@@ -464,12 +457,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -490,7 +483,27 @@ func main() {
             Bool: true,
             BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
-            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+            Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+            DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+            Enum: shared.EnumOne,
+            Float32: 1.1,
+            Int: 1,
+            Int32: 1,
+            Int32Enum: shared.Int32EnumFiftyFive,
+            IntEnum: shared.IntEnumSecond,
+            Num: 1.1,
+            Str: "test",
+            StrOpt: openapi.String("testOptional"),
+        },
+        shared.SimpleObject{
+            Any: "any",
+            Bigint: big.NewInt(8821239038968084),
+            BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+            Bool: true,
+            BoolOpt: openapi.Bool(true),
+            Date: types.MustDateFromString("2020-01-01"),
+            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
             Decimal: types.MustNewDecimalFromString("3.141592653589793"),
             DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
             Enum: shared.EnumOne,
@@ -527,7 +540,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONArrayObjResponse](../../pkg/models/operations/requestbodypostapplicationjsonarrayobjresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONArrayObjCamelCase
 
@@ -537,11 +550,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -555,6 +568,24 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayObjCamelCase(ctx, []shared.SimpleObjectCamelCase{
+        shared.SimpleObjectCamelCase{
+            AnyVal: "any example",
+            BoolOptVal: openapi.Bool(true),
+            BoolVal: true,
+            DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+            DateVal: types.MustDateFromString("2020-01-01"),
+            EnumVal: shared.EnumOne,
+            Float32Val: 2.2222222,
+            Int32EnumVal: shared.Int32EnumValSixtyNine,
+            Int32Val: 1,
+            IntEnumVal: shared.IntEnumValThird,
+            IntOptNullVal: openapi.Int64(999999),
+            IntVal: 999999,
+            NumOptNullVal: openapi.Float64(1.1),
+            NumVal: 1.1,
+            StrOptVal: openapi.String("optional example"),
+            StrVal: "example",
+        },
         shared.SimpleObjectCamelCase{
             AnyVal: "any example",
             BoolOptVal: openapi.Bool(true),
@@ -597,7 +628,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONArrayObjCamelCaseResponse](../../pkg/models/operations/requestbodypostapplicationjsonarrayobjcamelcaseresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONArrayOfArray
 
@@ -607,12 +638,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -634,7 +665,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -673,7 +704,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONArrayOfArrayResponse](../../pkg/models/operations/requestbodypostapplicationjsonarrayofarrayresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONArrayOfArrayCamelCase
 
@@ -683,11 +714,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -746,7 +777,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONArrayOfArrayCamelCaseResponse](../../pkg/models/operations/requestbodypostapplicationjsonarrayofarraycamelcaseresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONArrayOfArrayOfPrimitive
 
@@ -756,10 +787,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -774,7 +805,12 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayOfArrayOfPrimitive(ctx, [][]string{
         []string{
-            "string",
+            "foo",
+            "bar",
+        },
+        []string{
+            "buzz",
+            "bazz",
         },
     })
     if err != nil {
@@ -801,7 +837,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse](../../pkg/models/operations/requestbodypostapplicationjsonarrayofarrayofprimitiveresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONArrayOfMap
 
@@ -811,12 +847,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -831,14 +867,76 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayOfMap(ctx, []map[string]shared.SimpleObject{
         map[string]shared.SimpleObject{
-            "key": shared.SimpleObject{
+            "mapElem1": shared.SimpleObject{
                 Any: "any",
                 Bigint: big.NewInt(8821239038968084),
                 BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                Enum: shared.EnumOne,
+                Float32: 1.1,
+                Int: 1,
+                Int32: 1,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
+                Num: 1.1,
+                Str: "test",
+                StrOpt: openapi.String("testOptional"),
+            },
+            "mapElem2": shared.SimpleObject{
+                Any: "any",
+                Bigint: big.NewInt(8821239038968084),
+                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                Enum: shared.EnumOne,
+                Float32: 1.1,
+                Int: 1,
+                Int32: 1,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
+                Num: 1.1,
+                Str: "test",
+                StrOpt: openapi.String("testOptional"),
+            },
+        },
+        map[string]shared.SimpleObject{
+            "mapElem1": shared.SimpleObject{
+                Any: "any",
+                Bigint: big.NewInt(8821239038968084),
+                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                Enum: shared.EnumOne,
+                Float32: 1.1,
+                Int: 1,
+                Int32: 1,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
+                Num: 1.1,
+                Str: "test",
+                StrOpt: openapi.String("testOptional"),
+            },
+            "mapElem2": shared.SimpleObject{
+                Any: "any",
+                Bigint: big.NewInt(8821239038968084),
+                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -877,7 +975,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONArrayOfMapResponse](../../pkg/models/operations/requestbodypostapplicationjsonarrayofmapresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONArrayOfMapCamelCase
 
@@ -887,11 +985,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -906,7 +1004,63 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayOfMapCamelCase(ctx, []map[string]shared.SimpleObjectCamelCase{
         map[string]shared.SimpleObjectCamelCase{
-            "key": shared.SimpleObjectCamelCase{
+            "mapElem1": shared.SimpleObjectCamelCase{
+                AnyVal: "any example",
+                BoolOptVal: openapi.Bool(true),
+                BoolVal: true,
+                DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+                DateVal: types.MustDateFromString("2020-01-01"),
+                EnumVal: shared.EnumOne,
+                Float32Val: 2.2222222,
+                Int32EnumVal: shared.Int32EnumValSixtyNine,
+                Int32Val: 1,
+                IntEnumVal: shared.IntEnumValThird,
+                IntOptNullVal: openapi.Int64(999999),
+                IntVal: 999999,
+                NumOptNullVal: openapi.Float64(1.1),
+                NumVal: 1.1,
+                StrOptVal: openapi.String("optional example"),
+                StrVal: "example",
+            },
+            "mapElem2": shared.SimpleObjectCamelCase{
+                AnyVal: "any example",
+                BoolOptVal: openapi.Bool(true),
+                BoolVal: true,
+                DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+                DateVal: types.MustDateFromString("2020-01-01"),
+                EnumVal: shared.EnumOne,
+                Float32Val: 2.2222222,
+                Int32EnumVal: shared.Int32EnumValSixtyNine,
+                Int32Val: 1,
+                IntEnumVal: shared.IntEnumValThird,
+                IntOptNullVal: openapi.Int64(999999),
+                IntVal: 999999,
+                NumOptNullVal: openapi.Float64(1.1),
+                NumVal: 1.1,
+                StrOptVal: openapi.String("optional example"),
+                StrVal: "example",
+            },
+        },
+        map[string]shared.SimpleObjectCamelCase{
+            "mapElem1": shared.SimpleObjectCamelCase{
+                AnyVal: "any example",
+                BoolOptVal: openapi.Bool(true),
+                BoolVal: true,
+                DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+                DateVal: types.MustDateFromString("2020-01-01"),
+                EnumVal: shared.EnumOne,
+                Float32Val: 2.2222222,
+                Int32EnumVal: shared.Int32EnumValSixtyNine,
+                Int32Val: 1,
+                IntEnumVal: shared.IntEnumValThird,
+                IntOptNullVal: openapi.Int64(999999),
+                IntVal: 999999,
+                NumOptNullVal: openapi.Float64(1.1),
+                NumVal: 1.1,
+                StrOptVal: openapi.String("optional example"),
+                StrVal: "example",
+            },
+            "mapElem2": shared.SimpleObjectCamelCase{
                 AnyVal: "any example",
                 BoolOptVal: openapi.Bool(true),
                 BoolVal: true,
@@ -950,7 +1104,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONArrayOfMapCamelCaseResponse](../../pkg/models/operations/requestbodypostapplicationjsonarrayofmapcamelcaseresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONArrayOfPrimitive
 
@@ -960,10 +1114,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -977,7 +1131,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayOfPrimitive(ctx, []string{
-        "string",
+        "hello",
+        "world",
     })
     if err != nil {
         log.Fatal(err)
@@ -1003,7 +1158,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONArrayOfPrimitiveResponse](../../pkg/models/operations/requestbodypostapplicationjsonarrayofprimitiveresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONDeep
 
@@ -1013,12 +1168,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -1040,7 +1195,7 @@ func main() {
                     Bool: true,
                     BoolOpt: openapi.Bool(true),
                     Date: types.MustDateFromString("2020-01-01"),
-                    DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                    DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                     Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                     DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                     Enum: shared.EnumOne,
@@ -1062,7 +1217,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -1082,7 +1237,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -1106,7 +1261,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -1126,7 +1281,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -1148,7 +1303,7 @@ func main() {
             Bool: true,
             BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
-            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
             Decimal: types.MustNewDecimalFromString("3.141592653589793"),
             DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
             Enum: shared.EnumOne,
@@ -1186,7 +1341,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONDeepResponse](../../pkg/models/operations/requestbodypostapplicationjsondeepresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONDeepCamelCase
 
@@ -1196,11 +1351,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -1253,9 +1408,27 @@ func main() {
                 StrOptVal: openapi.String("optional example"),
                 StrVal: "example",
             },
+            shared.SimpleObjectCamelCase{
+                AnyVal: "any example",
+                BoolOptVal: openapi.Bool(true),
+                BoolVal: true,
+                DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+                DateVal: types.MustDateFromString("2020-01-01"),
+                EnumVal: shared.EnumOne,
+                Float32Val: 2.2222222,
+                Int32EnumVal: shared.Int32EnumValSixtyNine,
+                Int32Val: 1,
+                IntEnumVal: shared.IntEnumValThird,
+                IntOptNullVal: openapi.Int64(999999),
+                IntVal: 999999,
+                NumOptNullVal: openapi.Float64(1.1),
+                NumVal: 1.1,
+                StrOptVal: openapi.String("optional example"),
+                StrVal: "example",
+            },
         },
-        BoolVal: false,
-        IntVal: 962909,
+        BoolVal: true,
+        IntVal: 1,
         MapVal: map[string]shared.SimpleObjectCamelCase{
             "key": shared.SimpleObjectCamelCase{
                 AnyVal: "any example",
@@ -1276,7 +1449,7 @@ func main() {
                 StrVal: "example",
             },
         },
-        NumVal: 2064.4,
+        NumVal: 1.1,
         ObjVal: shared.SimpleObjectCamelCase{
             AnyVal: "any example",
             BoolOptVal: openapi.Bool(true),
@@ -1295,7 +1468,7 @@ func main() {
             StrOptVal: openapi.String("optional example"),
             StrVal: "example",
         },
-        StrVal: "string",
+        StrVal: "test",
     })
     if err != nil {
         log.Fatal(err)
@@ -1320,7 +1493,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONDeepCamelCaseResponse](../../pkg/models/operations/requestbodypostapplicationjsondeepcamelcaseresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONMap
 
@@ -1330,12 +1503,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -1349,14 +1522,34 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMap(ctx, map[string]shared.SimpleObject{
-        "key": shared.SimpleObject{
+        "mapElem1": shared.SimpleObject{
             Any: "any",
             Bigint: big.NewInt(8821239038968084),
             BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
             Bool: true,
             BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
-            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+            Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+            DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+            Enum: shared.EnumOne,
+            Float32: 1.1,
+            Int: 1,
+            Int32: 1,
+            Int32Enum: shared.Int32EnumFiftyFive,
+            IntEnum: shared.IntEnumSecond,
+            Num: 1.1,
+            Str: "test",
+            StrOpt: openapi.String("testOptional"),
+        },
+        "mapElem2": shared.SimpleObject{
+            Any: "any",
+            Bigint: big.NewInt(8821239038968084),
+            BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+            Bool: true,
+            BoolOpt: openapi.Bool(true),
+            Date: types.MustDateFromString("2020-01-01"),
+            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
             Decimal: types.MustNewDecimalFromString("3.141592653589793"),
             DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
             Enum: shared.EnumOne,
@@ -1394,7 +1587,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONMapResponse](../../pkg/models/operations/requestbodypostapplicationjsonmapresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONMapCamelCase
 
@@ -1404,11 +1597,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -1422,7 +1615,25 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapCamelCase(ctx, map[string]shared.SimpleObjectCamelCase{
-        "key": shared.SimpleObjectCamelCase{
+        "mapElem1": shared.SimpleObjectCamelCase{
+            AnyVal: "any example",
+            BoolOptVal: openapi.Bool(true),
+            BoolVal: true,
+            DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+            DateVal: types.MustDateFromString("2020-01-01"),
+            EnumVal: shared.EnumOne,
+            Float32Val: 2.2222222,
+            Int32EnumVal: shared.Int32EnumValSixtyNine,
+            Int32Val: 1,
+            IntEnumVal: shared.IntEnumValThird,
+            IntOptNullVal: openapi.Int64(999999),
+            IntVal: 999999,
+            NumOptNullVal: openapi.Float64(1.1),
+            NumVal: 1.1,
+            StrOptVal: openapi.String("optional example"),
+            StrVal: "example",
+        },
+        "mapElem2": shared.SimpleObjectCamelCase{
             AnyVal: "any example",
             BoolOptVal: openapi.Bool(true),
             BoolVal: true,
@@ -1465,7 +1676,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONMapCamelCaseResponse](../../pkg/models/operations/requestbodypostapplicationjsonmapcamelcaseresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONMapObj
 
@@ -1475,12 +1686,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -1494,14 +1705,34 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapObj(ctx, map[string]shared.SimpleObject{
-        "key": shared.SimpleObject{
+        "mapElem1": shared.SimpleObject{
             Any: "any",
             Bigint: big.NewInt(8821239038968084),
             BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
             Bool: true,
             BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
-            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+            Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+            DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+            Enum: shared.EnumOne,
+            Float32: 1.1,
+            Int: 1,
+            Int32: 1,
+            Int32Enum: shared.Int32EnumFiftyFive,
+            IntEnum: shared.IntEnumSecond,
+            Num: 1.1,
+            Str: "test",
+            StrOpt: openapi.String("testOptional"),
+        },
+        "mapElem2": shared.SimpleObject{
+            Any: "any",
+            Bigint: big.NewInt(8821239038968084),
+            BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+            Bool: true,
+            BoolOpt: openapi.Bool(true),
+            Date: types.MustDateFromString("2020-01-01"),
+            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
             Decimal: types.MustNewDecimalFromString("3.141592653589793"),
             DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
             Enum: shared.EnumOne,
@@ -1538,7 +1769,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONMapObjResponse](../../pkg/models/operations/requestbodypostapplicationjsonmapobjresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONMapObjCamelCase
 
@@ -1548,11 +1779,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -1566,7 +1797,25 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapObjCamelCase(ctx, map[string]shared.SimpleObjectCamelCase{
-        "key": shared.SimpleObjectCamelCase{
+        "mapElem1": shared.SimpleObjectCamelCase{
+            AnyVal: "any example",
+            BoolOptVal: openapi.Bool(true),
+            BoolVal: true,
+            DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+            DateVal: types.MustDateFromString("2020-01-01"),
+            EnumVal: shared.EnumOne,
+            Float32Val: 2.2222222,
+            Int32EnumVal: shared.Int32EnumValSixtyNine,
+            Int32Val: 1,
+            IntEnumVal: shared.IntEnumValThird,
+            IntOptNullVal: openapi.Int64(999999),
+            IntVal: 999999,
+            NumOptNullVal: openapi.Float64(1.1),
+            NumVal: 1.1,
+            StrOptVal: openapi.String("optional example"),
+            StrVal: "example",
+        },
+        "mapElem2": shared.SimpleObjectCamelCase{
             AnyVal: "any example",
             BoolOptVal: openapi.Bool(true),
             BoolVal: true,
@@ -1608,7 +1857,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONMapObjCamelCaseResponse](../../pkg/models/operations/requestbodypostapplicationjsonmapobjcamelcaseresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONMapOfArray
 
@@ -1618,12 +1867,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -1637,7 +1886,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfArray(ctx, map[string][]shared.SimpleObject{
-        "key": []shared.SimpleObject{
+        "mapElem1": []shared.SimpleObject{
             shared.SimpleObject{
                 Any: "any",
                 Bigint: big.NewInt(8821239038968084),
@@ -1645,7 +1894,69 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                Enum: shared.EnumOne,
+                Float32: 1.1,
+                Int: 1,
+                Int32: 1,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
+                Num: 1.1,
+                Str: "test",
+                StrOpt: openapi.String("testOptional"),
+            },
+            shared.SimpleObject{
+                Any: "any",
+                Bigint: big.NewInt(8821239038968084),
+                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                Enum: shared.EnumOne,
+                Float32: 1.1,
+                Int: 1,
+                Int32: 1,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
+                Num: 1.1,
+                Str: "test",
+                StrOpt: openapi.String("testOptional"),
+            },
+        },
+        "mapElem2": []shared.SimpleObject{
+            shared.SimpleObject{
+                Any: "any",
+                Bigint: big.NewInt(8821239038968084),
+                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                Enum: shared.EnumOne,
+                Float32: 1.1,
+                Int: 1,
+                Int32: 1,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
+                Num: 1.1,
+                Str: "test",
+                StrOpt: openapi.String("testOptional"),
+            },
+            shared.SimpleObject{
+                Any: "any",
+                Bigint: big.NewInt(8821239038968084),
+                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -1684,7 +1995,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONMapOfArrayResponse](../../pkg/models/operations/requestbodypostapplicationjsonmapofarrayresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONMapOfArrayCamelCase
 
@@ -1694,11 +2005,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -1712,7 +2023,63 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfArrayCamelCase(ctx, map[string][]shared.SimpleObjectCamelCase{
-        "key": []shared.SimpleObjectCamelCase{
+        "mapElem1": []shared.SimpleObjectCamelCase{
+            shared.SimpleObjectCamelCase{
+                AnyVal: "any example",
+                BoolOptVal: openapi.Bool(true),
+                BoolVal: true,
+                DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+                DateVal: types.MustDateFromString("2020-01-01"),
+                EnumVal: shared.EnumOne,
+                Float32Val: 2.2222222,
+                Int32EnumVal: shared.Int32EnumValSixtyNine,
+                Int32Val: 1,
+                IntEnumVal: shared.IntEnumValThird,
+                IntOptNullVal: openapi.Int64(999999),
+                IntVal: 999999,
+                NumOptNullVal: openapi.Float64(1.1),
+                NumVal: 1.1,
+                StrOptVal: openapi.String("optional example"),
+                StrVal: "example",
+            },
+            shared.SimpleObjectCamelCase{
+                AnyVal: "any example",
+                BoolOptVal: openapi.Bool(true),
+                BoolVal: true,
+                DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+                DateVal: types.MustDateFromString("2020-01-01"),
+                EnumVal: shared.EnumOne,
+                Float32Val: 2.2222222,
+                Int32EnumVal: shared.Int32EnumValSixtyNine,
+                Int32Val: 1,
+                IntEnumVal: shared.IntEnumValThird,
+                IntOptNullVal: openapi.Int64(999999),
+                IntVal: 999999,
+                NumOptNullVal: openapi.Float64(1.1),
+                NumVal: 1.1,
+                StrOptVal: openapi.String("optional example"),
+                StrVal: "example",
+            },
+        },
+        "mapElem2": []shared.SimpleObjectCamelCase{
+            shared.SimpleObjectCamelCase{
+                AnyVal: "any example",
+                BoolOptVal: openapi.Bool(true),
+                BoolVal: true,
+                DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+                DateVal: types.MustDateFromString("2020-01-01"),
+                EnumVal: shared.EnumOne,
+                Float32Val: 2.2222222,
+                Int32EnumVal: shared.Int32EnumValSixtyNine,
+                Int32Val: 1,
+                IntEnumVal: shared.IntEnumValThird,
+                IntOptNullVal: openapi.Int64(999999),
+                IntVal: 999999,
+                NumOptNullVal: openapi.Float64(1.1),
+                NumVal: 1.1,
+                StrOptVal: openapi.String("optional example"),
+                StrVal: "example",
+            },
             shared.SimpleObjectCamelCase{
                 AnyVal: "any example",
                 BoolOptVal: openapi.Bool(true),
@@ -1757,7 +2124,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONMapOfArrayCamelCaseResponse](../../pkg/models/operations/requestbodypostapplicationjsonmapofarraycamelcaseresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONMapOfMap
 
@@ -1767,12 +2134,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -1786,15 +2153,77 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfMap(ctx, map[string]map[string]shared.SimpleObject{
-        "key": map[string]shared.SimpleObject{
-            "key": shared.SimpleObject{
+        "mapElem1": map[string]shared.SimpleObject{
+            "subMapElem1": shared.SimpleObject{
                 Any: "any",
                 Bigint: big.NewInt(8821239038968084),
                 BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                Enum: shared.EnumOne,
+                Float32: 1.1,
+                Int: 1,
+                Int32: 1,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
+                Num: 1.1,
+                Str: "test",
+                StrOpt: openapi.String("testOptional"),
+            },
+            "subMapElem2": shared.SimpleObject{
+                Any: "any",
+                Bigint: big.NewInt(8821239038968084),
+                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                Enum: shared.EnumOne,
+                Float32: 1.1,
+                Int: 1,
+                Int32: 1,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
+                Num: 1.1,
+                Str: "test",
+                StrOpt: openapi.String("testOptional"),
+            },
+        },
+        "mapElem2": map[string]shared.SimpleObject{
+            "subMapElem1": shared.SimpleObject{
+                Any: "any",
+                Bigint: big.NewInt(8821239038968084),
+                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                Enum: shared.EnumOne,
+                Float32: 1.1,
+                Int: 1,
+                Int32: 1,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                IntEnum: shared.IntEnumSecond,
+                Num: 1.1,
+                Str: "test",
+                StrOpt: openapi.String("testOptional"),
+            },
+            "subMapElem2": shared.SimpleObject{
+                Any: "any",
+                Bigint: big.NewInt(8821239038968084),
+                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -1833,7 +2262,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONMapOfMapResponse](../../pkg/models/operations/requestbodypostapplicationjsonmapofmapresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONMapOfMapCamelCase
 
@@ -1843,11 +2272,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -1861,8 +2290,64 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfMapCamelCase(ctx, map[string]map[string]shared.SimpleObjectCamelCase{
-        "key": map[string]shared.SimpleObjectCamelCase{
-            "key": shared.SimpleObjectCamelCase{
+        "mapElem1": map[string]shared.SimpleObjectCamelCase{
+            "subMapElem1": shared.SimpleObjectCamelCase{
+                AnyVal: "any example",
+                BoolOptVal: openapi.Bool(true),
+                BoolVal: true,
+                DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+                DateVal: types.MustDateFromString("2020-01-01"),
+                EnumVal: shared.EnumOne,
+                Float32Val: 2.2222222,
+                Int32EnumVal: shared.Int32EnumValSixtyNine,
+                Int32Val: 1,
+                IntEnumVal: shared.IntEnumValThird,
+                IntOptNullVal: openapi.Int64(999999),
+                IntVal: 999999,
+                NumOptNullVal: openapi.Float64(1.1),
+                NumVal: 1.1,
+                StrOptVal: openapi.String("optional example"),
+                StrVal: "example",
+            },
+            "subMapElem2": shared.SimpleObjectCamelCase{
+                AnyVal: "any example",
+                BoolOptVal: openapi.Bool(true),
+                BoolVal: true,
+                DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+                DateVal: types.MustDateFromString("2020-01-01"),
+                EnumVal: shared.EnumOne,
+                Float32Val: 2.2222222,
+                Int32EnumVal: shared.Int32EnumValSixtyNine,
+                Int32Val: 1,
+                IntEnumVal: shared.IntEnumValThird,
+                IntOptNullVal: openapi.Int64(999999),
+                IntVal: 999999,
+                NumOptNullVal: openapi.Float64(1.1),
+                NumVal: 1.1,
+                StrOptVal: openapi.String("optional example"),
+                StrVal: "example",
+            },
+        },
+        "mapElem2": map[string]shared.SimpleObjectCamelCase{
+            "subMapElem1": shared.SimpleObjectCamelCase{
+                AnyVal: "any example",
+                BoolOptVal: openapi.Bool(true),
+                BoolVal: true,
+                DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+                DateVal: types.MustDateFromString("2020-01-01"),
+                EnumVal: shared.EnumOne,
+                Float32Val: 2.2222222,
+                Int32EnumVal: shared.Int32EnumValSixtyNine,
+                Int32Val: 1,
+                IntEnumVal: shared.IntEnumValThird,
+                IntOptNullVal: openapi.Int64(999999),
+                IntVal: 999999,
+                NumOptNullVal: openapi.Float64(1.1),
+                NumVal: 1.1,
+                StrOptVal: openapi.String("optional example"),
+                StrVal: "example",
+            },
+            "subMapElem2": shared.SimpleObjectCamelCase{
                 AnyVal: "any example",
                 BoolOptVal: openapi.Bool(true),
                 BoolVal: true,
@@ -1906,7 +2391,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONMapOfMapCamelCaseResponse](../../pkg/models/operations/requestbodypostapplicationjsonmapofmapcamelcaseresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONMapOfMapOfPrimitive
 
@@ -1916,10 +2401,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -1933,8 +2418,13 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfMapOfPrimitive(ctx, map[string]map[string]string{
-        "key": map[string]string{
-            "key": "string",
+        "mapElem1": map[string]string{
+            "subMapElem1": "foo",
+            "subMapElem2": "bar",
+        },
+        "mapElem2": map[string]string{
+            "subMapElem1": "buzz",
+            "subMapElem2": "bazz",
         },
     })
     if err != nil {
@@ -1961,7 +2451,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONMapOfMapOfPrimitiveResponse](../../pkg/models/operations/requestbodypostapplicationjsonmapofmapofprimitiveresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONMapOfPrimitive
 
@@ -1971,10 +2461,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -1988,7 +2478,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfPrimitive(ctx, map[string]string{
-        "key": "string",
+        "mapElem1": "hello",
+        "mapElem2": "world",
     })
     if err != nil {
         log.Fatal(err)
@@ -2014,7 +2505,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONMapOfPrimitiveResponse](../../pkg/models/operations/requestbodypostapplicationjsonmapofprimitiveresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONMultipleJSONFiltered
 
@@ -2024,12 +2515,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -2049,7 +2540,7 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
@@ -2085,7 +2576,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONMultipleJSONFilteredResponse](../../pkg/models/operations/requestbodypostapplicationjsonmultiplejsonfilteredresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONSimple
 
@@ -2095,12 +2586,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -2120,7 +2611,7 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
@@ -2156,7 +2647,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONSimpleResponse](../../pkg/models/operations/requestbodypostapplicationjsonsimpleresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostApplicationJSONSimpleCamelCase
 
@@ -2166,11 +2657,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -2224,7 +2715,7 @@ func main() {
 **[*operations.RequestBodyPostApplicationJSONSimpleCamelCaseResponse](../../pkg/models/operations/requestbodypostapplicationjsonsimplecamelcaseresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostComplexNumberTypes
 
@@ -2234,13 +2725,13 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"openapi/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -2255,19 +2746,19 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostComplexNumberTypes(ctx, operations.RequestBodyPostComplexNumberTypesRequest{
         ComplexNumberTypes: shared.ComplexNumberTypes{
-            Bigint: big.NewInt(765757),
-            BigintStr: big.NewInt(934487),
-            Decimal: types.MustNewDecimalFromString("2505.14"),
-            DecimalStr: types.MustNewDecimalFromString("6831.11"),
+            Bigint: big.NewInt(8821239038968084),
+            BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+            Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+            DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         },
-        PathBigInt: big.NewInt(500580),
-        PathBigIntStr: big.NewInt(741903),
-        PathDecimal: types.MustNewDecimalFromString("8228.52"),
-        PathDecimalStr: types.MustNewDecimalFromString("5491.78"),
-        QueryBigInt: big.NewInt(937395),
-        QueryBigIntStr: big.NewInt(178906),
-        QueryDecimal: types.MustNewDecimalFromString("8260.68"),
-        QueryDecimalStr: types.MustNewDecimalFromString("8253.58"),
+        PathBigInt: big.NewInt(8821239038968084),
+        PathBigIntStr: types.MustNewBigIntFromString("9223372036854775808"),
+        PathDecimal: types.MustNewDecimalFromString("3.141592653589793"),
+        PathDecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+        QueryBigInt: big.NewInt(8821239038968084),
+        QueryBigIntStr: types.MustNewBigIntFromString("9223372036854775808"),
+        QueryDecimal: types.MustNewDecimalFromString("3.141592653589793"),
+        QueryDecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
     })
     if err != nil {
         log.Fatal(err)
@@ -2292,7 +2783,7 @@ func main() {
 **[*operations.RequestBodyPostComplexNumberTypesResponse](../../pkg/models/operations/requestbodypostcomplexnumbertypesresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostDefaultsAndConsts
 
@@ -2302,10 +2793,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -2319,7 +2810,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostDefaultsAndConsts(ctx, shared.DefaultsAndConsts{
-        NormalField: "string",
+        NormalField: "test",
     })
     if err != nil {
         log.Fatal(err)
@@ -2344,7 +2835,7 @@ func main() {
 **[*operations.RequestBodyPostDefaultsAndConstsResponse](../../pkg/models/operations/requestbodypostdefaultsandconstsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostEmptyObject
 
@@ -2354,11 +2845,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -2371,10 +2862,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostEmptyObject(ctx, operations.RequestBodyPostEmptyObjectRequestBody{
-        Empty: &operations.Empty{},
-        EmptyWithEmptyProperties: &operations.EmptyWithEmptyProperties{},
-    })
+    res, err := s.RequestBodies.RequestBodyPostEmptyObject(ctx, operations.RequestBodyPostEmptyObjectRequestBody{})
     if err != nil {
         log.Fatal(err)
     }
@@ -2398,7 +2886,7 @@ func main() {
 **[*operations.RequestBodyPostEmptyObjectResponse](../../pkg/models/operations/requestbodypostemptyobjectresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostFormDeep
 
@@ -2408,12 +2896,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -2435,7 +2923,7 @@ func main() {
                     Bool: true,
                     BoolOpt: openapi.Bool(true),
                     Date: types.MustDateFromString("2020-01-01"),
-                    DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                    DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                     Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                     DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                     Enum: shared.EnumOne,
@@ -2457,7 +2945,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -2477,7 +2965,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -2501,7 +2989,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -2521,7 +3009,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -2543,7 +3031,7 @@ func main() {
             Bool: true,
             BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
-            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
             Decimal: types.MustNewDecimalFromString("3.141592653589793"),
             DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
             Enum: shared.EnumOne,
@@ -2581,7 +3069,7 @@ func main() {
 **[*operations.RequestBodyPostFormDeepResponse](../../pkg/models/operations/requestbodypostformdeepresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostFormMapPrimitive
 
@@ -2591,10 +3079,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -2608,7 +3096,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostFormMapPrimitive(ctx, map[string]string{
-        "key": "string",
+        "key1": "value1",
+        "key2": "value2",
+        "key3": "value3",
     })
     if err != nil {
         log.Fatal(err)
@@ -2633,7 +3123,7 @@ func main() {
 **[*operations.RequestBodyPostFormMapPrimitiveResponse](../../pkg/models/operations/requestbodypostformmapprimitiveresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostFormSimple
 
@@ -2643,12 +3133,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -2668,7 +3158,7 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
@@ -2704,7 +3194,7 @@ func main() {
 **[*operations.RequestBodyPostFormSimpleResponse](../../pkg/models/operations/requestbodypostformsimpleresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostJSONDataTypesArrayBigInt
 
@@ -2714,11 +3204,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
+	"log"
 )
 
 func main() {
@@ -2732,7 +3222,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostJSONDataTypesArrayBigInt(ctx, []*big.Int{
-        big.NewInt(564849),
+        big.NewInt(1),
     })
     if err != nil {
         log.Fatal(err)
@@ -2757,7 +3247,7 @@ func main() {
 **[*operations.RequestBodyPostJSONDataTypesArrayBigIntResponse](../../pkg/models/operations/requestbodypostjsondatatypesarraybigintresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostJSONDataTypesArrayDate
 
@@ -2767,11 +3257,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -2785,7 +3275,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostJSONDataTypesArrayDate(ctx, []types.Date{
-        types.MustDateFromString("2022-03-22"),
+        types.MustDateFromString("2020-01-01"),
     })
     if err != nil {
         log.Fatal(err)
@@ -2810,7 +3300,7 @@ func main() {
 **[*operations.RequestBodyPostJSONDataTypesArrayDateResponse](../../pkg/models/operations/requestbodypostjsondatatypesarraydateresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostJSONDataTypesArrayDecimalStr
 
@@ -2820,11 +3310,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"github.com/ericlagergren/decimal"
+	"log"
 )
 
 func main() {
@@ -2838,7 +3329,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostJSONDataTypesArrayDecimalStr(ctx, []*decimal.Big{
-        types.MustNewDecimalFromString("8083.93"),
+        types.MustNewDecimalFromString("3.141592653589793438462643383279"),
     })
     if err != nil {
         log.Fatal(err)
@@ -2863,7 +3354,7 @@ func main() {
 **[*operations.RequestBodyPostJSONDataTypesArrayDecimalStrResponse](../../pkg/models/operations/requestbodypostjsondatatypesarraydecimalstrresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostJSONDataTypesBigInt
 
@@ -2873,11 +3364,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
+	"log"
 )
 
 func main() {
@@ -2890,7 +3381,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesBigInt(ctx, big.NewInt(687617))
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesBigInt(ctx, big.NewInt(1))
     if err != nil {
         log.Fatal(err)
     }
@@ -2914,7 +3405,7 @@ func main() {
 **[*operations.RequestBodyPostJSONDataTypesBigIntResponse](../../pkg/models/operations/requestbodypostjsondatatypesbigintresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostJSONDataTypesBigIntStr
 
@@ -2924,11 +3415,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
+	"log"
 )
 
 func main() {
@@ -2941,7 +3432,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesBigIntStr(ctx, big.NewInt(649473))
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesBigIntStr(ctx, big.NewInt(1))
     if err != nil {
         log.Fatal(err)
     }
@@ -2965,7 +3456,7 @@ func main() {
 **[*operations.RequestBodyPostJSONDataTypesBigIntStrResponse](../../pkg/models/operations/requestbodypostjsondatatypesbigintstrresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostJSONDataTypesBoolean
 
@@ -2975,10 +3466,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -2991,7 +3482,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesBoolean(ctx, false)
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesBoolean(ctx, true)
     if err != nil {
         log.Fatal(err)
     }
@@ -3015,7 +3506,7 @@ func main() {
 **[*operations.RequestBodyPostJSONDataTypesBooleanResponse](../../pkg/models/operations/requestbodypostjsondatatypesbooleanresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostJSONDataTypesDate
 
@@ -3025,11 +3516,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -3042,7 +3533,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesDate(ctx, types.MustDateFromString("2022-03-04"))
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesDate(ctx, types.MustDateFromString("2020-01-01"))
     if err != nil {
         log.Fatal(err)
     }
@@ -3066,7 +3557,7 @@ func main() {
 **[*operations.RequestBodyPostJSONDataTypesDateResponse](../../pkg/models/operations/requestbodypostjsondatatypesdateresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostJSONDataTypesDateTime
 
@@ -3076,11 +3567,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -3093,7 +3584,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesDateTime(ctx, types.MustTimeFromString("2023-03-04T01:33:15.031Z"))
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesDateTime(ctx, types.MustTimeFromString("2020-01-01T00:00:00Z"))
     if err != nil {
         log.Fatal(err)
     }
@@ -3117,7 +3608,7 @@ func main() {
 **[*operations.RequestBodyPostJSONDataTypesDateTimeResponse](../../pkg/models/operations/requestbodypostjsondatatypesdatetimeresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostJSONDataTypesDecimal
 
@@ -3127,11 +3618,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -3144,7 +3635,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesDecimal(ctx, types.MustNewDecimalFromString("1107.81"))
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesDecimal(ctx, types.MustNewDecimalFromString("1.1"))
     if err != nil {
         log.Fatal(err)
     }
@@ -3168,7 +3659,7 @@ func main() {
 **[*operations.RequestBodyPostJSONDataTypesDecimalResponse](../../pkg/models/operations/requestbodypostjsondatatypesdecimalresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostJSONDataTypesDecimalStr
 
@@ -3178,11 +3669,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -3195,7 +3686,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesDecimalStr(ctx, types.MustNewDecimalFromString("5432.92"))
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesDecimalStr(ctx, types.MustNewDecimalFromString("1.1"))
     if err != nil {
         log.Fatal(err)
     }
@@ -3219,7 +3710,7 @@ func main() {
 **[*operations.RequestBodyPostJSONDataTypesDecimalStrResponse](../../pkg/models/operations/requestbodypostjsondatatypesdecimalstrresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostJSONDataTypesFloat32
 
@@ -3229,10 +3720,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -3245,7 +3736,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesFloat32(ctx, 4464.34)
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesFloat32(ctx, 1.1)
     if err != nil {
         log.Fatal(err)
     }
@@ -3269,7 +3760,7 @@ func main() {
 **[*operations.RequestBodyPostJSONDataTypesFloat32Response](../../pkg/models/operations/requestbodypostjsondatatypesfloat32response.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostJSONDataTypesInt32
 
@@ -3279,10 +3770,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -3295,7 +3786,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesInt32(ctx, 22155)
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesInt32(ctx, 1)
     if err != nil {
         log.Fatal(err)
     }
@@ -3319,7 +3810,7 @@ func main() {
 **[*operations.RequestBodyPostJSONDataTypesInt32Response](../../pkg/models/operations/requestbodypostjsondatatypesint32response.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostJSONDataTypesInteger
 
@@ -3329,10 +3820,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -3345,7 +3836,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesInteger(ctx, 273673)
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesInteger(ctx, 1)
     if err != nil {
         log.Fatal(err)
     }
@@ -3369,7 +3860,7 @@ func main() {
 **[*operations.RequestBodyPostJSONDataTypesIntegerResponse](../../pkg/models/operations/requestbodypostjsondatatypesintegerresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostJSONDataTypesMapBigIntStr
 
@@ -3379,11 +3870,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
+	"log"
 )
 
 func main() {
@@ -3397,7 +3888,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostJSONDataTypesMapBigIntStr(ctx, map[string]*big.Int{
-        "key": big.NewInt(42384),
+        "test": big.NewInt(1),
     })
     if err != nil {
         log.Fatal(err)
@@ -3422,7 +3913,7 @@ func main() {
 **[*operations.RequestBodyPostJSONDataTypesMapBigIntStrResponse](../../pkg/models/operations/requestbodypostjsondatatypesmapbigintstrresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostJSONDataTypesMapDateTime
 
@@ -3432,11 +3923,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"time"
+	"log"
 )
 
 func main() {
@@ -3450,7 +3942,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostJSONDataTypesMapDateTime(ctx, map[string]time.Time{
-        "key": types.MustTimeFromString("2022-09-03T18:52:14.477Z"),
+        "test": types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
     })
     if err != nil {
         log.Fatal(err)
@@ -3475,7 +3967,7 @@ func main() {
 **[*operations.RequestBodyPostJSONDataTypesMapDateTimeResponse](../../pkg/models/operations/requestbodypostjsondatatypesmapdatetimeresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostJSONDataTypesMapDecimal
 
@@ -3485,11 +3977,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"github.com/ericlagergren/decimal"
+	"log"
 )
 
 func main() {
@@ -3503,7 +3996,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostJSONDataTypesMapDecimal(ctx, map[string]*decimal.Big{
-        "key": types.MustNewDecimalFromString("3472.82"),
+        "test": types.MustNewDecimalFromString("3.141592653589793"),
     })
     if err != nil {
         log.Fatal(err)
@@ -3528,7 +4021,7 @@ func main() {
 **[*operations.RequestBodyPostJSONDataTypesMapDecimalResponse](../../pkg/models/operations/requestbodypostjsondatatypesmapdecimalresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostJSONDataTypesNumber
 
@@ -3538,10 +4031,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -3554,7 +4047,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesNumber(ctx, 2193.66)
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesNumber(ctx, 1.1)
     if err != nil {
         log.Fatal(err)
     }
@@ -3578,7 +4071,7 @@ func main() {
 **[*operations.RequestBodyPostJSONDataTypesNumberResponse](../../pkg/models/operations/requestbodypostjsondatatypesnumberresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostJSONDataTypesString
 
@@ -3588,10 +4081,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -3604,7 +4097,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesString(ctx, "string")
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesString(ctx, "test")
     if err != nil {
         log.Fatal(err)
     }
@@ -3628,7 +4121,7 @@ func main() {
 **[*operations.RequestBodyPostJSONDataTypesStringResponse](../../pkg/models/operations/requestbodypostjsondatatypesstringresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostMultipleContentTypesComponentFiltered
 
@@ -3638,12 +4131,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -3663,7 +4156,7 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
@@ -3699,7 +4192,7 @@ func main() {
 **[*operations.RequestBodyPostMultipleContentTypesComponentFilteredResponse](../../pkg/models/operations/requestbodypostmultiplecontenttypescomponentfilteredresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostMultipleContentTypesInlineFiltered
 
@@ -3709,11 +4202,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -3727,9 +4220,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesInlineFiltered(ctx, operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody{
-        Bool: false,
-        Num: 3558.41,
-        Str: "string",
+        Bool: true,
+        Num: 1.1,
+        Str: "test",
     })
     if err != nil {
         log.Fatal(err)
@@ -3754,7 +4247,7 @@ func main() {
 **[*operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse](../../pkg/models/operations/requestbodypostmultiplecontenttypesinlinefilteredresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostMultipleContentTypesSplitParamForm
 
@@ -3764,11 +4257,11 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -3803,11 +4296,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                 | Type                                                                                                                                                                      | Required                                                                                                                                                                  | Description                                                                                                                                                               |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                                                                     | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                     | :heavy_check_mark:                                                                                                                                                        | The context to use for the request.                                                                                                                                       |
-| `requestBody`                                                                                                                                                             | [operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody](../../../pkg/models/operations/requestbodypostmultiplecontenttypessplitparamformrequestbody.md) | :heavy_check_mark:                                                                                                                                                        | N/A                                                                                                                                                                       |
-| `paramStr`                                                                                                                                                                | *string*                                                                                                                                                                  | :heavy_check_mark:                                                                                                                                                        | N/A                                                                                                                                                                       |
+| Parameter                                                                                                                                                              | Type                                                                                                                                                                   | Required                                                                                                                                                               | Description                                                                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                  | :heavy_check_mark:                                                                                                                                                     | The context to use for the request.                                                                                                                                    |
+| `requestBody`                                                                                                                                                          | [operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody](../../pkg/models/operations/requestbodypostmultiplecontenttypessplitparamformrequestbody.md) | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
+| `paramStr`                                                                                                                                                             | *string*                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
 
 
 ### Response
@@ -3815,7 +4308,7 @@ func main() {
 **[*operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse](../../pkg/models/operations/requestbodypostmultiplecontenttypessplitparamformresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostMultipleContentTypesSplitParamJSON
 
@@ -3825,11 +4318,11 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -3864,11 +4357,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                 | Type                                                                                                                                                                      | Required                                                                                                                                                                  | Description                                                                                                                                                               |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                                                                     | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                     | :heavy_check_mark:                                                                                                                                                        | The context to use for the request.                                                                                                                                       |
-| `requestBody`                                                                                                                                                             | [operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody](../../../pkg/models/operations/requestbodypostmultiplecontenttypessplitparamjsonrequestbody.md) | :heavy_check_mark:                                                                                                                                                        | N/A                                                                                                                                                                       |
-| `paramStr`                                                                                                                                                                | *string*                                                                                                                                                                  | :heavy_check_mark:                                                                                                                                                        | N/A                                                                                                                                                                       |
+| Parameter                                                                                                                                                              | Type                                                                                                                                                                   | Required                                                                                                                                                               | Description                                                                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                  | :heavy_check_mark:                                                                                                                                                     | The context to use for the request.                                                                                                                                    |
+| `requestBody`                                                                                                                                                          | [operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody](../../pkg/models/operations/requestbodypostmultiplecontenttypessplitparamjsonrequestbody.md) | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
+| `paramStr`                                                                                                                                                             | *string*                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
 
 
 ### Response
@@ -3876,7 +4369,7 @@ func main() {
 **[*operations.RequestBodyPostMultipleContentTypesSplitParamJSONResponse](../../pkg/models/operations/requestbodypostmultiplecontenttypessplitparamjsonresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostMultipleContentTypesSplitParamMultipart
 
@@ -3886,11 +4379,11 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -3925,11 +4418,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                           | Type                                                                                                                                                                                | Required                                                                                                                                                                            | Description                                                                                                                                                                         |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                                                                               | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                               | :heavy_check_mark:                                                                                                                                                                  | The context to use for the request.                                                                                                                                                 |
-| `requestBody`                                                                                                                                                                       | [operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody](../../../pkg/models/operations/requestbodypostmultiplecontenttypessplitparammultipartrequestbody.md) | :heavy_check_mark:                                                                                                                                                                  | N/A                                                                                                                                                                                 |
-| `paramStr`                                                                                                                                                                          | *string*                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                  | N/A                                                                                                                                                                                 |
+| Parameter                                                                                                                                                                        | Type                                                                                                                                                                             | Required                                                                                                                                                                         | Description                                                                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                            | :heavy_check_mark:                                                                                                                                                               | The context to use for the request.                                                                                                                                              |
+| `requestBody`                                                                                                                                                                    | [operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody](../../pkg/models/operations/requestbodypostmultiplecontenttypessplitparammultipartrequestbody.md) | :heavy_check_mark:                                                                                                                                                               | N/A                                                                                                                                                                              |
+| `paramStr`                                                                                                                                                                       | *string*                                                                                                                                                                         | :heavy_check_mark:                                                                                                                                                               | N/A                                                                                                                                                                              |
 
 
 ### Response
@@ -3937,7 +4430,7 @@ func main() {
 **[*operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse](../../pkg/models/operations/requestbodypostmultiplecontenttypessplitparammultipartresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostMultipleContentTypesSplitForm
 
@@ -3947,11 +4440,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -3992,7 +4485,7 @@ func main() {
 **[*operations.RequestBodyPostMultipleContentTypesSplitFormResponse](../../pkg/models/operations/requestbodypostmultiplecontenttypessplitformresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostMultipleContentTypesSplitJSON
 
@@ -4002,11 +4495,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -4047,7 +4540,7 @@ func main() {
 **[*operations.RequestBodyPostMultipleContentTypesSplitJSONResponse](../../pkg/models/operations/requestbodypostmultiplecontenttypessplitjsonresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostMultipleContentTypesSplitMultipart
 
@@ -4057,11 +4550,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -4102,7 +4595,7 @@ func main() {
 **[*operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse](../../pkg/models/operations/requestbodypostmultiplecontenttypessplitmultipartresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostNotNullableNotRequiredStringBody
 
@@ -4112,10 +4605,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4128,7 +4621,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostNotNullableNotRequiredStringBody(ctx, &"string")
+    res, err := s.RequestBodies.RequestBodyPostNotNullableNotRequiredStringBody(ctx, nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -4152,7 +4645,7 @@ func main() {
 **[*operations.RequestBodyPostNotNullableNotRequiredStringBodyResponse](../../pkg/models/operations/requestbodypostnotnullablenotrequiredstringbodyresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostNullArray
 
@@ -4162,10 +4655,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4179,7 +4672,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostNullArray(ctx, []string{
-        "string",
+        "value1",
+        "value2",
+        "value3",
     })
     if err != nil {
         log.Fatal(err)
@@ -4204,7 +4699,7 @@ func main() {
 **[*operations.RequestBodyPostNullArrayResponse](../../pkg/models/operations/requestbodypostnullarrayresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostNullDictionary
 
@@ -4214,10 +4709,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4231,7 +4726,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostNullDictionary(ctx, map[string]string{
-        "key": "string",
+        "key1": "value1",
+        "key2": "value2",
+        "key3": "value3",
     })
     if err != nil {
         log.Fatal(err)
@@ -4256,7 +4753,7 @@ func main() {
 **[*operations.RequestBodyPostNullDictionaryResponse](../../pkg/models/operations/requestbodypostnulldictionaryresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostNullableNotRequiredStringBody
 
@@ -4266,10 +4763,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4282,7 +4779,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostNullableNotRequiredStringBody(ctx, &"string")
+    res, err := s.RequestBodies.RequestBodyPostNullableNotRequiredStringBody(ctx, nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -4306,7 +4803,7 @@ func main() {
 **[*operations.RequestBodyPostNullableNotRequiredStringBodyResponse](../../pkg/models/operations/requestbodypostnullablenotrequiredstringbodyresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPostNullableRequiredStringBody
 
@@ -4316,10 +4813,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4332,7 +4829,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostNullableRequiredStringBody(ctx, &"string")
+    res, err := s.RequestBodies.RequestBodyPostNullableRequiredStringBody(ctx, nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -4356,7 +4853,7 @@ func main() {
 **[*operations.RequestBodyPostNullableRequiredStringBodyResponse](../../pkg/models/operations/requestbodypostnullablerequiredstringbodyresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPutBytes
 
@@ -4366,10 +4863,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4406,7 +4903,7 @@ func main() {
 **[*operations.RequestBodyPutBytesResponse](../../pkg/models/operations/requestbodyputbytesresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPutBytesWithParams
 
@@ -4416,10 +4913,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4462,7 +4959,7 @@ func main() {
 **[*operations.RequestBodyPutBytesWithParamsResponse](../../pkg/models/operations/requestbodyputbyteswithparamsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPutMultipartDeep
 
@@ -4472,12 +4969,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -4499,7 +4996,7 @@ func main() {
                     Bool: true,
                     BoolOpt: openapi.Bool(true),
                     Date: types.MustDateFromString("2020-01-01"),
-                    DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                    DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                     Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                     DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                     Enum: shared.EnumOne,
@@ -4521,7 +5018,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -4541,7 +5038,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -4565,7 +5062,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -4585,7 +5082,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -4607,7 +5104,7 @@ func main() {
             Bool: true,
             BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
-            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
             Decimal: types.MustNewDecimalFromString("3.141592653589793"),
             DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
             Enum: shared.EnumOne,
@@ -4645,7 +5142,7 @@ func main() {
 **[*operations.RequestBodyPutMultipartDeepResponse](../../pkg/models/operations/requestbodyputmultipartdeepresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPutMultipartDifferentFileName
 
@@ -4655,11 +5152,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -4672,12 +5169,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPutMultipartDifferentFileName(ctx, operations.RequestBodyPutMultipartDifferentFileNameRequestBody{
-        DifferentFileName: &operations.DifferentFileName{
-            Content: []byte("0xdF19d43dd2"),
-            FileName: "west_tunisian.pdf",
-        },
-    })
+    res, err := s.RequestBodies.RequestBodyPutMultipartDifferentFileName(ctx, operations.RequestBodyPutMultipartDifferentFileNameRequestBody{})
     if err != nil {
         log.Fatal(err)
     }
@@ -4701,7 +5193,7 @@ func main() {
 **[*operations.RequestBodyPutMultipartDifferentFileNameResponse](../../pkg/models/operations/requestbodyputmultipartdifferentfilenameresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPutMultipartFile
 
@@ -4711,11 +5203,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -4728,12 +5220,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPutMultipartFile(ctx, operations.RequestBodyPutMultipartFileRequestBody{
-        File: &operations.File{
-            Content: []byte("0xa9f2Ee38c3"),
-            FileName: "bandwidth_sedan.pdf",
-        },
-    })
+    res, err := s.RequestBodies.RequestBodyPutMultipartFile(ctx, operations.RequestBodyPutMultipartFileRequestBody{})
     if err != nil {
         log.Fatal(err)
     }
@@ -4757,7 +5244,58 @@ func main() {
 **[*operations.RequestBodyPutMultipartFileResponse](../../pkg/models/operations/requestbodyputmultipartfileresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
+
+## RequestBodyPutMultipartOptionalRequestBody
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
+	"openapi/v2/pkg/models/operations"
+	"log"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPutMultipartOptionalRequestBody(ctx, &operations.RequestBodyPutMultipartOptionalRequestBodyRequestBody{})
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.Res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                                                    | :heavy_check_mark:                                                                                                                                       | The context to use for the request.                                                                                                                      |
+| `request`                                                                                                                                                | [operations.RequestBodyPutMultipartOptionalRequestBodyRequestBody](../../pkg/models/operations/requestbodyputmultipartoptionalrequestbodyrequestbody.md) | :heavy_check_mark:                                                                                                                                       | The request object to use for the request.                                                                                                               |
+
+
+### Response
+
+**[*operations.RequestBodyPutMultipartOptionalRequestBodyResponse](../../pkg/models/operations/requestbodyputmultipartoptionalrequestbodyresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPutMultipartSimple
 
@@ -4767,12 +5305,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -4792,7 +5330,7 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
@@ -4828,7 +5366,7 @@ func main() {
 **[*operations.RequestBodyPutMultipartSimpleResponse](../../pkg/models/operations/requestbodyputmultipartsimpleresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPutString
 
@@ -4838,10 +5376,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4854,7 +5392,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPutString(ctx, "string")
+    res, err := s.RequestBodies.RequestBodyPutString(ctx, "Hello World")
     if err != nil {
         log.Fatal(err)
     }
@@ -4878,7 +5416,7 @@ func main() {
 **[*operations.RequestBodyPutStringResponse](../../pkg/models/operations/requestbodyputstringresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyPutStringWithParams
 
@@ -4888,10 +5426,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4904,9 +5442,9 @@ func main() {
     )
 
 
-    var requestBody string = "string"
+    var requestBody string = "Hello world"
 
-    var queryStringParam string = "string"
+    var queryStringParam string = "test param"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutStringWithParams(ctx, requestBody, queryStringParam)
@@ -4922,11 +5460,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-| `requestBody`                                         | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
-| `queryStringParam`                                    | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `requestBody`                                         | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | Hello world                                           |
+| `queryStringParam`                                    | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | test param                                            |
 
 
 ### Response
@@ -4934,7 +5472,7 @@ func main() {
 **[*operations.RequestBodyPutStringWithParamsResponse](../../pkg/models/operations/requestbodyputstringwithparamsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyReadAndWrite
 
@@ -4944,10 +5482,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -4961,9 +5499,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyReadAndWrite(ctx, shared.ReadWriteObject{
-        Num1: 797612,
-        Num2: 89374,
-        Num3: 459345,
+        Num1: 1,
+        Num2: 2,
+        Num3: 4,
     })
     if err != nil {
         log.Fatal(err)
@@ -4989,7 +5527,7 @@ func main() {
 **[*operations.RequestBodyReadAndWriteResponse](../../pkg/models/operations/requestbodyreadandwriteresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyReadOnlyInput
 
@@ -4999,10 +5537,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -5040,7 +5578,7 @@ func main() {
 **[*operations.RequestBodyReadOnlyInputResponse](../../pkg/models/operations/requestbodyreadonlyinputresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyReadOnlyUnion
 
@@ -5050,12 +5588,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -5076,7 +5614,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -5114,7 +5652,7 @@ func main() {
 **[*operations.RequestBodyReadOnlyUnionResponse](../../pkg/models/operations/requestbodyreadonlyunionresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyReadWriteOnlyUnion
 
@@ -5124,12 +5662,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"math/big"
-	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -5144,9 +5680,9 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyReadWriteOnlyUnion(ctx, shared.CreateWeaklyTypedOneOfReadWriteObjectReadWriteObject(
             shared.ReadWriteObject{
-                Num1: 817251,
-                Num2: 891192,
-                Num3: 743101,
+                Num1: 1,
+                Num2: 2,
+                Num3: 4,
             },
     ))
     if err != nil {
@@ -5173,7 +5709,7 @@ func main() {
 **[*operations.RequestBodyReadWriteOnlyUnionResponse](../../pkg/models/operations/requestbodyreadwriteonlyunionresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyWriteOnly
 
@@ -5183,10 +5719,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -5200,9 +5736,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyWriteOnly(ctx, shared.WriteOnlyObject{
-        Bool: false,
-        Num: 3888.42,
-        String: "string",
+        Bool: true,
+        Num: 1,
+        String: "hello",
     })
     if err != nil {
         log.Fatal(err)
@@ -5228,7 +5764,7 @@ func main() {
 **[*operations.RequestBodyWriteOnlyResponse](../../pkg/models/operations/requestbodywriteonlyresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyWriteOnlyOutput
 
@@ -5238,10 +5774,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -5255,9 +5791,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyWriteOnlyOutput(ctx, shared.WriteOnlyObject{
-        Bool: false,
-        Num: 3867.69,
-        String: "string",
+        Bool: true,
+        Num: 1,
+        String: "hello",
     })
     if err != nil {
         log.Fatal(err)
@@ -5283,7 +5819,7 @@ func main() {
 **[*operations.RequestBodyWriteOnlyOutputResponse](../../pkg/models/operations/requestbodywriteonlyoutputresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RequestBodyWriteOnlyUnion
 
@@ -5293,12 +5829,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"math/big"
-	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -5313,9 +5847,9 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyWriteOnlyUnion(ctx, shared.CreateWeaklyTypedOneOfWriteOnlyObjectWriteOnlyObject(
             shared.WriteOnlyObject{
-                Bool: false,
-                Num: 3823.36,
-                String: "string",
+                Bool: true,
+                Num: 1,
+                String: "hello",
             },
     ))
     if err != nil {
@@ -5342,4 +5876,4 @@ func main() {
 **[*operations.RequestBodyWriteOnlyUnionResponse](../../pkg/models/operations/requestbodywriteonlyunionresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

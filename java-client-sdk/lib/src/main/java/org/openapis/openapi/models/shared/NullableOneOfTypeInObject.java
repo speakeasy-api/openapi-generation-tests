@@ -17,9 +17,9 @@ public class NullableOneOfTypeInObject {
     }
     
     @JsonProperty("NullableOneOfTwo")
-    public Object nullableOneOfTwo;
+    public java.lang.Object nullableOneOfTwo;
 
-    public NullableOneOfTypeInObject withNullableOneOfTwo(Object nullableOneOfTwo) {
+    public NullableOneOfTypeInObject withNullableOneOfTwo(java.lang.Object nullableOneOfTwo) {
         this.nullableOneOfTwo = nullableOneOfTwo;
         return this;
     }
@@ -32,7 +32,7 @@ public class NullableOneOfTypeInObject {
         return this;
     }
     
-    public NullableOneOfTypeInObject(@JsonProperty("NullableOneOfOne") Boolean nullableOneOfOne, @JsonProperty("NullableOneOfTwo") Object nullableOneOfTwo, @JsonProperty("OneOfOne") Boolean oneOfOne) {
+    public NullableOneOfTypeInObject(@JsonProperty("NullableOneOfOne") Boolean nullableOneOfOne, @JsonProperty("NullableOneOfTwo") java.lang.Object nullableOneOfTwo, @JsonProperty("OneOfOne") Boolean oneOfOne) {
         this.nullableOneOfOne = nullableOneOfOne;
         this.nullableOneOfTwo = nullableOneOfTwo;
         this.oneOfOne = oneOfOne;

@@ -8,6 +8,7 @@ Endpoints for testing retries.
 ### Available Operations
 
 * [retriesGet](#retriesget)
+* [retriesPost](#retriespost)
 
 ## retriesGet
 
@@ -27,18 +28,19 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->retries->retriesGet('string', 75342);
 
     if ($response->retries !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -55,4 +57,55 @@ try {
 ### Response
 
 **[?\OpenAPI\OpenAPI\Models\Operations\RetriesGetResponse](../../Models/Operations/RetriesGetResponse.md)**
+
+
+## retriesPost
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
+
+$security = new Shared\Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
+
+try {
+        $requestBody = new Operations\RetriesPostRequestBody();
+    $requestBody->fieldOne = 'string';
+
+    $response = $sdk->retries->retriesPost('string', $requestBody, 138258);
+
+    if ($response->retries !== null) {
+        // handle response
+    }
+} catch (Throwable $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `requestId`                                                                                                    | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `requestBody`                                                                                                  | [\OpenAPI\OpenAPI\Models\Operations\RetriesPostRequestBody](../../Models/Operations/RetriesPostRequestBody.md) | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `numRetries`                                                                                                   | *int*                                                                                                          | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `$serverURL`                                                                                                   | *string*                                                                                                       | :heavy_minus_sign:                                                                                             | An optional server URL to use.                                                                                 |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RetriesPostResponse](../../Models/Operations/RetriesPostResponse.md)**
 

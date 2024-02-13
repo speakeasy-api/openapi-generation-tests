@@ -26,14 +26,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GlobalPathParameterGetResponse res = sdk.globals.globalPathParameterGet(719830L);
+            org.openapis.openapi.models.operations.GlobalPathParameterGetResponse res = sdk.globals.globalPathParameterGet(719830L);
 
             if (res.res != null) {
                 // handle response
@@ -73,14 +74,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GlobalsQueryParameterGetResponse res = sdk.globals.globalsQueryParameterGet("string");
+            org.openapis.openapi.models.operations.GlobalsQueryParameterGetResponse res = sdk.globals.globalsQueryParameterGet("string");
 
             if (res.res != null) {
                 // handle response
