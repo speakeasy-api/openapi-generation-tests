@@ -6305,6 +6305,30 @@ paths:
             type: offset
         outputs:
           results: $.resultArray
+  /pagination/url:
+    get:
+      operationId: paginationURLParams
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: attempts
+          in: query
+          schema:
+            type: integer
+          required: true
+        - name: is-reference-path
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponse"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: url
+        outputs:
+          nextUrl: $.next
   /pagination/cursor:
     get:
       operationId: paginationCursorParams

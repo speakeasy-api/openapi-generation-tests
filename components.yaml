@@ -1750,6 +1750,8 @@ components:
             properties:
               numPages:
                 type: integer
+              next:
+                type: string
               resultArray:
                 type: array
                 items:
