@@ -4,8 +4,9 @@ from sdk import SDK
 from sdk.models.operations import *
 from sdk.utils import *
 
-from .helpers import *
 from .common_helpers import *
+from .test_helpers import *
+
 
 def test_component_body_and_param_no_conflict():
     record_test('flattening-component-body-and-param-no-conflict')

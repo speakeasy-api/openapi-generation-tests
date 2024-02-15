@@ -41,84 +41,81 @@ namespace Openapi
     public class Pagination: IPagination
     {
         /**
-        * PaginationCursorBodySERVERS contains the list of server urls available to the SDK.
+        * PaginationCursorBodyServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] PaginationCursorBodySERVERS = {
+        public static readonly string[] PaginationCursorBodyServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * PaginationCursorParamsSERVERS contains the list of server urls available to the SDK.
+        * PaginationCursorParamsServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] PaginationCursorParamsSERVERS = {
+        public static readonly string[] PaginationCursorParamsServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * PaginationLimitOffsetOffsetBodySERVERS contains the list of server urls available to the SDK.
+        * PaginationLimitOffsetOffsetBodyServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] PaginationLimitOffsetOffsetBodySERVERS = {
+        public static readonly string[] PaginationLimitOffsetOffsetBodyServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * PaginationLimitOffsetOffsetParamsSERVERS contains the list of server urls available to the SDK.
+        * PaginationLimitOffsetOffsetParamsServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] PaginationLimitOffsetOffsetParamsSERVERS = {
+        public static readonly string[] PaginationLimitOffsetOffsetParamsServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * PaginationLimitOffsetPageBodySERVERS contains the list of server urls available to the SDK.
+        * PaginationLimitOffsetPageBodyServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] PaginationLimitOffsetPageBodySERVERS = {
+        public static readonly string[] PaginationLimitOffsetPageBodyServerList = {
             "http://localhost:35456",
         };
 
         /**
-        * PaginationLimitOffsetPageParamsSERVERS contains the list of server urls available to the SDK.
+        * PaginationLimitOffsetPageParamsServerList contains the list of server urls available to the SDK.
         */
-        public static readonly string[] PaginationLimitOffsetPageParamsSERVERS = {
+        public static readonly string[] PaginationLimitOffsetPageParamsServerList = {
             "http://localhost:35456",
         };
 
-        public SDKConfig Config { get; private set; }
+        public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.3.1";
-        private const string _sdkGenVersion = "2.188.3";
+        private const string _sdkVersion = "0.4.0";
+        private const string _sdkGenVersion = "2.258.0";
         private const string _openapiDocVersion = "0.1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.0 2.258.0 0.1.0 openapi";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
-        private ISpeakeasyHttpClient _securityClient;
+        private Func<Security>? _securitySource;
 
-        public Pagination(ISpeakeasyHttpClient defaultClient, ISpeakeasyHttpClient securityClient, string serverUrl, SDKConfig config)
+        public Pagination(ISpeakeasyHttpClient defaultClient, Func<Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _defaultClient = defaultClient;
-            _securityClient = securityClient;
+            _securitySource = securitySource;
             _serverUrl = serverUrl;
-            Config = config;
+            SDKConfiguration = config;
         }
         
 
         public async Task<PaginationCursorBodyResponse> PaginationCursorBodyAsync(PaginationCursorBodyRequestBody request, string? serverUrl = null)
         {
-            string baseUrl = PaginationCursorBodySERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(PaginationCursorBodyServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/pagination/cursor";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json");
-            if (serializedBody == null) 
+            if (serializedBody == null)
             {
                 throw new ArgumentNullException("request body is required");
             }
@@ -127,8 +124,12 @@ namespace Openapi
                 httpRequest.Content = serializedBody;
             }
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
             
             Func<Task<PaginationCursorBodyResponse?>> nextFunc = async delegate() {
@@ -161,7 +162,7 @@ namespace Openapi
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
-                RawResponse = httpResponse, 
+                RawResponse = httpResponse,
                 Next = nextFunc
             };
             
@@ -171,11 +172,12 @@ namespace Openapi
                 {
                     response.Res = JsonConvert.DeserializeObject<PaginationCursorBodyRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<PaginationCursorParamsResponse> PaginationCursorParamsAsync(long cursor, string? serverUrl = null)
@@ -184,23 +186,24 @@ namespace Openapi
             {
                 Cursor = cursor,
             };
-            string baseUrl = PaginationCursorParamsSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(PaginationCursorParamsServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = URLBuilder.Build(baseUrl, "/pagination/cursor", request);
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
             
             Func<Task<PaginationCursorParamsResponse?>> nextFunc = async delegate() {
@@ -231,7 +234,7 @@ namespace Openapi
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
-                RawResponse = httpResponse, 
+                RawResponse = httpResponse,
                 Next = nextFunc
             };
             
@@ -241,31 +244,29 @@ namespace Openapi
                 {
                     response.Res = JsonConvert.DeserializeObject<PaginationCursorParamsRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<PaginationLimitOffsetOffsetBodyResponse> PaginationLimitOffsetOffsetBodyAsync(LimitOffsetConfig request, string? serverUrl = null)
         {
-            string baseUrl = PaginationLimitOffsetOffsetBodySERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(PaginationLimitOffsetOffsetBodyServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/pagination/limitoffset/offset";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json");
-            if (serializedBody == null) 
+            if (serializedBody == null)
             {
                 throw new ArgumentNullException("request body is required");
             }
@@ -274,8 +275,12 @@ namespace Openapi
                 httpRequest.Content = serializedBody;
             }
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
             
             Func<Task<PaginationLimitOffsetOffsetBodyResponse?>> nextFunc = async delegate() {
@@ -317,7 +322,7 @@ namespace Openapi
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
-                RawResponse = httpResponse, 
+                RawResponse = httpResponse,
                 Next = nextFunc
             };
             
@@ -327,11 +332,12 @@ namespace Openapi
                 {
                     response.Res = JsonConvert.DeserializeObject<PaginationLimitOffsetOffsetBodyRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<PaginationLimitOffsetOffsetParamsResponse> PaginationLimitOffsetOffsetParamsAsync(long? limit = null, long? offset = null, string? serverUrl = null)
@@ -341,23 +347,24 @@ namespace Openapi
                 Limit = limit,
                 Offset = offset,
             };
-            string baseUrl = PaginationLimitOffsetOffsetParamsSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(PaginationLimitOffsetOffsetParamsServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = URLBuilder.Build(baseUrl, "/pagination/limitoffset/offset", request);
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
             
             Func<Task<PaginationLimitOffsetOffsetParamsResponse?>> nextFunc = async delegate() {
@@ -396,7 +403,7 @@ namespace Openapi
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
-                RawResponse = httpResponse, 
+                RawResponse = httpResponse,
                 Next = nextFunc
             };
             
@@ -406,31 +413,29 @@ namespace Openapi
                 {
                     response.Res = JsonConvert.DeserializeObject<PaginationLimitOffsetOffsetParamsRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<PaginationLimitOffsetPageBodyResponse> PaginationLimitOffsetPageBodyAsync(LimitOffsetConfig request, string? serverUrl = null)
         {
-            string baseUrl = PaginationLimitOffsetPageBodySERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(PaginationLimitOffsetPageBodyServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = baseUrl + "/pagination/limitoffset/page";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json");
-            if (serializedBody == null) 
+            if (serializedBody == null)
             {
                 throw new ArgumentNullException("request body is required");
             }
@@ -439,8 +444,12 @@ namespace Openapi
                 httpRequest.Content = serializedBody;
             }
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
             
             Func<Task<PaginationLimitOffsetPageBodyResponse?>> nextFunc = async delegate() {
@@ -476,7 +485,7 @@ namespace Openapi
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
-                RawResponse = httpResponse, 
+                RawResponse = httpResponse,
                 Next = nextFunc
             };
             
@@ -486,11 +495,12 @@ namespace Openapi
                 {
                     response.Res = JsonConvert.DeserializeObject<PaginationLimitOffsetPageBodyRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<PaginationLimitOffsetPageParamsResponse> PaginationLimitOffsetPageParamsAsync(long page, string? serverUrl = null)
@@ -499,23 +509,24 @@ namespace Openapi
             {
                 Page = page,
             };
-            string baseUrl = PaginationLimitOffsetPageParamsSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
-                baseUrl = serverUrl;
-            }
-            if (baseUrl.EndsWith("/"))
+            string baseUrl = Utilities.TemplateUrl(PaginationLimitOffsetPageParamsServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
             {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+                baseUrl = serverUrl;
             }
             var urlString = URLBuilder.Build(baseUrl, "/pagination/limitoffset/page", request);
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
             
             Func<Task<PaginationLimitOffsetPageParamsResponse?>> nextFunc = async delegate() {
@@ -550,7 +561,7 @@ namespace Openapi
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
-                RawResponse = httpResponse, 
+                RawResponse = httpResponse,
                 Next = nextFunc
             };
             
@@ -560,11 +571,12 @@ namespace Openapi
                 {
                     response.Res = JsonConvert.DeserializeObject<PaginationLimitOffsetPageParamsRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
     }
 }
