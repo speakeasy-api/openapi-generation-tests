@@ -4,6 +4,8 @@
 
 package org.openapis.openapi.models.operations;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -11,6 +13,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class PaginationLimitOffsetOffsetBodyRes {
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("next")
+    public String next;
+
+    public PaginationLimitOffsetOffsetBodyRes withNext(String next) {
+        this.next = next;
+        return this;
+    }
+    
     @JsonProperty("numPages")
     public Long numPages;
 

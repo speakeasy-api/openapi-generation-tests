@@ -11,6 +11,7 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     using System.Collections.Generic;
     using System.Numerics;
     
@@ -20,7 +21,7 @@ namespace Openapi.Models.Operations
     public class ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody
     {
 
-        [JsonProperty("json")]
+        [JsonProperty("json", ItemConverterType = typeof(BigIntSerializer))]
         public Dictionary<string, BigInteger> Json { get; set; } = default!;
     }
 }

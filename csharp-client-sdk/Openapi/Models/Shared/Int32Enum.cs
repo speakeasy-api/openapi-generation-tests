@@ -20,4 +20,5 @@ namespace Openapi.Models.Shared
         SixtyNine = 69,
         OneHundredAndEightyOne = 181,
     }
+
 }
