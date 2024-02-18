@@ -84,6 +84,8 @@ class UsageExamplePostRequest:
     r"""An integer parameter"""
     str_parameter: str = dataclasses.field(metadata={'query_param': { 'field_name': 'strParameter', 'style': 'form', 'explode': True }})
     r"""A string parameter"""
+    request_body: Optional[UsageExamplePostRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    r"""A request body that contains fields with different formats for testing example generation"""
     bigint_parameter_optional: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'bigintParameterOptional', 'style': 'form', 'explode': True }})
     r"""An bigint parameter"""
     bigint_str_parameter_optional: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'bigintStrParameterOptional', 'style': 'form', 'explode': True }})
@@ -94,8 +96,6 @@ class UsageExamplePostRequest:
     r"""A decimal parameter"""
     opt_enum_parameter: Optional[OptEnumParameter] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'optEnumParameter', 'style': 'form', 'explode': True }})
     r"""An enum parameter"""
-    request_body: Optional[UsageExamplePostRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-    r"""A request body that contains fields with different formats for testing example generation"""
     
 
 
@@ -130,9 +130,9 @@ class UsageExamplePostResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     object: Optional[UsageExamplePostResponseBody] = dataclasses.field(default=None)
     r"""A successful response that contains the simpleObject sent in the request body"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    r"""Raw HTTP response; suitable for custom response parsing"""
     
 
