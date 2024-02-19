@@ -8,14 +8,20 @@ import (
 
 type RequestBodyPostFormSimpleForm struct {
 	Any        string  `json:"any"`
+	Bigint     *string `json:"bigint,omitempty"`
+	BigintStr  *string `json:"bigintStr,omitempty"`
 	Bool       string  `json:"bool"`
 	BoolOpt    *string `json:"boolOpt,omitempty"`
 	Date       string  `json:"date"`
 	DateTime   string  `json:"dateTime"`
+	Decimal    *string `json:"decimal,omitempty"`
+	DecimalStr *string `json:"decimalStr,omitempty"`
 	Enum       string  `json:"enum"`
 	Float32    string  `json:"float32"`
 	Int        string  `json:"int"`
 	Int32      string  `json:"int32"`
+	Int32Enum  string  `json:"int32Enum"`
+	IntEnum    string  `json:"intEnum"`
 	IntOptNull *string `json:"intOptNull,omitempty"`
 	Num        string  `json:"num"`
 	NumOptNull *string `json:"numOptNull,omitempty"`
@@ -28,6 +34,20 @@ func (o *RequestBodyPostFormSimpleForm) GetAny() string {
 		return ""
 	}
 	return o.Any
+}
+
+func (o *RequestBodyPostFormSimpleForm) GetBigint() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Bigint
+}
+
+func (o *RequestBodyPostFormSimpleForm) GetBigintStr() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BigintStr
 }
 
 func (o *RequestBodyPostFormSimpleForm) GetBool() string {
@@ -58,6 +78,20 @@ func (o *RequestBodyPostFormSimpleForm) GetDateTime() string {
 	return o.DateTime
 }
 
+func (o *RequestBodyPostFormSimpleForm) GetDecimal() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Decimal
+}
+
+func (o *RequestBodyPostFormSimpleForm) GetDecimalStr() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DecimalStr
+}
+
 func (o *RequestBodyPostFormSimpleForm) GetEnum() string {
 	if o == nil {
 		return ""
@@ -84,6 +118,20 @@ func (o *RequestBodyPostFormSimpleForm) GetInt32() string {
 		return ""
 	}
 	return o.Int32
+}
+
+func (o *RequestBodyPostFormSimpleForm) GetInt32Enum() string {
+	if o == nil {
+		return ""
+	}
+	return o.Int32Enum
+}
+
+func (o *RequestBodyPostFormSimpleForm) GetIntEnum() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntEnum
 }
 
 func (o *RequestBodyPostFormSimpleForm) GetIntOptNull() *string {

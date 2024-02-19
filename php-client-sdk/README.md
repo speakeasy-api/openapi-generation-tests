@@ -1,6 +1,6 @@
 # openapi/openapi
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### Composer
@@ -8,10 +8,11 @@
 ```bash
 composer require "openapi/openapi"
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example 1
 
 ```php
@@ -27,16 +28,72 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->setSecurity($security)
     ->build();
 
 try {
-    $response = $sdk->generation->globalNameOverridden();
+    $request = new Shared\SimpleObject();
+    $request->any = 'any';
+    $request->bigint = 8821239038968084;
+    $request->bigintStr = '9223372036854775808';
+    $request->bool = true;
+    $request->boolOpt = true;
+    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
+    $request->decimal = 3.141592653589793;
+    $request->decimalStr = '3.14159265358979344719667586';
+    $request->enum = Shared\Enum::One;
+    $request->float32 = 1.1;
+    $request->int = 1;
+    $request->int32 = 1;
+    $request->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $request->intEnum = Shared\IntEnum::Second;
+    $request->intOptNull = 930591;
+    $request->num = 1.1;
+    $request->numOptNull = 5244.22;
+    $request->str = 'test';
+    $request->strOpt = 'testOptional';
+
+    $response = $sdk->generation->globalNameOverridden($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
+    // handle exception
+}
+
+```
+
+### Example 2
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)
+    ->build();
+
+try {
+    $response = $sdk->servers->selectGlobalServer();
+
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+} catch (Throwable $e) {
     // handle exception
 }
 
@@ -56,7 +113,10 @@ use OpenAPI\OpenAPI;
 use OpenAPI\OpenAPI\Models\Shared;
 use OpenAPI\OpenAPI\Models\Operations;
 
-$sdk = OpenAPI\SDK::builder()->build();
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
 
 try {
     $request = new Operations\UsageExamplePostRequest();
@@ -73,12 +133,12 @@ try {
     $request->requestBody->fakerFormattedStrings->ipv6Format =
         '36a9:c057:a71b:b73a:c9ee:2348:d76c:3164';
     $request->requestBody->fakerFormattedStrings->jsonFormat =
-        '{key: 66681, key1: null, key2: "string"}';
+        '{key: 66681, key1: null, key2: "<value>"}';
     $request->requestBody->fakerFormattedStrings->macFormat = '25:8b:e7:e1:35:86';
     $request->requestBody->fakerFormattedStrings->passwordFormat = 'IKpiCb6eWzdveK0';
     $request->requestBody->fakerFormattedStrings->phoneFormat = '1-803-587-3283';
     $request->requestBody->fakerFormattedStrings->timezoneFormat = 'America/Argentina/Buenos_Aires';
-    $request->requestBody->fakerFormattedStrings->unknownFormat = 'string';
+    $request->requestBody->fakerFormattedStrings->unknownFormat = '<value>';
     $request->requestBody->fakerFormattedStrings->urlFormat = 'http://beneficial-inconvenience.net';
     $request->requestBody->fakerFormattedStrings->uuidFormat =
         '342442b8-aff3-42e0-b62d-e2e2d47a9bf1';
@@ -86,7 +146,7 @@ try {
     $request->requestBody->fakerStrings = new Shared\FakerStrings();
     $request->requestBody->fakerStrings->city = 'McLaughlinchester';
     $request->requestBody->fakerStrings->iban = 'TL232743267267003560099';
-    $request->requestBody->fakerStrings->id = '<ID>';
+    $request->requestBody->fakerStrings->id = '<id>';
     $request->requestBody->fakerStrings->iPv4 = '208.201.244.247';
     $request->requestBody->fakerStrings->iPv6 = 'bd3a:d72b:208b:2c81:8830:8bb9:7902:374e';
     $request->requestBody->fakerStrings->account = '65982652';
@@ -101,7 +161,7 @@ try {
     $request->requestBody->fakerStrings->countryCode = 'MO';
     $request->requestBody->fakerStrings->currency = 'Canadian Dollar';
     $request->requestBody->fakerStrings->datatype = 'point';
-    $request->requestBody->fakerStrings->default = 'string';
+    $request->requestBody->fakerStrings->default = '<value>';
     $request->requestBody->fakerStrings->description = 'Quality-focused full-range circuit';
     $request->requestBody->fakerStrings->directory = '/usr/ports';
     $request->requestBody->fakerStrings->domainName = 'klutzy-prostacyclin.com';
@@ -114,7 +174,7 @@ try {
     $request->requestBody->fakerStrings->fullName = 'Mrs. Lillian Bode';
     $request->requestBody->fakerStrings->gender = 'Cis female';
     $request->requestBody->fakerStrings->job = 'Future Solutions Specialist';
-    $request->requestBody->fakerStrings->json = '{key: 95274, key1: null, key2: "string"}';
+    $request->requestBody->fakerStrings->json = '{key: 95274, key1: null, key2: "<value>"}';
     $request->requestBody->fakerStrings->key = '<key>';
     $request->requestBody->fakerStrings->lastName = 'Renner';
     $request->requestBody->fakerStrings->latitude = '-71.5944';
@@ -147,7 +207,7 @@ try {
     $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat(
         'Y-m-d\TH:i:s+',
-        '2020-01-01T00:00:00.000000001Z',
+        '2020-01-01T00:00:00.000001Z',
     );
     $request->requestBody->simpleObject->decimal = 3.141592653589793;
     $request->requestBody->simpleObject->decimalStr = '3.14159265358979344719667586';
@@ -164,22 +224,22 @@ try {
     $request->requestBody->simpleObject->strOpt = 'testOptional';
     $request->bigintParameter = 924793;
     $request->bigintParameterOptional = 583481;
-    $request->bigintStrParameter = 'string';
-    $request->bigintStrParameterOptional = 'string';
+    $request->bigintStrParameter = '<value>';
+    $request->bigintStrParameterOptional = '<value>';
     $request->boolParameter = false;
-    $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2023-12-21');
+    $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2024-12-21');
     $request->dateTimeDefaultParameter = DateTime::createFromFormat(
         'Y-m-d\TH:i:s+',
-        '2021-03-16T01:25:42.471Z',
+        '2022-03-16T03:03:06.071Z',
     );
     $request->dateTimeParameter = DateTime::createFromFormat(
         'Y-m-d\TH:i:s+',
-        '2023-05-24T07:01:53.326Z',
+        '2024-05-24T02:10:19.731Z',
     );
     $request->decimalParameter = 4713.96;
     $request->decimalParameterOptional = 9349.54;
-    $request->decimalStrParameter = 'string';
-    $request->decimalStrParameterOptional = 'string';
+    $request->decimalStrParameter = '<value>';
+    $request->decimalStrParameterOptional = '<value>';
     $request->doubleParameter = 8700.78;
     $request->enumParameter = Operations\EnumParameter::Value2;
     $request->falseyNumberParameter = 0;
@@ -199,18 +259,19 @@ try {
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [SDK](docs/sdks/sdk/README.md)
 
+* [conflictingEnum](docs/sdks/sdk/README.md#conflictingenum) - Test potential namespace conflicts with java.lang.Object
 * [putAnythingIgnoredGeneration](docs/sdks/sdk/README.md#putanythingignoredgeneration)
 * [responseBodyJsonGet](docs/sdks/sdk/README.md#responsebodyjsonget)
 
@@ -252,7 +313,9 @@ try {
 * [nullableOneOfTypeInObjectPost](docs/sdks/unions/README.md#nullableoneoftypeinobjectpost)
 * [nullableTypedObjectPost](docs/sdks/unions/README.md#nullabletypedobjectpost)
 * [primitiveTypeOneOfPost](docs/sdks/unions/README.md#primitivetypeoneofpost)
+* [stronglyTypedOneOfDiscriminatedPost](docs/sdks/unions/README.md#stronglytypedoneofdiscriminatedpost)
 * [stronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
+* [stronglyTypedOneOfPostWithNonStandardDiscriminatorName](docs/sdks/unions/README.md#stronglytypedoneofpostwithnonstandarddiscriminatorname)
 * [typedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
 * [typedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
 * [unionBigIntDecimal](docs/sdks/unions/README.md#unionbigintdecimal)
@@ -299,6 +362,12 @@ try {
 * [simplePathParameterMaps](docs/sdks/parameters/README.md#simplepathparametermaps)
 * [simplePathParameterObjects](docs/sdks/parameters/README.md#simplepathparameterobjects)
 * [simplePathParameterPrimitives](docs/sdks/parameters/README.md#simplepathparameterprimitives)
+
+### [Hooks](docs/sdks/hooks/README.md)
+
+* [testHooks](docs/sdks/hooks/README.md#testhooks)
+* [testHooksAfterResponse](docs/sdks/hooks/README.md#testhooksafterresponse)
+* [testHooksError](docs/sdks/hooks/README.md#testhookserror)
 
 ### [NestFirst](docs/sdks/nestfirst/README.md)
 
@@ -371,6 +440,8 @@ try {
 * [requestBodyPostJsonDataTypesBigInt](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesbigint)
 * [requestBodyPostJsonDataTypesBigIntStr](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesbigintstr)
 * [requestBodyPostJsonDataTypesBoolean](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesboolean)
+* [requestBodyPostJsonDataTypesComplexNumberArrays](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypescomplexnumberarrays)
+* [requestBodyPostJsonDataTypesComplexNumberMaps](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypescomplexnumbermaps)
 * [requestBodyPostJsonDataTypesDate](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesdate)
 * [requestBodyPostJsonDataTypesDateTime](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesdatetime)
 * [requestBodyPostJsonDataTypesDecimal](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesdecimal)
@@ -401,6 +472,7 @@ try {
 * [requestBodyPutMultipartDeep](docs/sdks/requestbodies/README.md#requestbodyputmultipartdeep)
 * [requestBodyPutMultipartDifferentFileName](docs/sdks/requestbodies/README.md#requestbodyputmultipartdifferentfilename)
 * [requestBodyPutMultipartFile](docs/sdks/requestbodies/README.md#requestbodyputmultipartfile)
+* [requestBodyPutMultipartOptionalRequestBody](docs/sdks/requestbodies/README.md#requestbodyputmultipartoptionalrequestbody)
 * [requestBodyPutMultipartSimple](docs/sdks/requestbodies/README.md#requestbodyputmultipartsimple)
 * [requestBodyPutString](docs/sdks/requestbodies/README.md#requestbodyputstring)
 * [requestBodyPutStringWithParams](docs/sdks/requestbodies/README.md#requestbodyputstringwithparams)
@@ -414,6 +486,7 @@ try {
 
 ### [ResponseBodies](docs/sdks/responsebodies/README.md)
 
+* [responseBodyAdditionalPropertiesAnyPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesanypost)
 * [responseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
 * [responseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
 * [responseBodyAdditionalPropertiesObjectPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesobjectpost)
@@ -454,17 +527,18 @@ try {
 * [oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [openIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
-### [Documentation](docs/sdks/documentation/README.md)
-
-* [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
-
 ### [Resource](docs/sdks/resource/README.md)
 
 * [createFile](docs/sdks/resource/README.md#createfile)
 * [createResource](docs/sdks/resource/README.md#createresource)
 * [deleteResource](docs/sdks/resource/README.md#deleteresource)
+* [getArrayDataSource](docs/sdks/resource/README.md#getarraydatasource)
 * [getResource](docs/sdks/resource/README.md#getresource)
 * [updateResource](docs/sdks/resource/README.md#updateresource)
+
+### [Documentation](docs/sdks/documentation/README.md)
+
+* [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
 
 ### [First](docs/sdks/first/README.md)
 
@@ -482,21 +556,20 @@ try {
 * [paginationLimitOffsetOffsetParams](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetparams)
 * [paginationLimitOffsetPageBody](docs/sdks/pagination/README.md#paginationlimitoffsetpagebody)
 * [paginationLimitOffsetPageParams](docs/sdks/pagination/README.md#paginationlimitoffsetpageparams)
+* [paginationURLParams](docs/sdks/pagination/README.md#paginationurlparams)
 
 ### [Retries](docs/sdks/retries/README.md)
 
+* [retriesAfter](docs/sdks/retries/README.md#retriesafter)
 * [retriesGet](docs/sdks/retries/README.md#retriesget)
-<!-- End SDK Available Operations -->
+* [retriesPost](docs/sdks/retries/README.md#retriespost)
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
 
 
-
-<!-- Start Global Parameters -->
+<!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
@@ -530,6 +603,8 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->setSecurity($security)
     ->build();
 
@@ -539,12 +614,78 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 
 ```
-<!-- End Global Parameters -->
+<!-- End Global Parameters [global-parameters] -->
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+## Server Selection
+
+### Select Server by Index
+
+You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `http://localhost:35123` | None |
+| 1 | `http://broken` | None |
+| 2 | `http://{hostname}:{port}` | `hostname` (default is `localhost`), `port` (default is `35123`) |
+| 3 | `http://localhost:35123/anything/{something}` | `something` (default is `something`) |
+| 4 | `{protocol}://{hostname}:{port}` | `hostname` (default is `localhost`), `port` (default is `35123`), `protocol` (default is `http`) |
+
+
+
+#### Variables
+
+Some of the server options above contain variables. If you want to set the values of those variables, the following optional parameters are available when initializing the SDK client instance:
+ * `hostname: string`
+ * `port: string`
+ * `something: ServerSomething`
+ * `protocol: string`
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+
+
+### Override Server URL Per-Operation
+
+The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)
+    ->build();
+
+try {
+    $response = $sdk->errors->connectionErrorGet('http://somebrokenapi.broken');
+
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+} catch (Throwable $e) {
+    // handle exception
+}
+
+```
+<!-- End Server Selection [server] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

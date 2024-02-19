@@ -70,6 +70,18 @@ func (o *NullableRequiredPropertyPostRequestBody) GetNullableRequiredInt() *int6
 	return o.NullableRequiredInt
 }
 
+// NullableRequiredPropertyPostResponseBody - OK
+type NullableRequiredPropertyPostResponseBody struct {
+	Data string `json:"data"`
+}
+
+func (o *NullableRequiredPropertyPostResponseBody) GetData() string {
+	if o == nil {
+		return ""
+	}
+	return o.Data
+}
+
 type NullableRequiredPropertyPostResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -78,7 +90,7 @@ type NullableRequiredPropertyPostResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	Res *string
+	Object *NullableRequiredPropertyPostResponseBody
 }
 
 func (o *NullableRequiredPropertyPostResponse) GetContentType() string {
@@ -102,9 +114,9 @@ func (o *NullableRequiredPropertyPostResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *NullableRequiredPropertyPostResponse) GetRes() *string {
+func (o *NullableRequiredPropertyPostResponse) GetObject() *NullableRequiredPropertyPostResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.Res
+	return o.Object
 }

@@ -32,10 +32,9 @@ public class SDKSecond {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.NestedSecondGetResponse res = new org.openapis.openapi.models.operations.NestedSecondGetResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.NestedSecondGetResponse res = new org.openapis.openapi.models.operations.NestedSecondGetResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
         }
