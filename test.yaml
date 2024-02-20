@@ -3422,6 +3422,9 @@ paths:
                 - NullableRequiredInt
                 - NullableRequiredArray
                 - NullableRequiredEnum
+                - NullableRequiredDateTime
+                - NullableRequiredBigIntStr
+                - NullableRequiredDecimalStr
               properties:
                 NullableOptionalInt:
                   type: integer
@@ -3443,6 +3446,21 @@ paths:
                     - first
                     - second
                   example: second
+                NullableRequiredDateTime:
+                  nullable: true
+                  type: string
+                  format: date-time
+                  example: "2024-03-02T01:02:03.000001Z"
+                NullableRequiredBigIntStr:
+                  nullable: true
+                  type: string
+                  format: bigint
+                  example: "9223372036854775807"
+                NullableRequiredDecimalStr:
+                  nullable: true
+                  type: string
+                  format: decimal
+                  example: "3.14159265358979344719667586"
         required: true
       responses:
         "200":
@@ -3454,7 +3472,7 @@ paths:
                 properties:
                   data:
                     type: string
-                    example: "{\"NullableOptionalInt\":0,\"NullableRequiredArray\":null,\"NullableRequiredEnum\":\"second\",\"NullableRequiredInt\":null}"
+                    example: "{\"NullableOptionalInt\":0,\"NullableRequiredArray\":null,\"NullableRequiredBigIntStr\":\"9223372036854775807\",\"NullableRequiredDateTime\":\"2024-03-02T01:02:03.000001Z\",\"NullableRequiredDecimalStr\":\"3.14159265358979344719667586\",\"NullableRequiredEnum\":\"second\",\"NullableRequiredInt\":null}"
                 required:
                   - data
   /anything/requestBodies/post/nullableRequiredSharedObject:
