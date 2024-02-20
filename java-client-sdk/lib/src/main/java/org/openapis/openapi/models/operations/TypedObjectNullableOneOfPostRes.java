@@ -12,14 +12,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TypedObjectNullableOneOfPostRes {
     @JsonProperty("json")
-    public Object json;
+    public java.lang.Object json;
 
-    public TypedObjectNullableOneOfPostRes withJson(Object json) {
+    public TypedObjectNullableOneOfPostRes withJson(java.lang.Object json) {
         this.json = json;
         return this;
     }
     
-    public TypedObjectNullableOneOfPostRes(@JsonProperty("json") Object json) {
+    public TypedObjectNullableOneOfPostRes(@JsonProperty("json") java.lang.Object json) {
         this.json = json;
   }
 }

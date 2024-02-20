@@ -395,6 +395,24 @@ class _RequestBodiesAPI: RequestBodiesAPI {
         )
     }
     
+    public func requestBodyPostJsonDataTypesComplexNumberArrays(request: Shared.ComplexNumberArrays) async throws -> Response<Operations.RequestBodyPostJsonDataTypesComplexNumberArraysResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureRequestBodyPostJsonDataTypesComplexNumberArraysRequest(with: configuration, request: request)
+            },
+            handleResponse: handleRequestBodyPostJsonDataTypesComplexNumberArraysResponse
+        )
+    }
+    
+    public func requestBodyPostJsonDataTypesComplexNumberMaps(request: Shared.ComplexNumberMaps) async throws -> Response<Operations.RequestBodyPostJsonDataTypesComplexNumberMapsResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureRequestBodyPostJsonDataTypesComplexNumberMapsRequest(with: configuration, request: request)
+            },
+            handleResponse: handleRequestBodyPostJsonDataTypesComplexNumberMapsResponse
+        )
+    }
+    
     public func requestBodyPostJsonDataTypesDate(request: Date) async throws -> Response<Operations.RequestBodyPostJsonDataTypesDateResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
@@ -662,6 +680,15 @@ class _RequestBodiesAPI: RequestBodiesAPI {
                 try configureRequestBodyPutMultipartFileRequest(with: configuration, request: request)
             },
             handleResponse: handleRequestBodyPutMultipartFileResponse
+        )
+    }
+    
+    public func requestBodyPutMultipartOptionalRequestBody(request: Operations.RequestBodyPutMultipartOptionalRequestBodyRequestBody) async throws -> Response<Operations.RequestBodyPutMultipartOptionalRequestBodyResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureRequestBodyPutMultipartOptionalRequestBodyRequest(with: configuration, request: request)
+            },
+            handleResponse: handleRequestBodyPutMultipartOptionalRequestBodyResponse
         )
     }
     
@@ -1219,6 +1246,28 @@ private func configureRequestBodyPostJsonDataTypesBooleanRequest(with configurat
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
+private func configureRequestBodyPostJsonDataTypesComplexNumberArraysRequest(with configuration: URLRequestConfiguration, request: Shared.ComplexNumberArrays) throws {
+    configuration.path = "/anything/requestBodies/post/jsonDataTypes/complexNumberArrays"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configureRequestBodyPostJsonDataTypesComplexNumberMapsRequest(with configuration: URLRequestConfiguration, request: Shared.ComplexNumberMaps) throws {
+    configuration.path = "/anything/requestBodies/post/jsonDataTypes/complexNumberMaps"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
 private func configureRequestBodyPostJsonDataTypesDateRequest(with configuration: URLRequestConfiguration, request: Date) throws {
     configuration.path = "/anything/requestBodies/post/jsonDataTypes/date"
     configuration.method = .post
@@ -1552,6 +1601,15 @@ private func configureRequestBodyPutMultipartFileRequest(with configuration: URL
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
+private func configureRequestBodyPutMultipartOptionalRequestBodyRequest(with configuration: URLRequestConfiguration, request: Operations.RequestBodyPutMultipartOptionalRequestBodyRequestBody) throws {
+    configuration.path = "/anything/requestBodies/put/multipart/optionalRequestBody"
+    configuration.method = .put
+    let (boundary, formData) = try serializeMultipartFormData(with: request)
+    configuration.contentType = multipartContentType(with: boundary)
+    configuration.body = formData
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
 private func configureRequestBodyPutMultipartSimpleRequest(with configuration: URLRequestConfiguration, request: Shared.SimpleObject) throws {
     configuration.path = "/anything/requestBodies/put/multipart/simple"
     configuration.method = .put
@@ -1687,10 +1745,11 @@ private func handleNullableRequiredEmptyObjectPostResponse(response: Client.APIR
     
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
-            guard let string = String(data: data, encoding: .utf8) else {
-                throw ResponseHandlerError.failedToDecodeResponse
+            do {
+                return .object(try JSONDecoder().decode(Operations.NullableRequiredEmptyObjectPostResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
             }
-            return .res(string)
         }
     }
 
@@ -1702,10 +1761,11 @@ private func handleNullableRequiredPropertyPostResponse(response: Client.APIResp
     
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
-            guard let string = String(data: data, encoding: .utf8) else {
-                throw ResponseHandlerError.failedToDecodeResponse
+            do {
+                return .object(try JSONDecoder().decode(Operations.NullableRequiredPropertyPostResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
             }
-            return .res(string)
         }
     }
 
@@ -1717,10 +1777,11 @@ private func handleNullableRequiredSharedObjectPostResponse(response: Client.API
     
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
-            guard let string = String(data: data, encoding: .utf8) else {
-                throw ResponseHandlerError.failedToDecodeResponse
+            do {
+                return .object(try JSONDecoder().decode(Operations.NullableRequiredSharedObjectPostResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
             }
-            return .res(string)
         }
     }
 
@@ -2319,6 +2380,38 @@ private func handleRequestBodyPostJsonDataTypesBooleanResponse(response: Client.
     return .empty
 }
 
+private func handleRequestBodyPostJsonDataTypesComplexNumberArraysResponse(response: Client.APIResponse) throws -> Operations.RequestBodyPostJsonDataTypesComplexNumberArraysResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesComplexNumberArraysRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleRequestBodyPostJsonDataTypesComplexNumberMapsResponse(response: Client.APIResponse) throws -> Operations.RequestBodyPostJsonDataTypesComplexNumberMapsResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.RequestBodyPostJsonDataTypesComplexNumberMapsRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
 private func handleRequestBodyPostJsonDataTypesDateResponse(response: Client.APIResponse) throws -> Operations.RequestBodyPostJsonDataTypesDateResponse {
     let httpResponse = response.httpResponse
     
@@ -2790,6 +2883,22 @@ private func handleRequestBodyPutMultipartFileResponse(response: Client.APIRespo
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .res(try JSONDecoder().decode(Operations.RequestBodyPutMultipartFileRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleRequestBodyPutMultipartOptionalRequestBodyResponse(response: Client.APIResponse) throws -> Operations.RequestBodyPutMultipartOptionalRequestBodyResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.RequestBodyPutMultipartOptionalRequestBodyRes.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

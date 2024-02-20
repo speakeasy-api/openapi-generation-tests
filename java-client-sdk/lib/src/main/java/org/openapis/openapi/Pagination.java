@@ -60,6 +60,13 @@ public class Pagination {
         "http://localhost:35456",
     };
 	
+    /**
+	 * PAGINATION_URL_PARAMS_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] PAGINATION_URL_PARAMS_SERVERS = {
+        "http://localhost:35456",
+    };
+	
 	private SDKConfiguration sdkConfiguration;
 
 	public Pagination(SDKConfiguration sdkConfiguration) {
@@ -95,11 +102,10 @@ public class Pagination {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.PaginationCursorBodyResponse res = new org.openapis.openapi.models.operations.PaginationCursorBodyResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.PaginationCursorBodyResponse res = new org.openapis.openapi.models.operations.PaginationCursorBodyResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -144,11 +150,10 @@ public class Pagination {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.PaginationCursorParamsResponse res = new org.openapis.openapi.models.operations.PaginationCursorParamsResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.PaginationCursorParamsResponse res = new org.openapis.openapi.models.operations.PaginationCursorParamsResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -190,11 +195,10 @@ public class Pagination {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.PaginationLimitOffsetOffsetBodyResponse res = new org.openapis.openapi.models.operations.PaginationLimitOffsetOffsetBodyResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.PaginationLimitOffsetOffsetBodyResponse res = new org.openapis.openapi.models.operations.PaginationLimitOffsetOffsetBodyResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -257,11 +261,10 @@ public class Pagination {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.PaginationLimitOffsetOffsetParamsResponse res = new org.openapis.openapi.models.operations.PaginationLimitOffsetOffsetParamsResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.PaginationLimitOffsetOffsetParamsResponse res = new org.openapis.openapi.models.operations.PaginationLimitOffsetOffsetParamsResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -303,11 +306,10 @@ public class Pagination {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.PaginationLimitOffsetPageBodyResponse res = new org.openapis.openapi.models.operations.PaginationLimitOffsetPageBodyResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.PaginationLimitOffsetPageBodyResponse res = new org.openapis.openapi.models.operations.PaginationLimitOffsetPageBodyResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -352,16 +354,68 @@ public class Pagination {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.PaginationLimitOffsetPageParamsResponse res = new org.openapis.openapi.models.operations.PaginationLimitOffsetPageParamsResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.PaginationLimitOffsetPageParamsResponse res = new org.openapis.openapi.models.operations.PaginationLimitOffsetPageParamsResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
                 org.openapis.openapi.models.operations.PaginationLimitOffsetPageParamsRes out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.PaginationLimitOffsetPageParamsRes.class);
+                res.res = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.PaginationURLParamsResponse paginationURLParams(Long attempts) throws Exception {
+        return this.paginationURLParams(attempts, null, null);
+    }
+
+    public org.openapis.openapi.models.operations.PaginationURLParamsResponse paginationURLParams(Long attempts, String serverURL) throws Exception {
+        return this.paginationURLParams(attempts, null, serverURL);
+    }
+
+    public org.openapis.openapi.models.operations.PaginationURLParamsResponse paginationURLParams(Long attempts, String isReferencePath, String serverURL) throws Exception {
+        org.openapis.openapi.models.operations.PaginationURLParamsRequest request = new org.openapis.openapi.models.operations.PaginationURLParamsRequest(attempts);
+        request.isReferencePath=isReferencePath;
+        
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(PAGINATION_URL_PARAMS_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/pagination/url");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("GET");
+        req.setURL(url);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.PaginationURLParamsRequest.class, request, this.sdkConfiguration.globals);
+        if (queryParams != null) {
+            for (NameValuePair queryParam : queryParams) {
+                req.addQueryParam(queryParam);
+            }
+        }
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+        
+        org.openapis.openapi.models.operations.PaginationURLParamsResponse res = new org.openapis.openapi.models.operations.PaginationURLParamsResponse(contentType, httpRes.statusCode(), httpRes) {{
+            res = null;
+        }};
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.PaginationURLParamsRes out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.PaginationURLParamsRes.class);
                 res.res = out;
             }
         }
