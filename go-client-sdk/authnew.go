@@ -8,11 +8,12 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
+	"openapi/v2/internal/hooks"
 	"openapi/v2/pkg/models/operations"
 	"openapi/v2/pkg/models/sdkerrors"
 	"openapi/v2/pkg/models/shared"
 	"openapi/v2/pkg/utils"
-	"strings"
 )
 
 // AuthNew - Endpoints for testing authentication.
@@ -27,6 +28,8 @@ func newAuthNew(sdkConfig sdkConfiguration) *AuthNew {
 }
 
 func (s *AuthNew) APIKeyAuthGlobalNew(ctx context.Context, request shared.AuthServiceRequestBody, opts ...operations.Option) (*operations.APIKeyAuthGlobalNewResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "apiKeyAuthGlobalNew"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -42,35 +45,52 @@ func (s *AuthNew) APIKeyAuthGlobalNew(ctx context.Context, request shared.AuthSe
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/auth#apiKeyAuthGlobal"
+	opURL, err := url.JoinPath(baseURL, "/auth")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"401", "4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.APIKeyAuthGlobalNewResponse{
@@ -85,6 +105,7 @@ func (s *AuthNew) APIKeyAuthGlobalNew(ctx context.Context, request shared.AuthSe
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 	case httpRes.StatusCode == 401:
@@ -99,6 +120,8 @@ func (s *AuthNew) APIKeyAuthGlobalNew(ctx context.Context, request shared.AuthSe
 }
 
 func (s *AuthNew) AuthGlobal(ctx context.Context, request shared.AuthServiceRequestBody, opts ...operations.Option) (*operations.AuthGlobalResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "authGlobal"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -114,35 +137,52 @@ func (s *AuthNew) AuthGlobal(ctx context.Context, request shared.AuthServiceRequ
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/auth#authGlobal"
+	opURL, err := url.JoinPath(baseURL, "/auth")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"401", "4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.AuthGlobalResponse{
@@ -157,6 +197,7 @@ func (s *AuthNew) AuthGlobal(ctx context.Context, request shared.AuthServiceRequ
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 	case httpRes.StatusCode == 401:
@@ -171,6 +212,8 @@ func (s *AuthNew) AuthGlobal(ctx context.Context, request shared.AuthServiceRequ
 }
 
 func (s *AuthNew) BasicAuthNew(ctx context.Context, request shared.AuthServiceRequestBody, security operations.BasicAuthNewSecurity, opts ...operations.Option) (*operations.BasicAuthNewResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "basicAuthNew"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -186,35 +229,52 @@ func (s *AuthNew) BasicAuthNew(ctx context.Context, request shared.AuthServiceRe
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/auth#basicAuth"
+	opURL, err := url.JoinPath(baseURL, "/auth")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"401", "4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.BasicAuthNewResponse{
@@ -229,6 +289,7 @@ func (s *AuthNew) BasicAuthNew(ctx context.Context, request shared.AuthServiceRe
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 	case httpRes.StatusCode == 401:
@@ -243,6 +304,8 @@ func (s *AuthNew) BasicAuthNew(ctx context.Context, request shared.AuthServiceRe
 }
 
 func (s *AuthNew) MultipleMixedOptionsAuth(ctx context.Context, request shared.AuthServiceRequestBody, security operations.MultipleMixedOptionsAuthSecurity, opts ...operations.Option) (*operations.MultipleMixedOptionsAuthResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "multipleMixedOptionsAuth"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -258,35 +321,52 @@ func (s *AuthNew) MultipleMixedOptionsAuth(ctx context.Context, request shared.A
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/auth#multipleMixedOptionsAuth"
+	opURL, err := url.JoinPath(baseURL, "/auth")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"401", "4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.MultipleMixedOptionsAuthResponse{
@@ -301,6 +381,7 @@ func (s *AuthNew) MultipleMixedOptionsAuth(ctx context.Context, request shared.A
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 	case httpRes.StatusCode == 401:
@@ -315,6 +396,8 @@ func (s *AuthNew) MultipleMixedOptionsAuth(ctx context.Context, request shared.A
 }
 
 func (s *AuthNew) MultipleMixedSchemeAuth(ctx context.Context, request shared.AuthServiceRequestBody, security operations.MultipleMixedSchemeAuthSecurity, opts ...operations.Option) (*operations.MultipleMixedSchemeAuthResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "multipleMixedSchemeAuth"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -330,35 +413,52 @@ func (s *AuthNew) MultipleMixedSchemeAuth(ctx context.Context, request shared.Au
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/auth#multipleMixedSchemeAuth"
+	opURL, err := url.JoinPath(baseURL, "/auth")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"401", "4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.MultipleMixedSchemeAuthResponse{
@@ -373,6 +473,7 @@ func (s *AuthNew) MultipleMixedSchemeAuth(ctx context.Context, request shared.Au
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 	case httpRes.StatusCode == 401:
@@ -387,6 +488,8 @@ func (s *AuthNew) MultipleMixedSchemeAuth(ctx context.Context, request shared.Au
 }
 
 func (s *AuthNew) MultipleOptionsWithMixedSchemesAuth(ctx context.Context, request shared.AuthServiceRequestBody, security operations.MultipleOptionsWithMixedSchemesAuthSecurity, opts ...operations.Option) (*operations.MultipleOptionsWithMixedSchemesAuthResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "multipleOptionsWithMixedSchemesAuth"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -402,35 +505,52 @@ func (s *AuthNew) MultipleOptionsWithMixedSchemesAuth(ctx context.Context, reque
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/auth#multipleOptionsWithMixedSchemesAuth"
+	opURL, err := url.JoinPath(baseURL, "/auth")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"401", "4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.MultipleOptionsWithMixedSchemesAuthResponse{
@@ -445,6 +565,7 @@ func (s *AuthNew) MultipleOptionsWithMixedSchemesAuth(ctx context.Context, reque
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 	case httpRes.StatusCode == 401:
@@ -459,6 +580,8 @@ func (s *AuthNew) MultipleOptionsWithMixedSchemesAuth(ctx context.Context, reque
 }
 
 func (s *AuthNew) MultipleOptionsWithSimpleSchemesAuth(ctx context.Context, request shared.AuthServiceRequestBody, security operations.MultipleOptionsWithSimpleSchemesAuthSecurity, opts ...operations.Option) (*operations.MultipleOptionsWithSimpleSchemesAuthResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "multipleOptionsWithSimpleSchemesAuth"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -474,35 +597,52 @@ func (s *AuthNew) MultipleOptionsWithSimpleSchemesAuth(ctx context.Context, requ
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/auth#multipleOptionsWithSimpleSchemesAuth"
+	opURL, err := url.JoinPath(baseURL, "/auth")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"401", "4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.MultipleOptionsWithSimpleSchemesAuthResponse{
@@ -517,6 +657,7 @@ func (s *AuthNew) MultipleOptionsWithSimpleSchemesAuth(ctx context.Context, requ
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 	case httpRes.StatusCode == 401:
@@ -531,6 +672,8 @@ func (s *AuthNew) MultipleOptionsWithSimpleSchemesAuth(ctx context.Context, requ
 }
 
 func (s *AuthNew) MultipleSimpleOptionsAuth(ctx context.Context, request shared.AuthServiceRequestBody, security operations.MultipleSimpleOptionsAuthSecurity, opts ...operations.Option) (*operations.MultipleSimpleOptionsAuthResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "multipleSimpleOptionsAuth"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -546,35 +689,52 @@ func (s *AuthNew) MultipleSimpleOptionsAuth(ctx context.Context, request shared.
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/auth#multipleSimpleOptionsAuth"
+	opURL, err := url.JoinPath(baseURL, "/auth")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"401", "4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.MultipleSimpleOptionsAuthResponse{
@@ -589,6 +749,7 @@ func (s *AuthNew) MultipleSimpleOptionsAuth(ctx context.Context, request shared.
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 	case httpRes.StatusCode == 401:
@@ -603,6 +764,8 @@ func (s *AuthNew) MultipleSimpleOptionsAuth(ctx context.Context, request shared.
 }
 
 func (s *AuthNew) MultipleSimpleSchemeAuth(ctx context.Context, request shared.AuthServiceRequestBody, security operations.MultipleSimpleSchemeAuthSecurity, opts ...operations.Option) (*operations.MultipleSimpleSchemeAuthResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "multipleSimpleSchemeAuth"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -618,35 +781,52 @@ func (s *AuthNew) MultipleSimpleSchemeAuth(ctx context.Context, request shared.A
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/auth#multipleSimpleSchemeAuth"
+	opURL, err := url.JoinPath(baseURL, "/auth")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"401", "4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.MultipleSimpleSchemeAuthResponse{
@@ -661,6 +841,7 @@ func (s *AuthNew) MultipleSimpleSchemeAuth(ctx context.Context, request shared.A
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 	case httpRes.StatusCode == 401:
@@ -675,6 +856,8 @@ func (s *AuthNew) MultipleSimpleSchemeAuth(ctx context.Context, request shared.A
 }
 
 func (s *AuthNew) Oauth2AuthNew(ctx context.Context, request shared.AuthServiceRequestBody, security operations.Oauth2AuthNewSecurity, opts ...operations.Option) (*operations.Oauth2AuthNewResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "oauth2AuthNew"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -690,35 +873,52 @@ func (s *AuthNew) Oauth2AuthNew(ctx context.Context, request shared.AuthServiceR
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/auth#oauth2Auth"
+	opURL, err := url.JoinPath(baseURL, "/auth")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"401", "4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.Oauth2AuthNewResponse{
@@ -733,6 +933,7 @@ func (s *AuthNew) Oauth2AuthNew(ctx context.Context, request shared.AuthServiceR
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 	case httpRes.StatusCode == 401:
@@ -747,6 +948,8 @@ func (s *AuthNew) Oauth2AuthNew(ctx context.Context, request shared.AuthServiceR
 }
 
 func (s *AuthNew) OpenIDConnectAuthNew(ctx context.Context, request shared.AuthServiceRequestBody, security operations.OpenIDConnectAuthNewSecurity, opts ...operations.Option) (*operations.OpenIDConnectAuthNewResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "openIdConnectAuthNew"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -762,35 +965,52 @@ func (s *AuthNew) OpenIDConnectAuthNew(ctx context.Context, request shared.AuthS
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/auth#openIdConnectAuth"
+	opURL, err := url.JoinPath(baseURL, "/auth")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"401", "4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.OpenIDConnectAuthNewResponse{
@@ -805,6 +1025,7 @@ func (s *AuthNew) OpenIDConnectAuthNew(ctx context.Context, request shared.AuthS
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 	case httpRes.StatusCode == 401:

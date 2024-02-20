@@ -46,15 +46,16 @@ public class NullableRequiredSharedObjectPostResponse {
      * OK
      */
     
-    public String res;
+    public NullableRequiredSharedObjectPostResponseBody object;
 
-    public NullableRequiredSharedObjectPostResponse withRes(String res) {
-        this.res = res;
+    public NullableRequiredSharedObjectPostResponse withObject(NullableRequiredSharedObjectPostResponseBody object) {
+        this.object = object;
         return this;
     }
     
-    public NullableRequiredSharedObjectPostResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode) {
+    public NullableRequiredSharedObjectPostResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode, @JsonProperty("RawResponse") HttpResponse<byte[]> rawResponse) {
         this.contentType = contentType;
         this.statusCode = statusCode;
+        this.rawResponse = rawResponse;
   }
 }
