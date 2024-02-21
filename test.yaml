@@ -6703,6 +6703,33 @@ paths:
         statusCodes:
           - 503
         retryConnectionErrors: false
+  /retriesConnectError:
+    get:
+      operationId: retriesConnectErrorGet
+      description: A request to a non-valid port to test connection errors
+      servers:
+        - url: http://localhost:33333
+      tags:
+        - retries
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: retries
+                type: object
+                properties:
+                  retries:
+                    type: integer
+                required:
+                  - retries
+      x-speakeasy-retries:
+        strategy: backoff
+        # Using extension defaults
+        statusCodes:
+          - "5XX"
+        retryConnectionErrors: false
   /eventstreams/json:
     post:
       tags:
