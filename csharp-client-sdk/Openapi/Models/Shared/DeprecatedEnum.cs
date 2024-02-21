@@ -23,6 +23,7 @@ namespace Openapi.Models.Shared
         C,
     }
 
+#pragma warning disable 0618
     public static class DeprecatedEnumExtension
     {
         public static string Value(this DeprecatedEnum value)
@@ -55,4 +56,6 @@ namespace Openapi.Models.Shared
             throw new Exception($"Unknown value {value} for enum DeprecatedEnum");
         }
     }
+#pragma warning restore 0618
+
 }

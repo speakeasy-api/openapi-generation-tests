@@ -12,3 +12,13 @@ def test_global_security_flattening():
     res = s.auth.api_key_auth_global()
     assert res is not None
     assert res.status_code == 200
+
+def test_global_security_flattening_callback():
+    record_test("auth-global-security-flattening-callback")
+
+    s = SDK(api_key_auth=lambda: "Bearer testToken" )
+    assert s is not None
+
+    res = s.auth.api_key_auth_global()
+    assert res is not None
+    assert res.status_code == 200

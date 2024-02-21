@@ -35,7 +35,7 @@ Endpoints for purely testing valid generation behavior.
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -44,19 +44,21 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.generation.anchorTypesGet();
+  const result = await sdk.generation.anchorTypesGet();
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -66,7 +68,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## arrayCircularReferenceGet
 
@@ -75,7 +77,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -84,19 +86,21 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.generation.arrayCircularReferenceGet();
+  const result = await sdk.generation.arrayCircularReferenceGet();
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -106,7 +110,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## circularReferenceGet
 
@@ -115,7 +119,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -124,19 +128,21 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.generation.circularReferenceGet();
+  const result = await sdk.generation.circularReferenceGet();
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -146,7 +152,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## dateParamWithDefault
 
@@ -154,10 +160,9 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { DateParamWithDefaultRequest } from "openapi/dist/sdk/models/operations";
-import { RFCDate } from "openapi/dist/sdk/types";
+import { RFCDate } from "openapi/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -165,22 +170,25 @@ import { RFCDate } from "openapi/dist/sdk/types";
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const dateInput: RFCDate = new RFCDate("2021-11-30");
 
-  const res = await sdk.generation.dateParamWithDefault(dateInput);
+  const dateInput = new RFCDate("2022-11-30");
+  
+  const result = await sdk.generation.dateParamWithDefault(dateInput);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `dateInput`                                                  | [RFCDate](../../types/rfcdate.md)                            | :heavy_check_mark:                                           | A date parameter with a default value                        |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `dateInput`                                                                                                                                                                    | [RFCDate](../../types/rfcdate.md)                                                                                                                                              | :heavy_check_mark:                                                                                                                                                             | A date parameter with a default value                                                                                                                                          |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -190,7 +198,7 @@ const dateInput: RFCDate = new RFCDate("2021-11-30");
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## dateTimeParamWithDefault
 
@@ -198,9 +206,8 @@ const dateInput: RFCDate = new RFCDate("2021-11-30");
 
 ```typescript
 import { SDK } from "openapi";
-import { DateTimeParamWithDefaultRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -208,22 +215,25 @@ import { DateTimeParamWithDefaultRequest } from "openapi/dist/sdk/models/operati
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const dateTimeInput: Date = new Date("2023-02-09T21:53:21.077Z");
 
-  const res = await sdk.generation.dateTimeParamWithDefault(dateTimeInput);
+  const dateTimeInput = new Date("2024-02-10T14:45:50.302Z");
+  
+  const result = await sdk.generation.dateTimeParamWithDefault(dateTimeInput);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `dateTimeInput`                                                                               | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | A date time parameter with a default value                                                    |
-| `config`                                                                                      | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                  | :heavy_minus_sign:                                                                            | Available config options for making requests.                                                 |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `dateTimeInput`                                                                                                                                                                | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                                  | :heavy_check_mark:                                                                                                                                                             | A date time parameter with a default value                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -233,7 +243,7 @@ const dateTimeInput: Date = new Date("2023-02-09T21:53:21.077Z");
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## decimalParamWithDefault
 
@@ -241,9 +251,9 @@ const dateTimeInput: Date = new Date("2023-02-09T21:53:21.077Z");
 
 ```typescript
 import { SDK } from "openapi";
-import { DecimalParamWithDefaultRequest } from "openapi/dist/sdk/models/operations";
+import { Decimal } from "openapi/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -251,22 +261,25 @@ import { DecimalParamWithDefaultRequest } from "openapi/dist/sdk/models/operatio
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const decimalInput: number = 4060.06;
 
-  const res = await sdk.generation.decimalParamWithDefault(decimalInput);
+  const decimalInput = new Decimal("4060.06");
+  
+  const result = await sdk.generation.decimalParamWithDefault(decimalInput);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `decimalInput`                                               | *number*                                                     | :heavy_check_mark:                                           | A decimal parameter with a default value                     |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `decimalInput`                                                                                                                                                                 | *Decimal*                                                                                                                                                                      | :heavy_check_mark:                                                                                                                                                             | A decimal parameter with a default value                                                                                                                                       |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -276,7 +289,7 @@ const decimalInput: number = 4060.06;
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## deprecatedFieldInSchemaPost
 
@@ -284,9 +297,8 @@ const decimalInput: number = 4060.06;
 
 ```typescript
 import { SDK } from "openapi";
-import { DeprecatedEnum } from "openapi/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -295,20 +307,22 @@ import { DeprecatedEnum } from "openapi/dist/sdk/models/shared";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.generation.deprecatedFieldInSchemaPost({});
+  const result = await sdk.generation.deprecatedFieldInSchemaPost({});
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [shared.DeprecatedFieldInObject](../../sdk/models/shared/deprecatedfieldinobject.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [shared.DeprecatedFieldInObject](../../sdk/models/shared/deprecatedfieldinobject.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -318,7 +332,7 @@ import { DeprecatedEnum } from "openapi/dist/sdk/models/shared";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## deprecatedObjectInSchemaGet
 
@@ -327,7 +341,7 @@ import { DeprecatedEnum } from "openapi/dist/sdk/models/shared";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -336,19 +350,21 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.generation.deprecatedObjectInSchemaGet();
+  const result = await sdk.generation.deprecatedObjectInSchemaGet();
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -358,7 +374,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## ~~deprecatedOperationNoCommentsGet~~
 
@@ -368,9 +384,8 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { DeprecatedOperationNoCommentsGetRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -378,22 +393,25 @@ import { DeprecatedOperationNoCommentsGetRequest } from "openapi/dist/sdk/models
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const deprecatedParameter: string = "string";
 
-  const res = await sdk.generation.deprecatedOperationNoCommentsGet(deprecatedParameter);
+  const deprecatedParameter = "<value>";
+  
+  const result = await sdk.generation.deprecatedOperationNoCommentsGet(deprecatedParameter);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                               | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
-| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `deprecatedParameter`                                                                                                   | *string*                                                                                                                | :heavy_minus_sign:                                                                                                      | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible. |
-| `config`                                                                                                                | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                            | :heavy_minus_sign:                                                                                                      | Available config options for making requests.                                                                           |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `deprecatedParameter`                                                                                                                                                          | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.                                                        |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -403,7 +421,7 @@ const deprecatedParameter: string = "string";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## ~~deprecatedOperationWithCommentsGet~~
 
@@ -415,9 +433,8 @@ This is an endpoint setup to test deprecation with comments
 
 ```typescript
 import { SDK } from "openapi";
-import { DeprecatedOperationWithCommentsGetRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -425,24 +442,27 @@ import { DeprecatedOperationWithCommentsGetRequest } from "openapi/dist/sdk/mode
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const deprecatedParameter: string = "string";
-const newParameter: string = "string";
 
-  const res = await sdk.generation.deprecatedOperationWithCommentsGet(deprecatedParameter, newParameter);
+  const deprecatedParameter = "<value>";
+  const newParameter = "<value>";
+  
+  const result = await sdk.generation.deprecatedOperationWithCommentsGet(deprecatedParameter, newParameter);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `deprecatedParameter`                                                                                            | *string*                                                                                                         | :heavy_minus_sign:                                                                                               | : warning: ** DEPRECATED **: This parameter is deprecated. Use newParameter instead.<br/><br/>This is a string parameter |
-| `newParameter`                                                                                                   | *string*                                                                                                         | :heavy_minus_sign:                                                                                               | This is a string parameter                                                                                       |
-| `config`                                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                     | :heavy_minus_sign:                                                                                               | Available config options for making requests.                                                                    |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `deprecatedParameter`                                                                                                                                                          | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | : warning: ** DEPRECATED **: This parameter is deprecated. Use newParameter instead.<br/><br/>This is a string parameter                                                       |
+| `newParameter`                                                                                                                                                                 | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | This is a string parameter                                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -452,7 +472,7 @@ const newParameter: string = "string";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## emptyObjectGet
 
@@ -460,10 +480,8 @@ const newParameter: string = "string";
 
 ```typescript
 import { SDK } from "openapi";
-import { EmptyObjectGetRequest } from "openapi/dist/sdk/models/operations";
-import { EmptyObjectParam } from "openapi/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -471,22 +489,25 @@ import { EmptyObjectParam } from "openapi/dist/sdk/models/shared";
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const emptyObject: EmptyObjectParam = {};
 
-  const res = await sdk.generation.emptyObjectGet(emptyObject);
+  const emptyObject = {};
+  
+  const result = await sdk.generation.emptyObjectGet(emptyObject);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `emptyObject`                                                             | [shared.EmptyObjectParam](../../../sdk/models/shared/emptyobjectparam.md) | :heavy_check_mark:                                                        | N/A                                                                       |
-| `config`                                                                  | [AxiosRequestConfig](https://axios-http.com/docs/req_config)              | :heavy_minus_sign:                                                        | Available config options for making requests.                             |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `emptyObject`                                                                                                                                                                  | [shared.EmptyObjectParam](../../sdk/models/shared/emptyobjectparam.md)                                                                                                         | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -496,7 +517,7 @@ const emptyObject: EmptyObjectParam = {};
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## emptyResponseObjectWithCommentGet
 
@@ -505,7 +526,7 @@ const emptyObject: EmptyObjectParam = {};
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -514,19 +535,21 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.generation.emptyResponseObjectWithCommentGet();
+  const result = await sdk.generation.emptyResponseObjectWithCommentGet();
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -536,7 +559,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## globalNameOverridden
 
@@ -544,8 +567,10 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
+import { Enum, Int32Enum, IntEnum } from "openapi/sdk/models/shared";
+import { Decimal, RFCDate } from "openapi/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -554,19 +579,41 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.generation.globalNameOverridden();
+  const result = await sdk.generation.globalNameOverridden({
+    bool: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00.000001Z"),
+    enum: Enum.One,
+    float32: 1.1,
+    int: 1,
+    int32: 1,
+    int32Enum: Int32Enum.FiftyFive,
+    intEnum: IntEnum.Second,
+    num: 1.1,
+    str: "test",
+    any: "any",
+    bigint: BigInt(8821239038968084),
+    bigintStr: BigInt(9223372036854775808),
+    boolOpt: true,
+    decimal: new Decimal("3.141592653589793"),
+    decimalStr: new Decimal("3.14159265358979344719667586"),
+    strOpt: "testOptional",
+  });
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [shared.SimpleObject](../../sdk/models/shared/simpleobject.md)                                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -576,7 +623,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## ignoredGenerationGet
 
@@ -585,7 +632,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -594,19 +641,21 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.generation.ignoredGenerationGet();
+  const result = await sdk.generation.ignoredGenerationGet();
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -616,7 +665,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## ignoresPost
 
@@ -624,9 +673,8 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { IgnoresPostRequest, IgnoresPostRequestBody } from "openapi/dist/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -634,24 +682,27 @@ import { IgnoresPostRequest, IgnoresPostRequestBody } from "openapi/dist/sdk/mod
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const requestBody: IgnoresPostRequestBody = {};
-const testParam: string = "string";
 
-  const res = await sdk.generation.ignoresPost(requestBody, testParam);
+  const requestBody = {};
+  const testParam = "<value>";
+  
+  const result = await sdk.generation.ignoresPost(requestBody, testParam);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                 | [operations.IgnoresPostRequestBody](../../../sdk/models/operations/ignorespostrequestbody.md) | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `testParam`                                                                                   | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
-| `config`                                                                                      | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                  | :heavy_minus_sign:                                                                            | Available config options for making requests.                                                 |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `requestBody`                                                                                                                                                                  | [operations.IgnoresPostRequestBody](../../sdk/models/operations/ignorespostrequestbody.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `testParam`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -661,7 +712,7 @@ const testParam: string = "string";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## nameOverride
 
@@ -669,9 +720,9 @@ const testParam: string = "string";
 
 ```typescript
 import { SDK } from "openapi";
-import { EnumNameOverride, NameOverrideGetRequest } from "openapi/dist/sdk/models/operations";
+import { EnumNameOverride } from "openapi/sdk/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -679,24 +730,27 @@ import { EnumNameOverride, NameOverrideGetRequest } from "openapi/dist/sdk/model
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const testEnumQueryParam: EnumNameOverride = EnumNameOverride.Value3;
-const testQueryParam: string = "example";
 
-  const res = await sdk.generation.nameOverride(testEnumQueryParam, testQueryParam);
+  const testEnumQueryParam = EnumNameOverride.Value3;
+  const testQueryParam = "example";
+  
+  const result = await sdk.generation.nameOverride(testEnumQueryParam, testQueryParam);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `testEnumQueryParam`                                                              | [operations.EnumNameOverride](../../../sdk/models/operations/enumnameoverride.md) | :heavy_check_mark:                                                                | An enum type                                                                      | value3                                                                            |
-| `testQueryParam`                                                                  | *string*                                                                          | :heavy_check_mark:                                                                | N/A                                                                               | example                                                                           |
-| `config`                                                                          | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                      | :heavy_minus_sign:                                                                | Available config options for making requests.                                     |                                                                                   |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `testEnumQueryParam`                                                                                                                                                           | [operations.EnumNameOverride](../../sdk/models/operations/enumnameoverride.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | An enum type                                                                                                                                                                   | [object Object]                                                                                                                                                                |
+| `testQueryParam`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 
 
 ### Response
@@ -706,7 +760,7 @@ const testQueryParam: string = "example";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## objectCircularReferenceGet
 
@@ -715,7 +769,7 @@ const testQueryParam: string = "example";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -724,19 +778,21 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.generation.objectCircularReferenceGet();
+  const result = await sdk.generation.objectCircularReferenceGet();
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -746,7 +802,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## oneOfCircularReferenceGet
 
@@ -755,7 +811,7 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -764,19 +820,21 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.generation.oneOfCircularReferenceGet();
+  const result = await sdk.generation.oneOfCircularReferenceGet();
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -786,7 +844,7 @@ import { SDK } from "openapi";
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## typedParameterGenerationGet
 
@@ -794,10 +852,9 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { Obj, TypedParameterGenerationGetRequest } from "openapi/dist/sdk/models/operations";
-import { RFCDate } from "openapi/dist/sdk/types";
+import { Decimal, RFCDate } from "openapi/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     security: {
       apiKeyAuth: "Token YOUR_API_KEY",
@@ -805,32 +862,35 @@ import { RFCDate } from "openapi/dist/sdk/types";
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const bigint: number = 879275;
-const date: RFCDate = new RFCDate("2023-11-18");
-const decimal: number = 3346.96;
-const obj: Obj = {
-  bool: false,
-  num: 4778.06,
-  str: "string",
-};
 
-  const res = await sdk.generation.typedParameterGenerationGet(bigint, date, decimal, obj);
+  const bigint = BigInt(879275);
+  const date = new RFCDate("2024-11-18");
+  const decimal = new Decimal("3346.96");
+  const obj = {
+    bool: false,
+    num: 4778.06,
+    str: "<value>",
+  };
+  
+  const result = await sdk.generation.typedParameterGenerationGet(bigint, date, decimal, obj);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `bigint`                                                     | *number*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `date`                                                       | [RFCDate](../../types/rfcdate.md)                            | :heavy_minus_sign:                                           | N/A                                                          |
-| `decimal`                                                    | *number*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `obj`                                                        | [operations.Obj](../../../sdk/models/operations/obj.md)      | :heavy_minus_sign:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `bigint`                                                                                                                                                                       | *BigInt*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `date`                                                                                                                                                                         | [RFCDate](../../types/rfcdate.md)                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `decimal`                                                                                                                                                                      | *Decimal*                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `obj`                                                                                                                                                                          | [operations.Obj](../../sdk/models/operations/obj.md)                                                                                                                           | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -840,7 +900,7 @@ const obj: Obj = {
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## usageExamplePost
 
@@ -853,34 +913,29 @@ Usage example docs
 
 ```typescript
 import { SDK } from "openapi";
-import { EnumParameter, OptEnumParameter, UsageExamplePostSecurity } from "openapi/dist/sdk/models/operations";
-import { Enum, Int32Enum, IntEnum } from "openapi/dist/sdk/models/shared";
-import { RFCDate } from "openapi/dist/sdk/types";
+import { EnumParameter, OptEnumParameter } from "openapi/sdk/models/operations";
+import { Enum, Int32Enum, IntEnum } from "openapi/sdk/models/shared";
+import { Decimal, RFCDate } from "openapi/sdk/types";
 
-(async() => {
+async function run() {
   const sdk = new SDK({
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const operationSecurity: UsageExamplePostSecurity = {
-  password: "YOUR_PASSWORD",
-  username: "YOUR_USERNAME",
-};
 
-  const res = await sdk.generation.usageExamplePost({
+  const operationSecurity = {
+    password: "YOUR_PASSWORD",
+    username: "YOUR_USERNAME",
+  };
+  
+  const result = await sdk.generation.usageExamplePost({
     requestBody: {
       fakerFormattedStrings: {},
       fakerStrings: {},
       simpleObject: {
-        any: "any",
-        bigint: 8821239038968084,
-        bigintStr: "9223372036854775808",
         bool: true,
-        boolOpt: true,
         date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-        decimal: 3.141592653589793,
-        decimalStr: "3.14159265358979344719667586",
+        dateTime: new Date("2020-01-01T00:00:00.000001Z"),
         enum: Enum.One,
         float32: 1.1,
         int: 1,
@@ -889,41 +944,49 @@ const operationSecurity: UsageExamplePostSecurity = {
         intEnum: IntEnum.Second,
         num: 1.1,
         str: "test",
+        any: "any",
+        bigint: BigInt(8821239038968084),
+        bigintStr: BigInt(9223372036854775808),
+        boolOpt: true,
+        decimal: new Decimal("3.141592653589793"),
+        decimalStr: new Decimal("3.14159265358979344719667586"),
         strOpt: "testOptional",
       },
     },
-    bigintParameter: 168827,
-    bigintStrParameter: "string",
+    bigintParameter: BigInt(168827),
+    bigintStrParameter: BigInt(446729),
     boolParameter: false,
-    dateParameter: new RFCDate("2022-05-05"),
-    dateTimeDefaultParameter: new Date("2023-06-11T00:39:45.412Z"),
-    dateTimeParameter: new Date("2022-07-22T13:16:48.221Z"),
-    decimalParameter: 2679.33,
-    decimalStrParameter: "string",
-    doubleParameter: 5223.72,
+    dateParameter: new RFCDate("2024-06-10"),
+    dateTimeDefaultParameter: new Date("2023-07-23T01:43:10.512Z"),
+    dateTimeParameter: new Date("2022-10-21T15:42:48.223Z"),
+    decimalParameter: new Decimal("5223.72"),
+    decimalStrParameter: new Decimal("2911.37"),
+    doubleParameter: 6946.59,
     enumParameter: EnumParameter.Value1,
     falseyNumberParameter: 0,
-    float32Parameter: 6946.59,
-    floatParameter: 2286.22,
-    int64Parameter: 102975,
-    intParameter: 566999,
+    float32Parameter: 1029.75,
+    floatParameter: 5669.99,
+    int64Parameter: 195232,
+    intParameter: 569663,
     optEnumParameter: OptEnumParameter.Value3,
     strParameter: "example 1",
   }, operationSecurity);
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+  // Handle the result
+  console.log(result)
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `request`                                                                                      | [operations.UsageExamplePostRequest](../../sdk/models/operations/usageexamplepostrequest.md)   | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
-| `security`                                                                                     | [operations.UsageExamplePostSecurity](../../sdk/models/operations/usageexamplepostsecurity.md) | :heavy_check_mark:                                                                             | The security requirements to use for the request.                                              |
-| `config`                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                   | :heavy_minus_sign:                                                                             | Available config options for making requests.                                                  |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.UsageExamplePostRequest](../../sdk/models/operations/usageexamplepostrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.UsageExamplePostSecurity](../../sdk/models/operations/usageexamplepostsecurity.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -933,4 +996,4 @@ const operationSecurity: UsageExamplePostSecurity = {
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

@@ -29,11 +29,11 @@ namespace Openapi.Models.Operations
         /// <summary>
         /// Raw HTTP response; suitable for custom response parsing
         /// </summary>
-        public HttpResponseMessage? RawResponse { get; set; }
+        public HttpResponseMessage RawResponse { get; set; } = default!;
 
         /// <summary>
         /// OK
         /// </summary>
-        public string? Res { get; set; }
+        public NullableRequiredSharedObjectPostResponseBody? Object { get; set; }
     }
 }

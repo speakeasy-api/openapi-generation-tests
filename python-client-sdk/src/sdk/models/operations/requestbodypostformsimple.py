@@ -19,9 +19,15 @@ class RequestBodyPostFormSimpleForm:
     float32: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('float32') }})
     int: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int') }})
     int32: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int32') }})
+    int32_enum: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int32Enum') }})
+    int_enum: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('intEnum') }})
     num: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('num') }})
     str_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('str') }})
+    bigint: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bigint'), 'exclude': lambda f: f is None }})
+    bigint_str: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bigintStr'), 'exclude': lambda f: f is None }})
     bool_opt: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('boolOpt'), 'exclude': lambda f: f is None }})
+    decimal: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('decimal'), 'exclude': lambda f: f is None }})
+    decimal_str: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('decimalStr'), 'exclude': lambda f: f is None }})
     int_opt_null: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('intOptNull'), 'exclude': lambda f: f is None }})
     num_opt_null: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('numOptNull'), 'exclude': lambda f: f is None }})
     str_opt: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('strOpt'), 'exclude': lambda f: f is None }})
@@ -53,7 +59,7 @@ class RequestBodyPostFormSimpleResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
     res: Optional[RequestBodyPostFormSimpleRes] = dataclasses.field(default=None)
     r"""OK"""

@@ -19,6 +19,9 @@ namespace Openapi.Models.Operations
     public class PaginationLimitOffsetPageBodyRes
     {
 
+        [JsonProperty("next")]
+        public string? Next { get; set; }
+
         [JsonProperty("numPages")]
         public long NumPages { get; set; } = default!;
 

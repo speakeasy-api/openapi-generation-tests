@@ -69,6 +69,16 @@ class _PaginationAPI: PaginationAPI {
             handleResponse: handlePaginationLimitOffsetPageParamsResponse
         )
     }
+    
+    public func paginationURLParams(request: Operations.PaginationURLParamsRequest, server: PaginationServers.PaginationURLParams?) async throws -> Response<Operations.PaginationURLParamsResponse> {
+        return try await client.makeRequest(
+            with: try server?.server() ?? PaginationServers.PaginationURLParams.default(),
+            configureRequest: { configuration in
+                try configurePaginationURLParamsRequest(with: configuration, request: request)
+            },
+            handleResponse: handlePaginationURLParamsResponse
+        )
+    }
 
 }
 
@@ -123,6 +133,13 @@ private func configurePaginationLimitOffsetPageBodyRequest(with configuration: U
 
 private func configurePaginationLimitOffsetPageParamsRequest(with configuration: URLRequestConfiguration, request: Operations.PaginationLimitOffsetPageParamsRequest) throws {
     configuration.path = "/pagination/limitoffset/page"
+    configuration.method = .get
+    configuration.queryParameterSerializable = request
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configurePaginationURLParamsRequest(with configuration: URLRequestConfiguration, request: Operations.PaginationURLParamsRequest) throws {
+    configuration.path = "/pagination/url"
     configuration.method = .get
     configuration.queryParameterSerializable = request
     configuration.telemetryHeader = .speakeasyUserAgent
@@ -217,6 +234,22 @@ private func handlePaginationLimitOffsetPageParamsResponse(response: Client.APIR
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .res(try JSONDecoder().decode(Operations.PaginationLimitOffsetPageParamsRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handlePaginationURLParamsResponse(response: Client.APIResponse) throws -> Operations.PaginationURLParamsResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.PaginationURLParamsRes.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

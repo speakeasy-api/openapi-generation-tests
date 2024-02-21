@@ -2,8 +2,11 @@
 
 from __future__ import annotations
 import dataclasses
+import dateutil.parser
 import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
+from datetime import datetime
+from decimal import Decimal
 from enum import Enum
 from sdk import utils
 from typing import List, Optional
@@ -16,10 +19,23 @@ class NullableRequiredEnum(str, Enum):
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class NullableRequiredPropertyPostRequestBody:
+    UNSET='__SPEAKEASY_UNSET__'
     nullable_required_array: Optional[List[float]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredArray') }})
+    nullable_required_big_int_str: Optional[int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredBigIntStr'), 'encoder': utils.bigintencoder(False), 'decoder': utils.bigintdecoder }})
+    nullable_required_date_time: Optional[datetime] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredDateTime'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }})
+    nullable_required_decimal_str: Optional[Decimal] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredDecimalStr'), 'encoder': utils.decimalencoder(False, True), 'decoder': utils.decimaldecoder }})
     nullable_required_enum: Optional[NullableRequiredEnum] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredEnum') }})
     nullable_required_int: Optional[int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredInt') }})
-    nullable_optional_int: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOptionalInt') }})
+    nullable_optional_int: Optional[int] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOptionalInt'), 'exclude': lambda f: f is NullableRequiredPropertyPostRequestBody.UNSET }})
+    
+
+
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class NullableRequiredPropertyPostResponseBody:
+    r"""OK"""
+    data: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     
 
 
@@ -30,9 +46,9 @@ class NullableRequiredPropertyPostResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
-    res: Optional[str] = dataclasses.field(default=None)
+    object: Optional[NullableRequiredPropertyPostResponseBody] = dataclasses.field(default=None)
     r"""OK"""
     
 

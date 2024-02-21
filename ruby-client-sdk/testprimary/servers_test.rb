@@ -59,7 +59,7 @@ module OpenApiSDK
       
       refute_nil sdk
 
-      res = sdk.servers.select_server_with_id(Operations::SELECT_SERVER_WITH_ID_SERVERS[:SELECT_SERVER_WITH_ID_SERVER_VALID])
+      res = sdk.servers.select_server_with_id(::OpenApiSDK::Servers::SELECT_SERVER_WITH_ID_SERVERS[::OpenApiSDK::Servers::SELECT_SERVER_WITH_ID_SERVERS_VALID])
 
       refute_nil res
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
@@ -74,7 +74,7 @@ module OpenApiSDK
 
       error = nil
       begin
-        res = sdk.servers.select_server_with_id(Operations::SELECT_SERVER_WITH_ID_SERVERS[:SELECT_SERVER_WITH_ID_SERVER_BROKEN])
+        res = sdk.servers.select_server_with_id(::OpenApiSDK::Servers::SELECT_SERVER_WITH_ID_SERVERS[::OpenApiSDK::Servers::SELECT_SERVER_WITH_ID_SERVERS_BROKEN])
       rescue Faraday::ConnectionFailed => e
         error = e
       end
@@ -108,7 +108,7 @@ module OpenApiSDK
     def test_server_with_templates_global_enum
       record_test('servers-server-with-templates-global-enum')
   
-      sdk = SDK.new(server_idx: 3, something: ServerSomething::SOMETHING_ELSE_AGAIN)
+      sdk = SDK.new(server_idx: 3, something: ::OpenApiSDK::ServerVariables::ServerSomething::SOMETHING_ELSE_AGAIN)
 
       res = sdk.servers.server_with_templates_global
 
@@ -123,7 +123,7 @@ module OpenApiSDK
 
       res = sdk.servers.server_with_templates(
         Utils.template_url(
-          Operations::SERVER_WITH_TEMPLATES_SERVERS[0], 
+          ::OpenApiSDK::Servers::SERVER_WITH_TEMPLATES_SERVERS[0], 
           {
             hostname: 'localhost',
             port: '35123'

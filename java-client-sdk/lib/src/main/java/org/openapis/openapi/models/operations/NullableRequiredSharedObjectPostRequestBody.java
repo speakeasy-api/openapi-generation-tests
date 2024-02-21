@@ -12,9 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class NullableRequiredSharedObjectPostRequestBody {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("NullableOptionalObj")
-    public org.openapis.openapi.models.shared.NullableObject nullableOptionalObj;
+    public org.openapis.openapi.models.shared.NullableOptionalObject nullableOptionalObj;
 
-    public NullableRequiredSharedObjectPostRequestBody withNullableOptionalObj(org.openapis.openapi.models.shared.NullableObject nullableOptionalObj) {
+    public NullableRequiredSharedObjectPostRequestBody withNullableOptionalObj(org.openapis.openapi.models.shared.NullableOptionalObject nullableOptionalObj) {
         this.nullableOptionalObj = nullableOptionalObj;
         return this;
     }
