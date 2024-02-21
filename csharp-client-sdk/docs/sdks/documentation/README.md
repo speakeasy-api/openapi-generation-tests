@@ -25,10 +25,9 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Documentation.GetDocumentationPerLanguageAsync("string");
+var res = await sdk.Documentation.GetDocumentationPerLanguageAsync(language: "<value>");
 
 // handle response
 ```

@@ -33,7 +33,7 @@ class DeprecatedObjectInSchemaGetResponse
      * @var ?\Psr\Http\Message\ResponseInterface $rawResponse
      */
 	
-    public ?\Psr\Http\Message\ResponseInterface $rawResponse = null;
+    public ?\Psr\Http\Message\ResponseInterface $rawResponse;
     
     /**
      * A successful response that contains a deprecatedObject sent in the request body

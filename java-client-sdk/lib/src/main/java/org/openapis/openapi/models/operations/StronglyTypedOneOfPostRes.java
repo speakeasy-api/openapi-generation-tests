@@ -12,14 +12,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class StronglyTypedOneOfPostRes {
     @JsonProperty("json")
-    public Object json;
+    public java.lang.Object json;
 
-    public StronglyTypedOneOfPostRes withJson(Object json) {
+    public StronglyTypedOneOfPostRes withJson(java.lang.Object json) {
         this.json = json;
         return this;
     }
     
-    public StronglyTypedOneOfPostRes(@JsonProperty("json") Object json) {
+    public StronglyTypedOneOfPostRes(@JsonProperty("json") java.lang.Object json) {
         this.json = json;
   }
 }

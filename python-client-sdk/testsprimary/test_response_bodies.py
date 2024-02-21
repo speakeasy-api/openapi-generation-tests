@@ -7,7 +7,7 @@ from sdk.responsebodies import ResponseBodyOptionalGetAcceptEnum
 from sdk.utils import *
 
 from .common_helpers import *
-from .helpers import *
+from .test_helpers import *
 
 
 def test_response_body_json_get():

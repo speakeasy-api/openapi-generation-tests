@@ -13,6 +13,7 @@ from typing import Dict, List, Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ObjWithObjAdditionalProperties:
+    UNSET='__SPEAKEASY_UNSET__'
     additional_properties: List[int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('AdditionalProperties') }})
     datetime_: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('datetime'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }})
     additional_properties_t: Optional[Dict[str, SimpleObject]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'exclude': lambda f: f is None }})

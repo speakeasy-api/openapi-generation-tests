@@ -11,12 +11,19 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 
 class Headers
 {
-	#[\JMS\Serializer\Annotation\SerializedName('X-Header-Array')]
+	#[\JMS\Serializer\Annotation\SerializedName('Client-Level-Header')]
     #[\JMS\Serializer\Annotation\Type('string')]
-    public string $xHeaderArray;
+    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    public ?string $clientLevelHeader = null;
+    
+	#[\JMS\Serializer\Annotation\SerializedName('Idempotency-Key')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    public ?string $idempotencyKey = null;
     
 	public function __construct()
 	{
-		$this->xHeaderArray = "";
+		$this->clientLevelHeader = null;
+		$this->idempotencyKey = null;
 	}
 }

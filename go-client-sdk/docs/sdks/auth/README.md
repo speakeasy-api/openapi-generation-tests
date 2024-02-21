@@ -25,10 +25,10 @@ Endpoints for testing authentication.
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
+	"log"
 )
 
 func main() {
@@ -67,7 +67,7 @@ func main() {
 **[*operations.APIKeyAuthResponse](../../pkg/models/operations/apikeyauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## APIKeyAuthGlobal
 
@@ -77,10 +77,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -116,7 +116,7 @@ func main() {
 **[*operations.APIKeyAuthGlobalResponse](../../pkg/models/operations/apikeyauthglobalresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## BasicAuth
 
@@ -126,10 +126,10 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
+	"log"
 )
 
 func main() {
@@ -139,9 +139,9 @@ func main() {
     )
 
 
-    var passwd string = "string"
+    var passwd string = "<value>"
 
-    var user string = "string"
+    var user string = "<value>"
 
     operationSecurity := operations.BasicAuthSecurity{
             Password: "YOUR_PASSWORD",
@@ -175,7 +175,7 @@ func main() {
 **[*operations.BasicAuthResponse](../../pkg/models/operations/basicauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## BearerAuth
 
@@ -185,10 +185,10 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
+	"log"
 )
 
 func main() {
@@ -227,7 +227,7 @@ func main() {
 **[*operations.BearerAuthResponse](../../pkg/models/operations/bearerauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GlobalBearerAuth
 
@@ -237,10 +237,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -276,7 +276,7 @@ func main() {
 **[*operations.GlobalBearerAuthResponse](../../pkg/models/operations/globalbearerauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## NoAuth
 
@@ -286,17 +286,14 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
@@ -325,7 +322,7 @@ func main() {
 **[*operations.NoAuthResponse](../../pkg/models/operations/noauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Oauth2Auth
 
@@ -335,10 +332,10 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
+	"log"
 )
 
 func main() {
@@ -377,7 +374,7 @@ func main() {
 **[*operations.Oauth2AuthResponse](../../pkg/models/operations/oauth2authresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Oauth2Override
 
@@ -387,10 +384,10 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
+	"log"
 )
 
 func main() {
@@ -429,7 +426,7 @@ func main() {
 **[*operations.Oauth2OverrideResponse](../../pkg/models/operations/oauth2overrideresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## OpenIDConnectAuth
 
@@ -439,10 +436,10 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
+	"log"
 )
 
 func main() {
@@ -481,4 +478,4 @@ func main() {
 **[*operations.OpenIDConnectAuthResponse](../../pkg/models/operations/openidconnectauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
