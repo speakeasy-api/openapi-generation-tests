@@ -12,14 +12,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MixedTypeOneOfPostRes {
     @JsonProperty("json")
-    public Object json;
+    public java.lang.Object json;
 
-    public MixedTypeOneOfPostRes withJson(Object json) {
+    public MixedTypeOneOfPostRes withJson(java.lang.Object json) {
         this.json = json;
         return this;
     }
     
-    public MixedTypeOneOfPostRes(@JsonProperty("json") Object json) {
+    public MixedTypeOneOfPostRes(@JsonProperty("json") java.lang.Object json) {
         this.json = json;
   }
 }

@@ -10,12 +10,13 @@ import (
 	"io"
 	"math/big"
 	"net/http"
+	"net/url"
+	"openapi/v2/internal/hooks"
 	"openapi/v2/pkg/models/operations"
 	"openapi/v2/pkg/models/sdkerrors"
 	"openapi/v2/pkg/models/shared"
 	"openapi/v2/pkg/types"
 	"openapi/v2/pkg/utils"
-	"strings"
 	"time"
 )
 
@@ -31,36 +32,55 @@ func newRequestBodies(sdkConfig sdkConfiguration) *RequestBodies {
 }
 
 func (s *RequestBodies) NullableObjectPost(ctx context.Context, request *shared.NullableObject) (*operations.NullableObjectPostResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "nullableObjectPost"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/nullableRequiredObject"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/nullableRequiredObject")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, true, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.NullableObjectPostResponse{
@@ -75,6 +95,7 @@ func (s *RequestBodies) NullableObjectPost(ctx context.Context, request *shared.
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -98,36 +119,55 @@ func (s *RequestBodies) NullableObjectPost(ctx context.Context, request *shared.
 }
 
 func (s *RequestBodies) NullableRequiredEmptyObjectPost(ctx context.Context, request operations.NullableRequiredEmptyObjectPostRequestBody) (*operations.NullableRequiredEmptyObjectPostResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "nullableRequiredEmptyObjectPost"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/nullableRequiredEmptyObject"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/nullableRequiredEmptyObject")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.NullableRequiredEmptyObjectPostResponse{
@@ -142,12 +182,17 @@ func (s *RequestBodies) NullableRequiredEmptyObjectPost(ctx context.Context, req
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			out := string(rawBody)
-			res.Res = &out
+			var out operations.NullableRequiredEmptyObjectPostResponseBody
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -161,36 +206,55 @@ func (s *RequestBodies) NullableRequiredEmptyObjectPost(ctx context.Context, req
 }
 
 func (s *RequestBodies) NullableRequiredPropertyPost(ctx context.Context, request operations.NullableRequiredPropertyPostRequestBody) (*operations.NullableRequiredPropertyPostResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "nullableRequiredPropertyPost"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/nullableRequiredProperty"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/nullableRequiredProperty")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.NullableRequiredPropertyPostResponse{
@@ -205,12 +269,17 @@ func (s *RequestBodies) NullableRequiredPropertyPost(ctx context.Context, reques
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			out := string(rawBody)
-			res.Res = &out
+			var out operations.NullableRequiredPropertyPostResponseBody
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -224,36 +293,55 @@ func (s *RequestBodies) NullableRequiredPropertyPost(ctx context.Context, reques
 }
 
 func (s *RequestBodies) NullableRequiredSharedObjectPost(ctx context.Context, request operations.NullableRequiredSharedObjectPostRequestBody) (*operations.NullableRequiredSharedObjectPostResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "nullableRequiredSharedObjectPost"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/nullableRequiredSharedObject"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/nullableRequiredSharedObject")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.NullableRequiredSharedObjectPostResponse{
@@ -268,12 +356,17 @@ func (s *RequestBodies) NullableRequiredSharedObjectPost(ctx context.Context, re
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			out := string(rawBody)
-			res.Res = &out
+			var out operations.NullableRequiredSharedObjectPostResponseBody
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -287,6 +380,8 @@ func (s *RequestBodies) NullableRequiredSharedObjectPost(ctx context.Context, re
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONArray(ctx context.Context, request []shared.SimpleObject, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonArray"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -302,35 +397,52 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArray(ctx context.Context,
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/requestbody#array"
+	opURL, err := url.JoinPath(baseURL, "/requestbody")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONArrayResponse{
@@ -345,6 +457,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArray(ctx context.Context,
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -368,6 +481,8 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArray(ctx context.Context,
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONArrayCamelCase(ctx context.Context, request []shared.SimpleObjectCamelCase, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayCamelCaseResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonArrayCamelCase"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -383,35 +498,52 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayCamelCase(ctx context
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/requestbody#arrayCamelCase"
+	opURL, err := url.JoinPath(baseURL, "/requestbody")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONArrayCamelCaseResponse{
@@ -426,6 +558,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayCamelCase(ctx context
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -449,36 +582,55 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayCamelCase(ctx context
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONArrayObj(ctx context.Context, request []shared.SimpleObject) (*operations.RequestBodyPostApplicationJSONArrayObjResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonArrayObj"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/application/json/array/objResponse"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/application/json/array/objResponse")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONArrayObjResponse{
@@ -493,6 +645,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayObj(ctx context.Conte
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -516,36 +669,55 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayObj(ctx context.Conte
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONArrayObjCamelCase(ctx context.Context, request []shared.SimpleObjectCamelCase) (*operations.RequestBodyPostApplicationJSONArrayObjCamelCaseResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonArrayObjCamelCase"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/application/json/array/objResponseCamelCase"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/application/json/array/objResponseCamelCase")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONArrayObjCamelCaseResponse{
@@ -560,6 +732,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayObjCamelCase(ctx cont
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -583,6 +756,8 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayObjCamelCase(ctx cont
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfArray(ctx context.Context, request [][]shared.SimpleObject, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayOfArrayResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonArrayOfArray"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -598,35 +773,52 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfArray(ctx context.C
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/requestbody#arrayOfArrays"
+	opURL, err := url.JoinPath(baseURL, "/requestbody")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONArrayOfArrayResponse{
@@ -641,6 +833,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfArray(ctx context.C
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -664,6 +857,8 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfArray(ctx context.C
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfArrayCamelCase(ctx context.Context, request [][]shared.SimpleObjectCamelCase, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayOfArrayCamelCaseResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonArrayOfArrayCamelCase"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -679,35 +874,52 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfArrayCamelCase(ctx 
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/requestbody#arrayOfArraysCamelCase"
+	opURL, err := url.JoinPath(baseURL, "/requestbody")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONArrayOfArrayCamelCaseResponse{
@@ -722,6 +934,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfArrayCamelCase(ctx 
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -745,6 +958,8 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfArrayCamelCase(ctx 
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfArrayOfPrimitive(ctx context.Context, request [][]string, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonArrayOfArrayOfPrimitive"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -760,35 +975,52 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfArrayOfPrimitive(ct
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/requestbody#arrayOfArraysOfPrimitives"
+	opURL, err := url.JoinPath(baseURL, "/requestbody")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse{
@@ -803,6 +1035,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfArrayOfPrimitive(ct
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -826,6 +1059,8 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfArrayOfPrimitive(ct
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfMap(ctx context.Context, request []map[string]shared.SimpleObject, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayOfMapResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonArrayOfMap"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -841,35 +1076,52 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfMap(ctx context.Con
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/requestbody#arrayOfMaps"
+	opURL, err := url.JoinPath(baseURL, "/requestbody")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONArrayOfMapResponse{
@@ -884,6 +1136,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfMap(ctx context.Con
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -907,6 +1160,8 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfMap(ctx context.Con
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfMapCamelCase(ctx context.Context, request []map[string]shared.SimpleObjectCamelCase, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayOfMapCamelCaseResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonArrayOfMapCamelCase"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -922,35 +1177,52 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfMapCamelCase(ctx co
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/requestbody#arrayOfMapsCamelCase"
+	opURL, err := url.JoinPath(baseURL, "/requestbody")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONArrayOfMapCamelCaseResponse{
@@ -965,6 +1237,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfMapCamelCase(ctx co
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -988,6 +1261,8 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfMapCamelCase(ctx co
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfPrimitive(ctx context.Context, request []string, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONArrayOfPrimitiveResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonArrayOfPrimitive"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -1003,35 +1278,52 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfPrimitive(ctx conte
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/requestbody#arrayOfPrimitives"
+	opURL, err := url.JoinPath(baseURL, "/requestbody")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONArrayOfPrimitiveResponse{
@@ -1046,6 +1338,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfPrimitive(ctx conte
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1069,36 +1362,55 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONArrayOfPrimitive(ctx conte
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONDeep(ctx context.Context, request shared.DeepObject) (*operations.RequestBodyPostApplicationJSONDeepResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonDeep"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/application/json/deep"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/application/json/deep")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONDeepResponse{
@@ -1113,6 +1425,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONDeep(ctx context.Context, 
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1136,36 +1449,55 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONDeep(ctx context.Context, 
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONDeepCamelCase(ctx context.Context, request shared.DeepObjectCamelCase) (*operations.RequestBodyPostApplicationJSONDeepCamelCaseResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonDeepCamelCase"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/application/json/deep/camelcase"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/application/json/deep/camelcase")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONDeepCamelCaseResponse{
@@ -1180,6 +1512,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONDeepCamelCase(ctx context.
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1203,6 +1536,8 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONDeepCamelCase(ctx context.
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONMap(ctx context.Context, request map[string]shared.SimpleObject, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonMap"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -1218,35 +1553,52 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMap(ctx context.Context, r
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/requestbody#map"
+	opURL, err := url.JoinPath(baseURL, "/requestbody")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONMapResponse{
@@ -1261,6 +1613,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMap(ctx context.Context, r
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1284,6 +1637,8 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMap(ctx context.Context, r
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONMapCamelCase(ctx context.Context, request map[string]shared.SimpleObjectCamelCase, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapCamelCaseResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonMapCamelCase"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -1299,35 +1654,52 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapCamelCase(ctx context.C
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/requestbody#mapCamelCase"
+	opURL, err := url.JoinPath(baseURL, "/requestbody")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONMapCamelCaseResponse{
@@ -1342,6 +1714,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapCamelCase(ctx context.C
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1365,36 +1738,55 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapCamelCase(ctx context.C
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONMapObj(ctx context.Context, request map[string]shared.SimpleObject) (*operations.RequestBodyPostApplicationJSONMapObjResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonMapObj"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/application/json/map/objResponse"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/application/json/map/objResponse")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONMapObjResponse{
@@ -1409,6 +1801,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapObj(ctx context.Context
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1432,36 +1825,55 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapObj(ctx context.Context
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONMapObjCamelCase(ctx context.Context, request map[string]shared.SimpleObjectCamelCase) (*operations.RequestBodyPostApplicationJSONMapObjCamelCaseResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonMapObjCamelCase"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/application/json/map/objResponseCamelCase"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/application/json/map/objResponseCamelCase")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONMapObjCamelCaseResponse{
@@ -1476,6 +1888,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapObjCamelCase(ctx contex
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1499,6 +1912,8 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapObjCamelCase(ctx contex
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfArray(ctx context.Context, request map[string][]shared.SimpleObject, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapOfArrayResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonMapOfArray"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -1514,35 +1929,52 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfArray(ctx context.Con
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/requestbody#mapOfArrays"
+	opURL, err := url.JoinPath(baseURL, "/requestbody")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONMapOfArrayResponse{
@@ -1557,6 +1989,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfArray(ctx context.Con
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1580,6 +2013,8 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfArray(ctx context.Con
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfArrayCamelCase(ctx context.Context, request map[string][]shared.SimpleObjectCamelCase, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapOfArrayCamelCaseResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonMapOfArrayCamelCase"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -1595,35 +2030,52 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfArrayCamelCase(ctx co
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/requestbody#mapOfArraysCamelCase"
+	opURL, err := url.JoinPath(baseURL, "/requestbody")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONMapOfArrayCamelCaseResponse{
@@ -1638,6 +2090,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfArrayCamelCase(ctx co
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1661,6 +2114,8 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfArrayCamelCase(ctx co
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfMap(ctx context.Context, request map[string]map[string]shared.SimpleObject, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapOfMapResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonMapOfMap"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -1676,35 +2131,52 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfMap(ctx context.Conte
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/requestbody#mapOfMaps"
+	opURL, err := url.JoinPath(baseURL, "/requestbody")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONMapOfMapResponse{
@@ -1719,6 +2191,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfMap(ctx context.Conte
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1742,6 +2215,8 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfMap(ctx context.Conte
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfMapCamelCase(ctx context.Context, request map[string]map[string]shared.SimpleObjectCamelCase, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapOfMapCamelCaseResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonMapOfMapCamelCase"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -1757,35 +2232,52 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfMapCamelCase(ctx cont
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/requestbody#mapOfMapsCamelCase"
+	opURL, err := url.JoinPath(baseURL, "/requestbody")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONMapOfMapCamelCaseResponse{
@@ -1800,6 +2292,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfMapCamelCase(ctx cont
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1823,6 +2316,8 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfMapCamelCase(ctx cont
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfMapOfPrimitive(ctx context.Context, request map[string]map[string]string, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapOfMapOfPrimitiveResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonMapOfMapOfPrimitive"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -1838,35 +2333,52 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfMapOfPrimitive(ctx co
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/requestbody#mapOfMapsOfPrimitives"
+	opURL, err := url.JoinPath(baseURL, "/requestbody")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONMapOfMapOfPrimitiveResponse{
@@ -1881,6 +2393,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfMapOfPrimitive(ctx co
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1904,6 +2417,8 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfMapOfPrimitive(ctx co
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfPrimitive(ctx context.Context, request map[string]string, opts ...operations.Option) (*operations.RequestBodyPostApplicationJSONMapOfPrimitiveResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonMapOfPrimitive"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -1919,35 +2434,52 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfPrimitive(ctx context
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/requestbody#mapOfPrimitives"
+	opURL, err := url.JoinPath(baseURL, "/requestbody")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONMapOfPrimitiveResponse{
@@ -1962,6 +2494,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfPrimitive(ctx context
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1985,36 +2518,55 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMapOfPrimitive(ctx context
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONMultipleJSONFiltered(ctx context.Context, request shared.SimpleObject) (*operations.RequestBodyPostApplicationJSONMultipleJSONFilteredResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonMultipleJsonFiltered"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/application/json/multiple/json/filtered"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/application/json/multiple/json/filtered")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONMultipleJSONFilteredResponse{
@@ -2029,6 +2581,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMultipleJSONFiltered(ctx c
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -2052,36 +2605,55 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONMultipleJSONFiltered(ctx c
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONSimple(ctx context.Context, request shared.SimpleObject) (*operations.RequestBodyPostApplicationJSONSimpleResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonSimple"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/application/json/simple"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/application/json/simple")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONSimpleResponse{
@@ -2096,6 +2668,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONSimple(ctx context.Context
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -2119,36 +2692,55 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONSimple(ctx context.Context
 }
 
 func (s *RequestBodies) RequestBodyPostApplicationJSONSimpleCamelCase(ctx context.Context, request shared.SimpleObjectCamelCase) (*operations.RequestBodyPostApplicationJSONSimpleCamelCaseResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostApplicationJsonSimpleCamelCase"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/application/json/camelcase"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/application/json/camelcase")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostApplicationJSONSimpleCamelCaseResponse{
@@ -2163,6 +2755,7 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONSimpleCamelCase(ctx contex
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -2186,43 +2779,59 @@ func (s *RequestBodies) RequestBodyPostApplicationJSONSimpleCamelCase(ctx contex
 }
 
 func (s *RequestBodies) RequestBodyPostComplexNumberTypes(ctx context.Context, request operations.RequestBodyPostComplexNumberTypesRequest) (*operations.RequestBodyPostComplexNumberTypesResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostComplexNumberTypes"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/anything/requestBodies/post/{pathBigInt}/{pathBigIntStr}/{pathDecimal}/{pathDecimalStr}/complex-number-types", request, s.sdkConfiguration.Globals)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/anything/requestBodies/post/{pathBigInt}/{pathBigIntStr}/{pathDecimal}/{pathDecimalStr}/complex-number-types", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "ComplexNumberTypes", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostComplexNumberTypesResponse{
@@ -2237,6 +2846,7 @@ func (s *RequestBodies) RequestBodyPostComplexNumberTypes(ctx context.Context, r
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -2260,36 +2870,55 @@ func (s *RequestBodies) RequestBodyPostComplexNumberTypes(ctx context.Context, r
 }
 
 func (s *RequestBodies) RequestBodyPostDefaultsAndConsts(ctx context.Context, request shared.DefaultsAndConsts) (*operations.RequestBodyPostDefaultsAndConstsResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostDefaultsAndConsts"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/defaultsAndConsts"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/defaultsAndConsts")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostDefaultsAndConstsResponse{
@@ -2304,6 +2933,7 @@ func (s *RequestBodies) RequestBodyPostDefaultsAndConsts(ctx context.Context, re
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -2327,36 +2957,55 @@ func (s *RequestBodies) RequestBodyPostDefaultsAndConsts(ctx context.Context, re
 }
 
 func (s *RequestBodies) RequestBodyPostEmptyObject(ctx context.Context, request operations.RequestBodyPostEmptyObjectRequestBody) (*operations.RequestBodyPostEmptyObjectResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostEmptyObject"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/empty-object"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/empty-object")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostEmptyObjectResponse{
@@ -2371,6 +3020,7 @@ func (s *RequestBodies) RequestBodyPostEmptyObject(ctx context.Context, request 
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -2394,36 +3044,55 @@ func (s *RequestBodies) RequestBodyPostEmptyObject(ctx context.Context, request 
 }
 
 func (s *RequestBodies) RequestBodyPostFormDeep(ctx context.Context, request shared.DeepObject) (*operations.RequestBodyPostFormDeepResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostFormDeep"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/form/deep"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/form/deep")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "form", `request:"mediaType=application/x-www-form-urlencoded"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostFormDeepResponse{
@@ -2438,6 +3107,7 @@ func (s *RequestBodies) RequestBodyPostFormDeep(ctx context.Context, request sha
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -2461,36 +3131,55 @@ func (s *RequestBodies) RequestBodyPostFormDeep(ctx context.Context, request sha
 }
 
 func (s *RequestBodies) RequestBodyPostFormMapPrimitive(ctx context.Context, request map[string]string) (*operations.RequestBodyPostFormMapPrimitiveResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostFormMapPrimitive"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/form/map/primitive"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/form/map/primitive")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "form", `request:"mediaType=application/x-www-form-urlencoded"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostFormMapPrimitiveResponse{
@@ -2505,6 +3194,7 @@ func (s *RequestBodies) RequestBodyPostFormMapPrimitive(ctx context.Context, req
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -2528,36 +3218,55 @@ func (s *RequestBodies) RequestBodyPostFormMapPrimitive(ctx context.Context, req
 }
 
 func (s *RequestBodies) RequestBodyPostFormSimple(ctx context.Context, request shared.SimpleObject) (*operations.RequestBodyPostFormSimpleResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostFormSimple"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/form/simple"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/form/simple")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "form", `request:"mediaType=application/x-www-form-urlencoded"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostFormSimpleResponse{
@@ -2572,6 +3281,7 @@ func (s *RequestBodies) RequestBodyPostFormSimple(ctx context.Context, request s
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -2595,36 +3305,55 @@ func (s *RequestBodies) RequestBodyPostFormSimple(ctx context.Context, request s
 }
 
 func (s *RequestBodies) RequestBodyPostJSONDataTypesArrayBigInt(ctx context.Context, request []*big.Int) (*operations.RequestBodyPostJSONDataTypesArrayBigIntResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesArrayBigInt"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/array/bigInt"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/array/bigInt")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostJSONDataTypesArrayBigIntResponse{
@@ -2639,6 +3368,7 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesArrayBigInt(ctx context.Cont
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -2662,36 +3392,55 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesArrayBigInt(ctx context.Cont
 }
 
 func (s *RequestBodies) RequestBodyPostJSONDataTypesArrayDate(ctx context.Context, request []types.Date) (*operations.RequestBodyPostJSONDataTypesArrayDateResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesArrayDate"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/array/date"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/array/date")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostJSONDataTypesArrayDateResponse{
@@ -2706,6 +3455,7 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesArrayDate(ctx context.Contex
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -2729,36 +3479,55 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesArrayDate(ctx context.Contex
 }
 
 func (s *RequestBodies) RequestBodyPostJSONDataTypesArrayDecimalStr(ctx context.Context, request []*decimal.Big) (*operations.RequestBodyPostJSONDataTypesArrayDecimalStrResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesArrayDecimalStr"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/array/decimalStr"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/array/decimalStr")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostJSONDataTypesArrayDecimalStrResponse{
@@ -2773,6 +3542,7 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesArrayDecimalStr(ctx context.
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -2796,36 +3566,55 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesArrayDecimalStr(ctx context.
 }
 
 func (s *RequestBodies) RequestBodyPostJSONDataTypesBigInt(ctx context.Context, request *big.Int) (*operations.RequestBodyPostJSONDataTypesBigIntResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesBigInt"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/bigint"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/bigint")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostJSONDataTypesBigIntResponse{
@@ -2840,6 +3629,7 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesBigInt(ctx context.Context, 
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -2863,36 +3653,55 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesBigInt(ctx context.Context, 
 }
 
 func (s *RequestBodies) RequestBodyPostJSONDataTypesBigIntStr(ctx context.Context, request *big.Int) (*operations.RequestBodyPostJSONDataTypesBigIntStrResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesBigIntStr"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/bigintStr"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/bigintStr")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `bigint:"string" request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostJSONDataTypesBigIntStrResponse{
@@ -2907,6 +3716,7 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesBigIntStr(ctx context.Contex
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -2930,36 +3740,55 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesBigIntStr(ctx context.Contex
 }
 
 func (s *RequestBodies) RequestBodyPostJSONDataTypesBoolean(ctx context.Context, request bool) (*operations.RequestBodyPostJSONDataTypesBooleanResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesBoolean"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/boolean"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/boolean")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostJSONDataTypesBooleanResponse{
@@ -2974,6 +3803,7 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesBoolean(ctx context.Context,
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -2996,37 +3826,230 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesBoolean(ctx context.Context,
 	return res, nil
 }
 
-func (s *RequestBodies) RequestBodyPostJSONDataTypesDate(ctx context.Context, request types.Date) (*operations.RequestBodyPostJSONDataTypesDateResponse, error) {
+func (s *RequestBodies) RequestBodyPostJSONDataTypesComplexNumberArrays(ctx context.Context, request shared.ComplexNumberArrays) (*operations.RequestBodyPostJSONDataTypesComplexNumberArraysResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesComplexNumberArrays"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/date"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/complexNumberArrays")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesComplexNumberArraysResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
 	}
 
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out operations.RequestBodyPostJSONDataTypesComplexNumberArraysRes
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			res.Res = &out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *RequestBodies) RequestBodyPostJSONDataTypesComplexNumberMaps(ctx context.Context, request shared.ComplexNumberMaps) (*operations.RequestBodyPostJSONDataTypesComplexNumberMapsResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesComplexNumberMaps"}
+
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/complexNumberMaps")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesComplexNumberMapsResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out operations.RequestBodyPostJSONDataTypesComplexNumberMapsRes
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			res.Res = &out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *RequestBodies) RequestBodyPostJSONDataTypesDate(ctx context.Context, request types.Date) (*operations.RequestBodyPostJSONDataTypesDateResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesDate"}
+
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/date")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostJSONDataTypesDateResponse{
@@ -3041,6 +4064,7 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesDate(ctx context.Context, re
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -3064,36 +4088,55 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesDate(ctx context.Context, re
 }
 
 func (s *RequestBodies) RequestBodyPostJSONDataTypesDateTime(ctx context.Context, request time.Time) (*operations.RequestBodyPostJSONDataTypesDateTimeResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesDateTime"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/dateTime"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/dateTime")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostJSONDataTypesDateTimeResponse{
@@ -3108,6 +4151,7 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesDateTime(ctx context.Context
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -3131,36 +4175,55 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesDateTime(ctx context.Context
 }
 
 func (s *RequestBodies) RequestBodyPostJSONDataTypesDecimal(ctx context.Context, request *decimal.Big) (*operations.RequestBodyPostJSONDataTypesDecimalResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesDecimal"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/decimal"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/decimal")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `decimal:"number" request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostJSONDataTypesDecimalResponse{
@@ -3175,6 +4238,7 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesDecimal(ctx context.Context,
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -3198,36 +4262,55 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesDecimal(ctx context.Context,
 }
 
 func (s *RequestBodies) RequestBodyPostJSONDataTypesDecimalStr(ctx context.Context, request *decimal.Big) (*operations.RequestBodyPostJSONDataTypesDecimalStrResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesDecimalStr"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/decimalStr"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/decimalStr")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostJSONDataTypesDecimalStrResponse{
@@ -3242,6 +4325,7 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesDecimalStr(ctx context.Conte
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -3265,36 +4349,55 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesDecimalStr(ctx context.Conte
 }
 
 func (s *RequestBodies) RequestBodyPostJSONDataTypesFloat32(ctx context.Context, request float64) (*operations.RequestBodyPostJSONDataTypesFloat32Response, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesFloat32"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/float32"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/float32")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostJSONDataTypesFloat32Response{
@@ -3309,6 +4412,7 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesFloat32(ctx context.Context,
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -3332,36 +4436,55 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesFloat32(ctx context.Context,
 }
 
 func (s *RequestBodies) RequestBodyPostJSONDataTypesInt32(ctx context.Context, request int) (*operations.RequestBodyPostJSONDataTypesInt32Response, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesInt32"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/int32"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/int32")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostJSONDataTypesInt32Response{
@@ -3376,6 +4499,7 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesInt32(ctx context.Context, r
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -3399,36 +4523,55 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesInt32(ctx context.Context, r
 }
 
 func (s *RequestBodies) RequestBodyPostJSONDataTypesInteger(ctx context.Context, request int64) (*operations.RequestBodyPostJSONDataTypesIntegerResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesInteger"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/integer"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/integer")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostJSONDataTypesIntegerResponse{
@@ -3443,6 +4586,7 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesInteger(ctx context.Context,
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -3466,36 +4610,55 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesInteger(ctx context.Context,
 }
 
 func (s *RequestBodies) RequestBodyPostJSONDataTypesMapBigIntStr(ctx context.Context, request map[string]*big.Int) (*operations.RequestBodyPostJSONDataTypesMapBigIntStrResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesMapBigIntStr"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/map/bigIntStr"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/map/bigIntStr")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `bigint:"string" request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostJSONDataTypesMapBigIntStrResponse{
@@ -3510,6 +4673,7 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesMapBigIntStr(ctx context.Con
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -3533,36 +4697,55 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesMapBigIntStr(ctx context.Con
 }
 
 func (s *RequestBodies) RequestBodyPostJSONDataTypesMapDateTime(ctx context.Context, request map[string]time.Time) (*operations.RequestBodyPostJSONDataTypesMapDateTimeResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesMapDateTime"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/map/dateTime"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/map/dateTime")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostJSONDataTypesMapDateTimeResponse{
@@ -3577,6 +4760,7 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesMapDateTime(ctx context.Cont
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -3600,36 +4784,55 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesMapDateTime(ctx context.Cont
 }
 
 func (s *RequestBodies) RequestBodyPostJSONDataTypesMapDecimal(ctx context.Context, request map[string]*decimal.Big) (*operations.RequestBodyPostJSONDataTypesMapDecimalResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesMapDecimal"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/map/decimal"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/map/decimal")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `decimal:"number" request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostJSONDataTypesMapDecimalResponse{
@@ -3644,6 +4847,7 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesMapDecimal(ctx context.Conte
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -3667,36 +4871,55 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesMapDecimal(ctx context.Conte
 }
 
 func (s *RequestBodies) RequestBodyPostJSONDataTypesNumber(ctx context.Context, request float64) (*operations.RequestBodyPostJSONDataTypesNumberResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesNumber"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/number"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/number")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostJSONDataTypesNumberResponse{
@@ -3711,6 +4934,7 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesNumber(ctx context.Context, 
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -3734,36 +4958,55 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesNumber(ctx context.Context, 
 }
 
 func (s *RequestBodies) RequestBodyPostJSONDataTypesString(ctx context.Context, request string) (*operations.RequestBodyPostJSONDataTypesStringResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostJsonDataTypesString"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/string"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/jsonDataTypes/string")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostJSONDataTypesStringResponse{
@@ -3778,6 +5021,7 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesString(ctx context.Context, 
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -3801,36 +5045,55 @@ func (s *RequestBodies) RequestBodyPostJSONDataTypesString(ctx context.Context, 
 }
 
 func (s *RequestBodies) RequestBodyPostMultipleContentTypesComponentFiltered(ctx context.Context, request shared.SimpleObject) (*operations.RequestBodyPostMultipleContentTypesComponentFilteredResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostMultipleContentTypesComponentFiltered"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/multiple/contentTypes/component/filtered"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/multiple/contentTypes/component/filtered")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostMultipleContentTypesComponentFilteredResponse{
@@ -3845,6 +5108,7 @@ func (s *RequestBodies) RequestBodyPostMultipleContentTypesComponentFiltered(ctx
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -3868,36 +5132,55 @@ func (s *RequestBodies) RequestBodyPostMultipleContentTypesComponentFiltered(ctx
 }
 
 func (s *RequestBodies) RequestBodyPostMultipleContentTypesInlineFiltered(ctx context.Context, request operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody) (*operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostMultipleContentTypesInlineFiltered"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/multiple/contentTypes/inline/filtered"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/multiple/contentTypes/inline/filtered")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse{
@@ -3912,6 +5195,7 @@ func (s *RequestBodies) RequestBodyPostMultipleContentTypesInlineFiltered(ctx co
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -3935,45 +5219,64 @@ func (s *RequestBodies) RequestBodyPostMultipleContentTypesInlineFiltered(ctx co
 }
 
 func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitParamForm(ctx context.Context, requestBody operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody, paramStr string) (*operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostMultipleContentTypesSplitParam_form"}
+
 	request := operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest{
 		RequestBody: requestBody,
 		ParamStr:    paramStr,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/multiple/contentTypes/split/param"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/multiple/contentTypes/split/param")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RequestBody", "form", `request:"mediaType=application/x-www-form-urlencoded"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse{
@@ -3988,6 +5291,7 @@ func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitParamForm(ctx co
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -4011,45 +5315,64 @@ func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitParamForm(ctx co
 }
 
 func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitParamJSON(ctx context.Context, requestBody operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequestBody, paramStr string) (*operations.RequestBodyPostMultipleContentTypesSplitParamJSONResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostMultipleContentTypesSplitParam_json"}
+
 	request := operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequest{
 		RequestBody: requestBody,
 		ParamStr:    paramStr,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/multiple/contentTypes/split/param"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/multiple/contentTypes/split/param")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RequestBody", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostMultipleContentTypesSplitParamJSONResponse{
@@ -4064,6 +5387,7 @@ func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitParamJSON(ctx co
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -4087,45 +5411,64 @@ func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitParamJSON(ctx co
 }
 
 func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitParamMultipart(ctx context.Context, requestBody operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody, paramStr string) (*operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostMultipleContentTypesSplitParam_multipart"}
+
 	request := operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest{
 		RequestBody: requestBody,
 		ParamStr:    paramStr,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/multiple/contentTypes/split/param"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/multiple/contentTypes/split/param")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RequestBody", "multipart", `request:"mediaType=multipart/form-data"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse{
@@ -4140,6 +5483,7 @@ func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitParamMultipart(c
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -4163,36 +5507,55 @@ func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitParamMultipart(c
 }
 
 func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitForm(ctx context.Context, request operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody) (*operations.RequestBodyPostMultipleContentTypesSplitFormResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostMultipleContentTypesSplit_form"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/multiple/contentTypes/split"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/multiple/contentTypes/split")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "form", `request:"mediaType=application/x-www-form-urlencoded"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostMultipleContentTypesSplitFormResponse{
@@ -4207,6 +5570,7 @@ func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitForm(ctx context
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -4230,36 +5594,55 @@ func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitForm(ctx context
 }
 
 func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitJSON(ctx context.Context, request operations.RequestBodyPostMultipleContentTypesSplitJSONRequestBody) (*operations.RequestBodyPostMultipleContentTypesSplitJSONResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostMultipleContentTypesSplit_json"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/multiple/contentTypes/split"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/multiple/contentTypes/split")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostMultipleContentTypesSplitJSONResponse{
@@ -4274,6 +5657,7 @@ func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitJSON(ctx context
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -4297,36 +5681,55 @@ func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitJSON(ctx context
 }
 
 func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitMultipart(ctx context.Context, request operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody) (*operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostMultipleContentTypesSplit_multipart"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/multiple/contentTypes/split"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/multiple/contentTypes/split")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "multipart", `request:"mediaType=multipart/form-data"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse{
@@ -4341,6 +5744,7 @@ func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitMultipart(ctx co
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -4364,33 +5768,55 @@ func (s *RequestBodies) RequestBodyPostMultipleContentTypesSplitMultipart(ctx co
 }
 
 func (s *RequestBodies) RequestBodyPostNotNullableNotRequiredStringBody(ctx context.Context, request *string) (*operations.RequestBodyPostNotNullableNotRequiredStringBodyResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostNotNullableNotRequiredStringBody"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/notnullable/notrequired/string"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/notnullable/notrequired/string")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostNotNullableNotRequiredStringBodyResponse{
@@ -4405,6 +5831,7 @@ func (s *RequestBodies) RequestBodyPostNotNullableNotRequiredStringBody(ctx cont
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -4428,36 +5855,55 @@ func (s *RequestBodies) RequestBodyPostNotNullableNotRequiredStringBody(ctx cont
 }
 
 func (s *RequestBodies) RequestBodyPostNullArray(ctx context.Context, request []string) (*operations.RequestBodyPostNullArrayResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostNullArray"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/null-array"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/null-array")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostNullArrayResponse{
@@ -4472,6 +5918,7 @@ func (s *RequestBodies) RequestBodyPostNullArray(ctx context.Context, request []
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -4495,36 +5942,55 @@ func (s *RequestBodies) RequestBodyPostNullArray(ctx context.Context, request []
 }
 
 func (s *RequestBodies) RequestBodyPostNullDictionary(ctx context.Context, request map[string]string) (*operations.RequestBodyPostNullDictionaryResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostNullDictionary"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/null-dictionary"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/null-dictionary")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostNullDictionaryResponse{
@@ -4539,6 +6005,7 @@ func (s *RequestBodies) RequestBodyPostNullDictionary(ctx context.Context, reque
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -4562,33 +6029,55 @@ func (s *RequestBodies) RequestBodyPostNullDictionary(ctx context.Context, reque
 }
 
 func (s *RequestBodies) RequestBodyPostNullableNotRequiredStringBody(ctx context.Context, request *string) (*operations.RequestBodyPostNullableNotRequiredStringBodyResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostNullableNotRequiredStringBody"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/nullable/notrequired/string"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/nullable/notrequired/string")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, true, true, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostNullableNotRequiredStringBodyResponse{
@@ -4603,6 +6092,7 @@ func (s *RequestBodies) RequestBodyPostNullableNotRequiredStringBody(ctx context
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -4626,36 +6116,55 @@ func (s *RequestBodies) RequestBodyPostNullableNotRequiredStringBody(ctx context
 }
 
 func (s *RequestBodies) RequestBodyPostNullableRequiredStringBody(ctx context.Context, request *string) (*operations.RequestBodyPostNullableRequiredStringBodyResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPostNullableRequiredStringBody"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/nullable/required/string"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/post/nullable/required/string")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, true, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPostNullableRequiredStringBodyResponse{
@@ -4670,6 +6179,7 @@ func (s *RequestBodies) RequestBodyPostNullableRequiredStringBody(ctx context.Co
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -4693,36 +6203,55 @@ func (s *RequestBodies) RequestBodyPostNullableRequiredStringBody(ctx context.Co
 }
 
 func (s *RequestBodies) RequestBodyPutBytes(ctx context.Context, request []byte) (*operations.RequestBodyPutBytesResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPutBytes"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/put/bytes"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/put/bytes")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "raw", `request:"mediaType=application/octet-stream"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "PUT", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "PUT", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPutBytesResponse{
@@ -4737,6 +6266,7 @@ func (s *RequestBodies) RequestBodyPutBytes(ctx context.Context, request []byte)
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -4760,45 +6290,64 @@ func (s *RequestBodies) RequestBodyPutBytes(ctx context.Context, request []byte)
 }
 
 func (s *RequestBodies) RequestBodyPutBytesWithParams(ctx context.Context, requestBody []byte, queryStringParam string) (*operations.RequestBodyPutBytesWithParamsResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPutBytesWithParams"}
+
 	request := operations.RequestBodyPutBytesWithParamsRequest{
 		RequestBody:      requestBody,
 		QueryStringParam: queryStringParam,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/put/bytesWithParams"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/put/bytesWithParams")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RequestBody", "raw", `request:"mediaType=application/octet-stream"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "PUT", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "PUT", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPutBytesWithParamsResponse{
@@ -4813,6 +6362,7 @@ func (s *RequestBodies) RequestBodyPutBytesWithParams(ctx context.Context, reque
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -4836,36 +6386,55 @@ func (s *RequestBodies) RequestBodyPutBytesWithParams(ctx context.Context, reque
 }
 
 func (s *RequestBodies) RequestBodyPutMultipartDeep(ctx context.Context, request shared.DeepObject) (*operations.RequestBodyPutMultipartDeepResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPutMultipartDeep"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/put/multipart/deep"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/put/multipart/deep")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "multipart", `request:"mediaType=multipart/form-data"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "PUT", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "PUT", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPutMultipartDeepResponse{
@@ -4880,6 +6449,7 @@ func (s *RequestBodies) RequestBodyPutMultipartDeep(ctx context.Context, request
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -4903,36 +6473,55 @@ func (s *RequestBodies) RequestBodyPutMultipartDeep(ctx context.Context, request
 }
 
 func (s *RequestBodies) RequestBodyPutMultipartDifferentFileName(ctx context.Context, request operations.RequestBodyPutMultipartDifferentFileNameRequestBody) (*operations.RequestBodyPutMultipartDifferentFileNameResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPutMultipartDifferentFileName"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/put/multipart/differentFileName"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/put/multipart/differentFileName")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "multipart", `request:"mediaType=multipart/form-data"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "PUT", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "PUT", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPutMultipartDifferentFileNameResponse{
@@ -4947,6 +6536,7 @@ func (s *RequestBodies) RequestBodyPutMultipartDifferentFileName(ctx context.Con
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -4970,36 +6560,55 @@ func (s *RequestBodies) RequestBodyPutMultipartDifferentFileName(ctx context.Con
 }
 
 func (s *RequestBodies) RequestBodyPutMultipartFile(ctx context.Context, request operations.RequestBodyPutMultipartFileRequestBody) (*operations.RequestBodyPutMultipartFileResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPutMultipartFile"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/put/multipart/file"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/put/multipart/file")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "multipart", `request:"mediaType=multipart/form-data"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "PUT", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "PUT", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPutMultipartFileResponse{
@@ -5014,6 +6623,7 @@ func (s *RequestBodies) RequestBodyPutMultipartFile(ctx context.Context, request
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -5036,37 +6646,143 @@ func (s *RequestBodies) RequestBodyPutMultipartFile(ctx context.Context, request
 	return res, nil
 }
 
-func (s *RequestBodies) RequestBodyPutMultipartSimple(ctx context.Context, request shared.SimpleObject) (*operations.RequestBodyPutMultipartSimpleResponse, error) {
+func (s *RequestBodies) RequestBodyPutMultipartOptionalRequestBody(ctx context.Context, request *operations.RequestBodyPutMultipartOptionalRequestBodyRequestBody) (*operations.RequestBodyPutMultipartOptionalRequestBodyResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPutMultipartOptionalRequestBody"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/put/multipart/simple"
-
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "multipart", `request:"mediaType=multipart/form-data"`)
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/put/multipart/optionalRequestBody")
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "PUT", url, bodyReader)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "multipart", `request:"mediaType=multipart/form-data"`)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "PUT", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPutMultipartOptionalRequestBodyResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
 	}
 
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out operations.RequestBodyPutMultipartOptionalRequestBodyRes
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			res.Res = &out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *RequestBodies) RequestBodyPutMultipartSimple(ctx context.Context, request shared.SimpleObject) (*operations.RequestBodyPutMultipartSimpleResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPutMultipartSimple"}
+
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/put/multipart/simple")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "multipart", `request:"mediaType=multipart/form-data"`)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "PUT", opURL, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPutMultipartSimpleResponse{
@@ -5081,6 +6797,7 @@ func (s *RequestBodies) RequestBodyPutMultipartSimple(ctx context.Context, reque
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -5104,36 +6821,55 @@ func (s *RequestBodies) RequestBodyPutMultipartSimple(ctx context.Context, reque
 }
 
 func (s *RequestBodies) RequestBodyPutString(ctx context.Context, request string) (*operations.RequestBodyPutStringResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPutString"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/put/string"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/put/string")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "string", `request:"mediaType=text/plain"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "PUT", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "PUT", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPutStringResponse{
@@ -5148,6 +6884,7 @@ func (s *RequestBodies) RequestBodyPutString(ctx context.Context, request string
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -5171,45 +6908,64 @@ func (s *RequestBodies) RequestBodyPutString(ctx context.Context, request string
 }
 
 func (s *RequestBodies) RequestBodyPutStringWithParams(ctx context.Context, requestBody string, queryStringParam string) (*operations.RequestBodyPutStringWithParamsResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyPutStringWithParams"}
+
 	request := operations.RequestBodyPutStringWithParamsRequest{
 		RequestBody:      requestBody,
 		QueryStringParam: queryStringParam,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/put/stringWithParams"
+	opURL, err := url.JoinPath(baseURL, "/anything/requestBodies/put/stringWithParams")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RequestBody", "string", `request:"mediaType=text/plain"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "PUT", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "PUT", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyPutStringWithParamsResponse{
@@ -5224,6 +6980,7 @@ func (s *RequestBodies) RequestBodyPutStringWithParams(ctx context.Context, requ
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -5247,6 +7004,8 @@ func (s *RequestBodies) RequestBodyPutStringWithParams(ctx context.Context, requ
 }
 
 func (s *RequestBodies) RequestBodyReadAndWrite(ctx context.Context, request shared.ReadWriteObject, opts ...operations.Option) (*operations.RequestBodyReadAndWriteResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyReadAndWrite"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -5262,35 +7021,52 @@ func (s *RequestBodies) RequestBodyReadAndWrite(ctx context.Context, request sha
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/readonlyandwriteonly"
+	opURL, err := url.JoinPath(baseURL, "/readonlyandwriteonly")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyReadAndWriteResponse{
@@ -5305,6 +7081,7 @@ func (s *RequestBodies) RequestBodyReadAndWrite(ctx context.Context, request sha
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -5328,6 +7105,8 @@ func (s *RequestBodies) RequestBodyReadAndWrite(ctx context.Context, request sha
 }
 
 func (s *RequestBodies) RequestBodyReadOnlyInput(ctx context.Context, request shared.ReadOnlyObjectInput, opts ...operations.Option) (*operations.RequestBodyReadOnlyInputResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyReadOnlyInput"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -5343,35 +7122,52 @@ func (s *RequestBodies) RequestBodyReadOnlyInput(ctx context.Context, request sh
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/readonlyorwriteonly#readOnlyInput"
+	opURL, err := url.JoinPath(baseURL, "/readonlyorwriteonly")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyReadOnlyInputResponse{
@@ -5386,6 +7182,7 @@ func (s *RequestBodies) RequestBodyReadOnlyInput(ctx context.Context, request sh
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -5409,6 +7206,8 @@ func (s *RequestBodies) RequestBodyReadOnlyInput(ctx context.Context, request sh
 }
 
 func (s *RequestBodies) RequestBodyReadOnlyUnion(ctx context.Context, request shared.WeaklyTypedOneOfReadOnlyObjectInput, opts ...operations.Option) (*operations.RequestBodyReadOnlyUnionResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyReadOnlyUnion"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -5424,35 +7223,52 @@ func (s *RequestBodies) RequestBodyReadOnlyUnion(ctx context.Context, request sh
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/readonlyorwriteonly#readOnlyUnion"
+	opURL, err := url.JoinPath(baseURL, "/readonlyorwriteonly")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyReadOnlyUnionResponse{
@@ -5467,6 +7283,7 @@ func (s *RequestBodies) RequestBodyReadOnlyUnion(ctx context.Context, request sh
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -5490,6 +7307,8 @@ func (s *RequestBodies) RequestBodyReadOnlyUnion(ctx context.Context, request sh
 }
 
 func (s *RequestBodies) RequestBodyReadWriteOnlyUnion(ctx context.Context, request shared.WeaklyTypedOneOfReadWriteObject, opts ...operations.Option) (*operations.RequestBodyReadWriteOnlyUnionResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyReadWriteOnlyUnion"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -5505,35 +7324,52 @@ func (s *RequestBodies) RequestBodyReadWriteOnlyUnion(ctx context.Context, reque
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/readonlyandwriteonly#readWriteOnlyUnion"
+	opURL, err := url.JoinPath(baseURL, "/readonlyandwriteonly")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyReadWriteOnlyUnionResponse{
@@ -5548,6 +7384,7 @@ func (s *RequestBodies) RequestBodyReadWriteOnlyUnion(ctx context.Context, reque
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -5571,6 +7408,8 @@ func (s *RequestBodies) RequestBodyReadWriteOnlyUnion(ctx context.Context, reque
 }
 
 func (s *RequestBodies) RequestBodyWriteOnly(ctx context.Context, request shared.WriteOnlyObject, opts ...operations.Option) (*operations.RequestBodyWriteOnlyResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyWriteOnly"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -5586,35 +7425,52 @@ func (s *RequestBodies) RequestBodyWriteOnly(ctx context.Context, request shared
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/readonlyorwriteonly#writeOnly"
+	opURL, err := url.JoinPath(baseURL, "/readonlyorwriteonly")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyWriteOnlyResponse{
@@ -5629,6 +7485,7 @@ func (s *RequestBodies) RequestBodyWriteOnly(ctx context.Context, request shared
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -5652,6 +7509,8 @@ func (s *RequestBodies) RequestBodyWriteOnly(ctx context.Context, request shared
 }
 
 func (s *RequestBodies) RequestBodyWriteOnlyOutput(ctx context.Context, request shared.WriteOnlyObject, opts ...operations.Option) (*operations.RequestBodyWriteOnlyOutputResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyWriteOnlyOutput"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -5667,35 +7526,52 @@ func (s *RequestBodies) RequestBodyWriteOnlyOutput(ctx context.Context, request 
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/writeonlyoutput#writeOnlyOutput"
+	opURL, err := url.JoinPath(baseURL, "/writeonlyoutput")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyWriteOnlyOutputResponse{
@@ -5710,6 +7586,7 @@ func (s *RequestBodies) RequestBodyWriteOnlyOutput(ctx context.Context, request 
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -5733,6 +7610,8 @@ func (s *RequestBodies) RequestBodyWriteOnlyOutput(ctx context.Context, request 
 }
 
 func (s *RequestBodies) RequestBodyWriteOnlyUnion(ctx context.Context, request shared.WeaklyTypedOneOfWriteOnlyObject, opts ...operations.Option) (*operations.RequestBodyWriteOnlyUnionResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "requestBodyWriteOnlyUnion"}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -5748,35 +7627,52 @@ func (s *RequestBodies) RequestBodyWriteOnlyUnion(ctx context.Context, request s
 		baseURL = *o.ServerURL
 	}
 
-	url := strings.TrimSuffix(baseURL, "/") + "/writeonlyoutput#writeOnlyUnion"
+	opURL, err := url.JoinPath(baseURL, "/writeonlyoutput")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.RequestBodyWriteOnlyUnionResponse{
@@ -5791,6 +7687,7 @@ func (s *RequestBodies) RequestBodyWriteOnlyUnion(ctx context.Context, request s
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {

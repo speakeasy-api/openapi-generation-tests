@@ -11,13 +11,27 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     using System.Collections.Generic;
+    using System.Numerics;
+    using System;
     
     public class NullableRequiredPropertyPostRequestBody
     {
 
         [JsonProperty("NullableRequiredArray")]
         public List<double> NullableRequiredArray { get; set; } = default!;
+
+        [JsonProperty("NullableRequiredBigIntStr")]
+        [JsonConverter(typeof(BigIntSerializer))]
+        public BigInteger NullableRequiredBigIntStr { get; set; } = default!;
+
+        [JsonProperty("NullableRequiredDateTime")]
+        public DateTime NullableRequiredDateTime { get; set; } = default!;
+
+        [JsonProperty("NullableRequiredDecimalStr")]
+        [JsonConverter(typeof(DecimalSerializer))]
+        public decimal NullableRequiredDecimalStr { get; set; } = default!;
 
         [JsonProperty("NullableRequiredEnum")]
         public NullableRequiredEnum NullableRequiredEnum { get; set; } = default!;

@@ -8,11 +8,12 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
+	"openapi/v2/internal/hooks"
 	"openapi/v2/pkg/models/operations"
 	"openapi/v2/pkg/models/sdkerrors"
 	"openapi/v2/pkg/models/shared"
 	"openapi/v2/pkg/utils"
-	"strings"
 )
 
 // Parameters - Endpoints for testing parameters.
@@ -27,35 +28,58 @@ func newParameters(sdkConfig sdkConfiguration) *Parameters {
 }
 
 func (s *Parameters) DeepObjectQueryParamsMap(ctx context.Context, mapParam map[string]string, mapArrParam map[string][]string) (*operations.DeepObjectQueryParamsMapResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "deepObjectQueryParamsMap"}
+
 	request := operations.DeepObjectQueryParamsMapRequest{
 		MapParam:    mapParam,
 		MapArrParam: mapArrParam,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/deepObject/map"
+	opURL, err := url.JoinPath(baseURL, "/anything/queryParams/deepObject/map")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.DeepObjectQueryParamsMapResponse{
@@ -70,6 +94,7 @@ func (s *Parameters) DeepObjectQueryParamsMap(ctx context.Context, mapParam map[
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -93,35 +118,58 @@ func (s *Parameters) DeepObjectQueryParamsMap(ctx context.Context, mapParam map[
 }
 
 func (s *Parameters) DeepObjectQueryParamsObject(ctx context.Context, objParam shared.SimpleObject, objArrParam *operations.ObjArrParam) (*operations.DeepObjectQueryParamsObjectResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "deepObjectQueryParamsObject"}
+
 	request := operations.DeepObjectQueryParamsObjectRequest{
 		ObjParam:    objParam,
 		ObjArrParam: objArrParam,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/deepObject/obj"
+	opURL, err := url.JoinPath(baseURL, "/anything/queryParams/deepObject/obj")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.DeepObjectQueryParamsObjectResponse{
@@ -136,6 +184,7 @@ func (s *Parameters) DeepObjectQueryParamsObject(ctx context.Context, objParam s
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -159,33 +208,53 @@ func (s *Parameters) DeepObjectQueryParamsObject(ctx context.Context, objParam s
 }
 
 func (s *Parameters) DuplicateParam(ctx context.Context, duplicateParamRequest string) (*operations.DuplicateParamResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "duplicateParam"}
+
 	request := operations.DuplicateParamRequest{
 		DuplicateParamRequest: duplicateParamRequest,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/anything/params/{duplicateParamRequest}", request, s.sdkConfiguration.Globals)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/anything/params/{duplicateParamRequest}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.DuplicateParamResponse{
@@ -200,6 +269,7 @@ func (s *Parameters) DuplicateParam(ctx context.Context, duplicateParamRequest s
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -223,35 +293,58 @@ func (s *Parameters) DuplicateParam(ctx context.Context, duplicateParamRequest s
 }
 
 func (s *Parameters) FormQueryParamsArray(ctx context.Context, arrParam []string, arrParamExploded []int64) (*operations.FormQueryParamsArrayResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "formQueryParamsArray"}
+
 	request := operations.FormQueryParamsArrayRequest{
 		ArrParam:         arrParam,
 		ArrParamExploded: arrParamExploded,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/form/array"
+	opURL, err := url.JoinPath(baseURL, "/anything/queryParams/form/array")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.FormQueryParamsArrayResponse{
@@ -266,6 +359,7 @@ func (s *Parameters) FormQueryParamsArray(ctx context.Context, arrParam []string
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -289,35 +383,58 @@ func (s *Parameters) FormQueryParamsArray(ctx context.Context, arrParam []string
 }
 
 func (s *Parameters) FormQueryParamsCamelObject(ctx context.Context, objParamExploded operations.ObjParamExploded, objParam *operations.ObjParam) (*operations.FormQueryParamsCamelObjectResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "formQueryParamsCamelObject"}
+
 	request := operations.FormQueryParamsCamelObjectRequest{
 		ObjParamExploded: objParamExploded,
 		ObjParam:         objParam,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/form/camelObj"
+	opURL, err := url.JoinPath(baseURL, "/anything/queryParams/form/camelObj")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.FormQueryParamsCamelObjectResponse{
@@ -332,6 +449,7 @@ func (s *Parameters) FormQueryParamsCamelObject(ctx context.Context, objParamExp
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -355,35 +473,58 @@ func (s *Parameters) FormQueryParamsCamelObject(ctx context.Context, objParamExp
 }
 
 func (s *Parameters) FormQueryParamsMap(ctx context.Context, mapParam map[string]string, mapParamExploded map[string]int64) (*operations.FormQueryParamsMapResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "formQueryParamsMap"}
+
 	request := operations.FormQueryParamsMapRequest{
 		MapParam:         mapParam,
 		MapParamExploded: mapParamExploded,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/form/map"
+	opURL, err := url.JoinPath(baseURL, "/anything/queryParams/form/map")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.FormQueryParamsMapResponse{
@@ -398,6 +539,7 @@ func (s *Parameters) FormQueryParamsMap(ctx context.Context, mapParam map[string
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -421,35 +563,58 @@ func (s *Parameters) FormQueryParamsMap(ctx context.Context, mapParam map[string
 }
 
 func (s *Parameters) FormQueryParamsObject(ctx context.Context, objParamExploded shared.SimpleObject, objParam *shared.SimpleObject) (*operations.FormQueryParamsObjectResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "formQueryParamsObject"}
+
 	request := operations.FormQueryParamsObjectRequest{
 		ObjParamExploded: objParamExploded,
 		ObjParam:         objParam,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/form/obj"
+	opURL, err := url.JoinPath(baseURL, "/anything/queryParams/form/obj")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.FormQueryParamsObjectResponse{
@@ -464,6 +629,7 @@ func (s *Parameters) FormQueryParamsObject(ctx context.Context, objParamExploded
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -487,6 +653,8 @@ func (s *Parameters) FormQueryParamsObject(ctx context.Context, objParamExploded
 }
 
 func (s *Parameters) FormQueryParamsPrimitive(ctx context.Context, boolParam bool, intParam int64, numParam float64, strParam string) (*operations.FormQueryParamsPrimitiveResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "formQueryParamsPrimitive"}
+
 	request := operations.FormQueryParamsPrimitiveRequest{
 		BoolParam: boolParam,
 		IntParam:  intParam,
@@ -495,29 +663,50 @@ func (s *Parameters) FormQueryParamsPrimitive(ctx context.Context, boolParam boo
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/form/primitive"
+	opURL, err := url.JoinPath(baseURL, "/anything/queryParams/form/primitive")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.FormQueryParamsPrimitiveResponse{
@@ -532,6 +721,7 @@ func (s *Parameters) FormQueryParamsPrimitive(ctx context.Context, boolParam boo
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -555,35 +745,58 @@ func (s *Parameters) FormQueryParamsPrimitive(ctx context.Context, boolParam boo
 }
 
 func (s *Parameters) FormQueryParamsRefParamObject(ctx context.Context, refObjParam *shared.RefQueryParamObj, refObjParamExploded *shared.RefQueryParamObjExploded) (*operations.FormQueryParamsRefParamObjectResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "formQueryParamsRefParamObject"}
+
 	request := operations.FormQueryParamsRefParamObjectRequest{
 		RefObjParam:         refObjParam,
 		RefObjParamExploded: refObjParamExploded,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/form/refParamObject"
+	opURL, err := url.JoinPath(baseURL, "/anything/queryParams/form/refParamObject")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.FormQueryParamsRefParamObjectResponse{
@@ -598,6 +811,7 @@ func (s *Parameters) FormQueryParamsRefParamObject(ctx context.Context, refObjPa
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -621,32 +835,55 @@ func (s *Parameters) FormQueryParamsRefParamObject(ctx context.Context, refObjPa
 }
 
 func (s *Parameters) HeaderParamsArray(ctx context.Context, xHeaderArray []string) (*operations.HeaderParamsArrayResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "headerParamsArray"}
+
 	request := operations.HeaderParamsArrayRequest{
 		XHeaderArray: xHeaderArray,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/headers/array"
+	opURL, err := url.JoinPath(baseURL, "/anything/headers/array")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 
 	utils.PopulateHeaders(ctx, req, request)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.HeaderParamsArrayResponse{
@@ -661,6 +898,7 @@ func (s *Parameters) HeaderParamsArray(ctx context.Context, xHeaderArray []strin
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -684,33 +922,56 @@ func (s *Parameters) HeaderParamsArray(ctx context.Context, xHeaderArray []strin
 }
 
 func (s *Parameters) HeaderParamsMap(ctx context.Context, xHeaderMap map[string]string, xHeaderMapExplode map[string]string) (*operations.HeaderParamsMapResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "headerParamsMap"}
+
 	request := operations.HeaderParamsMapRequest{
 		XHeaderMap:        xHeaderMap,
 		XHeaderMapExplode: xHeaderMapExplode,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/headers/map"
+	opURL, err := url.JoinPath(baseURL, "/anything/headers/map")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 
 	utils.PopulateHeaders(ctx, req, request)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.HeaderParamsMapResponse{
@@ -725,6 +986,7 @@ func (s *Parameters) HeaderParamsMap(ctx context.Context, xHeaderMap map[string]
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -748,33 +1010,56 @@ func (s *Parameters) HeaderParamsMap(ctx context.Context, xHeaderMap map[string]
 }
 
 func (s *Parameters) HeaderParamsObject(ctx context.Context, xHeaderObj shared.SimpleObject, xHeaderObjExplode shared.SimpleObject) (*operations.HeaderParamsObjectResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "headerParamsObject"}
+
 	request := operations.HeaderParamsObjectRequest{
 		XHeaderObj:        xHeaderObj,
 		XHeaderObjExplode: xHeaderObjExplode,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/headers/obj"
+	opURL, err := url.JoinPath(baseURL, "/anything/headers/obj")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 
 	utils.PopulateHeaders(ctx, req, request)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.HeaderParamsObjectResponse{
@@ -789,6 +1074,7 @@ func (s *Parameters) HeaderParamsObject(ctx context.Context, xHeaderObj shared.S
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -812,6 +1098,8 @@ func (s *Parameters) HeaderParamsObject(ctx context.Context, xHeaderObj shared.S
 }
 
 func (s *Parameters) HeaderParamsPrimitive(ctx context.Context, xHeaderBoolean bool, xHeaderInteger int64, xHeaderNumber float64, xHeaderString string) (*operations.HeaderParamsPrimitiveResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "headerParamsPrimitive"}
+
 	request := operations.HeaderParamsPrimitiveRequest{
 		XHeaderBoolean: xHeaderBoolean,
 		XHeaderInteger: xHeaderInteger,
@@ -820,27 +1108,48 @@ func (s *Parameters) HeaderParamsPrimitive(ctx context.Context, xHeaderBoolean b
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/headers/primitive"
+	opURL, err := url.JoinPath(baseURL, "/anything/headers/primitive")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 
 	utils.PopulateHeaders(ctx, req, request)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.HeaderParamsPrimitiveResponse{
@@ -855,6 +1164,7 @@ func (s *Parameters) HeaderParamsPrimitive(ctx context.Context, xHeaderBoolean b
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -878,35 +1188,58 @@ func (s *Parameters) HeaderParamsPrimitive(ctx context.Context, xHeaderBoolean b
 }
 
 func (s *Parameters) JSONQueryParamsObject(ctx context.Context, deepObjParam shared.DeepObject, simpleObjParam shared.SimpleObject) (*operations.JSONQueryParamsObjectResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "jsonQueryParamsObject"}
+
 	request := operations.JSONQueryParamsObjectRequest{
 		DeepObjParam:   deepObjParam,
 		SimpleObjParam: simpleObjParam,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/json/obj"
+	opURL, err := url.JoinPath(baseURL, "/anything/queryParams/json/obj")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.JSONQueryParamsObjectResponse{
@@ -921,6 +1254,7 @@ func (s *Parameters) JSONQueryParamsObject(ctx context.Context, deepObjParam sha
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -944,6 +1278,8 @@ func (s *Parameters) JSONQueryParamsObject(ctx context.Context, deepObjParam sha
 }
 
 func (s *Parameters) MixedParametersCamelCase(ctx context.Context, headerParam string, pathParam string, queryStringParam string) (*operations.MixedParametersCamelCaseResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "mixedParametersCamelCase"}
+
 	request := operations.MixedParametersCamelCaseRequest{
 		HeaderParam:      headerParam,
 		PathParam:        pathParam,
@@ -951,17 +1287,17 @@ func (s *Parameters) MixedParametersCamelCase(ctx context.Context, headerParam s
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/anything/mixedParams/path/{path_param}/camelcase", request, s.sdkConfiguration.Globals)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/anything/mixedParams/path/{path_param}/camelcase", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 
 	utils.PopulateHeaders(ctx, req, request)
 
@@ -969,16 +1305,34 @@ func (s *Parameters) MixedParametersCamelCase(ctx context.Context, headerParam s
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.MixedParametersCamelCaseResponse{
@@ -993,6 +1347,7 @@ func (s *Parameters) MixedParametersCamelCase(ctx context.Context, headerParam s
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1016,6 +1371,8 @@ func (s *Parameters) MixedParametersCamelCase(ctx context.Context, headerParam s
 }
 
 func (s *Parameters) MixedParametersPrimitives(ctx context.Context, headerParam string, pathParam string, queryStringParam string) (*operations.MixedParametersPrimitivesResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "mixedParametersPrimitives"}
+
 	request := operations.MixedParametersPrimitivesRequest{
 		HeaderParam:      headerParam,
 		PathParam:        pathParam,
@@ -1023,17 +1380,17 @@ func (s *Parameters) MixedParametersPrimitives(ctx context.Context, headerParam 
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/anything/mixedParams/path/{pathParam}", request, s.sdkConfiguration.Globals)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/anything/mixedParams/path/{pathParam}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 
 	utils.PopulateHeaders(ctx, req, request)
 
@@ -1041,16 +1398,34 @@ func (s *Parameters) MixedParametersPrimitives(ctx context.Context, headerParam 
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.MixedParametersPrimitivesResponse{
@@ -1065,6 +1440,7 @@ func (s *Parameters) MixedParametersPrimitives(ctx context.Context, headerParam 
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1088,6 +1464,8 @@ func (s *Parameters) MixedParametersPrimitives(ctx context.Context, headerParam 
 }
 
 func (s *Parameters) MixedQueryParams(ctx context.Context, deepObjectParam shared.SimpleObject, formParam shared.SimpleObject, jsonParam shared.SimpleObject) (*operations.MixedQueryParamsResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "mixedQueryParams"}
+
 	request := operations.MixedQueryParamsRequest{
 		DeepObjectParam: deepObjectParam,
 		FormParam:       formParam,
@@ -1095,29 +1473,50 @@ func (s *Parameters) MixedQueryParams(ctx context.Context, deepObjectParam share
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/mixed"
+	opURL, err := url.JoinPath(baseURL, "/anything/queryParams/mixed")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.MixedQueryParamsResponse{
@@ -1132,6 +1531,7 @@ func (s *Parameters) MixedQueryParams(ctx context.Context, deepObjectParam share
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1155,33 +1555,53 @@ func (s *Parameters) MixedQueryParams(ctx context.Context, deepObjectParam share
 }
 
 func (s *Parameters) PathParameterJSON(ctx context.Context, jsonObj shared.SimpleObject) (*operations.PathParameterJSONResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "pathParameterJson"}
+
 	request := operations.PathParameterJSONRequest{
 		JSONObj: jsonObj,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/anything/pathParams/json/{jsonObj}", request, s.sdkConfiguration.Globals)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/anything/pathParams/json/{jsonObj}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PathParameterJSONResponse{
@@ -1196,6 +1616,7 @@ func (s *Parameters) PathParameterJSON(ctx context.Context, jsonObj shared.Simpl
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1219,6 +1640,8 @@ func (s *Parameters) PathParameterJSON(ctx context.Context, jsonObj shared.Simpl
 }
 
 func (s *Parameters) PipeDelimitedQueryParamsArray(ctx context.Context, arrParam []string, arrParamExploded []int64, mapParam map[string]string, objParam *shared.SimpleObject) (*operations.PipeDelimitedQueryParamsArrayResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "pipeDelimitedQueryParamsArray"}
+
 	request := operations.PipeDelimitedQueryParamsArrayRequest{
 		ArrParam:         arrParam,
 		ArrParamExploded: arrParamExploded,
@@ -1227,29 +1650,50 @@ func (s *Parameters) PipeDelimitedQueryParamsArray(ctx context.Context, arrParam
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/pipe/array"
+	opURL, err := url.JoinPath(baseURL, "/anything/queryParams/pipe/array")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
+
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.PipeDelimitedQueryParamsArrayResponse{
@@ -1264,6 +1708,7 @@ func (s *Parameters) PipeDelimitedQueryParamsArray(ctx context.Context, arrParam
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1287,33 +1732,53 @@ func (s *Parameters) PipeDelimitedQueryParamsArray(ctx context.Context, arrParam
 }
 
 func (s *Parameters) SimplePathParameterArrays(ctx context.Context, arrParam []string) (*operations.SimplePathParameterArraysResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "simplePathParameterArrays"}
+
 	request := operations.SimplePathParameterArraysRequest{
 		ArrParam: arrParam,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/anything/pathParams/arr/{arrParam}", request, s.sdkConfiguration.Globals)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/anything/pathParams/arr/{arrParam}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.SimplePathParameterArraysResponse{
@@ -1328,6 +1793,7 @@ func (s *Parameters) SimplePathParameterArrays(ctx context.Context, arrParam []s
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1351,34 +1817,54 @@ func (s *Parameters) SimplePathParameterArrays(ctx context.Context, arrParam []s
 }
 
 func (s *Parameters) SimplePathParameterMaps(ctx context.Context, mapParam map[string]string, mapParamExploded map[string]int64) (*operations.SimplePathParameterMapsResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "simplePathParameterMaps"}
+
 	request := operations.SimplePathParameterMapsRequest{
 		MapParam:         mapParam,
 		MapParamExploded: mapParamExploded,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/anything/pathParams/map/{mapParam}/mapExploded/{mapParamExploded}", request, s.sdkConfiguration.Globals)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/anything/pathParams/map/{mapParam}/mapExploded/{mapParamExploded}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.SimplePathParameterMapsResponse{
@@ -1393,6 +1879,7 @@ func (s *Parameters) SimplePathParameterMaps(ctx context.Context, mapParam map[s
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1416,34 +1903,54 @@ func (s *Parameters) SimplePathParameterMaps(ctx context.Context, mapParam map[s
 }
 
 func (s *Parameters) SimplePathParameterObjects(ctx context.Context, objParam shared.SimpleObject, objParamExploded shared.SimpleObject) (*operations.SimplePathParameterObjectsResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "simplePathParameterObjects"}
+
 	request := operations.SimplePathParameterObjectsRequest{
 		ObjParam:         objParam,
 		ObjParamExploded: objParamExploded,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/anything/pathParams/obj/{objParam}/objExploded/{objParamExploded}", request, s.sdkConfiguration.Globals)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/anything/pathParams/obj/{objParam}/objExploded/{objParamExploded}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.SimplePathParameterObjectsResponse{
@@ -1458,6 +1965,7 @@ func (s *Parameters) SimplePathParameterObjects(ctx context.Context, objParam sh
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -1481,6 +1989,8 @@ func (s *Parameters) SimplePathParameterObjects(ctx context.Context, objParam sh
 }
 
 func (s *Parameters) SimplePathParameterPrimitives(ctx context.Context, boolParam bool, intParam int64, numParam float64, strParam string) (*operations.SimplePathParameterPrimitivesResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "simplePathParameterPrimitives"}
+
 	request := operations.SimplePathParameterPrimitivesRequest{
 		BoolParam: boolParam,
 		IntParam:  intParam,
@@ -1489,28 +1999,46 @@ func (s *Parameters) SimplePathParameterPrimitives(ctx context.Context, boolPara
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/anything/pathParams/str/{strParam}/bool/{boolParam}/int/{intParam}/num/{numParam}", request, s.sdkConfiguration.Globals)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/anything/pathParams/str/{strParam}/bool/{boolParam}/int/{intParam}/num/{numParam}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("X-Speakeasy-User-Agent", s.sdkConfiguration.UserAgent)
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	if err != nil {
+		return nil, err
+	}
 
 	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
 
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
+	}
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.SimplePathParameterPrimitivesResponse{
@@ -1525,6 +2053,7 @@ func (s *Parameters) SimplePathParameterPrimitives(ctx context.Context, boolPara
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
