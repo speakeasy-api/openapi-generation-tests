@@ -9,8 +9,10 @@
 //------------------------------------------------------------------------------
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using Xunit;
 using Openapi;
+using Openapi.Utils;
 
 public class ServersShould
 {
@@ -18,7 +20,7 @@ public class ServersShould
     public async Task SelectGlobalServerValid()
     {
         CommonHelpers.RecordTest("servers-select-global-server-valid");
-        var sdk = new SDK(serverUrl: SDK.ServerList[0]);
+        var sdk = new SDK(serverUrl: SDKConfig.ServerList[0]);
 
         var res = await sdk.Servers.SelectGlobalServerAsync();
         Assert.NotNull(res);
@@ -29,7 +31,7 @@ public class ServersShould
     public async Task SelectGlobalServerBroken()
     {
         CommonHelpers.RecordTest("servers-select-global-server-broken");
-        var sdk = new SDK(serverUrl: SDK.ServerList[1]);
+        var sdk = new SDK(serverUrl: SDKConfig.ServerList[1]);
 
         await Assert.ThrowsAsync<HttpRequestException>(
             async () => await sdk.Servers.SelectGlobalServerAsync()
@@ -54,7 +56,7 @@ public class ServersShould
         var sdk = new SDK();
 
         var res = await sdk.Servers.SelectServerWithIDAsync(
-            serverUrl: Servers.SelectServerWithIDSERVERS[Servers.SelectServerWithIDServers.Valid]
+            serverUrl: Servers.SelectServerWithIDServerList[Servers.SelectServerWithIDServers.Valid]
         );
 
         Assert.Equal(200, res.StatusCode);
@@ -70,9 +72,159 @@ public class ServersShould
         await Assert.ThrowsAsync<HttpRequestException>(
             async () =>
                 await sdk.Servers.SelectServerWithIDAsync(
-                    serverUrl: Servers.SelectServerWithIDSERVERS[
+                    serverUrl: Servers.SelectServerWithIDServerList[
                         Servers.SelectServerWithIDServers.Broken
                     ]
+                )
+        );
+    }
+
+    [Fact]
+    public async Task ServerWithTemplatesGlobal()
+    {
+        CommonHelpers.RecordTest("servers-server-with-templates-global");
+
+        var sdk = new SDK(serverIndex: 2, hostname: "localhost", port: "35123");
+
+        var res = await sdk.Servers.ServerWithTemplatesGlobalAsync();
+
+        Assert.Equal(200, res.StatusCode);
+    }
+
+    [Fact]
+    public async Task ServerWithTemplatesGlobalDefaults()
+    {
+        CommonHelpers.RecordTest("servers-server-with-templates-global-defaults");
+
+        var sdk = new SDK(serverIndex: 2);
+
+        Assert.Equal(2, sdk.SDKConfiguration.serverIndex);
+
+        var res = await sdk.Servers.ServerWithTemplatesGlobalAsync();
+
+        Assert.Equal(200, res.StatusCode);
+    }
+
+    [Fact]
+    public async Task ServerWithTemplatesGlobalEnum()
+    {
+        CommonHelpers.RecordTest("servers-server-with-templates-global-enum");
+
+        var sdk = new SDK(serverIndex: 2, something: Openapi.ServerSomething.SomethingElseAgain);
+
+        var res = await sdk.Servers.ServerWithTemplatesGlobalAsync();
+
+        Assert.Equal(200, res.StatusCode);
+    }
+
+    [Fact]
+    public async Task ServerWithTemplates()
+    {
+        CommonHelpers.RecordTest("servers-server-with-templates");
+
+        var sdk = new SDK();
+
+        var res = await sdk.Servers.ServerWithTemplatesAsync(
+            serverUrl: Utilities.TemplateUrl(
+                Servers.ServerWithTemplatesServerList[0],
+                new Dictionary<string, string>(){
+                    {"protocol", "http"},
+                    {"hostname", "localhost"},
+                    {"port", "35123"},
+                }
+            )
+        );
+
+        Assert.Equal(200, res.StatusCode);
+    }
+
+    [Fact]
+    public async Task ServerWithTemplatesDefaults()
+    {
+        CommonHelpers.RecordTest("servers-server-with-templates-defaults");
+
+        var sdk = new SDK();
+
+        var res = await sdk.Servers.ServerWithTemplatesAsync();
+
+        Assert.Equal(200, res.StatusCode);
+    }
+
+    [Fact]
+    public async Task ServerByIDWithTemplates()
+    {
+        CommonHelpers.RecordTest("servers-server-by-id-with-templates");
+
+        var sdk = new SDK();
+
+        var res = await sdk.Servers.ServersByIDWithTemplatesAsync();
+
+        Assert.Equal(200, res.StatusCode);
+    }
+
+    [Fact]
+    public async Task GlobalServerWithTemplatedProtocol()
+    {
+        CommonHelpers.RecordTest("servers-global-server-with-templated-protocol");
+
+        var sdk = new SDK(serverIndex: 4, protocol: "http", hostname: "localhost", port: "35123");
+
+        var res = await sdk.Servers.SelectGlobalServerAsync();
+
+        Assert.Equal(200, res.StatusCode);
+    }
+
+    [Fact]
+    public async Task GlobalServerWithInvalidTemplatedProtocol()
+    {
+        CommonHelpers.RecordTest("servers-global-server-with-invalid-templated-protocol");
+
+        var sdk = new SDK(serverIndex: 4, protocol: "invalid", hostname: "localhost", port: "35123");
+
+        await Assert.ThrowsAsync<System.NotSupportedException>(
+            async () =>
+              await sdk.Servers.SelectGlobalServerAsync()
+        );
+    }
+
+    [Fact]
+    public async Task ServerWithProtocolTemplate()
+    {
+        CommonHelpers.RecordTest("servers-server-with-protocol-template");
+
+        var sdk = new SDK();
+
+        var res = await sdk.Servers.ServerWithProtocolTemplateAsync(
+            serverUrl: Utilities.TemplateUrl(
+                Servers.ServerWithProtocolTemplateServerList[Servers.ServerWithProtocolTemplateServers.Main],
+                new Dictionary<string, string>(){
+                    {"protocol", "http"},
+                    {"hostname", "localhost"},
+                    {"port", "35123"},
+                }
+            )
+        );
+        Assert.Equal(200, res.StatusCode);
+    }
+
+    [Fact]
+    public async Task ServerWithInvalidProtocolTemplate()
+    {
+        CommonHelpers.RecordTest("servers-server-with-invalid-protocol-template");
+
+        var sdk = new SDK();
+
+        await Assert.ThrowsAsync<System.NotSupportedException>(
+            async () =>
+                await sdk.Servers.ServerWithProtocolTemplateAsync(
+                    serverUrl: Utilities.TemplateUrl(
+                        Servers.ServerWithProtocolTemplateServerList[Servers.ServerWithProtocolTemplateServers.Main],
+                        new Dictionary<string, string>(){
+                            {"protocol", "invalid"},
+                            {"hostname", "localhost"},
+                            {"port", "35123"},
+                        }
+                    )
                 )
         );
     }

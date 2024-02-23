@@ -5,6 +5,6 @@ OK
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `json`                | Map<String, *Object*> | :heavy_minus_sign:    | N/A                   |
+| Field                                | Type                                 | Required                             | Description                          | Example                              |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `json`                               | Map<String, *java.lang.Object*>      | :heavy_minus_sign:                   | N/A                                  | {"bool":true,"num":1.1,"str":"test"} |

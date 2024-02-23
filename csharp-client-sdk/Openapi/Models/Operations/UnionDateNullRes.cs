@@ -19,7 +19,7 @@ namespace Openapi.Models.Operations
     public class UnionDateNullRes
     {
 
-        [JsonProperty("json")]
-        public LocalDate Json { get; set; } = default!;
+        [JsonProperty("json", NullValueHandling = NullValueHandling.Include)]
+        public LocalDate? Json { get; set; } = default!;
     }
 }
