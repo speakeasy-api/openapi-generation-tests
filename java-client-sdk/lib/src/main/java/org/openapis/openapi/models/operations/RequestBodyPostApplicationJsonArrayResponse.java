@@ -53,8 +53,9 @@ public class RequestBodyPostApplicationJsonArrayResponse {
         return this;
     }
     
-    public RequestBodyPostApplicationJsonArrayResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode) {
+    public RequestBodyPostApplicationJsonArrayResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode, @JsonProperty("RawResponse") HttpResponse<byte[]> rawResponse) {
         this.contentType = contentType;
         this.statusCode = statusCode;
+        this.rawResponse = rawResponse;
   }
 }
