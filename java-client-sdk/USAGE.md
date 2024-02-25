@@ -1,25 +1,87 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```java
 package hello.world;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.GetGlobalNameOverrideResponse;
+import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.SimpleObject;
 
 public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GetGlobalNameOverrideResponse res = sdk.generation.globalNameOverridden();
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject(
+                "any",
+                true,
+                LocalDate.parse("2020-01-01"),
+                OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                Enum.ONE,
+                1.1f,
+                1L,
+                1,
+                Int32Enum.FIFTY_FIVE,
+                IntEnum.Second,
+                1.1d,
+                "test"){{
+                bigint = 8821239038968084L;
+                bigintStr = "9223372036854775808";
+                boolOpt = true;
+                decimal = 3.141592653589793d;
+                decimalStr = "3.14159265358979344719667586";
+                intOptNull = 697039L;
+                numOptNull = 6448.77d;
+                strOpt = "testOptional";
+
+            }};
+
+            org.openapis.openapi.models.operations.GetGlobalNameOverrideResponse res = sdk.generation.globalNameOverridden(req);
 
             if (res.object != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.SelectGlobalServerResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security(
+                ){{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            org.openapis.openapi.models.operations.SelectGlobalServerResponse res = sdk.servers.selectGlobalServer();
+
+            if (res.statusCode == 200) {
                 // handle response
             }
         } catch (Exception e) {
@@ -61,9 +123,27 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(168827L, "string", false, LocalDate.parse("2022-05-05"), OffsetDateTime.parse("2023-06-11T00:39:45.412Z"), OffsetDateTime.parse("2022-07-22T13:16:48.221Z"), 2679.33d, "string", 5223.72d, EnumParameter.VALUE1, 0d, 6946.59f, 2286.22d, 102975L, 566999, "example 1"){{
-                requestBody = new UsageExamplePostRequestBody(){{
-                    fakerFormattedStrings = new FakerFormattedStrings(){{
+            org.openapis.openapi.models.operations.UsageExamplePostRequest req = new UsageExamplePostRequest(
+                168827L,
+                "<value>",
+                false,
+                LocalDate.parse("2023-05-05"),
+                OffsetDateTime.parse("2024-06-10T20:11:31.153Z"),
+                OffsetDateTime.parse("2023-07-23T01:43:10.512Z"),
+                2679.33d,
+                "<value>",
+                5223.72d,
+                EnumParameter.VALUE1,
+                0d,
+                6946.59f,
+                2286.22d,
+                102975L,
+                566999,
+                "example 1"){{
+                requestBody = new UsageExamplePostRequestBody(
+){{
+                    fakerFormattedStrings = new FakerFormattedStrings(
+){{
                         addressFormat = "2344 Aufderhar Corner";
                         directoryFormat = "/etc/defaults";
                         domainFormat = "fatal-cutting.name";
@@ -73,20 +153,22 @@ public class Application {
                         imageFormat = "https://loremflickr.com/640/480";
                         ipv4Format = "116.31.181.178";
                         ipv6Format = "73ac:9ee2:348d:76c3:164a:258b:e7e1:3586";
-                        jsonFormat = "{key: 42822, key1: null, key2: \"string\"}";
+                        jsonFormat = "{key: 42822, key1: null, key2: \"<value>\"}";
                         macFormat = "7d:ac:95:a0:15:23";
                         passwordFormat = "eWzdveK0sHokC9n";
                         phoneFormat = "1-340-562-2122 x175";
                         timezoneFormat = "Asia/Yekaterinburg";
-                        unknownFormat = "string";
+                        unknownFormat = "<value>";
                         urlFormat = "https://wilted-cytoplasm.biz";
                         uuidFormat = "e0f62de2-e2d4-47a9-bf10-0f753b9b364b";
                         zipcodeFormat = "73625";
+
                     }};
-                    fakerStrings = new FakerStrings(){{
+                    fakerStrings = new FakerStrings(
+){{
                         city = "Schuppecester";
                         iban = "NO0300631256004";
-                        id = "<ID>";
+                        id = "<id>";
                         iPv4 = "251.251.208.201";
                         iPv6 = "ffbd:3ad7:2b20:8b2c:8188:308b:b979:0237";
                         account = "29659826";
@@ -100,7 +182,7 @@ public class Application {
                         countryCode = "NF";
                         currency = "Pakistan Rupee";
                         datatype = "real";
-                        default_ = "string";
+                        default_ = "<value>";
                         description = "Customizable zero administration open system";
                         directory = "/opt/sbin";
                         domainName = "deep-stallion.info";
@@ -113,7 +195,7 @@ public class Application {
                         fullName = "Mrs. Jose Franey";
                         gender = "Trans female";
                         job = "Direct Accountability Liaison";
-                        json = "{key: 88901, key1: null, key2: \"string\"}";
+                        json = "{key: 88901, key1: null, key2: \"<value>\"}";
                         key = "<key>";
                         lastName = "Metz";
                         latitude = "68.2232";
@@ -137,8 +219,21 @@ public class Application {
                         url = "https://crooked-dulcimer.name";
                         username = "Mable76";
                         uuid = "16b919d6-51cd-4e97-81e2-5221b7b6969f";
+
                     }};
-                    simpleObject = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
+                    simpleObject = new SimpleObject(
+                        "any",
+                        true,
+                        LocalDate.parse("2020-01-01"),
+                        OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"),
+                        Enum.ONE,
+                        1.1f,
+                        1L,
+                        1,
+                        Int32Enum.FIFTY_FIVE,
+                        IntEnum.Second,
+                        1.1d,
+                        "test"){{
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
                         boolOpt = true;
@@ -147,16 +242,21 @@ public class Application {
                         intOptNull = 809796L;
                         numOptNull = 4812.91d;
                         strOpt = "testOptional";
+
                     }};
+
                 }};
                 bigintParameterOptional = 165468L;
-                bigintStrParameterOptional = "string";
+                bigintStrParameterOptional = "<value>";
                 decimalParameterOptional = 5944.32d;
-                decimalStrParameterOptional = "string";
+                decimalStrParameterOptional = "<value>";
                 optEnumParameter = OptEnumParameter.VALUE3;
-            }};            
 
-            UsageExamplePostResponse res = sdk.generation.usageExamplePost(req, new UsageExamplePostSecurity("YOUR_PASSWORD", "YOUR_USERNAME"){{
+            }};
+
+            org.openapis.openapi.models.operations.UsageExamplePostResponse res = sdk.generation.usageExamplePost(req, new UsageExamplePostSecurity(
+            "YOUR_PASSWORD",
+            "YOUR_USERNAME"){{
                 password = "YOUR_PASSWORD";
                 username = "YOUR_USERNAME";
             }});
@@ -170,4 +270,4 @@ public class Application {
     }
 }
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

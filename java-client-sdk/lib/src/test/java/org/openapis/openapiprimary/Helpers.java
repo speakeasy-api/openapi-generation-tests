@@ -95,7 +95,7 @@ public class Helpers {
 
     public static void assertDeepObjectEqual(DeepObject l, DeepObject r) {
         SimpleObject any = (SimpleObject) l.any;
-        Map<String, Object> rAny = (Map<String, Object>) r.any;
+        Map<String, java.lang.Object> rAny = (Map<String, java.lang.Object>) r.any;
 
         assertEquals(any.any, rAny.get("any"));
         assertEquals(any.bool, rAny.get("bool"));
