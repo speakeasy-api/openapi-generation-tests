@@ -14,6 +14,14 @@ class AuthTests: XCTestCase {
         }
     }
 
+    func testNoAuth() async throws {
+        try recordTest(named: "auth-no-auth")
+
+        let client = Client(security: nil)
+        let response = try await client.auth.noAuth()
+        XCTAssertEqual(response.statusCode, 200, "Request should succeed")
+    }
+
     func testBasicAuth() async throws {
         try recordTest(named: "auth-basic-auth")
 
@@ -54,7 +62,7 @@ class AuthTests: XCTestCase {
     func testAPIKeyAuthOperation() async throws {
         try recordTest(named: "auth-api-key-auth-operation")
 
-        let client = Client(security: .apiKeyAuth(""))
+        let client = Client(security: nil)
         let response = try await client.auth.apiKeyAuth(
             security: .apiKeyAuth("Bearer testToken")
         )
@@ -66,7 +74,7 @@ class AuthTests: XCTestCase {
     func testBearerAuthOperationWithPrefix() async throws {
         try recordTest(named: "auth-bearer-auth-operation-with-prefix")
 
-        let client = Client(security: .apiKeyAuth(""))
+        let client = Client(security: nil)
         let response = try await client.auth.bearerAuth(
             security: .bearerAuth("Bearer testToken")
         )
@@ -78,7 +86,7 @@ class AuthTests: XCTestCase {
     func testBearerAuthOperationWithoutPrefix() async throws {
         try recordTest(named: "auth-bearer-auth-operation-without-prefix")
 
-        let client = Client(security: .apiKeyAuth(""))
+        let client = Client(security: nil)
         let response = try await client.auth.bearerAuth(
             security: .bearerAuth("testToken")
         )
@@ -90,7 +98,7 @@ class AuthTests: XCTestCase {
     func testOAuth2Auth() async throws {
         try recordTest(named: "auth-oauth2-auth")
 
-        let client = Client(security: .apiKeyAuth(""))
+        let client = Client(security: nil)
         let response = try await client.authNew.oauth2AuthNew(
             request: .init(
                 basicAuth: nil,
@@ -110,7 +118,7 @@ class AuthTests: XCTestCase {
     func testOpenIDConnectAuth() async throws {
         try recordTest(named: "auth-open-id-connect-auth")
 
-        let client = Client(security: .apiKeyAuth(""))
+        let client = Client(security: nil)
         let response = try await client.authNew.openIdConnectAuthNew(
             request: .init(
                 basicAuth: nil,
@@ -130,7 +138,7 @@ class AuthTests: XCTestCase {
     func testMultipleSimpleSchemeAuth() async throws {
         try recordTest(named: "auth-multiple-simple-scheme-auth")
 
-        let client = Client(security: .apiKeyAuth(""))
+        let client = Client(security: nil)
         let response = try await client.authNew.multipleSimpleSchemeAuth(
             request: .init(
                 basicAuth: nil,
@@ -157,7 +165,7 @@ class AuthTests: XCTestCase {
     func testMultipleMixedSchemeAuth() async throws {
         try recordTest(named: "auth-multiple-mixed-scheme-auth")
 
-        let client = Client(security: .apiKeyAuth(""))
+        let client = Client(security: nil)
         let response = try await client.authNew.multipleMixedSchemeAuth(
             request: .init(
                 basicAuth: .init(
@@ -186,7 +194,7 @@ class AuthTests: XCTestCase {
     func testMultipleSimpleOptionsAuthFirstOption() async throws {
         try recordTest(named: "auth-multiple-simple-options-auth-first-option")
 
-        let client = Client(security: .apiKeyAuth(""))
+        let client = Client(security: nil)
         let response = try await client.authNew.multipleSimpleOptionsAuth(
             request: .init(
                 basicAuth: nil,
@@ -206,7 +214,7 @@ class AuthTests: XCTestCase {
     func testMultipleSimpleOptionsAuthSecondOption() async throws {
         try recordTest(named: "auth-multiple-simple-options-auth-second-option")
 
-        let client = Client(security: .apiKeyAuth(""))
+        let client = Client(security: nil)
         let response = try await client.authNew.multipleSimpleOptionsAuth(
             request: .init(
                 basicAuth: nil,
@@ -246,7 +254,7 @@ class AuthTests: XCTestCase {
     func testMultipleMixedOptionsAuthSecondOption() async throws {
         try recordTest(named: "auth-multiple-mixed-options-auth-second-option")
 
-        let client = Client(security: .apiKeyAuth(""))
+        let client = Client(security: nil)
         let response = try await client.authNew.multipleMixedOptionsAuth(
             request: .init(
                 basicAuth: .init(
@@ -269,7 +277,7 @@ class AuthTests: XCTestCase {
     func testMultipleMixedOptionsWithSimpleSchemesAuthFirstOption() async throws {
         try recordTest(named: "auth-multiple-options-with-simple-schemes-auth-first-option")
 
-        let client = Client(security: .apiKeyAuth(""))
+        let client = Client(security: nil)
         let response = try await client.authNew.multipleOptionsWithSimpleSchemesAuth(
             request: .init(
                 basicAuth: nil,
@@ -298,7 +306,7 @@ class AuthTests: XCTestCase {
     func testMultipleMixedOptionsWithSimpleSchemesAuthSecondOption() async throws {
         try recordTest(named: "auth-multiple-options-with-simple-schemes-auth-second-option")
 
-        let client = Client(security: .apiKeyAuth(""))
+        let client = Client(security: nil)
         let response = try await client.authNew.multipleOptionsWithSimpleSchemesAuth(
             request: .init(
                 basicAuth: nil,
@@ -327,7 +335,7 @@ class AuthTests: XCTestCase {
     func testMultipleMixedOptionsWithMixedSchemesAuthFirstOption() async throws {
         try recordTest(named: "auth-multiple-options-with-mixed-schemes-auth-first-option")
 
-        let client = Client(security: .apiKeyAuth(""))
+        let client = Client(security: nil)
         let response = try await client.authNew.multipleOptionsWithMixedSchemesAuth(
             request: .init(
                 basicAuth: nil,
@@ -356,7 +364,7 @@ class AuthTests: XCTestCase {
     func testMultipleMixedOptionsWithMixedSchemesAuthSecondOption() async throws {
         try recordTest(named: "auth-multiple-options-with-mixed-schemes-auth-second-option")
 
-        let client = Client(security: .apiKeyAuth(""))
+        let client = Client(security: nil)
         let response = try await client.authNew.multipleOptionsWithMixedSchemesAuth(
             request: .init(
                 basicAuth: .init(
