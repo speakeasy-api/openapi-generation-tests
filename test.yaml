@@ -6870,7 +6870,7 @@ paths:
   /anything/hooks:
     get:
       operationId: testHooks
-      x-speakeasy-test: ["go"]
+      x-speakeasy-test: true
       x-speakeasy-test-internal-id: test-hooks
       tags:
         - hooks
