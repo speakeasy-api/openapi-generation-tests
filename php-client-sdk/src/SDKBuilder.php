@@ -16,11 +16,9 @@ namespace OpenAPI\OpenAPI;
  */
 class SDKBuilder
 {
-    private SDKConfiguration $sdkConfig;
-
-    public function __construct() {
-        $this->sdkConfig = new SDKConfiguration();
-    }
+    public function __construct(
+        private SDKConfiguration $sdkConfig = new SDKConfiguration(),
+    ) {}
 
     /**
      * setClient allows setting a custom Guzzle client for the SDK to make requests with.
@@ -31,6 +29,7 @@ class SDKBuilder
     public function setClient(\GuzzleHttp\ClientInterface $client): SDKBuilder
     {
         $this->sdkConfig->defaultClient = $client;
+
         return $this;
     }
     
@@ -43,6 +42,7 @@ class SDKBuilder
     public function setSecurity(Models\Shared\Security $security): SDKBuilder
     {
         $this->sdkConfig->security = $security;
+
         return $this;
     }
     
@@ -56,6 +56,7 @@ class SDKBuilder
     public function setServerUrl(string $serverUrl, ?array $params = null): SDKBuilder
     {
         $this->sdkConfig->serverUrl = Utils\Utils::templateUrl($serverUrl, $params);
+
         return $this;
     }
     
@@ -68,6 +69,7 @@ class SDKBuilder
     public function setServerIndex(int $serverIdx): SDKBuilder
     {
         $this->sdkConfig->serverIndex = $serverIdx;
+
         return $this;
     }
     
@@ -109,24 +111,6 @@ class SDKBuilder
         return $this;
     }
     /**
-     * setProtocol is used to configure the protocol variable for url substitution
-     *
-     * @param string $protocol
-     * @return SDKBuilder
-     */
-    public function setProtocol(string $protocol): SDKBuilder
-    {
-        foreach ($this->sdkConfig->serverDefaults as $idx => $serverDefaults) {
-            if (!array_key_exists('protocol', $serverDefaults)) {
-                continue;
-            }
-            
-            $this->sdkConfig->serverDefaults[$idx]['protocol'] = $protocol;
-        }
-
-        return $this;
-    }
-    /**
      * setSomething is used to configure the something variable for url substitution
      *
      * @param ServerSomething $something
@@ -141,6 +125,24 @@ class SDKBuilder
             
             $this->sdkConfig->serverDefaults[$idx]['something'] = $something->value;
             
+        }
+
+        return $this;
+    }
+    /**
+     * setProtocol is used to configure the protocol variable for url substitution
+     *
+     * @param string $protocol
+     * @return SDKBuilder
+     */
+    public function setProtocol(string $protocol): SDKBuilder
+    {
+        foreach ($this->sdkConfig->serverDefaults as $idx => $serverDefaults) {
+            if (!array_key_exists('protocol', $serverDefaults)) {
+                continue;
+            }
+            
+            $this->sdkConfig->serverDefaults[$idx]['protocol'] = $protocol;
         }
 
         return $this;

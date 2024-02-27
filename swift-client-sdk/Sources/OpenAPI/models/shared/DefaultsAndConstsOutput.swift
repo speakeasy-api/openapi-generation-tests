@@ -21,7 +21,9 @@ extension Shared {
         @DecimalSerialized
         public private(set) var constNum: Double
         public let constStr: String
+        public let constStrDQuotes: String
         public let constStrNull: String
+        public let constStrSQuotes: String
         public let defaultBigInt: Int
         public let defaultBigIntStr: String
         public let defaultBool: Bool
@@ -38,14 +40,16 @@ extension Shared {
         @DecimalSerialized
         public private(set) var defaultNum: Double
         public let defaultStr: String
+        public let defaultStrDQuotes: String
         public let defaultStrNullable: String
+        public let defaultStrSQuotes: String
         public let normalField: String
         public let defaultStrOptional: String?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(constBigInt: Int, constBigIntStr: String, constBool: Bool, constDate: Date, constDateTime: Date, constDecimal: Double, constDecimalStr: String, constEnumInt: Shared.DefaultsAndConstsOutputConstEnumInt, constEnumStr: Shared.DefaultsAndConstsOutputConstEnumStr, constInt: Int, constNum: Double, constStr: String, constStrNull: String, defaultBigInt: Int, defaultBigIntStr: String, defaultBool: Bool, defaultDate: Date, defaultDateTime: Date, defaultDecimal: Double, defaultDecimalStr: String, defaultEnumInt: Shared.DefaultsAndConstsOutputDefaultEnumInt, defaultEnumStr: Shared.DefaultsAndConstsOutputDefaultEnumStr, defaultInt: Int, defaultNum: Double, defaultStr: String, defaultStrNullable: String, normalField: String, defaultStrOptional: String? = nil) {
+        public init(constBigInt: Int, constBigIntStr: String, constBool: Bool, constDate: Date, constDateTime: Date, constDecimal: Double, constDecimalStr: String, constEnumInt: Shared.DefaultsAndConstsOutputConstEnumInt, constEnumStr: Shared.DefaultsAndConstsOutputConstEnumStr, constInt: Int, constNum: Double, constStr: String, constStrDQuotes: String, constStrNull: String, constStrSQuotes: String, defaultBigInt: Int, defaultBigIntStr: String, defaultBool: Bool, defaultDate: Date, defaultDateTime: Date, defaultDecimal: Double, defaultDecimalStr: String, defaultEnumInt: Shared.DefaultsAndConstsOutputDefaultEnumInt, defaultEnumStr: Shared.DefaultsAndConstsOutputDefaultEnumStr, defaultInt: Int, defaultNum: Double, defaultStr: String, defaultStrDQuotes: String, defaultStrNullable: String, defaultStrSQuotes: String, normalField: String, defaultStrOptional: String? = nil) {
             self.constBigInt = constBigInt
             self.constBigIntStr = constBigIntStr
             self.constBool = constBool
@@ -58,7 +62,9 @@ extension Shared {
             self.constInt = constInt
             self._constNum = DecimalSerialized<Double>(wrappedValue: constNum)
             self.constStr = constStr
+            self.constStrDQuotes = constStrDQuotes
             self.constStrNull = constStrNull
+            self.constStrSQuotes = constStrSQuotes
             self.defaultBigInt = defaultBigInt
             self.defaultBigIntStr = defaultBigIntStr
             self.defaultBool = defaultBool
@@ -71,7 +77,9 @@ extension Shared {
             self.defaultInt = defaultInt
             self._defaultNum = DecimalSerialized<Double>(wrappedValue: defaultNum)
             self.defaultStr = defaultStr
+            self.defaultStrDQuotes = defaultStrDQuotes
             self.defaultStrNullable = defaultStrNullable
+            self.defaultStrSQuotes = defaultStrSQuotes
             self.normalField = normalField
             self.defaultStrOptional = defaultStrOptional
         }
@@ -92,7 +100,9 @@ extension Shared.DefaultsAndConstsOutput: Codable {
         case constInt
         case constNum
         case constStr
+        case constStrDQuotes
         case constStrNull
+        case constStrSQuotes
         case defaultBigInt
         case defaultBigIntStr
         case defaultBool
@@ -105,7 +115,9 @@ extension Shared.DefaultsAndConstsOutput: Codable {
         case defaultInt
         case defaultNum
         case defaultStr
+        case defaultStrDQuotes
         case defaultStrNullable
+        case defaultStrSQuotes
         case normalField
         case defaultStrOptional
     }
@@ -124,7 +136,9 @@ extension Shared.DefaultsAndConstsOutput: Codable {
         self.constInt = try container.decode(Int.self, forKey: .constInt)
         self._constNum = try container.decode(DecimalSerialized<Double>.self, forKey: .constNum)
         self.constStr = try container.decode(String.self, forKey: .constStr)
+        self.constStrDQuotes = try container.decode(String.self, forKey: .constStrDQuotes)
         self.constStrNull = try container.decode(String.self, forKey: .constStrNull)
+        self.constStrSQuotes = try container.decode(String.self, forKey: .constStrSQuotes)
         self.defaultBigInt = try container.decode(Int.self, forKey: .defaultBigInt)
         self.defaultBigIntStr = try container.decode(String.self, forKey: .defaultBigIntStr)
         self.defaultBool = try container.decode(Bool.self, forKey: .defaultBool)
@@ -137,7 +151,9 @@ extension Shared.DefaultsAndConstsOutput: Codable {
         self.defaultInt = try container.decode(Int.self, forKey: .defaultInt)
         self._defaultNum = try container.decode(DecimalSerialized<Double>.self, forKey: .defaultNum)
         self.defaultStr = try container.decode(String.self, forKey: .defaultStr)
+        self.defaultStrDQuotes = try container.decode(String.self, forKey: .defaultStrDQuotes)
         self.defaultStrNullable = try container.decode(String.self, forKey: .defaultStrNullable)
+        self.defaultStrSQuotes = try container.decode(String.self, forKey: .defaultStrSQuotes)
         self.normalField = try container.decode(String.self, forKey: .normalField)
         self.defaultStrOptional = try container.decodeIfPresent(String.self, forKey: .defaultStrOptional)
     }
@@ -156,7 +172,9 @@ extension Shared.DefaultsAndConstsOutput: Codable {
         try container.encode(self.constInt, forKey: .constInt)
         try container.encode(self._constNum, forKey: .constNum)
         try container.encode(self.constStr, forKey: .constStr)
+        try container.encode(self.constStrDQuotes, forKey: .constStrDQuotes)
         try container.encode(self.constStrNull, forKey: .constStrNull)
+        try container.encode(self.constStrSQuotes, forKey: .constStrSQuotes)
         try container.encode(self.defaultBigInt, forKey: .defaultBigInt)
         try container.encode(self.defaultBigIntStr, forKey: .defaultBigIntStr)
         try container.encode(self.defaultBool, forKey: .defaultBool)
@@ -169,7 +187,9 @@ extension Shared.DefaultsAndConstsOutput: Codable {
         try container.encode(self.defaultInt, forKey: .defaultInt)
         try container.encode(self._defaultNum, forKey: .defaultNum)
         try container.encode(self.defaultStr, forKey: .defaultStr)
+        try container.encode(self.defaultStrDQuotes, forKey: .defaultStrDQuotes)
         try container.encode(self.defaultStrNullable, forKey: .defaultStrNullable)
+        try container.encode(self.defaultStrSQuotes, forKey: .defaultStrSQuotes)
         try container.encode(self.normalField, forKey: .normalField)
         try container.encodeIfPresent(self.defaultStrOptional, forKey: .defaultStrOptional)
     }

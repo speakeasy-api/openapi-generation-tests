@@ -7,7 +7,15 @@ import (
 )
 
 type UpdateResourceRequest struct {
+	Augment    string `queryParam:"style=form,explode=true,name=augment"`
 	ResourceID string `pathParam:"style=simple,explode=false,name=resourceId"`
+}
+
+func (o *UpdateResourceRequest) GetAugment() string {
+	if o == nil {
+		return ""
+	}
+	return o.Augment
 }
 
 func (o *UpdateResourceRequest) GetResourceID() string {

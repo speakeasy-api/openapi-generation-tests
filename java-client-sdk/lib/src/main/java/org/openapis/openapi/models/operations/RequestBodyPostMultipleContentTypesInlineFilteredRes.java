@@ -15,9 +15,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class RequestBodyPostMultipleContentTypesInlineFilteredRes {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("json")
-    public java.util.Map<String, Object> json;
+    public java.util.Map<String, java.lang.Object> json;
 
-    public RequestBodyPostMultipleContentTypesInlineFilteredRes withJson(java.util.Map<String, Object> json) {
+    public RequestBodyPostMultipleContentTypesInlineFilteredRes withJson(java.util.Map<String, java.lang.Object> json) {
         this.json = json;
         return this;
     }
