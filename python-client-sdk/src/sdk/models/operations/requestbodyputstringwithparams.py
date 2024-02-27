@@ -10,8 +10,8 @@ from typing import Optional
 
 @dataclasses.dataclass
 class RequestBodyPutStringWithParamsRequest:
-    query_string_param: str = dataclasses.field(metadata={'query_param': { 'field_name': 'queryStringParam', 'style': 'form', 'explode': True }})
     request_body: str = dataclasses.field(metadata={'request': { 'media_type': 'text/plain' }})
+    query_string_param: str = dataclasses.field(metadata={'query_param': { 'field_name': 'queryStringParam', 'style': 'form', 'explode': True }})
     
 
 
@@ -40,7 +40,7 @@ class RequestBodyPutStringWithParamsResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
     res: Optional[RequestBodyPutStringWithParamsRes] = dataclasses.field(default=None)
     r"""OK"""

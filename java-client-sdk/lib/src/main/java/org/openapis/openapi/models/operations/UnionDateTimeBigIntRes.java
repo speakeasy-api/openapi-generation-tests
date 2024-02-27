@@ -12,14 +12,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UnionDateTimeBigIntRes {
     @JsonProperty("json")
-    public Object json;
+    public java.lang.Object json;
 
-    public UnionDateTimeBigIntRes withJson(Object json) {
+    public UnionDateTimeBigIntRes withJson(java.lang.Object json) {
         this.json = json;
         return this;
     }
     
-    public UnionDateTimeBigIntRes(@JsonProperty("json") Object json) {
+    public UnionDateTimeBigIntRes(@JsonProperty("json") java.lang.Object json) {
         this.json = json;
   }
 }

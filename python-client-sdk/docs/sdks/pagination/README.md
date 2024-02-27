@@ -13,6 +13,7 @@ Endpoints for testing the pagination extension
 * [pagination_limit_offset_offset_params](#pagination_limit_offset_offset_params)
 * [pagination_limit_offset_page_body](#pagination_limit_offset_page_body)
 * [pagination_limit_offset_page_params](#pagination_limit_offset_page_params)
+* [pagination_url_params](#pagination_url_params)
 
 ## pagination_cursor_body
 
@@ -61,7 +62,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## pagination_cursor_params
 
@@ -69,7 +70,7 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -107,7 +108,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## pagination_limit_offset_offset_body
 
@@ -154,7 +155,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## pagination_limit_offset_offset_params
 
@@ -162,7 +163,7 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -201,7 +202,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## pagination_limit_offset_page_body
 
@@ -248,7 +249,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## pagination_limit_offset_page_params
 
@@ -256,7 +257,7 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -294,4 +295,46 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
+
+## pagination_url_params
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.pagination.pagination_url_params(attempts=778920, is_reference_path='<value>')
+
+if res.res is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                      | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `attempts`                     | *int*                          | :heavy_check_mark:             | N/A                            |
+| `is_reference_path`            | *Optional[str]*                | :heavy_minus_sign:             | N/A                            |
+| `server_url`                   | *Optional[str]*                | :heavy_minus_sign:             | An optional server URL to use. |
+
+
+### Response
+
+**[operations.PaginationURLParamsResponse](../../models/operations/paginationurlparamsresponse.md)**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4x-5xx          | */*             |

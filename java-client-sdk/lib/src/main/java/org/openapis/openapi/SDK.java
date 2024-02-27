@@ -48,6 +48,7 @@ public class SDK {
 	};
 	
 	
+	
   	
     /**
      * Endpoints for purely testing valid generation behavior.
@@ -73,6 +74,10 @@ public class SDK {
      * Endpoints for testing parameters.
      */
     public Parameters parameters;
+    /**
+     * Endpoints for testing hooks
+     */
+    public Hooks hooks;
     public Nest nest;
     public Nested nested;
     /**
@@ -99,11 +104,11 @@ public class SDK {
      * Endpoints for testing authentication.
      */
     public AuthNew authNew;
+    public Resource resource;
     /**
      * Testing for documentation extensions and tooling.
      */
     public Documentation documentation;
-    public Resource resource;
     public First first;
     public Second second;
     /**
@@ -179,7 +184,7 @@ public class SDK {
 		}
 		
 		/**
-		 * Allows setting the $name variable for url substitution.
+		 * Allows setting the $variable.Name variable for url substitution.
 		 * @param hostname The value to set.
 		 * @return The builder instance.
 		 */
@@ -195,7 +200,7 @@ public class SDK {
 		}
 		
 		/**
-		 * Allows setting the $name variable for url substitution.
+		 * Allows setting the $variable.Name variable for url substitution.
 		 * @param port The value to set.
 		 * @return The builder instance.
 		 */
@@ -205,22 +210,6 @@ public class SDK {
 					continue;
 				}
 				server.put("port", port.toString());
-			}
-
-			return this;
-		}
-		
-		/**
-		 * Allows setting the $name variable for url substitution.
-		 * @param protocol The value to set.
-		 * @return The builder instance.
-		 */
-		public Builder setProtocol(String protocol) {
-			for (java.util.Map<String, String> server : this.sdkConfiguration.serverDefaults) {
-				if (!server.containsKey("protocol")) {
-					continue;
-				}
-				server.put("protocol", protocol.toString());
 			}
 
 			return this;
@@ -243,7 +232,7 @@ public class SDK {
         }
 
 		/**
-		 * Allows setting the $name variable for url substitution.
+		 * Allows setting the $variable.Name variable for url substitution.
 		 * @param something The value to set.
 		 * @return The builder instance.
 		 */
@@ -259,13 +248,29 @@ public class SDK {
 		}
 		
 		/**
+		 * Allows setting the $variable.Name variable for url substitution.
+		 * @param protocol The value to set.
+		 * @return The builder instance.
+		 */
+		public Builder setProtocol(String protocol) {
+			for (java.util.Map<String, String> server : this.sdkConfiguration.serverDefaults) {
+				if (!server.containsKey("protocol")) {
+					continue;
+				}
+				server.put("protocol", protocol.toString());
+			}
+
+			return this;
+		}
+		
+		/**
 		 * Allows setting the globalPathParam parameter for all supported operations.
 		 * @param globalPathParam The value to set.
 		 * @return The builder instance.
 		 */
 		public Builder setGlobalPathParam(Long globalPathParam) {
 			if (!this.sdkConfiguration.globals.get("parameters").containsKey("pathParam")) {
-				this.sdkConfiguration.globals.get("parameters").put("pathParam", new java.util.HashMap<String, Object>());
+				this.sdkConfiguration.globals.get("parameters").put("pathParam", new java.util.HashMap<String, java.lang.Object>());
 			}
 
 			this.sdkConfiguration.globals.get("parameters").get("pathParam").put("globalPathParam", globalPathParam);
@@ -280,7 +285,7 @@ public class SDK {
 		 */
 		public Builder setGlobalQueryParam(String globalQueryParam) {
 			if (!this.sdkConfiguration.globals.get("parameters").containsKey("queryParam")) {
-				this.sdkConfiguration.globals.get("parameters").put("queryParam", new java.util.HashMap<String, Object>());
+				this.sdkConfiguration.globals.get("parameters").put("queryParam", new java.util.HashMap<String, java.lang.Object>());
 			}
 
 			this.sdkConfiguration.globals.get("parameters").get("queryParam").put("globalQueryParam", globalQueryParam);
@@ -342,6 +347,8 @@ public class SDK {
 		
 		this.parameters = new Parameters(this.sdkConfiguration);
 		
+		this.hooks = new Hooks(this.sdkConfiguration);
+		
 		this.nest = new Nest(this.sdkConfiguration);
 		
 		this.nested = new Nested(this.sdkConfiguration);
@@ -358,9 +365,9 @@ public class SDK {
 		
 		this.authNew = new AuthNew(this.sdkConfiguration);
 		
-		this.documentation = new Documentation(this.sdkConfiguration);
-		
 		this.resource = new Resource(this.sdkConfiguration);
+		
+		this.documentation = new Documentation(this.sdkConfiguration);
 		
 		this.first = new First(this.sdkConfiguration);
 		
@@ -370,6 +377,40 @@ public class SDK {
 		
 		this.retries = new Retries(this.sdkConfiguration);
 	}
+
+    /**
+     * Test potential namespace conflicts with java.lang.Object
+     * @param request the request object containing all of the parameters for the API call
+     * @return the response from the API call
+     * @throws Exception if the API call fails
+     */
+    public org.openapis.openapi.models.operations.ConflictingEnumResponse conflictingEnum(org.openapis.openapi.models.shared.ConflictingEnum request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/conflictingEnum/");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "*/*");
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+        
+        org.openapis.openapi.models.operations.ConflictingEnumResponse res = new org.openapis.openapi.models.operations.ConflictingEnumResponse(contentType, httpRes.statusCode(), httpRes) {{
+        }};
+        
+        if (httpRes.statusCode() == 200) {
+        }
+
+        return res;
+    }
 
     public org.openapis.openapi.models.operations.PutAnythingIgnoredGenerationResponse putAnythingIgnoredGeneration(String request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
@@ -392,11 +433,10 @@ public class SDK {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.PutAnythingIgnoredGenerationResponse res = new org.openapis.openapi.models.operations.PutAnythingIgnoredGenerationResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.PutAnythingIgnoredGenerationResponse res = new org.openapis.openapi.models.operations.PutAnythingIgnoredGenerationResponse(contentType, httpRes.statusCode(), httpRes) {{
             object = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -425,11 +465,10 @@ public class SDK {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.ResponseBodyJsonGetResponse res = new org.openapis.openapi.models.operations.ResponseBodyJsonGetResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.ResponseBodyJsonGetResponse res = new org.openapis.openapi.models.operations.ResponseBodyJsonGetResponse(contentType, httpRes.statusCode(), httpRes) {{
             httpBinSimpleJsonObject = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
