@@ -36,22 +36,22 @@ namespace Openapi
     /// </summary>
     public class Flattening: IFlattening
     {
-        public SDKConfig Config { get; private set; }
+        public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.3.1";
-        private const string _sdkGenVersion = "2.188.3";
+        private const string _sdkVersion = "0.4.0";
+        private const string _sdkGenVersion = "2.272.7";
         private const string _openapiDocVersion = "0.1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.0 2.272.7 0.1.0 openapi";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
-        private ISpeakeasyHttpClient _securityClient;
+        private Func<Security>? _securitySource;
 
-        public Flattening(ISpeakeasyHttpClient defaultClient, ISpeakeasyHttpClient securityClient, string serverUrl, SDKConfig config)
+        public Flattening(ISpeakeasyHttpClient defaultClient, Func<Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _defaultClient = defaultClient;
-            _securityClient = securityClient;
+            _securitySource = securitySource;
             _serverUrl = serverUrl;
-            Config = config;
+            SDKConfiguration = config;
         }
         
 
@@ -62,51 +62,47 @@ namespace Openapi
                 SimpleObject = simpleObject,
                 Str = str,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/flattening/componentBodyAndParamConflict", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            var serializedBody = RequestBodySerializer.Serialize(request, "SimpleObject", "json");
-            if (serializedBody == null) 
-            {
-                throw new ArgumentNullException("request body is required");
-            }
-            else
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "SimpleObject", "json", false, false);
+            if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;
             }
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new ComponentBodyAndParamConflictResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<ComponentBodyAndParamConflictRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<ComponentBodyAndParamNoConflictResponse> ComponentBodyAndParamNoConflictAsync(string paramStr, SimpleObject simpleObject)
@@ -116,51 +112,47 @@ namespace Openapi
                 ParamStr = paramStr,
                 SimpleObject = simpleObject,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/flattening/componentBodyAndParamNoConflict", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            var serializedBody = RequestBodySerializer.Serialize(request, "SimpleObject", "json");
-            if (serializedBody == null) 
-            {
-                throw new ArgumentNullException("request body is required");
-            }
-            else
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "SimpleObject", "json", false, false);
+            if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;
             }
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new ComponentBodyAndParamNoConflictResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<ComponentBodyAndParamNoConflictRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<ConflictingParamsResponse> ConflictingParamsAsync(string strPathParameter, string strQueryParameter)
@@ -170,42 +162,41 @@ namespace Openapi
                 StrPathParameter = strPathParameter,
                 StrQueryParameter = strQueryParameter,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/flattening/conflictingParams/{str}", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new ConflictingParamsResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<ConflictingParamsRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<InlineBodyAndParamConflictResponse> InlineBodyAndParamConflictAsync(InlineBodyAndParamConflictRequestBody requestBody, string str)
@@ -215,51 +206,47 @@ namespace Openapi
                 RequestBody = requestBody,
                 Str = str,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/flattening/inlineBodyAndParamConflict", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json");
-            if (serializedBody == null) 
-            {
-                throw new ArgumentNullException("request body is required");
-            }
-            else
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, false);
+            if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;
             }
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new InlineBodyAndParamConflictResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<InlineBodyAndParamConflictRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<InlineBodyAndParamNoConflictResponse> InlineBodyAndParamNoConflictAsync(InlineBodyAndParamNoConflictRequestBody requestBody, string paramStr)
@@ -269,51 +256,47 @@ namespace Openapi
                 RequestBody = requestBody,
                 ParamStr = paramStr,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/flattening/inlineBodyAndParamNoConflict", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json");
-            if (serializedBody == null) 
-            {
-                throw new ArgumentNullException("request body is required");
-            }
-            else
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, false);
+            if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;
             }
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new InlineBodyAndParamNoConflictResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<InlineBodyAndParamNoConflictRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
     }
 }

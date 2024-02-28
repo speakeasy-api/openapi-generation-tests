@@ -17,6 +17,11 @@ namespace OpenAPI\OpenAPI\Models\Operations;
  */
 class PaginationLimitOffsetOffsetParamsRes
 {
+	#[\JMS\Serializer\Annotation\SerializedName('next')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    public ?string $next = null;
+    
 	#[\JMS\Serializer\Annotation\SerializedName('numPages')]
     #[\JMS\Serializer\Annotation\Type('int')]
     public int $numPages;
@@ -32,6 +37,7 @@ class PaginationLimitOffsetOffsetParamsRes
     
 	public function __construct()
 	{
+		$this->next = null;
 		$this->numPages = 0;
 		$this->resultArray = [];
 	}
