@@ -25,7 +25,7 @@ public class Unions {
 		this.sdkConfiguration = sdkConfiguration;
 	}
 
-    public org.openapis.openapi.models.operations.FlattenedTypedObjectPostResponse flattenedTypedObjectPost(Object request) throws Exception {
+    public org.openapis.openapi.models.operations.FlattenedTypedObjectPostResponse flattenedTypedObjectPost(java.lang.Object request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/flattenedTypedObject");
         
@@ -46,11 +46,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.FlattenedTypedObjectPostResponse res = new org.openapis.openapi.models.operations.FlattenedTypedObjectPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.FlattenedTypedObjectPostResponse res = new org.openapis.openapi.models.operations.FlattenedTypedObjectPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -63,7 +62,7 @@ public class Unions {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.MixedTypeOneOfPostResponse mixedTypeOneOfPost(Object request) throws Exception {
+    public org.openapis.openapi.models.operations.MixedTypeOneOfPostResponse mixedTypeOneOfPost(java.lang.Object request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/mixedTypeOneOf");
         
@@ -84,11 +83,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.MixedTypeOneOfPostResponse res = new org.openapis.openapi.models.operations.MixedTypeOneOfPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.MixedTypeOneOfPostResponse res = new org.openapis.openapi.models.operations.MixedTypeOneOfPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -122,11 +120,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.NullableOneOfRefInObjectPostResponse res = new org.openapis.openapi.models.operations.NullableOneOfRefInObjectPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.NullableOneOfRefInObjectPostResponse res = new org.openapis.openapi.models.operations.NullableOneOfRefInObjectPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -139,7 +136,7 @@ public class Unions {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.NullableOneOfSchemaPostResponse nullableOneOfSchemaPost(Object request) throws Exception {
+    public org.openapis.openapi.models.operations.NullableOneOfSchemaPostResponse nullableOneOfSchemaPost(java.lang.Object request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/nullableOneOfSchema");
         
@@ -160,11 +157,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.NullableOneOfSchemaPostResponse res = new org.openapis.openapi.models.operations.NullableOneOfSchemaPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.NullableOneOfSchemaPostResponse res = new org.openapis.openapi.models.operations.NullableOneOfSchemaPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -198,11 +194,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.NullableOneOfTypeInObjectPostResponse res = new org.openapis.openapi.models.operations.NullableOneOfTypeInObjectPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.NullableOneOfTypeInObjectPostResponse res = new org.openapis.openapi.models.operations.NullableOneOfTypeInObjectPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -236,11 +231,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.NullableTypedObjectPostResponse res = new org.openapis.openapi.models.operations.NullableTypedObjectPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.NullableTypedObjectPostResponse res = new org.openapis.openapi.models.operations.NullableTypedObjectPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -253,7 +247,7 @@ public class Unions {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.PrimitiveTypeOneOfPostResponse primitiveTypeOneOfPost(Object request) throws Exception {
+    public org.openapis.openapi.models.operations.PrimitiveTypeOneOfPostResponse primitiveTypeOneOfPost(java.lang.Object request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/primitiveTypeOneOf");
         
@@ -274,11 +268,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.PrimitiveTypeOneOfPostResponse res = new org.openapis.openapi.models.operations.PrimitiveTypeOneOfPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.PrimitiveTypeOneOfPostResponse res = new org.openapis.openapi.models.operations.PrimitiveTypeOneOfPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -291,7 +284,44 @@ public class Unions {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.StronglyTypedOneOfPostResponse stronglyTypedOneOfPost(Object request) throws Exception {
+    public org.openapis.openapi.models.operations.StronglyTypedOneOfDiscriminatedPostResponse stronglyTypedOneOfDiscriminatedPost(java.lang.Object request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/stronglyTypedOneOfDiscriminated");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        if (serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+        
+        org.openapis.openapi.models.operations.StronglyTypedOneOfDiscriminatedPostResponse res = new org.openapis.openapi.models.operations.StronglyTypedOneOfDiscriminatedPostResponse(contentType, httpRes.statusCode(), httpRes) {{
+            res = null;
+        }};
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.StronglyTypedOneOfDiscriminatedPostRes out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.StronglyTypedOneOfDiscriminatedPostRes.class);
+                res.res = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.StronglyTypedOneOfPostResponse stronglyTypedOneOfPost(java.lang.Object request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/stronglyTypedOneOf");
         
@@ -312,11 +342,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.StronglyTypedOneOfPostResponse res = new org.openapis.openapi.models.operations.StronglyTypedOneOfPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.StronglyTypedOneOfPostResponse res = new org.openapis.openapi.models.operations.StronglyTypedOneOfPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -329,7 +358,44 @@ public class Unions {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.TypedObjectNullableOneOfPostResponse typedObjectNullableOneOfPost(Object request) throws Exception {
+    public org.openapis.openapi.models.operations.StronglyTypedOneOfPostWithNonStandardDiscriminatorNameResponse stronglyTypedOneOfPostWithNonStandardDiscriminatorName(java.lang.Object request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/stronglyTypedOneOfWithNonStandardDiscriminatorName");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        if (serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+        
+        org.openapis.openapi.models.operations.StronglyTypedOneOfPostWithNonStandardDiscriminatorNameResponse res = new org.openapis.openapi.models.operations.StronglyTypedOneOfPostWithNonStandardDiscriminatorNameResponse(contentType, httpRes.statusCode(), httpRes) {{
+            res = null;
+        }};
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.StronglyTypedOneOfPostWithNonStandardDiscriminatorNameRes out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.StronglyTypedOneOfPostWithNonStandardDiscriminatorNameRes.class);
+                res.res = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.TypedObjectNullableOneOfPostResponse typedObjectNullableOneOfPost(java.lang.Object request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/typedObjectNullableOneOf");
         
@@ -350,11 +416,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.TypedObjectNullableOneOfPostResponse res = new org.openapis.openapi.models.operations.TypedObjectNullableOneOfPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.TypedObjectNullableOneOfPostResponse res = new org.openapis.openapi.models.operations.TypedObjectNullableOneOfPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -367,7 +432,7 @@ public class Unions {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.TypedObjectOneOfPostResponse typedObjectOneOfPost(Object request) throws Exception {
+    public org.openapis.openapi.models.operations.TypedObjectOneOfPostResponse typedObjectOneOfPost(java.lang.Object request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/typedObjectOneOf");
         
@@ -388,11 +453,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.TypedObjectOneOfPostResponse res = new org.openapis.openapi.models.operations.TypedObjectOneOfPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.TypedObjectOneOfPostResponse res = new org.openapis.openapi.models.operations.TypedObjectOneOfPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -405,7 +469,7 @@ public class Unions {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.UnionBigIntDecimalResponse unionBigIntDecimal(Object request) throws Exception {
+    public org.openapis.openapi.models.operations.UnionBigIntDecimalResponse unionBigIntDecimal(java.lang.Object request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/unionBigIntDecimal");
         
@@ -426,11 +490,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.UnionBigIntDecimalResponse res = new org.openapis.openapi.models.operations.UnionBigIntDecimalResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.UnionBigIntDecimalResponse res = new org.openapis.openapi.models.operations.UnionBigIntDecimalResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -464,11 +527,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.UnionDateNullResponse res = new org.openapis.openapi.models.operations.UnionDateNullResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.UnionDateNullResponse res = new org.openapis.openapi.models.operations.UnionDateNullResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -481,7 +543,7 @@ public class Unions {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.UnionDateTimeBigIntResponse unionDateTimeBigInt(Object request) throws Exception {
+    public org.openapis.openapi.models.operations.UnionDateTimeBigIntResponse unionDateTimeBigInt(java.lang.Object request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/unionDateTimeBigInt");
         
@@ -502,11 +564,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.UnionDateTimeBigIntResponse res = new org.openapis.openapi.models.operations.UnionDateTimeBigIntResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.UnionDateTimeBigIntResponse res = new org.openapis.openapi.models.operations.UnionDateTimeBigIntResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -540,11 +601,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.UnionDateTimeNullResponse res = new org.openapis.openapi.models.operations.UnionDateTimeNullResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.UnionDateTimeNullResponse res = new org.openapis.openapi.models.operations.UnionDateTimeNullResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -557,7 +617,7 @@ public class Unions {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.WeaklyTypedOneOfPostResponse weaklyTypedOneOfPost(Object request) throws Exception {
+    public org.openapis.openapi.models.operations.WeaklyTypedOneOfPostResponse weaklyTypedOneOfPost(java.lang.Object request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/weaklyTypedOneOf");
         
@@ -578,11 +638,10 @@ public class Unions {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.WeaklyTypedOneOfPostResponse res = new org.openapis.openapi.models.operations.WeaklyTypedOneOfPostResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.WeaklyTypedOneOfPostResponse res = new org.openapis.openapi.models.operations.WeaklyTypedOneOfPostResponse(contentType, httpRes.statusCode(), httpRes) {{
             res = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {

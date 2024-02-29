@@ -23,7 +23,7 @@ class Pagination:
         
         url = base_url + '/pagination/cursor'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, operations.PaginationCursorBodyRequestBody, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -53,12 +53,64 @@ class Pagination:
                 ),
                 server_url=server_url,
             )
-
+        
         res = operations.PaginationCursorBodyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.PaginationCursorBodyRes])
+                res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    
+    def pagination_cursor_non_numeric(self, cursor: Optional[str] = None, server_url: Optional[str] = None) -> operations.PaginationCursorNonNumericResponse:
+        request = operations.PaginationCursorNonNumericRequest(
+            cursor=cursor,
+        )
+        
+        base_url = utils.template_url(operations.PAGINATION_CURSOR_NON_NUMERIC_SERVERS[0], {
+        })
+        if server_url is not None:
+            base_url = server_url
+        
+        url = base_url + '/pagination/cursor_non_numeric'
+        headers = {}
+        query_params = utils.get_query_params(operations.PaginationCursorNonNumericRequest, request, self.sdk_configuration.globals)
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
+        
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
+        
+        http_res = client.request('GET', url, params=query_params, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+        
+        def next_func() -> Optional[operations.PaginationCursorNonNumericResponse]:
+            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            next_cursor = JSONPath("$.resultArray[-1:]").parse(body)
+
+            if len(next_cursor) == 0:
+                return None
+            next_cursor = next_cursor[0]
+
+            return self.pagination_cursor_non_numeric(
+                cursor=next_cursor,
+                server_url=server_url,
+            )
+        
+        res = operations.PaginationCursorNonNumericResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PaginationCursorNonNumericRes])
                 res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -105,7 +157,7 @@ class Pagination:
                 cursor=next_cursor,
                 server_url=server_url,
             )
-
+        
         res = operations.PaginationCursorParamsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
@@ -129,7 +181,7 @@ class Pagination:
         
         url = base_url + '/pagination/limitoffset/offset'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.LimitOffsetConfig, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -167,7 +219,7 @@ class Pagination:
                 ),
                 server_url=server_url,
             )
-
+        
         res = operations.PaginationLimitOffsetOffsetBodyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
@@ -227,7 +279,7 @@ class Pagination:
                 offset=new_offset,
                 server_url=server_url,
             )
-
+        
         res = operations.PaginationLimitOffsetOffsetParamsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
@@ -251,7 +303,7 @@ class Pagination:
         
         url = base_url + '/pagination/limitoffset/page'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, shared.LimitOffsetConfig, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -287,7 +339,7 @@ class Pagination:
                 ),
                 server_url=server_url,
             )
-
+        
         res = operations.PaginationLimitOffsetPageBodyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
@@ -343,12 +395,52 @@ class Pagination:
                 page=new_page,
                 server_url=server_url,
             )
-
+        
         res = operations.PaginationLimitOffsetPageParamsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res, next=next_func)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.PaginationLimitOffsetPageParamsRes])
+                res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    
+    def pagination_url_params(self, attempts: int, is_reference_path: Optional[str] = None, server_url: Optional[str] = None) -> operations.PaginationURLParamsResponse:
+        request = operations.PaginationURLParamsRequest(
+            attempts=attempts,
+            is_reference_path=is_reference_path,
+        )
+        
+        base_url = utils.template_url(operations.PAGINATION_URL_PARAMS_SERVERS[0], {
+        })
+        if server_url is not None:
+            base_url = server_url
+        
+        url = base_url + '/pagination/url'
+        headers = {}
+        query_params = utils.get_query_params(operations.PaginationURLParamsRequest, request, self.sdk_configuration.globals)
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
+        
+        if callable(self.sdk_configuration.security):
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+        else:
+            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
+        
+        http_res = client.request('GET', url, params=query_params, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+        
+        res = operations.PaginationURLParamsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PaginationURLParamsRes])
                 res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
