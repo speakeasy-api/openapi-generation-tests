@@ -6217,6 +6217,31 @@ paths:
                       type: string
                 required:
                   - headers
+  /pagination/cursor_non_numeric:
+    get:
+      operationId: paginationCursorNonNumeric
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: cursor
+          in: query
+          description: The page token used to request a specific page of the search results
+          schema:
+            type: string
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponseNonNumeric"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: cursor
+        inputs:
+          - name: cursor
+            in: parameters
+            type: cursor
+        outputs:
+          nextCursor: $.resultArray[(@.length-1)]
+      
   /pagination/limitoffset/page:
     get:
       operationId: paginationLimitOffsetPageParams

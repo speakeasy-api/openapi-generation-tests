@@ -1759,6 +1759,25 @@ components:
             required:
               - numPages
               - resultArray
+    paginationResponseNonNumeric:
+      description: OK
+      content:
+        application/json:
+          schema:
+            title: res
+            type: object
+            properties:
+              numPages:
+                type: integer
+              next:
+                type: string
+              resultArray:
+                type: array
+                items:
+                  type: string
+            required:
+              - numPages
+              - resultArray
   parameters:
     emptyObjectParam:
       name: emptyObject
