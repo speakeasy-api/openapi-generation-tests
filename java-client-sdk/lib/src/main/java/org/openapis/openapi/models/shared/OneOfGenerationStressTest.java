@@ -9,38 +9,38 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class OneOfGenerationStressTest {
     @JsonProperty("any")
-    public Object any;
+    public java.lang.Object any;
 
-    public OneOfGenerationStressTest withAny(Object any) {
+    public OneOfGenerationStressTest withAny(java.lang.Object any) {
         this.any = any;
         return this;
     }
     
     @JsonProperty("nullableAny")
-    public Object nullableAny;
+    public java.lang.Object nullableAny;
 
-    public OneOfGenerationStressTest withNullableAny(Object nullableAny) {
+    public OneOfGenerationStressTest withNullableAny(java.lang.Object nullableAny) {
         this.nullableAny = nullableAny;
         return this;
     }
     
     @JsonProperty("oneOfFromArrayOfTypes")
-    public Object oneOfFromArrayOfTypes;
+    public java.lang.Object oneOfFromArrayOfTypes;
 
-    public OneOfGenerationStressTest withOneOfFromArrayOfTypes(Object oneOfFromArrayOfTypes) {
+    public OneOfGenerationStressTest withOneOfFromArrayOfTypes(java.lang.Object oneOfFromArrayOfTypes) {
         this.oneOfFromArrayOfTypes = oneOfFromArrayOfTypes;
         return this;
     }
     
     @JsonProperty("oneOfSameType")
-    public Object oneOfSameType;
+    public java.lang.Object oneOfSameType;
 
-    public OneOfGenerationStressTest withOneOfSameType(Object oneOfSameType) {
+    public OneOfGenerationStressTest withOneOfSameType(java.lang.Object oneOfSameType) {
         this.oneOfSameType = oneOfSameType;
         return this;
     }
     
-    public OneOfGenerationStressTest(@JsonProperty("any") Object any, @JsonProperty("nullableAny") Object nullableAny, @JsonProperty("oneOfFromArrayOfTypes") Object oneOfFromArrayOfTypes, @JsonProperty("oneOfSameType") Object oneOfSameType) {
+    public OneOfGenerationStressTest(@JsonProperty("any") java.lang.Object any, @JsonProperty("nullableAny") java.lang.Object nullableAny, @JsonProperty("oneOfFromArrayOfTypes") java.lang.Object oneOfFromArrayOfTypes, @JsonProperty("oneOfSameType") java.lang.Object oneOfSameType) {
         this.any = any;
         this.nullableAny = nullableAny;
         this.oneOfFromArrayOfTypes = oneOfFromArrayOfTypes;

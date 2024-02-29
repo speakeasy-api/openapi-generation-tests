@@ -46,15 +46,16 @@ public class RequestBodyReadWriteOnlyUnionResponse {
      * OK
      */
     
-    public Object weaklyTypedOneOfReadWriteObject;
+    public java.lang.Object weaklyTypedOneOfReadWriteObject;
 
-    public RequestBodyReadWriteOnlyUnionResponse withWeaklyTypedOneOfReadWriteObject(Object weaklyTypedOneOfReadWriteObject) {
+    public RequestBodyReadWriteOnlyUnionResponse withWeaklyTypedOneOfReadWriteObject(java.lang.Object weaklyTypedOneOfReadWriteObject) {
         this.weaklyTypedOneOfReadWriteObject = weaklyTypedOneOfReadWriteObject;
         return this;
     }
     
-    public RequestBodyReadWriteOnlyUnionResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode) {
+    public RequestBodyReadWriteOnlyUnionResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode, @JsonProperty("RawResponse") HttpResponse<byte[]> rawResponse) {
         this.contentType = contentType;
         this.statusCode = statusCode;
+        this.rawResponse = rawResponse;
   }
 }

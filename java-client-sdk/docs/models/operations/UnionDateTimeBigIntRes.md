@@ -7,4 +7,4 @@ OK
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `json`             | *Object*           | :heavy_check_mark: | N/A                |
+| `json`             | *java.lang.Object* | :heavy_check_mark: | N/A                |
