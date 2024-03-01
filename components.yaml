@@ -88,6 +88,11 @@ components:
       oneOf:
         - $ref: "#/components/schemas/simpleObject"
         - $ref: "#/components/schemas/deepObject"
+    weaklyTypedOneOfNullEnumObject:
+      oneOf:
+        - $ref: "#/components/schemas/simpleObject"
+        - $ref: "#/components/schemas/deepObject"
+        - enum: [null]
     weaklyTypedOneOfReadOnlyObject:
       oneOf:
         - $ref: "#/components/schemas/simpleObject"
@@ -100,6 +105,14 @@ components:
       oneOf:
         - $ref: "#/components/schemas/simpleObject"
         - $ref: "#/components/schemas/readWriteObject"
+    objectWithNullEnums:
+      type: object
+      required: [nullEnum]
+      properties:
+        nullEnum:
+          enum: [null]
+        optNullEnum:
+          enum: [null]
     typedObjectOneOf:
       oneOf:
         - $ref: "#/components/schemas/typedObject1"

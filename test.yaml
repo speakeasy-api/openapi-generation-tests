@@ -3655,6 +3655,30 @@ paths:
                     $ref: "components.yaml#/components/schemas/defaultsAndConstsOutput"
                 required:
                   - json
+  /anything/requestBodies/post/nullEnum:
+    post:
+      operationId: nullEnumPost
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/objectWithNullEnums"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/objectWithNullEnums"
+                required:
+                  - json
   /anything/requestBodies/post/jsonDataTypes/string:
     post:
       operationId: requestBodyPostJsonDataTypesString
@@ -5733,6 +5757,30 @@ paths:
                 properties:
                   json:
                     $ref: "components.yaml#/components/schemas/weaklyTypedOneOfObject"
+                required:
+                  - json
+  /anything/weaklyTypedOneOfNullEnum:
+    post:
+      operationId: weaklyTypedOneOfNullEnumPost
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/weaklyTypedOneOfNullEnumObject"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/weaklyTypedOneOfNullEnumObject"
                 required:
                   - json
   /anything/typedObjectOneOf:
