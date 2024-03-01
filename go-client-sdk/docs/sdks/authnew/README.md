@@ -27,10 +27,11 @@ Endpoints for testing authentication.
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -43,18 +44,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.AuthNew.APIKeyAuthGlobalNew(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "owsGgP4_AhRPMSJ",
-            Username: "Devonte_Bins",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    })
+    res, err := s.AuthNew.APIKeyAuthGlobalNew(ctx, shared.AuthServiceRequestBody{})
     if err != nil {
         log.Fatal(err)
     }
@@ -79,7 +69,7 @@ func main() {
 **[*operations.APIKeyAuthGlobalNewResponse](../../pkg/models/operations/apikeyauthglobalnewresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## AuthGlobal
 
@@ -89,10 +79,11 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -105,18 +96,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.AuthNew.AuthGlobal(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "xvJcf9GiJNr7T2x",
-            Username: "Cory33",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    })
+    res, err := s.AuthNew.AuthGlobal(ctx, shared.AuthServiceRequestBody{})
     if err != nil {
         log.Fatal(err)
     }
@@ -141,7 +121,7 @@ func main() {
 **[*operations.AuthGlobalResponse](../../pkg/models/operations/authglobalresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## BasicAuthNew
 
@@ -151,11 +131,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
 	"openapi/v2/pkg/models/shared"
+	"log"
+	"net/http"
 )
 
 func main() {
@@ -171,18 +152,7 @@ func main() {
         }
 
     ctx := context.Background()
-    res, err := s.AuthNew.BasicAuthNew(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "Z2OStPksFyrcGeu",
-            Username: "Ashton.Steuber27",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    }, operationSecurity)
+    res, err := s.AuthNew.BasicAuthNew(ctx, shared.AuthServiceRequestBody{}, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -208,7 +178,7 @@ func main() {
 **[*operations.BasicAuthNewResponse](../../pkg/models/operations/basicauthnewresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MultipleMixedOptionsAuth
 
@@ -218,11 +188,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
 	"openapi/v2/pkg/models/shared"
+	"log"
+	"net/http"
 )
 
 func main() {
@@ -237,18 +208,7 @@ func main() {
         }
 
     ctx := context.Background()
-    res, err := s.AuthNew.MultipleMixedOptionsAuth(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "Iq1JSzG1wqLDz4v",
-            Username: "Ismael.Emmerich",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    }, operationSecurity)
+    res, err := s.AuthNew.MultipleMixedOptionsAuth(ctx, shared.AuthServiceRequestBody{}, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -274,7 +234,7 @@ func main() {
 **[*operations.MultipleMixedOptionsAuthResponse](../../pkg/models/operations/multiplemixedoptionsauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MultipleMixedSchemeAuth
 
@@ -284,11 +244,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
 	"openapi/v2/pkg/models/shared"
+	"context"
+	"log"
+	"net/http"
 )
 
 func main() {
@@ -307,18 +268,7 @@ func main() {
         }
 
     ctx := context.Background()
-    res, err := s.AuthNew.MultipleMixedSchemeAuth(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "OcWVV5608IiaWJQ",
-            Username: "Kameron42",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    }, operationSecurity)
+    res, err := s.AuthNew.MultipleMixedSchemeAuth(ctx, shared.AuthServiceRequestBody{}, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -344,7 +294,7 @@ func main() {
 **[*operations.MultipleMixedSchemeAuthResponse](../../pkg/models/operations/multiplemixedschemeauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MultipleOptionsWithMixedSchemesAuth
 
@@ -354,11 +304,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
 	"openapi/v2/pkg/models/shared"
+	"log"
+	"net/http"
 )
 
 func main() {
@@ -376,18 +327,7 @@ func main() {
         }
 
     ctx := context.Background()
-    res, err := s.AuthNew.MultipleOptionsWithMixedSchemesAuth(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "fpwNE90MyqKIrXk",
-            Username: "Caroline_Walsh",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    }, operationSecurity)
+    res, err := s.AuthNew.MultipleOptionsWithMixedSchemesAuth(ctx, shared.AuthServiceRequestBody{}, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -413,7 +353,7 @@ func main() {
 **[*operations.MultipleOptionsWithMixedSchemesAuthResponse](../../pkg/models/operations/multipleoptionswithmixedschemesauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MultipleOptionsWithSimpleSchemesAuth
 
@@ -423,11 +363,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
 	"openapi/v2/pkg/models/shared"
+	"log"
+	"net/http"
 )
 
 func main() {
@@ -445,18 +386,7 @@ func main() {
         }
 
     ctx := context.Background()
-    res, err := s.AuthNew.MultipleOptionsWithSimpleSchemesAuth(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "pibxDTiJSijK04Y",
-            Username: "Selena76",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    }, operationSecurity)
+    res, err := s.AuthNew.MultipleOptionsWithSimpleSchemesAuth(ctx, shared.AuthServiceRequestBody{}, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -482,7 +412,7 @@ func main() {
 **[*operations.MultipleOptionsWithSimpleSchemesAuthResponse](../../pkg/models/operations/multipleoptionswithsimpleschemesauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MultipleSimpleOptionsAuth
 
@@ -492,11 +422,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
 	"openapi/v2/pkg/models/shared"
+	"log"
+	"net/http"
 )
 
 func main() {
@@ -511,18 +442,7 @@ func main() {
         }
 
     ctx := context.Background()
-    res, err := s.AuthNew.MultipleSimpleOptionsAuth(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "pzdKQgSGZSrUGNs",
-            Username: "Eryn51",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    }, operationSecurity)
+    res, err := s.AuthNew.MultipleSimpleOptionsAuth(ctx, shared.AuthServiceRequestBody{}, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -548,7 +468,7 @@ func main() {
 **[*operations.MultipleSimpleOptionsAuthResponse](../../pkg/models/operations/multiplesimpleoptionsauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MultipleSimpleSchemeAuth
 
@@ -558,11 +478,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
 	"openapi/v2/pkg/models/shared"
+	"log"
+	"net/http"
 )
 
 func main() {
@@ -578,18 +499,7 @@ func main() {
         }
 
     ctx := context.Background()
-    res, err := s.AuthNew.MultipleSimpleSchemeAuth(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "UrAsw466AAaYtr1",
-            Username: "Kenya.Baumbach",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    }, operationSecurity)
+    res, err := s.AuthNew.MultipleSimpleSchemeAuth(ctx, shared.AuthServiceRequestBody{}, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -615,7 +525,7 @@ func main() {
 **[*operations.MultipleSimpleSchemeAuthResponse](../../pkg/models/operations/multiplesimpleschemeauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Oauth2AuthNew
 
@@ -625,11 +535,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
 	"openapi/v2/pkg/models/shared"
+	"log"
+	"net/http"
 )
 
 func main() {
@@ -644,18 +555,7 @@ func main() {
         }
 
     ctx := context.Background()
-    res, err := s.AuthNew.Oauth2AuthNew(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "V02sHy2onRTMRgS",
-            Username: "Polly.Aufderhar78",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    }, operationSecurity)
+    res, err := s.AuthNew.Oauth2AuthNew(ctx, shared.AuthServiceRequestBody{}, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -681,7 +581,7 @@ func main() {
 **[*operations.Oauth2AuthNewResponse](../../pkg/models/operations/oauth2authnewresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## OpenIDConnectAuthNew
 
@@ -691,11 +591,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
 	"openapi/v2/pkg/models/shared"
+	"log"
+	"net/http"
 )
 
 func main() {
@@ -710,18 +611,7 @@ func main() {
         }
 
     ctx := context.Background()
-    res, err := s.AuthNew.OpenIDConnectAuthNew(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "1_B3hNdr8HC3AeS",
-            Username: "Floy_Heller",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    }, operationSecurity)
+    res, err := s.AuthNew.OpenIDConnectAuthNew(ctx, shared.AuthServiceRequestBody{}, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -747,4 +637,4 @@ func main() {
 **[*operations.OpenIDConnectAuthNewResponse](../../pkg/models/operations/openidconnectauthnewresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

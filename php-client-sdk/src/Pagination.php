@@ -15,6 +15,10 @@ class Pagination
 		'http://localhost:35456',
 	];
 	
+	public const PAGINATION_CURSOR_NON_NUMERIC_SERVERS = [
+		'http://localhost:35456',
+	];
+	
 	public const PAGINATION_CURSOR_PARAMS_SERVERS = [
 		'http://localhost:35456',
 	];
@@ -32,6 +36,10 @@ class Pagination
 	];
 	
 	public const PAGINATION_LIMIT_OFFSET_PAGE_PARAMS_SERVERS = [
+		'http://localhost:35456',
+	];
+	
+	public const PAGINATION_URL_PARAMS_SERVERS = [
 		'http://localhost:35456',
 	];
 
@@ -89,6 +97,55 @@ class Pagination
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
                 $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\PaginationCursorBodyRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * paginationCursorNonNumeric
+     * 
+     * @param ?string $cursor
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\PaginationCursorNonNumericResponse
+     */
+	public function paginationCursorNonNumeric(
+        ?string $cursor = null,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\PaginationCursorNonNumericResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\PaginationCursorNonNumericRequest();
+        $request->cursor = $cursor;
+        
+        $baseUrl = Utils\Utils::templateUrl(Pagination::PAGINATION_CURSOR_NON_NUMERIC_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/pagination/cursor_non_numeric');
+        
+        $options = ['http_errors' => false];
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\PaginationCursorNonNumericRequest::class, $request, $this->sdkConfiguration->globals));
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\PaginationCursorNonNumericResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\PaginationCursorNonNumericRes', 'json');
             }
         }
 
@@ -339,6 +396,58 @@ class Pagination
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
                 $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\PaginationLimitOffsetPageParamsRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * paginationURLParams
+     * 
+     * @param int $attempts
+     * @param ?string $isReferencePath
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\PaginationURLParamsResponse
+     */
+	public function paginationURLParams(
+        int $attempts,
+        ?string $isReferencePath = null,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\PaginationURLParamsResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\PaginationURLParamsRequest();
+        $request->attempts = $attempts;
+        $request->isReferencePath = $isReferencePath;
+        
+        $baseUrl = Utils\Utils::templateUrl(Pagination::PAGINATION_URL_PARAMS_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/pagination/url');
+        
+        $options = ['http_errors' => false];
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\PaginationURLParamsRequest::class, $request, $this->sdkConfiguration->globals));
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\PaginationURLParamsResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\PaginationURLParamsRes', 'json');
             }
         }
 

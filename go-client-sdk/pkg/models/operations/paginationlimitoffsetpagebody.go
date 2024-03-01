@@ -12,8 +12,16 @@ var PaginationLimitOffsetPageBodyServerList = []string{
 
 // PaginationLimitOffsetPageBodyRes - OK
 type PaginationLimitOffsetPageBodyRes struct {
+	Next        *string `json:"next,omitempty"`
 	NumPages    int64   `json:"numPages"`
 	ResultArray []int64 `json:"resultArray"`
+}
+
+func (o *PaginationLimitOffsetPageBodyRes) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
 }
 
 func (o *PaginationLimitOffsetPageBodyRes) GetNumPages() int64 {
