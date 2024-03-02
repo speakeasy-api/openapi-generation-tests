@@ -19,6 +19,6 @@ namespace Openapi.Models.Operations
     {
 
         [JsonProperty("headers")]
-        public Headers Headers { get; set; } = default!;
+        public HeaderParamsArrayHeaders Headers { get; set; } = default!;
     }
 }

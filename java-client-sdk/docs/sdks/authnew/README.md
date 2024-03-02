@@ -37,24 +37,31 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
+            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(
+){{
+                basicAuth = new BasicAuth(
+                    "<value>",
+                    "<value>");
                 headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
+                    add(new HeaderAuth(
+                    "<value>",
+                    "<value>"){{
+                        expectedValue = "<value>";
+                        headerName = "<value>";
                     }}),
                 }};
-            }};            
 
-            ApiKeyAuthGlobalNewResponse res = sdk.authNew.apiKeyAuthGlobalNew(req);
+            }};
+
+            org.openapis.openapi.models.operations.ApiKeyAuthGlobalNewResponse res = sdk.authNew.apiKeyAuthGlobalNew(req);
 
             if (res.statusCode == 200) {
                 // handle response
@@ -97,24 +104,31 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
+            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(
+){{
+                basicAuth = new BasicAuth(
+                    "<value>",
+                    "<value>");
                 headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
+                    add(new HeaderAuth(
+                    "<value>",
+                    "<value>"){{
+                        expectedValue = "<value>";
+                        headerName = "<value>";
                     }}),
                 }};
-            }};            
 
-            AuthGlobalResponse res = sdk.authNew.authGlobal(req);
+            }};
+
+            org.openapis.openapi.models.operations.AuthGlobalResponse res = sdk.authNew.authGlobal(req);
 
             if (res.statusCode == 200) {
                 // handle response
@@ -162,17 +176,25 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
+            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(
+){{
+                basicAuth = new BasicAuth(
+                    "<value>",
+                    "<value>");
                 headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
+                    add(new HeaderAuth(
+                    "<value>",
+                    "<value>"){{
+                        expectedValue = "<value>";
+                        headerName = "<value>";
                     }}),
                 }};
-            }};            
 
-            BasicAuthNewResponse res = sdk.authNew.basicAuthNew(req, new BasicAuthNewSecurity("YOUR_PASSWORD", "YOUR_USERNAME"){{
+            }};
+
+            org.openapis.openapi.models.operations.BasicAuthNewResponse res = sdk.authNew.basicAuthNew(req, new BasicAuthNewSecurity(
+            "YOUR_PASSWORD",
+            "YOUR_USERNAME"){{
                 password = "YOUR_PASSWORD";
                 username = "YOUR_USERNAME";
             }});
@@ -225,17 +247,24 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
+            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(
+){{
+                basicAuth = new BasicAuth(
+                    "<value>",
+                    "<value>");
                 headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
+                    add(new HeaderAuth(
+                    "<value>",
+                    "<value>"){{
+                        expectedValue = "<value>";
+                        headerName = "<value>";
                     }}),
                 }};
-            }};            
 
-            MultipleMixedOptionsAuthResponse res = sdk.authNew.multipleMixedOptionsAuth(req, new MultipleMixedOptionsAuthSecurity(){{
+            }};
+
+            org.openapis.openapi.models.operations.MultipleMixedOptionsAuthResponse res = sdk.authNew.multipleMixedOptionsAuth(req, new MultipleMixedOptionsAuthSecurity(
+            ){{
                 apiKeyAuthNew = "Token <YOUR_API_KEY>";
             }});
 
@@ -287,19 +316,31 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
+            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(
+){{
+                basicAuth = new BasicAuth(
+                    "<value>",
+                    "<value>");
                 headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
+                    add(new HeaderAuth(
+                    "<value>",
+                    "<value>"){{
+                        expectedValue = "<value>";
+                        headerName = "<value>";
                     }}),
                 }};
-            }};            
 
-            MultipleMixedSchemeAuthResponse res = sdk.authNew.multipleMixedSchemeAuth(req, new MultipleMixedSchemeAuthSecurity("Token <YOUR_API_KEY>", new SchemeBasicAuth("YOUR_PASSWORD", "YOUR_USERNAME")){{
+            }};
+
+            org.openapis.openapi.models.operations.MultipleMixedSchemeAuthResponse res = sdk.authNew.multipleMixedSchemeAuth(req, new MultipleMixedSchemeAuthSecurity(
+            "Token <YOUR_API_KEY>",
+            new SchemeBasicAuth(
+            "YOUR_PASSWORD",
+            "YOUR_USERNAME")){{
                 apiKeyAuthNew = "Token <YOUR_API_KEY>";
-                basicAuth = new SchemeBasicAuth("YOUR_PASSWORD", "YOUR_USERNAME"){{
+                basicAuth = new SchemeBasicAuth(
+                "YOUR_PASSWORD",
+                "YOUR_USERNAME"){{
                     password = "YOUR_PASSWORD";
                     username = "YOUR_USERNAME";
                 }};
@@ -355,18 +396,27 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
+            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(
+){{
+                basicAuth = new BasicAuth(
+                    "<value>",
+                    "<value>");
                 headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
+                    add(new HeaderAuth(
+                    "<value>",
+                    "<value>"){{
+                        expectedValue = "<value>";
+                        headerName = "<value>";
                     }}),
                 }};
-            }};            
 
-            MultipleOptionsWithMixedSchemesAuthResponse res = sdk.authNew.multipleOptionsWithMixedSchemesAuth(req, new MultipleOptionsWithMixedSchemesAuthSecurity(){{
-                option1 = new MultipleOptionsWithMixedSchemesAuthSecurityOption1("Token <YOUR_API_KEY>", "Bearer YOUR_OAUTH2_TOKEN"){{
+            }};
+
+            org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthResponse res = sdk.authNew.multipleOptionsWithMixedSchemesAuth(req, new MultipleOptionsWithMixedSchemesAuthSecurity(
+            ){{
+                option1 = new MultipleOptionsWithMixedSchemesAuthSecurityOption1(
+                "Token <YOUR_API_KEY>",
+                "Bearer YOUR_OAUTH2_TOKEN"){{
                     apiKeyAuthNew = "Token <YOUR_API_KEY>";
                     oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
                 }};
@@ -421,18 +471,27 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
+            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(
+){{
+                basicAuth = new BasicAuth(
+                    "<value>",
+                    "<value>");
                 headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
+                    add(new HeaderAuth(
+                    "<value>",
+                    "<value>"){{
+                        expectedValue = "<value>";
+                        headerName = "<value>";
                     }}),
                 }};
-            }};            
 
-            MultipleOptionsWithSimpleSchemesAuthResponse res = sdk.authNew.multipleOptionsWithSimpleSchemesAuth(req, new MultipleOptionsWithSimpleSchemesAuthSecurity(){{
-                option1 = new MultipleOptionsWithSimpleSchemesAuthSecurityOption1("Token <YOUR_API_KEY>", "Bearer YOUR_OAUTH2_TOKEN"){{
+            }};
+
+            org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthResponse res = sdk.authNew.multipleOptionsWithSimpleSchemesAuth(req, new MultipleOptionsWithSimpleSchemesAuthSecurity(
+            ){{
+                option1 = new MultipleOptionsWithSimpleSchemesAuthSecurityOption1(
+                "Token <YOUR_API_KEY>",
+                "Bearer YOUR_OAUTH2_TOKEN"){{
                     apiKeyAuthNew = "Token <YOUR_API_KEY>";
                     oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
                 }};
@@ -485,17 +544,24 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
+            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(
+){{
+                basicAuth = new BasicAuth(
+                    "<value>",
+                    "<value>");
                 headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
+                    add(new HeaderAuth(
+                    "<value>",
+                    "<value>"){{
+                        expectedValue = "<value>";
+                        headerName = "<value>";
                     }}),
                 }};
-            }};            
 
-            MultipleSimpleOptionsAuthResponse res = sdk.authNew.multipleSimpleOptionsAuth(req, new MultipleSimpleOptionsAuthSecurity(){{
+            }};
+
+            org.openapis.openapi.models.operations.MultipleSimpleOptionsAuthResponse res = sdk.authNew.multipleSimpleOptionsAuth(req, new MultipleSimpleOptionsAuthSecurity(
+            ){{
                 apiKeyAuthNew = "Token <YOUR_API_KEY>";
             }});
 
@@ -546,17 +612,25 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
+            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(
+){{
+                basicAuth = new BasicAuth(
+                    "<value>",
+                    "<value>");
                 headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
+                    add(new HeaderAuth(
+                    "<value>",
+                    "<value>"){{
+                        expectedValue = "<value>";
+                        headerName = "<value>";
                     }}),
                 }};
-            }};            
 
-            MultipleSimpleSchemeAuthResponse res = sdk.authNew.multipleSimpleSchemeAuth(req, new MultipleSimpleSchemeAuthSecurity("Token <YOUR_API_KEY>", "Bearer YOUR_OAUTH2_TOKEN"){{
+            }};
+
+            org.openapis.openapi.models.operations.MultipleSimpleSchemeAuthResponse res = sdk.authNew.multipleSimpleSchemeAuth(req, new MultipleSimpleSchemeAuthSecurity(
+            "Token <YOUR_API_KEY>",
+            "Bearer YOUR_OAUTH2_TOKEN"){{
                 apiKeyAuthNew = "Token <YOUR_API_KEY>";
                 oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
             }});
@@ -608,17 +682,24 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
+            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(
+){{
+                basicAuth = new BasicAuth(
+                    "<value>",
+                    "<value>");
                 headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
+                    add(new HeaderAuth(
+                    "<value>",
+                    "<value>"){{
+                        expectedValue = "<value>";
+                        headerName = "<value>";
                     }}),
                 }};
-            }};            
 
-            Oauth2AuthNewResponse res = sdk.authNew.oauth2AuthNew(req, new Oauth2AuthNewSecurity("Bearer YOUR_OAUTH2_TOKEN"){{
+            }};
+
+            org.openapis.openapi.models.operations.Oauth2AuthNewResponse res = sdk.authNew.oauth2AuthNew(req, new Oauth2AuthNewSecurity(
+            "Bearer YOUR_OAUTH2_TOKEN"){{
                 oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
             }});
 
@@ -669,17 +750,24 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
+            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(
+){{
+                basicAuth = new BasicAuth(
+                    "<value>",
+                    "<value>");
                 headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
+                    add(new HeaderAuth(
+                    "<value>",
+                    "<value>"){{
+                        expectedValue = "<value>";
+                        headerName = "<value>";
                     }}),
                 }};
-            }};            
 
-            OpenIdConnectAuthNewResponse res = sdk.authNew.openIdConnectAuthNew(req, new OpenIdConnectAuthNewSecurity("Bearer YOUR_OPENID_TOKEN"){{
+            }};
+
+            org.openapis.openapi.models.operations.OpenIdConnectAuthNewResponse res = sdk.authNew.openIdConnectAuthNew(req, new OpenIdConnectAuthNewSecurity(
+            "Bearer YOUR_OPENID_TOKEN"){{
                 openIdConnect = "Bearer YOUR_OPENID_TOKEN";
             }});
 

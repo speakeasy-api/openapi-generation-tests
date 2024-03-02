@@ -1,9 +1,10 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```php
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use OpenAPI\OpenAPI;
 use OpenAPI\OpenAPI\Models\Shared;
@@ -12,16 +13,71 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->setSecurity($security)
     ->build();
 
 try {
-    $response = $sdk->generation->globalNameOverridden();
+    $request = new Shared\SimpleObject();
+    $request->any = 'any';
+    $request->bigint = 8821239038968084;
+    $request->bigintStr = '9223372036854775808';
+    $request->bool = true;
+    $request->boolOpt = true;
+    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000001Z');
+    $request->decimal = 3.141592653589793;
+    $request->decimalStr = '3.14159265358979344719667586';
+    $request->enum = Shared\Enum::One;
+    $request->float32 = 1.1;
+    $request->int = 1;
+    $request->int32 = 1;
+    $request->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $request->intEnum = Shared\IntEnum::Second;
+    $request->intOptNull = 930591;
+    $request->num = 1.1;
+    $request->numOptNull = 5244.22;
+    $request->str = 'test';
+    $request->strOpt = 'testOptional';
+
+    $response = $sdk->generation->globalNameOverridden($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
+    // handle exception
+}
+
+```
+
+```php
+<?php
+
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)
+    ->build();
+
+try {
+    $response = $sdk->servers->selectGlobalServer();
+
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+} catch (Throwable $e) {
     // handle exception
 }
 
@@ -35,13 +91,17 @@ Do this second
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use OpenAPI\OpenAPI;
 use OpenAPI\OpenAPI\Models\Shared;
 use OpenAPI\OpenAPI\Models\Operations;
 
-$sdk = OpenAPI\SDK::builder()->build();
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
 
 try {
     $request = new Operations\UsageExamplePostRequest();
@@ -58,12 +118,12 @@ try {
     $request->requestBody->fakerFormattedStrings->ipv6Format =
         '36a9:c057:a71b:b73a:c9ee:2348:d76c:3164';
     $request->requestBody->fakerFormattedStrings->jsonFormat =
-        '{key: 66681, key1: null, key2: "string"}';
+        '{key: 66681, key1: null, key2: "<value>"}';
     $request->requestBody->fakerFormattedStrings->macFormat = '25:8b:e7:e1:35:86';
     $request->requestBody->fakerFormattedStrings->passwordFormat = 'IKpiCb6eWzdveK0';
     $request->requestBody->fakerFormattedStrings->phoneFormat = '1-803-587-3283';
     $request->requestBody->fakerFormattedStrings->timezoneFormat = 'America/Argentina/Buenos_Aires';
-    $request->requestBody->fakerFormattedStrings->unknownFormat = 'string';
+    $request->requestBody->fakerFormattedStrings->unknownFormat = '<value>';
     $request->requestBody->fakerFormattedStrings->urlFormat = 'http://beneficial-inconvenience.net';
     $request->requestBody->fakerFormattedStrings->uuidFormat =
         '342442b8-aff3-42e0-b62d-e2e2d47a9bf1';
@@ -71,7 +131,7 @@ try {
     $request->requestBody->fakerStrings = new Shared\FakerStrings();
     $request->requestBody->fakerStrings->city = 'McLaughlinchester';
     $request->requestBody->fakerStrings->iban = 'TL232743267267003560099';
-    $request->requestBody->fakerStrings->id = '<ID>';
+    $request->requestBody->fakerStrings->id = '<id>';
     $request->requestBody->fakerStrings->iPv4 = '208.201.244.247';
     $request->requestBody->fakerStrings->iPv6 = 'bd3a:d72b:208b:2c81:8830:8bb9:7902:374e';
     $request->requestBody->fakerStrings->account = '65982652';
@@ -86,7 +146,7 @@ try {
     $request->requestBody->fakerStrings->countryCode = 'MO';
     $request->requestBody->fakerStrings->currency = 'Canadian Dollar';
     $request->requestBody->fakerStrings->datatype = 'point';
-    $request->requestBody->fakerStrings->default = 'string';
+    $request->requestBody->fakerStrings->default = '<value>';
     $request->requestBody->fakerStrings->description = 'Quality-focused full-range circuit';
     $request->requestBody->fakerStrings->directory = '/usr/ports';
     $request->requestBody->fakerStrings->domainName = 'klutzy-prostacyclin.com';
@@ -99,7 +159,7 @@ try {
     $request->requestBody->fakerStrings->fullName = 'Mrs. Lillian Bode';
     $request->requestBody->fakerStrings->gender = 'Cis female';
     $request->requestBody->fakerStrings->job = 'Future Solutions Specialist';
-    $request->requestBody->fakerStrings->json = '{key: 95274, key1: null, key2: "string"}';
+    $request->requestBody->fakerStrings->json = '{key: 95274, key1: null, key2: "<value>"}';
     $request->requestBody->fakerStrings->key = '<key>';
     $request->requestBody->fakerStrings->lastName = 'Renner';
     $request->requestBody->fakerStrings->latitude = '-71.5944';
@@ -132,7 +192,7 @@ try {
     $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat(
         'Y-m-d\TH:i:s+',
-        '2020-01-01T00:00:00.000000001Z',
+        '2020-01-01T00:00:00.000001Z',
     );
     $request->requestBody->simpleObject->decimal = 3.141592653589793;
     $request->requestBody->simpleObject->decimalStr = '3.14159265358979344719667586';
@@ -149,22 +209,22 @@ try {
     $request->requestBody->simpleObject->strOpt = 'testOptional';
     $request->bigintParameter = 924793;
     $request->bigintParameterOptional = 583481;
-    $request->bigintStrParameter = 'string';
-    $request->bigintStrParameterOptional = 'string';
+    $request->bigintStrParameter = '<value>';
+    $request->bigintStrParameterOptional = '<value>';
     $request->boolParameter = false;
-    $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2023-12-21');
+    $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2024-12-21');
     $request->dateTimeDefaultParameter = DateTime::createFromFormat(
         'Y-m-d\TH:i:s+',
-        '2021-03-16T01:25:42.471Z',
+        '2022-03-16T03:03:06.071Z',
     );
     $request->dateTimeParameter = DateTime::createFromFormat(
         'Y-m-d\TH:i:s+',
-        '2023-05-24T07:01:53.326Z',
+        '2024-05-24T02:10:19.731Z',
     );
     $request->decimalParameter = 4713.96;
     $request->decimalParameterOptional = 9349.54;
-    $request->decimalStrParameter = 'string';
-    $request->decimalStrParameterOptional = 'string';
+    $request->decimalStrParameter = '<value>';
+    $request->decimalStrParameterOptional = '<value>';
     $request->doubleParameter = 8700.78;
     $request->enumParameter = Operations\EnumParameter::Value2;
     $request->falseyNumberParameter = 0;
@@ -184,9 +244,9 @@ try {
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

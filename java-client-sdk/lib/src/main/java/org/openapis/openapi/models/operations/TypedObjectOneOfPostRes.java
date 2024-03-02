@@ -12,14 +12,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TypedObjectOneOfPostRes {
     @JsonProperty("json")
-    public Object json;
+    public java.lang.Object json;
 
-    public TypedObjectOneOfPostRes withJson(Object json) {
+    public TypedObjectOneOfPostRes withJson(java.lang.Object json) {
         this.json = json;
         return this;
     }
     
-    public TypedObjectOneOfPostRes(@JsonProperty("json") Object json) {
+    public TypedObjectOneOfPostRes(@JsonProperty("json") java.lang.Object json) {
         this.json = json;
   }
 }
