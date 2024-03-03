@@ -134,14 +134,14 @@ public class ExampleResource {
     }
     
     @JsonProperty("vehicle")
-    public Object vehicle;
+    public java.lang.Object vehicle;
 
-    public ExampleResource withVehicle(Object vehicle) {
+    public ExampleResource withVehicle(java.lang.Object vehicle) {
         this.vehicle = vehicle;
         return this;
     }
     
-    public ExampleResource(@JsonProperty("chocolates") Chocolates[] chocolates, @JsonProperty("id") String id, @JsonProperty("name") String name, @JsonProperty("vehicle") Object vehicle) {
+    public ExampleResource(@JsonProperty("chocolates") Chocolates[] chocolates, @JsonProperty("id") String id, @JsonProperty("name") String name, @JsonProperty("vehicle") java.lang.Object vehicle) {
         this.chocolates = chocolates;
         this.id = id;
         this.name = name;
