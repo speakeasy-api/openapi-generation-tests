@@ -19,10 +19,11 @@ Gets documentation for some language, I guess.
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -35,7 +36,7 @@ func main() {
     )
 
 
-    var language string = "string"
+    var language string = "<value>"
 
     ctx := context.Background()
     res, err := s.Documentation.GetDocumentationPerLanguage(ctx, language)
@@ -62,4 +63,4 @@ func main() {
 **[*operations.GetDocumentationPerLanguageResponse](../../pkg/models/operations/getdocumentationperlanguageresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

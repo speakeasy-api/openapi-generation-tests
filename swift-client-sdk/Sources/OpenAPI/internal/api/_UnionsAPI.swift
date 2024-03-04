@@ -73,12 +73,30 @@ class _UnionsAPI: UnionsAPI {
         )
     }
     
+    public func stronglyTypedOneOfDiscriminatedPost(request: Shared.StronglyTypedOneOfDiscriminatedObject) async throws -> Response<Operations.StronglyTypedOneOfDiscriminatedPostResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureStronglyTypedOneOfDiscriminatedPostRequest(with: configuration, request: request)
+            },
+            handleResponse: handleStronglyTypedOneOfDiscriminatedPostResponse
+        )
+    }
+    
     public func stronglyTypedOneOfPost(request: Shared.StronglyTypedOneOfObject) async throws -> Response<Operations.StronglyTypedOneOfPostResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
                 try configureStronglyTypedOneOfPostRequest(with: configuration, request: request)
             },
             handleResponse: handleStronglyTypedOneOfPostResponse
+        )
+    }
+    
+    public func stronglyTypedOneOfPostWithNonStandardDiscriminatorName(request: Shared.StronglyTypedOneOfObjectWithNonStandardDiscriminatorName) async throws -> Response<Operations.StronglyTypedOneOfPostWithNonStandardDiscriminatorNameResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureStronglyTypedOneOfPostWithNonStandardDiscriminatorNameRequest(with: configuration, request: request)
+            },
+            handleResponse: handleStronglyTypedOneOfPostWithNonStandardDiscriminatorNameResponse
         )
     }
     
@@ -133,6 +151,15 @@ class _UnionsAPI: UnionsAPI {
                 try configureUnionDateTimeNullRequest(with: configuration, request: request)
             },
             handleResponse: handleUnionDateTimeNullResponse
+        )
+    }
+    
+    public func weaklyTypedOneOfNullEnumPost(request: Shared.WeaklyTypedOneOfNullEnumObject) async throws -> Response<Operations.WeaklyTypedOneOfNullEnumPostResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureWeaklyTypedOneOfNullEnumPostRequest(with: configuration, request: request)
+            },
+            handleResponse: handleWeaklyTypedOneOfNullEnumPostResponse
         )
     }
     
@@ -226,8 +253,30 @@ private func configurePrimitiveTypeOneOfPostRequest(with configuration: URLReque
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
+private func configureStronglyTypedOneOfDiscriminatedPostRequest(with configuration: URLRequestConfiguration, request: Shared.StronglyTypedOneOfDiscriminatedObject) throws {
+    configuration.path = "/anything/stronglyTypedOneOfDiscriminated"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
 private func configureStronglyTypedOneOfPostRequest(with configuration: URLRequestConfiguration, request: Shared.StronglyTypedOneOfObject) throws {
     configuration.path = "/anything/stronglyTypedOneOf"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configureStronglyTypedOneOfPostWithNonStandardDiscriminatorNameRequest(with configuration: URLRequestConfiguration, request: Shared.StronglyTypedOneOfObjectWithNonStandardDiscriminatorName) throws {
+    configuration.path = "/anything/stronglyTypedOneOfWithNonStandardDiscriminatorName"
     configuration.method = .post
     configuration.contentType = "application/json"
     configuration.body = try jsonEncoder().encode(request)
@@ -294,6 +343,17 @@ private func configureUnionDateTimeBigIntRequest(with configuration: URLRequestC
 
 private func configureUnionDateTimeNullRequest(with configuration: URLRequestConfiguration, request: Date) throws {
     configuration.path = "/anything/unionDateTimeNull"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configureWeaklyTypedOneOfNullEnumPostRequest(with configuration: URLRequestConfiguration, request: Shared.WeaklyTypedOneOfNullEnumObject) throws {
+    configuration.path = "/anything/weaklyTypedOneOfNullEnum"
     configuration.method = .post
     configuration.contentType = "application/json"
     configuration.body = try jsonEncoder().encode(request)
@@ -428,6 +488,22 @@ private func handlePrimitiveTypeOneOfPostResponse(response: Client.APIResponse) 
     return .empty
 }
 
+private func handleStronglyTypedOneOfDiscriminatedPostResponse(response: Client.APIResponse) throws -> Operations.StronglyTypedOneOfDiscriminatedPostResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.StronglyTypedOneOfDiscriminatedPostRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
 private func handleStronglyTypedOneOfPostResponse(response: Client.APIResponse) throws -> Operations.StronglyTypedOneOfPostResponse {
     let httpResponse = response.httpResponse
     
@@ -435,6 +511,22 @@ private func handleStronglyTypedOneOfPostResponse(response: Client.APIResponse) 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .res(try JSONDecoder().decode(Operations.StronglyTypedOneOfPostRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleStronglyTypedOneOfPostWithNonStandardDiscriminatorNameResponse(response: Client.APIResponse) throws -> Operations.StronglyTypedOneOfPostWithNonStandardDiscriminatorNameResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.StronglyTypedOneOfPostWithNonStandardDiscriminatorNameRes.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -531,6 +623,22 @@ private func handleUnionDateTimeNullResponse(response: Client.APIResponse) throw
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .res(try JSONDecoder().decode(Operations.UnionDateTimeNullRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleWeaklyTypedOneOfNullEnumPostResponse(response: Client.APIResponse) throws -> Operations.WeaklyTypedOneOfNullEnumPostResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.WeaklyTypedOneOfNullEnumPostRes.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
