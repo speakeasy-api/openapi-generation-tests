@@ -12,9 +12,9 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 class NullableRequiredSharedObjectPostRequestBody
 {
 	#[\JMS\Serializer\Annotation\SerializedName('NullableOptionalObj')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\NullableObject')]
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\NullableOptionalObject')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?\OpenAPI\OpenAPI\Models\Shared\NullableObject $nullableOptionalObj = null;
+    public ?\OpenAPI\OpenAPI\Models\Shared\NullableOptionalObject $nullableOptionalObj = null;
     
 	#[\JMS\Serializer\Annotation\SerializedName('NullableRequiredObj')]
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\NullableObject')]

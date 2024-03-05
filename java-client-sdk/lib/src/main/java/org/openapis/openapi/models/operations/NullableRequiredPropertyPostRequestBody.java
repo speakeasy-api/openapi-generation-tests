@@ -7,6 +7,11 @@ package org.openapis.openapi.models.operations;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.time.OffsetDateTime;
+import org.openapis.openapi.utils.DateTimeDeserializer;
+import org.openapis.openapi.utils.DateTimeSerializer;
 
 
 public class NullableRequiredPropertyPostRequestBody {
@@ -27,6 +32,32 @@ public class NullableRequiredPropertyPostRequestBody {
         return this;
     }
     
+    @JsonProperty("NullableRequiredBigIntStr")
+    public String nullableRequiredBigIntStr;
+
+    public NullableRequiredPropertyPostRequestBody withNullableRequiredBigIntStr(String nullableRequiredBigIntStr) {
+        this.nullableRequiredBigIntStr = nullableRequiredBigIntStr;
+        return this;
+    }
+    
+    @JsonSerialize(using = DateTimeSerializer.class)
+    @JsonDeserialize(using = DateTimeDeserializer.class)
+    @JsonProperty("NullableRequiredDateTime")
+    public OffsetDateTime nullableRequiredDateTime;
+
+    public NullableRequiredPropertyPostRequestBody withNullableRequiredDateTime(OffsetDateTime nullableRequiredDateTime) {
+        this.nullableRequiredDateTime = nullableRequiredDateTime;
+        return this;
+    }
+    
+    @JsonProperty("NullableRequiredDecimalStr")
+    public String nullableRequiredDecimalStr;
+
+    public NullableRequiredPropertyPostRequestBody withNullableRequiredDecimalStr(String nullableRequiredDecimalStr) {
+        this.nullableRequiredDecimalStr = nullableRequiredDecimalStr;
+        return this;
+    }
+    
     @JsonProperty("NullableRequiredEnum")
     public NullableRequiredEnum nullableRequiredEnum;
 
@@ -43,8 +74,11 @@ public class NullableRequiredPropertyPostRequestBody {
         return this;
     }
     
-    public NullableRequiredPropertyPostRequestBody(@JsonProperty("NullableRequiredArray") Double[] nullableRequiredArray, @JsonProperty("NullableRequiredEnum") NullableRequiredEnum nullableRequiredEnum, @JsonProperty("NullableRequiredInt") Long nullableRequiredInt) {
+    public NullableRequiredPropertyPostRequestBody(@JsonProperty("NullableRequiredArray") Double[] nullableRequiredArray, @JsonProperty("NullableRequiredBigIntStr") String nullableRequiredBigIntStr, @JsonProperty("NullableRequiredDateTime") OffsetDateTime nullableRequiredDateTime, @JsonProperty("NullableRequiredDecimalStr") String nullableRequiredDecimalStr, @JsonProperty("NullableRequiredEnum") NullableRequiredEnum nullableRequiredEnum, @JsonProperty("NullableRequiredInt") Long nullableRequiredInt) {
         this.nullableRequiredArray = nullableRequiredArray;
+        this.nullableRequiredBigIntStr = nullableRequiredBigIntStr;
+        this.nullableRequiredDateTime = nullableRequiredDateTime;
+        this.nullableRequiredDecimalStr = nullableRequiredDecimalStr;
         this.nullableRequiredEnum = nullableRequiredEnum;
         this.nullableRequiredInt = nullableRequiredInt;
   }
