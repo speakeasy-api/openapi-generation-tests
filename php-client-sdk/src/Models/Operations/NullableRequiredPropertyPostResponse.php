@@ -33,21 +33,21 @@ class NullableRequiredPropertyPostResponse
      * @var ?\Psr\Http\Message\ResponseInterface $rawResponse
      */
 	
-    public ?\Psr\Http\Message\ResponseInterface $rawResponse = null;
+    public ?\Psr\Http\Message\ResponseInterface $rawResponse;
     
     /**
      * OK
      * 
-     * @var ?string $res
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\NullableRequiredPropertyPostResponseBody $object
      */
 	
-    public ?string $res = null;
+    public ?NullableRequiredPropertyPostResponseBody $object = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->res = null;
+		$this->object = null;
 	}
 }

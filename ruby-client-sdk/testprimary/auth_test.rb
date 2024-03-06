@@ -10,6 +10,15 @@ module OpenApiSDK
       @sdk = OpenApiSDK::SDK.new
     end
 
+    def test_no_auth
+      record_test('auth-no-auth')
+
+      res = @sdk.auth.no_auth
+
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+
+    end
 
     def test_basic_auth
       record_test('auth-basic-auth')
@@ -32,6 +41,25 @@ module OpenApiSDK
 
     end
 
+    def test_basic_auth_long_password
+      # Not recording this test, because it's ruby only
+      res = @sdk.auth_new.basic_auth_new(
+        Shared::AuthServiceRequestBody.new(
+          basic_auth: Shared::BasicAuth.new(
+            username: 'sdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasda',
+            password: 'asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd'
+          )
+        ),
+        Operations::BasicAuthNewSecurity.new(
+          username: 'sdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasda',
+          password: 'asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd'
+        )
+      )
+
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+
+    end
     def test_api_key_auth_global
       record_test('auth-api-key-auth-global')
 
@@ -165,7 +193,6 @@ module OpenApiSDK
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
     end
-
 
     def test_multiple_mixed_scheme_auth
       record_test('auth-multiple-mixed-scheme-auth')

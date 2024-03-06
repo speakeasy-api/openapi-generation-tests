@@ -46,15 +46,16 @@ public class NullableRequiredPropertyPostResponse {
      * OK
      */
     
-    public String res;
+    public NullableRequiredPropertyPostResponseBody object;
 
-    public NullableRequiredPropertyPostResponse withRes(String res) {
-        this.res = res;
+    public NullableRequiredPropertyPostResponse withObject(NullableRequiredPropertyPostResponseBody object) {
+        this.object = object;
         return this;
     }
     
-    public NullableRequiredPropertyPostResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode) {
+    public NullableRequiredPropertyPostResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode, @JsonProperty("RawResponse") HttpResponse<byte[]> rawResponse) {
         this.contentType = contentType;
         this.statusCode = statusCode;
+        this.rawResponse = rawResponse;
   }
 }
