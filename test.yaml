@@ -160,7 +160,6 @@ paths:
               description: The port on which the server is running.
             hostname:
               default: localhost
-
               description: The hostname of the server.
       responses:
         "200":
