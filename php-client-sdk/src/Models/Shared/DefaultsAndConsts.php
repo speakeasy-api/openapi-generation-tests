@@ -59,79 +59,82 @@ class DefaultsAndConsts
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $constStr;
     
+	#[\JMS\Serializer\Annotation\SerializedName('constStrDQuotes')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    public string $constStrDQuotes;
+    
 	#[\JMS\Serializer\Annotation\SerializedName('constStrNull')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $constStrNull;
     
+	#[\JMS\Serializer\Annotation\SerializedName('constStrSQuotes')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    public string $constStrSQuotes;
+    
 	#[\JMS\Serializer\Annotation\SerializedName('defaultBigInt')]
     #[\JMS\Serializer\Annotation\Type('int')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?int $defaultBigInt = null;
+    public int $defaultBigInt;
     
 	#[\JMS\Serializer\Annotation\SerializedName('defaultBigIntStr')]
     #[\JMS\Serializer\Annotation\Type('string')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?string $defaultBigIntStr = null;
+    public string $defaultBigIntStr;
     
 	#[\JMS\Serializer\Annotation\SerializedName('defaultBool')]
     #[\JMS\Serializer\Annotation\Type('bool')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?bool $defaultBool = null;
+    public bool $defaultBool;
     
 	#[\JMS\Serializer\Annotation\SerializedName('defaultDate')]
     #[\JMS\Serializer\Annotation\Type("DateTime<'Y-m-d', '', '|Y-m-d'>")]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?\DateTime $defaultDate = null;
+    public \DateTime $defaultDate;
     
 	#[\JMS\Serializer\Annotation\SerializedName('defaultDateTime')]
     #[\JMS\Serializer\Annotation\Type("DateTime<'Y-m-d\TH:i:s.up'>")]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?\DateTime $defaultDateTime = null;
+    public \DateTime $defaultDateTime;
     
 	#[\JMS\Serializer\Annotation\SerializedName('defaultDecimal')]
     #[\JMS\Serializer\Annotation\Type('float')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?float $defaultDecimal = null;
+    public float $defaultDecimal;
     
 	#[\JMS\Serializer\Annotation\SerializedName('defaultDecimalStr')]
     #[\JMS\Serializer\Annotation\Type('string')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?string $defaultDecimalStr = null;
+    public string $defaultDecimalStr;
     
 	#[\JMS\Serializer\Annotation\SerializedName('defaultEnumInt')]
     #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\DefaultEnumInt>')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?DefaultEnumInt $defaultEnumInt = null;
+    public DefaultEnumInt $defaultEnumInt;
     
 	#[\JMS\Serializer\Annotation\SerializedName('defaultEnumStr')]
     #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\DefaultEnumStr>')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?DefaultEnumStr $defaultEnumStr = null;
+    public DefaultEnumStr $defaultEnumStr;
     
 	#[\JMS\Serializer\Annotation\SerializedName('defaultInt')]
     #[\JMS\Serializer\Annotation\Type('int')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?int $defaultInt = null;
+    public int $defaultInt;
     
 	#[\JMS\Serializer\Annotation\SerializedName('defaultNum')]
     #[\JMS\Serializer\Annotation\Type('float')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?float $defaultNum = null;
+    public float $defaultNum;
     
 	#[\JMS\Serializer\Annotation\SerializedName('defaultStr')]
     #[\JMS\Serializer\Annotation\Type('string')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?string $defaultStr = null;
+    public string $defaultStr;
+    
+	#[\JMS\Serializer\Annotation\SerializedName('defaultStrDQuotes')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    public string $defaultStrDQuotes;
     
 	#[\JMS\Serializer\Annotation\SerializedName('defaultStrNullable')]
     #[\JMS\Serializer\Annotation\Type('string')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?string $defaultStrNullable = null;
+    public string $defaultStrNullable;
     
 	#[\JMS\Serializer\Annotation\SerializedName('defaultStrOptional')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $defaultStrOptional = null;
+    
+	#[\JMS\Serializer\Annotation\SerializedName('defaultStrSQuotes')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    public string $defaultStrSQuotes;
     
 	#[\JMS\Serializer\Annotation\SerializedName('normalField')]
     #[\JMS\Serializer\Annotation\Type('string')]
@@ -151,21 +154,25 @@ class DefaultsAndConsts
 		$this->constInt = 0;
 		$this->constNum = 0;
 		$this->constStr = "";
+		$this->constStrDQuotes = "";
 		$this->constStrNull = "";
-		$this->defaultBigInt = null;
-		$this->defaultBigIntStr = null;
-		$this->defaultBool = null;
-		$this->defaultDate = null;
-		$this->defaultDateTime = null;
-		$this->defaultDecimal = null;
-		$this->defaultDecimalStr = null;
-		$this->defaultEnumInt = null;
-		$this->defaultEnumStr = null;
-		$this->defaultInt = null;
-		$this->defaultNum = null;
-		$this->defaultStr = null;
-		$this->defaultStrNullable = null;
+		$this->constStrSQuotes = "";
+		$this->defaultBigInt = 0;
+		$this->defaultBigIntStr = "";
+		$this->defaultBool = false;
+		$this->defaultDate = new \DateTime();
+		$this->defaultDateTime = new \DateTime();
+		$this->defaultDecimal = 0;
+		$this->defaultDecimalStr = "";
+		$this->defaultEnumInt = \OpenAPI\OpenAPI\Models\Shared\DefaultEnumInt::One;
+		$this->defaultEnumStr = \OpenAPI\OpenAPI\Models\Shared\DefaultEnumStr::One;
+		$this->defaultInt = 0;
+		$this->defaultNum = 0;
+		$this->defaultStr = "";
+		$this->defaultStrDQuotes = "";
+		$this->defaultStrNullable = "";
 		$this->defaultStrOptional = null;
+		$this->defaultStrSQuotes = "";
 		$this->normalField = "";
 	}
 }

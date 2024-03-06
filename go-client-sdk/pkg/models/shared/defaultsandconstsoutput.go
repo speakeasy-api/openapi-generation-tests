@@ -145,7 +145,9 @@ type DefaultsAndConstsOutput struct {
 	ConstInt           int64                                 `json:"constInt"`
 	ConstNum           float64                               `json:"constNum"`
 	ConstStr           string                                `json:"constStr"`
+	ConstStrDQuotes    string                                `json:"constStrDQuotes"`
 	ConstStrNull       *string                               `json:"constStrNull"`
+	ConstStrSQuotes    string                                `json:"constStrSQuotes"`
 	DefaultBigInt      *big.Int                              `json:"defaultBigInt"`
 	DefaultBigIntStr   *big.Int                              `bigint:"string" json:"defaultBigIntStr"`
 	DefaultBool        bool                                  `json:"defaultBool"`
@@ -158,8 +160,10 @@ type DefaultsAndConstsOutput struct {
 	DefaultInt         int64                                 `json:"defaultInt"`
 	DefaultNum         float64                               `json:"defaultNum"`
 	DefaultStr         string                                `json:"defaultStr"`
+	DefaultStrDQuotes  string                                `json:"defaultStrDQuotes"`
 	DefaultStrNullable *string                               `json:"defaultStrNullable"`
 	DefaultStrOptional *string                               `json:"defaultStrOptional,omitempty"`
+	DefaultStrSQuotes  string                                `json:"defaultStrSQuotes"`
 	NormalField        string                                `json:"normalField"`
 }
 
@@ -258,11 +262,25 @@ func (o *DefaultsAndConstsOutput) GetConstStr() string {
 	return o.ConstStr
 }
 
+func (o *DefaultsAndConstsOutput) GetConstStrDQuotes() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConstStrDQuotes
+}
+
 func (o *DefaultsAndConstsOutput) GetConstStrNull() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ConstStrNull
+}
+
+func (o *DefaultsAndConstsOutput) GetConstStrSQuotes() string {
+	if o == nil {
+		return ""
+	}
+	return o.ConstStrSQuotes
 }
 
 func (o *DefaultsAndConstsOutput) GetDefaultBigInt() *big.Int {
@@ -349,6 +367,13 @@ func (o *DefaultsAndConstsOutput) GetDefaultStr() string {
 	return o.DefaultStr
 }
 
+func (o *DefaultsAndConstsOutput) GetDefaultStrDQuotes() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultStrDQuotes
+}
+
 func (o *DefaultsAndConstsOutput) GetDefaultStrNullable() *string {
 	if o == nil {
 		return nil
@@ -361,6 +386,13 @@ func (o *DefaultsAndConstsOutput) GetDefaultStrOptional() *string {
 		return nil
 	}
 	return o.DefaultStrOptional
+}
+
+func (o *DefaultsAndConstsOutput) GetDefaultStrSQuotes() string {
+	if o == nil {
+		return ""
+	}
+	return o.DefaultStrSQuotes
 }
 
 func (o *DefaultsAndConstsOutput) GetNormalField() string {

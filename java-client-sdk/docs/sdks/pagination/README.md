@@ -8,11 +8,13 @@ Endpoints for testing the pagination extension
 ### Available Operations
 
 * [paginationCursorBody](#paginationcursorbody)
+* [paginationCursorNonNumeric](#paginationcursornonnumeric)
 * [paginationCursorParams](#paginationcursorparams)
 * [paginationLimitOffsetOffsetBody](#paginationlimitoffsetoffsetbody)
 * [paginationLimitOffsetOffsetParams](#paginationlimitoffsetoffsetparams)
 * [paginationLimitOffsetPageBody](#paginationlimitoffsetpagebody)
 * [paginationLimitOffsetPageParams](#paginationlimitoffsetpageparams)
+* [paginationURLParams](#paginationurlparams)
 
 ## paginationCursorBody
 
@@ -30,16 +32,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            PaginationCursorBodyRequestBody req = new PaginationCursorBodyRequestBody(868337L);            
+            org.openapis.openapi.models.operations.PaginationCursorBodyRequestBody req = new PaginationCursorBodyRequestBody(
+                868337L);
 
-            PaginationCursorBodyResponse res = sdk.pagination.paginationCursorBody(req);
+            org.openapis.openapi.models.operations.PaginationCursorBodyResponse res = sdk.pagination.paginationCursorBody(req);
 
             if (res.res != null) {
                 // handle response
@@ -64,6 +68,55 @@ public class Application {
 **[org.openapis.openapi.models.operations.PaginationCursorBodyResponse](../../models/operations/PaginationCursorBodyResponse.md)**
 
 
+## paginationCursorNonNumeric
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.PaginationCursorNonNumericRequest;
+import org.openapis.openapi.models.operations.PaginationCursorNonNumericResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security(
+                ){{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            org.openapis.openapi.models.operations.PaginationCursorNonNumericResponse res = sdk.pagination.paginationCursorNonNumeric("<value>");
+
+            if (res.res != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `cursor`                                                             | *String*                                                             | :heavy_minus_sign:                                                   | The page token used to request a specific page of the search results |
+| `serverURL`                                                          | *String*                                                             | :heavy_minus_sign:                                                   | An optional server URL to use.                                       |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.PaginationCursorNonNumericResponse](../../models/operations/PaginationCursorNonNumericResponse.md)**
+
+
 ## paginationCursorParams
 
 ### Example Usage
@@ -80,14 +133,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            PaginationCursorParamsResponse res = sdk.pagination.paginationCursorParams(24812L);
+            org.openapis.openapi.models.operations.PaginationCursorParamsResponse res = sdk.pagination.paginationCursorParams(24812L);
 
             if (res.res != null) {
                 // handle response
@@ -128,20 +182,23 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.LimitOffsetConfig req = new LimitOffsetConfig(){{
+            org.openapis.openapi.models.shared.LimitOffsetConfig req = new LimitOffsetConfig(
+){{
                 limit = 189971L;
                 offset = 995974L;
                 page = 329413L;
-            }};            
 
-            PaginationLimitOffsetOffsetBodyResponse res = sdk.pagination.paginationLimitOffsetOffsetBody(req);
+            }};
+
+            org.openapis.openapi.models.operations.PaginationLimitOffsetOffsetBodyResponse res = sdk.pagination.paginationLimitOffsetOffsetBody(req);
 
             if (res.res != null) {
                 // handle response
@@ -182,14 +239,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            PaginationLimitOffsetOffsetParamsResponse res = sdk.pagination.paginationLimitOffsetOffsetParams(661976L, 600173L);
+            org.openapis.openapi.models.operations.PaginationLimitOffsetOffsetParamsResponse res = sdk.pagination.paginationLimitOffsetOffsetParams(661976L, 600173L);
 
             if (res.res != null) {
                 // handle response
@@ -231,20 +289,23 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.LimitOffsetConfig req = new LimitOffsetConfig(){{
+            org.openapis.openapi.models.shared.LimitOffsetConfig req = new LimitOffsetConfig(
+){{
                 limit = 479052L;
                 offset = 716379L;
                 page = 911806L;
-            }};            
 
-            PaginationLimitOffsetPageBodyResponse res = sdk.pagination.paginationLimitOffsetPageBody(req);
+            }};
+
+            org.openapis.openapi.models.operations.PaginationLimitOffsetPageBodyResponse res = sdk.pagination.paginationLimitOffsetPageBody(req);
 
             if (res.res != null) {
                 // handle response
@@ -285,14 +346,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
+                .setSecurity(new Security(
+                ){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            PaginationLimitOffsetPageParamsResponse res = sdk.pagination.paginationLimitOffsetPageParams(1177L);
+            org.openapis.openapi.models.operations.PaginationLimitOffsetPageParamsResponse res = sdk.pagination.paginationLimitOffsetPageParams(1177L);
 
             if (res.res != null) {
                 // handle response
@@ -315,4 +377,54 @@ public class Application {
 ### Response
 
 **[org.openapis.openapi.models.operations.PaginationLimitOffsetPageParamsResponse](../../models/operations/PaginationLimitOffsetPageParamsResponse.md)**
+
+
+## paginationURLParams
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.PaginationURLParamsRequest;
+import org.openapis.openapi.models.operations.PaginationURLParamsResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security(
+                ){{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            org.openapis.openapi.models.operations.PaginationURLParamsResponse res = sdk.pagination.paginationURLParams(778920L, "<value>");
+
+            if (res.res != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                      | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `attempts`                     | *Long*                         | :heavy_check_mark:             | N/A                            |
+| `isReferencePath`              | *String*                       | :heavy_minus_sign:             | N/A                            |
+| `serverURL`                    | *String*                       | :heavy_minus_sign:             | An optional server URL to use. |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.PaginationURLParamsResponse](../../models/operations/PaginationURLParamsResponse.md)**
 

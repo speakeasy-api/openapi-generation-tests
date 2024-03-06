@@ -11,11 +11,26 @@ import org.apache.http.NameValuePair;
 import org.openapis.openapi.utils.HTTPClient;
 import org.openapis.openapi.utils.HTTPRequest;
 import org.openapis.openapi.utils.JSON;
+import org.openapis.openapi.utils.SerializedBody;
 
 /**
  * Endpoints for testing retries.
  */
 public class Retries {
+	
+    /**
+	 * RETRIES_AFTER_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] RETRIES_AFTER_SERVERS = {
+        "http://localhost:35456",
+    };
+	
+    /**
+	 * RETRIES_CONNECT_ERROR_GET_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] RETRIES_CONNECT_ERROR_GET_SERVERS = {
+        "http://localhost:33333",
+    };
 	
     /**
 	 * RETRIES_GET_SERVERS contains the list of server urls available to the SDK.
@@ -24,11 +39,135 @@ public class Retries {
         "http://localhost:35456",
     };
 	
+    /**
+	 * RETRIES_POST_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] RETRIES_POST_SERVERS = {
+        "http://localhost:35456",
+    };
+	
 	private SDKConfiguration sdkConfiguration;
 
 	public Retries(SDKConfiguration sdkConfiguration) {
 		this.sdkConfiguration = sdkConfiguration;
 	}
+
+    public org.openapis.openapi.models.operations.RetriesAfterResponse retriesAfter(String requestId) throws Exception {
+        return this.retriesAfter(requestId, null, null, null);
+    }
+
+    public org.openapis.openapi.models.operations.RetriesAfterResponse retriesAfter(String requestId, String serverURL) throws Exception {
+        return this.retriesAfter(requestId, null, null, serverURL);
+    }
+
+    public org.openapis.openapi.models.operations.RetriesAfterResponse retriesAfter(String requestId, Long numRetries) throws Exception {
+        return this.retriesAfter(requestId, numRetries, null, null);
+    }
+
+    public org.openapis.openapi.models.operations.RetriesAfterResponse retriesAfter(String requestId, Long numRetries, String serverURL) throws Exception {
+        return this.retriesAfter(requestId, numRetries, null, serverURL);
+    }
+
+    public org.openapis.openapi.models.operations.RetriesAfterResponse retriesAfter(String requestId, Long numRetries, Long retryAfterVal) throws Exception {
+        return this.retriesAfter(requestId, numRetries, retryAfterVal, null);
+    }
+
+    public org.openapis.openapi.models.operations.RetriesAfterResponse retriesAfter(String requestId, Long numRetries, Long retryAfterVal, String serverURL) throws Exception {
+        org.openapis.openapi.models.operations.RetriesAfterRequest request = new org.openapis.openapi.models.operations.RetriesAfterRequest(requestId);
+        request.numRetries=numRetries;
+        request.retryAfterVal=retryAfterVal;
+        
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(RETRIES_AFTER_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/retries/after");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("GET");
+        req.setURL(url);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.RetriesAfterRequest.class, request, this.sdkConfiguration.globals);
+        if (queryParams != null) {
+            for (NameValuePair queryParam : queryParams) {
+                req.addQueryParam(queryParam);
+            }
+        }
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+        
+        org.openapis.openapi.models.operations.RetriesAfterResponse res = new org.openapis.openapi.models.operations.RetriesAfterResponse(contentType, httpRes.statusCode(), httpRes) {{
+            retries = null;
+        }};
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.RetriesAfterRetries out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.RetriesAfterRetries.class);
+                res.retries = out;
+            }
+        }
+
+        return res;
+    }
+
+    /**
+     * A request to a non-valid port to test connection errors
+     * @return the response from the API call
+     * @throws Exception if the API call fails
+     */
+    public org.openapis.openapi.models.operations.RetriesConnectErrorGetResponse retriesConnectErrorGet() throws Exception {
+        return this.retriesConnectErrorGet(null);
+    }
+
+    /**
+     * A request to a non-valid port to test connection errors
+     * @param serverURL an optional server URL to use
+     * @return the response from the API call
+     * @throws Exception if the API call fails
+     */
+    public org.openapis.openapi.models.operations.RetriesConnectErrorGetResponse retriesConnectErrorGet(String serverURL) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(RETRIES_CONNECT_ERROR_GET_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/retriesConnectError");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("GET");
+        req.setURL(url);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+        
+        org.openapis.openapi.models.operations.RetriesConnectErrorGetResponse res = new org.openapis.openapi.models.operations.RetriesConnectErrorGetResponse(contentType, httpRes.statusCode(), httpRes) {{
+            retries = null;
+        }};
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.RetriesConnectErrorGetRetries out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.RetriesConnectErrorGetRetries.class);
+                res.retries = out;
+            }
+        }
+
+        return res;
+    }
 
     public org.openapis.openapi.models.operations.RetriesGetResponse retriesGet(String requestId) throws Exception {
         return this.retriesGet(requestId, null, null);
@@ -71,16 +210,91 @@ public class Retries {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.RetriesGetResponse res = new org.openapis.openapi.models.operations.RetriesGetResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.RetriesGetResponse res = new org.openapis.openapi.models.operations.RetriesGetResponse(contentType, httpRes.statusCode(), httpRes) {{
             retries = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
                 org.openapis.openapi.models.operations.RetriesGetRetries out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.RetriesGetRetries.class);
+                res.retries = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.RetriesPostResponse retriesPost(String requestId) throws Exception {
+        return this.retriesPost(requestId, null, null, null);
+    }
+
+    public org.openapis.openapi.models.operations.RetriesPostResponse retriesPost(String requestId, String serverURL) throws Exception {
+        return this.retriesPost(requestId, null, null, serverURL);
+    }
+
+    public org.openapis.openapi.models.operations.RetriesPostResponse retriesPost(String requestId, Long numRetries) throws Exception {
+        return this.retriesPost(requestId, null, numRetries, null);
+    }
+
+    public org.openapis.openapi.models.operations.RetriesPostResponse retriesPost(String requestId, Long numRetries, String serverURL) throws Exception {
+        return this.retriesPost(requestId, null, numRetries, serverURL);
+    }
+
+    public org.openapis.openapi.models.operations.RetriesPostResponse retriesPost(String requestId, org.openapis.openapi.models.operations.RetriesPostRequestBody requestBody) throws Exception {
+        return this.retriesPost(requestId, requestBody, null, null);
+    }
+
+    public org.openapis.openapi.models.operations.RetriesPostResponse retriesPost(String requestId, org.openapis.openapi.models.operations.RetriesPostRequestBody requestBody, String serverURL) throws Exception {
+        return this.retriesPost(requestId, requestBody, null, serverURL);
+    }
+
+    public org.openapis.openapi.models.operations.RetriesPostResponse retriesPost(String requestId, org.openapis.openapi.models.operations.RetriesPostRequestBody requestBody, Long numRetries) throws Exception {
+        return this.retriesPost(requestId, requestBody, numRetries, null);
+    }
+
+    public org.openapis.openapi.models.operations.RetriesPostResponse retriesPost(String requestId, org.openapis.openapi.models.operations.RetriesPostRequestBody requestBody, Long numRetries, String serverURL) throws Exception {
+        org.openapis.openapi.models.operations.RetriesPostRequest request = new org.openapis.openapi.models.operations.RetriesPostRequest(requestId);
+        request.requestBody=requestBody;
+        request.numRetries=numRetries;
+        
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(RETRIES_POST_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/retries");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "requestBody", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.RetriesPostRequest.class, request, this.sdkConfiguration.globals);
+        if (queryParams != null) {
+            for (NameValuePair queryParam : queryParams) {
+                req.addQueryParam(queryParam);
+            }
+        }
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+        
+        org.openapis.openapi.models.operations.RetriesPostResponse res = new org.openapis.openapi.models.operations.RetriesPostResponse(contentType, httpRes.statusCode(), httpRes) {{
+            retries = null;
+        }};
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.RetriesPostRetries out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.RetriesPostRetries.class);
                 res.retries = out;
             }
         }

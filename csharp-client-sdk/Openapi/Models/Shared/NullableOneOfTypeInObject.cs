@@ -15,11 +15,11 @@ namespace Openapi.Models.Shared
     public class NullableOneOfTypeInObject
     {
 
-        [JsonProperty("NullableOneOfOne")]
-        public bool NullableOneOfOne { get; set; } = default!;
+        [JsonProperty("NullableOneOfOne", NullValueHandling = NullValueHandling.Include)]
+        public bool? NullableOneOfOne { get; set; } = default!;
 
-        [JsonProperty("NullableOneOfTwo")]
-        public object NullableOneOfTwo { get; set; } = default!;
+        [JsonProperty("NullableOneOfTwo", NullValueHandling = NullValueHandling.Include)]
+        public object? NullableOneOfTwo { get; set; } = default!;
 
         [JsonProperty("OneOfOne")]
         public bool OneOfOne { get; set; } = default!;
