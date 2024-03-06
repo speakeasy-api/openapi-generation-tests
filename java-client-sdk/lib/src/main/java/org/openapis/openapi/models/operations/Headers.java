@@ -4,19 +4,29 @@
 
 package org.openapis.openapi.models.operations;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class Headers {
-    @JsonProperty("X-Header-Array")
-    public String xHeaderArray;
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("Client-Level-Header")
+    public String clientLevelHeader;
 
-    public Headers withXHeaderArray(String xHeaderArray) {
-        this.xHeaderArray = xHeaderArray;
+    public Headers withClientLevelHeader(String clientLevelHeader) {
+        this.clientLevelHeader = clientLevelHeader;
         return this;
     }
     
-    public Headers(@JsonProperty("X-Header-Array") String xHeaderArray) {
-        this.xHeaderArray = xHeaderArray;
-  }
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("Idempotency-Key")
+    public String idempotencyKey;
+
+    public Headers withIdempotencyKey(String idempotencyKey) {
+        this.idempotencyKey = idempotencyKey;
+        return this;
+    }
+    
+    public Headers(){}
 }

@@ -14,13 +14,16 @@ Endpoints for testing union types.
 * [NullableOneOfTypeInObjectPost](#nullableoneoftypeinobjectpost)
 * [NullableTypedObjectPost](#nullabletypedobjectpost)
 * [PrimitiveTypeOneOfPost](#primitivetypeoneofpost)
+* [StronglyTypedOneOfDiscriminatedPost](#stronglytypedoneofdiscriminatedpost)
 * [StronglyTypedOneOfPost](#stronglytypedoneofpost)
+* [StronglyTypedOneOfPostWithNonStandardDiscriminatorName](#stronglytypedoneofpostwithnonstandarddiscriminatorname)
 * [TypedObjectNullableOneOfPost](#typedobjectnullableoneofpost)
 * [TypedObjectOneOfPost](#typedobjectoneofpost)
 * [UnionBigIntDecimal](#unionbigintdecimal)
 * [UnionDateNull](#uniondatenull)
 * [UnionDateTimeBigInt](#uniondatetimebigint)
 * [UnionDateTimeNull](#uniondatetimenull)
+* [WeaklyTypedOneOfNullEnumPost](#weaklytypedoneofnullenumpost)
 * [WeaklyTypedOneOfPost](#weaklytypedoneofpost)
 
 ## FlattenedTypedObjectPost
@@ -31,10 +34,10 @@ Endpoints for testing union types.
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -50,7 +53,7 @@ func main() {
     res, err := s.Unions.FlattenedTypedObjectPost(ctx, shared.CreateFlattenedTypedObject1TypedObject1(
             shared.TypedObject1{
                 Type: shared.TypedObject1TypeObj1,
-                Value: "string",
+                Value: "<value>",
             },
     ))
     if err != nil {
@@ -76,7 +79,7 @@ func main() {
 **[*operations.FlattenedTypedObjectPostResponse](../../pkg/models/operations/flattenedtypedobjectpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MixedTypeOneOfPost
 
@@ -86,13 +89,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
-	"math/big"
-	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -131,7 +131,7 @@ func main() {
 **[*operations.MixedTypeOneOfPostResponse](../../pkg/models/operations/mixedtypeoneofpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## NullableOneOfRefInObjectPost
 
@@ -141,10 +141,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -160,18 +160,18 @@ func main() {
     res, err := s.Unions.NullableOneOfRefInObjectPost(ctx, shared.NullableOneOfRefInObject{
         NullableOneOfOne: &shared.TypedObject1{
             Type: shared.TypedObject1TypeObj1,
-            Value: "string",
+            Value: "<value>",
         },
         NullableOneOfTwo: shared.CreateNullableOneOfTwoTypedObject2(
                 shared.TypedObject2{
                     Type: shared.TypedObject2TypeObj2,
-                    Value: "string",
+                    Value: "<value>",
                 },
         ),
         OneOfOne: shared.CreateOneOfOneTypedObject1(
                 shared.TypedObject1{
                     Type: shared.TypedObject1TypeObj1,
-                    Value: "string",
+                    Value: "<value>",
                 },
         ),
     })
@@ -198,7 +198,7 @@ func main() {
 **[*operations.NullableOneOfRefInObjectPostResponse](../../pkg/models/operations/nullableoneofrefinobjectpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## NullableOneOfSchemaPost
 
@@ -208,11 +208,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -225,10 +224,10 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Unions.NullableOneOfSchemaPost(ctx, &operations.CreateNullableOneOfSchemaPostRequestBodyTypedObject2(
+    res, err := s.Unions.NullableOneOfSchemaPost(ctx, operations.CreateNullableOneOfSchemaPostRequestBodyTypedObject2(
             shared.TypedObject2{
                 Type: shared.TypedObject2TypeObj2,
-                Value: "string",
+                Value: "<value>",
             },
     ))
     if err != nil {
@@ -254,7 +253,7 @@ func main() {
 **[*operations.NullableOneOfSchemaPostResponse](../../pkg/models/operations/nullableoneofschemapostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## NullableOneOfTypeInObjectPost
 
@@ -264,10 +263,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -281,7 +280,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Unions.NullableOneOfTypeInObjectPost(ctx, shared.NullableOneOfTypeInObject{
-        NullableOneOfOne: false,
+        NullableOneOfOne: openapi.Bool(false),
         NullableOneOfTwo: shared.CreateNullableOneOfTypeInObjectNullableOneOfTwoInteger(
         873677,
         ),
@@ -310,7 +309,7 @@ func main() {
 **[*operations.NullableOneOfTypeInObjectPostResponse](../../pkg/models/operations/nullableoneoftypeinobjectpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## NullableTypedObjectPost
 
@@ -320,10 +319,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -338,7 +337,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Unions.NullableTypedObjectPost(ctx, &shared.TypedObject1{
         Type: shared.TypedObject1TypeObj1,
-        Value: "string",
+        Value: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -363,7 +362,7 @@ func main() {
 **[*operations.NullableTypedObjectPostResponse](../../pkg/models/operations/nullabletypedobjectpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## PrimitiveTypeOneOfPost
 
@@ -373,11 +372,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -391,7 +389,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Unions.PrimitiveTypeOneOfPost(ctx, operations.CreatePrimitiveTypeOneOfPostRequestBodyStr(
-    "string",
+    "<value>",
     ))
     if err != nil {
         log.Fatal(err)
@@ -416,7 +414,62 @@ func main() {
 **[*operations.PrimitiveTypeOneOfPostResponse](../../pkg/models/operations/primitivetypeoneofpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
+
+## StronglyTypedOneOfDiscriminatedPost
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
+	"log"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Unions.StronglyTypedOneOfDiscriminatedPost(ctx, shared.CreateStronglyTypedOneOfDiscriminatedObjectTaggedObject1(
+            shared.TaggedObject1{
+                ImageURL: "<value>",
+                Tag: shared.TagTag1,
+            },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.Res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                            | :heavy_check_mark:                                                                                               | The context to use for the request.                                                                              |
+| `request`                                                                                                        | [shared.StronglyTypedOneOfDiscriminatedObject](../../pkg/models/shared/stronglytypedoneofdiscriminatedobject.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
+
+
+### Response
+
+**[*operations.StronglyTypedOneOfDiscriminatedPostResponse](../../pkg/models/operations/stronglytypedoneofdiscriminatedpostresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## StronglyTypedOneOfPost
 
@@ -426,12 +479,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -454,7 +507,7 @@ func main() {
                             Bool: true,
                             BoolOpt: openapi.Bool(true),
                             Date: types.MustDateFromString("2020-01-01"),
-                            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                             Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                             DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                             Enum: shared.EnumOne,
@@ -476,7 +529,7 @@ func main() {
                         Bool: true,
                         BoolOpt: openapi.Bool(true),
                         Date: types.MustDateFromString("2020-01-01"),
-                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                         Enum: shared.EnumOne,
@@ -496,7 +549,7 @@ func main() {
                         Bool: true,
                         BoolOpt: openapi.Bool(true),
                         Date: types.MustDateFromString("2020-01-01"),
-                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                         Enum: shared.EnumOne,
@@ -520,7 +573,7 @@ func main() {
                         Bool: true,
                         BoolOpt: openapi.Bool(true),
                         Date: types.MustDateFromString("2020-01-01"),
-                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                         Enum: shared.EnumOne,
@@ -540,7 +593,7 @@ func main() {
                         Bool: true,
                         BoolOpt: openapi.Bool(true),
                         Date: types.MustDateFromString("2020-01-01"),
-                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                         Enum: shared.EnumOne,
@@ -562,7 +615,7 @@ func main() {
                     Bool: true,
                     BoolOpt: openapi.Bool(true),
                     Date: types.MustDateFromString("2020-01-01"),
-                    DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                    DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                     Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                     DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                     Enum: shared.EnumOne,
@@ -601,9 +654,9 @@ func main() {
 **[*operations.StronglyTypedOneOfPostResponse](../../pkg/models/operations/stronglytypedoneofpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
-## TypedObjectNullableOneOfPost
+## StronglyTypedOneOfPostWithNonStandardDiscriminatorName
 
 ### Example Usage
 
@@ -611,10 +664,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
+	"math/big"
+	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -627,10 +682,82 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Unions.TypedObjectNullableOneOfPost(ctx, &shared.CreateTypedObjectNullableOneOfTypedObject2(
+    res, err := s.Unions.StronglyTypedOneOfPostWithNonStandardDiscriminatorName(ctx, shared.CreateStronglyTypedOneOfObjectWithNonStandardDiscriminatorNameSimpleObjectWithNonStandardTypeName(
+            shared.SimpleObjectWithNonStandardTypeName{
+                Any: "any",
+                Bigint: big.NewInt(8821239038968084),
+                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                Enum: shared.EnumOne,
+                Float32: 1.1,
+                Int: 1,
+                Int32: 1,
+                Int32Enum: shared.SimpleObjectWithNonStandardTypeNameInt32EnumFiftyFive,
+                IntEnum: shared.SimpleObjectWithNonStandardTypeNameIntEnumSecond,
+                Num: 1.1,
+                ObjType: "<value>",
+                Str: "test",
+                StrOpt: openapi.String("testOptional"),
+            },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.Res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                              | Type                                                                                                                                                   | Required                                                                                                                                               | Description                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                                                                  | :heavy_check_mark:                                                                                                                                     | The context to use for the request.                                                                                                                    |
+| `request`                                                                                                                                              | [shared.StronglyTypedOneOfObjectWithNonStandardDiscriminatorName](../../pkg/models/shared/stronglytypedoneofobjectwithnonstandarddiscriminatorname.md) | :heavy_check_mark:                                                                                                                                     | The request object to use for the request.                                                                                                             |
+
+
+### Response
+
+**[*operations.StronglyTypedOneOfPostWithNonStandardDiscriminatorNameResponse](../../pkg/models/operations/stronglytypedoneofpostwithnonstandarddiscriminatornameresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
+
+## TypedObjectNullableOneOfPost
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
+	"log"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Unions.TypedObjectNullableOneOfPost(ctx, shared.CreateTypedObjectNullableOneOfTypedObject2(
             shared.TypedObject2{
                 Type: shared.TypedObject2TypeObj2,
-                Value: "string",
+                Value: "<value>",
             },
     ))
     if err != nil {
@@ -656,7 +783,7 @@ func main() {
 **[*operations.TypedObjectNullableOneOfPostResponse](../../pkg/models/operations/typedobjectnullableoneofpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## TypedObjectOneOfPost
 
@@ -666,10 +793,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -685,7 +812,7 @@ func main() {
     res, err := s.Unions.TypedObjectOneOfPost(ctx, shared.CreateTypedObjectOneOfTypedObject3(
             shared.TypedObject3{
                 Type: shared.TypedObject3TypeObj3,
-                Value: "string",
+                Value: "<value>",
             },
     ))
     if err != nil {
@@ -711,7 +838,7 @@ func main() {
 **[*operations.TypedObjectOneOfPostResponse](../../pkg/models/operations/typedobjectoneofpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UnionBigIntDecimal
 
@@ -721,13 +848,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
-	"math/big"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -766,7 +891,7 @@ func main() {
 **[*operations.UnionBigIntDecimalResponse](../../pkg/models/operations/unionbigintdecimalresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UnionDateNull
 
@@ -776,11 +901,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -793,7 +918,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Unions.UnionDateNull(ctx, &types.MustDateFromString("2022-11-25"))
+    res, err := s.Unions.UnionDateNull(ctx, types.MustNewDateFromString("2023-11-26"))
     if err != nil {
         log.Fatal(err)
     }
@@ -817,7 +942,7 @@ func main() {
 **[*operations.UnionDateNullResponse](../../pkg/models/operations/uniondatenullresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UnionDateTimeBigInt
 
@@ -827,13 +952,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
-	"math/big"
+	"log"
 )
 
 func main() {
@@ -847,7 +970,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Unions.UnionDateTimeBigInt(ctx, operations.CreateUnionDateTimeBigIntRequestBodyDateTime(
-    types.MustTimeFromString("2021-06-19T18:26:42.874Z"),
+    types.MustTimeFromString("2022-06-19T22:09:58.311Z"),
     ))
     if err != nil {
         log.Fatal(err)
@@ -872,7 +995,7 @@ func main() {
 **[*operations.UnionDateTimeBigIntResponse](../../pkg/models/operations/uniondatetimebigintresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UnionDateTimeNull
 
@@ -882,11 +1005,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -899,7 +1022,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Unions.UnionDateTimeNull(ctx, &types.MustTimeFromString("2022-04-12T19:39:53.907Z"))
+    res, err := s.Unions.UnionDateTimeNull(ctx, types.MustNewTimeFromString("2023-04-13T05:53:47.874Z"))
     if err != nil {
         log.Fatal(err)
     }
@@ -923,7 +1046,192 @@ func main() {
 **[*operations.UnionDateTimeNullResponse](../../pkg/models/operations/uniondatetimenullresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
+
+## WeaklyTypedOneOfNullEnumPost
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
+	"math/big"
+	"openapi/v2/pkg/types"
+	"log"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Unions.WeaklyTypedOneOfNullEnumPost(ctx, shared.CreateWeaklyTypedOneOfNullEnumObjectDeepObject(
+            shared.DeepObject{
+                Any: shared.CreateAnySimpleObject(
+                        shared.SimpleObject{
+                            Any: "any",
+                            Bigint: big.NewInt(8821239038968084),
+                            BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                            Bool: true,
+                            BoolOpt: openapi.Bool(true),
+                            Date: types.MustDateFromString("2020-01-01"),
+                            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+                            Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                            DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                            Enum: shared.EnumOne,
+                            Float32: 1.1,
+                            Int: 1,
+                            Int32: 1,
+                            Int32Enum: shared.Int32EnumFiftyFive,
+                            IntEnum: shared.IntEnumSecond,
+                            Num: 1.1,
+                            Str: "test",
+                            StrOpt: openapi.String("testOptional"),
+                        },
+                ),
+                Arr: []shared.SimpleObject{
+                    shared.SimpleObject{
+                        Any: "any",
+                        Bigint: big.NewInt(8821239038968084),
+                        BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                        Bool: true,
+                        BoolOpt: openapi.Bool(true),
+                        Date: types.MustDateFromString("2020-01-01"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+                        Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                        DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                        Enum: shared.EnumOne,
+                        Float32: 1.1,
+                        Int: 1,
+                        Int32: 1,
+                        Int32Enum: shared.Int32EnumFiftyFive,
+                        IntEnum: shared.IntEnumSecond,
+                        Num: 1.1,
+                        Str: "test",
+                        StrOpt: openapi.String("testOptional"),
+                    },
+                    shared.SimpleObject{
+                        Any: "any",
+                        Bigint: big.NewInt(8821239038968084),
+                        BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                        Bool: true,
+                        BoolOpt: openapi.Bool(true),
+                        Date: types.MustDateFromString("2020-01-01"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+                        Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                        DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                        Enum: shared.EnumOne,
+                        Float32: 1.1,
+                        Int: 1,
+                        Int32: 1,
+                        Int32Enum: shared.Int32EnumFiftyFive,
+                        IntEnum: shared.IntEnumSecond,
+                        Num: 1.1,
+                        Str: "test",
+                        StrOpt: openapi.String("testOptional"),
+                    },
+                },
+                Bool: true,
+                Int: 1,
+                Map: map[string]shared.SimpleObject{
+                    "key": shared.SimpleObject{
+                        Any: "any",
+                        Bigint: big.NewInt(8821239038968084),
+                        BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                        Bool: true,
+                        BoolOpt: openapi.Bool(true),
+                        Date: types.MustDateFromString("2020-01-01"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+                        Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                        DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                        Enum: shared.EnumOne,
+                        Float32: 1.1,
+                        Int: 1,
+                        Int32: 1,
+                        Int32Enum: shared.Int32EnumFiftyFive,
+                        IntEnum: shared.IntEnumSecond,
+                        Num: 1.1,
+                        Str: "test",
+                        StrOpt: openapi.String("testOptional"),
+                    },
+                    "key2": shared.SimpleObject{
+                        Any: "any",
+                        Bigint: big.NewInt(8821239038968084),
+                        BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                        Bool: true,
+                        BoolOpt: openapi.Bool(true),
+                        Date: types.MustDateFromString("2020-01-01"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+                        Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                        DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                        Enum: shared.EnumOne,
+                        Float32: 1.1,
+                        Int: 1,
+                        Int32: 1,
+                        Int32Enum: shared.Int32EnumFiftyFive,
+                        IntEnum: shared.IntEnumSecond,
+                        Num: 1.1,
+                        Str: "test",
+                        StrOpt: openapi.String("testOptional"),
+                    },
+                },
+                Num: 1.1,
+                Obj: shared.SimpleObject{
+                    Any: "any",
+                    Bigint: big.NewInt(8821239038968084),
+                    BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                    Bool: true,
+                    BoolOpt: openapi.Bool(true),
+                    Date: types.MustDateFromString("2020-01-01"),
+                    DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
+                    Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                    DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                    Enum: shared.EnumOne,
+                    Float32: 1.1,
+                    Int: 1,
+                    Int32: 1,
+                    Int32Enum: shared.Int32EnumFiftyFive,
+                    IntEnum: shared.IntEnumSecond,
+                    Num: 1.1,
+                    Str: "test",
+                    StrOpt: openapi.String("testOptional"),
+                },
+                Str: "test",
+            },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.Res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |
+| `request`                                                                                          | [shared.WeaklyTypedOneOfNullEnumObject](../../pkg/models/shared/weaklytypedoneofnullenumobject.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+
+
+### Response
+
+**[*operations.WeaklyTypedOneOfNullEnumPostResponse](../../pkg/models/operations/weaklytypedoneofnullenumpostresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## WeaklyTypedOneOfPost
 
@@ -933,12 +1241,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -959,7 +1267,7 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
@@ -996,4 +1304,4 @@ func main() {
 **[*operations.WeaklyTypedOneOfPostResponse](../../pkg/models/operations/weaklytypedoneofpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

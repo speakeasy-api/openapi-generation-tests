@@ -55,22 +55,22 @@ namespace Openapi
     /// </summary>
     public class Parameters: IParameters
     {
-        public SDKConfig Config { get; private set; }
+        public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.3.1";
-        private const string _sdkGenVersion = "2.188.3";
+        private const string _sdkVersion = "0.4.0";
+        private const string _sdkGenVersion = "2.277.0";
         private const string _openapiDocVersion = "0.1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.0 2.277.0 0.1.0 openapi";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
-        private ISpeakeasyHttpClient _securityClient;
+        private Func<Security>? _securitySource;
 
-        public Parameters(ISpeakeasyHttpClient defaultClient, ISpeakeasyHttpClient securityClient, string serverUrl, SDKConfig config)
+        public Parameters(ISpeakeasyHttpClient defaultClient, Func<Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _defaultClient = defaultClient;
-            _securityClient = securityClient;
+            _securitySource = securitySource;
             _serverUrl = serverUrl;
-            Config = config;
+            SDKConfiguration = config;
         }
         
 
@@ -81,42 +81,41 @@ namespace Openapi
                 MapParam = mapParam,
                 MapArrParam = mapArrParam,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/queryParams/deepObject/map", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new DeepObjectQueryParamsMapResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<DeepObjectQueryParamsMapRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<DeepObjectQueryParamsObjectResponse> DeepObjectQueryParamsObjectAsync(SimpleObject objParam, ObjArrParam? objArrParam = null)
@@ -126,42 +125,41 @@ namespace Openapi
                 ObjParam = objParam,
                 ObjArrParam = objArrParam,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/queryParams/deepObject/obj", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new DeepObjectQueryParamsObjectResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<DeepObjectQueryParamsObjectRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<DuplicateParamResponse> DuplicateParamAsync(string duplicateParamRequest)
@@ -170,42 +168,41 @@ namespace Openapi
             {
                 DuplicateParamRequestValue = duplicateParamRequest,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/params/{duplicateParamRequest}", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new DuplicateParamResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.DuplicateParamResponseValue = JsonConvert.DeserializeObject<DuplicateParamDuplicateParamResponse>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<FormQueryParamsArrayResponse> FormQueryParamsArrayAsync(List<string>? arrParam = null, List<long>? arrParamExploded = null)
@@ -215,42 +212,41 @@ namespace Openapi
                 ArrParam = arrParam,
                 ArrParamExploded = arrParamExploded,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/queryParams/form/array", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new FormQueryParamsArrayResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<FormQueryParamsArrayRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<FormQueryParamsCamelObjectResponse> FormQueryParamsCamelObjectAsync(ObjParamExploded objParamExploded, ObjParam? objParam = null)
@@ -260,42 +256,41 @@ namespace Openapi
                 ObjParamExploded = objParamExploded,
                 ObjParam = objParam,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/queryParams/form/camelObj", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new FormQueryParamsCamelObjectResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<FormQueryParamsCamelObjectRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<FormQueryParamsMapResponse> FormQueryParamsMapAsync(Dictionary<string, string>? mapParam = null, Dictionary<string, long>? mapParamExploded = null)
@@ -305,42 +300,41 @@ namespace Openapi
                 MapParam = mapParam,
                 MapParamExploded = mapParamExploded,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/queryParams/form/map", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new FormQueryParamsMapResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<FormQueryParamsMapRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<FormQueryParamsObjectResponse> FormQueryParamsObjectAsync(SimpleObject objParamExploded, SimpleObject? objParam = null)
@@ -350,42 +344,41 @@ namespace Openapi
                 ObjParamExploded = objParamExploded,
                 ObjParam = objParam,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/queryParams/form/obj", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new FormQueryParamsObjectResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<FormQueryParamsObjectRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<FormQueryParamsPrimitiveResponse> FormQueryParamsPrimitiveAsync(bool boolParam, long intParam, double numParam, string strParam)
@@ -397,42 +390,41 @@ namespace Openapi
                 NumParam = numParam,
                 StrParam = strParam,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/queryParams/form/primitive", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new FormQueryParamsPrimitiveResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<FormQueryParamsPrimitiveRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<FormQueryParamsRefParamObjectResponse> FormQueryParamsRefParamObjectAsync(RefQueryParamObj? refObjParam = null, RefQueryParamObjExploded? refObjParamExploded = null)
@@ -442,42 +434,41 @@ namespace Openapi
                 RefObjParam = refObjParam,
                 RefObjParamExploded = refObjParamExploded,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/queryParams/form/refParamObject", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new FormQueryParamsRefParamObjectResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<FormQueryParamsRefParamObjectRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<HeaderParamsArrayResponse> HeaderParamsArrayAsync(List<string> xHeaderArray)
@@ -486,43 +477,43 @@ namespace Openapi
             {
                 XHeaderArray = xHeaderArray,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+
             var urlString = baseUrl + "/anything/headers/array";
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new HeaderParamsArrayResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<HeaderParamsArrayRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<HeaderParamsMapResponse> HeaderParamsMapAsync(Dictionary<string, string> xHeaderMap, Dictionary<string, string> xHeaderMapExplode)
@@ -532,43 +523,43 @@ namespace Openapi
                 XHeaderMap = xHeaderMap,
                 XHeaderMapExplode = xHeaderMapExplode,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+
             var urlString = baseUrl + "/anything/headers/map";
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new HeaderParamsMapResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<HeaderParamsMapRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<HeaderParamsObjectResponse> HeaderParamsObjectAsync(SimpleObject xHeaderObj, SimpleObject xHeaderObjExplode)
@@ -578,43 +569,43 @@ namespace Openapi
                 XHeaderObj = xHeaderObj,
                 XHeaderObjExplode = xHeaderObjExplode,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+
             var urlString = baseUrl + "/anything/headers/obj";
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new HeaderParamsObjectResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<HeaderParamsObjectRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<HeaderParamsPrimitiveResponse> HeaderParamsPrimitiveAsync(bool xHeaderBoolean, long xHeaderInteger, double xHeaderNumber, string xHeaderString)
@@ -626,43 +617,43 @@ namespace Openapi
                 XHeaderNumber = xHeaderNumber,
                 XHeaderString = xHeaderString,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+
             var urlString = baseUrl + "/anything/headers/primitive";
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new HeaderParamsPrimitiveResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<HeaderParamsPrimitiveRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<JsonQueryParamsObjectResponse> JsonQueryParamsObjectAsync(DeepObject deepObjParam, SimpleObject simpleObjParam)
@@ -672,42 +663,41 @@ namespace Openapi
                 DeepObjParam = deepObjParam,
                 SimpleObjParam = simpleObjParam,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/queryParams/json/obj", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new JsonQueryParamsObjectResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<JsonQueryParamsObjectRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<MixedParametersCamelCaseResponse> MixedParametersCamelCaseAsync(string headerParam, string pathParam, string queryStringParam)
@@ -718,43 +708,42 @@ namespace Openapi
                 PathParam = pathParam,
                 QueryStringParam = queryStringParam,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/mixedParams/path/{path_param}/camelcase", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new MixedParametersCamelCaseResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<MixedParametersCamelCaseRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<MixedParametersPrimitivesResponse> MixedParametersPrimitivesAsync(string headerParam, string pathParam, string queryStringParam)
@@ -765,43 +754,42 @@ namespace Openapi
                 PathParam = pathParam,
                 QueryStringParam = queryStringParam,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/mixedParams/path/{pathParam}", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new MixedParametersPrimitivesResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<MixedParametersPrimitivesRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<MixedQueryParamsResponse> MixedQueryParamsAsync(SimpleObject deepObjectParam, SimpleObject formParam, SimpleObject jsonParam)
@@ -812,42 +800,41 @@ namespace Openapi
                 FormParam = formParam,
                 JsonParam = jsonParam,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/queryParams/mixed", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new MixedQueryParamsResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<MixedQueryParamsRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<PathParameterJsonResponse> PathParameterJsonAsync(SimpleObject jsonObj)
@@ -856,42 +843,41 @@ namespace Openapi
             {
                 JsonObj = jsonObj,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/pathParams/json/{jsonObj}", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new PathParameterJsonResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<PathParameterJsonRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<PipeDelimitedQueryParamsArrayResponse> PipeDelimitedQueryParamsArrayAsync(List<string>? arrParam = null, List<long>? arrParamExploded = null, Dictionary<string, string>? mapParam = null, SimpleObject? objParam = null)
@@ -903,42 +889,41 @@ namespace Openapi
                 MapParam = mapParam,
                 ObjParam = objParam,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/queryParams/pipe/array", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new PipeDelimitedQueryParamsArrayResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<PipeDelimitedQueryParamsArrayRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<SimplePathParameterArraysResponse> SimplePathParameterArraysAsync(List<string> arrParam)
@@ -947,42 +932,41 @@ namespace Openapi
             {
                 ArrParam = arrParam,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/pathParams/arr/{arrParam}", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new SimplePathParameterArraysResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<SimplePathParameterArraysRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<SimplePathParameterMapsResponse> SimplePathParameterMapsAsync(Dictionary<string, string> mapParam, Dictionary<string, long> mapParamExploded)
@@ -992,42 +976,41 @@ namespace Openapi
                 MapParam = mapParam,
                 MapParamExploded = mapParamExploded,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/pathParams/map/{mapParam}/mapExploded/{mapParamExploded}", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new SimplePathParameterMapsResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<SimplePathParameterMapsRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<SimplePathParameterObjectsResponse> SimplePathParameterObjectsAsync(SimpleObject objParam, SimpleObject objParamExploded)
@@ -1037,42 +1020,41 @@ namespace Openapi
                 ObjParam = objParam,
                 ObjParamExploded = objParamExploded,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/pathParams/obj/{objParam}/objExploded/{objParamExploded}", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new SimplePathParameterObjectsResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<SimplePathParameterObjectsRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<SimplePathParameterPrimitivesResponse> SimplePathParameterPrimitivesAsync(bool boolParam, long intParam, double numParam, string strParam)
@@ -1084,42 +1066,41 @@ namespace Openapi
                 NumParam = numParam,
                 StrParam = strParam,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/anything/pathParams/str/{strParam}/bool/{boolParam}/int/{intParam}/num/{numParam}", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new SimplePathParameterPrimitivesResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<SimplePathParameterPrimitivesRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
     }
 }

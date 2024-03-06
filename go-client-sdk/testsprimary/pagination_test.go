@@ -184,3 +184,31 @@ func TestPaginationCursorBody(t *testing.T) {
 	require.NoError(t, err)
 	require.Nil(t, nullRes)
 }
+
+func TestPaginationCursorNonNumeric(t *testing.T) {
+	recordTest("pagination-cursor-non-numeric")
+
+	s := sdk.New()
+
+	res, err := s.Pagination.PaginationCursorNonNumeric(context.Background(), nil)
+
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, 15, len(res.Res.ResultArray))
+
+	nextRes, err := res.Next()
+	require.NoError(t, err)
+	require.NotNil(t, nextRes)
+	assert.Equal(t, 5, len(nextRes.Res.ResultArray))
+
+	penultimateRes, err := nextRes.Next()
+	require.NoError(t, err)
+	require.NotNil(t, penultimateRes)
+	assert.Equal(t, 0, len(penultimateRes.Res.ResultArray))
+
+	nullRes, err := penultimateRes.Next()
+	require.NoError(t, err)
+	require.Nil(t, nullRes)
+}
