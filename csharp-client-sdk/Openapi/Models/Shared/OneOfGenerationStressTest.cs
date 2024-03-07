@@ -18,13 +18,13 @@ namespace Openapi.Models.Shared
         [JsonProperty("any")]
         public object Any { get; set; } = default!;
 
-        [JsonProperty("nullableAny")]
-        public object NullableAny { get; set; } = default!;
+        [JsonProperty("nullableAny", NullValueHandling = NullValueHandling.Include)]
+        public object? NullableAny { get; set; } = default!;
 
-        [JsonProperty("oneOfFromArrayOfTypes")]
-        public object OneOfFromArrayOfTypes { get; set; } = default!;
+        [JsonProperty("oneOfFromArrayOfTypes", NullValueHandling = NullValueHandling.Include)]
+        public object? OneOfFromArrayOfTypes { get; set; } = default!;
 
-        [JsonProperty("oneOfSameType")]
-        public object OneOfSameType { get; set; } = default!;
+        [JsonProperty("oneOfSameType", NullValueHandling = NullValueHandling.Include)]
+        public object? OneOfSameType { get; set; } = default!;
     }
 }

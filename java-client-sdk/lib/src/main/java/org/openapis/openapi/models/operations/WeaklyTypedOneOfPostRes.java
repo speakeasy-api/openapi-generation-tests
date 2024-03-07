@@ -12,14 +12,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class WeaklyTypedOneOfPostRes {
     @JsonProperty("json")
-    public Object json;
+    public java.lang.Object json;
 
-    public WeaklyTypedOneOfPostRes withJson(Object json) {
+    public WeaklyTypedOneOfPostRes withJson(java.lang.Object json) {
         this.json = json;
         return this;
     }
     
-    public WeaklyTypedOneOfPostRes(@JsonProperty("json") Object json) {
+    public WeaklyTypedOneOfPostRes(@JsonProperty("json") java.lang.Object json) {
         this.json = json;
   }
 }

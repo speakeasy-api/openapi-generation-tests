@@ -13,9 +13,15 @@ extension Operations {
         public let float32: String
         public let int: String
         public let int32: String
+        public let int32Enum: String
+        public let intEnum: String
         public let num: String
         public let str: String
+        public let bigint: String?
+        public let bigintStr: String?
         public let boolOpt: String?
+        public let decimal: String?
+        public let decimalStr: String?
         public let intOptNull: String?
         public let numOptNull: String?
         public let strOpt: String?
@@ -23,7 +29,7 @@ extension Operations {
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(any: String, bool: String, date: String, dateTime: String, `enum`: String, float32: String, int: String, int32: String, num: String, str: String, boolOpt: String? = nil, intOptNull: String? = nil, numOptNull: String? = nil, strOpt: String? = nil) {
+        public init(any: String, bool: String, date: String, dateTime: String, `enum`: String, float32: String, int: String, int32: String, int32Enum: String, intEnum: String, num: String, str: String, bigint: String? = nil, bigintStr: String? = nil, boolOpt: String? = nil, decimal: String? = nil, decimalStr: String? = nil, intOptNull: String? = nil, numOptNull: String? = nil, strOpt: String? = nil) {
             self.any = any
             self.bool = bool
             self.date = date
@@ -32,9 +38,15 @@ extension Operations {
             self.float32 = float32
             self.int = int
             self.int32 = int32
+            self.int32Enum = int32Enum
+            self.intEnum = intEnum
             self.num = num
             self.str = str
+            self.bigint = bigint
+            self.bigintStr = bigintStr
             self.boolOpt = boolOpt
+            self.decimal = decimal
+            self.decimalStr = decimalStr
             self.intOptNull = intOptNull
             self.numOptNull = numOptNull
             self.strOpt = strOpt
@@ -52,9 +64,15 @@ extension Operations.RequestBodyPutMultipartSimpleForm: Codable {
         case float32
         case int
         case int32
+        case int32Enum
+        case intEnum
         case num
         case str
+        case bigint
+        case bigintStr
         case boolOpt
+        case decimal
+        case decimalStr
         case intOptNull
         case numOptNull
         case strOpt
