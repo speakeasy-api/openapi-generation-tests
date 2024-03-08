@@ -20,4 +20,5 @@ namespace Openapi.Models.Shared
         Two = 2,
         Three = 3,
     }
+
 }

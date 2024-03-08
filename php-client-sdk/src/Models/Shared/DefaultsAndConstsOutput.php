@@ -59,9 +59,17 @@ class DefaultsAndConstsOutput
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $constStr;
     
+	#[\JMS\Serializer\Annotation\SerializedName('constStrDQuotes')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    public string $constStrDQuotes;
+    
 	#[\JMS\Serializer\Annotation\SerializedName('constStrNull')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $constStrNull;
+    
+	#[\JMS\Serializer\Annotation\SerializedName('constStrSQuotes')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    public string $constStrSQuotes;
     
 	#[\JMS\Serializer\Annotation\SerializedName('defaultBigInt')]
     #[\JMS\Serializer\Annotation\Type('int')]
@@ -111,6 +119,10 @@ class DefaultsAndConstsOutput
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $defaultStr;
     
+	#[\JMS\Serializer\Annotation\SerializedName('defaultStrDQuotes')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    public string $defaultStrDQuotes;
+    
 	#[\JMS\Serializer\Annotation\SerializedName('defaultStrNullable')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $defaultStrNullable;
@@ -119,6 +131,10 @@ class DefaultsAndConstsOutput
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $defaultStrOptional = null;
+    
+	#[\JMS\Serializer\Annotation\SerializedName('defaultStrSQuotes')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    public string $defaultStrSQuotes;
     
 	#[\JMS\Serializer\Annotation\SerializedName('normalField')]
     #[\JMS\Serializer\Annotation\Type('string')]
@@ -138,7 +154,9 @@ class DefaultsAndConstsOutput
 		$this->constInt = 0;
 		$this->constNum = 0;
 		$this->constStr = "";
+		$this->constStrDQuotes = "";
 		$this->constStrNull = "";
+		$this->constStrSQuotes = "";
 		$this->defaultBigInt = 0;
 		$this->defaultBigIntStr = "";
 		$this->defaultBool = false;
@@ -151,8 +169,10 @@ class DefaultsAndConstsOutput
 		$this->defaultInt = 0;
 		$this->defaultNum = 0;
 		$this->defaultStr = "";
+		$this->defaultStrDQuotes = "";
 		$this->defaultStrNullable = "";
 		$this->defaultStrOptional = null;
+		$this->defaultStrSQuotes = "";
 		$this->normalField = "";
 	}
 }

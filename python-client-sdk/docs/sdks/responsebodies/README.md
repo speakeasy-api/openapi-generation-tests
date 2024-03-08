@@ -7,6 +7,7 @@ Endpoints for testing response bodies.
 
 ### Available Operations
 
+* [response_body_additional_properties_any_post](#response_body_additional_properties_any_post)
 * [response_body_additional_properties_complex_numbers_post](#response_body_additional_properties_complex_numbers_post)
 * [response_body_additional_properties_date_post](#response_body_additional_properties_date_post)
 * [response_body_additional_properties_object_post](#response_body_additional_properties_object_post)
@@ -18,6 +19,48 @@ Endpoints for testing response bodies.
 * [response_body_string_get](#response_body_string_get)
 * [response_body_xml_get](#response_body_xml_get)
 * [response_body_zero_value_complex_type_ptrs_post](#response_body_zero_value_complex_type_ptrs_post)
+
+## response_body_additional_properties_any_post
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = shared.ObjWithAnyAdditionalProperties()
+
+res = s.response_bodies.response_body_additional_properties_any_post(req)
+
+if res.object is not None:
+    # handle response
+    pass
+
+```
+
+### Parameters
+
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [shared.ObjWithAnyAdditionalProperties](../../models/shared/objwithanyadditionalproperties.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+
+
+### Response
+
+**[operations.ResponseBodyAdditionalPropertiesAnyPostResponse](../../models/operations/responsebodyadditionalpropertiesanypostresponse.md)**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## response_body_additional_properties_complex_numbers_post
 
@@ -36,10 +79,7 @@ s = sdk.SDK(
 )
 
 req = shared.ObjWithComplexNumbersAdditionalProperties(
-    additional_properties={
-        "key": 468801,
-    },
-    normal_field='string',
+    normal_field='<value>',
 )
 
 res = s.response_bodies.response_body_additional_properties_complex_numbers_post(req)
@@ -47,6 +87,7 @@ res = s.response_bodies.response_body_additional_properties_complex_numbers_post
 if res.object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -63,14 +104,13 @@ if res.object is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## response_body_additional_properties_date_post
 
 ### Example Usage
 
 ```python
-import dateutil.parser
 import sdk
 from sdk.models import shared
 
@@ -83,10 +123,7 @@ s = sdk.SDK(
 )
 
 req = shared.ObjWithDateAdditionalProperties(
-    additional_properties={
-        "key": dateutil.parser.parse('2021-03-16').date(),
-    },
-    normal_field='string',
+    normal_field='<value>',
 )
 
 res = s.response_bodies.response_body_additional_properties_date_post(req)
@@ -94,6 +131,7 @@ res = s.response_bodies.response_body_additional_properties_date_post(req)
 if res.object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -110,7 +148,7 @@ if res.object is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## response_body_additional_properties_object_post
 
@@ -119,7 +157,6 @@ if res.object is not None:
 ```python
 import dateutil.parser
 import sdk
-from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -134,29 +171,7 @@ req = shared.ObjWithObjAdditionalProperties(
     additional_properties=[
         617205,
     ],
-    additional_properties_t={
-        "key": shared.SimpleObject(
-            any='any',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
-            enum=shared.EnumT.ONE,
-            float32=1.1,
-            int=1,
-            int32=1,
-            int32_enum=shared.Int32Enum.FIFTY_FIVE,
-            int_enum=shared.IntEnum.SECOND,
-            num=1.1,
-            str_='test',
-            str_opt='testOptional',
-        ),
-    },
-    datetime_=dateutil.parser.isoparse('2022-03-22T01:00:55.017Z'),
+    datetime_=dateutil.parser.isoparse('2023-03-22T10:46:10.684Z'),
 )
 
 res = s.response_bodies.response_body_additional_properties_object_post(req)
@@ -164,6 +179,7 @@ res = s.response_bodies.response_body_additional_properties_object_post(req)
 if res.object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -180,7 +196,7 @@ if res.object is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## response_body_additional_properties_post
 
@@ -199,10 +215,7 @@ s = sdk.SDK(
 )
 
 req = shared.ObjWithStringAdditionalProperties(
-    additional_properties={
-        "key": 'string',
-    },
-    normal_field='string',
+    normal_field='<value>',
 )
 
 res = s.response_bodies.response_body_additional_properties_post(req)
@@ -210,6 +223,7 @@ res = s.response_bodies.response_body_additional_properties_post(req)
 if res.object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -226,7 +240,7 @@ if res.object is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## response_body_bytes_get
 
@@ -250,6 +264,7 @@ res = s.response_bodies.response_body_bytes_get()
 if res.bytes is not None:
     # handle response
     pass
+
 ```
 
 
@@ -260,7 +275,7 @@ if res.bytes is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## response_body_empty_with_headers
 
@@ -268,7 +283,7 @@ if res.bytes is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -279,11 +294,12 @@ s = sdk.SDK(
 )
 
 
-res = s.response_bodies.response_body_empty_with_headers(x_number_header=1751.8, x_string_header='string')
+res = s.response_bodies.response_body_empty_with_headers(x_number_header=1751.8, x_string_header='<value>')
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -301,7 +317,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## response_body_optional_get
 
@@ -325,6 +341,7 @@ res = s.response_bodies.response_body_optional_get()
 if res.typed_object1 is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -341,7 +358,7 @@ if res.typed_object1 is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## response_body_read_only
 
@@ -365,6 +382,7 @@ res = s.response_bodies.response_body_read_only()
 if res.read_only_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -381,7 +399,7 @@ if res.read_only_object is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## response_body_string_get
 
@@ -405,6 +423,7 @@ res = s.response_bodies.response_body_string_get()
 if res.html is not None:
     # handle response
     pass
+
 ```
 
 
@@ -415,7 +434,7 @@ if res.html is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## response_body_xml_get
 
@@ -439,6 +458,7 @@ res = s.response_bodies.response_body_xml_get()
 if res.xml is not None:
     # handle response
     pass
+
 ```
 
 
@@ -449,7 +469,7 @@ if res.xml is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## response_body_zero_value_complex_type_ptrs_post
 
@@ -458,7 +478,6 @@ if res.xml is not None:
 ```python
 import dateutil.parser
 import sdk
-from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -479,6 +498,7 @@ res = s.response_bodies.response_body_zero_value_complex_type_ptrs_post(req)
 if res.object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -495,4 +515,4 @@ if res.object is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |

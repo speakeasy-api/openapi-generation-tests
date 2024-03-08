@@ -12,6 +12,7 @@ import Foundation
 ///
 /// These methods allow you to make requests to the API.
 ///
+/// - ``conflictingEnum(request:)``
 /// - ``putAnythingIgnoredGeneration(request:)``
 /// - ``responseBodyJsonGet()``
 ///
@@ -25,6 +26,7 @@ import Foundation
 /// - ``flattening``
 /// - ``globals``
 /// - ``parameters``
+/// - ``hooks``
 /// - ``nestFirst``
 /// - ``nested``
 /// - ``nestedFirst``
@@ -35,14 +37,20 @@ import Foundation
 /// - ``servers``
 /// - ``telemetry``
 /// - ``authNew``
-/// - ``documentation``
 /// - ``resource``
+/// - ``documentation``
 /// - ``first``
 /// - ``second``
 /// - ``pagination``
 /// - ``retries``
 ///
 public protocol OpenAPI {
+    /// Test potential namespace conflicts with java.lang.Object
+    /// 
+    /// - Parameter request: A ``Shared/ConflictingEnum`` object describing the input to the API operation
+    /// - Returns: A ``Operations/ConflictingEnumResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``OpenAPIError``
+    func conflictingEnum(request: Shared.ConflictingEnum) async throws -> Response<Operations.ConflictingEnumResponse>
     func putAnythingIgnoredGeneration(request: String) async throws -> Response<Operations.PutAnythingIgnoredGenerationResponse>
     func responseBodyJsonGet() async throws -> Response<Operations.ResponseBodyJsonGetResponse>
 
@@ -59,6 +67,8 @@ public protocol OpenAPI {
     var globals: GlobalsAPI { get }
     /// Endpoints for testing parameters.
     var parameters: ParametersAPI { get }
+    /// Endpoints for testing hooks
+    var hooks: HooksAPI { get }
     var nestFirst: NestFirstAPI { get }
     var nested: NestedAPI { get }
     var nestedFirst: NestedFirstAPI { get }
@@ -75,9 +85,9 @@ public protocol OpenAPI {
     var telemetry: TelemetryAPI { get }
     /// Endpoints for testing authentication.
     var authNew: AuthNewAPI { get }
+    var resource: ResourceAPI { get }
     /// Testing for documentation extensions and tooling.
     var documentation: DocumentationAPI { get }
-    var resource: ResourceAPI { get }
     var first: FirstAPI { get }
     var second: SecondAPI { get }
     /// Endpoints for testing the pagination extension
@@ -106,7 +116,7 @@ public protocol OpenAPI {
 /// - ``deprecatedOperationWithCommentsGet(request:)``
 /// - ``emptyObjectGet(request:)``
 /// - ``emptyResponseObjectWithCommentGet()``
-/// - ``getGlobalNameOverride()``
+/// - ``getGlobalNameOverride(request:)``
 /// - ``ignoredGenerationGet()``
 /// - ``ignoresPost(request:)``
 /// - ``nameOverrideGet(request:)``
@@ -151,7 +161,7 @@ public protocol GenerationAPI {
 
     func emptyResponseObjectWithCommentGet() async throws -> Response<Operations.EmptyResponseObjectWithCommentGetResponse>
 
-    func getGlobalNameOverride() async throws -> Response<Operations.GetGlobalNameOverrideResponse>
+    func getGlobalNameOverride(request: Shared.SimpleObject) async throws -> Response<Operations.GetGlobalNameOverrideResponse>
 
     func ignoredGenerationGet() async throws -> Response<Operations.IgnoredGenerationGetResponse>
 
@@ -281,13 +291,16 @@ public protocol ErrorsAPI {
 /// - ``nullableOneOfTypeInObjectPost(request:)``
 /// - ``nullableTypedObjectPost(request:)``
 /// - ``primitiveTypeOneOfPost(request:)``
+/// - ``stronglyTypedOneOfDiscriminatedPost(request:)``
 /// - ``stronglyTypedOneOfPost(request:)``
+/// - ``stronglyTypedOneOfPostWithNonStandardDiscriminatorName(request:)``
 /// - ``typedObjectNullableOneOfPost(request:)``
 /// - ``typedObjectOneOfPost(request:)``
 /// - ``unionBigIntDecimal(request:)``
 /// - ``unionDateNull(request:)``
 /// - ``unionDateTimeBigInt(request:)``
 /// - ``unionDateTimeNull(request:)``
+/// - ``weaklyTypedOneOfNullEnumPost(request:)``
 /// - ``weaklyTypedOneOfPost(request:)``
 ///
 public protocol UnionsAPI {
@@ -305,7 +318,11 @@ public protocol UnionsAPI {
 
     func primitiveTypeOneOfPost(request: Operations.PrimitiveTypeOneOfPostRequestBody) async throws -> Response<Operations.PrimitiveTypeOneOfPostResponse>
 
+    func stronglyTypedOneOfDiscriminatedPost(request: Shared.StronglyTypedOneOfDiscriminatedObject) async throws -> Response<Operations.StronglyTypedOneOfDiscriminatedPostResponse>
+
     func stronglyTypedOneOfPost(request: Shared.StronglyTypedOneOfObject) async throws -> Response<Operations.StronglyTypedOneOfPostResponse>
+
+    func stronglyTypedOneOfPostWithNonStandardDiscriminatorName(request: Shared.StronglyTypedOneOfObjectWithNonStandardDiscriminatorName) async throws -> Response<Operations.StronglyTypedOneOfPostWithNonStandardDiscriminatorNameResponse>
 
     func typedObjectNullableOneOfPost(request: Shared.TypedObjectNullableOneOf) async throws -> Response<Operations.TypedObjectNullableOneOfPostResponse>
 
@@ -318,6 +335,8 @@ public protocol UnionsAPI {
     func unionDateTimeBigInt(request: Operations.UnionDateTimeBigIntRequestBody) async throws -> Response<Operations.UnionDateTimeBigIntResponse>
 
     func unionDateTimeNull(request: Date) async throws -> Response<Operations.UnionDateTimeNullResponse>
+
+    func weaklyTypedOneOfNullEnumPost(request: Shared.WeaklyTypedOneOfNullEnumObject) async throws -> Response<Operations.WeaklyTypedOneOfNullEnumPostResponse>
 
     func weaklyTypedOneOfPost(request: Shared.WeaklyTypedOneOfObject) async throws -> Response<Operations.WeaklyTypedOneOfPostResponse>
 }
@@ -443,6 +462,29 @@ public protocol ParametersAPI {
     func simplePathParameterObjects(request: Operations.SimplePathParameterObjectsRequest) async throws -> Response<Operations.SimplePathParameterObjectsResponse>
 
     func simplePathParameterPrimitives(request: Operations.SimplePathParameterPrimitivesRequest) async throws -> Response<Operations.SimplePathParameterPrimitivesResponse>
+}
+
+// MARK: - HooksAPI
+
+/// Endpoints for testing hooks
+///
+/// ## Topics
+///
+/// ### API calls
+///
+/// - ``authorizationHeaderModification(security:)``
+/// - ``testHooks(request:)``
+/// - ``testHooksAfterResponse()``
+/// - ``testHooksError()``
+///
+public protocol HooksAPI {
+    func authorizationHeaderModification(security: Operations.AuthorizationHeaderModificationSecurity) async throws -> Response<Operations.AuthorizationHeaderModificationResponse>
+
+    func testHooks(request: Operations.TestHooksRequest) async throws -> Response<Operations.TestHooksResponse>
+
+    func testHooksAfterResponse() async throws -> Response<Operations.TestHooksAfterResponseResponse>
+
+    func testHooksError() async throws -> Response<Operations.TestHooksErrorResponse>
 }
 
 // MARK: - NestFirstAPI
@@ -1342,6 +1384,7 @@ public enum RequestBodiesServers {
 ///
 /// ### API calls
 ///
+/// - ``nullEnumPost(request:)``
 /// - ``nullableObjectPost(request:)``
 /// - ``nullableRequiredEmptyObjectPost(request:)``
 /// - ``nullableRequiredPropertyPost(request:)``
@@ -1383,6 +1426,8 @@ public enum RequestBodiesServers {
 /// - ``requestBodyPostJsonDataTypesBigInt(request:)``
 /// - ``requestBodyPostJsonDataTypesBigIntStr(request:)``
 /// - ``requestBodyPostJsonDataTypesBoolean(request:)``
+/// - ``requestBodyPostJsonDataTypesComplexNumberArrays(request:)``
+/// - ``requestBodyPostJsonDataTypesComplexNumberMaps(request:)``
 /// - ``requestBodyPostJsonDataTypesDate(request:)``
 /// - ``requestBodyPostJsonDataTypesDateTime(request:)``
 /// - ``requestBodyPostJsonDataTypesDecimal(request:)``
@@ -1413,6 +1458,7 @@ public enum RequestBodiesServers {
 /// - ``requestBodyPutMultipartDeep(request:)``
 /// - ``requestBodyPutMultipartDifferentFileName(request:)``
 /// - ``requestBodyPutMultipartFile(request:)``
+/// - ``requestBodyPutMultipartOptionalRequestBody(request:)``
 /// - ``requestBodyPutMultipartSimple(request:)``
 /// - ``requestBodyPutString(request:)``
 /// - ``requestBodyPutStringWithParams(request:)``
@@ -1425,6 +1471,8 @@ public enum RequestBodiesServers {
 /// - ``requestBodyWriteOnlyUnion(request:server:)``
 ///
 public protocol RequestBodiesAPI {
+    func nullEnumPost(request: Shared.ObjectWithNullEnums) async throws -> Response<Operations.NullEnumPostResponse>
+
     func nullableObjectPost(request: Shared.NullableObject) async throws -> Response<Operations.NullableObjectPostResponse>
 
     func nullableRequiredEmptyObjectPost(request: Operations.NullableRequiredEmptyObjectPostRequestBody) async throws -> Response<Operations.NullableRequiredEmptyObjectPostResponse>
@@ -1507,6 +1555,10 @@ public protocol RequestBodiesAPI {
 
     func requestBodyPostJsonDataTypesBoolean(request: Bool) async throws -> Response<Operations.RequestBodyPostJsonDataTypesBooleanResponse>
 
+    func requestBodyPostJsonDataTypesComplexNumberArrays(request: Shared.ComplexNumberArrays) async throws -> Response<Operations.RequestBodyPostJsonDataTypesComplexNumberArraysResponse>
+
+    func requestBodyPostJsonDataTypesComplexNumberMaps(request: Shared.ComplexNumberMaps) async throws -> Response<Operations.RequestBodyPostJsonDataTypesComplexNumberMapsResponse>
+
     func requestBodyPostJsonDataTypesDate(request: Date) async throws -> Response<Operations.RequestBodyPostJsonDataTypesDateResponse>
 
     func requestBodyPostJsonDataTypesDateTime(request: Date) async throws -> Response<Operations.RequestBodyPostJsonDataTypesDateTimeResponse>
@@ -1566,6 +1618,8 @@ public protocol RequestBodiesAPI {
     func requestBodyPutMultipartDifferentFileName(request: Operations.RequestBodyPutMultipartDifferentFileNameRequestBody) async throws -> Response<Operations.RequestBodyPutMultipartDifferentFileNameResponse>
 
     func requestBodyPutMultipartFile(request: Operations.RequestBodyPutMultipartFileRequestBody) async throws -> Response<Operations.RequestBodyPutMultipartFileResponse>
+
+    func requestBodyPutMultipartOptionalRequestBody(request: Operations.RequestBodyPutMultipartOptionalRequestBodyRequestBody) async throws -> Response<Operations.RequestBodyPutMultipartOptionalRequestBodyResponse>
 
     func requestBodyPutMultipartSimple(request: Shared.SimpleObject) async throws -> Response<Operations.RequestBodyPutMultipartSimpleResponse>
 
@@ -1668,6 +1722,7 @@ public enum ResponseBodiesServers {
 ///
 /// ### API calls
 ///
+/// - ``responseBodyAdditionalPropertiesAnyPost(request:)``
 /// - ``responseBodyAdditionalPropertiesComplexNumbersPost(request:)``
 /// - ``responseBodyAdditionalPropertiesDatePost(request:)``
 /// - ``responseBodyAdditionalPropertiesObjectPost(request:)``
@@ -1681,6 +1736,8 @@ public enum ResponseBodiesServers {
 /// - ``responseBodyZeroValueComplexTypePtrsPost(request:)``
 ///
 public protocol ResponseBodiesAPI {
+    func responseBodyAdditionalPropertiesAnyPost(request: [String: AnyValue]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesAnyPostResponse>
+
     func responseBodyAdditionalPropertiesComplexNumbersPost(request: [String: String]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse>
 
     func responseBodyAdditionalPropertiesDatePost(request: [String: Date]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesDatePostResponse>
@@ -2336,6 +2393,32 @@ public protocol AuthNewAPI {
     func openIdConnectAuthNew(request: Shared.AuthServiceRequestBody, security: Operations.OpenIdConnectAuthNewSecurity, server: AuthNewServers.OpenIdConnectAuthNew?) async throws -> Response<Operations.OpenIdConnectAuthNewResponse>
 }
 
+// MARK: - ResourceAPI
+/// ## Topics
+///
+/// ### API calls
+///
+/// - ``createFile(request:)``
+/// - ``createResource(request:)``
+/// - ``deleteResource(request:)``
+/// - ``getArrayDataSource(request:)``
+/// - ``getResource(request:)``
+/// - ``updateResource(request:)``
+///
+public protocol ResourceAPI {
+    func createFile(request: Operations.CreateFileRequestBody) async throws -> Response<Operations.CreateFileResponse>
+
+    func createResource(request: Shared.ExampleResource) async throws -> Response<Operations.CreateResourceResponse>
+
+    func deleteResource(request: Operations.DeleteResourceRequest) async throws -> Response<Operations.DeleteResourceResponse>
+
+    func getArrayDataSource(request: Operations.GetArrayDataSourceRequest) async throws -> Response<Operations.GetArrayDataSourceResponse>
+
+    func getResource(request: Operations.GetResourceRequest) async throws -> Response<Operations.GetResourceResponse>
+
+    func updateResource(request: Operations.UpdateResourceRequest) async throws -> Response<Operations.UpdateResourceResponse>
+}
+
 // MARK: - DocumentationAPI
 
 /// Testing for documentation extensions and tooling.
@@ -2353,29 +2436,6 @@ public protocol DocumentationAPI {
     /// - Returns: A ``Operations/GetDocumentationPerLanguageResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``OpenAPIError``
     func getDocumentationPerLanguage(request: Operations.GetDocumentationPerLanguageRequest) async throws -> Response<Operations.GetDocumentationPerLanguageResponse>
-}
-
-// MARK: - ResourceAPI
-/// ## Topics
-///
-/// ### API calls
-///
-/// - ``createFile(request:)``
-/// - ``createResource(request:)``
-/// - ``deleteResource(request:)``
-/// - ``getResource(request:)``
-/// - ``updateResource(request:)``
-///
-public protocol ResourceAPI {
-    func createFile(request: Operations.CreateFileRequestBody) async throws -> Response<Operations.CreateFileResponse>
-
-    func createResource(request: Shared.ExampleResource) async throws -> Response<Operations.CreateResourceResponse>
-
-    func deleteResource(request: Operations.DeleteResourceRequest) async throws -> Response<Operations.DeleteResourceResponse>
-
-    func getResource(request: Operations.GetResourceRequest) async throws -> Response<Operations.GetResourceResponse>
-
-    func updateResource(request: Operations.UpdateResourceRequest) async throws -> Response<Operations.UpdateResourceResponse>
 }
 
 // MARK: - FirstAPI
@@ -2428,6 +2488,41 @@ public enum PaginationServers {
 
         static func `default`() throws -> Server {
             return try PaginationServers.PaginationCursorBody.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
+
+/// Describes the available servers that can be used when making 'paginationCursorNonNumeric' requests.
+///
+/// Use this type when making calls to ``PaginationAPI/paginationCursorNonNumeric(request:server:)`` to customize the server which is used.
+    public enum PaginationCursorNonNumeric: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:35456`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:35456"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:35456"
+        ]
+
+        static func `default`() throws -> Server {
+            return try PaginationServers.PaginationCursorNonNumeric.server1.server()
         }
 
         func server() throws -> Server {
@@ -2612,6 +2707,41 @@ public enum PaginationServers {
             }
         }
     }
+
+/// Describes the available servers that can be used when making 'paginationURLParams' requests.
+///
+/// Use this type when making calls to ``PaginationAPI/paginationURLParams(request:server:)`` to customize the server which is used.
+    public enum PaginationURLParams: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:35456`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:35456"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:35456"
+        ]
+
+        static func `default`() throws -> Server {
+            return try PaginationServers.PaginationURLParams.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
 }
 
 /// Endpoints for testing the pagination extension
@@ -2621,14 +2751,18 @@ public enum PaginationServers {
 /// ### API calls
 ///
 /// - ``paginationCursorBody(request:server:)``
+/// - ``paginationCursorNonNumeric(request:server:)``
 /// - ``paginationCursorParams(request:server:)``
 /// - ``paginationLimitOffsetOffsetBody(request:server:)``
 /// - ``paginationLimitOffsetOffsetParams(request:server:)``
 /// - ``paginationLimitOffsetPageBody(request:server:)``
 /// - ``paginationLimitOffsetPageParams(request:server:)``
+/// - ``paginationURLParams(request:server:)``
 ///
 public protocol PaginationAPI {
     func paginationCursorBody(request: Operations.PaginationCursorBodyRequestBody, server: PaginationServers.PaginationCursorBody?) async throws -> Response<Operations.PaginationCursorBodyResponse>
+
+    func paginationCursorNonNumeric(request: Operations.PaginationCursorNonNumericRequest, server: PaginationServers.PaginationCursorNonNumeric?) async throws -> Response<Operations.PaginationCursorNonNumericResponse>
 
     func paginationCursorParams(request: Operations.PaginationCursorParamsRequest, server: PaginationServers.PaginationCursorParams?) async throws -> Response<Operations.PaginationCursorParamsResponse>
 
@@ -2639,10 +2773,82 @@ public protocol PaginationAPI {
     func paginationLimitOffsetPageBody(request: Shared.LimitOffsetConfig, server: PaginationServers.PaginationLimitOffsetPageBody?) async throws -> Response<Operations.PaginationLimitOffsetPageBodyResponse>
 
     func paginationLimitOffsetPageParams(request: Operations.PaginationLimitOffsetPageParamsRequest, server: PaginationServers.PaginationLimitOffsetPageParams?) async throws -> Response<Operations.PaginationLimitOffsetPageParamsResponse>
+
+    func paginationURLParams(request: Operations.PaginationURLParamsRequest, server: PaginationServers.PaginationURLParams?) async throws -> Response<Operations.PaginationURLParamsResponse>
 }
 
 // MARK: - RetriesAPI
 public enum RetriesServers {
+
+/// Describes the available servers that can be used when making 'retriesAfter' requests.
+///
+/// Use this type when making calls to ``RetriesAPI/retriesAfter(request:server:)`` to customize the server which is used.
+    public enum RetriesAfter: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:35456`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:35456"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:35456"
+        ]
+
+        static func `default`() throws -> Server {
+            return try RetriesServers.RetriesAfter.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
+
+/// Describes the available servers that can be used when making 'retriesConnectErrorGet' requests.
+///
+/// Use this type when making calls to ``RetriesAPI/retriesConnectErrorGet(server:)`` to customize the server which is used.
+    public enum RetriesConnectErrorGet: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:33333`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:33333"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:33333"
+        ]
+
+        static func `default`() throws -> Server {
+            return try RetriesServers.RetriesConnectErrorGet.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
 
 /// Describes the available servers that can be used when making 'retriesGet' requests.
 ///
@@ -2678,6 +2884,41 @@ public enum RetriesServers {
             }
         }
     }
+
+/// Describes the available servers that can be used when making 'retriesPost' requests.
+///
+/// Use this type when making calls to ``RetriesAPI/retriesPost(request:server:)`` to customize the server which is used.
+    public enum RetriesPost: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:35456`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:35456"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:35456"
+        ]
+
+        static func `default`() throws -> Server {
+            return try RetriesServers.RetriesPost.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
 }
 
 /// Endpoints for testing retries.
@@ -2686,8 +2927,22 @@ public enum RetriesServers {
 ///
 /// ### API calls
 ///
+/// - ``retriesAfter(request:server:)``
+/// - ``retriesConnectErrorGet(server:)``
 /// - ``retriesGet(request:server:)``
+/// - ``retriesPost(request:server:)``
 ///
 public protocol RetriesAPI {
+    func retriesAfter(request: Operations.RetriesAfterRequest, server: RetriesServers.RetriesAfter?) async throws -> Response<Operations.RetriesAfterResponse>
+
+    /// A request to a non-valid port to test connection errors
+    /// 
+    /// - Parameter server: An optional server override to use for this operation
+    /// - Returns: A ``Operations/RetriesConnectErrorGetResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``OpenAPIError``
+    func retriesConnectErrorGet(server: RetriesServers.RetriesConnectErrorGet?) async throws -> Response<Operations.RetriesConnectErrorGetResponse>
+
     func retriesGet(request: Operations.RetriesGetRequest, server: RetriesServers.RetriesGet?) async throws -> Response<Operations.RetriesGetResponse>
+
+    func retriesPost(request: Operations.RetriesPostRequest, server: RetriesServers.RetriesPost?) async throws -> Response<Operations.RetriesPostResponse>
 }

@@ -9,14 +9,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class OneOfCircularReferenceObject {
     @JsonProperty("child")
-    public Object child;
+    public java.lang.Object child;
 
-    public OneOfCircularReferenceObject withChild(Object child) {
+    public OneOfCircularReferenceObject withChild(java.lang.Object child) {
         this.child = child;
         return this;
     }
     
-    public OneOfCircularReferenceObject(@JsonProperty("child") Object child) {
+    public OneOfCircularReferenceObject(@JsonProperty("child") java.lang.Object child) {
         this.child = child;
   }
 }

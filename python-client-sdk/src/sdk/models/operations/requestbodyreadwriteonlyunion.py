@@ -18,7 +18,7 @@ class RequestBodyReadWriteOnlyUnionResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
     weakly_typed_one_of_read_write_object: Optional[Union[shared_simpleobject.SimpleObject, shared_readwriteobject_output.ReadWriteObjectOutput]] = dataclasses.field(default=None)
     r"""OK"""
