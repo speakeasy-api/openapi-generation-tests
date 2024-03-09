@@ -25,6 +25,18 @@ class NullableRequiredPropertyPostRequestBody
     #[\JMS\Serializer\Annotation\Type('array<float>')]
     public array $nullableRequiredArray;
     
+	#[\JMS\Serializer\Annotation\SerializedName('NullableRequiredBigIntStr')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    public string $nullableRequiredBigIntStr;
+    
+	#[\JMS\Serializer\Annotation\SerializedName('NullableRequiredDateTime')]
+    #[\JMS\Serializer\Annotation\Type("DateTime<'Y-m-d\TH:i:s.up'>")]
+    public \DateTime $nullableRequiredDateTime;
+    
+	#[\JMS\Serializer\Annotation\SerializedName('NullableRequiredDecimalStr')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    public string $nullableRequiredDecimalStr;
+    
 	#[\JMS\Serializer\Annotation\SerializedName('NullableRequiredEnum')]
     #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Operations\NullableRequiredEnum>')]
     public NullableRequiredEnum $nullableRequiredEnum;
@@ -37,6 +49,9 @@ class NullableRequiredPropertyPostRequestBody
 	{
 		$this->nullableOptionalInt = null;
 		$this->nullableRequiredArray = [];
+		$this->nullableRequiredBigIntStr = "";
+		$this->nullableRequiredDateTime = new \DateTime();
+		$this->nullableRequiredDecimalStr = "";
 		$this->nullableRequiredEnum = \OpenAPI\OpenAPI\Models\Operations\NullableRequiredEnum::First;
 		$this->nullableRequiredInt = 0;
 	}
