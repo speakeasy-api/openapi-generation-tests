@@ -12,6 +12,7 @@ namespace Openapi
 {
     using Newtonsoft.Json;
     using Openapi.Models.Operations;
+    using Openapi.Models.Shared;
     using Openapi.Utils;
     using System.Net.Http.Headers;
     using System.Net.Http;
@@ -32,24 +33,23 @@ namespace Openapi
     /// </summary>
     public class Globals: IGlobals
     {
-        public SDKConfig Config { get; private set; }
+        public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.3.1";
-        private const string _sdkGenVersion = "2.188.3";
+        private const string _sdkVersion = "0.4.0";
+        private const string _sdkGenVersion = "2.279.1";
         private const string _openapiDocVersion = "0.1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.0 2.279.1 0.1.0 openapi";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
-        private ISpeakeasyHttpClient _securityClient;
+        private Func<Security>? _securitySource;
 
-        public Globals(ISpeakeasyHttpClient defaultClient, ISpeakeasyHttpClient securityClient, string serverUrl, SDKConfig config)
+        public Globals(ISpeakeasyHttpClient defaultClient, Func<Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _defaultClient = defaultClient;
-            _securityClient = securityClient;
+            _securitySource = securitySource;
             _serverUrl = serverUrl;
-            Config = config;
+            SDKConfiguration = config;
         }
-        
 
         public async Task<GlobalPathParameterGetResponse> GlobalPathParameterGetAsync(long? globalPathParam = null)
         {
@@ -57,44 +57,43 @@ namespace Openapi
             {
                 GlobalPathParam = globalPathParam,
             };
-            request.GlobalPathParam ??= Config.GlobalPathParam;
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
-            var urlString = URLBuilder.Build(baseUrl, "/anything/globals/pathParameter/{globalPathParam}", request);
+            request.GlobalPathParam ??= SDKConfiguration.GlobalPathParam;
             
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+            var urlString = URLBuilder.Build(baseUrl, "/anything/globals/pathParameter/{globalPathParam}", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GlobalPathParameterGetResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<GlobalPathParameterGetRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
-        
+
 
         public async Task<GlobalsQueryParameterGetResponse> GlobalsQueryParameterGetAsync(string? globalQueryParam = null)
         {
@@ -102,43 +101,42 @@ namespace Openapi
             {
                 GlobalQueryParam = globalQueryParam,
             };
-            request.GlobalQueryParam ??= Config.GlobalQueryParam;
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
-            var urlString = URLBuilder.Build(baseUrl, "/anything/globals/queryParameter", request);
+            request.GlobalQueryParam ??= SDKConfiguration.GlobalQueryParam;
             
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+            var urlString = URLBuilder.Build(baseUrl, "/anything/globals/queryParameter", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GlobalsQueryParameterGetResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<GlobalsQueryParameterGetRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
-        
+
     }
 }
