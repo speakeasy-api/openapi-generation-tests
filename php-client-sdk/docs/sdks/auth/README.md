@@ -25,13 +25,16 @@ Endpoints for testing authentication.
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
@@ -43,7 +46,7 @@ try {
     if ($response->token !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -68,7 +71,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -77,8 +81,9 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
     $response = $sdk->auth->apiKeyAuthGlobal();
@@ -86,7 +91,7 @@ try {
     if ($response->token !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -105,28 +110,31 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-
+    
 
     $requestSecurity = new Operations\BasicAuthSecurity();
     $requestSecurity->password = 'YOUR_PASSWORD';
     $requestSecurity->username = 'YOUR_USERNAME';
 
-    $response = $sdk->auth->basicAuth($requestSecurity, 'string', 'string');
+    $response = $sdk->auth->basicAuth($requestSecurity, '<value>', '<value>');
 
     if ($response->user !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -153,13 +161,16 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
@@ -171,7 +182,7 @@ try {
     if ($response->token !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -196,7 +207,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -205,8 +217,9 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
     $response = $sdk->auth->globalBearerAuth();
@@ -214,7 +227,7 @@ try {
     if ($response->token !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -233,16 +246,15 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
-
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
@@ -251,7 +263,7 @@ try {
     if ($response->statusCode === 200) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -270,13 +282,16 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
@@ -288,7 +303,7 @@ try {
     if ($response->token !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -313,17 +328,20 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-
+    
 
     $requestSecurity = new Operations\Oauth2OverrideSecurity();
     $requestSecurity->oauth2 = 'Bearer YOUR_OAUTH2_TOKEN';
@@ -333,7 +351,7 @@ try {
     if ($response->token !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -358,13 +376,16 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
@@ -376,7 +397,7 @@ try {
     if ($response->token !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```

@@ -32,10 +32,9 @@ public class Second {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.GroupSecondGetResponse res = new org.openapis.openapi.models.operations.GroupSecondGetResponse(contentType, httpRes.statusCode()) {{
+        
+        org.openapis.openapi.models.operations.GroupSecondGetResponse res = new org.openapis.openapi.models.operations.GroupSecondGetResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
         }

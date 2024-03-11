@@ -15,6 +15,16 @@ class RequestBodyPostFormSimpleForm
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $any;
     
+	#[\JMS\Serializer\Annotation\SerializedName('bigint')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    public ?string $bigint = null;
+    
+	#[\JMS\Serializer\Annotation\SerializedName('bigintStr')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    public ?string $bigintStr = null;
+    
 	#[\JMS\Serializer\Annotation\SerializedName('bool')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $bool;
@@ -32,6 +42,16 @@ class RequestBodyPostFormSimpleForm
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $dateTime;
     
+	#[\JMS\Serializer\Annotation\SerializedName('decimal')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    public ?string $decimal = null;
+    
+	#[\JMS\Serializer\Annotation\SerializedName('decimalStr')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    public ?string $decimalStr = null;
+    
 	#[\JMS\Serializer\Annotation\SerializedName('enum')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $enum;
@@ -47,6 +67,14 @@ class RequestBodyPostFormSimpleForm
 	#[\JMS\Serializer\Annotation\SerializedName('int32')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $int32;
+    
+	#[\JMS\Serializer\Annotation\SerializedName('int32Enum')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    public string $int32Enum;
+    
+	#[\JMS\Serializer\Annotation\SerializedName('intEnum')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    public string $intEnum;
     
 	#[\JMS\Serializer\Annotation\SerializedName('intOptNull')]
     #[\JMS\Serializer\Annotation\Type('string')]
@@ -74,14 +102,20 @@ class RequestBodyPostFormSimpleForm
 	public function __construct()
 	{
 		$this->any = "";
+		$this->bigint = null;
+		$this->bigintStr = null;
 		$this->bool = "";
 		$this->boolOpt = null;
 		$this->date = "";
 		$this->dateTime = "";
+		$this->decimal = null;
+		$this->decimalStr = null;
 		$this->enum = "";
 		$this->float32 = "";
 		$this->int = "";
 		$this->int32 = "";
+		$this->int32Enum = "";
+		$this->intEnum = "";
 		$this->intOptNull = null;
 		$this->num = "";
 		$this->numOptNull = null;

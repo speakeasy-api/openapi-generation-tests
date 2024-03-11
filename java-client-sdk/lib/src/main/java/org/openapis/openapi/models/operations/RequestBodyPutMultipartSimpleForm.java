@@ -18,6 +18,24 @@ public class RequestBodyPutMultipartSimpleForm {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("bigint")
+    public String bigint;
+
+    public RequestBodyPutMultipartSimpleForm withBigint(String bigint) {
+        this.bigint = bigint;
+        return this;
+    }
+    
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("bigintStr")
+    public String bigintStr;
+
+    public RequestBodyPutMultipartSimpleForm withBigintStr(String bigintStr) {
+        this.bigintStr = bigintStr;
+        return this;
+    }
+    
     @JsonProperty("bool")
     public String bool;
 
@@ -51,6 +69,24 @@ public class RequestBodyPutMultipartSimpleForm {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("decimal")
+    public String decimal;
+
+    public RequestBodyPutMultipartSimpleForm withDecimal(String decimal) {
+        this.decimal = decimal;
+        return this;
+    }
+    
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("decimalStr")
+    public String decimalStr;
+
+    public RequestBodyPutMultipartSimpleForm withDecimalStr(String decimalStr) {
+        this.decimalStr = decimalStr;
+        return this;
+    }
+    
     @JsonProperty("enum")
     public String enum_;
 
@@ -80,6 +116,22 @@ public class RequestBodyPutMultipartSimpleForm {
 
     public RequestBodyPutMultipartSimpleForm withInt32(String int32) {
         this.int32 = int32;
+        return this;
+    }
+    
+    @JsonProperty("int32Enum")
+    public String int32Enum;
+
+    public RequestBodyPutMultipartSimpleForm withInt32Enum(String int32Enum) {
+        this.int32Enum = int32Enum;
+        return this;
+    }
+    
+    @JsonProperty("intEnum")
+    public String intEnum;
+
+    public RequestBodyPutMultipartSimpleForm withIntEnum(String intEnum) {
+        this.intEnum = intEnum;
         return this;
     }
     
@@ -126,7 +178,7 @@ public class RequestBodyPutMultipartSimpleForm {
         return this;
     }
     
-    public RequestBodyPutMultipartSimpleForm(@JsonProperty("any") String any, @JsonProperty("bool") String bool, @JsonProperty("date") String date, @JsonProperty("dateTime") String dateTime, @JsonProperty("enum") String enum_, @JsonProperty("float32") String float32, @JsonProperty("int") String int_, @JsonProperty("int32") String int32, @JsonProperty("num") String num, @JsonProperty("str") String str) {
+    public RequestBodyPutMultipartSimpleForm(@JsonProperty("any") String any, @JsonProperty("bool") String bool, @JsonProperty("date") String date, @JsonProperty("dateTime") String dateTime, @JsonProperty("enum") String enum_, @JsonProperty("float32") String float32, @JsonProperty("int") String int_, @JsonProperty("int32") String int32, @JsonProperty("int32Enum") String int32Enum, @JsonProperty("intEnum") String intEnum, @JsonProperty("num") String num, @JsonProperty("str") String str) {
         this.any = any;
         this.bool = bool;
         this.date = date;
@@ -135,6 +187,8 @@ public class RequestBodyPutMultipartSimpleForm {
         this.float32 = float32;
         this.int_ = int_;
         this.int32 = int32;
+        this.int32Enum = int32Enum;
+        this.intEnum = intEnum;
         this.num = num;
         this.str = str;
   }
