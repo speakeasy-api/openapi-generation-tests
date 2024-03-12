@@ -17,7 +17,7 @@ Gets documentation for some language, I guess.
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -28,11 +28,12 @@ s = sdk.SDK(
 )
 
 
-res = s.documentation.get_documentation_per_language(language='string')
+res = s.documentation.get_documentation_per_language(language='<value>')
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -49,4 +50,4 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |

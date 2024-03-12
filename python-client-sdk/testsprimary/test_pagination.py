@@ -6,7 +6,7 @@ from sdk.models.shared import *
 from sdk.utils import *
 
 from .common_helpers import *
-from .helpers import *
+from .test_helpers import *
 
 
 def test_pagination_limit_offset_page_params():
@@ -150,7 +150,6 @@ def test_pagination_cursor_params():
 
     null_res = penultimate_res.next()
     assert null_res is None
-
 
 
 def test_pagination_cursor_body():

@@ -116,6 +116,14 @@ public class DefaultsAndConsts {
         return this;
     }
     
+    @JsonProperty("constStrDQuotes")
+    public String constStrDQuotes;
+
+    public DefaultsAndConsts withConstStrDQuotes(String constStrDQuotes) {
+        this.constStrDQuotes = constStrDQuotes;
+        return this;
+    }
+    
     @JsonProperty("constStrNull")
     public String constStrNull;
 
@@ -124,7 +132,14 @@ public class DefaultsAndConsts {
         return this;
     }
     
-    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("constStrSQuotes")
+    public String constStrSQuotes;
+
+    public DefaultsAndConsts withConstStrSQuotes(String constStrSQuotes) {
+        this.constStrSQuotes = constStrSQuotes;
+        return this;
+    }
+    
     @JsonProperty("defaultBigInt")
     public Long defaultBigInt;
 
@@ -133,7 +148,6 @@ public class DefaultsAndConsts {
         return this;
     }
     
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("defaultBigIntStr")
     public String defaultBigIntStr;
 
@@ -142,7 +156,6 @@ public class DefaultsAndConsts {
         return this;
     }
     
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("defaultBool")
     public Boolean defaultBool;
 
@@ -151,7 +164,6 @@ public class DefaultsAndConsts {
         return this;
     }
     
-    @JsonInclude(Include.NON_ABSENT)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("defaultDate")
     public LocalDate defaultDate;
@@ -161,7 +173,6 @@ public class DefaultsAndConsts {
         return this;
     }
     
-    @JsonInclude(Include.NON_ABSENT)
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("defaultDateTime")
@@ -172,7 +183,6 @@ public class DefaultsAndConsts {
         return this;
     }
     
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("defaultDecimal")
     public Double defaultDecimal;
 
@@ -181,7 +191,6 @@ public class DefaultsAndConsts {
         return this;
     }
     
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("defaultDecimalStr")
     public String defaultDecimalStr;
 
@@ -190,7 +199,6 @@ public class DefaultsAndConsts {
         return this;
     }
     
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("defaultEnumInt")
     public DefaultEnumInt defaultEnumInt;
 
@@ -199,7 +207,6 @@ public class DefaultsAndConsts {
         return this;
     }
     
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("defaultEnumStr")
     public DefaultEnumStr defaultEnumStr;
 
@@ -208,7 +215,6 @@ public class DefaultsAndConsts {
         return this;
     }
     
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("defaultInt")
     public Long defaultInt;
 
@@ -217,7 +223,6 @@ public class DefaultsAndConsts {
         return this;
     }
     
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("defaultNum")
     public Double defaultNum;
 
@@ -226,7 +231,6 @@ public class DefaultsAndConsts {
         return this;
     }
     
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("defaultStr")
     public String defaultStr;
 
@@ -235,7 +239,14 @@ public class DefaultsAndConsts {
         return this;
     }
     
-    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("defaultStrDQuotes")
+    public String defaultStrDQuotes;
+
+    public DefaultsAndConsts withDefaultStrDQuotes(String defaultStrDQuotes) {
+        this.defaultStrDQuotes = defaultStrDQuotes;
+        return this;
+    }
+    
     @JsonProperty("defaultStrNullable")
     public String defaultStrNullable;
 
@@ -253,6 +264,14 @@ public class DefaultsAndConsts {
         return this;
     }
     
+    @JsonProperty("defaultStrSQuotes")
+    public String defaultStrSQuotes;
+
+    public DefaultsAndConsts withDefaultStrSQuotes(String defaultStrSQuotes) {
+        this.defaultStrSQuotes = defaultStrSQuotes;
+        return this;
+    }
+    
     @JsonProperty("normalField")
     public String normalField;
 
@@ -261,7 +280,7 @@ public class DefaultsAndConsts {
         return this;
     }
     
-    public DefaultsAndConsts(@JsonProperty("constBigInt") Long constBigInt, @JsonProperty("constBigIntStr") String constBigIntStr, @JsonProperty("constBool") Boolean constBool, @JsonProperty("constDate") LocalDate constDate, @JsonProperty("constDateTime") OffsetDateTime constDateTime, @JsonProperty("constDecimal") Double constDecimal, @JsonProperty("constDecimalStr") String constDecimalStr, @JsonProperty("constEnumInt") ConstEnumInt constEnumInt, @JsonProperty("constEnumStr") ConstEnumStr constEnumStr, @JsonProperty("constInt") Long constInt, @JsonProperty("constNum") Double constNum, @JsonProperty("constStr") String constStr, @JsonProperty("constStrNull") String constStrNull, @JsonProperty("normalField") String normalField) {
+    public DefaultsAndConsts(@JsonProperty("constBigInt") Long constBigInt, @JsonProperty("constBigIntStr") String constBigIntStr, @JsonProperty("constBool") Boolean constBool, @JsonProperty("constDate") LocalDate constDate, @JsonProperty("constDateTime") OffsetDateTime constDateTime, @JsonProperty("constDecimal") Double constDecimal, @JsonProperty("constDecimalStr") String constDecimalStr, @JsonProperty("constEnumInt") ConstEnumInt constEnumInt, @JsonProperty("constEnumStr") ConstEnumStr constEnumStr, @JsonProperty("constInt") Long constInt, @JsonProperty("constNum") Double constNum, @JsonProperty("constStr") String constStr, @JsonProperty("constStrDQuotes") String constStrDQuotes, @JsonProperty("constStrNull") String constStrNull, @JsonProperty("constStrSQuotes") String constStrSQuotes, @JsonProperty("defaultBigInt") Long defaultBigInt, @JsonProperty("defaultBigIntStr") String defaultBigIntStr, @JsonProperty("defaultBool") Boolean defaultBool, @JsonProperty("defaultDate") LocalDate defaultDate, @JsonProperty("defaultDateTime") OffsetDateTime defaultDateTime, @JsonProperty("defaultDecimal") Double defaultDecimal, @JsonProperty("defaultDecimalStr") String defaultDecimalStr, @JsonProperty("defaultEnumInt") DefaultEnumInt defaultEnumInt, @JsonProperty("defaultEnumStr") DefaultEnumStr defaultEnumStr, @JsonProperty("defaultInt") Long defaultInt, @JsonProperty("defaultNum") Double defaultNum, @JsonProperty("defaultStr") String defaultStr, @JsonProperty("defaultStrDQuotes") String defaultStrDQuotes, @JsonProperty("defaultStrNullable") String defaultStrNullable, @JsonProperty("defaultStrSQuotes") String defaultStrSQuotes, @JsonProperty("normalField") String normalField) {
         this.constBigInt = constBigInt;
         this.constBigIntStr = constBigIntStr;
         this.constBool = constBool;
@@ -274,7 +293,24 @@ public class DefaultsAndConsts {
         this.constInt = constInt;
         this.constNum = constNum;
         this.constStr = constStr;
+        this.constStrDQuotes = constStrDQuotes;
         this.constStrNull = constStrNull;
+        this.constStrSQuotes = constStrSQuotes;
+        this.defaultBigInt = defaultBigInt;
+        this.defaultBigIntStr = defaultBigIntStr;
+        this.defaultBool = defaultBool;
+        this.defaultDate = defaultDate;
+        this.defaultDateTime = defaultDateTime;
+        this.defaultDecimal = defaultDecimal;
+        this.defaultDecimalStr = defaultDecimalStr;
+        this.defaultEnumInt = defaultEnumInt;
+        this.defaultEnumStr = defaultEnumStr;
+        this.defaultInt = defaultInt;
+        this.defaultNum = defaultNum;
+        this.defaultStr = defaultStr;
+        this.defaultStrDQuotes = defaultStrDQuotes;
+        this.defaultStrNullable = defaultStrNullable;
+        this.defaultStrSQuotes = defaultStrSQuotes;
         this.normalField = normalField;
   }
 }

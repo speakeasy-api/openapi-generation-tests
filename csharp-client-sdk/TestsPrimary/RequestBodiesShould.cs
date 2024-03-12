@@ -7,6 +7,7 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -18,6 +19,7 @@ using Openapi;
 using Openapi.Models.Shared;
 using Openapi.Utils;
 using Openapi.Models.Operations;
+using NodaTime;
 
 public class RequestBodiesShould
 {
@@ -906,5 +908,511 @@ public class RequestBodiesShould
             "http://localhost:35123/anything/requestBodies/post/9007199254740991/9223372036854775807/3.141592653589793/3.1415926535897932384626433833/complex-number-types?queryBigInt=9007199254740991&queryBigIntStr=9223372036854775807&queryDecimal=3.141592653589793&queryDecimalStr=3.1415926535897932384626433833",
             res.Object.Url
         );
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesStringAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-string");
+
+        var sdk = new SDK();
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesStringAsync("test");
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal("test", res.Object.Json);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesIntegerAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-integer");
+
+        var sdk = new SDK();
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesIntegerAsync(1);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(1, res.Object.Json);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesLongAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-int32");
+
+        var sdk = new SDK();
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesInt32Async(1);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(1, res.Object.Json);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesBigIntAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-bigint");
+
+        var sdk = new SDK();
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesBigIntAsync(new BigInteger(1));
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(typeof(BigInteger), res.Object.Json.GetType());
+        Assert.Equal(new BigInteger(1), res.Object.Json);
+        Assert.Equal("1", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesBigIntStrAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-bigint-str");
+
+        var sdk = new SDK();
+        var req = BigInteger.Parse("1");
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesBigIntStrAsync(req);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(typeof(BigInteger), res.Object.Json.GetType());
+        Assert.Equal(req, res.Object.Json);
+        Assert.Equal("\"1\"", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesNumberAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-number");
+
+        var sdk = new SDK();
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesNumberAsync(1.1);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(1.1, res.Object.Json);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesFloatAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-float32");
+
+        var sdk = new SDK();
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesFloat32Async(1.1);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(1.1, res.Object.Json);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesDecimalAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-decimal");
+
+        var sdk = new SDK();
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDecimalAsync(1.1M);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(typeof(decimal), res.Object.Json.GetType());
+        Assert.Equal(1.1M, res.Object.Json);
+        Assert.Equal("1.1", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesDecimalStrAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-decimal-str");
+
+        var sdk = new SDK();
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDecimalStrAsync(1.1M);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(typeof(decimal), res.Object.Json.GetType());
+        Assert.Equal(1.1M, res.Object.Json);
+        Assert.Equal("\"1.1\"", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesBooleanAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-boolean");
+
+        var sdk = new SDK();
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesBooleanAsync(true);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.True(res.Object.Json);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesDate()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-date");
+
+        var sdk = new SDK();
+        var date = LocalDate.FromDateTime(new DateTime(2020, 1, 1));
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDateAsync(date);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(date, res.Object.Json);
+        Assert.Equal("\"2020-01-01\"", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesDateTimeAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-date-time");
+
+        var sdk = new SDK();
+        var dateTime = new DateTime(2020, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDateTimeAsync(dateTime);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(dateTime, res.Object.Json);
+        Assert.Equal("\"2020-01-01T00:00:00.0000000Z\"", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesMapDateTimeAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-map-date-time");
+
+        var sdk = new SDK();
+        var req = new Dictionary<string, DateTime>()
+        {
+            { "test", new DateTime(2020, 1, 1, 0, 0, 0, DateTimeKind.Utc) }
+        };
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapDateTimeAsync(req);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req, res.Object.Json);
+        Assert.Equal("{\"test\":\"2020-01-01T00:00:00.0000000Z\"}", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesMapBigIntStrAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-map-bigint-str");
+
+        var sdk = new SDK();
+        var req = new Dictionary<string, BigInteger>()
+        {
+            { "test", new BigInteger(1) }
+        };
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapBigIntStrAsync(req);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req, res.Object.Json);
+        Assert.Equal("{\"test\":\"1\"}", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesMapDecimalAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-map-decimal");
+
+        var sdk = new SDK();
+        var req = new Dictionary<string, Decimal>()
+        {
+            { "test", 3.141592653589793M }
+        };
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapDecimalAsync(req);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req, res.Object.Json);
+        Assert.Equal("{\"test\":3.141592653589793}", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesArrayDateAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-array-date");
+
+        var sdk = new SDK();
+        var req = new List<LocalDate> { LocalDate.FromDateTime(new DateTime(2020, 1, 1)) };
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayDateAsync(req);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req, res.Object.Json);
+        Assert.Equal("[\"2020-01-01\"]", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesArrayBigIntAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-array-bigint");
+
+        var sdk = new SDK();
+        var req = new List<BigInteger> { new BigInteger(1) };
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayBigIntAsync(req);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req, res.Object.Json);
+        Assert.Equal("[1]", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesArrayDecimalStr()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-array-decimal-str");
+
+        var sdk = new SDK();
+        var req = new List<Decimal> { 3.141592653589793438462643383279M };
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayDecimalStrAsync(req);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req, res.Object.Json);
+        Assert.Equal("[\"3.1415926535897934384626433833\"]", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesComplexNumberArrays()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-complex-number-arrays");
+
+        var sdk = new SDK();
+        var req = new ComplexNumberArrays()
+        {
+            BigintArray = new List<BigInteger> { BigInteger.Parse("9007199254740991") },
+            BigintStrArray = new List<BigInteger> { BigInteger.Parse("9223372036854775807") },
+            DecimalArray = new List<Decimal> { 3.141592653589793M },
+            DecimalStrArray = new List<Decimal> { 3.141592653589793238462643383279M }
+        };
+        var serializedBody = RequestBodySerializer.Serialize(req, "request", "json");
+        var json = await serializedBody.ReadAsStringAsync();
+        Assert.Equal("{\"bigintArray\":[9007199254740991],\"bigintStrArray\":[\"9223372036854775807\"],\"decimalArray\":[3.141592653589793],\"decimalStrArray\":[\"3.1415926535897932384626433833\"]}", json);
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesComplexNumberArraysAsync(req);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req.BigintArray, res.Res.Json.BigintArray);
+        Assert.Equal(req.BigintStrArray, res.Res.Json.BigintStrArray);
+        Assert.Equal(req.DecimalArray, res.Res.Json.DecimalArray);
+        Assert.Equal(req.DecimalStrArray, res.Res.Json.DecimalStrArray);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesComplexNumberMaps()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-complex-number-maps");
+
+        var sdk = new SDK();
+        var req = new ComplexNumberMaps()
+        {
+            BigintMap = new Dictionary<string, BigInteger> { {"bigint", BigInteger.Parse("9007199254740991")} },
+            BigintStrMap = new Dictionary<string, BigInteger> { {"bigintStr", BigInteger.Parse("9223372036854775807")} },
+            DecimalMap = new Dictionary<string, Decimal> { {"decimal", 3.141592653589793M} },
+            DecimalStrMap = new Dictionary<string, Decimal> { {"decimalStr", 3.141592653589793238462643383279M} }
+        };
+
+        var serializedBody = RequestBodySerializer.Serialize(req, "request", "json");
+        var json = await serializedBody.ReadAsStringAsync();
+        Assert.Equal("{\"bigintMap\":{\"bigint\":9007199254740991},\"bigintStrMap\":{\"bigintStr\":\"9223372036854775807\"},\"decimalMap\":{\"decimal\":3.141592653589793},\"decimalStrMap\":{\"decimalStr\":\"3.1415926535897932384626433833\"}}", json);
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesComplexNumberMapsAsync(req);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req.BigintMap, res.Res.Json.BigintMap);
+        Assert.Equal(req.BigintStrMap, res.Res.Json.BigintStrMap);
+        Assert.Equal(req.DecimalMap, res.Res.Json.DecimalMap);
+        Assert.Equal(req.DecimalStrMap, res.Res.Json.DecimalStrMap);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostNullableRequiredStringBodyAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-nullable-required-string-body");
+
+        var sdk = new SDK();
+
+        var res = await sdk.RequestBodies.RequestBodyPostNullableRequiredStringBodyAsync(null);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal("null", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostNullableNotRequiredStringBodyAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-nullable-not-required-string-body");
+
+        var sdk = new SDK();
+
+        var res = await sdk.RequestBodies.RequestBodyPostNullableNotRequiredStringBodyAsync(null);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal("null", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostNotNullableNotRequiredStringBodyAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-not-nullable-not-required-string-body");
+
+        var sdk = new SDK();
+
+        var res = await sdk.RequestBodies.RequestBodyPostNotNullableNotRequiredStringBodyAsync(null);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal("", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostNullableRequiredPropertyAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-nullable-required-property");
+
+        var tests =  new CommonHelpers.TestTableEntry[] {
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "Empty initializer",
+                arg = new NullableRequiredPropertyPostRequestBody{},
+                want = "{\"NullableRequiredArray\":null,\"NullableRequiredBigIntStr\":null,\"NullableRequiredDateTime\":null,\"NullableRequiredDecimalStr\":null,\"NullableRequiredEnum\":null,\"NullableRequiredInt\":null}"
+            },
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "All fields set to null",
+                arg = new NullableRequiredPropertyPostRequestBody
+                {
+                    NullableOptionalInt = null,
+                    NullableRequiredArray = null,
+                    NullableRequiredEnum = null,
+                    NullableRequiredInt = null,
+                    NullableRequiredDateTime = null,
+                    NullableRequiredBigIntStr = null,
+                    NullableRequiredDecimalStr = null
+                },
+                want = "{\"NullableRequiredArray\":null,\"NullableRequiredBigIntStr\":null,\"NullableRequiredDateTime\":null,\"NullableRequiredDecimalStr\":null,\"NullableRequiredEnum\":null,\"NullableRequiredInt\":null}"
+            },
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "Optional field intialized",
+                arg = new NullableRequiredPropertyPostRequestBody{NullableOptionalInt = 0},
+                want = "{\"NullableRequiredArray\":null,\"NullableRequiredBigIntStr\":null,\"NullableRequiredDateTime\":null,\"NullableRequiredDecimalStr\":null,\"NullableRequiredEnum\":null,\"NullableRequiredInt\":null,\"NullableOptionalInt\":0}"
+            },
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "All fields set to non-null value",
+                arg = new NullableRequiredPropertyPostRequestBody
+                {
+                    NullableOptionalInt = 0,
+                    NullableRequiredArray = new List<double>{1.1, 2.2, 3.3},
+                    NullableRequiredEnum = NullableRequiredEnum.Second,
+                    NullableRequiredInt = 1,
+                    NullableRequiredDateTime = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+                    NullableRequiredBigIntStr = BigInteger.Parse("9223372036854775807"),
+                    NullableRequiredDecimalStr = 3.141592653589793238462643383279M
+                },
+                want = "{\"NullableRequiredArray\":[1.1,2.2,3.3],\"NullableRequiredBigIntStr\":\"9223372036854775807\",\"NullableRequiredDateTime\":\"2020-01-01T00:00:00.0000000Z\",\"NullableRequiredDecimalStr\":\"3.1415926535897932384626433833\",\"NullableRequiredEnum\":\"second\",\"NullableRequiredInt\":1,\"NullableOptionalInt\":0}"
+            }
+        };
+
+        var sdk = new SDK();
+        foreach (var test in tests)
+        {
+            var req = (NullableRequiredPropertyPostRequestBody)test.arg;
+            var serializedBody = RequestBodySerializer.Serialize(req, "request", "json");
+            var json = await serializedBody.ReadAsStringAsync();
+            Assert.Equal(test.want, json);
+            var res = await sdk.RequestBodies.NullableRequiredPropertyPostAsync(req);
+            Assert.Equal(200, res.StatusCode);
+        }
+    }
+
+    [Fact]
+    public async Task RequestBodyPostNullableRequiredSharedObject()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-nullable-required-shared-object");
+
+        var tests = new CommonHelpers.TestTableEntry[] {
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "Required field set to null",
+                arg = new NullableRequiredSharedObjectPostRequestBody{},
+                want = "{\"NullableRequiredObj\":null}"
+            },
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "Both fields set to null",
+                arg = new NullableRequiredSharedObjectPostRequestBody
+                {
+                    NullableOptionalObj = null,
+                    NullableRequiredObj = null
+                },
+                want = "{\"NullableRequiredObj\":null}"
+            },
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "Required field set to non-null value",
+                arg = new NullableRequiredSharedObjectPostRequestBody
+                {
+                    NullableOptionalObj = new NullableOptionalObject{Required = 1}
+                },
+                want = "{\"NullableRequiredObj\":null,\"NullableOptionalObj\":{\"required\":1}}"
+            },
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "Both fields set to non-null value",
+                arg = new NullableRequiredSharedObjectPostRequestBody
+                {
+                    NullableOptionalObj = new NullableOptionalObject{Required = 1, Optional = "test"},
+                    NullableRequiredObj = new NullableObject{Required = 2}
+                },
+                want = "{\"NullableRequiredObj\":{\"required\":2},\"NullableOptionalObj\":{\"optional\":\"test\",\"required\":1}}"
+            }
+        };
+
+        var sdk = new SDK();
+        foreach(var test in tests)
+        {
+            var req = (NullableRequiredSharedObjectPostRequestBody)test.arg;
+            var serializedBody = RequestBodySerializer.Serialize(req, "request", "json");
+            var json = await serializedBody.ReadAsStringAsync();
+            Assert.Equal(test.want, json);
+            var res = await sdk.RequestBodies.NullableRequiredSharedObjectPostAsync(req);
+            Assert.Equal(200, res.StatusCode);
+        }
+    }
+
+    [Fact]
+    public async Task RequestBodyPostNullableRequiredEmptyObjectAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-nullable-required-empty-object");
+
+        var tests = new CommonHelpers.TestTableEntry[] {
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "Empty initializer",
+                arg = new NullableRequiredEmptyObjectPostRequestBody{},
+                want = "{\"NullableRequiredObj\":null}"  // TODO SPE-2837
+                // want = "{\"NullableRequiredObj\":null,\"RequiredObj\":{}}"
+            },
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "Required field initialized only",
+                arg = new NullableRequiredEmptyObjectPostRequestBody
+                {
+                    RequiredObj = new RequiredObj{}
+                },
+                want = "{\"NullableRequiredObj\":null,\"RequiredObj\":{}}"
+            },
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "Optional field initialized only",
+                arg = new NullableRequiredEmptyObjectPostRequestBody
+                {
+                    NullableOptionalObj = new NullableOptionalObj{}
+                },
+                want = "{\"NullableRequiredObj\":null,\"NullableOptionalObj\":{}}" // TODO SPE-2837
+                // want = "{\"NullableRequiredObj\":null,\"NullableOptionalObj\":{},\"RequiredObj\":{}}"
+            },
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "All fields initialized",
+                arg = new NullableRequiredEmptyObjectPostRequestBody
+                {
+                    RequiredObj = new RequiredObj{},
+                    NullableOptionalObj = new NullableOptionalObj{},
+                    NullableRequiredObj = new NullableRequiredObj{}
+                },
+                want = "{\"NullableRequiredObj\":{},\"RequiredObj\":{},\"NullableOptionalObj\":{}}"
+            }
+        };
+
+        var sdk = new SDK();
+        foreach( var test in tests)
+        {
+            var req = (NullableRequiredEmptyObjectPostRequestBody)test.arg;
+            var serializedBody = RequestBodySerializer.Serialize(req, "request", "json");
+            var json = await serializedBody.ReadAsStringAsync();
+            Assert.Equal(test.want, json);
+            var res = await sdk.RequestBodies.NullableRequiredEmptyObjectPostAsync(req);
+            Assert.Equal(200, res.StatusCode);
+        }
     }
 }
