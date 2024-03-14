@@ -11,13 +11,21 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-public class CommonHelpers {
+public class CommonHelpers
+{
     private static object obj = new();
+
     public static void RecordTest(string id)
     {
         lock (obj)
         {
             File.AppendAllLines("test-csharp-record.txt", new List<string> { id });
         }
+    }
+
+    public struct TestTableEntry {
+        public string name;
+        public object arg;
+        public object want;
     }
 }
