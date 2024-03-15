@@ -1,0 +1,2 @@
+# WeaklyTypedOneOfReadOnlyObjectInput
+

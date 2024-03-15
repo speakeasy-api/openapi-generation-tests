@@ -1,5 +1,5 @@
 # Servers
-(*servers*)
+(*servers()*)
 
 ## Overview
 
@@ -21,26 +21,36 @@ Endpoints for testing servers.
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.SelectGlobalServerResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            SelectGlobalServerResponse res = sdk.servers.selectGlobalServer();
+            SelectGlobalServerResponse res = sdk.servers().selectGlobalServer()
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -51,8 +61,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.SelectGlobalServerResponse](../../models/operations/SelectGlobalServerResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.SelectGlobalServerResponse>](../../models/operations/SelectGlobalServerResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## selectServerWithID
 
@@ -63,26 +77,36 @@ Select a server by ID.
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.SelectServerWithIDResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            SelectServerWithIDResponse res = sdk.servers.selectServerWithID();
+            SelectServerWithIDResponse res = sdk.servers().selectServerWithID()
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -99,8 +123,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.SelectServerWithIDResponse](../../models/operations/SelectServerWithIDResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.SelectServerWithIDResponse>](../../models/operations/SelectServerWithIDResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## serverWithProtocolTemplate
 
@@ -109,26 +137,36 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.ServerWithProtocolTemplateResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            ServerWithProtocolTemplateResponse res = sdk.servers.serverWithProtocolTemplate();
+            ServerWithProtocolTemplateResponse res = sdk.servers().serverWithProtocolTemplate()
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -145,8 +183,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ServerWithProtocolTemplateResponse](../../models/operations/ServerWithProtocolTemplateResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ServerWithProtocolTemplateResponse>](../../models/operations/ServerWithProtocolTemplateResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## serverWithTemplates
 
@@ -155,26 +197,36 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.ServerWithTemplatesResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            ServerWithTemplatesResponse res = sdk.servers.serverWithTemplates();
+            ServerWithTemplatesResponse res = sdk.servers().serverWithTemplates()
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -191,8 +243,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ServerWithTemplatesResponse](../../models/operations/ServerWithTemplatesResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ServerWithTemplatesResponse>](../../models/operations/ServerWithTemplatesResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## serverWithTemplatesGlobal
 
@@ -201,26 +257,36 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.ServerWithTemplatesGlobalResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            ServerWithTemplatesGlobalResponse res = sdk.servers.serverWithTemplatesGlobal();
+            ServerWithTemplatesGlobalResponse res = sdk.servers().serverWithTemplatesGlobal()
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -231,8 +297,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ServerWithTemplatesGlobalResponse](../../models/operations/ServerWithTemplatesGlobalResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ServerWithTemplatesGlobalResponse>](../../models/operations/ServerWithTemplatesGlobalResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## serversByIDWithTemplates
 
@@ -241,26 +311,36 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.ServersByIDWithTemplatesResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            ServersByIDWithTemplatesResponse res = sdk.servers.serversByIDWithTemplates();
+            ServersByIDWithTemplatesResponse res = sdk.servers().serversByIDWithTemplates()
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -277,5 +357,9 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ServersByIDWithTemplatesResponse](../../models/operations/ServersByIDWithTemplatesResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ServersByIDWithTemplatesResponse>](../../models/operations/ServersByIDWithTemplatesResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
