@@ -1,5 +1,5 @@
 # AuthNew
-(*authNew*)
+(*authNew()*)
 
 ## Overview
 
@@ -26,39 +26,52 @@ Endpoints for testing authentication.
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.ApiKeyAuthGlobalNewResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
 import org.openapis.openapi.models.shared.BasicAuth;
 import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+            AuthServiceRequestBody req = AuthServiceRequestBody.builder()
+                .basicAuth(BasicAuth.builder()
+                    .password("<value>")
+                    .username("<value>")
+                    .build())
+                .headerAuth(java.util.List.of(
+                    HeaderAuth.builder()
+                        .expectedValue("<value>")
+                        .headerName("<value>")
+                        .build()))
+                .build();
 
-            ApiKeyAuthGlobalNewResponse res = sdk.authNew.apiKeyAuthGlobalNew(req);
+            ApiKeyAuthGlobalNewResponse res = sdk.authNew().apiKeyAuthGlobalNew()
+                .request(req)
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -76,8 +89,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ApiKeyAuthGlobalNewResponse](../../models/operations/ApiKeyAuthGlobalNewResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ApiKeyAuthGlobalNewResponse>](../../models/operations/ApiKeyAuthGlobalNewResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## authGlobal
 
@@ -86,39 +103,52 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.AuthGlobalResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
 import org.openapis.openapi.models.shared.BasicAuth;
 import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+            AuthServiceRequestBody req = AuthServiceRequestBody.builder()
+                .basicAuth(BasicAuth.builder()
+                    .password("<value>")
+                    .username("<value>")
+                    .build())
+                .headerAuth(java.util.List.of(
+                    HeaderAuth.builder()
+                        .expectedValue("<value>")
+                        .headerName("<value>")
+                        .build()))
+                .build();
 
-            AuthGlobalResponse res = sdk.authNew.authGlobal(req);
+            AuthGlobalResponse res = sdk.authNew().authGlobal()
+                .request(req)
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -136,8 +166,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.AuthGlobalResponse](../../models/operations/AuthGlobalResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.AuthGlobalResponse>](../../models/operations/AuthGlobalResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## basicAuthNew
 
@@ -146,40 +180,53 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.BasicAuthNewResponse;
 import org.openapis.openapi.models.operations.BasicAuthNewSecurity;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
 import org.openapis.openapi.models.shared.BasicAuth;
 import org.openapis.openapi.models.shared.HeaderAuth;
-import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+            AuthServiceRequestBody req = AuthServiceRequestBody.builder()
+                .basicAuth(BasicAuth.builder()
+                    .password("<value>")
+                    .username("<value>")
+                    .build())
+                .headerAuth(java.util.List.of(
+                    HeaderAuth.builder()
+                        .expectedValue("<value>")
+                        .headerName("<value>")
+                        .build()))
+                .build();
 
-            BasicAuthNewResponse res = sdk.authNew.basicAuthNew(req, new BasicAuthNewSecurity("YOUR_PASSWORD", "YOUR_USERNAME"){{
-                password = "YOUR_PASSWORD";
-                username = "YOUR_USERNAME";
-            }});
+            BasicAuthNewResponse res = sdk.authNew().basicAuthNew()
+                .request(req)
+                .security(BasicAuthNewSecurity.builder()
+                    .password("YOUR_PASSWORD")
+                    .username("YOUR_USERNAME")
+                    .build())
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -198,8 +245,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.BasicAuthNewResponse](../../models/operations/BasicAuthNewResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.BasicAuthNewResponse>](../../models/operations/BasicAuthNewResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## multipleMixedOptionsAuth
 
@@ -208,40 +259,53 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.MultipleMixedOptionsAuthResponse;
 import org.openapis.openapi.models.operations.MultipleMixedOptionsAuthSecurity;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
 import org.openapis.openapi.models.shared.BasicAuth;
 import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.SchemeBasicAuth;
-import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+            AuthServiceRequestBody req = AuthServiceRequestBody.builder()
+                .basicAuth(BasicAuth.builder()
+                    .password("<value>")
+                    .username("<value>")
+                    .build())
+                .headerAuth(java.util.List.of(
+                    HeaderAuth.builder()
+                        .expectedValue("<value>")
+                        .headerName("<value>")
+                        .build()))
+                .build();
 
-            MultipleMixedOptionsAuthResponse res = sdk.authNew.multipleMixedOptionsAuth(req, new MultipleMixedOptionsAuthSecurity(){{
-                apiKeyAuthNew = "Token <YOUR_API_KEY>";
-            }});
+            MultipleMixedOptionsAuthResponse res = sdk.authNew().multipleMixedOptionsAuth()
+                .request(req)
+                .security(MultipleMixedOptionsAuthSecurity.builder()
+                    .apiKeyAuthNew("Token <YOUR_API_KEY>")
+                    .build())
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -260,8 +324,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.MultipleMixedOptionsAuthResponse](../../models/operations/MultipleMixedOptionsAuthResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.MultipleMixedOptionsAuthResponse>](../../models/operations/MultipleMixedOptionsAuthResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## multipleMixedSchemeAuth
 
@@ -270,44 +338,57 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.MultipleMixedSchemeAuthResponse;
 import org.openapis.openapi.models.operations.MultipleMixedSchemeAuthSecurity;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
 import org.openapis.openapi.models.shared.BasicAuth;
 import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.SchemeBasicAuth;
-import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+            AuthServiceRequestBody req = AuthServiceRequestBody.builder()
+                .basicAuth(BasicAuth.builder()
+                    .password("<value>")
+                    .username("<value>")
+                    .build())
+                .headerAuth(java.util.List.of(
+                    HeaderAuth.builder()
+                        .expectedValue("<value>")
+                        .headerName("<value>")
+                        .build()))
+                .build();
 
-            MultipleMixedSchemeAuthResponse res = sdk.authNew.multipleMixedSchemeAuth(req, new MultipleMixedSchemeAuthSecurity("Token <YOUR_API_KEY>", new SchemeBasicAuth("YOUR_PASSWORD", "YOUR_USERNAME")){{
-                apiKeyAuthNew = "Token <YOUR_API_KEY>";
-                basicAuth = new SchemeBasicAuth("YOUR_PASSWORD", "YOUR_USERNAME"){{
-                    password = "YOUR_PASSWORD";
-                    username = "YOUR_USERNAME";
-                }};
-            }});
+            MultipleMixedSchemeAuthResponse res = sdk.authNew().multipleMixedSchemeAuth()
+                .request(req)
+                .security(MultipleMixedSchemeAuthSecurity.builder()
+                    .apiKeyAuthNew("Token <YOUR_API_KEY>")
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("YOUR_PASSWORD")
+                        .username("YOUR_USERNAME")
+                        .build())
+                    .build())
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -326,8 +407,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.MultipleMixedSchemeAuthResponse](../../models/operations/MultipleMixedSchemeAuthResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.MultipleMixedSchemeAuthResponse>](../../models/operations/MultipleMixedSchemeAuthResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## multipleOptionsWithMixedSchemesAuth
 
@@ -336,45 +421,58 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthResponse;
 import org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthSecurity;
 import org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthSecurityOption1;
 import org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthSecurityOption2;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
 import org.openapis.openapi.models.shared.BasicAuth;
 import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.SchemeBasicAuth;
-import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+            AuthServiceRequestBody req = AuthServiceRequestBody.builder()
+                .basicAuth(BasicAuth.builder()
+                    .password("<value>")
+                    .username("<value>")
+                    .build())
+                .headerAuth(java.util.List.of(
+                    HeaderAuth.builder()
+                        .expectedValue("<value>")
+                        .headerName("<value>")
+                        .build()))
+                .build();
 
-            MultipleOptionsWithMixedSchemesAuthResponse res = sdk.authNew.multipleOptionsWithMixedSchemesAuth(req, new MultipleOptionsWithMixedSchemesAuthSecurity(){{
-                option1 = new MultipleOptionsWithMixedSchemesAuthSecurityOption1("Token <YOUR_API_KEY>", "Bearer YOUR_OAUTH2_TOKEN"){{
-                    apiKeyAuthNew = "Token <YOUR_API_KEY>";
-                    oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
-                }};
-            }});
+            MultipleOptionsWithMixedSchemesAuthResponse res = sdk.authNew().multipleOptionsWithMixedSchemesAuth()
+                .request(req)
+                .security(MultipleOptionsWithMixedSchemesAuthSecurity.builder()
+                    .option1(MultipleOptionsWithMixedSchemesAuthSecurityOption1.builder()
+                        .apiKeyAuthNew("Token <YOUR_API_KEY>")
+                        .oauth2("Bearer YOUR_OAUTH2_TOKEN")
+                        .build())
+                    .build())
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -393,8 +491,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthResponse](../../models/operations/MultipleOptionsWithMixedSchemesAuthResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthResponse>](../../models/operations/MultipleOptionsWithMixedSchemesAuthResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## multipleOptionsWithSimpleSchemesAuth
 
@@ -403,44 +505,57 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthResponse;
 import org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthSecurity;
 import org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthSecurityOption1;
 import org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthSecurityOption2;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
 import org.openapis.openapi.models.shared.BasicAuth;
 import org.openapis.openapi.models.shared.HeaderAuth;
-import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+            AuthServiceRequestBody req = AuthServiceRequestBody.builder()
+                .basicAuth(BasicAuth.builder()
+                    .password("<value>")
+                    .username("<value>")
+                    .build())
+                .headerAuth(java.util.List.of(
+                    HeaderAuth.builder()
+                        .expectedValue("<value>")
+                        .headerName("<value>")
+                        .build()))
+                .build();
 
-            MultipleOptionsWithSimpleSchemesAuthResponse res = sdk.authNew.multipleOptionsWithSimpleSchemesAuth(req, new MultipleOptionsWithSimpleSchemesAuthSecurity(){{
-                option1 = new MultipleOptionsWithSimpleSchemesAuthSecurityOption1("Token <YOUR_API_KEY>", "Bearer YOUR_OAUTH2_TOKEN"){{
-                    apiKeyAuthNew = "Token <YOUR_API_KEY>";
-                    oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
-                }};
-            }});
+            MultipleOptionsWithSimpleSchemesAuthResponse res = sdk.authNew().multipleOptionsWithSimpleSchemesAuth()
+                .request(req)
+                .security(MultipleOptionsWithSimpleSchemesAuthSecurity.builder()
+                    .option1(MultipleOptionsWithSimpleSchemesAuthSecurityOption1.builder()
+                        .apiKeyAuthNew("Token <YOUR_API_KEY>")
+                        .oauth2("Bearer YOUR_OAUTH2_TOKEN")
+                        .build())
+                    .build())
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -459,8 +574,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthResponse](../../models/operations/MultipleOptionsWithSimpleSchemesAuthResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthResponse>](../../models/operations/MultipleOptionsWithSimpleSchemesAuthResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## multipleSimpleOptionsAuth
 
@@ -469,39 +588,52 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.MultipleSimpleOptionsAuthResponse;
 import org.openapis.openapi.models.operations.MultipleSimpleOptionsAuthSecurity;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
 import org.openapis.openapi.models.shared.BasicAuth;
 import org.openapis.openapi.models.shared.HeaderAuth;
-import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+            AuthServiceRequestBody req = AuthServiceRequestBody.builder()
+                .basicAuth(BasicAuth.builder()
+                    .password("<value>")
+                    .username("<value>")
+                    .build())
+                .headerAuth(java.util.List.of(
+                    HeaderAuth.builder()
+                        .expectedValue("<value>")
+                        .headerName("<value>")
+                        .build()))
+                .build();
 
-            MultipleSimpleOptionsAuthResponse res = sdk.authNew.multipleSimpleOptionsAuth(req, new MultipleSimpleOptionsAuthSecurity(){{
-                apiKeyAuthNew = "Token <YOUR_API_KEY>";
-            }});
+            MultipleSimpleOptionsAuthResponse res = sdk.authNew().multipleSimpleOptionsAuth()
+                .request(req)
+                .security(MultipleSimpleOptionsAuthSecurity.builder()
+                    .apiKeyAuthNew("Token <YOUR_API_KEY>")
+                    .build())
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -520,8 +652,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.MultipleSimpleOptionsAuthResponse](../../models/operations/MultipleSimpleOptionsAuthResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.MultipleSimpleOptionsAuthResponse>](../../models/operations/MultipleSimpleOptionsAuthResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## multipleSimpleSchemeAuth
 
@@ -530,40 +666,53 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.MultipleSimpleSchemeAuthResponse;
 import org.openapis.openapi.models.operations.MultipleSimpleSchemeAuthSecurity;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
 import org.openapis.openapi.models.shared.BasicAuth;
 import org.openapis.openapi.models.shared.HeaderAuth;
-import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+            AuthServiceRequestBody req = AuthServiceRequestBody.builder()
+                .basicAuth(BasicAuth.builder()
+                    .password("<value>")
+                    .username("<value>")
+                    .build())
+                .headerAuth(java.util.List.of(
+                    HeaderAuth.builder()
+                        .expectedValue("<value>")
+                        .headerName("<value>")
+                        .build()))
+                .build();
 
-            MultipleSimpleSchemeAuthResponse res = sdk.authNew.multipleSimpleSchemeAuth(req, new MultipleSimpleSchemeAuthSecurity("Token <YOUR_API_KEY>", "Bearer YOUR_OAUTH2_TOKEN"){{
-                apiKeyAuthNew = "Token <YOUR_API_KEY>";
-                oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
-            }});
+            MultipleSimpleSchemeAuthResponse res = sdk.authNew().multipleSimpleSchemeAuth()
+                .request(req)
+                .security(MultipleSimpleSchemeAuthSecurity.builder()
+                    .apiKeyAuthNew("Token <YOUR_API_KEY>")
+                    .oauth2("Bearer YOUR_OAUTH2_TOKEN")
+                    .build())
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -582,8 +731,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.MultipleSimpleSchemeAuthResponse](../../models/operations/MultipleSimpleSchemeAuthResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.MultipleSimpleSchemeAuthResponse>](../../models/operations/MultipleSimpleSchemeAuthResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## oauth2AuthNew
 
@@ -592,39 +745,52 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.Oauth2AuthNewResponse;
 import org.openapis.openapi.models.operations.Oauth2AuthNewSecurity;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
 import org.openapis.openapi.models.shared.BasicAuth;
 import org.openapis.openapi.models.shared.HeaderAuth;
-import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+            AuthServiceRequestBody req = AuthServiceRequestBody.builder()
+                .basicAuth(BasicAuth.builder()
+                    .password("<value>")
+                    .username("<value>")
+                    .build())
+                .headerAuth(java.util.List.of(
+                    HeaderAuth.builder()
+                        .expectedValue("<value>")
+                        .headerName("<value>")
+                        .build()))
+                .build();
 
-            Oauth2AuthNewResponse res = sdk.authNew.oauth2AuthNew(req, new Oauth2AuthNewSecurity("Bearer YOUR_OAUTH2_TOKEN"){{
-                oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
-            }});
+            Oauth2AuthNewResponse res = sdk.authNew().oauth2AuthNew()
+                .request(req)
+                .security(Oauth2AuthNewSecurity.builder()
+                    .oauth2("Bearer YOUR_OAUTH2_TOKEN")
+                    .build())
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -643,8 +809,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.Oauth2AuthNewResponse](../../models/operations/Oauth2AuthNewResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.Oauth2AuthNewResponse>](../../models/operations/Oauth2AuthNewResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## openIdConnectAuthNew
 
@@ -653,39 +823,52 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.OpenIdConnectAuthNewResponse;
 import org.openapis.openapi.models.operations.OpenIdConnectAuthNewSecurity;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
 import org.openapis.openapi.models.shared.BasicAuth;
 import org.openapis.openapi.models.shared.HeaderAuth;
-import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+            AuthServiceRequestBody req = AuthServiceRequestBody.builder()
+                .basicAuth(BasicAuth.builder()
+                    .password("<value>")
+                    .username("<value>")
+                    .build())
+                .headerAuth(java.util.List.of(
+                    HeaderAuth.builder()
+                        .expectedValue("<value>")
+                        .headerName("<value>")
+                        .build()))
+                .build();
 
-            OpenIdConnectAuthNewResponse res = sdk.authNew.openIdConnectAuthNew(req, new OpenIdConnectAuthNewSecurity("Bearer YOUR_OPENID_TOKEN"){{
-                openIdConnect = "Bearer YOUR_OPENID_TOKEN";
-            }});
+            OpenIdConnectAuthNewResponse res = sdk.authNew().openIdConnectAuthNew()
+                .request(req)
+                .security(OpenIdConnectAuthNewSecurity.builder()
+                    .openIdConnect("Bearer YOUR_OPENID_TOKEN")
+                    .build())
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -704,5 +887,9 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.OpenIdConnectAuthNewResponse](../../models/operations/OpenIdConnectAuthNewResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.OpenIdConnectAuthNewResponse>](../../models/operations/OpenIdConnectAuthNewResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |

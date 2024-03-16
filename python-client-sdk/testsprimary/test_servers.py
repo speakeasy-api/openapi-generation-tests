@@ -2,10 +2,9 @@
 
 from sdk import SDK, SERVERS, ServerSomething
 from sdk.models.operations import *
-from sdk.utils import *
+from sdk.utils import template_url
 
-from .common_helpers import *
-from .helpers import *
+from .common_helpers import record_test
 
 
 def test_select_global_server_valid():
@@ -29,7 +28,7 @@ def test_select_global_server_broken():
     error = None
 
     try:
-        res = s.servers.select_global_server()
+        s.servers.select_global_server()
     except Exception as err:
         error = err
 
@@ -51,7 +50,7 @@ def test_select_server_with_id_default():
 def test_select_server_with_id_valid():
     record_test('servers-select-server-with-id-valid')
 
-    s = SDK()
+    s = SDK(server_url="http://broken")  # overridden by operation
     assert s is not None
 
     res = s.servers.select_server_with_id(

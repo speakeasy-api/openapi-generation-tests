@@ -1,5 +1,5 @@
 # Auth
-(*auth*)
+(*auth()*)
 
 ## Overview
 
@@ -24,26 +24,38 @@ Endpoints for testing authentication.
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.ApiKeyAuthResponse;
 import org.openapis.openapi.models.operations.ApiKeyAuthSecurity;
-import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.*;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            ApiKeyAuthResponse res = sdk.auth.apiKeyAuth(new ApiKeyAuthSecurity("Token YOUR_API_KEY"){{
-                apiKeyAuth = "Token YOUR_API_KEY";
-            }});
+            ApiKeyAuthResponse res = sdk.auth().apiKeyAuth()
+                .security(ApiKeyAuthSecurity.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .call();
 
-            if (res.token != null) {
+            if (res.token().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -60,8 +72,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ApiKeyAuthResponse](../../models/operations/ApiKeyAuthResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ApiKeyAuthResponse>](../../models/operations/ApiKeyAuthResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## apiKeyAuthGlobal
 
@@ -70,26 +86,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.ApiKeyAuthGlobalResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            ApiKeyAuthGlobalResponse res = sdk.auth.apiKeyAuthGlobal();
+            ApiKeyAuthGlobalResponse res = sdk.auth().apiKeyAuthGlobal()
+                .call();
 
-            if (res.token != null) {
+            if (res.token().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -100,8 +128,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ApiKeyAuthGlobalResponse](../../models/operations/ApiKeyAuthGlobalResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ApiKeyAuthGlobalResponse>](../../models/operations/ApiKeyAuthGlobalResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## basicAuth
 
@@ -110,28 +142,42 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.BasicAuthRequest;
 import org.openapis.openapi.models.operations.BasicAuthResponse;
 import org.openapis.openapi.models.operations.BasicAuthSecurity;
-import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.*;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            BasicAuthResponse res = sdk.auth.basicAuth(new BasicAuthSecurity("YOUR_PASSWORD", "YOUR_USERNAME"){{
-                password = "YOUR_PASSWORD";
-                username = "YOUR_USERNAME";
-            }}, "string", "string");
+            BasicAuthResponse res = sdk.auth().basicAuth()
+                .security(BasicAuthSecurity.builder()
+                    .password("YOUR_PASSWORD")
+                    .username("YOUR_USERNAME")
+                    .build())
+                .passwd("<value>")
+                .user("<value>")
+                .call();
 
-            if (res.user != null) {
+            if (res.user().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -150,8 +196,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.BasicAuthResponse](../../models/operations/BasicAuthResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.BasicAuthResponse>](../../models/operations/BasicAuthResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## bearerAuth
 
@@ -160,26 +210,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.BearerAuthResponse;
 import org.openapis.openapi.models.operations.BearerAuthSecurity;
-import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.*;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            BearerAuthResponse res = sdk.auth.bearerAuth(new BearerAuthSecurity("YOUR_JWT"){{
-                bearerAuth = "YOUR_JWT";
-            }});
+            BearerAuthResponse res = sdk.auth().bearerAuth()
+                .security(BearerAuthSecurity.builder()
+                    .bearerAuth("YOUR_JWT")
+                    .build())
+                .call();
 
-            if (res.token != null) {
+            if (res.token().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -196,8 +258,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.BearerAuthResponse](../../models/operations/BearerAuthResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.BearerAuthResponse>](../../models/operations/BearerAuthResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## globalBearerAuth
 
@@ -206,26 +272,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.GlobalBearerAuthResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            GlobalBearerAuthResponse res = sdk.auth.globalBearerAuth();
+            GlobalBearerAuthResponse res = sdk.auth().globalBearerAuth()
+                .call();
 
-            if (res.token != null) {
+            if (res.token().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -236,8 +314,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.GlobalBearerAuthResponse](../../models/operations/GlobalBearerAuthResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.GlobalBearerAuthResponse>](../../models/operations/GlobalBearerAuthResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## noAuth
 
@@ -246,26 +328,32 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.NoAuthResponse;
-import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.*;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            NoAuthResponse res = sdk.auth.noAuth();
+            NoAuthResponse res = sdk.auth().noAuth()
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -276,8 +364,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.NoAuthResponse](../../models/operations/NoAuthResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.NoAuthResponse>](../../models/operations/NoAuthResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## oauth2Auth
 
@@ -286,26 +378,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.Oauth2AuthResponse;
 import org.openapis.openapi.models.operations.Oauth2AuthSecurity;
-import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.*;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            Oauth2AuthResponse res = sdk.auth.oauth2Auth(new Oauth2AuthSecurity("Bearer YOUR_OAUTH2_TOKEN"){{
-                oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
-            }});
+            Oauth2AuthResponse res = sdk.auth().oauth2Auth()
+                .security(Oauth2AuthSecurity.builder()
+                    .oauth2("Bearer YOUR_OAUTH2_TOKEN")
+                    .build())
+                .call();
 
-            if (res.token != null) {
+            if (res.token().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -322,8 +426,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.Oauth2AuthResponse](../../models/operations/Oauth2AuthResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.Oauth2AuthResponse>](../../models/operations/Oauth2AuthResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## oauth2Override
 
@@ -332,27 +440,39 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.Oauth2OverrideRequest;
 import org.openapis.openapi.models.operations.Oauth2OverrideResponse;
 import org.openapis.openapi.models.operations.Oauth2OverrideSecurity;
-import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.*;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            Oauth2OverrideResponse res = sdk.auth.oauth2Override(new Oauth2OverrideSecurity("Bearer YOUR_OAUTH2_TOKEN"){{
-                oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
-            }});
+            Oauth2OverrideResponse res = sdk.auth().oauth2Override()
+                .security(Oauth2OverrideSecurity.builder()
+                    .oauth2("Bearer YOUR_OAUTH2_TOKEN")
+                    .build())
+                .call();
 
-            if (res.token != null) {
+            if (res.token().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -369,8 +489,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.Oauth2OverrideResponse](../../models/operations/Oauth2OverrideResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.Oauth2OverrideResponse>](../../models/operations/Oauth2OverrideResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## openIdConnectAuth
 
@@ -379,26 +503,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.OpenIdConnectAuthResponse;
 import org.openapis.openapi.models.operations.OpenIdConnectAuthSecurity;
-import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.*;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            OpenIdConnectAuthResponse res = sdk.auth.openIdConnectAuth(new OpenIdConnectAuthSecurity("Bearer YOUR_OPENID_TOKEN"){{
-                openIdConnect = "Bearer YOUR_OPENID_TOKEN";
-            }});
+            OpenIdConnectAuthResponse res = sdk.auth().openIdConnectAuth()
+                .security(OpenIdConnectAuthSecurity.builder()
+                    .openIdConnect("Bearer YOUR_OPENID_TOKEN")
+                    .build())
+                .call();
 
-            if (res.token != null) {
+            if (res.token().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -415,5 +551,9 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.OpenIdConnectAuthResponse](../../models/operations/OpenIdConnectAuthResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.OpenIdConnectAuthResponse>](../../models/operations/OpenIdConnectAuthResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |

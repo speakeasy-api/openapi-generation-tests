@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from .errortype import ErrorType
+from ...models.shared import errortype as shared_errortype
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional
@@ -14,12 +14,12 @@ from typing import Optional
 @dataclasses.dataclass
 class StatusGetXSpeakeasyErrorsResponseBody(Exception):
     r"""Not Implemented"""
-    code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code'), 'exclude': lambda f: f is None }})
-    message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'exclude': lambda f: True }})
     r"""Raw HTTP response; suitable for custom response parsing"""
-    type: Optional[ErrorType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
+    code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code'), 'exclude': lambda f: f is None }})
+    message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})
+    type: Optional[shared_errortype.ErrorType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     
 
     def __str__(self) -> str:
-        return utils.marshal_json(self)
+        return utils.marshal_json(self, type(self))
