@@ -15,8 +15,8 @@ namespace Openapi.Models.Operations
     public class NullableRequiredEmptyObjectPostRequestBody
     {
 
-        [JsonProperty("NullableRequiredObj")]
-        public NullableRequiredObj NullableRequiredObj { get; set; } = default!;
+        [JsonProperty("NullableRequiredObj", NullValueHandling = NullValueHandling.Include)]
+        public NullableRequiredObj? NullableRequiredObj { get; set; } = default!;
 
         [JsonProperty("RequiredObj")]
         public RequiredObj RequiredObj { get; set; } = default!;

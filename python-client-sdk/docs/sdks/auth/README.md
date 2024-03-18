@@ -38,6 +38,7 @@ res = s.auth.api_key_auth(operations.APIKeyAuthSecurity(
 if res.token is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -54,7 +55,7 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## api_key_auth_global
 
@@ -78,6 +79,7 @@ res = s.auth.api_key_auth_global()
 if res.token is not None:
     # handle response
     pass
+
 ```
 
 
@@ -88,7 +90,7 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## basic_auth
 
@@ -107,11 +109,12 @@ s = sdk.SDK(
 res = s.auth.basic_auth(operations.BasicAuthSecurity(
     password="YOUR_PASSWORD",
     username="YOUR_USERNAME",
-), passwd='string', user='string')
+), passwd='<value>', user='<value>')
 
 if res.user is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -130,7 +133,7 @@ if res.user is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## bearer_auth
 
@@ -153,6 +156,7 @@ res = s.auth.bearer_auth(operations.BearerAuthSecurity(
 if res.token is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -169,7 +173,7 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## global_bearer_auth
 
@@ -193,6 +197,7 @@ res = s.auth.global_bearer_auth()
 if res.token is not None:
     # handle response
     pass
+
 ```
 
 
@@ -203,7 +208,7 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## no_auth
 
@@ -211,12 +216,8 @@ if res.token is not None:
 
 ```python
 import sdk
-from sdk.models import shared
 
 s = sdk.SDK(
-    security=shared.Security(
-        api_key_auth="Token YOUR_API_KEY",
-    ),
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -224,9 +225,10 @@ s = sdk.SDK(
 
 res = s.auth.no_auth()
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 
@@ -237,7 +239,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## oauth2_auth
 
@@ -260,6 +262,7 @@ res = s.auth.oauth2_auth(operations.Oauth2AuthSecurity(
 if res.token is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -276,7 +279,7 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## oauth2_override
 
@@ -299,6 +302,7 @@ res = s.auth.oauth2_override(operations.Oauth2OverrideSecurity(
 if res.token is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -315,7 +319,7 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## open_id_connect_auth
 
@@ -338,6 +342,7 @@ res = s.auth.open_id_connect_auth(operations.OpenIDConnectAuthSecurity(
 if res.token is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -354,4 +359,4 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |

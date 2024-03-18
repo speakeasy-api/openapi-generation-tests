@@ -10,16 +10,6 @@ class _AuthNewAPI: AuthNewAPI {
         self.client = client
     }
     
-    public func apiKeyAuthGlobalNew(request: Shared.AuthServiceRequestBody, server: AuthNewServers.ApiKeyAuthGlobalNew?) async throws -> Response<Operations.ApiKeyAuthGlobalNewResponse> {
-        return try await client.makeRequest(
-            with: try server?.server() ?? AuthNewServers.ApiKeyAuthGlobalNew.default(),
-            configureRequest: { configuration in
-                try configureApiKeyAuthGlobalNewRequest(with: configuration, request: request)
-            },
-            handleResponse: handleApiKeyAuthGlobalNewResponse
-        )
-    }
-    
     public func authGlobal(request: Shared.AuthServiceRequestBody, server: AuthNewServers.AuthGlobal?) async throws -> Response<Operations.AuthGlobalResponse> {
         return try await client.makeRequest(
             with: try server?.server() ?? AuthNewServers.AuthGlobal.default(),
@@ -123,17 +113,6 @@ class _AuthNewAPI: AuthNewAPI {
 }
 
 // MARK: - Request Configuration
-
-private func configureApiKeyAuthGlobalNewRequest(with configuration: URLRequestConfiguration, request: Shared.AuthServiceRequestBody) throws {
-    configuration.path = "/auth#apiKeyAuthGlobal"
-    configuration.method = .post
-    configuration.contentType = "application/json"
-    configuration.body = try jsonEncoder().encode(request)
-    if configuration.body == nil {
-        throw SerializationError.missingRequiredRequestBody
-    }
-    configuration.telemetryHeader = .speakeasyUserAgent
-}
 
 private func configureAuthGlobalRequest(with configuration: URLRequestConfiguration, request: Shared.AuthServiceRequestBody) throws {
     configuration.path = "/auth#authGlobal"
@@ -255,16 +234,6 @@ private func configureOpenIdConnectAuthNewRequest(with configuration: URLRequest
 }
 
 // MARK: - Response Handlers
-
-private func handleApiKeyAuthGlobalNewResponse(response: Client.APIResponse) throws -> Operations.ApiKeyAuthGlobalNewResponse {
-    let httpResponse = response.httpResponse
-    
-    if [200, 401].contains(httpResponse.statusCode) { 
-        return .empty
-    }
-
-    return .empty
-}
 
 private func handleAuthGlobalResponse(response: Client.APIResponse) throws -> Operations.AuthGlobalResponse {
     let httpResponse = response.httpResponse

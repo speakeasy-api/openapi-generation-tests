@@ -16,7 +16,6 @@ import (
 
 	sdk "openapi"
 
-	"github.com/AlekSi/pointer"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -39,8 +38,8 @@ func TestStronglyTypedOneOfPost_Basic(t *testing.T) {
 		Any:        "any",
 		Date:       types.Date{time.Date(2020, 1, 1, 0, 0, 0, 0, time.UTC)},
 		DateTime:   time.Date(2020, 1, 1, 0, 0, 0, 1, time.UTC),
-		BoolOpt:    pointer.ToBool(true),
-		StrOpt:     pointer.ToString("testOptional"),
+		BoolOpt:    sdk.Bool(true),
+		StrOpt:     sdk.String("testOptional"),
 		IntOptNull: nil,
 		NumOptNull: nil,
 	}
@@ -55,6 +54,42 @@ func TestStronglyTypedOneOfPost_Basic(t *testing.T) {
 
 	obj.Type = "simpleObjectWithType"
 	assert.Equal(t, obj, *res.Res.JSON.SimpleObjectWithType)
+}
+
+func TestStronglyTypedOneOfPostWithNonStandardDiscriminatorName(t *testing.T) {
+	recordTest("unions-strongly-typed-one-of-post-with-non-standard-discriminator-name")
+
+	s := sdk.New()
+
+	obj := shared.SimpleObjectWithNonStandardTypeName{
+		Str:        "test",
+		Bool:       true,
+		Int:        1,
+		Int32:      1,
+		IntEnum:    shared.SimpleObjectWithNonStandardTypeNameIntEnumSecond,
+		Int32Enum:  shared.SimpleObjectWithNonStandardTypeNameInt32EnumFiftyFive,
+		Num:        1.1,
+		Float32:    1.1,
+		Enum:       shared.EnumOne,
+		Any:        "any",
+		Date:       types.Date{time.Date(2020, 1, 1, 0, 0, 0, 0, time.UTC)},
+		DateTime:   time.Date(2020, 1, 1, 0, 0, 0, 1, time.UTC),
+		BoolOpt:    sdk.Bool(true),
+		StrOpt:     sdk.String("testOptional"),
+		IntOptNull: nil,
+		NumOptNull: nil,
+	}
+
+	req := shared.CreateStronglyTypedOneOfObjectWithNonStandardDiscriminatorNameSimpleObjectWithNonStandardTypeName(obj)
+
+	res, err := s.Unions.StronglyTypedOneOfPostWithNonStandardDiscriminatorName(context.Background(), req)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, shared.StronglyTypedOneOfObjectWithNonStandardDiscriminatorNameTypeSimpleObjectWithNonStandardTypeName, res.Res.JSON.Type)
+
+	obj.ObjType = "simpleObjectWithNonStandardTypeName"
+	assert.Equal(t, obj, *res.Res.JSON.SimpleObjectWithNonStandardTypeName)
 }
 
 func TestStronglyTypedOneOfPost_Deep(t *testing.T) {
@@ -75,7 +110,7 @@ func TestStronglyTypedOneOfPost_Deep(t *testing.T) {
 		Num:  1.1,
 		Obj:  createSimpleObject(),
 		Str:  "test",
-		Type: pointer.ToString("deepObjectWithType"),
+		Type: sdk.String("deepObjectWithType"),
 	}
 
 	req := shared.CreateStronglyTypedOneOfObjectDeepObjectWithType(obj)
@@ -360,7 +395,7 @@ func TestNullableOneOfTypeInObject(t *testing.T) {
 		{
 			name: "All fields set to non-null values",
 			obj: shared.NullableOneOfTypeInObject{
-				NullableOneOfOne: pointer.ToBool(true),
+				NullableOneOfOne: sdk.Bool(true),
 				NullableOneOfTwo: &nullableOneOfTwoInt2,
 				OneOfOne:         true,
 			},

@@ -8,10 +8,11 @@ import (
 	"testing"
 	"time"
 
+	sdk "openapi"
+
 	"openapi/pkg/models/shared"
 	"openapi/pkg/types"
 
-	"github.com/AlekSi/pointer"
 	"github.com/stretchr/testify/require"
 )
 
@@ -29,12 +30,12 @@ func createSimpleObject() shared.SimpleObject {
 		Any:        "any",
 		Date:       types.Date{time.Date(2020, 1, 1, 0, 0, 0, 0, time.UTC)},
 		DateTime:   time.Date(2020, 1, 1, 0, 0, 0, 1, time.UTC),
-		BoolOpt:    pointer.ToBool(true),
-		StrOpt:     pointer.ToString("testOptional"),
+		BoolOpt:    sdk.Bool(true),
+		StrOpt:     sdk.String("testOptional"),
 		IntOptNull: nil,
 		NumOptNull: nil,
 		Bigint:     big.NewInt(8821239038968084),
-		BigintStr:  types.MustNewBigIntFromString("1344719667586153181419716641724567886890850696275767987106294472017884974410332069524504824747437757"),
+		BigintStr:  types.MustNewBigIntFromString("9223372036854775808"),
 	}
 }
 
@@ -52,12 +53,12 @@ func createSimpleObjectCamelCase() shared.SimpleObjectCamelCase {
 		AnyVal:        "any",
 		DateVal:       types.Date{time.Date(2020, 1, 1, 0, 0, 0, 0, time.UTC)},
 		DateTimeVal:   time.Date(2020, 1, 1, 0, 0, 0, 1, time.UTC),
-		BoolOptVal:    pointer.ToBool(true),
-		StrOptVal:     pointer.ToString("testOptional"),
+		BoolOptVal:    sdk.Bool(true),
+		StrOptVal:     sdk.String("testOptional"),
 		IntOptNullVal: nil,
 		NumOptNullVal: nil,
 		BigintVal:     big.NewInt(8821239038968084),
-		BigintStrVal:  types.MustNewBigIntFromString("1344719667586153181419716641724567886890850696275767987106294472017884974410332069524504824747437757"),
+		BigintStrVal:  types.MustNewBigIntFromString("9223372036854775808"),
 	}
 }
 

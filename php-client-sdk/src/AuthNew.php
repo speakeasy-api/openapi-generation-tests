@@ -11,10 +11,6 @@ namespace OpenAPI\OpenAPI;
 class AuthNew 
 {
 	
-	public const API_KEY_AUTH_GLOBAL_NEW_SERVERS = [
-		'http://localhost:35456',
-	];
-	
 	public const AUTH_GLOBAL_SERVERS = [
 		'http://localhost:35456',
 	];
@@ -64,52 +60,6 @@ class AuthNew
 	{
 		$this->sdkConfiguration = $sdkConfig;
 	}
-	
-    /**
-     * apiKeyAuthGlobalNew
-     * 
-     * @param \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request
-     * @param string $serverURL
-     * @return \OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthGlobalNewResponse
-     */
-	public function apiKeyAuthGlobalNew(
-        \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
-        ?string $serverURL = null,
-    ): \OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthGlobalNewResponse
-    {
-        $baseUrl = Utils\Utils::templateUrl(AuthNew::API_KEY_AUTH_GLOBAL_NEW_SERVERS[0], array(
-        ));
-        if (!empty($serverURL)) {
-            $baseUrl = $serverURL;
-        }
-        
-        $url = Utils\Utils::generateUrl($baseUrl, '/auth#apiKeyAuthGlobal');
-        
-        $options = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        if ($body === null) {
-            throw new \Exception('Request body is required');
-        }
-        $options = array_merge_recursive($options, $body);
-        $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
-        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
-        
-        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
-
-        $statusCode = $httpResponse->getStatusCode();
-
-        $response = new \OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthGlobalNewResponse();
-        $response->statusCode = $statusCode;
-        $response->contentType = $contentType;
-        $response->rawResponse = $httpResponse;
-        
-        if ($httpResponse->getStatusCode() === 200 or $httpResponse->getStatusCode() === 401) {
-        }
-
-        return $response;
-    }
 	
     /**
      * authGlobal
