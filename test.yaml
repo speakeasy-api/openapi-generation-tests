@@ -112,7 +112,6 @@ tags:
     description: Endpoints for testing hooks
 security:
   - apiKeyAuth: []
-  - apiKeyAuthNew: []
   - oauth2: []
   - {}
 paths:
@@ -350,24 +349,6 @@ paths:
         - authNew
       security:
         - basicAuth: []
-      servers:
-        - url: http://localhost:35456
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "components.yaml#/components/schemas/authServiceRequestBody"
-        required: true
-      responses:
-        "200":
-          description: OK
-        "401":
-          description: Unsuccessful authentication.
-  /auth#apiKeyAuthGlobal:
-    post:
-      operationId: apiKeyAuthGlobalNew
-      tags:
-        - authNew
       servers:
         - url: http://localhost:35456
       requestBody:
