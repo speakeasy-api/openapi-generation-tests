@@ -25,9 +25,9 @@ class DeprecatedObjectInSchemaGetResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     object: Optional[DeprecatedObjectInSchemaGetResponseBody] = dataclasses.field(default=None)
     r"""A successful response that contains a deprecatedObject sent in the request body"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

@@ -30,9 +30,10 @@ s = sdk.SDK(
 
 res = s.errors.connection_error_get()
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -49,7 +50,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## status_get_error
 
@@ -57,7 +58,7 @@ if res.status_code == 200:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -70,9 +71,10 @@ s = sdk.SDK(
 
 res = s.errors.status_get_error(status_code=458364)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -89,7 +91,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## status_get_x_speakeasy_errors
 
@@ -97,7 +99,7 @@ if res.status_code == 200:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -110,9 +112,10 @@ s = sdk.SDK(
 
 res = s.errors.status_get_x_speakeasy_errors(status_code=385913)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -132,4 +135,4 @@ if res.status_code == 200:
 | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
 | errors.Error                                 | 500                                          | application/json                             |
 | errors.StatusGetXSpeakeasyErrorsResponseBody | 501                                          | application/json                             |
-| errors.SDKError                              | 400-600                                      | */*                                          |
+| errors.SDKError                              | 4x-5xx                                       | */*                                          |
