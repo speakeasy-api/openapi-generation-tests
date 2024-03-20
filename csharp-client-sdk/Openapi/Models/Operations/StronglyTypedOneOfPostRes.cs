@@ -11,6 +11,7 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Shared;
     
     /// <summary>
     /// OK
@@ -19,6 +20,14 @@ namespace Openapi.Models.Operations
     {
 
         [JsonProperty("json")]
-        public object Json { get; set; } = default!;
+        public StronglyTypedOneOfObject Json { get; set; } = default!;
+        public SimpleObjectWithType? GetJsonSimpleObjectWithType()
+        {
+            return this.Json.SimpleObjectWithType; 
+        }
+        public DeepObjectWithType? GetJsonDeepObjectWithType()
+        {
+            return this.Json.DeepObjectWithType; 
+        }
     }
 }

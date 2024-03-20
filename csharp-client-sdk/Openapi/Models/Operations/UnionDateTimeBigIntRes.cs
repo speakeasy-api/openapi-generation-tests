@@ -11,6 +11,7 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Shared;
     
     /// <summary>
     /// OK
@@ -19,6 +20,6 @@ namespace Openapi.Models.Operations
     {
 
         [JsonProperty("json")]
-        public object Json { get; set; } = default!;
+        public UnionDateTimeBigIntJson Json { get; set; } = default!;
     }
 }

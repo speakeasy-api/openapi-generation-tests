@@ -1,5 +1,5 @@
 # ResponseBodies
-(*responseBodies*)
+(*responseBodies()*)
 
 ## Overview
 
@@ -7,6 +7,7 @@ Endpoints for testing response bodies.
 
 ### Available Operations
 
+* [responseBodyAdditionalPropertiesAnyPost](#responsebodyadditionalpropertiesanypost)
 * [responseBodyAdditionalPropertiesComplexNumbersPost](#responsebodyadditionalpropertiescomplexnumberspost)
 * [responseBodyAdditionalPropertiesDatePost](#responsebodyadditionalpropertiesdatepost)
 * [responseBodyAdditionalPropertiesObjectPost](#responsebodyadditionalpropertiesobjectpost)
@@ -19,37 +20,49 @@ Endpoints for testing response bodies.
 * [responseBodyXmlGet](#responsebodyxmlget)
 * [responseBodyZeroValueComplexTypePtrsPost](#responsebodyzerovaluecomplextypeptrspost)
 
-## responseBodyAdditionalPropertiesComplexNumbersPost
+## responseBodyAdditionalPropertiesAnyPost
 
 ### Example Usage
 
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesAnyPostResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, String>(){{
-                put("key", "string");
-            }};            
+            java.util.Map<String, java.lang.Object> req = java.util.Map.ofEntries(
+                entry("key", "<value>"));
 
-            ResponseBodyAdditionalPropertiesComplexNumbersPostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesComplexNumbersPost(req);
+            ResponseBodyAdditionalPropertiesAnyPostResponse res = sdk.responseBodies().responseBodyAdditionalPropertiesAnyPost()
+                .request(req)
+                .call();
 
-            if (res.object != null) {
+            if (res.object().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -59,15 +72,85 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                          | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `request`                                          | [java.util.Map<String, String>](../../models//.md) | :heavy_check_mark:                                 | The request object to use for the request.         |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [java.util.Map<String, java.lang.Object>](../../models//.md) | :heavy_check_mark:                                           | The request object to use for the request.                   |
 
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse](../../models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesAnyPostResponse>](../../models/operations/ResponseBodyAdditionalPropertiesAnyPostResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
+
+## responseBodyAdditionalPropertiesComplexNumbersPost
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse;
+import org.openapis.openapi.models.shared.*;
+import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
+
+public class Application {
+
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+                .build();
+
+            java.util.Map<String, BigInteger> req = java.util.Map.ofEntries(
+                entry("key", new BigInteger("468801")));
+
+            ResponseBodyAdditionalPropertiesComplexNumbersPostResponse res = sdk.responseBodies().responseBodyAdditionalPropertiesComplexNumbersPost()
+                .request(req)
+                .call();
+
+            if (res.object().isPresent()) {
+                // handle response
+            }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                              | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `request`                                              | [java.util.Map<String, BigInteger>](../../models//.md) | :heavy_check_mark:                                     | The request object to use for the request.             |
+
+
+### Response
+
+**[Optional<? extends org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse>](../../models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse.md)**
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## responseBodyAdditionalPropertiesDatePost
 
@@ -76,30 +159,42 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesDatePostResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, LocalDate>(){{
-                put("key", LocalDate.parse("2021-03-16"));
-            }};            
+            java.util.Map<String, LocalDate> req = java.util.Map.ofEntries(
+                entry("key", LocalDate.parse("2022-03-16")));
 
-            ResponseBodyAdditionalPropertiesDatePostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesDatePost(req);
+            ResponseBodyAdditionalPropertiesDatePostResponse res = sdk.responseBodies().responseBodyAdditionalPropertiesDatePost()
+                .request(req)
+                .call();
 
-            if (res.object != null) {
+            if (res.object().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -116,8 +211,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesDatePostResponse](../../models/operations/ResponseBodyAdditionalPropertiesDatePostResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesDatePostResponse>](../../models/operations/ResponseBodyAdditionalPropertiesDatePostResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## responseBodyAdditionalPropertiesObjectPost
 
@@ -126,55 +225,65 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesObjectPostResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Enum;
 import org.openapis.openapi.models.shared.Int32Enum;
 import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-                    any = "any";
-                    bigint = 8821239038968084L;
-                    bigintStr = "9223372036854775808";
-                    bool = true;
-                    boolOpt = true;
-                    date = LocalDate.parse("2020-01-01");
-                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-                    decimal = 3.141592653589793d;
-                    decimalStr = "3.14159265358979344719667586";
-                    enum_ = Enum.ONE;
-                    float32 = 1.1f;
-                    int_ = 1L;
-                    int32 = 1;
-                    int32Enum = Int32Enum.FIFTY_FIVE;
-                    intEnum = IntEnum.Second;
-                    num = 1.1d;
-                    str = "test";
-                    strOpt = "testOptional";
-                }});
-            }};            
+            java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject> req = java.util.Map.ofEntries(
+                entry("key", SimpleObject.builder()
+                    .any("any")
+                    .bool(true)
+                    .date(LocalDate.parse("2020-01-01"))
+                    .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.000001Z"))
+                    .enum_(Enum.ONE)
+                    .float32(1.1f)
+                    .int_(1L)
+                    .int32(1)
+                    .int32Enum(Int32Enum.FIFTY_FIVE)
+                    .intEnum(IntEnum.Second)
+                    .num(1.1d)
+                    .str("test")
+                    .bigint(new BigInteger("8821239038968084"))
+                    .bigintStr(new BigInteger("9223372036854775808"))
+                    .boolOpt(true)
+                    .decimal(new BigDecimal("3.141592653589793"))
+                    .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                    .strOpt("testOptional")
+                    .build()));
 
-            ResponseBodyAdditionalPropertiesObjectPostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesObjectPost(req);
+            ResponseBodyAdditionalPropertiesObjectPostResponse res = sdk.responseBodies().responseBodyAdditionalPropertiesObjectPost()
+                .request(req)
+                .call();
 
-            if (res.object != null) {
+            if (res.object().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -191,8 +300,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesObjectPostResponse](../../models/operations/ResponseBodyAdditionalPropertiesObjectPostResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesObjectPostResponse>](../../models/operations/ResponseBodyAdditionalPropertiesObjectPostResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## responseBodyAdditionalPropertiesPost
 
@@ -201,30 +314,42 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesPostResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, String>(){{
-                put("key", "string");
-            }};            
+            java.util.Map<String, String> req = java.util.Map.ofEntries(
+                entry("key", "<value>"));
 
-            ResponseBodyAdditionalPropertiesPostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesPost(req);
+            ResponseBodyAdditionalPropertiesPostResponse res = sdk.responseBodies().responseBodyAdditionalPropertiesPost()
+                .request(req)
+                .call();
 
-            if (res.object != null) {
+            if (res.object().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -241,8 +366,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesPostResponse](../../models/operations/ResponseBodyAdditionalPropertiesPostResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesPostResponse>](../../models/operations/ResponseBodyAdditionalPropertiesPostResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## responseBodyBytesGet
 
@@ -251,26 +380,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.ResponseBodyBytesGetResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            ResponseBodyBytesGetResponse res = sdk.responseBodies.responseBodyBytesGet();
+            ResponseBodyBytesGetResponse res = sdk.responseBodies().responseBodyBytesGet()
+                .call();
 
-            if (res.bytes != null) {
+            if (res.bytes().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -281,8 +422,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ResponseBodyBytesGetResponse](../../models/operations/ResponseBodyBytesGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ResponseBodyBytesGetResponse>](../../models/operations/ResponseBodyBytesGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## responseBodyEmptyWithHeaders
 
@@ -291,27 +436,39 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.ResponseBodyEmptyWithHeadersRequest;
 import org.openapis.openapi.models.operations.ResponseBodyEmptyWithHeadersResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            ResponseBodyEmptyWithHeadersResponse res = sdk.responseBodies.responseBodyEmptyWithHeaders(1751.8d, "string");
+            ResponseBodyEmptyWithHeadersResponse res = sdk.responseBodies().responseBodyEmptyWithHeaders()
+                .xNumberHeader(1751.8d)
+                .xStringHeader("<value>")
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -323,14 +480,18 @@ public class Application {
 
 | Parameter          | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `xNumberHeader`    | *Double*           | :heavy_check_mark: | N/A                |
+| `xNumberHeader`    | *double*           | :heavy_check_mark: | N/A                |
 | `xStringHeader`    | *String*           | :heavy_check_mark: | N/A                |
 
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ResponseBodyEmptyWithHeadersResponse](../../models/operations/ResponseBodyEmptyWithHeadersResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ResponseBodyEmptyWithHeadersResponse>](../../models/operations/ResponseBodyEmptyWithHeadersResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## responseBodyOptionalGet
 
@@ -339,26 +500,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.ResponseBodyOptionalGetResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            ResponseBodyOptionalGetResponse res = sdk.responseBodies.responseBodyOptionalGet();
+            ResponseBodyOptionalGetResponse res = sdk.responseBodies().responseBodyOptionalGet()
+                .call();
 
-            if (res.typedObject1 != null) {
+            if (res.typedObject1().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -375,8 +548,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ResponseBodyOptionalGetResponse](../../models/operations/ResponseBodyOptionalGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ResponseBodyOptionalGetResponse>](../../models/operations/ResponseBodyOptionalGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## responseBodyReadOnly
 
@@ -385,26 +562,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.ResponseBodyReadOnlyResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            ResponseBodyReadOnlyResponse res = sdk.responseBodies.responseBodyReadOnly();
+            ResponseBodyReadOnlyResponse res = sdk.responseBodies().responseBodyReadOnly()
+                .call();
 
-            if (res.readOnlyObject != null) {
+            if (res.readOnlyObject().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -421,8 +610,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ResponseBodyReadOnlyResponse](../../models/operations/ResponseBodyReadOnlyResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ResponseBodyReadOnlyResponse>](../../models/operations/ResponseBodyReadOnlyResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## responseBodyStringGet
 
@@ -431,26 +624,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.ResponseBodyStringGetResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            ResponseBodyStringGetResponse res = sdk.responseBodies.responseBodyStringGet();
+            ResponseBodyStringGetResponse res = sdk.responseBodies().responseBodyStringGet()
+                .call();
 
-            if (res.html != null) {
+            if (res.html().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -461,8 +666,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ResponseBodyStringGetResponse](../../models/operations/ResponseBodyStringGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ResponseBodyStringGetResponse>](../../models/operations/ResponseBodyStringGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## responseBodyXmlGet
 
@@ -471,26 +680,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.ResponseBodyXmlGetResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            ResponseBodyXmlGetResponse res = sdk.responseBodies.responseBodyXmlGet();
+            ResponseBodyXmlGetResponse res = sdk.responseBodies().responseBodyXmlGet()
+                .call();
 
-            if (res.xml != null) {
+            if (res.xml().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -501,8 +722,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ResponseBodyXmlGetResponse](../../models/operations/ResponseBodyXmlGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ResponseBodyXmlGetResponse>](../../models/operations/ResponseBodyXmlGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## responseBodyZeroValueComplexTypePtrsPost
 
@@ -511,37 +736,48 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.ResponseBodyZeroValueComplexTypePtrsPostResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.ObjWithZeroValueComplexTypePtrs;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.ObjWithZeroValueComplexTypePtrs req = new ObjWithZeroValueComplexTypePtrs(){{
-                bigint = 438531L;
-                bigintStr = "string";
-                date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                decimal = 4843.38d;
-            }};            
+            ObjWithZeroValueComplexTypePtrs req = ObjWithZeroValueComplexTypePtrs.builder()
+                .bigint(new BigInteger("438531"))
+                .bigintStr(new BigInteger("484338"))
+                .date(LocalDate.parse("2020-01-01"))
+                .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00Z"))
+                .decimal(new BigDecimal("8697.02"))
+                .build();
 
-            ResponseBodyZeroValueComplexTypePtrsPostResponse res = sdk.responseBodies.responseBodyZeroValueComplexTypePtrsPost(req);
+            ResponseBodyZeroValueComplexTypePtrsPostResponse res = sdk.responseBodies().responseBodyZeroValueComplexTypePtrsPost()
+                .request(req)
+                .call();
 
-            if (res.object != null) {
+            if (res.object().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -558,5 +794,9 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ResponseBodyZeroValueComplexTypePtrsPostResponse](../../models/operations/ResponseBodyZeroValueComplexTypePtrsPostResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ResponseBodyZeroValueComplexTypePtrsPostResponse>](../../models/operations/ResponseBodyZeroValueComplexTypePtrsPostResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
