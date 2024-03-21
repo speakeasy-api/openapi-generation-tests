@@ -16,10 +16,10 @@ namespace Openapi.Models.Operations
     public class NullableRequiredSharedObjectPostRequestBody
     {
 
-        [JsonProperty("NullableRequiredObj")]
-        public NullableObject NullableRequiredObj { get; set; } = default!;
+        [JsonProperty("NullableRequiredObj", NullValueHandling = NullValueHandling.Include)]
+        public NullableObject? NullableRequiredObj { get; set; } = default!;
 
         [JsonProperty("NullableOptionalObj")]
-        public NullableObject? NullableOptionalObj { get; set; }
+        public NullableOptionalObject? NullableOptionalObj { get; set; }
     }
 }

@@ -11,6 +11,7 @@
 namespace Openapi.Models.Shared
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Shared;
     using System.Collections.Generic;
     
     public class ValidCircularReferenceObject

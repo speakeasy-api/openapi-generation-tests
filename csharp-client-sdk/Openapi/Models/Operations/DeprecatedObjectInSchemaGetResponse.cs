@@ -10,6 +10,7 @@
 #nullable enable
 namespace Openapi.Models.Operations
 {
+    using Openapi.Models.Operations;
     using System.Net.Http;
     using System;
     
@@ -29,7 +30,7 @@ namespace Openapi.Models.Operations
         /// <summary>
         /// Raw HTTP response; suitable for custom response parsing
         /// </summary>
-        public HttpResponseMessage? RawResponse { get; set; }
+        public HttpResponseMessage RawResponse { get; set; } = default!;
 
         /// <summary>
         /// A successful response that contains a deprecatedObject sent in the request body

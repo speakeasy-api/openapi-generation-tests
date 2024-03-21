@@ -25,29 +25,26 @@ Endpoints for testing authentication.
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
     s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-
-    operationSecurity := operations.APIKeyAuthSecurity{
-            APIKeyAuth: "Token YOUR_API_KEY",
-        }
-
     ctx := context.Background()
-    res, err := s.Auth.APIKeyAuth(ctx, operationSecurity)
+    res, err := s.Auth.APIKeyAuth(ctx)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Token != nil {
         // handle response
     }
@@ -56,10 +53,9 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
-| `security`                                                                         | [operations.APIKeyAuthSecurity](../../pkg/models/operations/apikeyauthsecurity.md) | :heavy_check_mark:                                                                 | The security requirements to use for the request.                                  |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
 
 
 ### Response
@@ -67,7 +63,7 @@ func main() {
 **[*operations.APIKeyAuthResponse](../../pkg/models/operations/apikeyauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## APIKeyAuthGlobal
 
@@ -77,10 +73,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -97,7 +93,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Token != nil {
         // handle response
     }
@@ -116,7 +111,7 @@ func main() {
 **[*operations.APIKeyAuthGlobalResponse](../../pkg/models/operations/apikeyauthglobalresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## BasicAuth
 
@@ -126,10 +121,10 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
+	"log"
 )
 
 func main() {
@@ -139,9 +134,9 @@ func main() {
     )
 
 
-    var passwd string = "string"
+    var passwd string = "<value>"
 
-    var user string = "string"
+    var user string = "<value>"
 
     operationSecurity := operations.BasicAuthSecurity{
             Password: "YOUR_PASSWORD",
@@ -153,7 +148,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.User != nil {
         // handle response
     }
@@ -175,7 +169,7 @@ func main() {
 **[*operations.BasicAuthResponse](../../pkg/models/operations/basicauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## BearerAuth
 
@@ -185,10 +179,10 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
+	"log"
 )
 
 func main() {
@@ -207,7 +201,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Token != nil {
         // handle response
     }
@@ -227,7 +220,7 @@ func main() {
 **[*operations.BearerAuthResponse](../../pkg/models/operations/bearerauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GlobalBearerAuth
 
@@ -237,10 +230,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -257,7 +250,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Token != nil {
         // handle response
     }
@@ -276,7 +268,7 @@ func main() {
 **[*operations.GlobalBearerAuthResponse](../../pkg/models/operations/globalbearerauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## NoAuth
 
@@ -286,17 +278,13 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
@@ -306,8 +294,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -325,7 +312,7 @@ func main() {
 **[*operations.NoAuthResponse](../../pkg/models/operations/noauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Oauth2Auth
 
@@ -335,29 +322,26 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
     s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-
-    operationSecurity := operations.Oauth2AuthSecurity{
-            Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-        }
-
     ctx := context.Background()
-    res, err := s.Auth.Oauth2Auth(ctx, operationSecurity)
+    res, err := s.Auth.Oauth2Auth(ctx)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Token != nil {
         // handle response
     }
@@ -366,10 +350,9 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
-| `security`                                                                         | [operations.Oauth2AuthSecurity](../../pkg/models/operations/oauth2authsecurity.md) | :heavy_check_mark:                                                                 | The security requirements to use for the request.                                  |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
 
 
 ### Response
@@ -377,7 +360,7 @@ func main() {
 **[*operations.Oauth2AuthResponse](../../pkg/models/operations/oauth2authresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Oauth2Override
 
@@ -387,29 +370,26 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
     s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-
-    operationSecurity := operations.Oauth2OverrideSecurity{
-            Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-        }
-
     ctx := context.Background()
-    res, err := s.Auth.Oauth2Override(ctx, operationSecurity)
+    res, err := s.Auth.Oauth2Override(ctx)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Token != nil {
         // handle response
     }
@@ -418,10 +398,9 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
-| `security`                                                                                 | [operations.Oauth2OverrideSecurity](../../pkg/models/operations/oauth2overridesecurity.md) | :heavy_check_mark:                                                                         | The security requirements to use for the request.                                          |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
 
 
 ### Response
@@ -429,7 +408,7 @@ func main() {
 **[*operations.Oauth2OverrideResponse](../../pkg/models/operations/oauth2overrideresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## OpenIDConnectAuth
 
@@ -439,10 +418,10 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
+	"context"
+	"log"
 )
 
 func main() {
@@ -461,7 +440,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Token != nil {
         // handle response
     }
@@ -481,4 +459,4 @@ func main() {
 **[*operations.OpenIDConnectAuthResponse](../../pkg/models/operations/openidconnectauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

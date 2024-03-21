@@ -11,6 +11,7 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Operations;
     
     public class RequestBodyPostEmptyObjectRequestBody
     {
