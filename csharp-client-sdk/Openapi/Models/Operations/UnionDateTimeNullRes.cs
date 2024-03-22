@@ -19,7 +19,7 @@ namespace Openapi.Models.Operations
     public class UnionDateTimeNullRes
     {
 
-        [JsonProperty("json")]
-        public DateTime Json { get; set; } = default!;
+        [JsonProperty("json", NullValueHandling = NullValueHandling.Include)]
+        public DateTime? Json { get; set; } = default!;
     }
 }

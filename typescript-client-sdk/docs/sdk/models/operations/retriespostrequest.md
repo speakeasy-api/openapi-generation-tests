@@ -1,0 +1,10 @@
+# RetriesPostRequest
+
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `requestId`                                                                                   | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `requestBody`                                                                                 | [operations.RetriesPostRequestBody](../../../sdk/models/operations/retriespostrequestbody.md) | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `numRetries`                                                                                  | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |

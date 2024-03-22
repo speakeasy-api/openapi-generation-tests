@@ -9,7 +9,6 @@ import (
 
 	sdk "openapi/v2"
 
-	"github.com/AlekSi/pointer"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -31,7 +30,7 @@ func TestGlobalsQueryParameterGet_UsesLocal(t *testing.T) {
 
 	s := sdk.New(sdk.WithGlobalQueryParam("test"))
 
-	res, err := s.Globals.GlobalsQueryParameterGet(context.Background(), pointer.ToString("local"))
+	res, err := s.Globals.GlobalsQueryParameterGet(context.Background(), sdk.String("local"))
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
@@ -55,7 +54,7 @@ func TestGlobalPathParameterGet_UsesLocal(t *testing.T) {
 
 	s := sdk.New(sdk.WithGlobalPathParam(1))
 
-	res, err := s.Globals.GlobalPathParameterGet(context.Background(), pointer.ToInt64(2))
+	res, err := s.Globals.GlobalPathParameterGet(context.Background(), sdk.Int64(2))
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)

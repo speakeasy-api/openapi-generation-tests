@@ -23,25 +23,19 @@ Endpoints for testing authentication.
 
 ```csharp
 using Openapi;
-using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Auth.ApiKeyAuthAsync(new ApiKeyAuthSecurity() {
-    ApiKeyAuth = "Token YOUR_API_KEY",
-});
+var res = await sdk.Auth.ApiKeyAuthAsync();
 
 // handle response
 ```
-
-### Parameters
-
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `security`                                                                                    | [Openapi.Models.Operations.ApiKeyAuthSecurity](../../Models/Operations/ApiKeyAuthSecurity.md) | :heavy_check_mark:                                                                            | The security requirements to use for the request.                                             |
 
 
 ### Response
@@ -62,8 +56,7 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Auth.ApiKeyAuthGlobalAsync();
 
@@ -86,13 +79,15 @@ using Openapi.Models.Operations;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Auth.BasicAuthAsync(new BasicAuthSecurity() {
+var res = await sdk.Auth.BasicAuthAsync(
+    security: new BasicAuthSecurity() {
     Password = "YOUR_PASSWORD",
     Username = "YOUR_USERNAME",
-}, "string", "string");
+},
+    passwd: "<value>",
+    user: "<value>");
 
 // handle response
 ```
@@ -121,10 +116,9 @@ using Openapi.Models.Operations;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Auth.BearerAuthAsync(new BearerAuthSecurity() {
+var res = await sdk.Auth.BearerAuthAsync(security: new BearerAuthSecurity() {
     BearerAuth = "YOUR_JWT",
 });
 
@@ -156,8 +150,7 @@ var sdk = new SDK(
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Auth.GlobalBearerAuthAsync();
 
@@ -179,12 +172,8 @@ using Openapi;
 using Openapi.Models.Shared;
 
 var sdk = new SDK(
-    security: new Security() {
-        ApiKeyAuth = "Token YOUR_API_KEY",
-    },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Auth.NoAuthAsync();
 
@@ -203,25 +192,19 @@ var res = await sdk.Auth.NoAuthAsync();
 
 ```csharp
 using Openapi;
-using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Auth.Oauth2AuthAsync(new Oauth2AuthSecurity() {
-    Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
-});
+var res = await sdk.Auth.Oauth2AuthAsync();
 
 // handle response
 ```
-
-### Parameters
-
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `security`                                                                                    | [Openapi.Models.Operations.Oauth2AuthSecurity](../../Models/Operations/Oauth2AuthSecurity.md) | :heavy_check_mark:                                                                            | The security requirements to use for the request.                                             |
 
 
 ### Response
@@ -235,25 +218,20 @@ var res = await sdk.Auth.Oauth2AuthAsync(new Oauth2AuthSecurity() {
 
 ```csharp
 using Openapi;
+using Openapi.Models.Shared;
 using Openapi.Models.Operations;
 
 var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Auth.Oauth2OverrideAsync(new Oauth2OverrideSecurity() {
-    Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
-});
+var res = await sdk.Auth.Oauth2OverrideAsync();
 
 // handle response
 ```
-
-### Parameters
-
-| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
-| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `security`                                                                                            | [Openapi.Models.Operations.Oauth2OverrideSecurity](../../Models/Operations/Oauth2OverrideSecurity.md) | :heavy_check_mark:                                                                                    | The security requirements to use for the request.                                                     |
 
 
 ### Response
@@ -271,10 +249,9 @@ using Openapi.Models.Operations;
 
 var sdk = new SDK(
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Auth.OpenIdConnectAuthAsync(new OpenIdConnectAuthSecurity() {
+var res = await sdk.Auth.OpenIdConnectAuthAsync(security: new OpenIdConnectAuthSecurity() {
     OpenIdConnect = "Bearer YOUR_OPENID_TOKEN",
 });
 

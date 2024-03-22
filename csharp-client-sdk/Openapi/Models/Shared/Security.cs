@@ -18,9 +18,6 @@ namespace Openapi.Models.Shared
         [SpeakeasyMetadata("security:scheme=true,type=apiKey,subType=header,name=Authorization")]
         public string? ApiKeyAuth { get; set; }
 
-        [SpeakeasyMetadata("security:scheme=true,type=apiKey,subType=header,name=x-api-key")]
-        public string? ApiKeyAuthNew { get; set; }
-
         [SpeakeasyMetadata("security:scheme=true,type=oauth2,name=Authorization")]
         public string? Oauth2 { get; set; }
     }
