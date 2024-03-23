@@ -5,7 +5,17 @@ from sdk import SDK
 from sdk.models.operations import *
 
 from .common_helpers import *
-from .helpers import *
+from .test_helpers import *
+
+def test_no_auth():
+    record_test('auth-no-auth')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.auth.no_auth()
+    assert res is not None
+    assert res.status_code == 200
 
 
 def test_basic_auth():
@@ -26,39 +36,66 @@ def test_basic_auth():
     assert res is not None
     assert res.status_code == 200
 
+def test_basic_auth_empty():
+    record_test('auth-basic-auth-empty')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.auth_new.basic_auth_new(request=shared.AuthServiceRequestBody(
+        basic_auth=shared.BasicAuth(username='', password='')
+    ), security=BasicAuthNewSecurity(
+        username='',
+        password='',
+    ))
+    assert res is not None
+    assert res.status_code == 200
+
+
+def test_basic_auth_username_only():
+    record_test('auth-basic-auth-username-only')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.auth_new.basic_auth_new(request=shared.AuthServiceRequestBody(
+        basic_auth=shared.BasicAuth(username='testUser', password='')
+    ), security=BasicAuthNewSecurity(
+        username='testUser',
+        password='',
+    ))
+    assert res is not None
+    assert res.status_code == 200
+
+
+def test_basic_auth_password_only():
+    record_test('auth-basic-auth-password-only')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.auth_new.basic_auth_new(request=shared.AuthServiceRequestBody(
+        basic_auth=shared.BasicAuth(username='', password='testPass')
+    ), security=BasicAuthNewSecurity(
+        username='',
+        password='testPass',
+    ))
+    assert res is not None
+    assert res.status_code == 200
+
 
 def test_api_key_auth_global():
     record_test('auth-api-key-auth-global')
 
     s = SDK(security=shared.Security(
-        api_key_auth_new='test_api_key',
+        api_key_auth='Bearer test_api_key',
     ))
     assert s is not None
 
-    res = s.auth_new.api_key_auth_global_new(request=shared.AuthServiceRequestBody(
-        header_auth=[shared.HeaderAuth(
-            header_name='x-api-key',
-            expected_value='test_api_key',
-        )]
-    ),
-    )
+    res = s.auth.api_key_auth_global()
     assert res is not None
     assert res.status_code == 200
-
-
-def test_api_key_auth_operation():
-    record_test('auth-api-key-auth-operation')
-
-    s = SDK()
-    assert s is not None
-
-    res = s.auth.api_key_auth(security=APIKeyAuthSecurity(
-        api_key_auth='Bearer test_token'
-    ))
-    assert res is not None
-    assert res.status_code == 200
-    assert res.token.authenticated is True
-    assert res.token.token == 'test_token'
+    assert res.token.token == 'test_api_key'
 
 
 def test_bearer_auth_operation_with_prefix():
@@ -94,7 +131,9 @@ def test_bearer_auth_operation_without_prefix():
 def test_oauth2_auth():
     record_test('auth-oauth2-auth')
 
-    s = SDK()
+    s = SDK(security=shared.Security(
+        oauth2='Bearer testToken',
+    ))
     assert s is not None
 
     res = s.auth_new.oauth2_auth_new(request=shared.AuthServiceRequestBody(
@@ -102,8 +141,6 @@ def test_oauth2_auth():
             header_name='Authorization',
             expected_value='Bearer testToken',
         )]
-    ), security=Oauth2AuthNewSecurity(
-        oauth2='Bearer testToken',
     ))
     assert res is not None
     assert res.status_code == 200
@@ -385,39 +422,3 @@ def test_function_callbacks_for_o_auth_support_global_security():
     assert res.status_code == 200
     assert res.token is not None
     assert res.token.token == "global"
-
-
-def test_function_callbacks_for_o_auth_support_operation_level_security_overrides():
-    record_test(
-        'auth-function-callbacks-oauth-global-security-with-local-override')
-
-    s = SDK(security=lambda: shared.Security(
-        oauth2="Bearer global"
-    ))
-    assert s is not None
-
-    res = s.auth.oauth2_auth(security=Oauth2AuthSecurity(
-        oauth2="Bearer local"
-    ))
-    assert res is not None
-    assert res.status_code == 200
-    assert res.token is not None
-    assert res.token.token == "local"
-
-
-def test_function_callbacks_for_o_auth_support_param_overrides():
-    record_test(
-        'auth-function-callbacks-oauth-global-security-with-param-override')
-
-    s = SDK(security=lambda: shared.Security(
-        oauth2="Bearer global"
-    ))
-    assert s is not None
-
-    res = s.auth.oauth2_override(security=Oauth2OverrideSecurity(
-        oauth2="Bearer overrideHeaders"
-    ))
-    assert res is not None
-    assert res.status_code == 200
-    assert res.token is not None
-    assert res.token.token == "overrideHeaders"

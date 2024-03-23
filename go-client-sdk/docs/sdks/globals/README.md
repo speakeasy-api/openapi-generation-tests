@@ -18,10 +18,10 @@ Endpoints for testing global parameters.
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -34,14 +34,13 @@ func main() {
     )
 
 
-    var globalPathParam *int64 = 719830
+    var globalPathParam *int64 = openapi.Int64(719830)
 
     ctx := context.Background()
     res, err := s.Globals.GlobalPathParameterGet(ctx, globalPathParam)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -61,7 +60,7 @@ func main() {
 **[*operations.GlobalPathParameterGetResponse](../../pkg/models/operations/globalpathparametergetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GlobalsQueryParameterGet
 
@@ -71,10 +70,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -87,14 +86,13 @@ func main() {
     )
 
 
-    var globalQueryParam *string = "string"
+    var globalQueryParam *string = openapi.String("<value>")
 
     ctx := context.Background()
     res, err := s.Globals.GlobalsQueryParameterGet(ctx, globalQueryParam)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -114,4 +112,4 @@ func main() {
 **[*operations.GlobalsQueryParameterGetResponse](../../pkg/models/operations/globalsqueryparametergetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

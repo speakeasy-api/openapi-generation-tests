@@ -12,6 +12,7 @@ namespace Openapi.Models.Shared
 {
     using Newtonsoft.Json;
     using NodaTime;
+    using Openapi.Models.Shared;
     using Openapi.Utils;
     using System.Numerics;
     using System;
