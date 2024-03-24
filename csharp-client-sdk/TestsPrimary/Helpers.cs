@@ -27,7 +27,7 @@ public class Helpers
             Bool = true,
             BoolOpt = true,
             Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.0000001Z"),
+            DateTime = DateTime.Parse("2020-01-01T00:00:00.0000001Z").ToUniversalTime(),
             Enum = Openapi.Models.Shared.Enum.One,
             Float32 = 1.1F,
             Int32 = 1,
@@ -103,7 +103,7 @@ public class Helpers
     public static DeepObject CreateDeepObject() =>
         new DeepObject()
         {
-            Any = CreateSimpleObject(),
+            Any = Any.CreateSimpleObject(CreateSimpleObject()),
             Arr = new List<SimpleObject>() { CreateSimpleObject(), CreateSimpleObject() },
             Bool = true,
             Int = 1,
@@ -120,37 +120,7 @@ public class Helpers
 
     public static void AssertDeepObject(DeepObject a)
     {
-        // because Any is object, the field-names
-        // aren't deserialized to match SimpleObject, so
-        // a.Any cannot be cast to Simple object in the
-        // standard way.
-        var json = JsonConvert.SerializeObject(
-            a.Any,
-            new JsonSerializerSettings()
-            {
-                NullValueHandling = NullValueHandling.Ignore,
-                Converters = new JsonConverter[]
-                {
-                    new FlexibleObjectDeserializer(),
-                    new IsoDateTimeSerializer(),
-                    new EnumSerializer()
-                }
-            }
-        );
-        var any = JsonConvert.DeserializeObject<SimpleObject>(
-            json,
-            new JsonSerializerSettings()
-            {
-                NullValueHandling = NullValueHandling.Ignore,
-                Converters = new JsonConverter[]
-                {
-                    new FlexibleObjectDeserializer(),
-                    new IsoDateTimeSerializer(),
-                    new EnumSerializer()
-                }
-            }
-        );
-        AssertSimpleObject(any);
+        AssertSimpleObject(a.Any.SimpleObject);
 
         Assert.Equal(2, a.Arr.Count());
         AssertSimpleObject(a.Arr.ToList().First());

@@ -12,6 +12,7 @@ namespace Openapi.Models.Shared
 {
     using Newtonsoft.Json;
     using NodaTime;
+    using Openapi.Models.Shared;
     using Openapi.Utils;
     using System.Numerics;
     using System;
@@ -57,8 +58,14 @@ namespace Openapi.Models.Shared
         [JsonProperty("constStr")]
         public string ConstStr { get; set; } = default!;
 
-        [JsonProperty("constStrNull")]
-        public string ConstStrNull { get; set; } = default!;
+        [JsonProperty("constStrDQuotes")]
+        public string ConstStrDQuotes { get; set; } = default!;
+
+        [JsonProperty("constStrNull", NullValueHandling = NullValueHandling.Include)]
+        public string? ConstStrNull { get; set; } = default!;
+
+        [JsonProperty("constStrSQuotes")]
+        public string ConstStrSQuotes { get; set; } = default!;
 
         [JsonProperty("defaultBigInt")]
         public BigInteger DefaultBigInt { get; set; } = default!;
@@ -98,11 +105,17 @@ namespace Openapi.Models.Shared
         [JsonProperty("defaultStr")]
         public string DefaultStr { get; set; } = default!;
 
-        [JsonProperty("defaultStrNullable")]
-        public string DefaultStrNullable { get; set; } = default!;
+        [JsonProperty("defaultStrDQuotes")]
+        public string DefaultStrDQuotes { get; set; } = default!;
+
+        [JsonProperty("defaultStrNullable", NullValueHandling = NullValueHandling.Include)]
+        public string? DefaultStrNullable { get; set; } = default!;
 
         [JsonProperty("defaultStrOptional")]
         public string? DefaultStrOptional { get; set; }
+
+        [JsonProperty("defaultStrSQuotes")]
+        public string DefaultStrSQuotes { get; set; } = default!;
 
         [JsonProperty("normalField")]
         public string NormalField { get; set; } = default!;

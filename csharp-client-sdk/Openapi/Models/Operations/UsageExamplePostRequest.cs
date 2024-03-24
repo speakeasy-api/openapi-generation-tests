@@ -11,6 +11,7 @@
 namespace Openapi.Models.Operations
 {
     using NodaTime;
+    using Openapi.Models.Operations;
     using Openapi.Utils;
     using System.Numerics;
     using System;

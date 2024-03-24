@@ -76,6 +76,13 @@ class SDK
      */
 	public Parameters $parameters;
 	
+    /**
+     * Endpoints for testing hooks
+     * 
+     * @var Hooks $$hooks
+     */
+	public Hooks $hooks;
+	
 	public NestFirst $nestFirst;
 	
 	public Nested $nested;
@@ -126,14 +133,14 @@ class SDK
      */
 	public AuthNew $authNew;
 	
+	public Resource $resource;
+	
     /**
      * Testing for documentation extensions and tooling.
      * 
      * @var Documentation $$documentation
      */
 	public Documentation $documentation;
-	
-	public Resource $resource;
 	
 	public First $first;
 	
@@ -152,8 +159,7 @@ class SDK
      * @var Retries $$retries
      */
 	public Retries $retries;
-		
-	private SDKConfiguration $sdkConfiguration;
+	
 
 	/**
 	 * Returns a new instance of the SDK builder used to configure and create the SDK instance.
@@ -168,9 +174,9 @@ class SDK
 	/**
 	 * @param SDKConfiguration $sdkConfiguration
 	 */
-	public function __construct(SDKConfiguration $sdkConfiguration)
-	{
-		$this->sdkConfiguration = $sdkConfiguration;
+	public function __construct(
+		private SDKConfiguration $sdkConfiguration,
+	) {
 		
 		$this->generation = new Generation($this->sdkConfiguration);
 		
@@ -183,6 +189,8 @@ class SDK
 		$this->globals = new Globals($this->sdkConfiguration);
 		
 		$this->parameters = new Parameters($this->sdkConfiguration);
+		
+		$this->hooks = new Hooks($this->sdkConfiguration);
 		
 		$this->nestFirst = new NestFirst($this->sdkConfiguration);
 		
@@ -204,9 +212,9 @@ class SDK
 		
 		$this->authNew = new AuthNew($this->sdkConfiguration);
 		
-		$this->documentation = new Documentation($this->sdkConfiguration);
-		
 		$this->resource = new Resource($this->sdkConfiguration);
+		
+		$this->documentation = new Documentation($this->sdkConfiguration);
 		
 		$this->first = new First($this->sdkConfiguration);
 		
@@ -216,6 +224,44 @@ class SDK
 		
 		$this->retries = new Retries($this->sdkConfiguration);
 	}
+	
+    /**
+     * Test potential namespace conflicts with java.lang.Object
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Shared\ConflictingEnum $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\ConflictingEnumResponse
+     */
+	public function conflictingEnum(
+        ?\OpenAPI\OpenAPI\Models\Shared\ConflictingEnum $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\ConflictingEnumResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/conflictingEnum/');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body !== null) {
+            $options = array_merge_recursive($options, $body);
+        }
+        $options['headers']['Accept'] = '*/*';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\ConflictingEnumResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+        }
+
+        return $response;
+    }
 	
     /**
      * putAnythingIgnoredGeneration

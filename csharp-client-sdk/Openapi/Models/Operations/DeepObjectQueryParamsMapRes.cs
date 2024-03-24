@@ -20,7 +20,7 @@ namespace Openapi.Models.Operations
     {
 
         [JsonProperty("args")]
-        public Dictionary<string, object> Args { get; set; } = default!;
+        public Dictionary<string, DeepObjectQueryParamsMapArgs> Args { get; set; } = default!;
 
         [JsonProperty("url")]
         public string Url { get; set; } = default!;

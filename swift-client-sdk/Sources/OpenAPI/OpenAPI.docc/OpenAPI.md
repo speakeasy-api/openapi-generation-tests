@@ -13,12 +13,9 @@ import OpenAPI
 
 let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
 
-let response = try await client.putAnythingIgnoredGeneration()
+let response = try await client.servers.selectGlobalServer()
 
 switch response.data {
-case .object(let object):
-    // Handle response
-    break
 case .empty:
     // Handle empty response
     break
@@ -56,6 +53,7 @@ case .empty:
 - ``FlatteningAPI``
 - ``GlobalsAPI``
 - ``ParametersAPI``
+- ``HooksAPI``
 - ``NestFirstAPI``
 - ``NestedAPI``
 - ``NestedFirstAPI``
@@ -66,8 +64,8 @@ case .empty:
 - ``ServersAPI``
 - ``TelemetryAPI``
 - ``AuthNewAPI``
-- ``DocumentationAPI``
 - ``ResourceAPI``
+- ``DocumentationAPI``
 - ``FirstAPI``
 - ``SecondAPI``
 - ``PaginationAPI``
@@ -75,11 +73,8 @@ case .empty:
 
 ### Security configuration
 - ``Operations/UsageExamplePostSecurity``
-- ``Operations/ApiKeyAuthSecurity``
 - ``Operations/BasicAuthSecurity``
 - ``Operations/BearerAuthSecurity``
-- ``Operations/Oauth2AuthSecurity``
-- ``Operations/Oauth2OverrideSecurity``
 - ``Operations/OpenIdConnectAuthSecurity``
 - ``Operations/BasicAuthNewSecurity``
 - ``Operations/MultipleMixedOptionsAuthSecurity``
@@ -88,7 +83,6 @@ case .empty:
 - ``Operations/MultipleOptionsWithSimpleSchemesAuthSecurity``
 - ``Operations/MultipleSimpleOptionsAuthSecurity``
 - ``Operations/MultipleSimpleSchemeAuthSecurity``
-- ``Operations/Oauth2AuthNewSecurity``
 - ``Operations/OpenIdConnectAuthNewSecurity``
 
 ### Server configuration
@@ -123,7 +117,6 @@ case .empty:
 - ``ServersServers/ServerWithProtocolTemplate``
 - ``ServersServers/ServerWithTemplates``
 - ``ServersServers/ServersByIDWithTemplates``
-- ``AuthNewServers/ApiKeyAuthGlobalNew``
 - ``AuthNewServers/AuthGlobal``
 - ``AuthNewServers/BasicAuthNew``
 - ``AuthNewServers/MultipleMixedOptionsAuth``
@@ -135,12 +128,17 @@ case .empty:
 - ``AuthNewServers/Oauth2AuthNew``
 - ``AuthNewServers/OpenIdConnectAuthNew``
 - ``PaginationServers/PaginationCursorBody``
+- ``PaginationServers/PaginationCursorNonNumeric``
 - ``PaginationServers/PaginationCursorParams``
 - ``PaginationServers/PaginationLimitOffsetOffsetBody``
 - ``PaginationServers/PaginationLimitOffsetOffsetParams``
 - ``PaginationServers/PaginationLimitOffsetPageBody``
 - ``PaginationServers/PaginationLimitOffsetPageParams``
+- ``PaginationServers/PaginationURLParams``
+- ``RetriesServers/RetriesAfter``
+- ``RetriesServers/RetriesConnectErrorGet``
 - ``RetriesServers/RetriesGet``
+- ``RetriesServers/RetriesPost``
 
 ### Shared models
 - ``Shared/Two``
@@ -154,11 +152,16 @@ case .empty:
 - ``Shared/BasicAuth``
 - ``Shared/Child``
 - ``Shared/Chocolates``
+- ``Shared/ComplexNumberArrays``
+- ``Shared/ComplexNumberMaps``
 - ``Shared/ComplexNumberTypes``
+- ``Shared/ConflictingEnum``
 - ``Shared/ConstEnumInt``
 - ``Shared/ConstEnumStr``
 - ``Shared/DeepObject``
 - ``Shared/DeepObjectCamelCase``
+- ``Shared/DeepObjectWithNonStandardTypeName``
+- ``Shared/DeepObjectWithNonStandardTypeNameAny``
 - ``Shared/DeepObjectWithType``
 - ``Shared/DeepObjectWithTypeAny``
 - ``Shared/DefaultEnumInt``
@@ -202,7 +205,10 @@ case .empty:
 - ``Shared/NullableOneOfTwo``
 - ``Shared/NullableOneOfTypeInObject``
 - ``Shared/NullableOneOfTypeInObjectNullableOneOfTwo``
+- ``Shared/NullableOptionalObject``
+- ``Shared/Object``
 - ``Shared/ObjectCircularReferenceObject``
+- ``Shared/ObjectWithNullEnums``
 - ``Shared/ObjWithZeroValueComplexTypePtrs``
 - ``Shared/OneOfCircularReferenceObject``
 - ``Shared/OneOfFromArrayOfTypes``
@@ -219,12 +225,22 @@ case .empty:
 - ``Shared/SchemeBasicAuth``
 - ``Shared/SimpleObject``
 - ``Shared/SimpleObjectCamelCase``
+- ``Shared/SimpleObjectWithNonStandardTypeName``
+- ``Shared/SimpleObjectWithNonStandardTypeNameInt32Enum``
+- ``Shared/SimpleObjectWithNonStandardTypeNameIntEnum``
 - ``Shared/SimpleObjectWithType``
 - ``Shared/SimpleObjectWithTypeInt32Enum``
 - ``Shared/SimpleObjectWithTypeIntEnum``
 - ``Shared/Slides``
 - ``Shared/Slideshow``
+- ``Shared/StronglyTypedOneOfDiscriminatedObject``
 - ``Shared/StronglyTypedOneOfObject``
+- ``Shared/StronglyTypedOneOfObjectWithNonStandardDiscriminatorName``
+- ``Shared/Tag``
+- ``Shared/TaggedObject1``
+- ``Shared/TaggedObject2``
+- ``Shared/TaggedObject2Tag``
+- ``Shared/TaggedObject3``
 - ``Shared/TypeModel``
 - ``Shared/TypedObject1``
 - ``Shared/TypedObject1Type``
@@ -236,6 +252,7 @@ case .empty:
 - ``Shared/TypedObjectOneOf``
 - ``Shared/UnsupportedEnums``
 - ``Shared/ValidCircularReferenceObject``
+- ``Shared/WeaklyTypedOneOfNullEnumObject``
 - ``Shared/WeaklyTypedOneOfObject``
 - ``Shared/WeaklyTypedOneOfReadOnlyObject``
 - ``Shared/WeaklyTypedOneOfReadOnlyObjectInput``
@@ -252,15 +269,16 @@ case .empty:
 - ``Operations/AnchorTypesGetResponse``
 - ``Operations/ApiKeyAuthResponse``
 - ``Operations/ApiKeyAuthGlobalResponse``
-- ``Operations/ApiKeyAuthGlobalNewResponse``
 - ``Operations/ArrayCircularReferenceGetResponse``
 - ``Operations/AuthGlobalResponse``
+- ``Operations/AuthorizationHeaderModificationResponse``
 - ``Operations/BasicAuthResponse``
 - ``Operations/BasicAuthNewResponse``
 - ``Operations/BearerAuthResponse``
 - ``Operations/CircularReferenceGetResponse``
 - ``Operations/ComponentBodyAndParamConflictResponse``
 - ``Operations/ComponentBodyAndParamNoConflictResponse``
+- ``Operations/ConflictingEnumResponse``
 - ``Operations/ConflictingParamsResponse``
 - ``Operations/ConnectionErrorGetResponse``
 - ``Operations/CreateFileResponse``
@@ -285,6 +303,7 @@ case .empty:
 - ``Operations/FormQueryParamsObjectResponse``
 - ``Operations/FormQueryParamsPrimitiveResponse``
 - ``Operations/FormQueryParamsRefParamObjectResponse``
+- ``Operations/GetArrayDataSourceResponse``
 - ``Operations/GetDocumentationPerLanguageResponse``
 - ``Operations/GetGlobalNameOverrideResponse``
 - ``Operations/GetResourceResponse``
@@ -326,6 +345,7 @@ case .empty:
 - ``Operations/NullableRequiredPropertyPostResponse``
 - ``Operations/NullableRequiredSharedObjectPostResponse``
 - ``Operations/NullableTypedObjectPostResponse``
+- ``Operations/NullEnumPostResponse``
 - ``Operations/Oauth2AuthResponse``
 - ``Operations/Oauth2AuthNewResponse``
 - ``Operations/Oauth2OverrideResponse``
@@ -334,11 +354,13 @@ case .empty:
 - ``Operations/OpenIdConnectAuthResponse``
 - ``Operations/OpenIdConnectAuthNewResponse``
 - ``Operations/PaginationCursorBodyResponse``
+- ``Operations/PaginationCursorNonNumericResponse``
 - ``Operations/PaginationCursorParamsResponse``
 - ``Operations/PaginationLimitOffsetOffsetBodyResponse``
 - ``Operations/PaginationLimitOffsetOffsetParamsResponse``
 - ``Operations/PaginationLimitOffsetPageBodyResponse``
 - ``Operations/PaginationLimitOffsetPageParamsResponse``
+- ``Operations/PaginationURLParamsResponse``
 - ``Operations/PathParameterJsonResponse``
 - ``Operations/PipeDelimitedQueryParamsArrayResponse``
 - ``Operations/PrimitiveTypeOneOfPostResponse``
@@ -380,6 +402,8 @@ case .empty:
 - ``Operations/RequestBodyPostJsonDataTypesBigIntResponse``
 - ``Operations/RequestBodyPostJsonDataTypesBigIntStrResponse``
 - ``Operations/RequestBodyPostJsonDataTypesBooleanResponse``
+- ``Operations/RequestBodyPostJsonDataTypesComplexNumberArraysResponse``
+- ``Operations/RequestBodyPostJsonDataTypesComplexNumberMapsResponse``
 - ``Operations/RequestBodyPostJsonDataTypesDateResponse``
 - ``Operations/RequestBodyPostJsonDataTypesDateTimeResponse``
 - ``Operations/RequestBodyPostJsonDataTypesDecimalResponse``
@@ -410,6 +434,7 @@ case .empty:
 - ``Operations/RequestBodyPutMultipartDeepResponse``
 - ``Operations/RequestBodyPutMultipartDifferentFileNameResponse``
 - ``Operations/RequestBodyPutMultipartFileResponse``
+- ``Operations/RequestBodyPutMultipartOptionalRequestBodyResponse``
 - ``Operations/RequestBodyPutMultipartSimpleResponse``
 - ``Operations/RequestBodyPutStringResponse``
 - ``Operations/RequestBodyPutStringWithParamsResponse``
@@ -420,6 +445,7 @@ case .empty:
 - ``Operations/RequestBodyWriteOnlyResponse``
 - ``Operations/RequestBodyWriteOnlyOutputResponse``
 - ``Operations/RequestBodyWriteOnlyUnionResponse``
+- ``Operations/ResponseBodyAdditionalPropertiesAnyPostResponse``
 - ``Operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse``
 - ``Operations/ResponseBodyAdditionalPropertiesDatePostResponse``
 - ``Operations/ResponseBodyAdditionalPropertiesObjectPostResponse``
@@ -432,7 +458,10 @@ case .empty:
 - ``Operations/ResponseBodyStringGetResponse``
 - ``Operations/ResponseBodyXmlGetResponse``
 - ``Operations/ResponseBodyZeroValueComplexTypePtrsPostResponse``
+- ``Operations/RetriesAfterResponse``
+- ``Operations/RetriesConnectErrorGetResponse``
 - ``Operations/RetriesGetResponse``
+- ``Operations/RetriesPostResponse``
 - ``Operations/SelectGlobalServerResponse``
 - ``Operations/SelectServerWithIDResponse``
 - ``Operations/ServersByIDWithTemplatesResponse``
@@ -445,9 +474,14 @@ case .empty:
 - ``Operations/SimplePathParameterPrimitivesResponse``
 - ``Operations/StatusGetErrorResponse``
 - ``Operations/StatusGetXSpeakeasyErrorsResponse``
+- ``Operations/StronglyTypedOneOfDiscriminatedPostResponse``
 - ``Operations/StronglyTypedOneOfPostResponse``
+- ``Operations/StronglyTypedOneOfPostWithNonStandardDiscriminatorNameResponse``
 - ``Operations/TelemetrySpeakeasyUserAgentGetResponse``
 - ``Operations/TelemetryUserAgentGetResponse``
+- ``Operations/TestHooksResponse``
+- ``Operations/TestHooksAfterResponseResponse``
+- ``Operations/TestHooksErrorResponse``
 - ``Operations/TypedObjectNullableOneOfPostResponse``
 - ``Operations/TypedObjectOneOfPostResponse``
 - ``Operations/TypedParameterGenerationGetResponse``
@@ -457,6 +491,7 @@ case .empty:
 - ``Operations/UnionDateTimeNullResponse``
 - ``Operations/UpdateResourceResponse``
 - ``Operations/UsageExamplePostResponse``
+- ``Operations/WeaklyTypedOneOfNullEnumPostResponse``
 - ``Operations/WeaklyTypedOneOfPostResponse``
 - ``Callbacks/IgnoredGenerationGetNotIgnoredCallbackResponse``
 - ``Callbacks/IgnoredGenerationGetSingledIgnoredCallbackOperationResponse``
@@ -466,6 +501,7 @@ case .empty:
 - ``Operations/ApiKeyAuthToken``
 - ``Operations/ApiKeyAuthGlobalToken``
 - ``Operations/Args``
+- ``Operations/AuthorizationHeaderModificationToken``
 - ``Operations/BasicAuthRequest``
 - ``Operations/BasicAuthUser``
 - ``Operations/BearerAuthToken``
@@ -520,6 +556,7 @@ case .empty:
 - ``Operations/FormQueryParamsRefParamObjectArgs``
 - ``Operations/FormQueryParamsRefParamObjectRequest``
 - ``Operations/FormQueryParamsRefParamObjectRes``
+- ``Operations/GetArrayDataSourceRequest``
 - ``Operations/GetDocumentationPerLanguageRequest``
 - ``Operations/GetGlobalNameOverrideResponseBody``
 - ``Operations/GetResourceRequest``
@@ -528,6 +565,7 @@ case .empty:
 - ``Operations/GlobalPathParameterGetRes``
 - ``Operations/GlobalsQueryParameterGetRequest``
 - ``Operations/GlobalsQueryParameterGetRes``
+- ``Operations/HeaderParamsArrayHeaders``
 - ``Operations/HeaderParamsArrayRequest``
 - ``Operations/HeaderParamsArrayRes``
 - ``Operations/HeaderParamsMapHeaders``
@@ -577,11 +615,15 @@ case .empty:
 - ``Operations/NullableOneOfTypeInObjectPostRes``
 - ``Operations/NullableOptionalObj``
 - ``Operations/NullableRequiredEmptyObjectPostRequestBody``
+- ``Operations/NullableRequiredEmptyObjectPostResponseBody``
 - ``Operations/NullableRequiredEnum``
 - ``Operations/NullableRequiredObj``
 - ``Operations/NullableRequiredPropertyPostRequestBody``
+- ``Operations/NullableRequiredPropertyPostResponseBody``
 - ``Operations/NullableRequiredSharedObjectPostRequestBody``
+- ``Operations/NullableRequiredSharedObjectPostResponseBody``
 - ``Operations/NullableTypedObjectPostRes``
+- ``Operations/NullEnumPostRes``
 - ``Operations/Oauth2AuthToken``
 - ``Operations/Oauth2OverrideRequest``
 - ``Operations/Oauth2OverrideToken``
@@ -593,6 +635,8 @@ case .empty:
 - ``Operations/OptEnumParameter``
 - ``Operations/PaginationCursorBodyRequestBody``
 - ``Operations/PaginationCursorBodyRes``
+- ``Operations/PaginationCursorNonNumericRequest``
+- ``Operations/PaginationCursorNonNumericRes``
 - ``Operations/PaginationCursorParamsRequest``
 - ``Operations/PaginationCursorParamsRes``
 - ``Operations/PaginationLimitOffsetOffsetBodyRes``
@@ -601,6 +645,8 @@ case .empty:
 - ``Operations/PaginationLimitOffsetPageBodyRes``
 - ``Operations/PaginationLimitOffsetPageParamsRequest``
 - ``Operations/PaginationLimitOffsetPageParamsRes``
+- ``Operations/PaginationURLParamsRequest``
+- ``Operations/PaginationURLParamsRes``
 - ``Operations/PathParameterJsonRequest``
 - ``Operations/PathParameterJsonRes``
 - ``Operations/PipeDelimitedQueryParamsArrayArgs``
@@ -632,6 +678,8 @@ case .empty:
 - ``Operations/RequestBodyPostJsonDataTypesBigIntResponseBody``
 - ``Operations/RequestBodyPostJsonDataTypesBigIntStrResponseBody``
 - ``Operations/RequestBodyPostJsonDataTypesBooleanResponseBody``
+- ``Operations/RequestBodyPostJsonDataTypesComplexNumberArraysRes``
+- ``Operations/RequestBodyPostJsonDataTypesComplexNumberMapsRes``
 - ``Operations/RequestBodyPostJsonDataTypesDateResponseBody``
 - ``Operations/RequestBodyPostJsonDataTypesDateTimeResponseBody``
 - ``Operations/RequestBodyPostJsonDataTypesDecimalResponseBody``
@@ -677,6 +725,9 @@ case .empty:
 - ``Operations/RequestBodyPutMultipartDifferentFileNameRes``
 - ``Operations/RequestBodyPutMultipartFileRequestBody``
 - ``Operations/RequestBodyPutMultipartFileRes``
+- ``Operations/RequestBodyPutMultipartOptionalRequestBodyForm``
+- ``Operations/RequestBodyPutMultipartOptionalRequestBodyRequestBody``
+- ``Operations/RequestBodyPutMultipartOptionalRequestBodyRes``
 - ``Operations/RequestBodyPutMultipartSimpleForm``
 - ``Operations/RequestBodyPutMultipartSimpleHeaders``
 - ``Operations/RequestBodyPutMultipartSimpleRes``
@@ -685,14 +736,22 @@ case .empty:
 - ``Operations/RequestBodyPutStringWithParamsRequest``
 - ``Operations/RequestBodyPutStringWithParamsRes``
 - ``Operations/RequiredObj``
+- ``Operations/ResponseBodyAdditionalPropertiesAnyPostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesDatePostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesObjectPostResponseBody``
 - ``Operations/ResponseBodyAdditionalPropertiesPostResponseBody``
 - ``Operations/ResponseBodyEmptyWithHeadersRequest``
 - ``Operations/ResponseBodyZeroValueComplexTypePtrsPostResponseBody``
+- ``Operations/RetriesAfterRequest``
+- ``Operations/RetriesAfterRetries``
+- ``Operations/RetriesConnectErrorGetRetries``
 - ``Operations/RetriesGetRequest``
 - ``Operations/RetriesGetRetries``
+- ``Operations/RetriesPostRequest``
+- ``Operations/RetriesPostRequestBody``
+- ``Operations/RetriesPostRetries``
+- ``Operations/SampleFile``
 - ``Operations/SimplePathParameterArraysRequest``
 - ``Operations/SimplePathParameterArraysRes``
 - ``Operations/SimplePathParameterMapsRequest``
@@ -704,10 +763,15 @@ case .empty:
 - ``Operations/StatusGetErrorRequest``
 - ``Operations/StatusGetXSpeakeasyErrorsRequest``
 - ``Operations/StatusGetXSpeakeasyErrorsResponseBody``
+- ``Operations/StronglyTypedOneOfDiscriminatedPostRes``
 - ``Operations/StronglyTypedOneOfPostRes``
+- ``Operations/StronglyTypedOneOfPostWithNonStandardDiscriminatorNameRes``
 - ``Operations/TelemetrySpeakeasyUserAgentGetRequest``
 - ``Operations/TelemetrySpeakeasyUserAgentGetRes``
 - ``Operations/TelemetryUserAgentGetRes``
+- ``Operations/TestHooksArgs``
+- ``Operations/TestHooksRequest``
+- ``Operations/TestHooksRes``
 - ``Operations/TypedObjectNullableOneOfPostRes``
 - ``Operations/TypedObjectOneOfPostRes``
 - ``Operations/TypedParameterGenerationGetRequest``
@@ -724,6 +788,7 @@ case .empty:
 - ``Operations/UsageExamplePostRequest``
 - ``Operations/UsageExamplePostRequestBody``
 - ``Operations/UsageExamplePostResponseBody``
+- ``Operations/WeaklyTypedOneOfNullEnumPostRes``
 - ``Operations/WeaklyTypedOneOfPostRes``
 - ``Callbacks/IgnoredGenerationGetNotIgnoredCallbackRequestBody``
 - ``Callbacks/IgnoredGenerationGetSingledIgnoredCallbackOperationRequestBody``
