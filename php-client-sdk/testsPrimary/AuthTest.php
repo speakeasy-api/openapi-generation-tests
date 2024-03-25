@@ -14,6 +14,20 @@ use PHPUnit\Framework\TestCase;
 
 final class AuthTest extends TestCase
 {
+    public function testNoAuth(): void
+    {
+        CommonHelpers::recordTest('auth-no-auth');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
+
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $response = $sdk->auth->noAuth();
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+    }
+
     public function testBasicAuth(): void
     {
         CommonHelpers::recordTest('auth-basic-auth');
@@ -37,48 +51,90 @@ final class AuthTest extends TestCase
         $this->assertEquals(200, $response->statusCode);
     }
 
-    public function testApiKeyAuthGlobal(): void
+    public function testBasicAuthEmpty(): void
     {
-        CommonHelpers::recordTest('auth-api-key-auth-global');
+        CommonHelpers::recordTest('auth-basic-auth-empty');
 
-        $security = new \OpenAPI\OpenAPI\Models\Shared\Security();
-        $security->apiKeyAuthNew = 'test_api_key';
-        $sdk = \OpenAPI\OpenAPI\SDK::builder()->setSecurity($security)->build();
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
 
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
         $request = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody();
+        $request->basicAuth = new \OpenAPI\OpenAPI\Models\Shared\BasicAuth();
+        $request->basicAuth->username = '';
+        $request->basicAuth->password = '';
 
-        $header = new \OpenAPI\OpenAPI\Models\Shared\HeaderAuth();
-        $header->headerName = 'x-api-key';
-        $header->expectedValue = 'test_api_key';
+        $security = new \OpenAPI\OpenAPI\Models\Operations\BasicAuthNewSecurity();
+        $security->username = '';
+        $security->password = '';
 
-        $request->headerAuth = [
-            $header
-        ];
-
-        $response = $sdk->authNew->apiKeyAuthGlobalNew($request);
+        $response = $sdk->authNew->basicAuthNew($request, $security);
 
         $this->assertNotNull($response);
         $this->assertEquals(200, $response->statusCode);
     }
 
-    public function testApiKeyAuthOperation(): void
+    public function testBasicAuthUsernameOnly(): void
     {
-        CommonHelpers::recordTest('auth-api-key-auth-operation');
+        CommonHelpers::recordTest('auth-basic-auth-username-only');
 
         $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
+
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
-        $security = new \OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthSecurity();
-        $security->apiKeyAuth = 'Bearer testToken';
+        $request = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody();
+        $request->basicAuth = new \OpenAPI\OpenAPI\Models\Shared\BasicAuth();
+        $request->basicAuth->username = 'testUser';
+        $request->basicAuth->password = '';
 
-        $response = $sdk->auth->apiKeyAuth($security);
+        $security = new \OpenAPI\OpenAPI\Models\Operations\BasicAuthNewSecurity();
+        $security->username = 'testUser';
+        $security->password = '';
+
+        $response = $sdk->authNew->basicAuthNew($request, $security);
 
         $this->assertNotNull($response);
         $this->assertEquals(200, $response->statusCode);
-        $this->assertTrue($response->token->authenticated);
-        $this->assertEquals('testToken', $response->token->token);
+    }
+
+    public function testBasicAuthPasswordOnly(): void
+    {
+        CommonHelpers::recordTest('auth-basic-auth-password-only');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
+
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $request = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody();
+        $request->basicAuth = new \OpenAPI\OpenAPI\Models\Shared\BasicAuth();
+        $request->basicAuth->username = '';
+        $request->basicAuth->password = 'testPass';
+
+        $security = new \OpenAPI\OpenAPI\Models\Operations\BasicAuthNewSecurity();
+        $security->username = '';
+        $security->password = 'testPass';
+
+        $response = $sdk->authNew->basicAuthNew($request, $security);
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+    }
+
+    public function testApiKeyAuthGlobal(): void
+    {
+        CommonHelpers::recordTest('auth-api-key-auth-global');
+
+        $security = new \OpenAPI\OpenAPI\Models\Shared\Security();
+        $security->apiKeyAuth = 'Bearer test_api_key';
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->setSecurity($security)->build();
+
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $response = $sdk->auth->apiKeyAuthGlobal();
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+        $this->assertEquals('test_api_key', $response->token->token);
     }
 
     public function testBearerAuthOperationWithPrefix(): void
@@ -121,7 +177,9 @@ final class AuthTest extends TestCase
     {
         CommonHelpers::recordTest('auth-oauth2-auth');
 
-        $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
+        $security = new \OpenAPI\OpenAPI\Models\Shared\Security();
+        $security->oauth2 = 'Bearer testToken';
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->setSecurity($security)->build();
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
         $request = new \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody();
@@ -134,10 +192,7 @@ final class AuthTest extends TestCase
             $header
         ];
 
-        $security = new \OpenAPI\OpenAPI\Models\Operations\Oauth2AuthNewSecurity();
-        $security->oauth2 = 'Bearer testToken';
-
-        $response = $sdk->authNew->oauth2AuthNew($request, $security);
+        $response = $sdk->authNew->oauth2AuthNew($request);
 
         $this->assertNotNull($response);
         $this->assertEquals(200, $response->statusCode);

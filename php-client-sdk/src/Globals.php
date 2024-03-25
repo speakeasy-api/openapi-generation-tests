@@ -63,6 +63,51 @@ class Globals
     }
 	
     /**
+     * globalsHeaderGet
+     * 
+     * @param bool $globalHeaderParam
+     * @return \OpenAPI\OpenAPI\Models\Operations\GlobalsHeaderGetResponse
+     */
+	public function globalsHeaderGet(
+        bool $globalHeaderParam,
+    ): \OpenAPI\OpenAPI\Models\Operations\GlobalsHeaderGetResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\GlobalsHeaderGetRequest();
+        $request->globalHeaderParam = $globalHeaderParam;
+        
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/globals/header');
+        
+        $options = ['http_errors' => false];
+        $options = array_merge_recursive($options, Utils\Utils::getHeaders($request));
+        if (!array_key_exists('headers', $options)) {
+            $options['headers'] = [];
+        }
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\GlobalsHeaderGetResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\GlobalsHeaderGetRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * globalsQueryParameterGet
      * 
      * @param ?string $globalQueryParam

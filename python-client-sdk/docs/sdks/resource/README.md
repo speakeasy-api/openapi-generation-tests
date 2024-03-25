@@ -6,6 +6,7 @@
 * [create_file](#create_file)
 * [create_resource](#create_resource)
 * [delete_resource](#delete_resource)
+* [get_array_data_source](#get_array_data_source)
 * [get_resource](#get_resource)
 * [update_resource](#update_resource)
 
@@ -25,18 +26,14 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.CreateFileRequestBody(
-    file=operations.CreateFileFile(
-        content='0xf10df1a3b9'.encode(),
-        file_name='rap_national.mp4v',
-    ),
-)
+req = operations.CreateFileRequestBody()
 
 res = s.resource.create_file(req)
 
 if res.file_resource is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -53,14 +50,13 @@ if res.file_resource is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## create_resource
 
 ### Example Usage
 
 ```python
-import dateutil.parser
 import sdk
 from sdk.models import shared
 
@@ -73,32 +69,17 @@ s = sdk.SDK(
 )
 
 req = shared.ExampleResource(
-    array_of_number=[
-        1867.47,
-    ],
-    array_of_string=[
-        'string',
-    ],
     chocolates=[
         shared.Chocolates(
-            description='Re-engineered asynchronous array',
+            description='Digitized optimal archive',
         ),
     ],
-    id='<ID>',
-    inline_object=shared.InlineObject(),
-    map_of_integer={
-        "key": 271791,
-    },
-    map_of_string={
-        "key": 'string',
-    },
-    name='string',
-    shared.ExampleCar(
-        make='string',
-        model='PT Cruiser',
-        name='string',
-        type=shared.ExampleCarType.CAR,
-        year=1259.83,
+    id='<id>',
+    name='<value>',
+    vehicle=shared.ExampleBoat(
+        length=2717.91,
+        name='<value>',
+        type=shared.Type.BOAT,
     ),
 )
 
@@ -107,6 +88,7 @@ res = s.resource.create_resource(req)
 if res.example_resource is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -123,7 +105,7 @@ if res.example_resource is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## delete_resource
 
@@ -131,7 +113,7 @@ if res.example_resource is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -142,11 +124,12 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.delete_resource(resource_id='string')
+res = s.resource.delete_resource(resource_id='<value>')
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -163,15 +146,15 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
-## get_resource
+## get_array_data_source
 
 ### Example Usage
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -182,11 +165,53 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.get_resource(resource_id='string')
+res = s.resource.get_array_data_source(filter_='<value>')
+
+if res.array_data_source is not None:
+    # handle response
+    pass
+
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `filter_`          | *str*              | :heavy_check_mark: | N/A                |
+
+
+### Response
+
+**[operations.GetArrayDataSourceResponse](../../models/operations/getarraydatasourceresponse.md)**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4x-5xx          | */*             |
+
+## get_resource
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.resource.get_resource(resource_id='<value>')
 
 if res.example_resource is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -203,7 +228,7 @@ if res.example_resource is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## update_resource
 
@@ -211,7 +236,7 @@ if res.example_resource is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -222,17 +247,19 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.update_resource(resource_id='string')
+res = s.resource.update_resource(augment='<value>', resource_id='<value>')
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
 
 | Parameter          | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `augment`          | *str*              | :heavy_check_mark: | N/A                |
 | `resource_id`      | *str*              | :heavy_check_mark: | N/A                |
 
 
@@ -243,4 +270,4 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |

@@ -11,6 +11,7 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Operations;
     
     /// <summary>
     /// A response body that contains the simpleObject sent in the request body
