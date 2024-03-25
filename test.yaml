@@ -6122,9 +6122,9 @@ paths:
                         format: bigint
                 required:
                   - json
-  /anything/unionBigIntDecimal:
+  /anything/unionBigIntStrDecimal:
     post:
-      operationId: unionBigIntDecimal
+      operationId: unionBigIntStrDecimal
       tags:
         - unions
       requestBody:
