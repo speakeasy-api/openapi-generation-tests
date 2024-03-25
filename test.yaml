@@ -65,6 +65,12 @@ x-speakeasy-globals:
       schema:
         type: integer
         example: 100
+    - name: globalHeaderParam
+      in: header
+      required: true
+      schema:
+        type: boolean
+        example: true
 x-speakeasy-name-override:
   - operationId: getGlobalNameOverride
     methodNameOverride: globalNameOverridden
@@ -5643,6 +5649,31 @@ paths:
                     type: string
                 required:
                   - url
+  /anything/globals/header:
+    get:
+      operationId: globalsHeaderGet
+      tags:
+        - globals
+      parameters:
+        - name: globalHeaderParam
+          in: header
+          required: true
+          schema:
+            type: boolean
+            example: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  headers:
+                    type: object
+                    additionalProperties:
+                      type: string      
   /anything/stronglyTypedOneOf:
     post:
       operationId: stronglyTypedOneOfPost
