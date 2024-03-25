@@ -11,6 +11,7 @@
 namespace Openapi.Models.Shared
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Shared;
     using System.Collections.Generic;
     using System;
     
@@ -27,7 +28,7 @@ namespace Openapi.Models.Shared
         public string Name { get; set; } = default!;
 
         [JsonProperty("vehicle")]
-        public object Vehicle { get; set; } = default!;
+        public ExampleVehicle Vehicle { get; set; } = default!;
 
         [JsonProperty("arrayOfNumber")]
         public List<double>? ArrayOfNumber { get; set; }

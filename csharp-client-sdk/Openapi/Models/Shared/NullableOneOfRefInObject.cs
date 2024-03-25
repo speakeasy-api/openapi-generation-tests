@@ -11,17 +11,18 @@
 namespace Openapi.Models.Shared
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Shared;
     
     public class NullableOneOfRefInObject
     {
 
-        [JsonProperty("NullableOneOfOne")]
-        public TypedObject1 NullableOneOfOne { get; set; } = default!;
+        [JsonProperty("NullableOneOfOne", NullValueHandling = NullValueHandling.Include)]
+        public TypedObject1? NullableOneOfOne { get; set; } = default!;
 
-        [JsonProperty("NullableOneOfTwo")]
-        public object NullableOneOfTwo { get; set; } = default!;
+        [JsonProperty("NullableOneOfTwo", NullValueHandling = NullValueHandling.Include)]
+        public NullableOneOfTwo? NullableOneOfTwo { get; set; } = default!;
 
         [JsonProperty("OneOfOne")]
-        public object OneOfOne { get; set; } = default!;
+        public OneOfOne OneOfOne { get; set; } = default!;
     }
 }
