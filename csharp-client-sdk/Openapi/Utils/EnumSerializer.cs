@@ -16,7 +16,16 @@ namespace Openapi.Utils
 {
     internal class EnumSerializer : JsonConverter
     {
-        public override bool CanConvert(System.Type objectType) => objectType.IsEnum;
+        public override bool CanConvert(System.Type objectType)
+        {
+            var  nullableType = Nullable.GetUnderlyingType(objectType);
+            if (nullableType != null)
+            {
+                return nullableType.IsEnum;
+            }
+
+            return objectType.IsEnum;
+        }
 
         public override bool CanRead => true;
 
@@ -44,7 +53,12 @@ namespace Openapi.Utils
                 throw new Exception($"Unable to find ToEnum method on {extensionType.FullName}");
             }
 
-            return method.Invoke(null, new[] { (string)reader.Value });
+            try {
+                return method.Invoke(null, new[] { (string)reader.Value });
+            } catch(System.Reflection.TargetInvocationException e) {
+                throw new Newtonsoft.Json.JsonSerializationException("Unable to convert value to enum", e);
+            }
+
         }
 
         public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)

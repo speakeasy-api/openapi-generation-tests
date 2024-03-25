@@ -9,13 +9,6 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class Oauth2OverrideSecurity:
-    oauth2: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'oauth2', 'field_name': 'Authorization' }})
-    
-
-
-
-@dataclasses.dataclass
 class Oauth2OverrideRequest:
     pass
 
@@ -36,7 +29,7 @@ class Oauth2OverrideResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
     token: Optional[Oauth2OverrideToken] = dataclasses.field(default=None)
     r"""Successful authentication."""

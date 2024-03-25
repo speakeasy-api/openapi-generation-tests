@@ -23,8 +23,16 @@ func (o *PaginationLimitOffsetPageParamsRequest) GetPage() int64 {
 
 // PaginationLimitOffsetPageParamsRes - OK
 type PaginationLimitOffsetPageParamsRes struct {
+	Next        *string `json:"next,omitempty"`
 	NumPages    int64   `json:"numPages"`
 	ResultArray []int64 `json:"resultArray"`
+}
+
+func (o *PaginationLimitOffsetPageParamsRes) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
 }
 
 func (o *PaginationLimitOffsetPageParamsRes) GetNumPages() int64 {

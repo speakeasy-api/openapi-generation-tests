@@ -24,11 +24,9 @@ class Auth
     /**
      * apiKeyAuth
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthSecurity $security
      * @return \OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthResponse
      */
 	public function apiKeyAuth(
-        \OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthSecurity $security,
     ): \OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthResponse
     {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -38,8 +36,7 @@ class Auth
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
         
-        $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->defaultClient, $security);
-        $httpResponse = $client->request('GET', $url, $options);
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
@@ -243,7 +240,7 @@ class Auth
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
         
-        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        $httpResponse = $this->sdkConfiguration->defaultClient->request('GET', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
@@ -263,11 +260,9 @@ class Auth
     /**
      * oauth2Auth
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\Oauth2AuthSecurity $security
      * @return \OpenAPI\OpenAPI\Models\Operations\Oauth2AuthResponse
      */
 	public function oauth2Auth(
-        \OpenAPI\OpenAPI\Models\Operations\Oauth2AuthSecurity $security,
     ): \OpenAPI\OpenAPI\Models\Operations\Oauth2AuthResponse
     {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -277,8 +272,7 @@ class Auth
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
         
-        $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->defaultClient, $security);
-        $httpResponse = $client->request('GET', $url, $options);
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
@@ -304,11 +298,9 @@ class Auth
     /**
      * oauth2Override
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideSecurity $security
      * @return \OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideResponse
      */
 	public function oauth2Override(
-        \OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideSecurity $security,
     ): \OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideResponse
     {
         $request = new \OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideRequest();
@@ -324,8 +316,7 @@ class Auth
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
         
-        $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->defaultClient, $security);
-        $httpResponse = $client->request('GET', $url, $options);
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 

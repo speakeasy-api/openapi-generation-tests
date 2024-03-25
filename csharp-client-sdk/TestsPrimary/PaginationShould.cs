@@ -161,4 +161,29 @@ public class PaginationShould
         Assert.Null(nullRes);
     }
 
+    [Fact]
+    public async Task PaginationCursorNonNumeric()
+    {
+        CommonHelpers.RecordTest("pagination-cursor-non-numeric");
+        var sdk = new SDK();
+
+        var res = await sdk.Pagination.PaginationCursorNonNumericAsync();
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.NotNull(res.Res);
+        Assert.Equal(15, res.Res.ResultArray.Count());
+
+        var nextRes = await res.Next();
+        Assert.Equal(200, nextRes.StatusCode);
+        Assert.NotNull(nextRes.Res);
+        Assert.Equal(5, nextRes.Res.ResultArray.Count());
+
+        var penultimateRes = await nextRes.Next();
+        Assert.Equal(200, penultimateRes.StatusCode);
+        Assert.NotNull(penultimateRes.Res);
+        Assert.Empty(penultimateRes.Res.ResultArray);
+
+        var nullRes = await penultimateRes.Next();
+        Assert.Null(nullRes);
+    }
 }
