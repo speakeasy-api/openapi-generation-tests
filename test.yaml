@@ -4835,6 +4835,14 @@ paths:
                     $ref: "components.yaml#/components/schemas/objWithObjAdditionalProperties"
                 required:
                   - json
+  /anything/responseBodies/missing2xxOr3xx:
+    get:
+      operationId: responseBodyMissing2xxOr3xxGet
+      tags:
+        - responseBodies
+      responses:
+        "500":
+          description: Internal Server Error
   /anything/{emptyObject}:
     get:
       operationId: emptyObjectGet
