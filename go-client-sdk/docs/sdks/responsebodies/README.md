@@ -7,17 +7,68 @@ Endpoints for testing response bodies.
 
 ### Available Operations
 
+* [ResponseBodyAdditionalPropertiesAnyPost](#responsebodyadditionalpropertiesanypost)
 * [ResponseBodyAdditionalPropertiesComplexNumbersPost](#responsebodyadditionalpropertiescomplexnumberspost)
 * [ResponseBodyAdditionalPropertiesDatePost](#responsebodyadditionalpropertiesdatepost)
 * [ResponseBodyAdditionalPropertiesObjectPost](#responsebodyadditionalpropertiesobjectpost)
 * [ResponseBodyAdditionalPropertiesPost](#responsebodyadditionalpropertiespost)
 * [ResponseBodyBytesGet](#responsebodybytesget)
 * [ResponseBodyEmptyWithHeaders](#responsebodyemptywithheaders)
+* [ResponseBodyMissing2xxOr3xxGet](#responsebodymissing2xxor3xxget)
 * [ResponseBodyOptionalGet](#responsebodyoptionalget)
 * [ResponseBodyReadOnly](#responsebodyreadonly)
 * [ResponseBodyStringGet](#responsebodystringget)
 * [ResponseBodyXMLGet](#responsebodyxmlget)
 * [ResponseBodyZeroValueComplexTypePtrsPost](#responsebodyzerovaluecomplextypeptrspost)
+
+## ResponseBodyAdditionalPropertiesAnyPost
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
+	"log"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesAnyPost(ctx, shared.ObjWithAnyAdditionalProperties{})
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |
+| `request`                                                                                          | [shared.ObjWithAnyAdditionalProperties](../../pkg/models/shared/objwithanyadditionalproperties.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+
+
+### Response
+
+**[*operations.ResponseBodyAdditionalPropertiesAnyPostResponse](../../pkg/models/operations/responsebodyadditionalpropertiesanypostresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ResponseBodyAdditionalPropertiesComplexNumbersPost
 
@@ -27,11 +78,10 @@ Endpoints for testing response bodies.
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"math/big"
 )
 
 func main() {
@@ -45,15 +95,11 @@ func main() {
 
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesComplexNumbersPost(ctx, shared.ObjWithComplexNumbersAdditionalProperties{
-        AdditionalProperties: map[string]*big.Int{
-            "key": big.NewInt(468801),
-        },
-        NormalField: "string",
+        NormalField: "<value>",
     })
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Object != nil {
         // handle response
     }
@@ -73,7 +119,7 @@ func main() {
 **[*operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse](../../pkg/models/operations/responsebodyadditionalpropertiescomplexnumberspostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ResponseBodyAdditionalPropertiesDatePost
 
@@ -83,11 +129,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/types"
 )
 
 func main() {
@@ -101,15 +146,11 @@ func main() {
 
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesDatePost(ctx, shared.ObjWithDateAdditionalProperties{
-        AdditionalProperties: map[string]types.Date{
-            "key": types.MustDateFromString("2021-03-16"),
-        },
-        NormalField: "string",
+        NormalField: "<value>",
     })
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Object != nil {
         // handle response
     }
@@ -129,7 +170,7 @@ func main() {
 **[*operations.ResponseBodyAdditionalPropertiesDatePostResponse](../../pkg/models/operations/responsebodyadditionalpropertiesdatepostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ResponseBodyAdditionalPropertiesObjectPost
 
@@ -139,12 +180,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
-	"math/big"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -161,34 +201,11 @@ func main() {
         AdditionalProperties: []int64{
             617205,
         },
-        AdditionalPropertiesT: map[string]shared.SimpleObject{
-            "key": shared.SimpleObject{
-                Any: "any",
-                Bigint: big.NewInt(8821239038968084),
-                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
-                Bool: true,
-                BoolOpt: openapi.Bool(true),
-                Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
-                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
-                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
-                Enum: shared.EnumOne,
-                Float32: 1.1,
-                Int: 1,
-                Int32: 1,
-                Int32Enum: shared.Int32EnumFiftyFive,
-                IntEnum: shared.IntEnumSecond,
-                Num: 1.1,
-                Str: "test",
-                StrOpt: openapi.String("testOptional"),
-            },
-        },
-        Datetime: types.MustTimeFromString("2022-03-22T01:00:55.017Z"),
+        Datetime: types.MustTimeFromString("2023-03-22T10:46:10.684Z"),
     })
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Object != nil {
         // handle response
     }
@@ -208,7 +225,7 @@ func main() {
 **[*operations.ResponseBodyAdditionalPropertiesObjectPostResponse](../../pkg/models/operations/responsebodyadditionalpropertiesobjectpostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ResponseBodyAdditionalPropertiesPost
 
@@ -218,10 +235,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -235,15 +252,11 @@ func main() {
 
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesPost(ctx, shared.ObjWithStringAdditionalProperties{
-        AdditionalProperties: map[string]string{
-            "key": "string",
-        },
-        NormalField: "string",
+        NormalField: "<value>",
     })
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Object != nil {
         // handle response
     }
@@ -263,7 +276,7 @@ func main() {
 **[*operations.ResponseBodyAdditionalPropertiesPostResponse](../../pkg/models/operations/responsebodyadditionalpropertiespostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ResponseBodyBytesGet
 
@@ -273,10 +286,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -293,7 +306,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Bytes != nil {
         // handle response
     }
@@ -312,7 +324,7 @@ func main() {
 **[*operations.ResponseBodyBytesGetResponse](../../pkg/models/operations/responsebodybytesgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ResponseBodyEmptyWithHeaders
 
@@ -322,10 +334,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -340,15 +352,14 @@ func main() {
 
     var xNumberHeader float64 = 1751.8
 
-    var xStringHeader string = "string"
+    var xStringHeader string = "<value>"
 
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyEmptyWithHeaders(ctx, xNumberHeader, xStringHeader)
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -368,7 +379,55 @@ func main() {
 **[*operations.ResponseBodyEmptyWithHeadersResponse](../../pkg/models/operations/responsebodyemptywithheadersresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
+
+## ResponseBodyMissing2xxOr3xxGet
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
+	"log"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.ResponseBodies.ResponseBodyMissing2xxOr3xxGet(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+
+
+### Response
+
+**[*operations.ResponseBodyMissing2xxOr3xxGetResponse](../../pkg/models/operations/responsebodymissing2xxor3xxgetresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ResponseBodyOptionalGet
 
@@ -378,10 +437,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -398,7 +457,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.TypedObject1 != nil {
         // handle response
     }
@@ -418,7 +476,7 @@ func main() {
 **[*operations.ResponseBodyOptionalGetResponse](../../pkg/models/operations/responsebodyoptionalgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ResponseBodyReadOnly
 
@@ -428,10 +486,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -448,7 +506,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ReadOnlyObject != nil {
         // handle response
     }
@@ -468,7 +525,7 @@ func main() {
 **[*operations.ResponseBodyReadOnlyResponse](../../pkg/models/operations/responsebodyreadonlyresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ResponseBodyStringGet
 
@@ -478,10 +535,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -498,7 +555,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.HTML != nil {
         // handle response
     }
@@ -517,7 +573,7 @@ func main() {
 **[*operations.ResponseBodyStringGetResponse](../../pkg/models/operations/responsebodystringgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ResponseBodyXMLGet
 
@@ -527,10 +583,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -547,7 +603,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.XML != nil {
         // handle response
     }
@@ -566,7 +621,7 @@ func main() {
 **[*operations.ResponseBodyXMLGetResponse](../../pkg/models/operations/responsebodyxmlgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ResponseBodyZeroValueComplexTypePtrsPost
 
@@ -576,11 +631,11 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
@@ -594,13 +649,12 @@ func main() {
 
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyZeroValueComplexTypePtrsPost(ctx, shared.ObjWithZeroValueComplexTypePtrs{
-        Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+        Date: types.MustNewDateFromString("2020-01-01"),
+        DateTime: types.MustNewTimeFromString("2020-01-01T00:00:00Z"),
     })
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Object != nil {
         // handle response
     }
@@ -620,4 +674,4 @@ func main() {
 **[*operations.ResponseBodyZeroValueComplexTypePtrsPostResponse](../../pkg/models/operations/responsebodyzerovaluecomplextypeptrspostresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

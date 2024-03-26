@@ -11,7 +11,19 @@ namespace OpenAPI\OpenAPI;
 class Retries 
 {
 	
+	public const RETRIES_AFTER_SERVERS = [
+		'http://localhost:35456',
+	];
+	
+	public const RETRIES_CONNECT_ERROR_GET_SERVERS = [
+		'http://localhost:33333',
+	];
+	
 	public const RETRIES_GET_SERVERS = [
+		'http://localhost:35456',
+	];
+	
+	public const RETRIES_POST_SERVERS = [
 		'http://localhost:35456',
 	];
 
@@ -24,6 +36,104 @@ class Retries
 	{
 		$this->sdkConfiguration = $sdkConfig;
 	}
+	
+    /**
+     * retriesAfter
+     * 
+     * @param string $requestId
+     * @param ?int $numRetries
+     * @param ?int $retryAfterVal
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\RetriesAfterResponse
+     */
+	public function retriesAfter(
+        string $requestId,
+        ?int $numRetries = null,
+        ?int $retryAfterVal = null,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\RetriesAfterResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\RetriesAfterRequest();
+        $request->requestId = $requestId;
+        $request->numRetries = $numRetries;
+        $request->retryAfterVal = $retryAfterVal;
+        
+        $baseUrl = Utils\Utils::templateUrl(Retries::RETRIES_AFTER_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/retries/after');
+        
+        $options = ['http_errors' => false];
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\RetriesAfterRequest::class, $request, $this->sdkConfiguration->globals));
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RetriesAfterResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->retries = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\RetriesAfterRetries', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * A request to a non-valid port to test connection errors
+     * 
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\RetriesConnectErrorGetResponse
+     */
+	public function retriesConnectErrorGet(
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\RetriesConnectErrorGetResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(Retries::RETRIES_CONNECT_ERROR_GET_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/retriesConnectError');
+        
+        $options = ['http_errors' => false];
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RetriesConnectErrorGetResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->retries = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\RetriesConnectErrorGetRetries', 'json');
+            }
+        }
+
+        return $response;
+    }
 	
     /**
      * retriesGet
@@ -71,6 +181,65 @@ class Retries
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
                 $response->retries = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\RetriesGetRetries', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * retriesPost
+     * 
+     * @param string $requestId
+     * @param ?\OpenAPI\OpenAPI\Models\Operations\RetriesPostRequestBody $requestBody
+     * @param ?int $numRetries
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\RetriesPostResponse
+     */
+	public function retriesPost(
+        string $requestId,
+        ?\OpenAPI\OpenAPI\Models\Operations\RetriesPostRequestBody $requestBody = null,
+        ?int $numRetries = null,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\RetriesPostResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\RetriesPostRequest();
+        $request->requestId = $requestId;
+        $request->requestBody = $requestBody;
+        $request->numRetries = $numRetries;
+        
+        $baseUrl = Utils\Utils::templateUrl(Retries::RETRIES_POST_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/retries');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "requestBody", "json");
+        if ($body !== null) {
+            $options = array_merge_recursive($options, $body);
+        }
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\RetriesPostRequest::class, $request, $this->sdkConfiguration->globals));
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RetriesPostResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->retries = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\RetriesPostRetries', 'json');
             }
         }
 

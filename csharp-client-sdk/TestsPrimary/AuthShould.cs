@@ -17,6 +17,19 @@ using System.Threading.Tasks;
 public class AuthShould
 {
     [Fact]
+    public async Task NoAuth()
+    {
+        CommonHelpers.RecordTest("auth-no-auth");
+
+        var sdk = new SDK();
+
+        var res = await sdk.Auth.NoAuthAsync();
+
+        Assert.NotNull(res);
+        Assert.Equal(200, res.StatusCode);
+    }
+
+    [Fact]
     public async Task BasicAuth()
     {
         CommonHelpers.RecordTest("auth-basic-auth");
@@ -36,23 +49,17 @@ public class AuthShould
     }
 
     [Fact]
-    public async Task ApiKeyAuthGlobal()
+    public async Task BasicAuthEmpty()
     {
-        CommonHelpers.RecordTest("auth-api-key-auth-global");
+        CommonHelpers.RecordTest("auth-basic-auth-empty");
 
-        var sdk = new SDK(security: new Security() { ApiKeyAuthNew = "test_api_key" });
+        var sdk = new SDK();
 
-        var res = await sdk.AuthNew.ApiKeyAuthGlobalNewAsync(
+        var res = await sdk.AuthNew.BasicAuthNewAsync(
+            new BasicAuthNewSecurity() { Username = "", Password = "" },
             new AuthServiceRequestBody()
             {
-                HeaderAuth = new List<HeaderAuth>()
-                {
-                    new HeaderAuth()
-                    {
-                        ExpectedValue = "test_api_key",
-                        HeaderName = "x-api-key"
-                    }
-                }
+                BasicAuth = new BasicAuth() { Username = "", Password = "" }
             }
         );
 
@@ -61,20 +68,55 @@ public class AuthShould
     }
 
     [Fact]
-    public async Task ApiKeyAuthOperation()
+    public async Task BasicAuthUsernameOnly()
     {
-        CommonHelpers.RecordTest("auth-api-key-auth-operation");
+        CommonHelpers.RecordTest("auth-basic-auth-username-only");
 
         var sdk = new SDK();
 
-        var res = await sdk.Auth.ApiKeyAuthAsync(
-            new ApiKeyAuthSecurity() { ApiKeyAuth = "Bearer testToken" }
+        var res = await sdk.AuthNew.BasicAuthNewAsync(
+            new BasicAuthNewSecurity() { Username = "testUser", Password = "" },
+            new AuthServiceRequestBody()
+            {
+                BasicAuth = new BasicAuth() { Username = "testUser", Password = "" }
+            }
         );
 
         Assert.NotNull(res);
         Assert.Equal(200, res.StatusCode);
-        Assert.True(res.Token.Authenticated);
-        Assert.Equal("testToken", res.Token.Token);
+    }
+
+    [Fact]
+    public async Task BasicAuthPasswordOnly()
+    {
+        CommonHelpers.RecordTest("auth-basic-auth-password-only");
+
+        var sdk = new SDK();
+
+        var res = await sdk.AuthNew.BasicAuthNewAsync(
+            new BasicAuthNewSecurity() { Username = "", Password = "testPass" },
+            new AuthServiceRequestBody()
+            {
+                BasicAuth = new BasicAuth() { Username = "", Password = "testPass" }
+            }
+        );
+
+        Assert.NotNull(res);
+        Assert.Equal(200, res.StatusCode);
+    }
+
+    [Fact]
+    public async Task ApiKeyAuthGlobal()
+    {
+        CommonHelpers.RecordTest("auth-api-key-auth-global");
+
+        var sdk = new SDK(security: new Security() { ApiKeyAuth = "Bearer test_api_key" });
+
+        var res = await sdk.Auth.ApiKeyAuthGlobalAsync();
+
+        Assert.NotNull(res);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal("test_api_key", res.Token.Token);
     }
 
     [Fact]
@@ -116,10 +158,9 @@ public class AuthShould
     {
         CommonHelpers.RecordTest("auth-oauth2-auth");
 
-        var sdk = new SDK();
+        var sdk = new SDK(security: new Security() { Oauth2 = "Bearer testToken" });
 
         var res = await sdk.AuthNew.Oauth2AuthNewAsync(
-            new Oauth2AuthNewSecurity() { Oauth2 = "Bearer testToken" },
             new AuthServiceRequestBody()
             {
                 HeaderAuth = new List<HeaderAuth>()
@@ -479,5 +520,18 @@ public class AuthShould
         );
 
         Assert.Equal(200, res.StatusCode);
+    }
+
+    [Fact]
+    public async Task FunctionCallbacksOauthGlobalSecurity()
+    {
+        CommonHelpers.RecordTest("auth-function-callbacks-oauth-global-security");
+
+        var sdk = new SDK(securitySource: () => new Security() { Oauth2 = "Bearer global" });
+
+        var res = await sdk.Auth.GlobalBearerAuthAsync();
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal("global", res.Token.Token);
     }
 }

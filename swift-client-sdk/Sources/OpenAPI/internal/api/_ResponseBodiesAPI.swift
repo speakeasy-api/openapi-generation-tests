@@ -10,6 +10,15 @@ class _ResponseBodiesAPI: ResponseBodiesAPI {
         self.client = client
     }
     
+    public func responseBodyAdditionalPropertiesAnyPost(request: [String: AnyValue]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesAnyPostResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureResponseBodyAdditionalPropertiesAnyPostRequest(with: configuration, request: request)
+            },
+            handleResponse: handleResponseBodyAdditionalPropertiesAnyPostResponse
+        )
+    }
+    
     public func responseBodyAdditionalPropertiesComplexNumbersPost(request: [String: String]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
@@ -64,6 +73,15 @@ class _ResponseBodiesAPI: ResponseBodiesAPI {
         )
     }
     
+    public func responseBodyMissing2xxOr3xxGet() async throws -> Response<Operations.ResponseBodyMissing2xxOr3xxGetResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureResponseBodyMissing2xxOr3xxGetRequest(with: configuration)
+            },
+            handleResponse: handleResponseBodyMissing2xxOr3xxGetResponse
+        )
+    }
+    
     public func responseBodyOptionalGet(server: ResponseBodiesServers.ResponseBodyOptionalGet?) async throws -> Response<Operations.ResponseBodyOptionalGetResponse> {
         return try await client.makeRequest(
             with: try server?.server() ?? ResponseBodiesServers.ResponseBodyOptionalGet.default(),
@@ -114,6 +132,17 @@ class _ResponseBodiesAPI: ResponseBodiesAPI {
 }
 
 // MARK: - Request Configuration
+
+private func configureResponseBodyAdditionalPropertiesAnyPostRequest(with configuration: URLRequestConfiguration, request: [String: AnyValue]) throws {
+    configuration.path = "/anything/responseBodies/additionalPropertiesAny"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
 
 private func configureResponseBodyAdditionalPropertiesComplexNumbersPostRequest(with configuration: URLRequestConfiguration, request: [String: String]) throws {
     configuration.path = "/anything/responseBodies/additionalPropertiesComplexNumbers"
@@ -172,6 +201,12 @@ private func configureResponseBodyEmptyWithHeadersRequest(with configuration: UR
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
+private func configureResponseBodyMissing2xxOr3xxGetRequest(with configuration: URLRequestConfiguration) throws {
+    configuration.path = "/anything/responseBodies/missing2xxOr3xx"
+    configuration.method = .get
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
 private func configureResponseBodyOptionalGetRequest(with configuration: URLRequestConfiguration) throws {
     configuration.path = "/optional"
     configuration.method = .get
@@ -208,6 +243,22 @@ private func configureResponseBodyZeroValueComplexTypePtrsPostRequest(with confi
 }
 
 // MARK: - Response Handlers
+
+private func handleResponseBodyAdditionalPropertiesAnyPostResponse(response: Client.APIResponse) throws -> Operations.ResponseBodyAdditionalPropertiesAnyPostResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .object(try JSONDecoder().decode(Operations.ResponseBodyAdditionalPropertiesAnyPostResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
 
 private func handleResponseBodyAdditionalPropertiesComplexNumbersPostResponse(response: Client.APIResponse) throws -> Operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse {
     let httpResponse = response.httpResponse
@@ -289,6 +340,16 @@ private func handleResponseBodyEmptyWithHeadersResponse(response: Client.APIResp
     let httpResponse = response.httpResponse
     
     if httpResponse.statusCode == 200 { 
+        return .empty
+    }
+
+    return .empty
+}
+
+private func handleResponseBodyMissing2xxOr3xxGetResponse(response: Client.APIResponse) throws -> Operations.ResponseBodyMissing2xxOr3xxGetResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 500 { 
         return .empty
     }
 

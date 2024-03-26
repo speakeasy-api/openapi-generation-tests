@@ -35,77 +35,75 @@ namespace Openapi
     /// </summary>
     public class Errors: IErrors
     {
-        /**
-        * ConnectionErrorGetSERVERS contains the list of server urls available to the SDK.
-        */
-        public static readonly string[] ConnectionErrorGetSERVERS = {
+        /// <summary>
+        /// List of server URLs available for the connectionErrorGet operation.
+        /// </summary>
+        public static readonly string[] ConnectionErrorGetServerList = {
             "http://somebrokenapi.broken",
         };
-
-        /**
-        * StatusGetXSpeakeasyErrorsSERVERS contains the list of server urls available to the SDK.
-        */
-        public static readonly string[] StatusGetXSpeakeasyErrorsSERVERS = {
+        /// <summary>
+        /// List of server URLs available for the statusGetXSpeakeasyErrors operation.
+        /// </summary>
+        public static readonly string[] StatusGetXSpeakeasyErrorsServerList = {
             "http://localhost:35456",
         };
-
-        public SDKConfig Config { get; private set; }
+        public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.3.1";
-        private const string _sdkGenVersion = "2.188.3";
+        private const string _sdkVersion = "0.4.0";
+        private const string _sdkGenVersion = "2.287.0";
         private const string _openapiDocVersion = "0.1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.3.1 2.188.3 0.1.0 openapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.0 2.287.0 0.1.0 openapi";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
-        private ISpeakeasyHttpClient _securityClient;
+        private Func<Security>? _securitySource;
 
-        public Errors(ISpeakeasyHttpClient defaultClient, ISpeakeasyHttpClient securityClient, string serverUrl, SDKConfig config)
+        public Errors(ISpeakeasyHttpClient defaultClient, Func<Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _defaultClient = defaultClient;
-            _securityClient = securityClient;
+            _securitySource = securitySource;
             _serverUrl = serverUrl;
-            Config = config;
+            SDKConfiguration = config;
         }
-        
 
         public async Task<ConnectionErrorGetResponse> ConnectionErrorGetAsync(string? serverUrl = null)
         {
-            string baseUrl = ConnectionErrorGetSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
+            string baseUrl = Utilities.TemplateUrl(ConnectionErrorGetServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
+            {
                 baseUrl = serverUrl;
             }
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+
             var urlString = baseUrl + "/anything/connectionError";
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new ConnectionErrorGetResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
-                
+
                 return response;
             }
             return response;
         }
-        
+
 
         public async Task<StatusGetErrorResponse> StatusGetErrorAsync(long statusCode)
         {
@@ -113,39 +111,37 @@ namespace Openapi
             {
                 StatusCode = statusCode,
             };
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/status/{statusCode}", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new StatusGetErrorResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200) || (response.StatusCode == 300) || (response.StatusCode == 400) || (response.StatusCode == 500))
             {
-                
+
                 return response;
             }
             return response;
         }
-        
+
 
         public async Task<StatusGetXSpeakeasyErrorsResponse> StatusGetXSpeakeasyErrorsAsync(long statusCode, string? serverUrl = null)
         {
@@ -153,59 +149,61 @@ namespace Openapi
             {
                 StatusCode = statusCode,
             };
-            string baseUrl = StatusGetXSpeakeasyErrorsSERVERS[0];
-            if (!string.IsNullOrEmpty(serverUrl)) {
+            string baseUrl = Utilities.TemplateUrl(StatusGetXSpeakeasyErrorsServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
+            {
                 baseUrl = serverUrl;
             }
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
             var urlString = URLBuilder.Build(baseUrl, "/errors/{statusCode}", request);
-            
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new StatusGetXSpeakeasyErrorsResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200) || (response.StatusCode == 300) || (response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 500))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
+
             if((response.StatusCode == 501))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Object = JsonConvert.DeserializeObject<StatusGetXSpeakeasyErrorsResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
-        
+
     }
 }
