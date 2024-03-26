@@ -8,6 +8,7 @@ Endpoints for testing global parameters.
 ### Available Operations
 
 * [GlobalPathParameterGet](#globalpathparameterget)
+* [GlobalsHeaderGet](#globalsheaderget)
 * [GlobalsQueryParameterGet](#globalsqueryparameterget)
 
 ## GlobalPathParameterGet
@@ -18,10 +19,10 @@ Endpoints for testing global parameters.
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -34,14 +35,13 @@ func main() {
     )
 
 
-    var globalPathParam *int64 = 719830
+    var globalPathParam *int64 = openapi.Int64(719830)
 
     ctx := context.Background()
     res, err := s.Globals.GlobalPathParameterGet(ctx, globalPathParam)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -61,9 +61,9 @@ func main() {
 **[*operations.GlobalPathParameterGetResponse](../../pkg/models/operations/globalpathparametergetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
-## GlobalsQueryParameterGet
+## GlobalsHeaderGet
 
 ### Example Usage
 
@@ -71,10 +71,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -87,14 +87,65 @@ func main() {
     )
 
 
-    var globalQueryParam *string = "string"
+    var globalHeaderParam bool = true
+
+    ctx := context.Background()
+    res, err := s.Globals.GlobalsHeaderGet(ctx, globalHeaderParam)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `globalHeaderParam`                                   | *bool*                                                | :heavy_check_mark:                                    | N/A                                                   | true                                                  |
+
+
+### Response
+
+**[*operations.GlobalsHeaderGetResponse](../../pkg/models/operations/globalsheadergetresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
+
+## GlobalsQueryParameterGet
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
+	"log"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+
+    var globalQueryParam *string = openapi.String("<value>")
 
     ctx := context.Background()
     res, err := s.Globals.GlobalsQueryParameterGet(ctx, globalQueryParam)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -114,4 +165,4 @@ func main() {
 **[*operations.GlobalsQueryParameterGetResponse](../../pkg/models/operations/globalsqueryparametergetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

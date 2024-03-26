@@ -8,6 +8,7 @@ Endpoints for testing global parameters.
 ### Available Operations
 
 * [global_path_parameter_get](#global_path_parameter_get)
+* [globals_header_get](#globals_header_get)
 * [globals_query_parameter_get](#globals_query_parameter_get)
 
 ## global_path_parameter_get
@@ -16,7 +17,7 @@ Endpoints for testing global parameters.
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -32,6 +33,7 @@ res = s.globals.global_path_parameter_get(global_path_param=719830)
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -48,15 +50,15 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
-## globals_query_parameter_get
+## globals_header_get
 
 ### Example Usage
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -67,11 +69,53 @@ s = sdk.SDK(
 )
 
 
-res = s.globals.globals_query_parameter_get(global_query_param='string')
+res = s.globals.globals_header_get(global_header_param=True)
 
 if res.res is not None:
     # handle response
     pass
+
+```
+
+### Parameters
+
+| Parameter             | Type                  | Required              | Description           | Example               |
+| --------------------- | --------------------- | --------------------- | --------------------- | --------------------- |
+| `global_header_param` | *bool*                | :heavy_check_mark:    | N/A                   | true                  |
+
+
+### Response
+
+**[operations.GlobalsHeaderGetResponse](../../models/operations/globalsheadergetresponse.md)**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4x-5xx          | */*             |
+
+## globals_query_parameter_get
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.globals.globals_query_parameter_get(global_query_param='<value>')
+
+if res.res is not None:
+    # handle response
+    pass
+
 ```
 
 ### Parameters
@@ -88,4 +132,4 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |

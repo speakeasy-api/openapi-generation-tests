@@ -16,7 +16,7 @@ Endpoints for testing telemetry.
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -27,11 +27,12 @@ s = sdk.SDK(
 )
 
 
-res = s.telemetry.telemetry_speakeasy_user_agent_get(user_agent='string')
+res = s.telemetry.telemetry_speakeasy_user_agent_get(user_agent='<value>')
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -48,7 +49,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## telemetry_user_agent_get
 
@@ -72,6 +73,7 @@ res = s.telemetry.telemetry_user_agent_get()
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 
@@ -82,4 +84,4 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |

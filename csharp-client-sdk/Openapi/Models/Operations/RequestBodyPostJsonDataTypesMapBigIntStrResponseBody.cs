@@ -11,6 +11,7 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     using System.Collections.Generic;
     using System.Numerics;
     
@@ -23,7 +24,7 @@ namespace Openapi.Models.Operations
         [JsonProperty("data")]
         public string Data { get; set; } = default!;
 
-        [JsonProperty("json")]
+        [JsonProperty("json", ItemConverterType = typeof(BigIntSerializer))]
         public Dictionary<string, BigInteger> Json { get; set; } = default!;
     }
 }

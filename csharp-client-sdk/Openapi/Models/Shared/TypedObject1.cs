@@ -11,12 +11,13 @@
 namespace Openapi.Models.Shared
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Shared;
     
     public class TypedObject1
     {
 
         [JsonProperty("type")]
-        public Type Type { get; set; } = default!;
+        public TypedObject1Type Type { get; set; } = default!;
 
         [JsonProperty("value")]
         public string Value { get; set; } = default!;

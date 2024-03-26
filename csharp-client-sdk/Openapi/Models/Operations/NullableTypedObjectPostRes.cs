@@ -19,7 +19,7 @@ namespace Openapi.Models.Operations
     public class NullableTypedObjectPostRes
     {
 
-        [JsonProperty("json")]
-        public TypedObject1 Json { get; set; } = default!;
+        [JsonProperty("json", NullValueHandling = NullValueHandling.Include)]
+        public TypedObject1? Json { get; set; } = default!;
     }
 }

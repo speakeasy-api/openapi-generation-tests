@@ -12,6 +12,7 @@ namespace Openapi.Models.Shared
 {
     using Newtonsoft.Json;
     using NodaTime;
+    using Openapi.Models.Shared;
     using Openapi.Utils;
     using System.Numerics;
     using System;
@@ -57,52 +58,64 @@ namespace Openapi.Models.Shared
         [JsonProperty("constStr")]
         public string ConstStr { get; set; } = default!;
 
-        [JsonProperty("constStrNull")]
-        public string ConstStrNull { get; set; } = default!;
+        [JsonProperty("constStrDQuotes")]
+        public string ConstStrDQuotes { get; set; } = default!;
 
-        [JsonProperty("normalField")]
-        public string NormalField { get; set; } = default!;
+        [JsonProperty("constStrNull", NullValueHandling = NullValueHandling.Include)]
+        public string? ConstStrNull { get; set; } = default!;
+
+        [JsonProperty("constStrSQuotes")]
+        public string ConstStrSQuotes { get; set; } = default!;
 
         [JsonProperty("defaultBigInt")]
-        public BigInteger? DefaultBigInt { get; set; }
+        public BigInteger DefaultBigInt { get; set; } = default!;
 
         [JsonProperty("defaultBigIntStr")]
         [JsonConverter(typeof(BigIntSerializer))]
-        public BigInteger? DefaultBigIntStr { get; set; }
+        public BigInteger DefaultBigIntStr { get; set; } = default!;
 
         [JsonProperty("defaultBool")]
-        public bool? DefaultBool { get; set; }
+        public bool DefaultBool { get; set; } = default!;
 
         [JsonProperty("defaultDate")]
-        public LocalDate? DefaultDate { get; set; }
+        public LocalDate DefaultDate { get; set; } = default!;
 
         [JsonProperty("defaultDateTime")]
-        public DateTime? DefaultDateTime { get; set; }
+        public DateTime DefaultDateTime { get; set; } = default!;
 
         [JsonProperty("defaultDecimal")]
-        public decimal? DefaultDecimal { get; set; }
+        public decimal DefaultDecimal { get; set; } = default!;
 
         [JsonProperty("defaultDecimalStr")]
         [JsonConverter(typeof(DecimalSerializer))]
-        public decimal? DefaultDecimalStr { get; set; }
+        public decimal DefaultDecimalStr { get; set; } = default!;
 
         [JsonProperty("defaultEnumInt")]
-        public DefaultEnumInt? DefaultEnumInt { get; set; }
+        public DefaultEnumInt DefaultEnumInt { get; set; } = default!;
 
         [JsonProperty("defaultEnumStr")]
-        public DefaultEnumStr? DefaultEnumStr { get; set; }
+        public DefaultEnumStr DefaultEnumStr { get; set; } = default!;
 
         [JsonProperty("defaultInt")]
-        public long? DefaultInt { get; set; }
+        public long DefaultInt { get; set; } = default!;
 
         [JsonProperty("defaultNum")]
-        public double? DefaultNum { get; set; }
+        public double DefaultNum { get; set; } = default!;
 
         [JsonProperty("defaultStr")]
-        public string? DefaultStr { get; set; }
+        public string DefaultStr { get; set; } = default!;
 
-        [JsonProperty("defaultStrNullable")]
-        public string? DefaultStrNullable { get; set; }
+        [JsonProperty("defaultStrDQuotes")]
+        public string DefaultStrDQuotes { get; set; } = default!;
+
+        [JsonProperty("defaultStrNullable", NullValueHandling = NullValueHandling.Include)]
+        public string? DefaultStrNullable { get; set; } = default!;
+
+        [JsonProperty("defaultStrSQuotes")]
+        public string DefaultStrSQuotes { get; set; } = default!;
+
+        [JsonProperty("normalField")]
+        public string NormalField { get; set; } = default!;
 
         [JsonProperty("defaultStrOptional")]
         public string? DefaultStrOptional { get; set; }

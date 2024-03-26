@@ -15,8 +15,8 @@ namespace Openapi.Models.Shared
     
     public enum Type
     {
-        [JsonProperty("obj1")]
-        Obj1,
+        [JsonProperty("boat")]
+        Boat,
     }
 
     public static class TypeExtension
@@ -51,4 +51,5 @@ namespace Openapi.Models.Shared
             throw new Exception($"Unknown value {value} for enum Type");
         }
     }
+
 }

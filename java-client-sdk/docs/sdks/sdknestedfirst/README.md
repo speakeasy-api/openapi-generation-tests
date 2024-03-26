@@ -1,5 +1,5 @@
 # SDKNestedFirst
-(*nested.first*)
+(*nested().first()*)
 
 ### Available Operations
 
@@ -12,26 +12,36 @@
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.NestedFirstGetResponse;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            NestedFirstGetResponse res = sdk.nested.first.get();
+            NestedFirstGetResponse res = sdk.nested().first().get()
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -42,5 +52,9 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.NestedFirstGetResponse](../../models/operations/NestedFirstGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.NestedFirstGetResponse>](../../models/operations/NestedFirstGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
