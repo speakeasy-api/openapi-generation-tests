@@ -5334,6 +5334,20 @@ paths:
                 properties:
                   json:
                     $ref: "components.yaml#/components/schemas/simpleObject"
+                  normal:
+                    type: object
+                    x-speakeasy-name-override: overriddenNormal
+                  allOf:
+                    allOf:
+                      - type: object
+                      - x-speakeasy-name-override: overriddenAllOf
+                  deepAllOf:
+                    allOf:
+                      - allOf:
+                        - x-speakeasy-name-override: deepOverriddenAllOf
+                        - type: object
+
+
   /anything/globalNameOverride:
     post:
       x-speakeasy-usage-example: true
