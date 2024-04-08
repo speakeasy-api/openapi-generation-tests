@@ -71,6 +71,18 @@ x-speakeasy-globals:
       schema:
         type: boolean
         example: true
+    - $ref: "components.yaml#/components/parameters/globalHiddenQueryParam"
+    - name: globalHiddenHeaderParam
+      in: header
+      required: true
+      schema:
+        type: string
+    - name: globalHiddenPathParam
+      in: path
+      required: true
+      schema:
+        type: string
+      x-speakeasy-globals-hidden: true
 x-speakeasy-name-override:
   - operationId: getGlobalNameOverride
     methodNameOverride: globalNameOverridden
@@ -5695,7 +5707,81 @@ paths:
                   headers:
                     type: object
                     additionalProperties:
-                      type: string      
+                      type: string
+  /anything/globals/hidden/{globalHiddenPathParam}:
+    post:
+      operationId: globalsHiddenPost
+      x-speakeasy-max-method-params: 0
+      tags:
+        - globals
+      parameters:
+        - $ref: "components.yaml#/components/parameters/globalHiddenQueryParam"
+        - name: globalHiddenHeaderParam
+          in: header
+          required: true
+          schema:
+            type: string
+          x-speakeasy-globals-hidden: true
+        - name: globalHiddenPathParam
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                test:
+                  type: string
+                  example: friend
+                other:
+                  type: integer
+                  example: 37
+              required:
+                - test
+                - other
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    type: object
+                    properties:
+                      test:
+                        type: string
+                        example: friend
+                      other:
+                        type: integer
+                        example: 37
+                    required:
+                      - test
+                      - other
+                  args:
+                    type: object
+                    properties:
+                      globalHiddenQueryParam:
+                        type: string
+                    required:
+                      - globalHiddenQueryParam
+                  url:
+                    type: string
+                  headers:
+                    type: object
+                    additionalProperties:
+                      type: string
+                required:
+                  - json
+                  - args
+                  - url
+                  - headers
   /anything/stronglyTypedOneOf:
     post:
       operationId: stronglyTypedOneOfPost

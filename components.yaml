@@ -1875,3 +1875,11 @@ components:
           - bool
           - int
           - num
+    globalHiddenQueryParam:
+      name: globalHiddenQueryParam
+      in: query
+      required: true
+      schema:
+        type: string
+        example: hello
+      x-speakeasy-globals-hidden: true
