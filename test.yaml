@@ -6338,6 +6338,33 @@ paths:
       responses:
         "200":
           description: OK
+  /errors/unionErrors:
+    servers:
+      - url: http://localhost:35456
+    get:
+      operationId: unionErrorsGet
+      tags:
+        - errors
+      parameters:
+        - name: errorType
+          in: query
+          required: true
+          schema:
+            type: string
+            enum:
+              - "type1"
+              - "type2"
+      responses:
+        "200":
+          description: OK
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "components.yaml#/components/schemas/errorType1"
+                  - $ref: "components.yaml#/components/schemas/errorType2"
   /anything/telemetry/user-agent:
     get:
       operationId: telemetryUserAgentGet

@@ -1064,6 +1064,25 @@ components:
         - "not_found"
         - "invalid"
         - "internal"
+    errorType1:
+      type: object
+      properties:
+        error: 
+          type: string
+      required:
+        - error
+    errorType2:
+      type: object
+      properties:
+        error: 
+          type: object
+          properties:
+            message:
+              type: string
+          required:
+            - message
+      required:
+        - error
     complexNumberTypes:
       type: object
       properties:
