@@ -7133,6 +7133,34 @@ paths:
                   - args
                   - headers
                   - url
+  /anything/hooks/beforeCreateRequestPaths/{namespace}:
+    get:
+      operationId: testHooksBeforeCreateRequestPaths
+      tags:
+        - hooks
+      parameters:
+        - name: namespace
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                required: [url, headers]
+                properties:
+                  url:
+                    type: string
+                  headers:
+                    type: object
+                    properties:
+                      Old-Pathname:
+                        type: string
   /anything/hooks/afterResponseValidation:
     get:
       operationId: testHooksAfterResponse
