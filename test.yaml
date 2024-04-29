@@ -5950,6 +5950,30 @@ paths:
                     $ref: "components.yaml#/components/schemas/typedObjectNullableOneOf"
                 required:
                   - json
+  /anything/collectionOneOf:
+    post:
+      operationId: collectionOneOfPost
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/collectionOneOfObject"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/collectionOneOfObject"
+                required:
+                  - json
   /anything/flattenedTypedObject:
     post:
       operationId: flattenedTypedObjectPost

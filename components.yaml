@@ -61,6 +61,16 @@ components:
         - num2
         - num3
         - sum
+    collectionOneOfObject:
+      oneOf:
+        - type: object
+          additionalProperties: true
+          example:
+            allow: true
+            user_is_admin: true
+            user_is_granted: []
+        - type: array
+          items: {}
     stronglyTypedOneOfObject:
       oneOf:
         - $ref: "#/components/schemas/simpleObjectWithType"
