@@ -6983,6 +6983,10 @@ paths:
       responses:
         "200":
           description: Ok
+          headers:
+            Request-Id:
+              schema:
+                type: string
           content:
             text/event-stream:
               schema:
