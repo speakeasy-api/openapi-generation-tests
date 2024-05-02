@@ -91,9 +91,9 @@ components:
       discriminator:
         propertyName: tag
         mapping:
+          tag3: "#/components/schemas/taggedObject3"
           tag1: "#/components/schemas/taggedObject1"
           tag2: "#/components/schemas/taggedObject2"
-          tag3: "#/components/schemas/taggedObject3"
     weaklyTypedOneOfObject:
       oneOf:
         - $ref: "#/components/schemas/simpleObject"
