@@ -4706,6 +4706,8 @@ paths:
           description: OK
   /json:
     get:
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: response-bodies-json-get
       operationId: responseBodyJsonGet
       # No tag as we want this simple request in the root sdk for testing operations get generated there
       responses:
@@ -4715,8 +4717,13 @@ paths:
             application/json:
               schema:
                 $ref: "components.yaml#/components/schemas/httpBinSimpleJsonObject"
+              examples:
+                test:
+                  value: {"slideshow": {"author": "Yours Truly","date": "date of publication","title": "Sample Slide Show","slides": [{"title": "Wake up to WonderWidgets!","type": "all"},{"title": "Overview","type": "all","items": ["Why <em>WonderWidgets</em> are great","Who <em>buys</em> WonderWidgets"]}]}}
   /html:
     get:
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: response-bodies-string-get
       operationId: responseBodyStringGet
       tags:
         - responseBodies
@@ -4728,8 +4735,13 @@ paths:
               schema:
                 title: html
                 type: string
+              examples:
+                test:
+                  value: "<!DOCTYPE html>\\n<html>\\n  <head>\\n  </head>\\n  <body>\\n      <h1>Herman Melville - Moby-Dick</h1>\\n\\n      <div>\\n        <p>\\n          Availing himself of the mild, summer-cool weather that now reigned in these latitudes, and in preparation for the peculiarly active pursuits shortly to be anticipated, Perth, the begrimed, blistered old blacksmith, had not removed his portable forge to the hold again, after concluding his contributory work for Ahab's leg, but still retained it on deck, fast lashed to ringbolts by the foremast; being now almost incessantly invoked by the headsmen, and harpooneers, and bowsmen to do some little job for them; altering, or repairing, or new shaping their various weapons and boat furniture. Often he would be surrounded by an eager circle, all waiting to be served; holding boat-spades, pike-heads, harpoons, and lances, and jealously watching his every sooty movement, as he toiled. Nevertheless, this old man's was a patient hammer wielded by a patient arm. No murmur, no impatience, no petulance did come from him. Silent, slow, and solemn; bowing over still further his chronically broken back, he toiled away, as if toil were life itself, and the heavy beating of his hammer the heavy beating of his heart. And so it was.—Most miserable! A peculiar walk in this old man, a certain slight but painful appearing yawing in his gait, had at an early period of the voyage excited the curiosity of the mariners. And to the importunity of their persisted questionings he had finally given in; and so it came to pass that every one now knew the shameful story of his wretched fate. Belated, and not innocently, one bitter winter's midnight, on the road running between two country towns, the blacksmith half-stupidly felt the deadly numbness stealing over him, and sought refuge in a leaning, dilapidated barn. The issue was, the loss of the extremities of both feet. Out of this revelation, part by part, at last came out the four acts of the gladness, and the one long, and as yet uncatastrophied fifth act of the grief of his life's drama. He was an old man, who, at the age of nearly sixty, had postponedly encountered that thing in sorrow's technicals called ruin. He had been an artisan of famed excellence, and with plenty to do; owned a house and garden; embraced a youthful, daughter-like, loving wife, and three blithe, ruddy children; every Sunday went to a cheerful-looking church, planted in a grove. But one night, under cover of darkness, and further concealed in a most cunning disguisement, a desperate burglar slid into his happy home, and robbed them all of everything. And darker yet to tell, the blacksmith himself did ignorantly conduct this burglar into his family's heart. It was the Bottle Conjuror! Upon the opening of that fatal cork, forth flew the fiend, and shrivelled up his home. Now, for prudent, most wise, and economic reasons, the blacksmith's shop was in the basement of his dwelling, but with a separate entrance to it; so that always had the young and loving healthy wife listened with no unhappy nervousness, but with vigorous pleasure, to the stout ringing of her young-armed old husband's hammer; whose reverberations, muffled by passing through the floors and walls, came up to her, not unsweetly, in her nursery; and so, to stout Labor's iron lullaby, the blacksmith's infants were rocked to slumber. Oh, woe on woe! Oh, Death, why canst thou not sometimes be timely? Hadst thou taken this old blacksmith to thyself ere his full ruin came upon him, then had the young widow had a delicious grief, and her orphans a truly venerable, legendary sire to dream of in their after years; and all of them a care-killing competency.\\n        </p>\\n      </div>\\n  </body>\\n</html>"
   /xml:
     get:
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: response-bodies-xml-get
       operationId: responseBodyXmlGet
       tags:
         - responseBodies
@@ -4741,6 +4753,9 @@ paths:
               schema:
                 title: xml
                 type: string
+              examples:
+                test:
+                  value: "<?xml version='1.0' encoding='us-ascii'?>\\n\\n<!--  A SAMPLE set of slides  -->\\n\\n<slideshow \\n    title=\"Sample Slide Show\"\\n    date=\"Date of publication\"\\n    author=\"Yours Truly\"\\n    >\\n\\n    <!-- TITLE SLIDE -->\\n    <slide type=\"all\">\\n      <title>Wake up to WonderWidgets!</title>\\n    </slide>\\n\\n    <!-- OVERVIEW -->\\n    <slide type=\"all\">\\n        <title>Overview</title>\\n        <item>Why <em>WonderWidgets</em> are great</item>\\n        <item/>\\n        <item>Who <em>buys</em> WonderWidgets</item>\\n    </slide>\\n\\n</slideshow>"
   /bytes/100:
     get:
       operationId: responseBodyBytesGet
@@ -4757,6 +4772,8 @@ paths:
                 format: binary
   /optional:
     get:
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: response-bodies-accept-header
       operationId: responseBodyOptionalGet
       tags:
         - responseBodies
@@ -4769,11 +4786,19 @@ paths:
             application/json:
               schema:
                 $ref: "components.yaml#/components/schemas/typedObject1"
+              examples:
+                default:
+                  value: {"type": "obj1", "value": "JSON"}
             text/plain:
               schema:
                 type: string
+              examples:
+                override:
+                  value: "Success"
   /readonlyorwriteonly#readOnly:
     post:
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: response-bodies-read-only
       operationId: responseBodyReadOnly
       servers:
         - url: http://localhost:35456
@@ -4786,6 +4811,9 @@ paths:
             application/json:
               schema:
                 $ref: "components.yaml#/components/schemas/readOnlyObject"
+              examples:
+                test:
+                  value: "..."
   /response-headers:
     post:
       operationId: responseBodyEmptyWithHeaders
@@ -4814,6 +4842,8 @@ paths:
                 type: number
   /anything/responseBodies/additionalProperties:
     post:
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: response-bodies-additional-properties-string
       operationId: responseBodyAdditionalPropertiesPost
       tags:
         - responseBodies
@@ -4822,6 +4852,12 @@ paths:
           application/json:
             schema:
               $ref: "components.yaml#/components/schemas/objWithStringAdditionalProperties"
+            examples:
+              string:
+                value: {
+                  "normalField": "normal",
+                  "key1": "value1"
+                }
         required: true
       responses:
         "200":
@@ -4835,8 +4871,18 @@ paths:
                     $ref: "components.yaml#/components/schemas/objWithStringAdditionalProperties"
                 required:
                   - json
+              examples:
+                string:
+                  value: {
+                    "json": {
+                      "normalField": "normal",
+                      "key1": "value1"
+                    }
+                  }
   /anything/responseBodies/additionalPropertiesAny:
     post:
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: response-bodies-additional-properties-any-values
       operationId: responseBodyAdditionalPropertiesAnyPost
       tags:
         - responseBodies
@@ -4845,6 +4891,20 @@ paths:
           application/json:
             schema:
               $ref: "components.yaml#/components/schemas/objWithAnyAdditionalProperties"
+            examples:
+              test:
+                value: {
+                  "key1": "value2",
+                  "key2": null,
+                  "key3": {
+                    "foo": "bar",
+                    "subkey1": {
+                      "foo": "bar"
+                    }
+                  },
+                  "key4": [ "foo", "bar" ],
+                  "normalField": "normal"
+                }
         required: true
       responses:
         "200":
@@ -4858,8 +4918,26 @@ paths:
                     $ref: "components.yaml#/components/schemas/objWithAnyAdditionalProperties"
                 required:
                   - json
+              examples:
+                test:
+                  value: {
+                    "json": {
+                      "key1": "value2",
+                      "key2": null,
+                      "key3": {
+                        "foo": "bar",
+                        "subkey1": {
+                          "foo": "bar"
+                        }
+                      },
+                      "key4": [ "foo", "bar" ],
+                      "normalField": "normal"
+                    }
+                  }
   /anything/responseBodies/additionalPropertiesComplexNumbers:
     post:
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: response-bodies-additional-properties-complex-numbers
       operationId: responseBodyAdditionalPropertiesComplexNumbersPost
       tags:
         - responseBodies
@@ -4868,6 +4946,12 @@ paths:
           application/json:
             schema:
               $ref: "components.yaml#/components/schemas/objWithComplexNumbersAdditionalProperties"
+            examples:
+              test:
+                value: {
+                  "normalField": "normal",
+                  "key1": 1
+                }
         required: true
       responses:
         "200":
@@ -4881,31 +4965,18 @@ paths:
                     $ref: "components.yaml#/components/schemas/objWithComplexNumbersAdditionalProperties"
                 required:
                   - json
-  /anything/responseBodies/zeroValueComplexTypePtrs:
-    post:
-      operationId: responseBodyZeroValueComplexTypePtrsPost
-      tags:
-        - responseBodies
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "components.yaml#/components/schemas/objWithZeroValueComplexTypePtrs"
-        required: true
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  json:
-                    $ref: "components.yaml#/components/schemas/objWithZeroValueComplexTypePtrs"
-                required:
-                  - json
+              examples:
+                test:
+                  value: {
+                    "json": {
+                      "normalField": "normal",
+                      "key1": 1
+                    }
+                  }
   /anything/responseBodies/additionalPropertiesDate:
     post:
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: response-bodies-additional-properties-date
       operationId: responseBodyAdditionalPropertiesDatePost
       tags:
         - responseBodies
@@ -4914,6 +4985,12 @@ paths:
           application/json:
             schema:
               $ref: "components.yaml#/components/schemas/objWithDateAdditionalProperties"
+            examples:
+              test:
+                value: {
+                  "normalField": "normal",
+                  "key1": "2020-01-01"
+                }
         required: true
       responses:
         "200":
@@ -4927,8 +5004,18 @@ paths:
                     $ref: "components.yaml#/components/schemas/objWithDateAdditionalProperties"
                 required:
                   - json
+              examples:
+                test:
+                  value: {
+                    "json": {
+                      "normalField": "normal",
+                      "key1": "2020-01-01"
+                    }
+                  }
   /anything/responseBodies/additionalPropertiesObject:
     post:
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: response-bodies-additional-properties-object
       operationId: responseBodyAdditionalPropertiesObjectPost
       tags:
         - responseBodies
@@ -4937,6 +5024,13 @@ paths:
           application/json:
             schema:
               $ref: "components.yaml#/components/schemas/objWithObjAdditionalProperties"
+            examples:
+              test:
+                value: {
+                  "datetime": "2020-01-01T00:00:00.001Z",
+                  "AdditionalProperties": [1,2,3],
+                  "key1": "..."
+                }
         required: true
       responses:
         "200":
@@ -4950,6 +5044,15 @@ paths:
                     $ref: "components.yaml#/components/schemas/objWithObjAdditionalProperties"
                 required:
                   - json
+              examples:
+                test:
+                  value: {
+                    "json": {
+                      "datetime": "2020-01-01T00:00:00.001Z",
+                      "AdditionalProperties": [1,2,3],
+                      "key1": "..."
+                    }
+                  }
   /anything/responseBodies/missing2xxOr3xx:
     get:
       operationId: responseBodyMissing2xxOr3xxGet

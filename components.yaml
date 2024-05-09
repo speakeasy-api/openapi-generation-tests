@@ -1517,28 +1517,6 @@ components:
         format: bigint
       required:
         - normalField
-    objWithZeroValueComplexTypePtrs:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date
-          description: "A date property."
-          example: "2020-01-01"
-        dateTime:
-          type: string
-          format: date-time
-          description: "A date-time property."
-          example: "2020-01-01T00:00:00Z"
-        bigint:
-          type: integer
-          format: bigint
-        bigintStr:
-          type: string
-          format: bigint
-        decimal:
-          type: number
-          format: decimal
     objWithDateAdditionalProperties:
       type: object
       properties:
