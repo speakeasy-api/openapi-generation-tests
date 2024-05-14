@@ -128,6 +128,8 @@ tags:
         description: Testing for documentation extensions in TypeScript.
   - name: hooks
     description: Endpoints for testing hooks
+  - name: openEnums
+    description: Endpoints for testing open/closed enums
 security:
   - apiKeyAuth: []
   - oauth2: []
@@ -7441,6 +7443,24 @@ paths:
           $ref: "components.yaml#/components/responses/tokenAuthResponse"
         "401":
           description: Unsuccessful authentication.
+  /anything/openEnums/unrecognized:
+    post:
+      operationId: openEnumsPostUnrecognized
+      tags:
+        - openEnums
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/themeRequestOpaque"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/themeResponse"
 components:
   schemas:
     ExampleVehicle:

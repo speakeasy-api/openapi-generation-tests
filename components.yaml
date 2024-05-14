@@ -1661,6 +1661,43 @@ components:
           type: string
       required:
         - url
+    themeRequestOpaque:
+      type: object
+      properties:
+        color:
+          type: string
+          example: green
+        icon:
+          type: string
+          example: tick
+        heroWidth:
+          type: integer
+          example: 480
+    themeResponse:
+      type: object
+      required:
+        - json
+      properties:
+        json:
+          $ref: "#/components/schemas/theme"
+    theme:
+      type: object
+      properties:
+        color:
+          type: string
+          enum: [red, green, blue]
+          example: green
+          default: blue
+          x-speakeasy-unknown-values: allow
+        icon:
+          type: string
+          enum: [tick, thumbs-up, fire]
+          example: tick
+        heroWidth:
+          type: integer
+          enum: [480, 720, 1080]
+          example: 480
+          x-speakeasy-unknown-values: allow
   responses:
     tokenAuthResponse:
       description: Successful authentication.
