@@ -4,9 +4,9 @@
 # TODO: have tests for generation methods to ensure generated code is valid
 openapi: 3.1.0
 info:
-  title: Test
+  title: Speakeasy's Uber Test Spec
   version: 0.1.0
-  summary: Test Summary
+  summary: Contains a wide array of different operation types and schema to try and cover enough ground to ensure good coverage of our support of OpenAPI
   description: |-
     Some test description.
     About our test document.
@@ -349,12 +349,6 @@ paths:
       operationId: oauth2Override
       tags:
         - auth
-      parameters:
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
       security:
         - oauth2: []
       responses:
@@ -3542,6 +3536,7 @@ paths:
                   enum:
                     - first
                     - second
+                    - null
                   example: second
                 NullableRequiredDateTime:
                   nullable: true
@@ -5689,6 +5684,7 @@ paths:
                 "200":
                   description: OK
     put:
+      operationId: ignoredGenerationPut
       requestBody:
         content:
           application/json:
@@ -5723,6 +5719,7 @@ paths:
           description: Created
           x-my-ignore: true
     post:
+      operationId: ignoredGenerationPost
       x-my-ignore: true
       requestBody:
         content:
@@ -5845,6 +5842,7 @@ paths:
   /anything/ignoredPath:
     x-my-ignore: true
     get:
+      operationId: ignoredPathGet
       responses:
         "200":
           description: OK
@@ -7461,6 +7459,144 @@ paths:
             application/json:
               schema:
                 $ref: "components.yaml#/components/schemas/themeResponse"
+  /clientcredentials/authenticatedrequest:
+    post:
+      operationId: authenticatedRequest
+      security:
+        - clientCredentials: [write]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: OK
+  /anything/flattenedUnionResponse:
+    get:
+      operationId: flattenedUnionResponse
+      tags:
+        - responseBodies
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /anything/flattenedEnvelopeResponse:
+    get:
+      operationId: flattenedEnvelopeResponse
+      tags:
+        - responseBodies
+      responses:
+        "200":
+          description: OK
+          headers:
+            x-some-header:
+              description: A header
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /anything/flattenedEnvelopeUnionResponse:
+    get:
+      operationId: flattenedEnvelopeUnionResponse
+      tags:
+        - responseBodies
+      responses:
+        "200":
+          description: OK
+          headers:
+            x-some-header:
+              description: A header
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+  /anything/flattenedEnvelopePaginationResponse:
+    get:
+      operationId: flattenedEnvelopePaginationResponse
+      tags:
+        - responseBodies
+      parameters:
+        - name: cursor
+          in: query
+          description: The page token used to request a specific page of the search results
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  numPages:
+                    type: integer
+                  next:
+                    type: string
+                  resultArray:
+                    type: array
+                    items:
+                      type: string
+                required:
+                  - numPages
+                  - resultArray
+      x-speakeasy-pagination:
+        type: cursor
+        inputs:
+          - name: cursor
+            in: parameters
+            type: cursor
+        outputs:
+          nextCursor: $.resultArray[(@.length-1)]
 components:
   schemas:
     ExampleVehicle:
@@ -7781,3 +7917,11 @@ components:
       type: openIdConnect
       openIdConnectUrl: http://localhost:35123/.well-known/openid-configuration
       x-speakeasy-example: Bearer YOUR_OPENID_TOKEN
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: /clientcredentials/token
+          scopes:
+            read: Read access
+            write: Write access
