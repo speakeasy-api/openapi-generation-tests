@@ -11,6 +11,7 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     using System;
     
     /// <summary>
@@ -58,4 +59,5 @@ namespace Openapi.Models.Operations
             throw new Exception($"Unknown value {value} for enum OptEnumParameter");
         }
     }
+
 }

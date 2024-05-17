@@ -40,9 +40,11 @@ type FormQueryParamsObjectArgs struct {
 	DecimalStr *string `json:"decimalStr,omitempty"`
 	Enum       string  `json:"enum"`
 	Float32    string  `json:"float32"`
+	Float64Str *string `json:"float64Str,omitempty"`
 	Int        string  `json:"int"`
 	Int32      string  `json:"int32"`
 	Int32Enum  string  `json:"int32Enum"`
+	Int64Str   *string `json:"int64Str,omitempty"`
 	IntEnum    string  `json:"intEnum"`
 	IntOptNull *string `json:"intOptNull,omitempty"`
 	Num        string  `json:"num"`
@@ -129,6 +131,13 @@ func (o *FormQueryParamsObjectArgs) GetFloat32() string {
 	return o.Float32
 }
 
+func (o *FormQueryParamsObjectArgs) GetFloat64Str() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Float64Str
+}
+
 func (o *FormQueryParamsObjectArgs) GetInt() string {
 	if o == nil {
 		return ""
@@ -148,6 +157,13 @@ func (o *FormQueryParamsObjectArgs) GetInt32Enum() string {
 		return ""
 	}
 	return o.Int32Enum
+}
+
+func (o *FormQueryParamsObjectArgs) GetInt64Str() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Int64Str
 }
 
 func (o *FormQueryParamsObjectArgs) GetIntEnum() string {

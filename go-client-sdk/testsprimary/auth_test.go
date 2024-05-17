@@ -16,20 +16,93 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func TestNoAuth(t *testing.T) {
+	recordTest("auth-no-auth")
+
+	s := sdk.New()
+	res, err := s.Auth.NoAuth(context.Background())
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+}
+
 func TestBasicAuth(t *testing.T) {
 	recordTest("auth-basic-auth")
 
 	s := sdk.New()
 
-	res, err := s.AuthNew.BasicAuthNew(context.Background(), shared.AuthServiceRequestBody{
+	req := shared.AuthServiceRequestBody{
 		BasicAuth: &shared.BasicAuth{
 			Username: "testUser",
 			Password: "testPass",
 		},
-	}, operations.BasicAuthNewSecurity{
+	}
+
+	sec := operations.BasicAuthNewSecurity{
 		Username: "testUser",
 		Password: "testPass",
-	})
+	}
+
+	res, err := s.AuthNew.BasicAuthNew(context.Background(), sec, req)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+}
+
+func TestBasicAuthEmpty(t *testing.T) {
+	recordTest("auth-basic-auth-empty")
+
+	s := sdk.New()
+
+	req := shared.AuthServiceRequestBody{
+		BasicAuth: &shared.BasicAuth{},
+	}
+
+	sec := operations.BasicAuthNewSecurity{}
+
+	res, err := s.AuthNew.BasicAuthNew(context.Background(), sec, req)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+}
+
+func TestBasicAuthUsernameOnly(t *testing.T) {
+	recordTest("auth-basic-auth-username-only")
+
+	s := sdk.New()
+
+	req := shared.AuthServiceRequestBody{
+		BasicAuth: &shared.BasicAuth{
+			Username: "testUser",
+		},
+	}
+
+	sec := operations.BasicAuthNewSecurity{
+		Username: "testUser",
+	}
+
+	res, err := s.AuthNew.BasicAuthNew(context.Background(), sec, req)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+}
+
+func TestBasicAuthPasswordOnly(t *testing.T) {
+	recordTest("auth-basic-auth-password-only")
+
+	s := sdk.New()
+
+	req := shared.AuthServiceRequestBody{
+		BasicAuth: &shared.BasicAuth{
+			Password: "testPass",
+		},
+	}
+
+	sec := operations.BasicAuthNewSecurity{
+		Password: "testPass",
+	}
+
+	res, err := s.AuthNew.BasicAuthNew(context.Background(), sec, req)
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
@@ -39,35 +112,14 @@ func TestAPIKeyAuthGlobal(t *testing.T) {
 	recordTest("auth-api-key-auth-global")
 
 	s := sdk.New(sdk.WithSecurity(shared.Security{
-		APIKeyAuthNew: sdk.String("test_api_key"),
+		APIKeyAuth: sdk.String("Bearer test_api_key"),
 	}))
 
-	res, err := s.AuthNew.APIKeyAuthGlobalNew(context.Background(), shared.AuthServiceRequestBody{
-		HeaderAuth: []shared.HeaderAuth{
-			{
-				HeaderName:    "x-api-key",
-				ExpectedValue: "test_api_key",
-			},
-		},
-	})
+	res, err := s.Auth.APIKeyAuthGlobal(context.Background())
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-}
-
-func TestAPIKeyAuthOperation(t *testing.T) {
-	recordTest("auth-api-key-auth-operation")
-
-	s := sdk.New()
-
-	res, err := s.Auth.APIKeyAuth(context.Background(), operations.APIKeyAuthSecurity{
-		APIKeyAuth: "Bearer testToken",
-	})
-	require.NoError(t, err)
-	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.True(t, res.Token.Authenticated)
-	assert.Equal(t, "testToken", res.Token.Token)
+	assert.Equal(t, "test_api_key", res.Token.Token)
 }
 
 func TestBearerAuthOperation_WithPrefix(t *testing.T) {
@@ -103,7 +155,9 @@ func TestBearerAuthOperation_WithoutPrefix(t *testing.T) {
 func TestOauth2Auth(t *testing.T) {
 	recordTest("auth-oauth2-auth")
 
-	s := sdk.New()
+	s := sdk.New(sdk.WithSecurity(shared.Security{
+		Oauth2: sdk.String("Bearer testToken"),
+	}))
 
 	res, err := s.AuthNew.Oauth2AuthNew(context.Background(), shared.AuthServiceRequestBody{
 		HeaderAuth: []shared.HeaderAuth{
@@ -112,8 +166,6 @@ func TestOauth2Auth(t *testing.T) {
 				ExpectedValue: "Bearer testToken",
 			},
 		},
-	}, operations.Oauth2AuthNewSecurity{
-		Oauth2: "Bearer testToken",
 	})
 	require.NoError(t, err)
 	require.NotNil(t, res)
@@ -125,16 +177,20 @@ func TestOpenIdConnectAuth(t *testing.T) {
 
 	s := sdk.New()
 
-	res, err := s.AuthNew.OpenIDConnectAuthNew(context.Background(), shared.AuthServiceRequestBody{
+	req := shared.AuthServiceRequestBody{
 		HeaderAuth: []shared.HeaderAuth{
 			{
 				HeaderName:    "Authorization",
 				ExpectedValue: "Bearer testToken",
 			},
 		},
-	}, operations.OpenIDConnectAuthNewSecurity{
+	}
+
+	sec := operations.OpenIDConnectAuthNewSecurity{
 		OpenIDConnect: "Bearer testToken",
-	})
+	}
+
+	res, err := s.AuthNew.OpenIDConnectAuthNew(context.Background(), sec, req)
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
@@ -145,7 +201,7 @@ func TestMultipleSimpleSchemeAuth(t *testing.T) {
 
 	s := sdk.New()
 
-	res, err := s.AuthNew.MultipleSimpleSchemeAuth(context.Background(), shared.AuthServiceRequestBody{
+	req := shared.AuthServiceRequestBody{
 		HeaderAuth: []shared.HeaderAuth{
 			{
 				HeaderName:    "x-api-key",
@@ -156,10 +212,14 @@ func TestMultipleSimpleSchemeAuth(t *testing.T) {
 				ExpectedValue: "Bearer testToken",
 			},
 		},
-	}, operations.MultipleSimpleSchemeAuthSecurity{
+	}
+
+	sec := operations.MultipleSimpleSchemeAuthSecurity{
 		APIKeyAuthNew: "test_api_key",
 		Oauth2:        "Bearer testToken",
-	})
+	}
+
+	res, err := s.AuthNew.MultipleSimpleSchemeAuth(context.Background(), sec, req)
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
@@ -170,7 +230,7 @@ func TestMultipleMixedSchemeAuth(t *testing.T) {
 
 	s := sdk.New()
 
-	res, err := s.AuthNew.MultipleMixedSchemeAuth(context.Background(), shared.AuthServiceRequestBody{
+	req := shared.AuthServiceRequestBody{
 		HeaderAuth: []shared.HeaderAuth{
 			{
 				HeaderName:    "x-api-key",
@@ -181,13 +241,17 @@ func TestMultipleMixedSchemeAuth(t *testing.T) {
 			Username: "testUser",
 			Password: "testPass",
 		},
-	}, operations.MultipleMixedSchemeAuthSecurity{
+	}
+
+	sec := operations.MultipleMixedSchemeAuthSecurity{
 		APIKeyAuthNew: "test_api_key",
 		BasicAuth: shared.SchemeBasicAuth{
 			Username: "testUser",
 			Password: "testPass",
 		},
-	})
+	}
+
+	res, err := s.AuthNew.MultipleMixedSchemeAuth(context.Background(), sec, req)
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
@@ -205,7 +269,7 @@ func TestMultipleSimpleOptionsAuth_FirstOption(t *testing.T) {
 				ExpectedValue: "test_api_key",
 			},
 		},
-	}, operations.MultipleSimpleOptionsAuthSecurity{
+	}, &operations.MultipleSimpleOptionsAuthSecurity{
 		APIKeyAuthNew: sdk.String("test_api_key"),
 	})
 	require.NoError(t, err)
@@ -225,7 +289,7 @@ func TestMultipleSimpleOptionsAuth_SecondOption(t *testing.T) {
 				ExpectedValue: "Bearer testToken",
 			},
 		},
-	}, operations.MultipleSimpleOptionsAuthSecurity{
+	}, &operations.MultipleSimpleOptionsAuthSecurity{
 		Oauth2: sdk.String("Bearer testToken"),
 	})
 	require.NoError(t, err)
@@ -245,7 +309,7 @@ func TestMultipleMixedOptionsAuth_FirstOption(t *testing.T) {
 				ExpectedValue: "test_api_key",
 			},
 		},
-	}, operations.MultipleMixedOptionsAuthSecurity{
+	}, &operations.MultipleMixedOptionsAuthSecurity{
 		APIKeyAuthNew: sdk.String("test_api_key"),
 	})
 	require.NoError(t, err)
@@ -263,7 +327,7 @@ func TestMultipleMixedOptionsAuth_SecondOption(t *testing.T) {
 			Username: "testUser",
 			Password: "testPass",
 		},
-	}, operations.MultipleMixedOptionsAuthSecurity{
+	}, &operations.MultipleMixedOptionsAuthSecurity{
 		BasicAuth: &shared.SchemeBasicAuth{
 			Username: "testUser",
 			Password: "testPass",
@@ -290,7 +354,7 @@ func TestMultipleOptionsWithSimpleSchemesAuth_FirstOption(t *testing.T) {
 				ExpectedValue: "Bearer testToken",
 			},
 		},
-	}, operations.MultipleOptionsWithSimpleSchemesAuthSecurity{
+	}, &operations.MultipleOptionsWithSimpleSchemesAuthSecurity{
 		Option1: &operations.MultipleOptionsWithSimpleSchemesAuthSecurityOption1{
 			APIKeyAuthNew: "test_api_key",
 			Oauth2:        "Bearer testToken",
@@ -317,7 +381,7 @@ func TestMultipleOptionsWithSimpleSchemesAuth_SecondOption(t *testing.T) {
 				ExpectedValue: "Bearer testToken",
 			},
 		},
-	}, operations.MultipleOptionsWithSimpleSchemesAuthSecurity{
+	}, &operations.MultipleOptionsWithSimpleSchemesAuthSecurity{
 		Option2: &operations.MultipleOptionsWithSimpleSchemesAuthSecurityOption2{
 			APIKeyAuthNew: "test_api_key",
 			OpenIDConnect: "Bearer testToken",
@@ -344,7 +408,7 @@ func TestMultipleOptionsWithMixedSchemesAuth_FirstOption(t *testing.T) {
 				ExpectedValue: "Bearer testToken",
 			},
 		},
-	}, operations.MultipleOptionsWithMixedSchemesAuthSecurity{
+	}, &operations.MultipleOptionsWithMixedSchemesAuthSecurity{
 		Option1: &operations.MultipleOptionsWithMixedSchemesAuthSecurityOption1{
 			APIKeyAuthNew: "test_api_key",
 			Oauth2:        "Bearer testToken",
@@ -371,7 +435,7 @@ func TestMultipleOptionsWithMixedSchemesAuth_SecondOption(t *testing.T) {
 			Username: "testUser",
 			Password: "testPass",
 		},
-	}, operations.MultipleOptionsWithMixedSchemesAuthSecurity{
+	}, &operations.MultipleOptionsWithMixedSchemesAuthSecurity{
 		Option2: &operations.MultipleOptionsWithMixedSchemesAuthSecurityOption2{
 			BasicAuth: shared.SchemeBasicAuth{
 				Username: "testUser",
@@ -399,41 +463,4 @@ func TestFunctionCallbacksForOAuthSupport_GlobalSecurity(t *testing.T) {
 	require.NotNil(t, res)
 	require.NotNil(t, res.Token)
 	assert.Equal(t, "global", res.Token.Token)
-}
-
-func TestFunctionCallbacksForOAuthSupport_OperationLevelSecurityOverrides(t *testing.T) {
-	recordTest("auth-function-callbacks-oauth-global-security-with-local-override")
-
-	s := sdk.New(sdk.WithSecuritySource(func(ctx context.Context) (shared.Security, error) {
-		return shared.Security{
-			Oauth2: sdk.String("Bearer global"),
-		}, nil
-	}))
-
-	res, err := s.Auth.Oauth2Auth(context.Background(), operations.Oauth2AuthSecurity{
-		Oauth2: "Bearer local",
-	})
-	require.NoError(t, err)
-	require.NotNil(t, res)
-	require.NotNil(t, res.Token)
-	assert.Equal(t, "local", res.Token.Token)
-}
-
-func TestFunctionCallbacksForOAuthSupport_ParamOverrides(t *testing.T) {
-	recordTest("auth-function-callbacks-oauth-global-security-with-param-override")
-
-	s := sdk.New(sdk.WithSecuritySource(func(ctx context.Context) (shared.Security, error) {
-		return shared.Security{
-			Oauth2: sdk.String("Bearer global"),
-		}, nil
-	}))
-
-	res, err := s.Auth.Oauth2Override(context.Background(), operations.Oauth2OverrideSecurity{
-		Oauth2: "Bearer overrideHeaders",
-	})
-	require.NoError(t, err)
-	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
-	require.NotNil(t, res.Token)
-	assert.Equal(t, "overrideHeaders", res.Token.Token)
 }

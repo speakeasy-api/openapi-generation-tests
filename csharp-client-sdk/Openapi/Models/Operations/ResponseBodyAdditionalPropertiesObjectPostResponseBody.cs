@@ -12,7 +12,7 @@ namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
     using Openapi.Models.Shared;
-    using System.Collections.Generic;
+    using Openapi.Utils;
     
     /// <summary>
     /// OK
@@ -21,6 +21,6 @@ namespace Openapi.Models.Operations
     {
 
         [JsonProperty("json")]
-        public Dictionary<string, SimpleObject> Json { get; set; } = default!;
+        public ObjWithObjAdditionalProperties Json { get; set; } = default!;
     }
 }

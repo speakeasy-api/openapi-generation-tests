@@ -11,11 +11,12 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     
     public class Args
     {
 
-        [JsonProperty("globalQueryParam")]
-        public string GlobalQueryParam { get; set; } = default!;
+        [JsonProperty("globalHiddenQueryParam")]
+        public string GlobalHiddenQueryParam { get; set; } = default!;
     }
 }

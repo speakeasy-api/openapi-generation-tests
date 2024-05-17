@@ -11,11 +11,15 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     
     public class Headers
     {
 
-        [JsonProperty("X-Header-Array")]
-        public string XHeaderArray { get; set; } = default!;
+        [JsonProperty("Client-Level-Header")]
+        public string? ClientLevelHeader { get; set; }
+
+        [JsonProperty("Idempotency-Key")]
+        public string? IdempotencyKey { get; set; }
     }
 }

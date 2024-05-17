@@ -10,6 +10,7 @@
 #nullable enable
 namespace Openapi.Models.Shared
 {
+    using Openapi.Utils;
     
     /// <summary>
     /// An integer enum property.
@@ -20,4 +21,5 @@ namespace Openapi.Models.Shared
         Two = 2,
         Three = 3,
     }
+
 }

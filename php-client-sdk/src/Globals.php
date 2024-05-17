@@ -8,41 +8,35 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI;
 
-class Globals 
+class Globals
 {
+    private SDKConfiguration $sdkConfiguration;
 
-	private SDKConfiguration $sdkConfiguration;
+    /**
+     * @param  SDKConfiguration  $sdkConfig
+     */
+    public function __construct(SDKConfiguration $sdkConfig)
+    {
+        $this->sdkConfiguration = $sdkConfig;
+    }
 
-	/**
-	 * @param SDKConfiguration $sdkConfig
-	 */
-	public function __construct(SDKConfiguration $sdkConfig)
-	{
-		$this->sdkConfiguration = $sdkConfig;
-	}
-	
     /**
      * globalPathParameterGet
-     * 
-     * @param ?int $globalPathParam
+     *
+     * @param  ?int  $globalPathParam
      * @return \OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetResponse
      */
-	public function globalPathParameterGet(
+    public function globalPathParameterGet(
         ?int $globalPathParam = null,
-    ): \OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetResponse {
         $request = new \OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetRequest();
         $request->globalPathParam = $globalPathParam;
-        
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/globals/pathParameter/{globalPathParam}', \OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetRequest::class, $request, $this->sdkConfiguration->globals);
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -51,40 +45,116 @@ class Globals
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetRes', 'json');
+                $response->res = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetRes', 'json');
             }
         }
 
         return $response;
     }
-	
+
+    /**
+     * globalsHeaderGet
+     *
+     * @param  ?bool  $globalHeaderParam
+     * @return \OpenAPI\OpenAPI\Models\Operations\GlobalsHeaderGetResponse
+     */
+    public function globalsHeaderGet(
+        ?bool $globalHeaderParam = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\GlobalsHeaderGetResponse {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\GlobalsHeaderGetRequest();
+        $request->globalHeaderParam = $globalHeaderParam;
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/globals/header');
+        $options = ['http_errors' => false];
+        $options = array_merge_recursive($options, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
+        if (! array_key_exists('headers', $options)) {
+            $options['headers'] = [];
+        }
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\GlobalsHeaderGetResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\GlobalsHeaderGetRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+
+    /**
+     * globalsHiddenPost
+     *
+     * @param  \OpenAPI\OpenAPI\Models\Operations\GlobalsHiddenPostRequest  $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\GlobalsHiddenPostResponse
+     */
+    public function globalsHiddenPost(
+        \OpenAPI\OpenAPI\Models\Operations\GlobalsHiddenPostRequest $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\GlobalsHiddenPostResponse {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/globals/hidden/{globalHiddenPathParam}', \OpenAPI\OpenAPI\Models\Operations\GlobalsHiddenPostRequest::class, $request, $this->sdkConfiguration->globals);
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, 'requestBody', 'json');
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $options = array_merge_recursive($options, $body);
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\GlobalsHiddenPostRequest::class, $request, $this->sdkConfiguration->globals));
+        $options = array_merge_recursive($options, Utils\Utils::getHeaders($request, $this->sdkConfiguration->globals));
+        if (! array_key_exists('headers', $options)) {
+            $options['headers'] = [];
+        }
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\GlobalsHiddenPostResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\GlobalsHiddenPostRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+
     /**
      * globalsQueryParameterGet
-     * 
-     * @param ?string $globalQueryParam
+     *
+     * @param  ?string  $globalQueryParam
      * @return \OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetResponse
      */
-	public function globalsQueryParameterGet(
+    public function globalsQueryParameterGet(
         ?string $globalQueryParam = null,
-    ): \OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetResponse {
         $request = new \OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetRequest();
         $request->globalQueryParam = $globalQueryParam;
-        
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/globals/queryParameter');
-        
         $options = ['http_errors' => false];
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -93,11 +163,10 @@ class Globals
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetRes', 'json');
+                $response->res = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetRes', 'json');
             }
         }
 

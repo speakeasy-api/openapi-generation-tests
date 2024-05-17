@@ -31,8 +31,16 @@ func (o *PaginationLimitOffsetOffsetParamsRequest) GetOffset() *int64 {
 
 // PaginationLimitOffsetOffsetParamsRes - OK
 type PaginationLimitOffsetOffsetParamsRes struct {
+	Next        *string `json:"next,omitempty"`
 	NumPages    int64   `json:"numPages"`
 	ResultArray []int64 `json:"resultArray"`
+}
+
+func (o *PaginationLimitOffsetOffsetParamsRes) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
 }
 
 func (o *PaginationLimitOffsetOffsetParamsRes) GetNumPages() int64 {

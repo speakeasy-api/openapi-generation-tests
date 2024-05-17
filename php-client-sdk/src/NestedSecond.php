@@ -8,36 +8,31 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI;
 
-class NestedSecond 
+class NestedSecond
 {
+    private SDKConfiguration $sdkConfiguration;
 
-	private SDKConfiguration $sdkConfiguration;
+    /**
+     * @param  SDKConfiguration  $sdkConfig
+     */
+    public function __construct(SDKConfiguration $sdkConfig)
+    {
+        $this->sdkConfiguration = $sdkConfig;
+    }
 
-	/**
-	 * @param SDKConfiguration $sdkConfig
-	 */
-	public function __construct(SDKConfiguration $sdkConfig)
-	{
-		$this->sdkConfiguration = $sdkConfig;
-	}
-	
     /**
      * get
-     * 
+     *
      * @return \OpenAPI\OpenAPI\Models\Operations\NestedSecondGetResponse
      */
-	public function get(
-    ): \OpenAPI\OpenAPI\Models\Operations\NestedSecondGetResponse
-    {
+    public function get(
+    ): \OpenAPI\OpenAPI\Models\Operations\NestedSecondGetResponse {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/nested/second');
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -46,7 +41,6 @@ class NestedSecond
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
         }
 

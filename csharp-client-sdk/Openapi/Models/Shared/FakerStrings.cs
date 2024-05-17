@@ -11,6 +11,7 @@
 namespace Openapi.Models.Shared
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     
     /// <summary>
     /// A set of strings with fieldnames that lead to relevant examples being generated for them

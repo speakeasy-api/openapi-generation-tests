@@ -43,7 +43,7 @@ func TestStatusGetError_DefaultErrorCodes(t *testing.T) {
 }
 
 func TestStatusGetError_300_NonError(t *testing.T) {
-	recordTest("errors-status-get-error-300-non-error")
+	recordTest("errors-status-get-error300-non-error")
 
 	s := sdk.New()
 

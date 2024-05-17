@@ -21,14 +21,14 @@ namespace Openapi.Models.Shared
         public BigInteger Bigint { get; set; } = default!;
 
         [JsonProperty("bigintStr")]
-        [JsonConverter(typeof(BigIntSerializer))]
+        [JsonConverter(typeof(BigIntStrConverter))]
         public BigInteger BigintStr { get; set; } = default!;
 
         [JsonProperty("decimal")]
         public decimal Decimal { get; set; } = default!;
 
         [JsonProperty("decimalStr")]
-        [JsonConverter(typeof(DecimalSerializer))]
+        [JsonConverter(typeof(DecimalStrConverter))]
         public decimal DecimalStr { get; set; } = default!;
     }
 }

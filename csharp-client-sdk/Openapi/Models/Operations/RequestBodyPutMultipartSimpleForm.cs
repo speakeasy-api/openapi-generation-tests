@@ -11,12 +11,19 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     
     public class RequestBodyPutMultipartSimpleForm
     {
 
         [JsonProperty("any")]
         public string Any { get; set; } = default!;
+
+        [JsonProperty("bigint")]
+        public string? Bigint { get; set; }
+
+        [JsonProperty("bigintStr")]
+        public string? BigintStr { get; set; }
 
         [JsonProperty("bool")]
         public string Bool { get; set; } = default!;
@@ -30,6 +37,12 @@ namespace Openapi.Models.Operations
         [JsonProperty("dateTime")]
         public string DateTime { get; set; } = default!;
 
+        [JsonProperty("decimal")]
+        public string? Decimal { get; set; }
+
+        [JsonProperty("decimalStr")]
+        public string? DecimalStr { get; set; }
+
         [JsonProperty("enum")]
         public string Enum { get; set; } = default!;
 
@@ -41,6 +54,12 @@ namespace Openapi.Models.Operations
 
         [JsonProperty("int32")]
         public string Int32 { get; set; } = default!;
+
+        [JsonProperty("int32Enum")]
+        public string Int32Enum { get; set; } = default!;
+
+        [JsonProperty("intEnum")]
+        public string IntEnum { get; set; } = default!;
 
         [JsonProperty("intOptNull")]
         public string? IntOptNull { get; set; }

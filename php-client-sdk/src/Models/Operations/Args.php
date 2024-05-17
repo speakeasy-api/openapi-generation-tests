@@ -11,12 +11,12 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 
 class Args
 {
-	#[\JMS\Serializer\Annotation\SerializedName('globalQueryParam')]
+    #[\JMS\Serializer\Annotation\SerializedName('globalHiddenQueryParam')]
     #[\JMS\Serializer\Annotation\Type('string')]
-    public string $globalQueryParam;
-    
-	public function __construct()
-	{
-		$this->globalQueryParam = "";
-	}
+    public string $globalHiddenQueryParam;
+
+    public function __construct()
+    {
+        $this->globalHiddenQueryParam = '';
+    }
 }

@@ -32,6 +32,21 @@ func TestRetriesSucceeds(t *testing.T) {
 	assert.EqualValues(t, 3, res.Retries.Retries)
 }
 
+func TestRetriesWithBodySucceeds(t *testing.T) {
+	recordTest("retries-succeeds-with-body")
+
+	s := sdk.New()
+
+	res, err := s.Retries.RetriesPost(context.Background(), pseudo_uuid(), &operations.RetriesPostRequestBody{
+		FieldOne: "one",
+	}, nil)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.Retries)
+	assert.EqualValues(t, 3, res.Retries.Retries)
+}
+
 func TestRetriesTimeout(t *testing.T) {
 	recordTest("retries-timeout")
 

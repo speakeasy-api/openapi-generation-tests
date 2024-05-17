@@ -19,8 +19,8 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 - [ ] ♻️ Refine your SDK quickly by iterating locally with the [Speakeasy CLI](https://github.com/speakeasy-api/speakeasy)
 - [ ] 🎁 Publish your SDK to package managers by [configuring automatic publishing](https://www.speakeasyapi.dev/docs/productionize-sdks/publish-sdks)
 - [ ] ✨ When ready to productionize, delete this section from the README
-<!-- Start SDK Installation -->
-## Installation
+<!-- Start SDK Installation [installation] -->
+## SDK Installation
 
 ### Swift Package Manager
 
@@ -28,13 +28,14 @@ You can add `OpenAPI` to your project directly in Xcode `(File > Add Packages...
 
 ```bash
 dependencies: [
-    .package(url: "", .upToNextMajor(from: "0.3.1"))
+    .package(url: "https://github.com/speakeasy-api/openapi-generation-tests.git", .upToNextMajor(from: "0.4.0"))
 ]
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example 1
 
 ```swift
@@ -43,12 +44,55 @@ import OpenAPI
 
 let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
 
-let response = try await client.generation.getGlobalNameOverride()
+let response = try await client.generation.getGlobalNameOverride(
+    request: Shared.SimpleObject(
+        any: AnyValue("any"), 
+        bool: true, 
+        date: Date(), 
+        dateTime: Date(), 
+        `enum`: .one, 
+        float32: 1.1, 
+        int: 1, 
+        int32: 1, 
+        int32Enum: .oneHundredAndEightyOne, 
+        intEnum: .second, 
+        num: 1.1, 
+        str: "test", 
+        bigint: 8821239038968084, 
+        bigintStr: "9223372036854775808", 
+        boolOpt: true, 
+        decimal: 3.141592653589793, 
+        decimalStr: "3.14159265358979344719667586", 
+        float64Str: "1.1", 
+        int64Str: "100", 
+        intOptNull: 930591, 
+        numOptNull: 5244.22, 
+        strOpt: "testOptional"
+    )
+)
 
 switch response.data {
 case .object(let object):
     // Handle response
     break
+case .empty:
+    // Handle empty response
+    break
+}
+
+```
+
+### Example 2
+
+```swift
+import Foundation
+import OpenAPI
+
+let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
+
+let response = try await client.servers.selectGlobalServer()
+
+switch response.data {
 case .empty:
     // Handle empty response
     break
@@ -64,30 +108,32 @@ Do this second
 import Foundation
 import OpenAPI
 
-let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
+let client = Client()
 
 let response = try await client.generation.usageExamplePost(
     request: Operations.UsageExamplePostRequest(
         bigintParameter: 168827, 
-        bigintStrParameter: "string", 
+        bigintStrParameter: "<value>", 
         boolParameter: false, 
         dateParameter: Date(), 
         dateTimeDefaultParameter: Date(), 
         dateTimeParameter: Date(), 
         decimalParameter: 2679.33, 
-        decimalStrParameter: "string", 
+        decimalStrParameter: "<value>", 
         doubleParameter: 5223.72, 
         enumParameter: .value1, 
         falseyNumberParameter: 0, 
         float32Parameter: 6946.59, 
+        float64StringParameter: "<value>", 
         floatParameter: 2286.22, 
         int64Parameter: 102975, 
+        int64StringParameter: "<value>", 
         intParameter: 566999, 
         strParameter: "example 1", 
         bigintParameterOptional: 569663, 
-        bigintStrParameterOptional: "string", 
+        bigintStrParameterOptional: "<value>", 
         decimalParameterOptional: 2642.95, 
-        decimalStrParameterOptional: "string", 
+        decimalStrParameterOptional: "<value>", 
         optEnumParameter: .value3, 
         requestBody: Operations.UsageExamplePostRequestBody(
             fakerFormattedStrings: Shared.FakerFormattedStrings(
@@ -100,12 +146,12 @@ let response = try await client.generation.usageExamplePost(
                 imageFormat: "https://loremflickr.com/640/480", 
                 ipv4Format: "116.31.181.178", 
                 ipv6Format: "73ac:9ee2:348d:76c3:164a:258b:e7e1:3586", 
-                jsonFormat: "{key: 42822, key1: null, key2: \"string\"}", 
+                jsonFormat: "{key: 42822, key1: null, key2: \"<value>\"}", 
                 macFormat: "7d:ac:95:a0:15:23", 
                 passwordFormat: "eWzdveK0sHokC9n", 
                 phoneFormat: "1-340-562-2122 x175", 
                 timezoneFormat: "Asia/Yekaterinburg", 
-                unknownFormat: "string", 
+                unknownFormat: "<value>", 
                 urlFormat: "https://wilted-cytoplasm.biz", 
                 uuidFormat: "e0f62de2-e2d4-47a9-bf10-0f753b9b364b", 
                 zipcodeFormat: "73625"
@@ -123,7 +169,7 @@ let response = try await client.generation.usageExamplePost(
                 countryCode: "PT", 
                 currency: "Hryvnia", 
                 datatype: "datetime", 
-                `default`: "string", 
+                `default`: "<value>", 
                 description: "Profit-focused systematic initiative", 
                 directory: "/etc/periodic", 
                 domainName: "shimmering-cloudburst.com", 
@@ -136,11 +182,11 @@ let response = try await client.generation.usageExamplePost(
                 fullName: "Nathan Mosciski", 
                 gender: "Male to female transsexual woman", 
                 iban: "AZ39AEBC00680065007140036325", 
-                id: "<ID>", 
+                id: "<id>", 
                 iPv4: "39.115.3.112", 
                 iPv6: "4e65:3f13:113d:0305:fb1e:2e9e:e6a2:42a1", 
                 job: "International Metrics Administrator", 
-                json: "{key: 91937, key1: null, key2: \"string\"}", 
+                json: "{key: 91937, key1: null, key2: \"<value>\"}", 
                 key: "<key>", 
                 lastName: "Bergnaum", 
                 latitude: "16.9358", 
@@ -183,6 +229,8 @@ let response = try await client.generation.usageExamplePost(
                 boolOpt: true, 
                 decimal: 3.141592653589793, 
                 decimalStr: "3.14159265358979344719667586", 
+                float64Str: "1.1", 
+                int64Str: "100", 
                 intOptNull: 69000, 
                 numOptNull: 4369.7, 
                 strOpt: "testOptional"
@@ -202,22 +250,20 @@ case .empty:
 }
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
+## Available Resources and Operations
 
-<!-- End SDK Available Operations -->
 
-<!-- Start Dev Containers -->
+<!-- End Available Resources and Operations [operations] -->
 
-<!-- End Dev Containers -->
-
-<!-- Start Global Parameters -->
+<!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `globalPathParam` to `100` at SDK initialization and then you do not have to pass the same value on calls to operations like `globalPathParameterGet`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `globalHeaderParam` to `true` at SDK initialization and then you do not have to pass the same value on calls to operations like `globalPathParameterGet`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -226,6 +272,10 @@ The following global parameters are available. The required parameters must be s
 
 | Name | Type | Required | Description |
 | ---- | ---- |:--------:| ----------- |
+| globalHeaderParam | Bool | ✔️ | The globalHeaderParam parameter. |
+| globalHiddenHeaderParam | String | ✔️ | The globalHiddenHeaderParam parameter. |
+| globalHiddenPathParam | String | ✔️ | The globalHiddenPathParam parameter. |
+| globalHiddenQueryParam | String | ✔️ | The globalHiddenQueryParam parameter. |
 | globalPathParam | Int | ✔️ | The globalPathParam parameter. |
 | globalQueryParam | String | ✔️ | The globalQueryParam parameter. |
 
@@ -252,7 +302,67 @@ case .empty:
 }
 
 ```
-<!-- End Global Parameters -->
+<!-- End Global Parameters [global-parameters] -->
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Global Security Schemes
+
+The SDK supports the following security schemes globally through the `Shared.Security` type:
+
+| Name          | Type          | Scheme        |
+| ------------- | ------------- | ------------- |
+| `.apiKeyAuth` | apiKey        | API key       |
+| `.oauth2`     | oauth2        | OAuth2 token  |
+
+You can set the appropriate security scheme by passing a `Shared.Security` value for the `security` parameter when initializing the `Client` instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
+
+```swift
+import Foundation
+import OpenAPI
+
+let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
+
+let response = try await client.conflictingEnum(
+    request: Shared.ConflictingEnum(
+        object: .obj1
+    )
+)
+
+switch response.data {
+case .empty:
+    // Handle empty response
+    break
+}
+
+```
+
+### Per-Operation Security Schemes
+
+Some operations in the SDK require the security scheme to be specified on a per-operation basis. For example:
+
+```swift
+import Foundation
+import OpenAPI
+
+let client = Client()
+
+let response = try await client.authenticatedRequest(
+    request: Operations.AuthenticatedRequestRequestBody(
+        name: "<value>"
+    ),
+    security: .clientCredentials("<YOUR_CLIENT_CREDENTIALS_HERE>")
+)
+
+switch response.data {
+case .empty:
+    // Handle empty response
+    break
+}
+
+```
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

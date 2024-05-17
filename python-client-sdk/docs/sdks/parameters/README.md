@@ -21,6 +21,7 @@ Endpoints for testing parameters.
 * [header_params_object](#header_params_object)
 * [header_params_primitive](#header_params_primitive)
 * [json_query_params_object](#json_query_params_object)
+* [json_query_params_object_smaller](#json_query_params_object_smaller)
 * [mixed_parameters_camel_case](#mixed_parameters_camel_case)
 * [mixed_parameters_primitives](#mixed_parameters_primitives)
 * [mixed_query_params](#mixed_query_params)
@@ -37,26 +38,29 @@ Endpoints for testing parameters.
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
 res = s.parameters.deep_object_query_params_map(map_param={
-    "test": 'value',
-    "test2": 'value2',
+    'test': 'value',
+    'test2': 'value2',
 }, map_arr_param={
-    "test": [
+    'test': [
         'test',
         'test2',
     ],
-    "test2": [
+    'test2': [
         'test3',
         'test4',
     ],
@@ -65,14 +69,15 @@ res = s.parameters.deep_object_query_params_map(map_param={
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
 
-| Parameter              | Type                   | Required               | Description            | Example                |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `map_param`            | Dict[str, *str*]       | :heavy_check_mark:     | N/A                    | [object Object]        |
-| `map_arr_param`        | Dict[str, List[*str*]] | :heavy_minus_sign:     | N/A                    | [object Object]        |
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    | Example                                                        |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `map_param`                                                    | Dict[str, *str*]                                               | :heavy_check_mark:                                             | N/A                                                            | {<br/>"test": "value",<br/>"test2": "value2"<br/>}             |
+| `map_arr_param`                                                | Dict[str, List[*str*]]                                         | :heavy_minus_sign:                                             | N/A                                                            | {<br/>"test": [<br/>"test",<br/>"test2"<br/>],<br/>"test2": [<br/>"test3",<br/>"test4"<br/>]<br/>} |
 
 
 ### Response
@@ -82,7 +87,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## deep_object_query_params_object
 
@@ -98,21 +103,19 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
 res = s.parameters.deep_object_query_params_object(obj_param=shared.SimpleObject(
     any='any',
-    bigint=8821239038968084,
-    bigint_str=9223372036854775808,
     bool=True,
-    bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-    decimal=Decimal('3.141592653589793'),
-    decimal_str=Decimal('3.14159265358979344719667586'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
     enum=shared.EnumT.ONE,
     float32=1.1,
     int=1,
@@ -121,6 +124,13 @@ res = s.parameters.deep_object_query_params_object(obj_param=shared.SimpleObject
     int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    float64_str=1.1,
+    int64_str=100,
     str_opt='testOptional',
 ), obj_arr_param=operations.ObjArrParam(
     arr=[
@@ -132,6 +142,7 @@ res = s.parameters.deep_object_query_params_object(obj_param=shared.SimpleObject
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -149,7 +160,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## duplicate_param
 
@@ -157,22 +168,26 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
-res = s.parameters.duplicate_param(duplicate_param_request='string')
+res = s.parameters.duplicate_param(duplicate_param_request='<value>')
 
 if res.duplicate_param_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -189,7 +204,7 @@ if res.duplicate_param_response is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## form_query_params_array
 
@@ -197,16 +212,19 @@ if res.duplicate_param_response is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
-
 
 res = s.parameters.form_query_params_array(arr_param=[
     'test',
@@ -219,6 +237,7 @@ res = s.parameters.form_query_params_array(arr_param=[
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -236,7 +255,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## form_query_params_camel_object
 
@@ -250,10 +269,13 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
-
 
 res = s.parameters.form_query_params_camel_object(obj_param_exploded=operations.ObjParamExploded(
     item_count='10',
@@ -266,6 +288,7 @@ res = s.parameters.form_query_params_camel_object(obj_param_exploded=operations.
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -283,7 +306,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## form_query_params_map
 
@@ -291,36 +314,40 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
 res = s.parameters.form_query_params_map(map_param={
-    "test": 'value',
-    "test2": 'value2',
+    'test': 'value',
+    'test2': 'value2',
 }, map_param_exploded={
-    "test": 1,
-    "test2": 2,
+    'test': 1,
+    'test2': 2,
 })
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
 
-| Parameter            | Type                 | Required             | Description          | Example              |
-| -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
-| `map_param`          | Dict[str, *str*]     | :heavy_minus_sign:   | N/A                  | [object Object]      |
-| `map_param_exploded` | Dict[str, *int*]     | :heavy_minus_sign:   | N/A                  | [object Object]      |
+| Parameter                              | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `map_param`                            | Dict[str, *str*]                       | :heavy_minus_sign:                     | N/A                                    | {<br/>"test": "value",<br/>"test2": "value2"<br/>} |
+| `map_param_exploded`                   | Dict[str, *int*]                       | :heavy_minus_sign:                     | N/A                                    | {<br/>"test": 1,<br/>"test2": 2<br/>}  |
 
 
 ### Response
@@ -330,7 +357,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## form_query_params_object
 
@@ -340,27 +367,25 @@ if res.res is not None:
 import dateutil.parser
 import sdk
 from decimal import Decimal
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
 res = s.parameters.form_query_params_object(obj_param_exploded=shared.SimpleObject(
     any='any',
-    bigint=8821239038968084,
-    bigint_str=9223372036854775808,
     bool=True,
-    bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-    decimal=Decimal('3.141592653589793'),
-    decimal_str=Decimal('3.14159265358979344719667586'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
     enum=shared.EnumT.ONE,
     float32=1.1,
     int=1,
@@ -369,17 +394,19 @@ res = s.parameters.form_query_params_object(obj_param_exploded=shared.SimpleObje
     int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    float64_str=1.1,
+    int64_str=100,
     str_opt='testOptional',
 ), obj_param=shared.SimpleObject(
     any='any',
-    bigint=8821239038968084,
-    bigint_str=9223372036854775808,
     bool=True,
-    bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-    decimal=Decimal('3.141592653589793'),
-    decimal_str=Decimal('3.14159265358979344719667586'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
     enum=shared.EnumT.ONE,
     float32=1.1,
     int=1,
@@ -388,12 +415,20 @@ res = s.parameters.form_query_params_object(obj_param_exploded=shared.SimpleObje
     int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    float64_str=1.1,
+    int64_str=100,
     str_opt='testOptional',
 ))
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -411,7 +446,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## form_query_params_primitive
 
@@ -419,22 +454,26 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
-
 
 res = s.parameters.form_query_params_primitive(bool_param=True, int_param=1, num_param=1.1, str_param='test')
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -454,7 +493,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## form_query_params_ref_param_object
 
@@ -462,16 +501,19 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
-
 
 res = s.parameters.form_query_params_ref_param_object(ref_obj_param=shared.RefQueryParamObj(
     bool=True,
@@ -488,6 +530,7 @@ res = s.parameters.form_query_params_ref_param_object(ref_obj_param=shared.RefQu
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -505,7 +548,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## header_params_array
 
@@ -513,16 +556,19 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
-
 
 res = s.parameters.header_params_array(x_header_array=[
     'test1',
@@ -532,6 +578,7 @@ res = s.parameters.header_params_array(x_header_array=[
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -548,7 +595,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## header_params_map
 
@@ -556,36 +603,40 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
 res = s.parameters.header_params_map(x_header_map={
-    "key1": 'value1',
-    "key2": 'value2',
+    'key1': 'value1',
+    'key2': 'value2',
 }, x_header_map_explode={
-    "test1": 'val1',
-    "test2": 'val2',
+    'test1': 'val1',
+    'test2': 'val2',
 })
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
 
-| Parameter              | Type                   | Required               | Description            | Example                |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `x_header_map`         | Dict[str, *str*]       | :heavy_check_mark:     | N/A                    | [object Object]        |
-| `x_header_map_explode` | Dict[str, *str*]       | :heavy_check_mark:     | N/A                    | [object Object]        |
+| Parameter                              | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `x_header_map`                         | Dict[str, *str*]                       | :heavy_check_mark:                     | N/A                                    | {<br/>"key1": "value1",<br/>"key2": "value2"<br/>} |
+| `x_header_map_explode`                 | Dict[str, *str*]                       | :heavy_check_mark:                     | N/A                                    | {<br/>"test1": "val1",<br/>"test2": "val2"<br/>} |
 
 
 ### Response
@@ -595,7 +646,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## header_params_object
 
@@ -605,27 +656,25 @@ if res.res is not None:
 import dateutil.parser
 import sdk
 from decimal import Decimal
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
 res = s.parameters.header_params_object(x_header_obj=shared.SimpleObject(
     any='any',
-    bigint=8821239038968084,
-    bigint_str=9223372036854775808,
     bool=True,
-    bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-    decimal=Decimal('3.141592653589793'),
-    decimal_str=Decimal('3.14159265358979344719667586'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
     enum=shared.EnumT.ONE,
     float32=1.1,
     int=1,
@@ -634,17 +683,19 @@ res = s.parameters.header_params_object(x_header_obj=shared.SimpleObject(
     int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    float64_str=1.1,
+    int64_str=100,
     str_opt='testOptional',
 ), x_header_obj_explode=shared.SimpleObject(
     any='any',
-    bigint=8821239038968084,
-    bigint_str=9223372036854775808,
     bool=True,
-    bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-    decimal=Decimal('3.141592653589793'),
-    decimal_str=Decimal('3.14159265358979344719667586'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
     enum=shared.EnumT.ONE,
     float32=1.1,
     int=1,
@@ -653,12 +704,20 @@ res = s.parameters.header_params_object(x_header_obj=shared.SimpleObject(
     int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    float64_str=1.1,
+    int64_str=100,
     str_opt='testOptional',
 ))
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -676,7 +735,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## header_params_primitive
 
@@ -684,22 +743,26 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
-
 
 res = s.parameters.header_params_primitive(x_header_boolean=True, x_header_integer=1, x_header_number=1.1, x_header_string='test')
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -719,7 +782,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## json_query_params_object
 
@@ -729,28 +792,26 @@ if res.res is not None:
 import dateutil.parser
 import sdk
 from decimal import Decimal
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
 res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
-    shared.SimpleObject(
+    any=shared.SimpleObject(
         any='any',
-        bigint=8821239038968084,
-        bigint_str=9223372036854775808,
         bool=True,
-        bool_opt=True,
         date_=dateutil.parser.parse('2020-01-01').date(),
-        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-        decimal=Decimal('3.141592653589793'),
-        decimal_str=Decimal('3.14159265358979344719667586'),
+        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
         enum=shared.EnumT.ONE,
         float32=1.1,
         int=1,
@@ -759,19 +820,21 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
         int_enum=shared.IntEnum.SECOND,
         num=1.1,
         str_='test',
+        bigint=8821239038968084,
+        bigint_str=9223372036854775808,
+        bool_opt=True,
+        decimal=Decimal('3.141592653589793'),
+        decimal_str=Decimal('3.14159265358979344719667586'),
+        float64_str=1.1,
+        int64_str=100,
         str_opt='testOptional',
     ),
     arr=[
         shared.SimpleObject(
             any='any',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
             bool=True,
-            bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
             enum=shared.EnumT.ONE,
             float32=1.1,
             int=1,
@@ -780,18 +843,20 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
             int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool_opt=True,
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            float64_str=1.1,
+            int64_str=100,
             str_opt='testOptional',
         ),
         shared.SimpleObject(
             any='any',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
             bool=True,
-            bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
             enum=shared.EnumT.ONE,
             float32=1.1,
             int=1,
@@ -800,22 +865,24 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
             int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool_opt=True,
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            float64_str=1.1,
+            int64_str=100,
             str_opt='testOptional',
         ),
     ],
     bool=True,
     int=1,
     map={
-        "key": shared.SimpleObject(
+        'key': shared.SimpleObject(
             any='any',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
             bool=True,
-            bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
             enum=shared.EnumT.ONE,
             float32=1.1,
             int=1,
@@ -824,18 +891,20 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
             int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool_opt=True,
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            float64_str=1.1,
+            int64_str=100,
             str_opt='testOptional',
         ),
-        "key2": shared.SimpleObject(
+        'key2': shared.SimpleObject(
             any='any',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
             bool=True,
-            bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
             enum=shared.EnumT.ONE,
             float32=1.1,
             int=1,
@@ -844,20 +913,22 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
             int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool_opt=True,
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            float64_str=1.1,
+            int64_str=100,
             str_opt='testOptional',
         ),
     },
     num=1.1,
     obj=shared.SimpleObject(
         any='any',
-        bigint=8821239038968084,
-        bigint_str=9223372036854775808,
         bool=True,
-        bool_opt=True,
         date_=dateutil.parser.parse('2020-01-01').date(),
-        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-        decimal=Decimal('3.141592653589793'),
-        decimal_str=Decimal('3.14159265358979344719667586'),
+        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
         enum=shared.EnumT.ONE,
         float32=1.1,
         int=1,
@@ -866,19 +937,21 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
         int_enum=shared.IntEnum.SECOND,
         num=1.1,
         str_='test',
+        bigint=8821239038968084,
+        bigint_str=9223372036854775808,
+        bool_opt=True,
+        decimal=Decimal('3.141592653589793'),
+        decimal_str=Decimal('3.14159265358979344719667586'),
+        float64_str=1.1,
+        int64_str=100,
         str_opt='testOptional',
     ),
     str_='test',
 ), simple_obj_param=shared.SimpleObject(
     any='any',
-    bigint=8821239038968084,
-    bigint_str=9223372036854775808,
     bool=True,
-    bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-    decimal=Decimal('3.141592653589793'),
-    decimal_str=Decimal('3.14159265358979344719667586'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
     enum=shared.EnumT.ONE,
     float32=1.1,
     int=1,
@@ -887,12 +960,20 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
     int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    float64_str=1.1,
+    int64_str=100,
     str_opt='testOptional',
 ))
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -910,7 +991,194 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## json_query_params_object_smaller
+
+### Example Usage
+
+```python
+import dateutil.parser
+import sdk
+from decimal import Decimal
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+res = s.parameters.json_query_params_object_smaller(deep_obj_param=shared.DeepObjectSmaller(
+    any=shared.SimpleObject(
+        any='any',
+        bool=True,
+        date_=dateutil.parser.parse('2020-01-01').date(),
+        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
+        enum=shared.EnumT.ONE,
+        float32=1.1,
+        int=1,
+        int32=1,
+        int32_enum=shared.Int32Enum.FIFTY_FIVE,
+        int_enum=shared.IntEnum.SECOND,
+        num=1.1,
+        str_='test',
+        bigint=8821239038968084,
+        bigint_str=9223372036854775808,
+        bool_opt=True,
+        decimal=Decimal('3.141592653589793'),
+        decimal_str=Decimal('3.14159265358979344719667586'),
+        float64_str=1.1,
+        int64_str=100,
+        str_opt='testOptional',
+    ),
+    arr=[
+        shared.SimpleObject(
+            any='any',
+            bool=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool_opt=True,
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            float64_str=1.1,
+            int64_str=100,
+            str_opt='testOptional',
+        ),
+        shared.SimpleObject(
+            any='any',
+            bool=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool_opt=True,
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            float64_str=1.1,
+            int64_str=100,
+            str_opt='testOptional',
+        ),
+    ],
+    bool=True,
+    int=1,
+    map={
+        'key': shared.SimpleObject(
+            any='any',
+            bool=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.Int32Enum.FIFTY_FIVE,
+            int_enum=shared.IntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool_opt=True,
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            float64_str=1.1,
+            int64_str=100,
+            str_opt='testOptional',
+        ),
+    },
+    num=1.1,
+    obj=shared.SimpleObject(
+        any='any',
+        bool=True,
+        date_=dateutil.parser.parse('2020-01-01').date(),
+        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
+        enum=shared.EnumT.ONE,
+        float32=1.1,
+        int=1,
+        int32=1,
+        int32_enum=shared.Int32Enum.FIFTY_FIVE,
+        int_enum=shared.IntEnum.SECOND,
+        num=1.1,
+        str_='test',
+        bigint=8821239038968084,
+        bigint_str=9223372036854775808,
+        bool_opt=True,
+        decimal=Decimal('3.141592653589793'),
+        decimal_str=Decimal('3.14159265358979344719667586'),
+        float64_str=1.1,
+        int64_str=100,
+        str_opt='testOptional',
+    ),
+    str_='test',
+), simple_obj_param=shared.SimpleObject(
+    any='any',
+    bool=True,
+    date_=dateutil.parser.parse('2020-01-01').date(),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
+    enum=shared.EnumT.ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
+    num=1.1,
+    str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    float64_str=1.1,
+    int64_str=100,
+    str_opt='testOptional',
+))
+
+if res.res is not None:
+    # handle response
+    pass
+
+```
+
+### Parameters
+
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `deep_obj_param`                                                                                   | [shared.DeepObjectSmaller](../../models/shared/deepobjectsmaller.md)                               | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `simple_obj_param`                                                                                 | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+
+
+### Response
+
+**[operations.JSONQueryParamsObjectSmallerResponse](../../models/operations/jsonqueryparamsobjectsmallerresponse.md)**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## mixed_parameters_camel_case
 
@@ -918,22 +1186,26 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
-
 
 res = s.parameters.mixed_parameters_camel_case(header_param='headerValue', path_param='pathValue', query_string_param='queryValue')
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -952,7 +1224,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## mixed_parameters_primitives
 
@@ -960,22 +1232,26 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
-
 
 res = s.parameters.mixed_parameters_primitives(header_param='headerValue', path_param='pathValue', query_string_param='queryValue')
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -994,7 +1270,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## mixed_query_params
 
@@ -1004,27 +1280,25 @@ if res.res is not None:
 import dateutil.parser
 import sdk
 from decimal import Decimal
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
 res = s.parameters.mixed_query_params(deep_object_param=shared.SimpleObject(
     any='any',
-    bigint=8821239038968084,
-    bigint_str=9223372036854775808,
     bool=True,
-    bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-    decimal=Decimal('3.141592653589793'),
-    decimal_str=Decimal('3.14159265358979344719667586'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
     enum=shared.EnumT.ONE,
     float32=1.1,
     int=1,
@@ -1033,17 +1307,19 @@ res = s.parameters.mixed_query_params(deep_object_param=shared.SimpleObject(
     int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    float64_str=1.1,
+    int64_str=100,
     str_opt='testOptional',
 ), form_param=shared.SimpleObject(
     any='any',
-    bigint=8821239038968084,
-    bigint_str=9223372036854775808,
     bool=True,
-    bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-    decimal=Decimal('3.141592653589793'),
-    decimal_str=Decimal('3.14159265358979344719667586'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
     enum=shared.EnumT.ONE,
     float32=1.1,
     int=1,
@@ -1052,17 +1328,19 @@ res = s.parameters.mixed_query_params(deep_object_param=shared.SimpleObject(
     int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    float64_str=1.1,
+    int64_str=100,
     str_opt='testOptional',
 ), json_param=shared.SimpleObject(
     any='any',
-    bigint=8821239038968084,
-    bigint_str=9223372036854775808,
     bool=True,
-    bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-    decimal=Decimal('3.141592653589793'),
-    decimal_str=Decimal('3.14159265358979344719667586'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
     enum=shared.EnumT.ONE,
     float32=1.1,
     int=1,
@@ -1071,12 +1349,20 @@ res = s.parameters.mixed_query_params(deep_object_param=shared.SimpleObject(
     int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    float64_str=1.1,
+    int64_str=100,
     str_opt='testOptional',
 ))
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -1095,7 +1381,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## path_parameter_json
 
@@ -1105,27 +1391,25 @@ if res.res is not None:
 import dateutil.parser
 import sdk
 from decimal import Decimal
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
 res = s.parameters.path_parameter_json(json_obj=shared.SimpleObject(
     any='any',
-    bigint=8821239038968084,
-    bigint_str=9223372036854775808,
     bool=True,
-    bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-    decimal=Decimal('3.141592653589793'),
-    decimal_str=Decimal('3.14159265358979344719667586'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
     enum=shared.EnumT.ONE,
     float32=1.1,
     int=1,
@@ -1134,12 +1418,20 @@ res = s.parameters.path_parameter_json(json_obj=shared.SimpleObject(
     int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    float64_str=1.1,
+    int64_str=100,
     str_opt='testOptional',
 ))
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -1156,7 +1448,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## pipe_delimited_query_params_array
 
@@ -1166,16 +1458,19 @@ if res.res is not None:
 import dateutil.parser
 import sdk
 from decimal import Decimal
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
-
 
 res = s.parameters.pipe_delimited_query_params_array(arr_param=[
     'test',
@@ -1184,18 +1479,13 @@ res = s.parameters.pipe_delimited_query_params_array(arr_param=[
     1,
     2,
 ], map_param={
-    "key1": 'val1',
-    "key2": 'val2',
+    'key1': 'val1',
+    'key2': 'val2',
 }, obj_param=shared.SimpleObject(
     any='any',
-    bigint=8821239038968084,
-    bigint_str=9223372036854775808,
     bool=True,
-    bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-    decimal=Decimal('3.141592653589793'),
-    decimal_str=Decimal('3.14159265358979344719667586'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
     enum=shared.EnumT.ONE,
     float32=1.1,
     int=1,
@@ -1204,12 +1494,20 @@ res = s.parameters.pipe_delimited_query_params_array(arr_param=[
     int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    float64_str=1.1,
+    int64_str=100,
     str_opt='testOptional',
 ))
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -1218,7 +1516,7 @@ if res.res is not None:
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `arr_param`                                                                                        | List[*str*]                                                                                        | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `arr_param_exploded`                                                                               | List[*int*]                                                                                        | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `map_param`                                                                                        | Dict[str, *str*]                                                                                   | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
+| `map_param`                                                                                        | Dict[str, *str*]                                                                                   | :heavy_minus_sign:                                                                                 | N/A                                                                                                | {<br/>"key1": "val1",<br/>"key2": "val2"<br/>}                                                     |
 | `obj_param`                                                                                        | [Optional[shared.SimpleObject]](../../models/shared/simpleobject.md)                               | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 
 
@@ -1229,7 +1527,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## simple_path_parameter_arrays
 
@@ -1237,16 +1535,19 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
-
 
 res = s.parameters.simple_path_parameter_arrays(arr_param=[
     'test',
@@ -1256,6 +1557,7 @@ res = s.parameters.simple_path_parameter_arrays(arr_param=[
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -1272,7 +1574,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## simple_path_parameter_maps
 
@@ -1280,36 +1582,40 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
 res = s.parameters.simple_path_parameter_maps(map_param={
-    "test2": 'value2',
-    "test": 'value',
+    'test': 'value',
+    'test2': 'value2',
 }, map_param_exploded={
-    "test": 1,
-    "test2": 2,
+    'test': 1,
+    'test2': 2,
 })
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
 
-| Parameter            | Type                 | Required             | Description          | Example              |
-| -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
-| `map_param`          | Dict[str, *str*]     | :heavy_check_mark:   | N/A                  | [object Object]      |
-| `map_param_exploded` | Dict[str, *int*]     | :heavy_check_mark:   | N/A                  | [object Object]      |
+| Parameter                              | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `map_param`                            | Dict[str, *str*]                       | :heavy_check_mark:                     | N/A                                    | {<br/>"test": "value",<br/>"test2": "value2"<br/>} |
+| `map_param_exploded`                   | Dict[str, *int*]                       | :heavy_check_mark:                     | N/A                                    | {<br/>"test": 1,<br/>"test2": 2<br/>}  |
 
 
 ### Response
@@ -1319,7 +1625,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## simple_path_parameter_objects
 
@@ -1329,27 +1635,25 @@ if res.res is not None:
 import dateutil.parser
 import sdk
 from decimal import Decimal
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
 res = s.parameters.simple_path_parameter_objects(obj_param=shared.SimpleObject(
     any='any',
-    bigint=8821239038968084,
-    bigint_str=9223372036854775808,
     bool=True,
-    bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-    decimal=Decimal('3.141592653589793'),
-    decimal_str=Decimal('3.14159265358979344719667586'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
     enum=shared.EnumT.ONE,
     float32=1.1,
     int=1,
@@ -1358,17 +1662,19 @@ res = s.parameters.simple_path_parameter_objects(obj_param=shared.SimpleObject(
     int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    float64_str=1.1,
+    int64_str=100,
     str_opt='testOptional',
 ), obj_param_exploded=shared.SimpleObject(
     any='any',
-    bigint=8821239038968084,
-    bigint_str=9223372036854775808,
     bool=True,
-    bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-    decimal=Decimal('3.141592653589793'),
-    decimal_str=Decimal('3.14159265358979344719667586'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
     enum=shared.EnumT.ONE,
     float32=1.1,
     int=1,
@@ -1377,12 +1683,20 @@ res = s.parameters.simple_path_parameter_objects(obj_param=shared.SimpleObject(
     int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    float64_str=1.1,
+    int64_str=100,
     str_opt='testOptional',
 ))
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -1400,7 +1714,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## simple_path_parameter_primitives
 
@@ -1408,22 +1722,26 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
-
 
 res = s.parameters.simple_path_parameter_primitives(bool_param=True, int_param=1, num_param=1.1, str_param='test')
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -1443,4 +1761,4 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

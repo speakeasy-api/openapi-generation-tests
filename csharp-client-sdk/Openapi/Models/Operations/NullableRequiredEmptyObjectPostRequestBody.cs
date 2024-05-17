@@ -11,17 +11,19 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Operations;
+    using Openapi.Utils;
     
     public class NullableRequiredEmptyObjectPostRequestBody
     {
 
-        [JsonProperty("NullableRequiredObj")]
-        public NullableRequiredObj NullableRequiredObj { get; set; } = default!;
+        [JsonProperty("NullableRequiredObj", NullValueHandling = NullValueHandling.Include)]
+        public NullableRequiredObj? NullableRequiredObj { get; set; }
 
         [JsonProperty("RequiredObj")]
         public RequiredObj RequiredObj { get; set; } = default!;
 
         [JsonProperty("NullableOptionalObj")]
-        public NullableOptionalObj? NullableOptionalObj { get; set; }
+        public NullableOptionalObj? NullableOptionalObj { get; set; } = null;
     }
 }

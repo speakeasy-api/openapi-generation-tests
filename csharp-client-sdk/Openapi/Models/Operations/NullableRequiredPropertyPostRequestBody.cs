@@ -11,21 +11,36 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Operations;
+    using Openapi.Utils;
     using System.Collections.Generic;
+    using System.Numerics;
+    using System;
     
     public class NullableRequiredPropertyPostRequestBody
     {
 
-        [JsonProperty("NullableRequiredArray")]
-        public List<double> NullableRequiredArray { get; set; } = default!;
+        [JsonProperty("NullableRequiredArray", NullValueHandling = NullValueHandling.Include)]
+        public List<double>? NullableRequiredArray { get; set; }
 
-        [JsonProperty("NullableRequiredEnum")]
-        public NullableRequiredEnum NullableRequiredEnum { get; set; } = default!;
+        [JsonProperty("NullableRequiredBigIntStr", NullValueHandling = NullValueHandling.Include)]
+        [JsonConverter(typeof(BigIntStrConverter))]
+        public BigInteger? NullableRequiredBigIntStr { get; set; }
 
-        [JsonProperty("NullableRequiredInt")]
-        public long NullableRequiredInt { get; set; } = default!;
+        [JsonProperty("NullableRequiredDateTime", NullValueHandling = NullValueHandling.Include)]
+        public DateTime? NullableRequiredDateTime { get; set; }
+
+        [JsonProperty("NullableRequiredDecimalStr", NullValueHandling = NullValueHandling.Include)]
+        [JsonConverter(typeof(DecimalStrConverter))]
+        public decimal? NullableRequiredDecimalStr { get; set; }
+
+        [JsonProperty("NullableRequiredEnum", NullValueHandling = NullValueHandling.Include)]
+        public NullableRequiredEnum? NullableRequiredEnum { get; set; }
+
+        [JsonProperty("NullableRequiredInt", NullValueHandling = NullValueHandling.Include)]
+        public long? NullableRequiredInt { get; set; }
 
         [JsonProperty("NullableOptionalInt")]
-        public long? NullableOptionalInt { get; set; }
+        public long? NullableOptionalInt { get; set; } = null;
     }
 }
