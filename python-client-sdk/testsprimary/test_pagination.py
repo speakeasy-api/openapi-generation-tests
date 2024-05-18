@@ -6,19 +6,17 @@ from sdk.models.shared import *
 from sdk.utils import *
 
 from .common_helpers import *
-from .helpers import *
+from .test_helpers import *
 
 
 def test_pagination_limit_offset_page_params():
-    record_test("pagination-limitOffset-page-params")
+    record_test("pagination-limit-offset-page-params")
 
     s = SDK()
     assert s is not None
     serverLimit = 20
 
-    res = s.pagination.pagination_limit_offset_page_params(
-        page=1
-    )
+    res = s.pagination.pagination_limit_offset_page_params(page=1)
 
     assert res is not None
     assert res.status_code == 200
@@ -36,17 +34,14 @@ def test_pagination_limit_offset_page_params():
 
 
 def test_pagination_limitOffset_page_body():
-    record_test("pagination-limitOffset-page-body")
+    record_test("pagination-limit-offset-page-body")
 
     s = SDK()
     assert s is not None
     limit = 15
 
     res = s.pagination.pagination_limit_offset_page_body(
-        request=LimitOffsetConfig(
-            limit=limit,
-            page=1
-        )
+        request=LimitOffsetConfig(limit=limit, page=1)
     )
 
     assert res is not None
@@ -65,16 +60,13 @@ def test_pagination_limitOffset_page_body():
 
 
 def test_pagination_limit_offset_offset_params():
-    record_test("pagination-limitOffset-offset-params")
+    record_test("pagination-limit-offset-offset-params")
 
     s = SDK()
     assert s is not None
     limit = 15
 
-    res = s.pagination.pagination_limit_offset_offset_params(
-        limit=limit,
-        offset=0
-    )
+    res = s.pagination.pagination_limit_offset_offset_params(limit=limit, offset=0)
 
     assert res is not None
     assert res.status_code == 200
@@ -92,17 +84,14 @@ def test_pagination_limit_offset_offset_params():
 
 
 def test_pagination_limitOffset_offset_body():
-    record_test("pagination-limitOffset-offset-body")
+    record_test("pagination-limit-offset-offset-body")
 
     s = SDK()
     assert s is not None
     limit = 15
 
     res = s.pagination.pagination_limit_offset_offset_body(
-        request=LimitOffsetConfig(
-            limit=limit,
-            offset=0
-        )
+        request=LimitOffsetConfig(limit=limit, offset=0)
     )
 
     assert res is not None
@@ -127,9 +116,7 @@ def test_pagination_cursor_params():
     assert s is not None
     limit = 15
 
-    res = s.pagination.pagination_cursor_params(
-        cursor=-1
-    )
+    res = s.pagination.pagination_cursor_params(cursor=-1)
 
     assert res is not None
     assert res.status_code == 200
@@ -150,7 +137,6 @@ def test_pagination_cursor_params():
 
     null_res = penultimate_res.next()
     assert null_res is None
-
 
 
 def test_pagination_cursor_body():

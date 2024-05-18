@@ -7,9 +7,15 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using NodaTime;
+using System;
+using System.Collections.Generic;
+using System.Numerics;
+using System.Threading.Tasks;
 using Xunit;
 using Openapi;
-using System.Threading.Tasks;
+using Openapi.Models.Shared;
+using Openapi.Utils;
 
 public class ResponseBodiesShould
 {
@@ -98,5 +104,166 @@ public class ResponseBodiesShould
         Assert.True(res.ReadOnlyObject.Bool);
         Assert.Equal(1.0, res.ReadOnlyObject.Num);
         Assert.Equal("hello", res.ReadOnlyObject.String);
+    }
+
+    [Fact]
+    public async Task ResponseBodyAdditionalPropertiesString()
+    {
+        CommonHelpers.RecordTest("response-bodies-additional-properties-string");
+        var sdk = new SDK();
+
+        var req = new ObjWithStringAdditionalProperties()
+        {
+            NormalField = "string",
+        };
+
+        var json = await Helpers.GetSerializedBodyJson(req);
+        Assert.Equal("{\"normalField\":\"string\"}", json);
+
+        var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesPostAsync(req);
+        Assert.NotNull(res);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal("string", res.Object.Json.NormalField);
+        Assert.Null(res.Object.Json.AdditionalProperties);
+
+        req = new ObjWithStringAdditionalProperties()
+        {
+            NormalField = "string",
+            AdditionalProperties = new Dictionary<string, string>()
+            {
+                { "extra1", "value1" },
+                { "extra2", null },
+            },
+        };
+
+        json = await Helpers.GetSerializedBodyJson(req);
+        Assert.Equal("{\"normalField\":\"string\",\"additionalProperties\":{\"extra1\":\"value1\",\"extra2\":null}}", json);
+
+        res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesPostAsync(req);
+        Assert.NotNull(res);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req.NormalField, res.Object.Json.NormalField);
+        Assert.Equal(req.AdditionalProperties, res.Object.Json.AdditionalProperties);
+    }
+
+    [Fact]
+    public async Task ResponseBodyAdditionalPropertiesDate()
+    {
+        CommonHelpers.RecordTest("response-bodies-additional-properties-date");
+        var sdk = new SDK();
+
+        var req = new ObjWithDateAdditionalProperties()
+        {
+            NormalField = "string",
+            AdditionalProperties = new Dictionary<string, LocalDate>()
+            {
+                { "today", LocalDate.FromDateTime(DateTime.Parse("2020-01-01")) },
+            }
+        };
+
+        var json = await Helpers.GetSerializedBodyJson(req);
+        Assert.Equal("{\"normalField\":\"string\",\"additionalProperties\":{\"today\":\"2020-01-01\"}}", json);
+
+        var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesDatePostAsync(req);
+        Assert.NotNull(res);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req.NormalField, res.Object.Json.NormalField);
+        Assert.Equal(req.AdditionalProperties, res.Object.Json.AdditionalProperties);
+    }
+
+
+    [Fact]
+    public async Task ResponseBodyAdditionalPropertiesComplexNumbers()
+    {
+        CommonHelpers.RecordTest("response-bodies-additional-properties-complex-numbers");
+        var sdk = new SDK();
+
+        var req = new ObjWithComplexNumbersAdditionalProperties()
+        {
+            NormalField = "string",
+            AdditionalProperties = new Dictionary<string, BigInteger>()
+            {
+                { "bigintStr", BigInteger.Parse("123456789012345678901234567890") }
+            }
+        };
+
+        var json = await Helpers.GetSerializedBodyJson(req);
+        Assert.Equal("{\"normalField\":\"string\",\"additionalProperties\":{\"bigintStr\":\"123456789012345678901234567890\"}}", json);
+
+        var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesComplexNumbersPostAsync(req);
+        Assert.NotNull(res);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req.NormalField, res.Object.Json.NormalField);
+        Assert.Equal(req.AdditionalProperties, res.Object.Json.AdditionalProperties);
+    }
+
+    [Fact]
+    public async Task ResponseBodyAdditionalPropertiesObject()
+    {
+        CommonHelpers.RecordTest("response-bodies-additional-properties-object");
+        var sdk = new SDK();
+
+        var obj = Helpers.CreateSimpleObject();
+        var req = new ObjWithObjAdditionalProperties()
+        {
+            Datetime = new DateTime(2020, 1, 1, 0, 0, 0, DateTimeKind.Utc),
+            AdditionalProperties = new List<long> { 1, 2, 3 },
+            AdditionalPropertiesT = new Dictionary<string, SimpleObject>()
+            {
+                { "obj1", obj }
+            }
+        };
+
+        var json = await Helpers.GetSerializedBodyJson(req);
+        Assert.Contains("{\"AdditionalProperties\":[1,2,3],\"datetime\":\"2020-01-01T00:00:00.0000000Z\",\"additionalProperties\":{\"obj1\":{\"any\":\"any\",", json);
+
+        var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesObjectPostAsync(req);
+        Assert.NotNull(res);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req.Datetime, res.Object.Json.Datetime);
+        Assert.Equal(req.AdditionalProperties, res.Object.Json.AdditionalProperties);
+        Helpers.AssertSimpleObject(res.Object.Json.AdditionalPropertiesT["obj1"]);
+    }
+
+    [Fact]
+    public async Task ResponseBodyAdditionalPropertiesObjectAnyValues()
+    {
+        CommonHelpers.RecordTest("response-bodies-additional-properties-any-values");
+        var sdk = new SDK();
+
+        var req = new ObjWithAnyAdditionalProperties();
+
+        var res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesAnyPostAsync(req);
+        Assert.NotNull(res);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Null(res.Object.Json.NormalField);
+        Assert.Null(res.Object.Json.AdditionalProperties);
+
+        req = new ObjWithAnyAdditionalProperties()
+        {
+            AdditionalProperties = new Dictionary<string, object>()
+            {
+                { "key1", "value1" },
+                { "key2", null },
+                { "key3", new Dictionary<string, object>()
+                    {
+                        { "foo", "bar" },
+                        { "subkey1", new Dictionary<string, object>()
+                            {
+                                { "foo", "bar" },
+                                { "nan", null }
+                            }
+                        }
+                    }
+                },
+                { "key4", new List<object>() { "foo", "bar" } }
+            }
+        };
+
+        res = await sdk.ResponseBodies.ResponseBodyAdditionalPropertiesAnyPostAsync(req);
+        Assert.NotNull(res);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Null(res.Object.Json.NormalField);
+        Helpers.AssertDictEqual(req.AdditionalProperties, res.Object.Json.AdditionalProperties);
     }
 }

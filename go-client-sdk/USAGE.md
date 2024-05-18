@@ -1,4 +1,64 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
+```go
+package main
+
+import (
+	"context"
+	"log"
+	"math/big"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
+)
+
+func main() {
+	s := openapi.New(
+		openapi.WithSecurity(shared.Security{
+			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+		}),
+		openapi.WithGlobalHeaderParam(true),
+		openapi.WithGlobalHiddenHeaderParam("<value>"),
+		openapi.WithGlobalHiddenPathParam("<value>"),
+		openapi.WithGlobalHiddenQueryParam("hello"),
+		openapi.WithGlobalPathParam(100),
+		openapi.WithGlobalQueryParam("some example global query param"),
+	)
+
+	var request *shared.SimpleObject = &shared.SimpleObject{
+		Any:        "any",
+		Bigint:     big.NewInt(8821239038968084),
+		BigintStr:  types.MustNewBigIntFromString("9223372036854775808"),
+		Bool:       true,
+		BoolOpt:    openapi.Bool(true),
+		Date:       types.MustDateFromString("2020-01-01"),
+		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
+		Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
+		DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+		Enum:       shared.EnumOne,
+		Float32:    1.1,
+		Float64Str: openapi.Float64(1.1),
+		Int:        1,
+		Int32:      1,
+		Int32Enum:  shared.Int32EnumFiftyFive,
+		Int64Str:   openapi.Int64(100),
+		IntEnum:    shared.IntEnumSecond,
+		Num:        1.1,
+		Str:        "test",
+		StrOpt:     openapi.String("testOptional"),
+	}
+
+	ctx := context.Background()
+	res, err := s.Generation.GlobalNameOverridden(ctx, request)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if res.Object != nil {
+		// handle response
+	}
+}
+
+```
+
 ```go
 package main
 
@@ -14,17 +74,20 @@ func main() {
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
+		openapi.WithGlobalHeaderParam(true),
+		openapi.WithGlobalHiddenHeaderParam("<value>"),
+		openapi.WithGlobalHiddenPathParam("<value>"),
+		openapi.WithGlobalHiddenQueryParam("hello"),
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
 
 	ctx := context.Background()
-	res, err := s.Generation.GlobalNameOverridden(ctx)
+	res, err := s.Servers.SelectGlobalServer(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	if res.Object != nil {
+	if res != nil {
 		// handle response
 	}
 }
@@ -50,20 +113,16 @@ import (
 
 func main() {
 	s := openapi.New(
+		openapi.WithGlobalHeaderParam(true),
+		openapi.WithGlobalHiddenHeaderParam("<value>"),
+		openapi.WithGlobalHiddenPathParam("<value>"),
+		openapi.WithGlobalHiddenQueryParam("hello"),
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
 
-	operationSecurity := operations.UsageExamplePostSecurity{
-		Password: "YOUR_PASSWORD",
-		Username: "YOUR_USERNAME",
-	}
-
-	ctx := context.Background()
-	res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
+	request := operations.UsageExamplePostRequest{
 		RequestBody: &operations.UsageExamplePostRequestBody{
-			FakerFormattedStrings: &shared.FakerFormattedStrings{},
-			FakerStrings:          &shared.FakerStrings{},
 			SimpleObject: &shared.SimpleObject{
 				Any:        "any",
 				Bigint:     big.NewInt(8821239038968084),
@@ -71,14 +130,16 @@ func main() {
 				Bool:       true,
 				BoolOpt:    openapi.Bool(true),
 				Date:       types.MustDateFromString("2020-01-01"),
-				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 				Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 				DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 				Enum:       shared.EnumOne,
 				Float32:    1.1,
+				Float64Str: openapi.Float64(1.1),
 				Int:        1,
 				Int32:      1,
 				Int32Enum:  shared.Int32EnumFiftyFive,
+				Int64Str:   openapi.Int64(100),
 				IntEnum:    shared.IntEnumSecond,
 				Num:        1.1,
 				Str:        "test",
@@ -88,29 +149,38 @@ func main() {
 		BigintParameter:          big.NewInt(168827),
 		BigintStrParameter:       big.NewInt(446729),
 		BoolParameter:            false,
-		DateParameter:            types.MustDateFromString("2023-06-11"),
-		DateTimeDefaultParameter: types.MustTimeFromString("2022-07-22T13:16:48.221Z"),
-		DateTimeParameter:        types.MustTimeFromString("2021-10-21T09:16:58.799Z"),
+		DateParameter:            types.MustDateFromString("2024-06-10"),
+		DateTimeDefaultParameter: types.MustTimeFromString("2023-07-23T01:43:10.512Z"),
+		DateTimeParameter:        types.MustTimeFromString("2022-10-21T15:42:48.223Z"),
 		DecimalParameter:         types.MustNewDecimalFromString("5223.72"),
 		DecimalStrParameter:      types.MustNewDecimalFromString("2911.37"),
 		DoubleParameter:          6946.59,
 		EnumParameter:            operations.EnumParameterValue1,
 		FalseyNumberParameter:    0,
 		Float32Parameter:         1029.75,
-		FloatParameter:           5669.99,
-		Int64Parameter:           195232,
-		IntParameter:             569663,
+		Float64StringParameter:   5669.99,
+		FloatParameter:           1952.32,
+		Int64Parameter:           569663,
+		Int64StringParameter:     264295,
+		IntParameter:             352778,
 		OptEnumParameter:         operations.OptEnumParameterValue3.ToPointer(),
-		StrParameter:             "example 1",
-	}, operationSecurity)
+		StrParameter:             "example 2",
+	}
+
+	security := operations.UsageExamplePostSecurity{
+		Password: "YOUR_PASSWORD",
+		Username: "YOUR_USERNAME",
+	}
+
+	ctx := context.Background()
+	res, err := s.Generation.UsageExamplePost(ctx, request, security)
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	if res.Object != nil {
 		// handle response
 	}
 }
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

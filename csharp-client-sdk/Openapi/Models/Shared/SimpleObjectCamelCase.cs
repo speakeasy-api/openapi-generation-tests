@@ -12,6 +12,7 @@ namespace Openapi.Models.Shared
 {
     using Newtonsoft.Json;
     using NodaTime;
+    using Openapi.Models.Shared;
     using Openapi.Utils;
     using System.Numerics;
     using System;
@@ -97,7 +98,7 @@ namespace Openapi.Models.Shared
         public string StrVal { get; set; } = default!;
 
         [JsonProperty("bigint_str_val")]
-        [JsonConverter(typeof(BigIntSerializer))]
+        [JsonConverter(typeof(BigIntStrConverter))]
         public BigInteger? BigintStrVal { get; set; }
 
         [JsonProperty("bigint_val")]

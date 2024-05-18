@@ -11,6 +11,7 @@
 namespace Openapi.Models.Shared
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     using System;
     
     public enum DefaultsAndConstsOutputDefaultEnumStr
@@ -55,4 +56,5 @@ namespace Openapi.Models.Shared
             throw new Exception($"Unknown value {value} for enum DefaultsAndConstsOutputDefaultEnumStr");
         }
     }
+
 }

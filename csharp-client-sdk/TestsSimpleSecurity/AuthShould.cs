@@ -8,26 +8,44 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using Xunit;
-using Openapi;
-using Openapi.Models.Shared;
-using Openapi.Models.Operations;
+using Company.Product.Feature.Subnamespace;
+using Company.Product.Feature.Subnamespace.Models.Shared;
+using Company.Product.Feature.Subnamespace.Models.Operations;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 public class AuthShould
 {
-    // TODO:
-    // [Fact]
-    // public async Task TestGlobalSecurityFlattening()
-	// recordTest("auth-global-security-flattening")
+    [Fact]
+    public async Task TestGlobalSecurityFlattening()
+    {
+        CommonHelpers.RecordTest("auth-global-security-flattening");
 
-	// s := sdk.New(sdk.WithSecurity("Bearer testToken"))
+        var sdk = new SDK(apiKeyAuth: "Bearer testToken");
 
-	// res, err := s.Auth.APIKeyAuthGlobal(context.Background())
-	// require.NoError(t, err)
-	// require.NotNil(t, res)
-	// assert.Equal(t, http.StatusOK, res.StatusCode)
-	// assert.True(t, res.Token.Authenticated)
-	// assert.Equal(t, "testToken", res.Token.Token)
-    // }
+        var res = await sdk.Auth.ApiKeyAuthGlobalAsync();
+
+        Assert.NotNull(res);
+        Assert.Equal(200, res.StatusCode);
+        Assert.True(res.Token.Authenticated);
+        Assert.Equal("testToken", res.Token.Token);
+    }
+
+    [Fact]
+    public async Task TestGlobalSecurityFlatteningCallback()
+    {
+        CommonHelpers.RecordTest("auth-global-security-flattening-callback");
+
+        var ex = Assert.Throws<System.Exception>(() => new SDK());
+        Assert.Equal("apiKeyAuth and apiKeyAuthSource cannot both be null", ex.Message);
+
+        var sdk = new SDK(apiKeyAuthSource: () => "Bearer testToken");
+
+        var res = await sdk.Auth.ApiKeyAuthGlobalAsync();
+
+        Assert.NotNull(res);
+        Assert.Equal(200, res.StatusCode);
+        Assert.True(res.Token.Authenticated);
+        Assert.Equal("testToken", res.Token.Token);
+    }
 }

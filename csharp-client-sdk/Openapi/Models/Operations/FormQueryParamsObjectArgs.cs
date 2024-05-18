@@ -11,6 +11,7 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     
     public class FormQueryParamsObjectArgs
     {
@@ -48,6 +49,9 @@ namespace Openapi.Models.Operations
         [JsonProperty("float32")]
         public string Float32 { get; set; } = default!;
 
+        [JsonProperty("float64Str")]
+        public string? Float64Str { get; set; }
+
         [JsonProperty("int")]
         public string Int { get; set; } = default!;
 
@@ -56,6 +60,9 @@ namespace Openapi.Models.Operations
 
         [JsonProperty("int32Enum")]
         public string Int32Enum { get; set; } = default!;
+
+        [JsonProperty("int64Str")]
+        public string? Int64Str { get; set; }
 
         [JsonProperty("intEnum")]
         public string IntEnum { get; set; } = default!;

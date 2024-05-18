@@ -8,18 +8,18 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class MultipleMixedOptionsAuthSecurity
 {
-	#[SpeakeasyMetadata('security:scheme=true,type=apiKey,subtype=header,name=x-api-key')]
+    #[SpeakeasyMetadata('security:scheme=true,type=apiKey,subtype=header,name=x-api-key')]
     public ?string $apiKeyAuthNew = null;
-    
-	#[SpeakeasyMetadata('security:scheme=true,type=http,subtype=basic')]
+
+    #[SpeakeasyMetadata('security:scheme=true,type=http,subtype=basic')]
     public ?\OpenAPI\OpenAPI\Models\Shared\SchemeBasicAuth $basicAuth = null;
-    
-	public function __construct()
-	{
-		$this->apiKeyAuthNew = null;
-		$this->basicAuth = null;
-	}
+
+    public function __construct()
+    {
+        $this->apiKeyAuthNew = null;
+        $this->basicAuth = null;
+    }
 }

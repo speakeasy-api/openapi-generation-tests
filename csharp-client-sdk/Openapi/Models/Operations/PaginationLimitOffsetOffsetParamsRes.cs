@@ -11,6 +11,7 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     using System.Collections.Generic;
     
     /// <summary>
@@ -18,6 +19,9 @@ namespace Openapi.Models.Operations
     /// </summary>
     public class PaginationLimitOffsetOffsetParamsRes
     {
+
+        [JsonProperty("next")]
+        public string? Next { get; set; }
 
         [JsonProperty("numPages")]
         public long NumPages { get; set; } = default!;

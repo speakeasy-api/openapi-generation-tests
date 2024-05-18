@@ -11,13 +11,18 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Operations;
     using Openapi.Models.Shared;
+    using Openapi.Utils;
     
     /// <summary>
     /// A successful response that contains the simpleObject sent in the request body
     /// </summary>
     public class NameOverrideGetOverriddenResponse
     {
+
+        [JsonProperty("deepAllOf")]
+        public DeepOverriddenAllOf? DeepOverriddenAllOf { get; set; }
 
         /// <summary>
         /// A simple object that uses all our supported primitive types and enums and has optional properties.
@@ -26,5 +31,11 @@ namespace Openapi.Models.Operations
         /// </summary>
         [JsonProperty("json")]
         public SimpleObject? Json { get; set; }
+
+        [JsonProperty("allOf")]
+        public OverriddenAllOf? OverriddenAllOf { get; set; }
+
+        [JsonProperty("normal")]
+        public OverriddenNormal? OverriddenNormal { get; set; }
     }
 }

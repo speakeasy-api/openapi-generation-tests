@@ -24,11 +24,14 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenHeaderParam: "<value>",
+    globalHiddenPathParam: "<value>",
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Documentation.GetDocumentationPerLanguageAsync("string");
+var res = await sdk.Documentation.GetDocumentationPerLanguageAsync(language: "<value>");
 
 // handle response
 ```
@@ -43,4 +46,8 @@ var res = await sdk.Documentation.GetDocumentationPerLanguageAsync("string");
 ### Response
 
 **[GetDocumentationPerLanguageResponse](../../Models/Operations/GetDocumentationPerLanguageResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |

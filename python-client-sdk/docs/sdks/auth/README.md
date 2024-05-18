@@ -23,28 +23,27 @@ Endpoints for testing authentication.
 
 ```python
 import sdk
-from sdk.models import operations
+from sdk.models import shared
 
 s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
-res = s.auth.api_key_auth(operations.APIKeyAuthSecurity(
-    api_key_auth="Token YOUR_API_KEY",
-))
+res = s.auth.api_key_auth()
 
 if res.token is not None:
     # handle response
     pass
+
 ```
-
-### Parameters
-
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `security`                                                                     | [operations.APIKeyAuthSecurity](../../models/operations/apikeyauthsecurity.md) | :heavy_check_mark:                                                             | The security requirements to use for the request.                              |
 
 
 ### Response
@@ -54,7 +53,7 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## api_key_auth_global
 
@@ -68,16 +67,20 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
-
 
 res = s.auth.api_key_auth_global()
 
 if res.token is not None:
     # handle response
     pass
+
 ```
 
 
@@ -88,7 +91,7 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## basic_auth
 
@@ -99,19 +102,23 @@ import sdk
 from sdk.models import operations
 
 s = sdk.SDK(
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
-res = s.auth.basic_auth(operations.BasicAuthSecurity(
+res = s.auth.basic_auth(security=operations.BasicAuthSecurity(
     password="YOUR_PASSWORD",
     username="YOUR_USERNAME",
-), passwd='string', user='string')
+), passwd='<value>', user='<value>')
 
 if res.user is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -130,7 +137,7 @@ if res.user is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## bearer_auth
 
@@ -141,18 +148,22 @@ import sdk
 from sdk.models import operations
 
 s = sdk.SDK(
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
-res = s.auth.bearer_auth(operations.BearerAuthSecurity(
+res = s.auth.bearer_auth(security=operations.BearerAuthSecurity(
     bearer_auth="YOUR_JWT",
 ))
 
 if res.token is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -169,7 +180,7 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## global_bearer_auth
 
@@ -183,16 +194,20 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
-
 
 res = s.auth.global_bearer_auth()
 
 if res.token is not None:
     # handle response
     pass
+
 ```
 
 
@@ -203,9 +218,43 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## no_auth
+
+### Example Usage
+
+```python
+import sdk
+
+s = sdk.SDK(
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+res = s.auth.no_auth()
+
+if res is not None:
+    # handle response
+    pass
+
+```
+
+
+### Response
+
+**[operations.NoAuthResponse](../../models/operations/noauthresponse.md)**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## oauth2_auth
 
 ### Example Usage
 
@@ -217,56 +266,21 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
-res = s.auth.no_auth()
-
-if res.status_code == 200:
-    # handle response
-    pass
-```
-
-
-### Response
-
-**[operations.NoAuthResponse](../../models/operations/noauthresponse.md)**
-### Errors
-
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
-
-## oauth2_auth
-
-### Example Usage
-
-```python
-import sdk
-from sdk.models import operations
-
-s = sdk.SDK(
-    global_path_param=100,
-    global_query_param='some example global query param',
-)
-
-
-res = s.auth.oauth2_auth(operations.Oauth2AuthSecurity(
-    oauth2="Bearer YOUR_OAUTH2_TOKEN",
-))
+res = s.auth.oauth2_auth()
 
 if res.token is not None:
     # handle response
     pass
+
 ```
-
-### Parameters
-
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `security`                                                                     | [operations.Oauth2AuthSecurity](../../models/operations/oauth2authsecurity.md) | :heavy_check_mark:                                                             | The security requirements to use for the request.                              |
 
 
 ### Response
@@ -276,7 +290,7 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## oauth2_override
 
@@ -284,28 +298,27 @@ if res.token is not None:
 
 ```python
 import sdk
-from sdk.models import operations
+from sdk.models import shared
 
 s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
-res = s.auth.oauth2_override(operations.Oauth2OverrideSecurity(
-    oauth2="Bearer YOUR_OAUTH2_TOKEN",
-))
+res = s.auth.oauth2_override()
 
 if res.token is not None:
     # handle response
     pass
+
 ```
-
-### Parameters
-
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `security`                                                                             | [operations.Oauth2OverrideSecurity](../../models/operations/oauth2overridesecurity.md) | :heavy_check_mark:                                                                     | The security requirements to use for the request.                                      |
 
 
 ### Response
@@ -315,7 +328,7 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## open_id_connect_auth
 
@@ -326,18 +339,22 @@ import sdk
 from sdk.models import operations
 
 s = sdk.SDK(
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
-res = s.auth.open_id_connect_auth(operations.OpenIDConnectAuthSecurity(
+res = s.auth.open_id_connect_auth(security=operations.OpenIDConnectAuthSecurity(
     open_id_connect="Bearer YOUR_OPENID_TOKEN",
 ))
 
 if res.token is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -354,4 +371,4 @@ if res.token is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

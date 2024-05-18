@@ -7,9 +7,9 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using Xunit;
-using Openapi;
 using System.Threading.Tasks;
+using Openapi;
+using Xunit;
 
 public class GlobalsShould
 {
@@ -63,5 +63,31 @@ public class GlobalsShould
 
         Assert.Equal(200, res.StatusCode);
         Assert.Equal("http://localhost:35123/anything/globals/pathParameter/2", res.Res.Url);
+    }
+
+    [Fact]
+    public async Task GlobalHeaderGetUsesGlobal()
+    {
+        CommonHelpers.RecordTest("globals-header-get-uses-global");
+
+        var sdk = new SDK(globalHeaderParam: true);
+
+        var res = await sdk.Globals.GlobalsHeaderGetAsync();
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal("true", res.Res.Headers["Globalheaderparam"]);
+    }
+
+    [Fact]
+    public async Task GlobalHeaderGetUsesLocal()
+    {
+        CommonHelpers.RecordTest("globals-header-get-uses-local");
+
+        var sdk = new SDK(globalHeaderParam: true);
+
+        var res = await sdk.Globals.GlobalsHeaderGetAsync(globalHeaderParam: false);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal("false", res.Res.Headers["Globalheaderparam"]);
     }
 }

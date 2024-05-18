@@ -11,22 +11,22 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 
 class NullableOneOfTypeInObject
 {
-	#[\JMS\Serializer\Annotation\SerializedName('NullableOneOfOne')]
+    #[\JMS\Serializer\Annotation\SerializedName('NullableOneOfOne')]
     #[\JMS\Serializer\Annotation\Type('bool')]
     public bool $nullableOneOfOne;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('NullableOneOfTwo')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('NullableOneOfTwo')]
     #[\JMS\Serializer\Annotation\Type('mixed')]
     public mixed $nullableOneOfTwo;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('OneOfOne')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('OneOfOne')]
     #[\JMS\Serializer\Annotation\Type('bool')]
     public bool $oneOfOne;
-    
-	public function __construct()
-	{
-		$this->nullableOneOfOne = false;
-		$this->nullableOneOfTwo = null;
-		$this->oneOfOne = false;
-	}
+
+    public function __construct()
+    {
+        $this->nullableOneOfOne = false;
+        $this->nullableOneOfTwo = null;
+        $this->oneOfOne = false;
+    }
 }

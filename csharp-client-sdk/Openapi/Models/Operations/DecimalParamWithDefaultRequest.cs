@@ -19,6 +19,6 @@ namespace Openapi.Models.Operations
         /// A decimal parameter with a default value
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=decimalInput")]
-        public decimal DecimalInput { get; set; } = default!;
+        public decimal DecimalInput { get; set; } = 903275809834567300000M;
     }
 }

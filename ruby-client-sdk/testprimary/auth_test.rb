@@ -10,6 +10,15 @@ module OpenApiSDK
       @sdk = OpenApiSDK::SDK.new
     end
 
+    def test_no_auth
+      record_test('auth-no-auth')
+
+      res = @sdk.auth.no_auth
+
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+
+    end
 
     def test_basic_auth
       record_test('auth-basic-auth')
@@ -29,7 +38,85 @@ module OpenApiSDK
 
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+    end
 
+    def test_basic_auth_empty
+      record_test('auth-basic-auth-empty')
+
+      res = @sdk.auth_new.basic_auth_new(
+        Shared::AuthServiceRequestBody.new(
+          basic_auth: Shared::BasicAuth.new(
+            username: '',
+            password: ''
+          )
+        ),
+        Operations::BasicAuthNewSecurity.new(
+          username: '',
+          password: ''
+        )
+      )
+
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+    end
+
+    def test_basic_auth_username_only
+      record_test('auth-basic-auth-username-only')
+
+      res = @sdk.auth_new.basic_auth_new(
+        Shared::AuthServiceRequestBody.new(
+          basic_auth: Shared::BasicAuth.new(
+            username: 'testUser',
+            password: ''
+          )
+        ),
+        Operations::BasicAuthNewSecurity.new(
+          username: 'testUser',
+          password: ''
+        )
+      )
+
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+    end
+
+    def test_basic_auth_password_only
+      record_test('auth-basic-auth-password-only')
+
+      res = @sdk.auth_new.basic_auth_new(
+        Shared::AuthServiceRequestBody.new(
+          basic_auth: Shared::BasicAuth.new(
+            username: '',
+            password: 'testPass'
+          )
+        ),
+        Operations::BasicAuthNewSecurity.new(
+          username: '',
+          password: 'testPass'
+        )
+      )
+
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+    end
+
+    def test_basic_auth_long_password
+      # Not recording this test, because it's ruby only
+      res = @sdk.auth_new.basic_auth_new(
+        Shared::AuthServiceRequestBody.new(
+          basic_auth: Shared::BasicAuth.new(
+            username: 'sdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasda',
+            password: 'asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd'
+          )
+        ),
+        Operations::BasicAuthNewSecurity.new(
+          username: 'sdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasda',
+          password: 'asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd'
+        )
+      )
+
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
     end
 
     def test_api_key_auth_global
@@ -37,37 +124,15 @@ module OpenApiSDK
 
       @sdk.config_security(
         Shared::Security.new(
-          api_key_auth_new: 'test_api_key'
+          api_key_auth: 'Bearer test_api_key'
         )
       )
 
-      res = @sdk.auth_new.api_key_auth_global_new(
-        Shared::AuthServiceRequestBody.new(
-          header_auth: [
-            Shared::HeaderAuth.new(
-              header_name: 'x-api-key',
-              expected_value: 'test_api_key'
-            )
-          ]
-        )
-      )
+      res = @sdk.auth.api_key_auth_global
 
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
-    end
-
-    def test_api_key_auth_operation
-      record_test('auth-api-key-auth-operation')
-
-      res = @sdk.auth.api_key_auth(
-        Operations::ApiKeyAuthSecurity.new(
-          api_key_auth: 'Bearer testToken'
-        )
-      )
-      refute_nil(res)
-      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
-      assert_equal(res.token.authenticated, true)
-      assert_equal('testToken', res.token.token)
+      assert_equal('test_api_key', res.token.token)
     end
 
     def test_bearer_auth_operation_with_prefix
@@ -101,6 +166,12 @@ module OpenApiSDK
     def test_oauth_2_auth
       record_test('auth-oauth2-auth')
 
+      @sdk.config_security(
+        Shared::Security.new(
+          oauth2: 'Bearer testToken'
+        )
+      )
+
       res = @sdk.auth_new.oauth2_auth_new(
         Shared::AuthServiceRequestBody.new(
           header_auth: [
@@ -109,9 +180,6 @@ module OpenApiSDK
               expected_value: 'Bearer testToken'
             )
           ]
-        ),
-        Operations::Oauth2AuthNewSecurity.new(
-          oauth2: 'Bearer testToken'
         )
       )
 
@@ -165,7 +233,6 @@ module OpenApiSDK
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
     end
-
 
     def test_multiple_mixed_scheme_auth
       record_test('auth-multiple-mixed-scheme-auth')

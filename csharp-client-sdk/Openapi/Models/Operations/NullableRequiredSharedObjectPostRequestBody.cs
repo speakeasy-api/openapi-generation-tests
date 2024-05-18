@@ -12,14 +12,15 @@ namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
     using Openapi.Models.Shared;
+    using Openapi.Utils;
     
     public class NullableRequiredSharedObjectPostRequestBody
     {
 
-        [JsonProperty("NullableRequiredObj")]
-        public NullableObject NullableRequiredObj { get; set; } = default!;
+        [JsonProperty("NullableRequiredObj", NullValueHandling = NullValueHandling.Include)]
+        public NullableObject? NullableRequiredObj { get; set; }
 
         [JsonProperty("NullableOptionalObj")]
-        public NullableObject? NullableOptionalObj { get; set; }
+        public NullableOptionalObject? NullableOptionalObj { get; set; } = null;
     }
 }

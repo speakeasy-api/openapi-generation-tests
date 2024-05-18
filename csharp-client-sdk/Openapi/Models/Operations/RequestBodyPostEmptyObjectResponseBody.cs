@@ -11,6 +11,8 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Operations;
+    using Openapi.Utils;
     
     /// <summary>
     /// OK
