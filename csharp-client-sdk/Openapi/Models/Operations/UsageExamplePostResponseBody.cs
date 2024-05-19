@@ -11,6 +11,8 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Operations;
+    using Openapi.Utils;
     
     /// <summary>
     /// A response body that contains the simpleObject sent in the request body
@@ -18,7 +20,7 @@ namespace Openapi.Models.Operations
     public class UsageExamplePostResponseBody
     {
 
-        [JsonProperty("json")]
-        public UsageExamplePostJson Json { get; set; } = default!;
+        [JsonProperty("json", NullValueHandling = NullValueHandling.Include)]
+        public UsageExamplePostJson? Json { get; set; }
     }
 }

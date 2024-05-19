@@ -17,80 +17,81 @@ namespace Openapi.Utils
 
     public interface ISpeakeasyHttpClient
     {
-        void AddHeader(string key, string value);
-        void AddQueryParam(string key, string value);
-        Task<HttpResponseMessage> SendAsync(HttpRequestMessage message);
+        /// <summary>
+        /// Sends an HTTP request asynchronously.
+        /// </summary>
+        /// <param name="request">The HTTP request message to send.</param>
+        /// <returns>The value of the TResult parameter contains the HTTP response message.</returns>
+        Task<HttpResponseMessage> SendAsync(HttpRequestMessage request);
+
+        /// <summary>
+        /// Clones an HTTP request asynchronously.
+        /// </summary>
+        /// <remarks>
+        /// This method is used in the context of Retries. It creates a new HttpRequestMessage instance
+        /// as a deep copy of the original request, including its method, URI, content, headers and options.
+        /// </remarks>
+        /// <param name="request">The HTTP request message to clone.</param>
+        /// <returns>The value of the TResult parameter contains the cloned HTTP request message.</returns>
+        Task<HttpRequestMessage> CloneAsync(HttpRequestMessage request);
     }
 
-    public class SpeakeasyHttpClient : ISpeakeasyHttpClient
+    public class BaseHttpClient : ISpeakeasyHttpClient
     {
-        private ISpeakeasyHttpClient? client;
+        protected readonly HttpClient httpClient;
 
-        private Dictionary<string, List<string>> headers { get; } =
-            new Dictionary<string, List<string>>();
+        public BaseHttpClient()
+        {
+            httpClient = new System.Net.Http.HttpClient();
+        }
 
-        private Dictionary<string, List<string>> queryParams { get; } =
-            new Dictionary<string, List<string>>();
+        public virtual async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
+        {
+            return await httpClient.SendAsync(request);
+        }
+
+        public virtual async Task<HttpRequestMessage> CloneAsync(HttpRequestMessage request)
+        {
+            HttpRequestMessage clone = new HttpRequestMessage(request.Method, request.RequestUri);
+
+            if (request.Content != null)
+            {
+                clone.Content = new ByteArrayContent(await request.Content.ReadAsByteArrayAsync());
+                if (request.Content.Headers != null)
+                {
+                    foreach (var h in request.Content.Headers)
+                    {
+                        clone.Content.Headers.Add(h.Key, h.Value);
+                    }
+                }
+            }
+
+            foreach (KeyValuePair<string, IEnumerable<string>> header in request.Headers)
+            {
+                clone.Headers.TryAddWithoutValidation(header.Key, header.Value);
+            }
+
+            foreach (KeyValuePair<string, object?> prop in request.Options)
+            {
+                clone.Options.TryAdd(prop.Key, prop.Value);
+            }
+
+            return clone;
+        }
+    }
+
+    public class SpeakeasyHttpClient : BaseHttpClient
+    {
+        private ISpeakeasyHttpClient client;
 
         internal SpeakeasyHttpClient(ISpeakeasyHttpClient? client = null)
         {
+            if (client == null)
+            {
+                client = new BaseHttpClient();
+            }
+
             this.client = client;
-        }
-
-        public void AddHeader(string key, string value)
-        {
-            if (headers.ContainsKey(key))
-            {
-                headers[key].Add(value);
-            }
-            else
-            {
-                headers.Add(key, new List<string> { value });
-            }
-        }
-
-        public void AddQueryParam(string key, string value)
-        {
-            if (queryParams.ContainsKey(key))
-            {
-                queryParams[key].Add(value);
-            }
-            else
-            {
-                queryParams.Add(key, new List<string> { value });
-            }
-        }
-
-        public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage message)
-        {
-            foreach(var hh in headers)
-            {
-                foreach(var hv in hh.Value)
-                {
-                    message.Headers.Add(hh.Key, hv);
-                }
-            }
-
-            /*var qp = URLBuilder.SerializeQueryParams(queryParams);
-
-            if (qp != "")
-            {
-                if (message.uri.Query == "")
-                {
-                    message.url += "?" + qp;
-                }
-                else
-                {
-                    message.url += "&" + qp;
-                }
-            }*/
-
-            if (client != null)
-            {
-                return await client.SendAsync(message);
-            }
-
-	    return await new HttpClient().SendAsync(message);
         }
     }
 }

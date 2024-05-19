@@ -10,6 +10,7 @@
 #nullable enable
 namespace Openapi.Models.Operations
 {
+    using Openapi.Utils;
     
     /// <summary>
     /// OK

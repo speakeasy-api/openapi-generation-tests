@@ -11,6 +11,7 @@
 namespace Openapi.Models.Shared
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     using System;
     
     /// <summary>
@@ -60,4 +61,5 @@ namespace Openapi.Models.Shared
             throw new Exception($"Unknown value {value} for enum Enum");
         }
     }
+
 }

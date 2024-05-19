@@ -20,6 +20,6 @@ namespace Openapi.Models.Operations
         /// A date parameter with a default value
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=dateInput")]
-        public LocalDate DateInput { get; set; } = default!;
+        public LocalDate DateInput { get; set; } = LocalDate.FromDateTime(System.DateTime.Parse("2023-10-13"));
     }
 }

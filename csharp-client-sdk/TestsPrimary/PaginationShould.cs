@@ -19,7 +19,7 @@ public class PaginationShould
     [Fact]
     public async Task PaginationLimitOffsetPageParams()
     {
-        CommonHelpers.RecordTest("pagination-limitOffset-page-params");
+        CommonHelpers.RecordTest("pagination-limit-offset-page-params");
         var sdk = new SDK();
 
         var serverLimit = 20;
@@ -42,7 +42,7 @@ public class PaginationShould
     [Fact]
     public async Task PaginationLimitOffsetPageBody()
     {
-        CommonHelpers.RecordTest("pagination-limitOffset-page-body");
+        CommonHelpers.RecordTest("pagination-limit-offset-page-body");
         var sdk = new SDK();
         var limit = 15;
 
@@ -64,7 +64,7 @@ public class PaginationShould
     [Fact]
     public async Task PaginationLimitOffsetOffsetParams()
     {
-        CommonHelpers.RecordTest("pagination-limitOffset-offset-params");
+        CommonHelpers.RecordTest("pagination-limit-offset-offset-params");
         var sdk = new SDK();
         var limit = 15;
 
@@ -86,7 +86,7 @@ public class PaginationShould
     [Fact]
     public async Task PaginationLimitOffsetOffsetBody()
     {
-        CommonHelpers.RecordTest("pagination-limitOffset-offset-body");
+        CommonHelpers.RecordTest("pagination-limit-offset-offset-body");
         var sdk = new SDK();
         var limit = 15;
 
@@ -161,4 +161,29 @@ public class PaginationShould
         Assert.Null(nullRes);
     }
 
+    [Fact]
+    public async Task PaginationCursorNonNumeric()
+    {
+        CommonHelpers.RecordTest("pagination-cursor-non-numeric");
+        var sdk = new SDK();
+
+        var res = await sdk.Pagination.PaginationCursorNonNumericAsync();
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.NotNull(res.Res);
+        Assert.Equal(15, res.Res.ResultArray.Count());
+
+        var nextRes = await res.Next();
+        Assert.Equal(200, nextRes.StatusCode);
+        Assert.NotNull(nextRes.Res);
+        Assert.Equal(5, nextRes.Res.ResultArray.Count());
+
+        var penultimateRes = await nextRes.Next();
+        Assert.Equal(200, penultimateRes.StatusCode);
+        Assert.NotNull(penultimateRes.Res);
+        Assert.Empty(penultimateRes.Res.ResultArray);
+
+        var nullRes = await penultimateRes.Next();
+        Assert.Null(nullRes);
+    }
 }

@@ -11,6 +11,7 @@
 namespace Openapi.Models.Callbacks
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     
     public class IgnoredGenerationGetNotIgnoredCallbackRequestBody
     {

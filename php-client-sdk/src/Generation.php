@@ -8,36 +8,31 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI;
 
-class Generation 
+class Generation
 {
+    private SDKConfiguration $sdkConfiguration;
 
-	private SDKConfiguration $sdkConfiguration;
+    /**
+     * @param  SDKConfiguration  $sdkConfig
+     */
+    public function __construct(SDKConfiguration $sdkConfig)
+    {
+        $this->sdkConfiguration = $sdkConfig;
+    }
 
-	/**
-	 * @param SDKConfiguration $sdkConfig
-	 */
-	public function __construct(SDKConfiguration $sdkConfig)
-	{
-		$this->sdkConfiguration = $sdkConfig;
-	}
-	
     /**
      * anchorTypesGet
-     * 
+     *
      * @return \OpenAPI\OpenAPI\Models\Operations\AnchorTypesGetResponse
      */
-	public function anchorTypesGet(
-    ): \OpenAPI\OpenAPI\Models\Operations\AnchorTypesGetResponse
-    {
+    public function anchorTypesGet(
+    ): \OpenAPI\OpenAPI\Models\Operations\AnchorTypesGetResponse {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/anchorTypes');
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -46,34 +41,29 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->typeFromAnchor = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\AnchorTypesGetTypeFromAnchor', 'json');
+                $response->typeFromAnchor = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\AnchorTypesGetTypeFromAnchor', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * arrayCircularReferenceGet
-     * 
+     *
      * @return \OpenAPI\OpenAPI\Models\Operations\ArrayCircularReferenceGetResponse
      */
-	public function arrayCircularReferenceGet(
-    ): \OpenAPI\OpenAPI\Models\Operations\ArrayCircularReferenceGetResponse
-    {
+    public function arrayCircularReferenceGet(
+    ): \OpenAPI\OpenAPI\Models\Operations\ArrayCircularReferenceGetResponse {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/arrayCircularReference');
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -82,34 +72,29 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->arrayCircularReferenceObject = $serializer->deserialize((string)$httpResponse->getBody(), 'array<OpenAPI\OpenAPI\Models\Shared\ArrayCircularReferenceObject>', 'json');
+                $response->arrayCircularReferenceObject = $serializer->deserialize((string) $httpResponse->getBody(), 'array<OpenAPI\OpenAPI\Models\Shared\ArrayCircularReferenceObject>', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * circularReferenceGet
-     * 
+     *
      * @return \OpenAPI\OpenAPI\Models\Operations\CircularReferenceGetResponse
      */
-	public function circularReferenceGet(
-    ): \OpenAPI\OpenAPI\Models\Operations\CircularReferenceGetResponse
-    {
+    public function circularReferenceGet(
+    ): \OpenAPI\OpenAPI\Models\Operations\CircularReferenceGetResponse {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/circularReference');
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -118,40 +103,34 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->validCircularReferenceObject = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\ValidCircularReferenceObject', 'json');
+                $response->validCircularReferenceObject = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\ValidCircularReferenceObject', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * dateParamWithDefault
-     * 
-     * @param \DateTime $dateInput
+     *
+     * @param  \DateTime  $dateInput
      * @return \OpenAPI\OpenAPI\Models\Operations\DateParamWithDefaultResponse
      */
-	public function dateParamWithDefault(
+    public function dateParamWithDefault(
         \DateTime $dateInput,
-    ): \OpenAPI\OpenAPI\Models\Operations\DateParamWithDefaultResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\DateParamWithDefaultResponse {
         $request = new \OpenAPI\OpenAPI\Models\Operations\DateParamWithDefaultRequest();
         $request->dateInput = $dateInput;
-        
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/dateParamWithDefault');
-        
         $options = ['http_errors' => false];
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\DateParamWithDefaultRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -160,36 +139,30 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 204) {
         }
 
         return $response;
     }
-	
+
     /**
      * dateTimeParamWithDefault
-     * 
-     * @param \DateTime $dateTimeInput
+     *
+     * @param  \DateTime  $dateTimeInput
      * @return \OpenAPI\OpenAPI\Models\Operations\DateTimeParamWithDefaultResponse
      */
-	public function dateTimeParamWithDefault(
+    public function dateTimeParamWithDefault(
         \DateTime $dateTimeInput,
-    ): \OpenAPI\OpenAPI\Models\Operations\DateTimeParamWithDefaultResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\DateTimeParamWithDefaultResponse {
         $request = new \OpenAPI\OpenAPI\Models\Operations\DateTimeParamWithDefaultRequest();
         $request->dateTimeInput = $dateTimeInput;
-        
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/dateTimeParamWithDefault');
-        
         $options = ['http_errors' => false];
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\DateTimeParamWithDefaultRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -198,36 +171,30 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 204) {
         }
 
         return $response;
     }
-	
+
     /**
      * decimalParamWithDefault
-     * 
-     * @param float $decimalInput
+     *
+     * @param  float  $decimalInput
      * @return \OpenAPI\OpenAPI\Models\Operations\DecimalParamWithDefaultResponse
      */
-	public function decimalParamWithDefault(
+    public function decimalParamWithDefault(
         float $decimalInput,
-    ): \OpenAPI\OpenAPI\Models\Operations\DecimalParamWithDefaultResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\DecimalParamWithDefaultResponse {
         $request = new \OpenAPI\OpenAPI\Models\Operations\DecimalParamWithDefaultRequest();
         $request->decimalInput = $decimalInput;
-        
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/decimalParamWithDefault');
-        
         $options = ['http_errors' => false];
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\DecimalParamWithDefaultRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -236,37 +203,32 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 204) {
         }
 
         return $response;
     }
-	
+
     /**
      * deprecatedFieldInSchemaPost
-     * 
-     * @param \OpenAPI\OpenAPI\Models\Shared\DeprecatedFieldInObject $request
+     *
+     * @param  \OpenAPI\OpenAPI\Models\Shared\DeprecatedFieldInObject  $request
      * @return \OpenAPI\OpenAPI\Models\Operations\DeprecatedFieldInSchemaPostResponse
      */
-	public function deprecatedFieldInSchemaPost(
+    public function deprecatedFieldInSchemaPost(
         \OpenAPI\OpenAPI\Models\Shared\DeprecatedFieldInObject $request,
-    ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedFieldInSchemaPostResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedFieldInSchemaPostResponse {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/deprecatedFieldInSchema');
-        
         $options = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        $body = Utils\Utils::serializeRequestBody($request, 'request', 'json');
         if ($body === null) {
             throw new \Exception('Request body is required');
         }
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -275,30 +237,25 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
         }
 
         return $response;
     }
-	
+
     /**
      * deprecatedObjectInSchemaGet
-     * 
+     *
      * @return \OpenAPI\OpenAPI\Models\Operations\DeprecatedObjectInSchemaGetResponse
      */
-	public function deprecatedObjectInSchemaGet(
-    ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedObjectInSchemaGetResponse
-    {
+    public function deprecatedObjectInSchemaGet(
+    ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedObjectInSchemaGetResponse {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/deprecatedObjectInSchema');
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -307,43 +264,36 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->object = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\DeprecatedObjectInSchemaGetResponseBody', 'json');
+                $response->object = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\DeprecatedObjectInSchemaGetResponseBody', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * deprecatedOperationNoCommentsGet
-     * 
-     * @param ?string $deprecatedParameter
+     *
+     * @param  ?string  $deprecatedParameter
      * @return \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationNoCommentsGetResponse
      * @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-	public function deprecatedOperationNoCommentsGet(
+    public function deprecatedOperationNoCommentsGet(
         ?string $deprecatedParameter = null,
-    ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationNoCommentsGetResponse
-    {
-        trigger_error('Method ' . __METHOD__ . ' is deprecated', E_USER_DEPRECATED);
-        
+    ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationNoCommentsGetResponse {
+        trigger_error('Method '.__METHOD__.' is deprecated', E_USER_DEPRECATED);
         $request = new \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationNoCommentsGetRequest();
         $request->deprecatedParameter = $deprecatedParameter;
-        
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/deprecatedOperationNoComments');
-        
         $options = ['http_errors' => false];
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationNoCommentsGetRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -352,42 +302,35 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
         }
 
         return $response;
     }
-	
+
     /**
      * This is an endpoint setup to test deprecation with comments
-     * 
-     * @param ?string $deprecatedParameter
-     * @param ?string $newParameter
+     *
+     * @param  ?string  $deprecatedParameter
+     * @param  ?string  $newParameter
      * @return \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationWithCommentsGetResponse
      * @deprecated  method: This operation is deprecated. Use simplePathParameterObjects instead.
      */
-	public function deprecatedOperationWithCommentsGet(
+    public function deprecatedOperationWithCommentsGet(
         ?string $deprecatedParameter = null,
         ?string $newParameter = null,
-    ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationWithCommentsGetResponse
-    {
-        trigger_error('Method ' . __METHOD__ . ' is deprecated', E_USER_DEPRECATED);
-        
+    ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationWithCommentsGetResponse {
+        trigger_error('Method '.__METHOD__.' is deprecated', E_USER_DEPRECATED);
         $request = new \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationWithCommentsGetRequest();
         $request->deprecatedParameter = $deprecatedParameter;
         $request->newParameter = $newParameter;
-        
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/deprecatedOperationWithComments');
-        
         $options = ['http_errors' => false];
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationWithCommentsGetRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -396,35 +339,29 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
         }
 
         return $response;
     }
-	
+
     /**
      * emptyObjectGet
-     * 
-     * @param \OpenAPI\OpenAPI\Models\Shared\EmptyObjectParam $emptyObject
+     *
+     * @param  \OpenAPI\OpenAPI\Models\Shared\EmptyObjectParam  $emptyObject
      * @return \OpenAPI\OpenAPI\Models\Operations\EmptyObjectGetResponse
      */
-	public function emptyObjectGet(
+    public function emptyObjectGet(
         \OpenAPI\OpenAPI\Models\Shared\EmptyObjectParam $emptyObject,
-    ): \OpenAPI\OpenAPI\Models\Operations\EmptyObjectGetResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\EmptyObjectGetResponse {
         $request = new \OpenAPI\OpenAPI\Models\Operations\EmptyObjectGetRequest();
         $request->emptyObject = $emptyObject;
-        
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/{emptyObject}', \OpenAPI\OpenAPI\Models\Operations\EmptyObjectGetRequest::class, $request, $this->sdkConfiguration->globals);
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -433,30 +370,25 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
         }
 
         return $response;
     }
-	
+
     /**
      * emptyResponseObjectWithCommentGet
-     * 
+     *
      * @return \OpenAPI\OpenAPI\Models\Operations\EmptyResponseObjectWithCommentGetResponse
      */
-	public function emptyResponseObjectWithCommentGet(
-    ): \OpenAPI\OpenAPI\Models\Operations\EmptyResponseObjectWithCommentGetResponse
-    {
+    public function emptyResponseObjectWithCommentGet(
+    ): \OpenAPI\OpenAPI\Models\Operations\EmptyResponseObjectWithCommentGetResponse {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/emptyResponseObjectWithComment');
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = 'application/octet-stream';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -465,7 +397,6 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/octet-stream')) {
                 $response->body = $httpResponse->getBody()->getContents();
@@ -474,24 +405,26 @@ class Generation
 
         return $response;
     }
-	
+
     /**
      * globalNameOverridden
-     * 
+     *
+     * @param  \OpenAPI\OpenAPI\Models\Shared\SimpleObject  $request
      * @return \OpenAPI\OpenAPI\Models\Operations\GetGlobalNameOverrideResponse
      */
-	public function globalNameOverridden(
-    ): \OpenAPI\OpenAPI\Models\Operations\GetGlobalNameOverrideResponse
-    {
+    public function globalNameOverridden(
+        ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\GetGlobalNameOverrideResponse {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/globalNameOverride');
-        
         $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, 'request', 'json');
+        if ($body !== null) {
+            $options = array_merge_recursive($options, $body);
+        }
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
-        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -500,34 +433,29 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->object = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\GetGlobalNameOverrideResponseBody', 'json');
+                $response->object = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\GetGlobalNameOverrideResponseBody', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * ignoredGenerationGet
-     * 
+     *
      * @return \OpenAPI\OpenAPI\Models\Operations\IgnoredGenerationGetResponse
      */
-	public function ignoredGenerationGet(
-    ): \OpenAPI\OpenAPI\Models\Operations\IgnoredGenerationGetResponse
-    {
+    public function ignoredGenerationGet(
+    ): \OpenAPI\OpenAPI\Models\Operations\IgnoredGenerationGetResponse {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/ignoredGeneration');
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -536,38 +464,34 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->object = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\IgnoredGenerationGetResponseBody', 'json');
+                $response->object = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\IgnoredGenerationGetResponseBody', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * ignoresPost
-     * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\IgnoresPostRequestBody $requestBody
-     * @param ?string $testParam
+     *
+     * @param  \OpenAPI\OpenAPI\Models\Operations\IgnoresPostRequestBody  $requestBody
+     * @param  ?string  $testParam
      * @return \OpenAPI\OpenAPI\Models\Operations\IgnoresPostResponse
      */
-	public function ignoresPost(
+    public function ignoresPost(
         \OpenAPI\OpenAPI\Models\Operations\IgnoresPostRequestBody $requestBody,
         ?string $testParam = null,
-    ): \OpenAPI\OpenAPI\Models\Operations\IgnoresPostResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\IgnoresPostResponse {
         $request = new \OpenAPI\OpenAPI\Models\Operations\IgnoresPostRequest();
         $request->requestBody = $requestBody;
         $request->testParam = $testParam;
-        
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/ignores');
-        
         $options = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, "requestBody", "json");
+        $body = Utils\Utils::serializeRequestBody($request, 'requestBody', 'json');
         if ($body === null) {
             throw new \Exception('Request body is required');
         }
@@ -575,9 +499,7 @@ class Generation
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\IgnoresPostRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -586,43 +508,37 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->httpBinSimpleJsonObject = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\HttpBinSimpleJsonObject', 'json');
+                $response->httpBinSimpleJsonObject = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\HttpBinSimpleJsonObject', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * nameOverride
-     * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\EnumNameOverride $testEnumQueryParam
-     * @param string $testQueryParam
+     *
+     * @param  \OpenAPI\OpenAPI\Models\Operations\EnumNameOverride  $testEnumQueryParam
+     * @param  string  $testQueryParam
      * @return \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetResponse
      */
-	public function nameOverride(
+    public function nameOverride(
         \OpenAPI\OpenAPI\Models\Operations\EnumNameOverride $testEnumQueryParam,
         string $testQueryParam,
-    ): \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetResponse {
         $request = new \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetRequest();
         $request->testEnumQueryParam = $testEnumQueryParam;
         $request->testQueryParam = $testQueryParam;
-        
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/nameOverride');
-        
         $options = ['http_errors' => false];
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\NameOverrideGetRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -631,34 +547,29 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->overriddenResponse = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\NameOverrideGetOverriddenResponse', 'json');
+                $response->overriddenResponse = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\NameOverrideGetOverriddenResponse', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * objectCircularReferenceGet
-     * 
+     *
      * @return \OpenAPI\OpenAPI\Models\Operations\ObjectCircularReferenceGetResponse
      */
-	public function objectCircularReferenceGet(
-    ): \OpenAPI\OpenAPI\Models\Operations\ObjectCircularReferenceGetResponse
-    {
+    public function objectCircularReferenceGet(
+    ): \OpenAPI\OpenAPI\Models\Operations\ObjectCircularReferenceGetResponse {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/objectCircularReference');
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -667,34 +578,29 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->objectCircularReferenceObject = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\ObjectCircularReferenceObject', 'json');
+                $response->objectCircularReferenceObject = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\ObjectCircularReferenceObject', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * oneOfCircularReferenceGet
-     * 
+     *
      * @return \OpenAPI\OpenAPI\Models\Operations\OneOfCircularReferenceGetResponse
      */
-	public function oneOfCircularReferenceGet(
-    ): \OpenAPI\OpenAPI\Models\Operations\OneOfCircularReferenceGetResponse
-    {
+    public function oneOfCircularReferenceGet(
+    ): \OpenAPI\OpenAPI\Models\Operations\OneOfCircularReferenceGetResponse {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/oneOfCircularReference');
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -703,49 +609,43 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->oneOfCircularReferenceObject = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\OneOfCircularReferenceObject', 'json');
+                $response->oneOfCircularReferenceObject = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\OneOfCircularReferenceObject', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * typedParameterGenerationGet
-     * 
-     * @param ?int $bigint
-     * @param ?\DateTime $date
-     * @param ?float $decimal
-     * @param ?\OpenAPI\OpenAPI\Models\Operations\Obj $obj
+     *
+     * @param  ?int  $bigint
+     * @param  ?\DateTime  $date
+     * @param  ?float  $decimal
+     * @param  ?\OpenAPI\OpenAPI\Models\Operations\Obj  $obj
      * @return \OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetResponse
      */
-	public function typedParameterGenerationGet(
+    public function typedParameterGenerationGet(
         ?int $bigint = null,
         ?\DateTime $date = null,
         ?float $decimal = null,
         ?\OpenAPI\OpenAPI\Models\Operations\Obj $obj = null,
-    ): \OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetResponse {
         $request = new \OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetRequest();
         $request->bigint = $bigint;
         $request->date = $date;
         $request->decimal = $decimal;
         $request->obj = $obj;
-        
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/typedParameterGeneration');
-        
         $options = ['http_errors' => false];
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -754,44 +654,39 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
         }
 
         return $response;
     }
-	
+
     /**
      * An operation used for testing usage examples
-     * 
+     *
      * An operation used for testing usage examples that includes a large array of parameters and input types to ensure that all are handled correctly
      * https://docs.example.com - Usage example docs
-     * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequest $request
-     * @param \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostSecurity $security
+     *
+     * @param  \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequest  $request
+     * @param  \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostSecurity  $security
      * @return \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostResponse
      * @see https://docs.example.com
      */
-	public function usageExamplePost(
+    public function usageExamplePost(
         ?\OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequest $request,
         \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostSecurity $security,
-    ): \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostResponse {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/usageExample');
-        
         $options = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, "requestBody", "json");
+        $body = Utils\Utils::serializeRequestBody($request, 'requestBody', 'json');
         if ($body !== null) {
             $options = array_merge_recursive($options, $body);
         }
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->defaultClient, $security);
         $httpResponse = $client->request('POST', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -800,11 +695,10 @@ class Generation
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->object = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\UsageExamplePostResponseBody', 'json');
+                $response->object = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\UsageExamplePostResponseBody', 'json');
             }
         }
 

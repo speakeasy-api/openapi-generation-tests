@@ -3,6 +3,7 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        | Example            |
-| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `xHeaderArray`     | *String*           | :heavy_check_mark: | N/A                | test1,test2        |
+| Field                        | Type                         | Required                     | Description                  | Example                      |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `clientLevelHeader`          | *Optional<? extends String>* | :heavy_minus_sign:           | N/A                          | added by client              |
+| `idempotencyKey`             | *Optional<? extends String>* | :heavy_minus_sign:           | N/A                          | some-key                     |

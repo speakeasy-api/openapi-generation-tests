@@ -11,11 +11,13 @@
 namespace Openapi.Models.Shared
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Shared;
+    using Openapi.Utils;
     
     public class OneOfCircularReferenceObject
     {
 
         [JsonProperty("child")]
-        public object Child { get; set; } = default!;
+        public Child Child { get; set; } = default!;
     }
 }
