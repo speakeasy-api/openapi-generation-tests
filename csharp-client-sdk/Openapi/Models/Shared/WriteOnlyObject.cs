@@ -11,6 +11,7 @@
 namespace Openapi.Models.Shared
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     
     public class WriteOnlyObject
     {

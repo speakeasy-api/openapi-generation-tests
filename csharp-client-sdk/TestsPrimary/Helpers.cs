@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xunit;
 using Openapi.Models.Shared;
@@ -27,7 +28,7 @@ public class Helpers
             Bool = true,
             BoolOpt = true,
             Date = LocalDate.FromDateTime(DateTime.Parse("2020-01-01")),
-            DateTime = DateTime.Parse("2020-01-01T00:00:00.0000001Z"),
+            DateTime = DateTime.Parse("2020-01-01T00:00:00.0000001Z").ToUniversalTime(),
             Enum = Openapi.Models.Shared.Enum.One,
             Float32 = 1.1F,
             Int32 = 1,
@@ -100,10 +101,21 @@ public class Helpers
         Assert.Equal(e.StrOptVal, a.StrOptVal);
     }
 
+    public static byte[] GetData() =>
+        Encoding.Unicode.GetBytes(
+            "{\r  \"some\": \"json\",\r  \"to\": \"be\",\r  \"uploaded\": \"in\",\r  \"a\": \"file\"\r}\r"
+        );
+
+    public static async Task<string> GetSerializedBodyJson(object request, string format = "")
+    {
+        var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, false, format);
+        return await serializedBody.ReadAsStringAsync();
+    }
+
     public static DeepObject CreateDeepObject() =>
         new DeepObject()
         {
-            Any = CreateSimpleObject(),
+            Any = Any.CreateSimpleObject(CreateSimpleObject()),
             Arr = new List<SimpleObject>() { CreateSimpleObject(), CreateSimpleObject() },
             Bool = true,
             Int = 1,
@@ -113,44 +125,9 @@ public class Helpers
             Str = "test"
         };
 
-    public static byte[] GetData() =>
-        Encoding.Unicode.GetBytes(
-            "{\r  \"some\": \"json\",\r  \"to\": \"be\",\r  \"uploaded\": \"in\",\r  \"a\": \"file\"\r}\r"
-        );
-
     public static void AssertDeepObject(DeepObject a)
     {
-        // because Any is object, the field-names
-        // aren't deserialized to match SimpleObject, so
-        // a.Any cannot be cast to Simple object in the
-        // standard way.
-        var json = JsonConvert.SerializeObject(
-            a.Any,
-            new JsonSerializerSettings()
-            {
-                NullValueHandling = NullValueHandling.Ignore,
-                Converters = new JsonConverter[]
-                {
-                    new FlexibleObjectDeserializer(),
-                    new IsoDateTimeSerializer(),
-                    new EnumSerializer()
-                }
-            }
-        );
-        var any = JsonConvert.DeserializeObject<SimpleObject>(
-            json,
-            new JsonSerializerSettings()
-            {
-                NullValueHandling = NullValueHandling.Ignore,
-                Converters = new JsonConverter[]
-                {
-                    new FlexibleObjectDeserializer(),
-                    new IsoDateTimeSerializer(),
-                    new EnumSerializer()
-                }
-            }
-        );
-        AssertSimpleObject(any);
+        AssertSimpleObject(a.Any.SimpleObject);
 
         Assert.Equal(2, a.Arr.Count());
         AssertSimpleObject(a.Arr.ToList().First());
@@ -165,5 +142,57 @@ public class Helpers
         Assert.Equal(1.1D, a.Num);
         AssertSimpleObject(a.Obj);
         Assert.Equal("test", a.Str);
+    }
+
+
+    public static DeepObjectCamelCase CreateDeepObjectCamelCase() =>
+        new DeepObjectCamelCase()
+        {
+            AnyVal = AnyVal.CreateSimpleObjectCamelCase(CreateSimpleObjectCamelCase()),
+            ArrVal = new List<SimpleObjectCamelCase>() { CreateSimpleObjectCamelCase(), CreateSimpleObjectCamelCase() },
+            BoolVal = true,
+            IntVal = 1,
+            MapVal = new Dictionary<string, SimpleObjectCamelCase>() { { "key", CreateSimpleObjectCamelCase() } },
+            NumVal = 1.1D,
+            ObjVal = CreateSimpleObjectCamelCase(),
+            StrVal = "test"
+        };
+
+    public static void AssertDeepObjectCamelCase(DeepObjectCamelCase a)
+    {
+        AssertSimpleObjectCamelCase(a.AnyVal.SimpleObjectCamelCase);
+
+        Assert.Equal(2, a.ArrVal.Count());
+        AssertSimpleObjectCamelCase(a.ArrVal.ToList().First());
+        AssertSimpleObjectCamelCase(a.ArrVal.ToList().Last());
+
+        Assert.True(a.BoolVal);
+        Assert.Equal(1, a.IntVal);
+
+        Assert.Single(a.MapVal);
+        AssertSimpleObjectCamelCase(a.MapVal["key"]);
+
+        Assert.Equal(1.1D, a.NumVal);
+        AssertSimpleObjectCamelCase(a.ObjVal);
+        Assert.Equal("test", a.StrVal);
+    }
+
+    public static void AssertDictEqual(Dictionary<string, object> a, Dictionary<string, object> b)
+    {
+        Assert.Equal(a.Count, b.Count);
+
+        foreach (var pair in a)
+        {
+            Assert.True(b.TryGetValue(pair .Key, out var value));
+
+            if (pair.Value is Dictionary<string, object> nestedA && value is Dictionary<string, object> nestedB)
+            {
+                AssertDictEqual(nestedA, nestedB);
+            }
+            else
+            {
+                Assert.Equal(pair.Value, value);
+            }
+        }
     }
 }

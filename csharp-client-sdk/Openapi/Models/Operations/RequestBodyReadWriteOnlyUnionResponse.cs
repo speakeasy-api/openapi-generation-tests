@@ -10,6 +10,8 @@
 #nullable enable
 namespace Openapi.Models.Operations
 {
+    using Openapi.Models.Shared;
+    using Openapi.Utils;
     using System.Net.Http;
     using System;
     
@@ -29,11 +31,11 @@ namespace Openapi.Models.Operations
         /// <summary>
         /// Raw HTTP response; suitable for custom response parsing
         /// </summary>
-        public HttpResponseMessage? RawResponse { get; set; }
+        public HttpResponseMessage RawResponse { get; set; } = default!;
 
         /// <summary>
         /// OK
         /// </summary>
-        public object? WeaklyTypedOneOfReadWriteObject { get; set; }
+        public WeaklyTypedOneOfReadWriteObjectOutput? WeaklyTypedOneOfReadWriteObject { get; set; }
     }
 }

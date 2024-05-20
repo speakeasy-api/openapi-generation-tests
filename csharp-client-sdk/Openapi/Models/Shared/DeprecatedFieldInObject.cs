@@ -11,6 +11,8 @@
 namespace Openapi.Models.Shared
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Shared;
+    using Openapi.Utils;
     using System;
     
     public class DeprecatedFieldInObject

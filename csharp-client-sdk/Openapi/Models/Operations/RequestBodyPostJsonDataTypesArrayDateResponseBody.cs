@@ -12,6 +12,7 @@ namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
     using NodaTime;
+    using Openapi.Utils;
     using System.Collections.Generic;
     
     /// <summary>

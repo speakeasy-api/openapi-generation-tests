@@ -11,8 +11,8 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Numerics;
+    using Openapi.Models.Shared;
+    using Openapi.Utils;
     
     /// <summary>
     /// OK
@@ -21,6 +21,6 @@ namespace Openapi.Models.Operations
     {
 
         [JsonProperty("json")]
-        public Dictionary<string, BigInteger> Json { get; set; } = default!;
+        public ObjWithComplexNumbersAdditionalProperties Json { get; set; } = default!;
     }
 }

@@ -11,6 +11,8 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Operations;
+    using Openapi.Utils;
     
     /// <summary>
     /// OK
@@ -19,6 +21,6 @@ namespace Openapi.Models.Operations
     {
 
         [JsonProperty("args")]
-        public Args Args { get; set; } = default!;
+        public GlobalsQueryParameterGetArgs Args { get; set; } = default!;
     }
 }

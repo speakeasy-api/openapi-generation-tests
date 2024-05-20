@@ -7,6 +7,9 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using NodaTime;
+using System;
+using System.IO;  
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -54,6 +57,24 @@ public class RequestBodiesShould
     }
 
     [Fact]
+    public async Task PostApplicationJsonArrayCamelCase()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-application-json-array-camel-case");
+        var sdk = new SDK();
+
+        var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayCamelCaseAsync(
+            new List<SimpleObjectCamelCase>() { Helpers.CreateSimpleObjectCamelCase(), Helpers.CreateSimpleObjectCamelCase() }
+        );
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(2, res.Res.Count());
+        foreach (var obj in res.Res)
+        {
+            Helpers.AssertSimpleObjectCamelCase(obj);
+        }
+    }
+
+    [Fact]
     public async Task PostApplicationJsonArrayOfArray()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-array-of-array");
@@ -71,14 +92,42 @@ public class RequestBodiesShould
 
         Assert.Equal(200, res.StatusCode);
         Assert.Equal(2, res.Res.Count());
-        Assert.Equal(2, res.Res.ToList()[0].Count());
-        Assert.Equal(2, res.Res.ToList()[1].Count());
 
         for (var i = 0; i < 2; i++)
         {
+            Assert.Equal(2, res.Res.ToList()[i].Count());
             for (var j = 0; j < 2; j++)
             {
                 Helpers.AssertSimpleObject(res.Res.ToList()[i].ToList()[j]);
+            }
+        }
+    }
+
+    [Fact]
+    public async Task PostApplicationJsonArrayOfArrayCamelCase()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-application-json-array-of-array-camel-case");
+        var sdk = new SDK();
+
+        var obj = Helpers.CreateSimpleObjectCamelCase();
+
+        var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfArrayCamelCaseAsync(
+            new List<List<SimpleObjectCamelCase>>
+            {
+                new List<SimpleObjectCamelCase>() { obj, obj },
+                new List<SimpleObjectCamelCase>() { obj, obj }
+            }
+        );
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(2, res.Res.Count());
+
+        for (var i = 0; i < 2; i++)
+        {
+            Assert.Equal(2, res.Res.ToList()[i].Count());
+            for (var j = 0; j < 2; j++)
+            {
+                Helpers.AssertSimpleObjectCamelCase(res.Res.ToList()[i].ToList()[j]);
             }
         }
     }
@@ -99,6 +148,24 @@ public class RequestBodiesShould
         Assert.Equal(2, res.Res.Count());
         Helpers.AssertSimpleObject(res.Res["mapElem1"]);
         Helpers.AssertSimpleObject(res.Res["mapElem2"]);
+    }
+
+    [Fact]
+    public async Task PostApplicationJsonMapCamelCase()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-application-json-map-camel-case");
+        var sdk = new SDK();
+
+        var obj = Helpers.CreateSimpleObjectCamelCase();
+
+        var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapCamelCaseAsync(
+            new Dictionary<string, SimpleObjectCamelCase>() { { "mapElem1", obj }, { "mapElem2", obj } }
+        );
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(2, res.Res.Count());
+        Helpers.AssertSimpleObjectCamelCase(res.Res["mapElem1"]);
+        Helpers.AssertSimpleObjectCamelCase(res.Res["mapElem2"]);
     }
 
     [Fact]
@@ -142,6 +209,46 @@ public class RequestBodiesShould
     }
 
     [Fact]
+    public async Task PostApplicationJsonMapOfMapCamelCase()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-application-json-map-of-map-camel-case");
+        var sdk = new SDK();
+
+        var obj = Helpers.CreateSimpleObjectCamelCase();
+
+        var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfMapCamelCaseAsync(
+            new Dictionary<string, Dictionary<string, SimpleObjectCamelCase>>()
+            {
+                {
+                    "mapElem1",
+                    new Dictionary<string, SimpleObjectCamelCase>()
+                    {
+                        { "subMapElem1", obj },
+                        { "subMapElem2", obj }
+                    }
+                },
+                {
+                    "mapElem2",
+                    new Dictionary<string, SimpleObjectCamelCase>()
+                    {
+                        { "subMapElem1", obj },
+                        { "subMapElem2", obj }
+                    }
+                },
+            }
+        );
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(2, res.Res.Count());
+        Assert.Equal(2, res.Res["mapElem1"].Count());
+        Assert.Equal(2, res.Res["mapElem2"].Count());
+        Helpers.AssertSimpleObjectCamelCase(res.Res["mapElem1"]["subMapElem1"]);
+        Helpers.AssertSimpleObjectCamelCase(res.Res["mapElem1"]["subMapElem2"]);
+        Helpers.AssertSimpleObjectCamelCase(res.Res["mapElem2"]["subMapElem1"]);
+        Helpers.AssertSimpleObjectCamelCase(res.Res["mapElem2"]["subMapElem2"]);
+    }
+
+    [Fact]
     public async Task PostApplicationJsonMapOfArray()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-map-of-array");
@@ -174,6 +281,38 @@ public class RequestBodiesShould
     }
 
     [Fact]
+    public async Task PostApplicationJsonMapOfArrayCamelCase()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-application-json-map-of-array-camel-case");
+        var sdk = new SDK();
+
+        var obj = Helpers.CreateSimpleObjectCamelCase();
+
+        var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapOfArrayCamelCaseAsync(
+            new Dictionary<string, List<SimpleObjectCamelCase>>()
+            {
+                {
+                    "mapElem1",
+                    new List<SimpleObjectCamelCase>() { obj, obj }
+                },
+                {
+                    "mapElem2",
+                    new List<SimpleObjectCamelCase>() { obj, obj }
+                }
+            }
+        );
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(2, res.Res.Count());
+        Assert.Equal(2, res.Res["mapElem1"].Count());
+        Assert.Equal(2, res.Res["mapElem2"].Count());
+        Helpers.AssertSimpleObjectCamelCase(res.Res["mapElem1"].First());
+        Helpers.AssertSimpleObjectCamelCase(res.Res["mapElem1"].Last());
+        Helpers.AssertSimpleObjectCamelCase(res.Res["mapElem2"].First());
+        Helpers.AssertSimpleObjectCamelCase(res.Res["mapElem2"].Last());
+    }
+
+    [Fact]
     public async Task PostApplicationJsonArrayOfMap()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-array-of-map");
@@ -203,6 +342,35 @@ public class RequestBodiesShould
         Helpers.AssertSimpleObject(res.Res.ToList()[1]["mapElem2"]);
     }
 
+    [Fact]
+    public async Task PostApplicationJsonArrayOfMapCamelCase()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-application-json-array-of-map-camel-case");
+        var sdk = new SDK();
+
+        var maps = new List<Dictionary<string, SimpleObjectCamelCase>>();
+        for (int i = 0; i < 2; i++)
+        {
+            maps.Add(
+                new Dictionary<string, SimpleObjectCamelCase>()
+                {
+                    { "mapElem1", Helpers.CreateSimpleObjectCamelCase() },
+                    { "mapElem2", Helpers.CreateSimpleObjectCamelCase() }
+                }
+            );
+        }
+
+        var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayOfMapCamelCaseAsync(maps);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(2, res.Res.Count());
+        Assert.Equal(2, res.Res.ToList()[0].Count());
+        Assert.Equal(2, res.Res.ToList()[1].Count());
+        Helpers.AssertSimpleObjectCamelCase(res.Res.ToList()[0]["mapElem1"]);
+        Helpers.AssertSimpleObjectCamelCase(res.Res.ToList()[0]["mapElem2"]);
+        Helpers.AssertSimpleObjectCamelCase(res.Res.ToList()[1]["mapElem1"]);
+        Helpers.AssertSimpleObjectCamelCase(res.Res.ToList()[1]["mapElem2"]);
+    }
     [Fact]
     public async Task PostApplicationJsonMapOfPrimitive()
     {
@@ -317,6 +485,24 @@ public class RequestBodiesShould
     }
 
     [Fact]
+    public async Task PostApplicationJsonArrayObjectCamelCase()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-application-json-array-object-camel-case");
+        var sdk = new SDK();
+
+        var obj = Helpers.CreateSimpleObjectCamelCase();
+
+        var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonArrayObjCamelCaseAsync(
+            new List<SimpleObjectCamelCase>() { obj, obj }
+        );
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(2, res.ArrObjValueCamelCase.Json.Count());
+        Helpers.AssertSimpleObjectCamelCase(res.ArrObjValueCamelCase.Json.ToList()[0]);
+        Helpers.AssertSimpleObjectCamelCase(res.ArrObjValueCamelCase.Json.ToList()[1]);
+    }
+
+    [Fact]
     public async Task PostApplicationJsonMapObject()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-map-object");
@@ -335,6 +521,24 @@ public class RequestBodiesShould
     }
 
     [Fact]
+    public async Task PostApplicationJsonMapObjectCamelCase()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-application-json-map-object-camel-case");
+        var sdk = new SDK();
+
+        var obj = Helpers.CreateSimpleObjectCamelCase();
+
+        var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonMapObjCamelCaseAsync(
+            new Dictionary<string, SimpleObjectCamelCase>() { { "mapElem1", obj }, { "mapElem2", obj } }
+        );
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(2, res.MapObjValueCamelCase.Json.Count());
+        Helpers.AssertSimpleObjectCamelCase(res.MapObjValueCamelCase.Json["mapElem1"]);
+        Helpers.AssertSimpleObjectCamelCase(res.MapObjValueCamelCase.Json["mapElem2"]);
+    }
+
+    [Fact]
     public async Task PostApplicationJsonDeep()
     {
         CommonHelpers.RecordTest("request-bodies-post-application-json-deep");
@@ -347,6 +551,40 @@ public class RequestBodiesShould
         Assert.Equal(200, res.StatusCode);
         Helpers.AssertDeepObject(res.Res.Json);
     }
+
+    [Fact]
+    public async Task PostApplicationJsonDeepCamelCase()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-application-json-deep-camel-case");
+        var sdk = new SDK();
+
+        var res = await sdk.RequestBodies.RequestBodyPostApplicationJsonDeepCamelCaseAsync(
+            Helpers.CreateDeepObjectCamelCase()
+        );
+
+        Assert.Equal(200, res.StatusCode);
+        Helpers.AssertDeepObjectCamelCase(res.Res.Json);
+    }
+
+
+/*
+    @Test
+    void testRequestBodyPostApplicationJsonDeepCamelCase() throws Exception {
+        CommonHelpers.recordTest("request-bodies-post-application-json-deep-camel-case");
+
+        SDK s = SDK.builder().build();
+        assertNotNull(s);
+
+        DeepObjectCamelCase obj = Helpers.createDeepObjectCamelCase();
+
+        RequestBodyPostApplicationJsonDeepCamelCaseResponse res = s.requestBodies()
+                .requestBodyPostApplicationJsonDeepCamelCase(obj);
+
+        assertNotNull(res);
+        assertEquals(200, res.statusCode());
+        assertNotNull(res.res().get());
+        assertEquals(obj, res.res().get().json().get());
+    }*/
 
     [Fact]
     public async Task PostApplicationJsonMultipleJsonFiltered()
@@ -603,7 +841,7 @@ public class RequestBodiesShould
         var res = await sdk.RequestBodies.RequestBodyPutMultipartFileAsync(
             new RequestBodyPutMultipartFileRequestBody()
             {
-                File = new File()
+                File = new Openapi.Models.Operations.File()
                 {
                     Content = data,
                     FileName = "testUpload.json"
@@ -614,6 +852,32 @@ public class RequestBodiesShould
         Assert.Equal(200, res.StatusCode);
         Assert.NotNull(res.Res);
         Assert.Equal(Encoding.UTF8.GetString(data, 0, data.Length), res.Res.Files["file"]);
+    }
+
+    [Fact]
+    public async Task RequestBodyPutMultipartDifferentFilename()
+    {
+        CommonHelpers.RecordTest("request-bodies-put-different-file-name");
+        // This relative path is necessary, because the CWD while under test is `Test/bin/Debug/net5.0`
+        // The C# canonical solution to using files in test is to embed them in the Assembly.
+        // I chose not to pursue that route for simplicity
+        byte[] data = System.IO.File.ReadAllBytes("../../../testUpload.json");
+
+        var sdk = new SDK();
+        var differentFileName = new DifferentFileName()
+        {
+            Content = data,
+            FileName = "testUpload.json"
+        };
+        var res = await sdk.RequestBodies.RequestBodyPutMultipartDifferentFileNameAsync(
+            new RequestBodyPutMultipartDifferentFileNameRequestBody()
+            {
+                DifferentFileName = differentFileName
+            }
+        );
+        Assert.Equal(200, res.StatusCode);
+        Assert.NotNull(res.Res);
+        Assert.Equal(System.Text.Encoding.Default.GetString(data), res.Res.Files["differentFileName"]);
     }
 
     [Fact]
@@ -906,5 +1170,554 @@ public class RequestBodiesShould
             "http://localhost:35123/anything/requestBodies/post/9007199254740991/9223372036854775807/3.141592653589793/3.1415926535897932384626433833/complex-number-types?queryBigInt=9007199254740991&queryBigIntStr=9223372036854775807&queryDecimal=3.141592653589793&queryDecimalStr=3.1415926535897932384626433833",
             res.Object.Url
         );
+    }
+
+    [Fact]
+    public async Task RequestBodyDefaultsAndConstsAsync() {
+        CommonHelpers.RecordTest("request-bodies-defaults-and-consts");
+
+        var sdk = new SDK();
+        var req = new DefaultsAndConsts(){
+            NormalField = "normal",
+            DefaultStr = "not default"
+        };
+        var res = await sdk.RequestBodies.RequestBodyPostDefaultsAndConstsAsync(req);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal("normal", res.Object.Json.NormalField);
+        Assert.Equal(9007199254740991, res.Object.Json.ConstBigInt);
+        Assert.Equal(9223372036854775807, res.Object.Json.ConstBigIntStr);
+        Assert.True(res.Object.Json.ConstBool);
+        Assert.Equal(LocalDate.FromDateTime(new DateTime(2020, 1, 1)), res.Object.Json.ConstDate);
+        Assert.Equal(new DateTime(2020, 1, 1), res.Object.Json.ConstDateTime);
+        Assert.Equal(3.141592653589793M, res.Object.Json.ConstDecimal);
+        Assert.Equal(3.141592653589793238462643383279M, res.Object.Json.ConstDecimalStr);
+        Assert.Equal(DefaultsAndConstsOutputConstEnumInt.Two, res.Object.Json.ConstEnumInt);
+        Assert.Equal(DefaultsAndConstsOutputConstEnumStr.Two, res.Object.Json.ConstEnumStr);
+        Assert.Equal(123, res.Object.Json.ConstInt);
+        Assert.Equal(123.456, res.Object.Json.ConstNum);
+        Assert.Null(res.Object.Json.ConstStrNull);
+
+        Assert.Equal(9007199254740991, res.Object.Json.DefaultBigInt);
+        Assert.Equal(9223372036854775807, res.Object.Json.DefaultBigIntStr);
+        Assert.True(res.Object.Json.DefaultBool);
+        Assert.Equal(LocalDate.FromDateTime(new DateTime(2020, 1, 1)), res.Object.Json.DefaultDate);
+        Assert.Equal(new DateTime(2020, 1, 1), res.Object.Json.DefaultDateTime);
+        Assert.Equal(3.141592653589793M, res.Object.Json.DefaultDecimal);
+        Assert.Equal(3.141592653589793238462643383279M, res.Object.Json.DefaultDecimalStr);
+        Assert.Equal(DefaultsAndConstsOutputDefaultEnumInt.Two, res.Object.Json.DefaultEnumInt);
+        Assert.Equal(DefaultsAndConstsOutputDefaultEnumStr.Two, res.Object.Json.DefaultEnumStr);
+        Assert.Equal(123, res.Object.Json.DefaultInt);
+        Assert.Equal(123.456, res.Object.Json.DefaultNum);
+        Assert.Equal("not default", res.Object.Json.DefaultStr);
+        Assert.Null(res.Object.Json.DefaultStrNullable);
+        Assert.Equal("default", res.Object.Json.DefaultStrOptional);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesStringAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-string");
+
+        var sdk = new SDK();
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesStringAsync("test");
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal("test", res.Object.Json);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesIntegerAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-integer");
+
+        var sdk = new SDK();
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesIntegerAsync(1);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(1, res.Object.Json);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesLongAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-int32");
+
+        var sdk = new SDK();
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesInt32Async(1);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(1, res.Object.Json);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesBigIntAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-bigint");
+
+        var sdk = new SDK();
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesBigIntAsync(new BigInteger(1));
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(typeof(BigInteger), res.Object.Json.GetType());
+        Assert.Equal(new BigInteger(1), res.Object.Json);
+        Assert.Equal("1", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesBigIntStrAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-bigint-str");
+
+        var sdk = new SDK();
+        var req = BigInteger.Parse("1");
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesBigIntStrAsync(req);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(typeof(BigInteger), res.Object.Json.GetType());
+        Assert.Equal(req, res.Object.Json);
+        Assert.Equal("\"1\"", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesNumberAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-number");
+
+        var sdk = new SDK();
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesNumberAsync(1.1);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(1.1, res.Object.Json);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesFloatAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-float32");
+
+        var sdk = new SDK();
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesFloat32Async(1.1);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(1.1, res.Object.Json);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesDecimalAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-decimal");
+
+        var sdk = new SDK();
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDecimalAsync(1.1M);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(typeof(decimal), res.Object.Json.GetType());
+        Assert.Equal(1.1M, res.Object.Json);
+        Assert.Equal("1.1", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesDecimalStrAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-decimal-str");
+
+        var sdk = new SDK();
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDecimalStrAsync(1.1M);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(typeof(decimal), res.Object.Json.GetType());
+        Assert.Equal(1.1M, res.Object.Json);
+        Assert.Equal("\"1.1\"", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesBooleanAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-boolean");
+
+        var sdk = new SDK();
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesBooleanAsync(true);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.True(res.Object.Json);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesDate()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-date");
+
+        var sdk = new SDK();
+        var date = LocalDate.FromDateTime(new DateTime(2020, 1, 1));
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDateAsync(date);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(date, res.Object.Json);
+        Assert.Equal("\"2020-01-01\"", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesDateTimeAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-date-time");
+
+        var sdk = new SDK();
+        var dateTime = new DateTime(2020, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesDateTimeAsync(dateTime);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(dateTime, res.Object.Json);
+        Assert.Equal("\"2020-01-01T00:00:00.0000000Z\"", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesMapDateTimeAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-map-date-time");
+
+        var sdk = new SDK();
+        var req = new Dictionary<string, DateTime>()
+        {
+            { "test", new DateTime(2020, 1, 1, 0, 0, 0, DateTimeKind.Utc) }
+        };
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapDateTimeAsync(req);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req, res.Object.Json);
+        Assert.Equal("{\"test\":\"2020-01-01T00:00:00.0000000Z\"}", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesMapBigIntStrAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-map-bigint-str");
+
+        var sdk = new SDK();
+        var req = new Dictionary<string, BigInteger>()
+        {
+            { "test", new BigInteger(1) }
+        };
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapBigIntStrAsync(req);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req, res.Object.Json);
+        Assert.Equal("{\"test\":\"1\"}", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesMapDecimalAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-map-decimal");
+
+        var sdk = new SDK();
+        var req = new Dictionary<string, Decimal>()
+        {
+            { "test", 3.141592653589793M }
+        };
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesMapDecimalAsync(req);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req, res.Object.Json);
+        Assert.Equal("{\"test\":3.141592653589793}", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesArrayDateAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-array-date");
+
+        var sdk = new SDK();
+        var req = new List<LocalDate> { LocalDate.FromDateTime(new DateTime(2020, 1, 1)) };
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayDateAsync(req);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req, res.Object.Json);
+        Assert.Equal("[\"2020-01-01\"]", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesArrayBigIntAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-array-bigint");
+
+        var sdk = new SDK();
+        var req = new List<BigInteger> { new BigInteger(1) };
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayBigIntAsync(req);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req, res.Object.Json);
+        Assert.Equal("[1]", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesArrayDecimalStr()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-array-decimal-str");
+
+        var sdk = new SDK();
+        var req = new List<Decimal> { 3.141592653589793438462643383279M };
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesArrayDecimalStrAsync(req);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req, res.Object.Json);
+        Assert.Equal("[\"3.1415926535897934384626433833\"]", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesComplexNumberArrays()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-complex-number-arrays");
+
+        var sdk = new SDK();
+        var req = new ComplexNumberArrays()
+        {
+            BigintArray = new List<BigInteger> { BigInteger.Parse("9007199254740991") },
+            BigintStrArray = new List<BigInteger> { BigInteger.Parse("9223372036854775807") },
+            DecimalArray = new List<Decimal> { 3.141592653589793M },
+            DecimalStrArray = new List<Decimal> { 3.141592653589793238462643383279M }
+        };
+        var json = await Helpers.GetSerializedBodyJson(req);
+        Assert.Equal("{\"bigintArray\":[9007199254740991],\"bigintStrArray\":[\"9223372036854775807\"],\"decimalArray\":[3.141592653589793],\"decimalStrArray\":[\"3.1415926535897932384626433833\"]}", json);
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesComplexNumberArraysAsync(req);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req.BigintArray, res.Res.Json.BigintArray);
+        Assert.Equal(req.BigintStrArray, res.Res.Json.BigintStrArray);
+        Assert.Equal(req.DecimalArray, res.Res.Json.DecimalArray);
+        Assert.Equal(req.DecimalStrArray, res.Res.Json.DecimalStrArray);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostJsonDataTypesComplexNumberMaps()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-json-data-types-complex-number-maps");
+
+        var sdk = new SDK();
+        var req = new ComplexNumberMaps()
+        {
+            BigintMap = new Dictionary<string, BigInteger> { {"bigint", BigInteger.Parse("9007199254740991")} },
+            BigintStrMap = new Dictionary<string, BigInteger> { {"bigintStr", BigInteger.Parse("9223372036854775807")} },
+            DecimalMap = new Dictionary<string, Decimal> { {"decimal", 3.141592653589793M} },
+            DecimalStrMap = new Dictionary<string, Decimal> { {"decimalStr", 3.141592653589793238462643383279M} }
+        };
+
+        var json = await Helpers.GetSerializedBodyJson(req);
+        Assert.Equal("{\"bigintMap\":{\"bigint\":9007199254740991},\"bigintStrMap\":{\"bigintStr\":\"9223372036854775807\"},\"decimalMap\":{\"decimal\":3.141592653589793},\"decimalStrMap\":{\"decimalStr\":\"3.1415926535897932384626433833\"}}", json);
+        var res = await sdk.RequestBodies.RequestBodyPostJsonDataTypesComplexNumberMapsAsync(req);
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal(req.BigintMap, res.Res.Json.BigintMap);
+        Assert.Equal(req.BigintStrMap, res.Res.Json.BigintStrMap);
+        Assert.Equal(req.DecimalMap, res.Res.Json.DecimalMap);
+        Assert.Equal(req.DecimalStrMap, res.Res.Json.DecimalStrMap);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostNullableRequiredStringBodyAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-nullable-required-string-body");
+
+        var sdk = new SDK();
+
+        var res = await sdk.RequestBodies.RequestBodyPostNullableRequiredStringBodyAsync(null);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal("null", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostNullableNotRequiredStringBodyAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-nullable-not-required-string-body");
+
+        var sdk = new SDK();
+
+        var res = await sdk.RequestBodies.RequestBodyPostNullableNotRequiredStringBodyAsync(null);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal("null", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostNotNullableNotRequiredStringBodyAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-not-nullable-not-required-string-body");
+
+        var sdk = new SDK();
+
+        var res = await sdk.RequestBodies.RequestBodyPostNotNullableNotRequiredStringBodyAsync(null);
+
+        Assert.Equal(200, res.StatusCode);
+        Assert.Equal("", res.Object.Data);
+    }
+
+    [Fact]
+    public async Task RequestBodyPostNullableRequiredPropertyAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-nullable-required-property");
+
+        var tests =  new CommonHelpers.TestTableEntry[] {
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "Empty initializer",
+                arg = new NullableRequiredPropertyPostRequestBody{},
+                want = "{\"NullableRequiredArray\":null,\"NullableRequiredBigIntStr\":null,\"NullableRequiredDateTime\":null,\"NullableRequiredDecimalStr\":null,\"NullableRequiredEnum\":null,\"NullableRequiredInt\":null}"
+            },
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "All fields set to null",
+                arg = new NullableRequiredPropertyPostRequestBody
+                {
+                    NullableOptionalInt = null,
+                    NullableRequiredArray = null,
+                    NullableRequiredEnum = null,
+                    NullableRequiredInt = null,
+                    NullableRequiredDateTime = null,
+                    NullableRequiredBigIntStr = null,
+                    NullableRequiredDecimalStr = null
+                },
+                want = "{\"NullableRequiredArray\":null,\"NullableRequiredBigIntStr\":null,\"NullableRequiredDateTime\":null,\"NullableRequiredDecimalStr\":null,\"NullableRequiredEnum\":null,\"NullableRequiredInt\":null}"
+            },
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "Optional field intialized",
+                arg = new NullableRequiredPropertyPostRequestBody{NullableOptionalInt = 0},
+                want = "{\"NullableRequiredArray\":null,\"NullableRequiredBigIntStr\":null,\"NullableRequiredDateTime\":null,\"NullableRequiredDecimalStr\":null,\"NullableRequiredEnum\":null,\"NullableRequiredInt\":null,\"NullableOptionalInt\":0}"
+            },
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "All fields set to non-null value",
+                arg = new NullableRequiredPropertyPostRequestBody
+                {
+                    NullableOptionalInt = 0,
+                    NullableRequiredArray = new List<double>{1.1, 2.2, 3.3},
+                    NullableRequiredEnum = NullableRequiredEnum.Second,
+                    NullableRequiredInt = 1,
+                    NullableRequiredDateTime = System.DateTime.Parse("2020-01-01T00:00:00Z"),
+                    NullableRequiredBigIntStr = BigInteger.Parse("9223372036854775807"),
+                    NullableRequiredDecimalStr = 3.141592653589793238462643383279M
+                },
+                want = "{\"NullableRequiredArray\":[1.1,2.2,3.3],\"NullableRequiredBigIntStr\":\"9223372036854775807\",\"NullableRequiredDateTime\":\"2020-01-01T00:00:00.0000000Z\",\"NullableRequiredDecimalStr\":\"3.1415926535897932384626433833\",\"NullableRequiredEnum\":\"second\",\"NullableRequiredInt\":1,\"NullableOptionalInt\":0}"
+            }
+        };
+
+        var sdk = new SDK();
+        foreach (var test in tests)
+        {
+            var req = (NullableRequiredPropertyPostRequestBody)test.arg;
+
+            var json = await Helpers.GetSerializedBodyJson(req);
+            Assert.Equal(test.want, json);
+
+            var res = await sdk.RequestBodies.NullableRequiredPropertyPostAsync(req);
+            Assert.Equal(200, res.StatusCode);
+        }
+    }
+
+    [Fact]
+    public async Task RequestBodyPostNullableRequiredSharedObject()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-nullable-required-shared-object");
+
+        var tests = new CommonHelpers.TestTableEntry[] {
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "Required field set to null",
+                arg = new NullableRequiredSharedObjectPostRequestBody{},
+                want = "{\"NullableRequiredObj\":null}"
+            },
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "Both fields set to null",
+                arg = new NullableRequiredSharedObjectPostRequestBody
+                {
+                    NullableOptionalObj = null,
+                    NullableRequiredObj = null
+                },
+                want = "{\"NullableRequiredObj\":null}"
+            },
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "Required field set to non-null value",
+                arg = new NullableRequiredSharedObjectPostRequestBody
+                {
+                    NullableOptionalObj = new NullableOptionalObject{Required = 1}
+                },
+                want = "{\"NullableRequiredObj\":null,\"NullableOptionalObj\":{\"required\":1}}"
+            },
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "Both fields set to non-null value",
+                arg = new NullableRequiredSharedObjectPostRequestBody
+                {
+                    NullableOptionalObj = new NullableOptionalObject{Required = 1, Optional = "test"},
+                    NullableRequiredObj = new NullableObject{Required = 2}
+                },
+                want = "{\"NullableRequiredObj\":{\"required\":2},\"NullableOptionalObj\":{\"optional\":\"test\",\"required\":1}}"
+            }
+        };
+
+        var sdk = new SDK();
+        foreach(var test in tests)
+        {
+            var req = (NullableRequiredSharedObjectPostRequestBody)test.arg;
+
+            var json = await Helpers.GetSerializedBodyJson(req);
+            Assert.Equal(test.want, json);
+
+            var res = await sdk.RequestBodies.NullableRequiredSharedObjectPostAsync(req);
+            Assert.Equal(200, res.StatusCode);
+        }
+    }
+
+    [Fact]
+    public async Task RequestBodyPostNullableRequiredEmptyObjectAsync()
+    {
+        CommonHelpers.RecordTest("request-bodies-post-nullable-required-empty-object");
+
+        var tests = new CommonHelpers.TestTableEntry[] {
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "Empty initializer",
+                arg = new NullableRequiredEmptyObjectPostRequestBody{},
+                want = "{\"NullableRequiredObj\":null}"  // TODO SPE-2837
+                // want = "{\"NullableRequiredObj\":null,\"RequiredObj\":{}}"
+            },
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "Required field initialized only",
+                arg = new NullableRequiredEmptyObjectPostRequestBody
+                {
+                    RequiredObj = new RequiredObj{}
+                },
+                want = "{\"NullableRequiredObj\":null,\"RequiredObj\":{}}"
+            },
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "Optional field initialized only",
+                arg = new NullableRequiredEmptyObjectPostRequestBody
+                {
+                    NullableOptionalObj = new NullableOptionalObj{}
+                },
+                want = "{\"NullableRequiredObj\":null,\"NullableOptionalObj\":{}}" // TODO SPE-2837
+                // want = "{\"NullableRequiredObj\":null,\"NullableOptionalObj\":{},\"RequiredObj\":{}}"
+            },
+            new CommonHelpers.TestTableEntry()
+            {
+                name = "All fields initialized",
+                arg = new NullableRequiredEmptyObjectPostRequestBody
+                {
+                    RequiredObj = new RequiredObj{},
+                    NullableOptionalObj = new NullableOptionalObj{},
+                    NullableRequiredObj = new NullableRequiredObj{}
+                },
+                want = "{\"NullableRequiredObj\":{},\"RequiredObj\":{},\"NullableOptionalObj\":{}}"
+            }
+        };
+
+        var sdk = new SDK();
+        foreach( var test in tests)
+        {
+            var req = (NullableRequiredEmptyObjectPostRequestBody)test.arg;
+
+            var json = await Helpers.GetSerializedBodyJson(req);
+            Assert.Equal(test.want, json);
+
+            var res = await sdk.RequestBodies.NullableRequiredEmptyObjectPostAsync(req);
+            Assert.Equal(200, res.StatusCode);
+        }
     }
 }

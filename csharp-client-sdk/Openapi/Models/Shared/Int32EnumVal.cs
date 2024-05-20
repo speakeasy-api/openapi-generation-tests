@@ -10,6 +10,7 @@
 #nullable enable
 namespace Openapi.Models.Shared
 {
+    using Openapi.Utils;
     
     /// <summary>
     /// An int32 enum property.
@@ -20,4 +21,5 @@ namespace Openapi.Models.Shared
         SixtyNine = 69,
         OneHundredAndEightyOne = 181,
     }
+
 }

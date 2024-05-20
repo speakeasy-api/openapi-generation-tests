@@ -11,6 +11,8 @@
 namespace Openapi.Models.Shared
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Shared;
+    using Openapi.Utils;
     using System.Collections.Generic;
     
     public class ArrObjValue

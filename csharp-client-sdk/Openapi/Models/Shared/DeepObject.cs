@@ -11,6 +11,7 @@
 namespace Openapi.Models.Shared
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Shared;
     using Openapi.Utils;
     using System.Collections.Generic;
     
@@ -19,7 +20,7 @@ namespace Openapi.Models.Shared
 
         [JsonProperty("any")]
         [SpeakeasyMetadata("form:name=any,json multipartForm:name=any,json")]
-        public object Any { get; set; } = default!;
+        public Any Any { get; set; } = default!;
 
         [JsonProperty("arr")]
         [SpeakeasyMetadata("form:name=arr,json multipartForm:name=arr,json")]

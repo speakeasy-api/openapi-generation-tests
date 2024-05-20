@@ -8,18 +8,18 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class FormQueryParamsRefParamObjectRequest
 {
-	#[SpeakeasyMetadata('queryParam:style=form,explode=false,name=refObjParam')]
+    #[SpeakeasyMetadata('queryParam:style=form,explode=false,name=refObjParam')]
     public ?\OpenAPI\OpenAPI\Models\Shared\RefQueryParamObj $refObjParam = null;
-    
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=refObjParamExploded')]
+
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=refObjParamExploded')]
     public ?\OpenAPI\OpenAPI\Models\Shared\RefQueryParamObjExploded $refObjParamExploded = null;
-    
-	public function __construct()
-	{
-		$this->refObjParam = null;
-		$this->refObjParamExploded = null;
-	}
+
+    public function __construct()
+    {
+        $this->refObjParam = null;
+        $this->refObjParamExploded = null;
+    }
 }

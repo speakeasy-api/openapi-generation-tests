@@ -16,7 +16,6 @@ import (
 
 	sdk "openapi"
 
-	"github.com/AlekSi/pointer"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -39,8 +38,8 @@ func TestStronglyTypedOneOfPost_Basic(t *testing.T) {
 		Any:        "any",
 		Date:       types.Date{time.Date(2020, 1, 1, 0, 0, 0, 0, time.UTC)},
 		DateTime:   time.Date(2020, 1, 1, 0, 0, 0, 1, time.UTC),
-		BoolOpt:    pointer.ToBool(true),
-		StrOpt:     pointer.ToString("testOptional"),
+		BoolOpt:    sdk.Bool(true),
+		StrOpt:     sdk.String("testOptional"),
 		IntOptNull: nil,
 		NumOptNull: nil,
 	}
@@ -55,6 +54,71 @@ func TestStronglyTypedOneOfPost_Basic(t *testing.T) {
 
 	obj.Type = "simpleObjectWithType"
 	assert.Equal(t, obj, *res.Res.JSON.SimpleObjectWithType)
+}
+
+func TestCollectionOneOfPost(t *testing.T) {
+	recordTest("unions-collections-one-of-post")
+
+	s := sdk.New()
+
+	req := shared.CollectionOneOfObject{
+		ArrayOfAny: []interface{}{"one", "two"},
+	}
+
+	res, err := s.Unions.CollectionOneOfPost(context.Background(), req)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, req.ArrayOfAny, res.Res.JSON.ArrayOfAny)
+
+	req2 := shared.CollectionOneOfObject{
+		MapOfAny: map[string]interface{}{
+			"1": "one",
+			"2": "two",
+		},
+	}
+
+	res2, err := s.Unions.CollectionOneOfPost(context.Background(), req2)
+	require.NoError(t, err)
+	require.NotNil(t, res2)
+	assert.Equal(t, http.StatusOK, res2.StatusCode)
+	assert.Equal(t, req2.MapOfAny, res2.Res.JSON.MapOfAny)
+}
+
+func TestStronglyTypedOneOfPostWithNonStandardDiscriminatorName(t *testing.T) {
+	recordTest("unions-strongly-typed-one-of-post-with-non-standard-discriminator-name")
+
+	s := sdk.New()
+
+	obj := shared.SimpleObjectWithNonStandardTypeName{
+		Str:        "test",
+		Bool:       true,
+		Int:        1,
+		Int32:      1,
+		IntEnum:    shared.SimpleObjectWithNonStandardTypeNameIntEnumSecond,
+		Int32Enum:  shared.SimpleObjectWithNonStandardTypeNameInt32EnumFiftyFive,
+		Num:        1.1,
+		Float32:    1.1,
+		Enum:       shared.EnumOne,
+		Any:        "any",
+		Date:       types.Date{time.Date(2020, 1, 1, 0, 0, 0, 0, time.UTC)},
+		DateTime:   time.Date(2020, 1, 1, 0, 0, 0, 1, time.UTC),
+		BoolOpt:    sdk.Bool(true),
+		StrOpt:     sdk.String("testOptional"),
+		IntOptNull: nil,
+		NumOptNull: nil,
+	}
+
+	req := shared.CreateStronglyTypedOneOfObjectWithNonStandardDiscriminatorNameSimpleObjectWithNonStandardTypeName(obj)
+
+	res, err := s.Unions.StronglyTypedOneOfPostWithNonStandardDiscriminatorName(context.Background(), req)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, shared.StronglyTypedOneOfObjectWithNonStandardDiscriminatorNameTypeSimpleObjectWithNonStandardTypeName, res.Res.JSON.Type)
+
+	obj.ObjType = "simpleObjectWithNonStandardTypeName"
+	assert.Equal(t, obj, *res.Res.JSON.SimpleObjectWithNonStandardTypeName)
 }
 
 func TestStronglyTypedOneOfPost_Deep(t *testing.T) {
@@ -75,7 +139,7 @@ func TestStronglyTypedOneOfPost_Deep(t *testing.T) {
 		Num:  1.1,
 		Obj:  createSimpleObject(),
 		Str:  "test",
-		Type: pointer.ToString("deepObjectWithType"),
+		Type: sdk.String("deepObjectWithType"),
 	}
 
 	req := shared.CreateStronglyTypedOneOfObjectDeepObjectWithType(obj)
@@ -187,7 +251,7 @@ func TestTypedObjectOneOfPost_Null(t *testing.T) {
 	req := shared.TypedObjectOneOf{}
 	_, err := s.Unions.TypedObjectOneOfPost(context.Background(), req)
 	require.Error(t, err)
-	assert.Equal(t, err.Error(), "error serializing request body: json: error calling MarshalJSON for type shared.TypedObjectOneOf: could not marshal union type: all fields are null")
+	assert.Equal(t, err.Error(), "error serializing request body: json: error calling MarshalJSON for type shared.TypedObjectOneOf: could not marshal union type TypedObjectOneOf: all fields are null")
 }
 
 func TestTypedObjectNullableOneOfPost_Obj1(t *testing.T) {
@@ -360,7 +424,7 @@ func TestNullableOneOfTypeInObject(t *testing.T) {
 		{
 			name: "All fields set to non-null values",
 			obj: shared.NullableOneOfTypeInObject{
-				NullableOneOfOne: pointer.ToBool(true),
+				NullableOneOfOne: sdk.Bool(true),
 				NullableOneOfTwo: &nullableOneOfTwoInt2,
 				OneOfOne:         true,
 			},
@@ -590,26 +654,26 @@ func TestDateTimeBigintUnion(t *testing.T) {
 	assert.Equal(t, big.NewInt(9007199254740991), nextRes.Res.JSON.Bigint)
 }
 
-func TestUnionBigintDecimal(t *testing.T) {
-	recordTest("unions-bigint-decimal")
+func TestUnionBigintStrDecimal(t *testing.T) {
+	recordTest("unions-bigint-str-decimal")
 
 	s := sdk.New()
 
-	req := operations.CreateUnionBigIntDecimalRequestBodyDecimal(types.MustNewDecimalFromString("3.141592653589793"))
+	req := operations.CreateUnionBigIntStrDecimalRequestBodyDecimal(types.MustNewDecimalFromString("3.141592653589793"))
 
-	res, err := s.Unions.UnionBigIntDecimal(context.Background(), req)
+	res, err := s.Unions.UnionBigIntStrDecimal(context.Background(), req)
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, operations.UnionBigIntDecimalJSONTypeDecimal, res.Res.JSON.Type)
+	assert.Equal(t, operations.UnionBigIntStrDecimalJSONTypeDecimal, res.Res.JSON.Type)
 	assert.Equal(t, types.MustNewDecimalFromString("3.141592653589793"), res.Res.JSON.Decimal)
 
-	nextReq := operations.CreateUnionBigIntDecimalRequestBodyBigint(big.NewInt(9007199254740991))
+	nextReq := operations.CreateUnionBigIntStrDecimalRequestBodyBigint(big.NewInt(9223372036854775807))
 
-	nextRes, nextErr := s.Unions.UnionBigIntDecimal(context.Background(), nextReq)
+	nextRes, nextErr := s.Unions.UnionBigIntStrDecimal(context.Background(), nextReq)
 	require.NoError(t, nextErr)
 	require.NotNil(t, nextRes)
 	assert.Equal(t, http.StatusOK, nextRes.StatusCode)
-	assert.Equal(t, operations.UnionBigIntDecimalJSONTypeBigint, nextRes.Res.JSON.Type)
-	assert.Equal(t, big.NewInt(9007199254740991), nextRes.Res.JSON.Bigint)
+	assert.Equal(t, operations.UnionBigIntStrDecimalJSONTypeBigint, nextRes.Res.JSON.Type)
+	assert.Equal(t, big.NewInt(9223372036854775807), nextRes.Res.JSON.Bigint)
 }

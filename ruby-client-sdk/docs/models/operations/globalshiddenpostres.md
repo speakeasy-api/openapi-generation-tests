@@ -1,0 +1,13 @@
+# GlobalsHiddenPostRes
+
+OK
+
+
+## Fields
+
+| Field                                                                                               | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `args`                                                                                              | [::OpenApiSDK::Operations::Args](../../models/operations/args.md)                                   | :heavy_check_mark:                                                                                  | N/A                                                                                                 |
+| `headers`                                                                                           | T::Hash[Symbol, *::String*]                                                                         | :heavy_check_mark:                                                                                  | N/A                                                                                                 |
+| `json`                                                                                              | [::OpenApiSDK::Operations::GlobalsHiddenPostJson](../../models/operations/globalshiddenpostjson.md) | :heavy_check_mark:                                                                                  | N/A                                                                                                 |
+| `url`                                                                                               | *::String*                                                                                          | :heavy_check_mark:                                                                                  | N/A                                                                                                 |
