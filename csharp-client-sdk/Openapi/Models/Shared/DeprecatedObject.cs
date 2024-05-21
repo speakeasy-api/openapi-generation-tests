@@ -11,6 +11,7 @@
 namespace Openapi.Models.Shared
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     using System;
     [Obsolete("This object is deprecated.")]
     public class DeprecatedObject

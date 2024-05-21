@@ -16,22 +16,26 @@ Endpoints for testing telemetry.
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-
-res = s.telemetry.telemetry_speakeasy_user_agent_get(user_agent='string')
+res = s.telemetry.telemetry_speakeasy_user_agent_get(user_agent='<value>')
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -48,7 +52,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## telemetry_user_agent_get
 
@@ -62,16 +66,20 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
-
 
 res = s.telemetry.telemetry_user_agent_get()
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 
@@ -82,4 +90,4 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

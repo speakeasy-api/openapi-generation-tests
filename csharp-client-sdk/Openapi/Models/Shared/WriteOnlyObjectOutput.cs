@@ -10,6 +10,7 @@
 #nullable enable
 namespace Openapi.Models.Shared
 {
+    using Openapi.Utils;
     
     public class WriteOnlyObjectOutput
     {

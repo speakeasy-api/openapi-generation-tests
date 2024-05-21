@@ -74,4 +74,34 @@ final class GlobalsTest extends TestCase
         $this->assertEquals(200, $response->statusCode);
         $this->assertEquals('http://localhost:35123/anything/globals/pathParameter/2', $response->res->url);
     }
+
+    public function testGlobalHeaderGetUsesGlobal(): void
+    {
+        CommonHelpers::recordTest('globals-header-get-uses-global');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->setGlobalHeaderParam(true)->build();
+
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $response = $sdk->globals->globalsHeaderGet();
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+        $this->assertEquals('true', $response->res->headers['Globalheaderparam']);
+    }
+
+    public function testGlobalHeaderGetUsesLocal(): void
+    {
+        CommonHelpers::recordTest('globals-header-get-uses-local');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->setGlobalHeaderParam(true)->build();
+
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $response = $sdk->globals->globalsHeaderGet(false);
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+        $this->assertEquals('false', $response->res->headers['Globalheaderparam']);
+    }
 }

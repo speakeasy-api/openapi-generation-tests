@@ -11,11 +11,13 @@ from enum import Enum
 from sdk import utils
 from typing import Any, Optional
 
+
 class SimpleObjectWithTypeInt32Enum(int, Enum):
     r"""An int32 enum property."""
     FIFTY_FIVE = 55
     SIXTY_NINE = 69
     ONE_HUNDRED_AND_EIGHTY_ONE = 181
+
 
 class SimpleObjectWithTypeIntEnum(int, Enum):
     r"""An integer enum property."""
@@ -61,6 +63,10 @@ class SimpleObjectWithType:
     r"""An optional boolean property."""
     decimal: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('decimal'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     decimal_str: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('decimalStr'), 'encoder': utils.decimalencoder(True, True), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
+    float64_str: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('float64Str'), 'encoder': utils.numberstrencoder(True), 'decoder': utils.numberstrdecoder, 'exclude': lambda f: f is None }})
+    r"""A float64 string"""
+    int64_str: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int64Str'), 'encoder': utils.integerstrencoder(True), 'decoder': utils.integerstrdecoder, 'exclude': lambda f: f is None }})
+    r"""An int64 string"""
     int_opt_null: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('intOptNull'), 'exclude': lambda f: f is None }})
     r"""An optional integer property will be null for tests."""
     num_opt_null: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('numOptNull'), 'exclude': lambda f: f is None }})

@@ -11,8 +11,8 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
-    using NodaTime;
-    using System.Collections.Generic;
+    using Openapi.Models.Shared;
+    using Openapi.Utils;
     
     /// <summary>
     /// OK
@@ -21,6 +21,6 @@ namespace Openapi.Models.Operations
     {
 
         [JsonProperty("json")]
-        public Dictionary<string, LocalDate> Json { get; set; } = default!;
+        public ObjWithDateAdditionalProperties Json { get; set; } = default!;
     }
 }

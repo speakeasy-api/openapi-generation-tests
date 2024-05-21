@@ -20,6 +20,16 @@ class _PaginationAPI: PaginationAPI {
         )
     }
     
+    public func paginationCursorNonNumeric(request: Operations.PaginationCursorNonNumericRequest, server: PaginationServers.PaginationCursorNonNumeric?) async throws -> Response<Operations.PaginationCursorNonNumericResponse> {
+        return try await client.makeRequest(
+            with: try server?.server() ?? PaginationServers.PaginationCursorNonNumeric.default(),
+            configureRequest: { configuration in
+                try configurePaginationCursorNonNumericRequest(with: configuration, request: request)
+            },
+            handleResponse: handlePaginationCursorNonNumericResponse
+        )
+    }
+    
     public func paginationCursorParams(request: Operations.PaginationCursorParamsRequest, server: PaginationServers.PaginationCursorParams?) async throws -> Response<Operations.PaginationCursorParamsResponse> {
         return try await client.makeRequest(
             with: try server?.server() ?? PaginationServers.PaginationCursorParams.default(),
@@ -69,6 +79,16 @@ class _PaginationAPI: PaginationAPI {
             handleResponse: handlePaginationLimitOffsetPageParamsResponse
         )
     }
+    
+    public func paginationURLParams(request: Operations.PaginationURLParamsRequest, server: PaginationServers.PaginationURLParams?) async throws -> Response<Operations.PaginationURLParamsResponse> {
+        return try await client.makeRequest(
+            with: try server?.server() ?? PaginationServers.PaginationURLParams.default(),
+            configureRequest: { configuration in
+                try configurePaginationURLParamsRequest(with: configuration, request: request)
+            },
+            handleResponse: handlePaginationURLParamsResponse
+        )
+    }
 
 }
 
@@ -82,6 +102,13 @@ private func configurePaginationCursorBodyRequest(with configuration: URLRequest
     if configuration.body == nil {
         throw SerializationError.missingRequiredRequestBody
     }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configurePaginationCursorNonNumericRequest(with configuration: URLRequestConfiguration, request: Operations.PaginationCursorNonNumericRequest) throws {
+    configuration.path = "/pagination/cursor_non_numeric"
+    configuration.method = .get
+    configuration.queryParameterSerializable = request
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
@@ -128,6 +155,13 @@ private func configurePaginationLimitOffsetPageParamsRequest(with configuration:
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
+private func configurePaginationURLParamsRequest(with configuration: URLRequestConfiguration, request: Operations.PaginationURLParamsRequest) throws {
+    configuration.path = "/pagination/url"
+    configuration.method = .get
+    configuration.queryParameterSerializable = request
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
 // MARK: - Response Handlers
 
 private func handlePaginationCursorBodyResponse(response: Client.APIResponse) throws -> Operations.PaginationCursorBodyResponse {
@@ -137,6 +171,22 @@ private func handlePaginationCursorBodyResponse(response: Client.APIResponse) th
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .res(try JSONDecoder().decode(Operations.PaginationCursorBodyRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handlePaginationCursorNonNumericResponse(response: Client.APIResponse) throws -> Operations.PaginationCursorNonNumericResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.PaginationCursorNonNumericRes.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -217,6 +267,22 @@ private func handlePaginationLimitOffsetPageParamsResponse(response: Client.APIR
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .res(try JSONDecoder().decode(Operations.PaginationLimitOffsetPageParamsRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handlePaginationURLParamsResponse(response: Client.APIResponse) throws -> Operations.PaginationURLParamsResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.PaginationURLParamsRes.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

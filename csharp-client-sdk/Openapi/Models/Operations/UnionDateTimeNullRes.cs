@@ -11,6 +11,7 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     using System;
     
     /// <summary>
@@ -19,7 +20,7 @@ namespace Openapi.Models.Operations
     public class UnionDateTimeNullRes
     {
 
-        [JsonProperty("json")]
-        public DateTime Json { get; set; } = default!;
+        [JsonProperty("json", NullValueHandling = NullValueHandling.Include)]
+        public DateTime? Json { get; set; }
     }
 }

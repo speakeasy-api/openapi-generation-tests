@@ -9,20 +9,15 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * RequestBodyPostNullableNotRequiredStringBodyResponseBody - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** RequestBodyPostNullableNotRequiredStringBodyResponseBody - OK */
 class RequestBodyPostNullableNotRequiredStringBodyResponseBody
 {
-	#[\JMS\Serializer\Annotation\SerializedName('data')]
+    #[\JMS\Serializer\Annotation\SerializedName('data')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $data;
-    
-	public function __construct()
-	{
-		$this->data = "";
-	}
+
+    public function __construct()
+    {
+        $this->data = '';
+    }
 }

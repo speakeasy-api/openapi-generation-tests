@@ -8,12 +8,16 @@ from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional, Union
 
+NullableOneOfTwo = Union[TypedObject1, TypedObject2]
+
+OneOfOne = Union[TypedObject1]
+
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class NullableOneOfRefInObject:
     nullable_one_of_one: Optional[TypedObject1] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfOne') }})
-    nullable_one_of_two: Optional[Union[TypedObject1, TypedObject2]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfTwo') }})
-    one_of_one: Union[TypedObject1] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('OneOfOne') }})
+    nullable_one_of_two: Optional[NullableOneOfTwo] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfTwo') }})
+    one_of_one: OneOfOne = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('OneOfOne') }})
     
 

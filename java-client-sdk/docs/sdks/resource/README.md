@@ -1,11 +1,12 @@
 # Resource
-(*resource*)
+(*resource()*)
 
 ### Available Operations
 
 * [createFile](#createfile)
 * [createResource](#createresource)
 * [deleteResource](#deleteresource)
+* [getArrayDataSource](#getarraydatasource)
 * [getResource](#getresource)
 * [updateResource](#updateresource)
 
@@ -16,34 +17,50 @@
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.CreateFileFile;
-import org.openapis.openapi.models.operations.CreateFileRequestBody;
-import org.openapis.openapi.models.operations.CreateFileResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            CreateFileRequestBody req = new CreateFileRequestBody(){{
-                file = new CreateFileFile("0xf10df1a3b9".getBytes(), "string");
-            }};            
+            CreateFileRequestBody req = CreateFileRequestBody.builder()
+                .build();
 
-            CreateFileResponse res = sdk.resource.createFile(req);
+            CreateFileResponse res = sdk.resource().createFile()
+                .request(req)
+                .call();
 
-            if (res.fileResource != null) {
+            if (res.fileResource().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -58,8 +75,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.CreateFileResponse](../../models/operations/CreateFileResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.CreateFileResponse>](../../models/operations/CreateFileResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## createResource
 
@@ -68,61 +89,61 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.CreateResourceResponse;
-import org.openapis.openapi.models.shared.Chocolates;
-import org.openapis.openapi.models.shared.EnumNumber;
-import org.openapis.openapi.models.shared.EnumStr;
-import org.openapis.openapi.models.shared.ExampleResource;
-import org.openapis.openapi.models.shared.InlineObject;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.ExampleResource req = new ExampleResource(new org.openapis.openapi.models.shared.Chocolates[]{{
-    add(new Chocolates("string"){{
-        description = "Digitized optimal archive";
-    }}),
-}}, "string", "string", "string"){{
-                arrayOfNumber = new Double[]{{
-                    add(1124.19d),
-                }};
-                arrayOfString = new String[]{{
-                    add("string"),
-                }};
-                createdAt = OffsetDateTime.parse("2021-10-25T14:40:21.269Z");
-                enumNumber = EnumNumber.THREE;
-                enumStr = EnumStr.TWO;
-                inlineObject = new InlineObject(){{
-                    inlineName = "string";
-                }};
-                mapOfInteger = new java.util.HashMap<String, Long>(){{
-                    put("key", 125983L);
-                }};
-                mapOfString = new java.util.HashMap<String, String>(){{
-                    put("key", "string");
-                }};
-                namePrefix = "string";
-                updatedAt = OffsetDateTime.parse("2021-07-09T15:40:32.497Z");
-            }};            
+            ExampleResource req = ExampleResource.builder()
+                .chocolates(java.util.List.of(
+                        Chocolates.builder()
+                            .description("<value>")
+                            .build()))
+                .id("<value>")
+                .name("<value>")
+                .vehicle(ExampleVehicle.of(ExampleBoat.builder()
+                            .length(7390.08d)
+                            .name("<value>")
+                            .type(Type.BOAT)
+                            .build()))
+                .build();
 
-            CreateResourceResponse res = sdk.resource.createResource(req);
+            CreateResourceResponse res = sdk.resource().createResource()
+                .request(req)
+                .call();
 
-            if (res.exampleResource != null) {
+            if (res.exampleResource().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -137,8 +158,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.CreateResourceResponse](../../models/operations/CreateResourceResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.CreateResourceResponse>](../../models/operations/CreateResourceResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## deleteResource
 
@@ -147,29 +172,45 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.DeleteResourceRequest;
-import org.openapis.openapi.models.operations.DeleteResourceResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            DeleteResourceResponse res = sdk.resource.deleteResource("string");
+            DeleteResourceResponse res = sdk.resource().deleteResource()
+                .resourceId("<value>")
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -184,8 +225,81 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.DeleteResourceResponse](../../models/operations/DeleteResourceResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.DeleteResourceResponse>](../../models/operations/DeleteResourceResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
+
+## getArrayDataSource
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
+import org.openapis.openapi.models.shared.Security;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+        try {
+            SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+                .build();
+
+            GetArrayDataSourceResponse res = sdk.resource().getArrayDataSource()
+                .filter("<value>")
+                .call();
+
+            if (res.arrayDataSource().isPresent()) {
+                // handle response
+            }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
+        } catch (Exception e) {
+            // handle exception
+            throw e;
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `filter`           | *String*           | :heavy_check_mark: | N/A                |
+
+
+### Response
+
+**[Optional<? extends org.openapis.openapi.models.operations.GetArrayDataSourceResponse>](../../models/operations/GetArrayDataSourceResponse.md)**
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## getResource
 
@@ -194,29 +308,47 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.GetResourceRequest;
-import org.openapis.openapi.models.operations.GetResourceResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            GetResourceResponse res = sdk.resource.getResource("string");
+            GetResourceResponse res = sdk.resource().getResource()
+                .resourceId("<value>")
+                .call();
 
-            if (res.exampleResource != null) {
+            if (res.exampleResource().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -231,8 +363,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.GetResourceResponse](../../models/operations/GetResourceResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.GetResourceResponse>](../../models/operations/GetResourceResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## updateResource
 
@@ -241,29 +377,46 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.UpdateResourceRequest;
-import org.openapis.openapi.models.operations.UpdateResourceResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            UpdateResourceResponse res = sdk.resource.updateResource("string");
+            UpdateResourceResponse res = sdk.resource().updateResource()
+                .augment("<value>")
+                .resourceId("<value>")
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -273,10 +426,15 @@ public class Application {
 
 | Parameter          | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `augment`          | *String*           | :heavy_check_mark: | N/A                |
 | `resourceId`       | *String*           | :heavy_check_mark: | N/A                |
 
 
 ### Response
 
-**[org.openapis.openapi.models.operations.UpdateResourceResponse](../../models/operations/UpdateResourceResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.UpdateResourceResponse>](../../models/operations/UpdateResourceResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |

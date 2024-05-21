@@ -11,6 +11,7 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     using System.Collections.Generic;
     
     /// <summary>
@@ -22,7 +23,7 @@ namespace Openapi.Models.Operations
         [JsonProperty("data")]
         public string Data { get; set; } = default!;
 
-        [JsonProperty("json")]
+        [JsonProperty("json", ItemConverterType = typeof(DecimalStrConverter))]
         public List<decimal> Json { get; set; } = default!;
     }
 }
