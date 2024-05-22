@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `Num3`             | *long*             | :heavy_check_mark: | N/A                |
-| `Sum`              | *long*             | :heavy_check_mark: | N/A                |
+| Field              | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `Num3`             | *long*             | :heavy_check_mark: | N/A                | 4                  |
+| `Sum`              | *long*             | :heavy_check_mark: | N/A                | 7                  |

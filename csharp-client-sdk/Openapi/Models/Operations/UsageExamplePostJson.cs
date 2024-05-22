@@ -12,6 +12,7 @@ namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
     using Openapi.Models.Shared;
+    using Openapi.Utils;
     
     public class UsageExamplePostJson
     {

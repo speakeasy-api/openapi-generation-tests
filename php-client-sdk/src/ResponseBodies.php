@@ -8,51 +8,225 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI;
 
-class ResponseBodies 
+class ResponseBodies
 {
-	
-	public const RESPONSE_BODY_OPTIONAL_GET_SERVERS = [
-		'http://localhost:35456',
-	];
-	
-	public const RESPONSE_BODY_READ_ONLY_SERVERS = [
-		'http://localhost:35456',
-	];
+    public const RESPONSE_BODY_OPTIONAL_GET_SERVERS = [
 
-	private SDKConfiguration $sdkConfiguration;
+        'http://localhost:35456',
+    ];
+    public const RESPONSE_BODY_READ_ONLY_SERVERS = [
 
-	/**
-	 * @param SDKConfiguration $sdkConfig
-	 */
-	public function __construct(SDKConfiguration $sdkConfig)
-	{
-		$this->sdkConfiguration = $sdkConfig;
-	}
-	
+        'http://localhost:35456',
+    ];
+    private SDKConfiguration $sdkConfiguration;
+
     /**
-     * responseBodyAdditionalPropertiesComplexNumbersPost
-     * 
-     * @param array<string, string> $request
-     * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesComplexNumbersPostResponse
+     * @param  SDKConfiguration  $sdkConfig
      */
-	public function responseBodyAdditionalPropertiesComplexNumbersPost(
-        array $request,
-    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesComplexNumbersPostResponse
+    public function __construct(SDKConfiguration $sdkConfig)
     {
+        $this->sdkConfiguration = $sdkConfig;
+    }
+
+    /**
+     * flattenedEnvelopePaginationResponse
+     *
+     * @param  ?string  $cursor
+     * @return \OpenAPI\OpenAPI\Models\Operations\FlattenedEnvelopePaginationResponseResponse
+     */
+    public function flattenedEnvelopePaginationResponse(
+        ?string $cursor = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\FlattenedEnvelopePaginationResponseResponse {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\FlattenedEnvelopePaginationResponseRequest();
+        $request->cursor = $cursor;
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
-        $url = Utils\Utils::generateUrl($baseUrl, '/anything/responseBodies/additionalPropertiesComplexNumbers');
-        
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/flattenedEnvelopePaginationResponse');
         $options = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\FlattenedEnvelopePaginationResponseRequest::class, $request, $this->sdkConfiguration->globals));
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\FlattenedEnvelopePaginationResponseResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\FlattenedEnvelopePaginationResponseRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+
+    /**
+     * flattenedEnvelopeResponse
+     *
+     * @return \OpenAPI\OpenAPI\Models\Operations\FlattenedEnvelopeResponseResponse
+     */
+    public function flattenedEnvelopeResponse(
+    ): \OpenAPI\OpenAPI\Models\Operations\FlattenedEnvelopeResponseResponse {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/flattenedEnvelopeResponse');
+        $options = ['http_errors' => false];
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\FlattenedEnvelopeResponseResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        if ($httpResponse->getStatusCode() === 200) {
+            $response->headers = $httpResponse->getHeaders();
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->object = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\FlattenedEnvelopeResponseResponseBody', 'json');
+            }
+        }
+
+        return $response;
+    }
+
+    /**
+     * flattenedEnvelopeUnionResponse
+     *
+     * @return \OpenAPI\OpenAPI\Models\Operations\FlattenedEnvelopeUnionResponseResponse
+     */
+    public function flattenedEnvelopeUnionResponse(
+    ): \OpenAPI\OpenAPI\Models\Operations\FlattenedEnvelopeUnionResponseResponse {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/flattenedEnvelopeUnionResponse');
+        $options = ['http_errors' => false];
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\FlattenedEnvelopeUnionResponseResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        if ($httpResponse->getStatusCode() === 200) {
+            $response->headers = $httpResponse->getHeaders();
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->twoHundredApplicationJsonObject = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\FlattenedEnvelopeUnionResponseResponseBody', 'json');
+            }
+        } elseif ($httpResponse->getStatusCode() === 201) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->twoHundredAndOneApplicationJsonObject = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\FlattenedEnvelopeUnionResponseResponseBodiesResponseBody', 'json');
+            }
+        }
+
+        return $response;
+    }
+
+    /**
+     * flattenedUnionResponse
+     *
+     * @return \OpenAPI\OpenAPI\Models\Operations\FlattenedUnionResponseResponse
+     */
+    public function flattenedUnionResponse(
+    ): \OpenAPI\OpenAPI\Models\Operations\FlattenedUnionResponseResponse {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/flattenedUnionResponse');
+        $options = ['http_errors' => false];
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\FlattenedUnionResponseResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->twoHundredApplicationJsonObject = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\FlattenedUnionResponseResponseBody', 'json');
+            }
+        } elseif ($httpResponse->getStatusCode() === 201) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->twoHundredAndOneApplicationJsonObject = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\FlattenedUnionResponseResponseBodiesResponseBody', 'json');
+            }
+        }
+
+        return $response;
+    }
+
+    /**
+     * responseBodyAdditionalPropertiesAnyPost
+     *
+     * @param  array<string, mixed>  $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesAnyPostResponse
+     */
+    public function responseBodyAdditionalPropertiesAnyPost(
+        array $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesAnyPostResponse {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/responseBodies/additionalPropertiesAny');
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, 'request', 'json');
         if ($body === null) {
             throw new \Exception('Request body is required');
         }
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
-        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesAnyPostResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->object = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesAnyPostResponseBody', 'json');
+            }
+        }
+
+        return $response;
+    }
+
+    /**
+     * responseBodyAdditionalPropertiesComplexNumbersPost
+     *
+     * @param  array<string, string>  $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesComplexNumbersPostResponse
+     */
+    public function responseBodyAdditionalPropertiesComplexNumbersPost(
+        array $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesComplexNumbersPostResponse {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/responseBodies/additionalPropertiesComplexNumbers');
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, 'request', 'json');
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -61,41 +235,36 @@ class ResponseBodies
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->object = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody', 'json');
+                $response->object = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesComplexNumbersPostResponseBody', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * responseBodyAdditionalPropertiesDatePost
-     * 
-     * @param array<string, \DateTime> $request
+     *
+     * @param  array<string, \DateTime>  $request
      * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesDatePostResponse
      */
-	public function responseBodyAdditionalPropertiesDatePost(
+    public function responseBodyAdditionalPropertiesDatePost(
         array $request,
-    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesDatePostResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesDatePostResponse {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/responseBodies/additionalPropertiesDate');
-        
         $options = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        $body = Utils\Utils::serializeRequestBody($request, 'request', 'json');
         if ($body === null) {
             throw new \Exception('Request body is required');
         }
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -104,41 +273,36 @@ class ResponseBodies
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->object = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesDatePostResponseBody', 'json');
+                $response->object = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesDatePostResponseBody', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * responseBodyAdditionalPropertiesObjectPost
-     * 
-     * @param array<string, \OpenAPI\OpenAPI\Models\Shared\SimpleObject> $request
+     *
+     * @param  array<string, \OpenAPI\OpenAPI\Models\Shared\SimpleObject>  $request
      * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesObjectPostResponse
      */
-	public function responseBodyAdditionalPropertiesObjectPost(
+    public function responseBodyAdditionalPropertiesObjectPost(
         array $request,
-    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesObjectPostResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesObjectPostResponse {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/responseBodies/additionalPropertiesObject');
-        
         $options = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        $body = Utils\Utils::serializeRequestBody($request, 'request', 'json');
         if ($body === null) {
             throw new \Exception('Request body is required');
         }
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -147,41 +311,36 @@ class ResponseBodies
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->object = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesObjectPostResponseBody', 'json');
+                $response->object = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesObjectPostResponseBody', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * responseBodyAdditionalPropertiesPost
-     * 
-     * @param array<string, string> $request
+     *
+     * @param  array<string, string>  $request
      * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesPostResponse
      */
-	public function responseBodyAdditionalPropertiesPost(
+    public function responseBodyAdditionalPropertiesPost(
         array $request,
-    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesPostResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesPostResponse {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/responseBodies/additionalProperties');
-        
         $options = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        $body = Utils\Utils::serializeRequestBody($request, 'request', 'json');
         if ($body === null) {
             throw new \Exception('Request body is required');
         }
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -190,34 +349,29 @@ class ResponseBodies
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->object = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesPostResponseBody', 'json');
+                $response->object = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesPostResponseBody', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * responseBodyBytesGet
-     * 
+     *
      * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyBytesGetResponse
      */
-	public function responseBodyBytesGet(
-    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyBytesGetResponse
-    {
+    public function responseBodyBytesGet(
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyBytesGetResponse {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/bytes/100');
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = 'application/octet-stream';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -226,7 +380,6 @@ class ResponseBodies
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/octet-stream')) {
                 $response->bytes = $httpResponse->getBody()->getContents();
@@ -235,33 +388,28 @@ class ResponseBodies
 
         return $response;
     }
-	
+
     /**
      * responseBodyEmptyWithHeaders
-     * 
-     * @param float $xNumberHeader
-     * @param string $xStringHeader
+     *
+     * @param  float  $xNumberHeader
+     * @param  string  $xStringHeader
      * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyEmptyWithHeadersResponse
      */
-	public function responseBodyEmptyWithHeaders(
+    public function responseBodyEmptyWithHeaders(
         float $xNumberHeader,
         string $xStringHeader,
-    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyEmptyWithHeadersResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyEmptyWithHeadersResponse {
         $request = new \OpenAPI\OpenAPI\Models\Operations\ResponseBodyEmptyWithHeadersRequest();
         $request->xNumberHeader = $xNumberHeader;
         $request->xStringHeader = $xStringHeader;
-        
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/response-headers');
-        
         $options = ['http_errors' => false];
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\ResponseBodyEmptyWithHeadersRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -270,39 +418,59 @@ class ResponseBodies
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             $response->headers = $httpResponse->getHeaders();
-            
         }
 
         return $response;
     }
-	
+
+    /**
+     * responseBodyMissing2xxOr3xxGet
+     *
+     * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyMissing2xxOr3xxGetResponse
+     */
+    public function responseBodyMissing2xxOr3xxGet(
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyMissing2xxOr3xxGetResponse {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/responseBodies/missing2xxOr3xx');
+        $options = ['http_errors' => false];
+        $options['headers']['Accept'] = '*/*';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\ResponseBodyMissing2xxOr3xxGetResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        if (($httpResponse->getStatusCode() >= 200 && $httpResponse->getStatusCode() < 300) or $httpResponse->getStatusCode() === 500) {
+        }
+
+        return $response;
+    }
+
     /**
      * responseBodyOptionalGet
-     * 
-     * @param string $serverURL
+     *
+     * @param  string  $serverURL
      * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyOptionalGetResponse
      */
-	public function responseBodyOptionalGet(
+    public function responseBodyOptionalGet(
         ?string $serverURL = null,
-    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyOptionalGetResponse
-    {
-        $baseUrl = Utils\Utils::templateUrl(ResponseBodies::RESPONSE_BODY_OPTIONAL_GET_SERVERS[0], array(
-        ));
-        if (!empty($serverURL)) {
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyOptionalGetResponse {
+        $baseUrl = Utils\Utils::templateUrl(ResponseBodies::RESPONSE_BODY_OPTIONAL_GET_SERVERS[0], [
+        ]);
+        if (! empty($serverURL)) {
             $baseUrl = $serverURL;
         }
-        
         $url = Utils\Utils::generateUrl($baseUrl, '/optional');
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = 'application/json;q=1, text/plain;q=0';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -311,11 +479,10 @@ class ResponseBodies
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->typedObject1 = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\TypedObject1', 'json');
+                $response->typedObject1 = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\TypedObject1', 'json');
             }
             if (Utils\Utils::matchContentType($contentType, 'text/plain')) {
                 $response->res = $httpResponse->getBody()->getContents();
@@ -324,31 +491,26 @@ class ResponseBodies
 
         return $response;
     }
-	
+
     /**
      * responseBodyReadOnly
-     * 
-     * @param string $serverURL
+     *
+     * @param  string  $serverURL
      * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyReadOnlyResponse
      */
-	public function responseBodyReadOnly(
+    public function responseBodyReadOnly(
         ?string $serverURL = null,
-    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyReadOnlyResponse
-    {
-        $baseUrl = Utils\Utils::templateUrl(ResponseBodies::RESPONSE_BODY_READ_ONLY_SERVERS[0], array(
-        ));
-        if (!empty($serverURL)) {
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyReadOnlyResponse {
+        $baseUrl = Utils\Utils::templateUrl(ResponseBodies::RESPONSE_BODY_READ_ONLY_SERVERS[0], [
+        ]);
+        if (! empty($serverURL)) {
             $baseUrl = $serverURL;
         }
-        
         $url = Utils\Utils::generateUrl($baseUrl, '/readonlyorwriteonly#readOnly');
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -357,34 +519,29 @@ class ResponseBodies
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->readOnlyObject = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\ReadOnlyObject', 'json');
+                $response->readOnlyObject = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\ReadOnlyObject', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * responseBodyStringGet
-     * 
+     *
      * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyStringGetResponse
      */
-	public function responseBodyStringGet(
-    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyStringGetResponse
-    {
+    public function responseBodyStringGet(
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyStringGetResponse {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/html');
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = 'text/html';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -393,7 +550,6 @@ class ResponseBodies
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'text/html')) {
                 $response->html = $httpResponse->getBody()->getContents();
@@ -402,24 +558,20 @@ class ResponseBodies
 
         return $response;
     }
-	
+
     /**
      * responseBodyXmlGet
-     * 
+     *
      * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyXmlGetResponse
      */
-	public function responseBodyXmlGet(
-    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyXmlGetResponse
-    {
+    public function responseBodyXmlGet(
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyXmlGetResponse {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/xml');
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = 'application/xml';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -428,53 +580,9 @@ class ResponseBodies
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/xml')) {
                 $response->xml = $httpResponse->getBody()->getContents();
-            }
-        }
-
-        return $response;
-    }
-	
-    /**
-     * responseBodyZeroValueComplexTypePtrsPost
-     * 
-     * @param \OpenAPI\OpenAPI\Models\Shared\ObjWithZeroValueComplexTypePtrs $request
-     * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyZeroValueComplexTypePtrsPostResponse
-     */
-	public function responseBodyZeroValueComplexTypePtrsPost(
-        \OpenAPI\OpenAPI\Models\Shared\ObjWithZeroValueComplexTypePtrs $request,
-    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyZeroValueComplexTypePtrsPostResponse
-    {
-        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
-        $url = Utils\Utils::generateUrl($baseUrl, '/anything/responseBodies/zeroValueComplexTypePtrs');
-        
-        $options = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        if ($body === null) {
-            throw new \Exception('Request body is required');
-        }
-        $options = array_merge_recursive($options, $body);
-        $options['headers']['Accept'] = 'application/json';
-        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
-        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
-        
-        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
-
-        $statusCode = $httpResponse->getStatusCode();
-
-        $response = new \OpenAPI\OpenAPI\Models\Operations\ResponseBodyZeroValueComplexTypePtrsPostResponse();
-        $response->statusCode = $statusCode;
-        $response->contentType = $contentType;
-        $response->rawResponse = $httpResponse;
-        
-        if ($httpResponse->getStatusCode() === 200) {
-            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
-                $serializer = Utils\JSON::createSerializer();
-                $response->object = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ResponseBodyZeroValueComplexTypePtrsPostResponseBody', 'json');
             }
         }
 

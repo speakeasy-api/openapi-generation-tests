@@ -20,6 +20,6 @@ namespace Openapi.Models.Operations
         /// A date time parameter with a default value
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=dateTimeInput")]
-        public DateTime DateTimeInput { get; set; } = default!;
+        public DateTime DateTimeInput { get; set; } = System.DateTime.Parse("2023-10-13T12:42:42.999+00:00");
     }
 }

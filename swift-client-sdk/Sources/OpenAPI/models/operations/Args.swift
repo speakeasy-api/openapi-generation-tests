@@ -5,20 +5,20 @@ import Foundation
 extension Operations {
     /// A model object
     public struct Args {
-        public let globalQueryParam: String
+        public let globalHiddenQueryParam: String
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(globalQueryParam: String) {
-            self.globalQueryParam = globalQueryParam
+        public init(globalHiddenQueryParam: String) {
+            self.globalHiddenQueryParam = globalHiddenQueryParam
         }
     }
 }
 
 extension Operations.Args: Codable {
     enum CodingKeys: String, CodingKey {
-        case globalQueryParam
+        case globalHiddenQueryParam
     }
 }
 

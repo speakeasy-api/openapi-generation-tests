@@ -11,13 +11,15 @@
 namespace Openapi.Models.Shared
 {
     using Newtonsoft.Json;
+    using Openapi.Models.Shared;
+    using Openapi.Utils;
     using System.Collections.Generic;
     
     public class DeepObjectCamelCase
     {
 
         [JsonProperty("any_val")]
-        public object AnyVal { get; set; } = default!;
+        public AnyVal AnyVal { get; set; } = default!;
 
         [JsonProperty("arr_val")]
         public List<SimpleObjectCamelCase> ArrVal { get; set; } = default!;

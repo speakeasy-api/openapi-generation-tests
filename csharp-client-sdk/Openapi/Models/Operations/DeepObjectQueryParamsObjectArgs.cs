@@ -11,6 +11,7 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     using System.Collections.Generic;
     
     public class DeepObjectQueryParamsObjectArgs
@@ -52,11 +53,17 @@ namespace Openapi.Models.Operations
         [JsonProperty("objParam[float32]")]
         public string ObjParamFloat32 { get; set; } = default!;
 
+        [JsonProperty("objParam[float64Str]")]
+        public string? ObjParamFloat64Str { get; set; }
+
         [JsonProperty("objParam[int32Enum]")]
         public string ObjParamInt32Enum { get; set; } = default!;
 
         [JsonProperty("objParam[int32]")]
         public string ObjParamInt32 { get; set; } = default!;
+
+        [JsonProperty("objParam[int64Str]")]
+        public string? ObjParamInt64Str { get; set; }
 
         [JsonProperty("objParam[intEnum]")]
         public string ObjParamIntEnum { get; set; } = default!;

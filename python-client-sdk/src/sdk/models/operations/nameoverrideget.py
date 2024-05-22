@@ -9,6 +9,7 @@ from enum import Enum
 from sdk import utils
 from typing import Optional
 
+
 class EnumNameOverride(str, Enum):
     r"""An enum type"""
     VALUE1 = 'value1'
@@ -25,14 +26,32 @@ class NameOverrideGetRequest:
 
 
 
+@dataclasses.dataclass
+class DeepOverriddenAllOf:
+    pass
+
+
+@dataclasses.dataclass
+class OverriddenAllOf:
+    pass
+
+
+@dataclasses.dataclass
+class OverriddenNormal:
+    pass
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class NameOverrideGetOverriddenResponse:
     r"""A successful response that contains the simpleObject sent in the request body"""
+    deep_overridden_all_of: Optional[DeepOverriddenAllOf] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('deepAllOf'), 'exclude': lambda f: f is None }})
     json: Optional[shared_simpleobject.SimpleObject] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties.
     https://docs.speakeasyapi.dev - A link to the external docs.
     """
+    overridden_all_of: Optional[OverriddenAllOf] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('allOf'), 'exclude': lambda f: f is None }})
+    overridden_normal: Optional[OverriddenNormal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('normal'), 'exclude': lambda f: f is None }})
     
 
 
@@ -43,9 +62,9 @@ class NameOverrideGetResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     overridden_response: Optional[NameOverrideGetOverriddenResponse] = dataclasses.field(default=None)
     r"""A successful response that contains the simpleObject sent in the request body"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

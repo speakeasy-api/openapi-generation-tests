@@ -8,51 +8,49 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI;
 
-class Errors 
+class Errors
 {
-	
-	public const CONNECTION_ERROR_GET_SERVERS = [
-		'http://somebrokenapi.broken',
-	];
-	
-	public const STATUS_GET_X_SPEAKEASY_ERRORS_SERVERS = [
-		'http://localhost:35456',
-	];
+    public const CONNECTION_ERROR_GET_SERVERS = [
 
-	private SDKConfiguration $sdkConfiguration;
+        'http://somebrokenapi.broken',
+    ];
+    public const STATUS_GET_X_SPEAKEASY_ERRORS_SERVERS = [
 
-	/**
-	 * @param SDKConfiguration $sdkConfig
-	 */
-	public function __construct(SDKConfiguration $sdkConfig)
-	{
-		$this->sdkConfiguration = $sdkConfig;
-	}
-	
+        'http://localhost:35456',
+    ];
+    public const UNION_ERRORS_GET_SERVERS = [
+
+        'http://localhost:35456',
+    ];
+    private SDKConfiguration $sdkConfiguration;
+
+    /**
+     * @param  SDKConfiguration  $sdkConfig
+     */
+    public function __construct(SDKConfiguration $sdkConfig)
+    {
+        $this->sdkConfiguration = $sdkConfig;
+    }
+
     /**
      * connectionErrorGet
-     * 
-     * @param string $serverURL
+     *
+     * @param  string  $serverURL
      * @return \OpenAPI\OpenAPI\Models\Operations\ConnectionErrorGetResponse
      */
-	public function connectionErrorGet(
+    public function connectionErrorGet(
         ?string $serverURL = null,
-    ): \OpenAPI\OpenAPI\Models\Operations\ConnectionErrorGetResponse
-    {
-        $baseUrl = Utils\Utils::templateUrl(Errors::CONNECTION_ERROR_GET_SERVERS[0], array(
-        ));
-        if (!empty($serverURL)) {
+    ): \OpenAPI\OpenAPI\Models\Operations\ConnectionErrorGetResponse {
+        $baseUrl = Utils\Utils::templateUrl(Errors::CONNECTION_ERROR_GET_SERVERS[0], [
+        ]);
+        if (! empty($serverURL)) {
             $baseUrl = $serverURL;
         }
-        
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/connectionError');
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -61,35 +59,29 @@ class Errors
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
         }
 
         return $response;
     }
-	
+
     /**
      * statusGetError
-     * 
-     * @param int $statusCode
+     *
+     * @param  int  $statusCode
      * @return \OpenAPI\OpenAPI\Models\Operations\StatusGetErrorResponse
      */
-	public function statusGetError(
+    public function statusGetError(
         int $statusCode,
-    ): \OpenAPI\OpenAPI\Models\Operations\StatusGetErrorResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\StatusGetErrorResponse {
         $request = new \OpenAPI\OpenAPI\Models\Operations\StatusGetErrorRequest();
         $request->statusCode = $statusCode;
-        
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/status/{statusCode}', \OpenAPI\OpenAPI\Models\Operations\StatusGetErrorRequest::class, $request, $this->sdkConfiguration->globals);
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -98,42 +90,35 @@ class Errors
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200 or $httpResponse->getStatusCode() === 300 or $httpResponse->getStatusCode() === 400 or $httpResponse->getStatusCode() === 500) {
         }
 
         return $response;
     }
-	
+
     /**
      * statusGetXSpeakeasyErrors
-     * 
-     * @param int $statusCode
-     * @param string $serverURL
+     *
+     * @param  int  $statusCode
+     * @param  string  $serverURL
      * @return \OpenAPI\OpenAPI\Models\Operations\StatusGetXSpeakeasyErrorsResponse
      */
-	public function statusGetXSpeakeasyErrors(
+    public function statusGetXSpeakeasyErrors(
         int $statusCode,
         ?string $serverURL = null,
-    ): \OpenAPI\OpenAPI\Models\Operations\StatusGetXSpeakeasyErrorsResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\StatusGetXSpeakeasyErrorsResponse {
         $request = new \OpenAPI\OpenAPI\Models\Operations\StatusGetXSpeakeasyErrorsRequest();
         $request->statusCode = $statusCode;
-        
-        $baseUrl = Utils\Utils::templateUrl(Errors::STATUS_GET_X_SPEAKEASY_ERRORS_SERVERS[0], array(
-        ));
-        if (!empty($serverURL)) {
+        $baseUrl = Utils\Utils::templateUrl(Errors::STATUS_GET_X_SPEAKEASY_ERRORS_SERVERS[0], [
+        ]);
+        if (! empty($serverURL)) {
             $baseUrl = $serverURL;
         }
-        
         $url = Utils\Utils::generateUrl($baseUrl, '/errors/{statusCode}', \OpenAPI\OpenAPI\Models\Operations\StatusGetXSpeakeasyErrorsRequest::class, $request, $this->sdkConfiguration->globals);
-        
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -142,19 +127,59 @@ class Errors
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200 or $httpResponse->getStatusCode() === 300 or $httpResponse->getStatusCode() === 400) {
-        }
-        else if ($httpResponse->getStatusCode() === 500) {
+        } elseif ($httpResponse->getStatusCode() === 500) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->error = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\Error', 'json');
+                $response->error = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\Error', 'json');
+            }
+        } elseif ($httpResponse->getStatusCode() === 501) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->object = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\StatusGetXSpeakeasyErrorsResponseBody', 'json');
             }
         }
-        else if ($httpResponse->getStatusCode() === 501) {
+
+        return $response;
+    }
+
+    /**
+     * unionErrorsGet
+     *
+     * @param  \OpenAPI\OpenAPI\Models\Operations\ErrorType  $errorType
+     * @param  string  $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\UnionErrorsGetResponse
+     */
+    public function unionErrorsGet(
+        \OpenAPI\OpenAPI\Models\Operations\ErrorType $errorType,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\UnionErrorsGetResponse {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\UnionErrorsGetRequest();
+        $request->errorType = $errorType;
+        $baseUrl = Utils\Utils::templateUrl(Errors::UNION_ERRORS_GET_SERVERS[0], [
+        ]);
+        if (! empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        $url = Utils\Utils::generateUrl($baseUrl, '/errors/unionErrors');
+        $options = ['http_errors' => false];
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\UnionErrorsGetRequest::class, $request, $this->sdkConfiguration->globals));
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $statusCode = $httpResponse->getStatusCode();
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\UnionErrorsGetResponse();
+        $response->statusCode = $statusCode;
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        if ($httpResponse->getStatusCode() === 200) {
+        } elseif ($httpResponse->getStatusCode() === 500) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->object = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\StatusGetXSpeakeasyErrorsResponseBody', 'json');
+                $response->oneOf = $serializer->deserialize((string) $httpResponse->getBody(), 'mixed', 'json');
             }
         }
 

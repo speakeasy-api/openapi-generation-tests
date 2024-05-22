@@ -11,6 +11,7 @@
 namespace Openapi.Models.Operations
 {
     using NodaTime;
+    using Openapi.Models.Operations;
     using Openapi.Utils;
     using System.Numerics;
     using System;
@@ -91,6 +92,12 @@ namespace Openapi.Models.Operations
         public float Float32Parameter { get; set; } = default!;
 
         /// <summary>
+        /// A float64 parameter
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=float64StringParameter")]
+        public string Float64StringParameter { get; set; } = default!;
+
+        /// <summary>
         /// A float parameter
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=floatParameter")]
@@ -101,6 +108,12 @@ namespace Openapi.Models.Operations
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=int64Parameter")]
         public long Int64Parameter { get; set; } = default!;
+
+        /// <summary>
+        /// An int64 parameter
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=int64StringParameter")]
+        public string Int64StringParameter { get; set; } = default!;
 
         /// <summary>
         /// An integer parameter

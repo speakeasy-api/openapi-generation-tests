@@ -24,7 +24,7 @@ namespace Openapi.Models.Operations
         public string Data { get; set; } = default!;
 
         [JsonProperty("json")]
-        [JsonConverter(typeof(BigIntSerializer))]
+        [JsonConverter(typeof(BigIntStrConverter))]
         public BigInteger Json { get; set; } = default!;
     }
 }

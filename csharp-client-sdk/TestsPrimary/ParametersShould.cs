@@ -13,6 +13,7 @@ using Openapi.Models.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Openapi.Models.Operations;
+using FluentAssertions;
 
 public class ParametersShould
 {
@@ -343,21 +344,32 @@ public class ParametersShould
             "http://localhost:35123/anything/queryParams/deepObject/map?mapParam[test]=value&mapParam[test2]=value2&mapArrParam[test]=value&mapArrParam[test]=value2&mapArrParam[test2]=value3&mapArrParam[test2]=value4",
             res.RawResponse.RequestMessage.RequestUri.ToString()
         );
-        Assert.Equal(
-            new Dictionary<string, object>()
+        res.Res.Args.Should().BeEquivalentTo(
+            new Dictionary<string, DeepObjectQueryParamsMapArgs>()
             {
                 {
                     "mapArrParam[test2]",
-                    new List<string>() { "value3", "value4" }
+                    new DeepObjectQueryParamsMapArgs(DeepObjectQueryParamsMapArgsType.ArrayOfStr) {
+                        ArrayOfStr = new List<string>() { "value3", "value4" }
+                    }
                 },
                 {
                     "mapArrParam[test]",
-                    new List<string>() { "value", "value2" }
+                    new DeepObjectQueryParamsMapArgs(DeepObjectQueryParamsMapArgsType.ArrayOfStr) {
+                        ArrayOfStr = new List<string>() { "value", "value2" }
+                    }
                 },
-                { "mapParam[test2]", "value2" },
-                { "mapParam[test]", "value" }
-            },
-            res.Res.Args
+                { "mapParam[test2]",
+                    new DeepObjectQueryParamsMapArgs(DeepObjectQueryParamsMapArgsType.Str) {
+                        Str = "value2"
+                    }
+                },
+                { "mapParam[test]", 
+                    new DeepObjectQueryParamsMapArgs(DeepObjectQueryParamsMapArgsType.Str) {
+                        Str = "value"
+                    }
+                }
+            }
         );
     }
 

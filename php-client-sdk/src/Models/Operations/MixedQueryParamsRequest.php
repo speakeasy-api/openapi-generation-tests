@@ -8,37 +8,37 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class MixedQueryParamsRequest
 {
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
-     * 
+     *
      * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObject $deepObjectParam
      */
-	#[SpeakeasyMetadata('queryParam:style=deepObject,explode=true,name=deepObjectParam')]
+    #[SpeakeasyMetadata('queryParam:style=deepObject,explode=true,name=deepObjectParam')]
     public \OpenAPI\OpenAPI\Models\Shared\SimpleObject $deepObjectParam;
-    
+
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
-     * 
+     *
      * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObject $formParam
      */
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=formParam')]
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=formParam')]
     public \OpenAPI\OpenAPI\Models\Shared\SimpleObject $formParam;
-    
+
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
-     * 
+     *
      * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObject $jsonParam
      */
-	#[SpeakeasyMetadata('queryParam:serialization=json,name=jsonParam')]
+    #[SpeakeasyMetadata('queryParam:serialization=json,name=jsonParam')]
     public \OpenAPI\OpenAPI\Models\Shared\SimpleObject $jsonParam;
-    
-	public function __construct()
-	{
-		$this->deepObjectParam = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
-		$this->formParam = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
-		$this->jsonParam = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
-	}
+
+    public function __construct()
+    {
+        $this->deepObjectParam = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
+        $this->formParam = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
+        $this->jsonParam = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
+    }
 }

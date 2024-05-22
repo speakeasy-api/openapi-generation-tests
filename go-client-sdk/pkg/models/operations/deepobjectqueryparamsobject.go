@@ -51,8 +51,10 @@ type DeepObjectQueryParamsObjectArgs struct {
 	ObjParamDecimal    *string  `json:"objParam[decimal],omitempty"`
 	ObjParamEnum       string   `json:"objParam[enum]"`
 	ObjParamFloat32    string   `json:"objParam[float32]"`
+	ObjParamFloat64Str *string  `json:"objParam[float64Str],omitempty"`
 	ObjParamInt32Enum  string   `json:"objParam[int32Enum]"`
 	ObjParamInt32      string   `json:"objParam[int32]"`
+	ObjParamInt64Str   *string  `json:"objParam[int64Str],omitempty"`
 	ObjParamIntEnum    string   `json:"objParam[intEnum]"`
 	ObjParamInt        string   `json:"objParam[int]"`
 	ObjParamNum        string   `json:"objParam[num]"`
@@ -144,6 +146,13 @@ func (o *DeepObjectQueryParamsObjectArgs) GetObjParamFloat32() string {
 	return o.ObjParamFloat32
 }
 
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamFloat64Str() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ObjParamFloat64Str
+}
+
 func (o *DeepObjectQueryParamsObjectArgs) GetObjParamInt32Enum() string {
 	if o == nil {
 		return ""
@@ -156,6 +165,13 @@ func (o *DeepObjectQueryParamsObjectArgs) GetObjParamInt32() string {
 		return ""
 	}
 	return o.ObjParamInt32
+}
+
+func (o *DeepObjectQueryParamsObjectArgs) GetObjParamInt64Str() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ObjParamInt64Str
 }
 
 func (o *DeepObjectQueryParamsObjectArgs) GetObjParamIntEnum() string {

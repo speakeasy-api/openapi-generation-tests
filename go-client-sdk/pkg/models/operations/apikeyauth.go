@@ -6,17 +6,6 @@ import (
 	"net/http"
 )
 
-type APIKeyAuthSecurity struct {
-	APIKeyAuth string `security:"scheme,type=apiKey,subtype=header,name=Authorization"`
-}
-
-func (o *APIKeyAuthSecurity) GetAPIKeyAuth() string {
-	if o == nil {
-		return ""
-	}
-	return o.APIKeyAuth
-}
-
 // APIKeyAuthToken - Successful authentication.
 type APIKeyAuthToken struct {
 	Authenticated bool   `json:"authenticated"`

@@ -23,7 +23,7 @@ namespace Openapi.Models.Operations
         public string Data { get; set; } = default!;
 
         [JsonProperty("json")]
-        [JsonConverter(typeof(DecimalSerializer))]
+        [JsonConverter(typeof(DecimalStrConverter))]
         public decimal Json { get; set; } = default!;
     }
 }

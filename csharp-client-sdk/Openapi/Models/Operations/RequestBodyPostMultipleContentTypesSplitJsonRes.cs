@@ -11,6 +11,7 @@
 namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
+    using Openapi.Utils;
     using System.Collections.Generic;
     
     /// <summary>
@@ -23,6 +24,6 @@ namespace Openapi.Models.Operations
         public Dictionary<string, object>? Form { get; set; }
 
         [JsonProperty("json")]
-        public Dictionary<string, object>? Json { get; set; }
+        public Dictionary<string, object>? Json { get; set; } = null;
     }
 }

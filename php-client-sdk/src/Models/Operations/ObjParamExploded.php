@@ -8,24 +8,19 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
-/**
- * ObjParamExploded
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+/** ObjParamExploded */
 class ObjParamExploded
 {
-	#[SpeakeasyMetadata('queryParam:name=item_count')]
+    #[SpeakeasyMetadata('queryParam:name=item_count')]
     public ?string $itemCount = null;
-    
-	#[SpeakeasyMetadata('queryParam:name=search_term')]
+
+    #[SpeakeasyMetadata('queryParam:name=search_term')]
     public ?string $searchTerm = null;
-    
-	public function __construct()
-	{
-		$this->itemCount = null;
-		$this->searchTerm = null;
-	}
+
+    public function __construct()
+    {
+        $this->itemCount = null;
+        $this->searchTerm = null;
+    }
 }

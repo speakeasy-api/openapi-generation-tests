@@ -12,6 +12,7 @@ namespace Openapi.Models.Operations
 {
     using Newtonsoft.Json;
     using Openapi.Models.Shared;
+    using Openapi.Utils;
     
     /// <summary>
     /// OK
@@ -19,7 +20,7 @@ namespace Openapi.Models.Operations
     public class NullableTypedObjectPostRes
     {
 
-        [JsonProperty("json")]
-        public TypedObject1 Json { get; set; } = default!;
+        [JsonProperty("json", NullValueHandling = NullValueHandling.Include)]
+        public TypedObject1? Json { get; set; }
     }
 }
