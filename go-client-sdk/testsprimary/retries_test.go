@@ -27,7 +27,22 @@ func TestRetriesSucceeds(t *testing.T) {
 	res, err := s.Retries.RetriesGet(context.Background(), pseudo_uuid(), nil)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
+	assert.NotNil(t, res.Retries)
+	assert.EqualValues(t, 3, res.Retries.Retries)
+}
+
+func TestRetriesWithBodySucceeds(t *testing.T) {
+	recordTest("retries-succeeds-with-body")
+
+	s := sdk.New()
+
+	res, err := s.Retries.RetriesPost(context.Background(), pseudo_uuid(), &operations.RetriesPostRequestBody{
+		FieldOne: "one",
+	}, nil)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
 	assert.NotNil(t, res.Retries)
 	assert.EqualValues(t, 3, res.Retries.Retries)
 }
@@ -80,7 +95,7 @@ func TestGlobalRetryConfigSuccess(t *testing.T) {
 	res, err := s.Retries.RetriesGet(context.Background(), pseudo_uuid(), sdk.Int64(20))
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
 	assert.NotNil(t, res.Retries)
 	assert.EqualValues(t, 20, res.Retries.Retries)
 }

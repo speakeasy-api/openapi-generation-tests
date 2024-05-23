@@ -1,5 +1,5 @@
 # Generation
-(*generation*)
+(*generation()*)
 
 ## Overview
 
@@ -35,28 +35,48 @@ Endpoints for purely testing valid generation behavior.
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.AnchorTypesGetResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            AnchorTypesGetResponse res = sdk.generation.anchorTypesGet();
+            AnchorTypesGetResponse res = sdk.generation().anchorTypesGet()
+                .call();
 
-            if (res.typeFromAnchor != null) {
+            if (res.typeFromAnchor().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -65,8 +85,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.AnchorTypesGetResponse](../../models/operations/AnchorTypesGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.AnchorTypesGetResponse>](../../models/operations/AnchorTypesGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## arrayCircularReferenceGet
 
@@ -75,28 +99,48 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.ArrayCircularReferenceGetResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            ArrayCircularReferenceGetResponse res = sdk.generation.arrayCircularReferenceGet();
+            ArrayCircularReferenceGetResponse res = sdk.generation().arrayCircularReferenceGet()
+                .call();
 
-            if (res.arrayCircularReferenceObject != null) {
+            if (res.arrayCircularReferenceObject().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -105,8 +149,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ArrayCircularReferenceGetResponse](../../models/operations/ArrayCircularReferenceGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ArrayCircularReferenceGetResponse>](../../models/operations/ArrayCircularReferenceGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## circularReferenceGet
 
@@ -115,28 +163,48 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.CircularReferenceGetResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            CircularReferenceGetResponse res = sdk.generation.circularReferenceGet();
+            CircularReferenceGetResponse res = sdk.generation().circularReferenceGet()
+                .call();
 
-            if (res.validCircularReferenceObject != null) {
+            if (res.validCircularReferenceObject().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -145,8 +213,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.CircularReferenceGetResponse](../../models/operations/CircularReferenceGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.CircularReferenceGetResponse>](../../models/operations/CircularReferenceGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## dateParamWithDefault
 
@@ -155,30 +227,47 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.DateParamWithDefaultRequest;
-import org.openapis.openapi.models.operations.DateParamWithDefaultResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            DateParamWithDefaultResponse res = sdk.generation.dateParamWithDefault(LocalDate.parse("2021-11-30"));
+            DateParamWithDefaultResponse res = sdk.generation().dateParamWithDefault()
+                .dateInput(LocalDate.parse("2023-10-13"))
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -193,8 +282,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.DateParamWithDefaultResponse](../../models/operations/DateParamWithDefaultResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.DateParamWithDefaultResponse>](../../models/operations/DateParamWithDefaultResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## dateTimeParamWithDefault
 
@@ -203,30 +296,47 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.DateTimeParamWithDefaultRequest;
-import org.openapis.openapi.models.operations.DateTimeParamWithDefaultResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            DateTimeParamWithDefaultResponse res = sdk.generation.dateTimeParamWithDefault(OffsetDateTime.parse("2023-02-09T21:53:21.077Z"));
+            DateTimeParamWithDefaultResponse res = sdk.generation().dateTimeParamWithDefault()
+                .dateTimeInput(OffsetDateTime.parse("2023-10-13T12:42:42.999+00:00"))
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -241,8 +351,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.DateTimeParamWithDefaultResponse](../../models/operations/DateTimeParamWithDefaultResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.DateTimeParamWithDefaultResponse>](../../models/operations/DateTimeParamWithDefaultResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## decimalParamWithDefault
 
@@ -251,29 +365,47 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.DecimalParamWithDefaultRequest;
-import org.openapis.openapi.models.operations.DecimalParamWithDefaultResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            DecimalParamWithDefaultResponse res = sdk.generation.decimalParamWithDefault(4060.06d);
+            DecimalParamWithDefaultResponse res = sdk.generation().decimalParamWithDefault()
+                .decimalInput(new BigDecimal("903275809834567300000"))
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -283,13 +415,17 @@ public class Application {
 
 | Parameter                                | Type                                     | Required                                 | Description                              |
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `decimalInput`                           | *Double*                                 | :heavy_check_mark:                       | A decimal parameter with a default value |
+| `decimalInput`                           | *BigDecimal*                             | :heavy_check_mark:                       | A decimal parameter with a default value |
 
 
 ### Response
 
-**[org.openapis.openapi.models.operations.DecimalParamWithDefaultResponse](../../models/operations/DecimalParamWithDefaultResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.DecimalParamWithDefaultResponse>](../../models/operations/DecimalParamWithDefaultResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## deprecatedFieldInSchemaPost
 
@@ -298,36 +434,50 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.DeprecatedFieldInSchemaPostResponse;
-import org.openapis.openapi.models.shared.DeprecatedEnum;
-import org.openapis.openapi.models.shared.DeprecatedFieldInObject;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.DeprecatedFieldInObject req = new DeprecatedFieldInObject(){{
-                deprecatedEnum = DeprecatedEnum.B;
-                deprecatedField = "string";
-                newField = "string";
-            }};            
+            DeprecatedFieldInObject req = DeprecatedFieldInObject.builder()
+                .build();
 
-            DeprecatedFieldInSchemaPostResponse res = sdk.generation.deprecatedFieldInSchemaPost(req);
+            DeprecatedFieldInSchemaPostResponse res = sdk.generation().deprecatedFieldInSchemaPost()
+                .request(req)
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -342,8 +492,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.DeprecatedFieldInSchemaPostResponse](../../models/operations/DeprecatedFieldInSchemaPostResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.DeprecatedFieldInSchemaPostResponse>](../../models/operations/DeprecatedFieldInSchemaPostResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## deprecatedObjectInSchemaGet
 
@@ -352,28 +506,48 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.DeprecatedObjectInSchemaGetResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            DeprecatedObjectInSchemaGetResponse res = sdk.generation.deprecatedObjectInSchemaGet();
+            DeprecatedObjectInSchemaGetResponse res = sdk.generation().deprecatedObjectInSchemaGet()
+                .call();
 
-            if (res.object != null) {
+            if (res.object().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -382,8 +556,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.DeprecatedObjectInSchemaGetResponse](../../models/operations/DeprecatedObjectInSchemaGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.DeprecatedObjectInSchemaGetResponse>](../../models/operations/DeprecatedObjectInSchemaGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## ~~deprecatedOperationNoCommentsGet~~
 
@@ -394,29 +572,47 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.DeprecatedOperationNoCommentsGetRequest;
-import org.openapis.openapi.models.operations.DeprecatedOperationNoCommentsGetResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            DeprecatedOperationNoCommentsGetResponse res = sdk.generation.deprecatedOperationNoCommentsGet("string");
+            DeprecatedOperationNoCommentsGetResponse res = sdk.generation().deprecatedOperationNoCommentsGet()
+                .deprecatedParameter("<value>")
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -426,13 +622,17 @@ public class Application {
 
 | Parameter                                                                                                               | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
 | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `deprecatedParameter`                                                                                                   | *String*                                                                                                                | :heavy_minus_sign:                                                                                                      | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible. |
+| `deprecatedParameter`                                                                                                   | *Optional<? extends String>*                                                                                            | :heavy_minus_sign:                                                                                                      | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible. |
 
 
 ### Response
 
-**[org.openapis.openapi.models.operations.DeprecatedOperationNoCommentsGetResponse](../../models/operations/DeprecatedOperationNoCommentsGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.DeprecatedOperationNoCommentsGetResponse>](../../models/operations/DeprecatedOperationNoCommentsGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## ~~deprecatedOperationWithCommentsGet~~
 
@@ -445,29 +645,48 @@ This is an endpoint setup to test deprecation with comments
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.DeprecatedOperationWithCommentsGetRequest;
-import org.openapis.openapi.models.operations.DeprecatedOperationWithCommentsGetResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            DeprecatedOperationWithCommentsGetResponse res = sdk.generation.deprecatedOperationWithCommentsGet("string", "string");
+            DeprecatedOperationWithCommentsGetResponse res = sdk.generation().deprecatedOperationWithCommentsGet()
+                .deprecatedParameter("<value>")
+                .newParameter("<value>")
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -477,14 +696,18 @@ public class Application {
 
 | Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
 | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `deprecatedParameter`                                                                                            | *String*                                                                                                         | :heavy_minus_sign:                                                                                               | : warning: ** DEPRECATED **: This parameter is deprecated. Use newParameter instead.<br/><br/>This is a string parameter |
-| `newParameter`                                                                                                   | *String*                                                                                                         | :heavy_minus_sign:                                                                                               | This is a string parameter                                                                                       |
+| `deprecatedParameter`                                                                                            | *Optional<? extends String>*                                                                                     | :heavy_minus_sign:                                                                                               | : warning: ** DEPRECATED **: This parameter is deprecated. Use newParameter instead.<br/><br/>This is a string parameter |
+| `newParameter`                                                                                                   | *Optional<? extends String>*                                                                                     | :heavy_minus_sign:                                                                                               | This is a string parameter                                                                                       |
 
 
 ### Response
 
-**[org.openapis.openapi.models.operations.DeprecatedOperationWithCommentsGetResponse](../../models/operations/DeprecatedOperationWithCommentsGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.DeprecatedOperationWithCommentsGetResponse>](../../models/operations/DeprecatedOperationWithCommentsGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## emptyObjectGet
 
@@ -493,30 +716,48 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.EmptyObjectGetRequest;
-import org.openapis.openapi.models.operations.EmptyObjectGetResponse;
-import org.openapis.openapi.models.shared.EmptyObjectParam;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            EmptyObjectGetResponse res = sdk.generation.emptyObjectGet(new EmptyObjectParam(){{}});
+            EmptyObjectGetResponse res = sdk.generation().emptyObjectGet()
+                .emptyObject(EmptyObjectParam.builder()
+                    .build())
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -531,8 +772,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.EmptyObjectGetResponse](../../models/operations/EmptyObjectGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.EmptyObjectGetResponse>](../../models/operations/EmptyObjectGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## emptyResponseObjectWithCommentGet
 
@@ -541,28 +786,48 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.EmptyResponseObjectWithCommentGetResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            EmptyResponseObjectWithCommentGetResponse res = sdk.generation.emptyResponseObjectWithCommentGet();
+            EmptyResponseObjectWithCommentGetResponse res = sdk.generation().emptyResponseObjectWithCommentGet()
+                .call();
 
-            if (res.body != null) {
+            if (res.body().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -571,8 +836,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.EmptyResponseObjectWithCommentGetResponse](../../models/operations/EmptyResponseObjectWithCommentGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.EmptyResponseObjectWithCommentGetResponse>](../../models/operations/EmptyResponseObjectWithCommentGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## globalNameOverridden
 
@@ -581,38 +850,93 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.GetGlobalNameOverrideResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
+import org.openapis.openapi.models.shared.Enum;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            GetGlobalNameOverrideResponse res = sdk.generation.globalNameOverridden();
+            SimpleObject req = SimpleObject.builder()
+                .any("any")
+                .bool(true)
+                .date(LocalDate.parse("2020-01-01"))
+                .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                .enum_(Enum.ONE)
+                .float32(1.1f)
+                .int_(1L)
+                .int32(1)
+                .int32Enum(Int32Enum.FIFTY_FIVE)
+                .intEnum(IntEnum.Second)
+                .num(1.1d)
+                .str("test")
+                .bigint(new BigInteger("8821239038968084"))
+                .bigintStr(new BigInteger("9223372036854775808"))
+                .boolOpt(true)
+                .decimal(new BigDecimal("3.141592653589793"))
+                .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                .float64Str("1.1")
+                .int64Str("100")
+                .strOpt("testOptional")
+                .build();
 
-            if (res.object != null) {
+            GetGlobalNameOverrideResponse res = sdk.generation().globalNameOverridden()
+                .request(req)
+                .call();
+
+            if (res.object().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
 ```
 
+### Parameters
+
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [org.openapis.openapi.models.shared.SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+
 
 ### Response
 
-**[org.openapis.openapi.models.operations.GetGlobalNameOverrideResponse](../../models/operations/GetGlobalNameOverrideResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.GetGlobalNameOverrideResponse>](../../models/operations/GetGlobalNameOverrideResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## ignoredGenerationGet
 
@@ -621,32 +945,48 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.callbacks.IgnoredGenerationGetNotIgnoredCallbackRequestBody;
-import org.openapis.openapi.models.callbacks.IgnoredGenerationGetNotIgnoredCallbackResponse;
-import org.openapis.openapi.models.callbacks.IgnoredGenerationGetSingledIgnoredCallbackOperationRequestBody;
-import org.openapis.openapi.models.callbacks.IgnoredGenerationGetSingledIgnoredCallbackOperationResponse;
-import org.openapis.openapi.models.operations.IgnoredGenerationGetResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            IgnoredGenerationGetResponse res = sdk.generation.ignoredGenerationGet();
+            IgnoredGenerationGetResponse res = sdk.generation().ignoredGenerationGet()
+                .call();
 
-            if (res.object != null) {
+            if (res.object().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -655,8 +995,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.IgnoredGenerationGetResponse](../../models/operations/IgnoredGenerationGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.IgnoredGenerationGetResponse>](../../models/operations/IgnoredGenerationGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## ignoresPost
 
@@ -665,30 +1009,51 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.IgnoresPostRequest;
-import org.openapis.openapi.models.operations.IgnoresPostRequestBody;
-import org.openapis.openapi.models.operations.IgnoresPostResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            IgnoresPostResponse res = sdk.generation.ignoresPost(new IgnoresPostRequestBody(){{}}, "string");
+            IgnoresPostResponse res = sdk.generation().ignoresPost()
+                .requestBody(IgnoresPostRequestBody.builder()
+                    .build())
+                .testParam("<value>")
+                .call();
 
-            if (res.httpBinSimpleJsonObject != null) {
+            if (res.httpBinSimpleJsonObject().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -699,13 +1064,17 @@ public class Application {
 | Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
 | `requestBody`                                                                                                      | [org.openapis.openapi.models.operations.IgnoresPostRequestBody](../../models/operations/IgnoresPostRequestBody.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `testParam`                                                                                                        | *String*                                                                                                           | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
+| `testParam`                                                                                                        | *Optional<? extends String>*                                                                                       | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
 
 
 ### Response
 
-**[org.openapis.openapi.models.operations.IgnoresPostResponse](../../models/operations/IgnoresPostResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.IgnoresPostResponse>](../../models/operations/IgnoresPostResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## nameOverride
 
@@ -714,30 +1083,50 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.EnumNameOverride;
-import org.openapis.openapi.models.operations.NameOverrideGetRequest;
-import org.openapis.openapi.models.operations.NameOverrideGetResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            NameOverrideGetResponse res = sdk.generation.nameOverride(EnumNameOverride.VALUE3, "example");
+            NameOverrideGetResponse res = sdk.generation().nameOverride()
+                .testEnumQueryParam(EnumNameOverride.VALUE3)
+                .testQueryParam("example")
+                .call();
 
-            if (res.overriddenResponse != null) {
+            if (res.overriddenResponse().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -753,8 +1142,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.NameOverrideGetResponse](../../models/operations/NameOverrideGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.NameOverrideGetResponse>](../../models/operations/NameOverrideGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## objectCircularReferenceGet
 
@@ -763,28 +1156,48 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.ObjectCircularReferenceGetResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            ObjectCircularReferenceGetResponse res = sdk.generation.objectCircularReferenceGet();
+            ObjectCircularReferenceGetResponse res = sdk.generation().objectCircularReferenceGet()
+                .call();
 
-            if (res.objectCircularReferenceObject != null) {
+            if (res.objectCircularReferenceObject().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -793,8 +1206,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ObjectCircularReferenceGetResponse](../../models/operations/ObjectCircularReferenceGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ObjectCircularReferenceGetResponse>](../../models/operations/ObjectCircularReferenceGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## oneOfCircularReferenceGet
 
@@ -803,28 +1220,48 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.OneOfCircularReferenceGetResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            OneOfCircularReferenceGetResponse res = sdk.generation.oneOfCircularReferenceGet();
+            OneOfCircularReferenceGetResponse res = sdk.generation().oneOfCircularReferenceGet()
+                .call();
 
-            if (res.oneOfCircularReferenceObject != null) {
+            if (res.oneOfCircularReferenceObject().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -833,8 +1270,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.OneOfCircularReferenceGetResponse](../../models/operations/OneOfCircularReferenceGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.OneOfCircularReferenceGetResponse>](../../models/operations/OneOfCircularReferenceGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## typedParameterGenerationGet
 
@@ -843,35 +1284,54 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.Obj;
-import org.openapis.openapi.models.operations.TypedParameterGenerationGetRequest;
-import org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            TypedParameterGenerationGetResponse res = sdk.generation.typedParameterGenerationGet(879275L, LocalDate.parse("2023-11-18"), 3346.96d, new Obj(false, 8948.31d, "string"){{
-                bool = false;
-                num = 4778.06d;
-                str = "string";
-            }});
+            TypedParameterGenerationGetResponse res = sdk.generation().typedParameterGenerationGet()
+                .bigint(new BigInteger("879275"))
+                .date(LocalDate.parse("2024-11-18"))
+                .decimal(new BigDecimal("3346.96"))
+                .obj(Obj.builder()
+                    .bool(false)
+                    .num(4778.06d)
+                    .str("<value>")
+                    .build())
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -879,18 +1339,22 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `bigint`                                                                        | *Long*                                                                          | :heavy_minus_sign:                                                              | N/A                                                                             |
-| `date`                                                                          | [LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html) | :heavy_minus_sign:                                                              | N/A                                                                             |
-| `decimal`                                                                       | *Double*                                                                        | :heavy_minus_sign:                                                              | N/A                                                                             |
-| `obj`                                                                           | [org.openapis.openapi.models.operations.Obj](../../models/operations/Obj.md)    | :heavy_minus_sign:                                                              | N/A                                                                             |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `bigint`                                                                                         | *Optional<? extends BigInteger>*                                                                 | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+| `date`                                                                                           | [LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html)                  | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+| `decimal`                                                                                        | *Optional<? extends BigDecimal>*                                                                 | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+| `obj`                                                                                            | [Optional<? extends org.openapis.openapi.models.operations.Obj>](../../models/operations/Obj.md) | :heavy_minus_sign:                                                                               | N/A                                                                                              |
 
 
 ### Response
 
-**[org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse](../../models/operations/TypedParameterGenerationGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse>](../../models/operations/TypedParameterGenerationGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## usageExamplePost
 
@@ -904,136 +1368,97 @@ Usage example docs
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.EnumParameter;
-import org.openapis.openapi.models.operations.OptEnumParameter;
-import org.openapis.openapi.models.operations.UsageExamplePostRequest;
-import org.openapis.openapi.models.operations.UsageExamplePostRequestBody;
-import org.openapis.openapi.models.operations.UsageExamplePostResponse;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.operations.UsageExamplePostSecurity;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Enum;
-import org.openapis.openapi.models.shared.FakerFormattedStrings;
-import org.openapis.openapi.models.shared.FakerStrings;
-import org.openapis.openapi.models.shared.Int32Enum;
-import org.openapis.openapi.models.shared.IntEnum;
-import org.openapis.openapi.models.shared.Security;
-import org.openapis.openapi.models.shared.SimpleObject;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .globalHeaderParam(true)
+                .globalHiddenHeaderParam("<value>")
+                .globalHiddenPathParam("<value>")
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(168827L, "string", false, LocalDate.parse("2022-05-05"), OffsetDateTime.parse("2023-06-11T00:39:45.412Z"), OffsetDateTime.parse("2022-07-22T13:16:48.221Z"), 2679.33d, "string", 5223.72d, EnumParameter.VALUE1, 0d, 6946.59f, 2286.22d, 102975L, 566999, "example 1"){{
-                requestBody = new UsageExamplePostRequestBody(){{
-                    fakerFormattedStrings = new FakerFormattedStrings(){{
-                        addressFormat = "2344 Aufderhar Corner";
-                        directoryFormat = "/etc/defaults";
-                        domainFormat = "fatal-cutting.name";
-                        emailFormat = "Roberta.Kemmer77@gmail.com";
-                        filenameFormat = "strategic_southwest_shirt.mp4v";
-                        filepathFormat = "/usr/local/bin/target.z4";
-                        imageFormat = "https://loremflickr.com/640/480";
-                        ipv4Format = "116.31.181.178";
-                        ipv6Format = "73ac:9ee2:348d:76c3:164a:258b:e7e1:3586";
-                        jsonFormat = "{key: 42822, key1: null, key2: \"string\"}";
-                        macFormat = "7d:ac:95:a0:15:23";
-                        passwordFormat = "eWzdveK0sHokC9n";
-                        phoneFormat = "1-340-562-2122 x175";
-                        timezoneFormat = "Asia/Yekaterinburg";
-                        unknownFormat = "string";
-                        urlFormat = "https://wilted-cytoplasm.biz";
-                        uuidFormat = "e0f62de2-e2d4-47a9-bf10-0f753b9b364b";
-                        zipcodeFormat = "73625";
-                    }};
-                    fakerStrings = new FakerStrings(){{
-                        city = "Schuppecester";
-                        iban = "NO0300631256004";
-                        id = "<ID>";
-                        iPv4 = "251.251.208.201";
-                        iPv6 = "ffbd:3ad7:2b20:8b2c:8188:308b:b979:0237";
-                        account = "29659826";
-                        address = "2500 Ambrose Circles";
-                        amount = "89.73";
-                        avatar = "https://loremflickr.com/640/480";
-                        color = "fuchsia";
-                        comment = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit";
-                        company = "Sipes - Buckridge";
-                        country = "Turkey";
-                        countryCode = "NF";
-                        currency = "Pakistan Rupee";
-                        datatype = "real";
-                        default_ = "string";
-                        description = "Customizable zero administration open system";
-                        directory = "/opt/sbin";
-                        domainName = "deep-stallion.info";
-                        emailAddr = "Alejandrin.Barrows@hotmail.com";
-                        extension = "m1v";
-                        filename = "panel_deposit.png";
-                        filepath = "/media/executive_automotive_northeast.distz";
-                        filetype = "video";
-                        firstName = "Dejuan";
-                        fullName = "Mrs. Jose Franey";
-                        gender = "Trans female";
-                        job = "Direct Accountability Liaison";
-                        json = "{key: 88901, key1: null, key2: \"string\"}";
-                        key = "<key>";
-                        lastName = "Metz";
-                        latitude = "68.2232";
-                        locale = "uk";
-                        longitude = "-42.1384";
-                        mac = "a2:42:a1:bf:6e:19";
-                        manufacturer = "Aston Martin";
-                        material = "Concrete";
-                        middleName = "Finley";
-                        model = "Escalade";
-                        password = "_QiNrTzqbDz8AXY";
-                        phone = "469-402-6116";
-                        pin = "9497";
-                        postalCode = "64696";
-                        price = "25.00";
-                        product = "Recycled Granite Pants";
-                        sex = "male";
-                        street = "Lura Wells";
-                        timezone = "Africa/Nairobi";
-                        unit = "degree Celsius";
-                        url = "https://crooked-dulcimer.name";
-                        username = "Mable76";
-                        uuid = "16b919d6-51cd-4e97-81e2-5221b7b6969f";
-                    }};
-                    simpleObject = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-                        bigint = 8821239038968084L;
-                        bigintStr = "9223372036854775808";
-                        boolOpt = true;
-                        decimal = 3.141592653589793d;
-                        decimalStr = "3.14159265358979344719667586";
-                        intOptNull = 809796L;
-                        numOptNull = 4812.91d;
-                        strOpt = "testOptional";
-                    }};
-                }};
-                bigintParameterOptional = 165468L;
-                bigintStrParameterOptional = "string";
-                decimalParameterOptional = 5944.32d;
-                decimalStrParameterOptional = "string";
-                optEnumParameter = OptEnumParameter.VALUE3;
-            }};            
+            UsageExamplePostRequest req = UsageExamplePostRequest.builder()
+                .bigintParameter(new BigInteger("168827"))
+                .bigintStrParameter(new BigInteger("446729"))
+                .boolParameter(false)
+                .dateParameter(LocalDate.parse("2024-06-10"))
+                .dateTimeDefaultParameter(OffsetDateTime.parse("2023-07-23T01:43:10.512Z"))
+                .dateTimeParameter(OffsetDateTime.parse("2022-10-21T15:42:48.223Z"))
+                .decimalParameter(new BigDecimal("5223.72"))
+                .decimalStrParameter(new BigDecimal("2911.37"))
+                .doubleParameter(6946.59d)
+                .enumParameter(EnumParameter.VALUE1)
+                .falseyNumberParameter(0d)
+                .float32Parameter(1029.75f)
+                .float64StringParameter("<value>")
+                .floatParameter(5669.99d)
+                .int64Parameter(195232L)
+                .int64StringParameter("<value>")
+                .intParameter(569663)
+                .strParameter("example 1")
+                .requestBody(UsageExamplePostRequestBody.builder()
+                    .simpleObject(SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build())
+                    .build())
+                .optEnumParameter(OptEnumParameter.VALUE3)
+                .build();
 
-            UsageExamplePostResponse res = sdk.generation.usageExamplePost(req, new UsageExamplePostSecurity("YOUR_PASSWORD", "YOUR_USERNAME"){{
-                password = "YOUR_PASSWORD";
-                username = "YOUR_USERNAME";
-            }});
+            UsageExamplePostResponse res = sdk.generation().usageExamplePost()
+                .request(req)
+                .security(UsageExamplePostSecurity.builder()
+                    .password("YOUR_PASSWORD")
+                    .username("YOUR_USERNAME")
+                    .build())
+                .call();
 
-            if (res.object != null) {
+            if (res.object().isPresent()) {
                 // handle response
             }
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -1049,5 +1474,9 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.UsageExamplePostResponse](../../models/operations/UsageExamplePostResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.UsageExamplePostResponse>](../../models/operations/UsageExamplePostResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |

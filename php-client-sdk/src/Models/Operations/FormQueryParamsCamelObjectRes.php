@@ -9,25 +9,20 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * FormQueryParamsCamelObjectRes - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** FormQueryParamsCamelObjectRes - OK */
 class FormQueryParamsCamelObjectRes
 {
-	#[\JMS\Serializer\Annotation\SerializedName('args')]
+    #[\JMS\Serializer\Annotation\SerializedName('args')]
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectArgs')]
     public FormQueryParamsCamelObjectArgs $args;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('url')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('url')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $url;
-    
-	public function __construct()
-	{
-		$this->args = new \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectArgs();
-		$this->url = "";
-	}
+
+    public function __construct()
+    {
+        $this->args = new \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectArgs();
+        $this->url = '';
+    }
 }
