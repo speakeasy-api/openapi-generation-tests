@@ -8,19 +8,19 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class PathParameterJsonRequest
 {
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
-     * 
+     *
      * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObject $jsonObj
      */
-	#[SpeakeasyMetadata('pathParam:serialization=json,name=jsonObj')]
+    #[SpeakeasyMetadata('pathParam:serialization=json,name=jsonObj')]
     public \OpenAPI\OpenAPI\Models\Shared\SimpleObject $jsonObj;
-    
-	public function __construct()
-	{
-		$this->jsonObj = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
-	}
+
+    public function __construct()
+    {
+        $this->jsonObj = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
+    }
 }

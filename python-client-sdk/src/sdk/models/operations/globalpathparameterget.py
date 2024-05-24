@@ -9,6 +9,13 @@ from typing import Optional
 
 
 @dataclasses.dataclass
+class GlobalPathParameterGetGlobals:
+    global_path_param: int = dataclasses.field(metadata={'path_param': { 'field_name': 'globalPathParam', 'style': 'simple', 'explode': False }})
+    
+
+
+
+@dataclasses.dataclass
 class GlobalPathParameterGetRequest:
     global_path_param: Optional[int] = dataclasses.field(default=None, metadata={'path_param': { 'field_name': 'globalPathParam', 'style': 'simple', 'explode': False }})
     
@@ -30,7 +37,7 @@ class GlobalPathParameterGetResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
     res: Optional[GlobalPathParameterGetRes] = dataclasses.field(default=None)
     r"""OK"""

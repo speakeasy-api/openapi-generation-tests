@@ -11,13 +11,13 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 
 class InlineObject
 {
-	#[\JMS\Serializer\Annotation\SerializedName('inline_name')]
+    #[\JMS\Serializer\Annotation\SerializedName('inline_name')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $inlineName = null;
-    
-	public function __construct()
-	{
-		$this->inlineName = null;
-	}
+
+    public function __construct()
+    {
+        $this->inlineName = null;
+    }
 }

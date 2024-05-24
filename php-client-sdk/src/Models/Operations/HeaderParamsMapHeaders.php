@@ -11,17 +11,17 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 
 class HeaderParamsMapHeaders
 {
-	#[\JMS\Serializer\Annotation\SerializedName('X-Header-Map')]
+    #[\JMS\Serializer\Annotation\SerializedName('X-Header-Map')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $xHeaderMap;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('X-Header-Map-Explode')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('X-Header-Map-Explode')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $xHeaderMapExplode;
-    
-	public function __construct()
-	{
-		$this->xHeaderMap = "";
-		$this->xHeaderMapExplode = "";
-	}
+
+    public function __construct()
+    {
+        $this->xHeaderMap = '';
+        $this->xHeaderMapExplode = '';
+    }
 }

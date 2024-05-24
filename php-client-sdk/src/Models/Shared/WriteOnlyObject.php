@@ -11,22 +11,22 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 
 class WriteOnlyObject
 {
-	#[\JMS\Serializer\Annotation\SerializedName('bool')]
+    #[\JMS\Serializer\Annotation\SerializedName('bool')]
     #[\JMS\Serializer\Annotation\Type('bool')]
     public bool $bool;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('num')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('num')]
     #[\JMS\Serializer\Annotation\Type('float')]
     public float $num;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('string')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('string')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $string;
-    
-	public function __construct()
-	{
-		$this->bool = false;
-		$this->num = 0;
-		$this->string = "";
-	}
+
+    public function __construct()
+    {
+        $this->bool = false;
+        $this->num = 0;
+        $this->string = '';
+    }
 }
