@@ -13,10 +13,10 @@
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -24,6 +24,10 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenHeaderParam("<value>"),
+        openapi.WithGlobalHiddenPathParam("<value>"),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
@@ -33,8 +37,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -52,4 +55,4 @@ func main() {
 **[*operations.NestedSecondGetResponse](../../pkg/models/operations/nestedsecondgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
