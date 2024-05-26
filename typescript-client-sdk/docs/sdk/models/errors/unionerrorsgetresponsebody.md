@@ -1,0 +1,4 @@
+# UnionErrorsGetResponseBody
+
+Internal Server Error
+

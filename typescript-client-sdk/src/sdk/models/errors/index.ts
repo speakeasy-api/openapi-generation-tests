@@ -3,6 +3,9 @@
  */
 
 export * from "./error";
-export * from "./errortype";
+export * from "./errortype1";
+export * from "./errortype2";
 export * from "./sdkerror";
+export * from "./sdkvalidationerror";
 export * from "./statusgetxspeakeasyerrors";
+export * from "./unionerrorsget";

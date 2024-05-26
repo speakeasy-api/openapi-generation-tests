@@ -8,23 +8,23 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class DeepObjectQueryParamsObjectRequest
 {
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
-     * 
+     *
      * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam
      */
-	#[SpeakeasyMetadata('queryParam:style=deepObject,explode=true,name=objParam')]
+    #[SpeakeasyMetadata('queryParam:style=deepObject,explode=true,name=objParam')]
     public \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam;
-    
-	#[SpeakeasyMetadata('queryParam:style=deepObject,explode=true,name=objArrParam')]
+
+    #[SpeakeasyMetadata('queryParam:style=deepObject,explode=true,name=objArrParam')]
     public ?ObjArrParam $objArrParam = null;
-    
-	public function __construct()
-	{
-		$this->objParam = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
-		$this->objArrParam = null;
-	}
+
+    public function __construct()
+    {
+        $this->objParam = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
+        $this->objArrParam = null;
+    }
 }

@@ -1,0 +1,10 @@
+# ObjWithObjAdditionalProperties
+
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `additionalProperties`                                                                        | *number*[]                                                                                    | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `additionalPropertiesT`                                                                       | Record<string, [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)>             | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `datetime`                                                                                    | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |

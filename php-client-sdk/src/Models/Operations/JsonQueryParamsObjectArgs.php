@@ -11,17 +11,17 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 
 class JsonQueryParamsObjectArgs
 {
-	#[\JMS\Serializer\Annotation\SerializedName('deepObjParam')]
+    #[\JMS\Serializer\Annotation\SerializedName('deepObjParam')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $deepObjParam;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('simpleObjParam')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('simpleObjParam')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $simpleObjParam;
-    
-	public function __construct()
-	{
-		$this->deepObjParam = "";
-		$this->simpleObjParam = "";
-	}
+
+    public function __construct()
+    {
+        $this->deepObjParam = '';
+        $this->simpleObjParam = '';
+    }
 }

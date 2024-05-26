@@ -5,20 +5,23 @@ import Foundation
 extension Operations {
     /// A model object
     public struct Headers {
-        public let xHeaderArray: String
+        public let clientLevelHeader: String?
+        public let idempotencyKey: String?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(xHeaderArray: String) {
-            self.xHeaderArray = xHeaderArray
+        public init(clientLevelHeader: String? = nil, idempotencyKey: String? = nil) {
+            self.clientLevelHeader = clientLevelHeader
+            self.idempotencyKey = idempotencyKey
         }
     }
 }
 
 extension Operations.Headers: Codable {
     enum CodingKeys: String, CodingKey {
-        case xHeaderArray = "X-Header-Array"
+        case clientLevelHeader = "Client-Level-Header"
+        case idempotencyKey = "Idempotency-Key"
     }
 }
 

@@ -4,6 +4,7 @@ package shared
 
 import (
 	"errors"
+	"fmt"
 	"openapi/v2/pkg/utils"
 )
 
@@ -41,21 +42,21 @@ func CreateChildSimpleObject(simpleObject SimpleObject) Child {
 
 func (u *Child) UnmarshalJSON(data []byte) error {
 
-	oneOfCircularReferenceObject := OneOfCircularReferenceObject{}
+	var oneOfCircularReferenceObject OneOfCircularReferenceObject = OneOfCircularReferenceObject{}
 	if err := utils.UnmarshalJSON(data, &oneOfCircularReferenceObject, "", true, true); err == nil {
 		u.OneOfCircularReferenceObject = &oneOfCircularReferenceObject
 		u.Type = ChildTypeOneOfCircularReferenceObject
 		return nil
 	}
 
-	simpleObject := SimpleObject{}
+	var simpleObject SimpleObject = SimpleObject{}
 	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
 		u.SimpleObject = &simpleObject
 		u.Type = ChildTypeSimpleObject
 		return nil
 	}
 
-	return errors.New("could not unmarshal into supported union types")
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Child", string(data))
 }
 
 func (u Child) MarshalJSON() ([]byte, error) {
@@ -67,7 +68,7 @@ func (u Child) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.SimpleObject, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type: all fields are null")
+	return nil, errors.New("could not marshal union type Child: all fields are null")
 }
 
 type OneOfCircularReferenceObject struct {
