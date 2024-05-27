@@ -3,16 +3,17 @@
 from datetime import datetime
 from decimal import Decimal
 
+import re
 import pytest
 from sdk import SDK
 from sdk.utils import utils
 
 from .common_helpers import *
-from .helpers import *
+from .test_helpers import *
 
 
 def test_strongly_typed_one_of_post_basic():
-    record_test('unions-strongly-typed-one-of-post-basic')
+    record_test("unions-strongly-typed-one-of-post-basic")
 
     s = SDK()
     assert s is not None
@@ -21,9 +22,48 @@ def test_strongly_typed_one_of_post_basic():
 
     res = s.unions.strongly_typed_one_of_post(request=obj)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res is not None
     compare_simple_object_with_type(res.res.json, obj)
+
+
+def test_collection_one_of_post():
+    record_test("unions-collections-one-of-post")
+    s = SDK()
+    assert s is not None
+
+    req = ["one", "two"]
+
+    res = s.unions.collection_one_of_post(request=req)
+    assert res is not None
+    assert res.http_meta.response.status_code == 200
+    assert res.res.json == req
+
+    req2 = {"1": "one", "2": "two"}
+
+    res2 = s.unions.collection_one_of_post(request=req2)
+    assert res2 is not None
+    assert res2.http_meta.response.status_code == 200
+    assert res2.res.json == req2
+
+
+def test_strongly_typed_one_of_post_with_non_standard_discriminator_name():
+    record_test(
+        "unions-strongly-typed-one-of-post-with-non-standard-discriminator-name"
+    )
+
+    s = SDK()
+    assert s is not None
+
+    obj = create_simple_object_with_non_standard_type_name()
+
+    res = s.unions.strongly_typed_one_of_post_with_non_standard_discriminator_name(
+        request=obj
+    )
+    assert res is not None
+    assert res.http_meta.response.status_code == 200
+    assert res.res is not None
+    compare_simple_object_with_non_standard_type_name(res.res.json, obj)
 
 
 def test_strongly_typed_one_of_post_deep():
@@ -35,7 +75,7 @@ def test_strongly_typed_one_of_post_deep():
 
     res = s.unions.strongly_typed_one_of_post(request=obj)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res is not None
     compare_deep_object_with_type(res.res.json, obj)
 
@@ -49,7 +89,7 @@ def test_weakly_typed_one_of_post_basic():
 
     res = s.unions.weakly_typed_one_of_post(request=obj)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert type(res.res.json) == shared.SimpleObject
 
 
@@ -62,7 +102,7 @@ def test_weakly_typed_one_of_post_deep():
 
     res = s.unions.weakly_typed_one_of_post(request=obj)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert type(res.res.json) == shared.DeepObject
 
 
@@ -75,7 +115,7 @@ def test_typed_object_one_of_post_obj1():
 
     res = s.unions.typed_object_one_of_post(request=obj)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert type(res.res.json) == shared.TypedObject1
     assert res.res.json.value == "obj1"
 
@@ -89,7 +129,7 @@ def test_typed_object_one_of_post_obj2():
 
     res = s.unions.typed_object_one_of_post(request=obj)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert type(res.res.json) == shared.TypedObject2
     assert res.res.json.value == "obj2"
 
@@ -103,19 +143,22 @@ def test_typed_object_one_of_post_obj3():
 
     res = s.unions.typed_object_one_of_post(request=obj)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert type(res.res.json) == shared.TypedObject3
     assert res.res.json.value == "obj3"
 
-# TODO
-# def test_typed_object_one_of_post_null():
-#     record_test("unions-typed-object-one-of-post-null")
 
-#     s = SDK()
+def test_typed_object_one_of_post_null():
+    record_test("unions-typed-object-one-of-post-null")
 
-# 	res = s.unions.typed_object_one_of_post(request=None)
-# 	require.Error(t, err)
-# 	assert.Equal(t, err.Error(), "error serializing request body: json: error calling MarshalJSON for type shared.TypedObjectOneOf: could not marshal union type: all fields are null")
+    s = SDK()
+    with pytest.raises(
+        ValueError,
+        match=re.escape(
+            "Could not marshal None into non-optional type: typing.Union[sdk.models.shared.typedobject1.TypedObject1, sdk.models.shared.typedobject2.TypedObject2, sdk.models.shared.typedobject3.TypedObject3]"
+        ),
+    ) as exc:
+        res = s.unions.typed_object_one_of_post(request=None)
 
 
 def test_typed_object_nullable_one_of_post_obj1():
@@ -127,7 +170,7 @@ def test_typed_object_nullable_one_of_post_obj1():
 
     res = s.unions.typed_object_nullable_one_of_post(request=obj)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert type(res.res.json) == shared.TypedObject1
     assert res.res.json.value == "one"
 
@@ -141,7 +184,7 @@ def test_typed_object_nullable_one_of_post_obj2():
 
     res = s.unions.typed_object_nullable_one_of_post(request=obj)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert type(res.res.json) == shared.TypedObject2
     assert res.res.json.value == "two"
 
@@ -153,7 +196,7 @@ def test_typed_object_nullable_one_of_post_null():
 
     res = s.unions.typed_object_nullable_one_of_post(None)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res.json is None
 
 
@@ -166,7 +209,7 @@ def test_flattened_typed_object_post_obj1():
 
     res = s.unions.flattened_typed_object_post(request=obj)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res.json.value == "one"
 
 
@@ -179,7 +222,7 @@ def test_unions_nullable_typed_object_post_obj1():
 
     res = s.unions.nullable_typed_object_post(request=obj)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res.json.value == "one"
 
 
@@ -190,7 +233,7 @@ def test_unions_nullable_typed_object_post_null():
 
     res = s.unions.nullable_typed_object_post(request=None)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res.json is None
 
 
@@ -203,7 +246,7 @@ def test_nullable_one_of_schema_post_obj1():
 
     res = s.unions.nullable_one_of_schema_post(request=obj)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res.json.value == "one"
 
 
@@ -216,7 +259,7 @@ def test_nullable_one_of_schema_post_obj2():
 
     res = s.unions.nullable_one_of_schema_post(request=obj)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res.json.value == "two"
 
 
@@ -227,7 +270,7 @@ def test_nullable_one_of_schema_post_null():
 
     res = s.unions.nullable_one_of_schema_post(request=None)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res.json is None
 
 
@@ -242,26 +285,29 @@ def test_nullable_one_of_type_in_object_post():
         MicroMock(
             name="Nullable fields set to null",
             obj=shared.NullableOneOfTypeInObject(
-                nullable_one_of_one=None, nullable_one_of_two=None, one_of_one=True),
-            want_json='{"NullableOneOfOne": null, "NullableOneOfTwo": null, "OneOfOne": true}',
+                nullable_one_of_one=None, nullable_one_of_two=None, one_of_one=True
+            ),
+            want_json='{"NullableOneOfOne":null,"NullableOneOfTwo":null,"OneOfOne":true}',
         ),
         MicroMock(
             name="All fields set to non-null values",
             obj=shared.NullableOneOfTypeInObject(
-                nullable_one_of_one=True, nullable_one_of_two=2, one_of_one=True),
-            want_json='{"NullableOneOfOne": true, "NullableOneOfTwo": 2, "OneOfOne": true}',
+                nullable_one_of_one=True, nullable_one_of_two=2, one_of_one=True
+            ),
+            want_json='{"NullableOneOfOne":true,"NullableOneOfTwo":2,"OneOfOne":true}',
         ),
     ]
 
     s = SDK()
     for tt in tests:
         _, req, _ = utils.serialize_request_body(
-            tt.obj, "Request", False, False, "json")
+            tt.obj, type(tt.obj), "Request", False, False, "json"
+        )
         assert req is not None
         assert req == tt.want_json
         res = s.unions.nullable_one_of_type_in_object_post(tt.obj)
         assert res is not None
-        assert res.status_code == 200
+        assert res.http_meta.response.status_code == 200
         assert res.res.json == tt.obj
 
 
@@ -290,12 +336,12 @@ def test_nullable_one_of_type_in_object_post():
 #     s = SDK()
 #     for tt in tests:
 #         _, req, _ = utils.serialize_request_body(
-#             tt.obj, "Request", False, False, "json")
+#             tt.obj, type(tt.obj), "Request", False, False, "json")
 #         assert req is not None
 #         assert req == tt.want_json
 #         res = s.unions.nullable_one_of_ref_in_object_post(tt.obj)
 #         assert res is not None
-#         assert res.status_code == 200
+#         assert res.http_meta.response.status_code == 200
 #         assert res.res.json == tt.obj
 
 
@@ -306,7 +352,7 @@ def test_primitive_type_one_of_post_string():
 
     res = s.unions.primitive_type_one_of_post(request="test")
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res.json == "test"
 
 
@@ -317,7 +363,7 @@ def test_primitive_type_one_of_post_integer():
 
     res = s.unions.primitive_type_one_of_post(request=1)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res.json == 1
 
 
@@ -328,7 +374,7 @@ def test_primitive_type_one_of_post_number():
 
     res = s.unions.primitive_type_one_of_post(request=1.1)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res.json == 1.1
 
 
@@ -339,7 +385,7 @@ def test_primitive_type_one_of_post_boolean():
 
     res = s.unions.primitive_type_one_of_post(request=True)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res.json == True
 
 
@@ -350,7 +396,7 @@ def test_mixed_type_one_of_post_string():
 
     res = s.unions.mixed_type_one_of_post(request="str")
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res.json == "str"
 
 
@@ -361,7 +407,7 @@ def test_mixed_type_one_of_post_integer():
 
     res = s.unions.mixed_type_one_of_post(request=1)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res.json == 1
 
 
@@ -374,7 +420,7 @@ def test_mixed_type_one_of_post_object():
 
     res = s.unions.mixed_type_one_of_post(request=obj)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     compare_simple_object(res.res.json, obj)
 
 
@@ -385,7 +431,7 @@ def test_date_null_union():
 
     res = s.unions.union_date_null(request=datetime.now().date())
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert type(res.res.json) == date
 
 
@@ -396,7 +442,7 @@ def test_date_time_null_union():
 
     res = s.unions.union_date_time_null(request=datetime.now())
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert type(res.res.json) == datetime
 
 
@@ -407,26 +453,26 @@ def test_date_time_bigint_union():
 
     res = s.unions.union_date_time_big_int(request=datetime.now())
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert type(res.res.json) == datetime
 
     res = s.unions.union_date_time_big_int(request=9007199254740991)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert type(res.res.json) == int
 
 
-def test_bigint_decimal_union():
-    record_test("unions-bigint-decimal")
+def test_bigint_str_decimal_union():
+    record_test("unions-bigint-str-decimal")
     s = SDK()
     assert s is not None
 
-    res = s.unions.union_big_int_decimal(request=3.141592653589793)
+    res = s.unions.union_big_int_str_decimal(request=Decimal("3.141592653589793"))
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert type(res.res.json) == Decimal
 
-    res = s.unions.union_big_int_decimal(request=9007199254740991)
+    res = s.unions.union_big_int_str_decimal(request=9223372036854775807)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert type(res.res.json) == int

@@ -7,10 +7,12 @@ from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Union
 
+Child = Union['OneOfCircularReferenceObject', SimpleObject]
+
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class OneOfCircularReferenceObject:
-    child: Union[OneOfCircularReferenceObject, SimpleObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('child') }})
+    child: Child = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('child') }})
     
 

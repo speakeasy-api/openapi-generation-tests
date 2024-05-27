@@ -21,6 +21,7 @@ Endpoints for testing parameters.
 * [headerParamsObject](#headerparamsobject)
 * [headerParamsPrimitive](#headerparamsprimitive)
 * [jsonQueryParamsObject](#jsonqueryparamsobject)
+* [jsonQueryParamsObjectSmaller](#jsonqueryparamsobjectsmaller)
 * [mixedParametersCamelCase](#mixedparameterscamelcase)
 * [mixedParametersPrimitives](#mixedparametersprimitives)
 * [mixedQueryParams](#mixedqueryparams)
@@ -39,7 +40,8 @@ Endpoints for testing parameters.
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -49,34 +51,39 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->parameters->deepObjectQueryParamsMap([
-    'compress' => 'string',
+    'compress' => '<value>',
 ], [
     'of' => [
-        'string',
+        '<value>',
     ],
 ]);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
 
 ### Parameters
 
-| Parameter                      | Type                           | Required                       | Description                    | Example                        |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `mapParam`                     | array<string, *string*>        | :heavy_check_mark:             | N/A                            | [object Object]                |
-| `mapArrParam`                  | array<string, array<*string*>> | :heavy_minus_sign:             | N/A                            | [object Object]                |
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    | Example                                                        |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `mapParam`                                                     | array<string, *string*>                                        | :heavy_check_mark:                                             | N/A                                                            | {<br/>"test": "value",<br/>"test2": "value2"<br/>}             |
+| `mapArrParam`                                                  | array<string, array<*string*>>                                 | :heavy_minus_sign:                                             | N/A                                                            | {<br/>"test": [<br/>"test",<br/>"test2"<br/>],<br/>"test2": [<br/>"test3",<br/>"test4"<br/>]<br/>} |
 
 
 ### Response
@@ -92,7 +99,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -102,35 +110,42 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $objParam = new Shared\SimpleObject();
+        $objParam = new Shared\SimpleObject();
     $objParam->any = 'any';
     $objParam->bigint = 8821239038968084;
     $objParam->bigintStr = '9223372036854775808';
     $objParam->bool = true;
     $objParam->boolOpt = true;
     $objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $objParam->decimal = 3.141592653589793;
     $objParam->decimalStr = '3.14159265358979344719667586';
     $objParam->enum = Shared\Enum::One;
     $objParam->float32 = 1.1;
+    $objParam->float64Str = '1.1';
     $objParam->int = 1;
     $objParam->int32 = 1;
     $objParam->int32Enum = Shared\Int32Enum::SixtyNine;
+    $objParam->int64Str = '100';
     $objParam->intEnum = Shared\IntEnum::Second;
     $objParam->intOptNull = 303001;
     $objParam->num = 1.1;
     $objParam->numOptNull = 5571.55;
     $objParam->str = 'test';
-    $objParam->strOpt = 'testOptional';
+    $objParam->strOpt = 'testOptional';;
 
     $objArrParam = new Operations\ObjArrParam();
     $objArrParam->arr = [
-        'test',
+        '<value>',
     ];
 
     $response = $sdk->parameters->deepObjectQueryParamsObject($objParam, $objArrParam);
@@ -138,7 +153,7 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -164,7 +179,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -174,18 +190,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
+    
 
-
-    $response = $sdk->parameters->duplicateParam('string');
+    $response = $sdk->parameters->duplicateParam('<value>');
 
     if ($response->duplicateParamResponse !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -210,7 +231,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -220,11 +242,16 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->parameters->formQueryParamsArray([
     'test',
@@ -235,7 +262,7 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -261,7 +288,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -271,13 +299,18 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $objParamExploded = new Operations\ObjParamExploded();
+        $objParamExploded = new Operations\ObjParamExploded();
     $objParamExploded->itemCount = '10';
-    $objParamExploded->searchTerm = 'foo';
+    $objParamExploded->searchTerm = 'foo';;
 
     $objParam = new Operations\ObjParam();
     $objParam->encodedCount = '11';
@@ -288,7 +321,7 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -314,7 +347,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -324,14 +358,19 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->parameters->formQueryParamsMap([
-    'male' => 'string',
+    'male' => '<value>',
 ], [
     'Reggae' => 355695,
 ]);
@@ -339,17 +378,17 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
 
 ### Parameters
 
-| Parameter               | Type                    | Required                | Description             | Example                 |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `mapParam`              | array<string, *string*> | :heavy_minus_sign:      | N/A                     | [object Object]         |
-| `mapParamExploded`      | array<string, *int*>    | :heavy_minus_sign:      | N/A                     | [object Object]         |
+| Parameter                              | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `mapParam`                             | array<string, *string*>                | :heavy_minus_sign:                     | N/A                                    | {<br/>"test": "value",<br/>"test2": "value2"<br/>} |
+| `mapParamExploded`                     | array<string, *int*>                   | :heavy_minus_sign:                     | N/A                                    | {<br/>"test": 1,<br/>"test2": 2<br/>}  |
 
 
 ### Response
@@ -365,7 +404,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -375,31 +415,38 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $objParamExploded = new Shared\SimpleObject();
+        $objParamExploded = new Shared\SimpleObject();
     $objParamExploded->any = 'any';
     $objParamExploded->bigint = 8821239038968084;
     $objParamExploded->bigintStr = '9223372036854775808';
     $objParamExploded->bool = true;
     $objParamExploded->boolOpt = true;
     $objParamExploded->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $objParamExploded->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $objParamExploded->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $objParamExploded->decimal = 3.141592653589793;
     $objParamExploded->decimalStr = '3.14159265358979344719667586';
     $objParamExploded->enum = Shared\Enum::One;
     $objParamExploded->float32 = 1.1;
+    $objParamExploded->float64Str = '1.1';
     $objParamExploded->int = 1;
     $objParamExploded->int32 = 1;
     $objParamExploded->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $objParamExploded->int64Str = '100';
     $objParamExploded->intEnum = Shared\IntEnum::Second;
     $objParamExploded->intOptNull = 645228;
     $objParamExploded->num = 1.1;
     $objParamExploded->numOptNull = 7602.31;
     $objParamExploded->str = 'test';
-    $objParamExploded->strOpt = 'testOptional';
+    $objParamExploded->strOpt = 'testOptional';;
 
     $objParam = new Shared\SimpleObject();
     $objParam->any = 'any';
@@ -408,14 +455,16 @@ try {
     $objParam->bool = true;
     $objParam->boolOpt = true;
     $objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $objParam->decimal = 3.141592653589793;
     $objParam->decimalStr = '3.14159265358979344719667586';
     $objParam->enum = Shared\Enum::One;
     $objParam->float32 = 1.1;
+    $objParam->float64Str = '1.1';
     $objParam->int = 1;
     $objParam->int32 = 1;
     $objParam->int32Enum = Shared\Int32Enum::SixtyNine;
+    $objParam->int64Str = '100';
     $objParam->intEnum = Shared\IntEnum::First;
     $objParam->intOptNull = 973554;
     $objParam->num = 1.1;
@@ -428,7 +477,7 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -454,7 +503,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -464,18 +514,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->parameters->formQueryParamsPrimitive(true, 1, 1.1, 'test');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -503,7 +558,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -513,15 +569,20 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $refObjParam = new Shared\RefQueryParamObj();
+        $refObjParam = new Shared\RefQueryParamObj();
     $refObjParam->bool = true;
     $refObjParam->int = 1;
     $refObjParam->num = 1.1;
-    $refObjParam->str = 'test';
+    $refObjParam->str = 'test';;
 
     $refObjParamExploded = new Shared\RefQueryParamObjExploded();
     $refObjParamExploded->bool = true;
@@ -534,7 +595,7 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -560,7 +621,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -570,11 +632,16 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->parameters->headerParamsArray([
     'test1',
@@ -583,7 +650,7 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -608,7 +675,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -618,32 +686,37 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->parameters->headerParamsMap([
-    'Ball' => 'string',
+    'Ball' => '<value>',
 ], [
-    'Account' => 'string',
+    'Account' => '<value>',
 ]);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
 
 ### Parameters
 
-| Parameter               | Type                    | Required                | Description             | Example                 |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `xHeaderMap`            | array<string, *string*> | :heavy_check_mark:      | N/A                     | [object Object]         |
-| `xHeaderMapExplode`     | array<string, *string*> | :heavy_check_mark:      | N/A                     | [object Object]         |
+| Parameter                              | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `xHeaderMap`                           | array<string, *string*>                | :heavy_check_mark:                     | N/A                                    | {<br/>"key1": "value1",<br/>"key2": "value2"<br/>} |
+| `xHeaderMapExplode`                    | array<string, *string*>                | :heavy_check_mark:                     | N/A                                    | {<br/>"test1": "val1",<br/>"test2": "val2"<br/>} |
 
 
 ### Response
@@ -659,7 +732,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -669,31 +743,38 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $xHeaderObj = new Shared\SimpleObject();
+        $xHeaderObj = new Shared\SimpleObject();
     $xHeaderObj->any = 'any';
     $xHeaderObj->bigint = 8821239038968084;
     $xHeaderObj->bigintStr = '9223372036854775808';
     $xHeaderObj->bool = true;
     $xHeaderObj->boolOpt = true;
     $xHeaderObj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $xHeaderObj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $xHeaderObj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $xHeaderObj->decimal = 3.141592653589793;
     $xHeaderObj->decimalStr = '3.14159265358979344719667586';
     $xHeaderObj->enum = Shared\Enum::One;
     $xHeaderObj->float32 = 1.1;
+    $xHeaderObj->float64Str = '1.1';
     $xHeaderObj->int = 1;
     $xHeaderObj->int32 = 1;
     $xHeaderObj->int32Enum = Shared\Int32Enum::SixtyNine;
+    $xHeaderObj->int64Str = '100';
     $xHeaderObj->intEnum = Shared\IntEnum::Third;
     $xHeaderObj->intOptNull = 590416;
     $xHeaderObj->num = 1.1;
     $xHeaderObj->numOptNull = 144.68;
     $xHeaderObj->str = 'test';
-    $xHeaderObj->strOpt = 'testOptional';
+    $xHeaderObj->strOpt = 'testOptional';;
 
     $xHeaderObjExplode = new Shared\SimpleObject();
     $xHeaderObjExplode->any = 'any';
@@ -702,14 +783,16 @@ try {
     $xHeaderObjExplode->bool = true;
     $xHeaderObjExplode->boolOpt = true;
     $xHeaderObjExplode->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $xHeaderObjExplode->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $xHeaderObjExplode->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $xHeaderObjExplode->decimal = 3.141592653589793;
     $xHeaderObjExplode->decimalStr = '3.14159265358979344719667586';
     $xHeaderObjExplode->enum = Shared\Enum::One;
     $xHeaderObjExplode->float32 = 1.1;
+    $xHeaderObjExplode->float64Str = '1.1';
     $xHeaderObjExplode->int = 1;
     $xHeaderObjExplode->int32 = 1;
     $xHeaderObjExplode->int32Enum = Shared\Int32Enum::FiftyFive;
+    $xHeaderObjExplode->int64Str = '100';
     $xHeaderObjExplode->intEnum = Shared\IntEnum::Second;
     $xHeaderObjExplode->intOptNull = 54344;
     $xHeaderObjExplode->num = 1.1;
@@ -722,7 +805,7 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -748,7 +831,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -758,18 +842,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->parameters->headerParamsPrimitive(true, 1, 1.1, 'test');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -797,7 +886,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -807,11 +897,16 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $deepObjParam = new Shared\DeepObject();
+        $deepObjParam = new Shared\DeepObject();
     $deepObjParam->any = 'anyOf[0]';
     $deepObjParam->arr = [
         new Shared\SimpleObject(),
@@ -829,14 +924,16 @@ try {
     $deepObjParam->obj->bool = true;
     $deepObjParam->obj->boolOpt = true;
     $deepObjParam->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $deepObjParam->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $deepObjParam->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $deepObjParam->obj->decimal = 3.141592653589793;
     $deepObjParam->obj->decimalStr = '3.14159265358979344719667586';
     $deepObjParam->obj->enum = Shared\Enum::One;
     $deepObjParam->obj->float32 = 1.1;
+    $deepObjParam->obj->float64Str = '1.1';
     $deepObjParam->obj->int = 1;
     $deepObjParam->obj->int32 = 1;
     $deepObjParam->obj->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $deepObjParam->obj->int64Str = '100';
     $deepObjParam->obj->intEnum = Shared\IntEnum::Third;
     $deepObjParam->obj->intOptNull = 980270;
     $deepObjParam->obj->num = 1.1;
@@ -844,7 +941,7 @@ try {
     $deepObjParam->obj->str = 'test';
     $deepObjParam->obj->strOpt = 'testOptional';
     $deepObjParam->str = 'test';
-    $deepObjParam->type = 'string';
+    $deepObjParam->type = '<value>';;
 
     $simpleObjParam = new Shared\SimpleObject();
     $simpleObjParam->any = 'any';
@@ -853,14 +950,16 @@ try {
     $simpleObjParam->bool = true;
     $simpleObjParam->boolOpt = true;
     $simpleObjParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $simpleObjParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $simpleObjParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $simpleObjParam->decimal = 3.141592653589793;
     $simpleObjParam->decimalStr = '3.14159265358979344719667586';
     $simpleObjParam->enum = Shared\Enum::One;
     $simpleObjParam->float32 = 1.1;
+    $simpleObjParam->float64Str = '1.1';
     $simpleObjParam->int = 1;
     $simpleObjParam->int32 = 1;
     $simpleObjParam->int32Enum = Shared\Int32Enum::FiftyFive;
+    $simpleObjParam->int64Str = '100';
     $simpleObjParam->intEnum = Shared\IntEnum::First;
     $simpleObjParam->intOptNull = 835122;
     $simpleObjParam->num = 1.1;
@@ -873,7 +972,7 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -891,7 +990,7 @@ try {
 **[?\OpenAPI\OpenAPI\Models\Operations\JsonQueryParamsObjectResponse](../../Models/Operations/JsonQueryParamsObjectResponse.md)**
 
 
-## mixedParametersCamelCase
+## jsonQueryParamsObjectSmaller
 
 ### Example Usage
 
@@ -899,7 +998,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -909,18 +1009,135 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
+        $deepObjParam = new Shared\DeepObjectSmaller();
+    $deepObjParam->any = 'anyOf[0]';
+    $deepObjParam->arr = [
+        new Shared\SimpleObject(),
+    ];
+    $deepObjParam->bool = true;
+    $deepObjParam->int = 1;
+    $deepObjParam->map = [
+        'Beauty' => new Shared\SimpleObject(),
+    ];
+    $deepObjParam->num = 1.1;
+    $deepObjParam->obj = new Shared\SimpleObject();
+    $deepObjParam->obj->any = 'any';
+    $deepObjParam->obj->bigint = 8821239038968084;
+    $deepObjParam->obj->bigintStr = '9223372036854775808';
+    $deepObjParam->obj->bool = true;
+    $deepObjParam->obj->boolOpt = true;
+    $deepObjParam->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $deepObjParam->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
+    $deepObjParam->obj->decimal = 3.141592653589793;
+    $deepObjParam->obj->decimalStr = '3.14159265358979344719667586';
+    $deepObjParam->obj->enum = Shared\Enum::One;
+    $deepObjParam->obj->float32 = 1.1;
+    $deepObjParam->obj->float64Str = '1.1';
+    $deepObjParam->obj->int = 1;
+    $deepObjParam->obj->int32 = 1;
+    $deepObjParam->obj->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $deepObjParam->obj->int64Str = '100';
+    $deepObjParam->obj->intEnum = Shared\IntEnum::Third;
+    $deepObjParam->obj->intOptNull = 185097;
+    $deepObjParam->obj->num = 1.1;
+    $deepObjParam->obj->numOptNull = 15.54;
+    $deepObjParam->obj->str = 'test';
+    $deepObjParam->obj->strOpt = 'testOptional';
+    $deepObjParam->str = 'test';
+    $deepObjParam->type = '<value>';;
 
+    $simpleObjParam = new Shared\SimpleObject();
+    $simpleObjParam->any = 'any';
+    $simpleObjParam->bigint = 8821239038968084;
+    $simpleObjParam->bigintStr = '9223372036854775808';
+    $simpleObjParam->bool = true;
+    $simpleObjParam->boolOpt = true;
+    $simpleObjParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $simpleObjParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
+    $simpleObjParam->decimal = 3.141592653589793;
+    $simpleObjParam->decimalStr = '3.14159265358979344719667586';
+    $simpleObjParam->enum = Shared\Enum::One;
+    $simpleObjParam->float32 = 1.1;
+    $simpleObjParam->float64Str = '1.1';
+    $simpleObjParam->int = 1;
+    $simpleObjParam->int32 = 1;
+    $simpleObjParam->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $simpleObjParam->int64Str = '100';
+    $simpleObjParam->intEnum = Shared\IntEnum::Second;
+    $simpleObjParam->intOptNull = 392383;
+    $simpleObjParam->num = 1.1;
+    $simpleObjParam->numOptNull = 889.45;
+    $simpleObjParam->str = 'test';
+    $simpleObjParam->strOpt = 'testOptional';
+
+    $response = $sdk->parameters->jsonQueryParamsObjectSmaller($deepObjParam, $simpleObjParam);
+
+    if ($response->res !== null) {
+        // handle response
+    }
+} catch (Throwable $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `deepObjParam`                                                                                     | [\OpenAPI\OpenAPI\Models\Shared\DeepObjectSmaller](../../Models/Shared/DeepObjectSmaller.md)       | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `simpleObjParam`                                                                                   | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                 | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\JsonQueryParamsObjectSmallerResponse](../../Models/Operations/JsonQueryParamsObjectSmallerResponse.md)**
+
+
+## mixedParametersCamelCase
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
+
+$security = new Shared\Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
+
+try {
+    
 
     $response = $sdk->parameters->mixedParametersCamelCase('headerValue', 'pathValue', 'queryValue');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -947,7 +1164,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -957,18 +1175,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->parameters->mixedParametersPrimitives('headerValue', 'pathValue', 'queryValue');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -995,7 +1218,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1005,31 +1229,38 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $deepObjectParam = new Shared\SimpleObject();
+        $deepObjectParam = new Shared\SimpleObject();
     $deepObjectParam->any = 'any';
     $deepObjectParam->bigint = 8821239038968084;
     $deepObjectParam->bigintStr = '9223372036854775808';
     $deepObjectParam->bool = true;
     $deepObjectParam->boolOpt = true;
     $deepObjectParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $deepObjectParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $deepObjectParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $deepObjectParam->decimal = 3.141592653589793;
     $deepObjectParam->decimalStr = '3.14159265358979344719667586';
     $deepObjectParam->enum = Shared\Enum::One;
     $deepObjectParam->float32 = 1.1;
+    $deepObjectParam->float64Str = '1.1';
     $deepObjectParam->int = 1;
     $deepObjectParam->int32 = 1;
     $deepObjectParam->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $deepObjectParam->int64Str = '100';
     $deepObjectParam->intEnum = Shared\IntEnum::Second;
     $deepObjectParam->intOptNull = 89281;
     $deepObjectParam->num = 1.1;
     $deepObjectParam->numOptNull = 2132.48;
     $deepObjectParam->str = 'test';
-    $deepObjectParam->strOpt = 'testOptional';
+    $deepObjectParam->strOpt = 'testOptional';;
 
     $formParam = new Shared\SimpleObject();
     $formParam->any = 'any';
@@ -1038,20 +1269,22 @@ try {
     $formParam->bool = true;
     $formParam->boolOpt = true;
     $formParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $formParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $formParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $formParam->decimal = 3.141592653589793;
     $formParam->decimalStr = '3.14159265358979344719667586';
     $formParam->enum = Shared\Enum::One;
     $formParam->float32 = 1.1;
+    $formParam->float64Str = '1.1';
     $formParam->int = 1;
     $formParam->int32 = 1;
     $formParam->int32Enum = Shared\Int32Enum::FiftyFive;
+    $formParam->int64Str = '100';
     $formParam->intEnum = Shared\IntEnum::Second;
     $formParam->intOptNull = 218100;
     $formParam->num = 1.1;
     $formParam->numOptNull = 75.58;
     $formParam->str = 'test';
-    $formParam->strOpt = 'testOptional';
+    $formParam->strOpt = 'testOptional';;
 
     $jsonParam = new Shared\SimpleObject();
     $jsonParam->any = 'any';
@@ -1060,14 +1293,16 @@ try {
     $jsonParam->bool = true;
     $jsonParam->boolOpt = true;
     $jsonParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $jsonParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $jsonParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $jsonParam->decimal = 3.141592653589793;
     $jsonParam->decimalStr = '3.14159265358979344719667586';
     $jsonParam->enum = Shared\Enum::One;
     $jsonParam->float32 = 1.1;
+    $jsonParam->float64Str = '1.1';
     $jsonParam->int = 1;
     $jsonParam->int32 = 1;
     $jsonParam->int32Enum = Shared\Int32Enum::FiftyFive;
+    $jsonParam->int64Str = '100';
     $jsonParam->intEnum = Shared\IntEnum::Third;
     $jsonParam->intOptNull = 387493;
     $jsonParam->num = 1.1;
@@ -1080,7 +1315,7 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1107,7 +1342,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1117,25 +1353,32 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $jsonObj = new Shared\SimpleObject();
+        $jsonObj = new Shared\SimpleObject();
     $jsonObj->any = 'any';
     $jsonObj->bigint = 8821239038968084;
     $jsonObj->bigintStr = '9223372036854775808';
     $jsonObj->bool = true;
     $jsonObj->boolOpt = true;
     $jsonObj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $jsonObj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $jsonObj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $jsonObj->decimal = 3.141592653589793;
     $jsonObj->decimalStr = '3.14159265358979344719667586';
     $jsonObj->enum = Shared\Enum::One;
     $jsonObj->float32 = 1.1;
+    $jsonObj->float64Str = '1.1';
     $jsonObj->int = 1;
     $jsonObj->int32 = 1;
     $jsonObj->int32Enum = Shared\Int32Enum::SixtyNine;
+    $jsonObj->int64Str = '100';
     $jsonObj->intEnum = Shared\IntEnum::Second;
     $jsonObj->intOptNull = 355762;
     $jsonObj->num = 1.1;
@@ -1148,7 +1391,7 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1173,7 +1416,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1183,25 +1427,32 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $objParam = new Shared\SimpleObject();
+        $objParam = new Shared\SimpleObject();
     $objParam->any = 'any';
     $objParam->bigint = 8821239038968084;
     $objParam->bigintStr = '9223372036854775808';
     $objParam->bool = true;
     $objParam->boolOpt = true;
     $objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $objParam->decimal = 3.141592653589793;
     $objParam->decimalStr = '3.14159265358979344719667586';
     $objParam->enum = Shared\Enum::One;
     $objParam->float32 = 1.1;
+    $objParam->float64Str = '1.1';
     $objParam->int = 1;
     $objParam->int32 = 1;
     $objParam->int32Enum = Shared\Int32Enum::SixtyNine;
+    $objParam->int64Str = '100';
     $objParam->intEnum = Shared\IntEnum::First;
     $objParam->intOptNull = 110513;
     $objParam->num = 1.1;
@@ -1214,13 +1465,13 @@ try {
 ], [
     2,
 ], [
-    'blue' => 'string',
+    'blue' => '<value>',
 ], $objParam);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1231,7 +1482,7 @@ try {
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `arrParam`                                                                                         | array<*string*>                                                                                    | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `arrParamExploded`                                                                                 | array<*int*>                                                                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `mapParam`                                                                                         | array<string, *string*>                                                                            | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
+| `mapParam`                                                                                         | array<string, *string*>                                                                            | :heavy_minus_sign:                                                                                 | N/A                                                                                                | {<br/>"key1": "val1",<br/>"key2": "val2"<br/>}                                                     |
 | `objParam`                                                                                         | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                 | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 
 
@@ -1248,7 +1499,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1258,11 +1510,16 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->parameters->simplePathParameterArrays([
     'test',
@@ -1271,7 +1528,7 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1296,7 +1553,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1306,14 +1564,19 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->parameters->simplePathParameterMaps([
-    'weber' => 'string',
+    'weber' => '<value>',
 ], [
     'Sausages' => 157687,
 ]);
@@ -1321,17 +1584,17 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
 
 ### Parameters
 
-| Parameter               | Type                    | Required                | Description             | Example                 |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `mapParam`              | array<string, *string*> | :heavy_check_mark:      | N/A                     | [object Object]         |
-| `mapParamExploded`      | array<string, *int*>    | :heavy_check_mark:      | N/A                     | [object Object]         |
+| Parameter                              | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `mapParam`                             | array<string, *string*>                | :heavy_check_mark:                     | N/A                                    | {<br/>"test": "value",<br/>"test2": "value2"<br/>} |
+| `mapParamExploded`                     | array<string, *int*>                   | :heavy_check_mark:                     | N/A                                    | {<br/>"test": 1,<br/>"test2": 2<br/>}  |
 
 
 ### Response
@@ -1347,7 +1610,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1357,31 +1621,38 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $objParam = new Shared\SimpleObject();
+        $objParam = new Shared\SimpleObject();
     $objParam->any = 'any';
     $objParam->bigint = 8821239038968084;
     $objParam->bigintStr = '9223372036854775808';
     $objParam->bool = true;
     $objParam->boolOpt = true;
     $objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $objParam->decimal = 3.141592653589793;
     $objParam->decimalStr = '3.14159265358979344719667586';
     $objParam->enum = Shared\Enum::One;
     $objParam->float32 = 1.1;
+    $objParam->float64Str = '1.1';
     $objParam->int = 1;
     $objParam->int32 = 1;
     $objParam->int32Enum = Shared\Int32Enum::FiftyFive;
+    $objParam->int64Str = '100';
     $objParam->intEnum = Shared\IntEnum::Third;
     $objParam->intOptNull = 384918;
     $objParam->num = 1.1;
     $objParam->numOptNull = 9559.93;
     $objParam->str = 'test';
-    $objParam->strOpt = 'testOptional';
+    $objParam->strOpt = 'testOptional';;
 
     $objParamExploded = new Shared\SimpleObject();
     $objParamExploded->any = 'any';
@@ -1390,14 +1661,16 @@ try {
     $objParamExploded->bool = true;
     $objParamExploded->boolOpt = true;
     $objParamExploded->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $objParamExploded->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $objParamExploded->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $objParamExploded->decimal = 3.141592653589793;
     $objParamExploded->decimalStr = '3.14159265358979344719667586';
     $objParamExploded->enum = Shared\Enum::One;
     $objParamExploded->float32 = 1.1;
+    $objParamExploded->float64Str = '1.1';
     $objParamExploded->int = 1;
     $objParamExploded->int32 = 1;
     $objParamExploded->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $objParamExploded->int64Str = '100';
     $objParamExploded->intEnum = Shared\IntEnum::Second;
     $objParamExploded->intOptNull = 678638;
     $objParamExploded->num = 1.1;
@@ -1410,7 +1683,7 @@ try {
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1436,7 +1709,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1446,18 +1720,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->parameters->simplePathParameterPrimitives(true, 1, 1.1, 'test');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
