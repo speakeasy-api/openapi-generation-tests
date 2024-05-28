@@ -8,18 +8,18 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class RequestBodyPostMultipleContentTypesSplitParamMultipartRequest
 {
-	#[SpeakeasyMetadata('request:mediaType=multipart/form-data')]
+    #[SpeakeasyMetadata('request:mediaType=multipart/form-data')]
     public RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody $requestBody;
-    
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=paramStr')]
+
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=paramStr')]
     public string $paramStr;
-    
-	public function __construct()
-	{
-		$this->requestBody = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody();
-		$this->paramStr = "";
-	}
+
+    public function __construct()
+    {
+        $this->requestBody = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody();
+        $this->paramStr = '';
+    }
 }

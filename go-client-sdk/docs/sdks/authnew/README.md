@@ -7,7 +7,6 @@ Endpoints for testing authentication.
 
 ### Available Operations
 
-* [APIKeyAuthGlobalNew](#apikeyauthglobalnew)
 * [AuthGlobal](#authglobal)
 * [BasicAuthNew](#basicauthnew)
 * [MultipleMixedOptionsAuth](#multiplemixedoptionsauth)
@@ -19,68 +18,6 @@ Endpoints for testing authentication.
 * [Oauth2AuthNew](#oauth2authnew)
 * [OpenIDConnectAuthNew](#openidconnectauthnew)
 
-## APIKeyAuthGlobalNew
-
-### Example Usage
-
-```go
-package main
-
-import(
-	"context"
-	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-)
-
-func main() {
-    s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
-        openapi.WithGlobalPathParam(100),
-        openapi.WithGlobalQueryParam("some example global query param"),
-    )
-
-    ctx := context.Background()
-    res, err := s.AuthNew.APIKeyAuthGlobalNew(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "owsGgP4_AhRPMSJ",
-            Username: "Devonte_Bins",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-
-    if res.StatusCode == http.StatusOK {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
-| `request`                                                                          | [shared.AuthServiceRequestBody](../../pkg/models/shared/authservicerequestbody.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `opts`                                                                             | [][operations.Option](../../pkg/models/operations/option.md)                       | :heavy_minus_sign:                                                                 | The options for this request.                                                      |
-
-
-### Response
-
-**[*operations.APIKeyAuthGlobalNewResponse](../../pkg/models/operations/apikeyauthglobalnewresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
-
 ## AuthGlobal
 
 ### Example Usage
@@ -89,10 +26,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -100,28 +37,20 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenHeaderParam("<value>"),
+        openapi.WithGlobalHiddenPathParam("<value>"),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
+    request := shared.AuthServiceRequestBody{}
     ctx := context.Background()
-    res, err := s.AuthNew.AuthGlobal(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "xvJcf9GiJNr7T2x",
-            Username: "Cory33",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    })
+    res, err := s.AuthNew.AuthGlobal(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -141,7 +70,7 @@ func main() {
 **[*operations.AuthGlobalResponse](../../pkg/models/operations/authglobalresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## BasicAuthNew
 
@@ -151,43 +80,34 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
     s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenHeaderParam("<value>"),
+        openapi.WithGlobalHiddenPathParam("<value>"),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+    request := shared.AuthServiceRequestBody{}
 
-
-    operationSecurity := operations.BasicAuthNewSecurity{
+    security := operations.BasicAuthNewSecurity{
             Password: "YOUR_PASSWORD",
             Username: "YOUR_USERNAME",
         }
-
     ctx := context.Background()
-    res, err := s.AuthNew.BasicAuthNew(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "Z2OStPksFyrcGeu",
-            Username: "Ashton.Steuber27",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    }, operationSecurity)
+    res, err := s.AuthNew.BasicAuthNew(ctx, request, security)
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -208,7 +128,7 @@ func main() {
 **[*operations.BasicAuthNewResponse](../../pkg/models/operations/basicauthnewresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MultipleMixedOptionsAuth
 
@@ -218,42 +138,33 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
     s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenHeaderParam("<value>"),
+        openapi.WithGlobalHiddenPathParam("<value>"),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+    request := shared.AuthServiceRequestBody{}
 
-
-    operationSecurity := operations.MultipleMixedOptionsAuthSecurity{
+    security := operations.MultipleMixedOptionsAuthSecurity{
             APIKeyAuthNew: openapi.String("Token <YOUR_API_KEY>"),
         }
-
     ctx := context.Background()
-    res, err := s.AuthNew.MultipleMixedOptionsAuth(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "Iq1JSzG1wqLDz4v",
-            Username: "Ismael.Emmerich",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    }, operationSecurity)
+    res, err := s.AuthNew.MultipleMixedOptionsAuth(ctx, request, security)
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -274,7 +185,7 @@ func main() {
 **[*operations.MultipleMixedOptionsAuthResponse](../../pkg/models/operations/multiplemixedoptionsauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MultipleMixedSchemeAuth
 
@@ -284,46 +195,37 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
     s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenHeaderParam("<value>"),
+        openapi.WithGlobalHiddenPathParam("<value>"),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+    request := shared.AuthServiceRequestBody{}
 
-
-    operationSecurity := operations.MultipleMixedSchemeAuthSecurity{
+    security := operations.MultipleMixedSchemeAuthSecurity{
             APIKeyAuthNew: "Token <YOUR_API_KEY>",
             BasicAuth: shared.SchemeBasicAuth{
                 Password: "YOUR_PASSWORD",
                 Username: "YOUR_USERNAME",
             },
         }
-
     ctx := context.Background()
-    res, err := s.AuthNew.MultipleMixedSchemeAuth(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "OcWVV5608IiaWJQ",
-            Username: "Kameron42",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    }, operationSecurity)
+    res, err := s.AuthNew.MultipleMixedSchemeAuth(ctx, request, security)
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -344,7 +246,7 @@ func main() {
 **[*operations.MultipleMixedSchemeAuthResponse](../../pkg/models/operations/multiplemixedschemeauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MultipleOptionsWithMixedSchemesAuth
 
@@ -354,45 +256,36 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
     s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenHeaderParam("<value>"),
+        openapi.WithGlobalHiddenPathParam("<value>"),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+    request := shared.AuthServiceRequestBody{}
 
-
-    operationSecurity := operations.MultipleOptionsWithMixedSchemesAuthSecurity{
+    security := operations.MultipleOptionsWithMixedSchemesAuthSecurity{
             Option1: &operations.MultipleOptionsWithMixedSchemesAuthSecurityOption1{
                 APIKeyAuthNew: "Token <YOUR_API_KEY>",
                 Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
             },
         }
-
     ctx := context.Background()
-    res, err := s.AuthNew.MultipleOptionsWithMixedSchemesAuth(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "fpwNE90MyqKIrXk",
-            Username: "Caroline_Walsh",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    }, operationSecurity)
+    res, err := s.AuthNew.MultipleOptionsWithMixedSchemesAuth(ctx, request, security)
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -413,7 +306,7 @@ func main() {
 **[*operations.MultipleOptionsWithMixedSchemesAuthResponse](../../pkg/models/operations/multipleoptionswithmixedschemesauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MultipleOptionsWithSimpleSchemesAuth
 
@@ -423,45 +316,36 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
     s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenHeaderParam("<value>"),
+        openapi.WithGlobalHiddenPathParam("<value>"),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+    request := shared.AuthServiceRequestBody{}
 
-
-    operationSecurity := operations.MultipleOptionsWithSimpleSchemesAuthSecurity{
+    security := operations.MultipleOptionsWithSimpleSchemesAuthSecurity{
             Option1: &operations.MultipleOptionsWithSimpleSchemesAuthSecurityOption1{
                 APIKeyAuthNew: "Token <YOUR_API_KEY>",
                 Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
             },
         }
-
     ctx := context.Background()
-    res, err := s.AuthNew.MultipleOptionsWithSimpleSchemesAuth(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "pibxDTiJSijK04Y",
-            Username: "Selena76",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    }, operationSecurity)
+    res, err := s.AuthNew.MultipleOptionsWithSimpleSchemesAuth(ctx, request, security)
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -482,7 +366,7 @@ func main() {
 **[*operations.MultipleOptionsWithSimpleSchemesAuthResponse](../../pkg/models/operations/multipleoptionswithsimpleschemesauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MultipleSimpleOptionsAuth
 
@@ -492,42 +376,33 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
     s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenHeaderParam("<value>"),
+        openapi.WithGlobalHiddenPathParam("<value>"),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+    request := shared.AuthServiceRequestBody{}
 
-
-    operationSecurity := operations.MultipleSimpleOptionsAuthSecurity{
+    security := operations.MultipleSimpleOptionsAuthSecurity{
             APIKeyAuthNew: openapi.String("Token <YOUR_API_KEY>"),
         }
-
     ctx := context.Background()
-    res, err := s.AuthNew.MultipleSimpleOptionsAuth(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "pzdKQgSGZSrUGNs",
-            Username: "Eryn51",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    }, operationSecurity)
+    res, err := s.AuthNew.MultipleSimpleOptionsAuth(ctx, request, security)
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -548,7 +423,7 @@ func main() {
 **[*operations.MultipleSimpleOptionsAuthResponse](../../pkg/models/operations/multiplesimpleoptionsauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MultipleSimpleSchemeAuth
 
@@ -558,43 +433,34 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
     s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenHeaderParam("<value>"),
+        openapi.WithGlobalHiddenPathParam("<value>"),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+    request := shared.AuthServiceRequestBody{}
 
-
-    operationSecurity := operations.MultipleSimpleSchemeAuthSecurity{
+    security := operations.MultipleSimpleSchemeAuthSecurity{
             APIKeyAuthNew: "Token <YOUR_API_KEY>",
             Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
         }
-
     ctx := context.Background()
-    res, err := s.AuthNew.MultipleSimpleSchemeAuth(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "UrAsw466AAaYtr1",
-            Username: "Kenya.Baumbach",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    }, operationSecurity)
+    res, err := s.AuthNew.MultipleSimpleSchemeAuth(ctx, request, security)
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -615,7 +481,7 @@ func main() {
 **[*operations.MultipleSimpleSchemeAuthResponse](../../pkg/models/operations/multiplesimpleschemeauthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Oauth2AuthNew
 
@@ -625,42 +491,31 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
     s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenHeaderParam("<value>"),
+        openapi.WithGlobalHiddenPathParam("<value>"),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
-    operationSecurity := operations.Oauth2AuthNewSecurity{
-            Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-        }
-
+    request := shared.AuthServiceRequestBody{}
     ctx := context.Background()
-    res, err := s.AuthNew.Oauth2AuthNew(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "V02sHy2onRTMRgS",
-            Username: "Polly.Aufderhar78",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    }, operationSecurity)
+    res, err := s.AuthNew.Oauth2AuthNew(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -668,12 +523,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |
-| `request`                                                                                | [shared.AuthServiceRequestBody](../../pkg/models/shared/authservicerequestbody.md)       | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `security`                                                                               | [operations.Oauth2AuthNewSecurity](../../pkg/models/operations/oauth2authnewsecurity.md) | :heavy_check_mark:                                                                       | The security requirements to use for the request.                                        |
-| `opts`                                                                                   | [][operations.Option](../../pkg/models/operations/option.md)                             | :heavy_minus_sign:                                                                       | The options for this request.                                                            |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
+| `request`                                                                          | [shared.AuthServiceRequestBody](../../pkg/models/shared/authservicerequestbody.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| `opts`                                                                             | [][operations.Option](../../pkg/models/operations/option.md)                       | :heavy_minus_sign:                                                                 | The options for this request.                                                      |
 
 
 ### Response
@@ -681,7 +535,7 @@ func main() {
 **[*operations.Oauth2AuthNewResponse](../../pkg/models/operations/oauth2authnewresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## OpenIDConnectAuthNew
 
@@ -691,42 +545,33 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
     s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenHeaderParam("<value>"),
+        openapi.WithGlobalHiddenPathParam("<value>"),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+    request := shared.AuthServiceRequestBody{}
 
-
-    operationSecurity := operations.OpenIDConnectAuthNewSecurity{
+    security := operations.OpenIDConnectAuthNewSecurity{
             OpenIDConnect: "Bearer YOUR_OPENID_TOKEN",
         }
-
     ctx := context.Background()
-    res, err := s.AuthNew.OpenIDConnectAuthNew(ctx, shared.AuthServiceRequestBody{
-        BasicAuth: &shared.BasicAuth{
-            Password: "1_B3hNdr8HC3AeS",
-            Username: "Floy_Heller",
-        },
-        HeaderAuth: []shared.HeaderAuth{
-            shared.HeaderAuth{
-                ExpectedValue: "string",
-                HeaderName: "string",
-            },
-        },
-    }, operationSecurity)
+    res, err := s.AuthNew.OpenIDConnectAuthNew(ctx, request, security)
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -747,4 +592,4 @@ func main() {
 **[*operations.OpenIDConnectAuthNewResponse](../../pkg/models/operations/openidconnectauthnewresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
