@@ -130,6 +130,8 @@ tags:
     description: Endpoints for testing hooks
   - name: openEnums
     description: Endpoints for testing open/closed enums
+  - name: customClient
+    description: Endpoints for testing custom HTTP clients
 security:
   - apiKeyAuth: []
   - oauth2: []
@@ -7597,6 +7599,64 @@ paths:
             type: cursor
         outputs:
           nextCursor: $.resultArray[(@.length-1)]
+  /anything/customClient/{pathParam}:
+    post:
+      operationId: customClientPost
+      tags:
+        - customClient
+      parameters:
+        - name: pathParam
+          in: path
+          schema:
+            type: string
+            example: pathValue
+          required: true
+        - name: queryStringParam
+          in: query
+          schema:
+            type: string
+            example: queryValue
+          required: true
+        - name: headerParam
+          in: header
+          schema:
+            type: string
+            example: headerValue
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/simpleObject"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                  args:
+                    type: object
+                    properties:
+                      queryStringParam:
+                        type: string
+                    required:
+                      - queryStringParam
+                  headers:
+                    type: object
+                    additionalProperties:
+                      type: string
+                  json:
+                    $ref: "components.yaml#/components/schemas/simpleObject"
+                required:
+                  - url
+                  - args
+                  - headers
+                  - json
 components:
   schemas:
     ExampleVehicle:
