@@ -8,11 +8,13 @@ Endpoints for testing the pagination extension
 ### Available Operations
 
 * [pagination_cursor_body](#pagination_cursor_body)
+* [pagination_cursor_non_numeric](#pagination_cursor_non_numeric)
 * [pagination_cursor_params](#pagination_cursor_params)
 * [pagination_limit_offset_offset_body](#pagination_limit_offset_offset_body)
 * [pagination_limit_offset_offset_params](#pagination_limit_offset_offset_params)
 * [pagination_limit_offset_page_body](#pagination_limit_offset_page_body)
 * [pagination_limit_offset_page_params](#pagination_limit_offset_page_params)
+* [pagination_url_params](#pagination_url_params)
 
 ## pagination_cursor_body
 
@@ -26,15 +28,18 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-req = operations.PaginationCursorBodyRequestBody(
-    cursor=868337,
-)
 
-res = s.pagination.pagination_cursor_body(req)
+res = s.pagination.pagination_cursor_body(request=operations.PaginationCursorBodyRequestBody(
+    cursor=868337,
+))
 
 if res.res is not None:
     while True:
@@ -43,6 +48,7 @@ if res.res is not None:
         res = res.Next()
         if res is None:
             break
+
 
 ```
 
@@ -61,7 +67,58 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## pagination_cursor_non_numeric
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.pagination.pagination_cursor_non_numeric(cursor='<value>')
+
+if res.res is not None:
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
+
+```
+
+### Parameters
+
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `cursor`                                                             | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | The page token used to request a specific page of the search results |
+| `server_url`                                                         | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | An optional server URL to use.                                       |
+
+
+### Response
+
+**[operations.PaginationCursorNonNumericResponse](../../models/operations/paginationcursornonnumericresponse.md)**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## pagination_cursor_params
 
@@ -69,12 +126,16 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -89,6 +150,7 @@ if res.res is not None:
         res = res.Next()
         if res is None:
             break
+
 
 ```
 
@@ -107,7 +169,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## pagination_limit_offset_offset_body
 
@@ -121,13 +183,16 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-req = shared.LimitOffsetConfig()
 
-res = s.pagination.pagination_limit_offset_offset_body(req)
+res = s.pagination.pagination_limit_offset_offset_body(request=shared.LimitOffsetConfig())
 
 if res.res is not None:
     while True:
@@ -136,6 +201,7 @@ if res.res is not None:
         res = res.Next()
         if res is None:
             break
+
 
 ```
 
@@ -154,7 +220,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## pagination_limit_offset_offset_params
 
@@ -162,12 +228,16 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -182,6 +252,7 @@ if res.res is not None:
         res = res.Next()
         if res is None:
             break
+
 
 ```
 
@@ -201,7 +272,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## pagination_limit_offset_page_body
 
@@ -215,13 +286,16 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-req = shared.LimitOffsetConfig()
 
-res = s.pagination.pagination_limit_offset_page_body(req)
+res = s.pagination.pagination_limit_offset_page_body(request=shared.LimitOffsetConfig())
 
 if res.res is not None:
     while True:
@@ -230,6 +304,7 @@ if res.res is not None:
         res = res.Next()
         if res is None:
             break
+
 
 ```
 
@@ -248,7 +323,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## pagination_limit_offset_page_params
 
@@ -256,12 +331,16 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -276,6 +355,7 @@ if res.res is not None:
         res = res.Next()
         if res is None:
             break
+
 
 ```
 
@@ -294,4 +374,51 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## pagination_url_params
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.pagination.pagination_url_params(attempts=778920, is_reference_path='<value>')
+
+if res.res is not None:
+    # handle response
+    pass
+
+```
+
+### Parameters
+
+| Parameter                      | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `attempts`                     | *int*                          | :heavy_check_mark:             | N/A                            |
+| `is_reference_path`            | *Optional[str]*                | :heavy_minus_sign:             | N/A                            |
+| `server_url`                   | *Optional[str]*                | :heavy_minus_sign:             | An optional server URL to use. |
+
+
+### Response
+
+**[operations.PaginationURLParamsResponse](../../models/operations/paginationurlparamsresponse.md)**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

@@ -17,7 +17,7 @@ import (
 )
 
 func TestPaginationLimitOffsetPageParams(t *testing.T) {
-	recordTest("pagination-limitOffset-page-params")
+	recordTest("pagination-limit-offset-page-params")
 
 	s := sdk.New()
 
@@ -27,7 +27,7 @@ func TestPaginationLimitOffsetPageParams(t *testing.T) {
 
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
 	assert.NotNil(t, res.Res)
 	assert.Equal(t, serverLimit, len(res.Res.ResultArray))
 
@@ -42,7 +42,7 @@ func TestPaginationLimitOffsetPageParams(t *testing.T) {
 }
 
 func TestPaginationLimitOffsetPageBody(t *testing.T) {
-	recordTest("pagination-limitOffset-page-body")
+	recordTest("pagination-limit-offset-page-body")
 
 	s := sdk.New()
 
@@ -56,7 +56,7 @@ func TestPaginationLimitOffsetPageBody(t *testing.T) {
 
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
 	assert.NotNil(t, res.Res)
 	assert.Equal(t, int(limit), len(res.Res.ResultArray))
 
@@ -71,7 +71,7 @@ func TestPaginationLimitOffsetPageBody(t *testing.T) {
 }
 
 func TestPaginationLimitOffsetOffsetParams(t *testing.T) {
-	recordTest("pagination-limitOffset-offset-params")
+	recordTest("pagination-limit-offset-offset-params")
 
 	s := sdk.New()
 
@@ -81,7 +81,7 @@ func TestPaginationLimitOffsetOffsetParams(t *testing.T) {
 
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
 	assert.NotNil(t, res.Res)
 	assert.Equal(t, int(limit), len(res.Res.ResultArray))
 
@@ -96,7 +96,7 @@ func TestPaginationLimitOffsetOffsetParams(t *testing.T) {
 }
 
 func TestPaginationLimitOffsetOffsetBody(t *testing.T) {
-	recordTest("pagination-limitOffset-offset-body")
+	recordTest("pagination-limit-offset-offset-body")
 
 	s := sdk.New()
 
@@ -110,7 +110,7 @@ func TestPaginationLimitOffsetOffsetBody(t *testing.T) {
 
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
 	assert.NotNil(t, res.Res)
 	assert.Equal(t, int(limit), len(res.Res.ResultArray))
 
@@ -134,7 +134,7 @@ func TestPaginationCursorParams(t *testing.T) {
 
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
 	assert.NotNil(t, res.Res)
 	assert.Equal(t, int(15), len(res.Res.ResultArray))
 
@@ -166,7 +166,35 @@ func TestPaginationCursorBody(t *testing.T) {
 
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, 15, len(res.Res.ResultArray))
+
+	nextRes, err := res.Next()
+	require.NoError(t, err)
+	require.NotNil(t, nextRes)
+	assert.Equal(t, 5, len(nextRes.Res.ResultArray))
+
+	penultimateRes, err := nextRes.Next()
+	require.NoError(t, err)
+	require.NotNil(t, penultimateRes)
+	assert.Equal(t, 0, len(penultimateRes.Res.ResultArray))
+
+	nullRes, err := penultimateRes.Next()
+	require.NoError(t, err)
+	require.Nil(t, nullRes)
+}
+
+func TestPaginationCursorNonNumeric(t *testing.T) {
+	recordTest("pagination-cursor-non-numeric")
+
+	s := sdk.New()
+
+	res, err := s.Pagination.PaginationCursorNonNumeric(context.Background(), nil)
+
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
 	assert.NotNil(t, res.Res)
 	assert.Equal(t, 15, len(res.Res.ResultArray))
 

@@ -8,14 +8,14 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class RequestBodyPutMultipartDifferentFileNameRequestBody
 {
-	#[SpeakeasyMetadata('multipartForm:file=true')]
+    #[SpeakeasyMetadata('multipartForm:file=true')]
     public ?DifferentFileName $differentFileName = null;
-    
-	public function __construct()
-	{
-		$this->differentFileName = null;
-	}
+
+    public function __construct()
+    {
+        $this->differentFileName = null;
+    }
 }
