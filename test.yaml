@@ -6683,7 +6683,50 @@ paths:
             type: cursor
         outputs:
           nextCursor: $.resultArray[(@.length-1)]
-      
+  /pagination/cursor_non_numeric#withRetries:
+    get:
+      operationId: paginationWithRetries
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: cursor
+          in: query
+          description: The page token used to request a specific page of the search results
+          schema:
+            type: string
+        - name: request-id
+          in: header
+          schema:
+            type: string
+            default: paginationWithRetries
+        - name: fault-settings
+          in: header
+          schema:
+            type: string
+            default: '{"error_code": 503, "error_count": 3}'
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponseNonNumeric"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: cursor
+        inputs:
+          - name: cursor
+            in: parameters
+            type: cursor
+        outputs:
+          nextCursor: $.resultArray[(@.length-1)]
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 10 # 10 ms
+          maxInterval: 100 # 100 ms
+          maxElapsedTime: 1000 # 1 seconds
+          exponent: 1.5
+        statusCodes:
+          - 503
+        retryConnectionErrors: false
   /pagination/limitoffset/page:
     get:
       operationId: paginationLimitOffsetPageParams
