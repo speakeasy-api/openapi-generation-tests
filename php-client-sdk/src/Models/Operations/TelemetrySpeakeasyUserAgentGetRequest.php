@@ -8,14 +8,14 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class TelemetrySpeakeasyUserAgentGetRequest
 {
-	#[SpeakeasyMetadata('header:style=simple,explode=false,name=User-Agent')]
+    #[SpeakeasyMetadata('header:style=simple,explode=false,name=User-Agent')]
     public string $userAgent;
-    
-	public function __construct()
-	{
-		$this->userAgent = "";
-	}
+
+    public function __construct()
+    {
+        $this->userAgent = '';
+    }
 }

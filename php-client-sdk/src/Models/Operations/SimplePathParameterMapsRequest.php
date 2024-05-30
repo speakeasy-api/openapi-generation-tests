@@ -8,28 +8,28 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class SimplePathParameterMapsRequest
 {
     /**
      * $mapParam
-     * 
+     *
      * @var array<string, string> $mapParam
      */
-	#[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=mapParam')]
+    #[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=mapParam')]
     public array $mapParam;
-    
+
     /**
      * $mapParamExploded
-     * 
+     *
      * @var array<string, int> $mapParamExploded
      */
-	#[SpeakeasyMetadata('pathParam:style=simple,explode=true,name=mapParamExploded')]
+    #[SpeakeasyMetadata('pathParam:style=simple,explode=true,name=mapParamExploded')]
     public array $mapParamExploded;
-    
-	public function __construct()
-	{
-		$this->mapParam = [];
-		$this->mapParamExploded = [];
-	}
+
+    public function __construct()
+    {
+        $this->mapParam = [];
+        $this->mapParamExploded = [];
+    }
 }
