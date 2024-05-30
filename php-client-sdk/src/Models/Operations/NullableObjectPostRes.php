@@ -9,20 +9,15 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * NullableObjectPostRes - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** NullableObjectPostRes - OK */
 class NullableObjectPostRes
 {
-	#[\JMS\Serializer\Annotation\SerializedName('json')]
+    #[\JMS\Serializer\Annotation\SerializedName('json')]
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\NullableObject')]
     public \OpenAPI\OpenAPI\Models\Shared\NullableObject $json;
-    
-	public function __construct()
-	{
-		$this->json = new \OpenAPI\OpenAPI\Models\Shared\NullableObject();
-	}
+
+    public function __construct()
+    {
+        $this->json = new \OpenAPI\OpenAPI\Models\Shared\NullableObject();
+    }
 }

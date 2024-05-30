@@ -8,14 +8,14 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class BearerAuthSecurity
 {
-	#[SpeakeasyMetadata('security:scheme=true,type=http,subtype=bearer,name=Authorization')]
+    #[SpeakeasyMetadata('security:scheme=true,type=http,subtype=bearer,name=Authorization')]
     public string $bearerAuth;
-    
-	public function __construct()
-	{
-		$this->bearerAuth = "";
-	}
+
+    public function __construct()
+    {
+        $this->bearerAuth = '';
+    }
 }

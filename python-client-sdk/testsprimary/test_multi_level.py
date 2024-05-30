@@ -3,11 +3,11 @@
 from sdk import SDK
 
 from .common_helpers import *
-from .helpers import *
+from .test_helpers import *
 
 
 def test_multi_level_grouping():
-    record_test('multi-level-grouping')
+    record_test("multi-level-grouping")
 
     s = SDK()
     assert s is not None
@@ -15,4 +15,4 @@ def test_multi_level_grouping():
     res = s.nested.first.get()
 
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
