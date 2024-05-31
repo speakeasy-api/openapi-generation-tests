@@ -8,12 +8,16 @@ from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional, Union
 
+MixedTypeOneOfPostRequestBody = Union[str, int, shared_simpleobject.SimpleObject]
+
+MixedTypeOneOfPostJSON = Union[str, int, shared_simpleobject.SimpleObject]
+
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class MixedTypeOneOfPostRes:
     r"""OK"""
-    json: Union[str, int, shared_simpleobject.SimpleObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
+    json: MixedTypeOneOfPostJSON = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
 
 
@@ -24,7 +28,7 @@ class MixedTypeOneOfPostResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
     res: Optional[MixedTypeOneOfPostRes] = dataclasses.field(default=None)
     r"""OK"""

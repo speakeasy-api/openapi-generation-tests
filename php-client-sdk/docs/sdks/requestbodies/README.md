@@ -7,6 +7,7 @@ Endpoints for testing request bodies.
 
 ### Available Operations
 
+* [nullEnumPost](#nullenumpost)
 * [nullableObjectPost](#nullableobjectpost)
 * [nullableRequiredEmptyObjectPost](#nullablerequiredemptyobjectpost)
 * [nullableRequiredPropertyPost](#nullablerequiredpropertypost)
@@ -48,6 +49,8 @@ Endpoints for testing request bodies.
 * [requestBodyPostJsonDataTypesBigInt](#requestbodypostjsondatatypesbigint)
 * [requestBodyPostJsonDataTypesBigIntStr](#requestbodypostjsondatatypesbigintstr)
 * [requestBodyPostJsonDataTypesBoolean](#requestbodypostjsondatatypesboolean)
+* [requestBodyPostJsonDataTypesComplexNumberArrays](#requestbodypostjsondatatypescomplexnumberarrays)
+* [requestBodyPostJsonDataTypesComplexNumberMaps](#requestbodypostjsondatatypescomplexnumbermaps)
 * [requestBodyPostJsonDataTypesDate](#requestbodypostjsondatatypesdate)
 * [requestBodyPostJsonDataTypesDateTime](#requestbodypostjsondatatypesdatetime)
 * [requestBodyPostJsonDataTypesDecimal](#requestbodypostjsondatatypesdecimal)
@@ -78,6 +81,7 @@ Endpoints for testing request bodies.
 * [requestBodyPutMultipartDeep](#requestbodyputmultipartdeep)
 * [requestBodyPutMultipartDifferentFileName](#requestbodyputmultipartdifferentfilename)
 * [requestBodyPutMultipartFile](#requestbodyputmultipartfile)
+* [requestBodyPutMultipartOptionalRequestBody](#requestbodyputmultipartoptionalrequestbody)
 * [requestBodyPutMultipartSimple](#requestbodyputmultipartsimple)
 * [requestBodyPutString](#requestbodyputstring)
 * [requestBodyPutStringWithParams](#requestbodyputstringwithparams)
@@ -89,7 +93,7 @@ Endpoints for testing request bodies.
 * [requestBodyWriteOnlyOutput](#requestbodywriteonlyoutput)
 * [requestBodyWriteOnlyUnion](#requestbodywriteonlyunion)
 
-## nullableObjectPost
+## nullEnumPost
 
 ### Example Usage
 
@@ -97,7 +101,8 @@ Endpoints for testing request bodies.
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -106,20 +111,78 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\NullableObject();
-    $request->optional = 'string';
-    $request->required = 302382;
+        $request = new Shared\ObjectWithNullEnums();
+    $request->nullEnum = '<value>';
+    $request->optNullEnum = '<value>';;
+
+    $response = $sdk->requestBodies->nullEnumPost($request);
+
+    if ($response->res !== null) {
+        // handle response
+    }
+} catch (Throwable $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `$request`                                                                                       | [\OpenAPI\OpenAPI\Models\Shared\ObjectWithNullEnums](../../Models/Shared/ObjectWithNullEnums.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\NullEnumPostResponse](../../Models/Operations/NullEnumPostResponse.md)**
+
+
+## nullableObjectPost
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
+
+try {
+        $request = new Shared\NullableObject();
+    $request->optional = '<value>';
+    $request->required = 302382;;
 
     $response = $sdk->requestBodies->nullableObjectPost($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -144,7 +207,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -154,21 +218,26 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Operations\NullableRequiredEmptyObjectPostRequestBody();
+        $request = new Operations\NullableRequiredEmptyObjectPostRequestBody();
     $request->nullableOptionalObj = new Operations\NullableOptionalObj();
     $request->nullableRequiredObj = new Operations\NullableRequiredObj();
-    $request->requiredObj = new Operations\RequiredObj();
+    $request->requiredObj = new Operations\RequiredObj();;
 
     $response = $sdk->requestBodies->nullableRequiredEmptyObjectPost($request);
 
-    if ($response->res !== null) {
+    if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -193,7 +262,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -203,24 +273,32 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Operations\NullableRequiredPropertyPostRequestBody();
-    $request->nullableOptionalInt = 235517;
+        $request = new Operations\NullableRequiredPropertyPostRequestBody();
+    $request->nullableOptionalInt = 0;
     $request->nullableRequiredArray = [
-        6917.41,
+        2355.17,
     ];
-    $request->nullableRequiredEnum = Operations\NullableRequiredEnum::First;
-    $request->nullableRequiredInt = 282026;
+    $request->nullableRequiredBigIntStr = '9223372036854775807';
+    $request->nullableRequiredDateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2024-03-02T01:02:03.001Z');
+    $request->nullableRequiredDecimalStr = '3.14159265358979344719667586';
+    $request->nullableRequiredEnum = Operations\NullableRequiredEnum::Second;
+    $request->nullableRequiredInt = null;;
 
     $response = $sdk->requestBodies->nullableRequiredPropertyPost($request);
 
-    if ($response->res !== null) {
+    if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -245,7 +323,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -255,24 +334,29 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Operations\NullableRequiredSharedObjectPostRequestBody();
-    $request->nullableOptionalObj = new Shared\NullableObject();
-    $request->nullableOptionalObj->optional = 'string';
+        $request = new Operations\NullableRequiredSharedObjectPostRequestBody();
+    $request->nullableOptionalObj = new Shared\NullableOptionalObject();
+    $request->nullableOptionalObj->optional = '<value>';
     $request->nullableOptionalObj->required = 86533;
     $request->nullableRequiredObj = new Shared\NullableObject();
-    $request->nullableRequiredObj->optional = 'string';
-    $request->nullableRequiredObj->required = 964394;
+    $request->nullableRequiredObj->optional = '<value>';
+    $request->nullableRequiredObj->required = 964394;;
 
     $response = $sdk->requestBodies->nullableRequiredSharedObjectPost($request);
 
-    if ($response->res !== null) {
+    if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -297,7 +381,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -306,20 +391,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         new Shared\SimpleObject(),
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonArray($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -345,7 +435,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -354,20 +445,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         new Shared\SimpleObjectCamelCase(),
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayCamelCase($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -393,7 +489,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -402,20 +499,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         new Shared\SimpleObject(),
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayObj($request);
 
     if ($response->arrObjValue !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -440,7 +542,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -449,20 +552,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         new Shared\SimpleObjectCamelCase(),
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayObjCamelCase($request);
 
     if ($response->arrObjValueCamelCase !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -487,7 +595,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -496,22 +605,27 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         [
             new Shared\SimpleObject(),
         ],
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfArray($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -537,7 +651,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -546,22 +661,27 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         [
             new Shared\SimpleObjectCamelCase(),
         ],
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfArrayCamelCase($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -587,7 +707,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -596,22 +717,27 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         [
-            'string',
+            '<value>',
         ],
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfArrayOfPrimitive($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -637,7 +763,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -646,22 +773,27 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         [
             'Southeast' => new Shared\SimpleObject(),
         ],
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfMap($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -687,7 +819,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -696,22 +829,27 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         [
             'culpa' => new Shared\SimpleObjectCamelCase(),
         ],
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfMapCamelCase($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -737,7 +875,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -746,20 +885,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
-        'string',
-    ]
+        $request = [
+        '<value>',
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfPrimitive($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -785,7 +929,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -794,11 +939,16 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\DeepObject();
+        $request = new Shared\DeepObject();
     $request->any = 'anyOf[0]';
     $request->arr = [
         new Shared\SimpleObject(),
@@ -816,14 +966,16 @@ try {
     $request->obj->bool = true;
     $request->obj->boolOpt = true;
     $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $request->obj->decimal = 3.141592653589793;
     $request->obj->decimalStr = '3.14159265358979344719667586';
     $request->obj->enum = Shared\Enum::One;
     $request->obj->float32 = 1.1;
+    $request->obj->float64Str = '1.1';
     $request->obj->int = 1;
     $request->obj->int32 = 1;
     $request->obj->int32Enum = Shared\Int32Enum::FiftyFive;
+    $request->obj->int64Str = '100';
     $request->obj->intEnum = Shared\IntEnum::Third;
     $request->obj->intOptNull = 817678;
     $request->obj->num = 1.1;
@@ -831,14 +983,14 @@ try {
     $request->obj->str = 'test';
     $request->obj->strOpt = 'testOptional';
     $request->str = 'test';
-    $request->type = 'string';
+    $request->type = '<value>';;
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonDeep($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -863,7 +1015,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -872,30 +1025,35 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\DeepObjectCamelCase();
-    $request->anyVal = 'string';
+        $request = new Shared\DeepObjectCamelCase();
+    $request->anyVal = '<value>';
     $request->arrVal = [
         new Shared\SimpleObjectCamelCase(),
     ];
-    $request->boolVal = false;
-    $request->intVal = 66469;
+    $request->boolVal = true;
+    $request->intVal = 1;
     $request->mapVal = [
-        'as' => new Shared\SimpleObjectCamelCase(),
+        'Cambridgeshire' => new Shared\SimpleObjectCamelCase(),
     ];
-    $request->numVal = 4241.4;
+    $request->numVal = 1.1;
     $request->objVal = new Shared\SimpleObjectCamelCase();
     $request->objVal->anyVal = 'any example';
-    $request->objVal->bigintStrVal = 'string';
-    $request->objVal->bigintVal = 942092;
+    $request->objVal->bigintStrVal = '<value>';
+    $request->objVal->bigintVal = 206440;
     $request->objVal->boolOptVal = true;
     $request->objVal->boolVal = true;
     $request->objVal->dateTimeVal = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00Z');
     $request->objVal->dateVal = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->objVal->decimalVal = 1379.45;
+    $request->objVal->decimalVal = 4241.4;
     $request->objVal->enumVal = Shared\Enum::One;
     $request->objVal->float32Val = 2.2222222;
     $request->objVal->int32EnumVal = Shared\Int32EnumVal::OneHundredAndEightyOne;
@@ -907,15 +1065,15 @@ try {
     $request->objVal->numVal = 1.1;
     $request->objVal->strOptVal = 'optional example';
     $request->objVal->strVal = 'example';
-    $request->strVal = 'string';
-    $request->type = 'string';
+    $request->strVal = 'test';
+    $request->type = '<value>';;
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonDeepCamelCase($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -940,7 +1098,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -949,20 +1108,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         'Bentley' => new Shared\SimpleObject(),
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMap($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -988,7 +1152,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -997,20 +1162,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         'archive' => new Shared\SimpleObjectCamelCase(),
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapCamelCase($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1036,7 +1206,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1045,20 +1216,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         'larder' => new Shared\SimpleObject(),
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapObj($request);
 
     if ($response->mapObjValue !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1083,7 +1259,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1092,20 +1269,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         'female' => new Shared\SimpleObjectCamelCase(),
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapObjCamelCase($request);
 
     if ($response->mapObjValueCamelCase !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1130,7 +1312,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1139,22 +1322,27 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         'Loan' => [
             new Shared\SimpleObject(),
         ],
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfArray($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1180,7 +1368,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1189,22 +1378,27 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         'nonstop' => [
             new Shared\SimpleObjectCamelCase(),
         ],
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfArrayCamelCase($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1230,7 +1424,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1239,22 +1434,27 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         'Senior' => [
             'vice' => new Shared\SimpleObject(),
         ],
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfMap($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1280,7 +1480,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1289,22 +1490,27 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         'Home' => [
             'plum' => new Shared\SimpleObjectCamelCase(),
         ],
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfMapCamelCase($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1330,7 +1536,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1339,22 +1546,27 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         'turquoise' => [
-            'collaboration' => 'string',
+            'collaboration' => '<value>',
         ],
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfMapOfPrimitive($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1380,7 +1592,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1389,20 +1602,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
-        'equally' => 'string',
-    ]
+        $request = [
+        'equally' => '<value>',
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfPrimitive($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1428,7 +1646,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1437,38 +1656,45 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\SimpleObject();
+        $request = new Shared\SimpleObject();
     $request->any = 'any';
     $request->bigint = 8821239038968084;
     $request->bigintStr = '9223372036854775808';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $request->decimal = 3.141592653589793;
     $request->decimalStr = '3.14159265358979344719667586';
     $request->enum = Shared\Enum::One;
     $request->float32 = 1.1;
+    $request->float64Str = '1.1';
     $request->int = 1;
     $request->int32 = 1;
     $request->int32Enum = Shared\Int32Enum::SixtyNine;
+    $request->int64Str = '100';
     $request->intEnum = Shared\IntEnum::First;
     $request->intOptNull = 680661;
     $request->num = 1.1;
     $request->numOptNull = 8809.47;
     $request->str = 'test';
-    $request->strOpt = 'testOptional';
+    $request->strOpt = 'testOptional';;
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMultipleJsonFiltered($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1493,7 +1719,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1502,38 +1729,45 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\SimpleObject();
+        $request = new Shared\SimpleObject();
     $request->any = 'any';
     $request->bigint = 8821239038968084;
     $request->bigintStr = '9223372036854775808';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $request->decimal = 3.141592653589793;
     $request->decimalStr = '3.14159265358979344719667586';
     $request->enum = Shared\Enum::One;
     $request->float32 = 1.1;
+    $request->float64Str = '1.1';
     $request->int = 1;
     $request->int32 = 1;
     $request->int32Enum = Shared\Int32Enum::FiftyFive;
+    $request->int64Str = '100';
     $request->intEnum = Shared\IntEnum::Second;
     $request->intOptNull = 387512;
     $request->num = 1.1;
     $request->numOptNull = 7875.71;
     $request->str = 'test';
-    $request->strOpt = 'testOptional';
+    $request->strOpt = 'testOptional';;
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonSimple($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1558,7 +1792,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1567,13 +1802,18 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\SimpleObjectCamelCase();
+        $request = new Shared\SimpleObjectCamelCase();
     $request->anyVal = 'any example';
-    $request->bigintStrVal = 'string';
+    $request->bigintStrVal = '<value>';
     $request->bigintVal = 281697;
     $request->boolOptVal = true;
     $request->boolVal = true;
@@ -1590,14 +1830,14 @@ try {
     $request->numOptNullVal = 1.1;
     $request->numVal = 1.1;
     $request->strOptVal = 'optional example';
-    $request->strVal = 'example';
+    $request->strVal = 'example';;
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonSimpleCamelCase($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1622,7 +1862,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1632,31 +1873,36 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Operations\RequestBodyPostComplexNumberTypesRequest();
+        $request = new Operations\RequestBodyPostComplexNumberTypesRequest();
     $request->complexNumberTypes = new Shared\ComplexNumberTypes();
-    $request->complexNumberTypes->bigint = 765757;
-    $request->complexNumberTypes->bigintStr = 'string';
-    $request->complexNumberTypes->decimal = 9344.87;
-    $request->complexNumberTypes->decimalStr = 'string';
-    $request->pathBigInt = 250514;
-    $request->pathBigIntStr = 'string';
-    $request->pathDecimal = 6831.11;
-    $request->pathDecimalStr = 'string';
-    $request->queryBigInt = 500580;
-    $request->queryBigIntStr = 'string';
-    $request->queryDecimal = 7419.03;
-    $request->queryDecimalStr = 'string';
+    $request->complexNumberTypes->bigint = 8821239038968084;
+    $request->complexNumberTypes->bigintStr = '9223372036854775808';
+    $request->complexNumberTypes->decimal = 3.141592653589793;
+    $request->complexNumberTypes->decimalStr = '3.14159265358979344719667586';
+    $request->pathBigInt = 8821239038968084;
+    $request->pathBigIntStr = '9223372036854775808';
+    $request->pathDecimal = 3.141592653589793;
+    $request->pathDecimalStr = '3.14159265358979344719667586';
+    $request->queryBigInt = 8821239038968084;
+    $request->queryBigIntStr = '9223372036854775808';
+    $request->queryDecimal = 3.141592653589793;
+    $request->queryDecimalStr = '3.14159265358979344719667586';;
 
     $response = $sdk->requestBodies->requestBodyPostComplexNumberTypes($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1681,7 +1927,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1690,46 +1937,55 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\DefaultsAndConsts();
+        $request = new Shared\DefaultsAndConsts();
     $request->constBigInt = 559205;
-    $request->constBigIntStr = 'string';
+    $request->constBigIntStr = '<value>';
     $request->constBool = false;
-    $request->constDate = DateTime::createFromFormat('Y-m-d', '2021-09-13');
-    $request->constDateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-12-15T04:16:08.794Z');
+    $request->constDate = DateTime::createFromFormat('Y-m-d', '2022-09-14');
+    $request->constDateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2023-12-15T19:54:01.459Z');
     $request->constDecimal = 9160.69;
-    $request->constDecimalStr = 'string';
+    $request->constDecimalStr = '<value>';
     $request->constEnumInt = Shared\ConstEnumInt::One;
     $request->constEnumStr = Shared\ConstEnumStr::Three;
     $request->constInt = 299545;
     $request->constNum = 4612.63;
-    $request->constStr = 'string';
-    $request->constStrNull = 'string';
+    $request->constStr = '<value>';
+    $request->constStrDQuotes = '<value>';
+    $request->constStrNull = '<value>';
+    $request->constStrSQuotes = '<value>';
     $request->defaultBigInt = 450379;
-    $request->defaultBigIntStr = 'string';
+    $request->defaultBigIntStr = '<value>';
     $request->defaultBool = false;
-    $request->defaultDate = DateTime::createFromFormat('Y-m-d', '2023-04-28');
-    $request->defaultDateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2021-10-01T11:08:55.738Z');
+    $request->defaultDate = DateTime::createFromFormat('Y-m-d', '2024-04-28');
+    $request->defaultDateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-10-01T17:08:33.213Z');
     $request->defaultDecimal = 4585.94;
-    $request->defaultDecimalStr = 'string';
+    $request->defaultDecimalStr = '<value>';
     $request->defaultEnumInt = Shared\DefaultEnumInt::Two;
     $request->defaultEnumStr = Shared\DefaultEnumStr::One;
     $request->defaultInt = 788517;
     $request->defaultNum = 639.73;
-    $request->defaultStr = 'string';
-    $request->defaultStrNullable = 'string';
-    $request->defaultStrOptional = 'string';
-    $request->normalField = 'string';
+    $request->defaultStr = '<value>';
+    $request->defaultStrDQuotes = '<value>';
+    $request->defaultStrNullable = '<value>';
+    $request->defaultStrOptional = '<value>';
+    $request->defaultStrSQuotes = '<value>';
+    $request->normalField = 'test';;
 
     $response = $sdk->requestBodies->requestBodyPostDefaultsAndConsts($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1754,7 +2010,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1764,20 +2021,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Operations\RequestBodyPostEmptyObjectRequestBody();
+        $request = new Operations\RequestBodyPostEmptyObjectRequestBody();
     $request->empty = new Operations\EmptyT();
-    $request->emptyWithEmptyProperties = new Operations\EmptyWithEmptyProperties();
+    $request->emptyWithEmptyProperties = new Operations\EmptyWithEmptyProperties();;
 
     $response = $sdk->requestBodies->requestBodyPostEmptyObject($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1802,7 +2064,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1811,11 +2074,16 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\DeepObject();
+        $request = new Shared\DeepObject();
     $request->any = 'anyOf[0]';
     $request->arr = [
         new Shared\SimpleObject(),
@@ -1833,14 +2101,16 @@ try {
     $request->obj->bool = true;
     $request->obj->boolOpt = true;
     $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $request->obj->decimal = 3.141592653589793;
     $request->obj->decimalStr = '3.14159265358979344719667586';
     $request->obj->enum = Shared\Enum::One;
     $request->obj->float32 = 1.1;
+    $request->obj->float64Str = '1.1';
     $request->obj->int = 1;
     $request->obj->int32 = 1;
     $request->obj->int32Enum = Shared\Int32Enum::FiftyFive;
+    $request->obj->int64Str = '100';
     $request->obj->intEnum = Shared\IntEnum::Third;
     $request->obj->intOptNull = 769249;
     $request->obj->num = 1.1;
@@ -1848,14 +2118,14 @@ try {
     $request->obj->str = 'test';
     $request->obj->strOpt = 'testOptional';
     $request->str = 'test';
-    $request->type = 'string';
+    $request->type = '<value>';;
 
     $response = $sdk->requestBodies->requestBodyPostFormDeep($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1880,7 +2150,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1889,20 +2160,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
-        'complexity' => 'string',
-    ]
+        $request = [
+        'complexity' => '<value>',
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostFormMapPrimitive($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1927,7 +2203,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -1936,38 +2213,45 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\SimpleObject();
+        $request = new Shared\SimpleObject();
     $request->any = 'any';
     $request->bigint = 8821239038968084;
     $request->bigintStr = '9223372036854775808';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $request->decimal = 3.141592653589793;
     $request->decimalStr = '3.14159265358979344719667586';
     $request->enum = Shared\Enum::One;
     $request->float32 = 1.1;
+    $request->float64Str = '1.1';
     $request->int = 1;
     $request->int32 = 1;
     $request->int32Enum = Shared\Int32Enum::SixtyNine;
+    $request->int64Str = '100';
     $request->intEnum = Shared\IntEnum::First;
     $request->intOptNull = 5565;
     $request->num = 1.1;
     $request->numOptNull = 8893.53;
     $request->str = 'test';
-    $request->strOpt = 'testOptional';
+    $request->strOpt = 'testOptional';;
 
     $response = $sdk->requestBodies->requestBodyPostFormSimple($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -1992,7 +2276,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2001,20 +2286,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         564849,
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesArrayBigInt($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2039,7 +2329,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2048,20 +2339,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
-        DateTime::createFromFormat('Y-m-d', '2022-03-22'),
-    ]
+        $request = [
+        DateTime::createFromFormat('Y-m-d', '2023-03-22'),
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesArrayDate($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2086,7 +2382,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2095,20 +2392,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
-        'string',
-    ]
+        $request = [
+        '<value>',
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesArrayDecimalStr($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2133,7 +2435,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2142,18 +2445,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-687617
+    1;
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesBigInt($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2178,7 +2486,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2187,18 +2496,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    '1';
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesBigIntStr($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2223,7 +2537,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2232,18 +2547,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-false
+    true;
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesBoolean($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2260,7 +2580,7 @@ false
 **[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesBooleanResponse](../../Models/Operations/RequestBodyPostJsonDataTypesBooleanResponse.md)**
 
 
-## requestBodyPostJsonDataTypesDate
+## requestBodyPostJsonDataTypesComplexNumberArrays
 
 ### Example Usage
 
@@ -2268,7 +2588,8 @@ false
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2277,18 +2598,149 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-DateTime::createFromFormat('Y-m-d', '2022-03-04')
+        $request = new Shared\ComplexNumberArrays();
+    $request->bigintArray = [
+        58951,
+    ];
+    $request->bigintStrArray = [
+        '<value>',
+    ];
+    $request->decimalArray = [
+        8682.08,
+    ];
+    $request->decimalStrArray = [
+        '<value>',
+    ];;
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesComplexNumberArrays($request);
+
+    if ($response->res !== null) {
+        // handle response
+    }
+} catch (Throwable $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `$request`                                                                                       | [\OpenAPI\OpenAPI\Models\Shared\ComplexNumberArrays](../../Models/Shared/ComplexNumberArrays.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesComplexNumberArraysResponse](../../Models/Operations/RequestBodyPostJsonDataTypesComplexNumberArraysResponse.md)**
+
+
+## requestBodyPostJsonDataTypesComplexNumberMaps
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
+
+try {
+        $request = new Shared\ComplexNumberMaps();
+    $request->bigintMap = [
+        'CSS' => 770392,
+    ];
+    $request->bigintStrMap = [
+        'connecting' => '<value>',
+    ];
+    $request->decimalMap = [
+        'gosh' => 1492.35,
+    ];
+    $request->decimalStrMap = [
+        'transmitter' => '<value>',
+    ];;
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesComplexNumberMaps($request);
+
+    if ($response->res !== null) {
+        // handle response
+    }
+} catch (Throwable $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `$request`                                                                                   | [\OpenAPI\OpenAPI\Models\Shared\ComplexNumberMaps](../../Models/Shared/ComplexNumberMaps.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesComplexNumberMapsResponse](../../Models/Operations/RequestBodyPostJsonDataTypesComplexNumberMapsResponse.md)**
+
+
+## requestBodyPostJsonDataTypesDate
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
+
+try {
+    DateTime::createFromFormat('Y-m-d', '2020-01-01');
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesDate($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2313,7 +2765,8 @@ DateTime::createFromFormat('Y-m-d', '2022-03-04')
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2322,18 +2775,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-DateTime::createFromFormat('Y-m-d\TH:i:s+', '2023-03-04T01:33:15.031Z')
+    DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesDateTime($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2358,7 +2816,8 @@ DateTime::createFromFormat('Y-m-d\TH:i:s+', '2023-03-04T01:33:15.031Z')
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2367,18 +2826,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-1107.81
+    1.1;
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesDecimal($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2403,7 +2867,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2412,18 +2877,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    '1.1';
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesDecimalStr($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2448,7 +2918,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2457,18 +2928,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-4464.34
+    1.1;
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesFloat32($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2493,7 +2969,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2502,18 +2979,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-22155
+    1;
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesInt32($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2538,7 +3020,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2547,18 +3030,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-273673
+    1;
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesInteger($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2583,7 +3071,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2592,20 +3081,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
-        'Nepal' => 'string',
-    ]
+        $request = [
+        'Nepal' => '<value>',
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesMapBigIntStr($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2630,7 +3124,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2639,20 +3134,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
-        'quantify' => DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-02-12T21:23:09.538Z'),
-    ]
+        $request = [
+        'quantify' => DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z'),
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesMapDateTime($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2677,7 +3177,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2686,20 +3187,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
+        $request = [
         'Inverse' => 9134.24,
-    ]
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesMapDecimal($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2724,7 +3230,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2733,18 +3240,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-2193.66
+    1.1;
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesNumber($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2769,7 +3281,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2778,18 +3291,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    'test';
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesString($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2814,7 +3332,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2823,38 +3342,45 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\SimpleObject();
+        $request = new Shared\SimpleObject();
     $request->any = 'any';
     $request->bigint = 8821239038968084;
     $request->bigintStr = '9223372036854775808';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $request->decimal = 3.141592653589793;
     $request->decimalStr = '3.14159265358979344719667586';
     $request->enum = Shared\Enum::One;
     $request->float32 = 1.1;
+    $request->float64Str = '1.1';
     $request->int = 1;
     $request->int32 = 1;
     $request->int32Enum = Shared\Int32Enum::FiftyFive;
+    $request->int64Str = '100';
     $request->intEnum = Shared\IntEnum::Third;
     $request->intOptNull = 587803;
     $request->num = 1.1;
     $request->numOptNull = 9724.14;
     $request->str = 'test';
-    $request->strOpt = 'testOptional';
+    $request->strOpt = 'testOptional';;
 
     $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesComponentFiltered($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2879,7 +3405,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2889,21 +3416,26 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Operations\RequestBodyPostMultipleContentTypesInlineFilteredRequestBody();
-    $request->bool = false;
-    $request->num = 3558.41;
-    $request->str = 'string';
+        $request = new Operations\RequestBodyPostMultipleContentTypesInlineFilteredRequestBody();
+    $request->bool = true;
+    $request->num = 1.1;
+    $request->str = 'test';;
 
     $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesInlineFiltered($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2928,7 +3460,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2938,21 +3471,26 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $requestBody = new Operations\RequestBodyPostMultipleContentTypesSplitParamFormRequestBody();
+        $requestBody = new Operations\RequestBodyPostMultipleContentTypesSplitParamFormRequestBody();
     $requestBody->bool3 = false;
     $requestBody->num3 = 8693.24;
-    $requestBody->str3 = 'string';
+    $requestBody->str3 = '<value>';
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamForm($requestBody, 'string');
+    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamForm($requestBody, '<value>');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -2978,7 +3516,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -2988,21 +3527,26 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $requestBody = new Operations\RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody();
+        $requestBody = new Operations\RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody();
     $requestBody->bool = false;
     $requestBody->num = 9771.91;
-    $requestBody->str = 'string';
+    $requestBody->str = '<value>';
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamJson($requestBody, 'string');
+    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamJson($requestBody, '<value>');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3028,7 +3572,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3038,21 +3583,26 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $requestBody = new Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody();
+        $requestBody = new Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody();
     $requestBody->bool2 = false;
     $requestBody->num2 = 7000.76;
-    $requestBody->str2 = 'string';
+    $requestBody->str2 = '<value>';
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamMultipart($requestBody, 'string');
+    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamMultipart($requestBody, '<value>');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3078,7 +3628,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3088,21 +3639,26 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Operations\RequestBodyPostMultipleContentTypesSplitFormRequestBody();
+        $request = new Operations\RequestBodyPostMultipleContentTypesSplitFormRequestBody();
     $request->bool3 = false;
     $request->num3 = 7842.07;
-    $request->str3 = 'string';
+    $request->str3 = '<value>';;
 
     $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitForm($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3127,7 +3683,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3137,21 +3694,26 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Operations\RequestBodyPostMultipleContentTypesSplitJsonRequestBody();
+        $request = new Operations\RequestBodyPostMultipleContentTypesSplitJsonRequestBody();
     $request->bool = false;
     $request->num = 2445.56;
-    $request->str = 'string';
+    $request->str = '<value>';;
 
     $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitJson($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3176,7 +3738,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3186,21 +3749,26 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Operations\RequestBodyPostMultipleContentTypesSplitMultipartRequestBody();
+        $request = new Operations\RequestBodyPostMultipleContentTypesSplitMultipartRequestBody();
     $request->bool2 = false;
     $request->num2 = 2079.2;
-    $request->str2 = 'string';
+    $request->str2 = '<value>';;
 
     $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitMultipart($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3225,7 +3793,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3234,18 +3803,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    null;
 
     $response = $sdk->requestBodies->requestBodyPostNotNullableNotRequiredStringBody($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3270,7 +3844,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3279,20 +3854,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
-        'string',
-    ]
+        $request = [
+        '<value>',
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostNullArray($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3317,7 +3897,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3326,20 +3907,25 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = [
-        'Intersex' => 'string',
-    ]
+        $request = [
+        'Intersex' => '<value>',
+    ];
 
     $response = $sdk->requestBodies->requestBodyPostNullDictionary($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3364,7 +3950,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3373,18 +3960,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    null;
 
     $response = $sdk->requestBodies->requestBodyPostNullableNotRequiredStringBody($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3409,7 +4001,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3418,18 +4011,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    null;
 
     $response = $sdk->requestBodies->requestBodyPostNullableRequiredStringBody($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3454,7 +4052,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3463,18 +4062,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'0x5DbFFb1Ff9'
+    '0x5DbFFb1Ff9';
 
     $response = $sdk->requestBodies->requestBodyPutBytes($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3499,7 +4103,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3509,18 +4114,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
+    
 
-
-    $response = $sdk->requestBodies->requestBodyPutBytesWithParams('0xC1B9cA4eb5', 'string');
+    $response = $sdk->requestBodies->requestBodyPutBytesWithParams('0xC1B9cA4eb5', '<value>');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3546,7 +4156,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3555,11 +4166,16 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\DeepObject();
+        $request = new Shared\DeepObject();
     $request->any = 'anyOf[0]';
     $request->arr = [
         new Shared\SimpleObject(),
@@ -3577,14 +4193,16 @@ try {
     $request->obj->bool = true;
     $request->obj->boolOpt = true;
     $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $request->obj->decimal = 3.141592653589793;
     $request->obj->decimalStr = '3.14159265358979344719667586';
     $request->obj->enum = Shared\Enum::One;
     $request->obj->float32 = 1.1;
+    $request->obj->float64Str = '1.1';
     $request->obj->int = 1;
     $request->obj->int32 = 1;
     $request->obj->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $request->obj->int64Str = '100';
     $request->obj->intEnum = Shared\IntEnum::Second;
     $request->obj->intOptNull = 731372;
     $request->obj->num = 1.1;
@@ -3592,14 +4210,14 @@ try {
     $request->obj->str = 'test';
     $request->obj->strOpt = 'testOptional';
     $request->str = 'test';
-    $request->type = 'string';
+    $request->type = '<value>';;
 
     $response = $sdk->requestBodies->requestBodyPutMultipartDeep($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3624,7 +4242,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3634,21 +4253,26 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Operations\RequestBodyPutMultipartDifferentFileNameRequestBody();
+        $request = new Operations\RequestBodyPutMultipartDifferentFileNameRequestBody();
     $request->differentFileName = new Operations\DifferentFileName();
     $request->differentFileName->content = '0xdF19d43dd2';
-    $request->differentFileName->fileName = 'west_tunisian.pdf';
+    $request->differentFileName->fileName = 'your_file_here';;
 
     $response = $sdk->requestBodies->requestBodyPutMultipartDifferentFileName($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3673,7 +4297,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3683,21 +4308,26 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Operations\RequestBodyPutMultipartFileRequestBody();
+        $request = new Operations\RequestBodyPutMultipartFileRequestBody();
     $request->file = new Operations\File();
     $request->file->content = '0xa9f2Ee38c3';
-    $request->file->fileName = 'bandwidth_sedan.pdf';
+    $request->file->fileName = 'your_file_here';;
 
     $response = $sdk->requestBodies->requestBodyPutMultipartFile($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3714,6 +4344,62 @@ try {
 **[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartFileResponse](../../Models/Operations/RequestBodyPutMultipartFileResponse.md)**
 
 
+## requestBodyPutMultipartOptionalRequestBody
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
+
+$security = new Shared\Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
+
+try {
+        $request = new Operations\RequestBodyPutMultipartOptionalRequestBodyRequestBody();
+    $request->sampleField = '<value>';
+    $request->sampleFile = new Operations\SampleFile();
+    $request->sampleFile->content = '0xEEdefEf24a';
+    $request->sampleFile->fileName = 'your_file_here';;
+
+    $response = $sdk->requestBodies->requestBodyPutMultipartOptionalRequestBody($request);
+
+    if ($response->res !== null) {
+        // handle response
+    }
+} catch (Throwable $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                    | Type                                                                                                                                                                         | Required                                                                                                                                                                     | Description                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                                                                                   | [\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartOptionalRequestBodyRequestBody](../../Models/Operations/RequestBodyPutMultipartOptionalRequestBodyRequestBody.md) | :heavy_check_mark:                                                                                                                                                           | The request object to use for the request.                                                                                                                                   |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartOptionalRequestBodyResponse](../../Models/Operations/RequestBodyPutMultipartOptionalRequestBodyResponse.md)**
+
+
 ## requestBodyPutMultipartSimple
 
 ### Example Usage
@@ -3722,7 +4408,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3731,38 +4418,45 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\SimpleObject();
+        $request = new Shared\SimpleObject();
     $request->any = 'any';
     $request->bigint = 8821239038968084;
     $request->bigintStr = '9223372036854775808';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $request->decimal = 3.141592653589793;
     $request->decimalStr = '3.14159265358979344719667586';
     $request->enum = Shared\Enum::One;
     $request->float32 = 1.1;
+    $request->float64Str = '1.1';
     $request->int = 1;
     $request->int32 = 1;
     $request->int32Enum = Shared\Int32Enum::FiftyFive;
+    $request->int64Str = '100';
     $request->intEnum = Shared\IntEnum::Third;
     $request->intOptNull = 544005;
     $request->num = 1.1;
     $request->numOptNull = 7648.28;
     $request->str = 'test';
-    $request->strOpt = 'testOptional';
+    $request->strOpt = 'testOptional';;
 
     $response = $sdk->requestBodies->requestBodyPutMultipartSimple($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3787,7 +4481,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3796,18 +4491,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    'Hello World';
 
     $response = $sdk->requestBodies->requestBodyPutString($request);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3832,7 +4532,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3842,28 +4543,33 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
+    
 
-
-    $response = $sdk->requestBodies->requestBodyPutStringWithParams('string', 'string');
+    $response = $sdk->requestBodies->requestBodyPutStringWithParams('Hello world', 'test param');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `requestBody`      | *string*           | :heavy_check_mark: | N/A                |
-| `queryStringParam` | *string*           | :heavy_check_mark: | N/A                |
+| Parameter          | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `requestBody`      | *string*           | :heavy_check_mark: | N/A                | Hello world        |
+| `queryStringParam` | *string*           | :heavy_check_mark: | N/A                | test param         |
 
 
 ### Response
@@ -3879,7 +4585,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3888,21 +4595,26 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\ReadWriteObject();
-    $request->num1 = 797612;
-    $request->num2 = 89374;
-    $request->num3 = 459345;
+        $request = new Shared\ReadWriteObject();
+    $request->num1 = 1;
+    $request->num2 = 2;
+    $request->num3 = 4;;
 
     $response = $sdk->requestBodies->requestBodyReadAndWrite($request);
 
     if ($response->readWriteObject !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3928,7 +4640,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3937,18 +4650,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\ReadOnlyObjectInput();
+        $request = new Shared\ReadOnlyObjectInput();;
 
     $response = $sdk->requestBodies->requestBodyReadOnlyInput($request);
 
     if ($response->readOnlyObject !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -3974,7 +4692,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -3983,18 +4702,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    '<value>';
 
     $response = $sdk->requestBodies->requestBodyReadOnlyUnion($request);
 
     if ($response->weaklyTypedOneOfReadOnlyObject !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -4020,7 +4744,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -4029,18 +4754,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    '<value>';
 
     $response = $sdk->requestBodies->requestBodyReadWriteOnlyUnion($request);
 
     if ($response->weaklyTypedOneOfReadWriteObject !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -4066,7 +4796,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -4075,21 +4806,26 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\WriteOnlyObject();
-    $request->bool = false;
-    $request->num = 3888.42;
-    $request->string = 'string';
+        $request = new Shared\WriteOnlyObject();
+    $request->bool = true;
+    $request->num = 1;
+    $request->string = 'hello';;
 
     $response = $sdk->requestBodies->requestBodyWriteOnly($request);
 
     if ($response->readOnlyObject !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -4115,7 +4851,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -4124,21 +4861,26 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\WriteOnlyObject();
-    $request->bool = false;
-    $request->num = 3867.69;
-    $request->string = 'string';
+        $request = new Shared\WriteOnlyObject();
+    $request->bool = true;
+    $request->num = 1;
+    $request->string = 'hello';;
 
     $response = $sdk->requestBodies->requestBodyWriteOnlyOutput($request);
 
     if ($response->writeOnlyObject !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -4164,7 +4906,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -4173,18 +4916,23 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenHeaderParam('<value>')
+    ->setGlobalHiddenPathParam('<value>')
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-'string'
+    '<value>';
 
     $response = $sdk->requestBodies->requestBodyWriteOnlyUnion($request);
 
     if ($response->weaklyTypedOneOfWriteOnlyObject !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```

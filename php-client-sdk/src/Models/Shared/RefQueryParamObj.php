@@ -8,26 +8,26 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Shared;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class RefQueryParamObj
 {
-	#[SpeakeasyMetadata('queryParam:name=bool')]
+    #[SpeakeasyMetadata('queryParam:name=bool')]
     public bool $bool;
-    
-	#[SpeakeasyMetadata('queryParam:name=int')]
+
+    #[SpeakeasyMetadata('queryParam:name=int')]
     public int $int;
-    
-	#[SpeakeasyMetadata('queryParam:name=num')]
+
+    #[SpeakeasyMetadata('queryParam:name=num')]
     public float $num;
-    
-	#[SpeakeasyMetadata('queryParam:name=str')]
+
+    #[SpeakeasyMetadata('queryParam:name=str')]
     public string $str;
-    
-	public function __construct()
-	{
-		$this->bool = false;
-		$this->int = 0;
-		$this->num = 0;
-		$this->str = "";
-	}
+
+    public function __construct()
+    {
+        $this->bool = false;
+        $this->int = 0;
+        $this->num = 0;
+        $this->str = '';
+    }
 }
