@@ -9,25 +9,20 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * TelemetryUserAgentGetRes - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** TelemetryUserAgentGetRes - OK */
 class TelemetryUserAgentGetRes
 {
     /**
      * $headers
-     * 
+     *
      * @var array<string, string> $headers
      */
-	#[\JMS\Serializer\Annotation\SerializedName('headers')]
+    #[\JMS\Serializer\Annotation\SerializedName('headers')]
     #[\JMS\Serializer\Annotation\Type('array<string, string>')]
     public array $headers;
-    
-	public function __construct()
-	{
-		$this->headers = [];
-	}
+
+    public function __construct()
+    {
+        $this->headers = [];
+    }
 }

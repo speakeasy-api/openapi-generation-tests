@@ -8,22 +8,22 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class MixedParametersCamelCaseRequest
 {
-	#[SpeakeasyMetadata('header:style=simple,explode=false,name=header_param')]
+    #[SpeakeasyMetadata('header:style=simple,explode=false,name=header_param')]
     public string $headerParam;
-    
-	#[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=path_param')]
+
+    #[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=path_param')]
     public string $pathParam;
-    
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=query_string_param')]
+
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=query_string_param')]
     public string $queryStringParam;
-    
-	public function __construct()
-	{
-		$this->headerParam = "";
-		$this->pathParam = "";
-		$this->queryStringParam = "";
-	}
+
+    public function __construct()
+    {
+        $this->headerParam = '';
+        $this->pathParam = '';
+        $this->queryStringParam = '';
+    }
 }

@@ -8,26 +8,26 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class HeaderParamsPrimitiveRequest
 {
-	#[SpeakeasyMetadata('header:style=simple,explode=false,name=X-Header-Boolean')]
+    #[SpeakeasyMetadata('header:style=simple,explode=false,name=X-Header-Boolean')]
     public bool $xHeaderBoolean;
-    
-	#[SpeakeasyMetadata('header:style=simple,explode=false,name=X-Header-Integer')]
+
+    #[SpeakeasyMetadata('header:style=simple,explode=false,name=X-Header-Integer')]
     public int $xHeaderInteger;
-    
-	#[SpeakeasyMetadata('header:style=simple,explode=false,name=X-Header-Number')]
+
+    #[SpeakeasyMetadata('header:style=simple,explode=false,name=X-Header-Number')]
     public float $xHeaderNumber;
-    
-	#[SpeakeasyMetadata('header:style=simple,explode=false,name=X-Header-String')]
+
+    #[SpeakeasyMetadata('header:style=simple,explode=false,name=X-Header-String')]
     public string $xHeaderString;
-    
-	public function __construct()
-	{
-		$this->xHeaderBoolean = false;
-		$this->xHeaderInteger = 0;
-		$this->xHeaderNumber = 0;
-		$this->xHeaderString = "";
-	}
+
+    public function __construct()
+    {
+        $this->xHeaderBoolean = false;
+        $this->xHeaderInteger = 0;
+        $this->xHeaderNumber = 0;
+        $this->xHeaderString = '';
+    }
 }
