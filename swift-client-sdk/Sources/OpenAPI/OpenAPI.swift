@@ -12,7 +12,9 @@ import Foundation
 ///
 /// These methods allow you to make requests to the API.
 ///
-/// - ``putAnythingIgnoredGeneration(request:)``
+/// - ``authenticatedRequest(request:security:)``
+/// - ``conflictingEnum(request:)``
+/// - ``ignoredGenerationPut(request:)``
 /// - ``responseBodyJsonGet()``
 ///
 /// ### Scoped API calls
@@ -20,64 +22,80 @@ import Foundation
 /// These properties logically group other parts of the API.
 ///
 /// - ``generation``
-/// - ``errors``
 /// - ``unions``
+/// - ``errors``
+/// - ``customClient``
+/// - ``responseBodies``
 /// - ``flattening``
 /// - ``globals``
 /// - ``parameters``
+/// - ``hooks``
 /// - ``nestFirst``
 /// - ``nested``
 /// - ``nestedFirst``
 /// - ``nestedSecond``
 /// - ``auth``
+/// - ``openEnums``
 /// - ``requestBodies``
-/// - ``responseBodies``
 /// - ``servers``
 /// - ``telemetry``
 /// - ``authNew``
-/// - ``documentation``
 /// - ``resource``
+/// - ``documentation``
 /// - ``first``
 /// - ``second``
 /// - ``pagination``
 /// - ``retries``
 ///
 public protocol OpenAPI {
-    func putAnythingIgnoredGeneration(request: String) async throws -> Response<Operations.PutAnythingIgnoredGenerationResponse>
+    func authenticatedRequest(request: Operations.AuthenticatedRequestRequestBody, security: Operations.AuthenticatedRequestSecurity) async throws -> Response<Operations.AuthenticatedRequestResponse>
+    /// Test potential namespace conflicts with java.lang.Object
+    /// 
+    /// - Parameter request: A ``Shared/ConflictingEnum`` object describing the input to the API operation
+    /// - Returns: A ``Operations/ConflictingEnumResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``OpenAPIError``
+    func conflictingEnum(request: Shared.ConflictingEnum) async throws -> Response<Operations.ConflictingEnumResponse>
+    func ignoredGenerationPut(request: String) async throws -> Response<Operations.IgnoredGenerationPutResponse>
     func responseBodyJsonGet() async throws -> Response<Operations.ResponseBodyJsonGetResponse>
 
     // MARK: - Scoped APIs
     /// Endpoints for purely testing valid generation behavior.
     var generation: GenerationAPI { get }
-    /// Endpoints for testing error responses.
-    var errors: ErrorsAPI { get }
     /// Endpoints for testing union types.
     var unions: UnionsAPI { get }
+    /// Endpoints for testing error responses.
+    var errors: ErrorsAPI { get }
+    /// Endpoints for testing custom HTTP clients
+    var customClient: CustomClientAPI { get }
+    /// Endpoints for testing response bodies.
+    var responseBodies: ResponseBodiesAPI { get }
     /// Endpoints for testing flattening through request body and parameter combinations.
     var flattening: FlatteningAPI { get }
     /// Endpoints for testing global parameters.
     var globals: GlobalsAPI { get }
     /// Endpoints for testing parameters.
     var parameters: ParametersAPI { get }
+    /// Endpoints for testing hooks
+    var hooks: HooksAPI { get }
     var nestFirst: NestFirstAPI { get }
     var nested: NestedAPI { get }
     var nestedFirst: NestedFirstAPI { get }
     var nestedSecond: NestedSecondAPI { get }
     /// Endpoints for testing authentication.
     var auth: AuthAPI { get }
+    /// Endpoints for testing open/closed enums
+    var openEnums: OpenEnumsAPI { get }
     /// Endpoints for testing request bodies.
     var requestBodies: RequestBodiesAPI { get }
-    /// Endpoints for testing response bodies.
-    var responseBodies: ResponseBodiesAPI { get }
     /// Endpoints for testing servers.
     var servers: ServersAPI { get }
     /// Endpoints for testing telemetry.
     var telemetry: TelemetryAPI { get }
     /// Endpoints for testing authentication.
     var authNew: AuthNewAPI { get }
+    var resource: ResourceAPI { get }
     /// Testing for documentation extensions and tooling.
     var documentation: DocumentationAPI { get }
-    var resource: ResourceAPI { get }
     var first: FirstAPI { get }
     var second: SecondAPI { get }
     /// Endpoints for testing the pagination extension
@@ -106,7 +124,7 @@ public protocol OpenAPI {
 /// - ``deprecatedOperationWithCommentsGet(request:)``
 /// - ``emptyObjectGet(request:)``
 /// - ``emptyResponseObjectWithCommentGet()``
-/// - ``getGlobalNameOverride()``
+/// - ``getGlobalNameOverride(request:)``
 /// - ``ignoredGenerationGet()``
 /// - ``ignoresPost(request:)``
 /// - ``nameOverrideGet(request:)``
@@ -151,7 +169,7 @@ public protocol GenerationAPI {
 
     func emptyResponseObjectWithCommentGet() async throws -> Response<Operations.EmptyResponseObjectWithCommentGetResponse>
 
-    func getGlobalNameOverride() async throws -> Response<Operations.GetGlobalNameOverrideResponse>
+    func getGlobalNameOverride(request: Shared.SimpleObject) async throws -> Response<Operations.GetGlobalNameOverrideResponse>
 
     func ignoredGenerationGet() async throws -> Response<Operations.IgnoredGenerationGetResponse>
 
@@ -172,6 +190,77 @@ public protocol GenerationAPI {
     /// - Returns: A ``Operations/UsageExamplePostResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``OpenAPIError``
     func usageExamplePost(request: Operations.UsageExamplePostRequest, security: Operations.UsageExamplePostSecurity) async throws -> Response<Operations.UsageExamplePostResponse>
+}
+
+// MARK: - UnionsAPI
+
+/// Endpoints for testing union types.
+///
+/// ## Topics
+///
+/// ### API calls
+///
+/// - ``collectionOneOfPost(request:)``
+/// - ``flattenedTypedObjectPost(request:)``
+/// - ``mixedTypeOneOfPost(request:)``
+/// - ``nullableOneOfRefInObjectPost(request:)``
+/// - ``nullableOneOfSchemaPost(request:)``
+/// - ``nullableOneOfTypeInObjectPost(request:)``
+/// - ``nullableTypedObjectPost(request:)``
+/// - ``primitiveTypeOneOfPost(request:)``
+/// - ``stronglyTypedOneOfDiscriminatedPost(request:)``
+/// - ``stronglyTypedOneOfPost(request:)``
+/// - ``stronglyTypedOneOfPostWithNonStandardDiscriminatorName(request:)``
+/// - ``typedObjectNullableOneOfPost(request:)``
+/// - ``typedObjectOneOfPost(request:)``
+/// - ``unionBigIntStrDecimal(request:)``
+/// - ``unionDateNull(request:)``
+/// - ``unionDateTimeBigInt(request:)``
+/// - ``unionDateTimeNull(request:)``
+/// - ``unionMap(request:)``
+/// - ``weaklyTypedOneOfNullEnumPost(request:)``
+/// - ``weaklyTypedOneOfPost(request:)``
+///
+public protocol UnionsAPI {
+    func collectionOneOfPost(request: Shared.CollectionOneOfObject) async throws -> Response<Operations.CollectionOneOfPostResponse>
+
+    func flattenedTypedObjectPost(request: Shared.FlattenedTypedObject1) async throws -> Response<Operations.FlattenedTypedObjectPostResponse>
+
+    func mixedTypeOneOfPost(request: Operations.MixedTypeOneOfPostRequestBody) async throws -> Response<Operations.MixedTypeOneOfPostResponse>
+
+    func nullableOneOfRefInObjectPost(request: Shared.NullableOneOfRefInObject) async throws -> Response<Operations.NullableOneOfRefInObjectPostResponse>
+
+    func nullableOneOfSchemaPost(request: Operations.NullableOneOfSchemaPostRequestBody) async throws -> Response<Operations.NullableOneOfSchemaPostResponse>
+
+    func nullableOneOfTypeInObjectPost(request: Shared.NullableOneOfTypeInObject) async throws -> Response<Operations.NullableOneOfTypeInObjectPostResponse>
+
+    func nullableTypedObjectPost(request: Shared.TypedObject1) async throws -> Response<Operations.NullableTypedObjectPostResponse>
+
+    func primitiveTypeOneOfPost(request: Operations.PrimitiveTypeOneOfPostRequestBody) async throws -> Response<Operations.PrimitiveTypeOneOfPostResponse>
+
+    func stronglyTypedOneOfDiscriminatedPost(request: Shared.StronglyTypedOneOfDiscriminatedObject) async throws -> Response<Operations.StronglyTypedOneOfDiscriminatedPostResponse>
+
+    func stronglyTypedOneOfPost(request: Shared.StronglyTypedOneOfObject) async throws -> Response<Operations.StronglyTypedOneOfPostResponse>
+
+    func stronglyTypedOneOfPostWithNonStandardDiscriminatorName(request: Shared.StronglyTypedOneOfObjectWithNonStandardDiscriminatorName) async throws -> Response<Operations.StronglyTypedOneOfPostWithNonStandardDiscriminatorNameResponse>
+
+    func typedObjectNullableOneOfPost(request: Shared.TypedObjectNullableOneOf) async throws -> Response<Operations.TypedObjectNullableOneOfPostResponse>
+
+    func typedObjectOneOfPost(request: Shared.TypedObjectOneOf) async throws -> Response<Operations.TypedObjectOneOfPostResponse>
+
+    func unionBigIntStrDecimal(request: Operations.UnionBigIntStrDecimalRequestBody) async throws -> Response<Operations.UnionBigIntStrDecimalResponse>
+
+    func unionDateNull(request: Date) async throws -> Response<Operations.UnionDateNullResponse>
+
+    func unionDateTimeBigInt(request: Operations.UnionDateTimeBigIntRequestBody) async throws -> Response<Operations.UnionDateTimeBigIntResponse>
+
+    func unionDateTimeNull(request: Date) async throws -> Response<Operations.UnionDateTimeNullResponse>
+
+    func unionMap(request: Operations.UnionMapRequestBody) async throws -> Response<Operations.UnionMapResponse>
+
+    func weaklyTypedOneOfNullEnumPost(request: Shared.WeaklyTypedOneOfNullEnumObject) async throws -> Response<Operations.WeaklyTypedOneOfNullEnumPostResponse>
+
+    func weaklyTypedOneOfPost(request: Shared.WeaklyTypedOneOfObject) async throws -> Response<Operations.WeaklyTypedOneOfPostResponse>
 }
 
 // MARK: - ErrorsAPI
@@ -246,6 +335,41 @@ public enum ErrorsServers {
             }
         }
     }
+
+/// Describes the available servers that can be used when making 'unionErrorsGet' requests.
+///
+/// Use this type when making calls to ``ErrorsAPI/unionErrorsGet(request:server:)`` to customize the server which is used.
+    public enum UnionErrorsGet: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:35456`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:35456"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:35456"
+        ]
+
+        static func `default`() throws -> Server {
+            return try ErrorsServers.UnionErrorsGet.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
 }
 
 /// Endpoints for testing error responses.
@@ -257,6 +381,7 @@ public enum ErrorsServers {
 /// - ``connectionErrorGet(server:)``
 /// - ``statusGetError(request:)``
 /// - ``statusGetXSpeakeasyErrors(request:server:)``
+/// - ``unionErrorsGet(request:server:)``
 ///
 public protocol ErrorsAPI {
     func connectionErrorGet(server: ErrorsServers.ConnectionErrorGet?) async throws -> Response<Operations.ConnectionErrorGetResponse>
@@ -264,62 +389,153 @@ public protocol ErrorsAPI {
     func statusGetError(request: Operations.StatusGetErrorRequest) async throws -> Response<Operations.StatusGetErrorResponse>
 
     func statusGetXSpeakeasyErrors(request: Operations.StatusGetXSpeakeasyErrorsRequest, server: ErrorsServers.StatusGetXSpeakeasyErrors?) async throws -> Response<Operations.StatusGetXSpeakeasyErrorsResponse>
+
+    func unionErrorsGet(request: Operations.UnionErrorsGetRequest, server: ErrorsServers.UnionErrorsGet?) async throws -> Response<Operations.UnionErrorsGetResponse>
 }
 
-// MARK: - UnionsAPI
+// MARK: - CustomClientAPI
 
-/// Endpoints for testing union types.
+/// Endpoints for testing custom HTTP clients
 ///
 /// ## Topics
 ///
 /// ### API calls
 ///
-/// - ``flattenedTypedObjectPost(request:)``
-/// - ``mixedTypeOneOfPost(request:)``
-/// - ``nullableOneOfRefInObjectPost(request:)``
-/// - ``nullableOneOfSchemaPost(request:)``
-/// - ``nullableOneOfTypeInObjectPost(request:)``
-/// - ``nullableTypedObjectPost(request:)``
-/// - ``primitiveTypeOneOfPost(request:)``
-/// - ``stronglyTypedOneOfPost(request:)``
-/// - ``typedObjectNullableOneOfPost(request:)``
-/// - ``typedObjectOneOfPost(request:)``
-/// - ``unionBigIntDecimal(request:)``
-/// - ``unionDateNull(request:)``
-/// - ``unionDateTimeBigInt(request:)``
-/// - ``unionDateTimeNull(request:)``
-/// - ``weaklyTypedOneOfPost(request:)``
+/// - ``customClientPost(request:)``
 ///
-public protocol UnionsAPI {
-    func flattenedTypedObjectPost(request: Shared.FlattenedTypedObject1) async throws -> Response<Operations.FlattenedTypedObjectPostResponse>
+public protocol CustomClientAPI {
+    func customClientPost(request: Operations.CustomClientPostRequest) async throws -> Response<Operations.CustomClientPostResponse>
+}
 
-    func mixedTypeOneOfPost(request: Operations.MixedTypeOneOfPostRequestBody) async throws -> Response<Operations.MixedTypeOneOfPostResponse>
+// MARK: - ResponseBodiesAPI
+public enum ResponseBodiesServers {
 
-    func nullableOneOfRefInObjectPost(request: Shared.NullableOneOfRefInObject) async throws -> Response<Operations.NullableOneOfRefInObjectPostResponse>
+/// Describes the available servers that can be used when making 'responseBodyOptionalGet' requests.
+///
+/// Use this type when making calls to ``ResponseBodiesAPI/responseBodyOptionalGet(server:)`` to customize the server which is used.
+    public enum ResponseBodyOptionalGet: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:35456`
+        case server1
 
-    func nullableOneOfSchemaPost(request: Operations.NullableOneOfSchemaPostRequestBody) async throws -> Response<Operations.NullableOneOfSchemaPostResponse>
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:35456"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:35456"
+        ]
 
-    func nullableOneOfTypeInObjectPost(request: Shared.NullableOneOfTypeInObject) async throws -> Response<Operations.NullableOneOfTypeInObjectPostResponse>
+        static func `default`() throws -> Server {
+            return try ResponseBodiesServers.ResponseBodyOptionalGet.server1.server()
+        }
 
-    func nullableTypedObjectPost(request: Shared.TypedObject1) async throws -> Response<Operations.NullableTypedObjectPostResponse>
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
 
-    func primitiveTypeOneOfPost(request: Operations.PrimitiveTypeOneOfPostRequestBody) async throws -> Response<Operations.PrimitiveTypeOneOfPostResponse>
+/// Describes the available servers that can be used when making 'responseBodyReadOnly' requests.
+///
+/// Use this type when making calls to ``ResponseBodiesAPI/responseBodyReadOnly(server:)`` to customize the server which is used.
+    public enum ResponseBodyReadOnly: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:35456`
+        case server1
 
-    func stronglyTypedOneOfPost(request: Shared.StronglyTypedOneOfObject) async throws -> Response<Operations.StronglyTypedOneOfPostResponse>
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:35456"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:35456"
+        ]
 
-    func typedObjectNullableOneOfPost(request: Shared.TypedObjectNullableOneOf) async throws -> Response<Operations.TypedObjectNullableOneOfPostResponse>
+        static func `default`() throws -> Server {
+            return try ResponseBodiesServers.ResponseBodyReadOnly.server1.server()
+        }
 
-    func typedObjectOneOfPost(request: Shared.TypedObjectOneOf) async throws -> Response<Operations.TypedObjectOneOfPostResponse>
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
+}
 
-    func unionBigIntDecimal(request: Operations.UnionBigIntDecimalRequestBody) async throws -> Response<Operations.UnionBigIntDecimalResponse>
+/// Endpoints for testing response bodies.
+///
+/// ## Topics
+///
+/// ### API calls
+///
+/// - ``flattenedEnvelopePaginationResponse(request:)``
+/// - ``flattenedEnvelopeResponse()``
+/// - ``flattenedEnvelopeUnionResponse()``
+/// - ``flattenedUnionResponse()``
+/// - ``responseBodyAdditionalPropertiesAnyPost(request:)``
+/// - ``responseBodyAdditionalPropertiesComplexNumbersPost(request:)``
+/// - ``responseBodyAdditionalPropertiesDatePost(request:)``
+/// - ``responseBodyAdditionalPropertiesObjectPost(request:)``
+/// - ``responseBodyAdditionalPropertiesPost(request:)``
+/// - ``responseBodyBytesGet()``
+/// - ``responseBodyEmptyWithHeaders(request:)``
+/// - ``responseBodyMissing2xxOr3xxGet()``
+/// - ``responseBodyOptionalGet(server:)``
+/// - ``responseBodyReadOnly(server:)``
+/// - ``responseBodyStringGet()``
+/// - ``responseBodyXmlGet()``
+///
+public protocol ResponseBodiesAPI {
+    func flattenedEnvelopePaginationResponse(request: Operations.FlattenedEnvelopePaginationResponseRequest) async throws -> Response<Operations.FlattenedEnvelopePaginationResponseResponse>
 
-    func unionDateNull(request: Date) async throws -> Response<Operations.UnionDateNullResponse>
+    func flattenedEnvelopeResponse() async throws -> ResponseWithHeaders<Operations.FlattenedEnvelopeResponseResponse>
 
-    func unionDateTimeBigInt(request: Operations.UnionDateTimeBigIntRequestBody) async throws -> Response<Operations.UnionDateTimeBigIntResponse>
+    func flattenedEnvelopeUnionResponse() async throws -> ResponseWithHeaders<Operations.FlattenedEnvelopeUnionResponseResponse>
 
-    func unionDateTimeNull(request: Date) async throws -> Response<Operations.UnionDateTimeNullResponse>
+    func flattenedUnionResponse() async throws -> Response<Operations.FlattenedUnionResponseResponse>
 
-    func weaklyTypedOneOfPost(request: Shared.WeaklyTypedOneOfObject) async throws -> Response<Operations.WeaklyTypedOneOfPostResponse>
+    func responseBodyAdditionalPropertiesAnyPost(request: [String: AnyValue]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesAnyPostResponse>
+
+    func responseBodyAdditionalPropertiesComplexNumbersPost(request: [String: String]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse>
+
+    func responseBodyAdditionalPropertiesDatePost(request: [String: Date]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesDatePostResponse>
+
+    func responseBodyAdditionalPropertiesObjectPost(request: [String: Shared.SimpleObject]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesObjectPostResponse>
+
+    func responseBodyAdditionalPropertiesPost(request: [String: String]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesPostResponse>
+
+    func responseBodyBytesGet() async throws -> Response<Operations.ResponseBodyBytesGetResponse>
+
+    func responseBodyEmptyWithHeaders(request: Operations.ResponseBodyEmptyWithHeadersRequest) async throws -> ResponseWithHeaders<Operations.ResponseBodyEmptyWithHeadersResponse>
+
+    func responseBodyMissing2xxOr3xxGet() async throws -> Response<Operations.ResponseBodyMissing2xxOr3xxGetResponse>
+
+    func responseBodyOptionalGet(server: ResponseBodiesServers.ResponseBodyOptionalGet?) async throws -> Response<Operations.ResponseBodyOptionalGetResponse>
+
+    func responseBodyReadOnly(server: ResponseBodiesServers.ResponseBodyReadOnly?) async throws -> Response<Operations.ResponseBodyReadOnlyResponse>
+
+    func responseBodyStringGet() async throws -> Response<Operations.ResponseBodyStringGetResponse>
+
+    func responseBodyXmlGet() async throws -> Response<Operations.ResponseBodyXmlGetResponse>
 }
 
 // MARK: - FlatteningAPI
@@ -357,10 +573,16 @@ public protocol FlatteningAPI {
 /// ### API calls
 ///
 /// - ``globalPathParameterGet(request:)``
+/// - ``globalsHeaderGet(request:)``
+/// - ``globalsHiddenPost(request:)``
 /// - ``globalsQueryParameterGet(request:)``
 ///
 public protocol GlobalsAPI {
     func globalPathParameterGet(request: Operations.GlobalPathParameterGetRequest) async throws -> Response<Operations.GlobalPathParameterGetResponse>
+
+    func globalsHeaderGet(request: Operations.GlobalsHeaderGetRequest) async throws -> Response<Operations.GlobalsHeaderGetResponse>
+
+    func globalsHiddenPost(request: Operations.GlobalsHiddenPostRequest) async throws -> Response<Operations.GlobalsHiddenPostResponse>
 
     func globalsQueryParameterGet(request: Operations.GlobalsQueryParameterGetRequest) async throws -> Response<Operations.GlobalsQueryParameterGetResponse>
 }
@@ -387,6 +609,7 @@ public protocol GlobalsAPI {
 /// - ``headerParamsObject(request:)``
 /// - ``headerParamsPrimitive(request:)``
 /// - ``jsonQueryParamsObject(request:)``
+/// - ``jsonQueryParamsObjectSmaller(request:)``
 /// - ``mixedParametersCamelCase(request:)``
 /// - ``mixedParametersPrimitives(request:)``
 /// - ``mixedQueryParams(request:)``
@@ -426,6 +649,8 @@ public protocol ParametersAPI {
 
     func jsonQueryParamsObject(request: Operations.JsonQueryParamsObjectRequest) async throws -> Response<Operations.JsonQueryParamsObjectResponse>
 
+    func jsonQueryParamsObjectSmaller(request: Operations.JsonQueryParamsObjectSmallerRequest) async throws -> Response<Operations.JsonQueryParamsObjectSmallerResponse>
+
     func mixedParametersCamelCase(request: Operations.MixedParametersCamelCaseRequest) async throws -> Response<Operations.MixedParametersCamelCaseResponse>
 
     func mixedParametersPrimitives(request: Operations.MixedParametersPrimitivesRequest) async throws -> Response<Operations.MixedParametersPrimitivesResponse>
@@ -443,6 +668,32 @@ public protocol ParametersAPI {
     func simplePathParameterObjects(request: Operations.SimplePathParameterObjectsRequest) async throws -> Response<Operations.SimplePathParameterObjectsResponse>
 
     func simplePathParameterPrimitives(request: Operations.SimplePathParameterPrimitivesRequest) async throws -> Response<Operations.SimplePathParameterPrimitivesResponse>
+}
+
+// MARK: - HooksAPI
+
+/// Endpoints for testing hooks
+///
+/// ## Topics
+///
+/// ### API calls
+///
+/// - ``authorizationHeaderModification()``
+/// - ``testHooks(request:)``
+/// - ``testHooksAfterResponse()``
+/// - ``testHooksBeforeCreateRequestPaths(request:)``
+/// - ``testHooksError()``
+///
+public protocol HooksAPI {
+    func authorizationHeaderModification() async throws -> Response<Operations.AuthorizationHeaderModificationResponse>
+
+    func testHooks(request: Operations.TestHooksRequest) async throws -> Response<Operations.TestHooksResponse>
+
+    func testHooksAfterResponse() async throws -> Response<Operations.TestHooksAfterResponseResponse>
+
+    func testHooksBeforeCreateRequestPaths(request: Operations.TestHooksBeforeCreateRequestPathsRequest) async throws -> Response<Operations.TestHooksBeforeCreateRequestPathsResponse>
+
+    func testHooksError() async throws -> Response<Operations.TestHooksErrorResponse>
 }
 
 // MARK: - NestFirstAPI
@@ -497,18 +748,18 @@ public protocol NestedSecondAPI {
 ///
 /// ### API calls
 ///
-/// - ``apiKeyAuth(security:)``
+/// - ``apiKeyAuth()``
 /// - ``apiKeyAuthGlobal()``
 /// - ``basicAuth(request:security:)``
 /// - ``bearerAuth(security:)``
 /// - ``globalBearerAuth()``
 /// - ``noAuth()``
-/// - ``oauth2Auth(security:)``
-/// - ``oauth2Override(request:security:)``
+/// - ``oauth2Auth()``
+/// - ``oauth2Override()``
 /// - ``openIdConnectAuth(security:)``
 ///
 public protocol AuthAPI {
-    func apiKeyAuth(security: Operations.ApiKeyAuthSecurity) async throws -> Response<Operations.ApiKeyAuthResponse>
+    func apiKeyAuth() async throws -> Response<Operations.ApiKeyAuthResponse>
 
     func apiKeyAuthGlobal() async throws -> Response<Operations.ApiKeyAuthGlobalResponse>
 
@@ -520,11 +771,25 @@ public protocol AuthAPI {
 
     func noAuth() async throws -> Response<Operations.NoAuthResponse>
 
-    func oauth2Auth(security: Operations.Oauth2AuthSecurity) async throws -> Response<Operations.Oauth2AuthResponse>
+    func oauth2Auth() async throws -> Response<Operations.Oauth2AuthResponse>
 
-    func oauth2Override(request: Operations.Oauth2OverrideRequest, security: Operations.Oauth2OverrideSecurity) async throws -> Response<Operations.Oauth2OverrideResponse>
+    func oauth2Override() async throws -> Response<Operations.Oauth2OverrideResponse>
 
     func openIdConnectAuth(security: Operations.OpenIdConnectAuthSecurity) async throws -> Response<Operations.OpenIdConnectAuthResponse>
+}
+
+// MARK: - OpenEnumsAPI
+
+/// Endpoints for testing open/closed enums
+///
+/// ## Topics
+///
+/// ### API calls
+///
+/// - ``openEnumsPostUnrecognized(request:)``
+///
+public protocol OpenEnumsAPI {
+    func openEnumsPostUnrecognized(request: Shared.ThemeRequestOpaque) async throws -> Response<Operations.OpenEnumsPostUnrecognizedResponse>
 }
 
 // MARK: - RequestBodiesAPI
@@ -1342,6 +1607,7 @@ public enum RequestBodiesServers {
 ///
 /// ### API calls
 ///
+/// - ``nullEnumPost(request:)``
 /// - ``nullableObjectPost(request:)``
 /// - ``nullableRequiredEmptyObjectPost(request:)``
 /// - ``nullableRequiredPropertyPost(request:)``
@@ -1383,6 +1649,8 @@ public enum RequestBodiesServers {
 /// - ``requestBodyPostJsonDataTypesBigInt(request:)``
 /// - ``requestBodyPostJsonDataTypesBigIntStr(request:)``
 /// - ``requestBodyPostJsonDataTypesBoolean(request:)``
+/// - ``requestBodyPostJsonDataTypesComplexNumberArrays(request:)``
+/// - ``requestBodyPostJsonDataTypesComplexNumberMaps(request:)``
 /// - ``requestBodyPostJsonDataTypesDate(request:)``
 /// - ``requestBodyPostJsonDataTypesDateTime(request:)``
 /// - ``requestBodyPostJsonDataTypesDecimal(request:)``
@@ -1413,6 +1681,7 @@ public enum RequestBodiesServers {
 /// - ``requestBodyPutMultipartDeep(request:)``
 /// - ``requestBodyPutMultipartDifferentFileName(request:)``
 /// - ``requestBodyPutMultipartFile(request:)``
+/// - ``requestBodyPutMultipartOptionalRequestBody(request:)``
 /// - ``requestBodyPutMultipartSimple(request:)``
 /// - ``requestBodyPutString(request:)``
 /// - ``requestBodyPutStringWithParams(request:)``
@@ -1425,6 +1694,8 @@ public enum RequestBodiesServers {
 /// - ``requestBodyWriteOnlyUnion(request:server:)``
 ///
 public protocol RequestBodiesAPI {
+    func nullEnumPost(request: Shared.ObjectWithNullEnums) async throws -> Response<Operations.NullEnumPostResponse>
+
     func nullableObjectPost(request: Shared.NullableObject) async throws -> Response<Operations.NullableObjectPostResponse>
 
     func nullableRequiredEmptyObjectPost(request: Operations.NullableRequiredEmptyObjectPostRequestBody) async throws -> Response<Operations.NullableRequiredEmptyObjectPostResponse>
@@ -1507,6 +1778,10 @@ public protocol RequestBodiesAPI {
 
     func requestBodyPostJsonDataTypesBoolean(request: Bool) async throws -> Response<Operations.RequestBodyPostJsonDataTypesBooleanResponse>
 
+    func requestBodyPostJsonDataTypesComplexNumberArrays(request: Shared.ComplexNumberArrays) async throws -> Response<Operations.RequestBodyPostJsonDataTypesComplexNumberArraysResponse>
+
+    func requestBodyPostJsonDataTypesComplexNumberMaps(request: Shared.ComplexNumberMaps) async throws -> Response<Operations.RequestBodyPostJsonDataTypesComplexNumberMapsResponse>
+
     func requestBodyPostJsonDataTypesDate(request: Date) async throws -> Response<Operations.RequestBodyPostJsonDataTypesDateResponse>
 
     func requestBodyPostJsonDataTypesDateTime(request: Date) async throws -> Response<Operations.RequestBodyPostJsonDataTypesDateTimeResponse>
@@ -1567,6 +1842,8 @@ public protocol RequestBodiesAPI {
 
     func requestBodyPutMultipartFile(request: Operations.RequestBodyPutMultipartFileRequestBody) async throws -> Response<Operations.RequestBodyPutMultipartFileResponse>
 
+    func requestBodyPutMultipartOptionalRequestBody(request: Operations.RequestBodyPutMultipartOptionalRequestBodyRequestBody) async throws -> Response<Operations.RequestBodyPutMultipartOptionalRequestBodyResponse>
+
     func requestBodyPutMultipartSimple(request: Shared.SimpleObject) async throws -> Response<Operations.RequestBodyPutMultipartSimpleResponse>
 
     func requestBodyPutString(request: String) async throws -> Response<Operations.RequestBodyPutStringResponse>
@@ -1586,122 +1863,6 @@ public protocol RequestBodiesAPI {
     func requestBodyWriteOnlyOutput(request: Shared.WriteOnlyObject, server: RequestBodiesServers.RequestBodyWriteOnlyOutput?) async throws -> Response<Operations.RequestBodyWriteOnlyOutputResponse>
 
     func requestBodyWriteOnlyUnion(request: Shared.WeaklyTypedOneOfWriteOnlyObject, server: RequestBodiesServers.RequestBodyWriteOnlyUnion?) async throws -> Response<Operations.RequestBodyWriteOnlyUnionResponse>
-}
-
-// MARK: - ResponseBodiesAPI
-public enum ResponseBodiesServers {
-
-/// Describes the available servers that can be used when making 'responseBodyOptionalGet' requests.
-///
-/// Use this type when making calls to ``ResponseBodiesAPI/responseBodyOptionalGet(server:)`` to customize the server which is used.
-    public enum ResponseBodyOptionalGet: Servers, ServerConvertible {
-        /// Supported server value.
-        ///
-        /// Corresponds to `http://localhost:35456`
-        case server1
-
-        /// Defines the raw URL strings for each server option.
-        ///
-        /// > Note: You do not need to use these values directly.
-        ///
-        /// The available URL strings are defined as:
-        /// ```swift
-        /// public static let urlStrings = [
-        ///     "http://localhost:35456"
-        /// ]
-        /// ```
-        public static let urlStrings = [
-            "http://localhost:35456"
-        ]
-
-        static func `default`() throws -> Server {
-            return try ResponseBodiesServers.ResponseBodyOptionalGet.server1.server()
-        }
-
-        func server() throws -> Server {
-            switch self {
-            case .server1:
-                return try type(of: self).server(at: 0, substituting: nil)
-            }
-        }
-    }
-
-/// Describes the available servers that can be used when making 'responseBodyReadOnly' requests.
-///
-/// Use this type when making calls to ``ResponseBodiesAPI/responseBodyReadOnly(server:)`` to customize the server which is used.
-    public enum ResponseBodyReadOnly: Servers, ServerConvertible {
-        /// Supported server value.
-        ///
-        /// Corresponds to `http://localhost:35456`
-        case server1
-
-        /// Defines the raw URL strings for each server option.
-        ///
-        /// > Note: You do not need to use these values directly.
-        ///
-        /// The available URL strings are defined as:
-        /// ```swift
-        /// public static let urlStrings = [
-        ///     "http://localhost:35456"
-        /// ]
-        /// ```
-        public static let urlStrings = [
-            "http://localhost:35456"
-        ]
-
-        static func `default`() throws -> Server {
-            return try ResponseBodiesServers.ResponseBodyReadOnly.server1.server()
-        }
-
-        func server() throws -> Server {
-            switch self {
-            case .server1:
-                return try type(of: self).server(at: 0, substituting: nil)
-            }
-        }
-    }
-}
-
-/// Endpoints for testing response bodies.
-///
-/// ## Topics
-///
-/// ### API calls
-///
-/// - ``responseBodyAdditionalPropertiesComplexNumbersPost(request:)``
-/// - ``responseBodyAdditionalPropertiesDatePost(request:)``
-/// - ``responseBodyAdditionalPropertiesObjectPost(request:)``
-/// - ``responseBodyAdditionalPropertiesPost(request:)``
-/// - ``responseBodyBytesGet()``
-/// - ``responseBodyEmptyWithHeaders(request:)``
-/// - ``responseBodyOptionalGet(server:)``
-/// - ``responseBodyReadOnly(server:)``
-/// - ``responseBodyStringGet()``
-/// - ``responseBodyXmlGet()``
-/// - ``responseBodyZeroValueComplexTypePtrsPost(request:)``
-///
-public protocol ResponseBodiesAPI {
-    func responseBodyAdditionalPropertiesComplexNumbersPost(request: [String: String]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse>
-
-    func responseBodyAdditionalPropertiesDatePost(request: [String: Date]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesDatePostResponse>
-
-    func responseBodyAdditionalPropertiesObjectPost(request: [String: Shared.SimpleObject]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesObjectPostResponse>
-
-    func responseBodyAdditionalPropertiesPost(request: [String: String]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesPostResponse>
-
-    func responseBodyBytesGet() async throws -> Response<Operations.ResponseBodyBytesGetResponse>
-
-    func responseBodyEmptyWithHeaders(request: Operations.ResponseBodyEmptyWithHeadersRequest) async throws -> ResponseWithHeaders<Operations.ResponseBodyEmptyWithHeadersResponse>
-
-    func responseBodyOptionalGet(server: ResponseBodiesServers.ResponseBodyOptionalGet?) async throws -> Response<Operations.ResponseBodyOptionalGetResponse>
-
-    func responseBodyReadOnly(server: ResponseBodiesServers.ResponseBodyReadOnly?) async throws -> Response<Operations.ResponseBodyReadOnlyResponse>
-
-    func responseBodyStringGet() async throws -> Response<Operations.ResponseBodyStringGetResponse>
-
-    func responseBodyXmlGet() async throws -> Response<Operations.ResponseBodyXmlGetResponse>
-
-    func responseBodyZeroValueComplexTypePtrsPost(request: Shared.ObjWithZeroValueComplexTypePtrs) async throws -> Response<Operations.ResponseBodyZeroValueComplexTypePtrsPostResponse>
 }
 
 // MARK: - ServersAPI
@@ -1907,41 +2068,6 @@ public protocol TelemetryAPI {
 
 // MARK: - AuthNewAPI
 public enum AuthNewServers {
-
-/// Describes the available servers that can be used when making 'apiKeyAuthGlobalNew' requests.
-///
-/// Use this type when making calls to ``AuthNewAPI/apiKeyAuthGlobalNew(request:server:)`` to customize the server which is used.
-    public enum ApiKeyAuthGlobalNew: Servers, ServerConvertible {
-        /// Supported server value.
-        ///
-        /// Corresponds to `http://localhost:35456`
-        case server1
-
-        /// Defines the raw URL strings for each server option.
-        ///
-        /// > Note: You do not need to use these values directly.
-        ///
-        /// The available URL strings are defined as:
-        /// ```swift
-        /// public static let urlStrings = [
-        ///     "http://localhost:35456"
-        /// ]
-        /// ```
-        public static let urlStrings = [
-            "http://localhost:35456"
-        ]
-
-        static func `default`() throws -> Server {
-            return try AuthNewServers.ApiKeyAuthGlobalNew.server1.server()
-        }
-
-        func server() throws -> Server {
-            switch self {
-            case .server1:
-                return try type(of: self).server(at: 0, substituting: nil)
-            }
-        }
-    }
 
 /// Describes the available servers that can be used when making 'authGlobal' requests.
 ///
@@ -2225,7 +2351,7 @@ public enum AuthNewServers {
 
 /// Describes the available servers that can be used when making 'oauth2AuthNew' requests.
 ///
-/// Use this type when making calls to ``AuthNewAPI/oauth2AuthNew(request:security:server:)`` to customize the server which is used.
+/// Use this type when making calls to ``AuthNewAPI/oauth2AuthNew(request:server:)`` to customize the server which is used.
     public enum Oauth2AuthNew: Servers, ServerConvertible {
         /// Supported server value.
         ///
@@ -2300,7 +2426,6 @@ public enum AuthNewServers {
 ///
 /// ### API calls
 ///
-/// - ``apiKeyAuthGlobalNew(request:server:)``
 /// - ``authGlobal(request:server:)``
 /// - ``basicAuthNew(request:security:server:)``
 /// - ``multipleMixedOptionsAuth(request:security:server:)``
@@ -2309,12 +2434,10 @@ public enum AuthNewServers {
 /// - ``multipleOptionsWithSimpleSchemesAuth(request:security:server:)``
 /// - ``multipleSimpleOptionsAuth(request:security:server:)``
 /// - ``multipleSimpleSchemeAuth(request:security:server:)``
-/// - ``oauth2AuthNew(request:security:server:)``
+/// - ``oauth2AuthNew(request:server:)``
 /// - ``openIdConnectAuthNew(request:security:server:)``
 ///
 public protocol AuthNewAPI {
-    func apiKeyAuthGlobalNew(request: Shared.AuthServiceRequestBody, server: AuthNewServers.ApiKeyAuthGlobalNew?) async throws -> Response<Operations.ApiKeyAuthGlobalNewResponse>
-
     func authGlobal(request: Shared.AuthServiceRequestBody, server: AuthNewServers.AuthGlobal?) async throws -> Response<Operations.AuthGlobalResponse>
 
     func basicAuthNew(request: Shared.AuthServiceRequestBody, security: Operations.BasicAuthNewSecurity, server: AuthNewServers.BasicAuthNew?) async throws -> Response<Operations.BasicAuthNewResponse>
@@ -2331,9 +2454,35 @@ public protocol AuthNewAPI {
 
     func multipleSimpleSchemeAuth(request: Shared.AuthServiceRequestBody, security: Operations.MultipleSimpleSchemeAuthSecurity, server: AuthNewServers.MultipleSimpleSchemeAuth?) async throws -> Response<Operations.MultipleSimpleSchemeAuthResponse>
 
-    func oauth2AuthNew(request: Shared.AuthServiceRequestBody, security: Operations.Oauth2AuthNewSecurity, server: AuthNewServers.Oauth2AuthNew?) async throws -> Response<Operations.Oauth2AuthNewResponse>
+    func oauth2AuthNew(request: Shared.AuthServiceRequestBody, server: AuthNewServers.Oauth2AuthNew?) async throws -> Response<Operations.Oauth2AuthNewResponse>
 
     func openIdConnectAuthNew(request: Shared.AuthServiceRequestBody, security: Operations.OpenIdConnectAuthNewSecurity, server: AuthNewServers.OpenIdConnectAuthNew?) async throws -> Response<Operations.OpenIdConnectAuthNewResponse>
+}
+
+// MARK: - ResourceAPI
+/// ## Topics
+///
+/// ### API calls
+///
+/// - ``createFile(request:)``
+/// - ``createResource(request:)``
+/// - ``deleteResource(request:)``
+/// - ``getArrayDataSource(request:)``
+/// - ``getResource(request:)``
+/// - ``updateResource(request:)``
+///
+public protocol ResourceAPI {
+    func createFile(request: Operations.CreateFileRequestBody) async throws -> Response<Operations.CreateFileResponse>
+
+    func createResource(request: Shared.ExampleResource) async throws -> Response<Operations.CreateResourceResponse>
+
+    func deleteResource(request: Operations.DeleteResourceRequest) async throws -> Response<Operations.DeleteResourceResponse>
+
+    func getArrayDataSource(request: Operations.GetArrayDataSourceRequest) async throws -> Response<Operations.GetArrayDataSourceResponse>
+
+    func getResource(request: Operations.GetResourceRequest) async throws -> Response<Operations.GetResourceResponse>
+
+    func updateResource(request: Operations.UpdateResourceRequest) async throws -> Response<Operations.UpdateResourceResponse>
 }
 
 // MARK: - DocumentationAPI
@@ -2353,29 +2502,6 @@ public protocol DocumentationAPI {
     /// - Returns: A ``Operations/GetDocumentationPerLanguageResponse`` object describing the result of the API operation
     /// - Throws: An error of type ``OpenAPIError``
     func getDocumentationPerLanguage(request: Operations.GetDocumentationPerLanguageRequest) async throws -> Response<Operations.GetDocumentationPerLanguageResponse>
-}
-
-// MARK: - ResourceAPI
-/// ## Topics
-///
-/// ### API calls
-///
-/// - ``createFile(request:)``
-/// - ``createResource(request:)``
-/// - ``deleteResource(request:)``
-/// - ``getResource(request:)``
-/// - ``updateResource(request:)``
-///
-public protocol ResourceAPI {
-    func createFile(request: Operations.CreateFileRequestBody) async throws -> Response<Operations.CreateFileResponse>
-
-    func createResource(request: Shared.ExampleResource) async throws -> Response<Operations.CreateResourceResponse>
-
-    func deleteResource(request: Operations.DeleteResourceRequest) async throws -> Response<Operations.DeleteResourceResponse>
-
-    func getResource(request: Operations.GetResourceRequest) async throws -> Response<Operations.GetResourceResponse>
-
-    func updateResource(request: Operations.UpdateResourceRequest) async throws -> Response<Operations.UpdateResourceResponse>
 }
 
 // MARK: - FirstAPI
@@ -2428,6 +2554,41 @@ public enum PaginationServers {
 
         static func `default`() throws -> Server {
             return try PaginationServers.PaginationCursorBody.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
+
+/// Describes the available servers that can be used when making 'paginationCursorNonNumeric' requests.
+///
+/// Use this type when making calls to ``PaginationAPI/paginationCursorNonNumeric(request:server:)`` to customize the server which is used.
+    public enum PaginationCursorNonNumeric: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:35456`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:35456"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:35456"
+        ]
+
+        static func `default`() throws -> Server {
+            return try PaginationServers.PaginationCursorNonNumeric.server1.server()
         }
 
         func server() throws -> Server {
@@ -2612,6 +2773,76 @@ public enum PaginationServers {
             }
         }
     }
+
+/// Describes the available servers that can be used when making 'paginationURLParams' requests.
+///
+/// Use this type when making calls to ``PaginationAPI/paginationURLParams(request:server:)`` to customize the server which is used.
+    public enum PaginationURLParams: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:35456`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:35456"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:35456"
+        ]
+
+        static func `default`() throws -> Server {
+            return try PaginationServers.PaginationURLParams.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
+
+/// Describes the available servers that can be used when making 'paginationWithRetries' requests.
+///
+/// Use this type when making calls to ``PaginationAPI/paginationWithRetries(request:server:)`` to customize the server which is used.
+    public enum PaginationWithRetries: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:35456`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:35456"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:35456"
+        ]
+
+        static func `default`() throws -> Server {
+            return try PaginationServers.PaginationWithRetries.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
 }
 
 /// Endpoints for testing the pagination extension
@@ -2621,14 +2852,19 @@ public enum PaginationServers {
 /// ### API calls
 ///
 /// - ``paginationCursorBody(request:server:)``
+/// - ``paginationCursorNonNumeric(request:server:)``
 /// - ``paginationCursorParams(request:server:)``
 /// - ``paginationLimitOffsetOffsetBody(request:server:)``
 /// - ``paginationLimitOffsetOffsetParams(request:server:)``
 /// - ``paginationLimitOffsetPageBody(request:server:)``
 /// - ``paginationLimitOffsetPageParams(request:server:)``
+/// - ``paginationURLParams(request:server:)``
+/// - ``paginationWithRetries(request:server:)``
 ///
 public protocol PaginationAPI {
     func paginationCursorBody(request: Operations.PaginationCursorBodyRequestBody, server: PaginationServers.PaginationCursorBody?) async throws -> Response<Operations.PaginationCursorBodyResponse>
+
+    func paginationCursorNonNumeric(request: Operations.PaginationCursorNonNumericRequest, server: PaginationServers.PaginationCursorNonNumeric?) async throws -> Response<Operations.PaginationCursorNonNumericResponse>
 
     func paginationCursorParams(request: Operations.PaginationCursorParamsRequest, server: PaginationServers.PaginationCursorParams?) async throws -> Response<Operations.PaginationCursorParamsResponse>
 
@@ -2639,10 +2875,84 @@ public protocol PaginationAPI {
     func paginationLimitOffsetPageBody(request: Shared.LimitOffsetConfig, server: PaginationServers.PaginationLimitOffsetPageBody?) async throws -> Response<Operations.PaginationLimitOffsetPageBodyResponse>
 
     func paginationLimitOffsetPageParams(request: Operations.PaginationLimitOffsetPageParamsRequest, server: PaginationServers.PaginationLimitOffsetPageParams?) async throws -> Response<Operations.PaginationLimitOffsetPageParamsResponse>
+
+    func paginationURLParams(request: Operations.PaginationURLParamsRequest, server: PaginationServers.PaginationURLParams?) async throws -> Response<Operations.PaginationURLParamsResponse>
+
+    func paginationWithRetries(request: Operations.PaginationWithRetriesRequest, server: PaginationServers.PaginationWithRetries?) async throws -> Response<Operations.PaginationWithRetriesResponse>
 }
 
 // MARK: - RetriesAPI
 public enum RetriesServers {
+
+/// Describes the available servers that can be used when making 'retriesAfter' requests.
+///
+/// Use this type when making calls to ``RetriesAPI/retriesAfter(request:server:)`` to customize the server which is used.
+    public enum RetriesAfter: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:35456`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:35456"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:35456"
+        ]
+
+        static func `default`() throws -> Server {
+            return try RetriesServers.RetriesAfter.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
+
+/// Describes the available servers that can be used when making 'retriesConnectErrorGet' requests.
+///
+/// Use this type when making calls to ``RetriesAPI/retriesConnectErrorGet(server:)`` to customize the server which is used.
+    public enum RetriesConnectErrorGet: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:33333`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:33333"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:33333"
+        ]
+
+        static func `default`() throws -> Server {
+            return try RetriesServers.RetriesConnectErrorGet.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
 
 /// Describes the available servers that can be used when making 'retriesGet' requests.
 ///
@@ -2678,6 +2988,41 @@ public enum RetriesServers {
             }
         }
     }
+
+/// Describes the available servers that can be used when making 'retriesPost' requests.
+///
+/// Use this type when making calls to ``RetriesAPI/retriesPost(request:server:)`` to customize the server which is used.
+    public enum RetriesPost: Servers, ServerConvertible {
+        /// Supported server value.
+        ///
+        /// Corresponds to `http://localhost:35456`
+        case server1
+
+        /// Defines the raw URL strings for each server option.
+        ///
+        /// > Note: You do not need to use these values directly.
+        ///
+        /// The available URL strings are defined as:
+        /// ```swift
+        /// public static let urlStrings = [
+        ///     "http://localhost:35456"
+        /// ]
+        /// ```
+        public static let urlStrings = [
+            "http://localhost:35456"
+        ]
+
+        static func `default`() throws -> Server {
+            return try RetriesServers.RetriesPost.server1.server()
+        }
+
+        func server() throws -> Server {
+            switch self {
+            case .server1:
+                return try type(of: self).server(at: 0, substituting: nil)
+            }
+        }
+    }
 }
 
 /// Endpoints for testing retries.
@@ -2686,8 +3031,22 @@ public enum RetriesServers {
 ///
 /// ### API calls
 ///
+/// - ``retriesAfter(request:server:)``
+/// - ``retriesConnectErrorGet(server:)``
 /// - ``retriesGet(request:server:)``
+/// - ``retriesPost(request:server:)``
 ///
 public protocol RetriesAPI {
+    func retriesAfter(request: Operations.RetriesAfterRequest, server: RetriesServers.RetriesAfter?) async throws -> Response<Operations.RetriesAfterResponse>
+
+    /// A request to a non-valid port to test connection errors
+    /// 
+    /// - Parameter server: An optional server override to use for this operation
+    /// - Returns: A ``Operations/RetriesConnectErrorGetResponse`` object describing the result of the API operation
+    /// - Throws: An error of type ``OpenAPIError``
+    func retriesConnectErrorGet(server: RetriesServers.RetriesConnectErrorGet?) async throws -> Response<Operations.RetriesConnectErrorGetResponse>
+
     func retriesGet(request: Operations.RetriesGetRequest, server: RetriesServers.RetriesGet?) async throws -> Response<Operations.RetriesGetResponse>
+
+    func retriesPost(request: Operations.RetriesPostRequest, server: RetriesServers.RetriesPost?) async throws -> Response<Operations.RetriesPostResponse>
 }

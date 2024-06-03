@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ...models.shared import readwriteobject_output as shared_readwriteobject_output
-from ...models.shared import simpleobject as shared_simpleobject
-from typing import Optional, Union
+from ...models.shared import weaklytypedoneofreadwriteobject_output as shared_weaklytypedoneofreadwriteobject_output
+from typing import Optional
 
 REQUEST_BODY_READ_WRITE_ONLY_UNION_SERVERS = [
 	"http://localhost:35456",
@@ -18,9 +17,9 @@ class RequestBodyReadWriteOnlyUnionResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
-    weakly_typed_one_of_read_write_object: Optional[Union[shared_simpleobject.SimpleObject, shared_readwriteobject_output.ReadWriteObjectOutput]] = dataclasses.field(default=None)
+    weakly_typed_one_of_read_write_object: Optional[shared_weaklytypedoneofreadwriteobject_output.WeaklyTypedOneOfReadWriteObjectOutput] = dataclasses.field(default=None)
     r"""OK"""
     
 

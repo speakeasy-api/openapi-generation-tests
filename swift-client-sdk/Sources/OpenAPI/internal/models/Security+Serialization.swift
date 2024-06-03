@@ -8,8 +8,6 @@ extension Shared.Security: SecurityParameterProviding {
         switch self {
         case .apiKeyAuth(let value):
             return [.apiKey(name: "Authorization", value: value)]
-        case .apiKeyAuthNew(let value):
-            return [.apiKey(name: "x-api-key", value: value)]
         case .oauth2(let value):
             return [.oauth2(name: "Authorization", value: value)]
         }

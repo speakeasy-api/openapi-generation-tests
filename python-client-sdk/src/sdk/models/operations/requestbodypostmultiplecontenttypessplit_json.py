@@ -22,8 +22,9 @@ class RequestBodyPostMultipleContentTypesSplitJSONRequestBody:
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesSplitJSONRes:
     r"""OK"""
+    UNSET='__SPEAKEASY_UNSET__'
     form: Optional[Dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form'), 'exclude': lambda f: f is None }})
-    json: Optional[Dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
+    json: Optional[Dict[str, Any]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is RequestBodyPostMultipleContentTypesSplitJSONRes.UNSET }})
     
 
 
@@ -34,7 +35,7 @@ class RequestBodyPostMultipleContentTypesSplitJSONResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
     res: Optional[RequestBodyPostMultipleContentTypesSplitJSONRes] = dataclasses.field(default=None)
     r"""OK"""

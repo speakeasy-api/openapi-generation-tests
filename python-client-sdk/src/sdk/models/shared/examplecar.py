@@ -9,6 +9,7 @@ from enum import Enum
 from sdk import utils
 from typing import Optional
 
+
 class ExampleCarType(str, Enum):
     CAR = 'car'
 

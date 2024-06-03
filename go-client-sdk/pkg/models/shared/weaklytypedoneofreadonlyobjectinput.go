@@ -4,6 +4,7 @@ package shared
 
 import (
 	"errors"
+	"fmt"
 	"openapi/v2/pkg/utils"
 )
 
@@ -41,21 +42,21 @@ func CreateWeaklyTypedOneOfReadOnlyObjectInputReadOnlyObjectInput(readOnlyObject
 
 func (u *WeaklyTypedOneOfReadOnlyObjectInput) UnmarshalJSON(data []byte) error {
 
-	readOnlyObjectInput := ReadOnlyObjectInput{}
+	var readOnlyObjectInput ReadOnlyObjectInput = ReadOnlyObjectInput{}
 	if err := utils.UnmarshalJSON(data, &readOnlyObjectInput, "", true, true); err == nil {
 		u.ReadOnlyObjectInput = &readOnlyObjectInput
 		u.Type = WeaklyTypedOneOfReadOnlyObjectInputTypeReadOnlyObjectInput
 		return nil
 	}
 
-	simpleObject := SimpleObject{}
+	var simpleObject SimpleObject = SimpleObject{}
 	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
 		u.SimpleObject = &simpleObject
 		u.Type = WeaklyTypedOneOfReadOnlyObjectInputTypeSimpleObject
 		return nil
 	}
 
-	return errors.New("could not unmarshal into supported union types")
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for WeaklyTypedOneOfReadOnlyObjectInput", string(data))
 }
 
 func (u WeaklyTypedOneOfReadOnlyObjectInput) MarshalJSON() ([]byte, error) {
@@ -67,5 +68,5 @@ func (u WeaklyTypedOneOfReadOnlyObjectInput) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.ReadOnlyObjectInput, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type: all fields are null")
+	return nil, errors.New("could not marshal union type WeaklyTypedOneOfReadOnlyObjectInput: all fields are null")
 }
