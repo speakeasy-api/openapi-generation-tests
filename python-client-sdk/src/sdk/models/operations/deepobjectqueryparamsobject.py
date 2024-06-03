@@ -30,23 +30,25 @@ class DeepObjectQueryParamsObjectRequest:
 class DeepObjectQueryParamsObjectArgs:
     obj_arr_param_arr: List[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objArrParam[arr]') }})
     obj_param_any: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[any]') }})
-    obj_param_bool: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[bool]') }})
     obj_param_bool_opt: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[boolOpt]') }})
-    obj_param_date: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[date]') }})
+    obj_param_bool: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[bool]') }})
     obj_param_date_time: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[dateTime]') }})
+    obj_param_date: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[date]') }})
     obj_param_enum: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[enum]') }})
     obj_param_float32: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[float32]') }})
-    obj_param_int: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[int]') }})
-    obj_param_int32: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[int32]') }})
     obj_param_int32_enum: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[int32Enum]') }})
+    obj_param_int32: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[int32]') }})
     obj_param_int_enum: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[intEnum]') }})
+    obj_param_int: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[int]') }})
     obj_param_num: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[num]') }})
-    obj_param_str: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[str]') }})
     obj_param_str_opt: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[strOpt]') }})
-    obj_param_bigint: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[bigint]'), 'exclude': lambda f: f is None }})
+    obj_param_str: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[str]') }})
     obj_param_bigint_str: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[bigintStr]'), 'exclude': lambda f: f is None }})
-    obj_param_decimal: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[decimal]'), 'exclude': lambda f: f is None }})
+    obj_param_bigint: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[bigint]'), 'exclude': lambda f: f is None }})
     obj_param_decimal_str: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[decimalStr]'), 'exclude': lambda f: f is None }})
+    obj_param_decimal: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[decimal]'), 'exclude': lambda f: f is None }})
+    obj_param_float64_str: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[float64Str]'), 'exclude': lambda f: f is None }})
+    obj_param_int64_str: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[int64Str]'), 'exclude': lambda f: f is None }})
     
 
 
@@ -67,7 +69,7 @@ class DeepObjectQueryParamsObjectResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
     res: Optional[DeepObjectQueryParamsObjectRes] = dataclasses.field(default=None)
     r"""OK"""

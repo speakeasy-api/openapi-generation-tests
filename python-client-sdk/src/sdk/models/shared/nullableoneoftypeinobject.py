@@ -6,12 +6,14 @@ from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional, Union
 
+NullableOneOfTypeInObjectNullableOneOfTwo = Union[bool, int]
+
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class NullableOneOfTypeInObject:
     nullable_one_of_one: Optional[bool] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfOne') }})
-    nullable_one_of_two: Optional[Union[bool, int]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfTwo') }})
+    nullable_one_of_two: Optional[NullableOneOfTypeInObjectNullableOneOfTwo] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfTwo') }})
     one_of_one: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('OneOfOne') }})
     
 
