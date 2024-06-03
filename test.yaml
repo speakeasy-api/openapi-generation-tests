@@ -5579,8 +5579,6 @@ paths:
                       - allOf:
                         - x-speakeasy-name-override: deepOverriddenAllOf
                         - type: object
-
-
   /anything/globalNameOverride:
     post:
       x-speakeasy-usage-example: true
@@ -6508,6 +6506,42 @@ paths:
                         format: bigint
                       - type: number
                         format: decimal
+                required:
+                  - json
+  /anything/unionMap:
+    post:
+      operationId: unionMap
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [input]
+              properties:
+                input:
+                  type: object
+                  additionalProperties:
+                    $ref: "components.yaml#/components/schemas/oneOfPrimitives"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    type: object
+                    required: [input]
+                    properties:
+                      input:
+                        type: object
+                        additionalProperties:
+                          $ref: "components.yaml#/components/schemas/oneOfPrimitives"
                 required:
                   - json
   /status/{statusCode}:

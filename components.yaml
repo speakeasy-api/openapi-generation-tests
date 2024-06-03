@@ -115,6 +115,10 @@ components:
       oneOf:
         - $ref: "#/components/schemas/simpleObject"
         - $ref: "#/components/schemas/readWriteObject"
+    oneOfPrimitives:
+      oneOf:
+      - type: boolean
+      - type: string
     objectWithNullEnums:
       type: object
       required: [nullEnum]
