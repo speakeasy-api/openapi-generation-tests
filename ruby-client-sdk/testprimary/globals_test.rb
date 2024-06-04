@@ -56,5 +56,29 @@ module OpenApiSDK
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
       assert_equal(res.res.url, 'http://localhost:35123/anything/globals/pathParameter/2')
     end
+
+    def test_global_header_get_uses_global
+      record_test('globals-header-get-uses-global')
+
+      @sdk = OpenApiSDK::SDK.new(global_header_param: true)
+      refute_nil @sdk
+
+      res = @sdk.globals.globals_header_get
+      refute_nil res
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+      assert_equal(res.res.headers['Globalheaderparam'], 'true')
+    end
+
+    def test_global_header_get_uses_local
+      record_test('globals-header-get-uses-local')
+
+      @sdk = OpenApiSDK::SDK.new(global_header_param: true)
+      refute_nil @sdk
+
+      res = @sdk.globals.globals_header_get(false)
+      refute_nil res
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+      assert_equal(res.res.headers['Globalheaderparam'], 'false')
+    end
   end
 end

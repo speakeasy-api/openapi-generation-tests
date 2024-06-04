@@ -9,15 +9,10 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * EmptyResponseObjectWithCommentGetResponseBody - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** EmptyResponseObjectWithCommentGetResponseBody - OK */
 class EmptyResponseObjectWithCommentGetResponseBody
 {
-	public function __construct()
-	{
-	}
+    public function __construct()
+    {
+    }
 }

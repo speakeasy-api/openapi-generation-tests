@@ -25,6 +25,7 @@ class PaginationLimitOffsetPageParamsRes:
     r"""OK"""
     num_pages: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('numPages') }})
     result_array: List[int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('resultArray') }})
+    next: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next'), 'exclude': lambda f: f is None }})
     
 
 
@@ -36,7 +37,7 @@ class PaginationLimitOffsetPageParamsResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
     res: Optional[PaginationLimitOffsetPageParamsRes] = dataclasses.field(default=None)
     r"""OK"""

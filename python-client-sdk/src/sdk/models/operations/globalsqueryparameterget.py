@@ -9,6 +9,13 @@ from typing import Optional
 
 
 @dataclasses.dataclass
+class GlobalsQueryParameterGetGlobals:
+    global_query_param: str = dataclasses.field(metadata={'query_param': { 'field_name': 'globalQueryParam', 'style': 'form', 'explode': True }})
+    
+
+
+
+@dataclasses.dataclass
 class GlobalsQueryParameterGetRequest:
     global_query_param: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'globalQueryParam', 'style': 'form', 'explode': True }})
     
@@ -17,7 +24,7 @@ class GlobalsQueryParameterGetRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class Args:
+class GlobalsQueryParameterGetArgs:
     global_query_param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('globalQueryParam') }})
     
 
@@ -27,7 +34,7 @@ class Args:
 @dataclasses.dataclass
 class GlobalsQueryParameterGetRes:
     r"""OK"""
-    args: Args = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
+    args: GlobalsQueryParameterGetArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     
 
 
@@ -38,7 +45,7 @@ class GlobalsQueryParameterGetResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
     res: Optional[GlobalsQueryParameterGetRes] = dataclasses.field(default=None)
     r"""OK"""
