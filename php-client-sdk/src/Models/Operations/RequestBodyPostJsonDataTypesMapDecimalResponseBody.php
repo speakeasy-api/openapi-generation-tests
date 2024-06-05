@@ -9,30 +9,25 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * RequestBodyPostJsonDataTypesMapDecimalResponseBody - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** RequestBodyPostJsonDataTypesMapDecimalResponseBody - OK */
 class RequestBodyPostJsonDataTypesMapDecimalResponseBody
 {
-	#[\JMS\Serializer\Annotation\SerializedName('data')]
+    #[\JMS\Serializer\Annotation\SerializedName('data')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $data;
-    
+
     /**
      * $json
-     * 
+     *
      * @var array<string, float> $json
      */
-	#[\JMS\Serializer\Annotation\SerializedName('json')]
+    #[\JMS\Serializer\Annotation\SerializedName('json')]
     #[\JMS\Serializer\Annotation\Type('array<string, float>')]
     public array $json;
-    
-	public function __construct()
-	{
-		$this->data = "";
-		$this->json = [];
-	}
+
+    public function __construct()
+    {
+        $this->data = '';
+        $this->json = [];
+    }
 }
