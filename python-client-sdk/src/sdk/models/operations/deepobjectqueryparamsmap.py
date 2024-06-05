@@ -15,12 +15,14 @@ class DeepObjectQueryParamsMapRequest:
     
 
 
+DeepObjectQueryParamsMapArgs = Union[str, List[str]]
+
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class DeepObjectQueryParamsMapRes:
     r"""OK"""
-    args: Dict[str, Union[str, List[str]]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
+    args: Dict[str, DeepObjectQueryParamsMapArgs] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
 
@@ -32,7 +34,7 @@ class DeepObjectQueryParamsMapResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
     res: Optional[DeepObjectQueryParamsMapRes] = dataclasses.field(default=None)
     r"""OK"""

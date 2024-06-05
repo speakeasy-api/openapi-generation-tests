@@ -16,26 +16,27 @@ Gets documentation for some language, I guess.
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_header_param: "<value>",
+      global_hidden_path_param: "<value>",
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::GetDocumentationPerLanguageRequest.new(
-  query_params=Operations::GetDocumentationPerLanguageRequest.new(
-    language="string",
-  ),
-)
     
-res = s.documentation.get_documentation_per_language(req)
+res = s.documentation.get_documentation_per_language(language="<value>")
 
-if res.status == 200
+if res.status_code == 200
   # handle response
 end
 
@@ -45,10 +46,10 @@ end
 
 | Parameter                                 | Type                                      | Required                                  | Description                               |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| `language`                                | *String*                                  | :heavy_check_mark:                        | The language parameter for this endpoint. |
+| `language`                                | *::String*                                | :heavy_check_mark:                        | The language parameter for this endpoint. |
 
 
 ### Response
 
-**[T.nilable(Operations::GetDocumentationPerLanguageResponse)](../../models/operations/getdocumentationperlanguageresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::GetDocumentationPerLanguageResponse)](../../models/operations/getdocumentationperlanguageresponse.md)**
 

@@ -4,7 +4,7 @@ package shared
 
 type ArrObjValue struct {
 	JSON     []SimpleObject `json:"json,omitempty"`
-	Required interface{}    `json:"required,omitempty"`
+	Required any            `json:"required,omitempty"`
 }
 
 func (o *ArrObjValue) GetJSON() []SimpleObject {
@@ -14,7 +14,7 @@ func (o *ArrObjValue) GetJSON() []SimpleObject {
 	return o.JSON
 }
 
-func (o *ArrObjValue) GetRequired() interface{} {
+func (o *ArrObjValue) GetRequired() any {
 	if o == nil {
 		return nil
 	}
