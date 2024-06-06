@@ -5,12 +5,12 @@ import Foundation
 extension Operations {
     /// OK
     public struct GlobalsQueryParameterGetRes {
-        public let args: Operations.Args
+        public let args: Operations.GlobalsQueryParameterGetArgs
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(args: Operations.Args) {
+        public init(args: Operations.GlobalsQueryParameterGetArgs) {
             self.args = args
         }
     }

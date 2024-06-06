@@ -40,6 +40,10 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -50,6 +54,7 @@ res = s.generation.anchor_types_get()
 if res.type_from_anchor is not None:
     # handle response
     pass
+
 ```
 
 
@@ -60,7 +65,7 @@ if res.type_from_anchor is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## array_circular_reference_get
 
@@ -74,6 +79,10 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -84,6 +93,7 @@ res = s.generation.array_circular_reference_get()
 if res.array_circular_reference_object is not None:
     # handle response
     pass
+
 ```
 
 
@@ -94,7 +104,7 @@ if res.array_circular_reference_object is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## circular_reference_get
 
@@ -108,6 +118,10 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -118,6 +132,7 @@ res = s.generation.circular_reference_get()
 if res.valid_circular_reference_object is not None:
     # handle response
     pass
+
 ```
 
 
@@ -128,7 +143,7 @@ if res.valid_circular_reference_object is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## date_param_with_default
 
@@ -137,22 +152,27 @@ if res.valid_circular_reference_object is not None:
 ```python
 import dateutil.parser
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
 
-res = s.generation.date_param_with_default(date_input=dateutil.parser.parse('2021-11-30').date())
+res = s.generation.date_param_with_default(date_input=dateutil.parser.parse('2023-10-13').date())
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -169,7 +189,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## date_time_param_with_default
 
@@ -178,22 +198,27 @@ if res.status_code == 200:
 ```python
 import dateutil.parser
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
 
-res = s.generation.date_time_param_with_default(date_time_input=dateutil.parser.isoparse('2023-02-09T21:53:21.077Z'))
+res = s.generation.date_time_param_with_default(date_time_input=dateutil.parser.isoparse('2023-10-13T12:42:42.999+00:00'))
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -210,7 +235,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## decimal_param_with_default
 
@@ -219,22 +244,27 @@ if res.status_code == 200:
 ```python
 import sdk
 from decimal import Decimal
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
 
-res = s.generation.decimal_param_with_default(decimal_input=Decimal('4060.06'))
+res = s.generation.decimal_param_with_default(decimal_input=Decimal('903275809834567300000'))
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -251,7 +281,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## deprecated_field_in_schema_post
 
@@ -265,17 +295,21 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-req = shared.DeprecatedFieldInObject()
 
-res = s.generation.deprecated_field_in_schema_post(req)
+res = s.generation.deprecated_field_in_schema_post(request=shared.DeprecatedFieldInObject())
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -292,7 +326,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## deprecated_object_in_schema_get
 
@@ -306,6 +340,10 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -316,6 +354,7 @@ res = s.generation.deprecated_object_in_schema_get()
 if res.object is not None:
     # handle response
     pass
+
 ```
 
 
@@ -326,7 +365,7 @@ if res.object is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## ~~deprecated_operation_no_comments_get~~
 
@@ -336,22 +375,27 @@ if res.object is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
 
-res = s.generation.deprecated_operation_no_comments_get(deprecated_parameter='string')
+res = s.generation.deprecated_operation_no_comments_get(deprecated_parameter='<value>')
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -368,7 +412,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## ~~deprecated_operation_with_comments_get~~
 
@@ -380,22 +424,27 @@ This is an endpoint setup to test deprecation with comments
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
 
-res = s.generation.deprecated_operation_with_comments_get(deprecated_parameter='string', new_parameter='string')
+res = s.generation.deprecated_operation_with_comments_get(deprecated_parameter='<value>', new_parameter='<value>')
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -413,7 +462,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## empty_object_get
 
@@ -421,12 +470,16 @@ if res.status_code == 200:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -434,9 +487,10 @@ s = sdk.SDK(
 
 res = s.generation.empty_object_get(empty_object=shared.EmptyObjectParam())
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -453,7 +507,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## empty_response_object_with_comment_get
 
@@ -467,6 +521,10 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -477,6 +535,7 @@ res = s.generation.empty_response_object_with_comment_get()
 if res.body is not None:
     # handle response
     pass
+
 ```
 
 
@@ -487,9 +546,77 @@ if res.body is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## global_name_overridden
+
+### Example Usage
+
+```python
+import dateutil.parser
+import sdk
+from decimal import Decimal
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.generation.global_name_overridden(request=shared.SimpleObject(
+    any='any',
+    bool=True,
+    date_=dateutil.parser.parse('2020-01-01').date(),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
+    enum=shared.EnumT.ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
+    num=1.1,
+    str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    float64_str=1.1,
+    int64_str=100,
+    str_opt='testOptional',
+))
+
+if res.object is not None:
+    # handle response
+    pass
+
+```
+
+### Parameters
+
+| Parameter                                                  | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `request`                                                  | [shared.SimpleObject](../../models/shared/simpleobject.md) | :heavy_check_mark:                                         | The request object to use for the request.                 |
+
+
+### Response
+
+**[operations.GetGlobalNameOverrideResponse](../../models/operations/getglobalnameoverrideresponse.md)**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## ignored_generation_get
 
 ### Example Usage
 
@@ -501,40 +628,10 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
-    global_path_param=100,
-    global_query_param='some example global query param',
-)
-
-
-res = s.generation.global_name_overridden()
-
-if res.object is not None:
-    # handle response
-    pass
-```
-
-
-### Response
-
-**[operations.GetGlobalNameOverrideResponse](../../models/operations/getglobalnameoverrideresponse.md)**
-### Errors
-
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
-
-## ignored_generation_get
-
-### Example Usage
-
-```python
-import sdk
-from sdk.models import callbacks, shared
-
-s = sdk.SDK(
-    security=shared.Security(
-        api_key_auth="Token YOUR_API_KEY",
-    ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -545,6 +642,7 @@ res = s.generation.ignored_generation_get()
 if res.object is not None:
     # handle response
     pass
+
 ```
 
 
@@ -555,7 +653,7 @@ if res.object is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## ignores_post
 
@@ -569,16 +667,21 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
 
-res = s.generation.ignores_post(request_body=operations.IgnoresPostRequestBody(), test_param='string')
+res = s.generation.ignores_post(request_body=operations.IgnoresPostRequestBody(), test_param='<value>')
 
 if res.http_bin_simple_json_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -596,7 +699,7 @@ if res.http_bin_simple_json_object is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## name_override
 
@@ -610,6 +713,10 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -620,6 +727,7 @@ res = s.generation.name_override(test_enum_query_param=operations.EnumNameOverri
 if res.overridden_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -637,7 +745,7 @@ if res.overridden_response is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## object_circular_reference_get
 
@@ -651,6 +759,10 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -661,6 +773,7 @@ res = s.generation.object_circular_reference_get()
 if res.object_circular_reference_object is not None:
     # handle response
     pass
+
 ```
 
 
@@ -671,7 +784,7 @@ if res.object_circular_reference_object is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## one_of_circular_reference_get
 
@@ -685,6 +798,10 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -695,6 +812,7 @@ res = s.generation.one_of_circular_reference_get()
 if res.one_of_circular_reference_object is not None:
     # handle response
     pass
+
 ```
 
 
@@ -705,7 +823,7 @@ if res.one_of_circular_reference_object is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## typed_parameter_generation_get
 
@@ -721,20 +839,25 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
 
-res = s.generation.typed_parameter_generation_get(bigint=879275, date_=dateutil.parser.parse('2023-11-18').date(), decimal=Decimal('3346.96'), obj=operations.Obj(
+res = s.generation.typed_parameter_generation_get(bigint=879275, date_=dateutil.parser.parse('2024-11-18').date(), decimal=Decimal('3346.96'), obj=operations.Obj(
     bool=False,
     num=4778.06,
-    str_='string',
+    str_='<value>',
 ))
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -754,7 +877,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## usage_example_post
 
@@ -772,24 +895,40 @@ from decimal import Decimal
 from sdk.models import operations, shared
 
 s = sdk.SDK(
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-req = operations.UsageExamplePostRequest(
+
+res = s.generation.usage_example_post(request=operations.UsageExamplePostRequest(
+    bigint_parameter=168827,
+    bigint_str_parameter=446729,
+    bool_parameter=False,
+    date_parameter=dateutil.parser.parse('2024-06-10').date(),
+    date_time_default_parameter=dateutil.parser.isoparse('2023-07-23T01:43:10.512Z'),
+    date_time_parameter=dateutil.parser.isoparse('2022-10-21T15:42:48.223Z'),
+    decimal_parameter=Decimal('5223.72'),
+    decimal_str_parameter=Decimal('2911.37'),
+    double_parameter=6946.59,
+    enum_parameter=operations.EnumParameter.VALUE1,
+    falsey_number_parameter=0,
+    float32_parameter=1029.75,
+    float64_string_parameter=5669.99,
+    float_parameter=1952.32,
+    int64_parameter=569663,
+    int64_string_parameter=264295,
+    int_parameter=352778,
+    str_parameter='example 2',
     request_body=operations.UsageExamplePostRequestBody(
-        faker_formatted_strings=shared.FakerFormattedStrings(),
-        faker_strings=shared.FakerStrings(),
         simple_object=shared.SimpleObject(
             any='any',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
             bool=True,
-            bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
             enum=shared.EnumT.ONE,
             float32=1.1,
             int=1,
@@ -798,29 +937,18 @@ req = operations.UsageExamplePostRequest(
             int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool_opt=True,
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            float64_str=1.1,
+            int64_str=100,
             str_opt='testOptional',
         ),
     ),
-    bigint_parameter=168827,
-    bigint_str_parameter=446729,
-    bool_parameter=False,
-    date_parameter=dateutil.parser.parse('2023-06-11').date(),
-    date_time_default_parameter=dateutil.parser.isoparse('2022-07-22T13:16:48.221Z'),
-    date_time_parameter=dateutil.parser.isoparse('2021-10-21T09:16:58.799Z'),
-    decimal_parameter=Decimal('5223.72'),
-    decimal_str_parameter=Decimal('2911.37'),
-    double_parameter=6946.59,
-    enum_parameter=operations.EnumParameter.VALUE1,
-    falsey_number_parameter=0,
-    float32_parameter=1029.75,
-    float_parameter=5669.99,
-    int64_parameter=195232,
-    int_parameter=569663,
     opt_enum_parameter=operations.OptEnumParameter.VALUE3,
-    str_parameter='example 1',
-)
-
-res = s.generation.usage_example_post(req, operations.UsageExamplePostSecurity(
+), security=operations.UsageExamplePostSecurity(
     password="YOUR_PASSWORD",
     username="YOUR_USERNAME",
 ))
@@ -828,6 +956,7 @@ res = s.generation.usage_example_post(req, operations.UsageExamplePostSecurity(
 if res.object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -845,4 +974,4 @@ if res.object is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

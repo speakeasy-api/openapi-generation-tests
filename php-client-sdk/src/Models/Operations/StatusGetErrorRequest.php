@@ -8,14 +8,14 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class StatusGetErrorRequest
 {
-	#[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=statusCode')]
+    #[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=statusCode')]
     public int $statusCode;
-    
-	public function __construct()
-	{
-		$this->statusCode = 0;
-	}
+
+    public function __construct()
+    {
+        $this->statusCode = 0;
+    }
 }

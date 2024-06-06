@@ -41,6 +41,10 @@ extension Shared {
         @DecimalSerialized
         public private(set) var decimal: Double?
         public let decimalStr: String?
+        /// A float64 string
+        public let float64Str: String?
+        /// An int64 string
+        public let int64Str: String?
         /// An optional integer property will be null for tests.
         public let intOptNull: Int?
         /// An optional number property will be null for tests.
@@ -64,11 +68,13 @@ extension Shared {
         /// - Parameter num: A number property.
         /// - Parameter str: A string property.
         /// - Parameter boolOpt: An optional boolean property.
+        /// - Parameter float64Str: A float64 string
+        /// - Parameter int64Str: An int64 string
         /// - Parameter intOptNull: An optional integer property will be null for tests.
         /// - Parameter numOptNull: An optional number property will be null for tests.
         /// - Parameter strOpt: An optional string property.
         ///
-        public init(any: AnyValue, bool: Bool, date: Date, dateTime: Date, `enum`: Shared.Enum, float32: Double, int: Int, int32: Int, int32Enum: Shared.SimpleObjectWithTypeInt32Enum, intEnum: Shared.SimpleObjectWithTypeIntEnum, num: Double, str: String, bigint: Int? = nil, bigintStr: String? = nil, boolOpt: Bool? = nil, decimal: Double? = nil, decimalStr: String? = nil, intOptNull: Int? = nil, numOptNull: Double? = nil, strOpt: String? = nil) {
+        public init(any: AnyValue, bool: Bool, date: Date, dateTime: Date, `enum`: Shared.Enum, float32: Double, int: Int, int32: Int, int32Enum: Shared.SimpleObjectWithTypeInt32Enum, intEnum: Shared.SimpleObjectWithTypeIntEnum, num: Double, str: String, bigint: Int? = nil, bigintStr: String? = nil, boolOpt: Bool? = nil, decimal: Double? = nil, decimalStr: String? = nil, float64Str: String? = nil, int64Str: String? = nil, intOptNull: Int? = nil, numOptNull: Double? = nil, strOpt: String? = nil) {
             self.any = any
             self.bool = bool
             self._date = DateOnly<Date>(wrappedValue: date)
@@ -86,6 +92,8 @@ extension Shared {
             self.boolOpt = boolOpt
             self._decimal = DecimalSerialized<Double?>(wrappedValue: decimal)
             self.decimalStr = decimalStr
+            self.float64Str = float64Str
+            self.int64Str = int64Str
             self.intOptNull = intOptNull
             self._numOptNull = DecimalSerialized<Double?>(wrappedValue: numOptNull)
             self.strOpt = strOpt
@@ -113,6 +121,8 @@ extension Shared.SimpleObjectWithType: Codable {
         case boolOpt
         case decimal
         case decimalStr
+        case float64Str
+        case int64Str
         case intOptNull
         case numOptNull
         case strOpt
@@ -137,6 +147,8 @@ extension Shared.SimpleObjectWithType: Codable {
         self.boolOpt = try container.decodeIfPresent(Bool.self, forKey: .boolOpt)
         self._decimal = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .decimal) ?? DecimalSerialized<Double?>(wrappedValue: nil)
         self.decimalStr = try container.decodeIfPresent(String.self, forKey: .decimalStr)
+        self.float64Str = try container.decodeIfPresent(String.self, forKey: .float64Str)
+        self.int64Str = try container.decodeIfPresent(String.self, forKey: .int64Str)
         self.intOptNull = try container.decodeIfPresent(Int.self, forKey: .intOptNull)
         self._numOptNull = try container.decodeIfPresent(DecimalSerialized<Double?>.self, forKey: .numOptNull) ?? DecimalSerialized<Double?>(wrappedValue: nil)
         self.strOpt = try container.decodeIfPresent(String.self, forKey: .strOpt)
@@ -164,6 +176,8 @@ extension Shared.SimpleObjectWithType: Codable {
             try container.encode(self._decimal, forKey: .decimal)
         }
         try container.encodeIfPresent(self.decimalStr, forKey: .decimalStr)
+        try container.encodeIfPresent(self.float64Str, forKey: .float64Str)
+        try container.encodeIfPresent(self.int64Str, forKey: .int64Str)
         try container.encodeIfPresent(self.intOptNull, forKey: .intOptNull)
         if self.numOptNull != nil {
             try container.encode(self._numOptNull, forKey: .numOptNull)
