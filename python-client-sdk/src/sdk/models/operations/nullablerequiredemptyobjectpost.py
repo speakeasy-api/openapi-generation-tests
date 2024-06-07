@@ -26,9 +26,19 @@ class RequiredObj:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class NullableRequiredEmptyObjectPostRequestBody:
+    UNSET='__SPEAKEASY_UNSET__'
     nullable_required_obj: Optional[NullableRequiredObj] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredObj') }})
     required_obj: RequiredObj = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('RequiredObj') }})
-    nullable_optional_obj: Optional[NullableOptionalObj] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOptionalObj') }})
+    nullable_optional_obj: Optional[NullableOptionalObj] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOptionalObj'), 'exclude': lambda f: f is NullableRequiredEmptyObjectPostRequestBody.UNSET }})
+    
+
+
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class NullableRequiredEmptyObjectPostResponseBody:
+    r"""OK"""
+    data: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     
 
 
@@ -39,9 +49,9 @@ class NullableRequiredEmptyObjectPostResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
-    res: Optional[str] = dataclasses.field(default=None)
+    object: Optional[NullableRequiredEmptyObjectPostResponseBody] = dataclasses.field(default=None)
     r"""OK"""
     
 
