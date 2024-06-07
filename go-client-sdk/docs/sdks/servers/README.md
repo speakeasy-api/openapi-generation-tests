@@ -22,10 +22,10 @@ Endpoints for testing servers.
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -33,6 +33,10 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenHeaderParam("<value>"),
+        openapi.WithGlobalHiddenPathParam("<value>"),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
@@ -42,8 +46,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -61,7 +64,7 @@ func main() {
 **[*operations.SelectGlobalServerResponse](../../pkg/models/operations/selectglobalserverresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## SelectServerWithID
 
@@ -73,10 +76,10 @@ Select a server by ID.
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -84,6 +87,10 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenHeaderParam("<value>"),
+        openapi.WithGlobalHiddenPathParam("<value>"),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
@@ -93,8 +100,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -113,7 +119,7 @@ func main() {
 **[*operations.SelectServerWithIDResponse](../../pkg/models/operations/selectserverwithidresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ServerWithProtocolTemplate
 
@@ -123,10 +129,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -134,6 +140,10 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenHeaderParam("<value>"),
+        openapi.WithGlobalHiddenPathParam("<value>"),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
@@ -143,8 +153,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -163,7 +172,7 @@ func main() {
 **[*operations.ServerWithProtocolTemplateResponse](../../pkg/models/operations/serverwithprotocoltemplateresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ServerWithTemplates
 
@@ -173,10 +182,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -184,6 +193,10 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenHeaderParam("<value>"),
+        openapi.WithGlobalHiddenPathParam("<value>"),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
@@ -193,8 +206,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -213,7 +225,7 @@ func main() {
 **[*operations.ServerWithTemplatesResponse](../../pkg/models/operations/serverwithtemplatesresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ServerWithTemplatesGlobal
 
@@ -223,10 +235,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -234,6 +246,10 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenHeaderParam("<value>"),
+        openapi.WithGlobalHiddenPathParam("<value>"),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
@@ -243,8 +259,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -262,7 +277,7 @@ func main() {
 **[*operations.ServerWithTemplatesGlobalResponse](../../pkg/models/operations/serverwithtemplatesglobalresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ServersByIDWithTemplates
 
@@ -272,10 +287,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -283,6 +298,10 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenHeaderParam("<value>"),
+        openapi.WithGlobalHiddenPathParam("<value>"),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
@@ -292,8 +311,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -312,4 +330,4 @@ func main() {
 **[*operations.ServersByIDWithTemplatesResponse](../../pkg/models/operations/serversbyidwithtemplatesresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

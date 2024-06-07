@@ -8,14 +8,14 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class PaginationCursorParamsRequest
 {
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=cursor')]
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=cursor')]
     public int $cursor;
-    
-	public function __construct()
-	{
-		$this->cursor = 0;
-	}
+
+    public function __construct()
+    {
+        $this->cursor = 0;
+    }
 }

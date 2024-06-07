@@ -4,7 +4,7 @@ package shared
 
 type MapObjValueCamelCase struct {
 	JSON     map[string]SimpleObjectCamelCase `json:"json,omitempty"`
-	Required interface{}                      `json:"required,omitempty"`
+	Required any                              `json:"required,omitempty"`
 }
 
 func (o *MapObjValueCamelCase) GetJSON() map[string]SimpleObjectCamelCase {
@@ -14,7 +14,7 @@ func (o *MapObjValueCamelCase) GetJSON() map[string]SimpleObjectCamelCase {
 	return o.JSON
 }
 
-func (o *MapObjValueCamelCase) GetRequired() interface{} {
+func (o *MapObjValueCamelCase) GetRequired() any {
 	if o == nil {
 		return nil
 	}

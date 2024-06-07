@@ -8,18 +8,18 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Shared;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class SchemeBasicAuth
 {
-	#[SpeakeasyMetadata('security:name=password')]
+    #[SpeakeasyMetadata('security:name=password')]
     public string $password;
-    
-	#[SpeakeasyMetadata('security:name=username')]
+
+    #[SpeakeasyMetadata('security:name=username')]
     public string $username;
-    
-	public function __construct()
-	{
-		$this->password = "";
-		$this->username = "";
-	}
+
+    public function __construct()
+    {
+        $this->password = '';
+        $this->username = '';
+    }
 }

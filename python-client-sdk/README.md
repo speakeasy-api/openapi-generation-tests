@@ -1,16 +1,67 @@
 # openapi
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ```bash
 pip install git+https://github.com/speakeasy-api/openapi-generation-tests.git#subdirectory=python-client-sdk
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example 1
+
+```python
+import dateutil.parser
+import sdk
+from decimal import Decimal
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.generation.global_name_overridden(request=shared.SimpleObject(
+    any='any',
+    bool=True,
+    date_=dateutil.parser.parse('2020-01-01').date(),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
+    enum=shared.EnumT.ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=shared.Int32Enum.FIFTY_FIVE,
+    int_enum=shared.IntEnum.SECOND,
+    num=1.1,
+    str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    float64_str=1.1,
+    int64_str=100,
+    str_opt='testOptional',
+))
+
+if res.object is not None:
+    # handle response
+    pass
+
+```
+
+### Example 2
 
 ```python
 import sdk
@@ -20,16 +71,21 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
 
-res = s.generation.global_name_overridden()
+res = s.servers.select_global_server()
 
-if res.object is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Second
@@ -43,24 +99,40 @@ from decimal import Decimal
 from sdk.models import operations, shared
 
 s = sdk.SDK(
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-req = operations.UsageExamplePostRequest(
+
+res = s.generation.usage_example_post(request=operations.UsageExamplePostRequest(
+    bigint_parameter=168827,
+    bigint_str_parameter=446729,
+    bool_parameter=False,
+    date_parameter=dateutil.parser.parse('2024-06-10').date(),
+    date_time_default_parameter=dateutil.parser.isoparse('2023-07-23T01:43:10.512Z'),
+    date_time_parameter=dateutil.parser.isoparse('2022-10-21T15:42:48.223Z'),
+    decimal_parameter=Decimal('5223.72'),
+    decimal_str_parameter=Decimal('2911.37'),
+    double_parameter=6946.59,
+    enum_parameter=operations.EnumParameter.VALUE1,
+    falsey_number_parameter=0,
+    float32_parameter=1029.75,
+    float64_string_parameter=5669.99,
+    float_parameter=1952.32,
+    int64_parameter=569663,
+    int64_string_parameter=264295,
+    int_parameter=352778,
+    str_parameter='example 2',
     request_body=operations.UsageExamplePostRequestBody(
-        faker_formatted_strings=shared.FakerFormattedStrings(),
-        faker_strings=shared.FakerStrings(),
         simple_object=shared.SimpleObject(
             any='any',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
             bool=True,
-            bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
             enum=shared.EnumT.ONE,
             float32=1.1,
             int=1,
@@ -69,29 +141,18 @@ req = operations.UsageExamplePostRequest(
             int_enum=shared.IntEnum.SECOND,
             num=1.1,
             str_='test',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool_opt=True,
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            float64_str=1.1,
+            int64_str=100,
             str_opt='testOptional',
         ),
     ),
-    bigint_parameter=168827,
-    bigint_str_parameter=446729,
-    bool_parameter=False,
-    date_parameter=dateutil.parser.parse('2023-06-11').date(),
-    date_time_default_parameter=dateutil.parser.isoparse('2022-07-22T13:16:48.221Z'),
-    date_time_parameter=dateutil.parser.isoparse('2021-10-21T09:16:58.799Z'),
-    decimal_parameter=Decimal('5223.72'),
-    decimal_str_parameter=Decimal('2911.37'),
-    double_parameter=6946.59,
-    enum_parameter=operations.EnumParameter.VALUE1,
-    falsey_number_parameter=0,
-    float32_parameter=1029.75,
-    float_parameter=5669.99,
-    int64_parameter=195232,
-    int_parameter=569663,
     opt_enum_parameter=operations.OptEnumParameter.VALUE3,
-    str_parameter='example 1',
-)
-
-res = s.generation.usage_example_post(req, operations.UsageExamplePostSecurity(
+), security=operations.UsageExamplePostSecurity(
     password="YOUR_PASSWORD",
     username="YOUR_USERNAME",
 ))
@@ -99,15 +160,18 @@ res = s.generation.usage_example_post(req, operations.UsageExamplePostSecurity(
 if res.object is not None:
     # handle response
     pass
-```
-<!-- End SDK Example Usage -->
 
-<!-- Start SDK Available Operations -->
+```
+<!-- End SDK Example Usage [usage] -->
+
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [SDK](docs/sdks/sdk/README.md)
 
-* [put_anything_ignored_generation](docs/sdks/sdk/README.md#put_anything_ignored_generation)
+* [authenticated_request](docs/sdks/sdk/README.md#authenticated_request)
+* [conflicting_enum](docs/sdks/sdk/README.md#conflicting_enum) - Test potential namespace conflicts with java.lang.Object
+* [ignored_generation_put](docs/sdks/sdk/README.md#ignored_generation_put)
 * [response_body_json_get](docs/sdks/sdk/README.md#response_body_json_get)
 
 ### [generation](docs/sdks/generation/README.md)
@@ -133,14 +197,9 @@ if res.object is not None:
 * [typed_parameter_generation_get](docs/sdks/generation/README.md#typed_parameter_generation_get)
 * [usage_example_post](docs/sdks/generation/README.md#usage_example_post) - An operation used for testing usage examples
 
-### [errors](docs/sdks/errors/README.md)
-
-* [connection_error_get](docs/sdks/errors/README.md#connection_error_get)
-* [status_get_error](docs/sdks/errors/README.md#status_get_error)
-* [status_get_x_speakeasy_errors](docs/sdks/errors/README.md#status_get_x_speakeasy_errors)
-
 ### [unions](docs/sdks/unions/README.md)
 
+* [collection_one_of_post](docs/sdks/unions/README.md#collection_one_of_post)
 * [flattened_typed_object_post](docs/sdks/unions/README.md#flattened_typed_object_post)
 * [mixed_type_one_of_post](docs/sdks/unions/README.md#mixed_type_one_of_post)
 * [nullable_one_of_ref_in_object_post](docs/sdks/unions/README.md#nullable_one_of_ref_in_object_post)
@@ -148,14 +207,48 @@ if res.object is not None:
 * [nullable_one_of_type_in_object_post](docs/sdks/unions/README.md#nullable_one_of_type_in_object_post)
 * [nullable_typed_object_post](docs/sdks/unions/README.md#nullable_typed_object_post)
 * [primitive_type_one_of_post](docs/sdks/unions/README.md#primitive_type_one_of_post)
+* [strongly_typed_one_of_discriminated_post](docs/sdks/unions/README.md#strongly_typed_one_of_discriminated_post)
 * [strongly_typed_one_of_post](docs/sdks/unions/README.md#strongly_typed_one_of_post)
+* [strongly_typed_one_of_post_with_non_standard_discriminator_name](docs/sdks/unions/README.md#strongly_typed_one_of_post_with_non_standard_discriminator_name)
 * [typed_object_nullable_one_of_post](docs/sdks/unions/README.md#typed_object_nullable_one_of_post)
 * [typed_object_one_of_post](docs/sdks/unions/README.md#typed_object_one_of_post)
-* [union_big_int_decimal](docs/sdks/unions/README.md#union_big_int_decimal)
+* [union_big_int_str_decimal](docs/sdks/unions/README.md#union_big_int_str_decimal)
 * [union_date_null](docs/sdks/unions/README.md#union_date_null)
 * [union_date_time_big_int](docs/sdks/unions/README.md#union_date_time_big_int)
 * [union_date_time_null](docs/sdks/unions/README.md#union_date_time_null)
+* [union_map](docs/sdks/unions/README.md#union_map)
+* [weakly_typed_one_of_null_enum_post](docs/sdks/unions/README.md#weakly_typed_one_of_null_enum_post)
 * [weakly_typed_one_of_post](docs/sdks/unions/README.md#weakly_typed_one_of_post)
+
+### [errors](docs/sdks/errors/README.md)
+
+* [connection_error_get](docs/sdks/errors/README.md#connection_error_get)
+* [status_get_error](docs/sdks/errors/README.md#status_get_error)
+* [status_get_x_speakeasy_errors](docs/sdks/errors/README.md#status_get_x_speakeasy_errors)
+* [union_errors_get](docs/sdks/errors/README.md#union_errors_get)
+
+### [custom_client](docs/sdks/customclient/README.md)
+
+* [custom_client_post](docs/sdks/customclient/README.md#custom_client_post)
+
+### [response_bodies](docs/sdks/responsebodies/README.md)
+
+* [flattened_envelope_pagination_response](docs/sdks/responsebodies/README.md#flattened_envelope_pagination_response)
+* [flattened_envelope_response](docs/sdks/responsebodies/README.md#flattened_envelope_response)
+* [flattened_envelope_union_response](docs/sdks/responsebodies/README.md#flattened_envelope_union_response)
+* [flattened_union_response](docs/sdks/responsebodies/README.md#flattened_union_response)
+* [response_body_additional_properties_any_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_any_post)
+* [response_body_additional_properties_complex_numbers_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_complex_numbers_post)
+* [response_body_additional_properties_date_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_date_post)
+* [response_body_additional_properties_object_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_object_post)
+* [response_body_additional_properties_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_post)
+* [response_body_bytes_get](docs/sdks/responsebodies/README.md#response_body_bytes_get)
+* [response_body_empty_with_headers](docs/sdks/responsebodies/README.md#response_body_empty_with_headers)
+* [response_body_missing2xx_or3xx_get](docs/sdks/responsebodies/README.md#response_body_missing2xx_or3xx_get)
+* [response_body_optional_get](docs/sdks/responsebodies/README.md#response_body_optional_get)
+* [response_body_read_only](docs/sdks/responsebodies/README.md#response_body_read_only)
+* [response_body_string_get](docs/sdks/responsebodies/README.md#response_body_string_get)
+* [response_body_xml_get](docs/sdks/responsebodies/README.md#response_body_xml_get)
 
 ### [flattening](docs/sdks/flattening/README.md)
 
@@ -168,6 +261,8 @@ if res.object is not None:
 ### [globals](docs/sdks/globals/README.md)
 
 * [global_path_parameter_get](docs/sdks/globals/README.md#global_path_parameter_get)
+* [globals_header_get](docs/sdks/globals/README.md#globals_header_get)
+* [globals_hidden_post](docs/sdks/globals/README.md#globals_hidden_post)
 * [globals_query_parameter_get](docs/sdks/globals/README.md#globals_query_parameter_get)
 
 ### [parameters](docs/sdks/parameters/README.md)
@@ -186,6 +281,7 @@ if res.object is not None:
 * [header_params_object](docs/sdks/parameters/README.md#header_params_object)
 * [header_params_primitive](docs/sdks/parameters/README.md#header_params_primitive)
 * [json_query_params_object](docs/sdks/parameters/README.md#json_query_params_object)
+* [json_query_params_object_smaller](docs/sdks/parameters/README.md#json_query_params_object_smaller)
 * [mixed_parameters_camel_case](docs/sdks/parameters/README.md#mixed_parameters_camel_case)
 * [mixed_parameters_primitives](docs/sdks/parameters/README.md#mixed_parameters_primitives)
 * [mixed_query_params](docs/sdks/parameters/README.md#mixed_query_params)
@@ -195,6 +291,14 @@ if res.object is not None:
 * [simple_path_parameter_maps](docs/sdks/parameters/README.md#simple_path_parameter_maps)
 * [simple_path_parameter_objects](docs/sdks/parameters/README.md#simple_path_parameter_objects)
 * [simple_path_parameter_primitives](docs/sdks/parameters/README.md#simple_path_parameter_primitives)
+
+### [hooks](docs/sdks/hooks/README.md)
+
+* [authorization_header_modification](docs/sdks/hooks/README.md#authorization_header_modification)
+* [test_hooks](docs/sdks/hooks/README.md#test_hooks)
+* [test_hooks_after_response](docs/sdks/hooks/README.md#test_hooks_after_response)
+* [test_hooks_before_create_request_paths](docs/sdks/hooks/README.md#test_hooks_before_create_request_paths)
+* [test_hooks_error](docs/sdks/hooks/README.md#test_hooks_error)
 
 
 ### [nest.first](docs/sdks/sdkfirst/README.md)
@@ -225,8 +329,13 @@ if res.object is not None:
 * [oauth2_override](docs/sdks/auth/README.md#oauth2_override)
 * [open_id_connect_auth](docs/sdks/auth/README.md#open_id_connect_auth)
 
+### [open_enums](docs/sdks/openenums/README.md)
+
+* [open_enums_post_unrecognized](docs/sdks/openenums/README.md#open_enums_post_unrecognized)
+
 ### [request_bodies](docs/sdks/requestbodies/README.md)
 
+* [null_enum_post](docs/sdks/requestbodies/README.md#null_enum_post)
 * [nullable_object_post](docs/sdks/requestbodies/README.md#nullable_object_post)
 * [nullable_required_empty_object_post](docs/sdks/requestbodies/README.md#nullable_required_empty_object_post)
 * [nullable_required_property_post](docs/sdks/requestbodies/README.md#nullable_required_property_post)
@@ -268,6 +377,8 @@ if res.object is not None:
 * [request_body_post_json_data_types_big_int](docs/sdks/requestbodies/README.md#request_body_post_json_data_types_big_int)
 * [request_body_post_json_data_types_big_int_str](docs/sdks/requestbodies/README.md#request_body_post_json_data_types_big_int_str)
 * [request_body_post_json_data_types_boolean](docs/sdks/requestbodies/README.md#request_body_post_json_data_types_boolean)
+* [request_body_post_json_data_types_complex_number_arrays](docs/sdks/requestbodies/README.md#request_body_post_json_data_types_complex_number_arrays)
+* [request_body_post_json_data_types_complex_number_maps](docs/sdks/requestbodies/README.md#request_body_post_json_data_types_complex_number_maps)
 * [request_body_post_json_data_types_date](docs/sdks/requestbodies/README.md#request_body_post_json_data_types_date)
 * [request_body_post_json_data_types_date_time](docs/sdks/requestbodies/README.md#request_body_post_json_data_types_date_time)
 * [request_body_post_json_data_types_decimal](docs/sdks/requestbodies/README.md#request_body_post_json_data_types_decimal)
@@ -298,6 +409,7 @@ if res.object is not None:
 * [request_body_put_multipart_deep](docs/sdks/requestbodies/README.md#request_body_put_multipart_deep)
 * [request_body_put_multipart_different_file_name](docs/sdks/requestbodies/README.md#request_body_put_multipart_different_file_name)
 * [request_body_put_multipart_file](docs/sdks/requestbodies/README.md#request_body_put_multipart_file)
+* [request_body_put_multipart_optional_request_body](docs/sdks/requestbodies/README.md#request_body_put_multipart_optional_request_body)
 * [request_body_put_multipart_simple](docs/sdks/requestbodies/README.md#request_body_put_multipart_simple)
 * [request_body_put_string](docs/sdks/requestbodies/README.md#request_body_put_string)
 * [request_body_put_string_with_params](docs/sdks/requestbodies/README.md#request_body_put_string_with_params)
@@ -308,20 +420,6 @@ if res.object is not None:
 * [request_body_write_only](docs/sdks/requestbodies/README.md#request_body_write_only)
 * [request_body_write_only_output](docs/sdks/requestbodies/README.md#request_body_write_only_output)
 * [request_body_write_only_union](docs/sdks/requestbodies/README.md#request_body_write_only_union)
-
-### [response_bodies](docs/sdks/responsebodies/README.md)
-
-* [response_body_additional_properties_complex_numbers_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_complex_numbers_post)
-* [response_body_additional_properties_date_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_date_post)
-* [response_body_additional_properties_object_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_object_post)
-* [response_body_additional_properties_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_post)
-* [response_body_bytes_get](docs/sdks/responsebodies/README.md#response_body_bytes_get)
-* [response_body_empty_with_headers](docs/sdks/responsebodies/README.md#response_body_empty_with_headers)
-* [response_body_optional_get](docs/sdks/responsebodies/README.md#response_body_optional_get)
-* [response_body_read_only](docs/sdks/responsebodies/README.md#response_body_read_only)
-* [response_body_string_get](docs/sdks/responsebodies/README.md#response_body_string_get)
-* [response_body_xml_get](docs/sdks/responsebodies/README.md#response_body_xml_get)
-* [response_body_zero_value_complex_type_ptrs_post](docs/sdks/responsebodies/README.md#response_body_zero_value_complex_type_ptrs_post)
 
 ### [servers](docs/sdks/servers/README.md)
 
@@ -339,7 +437,6 @@ if res.object is not None:
 
 ### [auth_new](docs/sdks/authnew/README.md)
 
-* [api_key_auth_global_new](docs/sdks/authnew/README.md#api_key_auth_global_new)
 * [auth_global](docs/sdks/authnew/README.md#auth_global)
 * [basic_auth_new](docs/sdks/authnew/README.md#basic_auth_new)
 * [multiple_mixed_options_auth](docs/sdks/authnew/README.md#multiple_mixed_options_auth)
@@ -351,17 +448,27 @@ if res.object is not None:
 * [oauth2_auth_new](docs/sdks/authnew/README.md#oauth2_auth_new)
 * [open_id_connect_auth_new](docs/sdks/authnew/README.md#open_id_connect_auth_new)
 
-### [documentation](docs/sdks/documentation/README.md)
-
-* [get_documentation_per_language](docs/sdks/documentation/README.md#get_documentation_per_language) - Gets documentation for some language, I guess.
-
 ### [resource](docs/sdks/resource/README.md)
 
 * [create_file](docs/sdks/resource/README.md#create_file)
 * [create_resource](docs/sdks/resource/README.md#create_resource)
 * [delete_resource](docs/sdks/resource/README.md#delete_resource)
+* [get_array_data_source](docs/sdks/resource/README.md#get_array_data_source)
 * [get_resource](docs/sdks/resource/README.md#get_resource)
 * [update_resource](docs/sdks/resource/README.md#update_resource)
+
+### [documentation](docs/sdks/documentation/README.md)
+
+* [get_documentation_per_language](docs/sdks/documentation/README.md#get_documentation_per_language) - Gets documentation for some language, I guess.
+
+### [eventstreams](docs/sdks/eventstreams/README.md)
+
+* [chat](docs/sdks/eventstreams/README.md#chat)
+* [different_data_schemas](docs/sdks/eventstreams/README.md#different_data_schemas)
+* [json](docs/sdks/eventstreams/README.md#json)
+* [multiline](docs/sdks/eventstreams/README.md#multiline)
+* [rich](docs/sdks/eventstreams/README.md#rich)
+* [text](docs/sdks/eventstreams/README.md#text)
 
 ### [first](docs/sdks/first/README.md)
 
@@ -374,26 +481,29 @@ if res.object is not None:
 ### [pagination](docs/sdks/pagination/README.md)
 
 * [pagination_cursor_body](docs/sdks/pagination/README.md#pagination_cursor_body)
+* [pagination_cursor_non_numeric](docs/sdks/pagination/README.md#pagination_cursor_non_numeric)
 * [pagination_cursor_params](docs/sdks/pagination/README.md#pagination_cursor_params)
 * [pagination_limit_offset_offset_body](docs/sdks/pagination/README.md#pagination_limit_offset_offset_body)
 * [pagination_limit_offset_offset_params](docs/sdks/pagination/README.md#pagination_limit_offset_offset_params)
 * [pagination_limit_offset_page_body](docs/sdks/pagination/README.md#pagination_limit_offset_page_body)
 * [pagination_limit_offset_page_params](docs/sdks/pagination/README.md#pagination_limit_offset_page_params)
+* [pagination_url_params](docs/sdks/pagination/README.md#pagination_url_params)
+* [pagination_with_retries](docs/sdks/pagination/README.md#pagination_with_retries)
 
 ### [retries](docs/sdks/retries/README.md)
 
+* [retries_after](docs/sdks/retries/README.md#retries_after)
+* [retries_connect_error_get](docs/sdks/retries/README.md#retries_connect_error_get) - A request to a non-valid port to test connection errors
+* [retries_flat_empty_response_post](docs/sdks/retries/README.md#retries_flat_empty_response_post)
 * [retries_get](docs/sdks/retries/README.md#retries_get)
-<!-- End SDK Available Operations -->
+* [retries_post](docs/sdks/retries/README.md#retries_post)
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
 
 
-
-<!-- Start Pagination -->
+<!-- Start Pagination [pagination] -->
 ## Pagination
 
 Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
@@ -403,21 +513,22 @@ return value of `Next` is `None`, then there are no more pages to be fetched.
 Here's an example of one such pagination call:
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-req = operations.PaginationCursorBodyRequestBody(
-    cursor=868337,
-)
 
-res = s.pagination.pagination_cursor_body(req)
+res = s.response_bodies.flattened_envelope_pagination_response(cursor='<value>')
 
 if res.res is not None:
     while True:
@@ -427,17 +538,18 @@ if res.res is not None:
         if res is None:
             break
 
+
 ```
-<!-- End Pagination -->
+<!-- End Pagination [pagination] -->
 
 
 
-<!-- Start Global Parameters -->
+<!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `globalPathParam` to `100` at SDK initialization and then you do not have to pass the same value on calls to operations like `global_path_parameter_get`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `globalHeaderParam` to `True` at SDK initialization and then you do not have to pass the same value on calls to operations like `global_path_parameter_get`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -446,36 +558,45 @@ The following global parameters are available. The required parameters must be s
 
 | Name | Type | Required | Description |
 | ---- | ---- |:--------:| ----------- |
-| globalPathParam | int | ✔️ | The globalPathParam parameter. |
-| globalQueryParam | str | ✔️ | The globalQueryParam parameter. |
+| global_header_param | bool | ✔️ | The global_header_param parameter. |
+| global_hidden_header_param | str | ✔️ | The global_hidden_header_param parameter. |
+| global_hidden_path_param | str | ✔️ | The global_hidden_path_param parameter. |
+| global_hidden_query_param | str | ✔️ | The global_hidden_query_param parameter. |
+| global_path_param | int | ✔️ | The global_path_param parameter. |
+| global_query_param | str | ✔️ | The global_query_param parameter. |
 
 
 ### Example
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
 
-res = s.globals.global_path_parameter_get(global_path_param=719830)
+res = s.globals.global_path_parameter_get(global_path_param=100)
 
 if res.res is not None:
     # handle response
     pass
+
 ```
-<!-- End Global Parameters -->
+<!-- End Global Parameters [global-parameters] -->
 
 
 
-<!-- Start Error Handling -->
+<!-- Start Error Handling [errors] -->
 ## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
@@ -484,44 +605,50 @@ Handling errors in this SDK should largely match your expectations.  All operati
 | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
 | errors.Error                                 | 500                                          | application/json                             |
 | errors.StatusGetXSpeakeasyErrorsResponseBody | 501                                          | application/json                             |
-| errors.SDKError                              | 400-600                                      | */*                                          |
+| errors.SDKError                              | 4xx-5xx                                      | */*                                          |
 
 ### Example
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import errors, shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
-
 
 res = None
 try:
     res = s.errors.status_get_x_speakeasy_errors(status_code=385913)
 
-except (errors.Error) as e:
-    print(e) # handle exception
-except (errors.StatusGetXSpeakeasyErrorsResponseBody) as e:
-    print(e) # handle exception
-except (errors.SDKError) as e:
-    print(e) # handle exception
+except errors.Error as e:
+    # handle exception
+    raise(e)
+except errors.StatusGetXSpeakeasyErrorsResponseBody as e:
+    # handle exception
+    raise(e)
+except errors.SDKError as e:
+    # handle exception
+    raise(e)
 
-
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
-<!-- End Error Handling -->
+<!-- End Error Handling [errors] -->
 
 
 
-<!-- Start Server Selection -->
+<!-- Start Server Selection [server] -->
 ## Server Selection
 
 ### Select Server by Index
@@ -540,24 +667,27 @@ You can override the default server globally by passing a server index to the `s
 
 ```python
 import sdk
-from sdk.models import shared
+from sdk.models import operations
 
 s = sdk.SDK(
     server_idx=4,
-    security=shared.Security(
-        api_key_auth="Token YOUR_API_KEY",
-    ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-req = 'string'
 
-res = s.put_anything_ignored_generation(req)
+res = s.authenticated_request(security=operations.AuthenticatedRequestSecurity(
+    client_credentials="<YOUR_CLIENT_CREDENTIALS_HERE>",
+), request=operations.AuthenticatedRequestRequestBody())
 
-if res.object is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 #### Variables
@@ -565,32 +695,35 @@ if res.object is not None:
 Some of the server options above contain variables. If you want to set the values of those variables, the following optional parameters are available when initializing the SDK client instance:
  * `hostname: str`
  * `port: str`
- * `protocol: str`
  * `something: models.ServerSomething`
+ * `protocol: str`
 
 ### Override Server URL Per-Client
 
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
 import sdk
-from sdk.models import shared
+from sdk.models import operations
 
 s = sdk.SDK(
     server_url="http://localhost:35123",
-    security=shared.Security(
-        api_key_auth="Token YOUR_API_KEY",
-    ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-req = 'string'
 
-res = s.put_anything_ignored_generation(req)
+res = s.authenticated_request(security=operations.AuthenticatedRequestSecurity(
+    client_credentials="<YOUR_CLIENT_CREDENTIALS_HERE>",
+), request=operations.AuthenticatedRequestRequestBody())
 
-if res.object is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Override Server URL Per-Operation
@@ -604,6 +737,10 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -611,18 +748,19 @@ s = sdk.SDK(
 
 res = s.errors.connection_error_get(server_url="http://somebrokenapi.broken")
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
-<!-- End Server Selection -->
+<!-- End Server Selection [server] -->
 
 
 
-<!-- Start Custom HTTP Client -->
+<!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
-The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
+The Python SDK makes API calls using the [requests](https://pypi.org/project/requests/) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
 
 For example, you could specify a header for every request that this sdk makes as follows:
 ```python
@@ -631,78 +769,97 @@ import requests
 
 http_client = requests.Session()
 http_client.headers.update({'x-custom-header': 'someValue'})
-s = sdk.SDK(client: http_client)
+s = sdk.SDK(client=http_client)
 ```
-<!-- End Custom HTTP Client -->
+<!-- End Custom HTTP Client [http-client] -->
 
 
 
-<!-- Start Retries -->
+<!-- Start Retries [retries] -->
 ## Retries
 
-Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
 
-To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 from sdk.utils import BackoffStrategy, RetryConfig
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
 
-res = s.retries.retries_get(request_id='string', num_retries=75342,
+res = s.pagination.pagination_with_retries(cursor='<value>', fault_settings='{"error_code": 503, "error_count": 3}', request_id='paginationWithRetries',
     RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False))
 
-if res.retries is not None:
-    # handle response
-    pass
+if res.res is not None:
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
+
 ```
 
-If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 from sdk.utils import BackoffStrategy, RetryConfig
 
 s = sdk.SDK(
-    retry_config=RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False)
+    retry_config=RetryConfig('backoff', BackoffStrategy(1, 50, 1.1, 100), False),
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
 
-res = s.retries.retries_get(request_id='string', num_retries=75342)
+res = s.pagination.pagination_with_retries(cursor='<value>', fault_settings='{"error_code": 503, "error_count": 3}', request_id='paginationWithRetries')
 
-if res.retries is not None:
-    # handle response
-    pass
+if res.res is not None:
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
+
 ```
-<!-- End Retries -->
+<!-- End Retries [retries] -->
 
 
 
-<!-- Start Authentication -->
+<!-- Start Authentication [security] -->
 ## Authentication
 
 ### Per-Client Security Schemes
 
 This SDK supports the following security schemes globally:
 
-| Name               | Type               | Scheme             |
-| ------------------ | ------------------ | ------------------ |
-| `api_key_auth`     | apiKey             | API key            |
-| `api_key_auth_new` | apiKey             | API key            |
-| `oauth2`           | oauth2             | OAuth2 token       |
+| Name           | Type           | Scheme         |
+| -------------- | -------------- | -------------- |
+| `api_key_auth` | apiKey         | API key        |
+| `oauth2`       | oauth2         | OAuth2 token   |
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```python
@@ -713,87 +870,91 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-req = 'string'
 
-res = s.put_anything_ignored_generation(req)
+res = s.conflicting_enum(request=shared.ConflictingEnum())
 
-if res.object is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Per-Operation Security Schemes
 
 Some operations in this SDK require the security scheme to be specified at the request level. For example:
 ```python
-import dateutil.parser
 import sdk
-from decimal import Decimal
-from sdk.models import operations, shared
+from sdk.models import operations
 
 s = sdk.SDK(
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
-req = operations.UsageExamplePostRequest(
-    request_body=operations.UsageExamplePostRequestBody(
-        faker_formatted_strings=shared.FakerFormattedStrings(),
-        faker_strings=shared.FakerStrings(),
-        simple_object=shared.SimpleObject(
-            any='any',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
-            enum=shared.EnumT.ONE,
-            float32=1.1,
-            int=1,
-            int32=1,
-            int32_enum=shared.Int32Enum.FIFTY_FIVE,
-            int_enum=shared.IntEnum.SECOND,
-            num=1.1,
-            str_='test',
-            str_opt='testOptional',
-        ),
-    ),
-    bigint_parameter=168827,
-    bigint_str_parameter=446729,
-    bool_parameter=False,
-    date_parameter=dateutil.parser.parse('2023-06-11').date(),
-    date_time_default_parameter=dateutil.parser.isoparse('2022-07-22T13:16:48.221Z'),
-    date_time_parameter=dateutil.parser.isoparse('2021-10-21T09:16:58.799Z'),
-    decimal_parameter=Decimal('5223.72'),
-    decimal_str_parameter=Decimal('2911.37'),
-    double_parameter=6946.59,
-    enum_parameter=operations.EnumParameter.VALUE1,
-    falsey_number_parameter=0,
-    float32_parameter=1029.75,
-    float_parameter=5669.99,
-    int64_parameter=195232,
-    int_parameter=569663,
-    opt_enum_parameter=operations.OptEnumParameter.VALUE3,
-    str_parameter='example 1',
-)
 
-res = s.generation.usage_example_post(req, operations.UsageExamplePostSecurity(
-    password="YOUR_PASSWORD",
-    username="YOUR_USERNAME",
-))
+res = s.authenticated_request(security=operations.AuthenticatedRequestSecurity(
+    client_credentials="<YOUR_CLIENT_CREDENTIALS_HERE>",
+), request=operations.AuthenticatedRequestRequestBody())
 
-if res.object is not None:
+if res is not None:
     # handle response
     pass
+
 ```
-<!-- End Authentication -->
+<!-- End Authentication [security] -->
+
+<!-- Start Server-sent event streaming [eventstream] -->
+## Server-sent event streaming
+
+[Server-sent events][mdn-sse] are used to stream content from certain
+operations. These operations will expose the stream as [Generator][generator] that
+can be consumed using a simple `for` loop. The loop will
+terminate when the server no longer has any events to send and closes the
+underlying connection.
+
+```python
+import sdk
+from sdk.models import operations, shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_header_param=True,
+    global_hidden_header_param='<value>',
+    global_hidden_path_param='<value>',
+    global_hidden_query_param='hello',
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.eventstreams.chat(request=operations.ChatRequestBody(
+    prompt='<value>',
+))
+
+if res.chat_completion_result is not None:
+    for event in res.chat_completion_stream:
+        # handle event
+        print(event)
+
+```
+
+[mdn-sse]: https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
+[generator]: https://wiki.python.org/moin/Generators
+<!-- End Server-sent event streaming [eventstream] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
