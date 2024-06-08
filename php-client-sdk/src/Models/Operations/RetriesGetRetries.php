@@ -9,20 +9,15 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * RetriesGetRetries - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** RetriesGetRetries - OK */
 class RetriesGetRetries
 {
-	#[\JMS\Serializer\Annotation\SerializedName('retries')]
+    #[\JMS\Serializer\Annotation\SerializedName('retries')]
     #[\JMS\Serializer\Annotation\Type('int')]
     public int $retries;
-    
-	public function __construct()
-	{
-		$this->retries = 0;
-	}
+
+    public function __construct()
+    {
+        $this->retries = 0;
+    }
 }

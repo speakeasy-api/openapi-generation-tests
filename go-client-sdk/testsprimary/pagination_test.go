@@ -17,7 +17,7 @@ import (
 )
 
 func TestPaginationLimitOffsetPageParams(t *testing.T) {
-	recordTest("pagination-limitOffset-page-params")
+	recordTest("pagination-limit-offset-page-params")
 
 	s := sdk.New()
 
@@ -27,7 +27,7 @@ func TestPaginationLimitOffsetPageParams(t *testing.T) {
 
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
 	assert.NotNil(t, res.Res)
 	assert.Equal(t, serverLimit, len(res.Res.ResultArray))
 
@@ -42,7 +42,7 @@ func TestPaginationLimitOffsetPageParams(t *testing.T) {
 }
 
 func TestPaginationLimitOffsetPageBody(t *testing.T) {
-	recordTest("pagination-limitOffset-page-body")
+	recordTest("pagination-limit-offset-page-body")
 
 	s := sdk.New()
 
@@ -56,7 +56,7 @@ func TestPaginationLimitOffsetPageBody(t *testing.T) {
 
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
 	assert.NotNil(t, res.Res)
 	assert.Equal(t, int(limit), len(res.Res.ResultArray))
 
@@ -71,7 +71,7 @@ func TestPaginationLimitOffsetPageBody(t *testing.T) {
 }
 
 func TestPaginationLimitOffsetOffsetParams(t *testing.T) {
-	recordTest("pagination-limitOffset-offset-params")
+	recordTest("pagination-limit-offset-offset-params")
 
 	s := sdk.New()
 
@@ -81,7 +81,7 @@ func TestPaginationLimitOffsetOffsetParams(t *testing.T) {
 
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
 	assert.NotNil(t, res.Res)
 	assert.Equal(t, int(limit), len(res.Res.ResultArray))
 
@@ -96,7 +96,7 @@ func TestPaginationLimitOffsetOffsetParams(t *testing.T) {
 }
 
 func TestPaginationLimitOffsetOffsetBody(t *testing.T) {
-	recordTest("pagination-limitOffset-offset-body")
+	recordTest("pagination-limit-offset-offset-body")
 
 	s := sdk.New()
 
@@ -110,7 +110,7 @@ func TestPaginationLimitOffsetOffsetBody(t *testing.T) {
 
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
 	assert.NotNil(t, res.Res)
 	assert.Equal(t, int(limit), len(res.Res.ResultArray))
 
@@ -134,7 +134,7 @@ func TestPaginationCursorParams(t *testing.T) {
 
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
 	assert.NotNil(t, res.Res)
 	assert.Equal(t, int(15), len(res.Res.ResultArray))
 
@@ -166,7 +166,7 @@ func TestPaginationCursorBody(t *testing.T) {
 
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
 	assert.NotNil(t, res.Res)
 	assert.Equal(t, 15, len(res.Res.ResultArray))
 
@@ -183,4 +183,121 @@ func TestPaginationCursorBody(t *testing.T) {
 	nullRes, err := penultimateRes.Next()
 	require.NoError(t, err)
 	require.Nil(t, nullRes)
+}
+
+func TestPaginationCursorNonNumeric(t *testing.T) {
+	recordTest("pagination-cursor-non-numeric")
+
+	s := sdk.New()
+
+	res, err := s.Pagination.PaginationCursorNonNumeric(context.Background(), nil)
+
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, 15, len(res.Res.ResultArray))
+
+	nextRes, err := res.Next()
+	require.NoError(t, err)
+	require.NotNil(t, nextRes)
+	assert.Equal(t, 5, len(nextRes.Res.ResultArray))
+
+	penultimateRes, err := nextRes.Next()
+	require.NoError(t, err)
+	require.NotNil(t, penultimateRes)
+	assert.Equal(t, 0, len(penultimateRes.Res.ResultArray))
+
+	nullRes, err := penultimateRes.Next()
+	require.NoError(t, err)
+	require.Nil(t, nullRes)
+}
+
+func TestPaginationWithRetries(t *testing.T) {
+	recordTest("pagination-with-retries")
+
+	client := newPaginationTestClient()
+
+	s := sdk.New(sdk.WithClient(client))
+
+	faultSettings := sdk.String(`{"error_code": 503, "error_count": 3}`)
+
+	res, err := s.Pagination.PaginationWithRetries(context.Background(), nil, faultSettings, nil)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	require.NotNil(t, res.Res, "(1) expected response to have non-nil body")
+	count := len(res.Res.ResultArray)
+
+	res, err = res.Next()
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	require.NotNil(t, res.Res, "(2) expected response to have non-nil body")
+	count += len(res.Res.ResultArray)
+
+	res, err = res.Next()
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	require.NotNil(t, res.Res, "(3) expected response to have non-nil body")
+	count += len(res.Res.ResultArray)
+
+	res, err = res.Next()
+	require.NoError(t, err)
+	require.Nil(t, res)
+
+	failattempt := paginationRequestLog{
+		status: http.StatusServiceUnavailable,
+		method: http.MethodGet,
+		path:   "/pagination/cursor_non_numeric",
+	}
+	successattempt := paginationRequestLog{
+		status: http.StatusOK,
+		method: http.MethodGet,
+		path:   "/pagination/cursor_non_numeric",
+	}
+
+	require.Equal(t, 20, count, "expected 20 results")
+	require.Equal(t, 6, len(client.logs), "expected 6 http calls")
+	require.Equal(t, failattempt, client.logs[0], "expected first call to fail")
+	require.Equal(t, failattempt, client.logs[1], "expected second call to fail")
+	require.Equal(t, failattempt, client.logs[2], "expected third call to fail")
+	require.Equal(t, successattempt, client.logs[3], "expected fourth call to succeed")
+	require.Equal(t, successattempt, client.logs[4], "expected fifth call to succeed")
+	require.Equal(t, successattempt, client.logs[5], "expected sixth call to succeed")
+}
+
+type paginationTestClient struct {
+	http.Client
+	reqID string
+	logs  []paginationRequestLog
+}
+
+func newPaginationTestClient() *paginationTestClient {
+	return &paginationTestClient{
+		Client: http.Client{},
+		reqID:  pseudo_uuid(),
+		logs:   []paginationRequestLog{},
+	}
+}
+
+func (c *paginationTestClient) Do(req *http.Request) (*http.Response, error) {
+	req.Header.Set("Request-ID", c.reqID)
+
+	res, err := c.Client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+
+	c.logs = append(c.logs, paginationRequestLog{
+		status: res.StatusCode,
+		method: req.Method,
+		path:   req.URL.Path,
+	})
+
+	return res, nil
+}
+
+type paginationRequestLog struct {
+	status int
+	method string
+	path   string
 }

@@ -5,7 +5,11 @@ package operations
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/ericlagergren/decimal"
+	"math/big"
 	"net/http"
+	"openapi/v2/pkg/utils"
+	"time"
 )
 
 type NullableRequiredEnum string
@@ -18,7 +22,6 @@ const (
 func (e NullableRequiredEnum) ToPointer() *NullableRequiredEnum {
 	return &e
 }
-
 func (e *NullableRequiredEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -36,10 +39,24 @@ func (e *NullableRequiredEnum) UnmarshalJSON(data []byte) error {
 }
 
 type NullableRequiredPropertyPostRequestBody struct {
-	NullableOptionalInt   *int64                `json:"NullableOptionalInt,omitempty"`
-	NullableRequiredArray []float64             `json:"NullableRequiredArray"`
-	NullableRequiredEnum  *NullableRequiredEnum `json:"NullableRequiredEnum"`
-	NullableRequiredInt   *int64                `json:"NullableRequiredInt"`
+	NullableOptionalInt        *int64                `json:"NullableOptionalInt,omitempty"`
+	NullableRequiredArray      []float64             `json:"NullableRequiredArray"`
+	NullableRequiredBigIntStr  *big.Int              `bigint:"string" json:"NullableRequiredBigIntStr"`
+	NullableRequiredDateTime   *time.Time            `json:"NullableRequiredDateTime"`
+	NullableRequiredDecimalStr *decimal.Big          `json:"NullableRequiredDecimalStr"`
+	NullableRequiredEnum       *NullableRequiredEnum `json:"NullableRequiredEnum"`
+	NullableRequiredInt        *int64                `json:"NullableRequiredInt"`
+}
+
+func (n NullableRequiredPropertyPostRequestBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NullableRequiredPropertyPostRequestBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *NullableRequiredPropertyPostRequestBody) GetNullableOptionalInt() *int64 {
@@ -56,6 +73,27 @@ func (o *NullableRequiredPropertyPostRequestBody) GetNullableRequiredArray() []f
 	return o.NullableRequiredArray
 }
 
+func (o *NullableRequiredPropertyPostRequestBody) GetNullableRequiredBigIntStr() *big.Int {
+	if o == nil {
+		return nil
+	}
+	return o.NullableRequiredBigIntStr
+}
+
+func (o *NullableRequiredPropertyPostRequestBody) GetNullableRequiredDateTime() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.NullableRequiredDateTime
+}
+
+func (o *NullableRequiredPropertyPostRequestBody) GetNullableRequiredDecimalStr() *decimal.Big {
+	if o == nil {
+		return nil
+	}
+	return o.NullableRequiredDecimalStr
+}
+
 func (o *NullableRequiredPropertyPostRequestBody) GetNullableRequiredEnum() *NullableRequiredEnum {
 	if o == nil {
 		return nil
@@ -70,6 +108,18 @@ func (o *NullableRequiredPropertyPostRequestBody) GetNullableRequiredInt() *int6
 	return o.NullableRequiredInt
 }
 
+// NullableRequiredPropertyPostResponseBody - OK
+type NullableRequiredPropertyPostResponseBody struct {
+	Data string `json:"data"`
+}
+
+func (o *NullableRequiredPropertyPostResponseBody) GetData() string {
+	if o == nil {
+		return ""
+	}
+	return o.Data
+}
+
 type NullableRequiredPropertyPostResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -78,7 +128,7 @@ type NullableRequiredPropertyPostResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	Res *string
+	Object *NullableRequiredPropertyPostResponseBody
 }
 
 func (o *NullableRequiredPropertyPostResponse) GetContentType() string {
@@ -102,9 +152,9 @@ func (o *NullableRequiredPropertyPostResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *NullableRequiredPropertyPostResponse) GetRes() *string {
+func (o *NullableRequiredPropertyPostResponse) GetObject() *NullableRequiredPropertyPostResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.Res
+	return o.Object
 }
