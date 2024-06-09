@@ -11,32 +11,32 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 
 class FormQueryParamsRefParamObjectArgs
 {
-	#[\JMS\Serializer\Annotation\SerializedName('bool')]
+    #[\JMS\Serializer\Annotation\SerializedName('bool')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $bool;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('int')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('int')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $int;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('num')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('num')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $num;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('refObjParam')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('refObjParam')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $refObjParam;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('str')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('str')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $str;
-    
-	public function __construct()
-	{
-		$this->bool = "";
-		$this->int = "";
-		$this->num = "";
-		$this->refObjParam = "";
-		$this->str = "";
-	}
+
+    public function __construct()
+    {
+        $this->bool = '';
+        $this->int = '';
+        $this->num = '';
+        $this->refObjParam = '';
+        $this->str = '';
+    }
 }

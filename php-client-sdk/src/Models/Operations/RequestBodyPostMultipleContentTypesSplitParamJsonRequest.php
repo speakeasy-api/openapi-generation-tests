@@ -8,18 +8,18 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class RequestBodyPostMultipleContentTypesSplitParamJsonRequest
 {
-	#[SpeakeasyMetadata('request:mediaType=application/json')]
+    #[SpeakeasyMetadata('request:mediaType=application/json')]
     public RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody $requestBody;
-    
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=paramStr')]
+
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=paramStr')]
     public string $paramStr;
-    
-	public function __construct()
-	{
-		$this->requestBody = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody();
-		$this->paramStr = "";
-	}
+
+    public function __construct()
+    {
+        $this->requestBody = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody();
+        $this->paramStr = '';
+    }
 }

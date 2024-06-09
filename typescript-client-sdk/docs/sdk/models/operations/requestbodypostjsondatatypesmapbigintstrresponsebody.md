@@ -5,7 +5,7 @@ OK
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `data`                   | *string*                 | :heavy_check_mark:       | N/A                      |
-| `json`                   | Record<string, *string*> | :heavy_check_mark:       | N/A                      |
+| Field                    | Type                     | Required                 | Description              | Example                  |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `data`                   | *string*                 | :heavy_check_mark:       | N/A                      | {"test":"1"}             |
+| `json`                   | Record<string, *BigInt*> | :heavy_check_mark:       | N/A                      | {<br/>"test": "1"<br/>}  |
