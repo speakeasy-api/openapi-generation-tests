@@ -8,13 +8,6 @@ from sdk import utils
 from typing import Optional
 
 
-@dataclasses.dataclass
-class APIKeyAuthSecurity:
-    api_key_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'Authorization' }})
-    
-
-
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class APIKeyAuthToken:
@@ -31,7 +24,7 @@ class APIKeyAuthResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
     token: Optional[APIKeyAuthToken] = dataclasses.field(default=None)
     r"""Successful authentication."""

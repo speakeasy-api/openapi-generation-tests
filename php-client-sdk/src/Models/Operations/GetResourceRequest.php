@@ -8,14 +8,14 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class GetResourceRequest
 {
-	#[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=resourceId')]
+    #[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=resourceId')]
     public string $resourceId;
-    
-	public function __construct()
-	{
-		$this->resourceId = "";
-	}
+
+    public function __construct()
+    {
+        $this->resourceId = '';
+    }
 }

@@ -11,7 +11,7 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 
 class ReadOnlyObjectInput
 {
-	public function __construct()
-	{
-	}
+    public function __construct()
+    {
+    }
 }

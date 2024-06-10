@@ -8,22 +8,22 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class RequestBodyPostMultipleContentTypesSplitParamFormRequestBody
 {
-	#[SpeakeasyMetadata('form:name=bool3')]
+    #[SpeakeasyMetadata('form:name=bool3')]
     public bool $bool3;
-    
-	#[SpeakeasyMetadata('form:name=num3')]
+
+    #[SpeakeasyMetadata('form:name=num3')]
     public float $num3;
-    
-	#[SpeakeasyMetadata('form:name=str3')]
+
+    #[SpeakeasyMetadata('form:name=str3')]
     public string $str3;
-    
-	public function __construct()
-	{
-		$this->bool3 = false;
-		$this->num3 = 0;
-		$this->str3 = "";
-	}
+
+    public function __construct()
+    {
+        $this->bool3 = false;
+        $this->num3 = 0;
+        $this->str3 = '';
+    }
 }
