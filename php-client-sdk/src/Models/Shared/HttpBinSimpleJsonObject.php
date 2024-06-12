@@ -11,12 +11,12 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 
 class HttpBinSimpleJsonObject
 {
-	#[\JMS\Serializer\Annotation\SerializedName('slideshow')]
+    #[\JMS\Serializer\Annotation\SerializedName('slideshow')]
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\Slideshow')]
     public Slideshow $slideshow;
-    
-	public function __construct()
-	{
-		$this->slideshow = new \OpenAPI\OpenAPI\Models\Shared\Slideshow();
-	}
+
+    public function __construct()
+    {
+        $this->slideshow = new \OpenAPI\OpenAPI\Models\Shared\Slideshow();
+    }
 }

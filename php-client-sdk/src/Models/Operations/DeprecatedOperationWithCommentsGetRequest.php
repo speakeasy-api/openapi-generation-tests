@@ -8,29 +8,29 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class DeprecatedOperationWithCommentsGetRequest
 {
     /**
      * This is a string parameter
-     * 
+     *
      * @var ?string $deprecatedParameter
      * @deprecated  field: This parameter is deprecated. Use newParameter instead.
      */
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=deprecatedParameter')]
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=deprecatedParameter')]
     public ?string $deprecatedParameter = null;
-    
+
     /**
      * This is a string parameter
-     * 
+     *
      * @var ?string $newParameter
      */
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=newParameter')]
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=newParameter')]
     public ?string $newParameter = null;
-    
-	public function __construct()
-	{
-		$this->deprecatedParameter = null;
-		$this->newParameter = null;
-	}
+
+    public function __construct()
+    {
+        $this->deprecatedParameter = null;
+        $this->newParameter = null;
+    }
 }

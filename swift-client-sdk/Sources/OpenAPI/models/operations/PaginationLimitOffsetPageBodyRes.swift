@@ -7,13 +7,15 @@ extension Operations {
     public struct PaginationLimitOffsetPageBodyRes {
         public let numPages: Int
         public let resultArray: [Int]
+        public let next: String?
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(numPages: Int, resultArray: [Int]) {
+        public init(numPages: Int, resultArray: [Int], next: String? = nil) {
             self.numPages = numPages
             self.resultArray = resultArray
+            self.next = next
         }
     }
 }
@@ -22,6 +24,7 @@ extension Operations.PaginationLimitOffsetPageBodyRes: Codable {
     enum CodingKeys: String, CodingKey {
         case numPages
         case resultArray
+        case next
     }
 }
 

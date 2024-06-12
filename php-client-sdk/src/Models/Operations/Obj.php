@@ -8,28 +8,23 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
-/**
- * Obj
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+/** Obj */
 class Obj
 {
-	#[SpeakeasyMetadata('queryParam:name=bool')]
+    #[SpeakeasyMetadata('queryParam:name=bool')]
     public bool $bool;
-    
-	#[SpeakeasyMetadata('queryParam:name=num')]
+
+    #[SpeakeasyMetadata('queryParam:name=num')]
     public float $num;
-    
-	#[SpeakeasyMetadata('queryParam:name=str')]
+
+    #[SpeakeasyMetadata('queryParam:name=str')]
     public string $str;
-    
-	public function __construct()
-	{
-		$this->bool = false;
-		$this->num = 0;
-		$this->str = "";
-	}
+
+    public function __construct()
+    {
+        $this->bool = false;
+        $this->num = 0;
+        $this->str = '';
+    }
 }
