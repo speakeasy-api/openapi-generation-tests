@@ -9,20 +9,15 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * SimplePathParameterObjectsRes - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** SimplePathParameterObjectsRes - OK */
 class SimplePathParameterObjectsRes
 {
-	#[\JMS\Serializer\Annotation\SerializedName('url')]
+    #[\JMS\Serializer\Annotation\SerializedName('url')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $url;
-    
-	public function __construct()
-	{
-		$this->url = "";
-	}
+
+    public function __construct()
+    {
+        $this->url = '';
+    }
 }

@@ -11,20 +11,18 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 
 /**
  * DeprecatedObject
- * 
- * @package OpenAPI\OpenAPI\Models\Shared
- * @access public
+ *
  * @deprecated  class: This object is deprecated.
  */
 class DeprecatedObject
 {
-	#[\JMS\Serializer\Annotation\SerializedName('str')]
+    #[\JMS\Serializer\Annotation\SerializedName('str')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $str = null;
-    
-	public function __construct()
-	{
-		$this->str = null;
-	}
+
+    public function __construct()
+    {
+        $this->str = null;
+    }
 }
