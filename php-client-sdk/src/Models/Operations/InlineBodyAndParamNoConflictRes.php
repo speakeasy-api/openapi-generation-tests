@@ -9,30 +9,25 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * InlineBodyAndParamNoConflictRes - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** InlineBodyAndParamNoConflictRes - OK */
 class InlineBodyAndParamNoConflictRes
 {
     /**
      * $args
-     * 
+     *
      * @var array<string, string> $args
      */
-	#[\JMS\Serializer\Annotation\SerializedName('args')]
+    #[\JMS\Serializer\Annotation\SerializedName('args')]
     #[\JMS\Serializer\Annotation\Type('array<string, string>')]
     public array $args;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('json')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('json')]
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictJson')]
     public InlineBodyAndParamNoConflictJson $json;
-    
-	public function __construct()
-	{
-		$this->args = [];
-		$this->json = new \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictJson();
-	}
+
+    public function __construct()
+    {
+        $this->args = [];
+        $this->json = new \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictJson();
+    }
 }

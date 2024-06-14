@@ -54,9 +54,9 @@ func (o *RequestBodyPostMultipleContentTypesSplitParamFormRequest) GetParamStr()
 
 // RequestBodyPostMultipleContentTypesSplitParamFormRes - OK
 type RequestBodyPostMultipleContentTypesSplitParamFormRes struct {
-	Args map[string]string      `json:"args,omitempty"`
-	Form map[string]interface{} `json:"form,omitempty"`
-	JSON map[string]interface{} `json:"json,omitempty"`
+	Args map[string]string `json:"args,omitempty"`
+	Form map[string]any    `json:"form,omitempty"`
+	JSON map[string]any    `json:"json,omitempty"`
 }
 
 func (o *RequestBodyPostMultipleContentTypesSplitParamFormRes) GetArgs() map[string]string {
@@ -66,14 +66,14 @@ func (o *RequestBodyPostMultipleContentTypesSplitParamFormRes) GetArgs() map[str
 	return o.Args
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitParamFormRes) GetForm() map[string]interface{} {
+func (o *RequestBodyPostMultipleContentTypesSplitParamFormRes) GetForm() map[string]any {
 	if o == nil {
 		return nil
 	}
 	return o.Form
 }
 
-func (o *RequestBodyPostMultipleContentTypesSplitParamFormRes) GetJSON() map[string]interface{} {
+func (o *RequestBodyPostMultipleContentTypesSplitParamFormRes) GetJSON() map[string]any {
 	if o == nil {
 		return nil
 	}

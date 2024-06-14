@@ -9,25 +9,20 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * OpenIdConnectAuthToken - Successful authentication.
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** OpenIdConnectAuthToken - Successful authentication. */
 class OpenIdConnectAuthToken
 {
-	#[\JMS\Serializer\Annotation\SerializedName('authenticated')]
+    #[\JMS\Serializer\Annotation\SerializedName('authenticated')]
     #[\JMS\Serializer\Annotation\Type('bool')]
     public bool $authenticated;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('token')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('token')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $token;
-    
-	public function __construct()
-	{
-		$this->authenticated = false;
-		$this->token = "";
-	}
+
+    public function __construct()
+    {
+        $this->authenticated = false;
+        $this->token = '';
+    }
 }

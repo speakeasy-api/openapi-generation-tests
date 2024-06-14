@@ -19,6 +19,24 @@ class _GlobalsAPI: GlobalsAPI {
         )
     }
     
+    public func globalsHeaderGet(request: Operations.GlobalsHeaderGetRequest) async throws -> Response<Operations.GlobalsHeaderGetResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureGlobalsHeaderGetRequest(with: configuration, request: request)
+            },
+            handleResponse: handleGlobalsHeaderGetResponse
+        )
+    }
+    
+    public func globalsHiddenPost(request: Operations.GlobalsHiddenPostRequest) async throws -> Response<Operations.GlobalsHiddenPostResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureGlobalsHiddenPostRequest(with: configuration, request: request)
+            },
+            handleResponse: handleGlobalsHiddenPostResponse
+        )
+    }
+    
     public func globalsQueryParameterGet(request: Operations.GlobalsQueryParameterGetRequest) async throws -> Response<Operations.GlobalsQueryParameterGetResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
@@ -39,6 +57,27 @@ private func configureGlobalPathParameterGetRequest(with configuration: URLReque
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
+private func configureGlobalsHeaderGetRequest(with configuration: URLRequestConfiguration, request: Operations.GlobalsHeaderGetRequest) throws {
+    configuration.path = "/anything/globals/header"
+    configuration.method = .get
+    configuration.headerParameterSerializable = request
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configureGlobalsHiddenPostRequest(with configuration: URLRequestConfiguration, request: Operations.GlobalsHiddenPostRequest) throws {
+    configuration.path = "/anything/globals/hidden/{globalHiddenPathParam}"
+    configuration.method = .post
+    configuration.pathParameterSerializable = request
+    configuration.queryParameterSerializable = request
+    configuration.headerParameterSerializable = request
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request.requestBody)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
 private func configureGlobalsQueryParameterGetRequest(with configuration: URLRequestConfiguration, request: Operations.GlobalsQueryParameterGetRequest) throws {
     configuration.path = "/anything/globals/queryParameter"
     configuration.method = .get
@@ -55,6 +94,38 @@ private func handleGlobalPathParameterGetResponse(response: Client.APIResponse) 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .res(try JSONDecoder().decode(Operations.GlobalPathParameterGetRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleGlobalsHeaderGetResponse(response: Client.APIResponse) throws -> Operations.GlobalsHeaderGetResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.GlobalsHeaderGetRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleGlobalsHiddenPostResponse(response: Client.APIResponse) throws -> Operations.GlobalsHiddenPostResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.GlobalsHiddenPostRes.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
