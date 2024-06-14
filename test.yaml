@@ -5067,6 +5067,36 @@ paths:
       responses:
         "500":
           description: Internal Server Error
+  /reflect#decimalStr:
+    post:
+      operationId: responseBodyDecimalStr
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: response-bodies-decimal-string
+      tags:
+        - responseBodies
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+              format: decimal
+            examples:
+              test:
+                value: 3.141592653589793
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                format: decimal
+              examples:
+                test:
+                  value: 3.141592653589793
   /anything/{emptyObject}:
     get:
       operationId: emptyObjectGet
