@@ -10,6 +10,15 @@ class _UnionsAPI: UnionsAPI {
         self.client = client
     }
     
+    public func collectionOneOfPost(request: Shared.CollectionOneOfObject) async throws -> Response<Operations.CollectionOneOfPostResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureCollectionOneOfPostRequest(with: configuration, request: request)
+            },
+            handleResponse: handleCollectionOneOfPostResponse
+        )
+    }
+    
     public func flattenedTypedObjectPost(request: Shared.FlattenedTypedObject1) async throws -> Response<Operations.FlattenedTypedObjectPostResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
@@ -73,12 +82,30 @@ class _UnionsAPI: UnionsAPI {
         )
     }
     
+    public func stronglyTypedOneOfDiscriminatedPost(request: Shared.StronglyTypedOneOfDiscriminatedObject) async throws -> Response<Operations.StronglyTypedOneOfDiscriminatedPostResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureStronglyTypedOneOfDiscriminatedPostRequest(with: configuration, request: request)
+            },
+            handleResponse: handleStronglyTypedOneOfDiscriminatedPostResponse
+        )
+    }
+    
     public func stronglyTypedOneOfPost(request: Shared.StronglyTypedOneOfObject) async throws -> Response<Operations.StronglyTypedOneOfPostResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
                 try configureStronglyTypedOneOfPostRequest(with: configuration, request: request)
             },
             handleResponse: handleStronglyTypedOneOfPostResponse
+        )
+    }
+    
+    public func stronglyTypedOneOfPostWithNonStandardDiscriminatorName(request: Shared.StronglyTypedOneOfObjectWithNonStandardDiscriminatorName) async throws -> Response<Operations.StronglyTypedOneOfPostWithNonStandardDiscriminatorNameResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureStronglyTypedOneOfPostWithNonStandardDiscriminatorNameRequest(with: configuration, request: request)
+            },
+            handleResponse: handleStronglyTypedOneOfPostWithNonStandardDiscriminatorNameResponse
         )
     }
     
@@ -100,12 +127,12 @@ class _UnionsAPI: UnionsAPI {
         )
     }
     
-    public func unionBigIntDecimal(request: Operations.UnionBigIntDecimalRequestBody) async throws -> Response<Operations.UnionBigIntDecimalResponse> {
+    public func unionBigIntStrDecimal(request: Operations.UnionBigIntStrDecimalRequestBody) async throws -> Response<Operations.UnionBigIntStrDecimalResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
-                try configureUnionBigIntDecimalRequest(with: configuration, request: request)
+                try configureUnionBigIntStrDecimalRequest(with: configuration, request: request)
             },
-            handleResponse: handleUnionBigIntDecimalResponse
+            handleResponse: handleUnionBigIntStrDecimalResponse
         )
     }
     
@@ -136,6 +163,24 @@ class _UnionsAPI: UnionsAPI {
         )
     }
     
+    public func unionMap(request: Operations.UnionMapRequestBody) async throws -> Response<Operations.UnionMapResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureUnionMapRequest(with: configuration, request: request)
+            },
+            handleResponse: handleUnionMapResponse
+        )
+    }
+    
+    public func weaklyTypedOneOfNullEnumPost(request: Shared.WeaklyTypedOneOfNullEnumObject) async throws -> Response<Operations.WeaklyTypedOneOfNullEnumPostResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureWeaklyTypedOneOfNullEnumPostRequest(with: configuration, request: request)
+            },
+            handleResponse: handleWeaklyTypedOneOfNullEnumPostResponse
+        )
+    }
+    
     public func weaklyTypedOneOfPost(request: Shared.WeaklyTypedOneOfObject) async throws -> Response<Operations.WeaklyTypedOneOfPostResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
@@ -148,6 +193,17 @@ class _UnionsAPI: UnionsAPI {
 }
 
 // MARK: - Request Configuration
+
+private func configureCollectionOneOfPostRequest(with configuration: URLRequestConfiguration, request: Shared.CollectionOneOfObject) throws {
+    configuration.path = "/anything/collectionOneOf"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
 
 private func configureFlattenedTypedObjectPostRequest(with configuration: URLRequestConfiguration, request: Shared.FlattenedTypedObject1) throws {
     configuration.path = "/anything/flattenedTypedObject"
@@ -226,8 +282,30 @@ private func configurePrimitiveTypeOneOfPostRequest(with configuration: URLReque
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
+private func configureStronglyTypedOneOfDiscriminatedPostRequest(with configuration: URLRequestConfiguration, request: Shared.StronglyTypedOneOfDiscriminatedObject) throws {
+    configuration.path = "/anything/stronglyTypedOneOfDiscriminated"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
 private func configureStronglyTypedOneOfPostRequest(with configuration: URLRequestConfiguration, request: Shared.StronglyTypedOneOfObject) throws {
     configuration.path = "/anything/stronglyTypedOneOf"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configureStronglyTypedOneOfPostWithNonStandardDiscriminatorNameRequest(with configuration: URLRequestConfiguration, request: Shared.StronglyTypedOneOfObjectWithNonStandardDiscriminatorName) throws {
+    configuration.path = "/anything/stronglyTypedOneOfWithNonStandardDiscriminatorName"
     configuration.method = .post
     configuration.contentType = "application/json"
     configuration.body = try jsonEncoder().encode(request)
@@ -259,8 +337,8 @@ private func configureTypedObjectOneOfPostRequest(with configuration: URLRequest
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
-private func configureUnionBigIntDecimalRequest(with configuration: URLRequestConfiguration, request: Operations.UnionBigIntDecimalRequestBody) throws {
-    configuration.path = "/anything/unionBigIntDecimal"
+private func configureUnionBigIntStrDecimalRequest(with configuration: URLRequestConfiguration, request: Operations.UnionBigIntStrDecimalRequestBody) throws {
+    configuration.path = "/anything/unionBigIntStrDecimal"
     configuration.method = .post
     configuration.contentType = "application/json"
     configuration.body = try jsonEncoder().encode(request)
@@ -303,6 +381,28 @@ private func configureUnionDateTimeNullRequest(with configuration: URLRequestCon
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
+private func configureUnionMapRequest(with configuration: URLRequestConfiguration, request: Operations.UnionMapRequestBody) throws {
+    configuration.path = "/anything/unionMap"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configureWeaklyTypedOneOfNullEnumPostRequest(with configuration: URLRequestConfiguration, request: Shared.WeaklyTypedOneOfNullEnumObject) throws {
+    configuration.path = "/anything/weaklyTypedOneOfNullEnum"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
 private func configureWeaklyTypedOneOfPostRequest(with configuration: URLRequestConfiguration, request: Shared.WeaklyTypedOneOfObject) throws {
     configuration.path = "/anything/weaklyTypedOneOf"
     configuration.method = .post
@@ -315,6 +415,22 @@ private func configureWeaklyTypedOneOfPostRequest(with configuration: URLRequest
 }
 
 // MARK: - Response Handlers
+
+private func handleCollectionOneOfPostResponse(response: Client.APIResponse) throws -> Operations.CollectionOneOfPostResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.CollectionOneOfPostRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
 
 private func handleFlattenedTypedObjectPostResponse(response: Client.APIResponse) throws -> Operations.FlattenedTypedObjectPostResponse {
     let httpResponse = response.httpResponse
@@ -428,6 +544,22 @@ private func handlePrimitiveTypeOneOfPostResponse(response: Client.APIResponse) 
     return .empty
 }
 
+private func handleStronglyTypedOneOfDiscriminatedPostResponse(response: Client.APIResponse) throws -> Operations.StronglyTypedOneOfDiscriminatedPostResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.StronglyTypedOneOfDiscriminatedPostRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
 private func handleStronglyTypedOneOfPostResponse(response: Client.APIResponse) throws -> Operations.StronglyTypedOneOfPostResponse {
     let httpResponse = response.httpResponse
     
@@ -435,6 +567,22 @@ private func handleStronglyTypedOneOfPostResponse(response: Client.APIResponse) 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .res(try JSONDecoder().decode(Operations.StronglyTypedOneOfPostRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleStronglyTypedOneOfPostWithNonStandardDiscriminatorNameResponse(response: Client.APIResponse) throws -> Operations.StronglyTypedOneOfPostWithNonStandardDiscriminatorNameResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.StronglyTypedOneOfPostWithNonStandardDiscriminatorNameRes.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -476,13 +624,13 @@ private func handleTypedObjectOneOfPostResponse(response: Client.APIResponse) th
     return .empty
 }
 
-private func handleUnionBigIntDecimalResponse(response: Client.APIResponse) throws -> Operations.UnionBigIntDecimalResponse {
+private func handleUnionBigIntStrDecimalResponse(response: Client.APIResponse) throws -> Operations.UnionBigIntStrDecimalResponse {
     let httpResponse = response.httpResponse
     
     if httpResponse.statusCode == 200 { 
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
-                return .res(try JSONDecoder().decode(Operations.UnionBigIntDecimalRes.self, from: data))
+                return .res(try JSONDecoder().decode(Operations.UnionBigIntStrDecimalRes.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
@@ -531,6 +679,38 @@ private func handleUnionDateTimeNullResponse(response: Client.APIResponse) throw
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .res(try JSONDecoder().decode(Operations.UnionDateTimeNullRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleUnionMapResponse(response: Client.APIResponse) throws -> Operations.UnionMapResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.UnionMapRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleWeaklyTypedOneOfNullEnumPostResponse(response: Client.APIResponse) throws -> Operations.WeaklyTypedOneOfNullEnumPostResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.WeaklyTypedOneOfNullEnumPostRes.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

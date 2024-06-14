@@ -11,11 +11,13 @@ from enum import Enum
 from sdk import utils
 from typing import Any, Optional
 
+
 class Int32Enum(int, Enum):
     r"""An int32 enum property."""
     FIFTY_FIVE = 55
     SIXTY_NINE = 69
     ONE_HUNDRED_AND_EIGHTY_ONE = 181
+
 
 class IntEnum(int, Enum):
     r"""An integer enum property."""
@@ -60,6 +62,10 @@ class SimpleObject:
     r"""An optional boolean property."""
     decimal: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('decimal'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }, 'header': { 'field_name': 'decimal' }, 'path_param': { 'field_name': 'decimal' }, 'query_param': { 'field_name': 'decimal' }, 'form': { 'field_name': 'decimal' }, 'multipart_form': { 'field_name': 'decimal' }})
     decimal_str: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('decimalStr'), 'encoder': utils.decimalencoder(True, True), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }, 'header': { 'field_name': 'decimalStr' }, 'path_param': { 'field_name': 'decimalStr' }, 'query_param': { 'field_name': 'decimalStr' }, 'form': { 'field_name': 'decimalStr' }, 'multipart_form': { 'field_name': 'decimalStr' }})
+    float64_str: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('float64Str'), 'encoder': utils.numberstrencoder(True), 'decoder': utils.numberstrdecoder, 'exclude': lambda f: f is None }, 'header': { 'field_name': 'float64Str' }, 'path_param': { 'field_name': 'float64Str' }, 'query_param': { 'field_name': 'float64Str' }, 'form': { 'field_name': 'float64Str' }, 'multipart_form': { 'field_name': 'float64Str' }})
+    r"""A float64 string"""
+    int64_str: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int64Str'), 'encoder': utils.integerstrencoder(True), 'decoder': utils.integerstrdecoder, 'exclude': lambda f: f is None }, 'header': { 'field_name': 'int64Str' }, 'path_param': { 'field_name': 'int64Str' }, 'query_param': { 'field_name': 'int64Str' }, 'form': { 'field_name': 'int64Str' }, 'multipart_form': { 'field_name': 'int64Str' }})
+    r"""An int64 string"""
     int_opt_null: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('intOptNull'), 'exclude': lambda f: f is None }, 'header': { 'field_name': 'intOptNull' }, 'path_param': { 'field_name': 'intOptNull' }, 'query_param': { 'field_name': 'intOptNull' }, 'form': { 'field_name': 'intOptNull' }, 'multipart_form': { 'field_name': 'intOptNull' }})
     r"""An optional integer property will be null for tests."""
     num_opt_null: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('numOptNull'), 'exclude': lambda f: f is None }, 'header': { 'field_name': 'numOptNull' }, 'path_param': { 'field_name': 'numOptNull' }, 'query_param': { 'field_name': 'numOptNull' }, 'form': { 'field_name': 'numOptNull' }, 'multipart_form': { 'field_name': 'numOptNull' }})

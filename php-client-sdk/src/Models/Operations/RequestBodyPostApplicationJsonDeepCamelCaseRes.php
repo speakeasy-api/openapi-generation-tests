@@ -9,21 +9,16 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * RequestBodyPostApplicationJsonDeepCamelCaseRes - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** RequestBodyPostApplicationJsonDeepCamelCaseRes - OK */
 class RequestBodyPostApplicationJsonDeepCamelCaseRes
 {
-	#[\JMS\Serializer\Annotation\SerializedName('json')]
+    #[\JMS\Serializer\Annotation\SerializedName('json')]
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\DeepObjectCamelCase')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?\OpenAPI\OpenAPI\Models\Shared\DeepObjectCamelCase $json = null;
-    
-	public function __construct()
-	{
-		$this->json = null;
-	}
+
+    public function __construct()
+    {
+        $this->json = null;
+    }
 }
