@@ -9,25 +9,20 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * BasicAuthUser - Successful authentication.
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** BasicAuthUser - Successful authentication. */
 class BasicAuthUser
 {
-	#[\JMS\Serializer\Annotation\SerializedName('authenticated')]
+    #[\JMS\Serializer\Annotation\SerializedName('authenticated')]
     #[\JMS\Serializer\Annotation\Type('bool')]
     public bool $authenticated;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('user')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('user')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $user;
-    
-	public function __construct()
-	{
-		$this->authenticated = false;
-		$this->user = "";
-	}
+
+    public function __construct()
+    {
+        $this->authenticated = false;
+        $this->user = '';
+    }
 }

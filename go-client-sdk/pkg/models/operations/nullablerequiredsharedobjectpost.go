@@ -8,11 +8,11 @@ import (
 )
 
 type NullableRequiredSharedObjectPostRequestBody struct {
-	NullableOptionalObj *shared.NullableObject `json:"NullableOptionalObj,omitempty"`
-	NullableRequiredObj *shared.NullableObject `json:"NullableRequiredObj"`
+	NullableOptionalObj *shared.NullableOptionalObject `json:"NullableOptionalObj,omitempty"`
+	NullableRequiredObj *shared.NullableObject         `json:"NullableRequiredObj"`
 }
 
-func (o *NullableRequiredSharedObjectPostRequestBody) GetNullableOptionalObj() *shared.NullableObject {
+func (o *NullableRequiredSharedObjectPostRequestBody) GetNullableOptionalObj() *shared.NullableOptionalObject {
 	if o == nil {
 		return nil
 	}
@@ -26,6 +26,18 @@ func (o *NullableRequiredSharedObjectPostRequestBody) GetNullableRequiredObj() *
 	return o.NullableRequiredObj
 }
 
+// NullableRequiredSharedObjectPostResponseBody - OK
+type NullableRequiredSharedObjectPostResponseBody struct {
+	Data string `json:"data"`
+}
+
+func (o *NullableRequiredSharedObjectPostResponseBody) GetData() string {
+	if o == nil {
+		return ""
+	}
+	return o.Data
+}
+
 type NullableRequiredSharedObjectPostResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -34,7 +46,7 @@ type NullableRequiredSharedObjectPostResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	Res *string
+	Object *NullableRequiredSharedObjectPostResponseBody
 }
 
 func (o *NullableRequiredSharedObjectPostResponse) GetContentType() string {
@@ -58,9 +70,9 @@ func (o *NullableRequiredSharedObjectPostResponse) GetRawResponse() *http.Respon
 	return o.RawResponse
 }
 
-func (o *NullableRequiredSharedObjectPostResponse) GetRes() *string {
+func (o *NullableRequiredSharedObjectPostResponse) GetObject() *NullableRequiredSharedObjectPostResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.Res
+	return o.Object
 }

@@ -8,19 +8,19 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class SimplePathParameterArraysRequest
 {
     /**
      * $arrParam
-     * 
+     *
      * @var array<string> $arrParam
      */
-	#[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=arrParam')]
+    #[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=arrParam')]
     public array $arrParam;
-    
-	public function __construct()
-	{
-		$this->arrParam = [];
-	}
+
+    public function __construct()
+    {
+        $this->arrParam = [];
+    }
 }
