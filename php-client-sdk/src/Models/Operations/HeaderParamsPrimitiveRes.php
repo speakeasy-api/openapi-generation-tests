@@ -9,20 +9,15 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * HeaderParamsPrimitiveRes - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** HeaderParamsPrimitiveRes - OK */
 class HeaderParamsPrimitiveRes
 {
-	#[\JMS\Serializer\Annotation\SerializedName('headers')]
+    #[\JMS\Serializer\Annotation\SerializedName('headers')]
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\HeaderParamsPrimitiveHeaders')]
     public HeaderParamsPrimitiveHeaders $headers;
-    
-	public function __construct()
-	{
-		$this->headers = new \OpenAPI\OpenAPI\Models\Operations\HeaderParamsPrimitiveHeaders();
-	}
+
+    public function __construct()
+    {
+        $this->headers = new \OpenAPI\OpenAPI\Models\Operations\HeaderParamsPrimitiveHeaders();
+    }
 }

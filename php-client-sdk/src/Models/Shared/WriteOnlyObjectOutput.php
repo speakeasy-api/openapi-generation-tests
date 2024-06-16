@@ -11,7 +11,7 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 
 class WriteOnlyObjectOutput
 {
-	public function __construct()
-	{
-	}
+    public function __construct()
+    {
+    }
 }
