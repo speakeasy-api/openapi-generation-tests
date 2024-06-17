@@ -14,19 +14,66 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 - [ ] ♻️ Refine your SDK quickly by iterating locally with the [Speakeasy CLI](https://github.com/speakeasy-api/speakeasy)
 - [ ] 🎁 Publish your SDK to package managers by [configuring automatic publishing](https://www.speakeasyapi.dev/docs/productionize-sdks/publish-sdks)
 - [ ] ✨ When ready to productionize, delete this section from the README
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### Nuget
 
 ```bash
-dotnet add package openapi
+dotnet add package Openapi
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example 1
+
+```csharp
+using Openapi;
+using Openapi.Models.Shared;
+using NodaTime;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalHeaderParam: true,
+    globalHiddenHeaderParam: "<value>",
+    globalHiddenPathParam: "<value>",
+    globalHiddenQueryParam: "hello",
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+SimpleObject req = new SimpleObject() {
+    Any = "any",
+    Bool = true,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+    Enum = Openapi.Models.Shared.Enum.One,
+    Float32 = 1.1F,
+    Int = 1,
+    Int32 = 1,
+    Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+    IntEnum = Openapi.Models.Shared.IntEnum.Two,
+    Num = 1.1D,
+    Str = "test",
+    Bigint = 8821239038968084,
+    BigintStr = 9223372036854775808,
+    BoolOpt = true,
+    Decimal = 3.141592653589793M,
+    DecimalStr = 3.14159265358979344719667586M,
+    Float64Str = "1.1",
+    Int64Str = "100",
+    StrOpt = "testOptional",
+};
+
+var res = await sdk.Generation.GlobalNameOverriddenAsync(req);
+
+// handle response
+```
+
+### Example 2
 
 ```csharp
 using Openapi;
@@ -36,11 +83,14 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenHeaderParam: "<value>",
+    globalHiddenPathParam: "<value>",
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.GlobalNameOverriddenAsync();
+var res = await sdk.Servers.SelectGlobalServerAsync();
 
 // handle response
 ```
@@ -56,44 +106,44 @@ using Openapi.Models.Shared;
 using NodaTime;
 
 var sdk = new SDK(
+    globalHeaderParam: true,
+    globalHiddenHeaderParam: "<value>",
+    globalHiddenPathParam: "<value>",
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurity() {
-    Password = "YOUR_PASSWORD",
-    Username = "YOUR_USERNAME",
-}, new UsageExamplePostRequest() {
+UsageExamplePostRequest req = new UsageExamplePostRequest() {
     BigintParameter = 168827,
     BigintStrParameter = 446729,
     BoolParameter = false,
-    DateParameter = LocalDate.FromDateTime(System.DateTime.Parse("2023-06-11")),
-    DateTimeDefaultParameter = System.DateTime.Parse("2022-07-22T13:16:48.221Z"),
-    DateTimeParameter = System.DateTime.Parse("2021-10-21T09:16:58.799Z"),
+    DateParameter = LocalDate.FromDateTime(System.DateTime.Parse("2024-06-10")),
+    DateTimeDefaultParameter = System.DateTime.Parse("2023-07-23T01:43:10.512Z"),
+    DateTimeParameter = System.DateTime.Parse("2022-10-21T15:42:48.223Z"),
     DecimalParameter = 5223.72M,
     DecimalStrParameter = 2911.37M,
     DoubleParameter = 6946.59D,
-    EnumParameter = EnumParameter.Value1,
+    EnumParameter = Openapi.Models.Operations.EnumParameter.Value1,
     FalseyNumberParameter = 0D,
     Float32Parameter = 1029.75F,
+    Float64StringParameter = "<value>",
     FloatParameter = 5669.99D,
     Int64Parameter = 195232,
+    Int64StringParameter = "<value>",
     IntParameter = 569663,
     StrParameter = "example 1",
     RequestBody = new UsageExamplePostRequestBody() {
-        FakerFormattedStrings = new FakerFormattedStrings() {},
-        FakerStrings = new FakerStrings() {},
         SimpleObject = new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = Enum.One,
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+            Enum = Openapi.Models.Shared.Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = Int32Enum.FiftyFive,
-            IntEnum = IntEnum.Two,
+            Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+            IntEnum = Openapi.Models.Shared.IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -101,22 +151,33 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
             BoolOpt = true,
             Decimal = 3.141592653589793M,
             DecimalStr = 3.14159265358979344719667586M,
+            Float64Str = "1.1",
+            Int64Str = "100",
             StrOpt = "testOptional",
         },
     },
     OptEnumParameter = OptEnumParameter.Value3,
-});
+};
+
+var res = await sdk.Generation.UsageExamplePostAsync(
+    security: new UsageExamplePostSecurity() {
+        Password = "YOUR_PASSWORD",
+        Username = "YOUR_USERNAME",
+    },
+    req);
 
 // handle response
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [SDK](docs/sdks/sdk/README.md)
 
-* [PutAnythingIgnoredGeneration](docs/sdks/sdk/README.md#putanythingignoredgeneration)
+* [AuthenticatedRequest](docs/sdks/sdk/README.md#authenticatedrequest)
+* [ConflictingEnum](docs/sdks/sdk/README.md#conflictingenum) - Test potential namespace conflicts with java.lang.Object
+* [IgnoredGenerationPut](docs/sdks/sdk/README.md#ignoredgenerationput)
 * [ResponseBodyJsonGet](docs/sdks/sdk/README.md#responsebodyjsonget)
 
 ### [Generation](docs/sdks/generation/README.md)
@@ -142,14 +203,9 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [TypedParameterGenerationGet](docs/sdks/generation/README.md#typedparametergenerationget)
 * [UsageExamplePost](docs/sdks/generation/README.md#usageexamplepost) - An operation used for testing usage examples
 
-### [Errors](docs/sdks/errors/README.md)
-
-* [ConnectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
-* [StatusGetError](docs/sdks/errors/README.md#statusgeterror)
-* [StatusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
-
 ### [Unions](docs/sdks/unions/README.md)
 
+* [CollectionOneOfPost](docs/sdks/unions/README.md#collectiononeofpost)
 * [FlattenedTypedObjectPost](docs/sdks/unions/README.md#flattenedtypedobjectpost)
 * [MixedTypeOneOfPost](docs/sdks/unions/README.md#mixedtypeoneofpost)
 * [NullableOneOfRefInObjectPost](docs/sdks/unions/README.md#nullableoneofrefinobjectpost)
@@ -157,14 +213,48 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [NullableOneOfTypeInObjectPost](docs/sdks/unions/README.md#nullableoneoftypeinobjectpost)
 * [NullableTypedObjectPost](docs/sdks/unions/README.md#nullabletypedobjectpost)
 * [PrimitiveTypeOneOfPost](docs/sdks/unions/README.md#primitivetypeoneofpost)
+* [StronglyTypedOneOfDiscriminatedPost](docs/sdks/unions/README.md#stronglytypedoneofdiscriminatedpost)
 * [StronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
+* [StronglyTypedOneOfPostWithNonStandardDiscriminatorName](docs/sdks/unions/README.md#stronglytypedoneofpostwithnonstandarddiscriminatorname)
 * [TypedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
 * [TypedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
-* [UnionBigIntDecimal](docs/sdks/unions/README.md#unionbigintdecimal)
+* [UnionBigIntStrDecimal](docs/sdks/unions/README.md#unionbigintstrdecimal)
 * [UnionDateNull](docs/sdks/unions/README.md#uniondatenull)
 * [UnionDateTimeBigInt](docs/sdks/unions/README.md#uniondatetimebigint)
 * [UnionDateTimeNull](docs/sdks/unions/README.md#uniondatetimenull)
+* [UnionMap](docs/sdks/unions/README.md#unionmap)
+* [WeaklyTypedOneOfNullEnumPost](docs/sdks/unions/README.md#weaklytypedoneofnullenumpost)
 * [WeaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
+
+### [Errors](docs/sdks/errors/README.md)
+
+* [ConnectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
+* [StatusGetError](docs/sdks/errors/README.md#statusgeterror)
+* [StatusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
+
+### [CustomClient](docs/sdks/customclient/README.md)
+
+* [CustomClientPost](docs/sdks/customclient/README.md#customclientpost)
+
+### [ResponseBodies](docs/sdks/responsebodies/README.md)
+
+* [FlattenedEnvelopePaginationResponse](docs/sdks/responsebodies/README.md#flattenedenvelopepaginationresponse)
+* [FlattenedEnvelopeResponse](docs/sdks/responsebodies/README.md#flattenedenveloperesponse)
+* [FlattenedEnvelopeUnionResponse](docs/sdks/responsebodies/README.md#flattenedenvelopeunionresponse)
+* [FlattenedUnionResponse](docs/sdks/responsebodies/README.md#flattenedunionresponse)
+* [ResponseBodyAdditionalPropertiesAnyPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesanypost)
+* [ResponseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
+* [ResponseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
+* [ResponseBodyAdditionalPropertiesObjectPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesobjectpost)
+* [ResponseBodyAdditionalPropertiesPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiespost)
+* [ResponseBodyBytesGet](docs/sdks/responsebodies/README.md#responsebodybytesget)
+* [ResponseBodyDecimalStr](docs/sdks/responsebodies/README.md#responsebodydecimalstr)
+* [ResponseBodyEmptyWithHeaders](docs/sdks/responsebodies/README.md#responsebodyemptywithheaders)
+* [ResponseBodyMissing2xxOr3xxGet](docs/sdks/responsebodies/README.md#responsebodymissing2xxor3xxget)
+* [ResponseBodyOptionalGet](docs/sdks/responsebodies/README.md#responsebodyoptionalget)
+* [ResponseBodyReadOnly](docs/sdks/responsebodies/README.md#responsebodyreadonly)
+* [ResponseBodyStringGet](docs/sdks/responsebodies/README.md#responsebodystringget)
+* [ResponseBodyXmlGet](docs/sdks/responsebodies/README.md#responsebodyxmlget)
 
 ### [Flattening](docs/sdks/flattening/README.md)
 
@@ -177,6 +267,8 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 ### [Globals](docs/sdks/globals/README.md)
 
 * [GlobalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
+* [GlobalsHeaderGet](docs/sdks/globals/README.md#globalsheaderget)
+* [GlobalsHiddenPost](docs/sdks/globals/README.md#globalshiddenpost)
 * [GlobalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
 
 ### [Parameters](docs/sdks/parameters/README.md)
@@ -195,6 +287,7 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [HeaderParamsObject](docs/sdks/parameters/README.md#headerparamsobject)
 * [HeaderParamsPrimitive](docs/sdks/parameters/README.md#headerparamsprimitive)
 * [JsonQueryParamsObject](docs/sdks/parameters/README.md#jsonqueryparamsobject)
+* [JsonQueryParamsObjectSmaller](docs/sdks/parameters/README.md#jsonqueryparamsobjectsmaller)
 * [MixedParametersCamelCase](docs/sdks/parameters/README.md#mixedparameterscamelcase)
 * [MixedParametersPrimitives](docs/sdks/parameters/README.md#mixedparametersprimitives)
 * [MixedQueryParams](docs/sdks/parameters/README.md#mixedqueryparams)
@@ -204,6 +297,14 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [SimplePathParameterMaps](docs/sdks/parameters/README.md#simplepathparametermaps)
 * [SimplePathParameterObjects](docs/sdks/parameters/README.md#simplepathparameterobjects)
 * [SimplePathParameterPrimitives](docs/sdks/parameters/README.md#simplepathparameterprimitives)
+
+### [Hooks](docs/sdks/hooks/README.md)
+
+* [AuthorizationHeaderModification](docs/sdks/hooks/README.md#authorizationheadermodification)
+* [TestHooks](docs/sdks/hooks/README.md#testhooks)
+* [TestHooksAfterResponse](docs/sdks/hooks/README.md#testhooksafterresponse)
+* [TestHooksBeforeCreateRequestPaths](docs/sdks/hooks/README.md#testhooksbeforecreaterequestpaths)
+* [TestHooksError](docs/sdks/hooks/README.md#testhookserror)
 
 
 ### [Nest.First](docs/sdks/sdkfirst/README.md)
@@ -234,8 +335,13 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [Oauth2Override](docs/sdks/auth/README.md#oauth2override)
 * [OpenIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
+### [OpenEnums](docs/sdks/openenums/README.md)
+
+* [OpenEnumsPostUnrecognized](docs/sdks/openenums/README.md#openenumspostunrecognized)
+
 ### [RequestBodies](docs/sdks/requestbodies/README.md)
 
+* [NullEnumPost](docs/sdks/requestbodies/README.md#nullenumpost)
 * [NullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
 * [NullableRequiredEmptyObjectPost](docs/sdks/requestbodies/README.md#nullablerequiredemptyobjectpost)
 * [NullableRequiredPropertyPost](docs/sdks/requestbodies/README.md#nullablerequiredpropertypost)
@@ -277,6 +383,8 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [RequestBodyPostJsonDataTypesBigInt](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesbigint)
 * [RequestBodyPostJsonDataTypesBigIntStr](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesbigintstr)
 * [RequestBodyPostJsonDataTypesBoolean](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesboolean)
+* [RequestBodyPostJsonDataTypesComplexNumberArrays](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypescomplexnumberarrays)
+* [RequestBodyPostJsonDataTypesComplexNumberMaps](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypescomplexnumbermaps)
 * [RequestBodyPostJsonDataTypesDate](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesdate)
 * [RequestBodyPostJsonDataTypesDateTime](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesdatetime)
 * [RequestBodyPostJsonDataTypesDecimal](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesdecimal)
@@ -307,6 +415,7 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [RequestBodyPutMultipartDeep](docs/sdks/requestbodies/README.md#requestbodyputmultipartdeep)
 * [RequestBodyPutMultipartDifferentFileName](docs/sdks/requestbodies/README.md#requestbodyputmultipartdifferentfilename)
 * [RequestBodyPutMultipartFile](docs/sdks/requestbodies/README.md#requestbodyputmultipartfile)
+* [RequestBodyPutMultipartOptionalRequestBody](docs/sdks/requestbodies/README.md#requestbodyputmultipartoptionalrequestbody)
 * [RequestBodyPutMultipartSimple](docs/sdks/requestbodies/README.md#requestbodyputmultipartsimple)
 * [RequestBodyPutString](docs/sdks/requestbodies/README.md#requestbodyputstring)
 * [RequestBodyPutStringWithParams](docs/sdks/requestbodies/README.md#requestbodyputstringwithparams)
@@ -317,20 +426,6 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [RequestBodyWriteOnly](docs/sdks/requestbodies/README.md#requestbodywriteonly)
 * [RequestBodyWriteOnlyOutput](docs/sdks/requestbodies/README.md#requestbodywriteonlyoutput)
 * [RequestBodyWriteOnlyUnion](docs/sdks/requestbodies/README.md#requestbodywriteonlyunion)
-
-### [ResponseBodies](docs/sdks/responsebodies/README.md)
-
-* [ResponseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
-* [ResponseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
-* [ResponseBodyAdditionalPropertiesObjectPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesobjectpost)
-* [ResponseBodyAdditionalPropertiesPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiespost)
-* [ResponseBodyBytesGet](docs/sdks/responsebodies/README.md#responsebodybytesget)
-* [ResponseBodyEmptyWithHeaders](docs/sdks/responsebodies/README.md#responsebodyemptywithheaders)
-* [ResponseBodyOptionalGet](docs/sdks/responsebodies/README.md#responsebodyoptionalget)
-* [ResponseBodyReadOnly](docs/sdks/responsebodies/README.md#responsebodyreadonly)
-* [ResponseBodyStringGet](docs/sdks/responsebodies/README.md#responsebodystringget)
-* [ResponseBodyXmlGet](docs/sdks/responsebodies/README.md#responsebodyxmlget)
-* [ResponseBodyZeroValueComplexTypePtrsPost](docs/sdks/responsebodies/README.md#responsebodyzerovaluecomplextypeptrspost)
 
 ### [Servers](docs/sdks/servers/README.md)
 
@@ -348,7 +443,6 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 
 ### [AuthNew](docs/sdks/authnew/README.md)
 
-* [ApiKeyAuthGlobalNew](docs/sdks/authnew/README.md#apikeyauthglobalnew)
 * [AuthGlobal](docs/sdks/authnew/README.md#authglobal)
 * [BasicAuthNew](docs/sdks/authnew/README.md#basicauthnew)
 * [MultipleMixedOptionsAuth](docs/sdks/authnew/README.md#multiplemixedoptionsauth)
@@ -360,17 +454,18 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [Oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [OpenIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
-### [Documentation](docs/sdks/documentation/README.md)
-
-* [GetDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
-
 ### [Resource](docs/sdks/resource/README.md)
 
 * [CreateFile](docs/sdks/resource/README.md#createfile)
 * [CreateResource](docs/sdks/resource/README.md#createresource)
 * [DeleteResource](docs/sdks/resource/README.md#deleteresource)
+* [GetArrayDataSource](docs/sdks/resource/README.md#getarraydatasource)
 * [GetResource](docs/sdks/resource/README.md#getresource)
 * [UpdateResource](docs/sdks/resource/README.md#updateresource)
+
+### [Documentation](docs/sdks/documentation/README.md)
+
+* [GetDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
 
 ### [First](docs/sdks/first/README.md)
 
@@ -383,27 +478,32 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 ### [Pagination](docs/sdks/pagination/README.md)
 
 * [PaginationCursorBody](docs/sdks/pagination/README.md#paginationcursorbody)
+* [PaginationCursorNonNumeric](docs/sdks/pagination/README.md#paginationcursornonnumeric)
 * [PaginationCursorParams](docs/sdks/pagination/README.md#paginationcursorparams)
 * [PaginationLimitOffsetOffsetBody](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetbody)
 * [PaginationLimitOffsetOffsetParams](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetparams)
 * [PaginationLimitOffsetPageBody](docs/sdks/pagination/README.md#paginationlimitoffsetpagebody)
 * [PaginationLimitOffsetPageParams](docs/sdks/pagination/README.md#paginationlimitoffsetpageparams)
+* [PaginationURLParams](docs/sdks/pagination/README.md#paginationurlparams)
+* [PaginationWithRetries](docs/sdks/pagination/README.md#paginationwithretries)
 
 ### [Retries](docs/sdks/retries/README.md)
 
+* [RetriesAfter](docs/sdks/retries/README.md#retriesafter)
+* [RetriesConnectErrorGet](docs/sdks/retries/README.md#retriesconnecterrorget) - A request to a non-valid port to test connection errors
+* [RetriesFlatEmptyResponsePost](docs/sdks/retries/README.md#retriesflatemptyresponsepost)
 * [RetriesGet](docs/sdks/retries/README.md#retriesget)
-<!-- End SDK Available Operations -->
+* [RetriesPost](docs/sdks/retries/README.md#retriespost)
+<!-- End Available Resources and Operations [operations] -->
 
-<!-- Start Dev Containers -->
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
 
-<!-- End Dev Containers -->
-
-<!-- Start Global Parameters -->
 ## Global Parameters
 
 Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `globalPathParam` to `100` at SDK initialization and then you do not have to pass the same value on calls to operations like `GlobalPathParameterGet`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `globalHeaderParam` to `true` at SDK initialization and then you do not have to pass the same value on calls to operations like `GlobalPathParameterGet`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -412,8 +512,12 @@ The following global parameters are available. The required parameters must be s
 
 | Name | Type | Required | Description |
 | ---- | ---- |:--------:| ----------- |
-| globalPathParam | long | ✔️ | The globalPathParam parameter. |
-| globalQueryParam | string | ✔️ | The globalQueryParam parameter. |
+| globalHeaderParam | bool | ✔️ | The GlobalHeaderParam parameter. |
+| globalHiddenHeaderParam | string | ✔️ | The GlobalHiddenHeaderParam parameter. |
+| globalHiddenPathParam | string | ✔️ | The GlobalHiddenPathParam parameter. |
+| globalHiddenQueryParam | string | ✔️ | The GlobalHiddenQueryParam parameter. |
+| globalPathParam | long | ✔️ | The GlobalPathParam parameter. |
+| globalQueryParam | string | ✔️ | The GlobalQueryParam parameter. |
 
 
 ### Example
@@ -427,15 +531,325 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenHeaderParam: "<value>",
+    globalHiddenPathParam: "<value>",
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Globals.GlobalPathParameterGetAsync(719830);
+var res = await sdk.Globals.GlobalPathParameterGetAsync(globalPathParam: 100);
 
 // handle response
 ```
-<!-- End Global Parameters -->
+<!-- End Global Parameters [global-parameters] -->
+
+<!-- Start Pagination [pagination] -->
+## Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
+returned response object will have a `Next` method that can be called to pull down the next group of results. If the
+return value of `Next` is `null`, then there are no more pages to be fetched.
+
+Here's an example of one such pagination call:
+```csharp
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalHeaderParam: true,
+    globalHiddenHeaderParam: "<value>",
+    globalHiddenPathParam: "<value>",
+    globalHiddenQueryParam: "hello",
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+var res = await sdk.ResponseBodies.FlattenedEnvelopePaginationResponseAsync(cursor: "<value>");
+
+
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res != null)
+    {
+        break;
+    }
+}
+```
+<!-- End Pagination [pagination] -->
+
+<!-- Start Retries [retries] -->
+## Retries
+
+Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply pass a `RetryConfig` to the call:
+```csharp
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalHeaderParam: true,
+    globalHiddenHeaderParam: "<value>",
+    globalHiddenPathParam: "<value>",
+    globalHiddenQueryParam: "hello",
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+var res = await sdk.Pagination.PaginationWithRetriesAsync(
+    cursor: "<value>",
+    faultSettings: "{\"error_code\": 503, \"error_count\": 3}",
+    requestId: "paginationWithRetries",
+    retryConfig: new RetryConfig(
+        strategy: RetryConfig.RetryStrategy.BACKOFF,
+        backoff: new BackoffStrategy(
+            initialIntervalMs: 1L,
+            maxIntervalMs: 50L,
+            maxElapsedTimeMs: 100L,
+            exponent: 1.1
+        ),
+        retryConnectionErrors: false
+));
+
+
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res != null)
+    {
+        break;
+    }
+}
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can use the `RetryConfig` optional parameter when intitializing the SDK:
+```csharp
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
+
+var sdk = new SDK(
+    retryConfig: new RetryConfig(
+        strategy: RetryConfig.RetryStrategy.BACKOFF,
+        backoff: new BackoffStrategy(
+            initialIntervalMs: 1L,
+            maxIntervalMs: 50L,
+            maxElapsedTimeMs: 100L,
+            exponent: 1.1
+        ),
+        retryConnectionErrors: false
+),
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalHeaderParam: true,
+    globalHiddenHeaderParam: "<value>",
+    globalHiddenPathParam: "<value>",
+    globalHiddenQueryParam: "hello",
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+var res = await sdk.Pagination.PaginationWithRetriesAsync(
+    cursor: "<value>",
+    faultSettings: "{\"error_code\": 503, \"error_count\": 3}",
+    requestId: "paginationWithRetries");
+
+
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res != null)
+    {
+        break;
+    }
+}
+```
+<!-- End Retries [retries] -->
+
+<!-- Start Error Handling [errors] -->
+## Error Handling
+
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or thow an exception.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate type.
+
+| Error Object                                                | Status Code                                                 | Content Type                                                |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| Openapi.Models.Errors.Error                                 | 500                                                         | application/json                                            |
+| Openapi.Models.Errors.StatusGetXSpeakeasyErrorsResponseBody | 501                                                         | application/json                                            |
+| Openapi.Models.Errors.SDKException                          | 4xx-5xx                                                     | */*                                                         |
+
+### Example
+
+```csharp
+using Openapi;
+using Openapi.Models.Shared;
+using System;
+using Openapi.Models.Errors;
+using Openapi.Models.Operations;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalHeaderParam: true,
+    globalHiddenHeaderParam: "<value>",
+    globalHiddenPathParam: "<value>",
+    globalHiddenQueryParam: "hello",
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+try
+{
+    var res = await sdk.Errors.StatusGetXSpeakeasyErrorsAsync(statusCode: 385913);
+    // handle response
+}
+catch (Exception ex)
+{
+    if (ex is Error)
+    {
+        // handle exception
+    }
+    else if (ex is StatusGetXSpeakeasyErrorsResponseBody)
+    {
+        // handle exception
+    }
+    else if (ex is Openapi.Models.Errors.SDKException)
+    {
+        // handle exception
+    }
+}
+
+```
+<!-- End Error Handling [errors] -->
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+### Select Server by Index
+
+You can override the default server globally by passing a server index to the `serverIndex: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `http://localhost:35123` | None |
+| 1 | `http://broken` | None |
+| 2 | `http://{hostname}:{port}` | `hostname` (default is `localhost`), `port` (default is `35123`) |
+| 3 | `http://localhost:35123/anything/{something}` | `something` (default is `something`) |
+| 4 | `{protocol}://{hostname}:{port}` | `hostname` (default is `localhost`), `port` (default is `35123`), `protocol` (default is `http`) |
+
+
+
+#### Variables
+
+Some of the server options above contain variables. If you want to set the values of those variables, the following options are provided for doing so:
+ * `hostname: string`
+ * `port: string`
+ * `something: ServerSomething`
+ * `protocol: string`
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `serverUrl: str` optional parameter when initializing the SDK client instance. For example:
+
+
+### Override Server URL Per-Operation
+
+The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
+```csharp
+using Openapi;
+using Openapi.Models.Shared;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalHeaderParam: true,
+    globalHiddenHeaderParam: "<value>",
+    globalHiddenPathParam: "<value>",
+    globalHiddenQueryParam: "hello",
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+var res = await sdk.Errors.ConnectionErrorGetAsync(serverUrl: "http://somebrokenapi.broken");
+
+// handle response
+```
+<!-- End Server Selection [server] -->
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security schemes globally:
+
+| Name         | Type         | Scheme       |
+| ------------ | ------------ | ------------ |
+| `ApiKeyAuth` | apiKey       | API key      |
+| `Oauth2`     | oauth2       | OAuth2 token |
+
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
+```csharp
+using Openapi;
+using Openapi.Models.Shared;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalHeaderParam: true,
+    globalHiddenHeaderParam: "<value>",
+    globalHiddenPathParam: "<value>",
+    globalHiddenQueryParam: "hello",
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+ConflictingEnum req = new ConflictingEnum() {};
+
+var res = await sdk.ConflictingEnumAsync(req);
+
+// handle response
+```
+
+### Per-Operation Security Schemes
+
+Some operations in this SDK require the security scheme to be specified at the request level. For example:
+```csharp
+using Openapi;
+using Openapi.Models.Operations;
+
+var sdk = new SDK(
+    globalHeaderParam: true,
+    globalHiddenHeaderParam: "<value>",
+    globalHiddenPathParam: "<value>",
+    globalHiddenQueryParam: "hello",
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+AuthenticatedRequestRequestBody req = new AuthenticatedRequestRequestBody() {};
+
+var res = await sdk.AuthenticatedRequestAsync(
+    security: new AuthenticatedRequestSecurity() {
+        ClientCredentials = "<YOUR_CLIENT_CREDENTIALS_HERE>",
+    },
+    req);
+
+// handle response
+```
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
