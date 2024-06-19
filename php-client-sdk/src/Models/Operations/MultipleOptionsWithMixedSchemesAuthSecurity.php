@@ -8,18 +8,18 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class MultipleOptionsWithMixedSchemesAuthSecurity
 {
-	#[SpeakeasyMetadata('security:option=true')]
+    #[SpeakeasyMetadata('security:option=true')]
     public ?MultipleOptionsWithMixedSchemesAuthSecurityOption1 $option1 = null;
-    
-	#[SpeakeasyMetadata('security:option=true')]
+
+    #[SpeakeasyMetadata('security:option=true')]
     public ?MultipleOptionsWithMixedSchemesAuthSecurityOption2 $option2 = null;
-    
-	public function __construct()
-	{
-		$this->option1 = null;
-		$this->option2 = null;
-	}
+
+    public function __construct()
+    {
+        $this->option1 = null;
+        $this->option2 = null;
+    }
 }

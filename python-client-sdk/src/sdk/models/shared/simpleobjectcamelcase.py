@@ -11,11 +11,13 @@ from enum import Enum
 from sdk import utils
 from typing import Any, Optional
 
+
 class Int32EnumVal(int, Enum):
     r"""An int32 enum property."""
     FIFTY_FIVE = 55
     SIXTY_NINE = 69
     ONE_HUNDRED_AND_EIGHTY_ONE = 181
+
 
 class IntEnumVal(int, Enum):
     r"""An integer enum property."""
@@ -42,14 +44,14 @@ class SimpleObjectCamelCase:
     r"""A string based enum"""
     float32_val: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('float32_val') }})
     r"""A float32 property."""
-    int_enum_val: IntEnumVal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int_enum_val') }})
-    r"""An integer enum property."""
-    int_val: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int_val') }})
-    r"""An integer property."""
     int32_enum_val: Int32EnumVal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int32_enum_val') }})
     r"""An int32 enum property."""
     int32_val: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int32_val') }})
     r"""An int32 property."""
+    int_enum_val: IntEnumVal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int_enum_val') }})
+    r"""An integer enum property."""
+    int_val: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int_val') }})
+    r"""An integer property."""
     num_val: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('num_val') }})
     r"""A number property."""
     str_val: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('str_val') }})

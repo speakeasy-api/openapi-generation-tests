@@ -12,7 +12,7 @@ from typing import Optional, Union
 @dataclasses.dataclass
 class PrimitiveTypeOneOfPostRes:
     r"""OK"""
-    json: Union[str, int, float, bool] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
+    json: PrimitiveTypeOneOfPostJSON = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
 
 
@@ -23,9 +23,13 @@ class PrimitiveTypeOneOfPostResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
     res: Optional[PrimitiveTypeOneOfPostRes] = dataclasses.field(default=None)
     r"""OK"""
     
 
+
+PrimitiveTypeOneOfPostRequestBody = Union[str, int, float, bool]
+
+PrimitiveTypeOneOfPostJSON = Union[str, int, float, bool]

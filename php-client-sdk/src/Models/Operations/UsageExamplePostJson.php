@@ -13,38 +13,38 @@ class UsageExamplePostJson
 {
     /**
      * A set of strings with format values that lead to relevant examples being generated for them
-     * 
+     *
      * @var ?\OpenAPI\OpenAPI\Models\Shared\FakerFormattedStrings $fakerFormattedStrings
      */
-	#[\JMS\Serializer\Annotation\SerializedName('fakerFormattedStrings')]
+    #[\JMS\Serializer\Annotation\SerializedName('fakerFormattedStrings')]
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\FakerFormattedStrings')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?\OpenAPI\OpenAPI\Models\Shared\FakerFormattedStrings $fakerFormattedStrings = null;
-    
+
     /**
      * A set of strings with fieldnames that lead to relevant examples being generated for them
-     * 
+     *
      * @var ?\OpenAPI\OpenAPI\Models\Shared\FakerStrings $fakerStrings
      */
-	#[\JMS\Serializer\Annotation\SerializedName('fakerStrings')]
+    #[\JMS\Serializer\Annotation\SerializedName('fakerStrings')]
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\FakerStrings')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?\OpenAPI\OpenAPI\Models\Shared\FakerStrings $fakerStrings = null;
-    
+
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
-     * 
+     *
      * @var ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObject
      */
-	#[\JMS\Serializer\Annotation\SerializedName('simpleObject')]
+    #[\JMS\Serializer\Annotation\SerializedName('simpleObject')]
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\SimpleObject')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObject = null;
-    
-	public function __construct()
-	{
-		$this->fakerFormattedStrings = null;
-		$this->fakerStrings = null;
-		$this->simpleObject = null;
-	}
+
+    public function __construct()
+    {
+        $this->fakerFormattedStrings = null;
+        $this->fakerStrings = null;
+        $this->simpleObject = null;
+    }
 }
