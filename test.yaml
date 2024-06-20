@@ -4377,6 +4377,8 @@ paths:
   /anything/requestBodies/post/jsonDataTypes/complexNumberArrays:
     post:
       operationId: requestBodyPostJsonDataTypesComplexNumberArrays
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: request-bodies-post-json-data-types-complex-number-arrays
       tags:
         - requestBodies
       requestBody:
@@ -4384,6 +4386,14 @@ paths:
           application/json:
             schema:
               $ref: "components.yaml#/components/schemas/complexNumberArrays"
+            examples:
+              test:
+                value: {
+                  "bigIntArray": [9007199254740991],
+                  "bigIntStrArray": ["9223372036854775807"],
+                  "decimalArray": [3.141592653589793],
+                  "decimalStrArray": ["3.141592653589793238462643383279"]
+                }
         required: true
       responses:
         "200":
@@ -4398,9 +4408,21 @@ paths:
                     $ref: "components.yaml#/components/schemas/complexNumberArrays"
                 required:
                   - json
+              examples:
+                test:
+                  value: {
+                    "json": {
+                      "bigIntArray": [9007199254740991],
+                      "bigIntStrArray": ["9223372036854775807"],
+                      "decimalArray": [3.141592653589793],
+                      "decimalStrArray": ["3.141592653589793238462643383279"]
+                    }
+                  }
   /anything/requestBodies/post/jsonDataTypes/complexNumberMaps:
     post:
       operationId: requestBodyPostJsonDataTypesComplexNumberMaps
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: request-bodies-post-json-data-types-complex-number-maps
       tags:
         - requestBodies
       requestBody:
@@ -4408,6 +4430,22 @@ paths:
           application/json:
             schema:
               $ref: "components.yaml#/components/schemas/complexNumberMaps"
+            examples:
+              test:
+                value: {
+                  "bigintMap": {
+                    "bigint": 9007199254740991
+                  },
+                  "bigintStrMap": {
+                    "bigint": "9223372036854775807"
+                  },
+                  "decimalMap": {
+                    "decimal": 3.141592653589793
+                  },
+                  "decimalStrMap": {
+                    "decimal": "3.141592653589793238462643383279"
+                  }
+                }
         required: true
       responses:
         "200":
@@ -4422,6 +4460,24 @@ paths:
                     $ref: "components.yaml#/components/schemas/complexNumberMaps"
                 required:
                   - json
+              examples:
+                test:
+                  value: {
+                    "json": {
+                      "bigintMap": {
+                        "bigint": 9007199254740991
+                      },
+                      "bigintStrMap": {
+                        "bigint": "9223372036854775807"
+                      },
+                      "decimalMap": {
+                        "decimal": 3.141592653589793
+                      },
+                      "decimalStrMap": {
+                        "decimal": "3.141592653589793238462643383279"
+                      }
+                    }
+                  }
   /anything/requestBodies/post/nullable/required/string:
     post:
       operationId: requestBodyPostNullableRequiredStringBody
