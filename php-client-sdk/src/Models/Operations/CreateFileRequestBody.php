@@ -8,14 +8,14 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class CreateFileRequestBody
 {
-	#[SpeakeasyMetadata('multipartForm:file=true')]
+    #[SpeakeasyMetadata('multipartForm:file=true')]
     public ?CreateFileFile $file = null;
-    
-	public function __construct()
-	{
-		$this->file = null;
-	}
+
+    public function __construct()
+    {
+        $this->file = null;
+    }
 }

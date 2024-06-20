@@ -11,12 +11,12 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 
 class RequestBodyPostFormSimpleHeaders
 {
-	#[\JMS\Serializer\Annotation\SerializedName('Content-Type')]
+    #[\JMS\Serializer\Annotation\SerializedName('Content-Type')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $contentType;
-    
-	public function __construct()
-	{
-		$this->contentType = "";
-	}
+
+    public function __construct()
+    {
+        $this->contentType = '';
+    }
 }

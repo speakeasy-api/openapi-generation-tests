@@ -8,40 +8,36 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI;
 
-class Flattening 
+class Flattening
 {
+    private SDKConfiguration $sdkConfiguration;
 
-	private SDKConfiguration $sdkConfiguration;
+    /**
+     * @param  SDKConfiguration  $sdkConfig
+     */
+    public function __construct(SDKConfiguration $sdkConfig)
+    {
+        $this->sdkConfiguration = $sdkConfig;
+    }
 
-	/**
-	 * @param SDKConfiguration $sdkConfig
-	 */
-	public function __construct(SDKConfiguration $sdkConfig)
-	{
-		$this->sdkConfiguration = $sdkConfig;
-	}
-	
     /**
      * componentBodyAndParamConflict
-     * 
-     * @param \OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObject
-     * @param string $str
+     *
+     * @param  \OpenAPI\OpenAPI\Models\Shared\SimpleObject  $simpleObject
+     * @param  string  $str
      * @return \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamConflictResponse
      */
-	public function componentBodyAndParamConflict(
+    public function componentBodyAndParamConflict(
         \OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObject,
         string $str,
-    ): \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamConflictResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamConflictResponse {
         $request = new \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamConflictRequest();
         $request->simpleObject = $simpleObject;
         $request->str = $str;
-        
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/flattening/componentBodyAndParamConflict');
-        
         $options = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, "simpleObject", "json");
+        $body = Utils\Utils::serializeRequestBody($request, 'simpleObject', 'json');
         if ($body === null) {
             throw new \Exception('Request body is required');
         }
@@ -49,9 +45,8 @@ class Flattening
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamConflictRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
+
         $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -60,38 +55,34 @@ class Flattening
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamConflictRes', 'json');
+                $response->res = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamConflictRes', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * componentBodyAndParamNoConflict
-     * 
-     * @param string $paramStr
-     * @param \OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObject
+     *
+     * @param  string  $paramStr
+     * @param  \OpenAPI\OpenAPI\Models\Shared\SimpleObject  $simpleObject
      * @return \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamNoConflictResponse
      */
-	public function componentBodyAndParamNoConflict(
+    public function componentBodyAndParamNoConflict(
         string $paramStr,
         \OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObject,
-    ): \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamNoConflictResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamNoConflictResponse {
         $request = new \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamNoConflictRequest();
         $request->paramStr = $paramStr;
         $request->simpleObject = $simpleObject;
-        
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/flattening/componentBodyAndParamNoConflict');
-        
         $options = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, "simpleObject", "json");
+        $body = Utils\Utils::serializeRequestBody($request, 'simpleObject', 'json');
         if ($body === null) {
             throw new \Exception('Request body is required');
         }
@@ -99,9 +90,8 @@ class Flattening
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamNoConflictRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
+
         $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -110,43 +100,38 @@ class Flattening
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamNoConflictRes', 'json');
+                $response->res = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamNoConflictRes', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * conflictingParams
-     * 
-     * @param string $strPathParameter
-     * @param string $strQueryParameter
+     *
+     * @param  string  $strPathParameter
+     * @param  string  $strQueryParameter
      * @return \OpenAPI\OpenAPI\Models\Operations\ConflictingParamsResponse
      */
-	public function conflictingParams(
+    public function conflictingParams(
         string $strPathParameter,
         string $strQueryParameter,
-    ): \OpenAPI\OpenAPI\Models\Operations\ConflictingParamsResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\ConflictingParamsResponse {
         $request = new \OpenAPI\OpenAPI\Models\Operations\ConflictingParamsRequest();
         $request->strPathParameter = $strPathParameter;
         $request->strQueryParameter = $strQueryParameter;
-        
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/flattening/conflictingParams/{str}', \OpenAPI\OpenAPI\Models\Operations\ConflictingParamsRequest::class, $request, $this->sdkConfiguration->globals);
-        
         $options = ['http_errors' => false];
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\ConflictingParamsRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
+
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -155,38 +140,34 @@ class Flattening
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ConflictingParamsRes', 'json');
+                $response->res = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ConflictingParamsRes', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * inlineBodyAndParamConflict
-     * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictRequestBody $requestBody
-     * @param string $str
+     *
+     * @param  \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictRequestBody  $requestBody
+     * @param  string  $str
      * @return \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictResponse
      */
-	public function inlineBodyAndParamConflict(
+    public function inlineBodyAndParamConflict(
         \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictRequestBody $requestBody,
         string $str,
-    ): \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictResponse {
         $request = new \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictRequest();
         $request->requestBody = $requestBody;
         $request->str = $str;
-        
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/flattening/inlineBodyAndParamConflict');
-        
         $options = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, "requestBody", "json");
+        $body = Utils\Utils::serializeRequestBody($request, 'requestBody', 'json');
         if ($body === null) {
             throw new \Exception('Request body is required');
         }
@@ -194,9 +175,8 @@ class Flattening
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
+
         $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -205,38 +185,34 @@ class Flattening
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictRes', 'json');
+                $response->res = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictRes', 'json');
             }
         }
 
         return $response;
     }
-	
+
     /**
      * inlineBodyAndParamNoConflict
-     * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictRequestBody $requestBody
-     * @param string $paramStr
+     *
+     * @param  \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictRequestBody  $requestBody
+     * @param  string  $paramStr
      * @return \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictResponse
      */
-	public function inlineBodyAndParamNoConflict(
+    public function inlineBodyAndParamNoConflict(
         \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictRequestBody $requestBody,
         string $paramStr,
-    ): \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictResponse
-    {
+    ): \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictResponse {
         $request = new \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictRequest();
         $request->requestBody = $requestBody;
         $request->paramStr = $paramStr;
-        
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/flattening/inlineBodyAndParamNoConflict');
-        
         $options = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, "requestBody", "json");
+        $body = Utils\Utils::serializeRequestBody($request, 'requestBody', 'json');
         if ($body === null) {
             throw new \Exception('Request body is required');
         }
@@ -244,9 +220,8 @@ class Flattening
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
-        
+
         $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
-        
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
@@ -255,11 +230,10 @@ class Flattening
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
-        
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictRes', 'json');
+                $response->res = $serializer->deserialize((string) $httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictRes', 'json');
             }
         }
 
