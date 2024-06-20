@@ -5,7 +5,7 @@ from sdk import SDK
 from sdk.models.operations import *
 
 from .common_helpers import *
-from .helpers import *
+from .test_helpers import *
 
 
 def test_telemetry_user_agent_get():
@@ -16,9 +16,9 @@ def test_telemetry_user_agent_get():
 
     res = s.telemetry.telemetry_user_agent_get()
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res is not None
-    assert res.res.headers['X-Speakeasy-User-Agent'] == 'speakeasy-sdk/python 3.1.2 2.188.3 0.1.0 openapi'
+    assert res.res.headers['X-Speakeasy-User-Agent'] == 'speakeasy-sdk/python 3.2.0 2.347.4 0.1.0 openapi'
 
 
 def test_telemetry_speakeasy_user_agent_get():
@@ -31,7 +31,7 @@ def test_telemetry_speakeasy_user_agent_get():
 
     res = s.telemetry.telemetry_speakeasy_user_agent_get(user_agent)
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res is not None
     assert res.res.headers['User-Agent'] == user_agent
-    assert res.res.headers['X-Speakeasy-User-Agent'] == 'speakeasy-sdk/python 3.1.2 2.188.3 0.1.0 openapi'
+    assert res.res.headers['X-Speakeasy-User-Agent'] == 'speakeasy-sdk/python 3.2.0 2.347.4 0.1.0 openapi'

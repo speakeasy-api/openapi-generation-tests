@@ -8,28 +8,28 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class FormQueryParamsArrayRequest
 {
     /**
      * $arrParam
-     * 
+     *
      * @var ?array<string> $arrParam
      */
-	#[SpeakeasyMetadata('queryParam:style=form,explode=false,name=arrParam')]
+    #[SpeakeasyMetadata('queryParam:style=form,explode=false,name=arrParam')]
     public ?array $arrParam = null;
-    
+
     /**
      * $arrParamExploded
-     * 
+     *
      * @var ?array<int> $arrParamExploded
      */
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=arrParamExploded')]
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=arrParamExploded')]
     public ?array $arrParamExploded = null;
-    
-	public function __construct()
-	{
-		$this->arrParam = null;
-		$this->arrParamExploded = null;
-	}
+
+    public function __construct()
+    {
+        $this->arrParam = null;
+        $this->arrParamExploded = null;
+    }
 }

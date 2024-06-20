@@ -6,6 +6,7 @@
 * [createFile](#createfile)
 * [createResource](#createresource)
 * [deleteResource](#deleteresource)
+* [getArrayDataSource](#getarraydatasource)
 * [getResource](#getresource)
 * [updateResource](#updateresource)
 
@@ -17,7 +18,8 @@
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -27,21 +29,24 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Operations\CreateFileRequestBody();
+        $request = new Operations\CreateFileRequestBody();
     $request->file = new Operations\CreateFileFile();
     $request->file->content = '0xf10df1a3b9';
-    $request->file->fileName = 'rap_national.mp4v';
+    $request->file->fileName = 'your_file_here';;
 
     $response = $sdk->resource->createFile($request);
 
     if ($response->fileResource !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -66,7 +71,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -75,43 +81,46 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\ExampleResource();
+        $request = new Shared\ExampleResource();
     $request->arrayOfNumber = [
         1867.47,
     ];
     $request->arrayOfString = [
-        'string',
+        '<value>',
     ];
     $request->chocolates = [
         new Shared\Chocolates(),
     ];
-    $request->createdAt = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2023-03-21T05:07:13.653Z');
+    $request->createdAt = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2024-03-20T22:51:23.912Z');
     $request->enumNumber = Shared\EnumNumber::One;
     $request->enumStr = Shared\EnumStr::One;
-    $request->id = '<ID>';
+    $request->id = '<id>';
     $request->inlineObject = new Shared\InlineObject();
-    $request->inlineObject->inlineName = 'string';
+    $request->inlineObject->inlineName = '<value>';
     $request->mapOfInteger = [
         'Unbranded' => 967142,
     ];
     $request->mapOfString = [
-        'Elmo' => 'string',
+        'Elmo' => '<value>',
     ];
-    $request->name = 'string';
-    $request->namePrefix = 'string';
-    $request->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-06-22T17:48:04.355Z');
-    $request->vehicle = 'string';
+    $request->name = '<value>';
+    $request->namePrefix = '<value>';
+    $request->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2023-06-23T05:35:14.386Z');
+    $request->vehicle = '<value>';;
 
     $response = $sdk->resource->createResource($request);
 
     if ($response->exampleResource !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -136,7 +145,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -146,18 +156,21 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
+    
 
-
-    $response = $sdk->resource->deleteResource('string');
+    $response = $sdk->resource->deleteResource('<value>');
 
     if ($response->statusCode === 200) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -174,7 +187,7 @@ try {
 **[?\OpenAPI\OpenAPI\Models\Operations\DeleteResourceResponse](../../Models/Operations/DeleteResourceResponse.md)**
 
 
-## getResource
+## getArrayDataSource
 
 ### Example Usage
 
@@ -182,7 +195,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -192,18 +206,71 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
+    
+
+    $response = $sdk->resource->getArrayDataSource('<value>');
+
+    if ($response->arrayDataSource !== null) {
+        // handle response
+    }
+} catch (Throwable $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `filter`           | *string*           | :heavy_check_mark: | N/A                |
 
 
-    $response = $sdk->resource->getResource('string');
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\GetArrayDataSourceResponse](../../Models/Operations/GetArrayDataSourceResponse.md)**
+
+
+## getResource
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Shared;
+use \OpenAPI\OpenAPI\Models\Operations;
+
+$security = new Shared\Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
+
+try {
+    
+
+    $response = $sdk->resource->getResource('<value>');
 
     if ($response->exampleResource !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -228,7 +295,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -238,18 +306,21 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
+    
 
-
-    $response = $sdk->resource->updateResource('string');
+    $response = $sdk->resource->updateResource('<value>', '<value>');
 
     if ($response->statusCode === 200) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -258,6 +329,7 @@ try {
 
 | Parameter          | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `augment`          | *string*           | :heavy_check_mark: | N/A                |
 | `resourceId`       | *string*           | :heavy_check_mark: | N/A                |
 
 

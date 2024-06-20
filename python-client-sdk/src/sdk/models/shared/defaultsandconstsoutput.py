@@ -10,20 +10,24 @@ from enum import Enum
 from sdk import utils
 from typing import Optional
 
+
 class DefaultsAndConstsOutputConstEnumInt(int, Enum):
     ONE = 1
     TWO = 2
     THREE = 3
+
 
 class DefaultsAndConstsOutputConstEnumStr(str, Enum):
     ONE = 'one'
     TWO = 'two'
     THREE = 'three'
 
+
 class DefaultsAndConstsOutputDefaultEnumInt(int, Enum):
     ONE = 1
     TWO = 2
     THREE = 3
+
 
 class DefaultsAndConstsOutputDefaultEnumStr(str, Enum):
     ONE = 'one'
@@ -46,7 +50,9 @@ class DefaultsAndConstsOutput:
     const_int: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constInt') }})
     const_num: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constNum') }})
     const_str: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constStr') }})
+    const_str_d_quotes: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constStrDQuotes') }})
     const_str_null: Optional[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constStrNull') }})
+    const_str_s_quotes: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constStrSQuotes') }})
     default_big_int: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultBigInt') }})
     default_big_int_str: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultBigIntStr'), 'encoder': utils.bigintencoder(False), 'decoder': utils.bigintdecoder }})
     default_bool: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultBool') }})
@@ -59,7 +65,9 @@ class DefaultsAndConstsOutput:
     default_int: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultInt') }})
     default_num: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultNum') }})
     default_str: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultStr') }})
+    default_str_d_quotes: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultStrDQuotes') }})
     default_str_nullable: Optional[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultStrNullable') }})
+    default_str_s_quotes: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultStrSQuotes') }})
     normal_field: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('normalField') }})
     default_str_optional: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultStrOptional'), 'exclude': lambda f: f is None }})
     
