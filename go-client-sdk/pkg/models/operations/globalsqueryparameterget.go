@@ -6,6 +6,17 @@ import (
 	"net/http"
 )
 
+type GlobalsQueryParameterGetGlobals struct {
+	GlobalQueryParam *string `queryParam:"style=form,explode=true,name=globalQueryParam"`
+}
+
+func (o *GlobalsQueryParameterGetGlobals) GetGlobalQueryParam() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GlobalQueryParam
+}
+
 type GlobalsQueryParameterGetRequest struct {
 	GlobalQueryParam *string `queryParam:"style=form,explode=true,name=globalQueryParam"`
 }
@@ -17,11 +28,11 @@ func (o *GlobalsQueryParameterGetRequest) GetGlobalQueryParam() *string {
 	return o.GlobalQueryParam
 }
 
-type Args struct {
+type GlobalsQueryParameterGetArgs struct {
 	GlobalQueryParam string `json:"globalQueryParam"`
 }
 
-func (o *Args) GetGlobalQueryParam() string {
+func (o *GlobalsQueryParameterGetArgs) GetGlobalQueryParam() string {
 	if o == nil {
 		return ""
 	}
@@ -30,12 +41,12 @@ func (o *Args) GetGlobalQueryParam() string {
 
 // GlobalsQueryParameterGetRes - OK
 type GlobalsQueryParameterGetRes struct {
-	Args Args `json:"args"`
+	Args GlobalsQueryParameterGetArgs `json:"args"`
 }
 
-func (o *GlobalsQueryParameterGetRes) GetArgs() Args {
+func (o *GlobalsQueryParameterGetRes) GetArgs() GlobalsQueryParameterGetArgs {
 	if o == nil {
-		return Args{}
+		return GlobalsQueryParameterGetArgs{}
 	}
 	return o.Args
 }

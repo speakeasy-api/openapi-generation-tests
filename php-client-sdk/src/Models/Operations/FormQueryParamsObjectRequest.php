@@ -8,28 +8,28 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class FormQueryParamsObjectRequest
 {
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
-     * 
+     *
      * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParamExploded
      */
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=objParamExploded')]
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=objParamExploded')]
     public \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParamExploded;
-    
+
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
-     * 
+     *
      * @var ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam
      */
-	#[SpeakeasyMetadata('queryParam:style=form,explode=false,name=objParam')]
+    #[SpeakeasyMetadata('queryParam:style=form,explode=false,name=objParam')]
     public ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam = null;
-    
-	public function __construct()
-	{
-		$this->objParamExploded = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
-		$this->objParam = null;
-	}
+
+    public function __construct()
+    {
+        $this->objParamExploded = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
+        $this->objParam = null;
+    }
 }
