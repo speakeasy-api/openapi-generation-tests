@@ -7,7 +7,6 @@ Endpoints for testing authentication.
 
 ### Available Operations
 
-* [apiKeyAuthGlobalNew](#apikeyauthglobalnew)
 * [authGlobal](#authglobal)
 * [basicAuthNew](#basicauthnew)
 * [multipleMixedOptionsAuth](#multiplemixedoptionsauth)
@@ -19,58 +18,6 @@ Endpoints for testing authentication.
 * [oauth2AuthNew](#oauth2authnew)
 * [openIdConnectAuthNew](#openidconnectauthnew)
 
-## apiKeyAuthGlobalNew
-
-### Example Usage
-
-```php
-<?php
-
-declare(strict_types=1);
-require_once 'vendor/autoload.php';
-
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
-
-$sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
-
-try {
-    $request = new Shared\AuthServiceRequestBody();
-    $request->basicAuth = new Shared\BasicAuth();
-    $request->basicAuth->password = 'owsGgP4_AhRPMSJ';
-    $request->basicAuth->username = 'Devonte_Bins';
-    $request->headerAuth = [
-        new Shared\HeaderAuth(),
-    ];
-
-    $response = $sdk->authNew->apiKeyAuthGlobalNew($request);
-
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
-}
-```
-
-### Parameters
-
-| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `$request`                                                                                             | [\OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody](../../Models/Shared/AuthServiceRequestBody.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
-| `$serverURL`                                                                                           | *string*                                                                                               | :heavy_minus_sign:                                                                                     | An optional server URL to use.                                                                         |
-
-
-### Response
-
-**[?\OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthGlobalNewResponse](../../Models/Operations/ApiKeyAuthGlobalNewResponse.md)**
-
-
 ## authGlobal
 
 ### Example Usage
@@ -79,7 +26,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -88,24 +36,27 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'xvJcf9GiJNr7T2x';
     $request->basicAuth->username = 'Cory33';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $response = $sdk->authNew->authGlobal($request);
 
     if ($response->statusCode === 200) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -131,23 +82,28 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'Z2OStPksFyrcGeu';
     $request->basicAuth->username = 'Ashton.Steuber27';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $requestSecurity = new Operations\BasicAuthNewSecurity();
     $requestSecurity->password = 'YOUR_PASSWORD';
@@ -158,7 +114,7 @@ try {
     if ($response->statusCode === 200) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -185,23 +141,28 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'Iq1JSzG1wqLDz4v';
     $request->basicAuth->username = 'Ismael.Emmerich';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $requestSecurity = new Operations\MultipleMixedOptionsAuthSecurity();
     $requestSecurity->apiKeyAuthNew = 'Token <YOUR_API_KEY>';
@@ -211,7 +172,7 @@ try {
     if ($response->statusCode === 200) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -238,23 +199,28 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'OcWVV5608IiaWJQ';
     $request->basicAuth->username = 'Kameron42';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $requestSecurity = new Operations\MultipleMixedSchemeAuthSecurity();
     $requestSecurity->apiKeyAuthNew = 'Token <YOUR_API_KEY>';
@@ -266,7 +232,7 @@ try {
     if ($response->statusCode === 200) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -293,23 +259,28 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'fpwNE90MyqKIrXk';
     $request->basicAuth->username = 'Caroline_Walsh';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $requestSecurity = new Operations\MultipleOptionsWithMixedSchemesAuthSecurity();
     $requestSecurity->option1 = new Operations\MultipleOptionsWithMixedSchemesAuthSecurityOption1();
@@ -321,7 +292,7 @@ try {
     if ($response->statusCode === 200) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -348,23 +319,28 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'pibxDTiJSijK04Y';
     $request->basicAuth->username = 'Selena76';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $requestSecurity = new Operations\MultipleOptionsWithSimpleSchemesAuthSecurity();
     $requestSecurity->option1 = new Operations\MultipleOptionsWithSimpleSchemesAuthSecurityOption1();
@@ -376,7 +352,7 @@ try {
     if ($response->statusCode === 200) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -403,23 +379,28 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'pzdKQgSGZSrUGNs';
     $request->basicAuth->username = 'Eryn51';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $requestSecurity = new Operations\MultipleSimpleOptionsAuthSecurity();
     $requestSecurity->apiKeyAuthNew = 'Token <YOUR_API_KEY>';
@@ -429,7 +410,7 @@ try {
     if ($response->statusCode === 200) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -456,23 +437,28 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'UrAsw466AAaYtr1';
     $request->basicAuth->username = 'Kenya.Baumbach';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $requestSecurity = new Operations\MultipleSimpleSchemeAuthSecurity();
     $requestSecurity->apiKeyAuthNew = 'Token <YOUR_API_KEY>';
@@ -483,7 +469,7 @@ try {
     if ($response->statusCode === 200) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -510,44 +496,47 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+
+$security = new Shared\Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = 'V02sHy2onRTMRgS';
     $request->basicAuth->username = 'Polly.Aufderhar78';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
-    $requestSecurity = new Operations\Oauth2AuthNewSecurity();
-    $requestSecurity->oauth2 = 'Bearer YOUR_OAUTH2_TOKEN';
-
-    $response = $sdk->authNew->oauth2AuthNew($request, $requestSecurity);
+    $response = $sdk->authNew->oauth2AuthNew($request);
 
     if ($response->statusCode === 200) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `$request`                                                                                                   | [\OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody](../../Models/Shared/AuthServiceRequestBody.md)       | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
-| `security`                                                                                                   | [\OpenAPI\OpenAPI\Models\Operations\Oauth2AuthNewSecurity](../../Models/Operations/Oauth2AuthNewSecurity.md) | :heavy_check_mark:                                                                                           | The security requirements to use for the request.                                                            |
-| `$serverURL`                                                                                                 | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | An optional server URL to use.                                                                               |
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `$request`                                                                                             | [\OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody](../../Models/Shared/AuthServiceRequestBody.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
+| `$serverURL`                                                                                           | *string*                                                                                               | :heavy_minus_sign:                                                                                     | An optional server URL to use.                                                                         |
 
 
 ### Response
@@ -563,23 +552,28 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
 try {
-    $request = new Shared\AuthServiceRequestBody();
+        $request = new Shared\AuthServiceRequestBody();
     $request->basicAuth = new Shared\BasicAuth();
     $request->basicAuth->password = '1_B3hNdr8HC3AeS';
     $request->basicAuth->username = 'Floy_Heller';
     $request->headerAuth = [
         new Shared\HeaderAuth(),
-    ];
+    ];;
 
     $requestSecurity = new Operations\OpenIdConnectAuthNewSecurity();
     $requestSecurity->openIdConnect = 'Bearer YOUR_OPENID_TOKEN';
@@ -589,7 +583,7 @@ try {
     if ($response->statusCode === 200) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
