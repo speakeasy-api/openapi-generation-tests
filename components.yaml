@@ -117,8 +117,27 @@ components:
         - $ref: "#/components/schemas/readWriteObject"
     oneOfPrimitives:
       oneOf:
-      - type: boolean
-      - type: string
+        - type: boolean
+        - type: string
+    oneOfOverlappingObjects:
+      oneOf:
+        - type: object
+          title: obj1
+          required:
+            - field1
+          properties:
+            field1:
+              type: string
+        - type: object
+          title: obj2
+          required:
+            - field1
+            - field2
+          properties:
+            field1:
+              type: string
+            field2:
+              type: boolean
     objectWithNullEnums:
       type: object
       required: [nullEnum]

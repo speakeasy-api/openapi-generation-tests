@@ -6217,6 +6217,39 @@ paths:
                     $ref: "components.yaml#/components/schemas/weaklyTypedOneOfNullEnumObject"
                 required:
                   - json
+  /anything/oneOfOverlappingObjects:
+    post:
+      operationId: oneOfOverlappingObjects
+      tags:
+        - unions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - field1
+              properties:
+                field1:
+                  type: string
+                field2:
+                  type: boolean
+                field3:
+                  type: number
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/oneOfOverlappingObjects"
+                required:
+                  - json
   /anything/typedObjectOneOf:
     post:
       operationId: typedObjectOneOfPost
