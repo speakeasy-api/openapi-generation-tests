@@ -846,7 +846,7 @@ paths:
                   - url
   /anything/pathParams/json/{jsonObj}:
     get:
-      x-speakeasy-test: ["go", "python"]
+      x-speakeasy-test: ["go", "python", "pythonv2"]
       x-speakeasy-test-internal-id: parameters-path-parameter-json
       operationId: pathParameterJson
       tags:
@@ -1632,7 +1632,7 @@ paths:
 
   /anything/queryParams/json/objsmaller:
     get:
-      x-speakeasy-test: ["go", "python"]
+      x-speakeasy-test: ["go", "python", "pythonv2"]
       x-speakeasy-test-internal-id: parameters-json-query-params-object
       operationId: jsonQueryParamsObjectSmaller
       tags:
@@ -1687,7 +1687,7 @@ paths:
                   - args
   /anything/queryParams/mixed:
     get:
-      x-speakeasy-test: ["go", "python"]
+      x-speakeasy-test: ["go", "python", "pythonv2"]
       x-speakeasy-test-internal-id: parameters-mixed-query-params
       operationId: mixedQueryParams
       tags:
@@ -3509,6 +3509,7 @@ paths:
     post:
       operationId: nullableRequiredPropertyPost
       x-speakeasy-test: true
+      x-speakeasy-test-internal-id: request-bodies-post-nullable-required-property
       tags:
         - requestBodies
       requestBody:
@@ -3527,39 +3528,54 @@ paths:
                 NullableOptionalInt:
                   type: integer
                   nullable: true
-                  example: 0
                 NullableRequiredInt:
                   type:
                     - integer
-                    - null
-                  example: null
+                    - "null"
                 NullableRequiredArray:
-                  type: [array, null]
+                  type: [array, "null"]
                   items:
                     type: number
-                  example: null
                 NullableRequiredEnum:
                   type: ["string", "null"]
                   enum:
                     - first
                     - second
-                    - null
-                  example: second
+                    - "null"
                 NullableRequiredDateTime:
                   nullable: true
                   type: string
                   format: date-time
-                  example: "2024-03-02T01:02:03.001Z"
                 NullableRequiredBigIntStr:
                   nullable: true
                   type: string
                   format: bigint
-                  example: "9223372036854775807"
                 NullableRequiredDecimalStr:
                   nullable: true
                   type: string
                   format: decimal
-                  example: "3.14159265358979344719667586"
+            examples:
+              allSet: {
+                value: {
+                  "NullableOptionalInt": 0,
+                  "NullableRequiredInt": 1,
+                  "NullableRequiredArray": [ 1.1, 2.2, 3.3 ],
+                  "NullableRequiredEnum": "second",
+                  "NullableRequiredDateTime": "2020-01-01T00:00:00Z",
+                  "NullableRequiredBigIntStr": "9223372036854775807",
+                  "NullableRequiredDecimalStr": "3.141592653589793238462643383279"
+                }
+              }
+              allNull:
+                value: {
+                  "NullableOptionalInt": null,
+                  "NullableRequiredInt": null,
+                  "NullableRequiredArray": null,
+                  "NullableRequiredEnum": null,
+                  "NullableRequiredDateTime": null,
+                  "NullableRequiredBigIntStr": null,
+                  "NullableRequiredDecimalStr": null
+                }
         required: true
       responses:
         "200":
@@ -3571,15 +3587,80 @@ paths:
                 properties:
                   data:
                     type: string
-                    example: "{\"NullableOptionalInt\":0,\"NullableRequiredArray\":null,\"NullableRequiredBigIntStr\":\"9223372036854775807\",\"NullableRequiredDateTime\":\"2024-03-02T01:02:03.001Z\",\"NullableRequiredDecimalStr\":\"3.14159265358979344719667586\",\"NullableRequiredEnum\":\"second\",\"NullableRequiredInt\":null}"
-                    x-speakeasy-test-internal-directives:
-                      - sanitizeTimestamp: {}
-                required:
-                  - data
+                    x-speakeasy-test-ignore: true
+                  json:
+                    type: object
+                    required:
+                      - NullableRequiredInt
+                      - NullableRequiredArray
+                      - NullableRequiredEnum
+                      - NullableRequiredDateTime
+                      - NullableRequiredBigIntStr
+                      - NullableRequiredDecimalStr
+                    properties:
+                      NullableOptionalInt:
+                        type: integer
+                        nullable: true
+                      NullableRequiredInt:
+                        type:
+                          - integer
+                          - "null"
+                      NullableRequiredArray:
+                        type: [array, "null"]
+                        items:
+                          type: number
+                      NullableRequiredEnum:
+                        type: ["string", "null"]
+                        enum:
+                          - first
+                          - second
+                          - "null"
+                      NullableRequiredDateTime:
+                        nullable: true
+                        type: string
+                        format: date-time
+                      NullableRequiredBigIntStr:
+                        nullable: true
+                        type: string
+                        format: bigint
+                      NullableRequiredDecimalStr:
+                        nullable: true
+                        type: string
+                        format: decimal
+                      x-speakeasy-test-internal-directives:
+                        - sanitizeTimestamp: {}
+              examples:
+                allSet: {
+                  value: {
+                    "json": {
+                      "NullableOptionalInt": 0,
+                      "NullableRequiredInt": 1,
+                      "NullableRequiredArray": [ 1.1, 2.2, 3.3 ],
+                      "NullableRequiredEnum": "second",
+                      "NullableRequiredDateTime": "2020-01-01T00:00:00Z",
+                      "NullableRequiredBigIntStr": "9223372036854775807",
+                      "NullableRequiredDecimalStr": "3.141592653589793238462643383279"
+                    }
+                  }
+                }
+                allNull:
+                  value: {
+                    "json": {
+                      "NullableOptionalInt": null,
+                      "NullableRequiredInt": null,
+                      "NullableRequiredArray": null,
+                      "NullableRequiredEnum": null,
+                      "NullableRequiredDateTime": null,
+                      "NullableRequiredBigIntStr": null,
+                      "NullableRequiredDecimalStr": null
+                    }
+                  }
+
   /anything/requestBodies/post/nullableRequiredSharedObject:
     post:
       operationId: nullableRequiredSharedObjectPost
-      x-speakeasy-test: true
+      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test-internal-id: request-bodies-post-nullable-required-shared-object
       tags:
         - requestBodies
       requestBody:
@@ -3594,6 +3675,33 @@ paths:
                   $ref: "#/components/schemas/nullableOptionalObject"
                 NullableRequiredObj:
                   $ref: "#/components/schemas/nullableObject"
+            examples:
+              requiredNull:
+                value: {
+                  "NullableRequiredObj": null
+                }
+              allNull:
+                value: {
+                  "NullableOptionalObj": null,
+                  "NullableRequiredObj": null
+                }
+              optionalNonNull:
+                value: {
+                  "NullableOptionalObj": {
+                    "required": 1
+                  },
+                  "NullableRequiredObj": null
+                }
+              allSet:
+                value: {
+                  "NullableOptionalObj": {
+                    "required": 1,
+                    "optional": "test"
+                  },
+                  "NullableRequiredObj": {
+                    "required": 1
+                  }
+                }
         required: true
       responses:
         "200":
@@ -3605,13 +3713,56 @@ paths:
                 properties:
                   data:
                     type: string
-                    example: "{\"NullableRequiredObj\":null}"
-                required:
-                  - data
+                    x-speakeasy-test-ignore: true
+                  json:
+                    type: object
+                    required:
+                      - NullableRequiredObj
+                    properties:
+                      NullableOptionalObj:
+                        $ref: "#/components/schemas/nullableOptionalObject"
+                      NullableRequiredObj:
+                        $ref: "#/components/schemas/nullableObject"
+              examples:
+                requiredNull:
+                  value: {
+                    "json": {
+                      "NullableRequiredObj": null
+                    }
+                  }
+                allNull:
+                  value: {
+                    "json": {
+                      "NullableOptionalObj": null,
+                      "NullableRequiredObj": null
+                    }
+                  }
+                optionalNonNull:
+                  value: {
+                    "json": {
+                      "NullableOptionalObj": {
+                        "required": 1
+                      },
+                      "NullableRequiredObj": null
+                    }
+                  }
+                allSet:
+                  value: {
+                    "json": {
+                      "NullableOptionalObj": {
+                        "required": 1,
+                        "optional": "test"
+                      },
+                      "NullableRequiredObj": {
+                        "required": 1
+                      }
+                    }
+                  }
   /anything/requestBodies/post/nullableRequiredEmptyObject:
     post:
       operationId: nullableRequiredEmptyObjectPost
       x-speakeasy-test: true
+      x-speakeasy-test-internal-id: request-bodies-post-nullable-required-empty-object
       tags:
         - requestBodies
       requestBody:
@@ -3627,10 +3778,27 @@ paths:
                   type: ["object"]
                 NullableOptionalObj:
                   type: ["object", "null"]
-                  example: {}
                 NullableRequiredObj:
                   type: ["object", "null"]
-                  example: null
+            examples:
+              nullable-set:
+                value: {
+                  "RequiredObj": {},
+                  "NullableRequiredObj": null,
+                  "NullableOptionalObj": null
+                }
+              optional-set:
+                value: {
+                  "RequiredObj": {},
+                  "NullableRequiredObj": null,
+                  "NullableOptionalObj": {}
+                }
+              all-set:
+                value: {
+                  "RequiredObj": {},
+                  "NullableRequiredObj": {},
+                  "NullableOptionalObj": {}
+                }
         required: true
       responses:
         "200":
@@ -3642,9 +3810,44 @@ paths:
                 properties:
                   data:
                     type: string
-                    example: "{\"NullableOptionalObj\":{},\"NullableRequiredObj\":null,\"RequiredObj\":{}}"
-                required:
-                  - data
+                    x-speakeasy-test-ignore: true
+                  json:
+                    type: object
+                    required:
+                      - RequiredObj
+                      - NullableRequiredObj
+                    properties:
+                      RequiredObj:
+                        type: ["object"]
+                      NullableOptionalObj:
+                        type: ["object", "null"]
+                      NullableRequiredObj:
+                        type: ["object", "null"]
+              examples:
+                nullable-set:
+                  value: {
+                    "json": {
+                      "RequiredObj": {},
+                      "NullableRequiredObj": null,
+                      "NullableOptionalObj": null
+                    }
+                  }
+                optional-set:
+                  value: {
+                    "json": {
+                      "RequiredObj": {},
+                      "NullableRequiredObj": null,
+                      "NullableOptionalObj": {}
+                    }
+                  }
+                all-set:
+                  value: {
+                    "json": {
+                      "RequiredObj": {},
+                      "NullableRequiredObj": {},
+                      "NullableOptionalObj": {}
+                    }
+                  }
   /anything/requestBodies/post/{pathBigInt}/{pathBigIntStr}/{pathDecimal}/{pathDecimalStr}/complex-number-types:
     post:
       operationId: requestBodyPostComplexNumberTypes
@@ -7899,7 +8102,6 @@ paths:
                   - url
                   - args
                   - headers
-                  - json
 components:
   schemas:
     ExampleVehicle:
