@@ -8,23 +8,23 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class NameOverrideGetRequest
 {
     /**
      * An enum type
-     * 
+     *
      * @var \OpenAPI\OpenAPI\Models\Operations\EnumNameOverride $testEnumQueryParam
      */
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=enumNameOverride')]
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=enumNameOverride')]
     public EnumNameOverride $testEnumQueryParam;
-    
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=nameOverride')]
+
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=nameOverride')]
     public string $testQueryParam;
-    
-	public function __construct()
-	{
-		$this->testEnumQueryParam = \OpenAPI\OpenAPI\Models\Operations\EnumNameOverride::Value1;
-		$this->testQueryParam = "";
-	}
+
+    public function __construct()
+    {
+        $this->testEnumQueryParam = \OpenAPI\OpenAPI\Models\Operations\EnumNameOverride::Value1;
+        $this->testQueryParam = '';
+    }
 }

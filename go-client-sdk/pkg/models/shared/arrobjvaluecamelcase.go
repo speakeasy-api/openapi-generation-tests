@@ -4,7 +4,7 @@ package shared
 
 type ArrObjValueCamelCase struct {
 	JSON     []SimpleObjectCamelCase `json:"json,omitempty"`
-	Required interface{}             `json:"required,omitempty"`
+	Required any                     `json:"required,omitempty"`
 }
 
 func (o *ArrObjValueCamelCase) GetJSON() []SimpleObjectCamelCase {
@@ -14,7 +14,7 @@ func (o *ArrObjValueCamelCase) GetJSON() []SimpleObjectCamelCase {
 	return o.JSON
 }
 
-func (o *ArrObjValueCamelCase) GetRequired() interface{} {
+func (o *ArrObjValueCamelCase) GetRequired() any {
 	if o == nil {
 		return nil
 	}

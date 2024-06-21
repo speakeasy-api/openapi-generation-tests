@@ -13,26 +13,26 @@ class Slides
 {
     /**
      * $items
-     * 
+     *
      * @var ?array<string> $items
      */
-	#[\JMS\Serializer\Annotation\SerializedName('items')]
+    #[\JMS\Serializer\Annotation\SerializedName('items')]
     #[\JMS\Serializer\Annotation\Type('array<string>')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?array $items = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('title')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('title')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $title;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('type')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('type')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $type;
-    
-	public function __construct()
-	{
-		$this->items = null;
-		$this->title = "";
-		$this->type = "";
-	}
+
+    public function __construct()
+    {
+        $this->items = null;
+        $this->title = '';
+        $this->type = '';
+    }
 }

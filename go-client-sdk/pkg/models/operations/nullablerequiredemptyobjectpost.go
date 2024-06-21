@@ -42,6 +42,18 @@ func (o *NullableRequiredEmptyObjectPostRequestBody) GetRequiredObj() RequiredOb
 	return o.RequiredObj
 }
 
+// NullableRequiredEmptyObjectPostResponseBody - OK
+type NullableRequiredEmptyObjectPostResponseBody struct {
+	Data string `json:"data"`
+}
+
+func (o *NullableRequiredEmptyObjectPostResponseBody) GetData() string {
+	if o == nil {
+		return ""
+	}
+	return o.Data
+}
+
 type NullableRequiredEmptyObjectPostResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -50,7 +62,7 @@ type NullableRequiredEmptyObjectPostResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	Res *string
+	Object *NullableRequiredEmptyObjectPostResponseBody
 }
 
 func (o *NullableRequiredEmptyObjectPostResponse) GetContentType() string {
@@ -74,9 +86,9 @@ func (o *NullableRequiredEmptyObjectPostResponse) GetRawResponse() *http.Respons
 	return o.RawResponse
 }
 
-func (o *NullableRequiredEmptyObjectPostResponse) GetRes() *string {
+func (o *NullableRequiredEmptyObjectPostResponse) GetObject() *NullableRequiredEmptyObjectPostResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.Res
+	return o.Object
 }

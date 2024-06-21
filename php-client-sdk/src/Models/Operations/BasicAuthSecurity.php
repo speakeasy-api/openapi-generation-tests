@@ -8,18 +8,18 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class BasicAuthSecurity
 {
-	#[SpeakeasyMetadata('security:scheme=true,type=http,subtype=basic,name=password')]
+    #[SpeakeasyMetadata('security:scheme=true,type=http,subtype=basic,name=password')]
     public string $password;
-    
-	#[SpeakeasyMetadata('security:scheme=true,type=http,subtype=basic,name=username')]
+
+    #[SpeakeasyMetadata('security:scheme=true,type=http,subtype=basic,name=username')]
     public string $username;
-    
-	public function __construct()
-	{
-		$this->password = "";
-		$this->username = "";
-	}
+
+    public function __construct()
+    {
+        $this->password = '';
+        $this->username = '';
+    }
 }
