@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### 
+### `str`
 
 ```python
-oneOfFromArrayOfTypes: str = /* values here */
+value: str = /* values here */
 ```
 
-### 
+### `int`
 
 ```python
-oneOfFromArrayOfTypes: int = /* values here */
+value: int = /* values here */
 ```
 

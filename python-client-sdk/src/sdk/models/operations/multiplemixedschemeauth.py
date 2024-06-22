@@ -4,7 +4,6 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ...models.shared import schemebasicauth as shared_schemebasicauth
-from typing import Optional
 
 MULTIPLE_MIXED_SCHEME_AUTH_SERVERS = [
 	"http://localhost:35456",
@@ -25,7 +24,7 @@ class MultipleMixedSchemeAuthResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
     
 

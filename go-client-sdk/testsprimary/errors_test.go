@@ -43,14 +43,14 @@ func TestStatusGetError_DefaultErrorCodes(t *testing.T) {
 }
 
 func TestStatusGetError_300_NonError(t *testing.T) {
-	recordTest("errors-status-get-error-300-non-error")
+	recordTest("errors-status-get-error300-non-error")
 
 	s := sdk.New()
 
 	res, err := s.Errors.StatusGetError(context.Background(), 300)
 	assert.NoError(t, err)
 
-	assert.Equal(t, 300, res.StatusCode)
+	assert.Equal(t, 300, res.HTTPMeta.Response.StatusCode)
 }
 
 func TestStatusGetErrorXSpeakeasyErrors(t *testing.T) {
@@ -107,7 +107,7 @@ func TestStatusGetErrorXSpeakeasyErrors(t *testing.T) {
 	var e501 *sdkerrors.StatusGetXSpeakeasyErrorsResponseBody
 	if assert.ErrorAs(t, err, &e501) {
 		assert.Equal(t, "501", *e501.Code)
-		assert.Equal(t, 501, e501.RawResponse.StatusCode)
+		assert.Equal(t, 501, e501.HTTPMeta.Response.StatusCode)
 	}
 }
 
