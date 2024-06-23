@@ -10,7 +10,7 @@ import (
 
 type DecimalParamWithDefaultRequest struct {
 	// A decimal parameter with a default value
-	DecimalInput *decimal.Big `default:"903275809834567386763" decimal:"number" queryParam:"style=form,explode=true,name=decimalInput"`
+	DecimalInput *decimal.Big `default:"903275809834567300000" decimal:"number" queryParam:"style=form,explode=true,name=decimalInput"`
 }
 
 func (d DecimalParamWithDefaultRequest) MarshalJSON() ([]byte, error) {

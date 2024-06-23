@@ -8,18 +8,18 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class InlineBodyAndParamConflictRequest
 {
-	#[SpeakeasyMetadata('request:mediaType=application/json')]
+    #[SpeakeasyMetadata('request:mediaType=application/json')]
     public InlineBodyAndParamConflictRequestBody $requestBody;
-    
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=str')]
+
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=str')]
     public string $str;
-    
-	public function __construct()
-	{
-		$this->requestBody = new \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictRequestBody();
-		$this->str = "";
-	}
+
+    public function __construct()
+    {
+        $this->requestBody = new \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictRequestBody();
+        $this->str = '';
+    }
 }
