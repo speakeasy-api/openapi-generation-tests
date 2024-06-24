@@ -1,0 +1,2 @@
+# FlattenedTypedObject1
+

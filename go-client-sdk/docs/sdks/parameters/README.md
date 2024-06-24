@@ -21,6 +21,7 @@ Endpoints for testing parameters.
 * [HeaderParamsObject](#headerparamsobject)
 * [HeaderParamsPrimitive](#headerparamsprimitive)
 * [JSONQueryParamsObject](#jsonqueryparamsobject)
+* [JSONQueryParamsObjectSmaller](#jsonqueryparamsobjectsmaller)
 * [MixedParametersCamelCase](#mixedparameterscamelcase)
 * [MixedParametersPrimitives](#mixedparametersprimitives)
 * [MixedQueryParams](#mixedqueryparams)
@@ -39,10 +40,10 @@ Endpoints for testing parameters.
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -50,17 +51,17 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
     mapParam := map[string]string{
-        "test2": "value2",
         "test": "value",
+        "test2": "value2",
     }
 
-    mapArrParam := map[string][]string{
+    var mapArrParam map[string][]string = map[string][]string{
         "test": []string{
             "test",
             "test2",
@@ -70,13 +71,11 @@ func main() {
             "test4",
         },
     }
-
     ctx := context.Background()
     res, err := s.Parameters.DeepObjectQueryParamsMap(ctx, mapParam, mapArrParam)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -85,11 +84,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
-| `mapParam`                                            | map[string]*string*                                   | :heavy_check_mark:                                    | N/A                                                   | [object Object]                                       |
-| `mapArrParam`                                         | map[string][]*string*                                 | :heavy_minus_sign:                                    | N/A                                                   | [object Object]                                       |
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    | Example                                                        |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `ctx`                                                          | [context.Context](https://pkg.go.dev/context#Context)          | :heavy_check_mark:                                             | The context to use for the request.                            |                                                                |
+| `mapParam`                                                     | map[string]*string*                                            | :heavy_check_mark:                                             | N/A                                                            | {<br/>"test": "value",<br/>"test2": "value2"<br/>}             |
+| `mapArrParam`                                                  | map[string][]*string*                                          | :heavy_minus_sign:                                             | N/A                                                            | {<br/>"test": [<br/>"test",<br/>"test2"<br/>],<br/>"test2": [<br/>"test3",<br/>"test4"<br/>]<br/>} |
 
 
 ### Response
@@ -97,7 +96,7 @@ func main() {
 **[*operations.DeepObjectQueryParamsMapResponse](../../pkg/models/operations/deepobjectqueryparamsmapresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## DeepObjectQueryParamsObject
 
@@ -107,13 +106,13 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"math/big"
 	"openapi/v2/pkg/types"
 	"openapi/v2/pkg/models/operations"
+	"context"
+	"log"
 )
 
 func main() {
@@ -121,11 +120,11 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
     objParam := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -133,33 +132,33 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
         Float32: 1.1,
+        Float64Str: openapi.Float64(1.1),
         Int: 1,
         Int32: 1,
         Int32Enum: shared.Int32EnumFiftyFive,
+        Int64Str: openapi.Int64(100),
         IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
 
-    objArrParam := &operations.ObjArrParam{
+    var objArrParam *operations.ObjArrParam = &operations.ObjArrParam{
         Arr: []string{
             "test",
             "test2",
         },
     }
-
     ctx := context.Background()
     res, err := s.Parameters.DeepObjectQueryParamsObject(ctx, objParam, objArrParam)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -171,8 +170,8 @@ func main() {
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |
-| `objParam`                                                                                         | [shared.SimpleObject](../../../pkg/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `objArrParam`                                                                                      | [*operations.ObjArrParam](../../../pkg/models/operations/objarrparam.md)                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `objParam`                                                                                         | [shared.SimpleObject](../../pkg/models/shared/simpleobject.md)                                     | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objArrParam`                                                                                      | [*operations.ObjArrParam](../../pkg/models/operations/objarrparam.md)                              | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 
 
 ### Response
@@ -180,7 +179,7 @@ func main() {
 **[*operations.DeepObjectQueryParamsObjectResponse](../../pkg/models/operations/deepobjectqueryparamsobjectresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## DuplicateParam
 
@@ -190,10 +189,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -201,19 +200,17 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
-    var duplicateParamRequest string = "string"
-
+    var duplicateParamRequest string = "<value>"
     ctx := context.Background()
     res, err := s.Parameters.DuplicateParam(ctx, duplicateParamRequest)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DuplicateParamResponse != nil {
         // handle response
     }
@@ -233,7 +230,7 @@ func main() {
 **[*operations.DuplicateParamResponse](../../pkg/models/operations/duplicateparamresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## FormQueryParamsArray
 
@@ -243,10 +240,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -254,27 +251,25 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
-    arrParam := []string{
+    var arrParam []string = []string{
         "test",
         "test2",
     }
 
-    arrParamExploded := []int64{
+    var arrParamExploded []int64 = []int64{
         1,
         2,
     }
-
     ctx := context.Background()
     res, err := s.Parameters.FormQueryParamsArray(ctx, arrParam, arrParamExploded)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -295,7 +290,7 @@ func main() {
 **[*operations.FormQueryParamsArrayResponse](../../pkg/models/operations/formqueryparamsarrayresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## FormQueryParamsCamelObject
 
@@ -305,11 +300,11 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -317,27 +312,25 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
     objParamExploded := operations.ObjParamExploded{
         ItemCount: openapi.String("10"),
         SearchTerm: openapi.String("foo"),
     }
 
-    objParam := &operations.ObjParam{
+    var objParam *operations.ObjParam = &operations.ObjParam{
         EncodedCount: openapi.String("11"),
         EncodedTerm: openapi.String("bar"),
     }
-
     ctx := context.Background()
     res, err := s.Parameters.FormQueryParamsCamelObject(ctx, objParamExploded, objParam)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -346,11 +339,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `ctx`                                                                             | [context.Context](https://pkg.go.dev/context#Context)                             | :heavy_check_mark:                                                                | The context to use for the request.                                               |
-| `objParamExploded`                                                                | [operations.ObjParamExploded](../../../pkg/models/operations/objparamexploded.md) | :heavy_check_mark:                                                                | N/A                                                                               |
-| `objParam`                                                                        | [*operations.ObjParam](../../../pkg/models/operations/objparam.md)                | :heavy_minus_sign:                                                                | N/A                                                                               |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `objParamExploded`                                                             | [operations.ObjParamExploded](../../pkg/models/operations/objparamexploded.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `objParam`                                                                     | [*operations.ObjParam](../../pkg/models/operations/objparam.md)                | :heavy_minus_sign:                                                             | N/A                                                                            |
 
 
 ### Response
@@ -358,7 +351,7 @@ func main() {
 **[*operations.FormQueryParamsCamelObjectResponse](../../pkg/models/operations/formqueryparamscamelobjectresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## FormQueryParamsMap
 
@@ -368,10 +361,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -379,27 +372,25 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
-    mapParam := map[string]string{
+    var mapParam map[string]string = map[string]string{
         "test": "value",
         "test2": "value2",
     }
 
-    mapParamExploded := map[string]int64{
+    var mapParamExploded map[string]int64 = map[string]int64{
         "test": 1,
         "test2": 2,
     }
-
     ctx := context.Background()
     res, err := s.Parameters.FormQueryParamsMap(ctx, mapParam, mapParamExploded)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -411,8 +402,8 @@ func main() {
 | Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
 | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
 | `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
-| `mapParam`                                            | map[string]*string*                                   | :heavy_minus_sign:                                    | N/A                                                   | [object Object]                                       |
-| `mapParamExploded`                                    | map[string]*int64*                                    | :heavy_minus_sign:                                    | N/A                                                   | [object Object]                                       |
+| `mapParam`                                            | map[string]*string*                                   | :heavy_minus_sign:                                    | N/A                                                   | {<br/>"test": "value",<br/>"test2": "value2"<br/>}    |
+| `mapParamExploded`                                    | map[string]*int64*                                    | :heavy_minus_sign:                                    | N/A                                                   | {<br/>"test": 1,<br/>"test2": 2<br/>}                 |
 
 
 ### Response
@@ -420,7 +411,7 @@ func main() {
 **[*operations.FormQueryParamsMapResponse](../../pkg/models/operations/formqueryparamsmapresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## FormQueryParamsObject
 
@@ -430,12 +421,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"context"
+	"log"
 )
 
 func main() {
@@ -443,11 +434,11 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
     objParamExploded := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -455,47 +446,49 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
         Float32: 1.1,
+        Float64Str: openapi.Float64(1.1),
         Int: 1,
         Int32: 1,
         Int32Enum: shared.Int32EnumFiftyFive,
+        Int64Str: openapi.Int64(100),
         IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
 
-    objParam := &shared.SimpleObject{
+    var objParam *shared.SimpleObject = &shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
         BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
         Float32: 1.1,
+        Float64Str: openapi.Float64(1.1),
         Int: 1,
         Int32: 1,
         Int32Enum: shared.Int32EnumFiftyFive,
+        Int64Str: openapi.Int64(100),
         IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
-
     ctx := context.Background()
     res, err := s.Parameters.FormQueryParamsObject(ctx, objParamExploded, objParam)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -507,8 +500,8 @@ func main() {
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |
-| `objParamExploded`                                                                                 | [shared.SimpleObject](../../../pkg/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `objParam`                                                                                         | [*shared.SimpleObject](../../../pkg/models/shared/simpleobject.md)                                 | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objParamExploded`                                                                                 | [shared.SimpleObject](../../pkg/models/shared/simpleobject.md)                                     | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objParam`                                                                                         | [*shared.SimpleObject](../../pkg/models/shared/simpleobject.md)                                    | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
@@ -516,7 +509,7 @@ func main() {
 **[*operations.FormQueryParamsObjectResponse](../../pkg/models/operations/formqueryparamsobjectresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## FormQueryParamsPrimitive
 
@@ -526,10 +519,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -537,11 +530,11 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
     var boolParam bool = true
 
     var intParam int64 = 1
@@ -549,13 +542,11 @@ func main() {
     var numParam float64 = 1.1
 
     var strParam string = "test"
-
     ctx := context.Background()
     res, err := s.Parameters.FormQueryParamsPrimitive(ctx, boolParam, intParam, numParam, strParam)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -578,7 +569,7 @@ func main() {
 **[*operations.FormQueryParamsPrimitiveResponse](../../pkg/models/operations/formqueryparamsprimitiveresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## FormQueryParamsRefParamObject
 
@@ -588,10 +579,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -599,31 +590,29 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
-    refObjParam := &shared.RefQueryParamObj{
+    var refObjParam *shared.RefQueryParamObj = &shared.RefQueryParamObj{
         Bool: true,
         Int: 1,
         Num: 1.1,
         Str: "test",
     }
 
-    refObjParamExploded := &shared.RefQueryParamObjExploded{
+    var refObjParamExploded *shared.RefQueryParamObjExploded = &shared.RefQueryParamObjExploded{
         Bool: true,
         Int: 1,
         Num: 1.1,
         Str: "test",
     }
-
     ctx := context.Background()
     res, err := s.Parameters.FormQueryParamsRefParamObject(ctx, refObjParam, refObjParamExploded)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -632,11 +621,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
-| `refObjParam`                                                                              | [*shared.RefQueryParamObj](../../../pkg/models/shared/refqueryparamobj.md)                 | :heavy_minus_sign:                                                                         | N/A                                                                                        |
-| `refObjParamExploded`                                                                      | [*shared.RefQueryParamObjExploded](../../../pkg/models/shared/refqueryparamobjexploded.md) | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `ctx`                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                   | :heavy_check_mark:                                                                      | The context to use for the request.                                                     |
+| `refObjParam`                                                                           | [*shared.RefQueryParamObj](../../pkg/models/shared/refqueryparamobj.md)                 | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `refObjParamExploded`                                                                   | [*shared.RefQueryParamObjExploded](../../pkg/models/shared/refqueryparamobjexploded.md) | :heavy_minus_sign:                                                                      | N/A                                                                                     |
 
 
 ### Response
@@ -644,7 +633,7 @@ func main() {
 **[*operations.FormQueryParamsRefParamObjectResponse](../../pkg/models/operations/formqueryparamsrefparamobjectresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## HeaderParamsArray
 
@@ -654,10 +643,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -665,22 +654,20 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
     xHeaderArray := []string{
         "test1",
         "test2",
     }
-
     ctx := context.Background()
     res, err := s.Parameters.HeaderParamsArray(ctx, xHeaderArray)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -700,7 +687,7 @@ func main() {
 **[*operations.HeaderParamsArrayResponse](../../pkg/models/operations/headerparamsarrayresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## HeaderParamsMap
 
@@ -710,10 +697,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -721,27 +708,25 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
     xHeaderMap := map[string]string{
-        "key2": "value2",
         "key1": "value1",
+        "key2": "value2",
     }
 
     xHeaderMapExplode := map[string]string{
-        "test2": "val2",
         "test1": "val1",
+        "test2": "val2",
     }
-
     ctx := context.Background()
     res, err := s.Parameters.HeaderParamsMap(ctx, xHeaderMap, xHeaderMapExplode)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -753,8 +738,8 @@ func main() {
 | Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
 | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
 | `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
-| `xHeaderMap`                                          | map[string]*string*                                   | :heavy_check_mark:                                    | N/A                                                   | [object Object]                                       |
-| `xHeaderMapExplode`                                   | map[string]*string*                                   | :heavy_check_mark:                                    | N/A                                                   | [object Object]                                       |
+| `xHeaderMap`                                          | map[string]*string*                                   | :heavy_check_mark:                                    | N/A                                                   | {<br/>"key1": "value1",<br/>"key2": "value2"<br/>}    |
+| `xHeaderMapExplode`                                   | map[string]*string*                                   | :heavy_check_mark:                                    | N/A                                                   | {<br/>"test1": "val1",<br/>"test2": "val2"<br/>}      |
 
 
 ### Response
@@ -762,7 +747,7 @@ func main() {
 **[*operations.HeaderParamsMapResponse](../../pkg/models/operations/headerparamsmapresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## HeaderParamsObject
 
@@ -772,12 +757,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"context"
+	"log"
 )
 
 func main() {
@@ -785,11 +770,11 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
     xHeaderObj := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -797,14 +782,16 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
         Float32: 1.1,
+        Float64Str: openapi.Float64(1.1),
         Int: 1,
         Int32: 1,
         Int32Enum: shared.Int32EnumFiftyFive,
+        Int64Str: openapi.Int64(100),
         IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
@@ -818,26 +805,26 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
         Float32: 1.1,
+        Float64Str: openapi.Float64(1.1),
         Int: 1,
         Int32: 1,
         Int32Enum: shared.Int32EnumFiftyFive,
+        Int64Str: openapi.Int64(100),
         IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
-
     ctx := context.Background()
     res, err := s.Parameters.HeaderParamsObject(ctx, xHeaderObj, xHeaderObjExplode)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -849,8 +836,8 @@ func main() {
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |
-| `xHeaderObj`                                                                                       | [shared.SimpleObject](../../../pkg/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `xHeaderObjExplode`                                                                                | [shared.SimpleObject](../../../pkg/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `xHeaderObj`                                                                                       | [shared.SimpleObject](../../pkg/models/shared/simpleobject.md)                                     | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `xHeaderObjExplode`                                                                                | [shared.SimpleObject](../../pkg/models/shared/simpleobject.md)                                     | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
@@ -858,7 +845,7 @@ func main() {
 **[*operations.HeaderParamsObjectResponse](../../pkg/models/operations/headerparamsobjectresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## HeaderParamsPrimitive
 
@@ -868,10 +855,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -879,11 +866,11 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
     var xHeaderBoolean bool = true
 
     var xHeaderInteger int64 = 1
@@ -891,13 +878,11 @@ func main() {
     var xHeaderNumber float64 = 1.1
 
     var xHeaderString string = "test"
-
     ctx := context.Background()
     res, err := s.Parameters.HeaderParamsPrimitive(ctx, xHeaderBoolean, xHeaderInteger, xHeaderNumber, xHeaderString)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -920,7 +905,7 @@ func main() {
 **[*operations.HeaderParamsPrimitiveResponse](../../pkg/models/operations/headerparamsprimitiveresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## JSONQueryParamsObject
 
@@ -930,12 +915,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"context"
+	"log"
 )
 
 func main() {
@@ -943,11 +928,11 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
     deepObjParam := shared.DeepObject{
         Any: shared.CreateAnySimpleObject(
                 shared.SimpleObject{
@@ -957,14 +942,16 @@ func main() {
                     Bool: true,
                     BoolOpt: openapi.Bool(true),
                     Date: types.MustDateFromString("2020-01-01"),
-                    DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                    DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
                     Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                     DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                     Enum: shared.EnumOne,
                     Float32: 1.1,
+                    Float64Str: openapi.Float64(1.1),
                     Int: 1,
                     Int32: 1,
                     Int32Enum: shared.Int32EnumFiftyFive,
+                    Int64Str: openapi.Int64(100),
                     IntEnum: shared.IntEnumSecond,
                     Num: 1.1,
                     Str: "test",
@@ -979,14 +966,16 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
                 Float32: 1.1,
+                Float64Str: openapi.Float64(1.1),
                 Int: 1,
                 Int32: 1,
                 Int32Enum: shared.Int32EnumFiftyFive,
+                Int64Str: openapi.Int64(100),
                 IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
@@ -999,14 +988,16 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
                 Float32: 1.1,
+                Float64Str: openapi.Float64(1.1),
                 Int: 1,
                 Int32: 1,
                 Int32Enum: shared.Int32EnumFiftyFive,
+                Int64Str: openapi.Int64(100),
                 IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
@@ -1023,14 +1014,16 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
                 Float32: 1.1,
+                Float64Str: openapi.Float64(1.1),
                 Int: 1,
                 Int32: 1,
                 Int32Enum: shared.Int32EnumFiftyFive,
+                Int64Str: openapi.Int64(100),
                 IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
@@ -1043,14 +1036,16 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
                 Float32: 1.1,
+                Float64Str: openapi.Float64(1.1),
                 Int: 1,
                 Int32: 1,
                 Int32Enum: shared.Int32EnumFiftyFive,
+                Int64Str: openapi.Int64(100),
                 IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
@@ -1065,14 +1060,16 @@ func main() {
             Bool: true,
             BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
-            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
             Decimal: types.MustNewDecimalFromString("3.141592653589793"),
             DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
             Enum: shared.EnumOne,
             Float32: 1.1,
+            Float64Str: openapi.Float64(1.1),
             Int: 1,
             Int32: 1,
             Int32Enum: shared.Int32EnumFiftyFive,
+            Int64Str: openapi.Int64(100),
             IntEnum: shared.IntEnumSecond,
             Num: 1.1,
             Str: "test",
@@ -1088,26 +1085,26 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
         Float32: 1.1,
+        Float64Str: openapi.Float64(1.1),
         Int: 1,
         Int32: 1,
         Int32Enum: shared.Int32EnumFiftyFive,
+        Int64Str: openapi.Int64(100),
         IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
-
     ctx := context.Background()
     res, err := s.Parameters.JSONQueryParamsObject(ctx, deepObjParam, simpleObjParam)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -1119,8 +1116,8 @@ func main() {
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |
-| `deepObjParam`                                                                                     | [shared.DeepObject](../../../pkg/models/shared/deepobject.md)                                      | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `simpleObjParam`                                                                                   | [shared.SimpleObject](../../../pkg/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `deepObjParam`                                                                                     | [shared.DeepObject](../../pkg/models/shared/deepobject.md)                                         | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `simpleObjParam`                                                                                   | [shared.SimpleObject](../../pkg/models/shared/simpleobject.md)                                     | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
@@ -1128,7 +1125,205 @@ func main() {
 **[*operations.JSONQueryParamsObjectResponse](../../pkg/models/operations/jsonqueryparamsobjectresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
+
+## JSONQueryParamsObjectSmaller
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"math/big"
+	"openapi/v2/pkg/types"
+	"context"
+	"log"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+    deepObjParam := shared.DeepObjectSmaller{
+        Any: shared.CreateDeepObjectSmallerAnySimpleObject(
+                shared.SimpleObject{
+                    Any: "any",
+                    Bigint: big.NewInt(8821239038968084),
+                    BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                    Bool: true,
+                    BoolOpt: openapi.Bool(true),
+                    Date: types.MustDateFromString("2020-01-01"),
+                    DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
+                    Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                    DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                    Enum: shared.EnumOne,
+                    Float32: 1.1,
+                    Float64Str: openapi.Float64(1.1),
+                    Int: 1,
+                    Int32: 1,
+                    Int32Enum: shared.Int32EnumFiftyFive,
+                    Int64Str: openapi.Int64(100),
+                    IntEnum: shared.IntEnumSecond,
+                    Num: 1.1,
+                    Str: "test",
+                    StrOpt: openapi.String("testOptional"),
+                },
+        ),
+        Arr: []shared.SimpleObject{
+            shared.SimpleObject{
+                Any: "any",
+                Bigint: big.NewInt(8821239038968084),
+                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
+                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                Enum: shared.EnumOne,
+                Float32: 1.1,
+                Float64Str: openapi.Float64(1.1),
+                Int: 1,
+                Int32: 1,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                Int64Str: openapi.Int64(100),
+                IntEnum: shared.IntEnumSecond,
+                Num: 1.1,
+                Str: "test",
+                StrOpt: openapi.String("testOptional"),
+            },
+            shared.SimpleObject{
+                Any: "any",
+                Bigint: big.NewInt(8821239038968084),
+                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
+                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                Enum: shared.EnumOne,
+                Float32: 1.1,
+                Float64Str: openapi.Float64(1.1),
+                Int: 1,
+                Int32: 1,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                Int64Str: openapi.Int64(100),
+                IntEnum: shared.IntEnumSecond,
+                Num: 1.1,
+                Str: "test",
+                StrOpt: openapi.String("testOptional"),
+            },
+        },
+        Bool: true,
+        Int: 1,
+        Map: map[string]shared.SimpleObject{
+            "key": shared.SimpleObject{
+                Any: "any",
+                Bigint: big.NewInt(8821239038968084),
+                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
+                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                Enum: shared.EnumOne,
+                Float32: 1.1,
+                Float64Str: openapi.Float64(1.1),
+                Int: 1,
+                Int32: 1,
+                Int32Enum: shared.Int32EnumFiftyFive,
+                Int64Str: openapi.Int64(100),
+                IntEnum: shared.IntEnumSecond,
+                Num: 1.1,
+                Str: "test",
+                StrOpt: openapi.String("testOptional"),
+            },
+        },
+        Num: 1.1,
+        Obj: shared.SimpleObject{
+            Any: "any",
+            Bigint: big.NewInt(8821239038968084),
+            BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+            Bool: true,
+            BoolOpt: openapi.Bool(true),
+            Date: types.MustDateFromString("2020-01-01"),
+            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
+            Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+            DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+            Enum: shared.EnumOne,
+            Float32: 1.1,
+            Float64Str: openapi.Float64(1.1),
+            Int: 1,
+            Int32: 1,
+            Int32Enum: shared.Int32EnumFiftyFive,
+            Int64Str: openapi.Int64(100),
+            IntEnum: shared.IntEnumSecond,
+            Num: 1.1,
+            Str: "test",
+            StrOpt: openapi.String("testOptional"),
+        },
+        Str: "test",
+    }
+
+    simpleObjParam := shared.SimpleObject{
+        Any: "any",
+        Bigint: big.NewInt(8821239038968084),
+        BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+        Bool: true,
+        BoolOpt: openapi.Bool(true),
+        Date: types.MustDateFromString("2020-01-01"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
+        Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+        DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+        Enum: shared.EnumOne,
+        Float32: 1.1,
+        Float64Str: openapi.Float64(1.1),
+        Int: 1,
+        Int32: 1,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        Int64Str: openapi.Int64(100),
+        IntEnum: shared.IntEnumSecond,
+        Num: 1.1,
+        Str: "test",
+        StrOpt: openapi.String("testOptional"),
+    }
+    ctx := context.Background()
+    res, err := s.Parameters.JSONQueryParamsObjectSmaller(ctx, deepObjParam, simpleObjParam)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |
+| `deepObjParam`                                                                                     | [shared.DeepObjectSmaller](../../pkg/models/shared/deepobjectsmaller.md)                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `simpleObjParam`                                                                                   | [shared.SimpleObject](../../pkg/models/shared/simpleobject.md)                                     | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+
+
+### Response
+
+**[*operations.JSONQueryParamsObjectSmallerResponse](../../pkg/models/operations/jsonqueryparamsobjectsmallerresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MixedParametersCamelCase
 
@@ -1138,10 +1333,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -1149,23 +1344,21 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
     var headerParam string = "headerValue"
 
     var pathParam string = "pathValue"
 
     var queryStringParam string = "queryValue"
-
     ctx := context.Background()
     res, err := s.Parameters.MixedParametersCamelCase(ctx, headerParam, pathParam, queryStringParam)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -1187,7 +1380,7 @@ func main() {
 **[*operations.MixedParametersCamelCaseResponse](../../pkg/models/operations/mixedparameterscamelcaseresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MixedParametersPrimitives
 
@@ -1197,10 +1390,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -1208,23 +1401,21 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
     var headerParam string = "headerValue"
 
     var pathParam string = "pathValue"
 
     var queryStringParam string = "queryValue"
-
     ctx := context.Background()
     res, err := s.Parameters.MixedParametersPrimitives(ctx, headerParam, pathParam, queryStringParam)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -1246,7 +1437,7 @@ func main() {
 **[*operations.MixedParametersPrimitivesResponse](../../pkg/models/operations/mixedparametersprimitivesresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## MixedQueryParams
 
@@ -1256,12 +1447,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"context"
+	"log"
 )
 
 func main() {
@@ -1269,11 +1460,11 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
     deepObjectParam := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -1281,14 +1472,16 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
         Float32: 1.1,
+        Float64Str: openapi.Float64(1.1),
         Int: 1,
         Int32: 1,
         Int32Enum: shared.Int32EnumFiftyFive,
+        Int64Str: openapi.Int64(100),
         IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
@@ -1302,14 +1495,16 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
         Float32: 1.1,
+        Float64Str: openapi.Float64(1.1),
         Int: 1,
         Int32: 1,
         Int32Enum: shared.Int32EnumFiftyFive,
+        Int64Str: openapi.Int64(100),
         IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
@@ -1323,26 +1518,26 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
         Float32: 1.1,
+        Float64Str: openapi.Float64(1.1),
         Int: 1,
         Int32: 1,
         Int32Enum: shared.Int32EnumFiftyFive,
+        Int64Str: openapi.Int64(100),
         IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
-
     ctx := context.Background()
     res, err := s.Parameters.MixedQueryParams(ctx, deepObjectParam, formParam, jsonParam)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -1354,9 +1549,9 @@ func main() {
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |
-| `deepObjectParam`                                                                                  | [shared.SimpleObject](../../../pkg/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `formParam`                                                                                        | [shared.SimpleObject](../../../pkg/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `jsonParam`                                                                                        | [shared.SimpleObject](../../../pkg/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `deepObjectParam`                                                                                  | [shared.SimpleObject](../../pkg/models/shared/simpleobject.md)                                     | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `formParam`                                                                                        | [shared.SimpleObject](../../pkg/models/shared/simpleobject.md)                                     | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `jsonParam`                                                                                        | [shared.SimpleObject](../../pkg/models/shared/simpleobject.md)                                     | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
@@ -1364,7 +1559,7 @@ func main() {
 **[*operations.MixedQueryParamsResponse](../../pkg/models/operations/mixedqueryparamsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## PathParameterJSON
 
@@ -1374,12 +1569,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"context"
+	"log"
 )
 
 func main() {
@@ -1387,11 +1582,11 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
     jsonObj := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -1399,26 +1594,26 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
         Float32: 1.1,
+        Float64Str: openapi.Float64(1.1),
         Int: 1,
         Int32: 1,
         Int32Enum: shared.Int32EnumFiftyFive,
+        Int64Str: openapi.Int64(100),
         IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
-
     ctx := context.Background()
     res, err := s.Parameters.PathParameterJSON(ctx, jsonObj)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -1430,7 +1625,7 @@ func main() {
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |
-| `jsonObj`                                                                                          | [shared.SimpleObject](../../../pkg/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `jsonObj`                                                                                          | [shared.SimpleObject](../../pkg/models/shared/simpleobject.md)                                     | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
@@ -1438,7 +1633,7 @@ func main() {
 **[*operations.PathParameterJSONResponse](../../pkg/models/operations/pathparameterjsonresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## PipeDelimitedQueryParamsArray
 
@@ -1448,12 +1643,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"context"
+	"log"
 )
 
 func main() {
@@ -1461,53 +1656,53 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
-    arrParam := []string{
+    var arrParam []string = []string{
         "test",
         "test2",
     }
 
-    arrParamExploded := []int64{
+    var arrParamExploded []int64 = []int64{
         1,
         2,
     }
 
-    mapParam := map[string]string{
+    var mapParam map[string]string = map[string]string{
         "key1": "val1",
         "key2": "val2",
     }
 
-    objParam := &shared.SimpleObject{
+    var objParam *shared.SimpleObject = &shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
         BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
         Float32: 1.1,
+        Float64Str: openapi.Float64(1.1),
         Int: 1,
         Int32: 1,
         Int32Enum: shared.Int32EnumFiftyFive,
+        Int64Str: openapi.Int64(100),
         IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
-
     ctx := context.Background()
     res, err := s.Parameters.PipeDelimitedQueryParamsArray(ctx, arrParam, arrParamExploded, mapParam, objParam)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -1521,8 +1716,8 @@ func main() {
 | `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |                                                                                                    |
 | `arrParam`                                                                                         | []*string*                                                                                         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `arrParamExploded`                                                                                 | []*int64*                                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `mapParam`                                                                                         | map[string]*string*                                                                                | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
-| `objParam`                                                                                         | [*shared.SimpleObject](../../../pkg/models/shared/simpleobject.md)                                 | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
+| `mapParam`                                                                                         | map[string]*string*                                                                                | :heavy_minus_sign:                                                                                 | N/A                                                                                                | {<br/>"key1": "val1",<br/>"key2": "val2"<br/>}                                                     |
+| `objParam`                                                                                         | [*shared.SimpleObject](../../pkg/models/shared/simpleobject.md)                                    | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 
 
 ### Response
@@ -1530,7 +1725,7 @@ func main() {
 **[*operations.PipeDelimitedQueryParamsArrayResponse](../../pkg/models/operations/pipedelimitedqueryparamsarrayresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## SimplePathParameterArrays
 
@@ -1540,10 +1735,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -1551,22 +1746,20 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
     arrParam := []string{
         "test",
         "test2",
     }
-
     ctx := context.Background()
     res, err := s.Parameters.SimplePathParameterArrays(ctx, arrParam)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -1586,7 +1779,7 @@ func main() {
 **[*operations.SimplePathParameterArraysResponse](../../pkg/models/operations/simplepathparameterarraysresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## SimplePathParameterMaps
 
@@ -1596,10 +1789,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -1607,27 +1800,25 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
     mapParam := map[string]string{
-        "test2": "value2",
         "test": "value",
+        "test2": "value2",
     }
 
     mapParamExploded := map[string]int64{
         "test": 1,
         "test2": 2,
     }
-
     ctx := context.Background()
     res, err := s.Parameters.SimplePathParameterMaps(ctx, mapParam, mapParamExploded)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -1639,8 +1830,8 @@ func main() {
 | Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
 | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
 | `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
-| `mapParam`                                            | map[string]*string*                                   | :heavy_check_mark:                                    | N/A                                                   | [object Object]                                       |
-| `mapParamExploded`                                    | map[string]*int64*                                    | :heavy_check_mark:                                    | N/A                                                   | [object Object]                                       |
+| `mapParam`                                            | map[string]*string*                                   | :heavy_check_mark:                                    | N/A                                                   | {<br/>"test": "value",<br/>"test2": "value2"<br/>}    |
+| `mapParamExploded`                                    | map[string]*int64*                                    | :heavy_check_mark:                                    | N/A                                                   | {<br/>"test": 1,<br/>"test2": 2<br/>}                 |
 
 
 ### Response
@@ -1648,7 +1839,7 @@ func main() {
 **[*operations.SimplePathParameterMapsResponse](../../pkg/models/operations/simplepathparametermapsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## SimplePathParameterObjects
 
@@ -1658,12 +1849,12 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
-	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"context"
+	"log"
 )
 
 func main() {
@@ -1671,11 +1862,11 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
     objParam := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -1683,14 +1874,16 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
         Float32: 1.1,
+        Float64Str: openapi.Float64(1.1),
         Int: 1,
         Int32: 1,
         Int32Enum: shared.Int32EnumFiftyFive,
+        Int64Str: openapi.Int64(100),
         IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
@@ -1704,26 +1897,26 @@ func main() {
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
-        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
         Decimal: types.MustNewDecimalFromString("3.141592653589793"),
         DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
         Enum: shared.EnumOne,
         Float32: 1.1,
+        Float64Str: openapi.Float64(1.1),
         Int: 1,
         Int32: 1,
         Int32Enum: shared.Int32EnumFiftyFive,
+        Int64Str: openapi.Int64(100),
         IntEnum: shared.IntEnumSecond,
         Num: 1.1,
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
-
     ctx := context.Background()
     res, err := s.Parameters.SimplePathParameterObjects(ctx, objParam, objParamExploded)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -1735,8 +1928,8 @@ func main() {
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |
-| `objParam`                                                                                         | [shared.SimpleObject](../../../pkg/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `objParamExploded`                                                                                 | [shared.SimpleObject](../../../pkg/models/shared/simpleobject.md)                                  | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objParam`                                                                                         | [shared.SimpleObject](../../pkg/models/shared/simpleobject.md)                                     | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objParamExploded`                                                                                 | [shared.SimpleObject](../../pkg/models/shared/simpleobject.md)                                     | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
@@ -1744,7 +1937,7 @@ func main() {
 **[*operations.SimplePathParameterObjectsResponse](../../pkg/models/operations/simplepathparameterobjectsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## SimplePathParameterPrimitives
 
@@ -1754,10 +1947,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -1765,11 +1958,11 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
     var boolParam bool = true
 
     var intParam int64 = 1
@@ -1777,13 +1970,11 @@ func main() {
     var numParam float64 = 1.1
 
     var strParam string = "test"
-
     ctx := context.Background()
     res, err := s.Parameters.SimplePathParameterPrimitives(ctx, boolParam, intParam, numParam, strParam)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
         // handle response
     }
@@ -1806,4 +1997,4 @@ func main() {
 **[*operations.SimplePathParameterPrimitivesResponse](../../pkg/models/operations/simplepathparameterprimitivesresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
