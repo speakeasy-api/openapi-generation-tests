@@ -6,6 +6,7 @@ from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from sdk import utils
 
+
 class TypedObject3Type(str, Enum):
     OBJ3 = 'obj3'
 
