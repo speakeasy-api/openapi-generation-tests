@@ -11,13 +11,13 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 
 class ObjectCircularReferenceObject
 {
-	#[\JMS\Serializer\Annotation\SerializedName('circular')]
+    #[\JMS\Serializer\Annotation\SerializedName('circular')]
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\ObjectCircularReferenceObject')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?ObjectCircularReferenceObject $circular = null;
-    
-	public function __construct()
-	{
-		$this->circular = null;
-	}
+
+    public function __construct()
+    {
+        $this->circular = null;
+    }
 }

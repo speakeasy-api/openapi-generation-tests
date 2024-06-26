@@ -9,25 +9,20 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * ResponseBodyAdditionalPropertiesObjectPostResponseBody - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** ResponseBodyAdditionalPropertiesObjectPostResponseBody - OK */
 class ResponseBodyAdditionalPropertiesObjectPostResponseBody
 {
     /**
      * $json
-     * 
+     *
      * @var array<string, \OpenAPI\OpenAPI\Models\Shared\SimpleObject> $json
      */
-	#[\JMS\Serializer\Annotation\SerializedName('json')]
+    #[\JMS\Serializer\Annotation\SerializedName('json')]
     #[\JMS\Serializer\Annotation\Type('array<string, OpenAPI\OpenAPI\Models\Shared\SimpleObject>')]
     public array $json;
-    
-	public function __construct()
-	{
-		$this->json = [];
-	}
+
+    public function __construct()
+    {
+        $this->json = [];
+    }
 }

@@ -11,25 +11,25 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 
 class Error
 {
-	#[\JMS\Serializer\Annotation\SerializedName('code')]
+    #[\JMS\Serializer\Annotation\SerializedName('code')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $code = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('message')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('message')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $message = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('type')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('type')]
     #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\ErrorType>')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?ErrorType $type = null;
-    
-	public function __construct()
-	{
-		$this->code = null;
-		$this->message = null;
-		$this->type = null;
-	}
+
+    public function __construct()
+    {
+        $this->code = null;
+        $this->message = null;
+        $this->type = null;
+    }
 }

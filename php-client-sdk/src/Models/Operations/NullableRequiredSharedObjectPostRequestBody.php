@@ -11,18 +11,18 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 
 class NullableRequiredSharedObjectPostRequestBody
 {
-	#[\JMS\Serializer\Annotation\SerializedName('NullableOptionalObj')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\NullableObject')]
+    #[\JMS\Serializer\Annotation\SerializedName('NullableOptionalObj')]
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\NullableOptionalObject')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?\OpenAPI\OpenAPI\Models\Shared\NullableObject $nullableOptionalObj = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('NullableRequiredObj')]
+    public ?\OpenAPI\OpenAPI\Models\Shared\NullableOptionalObject $nullableOptionalObj = null;
+
+    #[\JMS\Serializer\Annotation\SerializedName('NullableRequiredObj')]
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\NullableObject')]
     public \OpenAPI\OpenAPI\Models\Shared\NullableObject $nullableRequiredObj;
-    
-	public function __construct()
-	{
-		$this->nullableOptionalObj = null;
-		$this->nullableRequiredObj = new \OpenAPI\OpenAPI\Models\Shared\NullableObject();
-	}
+
+    public function __construct()
+    {
+        $this->nullableOptionalObj = null;
+        $this->nullableRequiredObj = new \OpenAPI\OpenAPI\Models\Shared\NullableObject();
+    }
 }

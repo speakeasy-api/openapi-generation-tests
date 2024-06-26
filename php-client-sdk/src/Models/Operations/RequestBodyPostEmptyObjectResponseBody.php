@@ -9,27 +9,22 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * RequestBodyPostEmptyObjectResponseBody - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** RequestBodyPostEmptyObjectResponseBody - OK */
 class RequestBodyPostEmptyObjectResponseBody
 {
-	#[\JMS\Serializer\Annotation\SerializedName('empty')]
+    #[\JMS\Serializer\Annotation\SerializedName('empty')]
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPostEmptyObjectEmpty')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?RequestBodyPostEmptyObjectEmpty $empty = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('emptyRespWithEmptyProperies')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('emptyRespWithEmptyProperies')]
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\EmptyRespWithEmptyProperies')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?EmptyRespWithEmptyProperies $emptyRespWithEmptyProperies = null;
-    
-	public function __construct()
-	{
-		$this->empty = null;
-		$this->emptyRespWithEmptyProperies = null;
-	}
+
+    public function __construct()
+    {
+        $this->empty = null;
+        $this->emptyRespWithEmptyProperies = null;
+    }
 }

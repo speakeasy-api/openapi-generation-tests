@@ -4,7 +4,7 @@ package shared
 
 type MapObjValue struct {
 	JSON     map[string]SimpleObject `json:"json,omitempty"`
-	Required interface{}             `json:"required,omitempty"`
+	Required any                     `json:"required,omitempty"`
 }
 
 func (o *MapObjValue) GetJSON() map[string]SimpleObject {
@@ -14,7 +14,7 @@ func (o *MapObjValue) GetJSON() map[string]SimpleObject {
 	return o.JSON
 }
 
-func (o *MapObjValue) GetRequired() interface{} {
+func (o *MapObjValue) GetRequired() any {
 	if o == nil {
 		return nil
 	}
