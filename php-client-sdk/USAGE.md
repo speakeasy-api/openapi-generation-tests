@@ -1,9 +1,10 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```php
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use OpenAPI\OpenAPI;
 use OpenAPI\OpenAPI\Models\Shared;
@@ -12,16 +13,77 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->setSecurity($security)
     ->build();
 
 try {
-    $response = $sdk->generation->globalNameOverridden();
+    $request = new Shared\SimpleObject();
+    $request->any = 'any';
+    $request->bigint = 8821239038968084;
+    $request->bigintStr = '9223372036854775808';
+    $request->bool = true;
+    $request->boolOpt = true;
+    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
+    $request->decimal = 3.141592653589793;
+    $request->decimalStr = '3.14159265358979344719667586';
+    $request->enum = Shared\Enum::One;
+    $request->float32 = 1.1;
+    $request->float64Str = '1.1';
+    $request->int = 1;
+    $request->int32 = 1;
+    $request->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $request->int64Str = '100';
+    $request->intEnum = Shared\IntEnum::Second;
+    $request->intOptNull = 930591;
+    $request->num = 1.1;
+    $request->numOptNull = 5244.22;
+    $request->str = 'test';
+    $request->strOpt = 'testOptional';
+
+    $response = $sdk->generation->globalNameOverridden($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
+    // handle exception
+}
+
+```
+
+```php
+<?php
+
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)
+    ->build();
+
+try {
+    $response = $sdk->servers->selectGlobalServer();
+
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+} catch (Throwable $e) {
     // handle exception
 }
 
@@ -35,13 +97,19 @@ Do this second
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use OpenAPI\OpenAPI;
 use OpenAPI\OpenAPI\Models\Shared;
 use OpenAPI\OpenAPI\Models\Operations;
 
-$sdk = OpenAPI\SDK::builder()->build();
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
 
 try {
     $request = new Operations\UsageExamplePostRequest();
@@ -51,55 +119,55 @@ try {
     $request->requestBody->fakerFormattedStrings->directoryFormat = '/etc/defaults';
     $request->requestBody->fakerFormattedStrings->domainFormat = 'next-conflict.name';
     $request->requestBody->fakerFormattedStrings->emailFormat = 'Fermin_Koelpin@gmail.com';
-    $request->requestBody->fakerFormattedStrings->filenameFormat = 'northeast.wav';
-    $request->requestBody->fakerFormattedStrings->filepathFormat = '/lib/pizza_integrated.hbs';
+    $request->requestBody->fakerFormattedStrings->filenameFormat = 'your_file_here';
+    $request->requestBody->fakerFormattedStrings->filepathFormat = '/bin/northwest.mlp';
     $request->requestBody->fakerFormattedStrings->imageFormat = 'https://loremflickr.com/640/480';
-    $request->requestBody->fakerFormattedStrings->ipv4Format = '75.42.25.241';
+    $request->requestBody->fakerFormattedStrings->ipv4Format = '152.55.213.110';
     $request->requestBody->fakerFormattedStrings->ipv6Format =
-        '36a9:c057:a71b:b73a:c9ee:2348:d76c:3164';
+        'e4ce:421f:36a9:c057:a71b:b73a:c9ee:2348';
     $request->requestBody->fakerFormattedStrings->jsonFormat =
-        '{key: 66681, key1: null, key2: "string"}';
-    $request->requestBody->fakerFormattedStrings->macFormat = '25:8b:e7:e1:35:86';
-    $request->requestBody->fakerFormattedStrings->passwordFormat = 'IKpiCb6eWzdveK0';
-    $request->requestBody->fakerFormattedStrings->phoneFormat = '1-803-587-3283';
-    $request->requestBody->fakerFormattedStrings->timezoneFormat = 'America/Argentina/Buenos_Aires';
-    $request->requestBody->fakerFormattedStrings->unknownFormat = 'string';
-    $request->requestBody->fakerFormattedStrings->urlFormat = 'http://beneficial-inconvenience.net';
+        '{key: 86008, key1: null, key2: "<value>"}';
+    $request->requestBody->fakerFormattedStrings->macFormat = '76:c3:16:4a:25:8b';
+    $request->requestBody->fakerFormattedStrings->passwordFormat = 'zMy5BUDIKpiCb6e';
+    $request->requestBody->fakerFormattedStrings->phoneFormat = '(917) 974-0191 x1803';
+    $request->requestBody->fakerFormattedStrings->timezoneFormat = 'Europe/Berlin';
+    $request->requestBody->fakerFormattedStrings->unknownFormat = '<value>';
+    $request->requestBody->fakerFormattedStrings->urlFormat = 'https://spectacular-footage.biz';
     $request->requestBody->fakerFormattedStrings->uuidFormat =
-        '342442b8-aff3-42e0-b62d-e2e2d47a9bf1';
-    $request->requestBody->fakerFormattedStrings->zipcodeFormat = '09432';
+        'd63717a3-4244-42b8-aff3-2e0f62de2e2d';
+    $request->requestBody->fakerFormattedStrings->zipcodeFormat = '46679';
     $request->requestBody->fakerStrings = new Shared\FakerStrings();
-    $request->requestBody->fakerStrings->city = 'McLaughlinchester';
-    $request->requestBody->fakerStrings->iban = 'TL232743267267003560099';
-    $request->requestBody->fakerStrings->id = '<ID>';
-    $request->requestBody->fakerStrings->iPv4 = '208.201.244.247';
-    $request->requestBody->fakerStrings->iPv6 = 'bd3a:d72b:208b:2c81:8830:8bb9:7902:374e';
-    $request->requestBody->fakerStrings->account = '65982652';
-    $request->requestBody->fakerStrings->address = '0010 Assunta Throughway';
-    $request->requestBody->fakerStrings->amount = '616.94';
+    $request->requestBody->fakerStrings->city = 'North Amanishire';
+    $request->requestBody->fakerStrings->iban = 'JO74IFSP2274326726700356009879';
+    $request->requestBody->fakerStrings->id = '<id>';
+    $request->requestBody->fakerStrings->iPv4 = '247.188.210.52';
+    $request->requestBody->fakerStrings->iPv6 = 'ad72:b208:b2c8:1883:08bb:9790:2374:ea8e';
+    $request->requestBody->fakerStrings->account = '82652500';
+    $request->requestBody->fakerStrings->address = '00086 Sipes Corners';
+    $request->requestBody->fakerStrings->amount = '913.36';
     $request->requestBody->fakerStrings->avatar = 'https://loremflickr.com/640/480';
-    $request->requestBody->fakerStrings->color = 'tan';
+    $request->requestBody->fakerStrings->color = 'olive';
     $request->requestBody->fakerStrings->comment =
-        'New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart';
-    $request->requestBody->fakerStrings->company = 'Volkman LLC';
-    $request->requestBody->fakerStrings->country = 'Nicaragua';
-    $request->requestBody->fakerStrings->countryCode = 'MO';
-    $request->requestBody->fakerStrings->currency = 'Canadian Dollar';
-    $request->requestBody->fakerStrings->datatype = 'point';
-    $request->requestBody->fakerStrings->default = 'string';
-    $request->requestBody->fakerStrings->description = 'Quality-focused full-range circuit';
-    $request->requestBody->fakerStrings->directory = '/usr/ports';
-    $request->requestBody->fakerStrings->domainName = 'klutzy-prostacyclin.com';
-    $request->requestBody->fakerStrings->emailAddr = 'Jalyn_Haley47@gmail.com';
-    $request->requestBody->fakerStrings->extension = 'png';
-    $request->requestBody->fakerStrings->filename = 'panel.jpeg';
-    $request->requestBody->fakerStrings->filepath = '/opt/share/yahoo.xul';
-    $request->requestBody->fakerStrings->filetype = 'video';
-    $request->requestBody->fakerStrings->firstName = 'Trystan';
-    $request->requestBody->fakerStrings->fullName = 'Mrs. Lillian Bode';
+        'Carbonite web goalkeeper gloves are ergonomically designed to give easy fit';
+    $request->requestBody->fakerStrings->company = 'Considine - Wolf';
+    $request->requestBody->fakerStrings->country = 'Paraguay';
+    $request->requestBody->fakerStrings->countryCode = 'IN';
+    $request->requestBody->fakerStrings->currency = 'Colombian Peso';
+    $request->requestBody->fakerStrings->datatype = 'enum';
+    $request->requestBody->fakerStrings->default = '<value>';
+    $request->requestBody->fakerStrings->description = 'Multi-lateral neutral adapter';
+    $request->requestBody->fakerStrings->directory = '/bin';
+    $request->requestBody->fakerStrings->domainName = 'juvenile-equivalent.org';
+    $request->requestBody->fakerStrings->emailAddr = 'Jany53@yahoo.com';
+    $request->requestBody->fakerStrings->extension = 'mp2a';
+    $request->requestBody->fakerStrings->filename = 'your_file_here';
+    $request->requestBody->fakerStrings->filepath = '/Applications/ubiquitous_executive.pkpass';
+    $request->requestBody->fakerStrings->filetype = 'application';
+    $request->requestBody->fakerStrings->firstName = 'Blaise';
+    $request->requestBody->fakerStrings->fullName = 'Stephanie Carroll';
     $request->requestBody->fakerStrings->gender = 'Cis female';
     $request->requestBody->fakerStrings->job = 'Future Solutions Specialist';
-    $request->requestBody->fakerStrings->json = '{key: 95274, key1: null, key2: "string"}';
+    $request->requestBody->fakerStrings->json = '{key: 95274, key1: null, key2: "<value>"}';
     $request->requestBody->fakerStrings->key = '<key>';
     $request->requestBody->fakerStrings->lastName = 'Renner';
     $request->requestBody->fakerStrings->latitude = '-71.5944';
@@ -132,15 +200,17 @@ try {
     $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat(
         'Y-m-d\TH:i:s+',
-        '2020-01-01T00:00:00.000000001Z',
+        '2020-01-01T00:00:00.001Z',
     );
     $request->requestBody->simpleObject->decimal = 3.141592653589793;
     $request->requestBody->simpleObject->decimalStr = '3.14159265358979344719667586';
     $request->requestBody->simpleObject->enum = Shared\Enum::One;
     $request->requestBody->simpleObject->float32 = 1.1;
+    $request->requestBody->simpleObject->float64Str = '1.1';
     $request->requestBody->simpleObject->int = 1;
     $request->requestBody->simpleObject->int32 = 1;
     $request->requestBody->simpleObject->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $request->requestBody->simpleObject->int64Str = '100';
     $request->requestBody->simpleObject->intEnum = Shared\IntEnum::Second;
     $request->requestBody->simpleObject->intOptNull = 165468;
     $request->requestBody->simpleObject->num = 1.1;
@@ -149,28 +219,30 @@ try {
     $request->requestBody->simpleObject->strOpt = 'testOptional';
     $request->bigintParameter = 924793;
     $request->bigintParameterOptional = 583481;
-    $request->bigintStrParameter = 'string';
-    $request->bigintStrParameterOptional = 'string';
+    $request->bigintStrParameter = '<value>';
+    $request->bigintStrParameterOptional = '<value>';
     $request->boolParameter = false;
-    $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2023-12-21');
+    $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2024-12-21');
     $request->dateTimeDefaultParameter = DateTime::createFromFormat(
         'Y-m-d\TH:i:s+',
-        '2021-03-16T01:25:42.471Z',
+        '2022-03-16T03:03:06.071Z',
     );
     $request->dateTimeParameter = DateTime::createFromFormat(
         'Y-m-d\TH:i:s+',
-        '2023-05-24T07:01:53.326Z',
+        '2024-05-24T02:10:19.731Z',
     );
     $request->decimalParameter = 4713.96;
     $request->decimalParameterOptional = 9349.54;
-    $request->decimalStrParameter = 'string';
-    $request->decimalStrParameterOptional = 'string';
+    $request->decimalStrParameter = '<value>';
+    $request->decimalStrParameterOptional = '<value>';
     $request->doubleParameter = 8700.78;
     $request->enumParameter = Operations\EnumParameter::Value2;
     $request->falseyNumberParameter = 0;
     $request->float32Parameter = 1341.86;
+    $request->float64StringParameter = '<value>';
     $request->floatParameter = 5429.24;
     $request->int64Parameter = 101970;
+    $request->int64StringParameter = '<value>';
     $request->intParameter = 938852;
     $request->optEnumParameter = Operations\OptEnumParameter::Value3;
     $request->strParameter = 'example 3';
@@ -184,9 +256,9 @@ try {
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

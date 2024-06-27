@@ -9,333 +9,328 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Shared;
 
 
-/**
- * FakerStrings - A set of strings with fieldnames that lead to relevant examples being generated for them
- * 
- * @package OpenAPI\OpenAPI\Models\Shared
- * @access public
- */
+/** FakerStrings - A set of strings with fieldnames that lead to relevant examples being generated for them */
 class FakerStrings
 {
-	#[\JMS\Serializer\Annotation\SerializedName('City')]
+    #[\JMS\Serializer\Annotation\SerializedName('City')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $city = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('IBAN')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('IBAN')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $iban = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('ID')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('ID')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $id = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('IPv4')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('IPv4')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $iPv4 = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('IPv6')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('IPv6')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $iPv6 = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('account')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('account')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $account = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('address')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('address')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $address = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('amount')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('amount')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $amount = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('avatar')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('avatar')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $avatar = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('color')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('color')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $color = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('comment')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('comment')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $comment = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('company')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('company')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $company = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('country')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('country')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $country = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('country_code')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('country_code')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $countryCode = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('currency')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('currency')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $currency = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('datatype')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('datatype')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $datatype = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('default')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('default')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $default = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('description')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('description')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $description = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('directory')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('directory')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $directory = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('domainName')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('domainName')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $domainName = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('emailAddr')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('emailAddr')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $emailAddr = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('extension')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('extension')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $extension = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('filename')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('filename')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $filename = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('filepath')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('filepath')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $filepath = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('filetype')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('filetype')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $filetype = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('firstName')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('firstName')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $firstName = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('fullName')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('fullName')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $fullName = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('gender')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('gender')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $gender = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('job')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('job')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $job = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('json')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('json')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $json = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('key')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('key')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $key = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('lastName')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('lastName')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $lastName = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('latitude')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('latitude')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $latitude = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('locale')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('locale')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $locale = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('longitude')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('longitude')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $longitude = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('mac')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('mac')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $mac = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('manufacturer')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('manufacturer')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $manufacturer = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('material')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('material')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $material = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('middleName')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('middleName')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $middleName = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('model')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('model')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $model = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('password')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('password')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $password = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('phone')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('phone')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $phone = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('pin')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('pin')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $pin = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('postal-code')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('postal-code')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $postalCode = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('price')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('price')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $price = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('product')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('product')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $product = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('sex')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('sex')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $sex = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('street')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('street')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $street = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('timezone')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('timezone')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $timezone = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('unit')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('unit')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $unit = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('url')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('url')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $url = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('username')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('username')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $username = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('uuid')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('uuid')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $uuid = null;
-    
-	public function __construct()
-	{
-		$this->city = null;
-		$this->iban = null;
-		$this->id = null;
-		$this->iPv4 = null;
-		$this->iPv6 = null;
-		$this->account = null;
-		$this->address = null;
-		$this->amount = null;
-		$this->avatar = null;
-		$this->color = null;
-		$this->comment = null;
-		$this->company = null;
-		$this->country = null;
-		$this->countryCode = null;
-		$this->currency = null;
-		$this->datatype = null;
-		$this->default = null;
-		$this->description = null;
-		$this->directory = null;
-		$this->domainName = null;
-		$this->emailAddr = null;
-		$this->extension = null;
-		$this->filename = null;
-		$this->filepath = null;
-		$this->filetype = null;
-		$this->firstName = null;
-		$this->fullName = null;
-		$this->gender = null;
-		$this->job = null;
-		$this->json = null;
-		$this->key = null;
-		$this->lastName = null;
-		$this->latitude = null;
-		$this->locale = null;
-		$this->longitude = null;
-		$this->mac = null;
-		$this->manufacturer = null;
-		$this->material = null;
-		$this->middleName = null;
-		$this->model = null;
-		$this->password = null;
-		$this->phone = null;
-		$this->pin = null;
-		$this->postalCode = null;
-		$this->price = null;
-		$this->product = null;
-		$this->sex = null;
-		$this->street = null;
-		$this->timezone = null;
-		$this->unit = null;
-		$this->url = null;
-		$this->username = null;
-		$this->uuid = null;
-	}
+
+    public function __construct()
+    {
+        $this->city = null;
+        $this->iban = null;
+        $this->id = null;
+        $this->iPv4 = null;
+        $this->iPv6 = null;
+        $this->account = null;
+        $this->address = null;
+        $this->amount = null;
+        $this->avatar = null;
+        $this->color = null;
+        $this->comment = null;
+        $this->company = null;
+        $this->country = null;
+        $this->countryCode = null;
+        $this->currency = null;
+        $this->datatype = null;
+        $this->default = null;
+        $this->description = null;
+        $this->directory = null;
+        $this->domainName = null;
+        $this->emailAddr = null;
+        $this->extension = null;
+        $this->filename = null;
+        $this->filepath = null;
+        $this->filetype = null;
+        $this->firstName = null;
+        $this->fullName = null;
+        $this->gender = null;
+        $this->job = null;
+        $this->json = null;
+        $this->key = null;
+        $this->lastName = null;
+        $this->latitude = null;
+        $this->locale = null;
+        $this->longitude = null;
+        $this->mac = null;
+        $this->manufacturer = null;
+        $this->material = null;
+        $this->middleName = null;
+        $this->model = null;
+        $this->password = null;
+        $this->phone = null;
+        $this->pin = null;
+        $this->postalCode = null;
+        $this->price = null;
+        $this->product = null;
+        $this->sex = null;
+        $this->street = null;
+        $this->timezone = null;
+        $this->unit = null;
+        $this->url = null;
+        $this->username = null;
+        $this->uuid = null;
+    }
 }

@@ -8,14 +8,20 @@ import (
 
 type RequestBodyPutMultipartSimpleForm struct {
 	Any        string  `json:"any"`
+	Bigint     *string `json:"bigint,omitempty"`
+	BigintStr  *string `json:"bigintStr,omitempty"`
 	Bool       string  `json:"bool"`
 	BoolOpt    *string `json:"boolOpt,omitempty"`
 	Date       string  `json:"date"`
 	DateTime   string  `json:"dateTime"`
+	Decimal    *string `json:"decimal,omitempty"`
+	DecimalStr *string `json:"decimalStr,omitempty"`
 	Enum       string  `json:"enum"`
 	Float32    string  `json:"float32"`
 	Int        string  `json:"int"`
 	Int32      string  `json:"int32"`
+	Int32Enum  string  `json:"int32Enum"`
+	IntEnum    string  `json:"intEnum"`
 	IntOptNull *string `json:"intOptNull,omitempty"`
 	Num        string  `json:"num"`
 	NumOptNull *string `json:"numOptNull,omitempty"`
@@ -28,6 +34,20 @@ func (o *RequestBodyPutMultipartSimpleForm) GetAny() string {
 		return ""
 	}
 	return o.Any
+}
+
+func (o *RequestBodyPutMultipartSimpleForm) GetBigint() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Bigint
+}
+
+func (o *RequestBodyPutMultipartSimpleForm) GetBigintStr() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BigintStr
 }
 
 func (o *RequestBodyPutMultipartSimpleForm) GetBool() string {
@@ -58,6 +78,20 @@ func (o *RequestBodyPutMultipartSimpleForm) GetDateTime() string {
 	return o.DateTime
 }
 
+func (o *RequestBodyPutMultipartSimpleForm) GetDecimal() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Decimal
+}
+
+func (o *RequestBodyPutMultipartSimpleForm) GetDecimalStr() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DecimalStr
+}
+
 func (o *RequestBodyPutMultipartSimpleForm) GetEnum() string {
 	if o == nil {
 		return ""
@@ -84,6 +118,20 @@ func (o *RequestBodyPutMultipartSimpleForm) GetInt32() string {
 		return ""
 	}
 	return o.Int32
+}
+
+func (o *RequestBodyPutMultipartSimpleForm) GetInt32Enum() string {
+	if o == nil {
+		return ""
+	}
+	return o.Int32Enum
+}
+
+func (o *RequestBodyPutMultipartSimpleForm) GetIntEnum() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntEnum
 }
 
 func (o *RequestBodyPutMultipartSimpleForm) GetIntOptNull() *string {

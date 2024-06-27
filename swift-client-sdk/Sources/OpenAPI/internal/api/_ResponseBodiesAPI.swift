@@ -10,6 +10,51 @@ class _ResponseBodiesAPI: ResponseBodiesAPI {
         self.client = client
     }
     
+    public func flattenedEnvelopePaginationResponse(request: Operations.FlattenedEnvelopePaginationResponseRequest) async throws -> Response<Operations.FlattenedEnvelopePaginationResponseResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureFlattenedEnvelopePaginationResponseRequest(with: configuration, request: request)
+            },
+            handleResponse: handleFlattenedEnvelopePaginationResponseResponse
+        )
+    }
+    
+    public func flattenedEnvelopeResponse() async throws -> ResponseWithHeaders<Operations.FlattenedEnvelopeResponseResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureFlattenedEnvelopeResponseRequest(with: configuration)
+            },
+            handleResponse: handleFlattenedEnvelopeResponseResponse
+        )
+    }
+    
+    public func flattenedEnvelopeUnionResponse() async throws -> ResponseWithHeaders<Operations.FlattenedEnvelopeUnionResponseResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureFlattenedEnvelopeUnionResponseRequest(with: configuration)
+            },
+            handleResponse: handleFlattenedEnvelopeUnionResponseResponse
+        )
+    }
+    
+    public func flattenedUnionResponse() async throws -> Response<Operations.FlattenedUnionResponseResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureFlattenedUnionResponseRequest(with: configuration)
+            },
+            handleResponse: handleFlattenedUnionResponseResponse
+        )
+    }
+    
+    public func responseBodyAdditionalPropertiesAnyPost(request: [String: AnyValue]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesAnyPostResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureResponseBodyAdditionalPropertiesAnyPostRequest(with: configuration, request: request)
+            },
+            handleResponse: handleResponseBodyAdditionalPropertiesAnyPostResponse
+        )
+    }
+    
     public func responseBodyAdditionalPropertiesComplexNumbersPost(request: [String: String]) async throws -> Response<Operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
@@ -55,12 +100,31 @@ class _ResponseBodiesAPI: ResponseBodiesAPI {
         )
     }
     
+    public func responseBodyDecimalStr(request: String, server: ResponseBodiesServers.ResponseBodyDecimalStr?) async throws -> Response<Operations.ResponseBodyDecimalStrResponse> {
+        return try await client.makeRequest(
+            with: try server?.server() ?? ResponseBodiesServers.ResponseBodyDecimalStr.default(),
+            configureRequest: { configuration in
+                try configureResponseBodyDecimalStrRequest(with: configuration, request: request)
+            },
+            handleResponse: handleResponseBodyDecimalStrResponse
+        )
+    }
+    
     public func responseBodyEmptyWithHeaders(request: Operations.ResponseBodyEmptyWithHeadersRequest) async throws -> ResponseWithHeaders<Operations.ResponseBodyEmptyWithHeadersResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
                 try configureResponseBodyEmptyWithHeadersRequest(with: configuration, request: request)
             },
             handleResponse: handleResponseBodyEmptyWithHeadersResponse
+        )
+    }
+    
+    public func responseBodyMissing2xxOr3xxGet() async throws -> Response<Operations.ResponseBodyMissing2xxOr3xxGetResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureResponseBodyMissing2xxOr3xxGetRequest(with: configuration)
+            },
+            handleResponse: handleResponseBodyMissing2xxOr3xxGetResponse
         )
     }
     
@@ -101,19 +165,46 @@ class _ResponseBodiesAPI: ResponseBodiesAPI {
             handleResponse: handleResponseBodyXmlGetResponse
         )
     }
-    
-    public func responseBodyZeroValueComplexTypePtrsPost(request: Shared.ObjWithZeroValueComplexTypePtrs) async throws -> Response<Operations.ResponseBodyZeroValueComplexTypePtrsPostResponse> {
-        return try await client.makeRequest(
-            configureRequest: { configuration in
-                try configureResponseBodyZeroValueComplexTypePtrsPostRequest(with: configuration, request: request)
-            },
-            handleResponse: handleResponseBodyZeroValueComplexTypePtrsPostResponse
-        )
-    }
 
 }
 
 // MARK: - Request Configuration
+
+private func configureFlattenedEnvelopePaginationResponseRequest(with configuration: URLRequestConfiguration, request: Operations.FlattenedEnvelopePaginationResponseRequest) throws {
+    configuration.path = "/anything/flattenedEnvelopePaginationResponse"
+    configuration.method = .get
+    configuration.queryParameterSerializable = request
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configureFlattenedEnvelopeResponseRequest(with configuration: URLRequestConfiguration) throws {
+    configuration.path = "/anything/flattenedEnvelopeResponse"
+    configuration.method = .get
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configureFlattenedEnvelopeUnionResponseRequest(with configuration: URLRequestConfiguration) throws {
+    configuration.path = "/anything/flattenedEnvelopeUnionResponse"
+    configuration.method = .get
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configureFlattenedUnionResponseRequest(with configuration: URLRequestConfiguration) throws {
+    configuration.path = "/anything/flattenedUnionResponse"
+    configuration.method = .get
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configureResponseBodyAdditionalPropertiesAnyPostRequest(with configuration: URLRequestConfiguration, request: [String: AnyValue]) throws {
+    configuration.path = "/anything/responseBodies/additionalPropertiesAny"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
 
 private func configureResponseBodyAdditionalPropertiesComplexNumbersPostRequest(with configuration: URLRequestConfiguration, request: [String: String]) throws {
     configuration.path = "/anything/responseBodies/additionalPropertiesComplexNumbers"
@@ -165,10 +256,27 @@ private func configureResponseBodyBytesGetRequest(with configuration: URLRequest
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
+private func configureResponseBodyDecimalStrRequest(with configuration: URLRequestConfiguration, request: String) throws {
+    configuration.path = "/reflect#decimalStr"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
 private func configureResponseBodyEmptyWithHeadersRequest(with configuration: URLRequestConfiguration, request: Operations.ResponseBodyEmptyWithHeadersRequest) throws {
     configuration.path = "/response-headers"
     configuration.method = .post
     configuration.queryParameterSerializable = request
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configureResponseBodyMissing2xxOr3xxGetRequest(with configuration: URLRequestConfiguration) throws {
+    configuration.path = "/anything/responseBodies/missing2xxOr3xx"
+    configuration.method = .get
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
@@ -196,18 +304,103 @@ private func configureResponseBodyXmlGetRequest(with configuration: URLRequestCo
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
-private func configureResponseBodyZeroValueComplexTypePtrsPostRequest(with configuration: URLRequestConfiguration, request: Shared.ObjWithZeroValueComplexTypePtrs) throws {
-    configuration.path = "/anything/responseBodies/zeroValueComplexTypePtrs"
-    configuration.method = .post
-    configuration.contentType = "application/json"
-    configuration.body = try jsonEncoder().encode(request)
-    if configuration.body == nil {
-        throw SerializationError.missingRequiredRequestBody
+// MARK: - Response Handlers
+
+private func handleFlattenedEnvelopePaginationResponseResponse(response: Client.APIResponse) throws -> Operations.FlattenedEnvelopePaginationResponseResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.FlattenedEnvelopePaginationResponseRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
     }
-    configuration.telemetryHeader = .speakeasyUserAgent
+
+    return .empty
 }
 
-// MARK: - Response Handlers
+private func handleFlattenedEnvelopeResponseResponse(response: Client.APIResponse) throws -> Operations.FlattenedEnvelopeResponseResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .object(try JSONDecoder().decode(Operations.FlattenedEnvelopeResponseResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleFlattenedEnvelopeUnionResponseResponse(response: Client.APIResponse) throws -> Operations.FlattenedEnvelopeUnionResponseResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .twoHundredApplicationJsonObject(try JSONDecoder().decode(Operations.FlattenedEnvelopeUnionResponseResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 201 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .twoHundredAndOneApplicationJsonObject(try JSONDecoder().decode(Operations.FlattenedEnvelopeUnionResponseResponseBodiesResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleFlattenedUnionResponseResponse(response: Client.APIResponse) throws -> Operations.FlattenedUnionResponseResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .twoHundredApplicationJsonObject(try JSONDecoder().decode(Operations.FlattenedUnionResponseResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    } else if httpResponse.statusCode == 201 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .twoHundredAndOneApplicationJsonObject(try JSONDecoder().decode(Operations.FlattenedUnionResponseResponseBodiesResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleResponseBodyAdditionalPropertiesAnyPostResponse(response: Client.APIResponse) throws -> Operations.ResponseBodyAdditionalPropertiesAnyPostResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .object(try JSONDecoder().decode(Operations.ResponseBodyAdditionalPropertiesAnyPostResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
 
 private func handleResponseBodyAdditionalPropertiesComplexNumbersPostResponse(response: Client.APIResponse) throws -> Operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse {
     let httpResponse = response.httpResponse
@@ -285,10 +478,36 @@ private func handleResponseBodyBytesGetResponse(response: Client.APIResponse) th
     return .empty
 }
 
+private func handleResponseBodyDecimalStrResponse(response: Client.APIResponse) throws -> Operations.ResponseBodyDecimalStrResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .string(try JSONDecoder().decode(String.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
 private func handleResponseBodyEmptyWithHeadersResponse(response: Client.APIResponse) throws -> Operations.ResponseBodyEmptyWithHeadersResponse {
     let httpResponse = response.httpResponse
     
     if httpResponse.statusCode == 200 { 
+        return .empty
+    }
+
+    return .empty
+}
+
+private func handleResponseBodyMissing2xxOr3xxGetResponse(response: Client.APIResponse) throws -> Operations.ResponseBodyMissing2xxOr3xxGetResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode >= 200 && httpResponse.statusCode < 300 || httpResponse.statusCode == 500 { 
         return .empty
     }
 
@@ -357,22 +576,6 @@ private func handleResponseBodyXmlGetResponse(response: Client.APIResponse) thro
                 throw ResponseHandlerError.failedToDecodeResponse
             }
             return .xml(string)
-        }
-    }
-
-    return .empty
-}
-
-private func handleResponseBodyZeroValueComplexTypePtrsPostResponse(response: Client.APIResponse) throws -> Operations.ResponseBodyZeroValueComplexTypePtrsPostResponse {
-    let httpResponse = response.httpResponse
-    
-    if httpResponse.statusCode == 200 { 
-        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
-            do {
-                return .object(try JSONDecoder().decode(Operations.ResponseBodyZeroValueComplexTypePtrsPostResponseBody.self, from: data))
-            } catch {
-                throw ResponseHandlerError.failedToDecodeJSON(error)
-            }
         }
     }
 

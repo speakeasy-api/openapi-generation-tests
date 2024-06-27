@@ -35,10 +35,10 @@ func (o *RequestBodyPostMultipleContentTypesInlineFilteredRequestBody) GetStr() 
 
 // RequestBodyPostMultipleContentTypesInlineFilteredRes - OK
 type RequestBodyPostMultipleContentTypesInlineFilteredRes struct {
-	JSON map[string]interface{} `json:"json,omitempty"`
+	JSON map[string]any `json:"json,omitempty"`
 }
 
-func (o *RequestBodyPostMultipleContentTypesInlineFilteredRes) GetJSON() map[string]interface{} {
+func (o *RequestBodyPostMultipleContentTypesInlineFilteredRes) GetJSON() map[string]any {
 	if o == nil {
 		return nil
 	}

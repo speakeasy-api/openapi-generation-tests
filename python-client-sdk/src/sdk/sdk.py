@@ -3,14 +3,18 @@
 import requests as requests_http
 from .auth import Auth
 from .authnew import AuthNew
+from .customclient import CustomClient
 from .documentation import Documentation
 from .errors import Errors
+from .eventstreams import Eventstreams
 from .first import First
 from .flattening import Flattening
 from .generation import Generation
 from .globals import Globals
+from .hooks import Hooks
 from .nest import Nest
 from .nested import Nested
+from .openenums import OpenEnums
 from .pagination import Pagination
 from .parameters import Parameters
 from .requestbodies import RequestBodies
@@ -22,45 +26,55 @@ from .second import Second
 from .servers import Servers
 from .telemetry import Telemetry
 from .unions import Unions
+from .utils.retries import RetryConfig
 from sdk import utils
-from sdk.models import errors, operations, shared
+from sdk._hooks import AfterErrorContext, AfterSuccessContext, BeforeRequestContext, HookContext, SDKHooks
+from sdk.models import errors, internal, operations, shared
 from typing import Callable, Dict, Optional, Union
 
 class SDK:
-    r"""Test: Test Summary
+    r"""Speakeasy's Uber Test Spec: Contains a wide array of different operation types and schema to try and cover enough ground to ensure good coverage of our support of OpenAPI
     Some test description.
     About our test document.
     https://speakeasyapi.dev/docs/home - Speakeasy Docs
     """
     generation: Generation
     r"""Endpoints for purely testing valid generation behavior."""
-    errors: Errors
-    r"""Endpoints for testing error responses."""
     unions: Unions
     r"""Endpoints for testing union types."""
+    errors: Errors
+    r"""Endpoints for testing error responses."""
+    custom_client: CustomClient
+    r"""Endpoints for testing custom HTTP clients"""
+    response_bodies: ResponseBodies
+    r"""Endpoints for testing response bodies."""
     flattening: Flattening
     r"""Endpoints for testing flattening through request body and parameter combinations."""
     globals: Globals
     r"""Endpoints for testing global parameters."""
     parameters: Parameters
     r"""Endpoints for testing parameters."""
+    hooks: Hooks
+    r"""Endpoints for testing hooks"""
     nest: Nest
     nested: Nested
     auth: Auth
     r"""Endpoints for testing authentication."""
+    open_enums: OpenEnums
+    r"""Endpoints for testing open/closed enums"""
     request_bodies: RequestBodies
     r"""Endpoints for testing request bodies."""
-    response_bodies: ResponseBodies
-    r"""Endpoints for testing response bodies."""
     servers: Servers
     r"""Endpoints for testing servers."""
     telemetry: Telemetry
     r"""Endpoints for testing telemetry."""
     auth_new: AuthNew
     r"""Endpoints for testing authentication."""
+    resource: Resource
     documentation: Documentation
     r"""Testing for documentation extensions in Python."""
-    resource: Resource
+    eventstreams: Eventstreams
+    r"""Endpoints for testing server-sent events streaming"""
     first: First
     second: Second
     pagination: Pagination
@@ -72,34 +86,46 @@ class SDK:
 
     def __init__(self,
                  security: Union[shared.Security,Callable[[], shared.Security]] = None,
+                 global_header_param: bool = None,
+                 global_hidden_header_param: str = None,
+                 global_hidden_path_param: str = None,
+                 global_hidden_query_param: str = None,
                  global_path_param: int = None,
                  global_query_param: str = None,
                  hostname: str = None,
                  port: str = None,
-                 protocol: str = None,
                  something: ServerSomething = None,
-                 server_idx: int = None,
-                 server_url: str = None,
-                 url_params: Dict[str, str] = None,
-                 client: requests_http.Session = None,
-                 retry_config: utils.RetryConfig = None
+                 protocol: str = None,
+                 server_idx: Optional[int] = None,
+                 server_url: Optional[str] = None,
+                 url_params: Optional[Dict[str, str]] = None,
+                 client: Optional[requests_http.Session] = None,
+                 retry_config: Optional[RetryConfig] = None
                  ) -> None:
         """Instantiates the SDK configuring it with the provided parameters.
-        
+
         :param security: The security details required for authentication
         :type security: Union[shared.Security,Callable[[], shared.Security]]
+        :param global_header_param: Configures the global_header_param parameter for all supported operations
+        :type global_header_param: bool
+        :param global_hidden_header_param: Configures the global_hidden_header_param parameter for all supported operations
+        :type global_hidden_header_param: str
+        :param global_hidden_path_param: Configures the global_hidden_path_param parameter for all supported operations
+        :type global_hidden_path_param: str
+        :param global_hidden_query_param: Configures the global_hidden_query_param parameter for all supported operations
+        :type global_hidden_query_param: str
         :param global_path_param: Configures the global_path_param parameter for all supported operations
         :type global_path_param: int
         :param global_query_param: Configures the global_query_param parameter for all supported operations
         :type global_query_param: str
         :param hostname: Allows setting the hostname variable for url substitution
-        :type hostname: 
+        :type hostname: str
         :param port: Allows setting the port variable for url substitution
-        :type port: 
-        :param protocol: Allows setting the protocol variable for url substitution
-        :type protocol: 
+        :type port: str
         :param something: Allows setting the something variable for url substitution
-        :type something: ServerSomethingmodels.ServerSomething
+        :type something: ServerSomething
+        :param protocol: Allows setting the protocol variable for url substitution
+        :type protocol: str
         :param server_idx: The index of the server to use for all operations
         :type server_idx: int
         :param server_url: The server URL to use for all operations
@@ -109,11 +135,11 @@ class SDK:
         :param client: The requests.Session HTTP client to use for all operations
         :type client: requests_http.Session
         :param retry_config: The utils.RetryConfig to use globally
-        :type retry_config: utils.RetryConfig
+        :type retry_config: RetryConfig
         """
         if client is None:
             client = requests_http.Session()
-        
+
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
@@ -135,106 +161,274 @@ class SDK:
                 'protocol': protocol or 'http',
             },
         ]
-
-        self.sdk_configuration = SDKConfiguration(client, security, server_url, server_idx, server_defaults, {
-            'parameters': {
-                'queryParam': {
-                    'global_query_param': global_query_param,
-                },
-                'pathParam': {
-                    'global_path_param': global_path_param,
-                },
-            },
-        }, retry_config=retry_config)
-       
-        self._init_sdks()
     
+        _globals = internal.Globals(
+            global_header_param=global_header_param,
+            global_hidden_header_param=global_hidden_header_param,
+            global_hidden_path_param=global_hidden_path_param,
+            global_hidden_query_param=global_hidden_query_param,
+            global_path_param=global_path_param,
+            global_query_param=global_query_param,
+        )
+
+        self.sdk_configuration = SDKConfiguration(
+            client,
+            _globals,
+            security,
+            server_url,
+            server_idx,
+            server_defaults,
+            retry_config=retry_config
+        )
+
+        hooks = SDKHooks()
+
+        current_server_url, *_ = self.sdk_configuration.get_server_details()
+        server_url, self.sdk_configuration.client = hooks.sdk_init(current_server_url, self.sdk_configuration.client)
+        if current_server_url != server_url:
+            self.sdk_configuration.server_url = server_url
+
+        # pylint: disable=protected-access
+        self.sdk_configuration.__dict__['_hooks'] = hooks
+
+        self._init_sdks()
+
+
     def _init_sdks(self):
         self.generation = Generation(self.sdk_configuration)
-        self.errors = Errors(self.sdk_configuration)
         self.unions = Unions(self.sdk_configuration)
+        self.errors = Errors(self.sdk_configuration)
+        self.custom_client = CustomClient(self.sdk_configuration)
+        self.response_bodies = ResponseBodies(self.sdk_configuration)
         self.flattening = Flattening(self.sdk_configuration)
         self.globals = Globals(self.sdk_configuration)
         self.parameters = Parameters(self.sdk_configuration)
+        self.hooks = Hooks(self.sdk_configuration)
         self.nest = Nest(self.sdk_configuration)
         self.nested = Nested(self.sdk_configuration)
         self.auth = Auth(self.sdk_configuration)
+        self.open_enums = OpenEnums(self.sdk_configuration)
         self.request_bodies = RequestBodies(self.sdk_configuration)
-        self.response_bodies = ResponseBodies(self.sdk_configuration)
         self.servers = Servers(self.sdk_configuration)
         self.telemetry = Telemetry(self.sdk_configuration)
         self.auth_new = AuthNew(self.sdk_configuration)
-        self.documentation = Documentation(self.sdk_configuration)
         self.resource = Resource(self.sdk_configuration)
+        self.documentation = Documentation(self.sdk_configuration)
+        self.eventstreams = Eventstreams(self.sdk_configuration)
         self.first = First(self.sdk_configuration)
         self.second = Second(self.sdk_configuration)
         self.pagination = Pagination(self.sdk_configuration)
         self.retries = Retries(self.sdk_configuration)
-    
-    
-    def put_anything_ignored_generation(self, request: str) -> operations.PutAnythingIgnoredGenerationResponse:
+
+
+    def authenticated_request(self, security: operations.AuthenticatedRequestSecurity, request: Optional[operations.AuthenticatedRequestRequestBody] = None) -> operations.AuthenticatedRequestResponse:
+        hook_ctx = HookContext(operation_id='authenticatedRequest', oauth2_scopes=[], security_source=security)
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = base_url + '/clientcredentials/authenticatedrequest'
+        
+        headers, query_params = utils.get_security(security)
+        
+        req_content_type, data, form = utils.serialize_request_body(request, Optional[operations.AuthenticatedRequestRequestBody], "request", False, True, 'json')
+        if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = '*/*'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
+        
+        try:
+            req = client.prepare_request(requests_http.Request('POST', url, params=query_params, data=data, files=form, headers=headers))
+            req = self.sdk_configuration.get_hooks().before_request(BeforeRequestContext(hook_ctx), req)
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), None, e)
+            if e is not None:
+                raise e
+
+        if utils.match_status_codes(['4XX','5XX'], http_res.status_code):
+            result, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), http_res, None)
+            if e is not None:
+                raise e
+            if result is not None:
+                http_res = result
+        else:
+            http_res = self.sdk_configuration.get_hooks().after_success(AfterSuccessContext(hook_ctx), http_res)
+            
+        
+        
+        res = operations.AuthenticatedRequestResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type') or '', raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            pass
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+
+
+    def conflicting_enum(self, request: Optional[shared.ConflictingEnum] = None) -> operations.ConflictingEnumResponse:
+        r"""Test potential namespace conflicts with java.lang.Object"""
+        hook_ctx = HookContext(operation_id='conflictingEnum', oauth2_scopes=[], security_source=self.sdk_configuration.security)
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = base_url + '/anything/conflictingEnum/'
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
+        req_content_type, data, form = utils.serialize_request_body(request, Optional[shared.ConflictingEnum], "request", False, True, 'json')
+        if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = '*/*'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
+        
+        try:
+            req = client.prepare_request(requests_http.Request('POST', url, params=query_params, data=data, files=form, headers=headers))
+            req = self.sdk_configuration.get_hooks().before_request(BeforeRequestContext(hook_ctx), req)
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), None, e)
+            if e is not None:
+                raise e
+
+        if utils.match_status_codes(['4XX','5XX'], http_res.status_code):
+            result, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), http_res, None)
+            if e is not None:
+                raise e
+            if result is not None:
+                http_res = result
+        else:
+            http_res = self.sdk_configuration.get_hooks().after_success(AfterSuccessContext(hook_ctx), http_res)
+            
+        
+        
+        res = operations.ConflictingEnumResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type') or '', raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            pass
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+
+
+    def ignored_generation_put(self, request: str) -> operations.IgnoredGenerationPutResponse:
+        hook_ctx = HookContext(operation_id='ignoredGenerationPut', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/ignoredGeneration'
-        headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
+        req_content_type, data, form = utils.serialize_request_body(request, str, "request", False, False, 'json')
+        if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
         
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
-        http_res = client.request('PUT', url, data=data, files=form, headers=headers)
-        content_type = http_res.headers.get('Content-Type')
+        try:
+            req = client.prepare_request(requests_http.Request('PUT', url, params=query_params, data=data, files=form, headers=headers))
+            req = self.sdk_configuration.get_hooks().before_request(BeforeRequestContext(hook_ctx), req)
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), None, e)
+            if e is not None:
+                raise e
 
-        res = operations.PutAnythingIgnoredGenerationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        if utils.match_status_codes(['4XX','5XX'], http_res.status_code):
+            result, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), http_res, None)
+            if e is not None:
+                raise e
+            if result is not None:
+                http_res = result
+        else:
+            http_res = self.sdk_configuration.get_hooks().after_success(AfterSuccessContext(hook_ctx), http_res)
+            
+        
+        
+        res = operations.IgnoredGenerationPutResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type') or '', raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PutAnythingIgnoredGenerationResponseBody])
+            # pylint: disable=no-else-return
+            if utils.match_content_type(http_res.headers.get('Content-Type') or '', 'application/json'):                
+                out = utils.unmarshal_json(http_res.text, Optional[operations.IgnoredGenerationPutResponseBody])
                 res.object = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
-    
-    
+
+
     def response_body_json_get(self) -> operations.ResponseBodyJSONGetResponse:
+        hook_ctx = HookContext(operation_id='responseBodyJsonGet', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/json'
-        headers = {}
-        headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
         else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
         
-        http_res = client.request('GET', url, headers=headers)
-        content_type = http_res.headers.get('Content-Type')
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
+        
+        try:
+            req = client.prepare_request(requests_http.Request('GET', url, params=query_params, headers=headers))
+            req = self.sdk_configuration.get_hooks().before_request(BeforeRequestContext(hook_ctx), req)
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), None, e)
+            if e is not None:
+                raise e
 
-        res = operations.ResponseBodyJSONGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        if utils.match_status_codes(['4XX','5XX'], http_res.status_code):
+            result, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), http_res, None)
+            if e is not None:
+                raise e
+            if result is not None:
+                http_res = result
+        else:
+            http_res = self.sdk_configuration.get_hooks().after_success(AfterSuccessContext(hook_ctx), http_res)
+            
+        
+        
+        res = operations.ResponseBodyJSONGetResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type') or '', raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            # pylint: disable=no-else-return
+            if utils.match_content_type(http_res.headers.get('Content-Type') or '', 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[shared.HTTPBinSimpleJSONObject])
                 res.http_bin_simple_json_object = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
-    
