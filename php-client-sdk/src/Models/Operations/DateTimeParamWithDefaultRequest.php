@@ -8,19 +8,19 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class DateTimeParamWithDefaultRequest
 {
     /**
      * A date time parameter with a default value
-     * 
+     *
      * @var \DateTime $dateTimeInput
      */
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=dateTimeInput,dateTimeFormat=Y-m-d\TH:i:s.up')]
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=dateTimeInput,dateTimeFormat=Y-m-d\TH:i:s.up')]
     public \DateTime $dateTimeInput;
-    
-	public function __construct()
-	{
-		$this->dateTimeInput = new \DateTime();
-	}
+
+    public function __construct()
+    {
+        $this->dateTimeInput = new \DateTime();
+    }
 }

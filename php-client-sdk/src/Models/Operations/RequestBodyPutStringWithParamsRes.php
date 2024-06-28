@@ -9,25 +9,20 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * RequestBodyPutStringWithParamsRes - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** RequestBodyPutStringWithParamsRes - OK */
 class RequestBodyPutStringWithParamsRes
 {
-	#[\JMS\Serializer\Annotation\SerializedName('args')]
+    #[\JMS\Serializer\Annotation\SerializedName('args')]
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPutStringWithParamsArgs')]
     public RequestBodyPutStringWithParamsArgs $args;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('data')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('data')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $data;
-    
-	public function __construct()
-	{
-		$this->args = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutStringWithParamsArgs();
-		$this->data = "";
-	}
+
+    public function __construct()
+    {
+        $this->args = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutStringWithParamsArgs();
+        $this->data = '';
+    }
 }

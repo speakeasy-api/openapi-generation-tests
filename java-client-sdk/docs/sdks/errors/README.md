@@ -1,5 +1,5 @@
 # Errors
-(*errors*)
+(*errors()*)
 
 ## Overview
 
@@ -18,29 +18,46 @@ Endpoints for testing error responses.
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.ConnectionErrorGetResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            ConnectionErrorGetResponse res = sdk.errors.connectionErrorGet();
+            ConnectionErrorGetResponse res = sdk.errors().connectionErrorGet()
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
+
     }
 }
 ```
@@ -54,8 +71,12 @@ public class Application {
 
 ### Response
 
-**[org.openapis.openapi.models.operations.ConnectionErrorGetResponse](../../models/operations/ConnectionErrorGetResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.ConnectionErrorGetResponse>](../../models/operations/ConnectionErrorGetResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## statusGetError
 
@@ -64,30 +85,47 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.StatusGetErrorRequest;
-import org.openapis.openapi.models.operations.StatusGetErrorResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            StatusGetErrorResponse res = sdk.errors.statusGetError(458364L);
+            StatusGetErrorResponse res = sdk.errors().statusGetError()
+                .statusCode(458364L)
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
+
     }
 }
 ```
@@ -96,13 +134,17 @@ public class Application {
 
 | Parameter          | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `statusCode`       | *Long*             | :heavy_check_mark: | N/A                |
+| `statusCode`       | *long*             | :heavy_check_mark: | N/A                |
 
 
 ### Response
 
-**[org.openapis.openapi.models.operations.StatusGetErrorResponse](../../models/operations/StatusGetErrorResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.StatusGetErrorResponse>](../../models/operations/StatusGetErrorResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## statusGetXSpeakeasyErrors
 
@@ -111,30 +153,53 @@ public class Application {
 ```java
 package hello.world;
 
+import java.math.BigDecimal;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsRequest;
-import org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.utils.EventStream;
+import org.openapitools.jackson.nullable.JsonNullable;
+import static java.util.Map.entry;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            StatusGetXSpeakeasyErrorsResponse res = sdk.errors.statusGetXSpeakeasyErrors(385913L);
+            StatusGetXSpeakeasyErrorsResponse res = sdk.errors().statusGetXSpeakeasyErrors()
+                .statusCode(385913L)
+                .call();
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
+            // handle response
+        } catch (org.openapis.openapi.models.errors.Error e) {
+            // handle exception
+            throw e;
+        } catch (org.openapis.openapi.models.errors.StatusGetXSpeakeasyErrorsResponseBody e) {
+            // handle exception
+            throw e;
+        } catch (org.openapis.openapi.models.errors.SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
+
     }
 }
 ```
@@ -143,11 +208,17 @@ public class Application {
 
 | Parameter                      | Type                           | Required                       | Description                    |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `statusCode`                   | *Long*                         | :heavy_check_mark:             | N/A                            |
+| `statusCode`                   | *long*                         | :heavy_check_mark:             | N/A                            |
 | `serverURL`                    | *String*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
 
 ### Response
 
-**[org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsResponse](../../models/operations/StatusGetXSpeakeasyErrorsResponse.md)**
+**[Optional<? extends org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsResponse>](../../models/operations/StatusGetXSpeakeasyErrorsResponse.md)**
+### Errors
 
+| Error Object                                        | Status Code                                         | Content Type                                        |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| models/errors/Error                                 | 500                                                 | application/json                                    |
+| models/errors/StatusGetXSpeakeasyErrorsResponseBody | 501                                                 | application/json                                    |
+| models/errors/SDKError                              | 4xx-5xx                                             | */*                                                 |

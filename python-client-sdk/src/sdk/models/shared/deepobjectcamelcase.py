@@ -11,7 +11,7 @@ from typing import Dict, List, Optional, Union
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class DeepObjectCamelCase:
-    any_val: Union[SimpleObjectCamelCase, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any_val') }})
+    any_val: AnyVal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any_val') }})
     arr_val: List[SimpleObjectCamelCase] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arr_val') }})
     bool_val: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool_val') }})
     int_val: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int_val') }})
@@ -25,3 +25,5 @@ class DeepObjectCamelCase:
     type: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     
 
+
+AnyVal = Union[SimpleObjectCamelCase, str]

@@ -136,6 +136,15 @@ class _ParametersAPI: ParametersAPI {
         )
     }
     
+    public func jsonQueryParamsObjectSmaller(request: Operations.JsonQueryParamsObjectSmallerRequest) async throws -> Response<Operations.JsonQueryParamsObjectSmallerResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureJsonQueryParamsObjectSmallerRequest(with: configuration, request: request)
+            },
+            handleResponse: handleJsonQueryParamsObjectSmallerResponse
+        )
+    }
+    
     public func mixedParametersCamelCase(request: Operations.MixedParametersCamelCaseRequest) async throws -> Response<Operations.MixedParametersCamelCaseResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
@@ -314,6 +323,13 @@ private func configureHeaderParamsPrimitiveRequest(with configuration: URLReques
 
 private func configureJsonQueryParamsObjectRequest(with configuration: URLRequestConfiguration, request: Operations.JsonQueryParamsObjectRequest) throws {
     configuration.path = "/anything/queryParams/json/obj"
+    configuration.method = .get
+    configuration.queryParameterSerializable = request
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configureJsonQueryParamsObjectSmallerRequest(with configuration: URLRequestConfiguration, request: Operations.JsonQueryParamsObjectSmallerRequest) throws {
+    configuration.path = "/anything/queryParams/json/objsmaller"
     configuration.method = .get
     configuration.queryParameterSerializable = request
     configuration.telemetryHeader = .speakeasyUserAgent
@@ -603,6 +619,22 @@ private func handleJsonQueryParamsObjectResponse(response: Client.APIResponse) t
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .res(try JSONDecoder().decode(Operations.JsonQueryParamsObjectRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleJsonQueryParamsObjectSmallerResponse(response: Client.APIResponse) throws -> Operations.JsonQueryParamsObjectSmallerResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.JsonQueryParamsObjectSmallerRes.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }
