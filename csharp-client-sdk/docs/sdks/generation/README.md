@@ -40,9 +40,10 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Generation.AnchorTypesGetAsync();
 
@@ -53,7 +54,11 @@ var res = await sdk.Generation.AnchorTypesGetAsync();
 ### Response
 
 **[AnchorTypesGetResponse](../../Models/Operations/AnchorTypesGetResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## ArrayCircularReferenceGet
 
@@ -67,9 +72,10 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Generation.ArrayCircularReferenceGetAsync();
 
@@ -80,7 +86,11 @@ var res = await sdk.Generation.ArrayCircularReferenceGetAsync();
 ### Response
 
 **[ArrayCircularReferenceGetResponse](../../Models/Operations/ArrayCircularReferenceGetResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## CircularReferenceGet
 
@@ -94,9 +104,10 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Generation.CircularReferenceGetAsync();
 
@@ -107,7 +118,11 @@ var res = await sdk.Generation.CircularReferenceGetAsync();
 ### Response
 
 **[CircularReferenceGetResponse](../../Models/Operations/CircularReferenceGetResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## DateParamWithDefault
 
@@ -123,11 +138,12 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.DateParamWithDefaultAsync(LocalDate.FromDateTime(System.DateTime.Parse("2021-11-30")));
+var res = await sdk.Generation.DateParamWithDefaultAsync(dateInput: LocalDate.FromDateTime(System.DateTime.Parse("2023-10-13")));
 
 // handle response
 ```
@@ -142,7 +158,11 @@ var res = await sdk.Generation.DateParamWithDefaultAsync(LocalDate.FromDateTime(
 ### Response
 
 **[DateParamWithDefaultResponse](../../Models/Operations/DateParamWithDefaultResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## DateTimeParamWithDefault
 
@@ -157,11 +177,12 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.DateTimeParamWithDefaultAsync(System.DateTime.Parse("2023-02-09T21:53:21.077Z"));
+var res = await sdk.Generation.DateTimeParamWithDefaultAsync(dateTimeInput: System.DateTime.Parse("2023-10-13T12:42:42.999+00:00"));
 
 // handle response
 ```
@@ -176,7 +197,11 @@ var res = await sdk.Generation.DateTimeParamWithDefaultAsync(System.DateTime.Par
 ### Response
 
 **[DateTimeParamWithDefaultResponse](../../Models/Operations/DateTimeParamWithDefaultResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## DecimalParamWithDefault
 
@@ -191,11 +216,12 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.DecimalParamWithDefaultAsync(4060.06M);
+var res = await sdk.Generation.DecimalParamWithDefaultAsync(decimalInput: 903275809834567300000M);
 
 // handle response
 ```
@@ -210,7 +236,11 @@ var res = await sdk.Generation.DecimalParamWithDefaultAsync(4060.06M);
 ### Response
 
 **[DecimalParamWithDefaultResponse](../../Models/Operations/DecimalParamWithDefaultResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## DeprecatedFieldInSchemaPost
 
@@ -224,11 +254,14 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.DeprecatedFieldInSchemaPostAsync(new DeprecatedFieldInObject() {});
+DeprecatedFieldInObject req = new DeprecatedFieldInObject() {};
+
+var res = await sdk.Generation.DeprecatedFieldInSchemaPostAsync(req);
 
 // handle response
 ```
@@ -243,7 +276,11 @@ var res = await sdk.Generation.DeprecatedFieldInSchemaPostAsync(new DeprecatedFi
 ### Response
 
 **[DeprecatedFieldInSchemaPostResponse](../../Models/Operations/DeprecatedFieldInSchemaPostResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## DeprecatedObjectInSchemaGet
 
@@ -257,9 +294,10 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Generation.DeprecatedObjectInSchemaGetAsync();
 
@@ -270,7 +308,11 @@ var res = await sdk.Generation.DeprecatedObjectInSchemaGetAsync();
 ### Response
 
 **[DeprecatedObjectInSchemaGetResponse](../../Models/Operations/DeprecatedObjectInSchemaGetResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## ~~DeprecatedOperationNoCommentsGet~~
 
@@ -287,11 +329,12 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.DeprecatedOperationNoCommentsGetAsync("string");
+var res = await sdk.Generation.DeprecatedOperationNoCommentsGetAsync(deprecatedParameter: "<value>");
 
 // handle response
 ```
@@ -306,7 +349,11 @@ var res = await sdk.Generation.DeprecatedOperationNoCommentsGetAsync("string");
 ### Response
 
 **[DeprecatedOperationNoCommentsGetResponse](../../Models/Operations/DeprecatedOperationNoCommentsGetResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## ~~DeprecatedOperationWithCommentsGet~~
 
@@ -325,11 +372,14 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.DeprecatedOperationWithCommentsGetAsync("string", "string");
+var res = await sdk.Generation.DeprecatedOperationWithCommentsGetAsync(
+    deprecatedParameter: "<value>",
+    newParameter: "<value>");
 
 // handle response
 ```
@@ -345,7 +395,11 @@ var res = await sdk.Generation.DeprecatedOperationWithCommentsGetAsync("string",
 ### Response
 
 **[DeprecatedOperationWithCommentsGetResponse](../../Models/Operations/DeprecatedOperationWithCommentsGetResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## EmptyObjectGet
 
@@ -360,11 +414,12 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.EmptyObjectGetAsync(new EmptyObjectParam() {});
+var res = await sdk.Generation.EmptyObjectGetAsync(emptyObject: new EmptyObjectParam() {});
 
 // handle response
 ```
@@ -379,7 +434,11 @@ var res = await sdk.Generation.EmptyObjectGetAsync(new EmptyObjectParam() {});
 ### Response
 
 **[EmptyObjectGetResponse](../../Models/Operations/EmptyObjectGetResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## EmptyResponseObjectWithCommentGet
 
@@ -393,9 +452,10 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Generation.EmptyResponseObjectWithCommentGetAsync();
 
@@ -406,7 +466,11 @@ var res = await sdk.Generation.EmptyResponseObjectWithCommentGetAsync();
 ### Response
 
 **[EmptyResponseObjectWithCommentGetResponse](../../Models/Operations/EmptyResponseObjectWithCommentGetResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## GlobalNameOverridden
 
@@ -415,25 +479,60 @@ var res = await sdk.Generation.EmptyResponseObjectWithCommentGetAsync();
 ```csharp
 using Openapi;
 using Openapi.Models.Shared;
+using NodaTime;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.GlobalNameOverriddenAsync();
+SimpleObject req = new SimpleObject() {
+    Any = "any",
+    Bool = true,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+    Enum = Openapi.Models.Shared.Enum.One,
+    Float32 = 1.1F,
+    Int = 1,
+    Int32 = 1,
+    Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+    IntEnum = Openapi.Models.Shared.IntEnum.Two,
+    Num = 1.1D,
+    Str = "test",
+    Bigint = 8821239038968084,
+    BigintStr = 9223372036854775808,
+    BoolOpt = true,
+    Decimal = 3.141592653589793M,
+    DecimalStr = 3.14159265358979344719667586M,
+    Float64Str = "1.1",
+    Int64Str = "100",
+    StrOpt = "testOptional",
+};
+
+var res = await sdk.Generation.GlobalNameOverriddenAsync(req);
 
 // handle response
 ```
+
+### Parameters
+
+| Parameter                                           | Type                                                | Required                                            | Description                                         |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `request`                                           | [SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
 
 
 ### Response
 
 **[GetGlobalNameOverrideResponse](../../Models/Operations/GetGlobalNameOverrideResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## IgnoredGenerationGet
 
@@ -448,9 +547,10 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Generation.IgnoredGenerationGetAsync();
 
@@ -461,7 +561,11 @@ var res = await sdk.Generation.IgnoredGenerationGetAsync();
 ### Response
 
 **[IgnoredGenerationGetResponse](../../Models/Operations/IgnoredGenerationGetResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## IgnoresPost
 
@@ -476,11 +580,14 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.IgnoresPostAsync(new IgnoresPostRequestBody() {}, "string");
+var res = await sdk.Generation.IgnoresPostAsync(
+    requestBody: new IgnoresPostRequestBody() {},
+    testParam: "<value>");
 
 // handle response
 ```
@@ -496,7 +603,11 @@ var res = await sdk.Generation.IgnoresPostAsync(new IgnoresPostRequestBody() {},
 ### Response
 
 **[IgnoresPostResponse](../../Models/Operations/IgnoresPostResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## NameOverride
 
@@ -511,11 +622,14 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.NameOverrideAsync(EnumNameOverride.Value3, "example");
+var res = await sdk.Generation.NameOverrideAsync(
+    testEnumQueryParam: Openapi.Models.Operations.EnumNameOverride.Value3,
+    testQueryParam: "example");
 
 // handle response
 ```
@@ -531,7 +645,11 @@ var res = await sdk.Generation.NameOverrideAsync(EnumNameOverride.Value3, "examp
 ### Response
 
 **[NameOverrideGetResponse](../../Models/Operations/NameOverrideGetResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## ObjectCircularReferenceGet
 
@@ -545,9 +663,10 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Generation.ObjectCircularReferenceGetAsync();
 
@@ -558,7 +677,11 @@ var res = await sdk.Generation.ObjectCircularReferenceGetAsync();
 ### Response
 
 **[ObjectCircularReferenceGetResponse](../../Models/Operations/ObjectCircularReferenceGetResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## OneOfCircularReferenceGet
 
@@ -572,9 +695,10 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Generation.OneOfCircularReferenceGetAsync();
 
@@ -585,7 +709,11 @@ var res = await sdk.Generation.OneOfCircularReferenceGetAsync();
 ### Response
 
 **[OneOfCircularReferenceGetResponse](../../Models/Operations/OneOfCircularReferenceGetResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## TypedParameterGenerationGet
 
@@ -601,14 +729,19 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.TypedParameterGenerationGetAsync(879275, LocalDate.FromDateTime(System.DateTime.Parse("2023-11-18")), 3346.96M, new Obj() {
+var res = await sdk.Generation.TypedParameterGenerationGetAsync(
+    bigint: 879275,
+    date: LocalDate.FromDateTime(System.DateTime.Parse("2024-11-18")),
+    decimal: 3346.96M,
+    obj: new Obj() {
     Bool = false,
     Num = 4778.06D,
-    Str = "string",
+    Str = "<value>",
 });
 
 // handle response
@@ -627,7 +760,11 @@ var res = await sdk.Generation.TypedParameterGenerationGetAsync(879275, LocalDat
 ### Response
 
 **[TypedParameterGenerationGetResponse](../../Models/Operations/TypedParameterGenerationGetResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## UsageExamplePost
 
@@ -645,44 +782,42 @@ using Openapi.Models.Shared;
 using NodaTime;
 
 var sdk = new SDK(
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurity() {
-    Password = "YOUR_PASSWORD",
-    Username = "YOUR_USERNAME",
-}, new UsageExamplePostRequest() {
+UsageExamplePostRequest req = new UsageExamplePostRequest() {
     BigintParameter = 168827,
     BigintStrParameter = 446729,
     BoolParameter = false,
-    DateParameter = LocalDate.FromDateTime(System.DateTime.Parse("2023-06-11")),
-    DateTimeDefaultParameter = System.DateTime.Parse("2022-07-22T13:16:48.221Z"),
-    DateTimeParameter = System.DateTime.Parse("2021-10-21T09:16:58.799Z"),
+    DateParameter = LocalDate.FromDateTime(System.DateTime.Parse("2024-06-10")),
+    DateTimeDefaultParameter = System.DateTime.Parse("2023-07-23T01:43:10.512Z"),
+    DateTimeParameter = System.DateTime.Parse("2022-10-21T15:42:48.223Z"),
     DecimalParameter = 5223.72M,
     DecimalStrParameter = 2911.37M,
     DoubleParameter = 6946.59D,
-    EnumParameter = EnumParameter.Value1,
+    EnumParameter = Openapi.Models.Operations.EnumParameter.Value1,
     FalseyNumberParameter = 0D,
     Float32Parameter = 1029.75F,
+    Float64StringParameter = "<value>",
     FloatParameter = 5669.99D,
     Int64Parameter = 195232,
+    Int64StringParameter = "<value>",
     IntParameter = 569663,
     StrParameter = "example 1",
     RequestBody = new UsageExamplePostRequestBody() {
-        FakerFormattedStrings = new FakerFormattedStrings() {},
-        FakerStrings = new FakerStrings() {},
         SimpleObject = new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = Enum.One,
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+            Enum = Openapi.Models.Shared.Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = Int32Enum.FiftyFive,
-            IntEnum = IntEnum.Two,
+            Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+            IntEnum = Openapi.Models.Shared.IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -690,11 +825,20 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
             BoolOpt = true,
             Decimal = 3.141592653589793M,
             DecimalStr = 3.14159265358979344719667586M,
+            Float64Str = "1.1",
+            Int64Str = "100",
             StrOpt = "testOptional",
         },
     },
     OptEnumParameter = OptEnumParameter.Value3,
-});
+};
+
+var res = await sdk.Generation.UsageExamplePostAsync(
+    security: new UsageExamplePostSecurity() {
+        Password = "YOUR_PASSWORD",
+        Username = "YOUR_USERNAME",
+    },
+    req);
 
 // handle response
 ```
@@ -710,4 +854,8 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 ### Response
 
 **[UsageExamplePostResponse](../../Models/Operations/UsageExamplePostResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |

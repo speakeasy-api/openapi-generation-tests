@@ -1,0 +1,10 @@
+# Theme
+
+
+## Fields
+
+| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `color`                                                                       | [?\OpenAPI\OpenAPI\Models\Shared\Color](../../Models/Shared/Color.md)         | :heavy_minus_sign:                                                            | N/A                                                                           | green                                                                         |
+| `heroWidth`                                                                   | [?\OpenAPI\OpenAPI\Models\Shared\HeroWidth](../../Models/Shared/HeroWidth.md) | :heavy_minus_sign:                                                            | N/A                                                                           | 480                                                                           |
+| `icon`                                                                        | [?\OpenAPI\OpenAPI\Models\Shared\Icon](../../Models/Shared/Icon.md)           | :heavy_minus_sign:                                                            | N/A                                                                           | tick                                                                          |
