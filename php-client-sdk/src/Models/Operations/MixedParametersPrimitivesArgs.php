@@ -11,12 +11,12 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 
 class MixedParametersPrimitivesArgs
 {
-	#[\JMS\Serializer\Annotation\SerializedName('queryStringParam')]
+    #[\JMS\Serializer\Annotation\SerializedName('queryStringParam')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $queryStringParam;
-    
-	public function __construct()
-	{
-		$this->queryStringParam = "";
-	}
+
+    public function __construct()
+    {
+        $this->queryStringParam = '';
+    }
 }

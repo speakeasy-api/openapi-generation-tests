@@ -11,7 +11,7 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 
 class EmptyWithEmptyProperties
 {
-	public function __construct()
-	{
-	}
+    public function __construct()
+    {
+    }
 }
