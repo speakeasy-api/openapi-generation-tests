@@ -13,15 +13,15 @@ class ArrayCircularReferenceObject
 {
     /**
      * $circular
-     * 
+     *
      * @var array<\OpenAPI\OpenAPI\Models\Shared\ArrayCircularReferenceObject> $circular
      */
-	#[\JMS\Serializer\Annotation\SerializedName('circular')]
+    #[\JMS\Serializer\Annotation\SerializedName('circular')]
     #[\JMS\Serializer\Annotation\Type('array<OpenAPI\OpenAPI\Models\Shared\ArrayCircularReferenceObject>')]
     public array $circular;
-    
-	public function __construct()
-	{
-		$this->circular = [];
-	}
+
+    public function __construct()
+    {
+        $this->circular = [];
+    }
 }

@@ -11,12 +11,12 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 
 class OneOfCircularReferenceObject
 {
-	#[\JMS\Serializer\Annotation\SerializedName('child')]
+    #[\JMS\Serializer\Annotation\SerializedName('child')]
     #[\JMS\Serializer\Annotation\Type('mixed')]
     public mixed $child;
-    
-	public function __construct()
-	{
-		$this->child = null;
-	}
+
+    public function __construct()
+    {
+        $this->child = null;
+    }
 }
