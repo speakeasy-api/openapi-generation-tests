@@ -15,20 +15,19 @@ import (
 )
 
 func TestParameters_DeepObjectQueryParamsMap(t *testing.T) {
+	recordTest("parameters-deep-object-query-params-map")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
 	mapParam := map[string]string{
 		"test":  "value",
 		"test2": "value2",
 	}
 
-	mapArrParam := map[string][]string{
+	var mapArrParam map[string][]string = map[string][]string{
 		"test": []string{
 			"test",
 			"test2",
@@ -38,24 +37,19 @@ func TestParameters_DeepObjectQueryParamsMap(t *testing.T) {
 			"test4",
 		},
 	}
-
 	ctx := context.Background()
 	res, err := s.Parameters.DeepObjectQueryParamsMap(ctx, mapParam, mapArrParam)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
 	assert.Equal(t, map[string]operations.DeepObjectQueryParamsMapArgs{
-		"mapParam[test2]": operations.CreateDeepObjectQueryParamsMapArgsStr(
-			"value2",
-		),
-		"mapArrParam[test]": operations.CreateDeepObjectQueryParamsMapArgsArrayOfstr(
+		"mapArrParam[test]": operations.CreateDeepObjectQueryParamsMapArgsArrayOfStr(
 			[]string{
 				"test",
 				"test2",
 			},
 		),
-		"mapArrParam[test2]": operations.CreateDeepObjectQueryParamsMapArgsArrayOfstr(
+		"mapArrParam[test2]": operations.CreateDeepObjectQueryParamsMapArgsArrayOfStr(
 			[]string{
 				"test3",
 				"test4",
@@ -64,19 +58,21 @@ func TestParameters_DeepObjectQueryParamsMap(t *testing.T) {
 		"mapParam[test]": operations.CreateDeepObjectQueryParamsMapArgsStr(
 			"value",
 		),
+		"mapParam[test2]": operations.CreateDeepObjectQueryParamsMapArgsStr(
+			"value2",
+		),
 	}, res.Res.Args)
-	assert.Equal(t, "http://localhost:35123/anything/queryParams/deepObject/map?mapArrParam[test2]=test3&mapArrParam[test2]=test4&mapArrParam[test]=test&mapArrParam[test]=test2&mapParam[test2]=value2&mapParam[test]=value", res.Res.URL)
+	assert.Equal(t, "http://localhost:35123/anything/queryParams/deepObject/map?mapArrParam[test2]=test3&mapArrParam[test2]=test4&mapArrParam[test]=test&mapArrParam[test]=test2&mapParam[test2]=value2&mapParam[test]=value", sortQueryParameters(res.Res.URL))
 }
 
 func TestParameters_DeepObjectQueryParamsObject(t *testing.T) {
+	recordTest("parameters-deep-object-query-params-object")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
 	objParam := shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -84,163 +80,161 @@ func TestParameters_DeepObjectQueryParamsObject(t *testing.T) {
 		Bool:       true,
 		BoolOpt:    openapi.Bool(true),
 		Date:       types.MustDateFromString("2020-01-01"),
-		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 		Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 		DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 		Enum:       shared.EnumOne,
 		Float32:    1.1,
+		Float64Str: openapi.Float64(1.1),
 		Int:        1,
 		Int32:      1,
 		Int32Enum:  shared.Int32EnumFiftyFive,
+		Int64Str:   openapi.Int64(100),
 		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
 	}
 
-	objArrParam := &operations.ObjArrParam{
+	var objArrParam *operations.ObjArrParam = &operations.ObjArrParam{
 		Arr: []string{
 			"test",
 			"test2",
 		},
 	}
-
 	ctx := context.Background()
 	res, err := s.Parameters.DeepObjectQueryParamsObject(ctx, objParam, objArrParam)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
-	assert.Equal(t, []string{
-		"test",
-		"test2",
-	}, res.Res.Args.ObjArrParamArr)
-	assert.Equal(t, "any", res.Res.Args.ObjParamAny)
-	assert.Equal(t, "9223372036854775808", *res.Res.Args.ObjParamBigintStr)
-	assert.Equal(t, "8821239038968084", *res.Res.Args.ObjParamBigint)
-	assert.Equal(t, "true", res.Res.Args.ObjParamBoolOpt)
-	assert.Equal(t, "true", res.Res.Args.ObjParamBool)
-	assert.Equal(t, "2020-01-01T00:00:00.000000001Z", res.Res.Args.ObjParamDateTime)
-	assert.Equal(t, "2020-01-01", res.Res.Args.ObjParamDate)
-	assert.Equal(t, "3.14159265358979344719667586", *res.Res.Args.ObjParamDecimalStr)
-	assert.Equal(t, "3.141592653589793", *res.Res.Args.ObjParamDecimal)
-	assert.Equal(t, "one", res.Res.Args.ObjParamEnum)
-	assert.Equal(t, "1.1", res.Res.Args.ObjParamFloat32)
-	assert.Equal(t, "55", res.Res.Args.ObjParamInt32Enum)
-	assert.Equal(t, "1", res.Res.Args.ObjParamInt32)
-	assert.Equal(t, "2", res.Res.Args.ObjParamIntEnum)
-	assert.Equal(t, "1", res.Res.Args.ObjParamInt)
-	assert.Equal(t, "1.1", res.Res.Args.ObjParamNum)
-	assert.Equal(t, "testOptional", res.Res.Args.ObjParamStrOpt)
-	assert.Equal(t, "test", res.Res.Args.ObjParamStr)
-	assert.Equal(t, "http://localhost:35123/anything/queryParams/deepObject/obj?objArrParam[arr]=test&objArrParam[arr]=test2&objParam[any]=any&objParam[bigintStr]=9223372036854775808&objParam[bigint]=8821239038968084&objParam[boolOpt]=true&objParam[bool]=true&objParam[dateTime]=2020-01-01T00%3A00%3A00.000000001Z&objParam[date]=2020-01-01&objParam[decimalStr]=3.14159265358979344719667586&objParam[decimal]=3.141592653589793&objParam[enum]=one&objParam[float32]=1.1&objParam[int32Enum]=55&objParam[int32]=1&objParam[intEnum]=2&objParam[int]=1&objParam[num]=1.1&objParam[strOpt]=testOptional&objParam[str]=test", res.Res.URL)
+	assert.Equal(t, operations.DeepObjectQueryParamsObjectArgs{
+		ObjArrParamArr: []string{
+			"test",
+			"test2",
+		},
+		ObjParamAny:        "any",
+		ObjParamBigintStr:  openapi.String("9223372036854775808"),
+		ObjParamBigint:     openapi.String("8821239038968084"),
+		ObjParamBoolOpt:    "true",
+		ObjParamBool:       "true",
+		ObjParamDateTime:   "2020-01-01T00:00:00.001Z",
+		ObjParamDate:       "2020-01-01",
+		ObjParamDecimalStr: openapi.String("3.14159265358979344719667586"),
+		ObjParamDecimal:    openapi.String("3.141592653589793"),
+		ObjParamEnum:       "one",
+		ObjParamFloat32:    "1.1",
+		ObjParamFloat64Str: openapi.String("1.1"),
+		ObjParamInt32Enum:  "55",
+		ObjParamInt32:      "1",
+		ObjParamInt64Str:   openapi.String("100"),
+		ObjParamIntEnum:    "2",
+		ObjParamInt:        "1",
+		ObjParamNum:        "1.1",
+		ObjParamStrOpt:     "testOptional",
+		ObjParamStr:        "test",
+	}, res.Res.Args)
+	assert.Equal(t, "http://localhost:35123/anything/queryParams/deepObject/obj?objArrParam[arr]=test&objArrParam[arr]=test2&objParam[any]=any&objParam[bigintStr]=9223372036854775808&objParam[bigint]=8821239038968084&objParam[boolOpt]=true&objParam[bool]=true&objParam[dateTime]=2020-01-01T00%3A00%3A00.001Z&objParam[date]=2020-01-01&objParam[decimalStr]=3.14159265358979344719667586&objParam[decimal]=3.141592653589793&objParam[enum]=one&objParam[float32]=1.1&objParam[float64Str]=1.1&objParam[int32Enum]=55&objParam[int32]=1&objParam[int64Str]=100&objParam[intEnum]=2&objParam[int]=1&objParam[num]=1.1&objParam[strOpt]=testOptional&objParam[str]=test", sortQueryParameters(res.Res.URL))
 }
 
 func TestParameters_FormQueryParamsArray(t *testing.T) {
+	recordTest("parameters-form-query-params-array")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
-	arrParam := []string{
+	var arrParam []string = []string{
 		"test",
 		"test2",
 	}
 
-	arrParamExploded := []int64{
+	var arrParamExploded []int64 = []int64{
 		1,
 		2,
 	}
-
 	ctx := context.Background()
 	res, err := s.Parameters.FormQueryParamsArray(ctx, arrParam, arrParamExploded)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
-	assert.Equal(t, "test,test2", res.Res.Args.ArrParam)
-	assert.Equal(t, []string{
-		"1",
-		"2",
-	}, res.Res.Args.ArrParamExploded)
-	assert.Equal(t, "http://localhost:35123/anything/queryParams/form/array?arrParam=test%2Ctest2&arrParamExploded=1&arrParamExploded=2", res.Res.URL)
+	assert.Equal(t, operations.FormQueryParamsArrayArgs{
+		ArrParam: "test,test2",
+		ArrParamExploded: []string{
+			"1",
+			"2",
+		},
+	}, res.Res.Args)
+	assert.Equal(t, "http://localhost:35123/anything/queryParams/form/array?arrParam=test%2Ctest2&arrParamExploded=1&arrParamExploded=2", sortQueryParameters(res.Res.URL))
 }
 
 func TestParameters_FormQueryParamsCamelObject(t *testing.T) {
+	recordTest("parameters-form-query-params-camel-object")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
 	objParamExploded := operations.ObjParamExploded{
 		ItemCount:  openapi.String("10"),
 		SearchTerm: openapi.String("foo"),
 	}
 
-	objParam := &operations.ObjParam{
+	var objParam *operations.ObjParam = &operations.ObjParam{
 		EncodedCount: openapi.String("11"),
 		EncodedTerm:  openapi.String("bar"),
 	}
-
 	ctx := context.Background()
 	res, err := s.Parameters.FormQueryParamsCamelObject(ctx, objParamExploded, objParam)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
-	assert.Equal(t, "10", res.Res.Args.ItemCount)
-	assert.Equal(t, "foo", res.Res.Args.SearchTerm)
-	assert.Equal(t, "http://localhost:35123/anything/queryParams/form/camelObj?item_count=10&obj_param=encoded_count%2C11%2Cencoded_term%2Cbar&search_term=foo", res.Res.URL)
+	assert.Equal(t, operations.FormQueryParamsCamelObjectArgs{
+		ItemCount:  "10",
+		SearchTerm: "foo",
+	}, res.Res.Args)
+	assert.Equal(t, "http://localhost:35123/anything/queryParams/form/camelObj?item_count=10&obj_param=encoded_count%2C11%2Cencoded_term%2Cbar&search_term=foo", sortQueryParameters(res.Res.URL))
 }
 
 func TestParameters_FormQueryParamsMap(t *testing.T) {
+	recordTest("parameters-form-query-params-map")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
-	mapParam := map[string]string{
+	var mapParam map[string]string = map[string]string{
 		"test":  "value",
 		"test2": "value2",
 	}
 
-	mapParamExploded := map[string]int64{
+	var mapParamExploded map[string]int64 = map[string]int64{
 		"test":  1,
 		"test2": 2,
 	}
-
 	ctx := context.Background()
 	res, err := s.Parameters.FormQueryParamsMap(ctx, mapParam, mapParamExploded)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
 	assert.Equal(t, map[string]string{
-		"test2":    "2",
 		"mapParam": "test,value,test2,value2",
 		"test":     "1",
+		"test2":    "2",
 	}, sortSerializedMaps(res.Res.Args, `(.*)`, ","))
-	assert.Equal(t, "http://localhost:35123/anything/queryParams/form/map?mapParam=test%2Cvalue%2Ctest2%2Cvalue2&test=1&test2=2", sortSerializedMaps(res.Res.URL, `.*?\?mapParam=(.*?)&(.*)`, "%2C"))
+	assert.Equal(t, "http://localhost:35123/anything/queryParams/form/map?mapParam=test%2Cvalue%2Ctest2%2Cvalue2&test=1&test2=2", sortSerializedMaps(sortQueryParameters(res.Res.URL), `.*?\?mapParam=(.*?)&(.*)`, "%2C"))
 }
 
 func TestParameters_FormQueryParamsObject(t *testing.T) {
+	recordTest("parameters-form-query-params-object")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
 	objParamExploded := shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -248,46 +242,48 @@ func TestParameters_FormQueryParamsObject(t *testing.T) {
 		Bool:       true,
 		BoolOpt:    openapi.Bool(true),
 		Date:       types.MustDateFromString("2020-01-01"),
-		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 		Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 		DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 		Enum:       shared.EnumOne,
 		Float32:    1.1,
+		Float64Str: openapi.Float64(1.1),
 		Int:        1,
 		Int32:      1,
 		Int32Enum:  shared.Int32EnumFiftyFive,
+		Int64Str:   openapi.Int64(100),
 		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
 	}
 
-	objParam := &shared.SimpleObject{
+	var objParam *shared.SimpleObject = &shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
 		BigintStr:  types.MustNewBigIntFromString("9223372036854775808"),
 		Bool:       true,
 		BoolOpt:    openapi.Bool(true),
 		Date:       types.MustDateFromString("2020-01-01"),
-		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 		Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 		DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 		Enum:       shared.EnumOne,
 		Float32:    1.1,
+		Float64Str: openapi.Float64(1.1),
 		Int:        1,
 		Int32:      1,
 		Int32Enum:  shared.Int32EnumFiftyFive,
+		Int64Str:   openapi.Int64(100),
 		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
 	}
-
 	ctx := context.Background()
 	res, err := s.Parameters.FormQueryParamsObject(ctx, objParamExploded, objParam)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
 	assert.Equal(t, "any", res.Res.Args.Any)
 	assert.Equal(t, "8821239038968084", *res.Res.Args.Bigint)
@@ -295,33 +291,34 @@ func TestParameters_FormQueryParamsObject(t *testing.T) {
 	assert.Equal(t, "true", res.Res.Args.Bool)
 	assert.Equal(t, "true", *res.Res.Args.BoolOpt)
 	assert.Equal(t, "2020-01-01", res.Res.Args.Date)
-	assert.Equal(t, "2020-01-01T00:00:00.000000001Z", res.Res.Args.DateTime)
+	assert.Equal(t, "2020-01-01T00:00:00.001Z", res.Res.Args.DateTime)
 	assert.Equal(t, "3.141592653589793", *res.Res.Args.Decimal)
 	assert.Equal(t, "3.14159265358979344719667586", *res.Res.Args.DecimalStr)
 	assert.Equal(t, "one", res.Res.Args.Enum)
 	assert.Equal(t, "1.1", res.Res.Args.Float32)
+	assert.Equal(t, "1.1", *res.Res.Args.Float64Str)
 	assert.Equal(t, "1", res.Res.Args.Int)
 	assert.Equal(t, "1", res.Res.Args.Int32)
 	assert.Equal(t, "55", res.Res.Args.Int32Enum)
+	assert.Equal(t, "100", *res.Res.Args.Int64Str)
 	assert.Equal(t, "2", res.Res.Args.IntEnum)
 	assert.Nil(t, res.Res.Args.IntOptNull)
 	assert.Equal(t, "1.1", res.Res.Args.Num)
 	assert.Nil(t, res.Res.Args.NumOptNull)
-	assert.Equal(t, "any,any,bigint,8821239038968084,bigintStr,9223372036854775808,bool,true,boolOpt,true,date,2020-01-01,dateTime,2020-01-01T00:00:00.000000001Z,decimal,3.141592653589793,decimalStr,3.14159265358979344719667586,enum,one,float32,1.1,int,1,int32,1,int32Enum,55,intEnum,2,num,1.1,str,test,strOpt,testOptional", res.Res.Args.ObjParam)
+	assert.Equal(t, "any,any,bigint,8821239038968084,bigintStr,9223372036854775808,bool,true,boolOpt,true,date,2020-01-01,dateTime,2020-01-01T00:00:00.001Z,decimal,3.141592653589793,decimalStr,3.14159265358979344719667586,enum,one,float32,1.1,float64Str,1.1,int,1,int32,1,int32Enum,55,int64Str,100,intEnum,2,num,1.1,str,test,strOpt,testOptional", sortSerializedMaps(res.Res.Args.ObjParam, `(.*)`, ","))
 	assert.Equal(t, "test", res.Res.Args.Str)
 	assert.Equal(t, "testOptional", *res.Res.Args.StrOpt)
-	assert.Equal(t, "http://localhost:35123/anything/queryParams/form/obj?any=any&bigint=8821239038968084&bigintStr=9223372036854775808&bool=true&boolOpt=true&date=2020-01-01&dateTime=2020-01-01T00%3A00%3A00.000000001Z&decimal=3.141592653589793&decimalStr=3.14159265358979344719667586&enum=one&float32=1.1&int=1&int32=1&int32Enum=55&intEnum=2&num=1.1&objParam=any%2Cany%2Cbigint%2C8821239038968084%2CbigintStr%2C9223372036854775808%2Cbool%2Ctrue%2CboolOpt%2Ctrue%2Cdate%2C2020-01-01%2CdateTime%2C2020-01-01T00%3A00%3A00.000000001Z%2Cdecimal%2C3.141592653589793%2CdecimalStr%2C3.14159265358979344719667586%2Cenum%2Cone%2Cfloat32%2C1.1%2Cint%2C1%2Cint32%2C1%2Cint32Enum%2C55%2CintEnum%2C2%2Cnum%2C1.1%2Cstr%2Ctest%2CstrOpt%2CtestOptional&str=test&strOpt=testOptional", res.Res.URL)
+	assert.Equal(t, "http://localhost:35123/anything/queryParams/form/obj?any=any&bigint=8821239038968084&bigintStr=9223372036854775808&bool=true&boolOpt=true&date=2020-01-01&dateTime=2020-01-01T00%3A00%3A00.001Z&decimal=3.141592653589793&decimalStr=3.14159265358979344719667586&enum=one&float32=1.1&float64Str=1.1&int=1&int32=1&int32Enum=55&int64Str=100&intEnum=2&num=1.1&objParam=any%2Cany%2Cbigint%2C8821239038968084%2CbigintStr%2C9223372036854775808%2Cbool%2Ctrue%2CboolOpt%2Ctrue%2Cdate%2C2020-01-01%2CdateTime%2C2020-01-01T00%3A00%3A00.001Z%2Cdecimal%2C3.141592653589793%2CdecimalStr%2C3.14159265358979344719667586%2Cenum%2Cone%2Cfloat32%2C1.1%2Cfloat64Str%2C1.1%2Cint%2C1%2Cint32%2C1%2Cint32Enum%2C55%2Cint64Str%2C100%2CintEnum%2C2%2Cnum%2C1.1%2Cstr%2Ctest%2CstrOpt%2CtestOptional&str=test&strOpt=testOptional", sortSerializedMaps(sortQueryParameters(res.Res.URL), `objParam=(.*?)&`, "%2C"))
 }
 
 func TestParameters_FormQueryParamsPrimitive(t *testing.T) {
+	recordTest("parameters-form-query-params-primitive")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
 	var boolParam bool = true
 
 	var intParam int64 = 1
@@ -329,89 +326,88 @@ func TestParameters_FormQueryParamsPrimitive(t *testing.T) {
 	var numParam float64 = 1.1
 
 	var strParam string = "test"
-
 	ctx := context.Background()
 	res, err := s.Parameters.FormQueryParamsPrimitive(ctx, boolParam, intParam, numParam, strParam)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
-	assert.Equal(t, "true", res.Res.Args.BoolParam)
-	assert.Equal(t, "1", res.Res.Args.IntParam)
-	assert.Equal(t, "1.1", res.Res.Args.NumParam)
-	assert.Equal(t, "test", res.Res.Args.StrParam)
-	assert.Equal(t, "http://localhost:35123/anything/queryParams/form/primitive?boolParam=true&intParam=1&numParam=1.1&strParam=test", res.Res.URL)
+	assert.Equal(t, operations.FormQueryParamsPrimitiveArgs{
+		BoolParam: "true",
+		IntParam:  "1",
+		NumParam:  "1.1",
+		StrParam:  "test",
+	}, res.Res.Args)
+	assert.Equal(t, "http://localhost:35123/anything/queryParams/form/primitive?boolParam=true&intParam=1&numParam=1.1&strParam=test", sortQueryParameters(res.Res.URL))
 }
 
 func TestParameters_FormQueryParamsRefParamObject(t *testing.T) {
+	recordTest("parameters-form-query-params-ref-param-object")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
-	refObjParam := &shared.RefQueryParamObj{
+	var refObjParam *shared.RefQueryParamObj = &shared.RefQueryParamObj{
 		Bool: true,
 		Int:  1,
 		Num:  1.1,
 		Str:  "test",
 	}
 
-	refObjParamExploded := &shared.RefQueryParamObjExploded{
+	var refObjParamExploded *shared.RefQueryParamObjExploded = &shared.RefQueryParamObjExploded{
 		Bool: true,
 		Int:  1,
 		Num:  1.1,
 		Str:  "test",
 	}
-
 	ctx := context.Background()
 	res, err := s.Parameters.FormQueryParamsRefParamObject(ctx, refObjParam, refObjParamExploded)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
-	assert.Equal(t, "true", res.Res.Args.Bool)
-	assert.Equal(t, "1", res.Res.Args.Int)
-	assert.Equal(t, "1.1", res.Res.Args.Num)
-	assert.Equal(t, "bool,true,int,1,num,1.1,str,test", res.Res.Args.RefObjParam)
-	assert.Equal(t, "test", res.Res.Args.Str)
-	assert.Equal(t, "http://localhost:35123/anything/queryParams/form/refParamObject?bool=true&int=1&num=1.1&refObjParam=bool%2Ctrue%2Cint%2C1%2Cnum%2C1.1%2Cstr%2Ctest&str=test", res.Res.URL)
+	assert.Equal(t, operations.FormQueryParamsRefParamObjectArgs{
+		Bool:        "true",
+		Int:         "1",
+		Num:         "1.1",
+		RefObjParam: "bool,true,int,1,num,1.1,str,test",
+		Str:         "test",
+	}, res.Res.Args)
+	assert.Equal(t, "http://localhost:35123/anything/queryParams/form/refParamObject?bool=true&int=1&num=1.1&refObjParam=bool%2Ctrue%2Cint%2C1%2Cnum%2C1.1%2Cstr%2Ctest&str=test", sortQueryParameters(res.Res.URL))
 }
 
 func TestParameters_HeaderParamsArray(t *testing.T) {
+	recordTest("parameters-header-params-array")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
 	xHeaderArray := []string{
 		"test1",
 		"test2",
 	}
-
 	ctx := context.Background()
 	res, err := s.Parameters.HeaderParamsArray(ctx, xHeaderArray)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
-	assert.Equal(t, "test1,test2", res.Res.Headers.XHeaderArray)
+	assert.Equal(t, operations.HeaderParamsArrayRes{
+		Headers: operations.HeaderParamsArrayHeaders{
+			XHeaderArray: "test1,test2",
+		},
+	}, *res.Res)
 }
 
 func TestParameters_HeaderParamsMap(t *testing.T) {
+	recordTest("parameters-header-params-map")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
 	xHeaderMap := map[string]string{
 		"key1": "value1",
 		"key2": "value2",
@@ -421,26 +417,23 @@ func TestParameters_HeaderParamsMap(t *testing.T) {
 		"test1": "val1",
 		"test2": "val2",
 	}
-
 	ctx := context.Background()
 	res, err := s.Parameters.HeaderParamsMap(ctx, xHeaderMap, xHeaderMapExplode)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
 	assert.Equal(t, "key1,value1,key2,value2", sortSerializedMaps(res.Res.Headers.XHeaderMap, `(.*)`, ","))
 	assert.Equal(t, "test1=val1,test2=val2", sortSerializedMaps(res.Res.Headers.XHeaderMapExplode, `(.*)`, ","))
 }
 
 func TestParameters_HeaderParamsObject(t *testing.T) {
+	recordTest("parameters-header-params-object")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
 	xHeaderObj := shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -448,14 +441,16 @@ func TestParameters_HeaderParamsObject(t *testing.T) {
 		Bool:       true,
 		BoolOpt:    openapi.Bool(true),
 		Date:       types.MustDateFromString("2020-01-01"),
-		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 		Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 		DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 		Enum:       shared.EnumOne,
 		Float32:    1.1,
+		Float64Str: openapi.Float64(1.1),
 		Int:        1,
 		Int32:      1,
 		Int32Enum:  shared.Int32EnumFiftyFive,
+		Int64Str:   openapi.Int64(100),
 		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
@@ -469,39 +464,38 @@ func TestParameters_HeaderParamsObject(t *testing.T) {
 		Bool:       true,
 		BoolOpt:    openapi.Bool(true),
 		Date:       types.MustDateFromString("2020-01-01"),
-		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 		Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 		DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 		Enum:       shared.EnumOne,
 		Float32:    1.1,
+		Float64Str: openapi.Float64(1.1),
 		Int:        1,
 		Int32:      1,
 		Int32Enum:  shared.Int32EnumFiftyFive,
+		Int64Str:   openapi.Int64(100),
 		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
 	}
-
 	ctx := context.Background()
 	res, err := s.Parameters.HeaderParamsObject(ctx, xHeaderObj, xHeaderObjExplode)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
-	assert.Equal(t, "any,any,bigint,8821239038968084,bigintStr,9223372036854775808,bool,true,boolOpt,true,date,2020-01-01,dateTime,2020-01-01T00:00:00.000000001Z,decimal,3.141592653589793,decimalStr,3.14159265358979344719667586,enum,one,float32,1.1,int,1,int32,1,int32Enum,55,intEnum,2,num,1.1,str,test,strOpt,testOptional", res.Res.Headers.XHeaderObj)
-	assert.Equal(t, "any=any,bigint=8821239038968084,bigintStr=9223372036854775808,bool=true,boolOpt=true,date=2020-01-01,dateTime=2020-01-01T00:00:00.000000001Z,decimal=3.141592653589793,decimalStr=3.14159265358979344719667586,enum=one,float32=1.1,int=1,int32=1,int32Enum=55,intEnum=2,num=1.1,str=test,strOpt=testOptional", res.Res.Headers.XHeaderObjExplode)
+	assert.Equal(t, "any,any,bigint,8821239038968084,bigintStr,9223372036854775808,bool,true,boolOpt,true,date,2020-01-01,dateTime,2020-01-01T00:00:00.001Z,decimal,3.141592653589793,decimalStr,3.14159265358979344719667586,enum,one,float32,1.1,float64Str,1.1,int,1,int32,1,int32Enum,55,int64Str,100,intEnum,2,num,1.1,str,test,strOpt,testOptional", sortSerializedMaps(res.Res.Headers.XHeaderObj, `(.*)`, ","))
+	assert.Equal(t, "any=any,bigint=8821239038968084,bigintStr=9223372036854775808,bool=true,boolOpt=true,date=2020-01-01,dateTime=2020-01-01T00:00:00.001Z,decimal=3.141592653589793,decimalStr=3.14159265358979344719667586,enum=one,float32=1.1,float64Str=1.1,int=1,int32=1,int32Enum=55,int64Str=100,intEnum=2,num=1.1,str=test,strOpt=testOptional", sortSerializedMaps(res.Res.Headers.XHeaderObjExplode, `(.*)`, ","))
 }
 
 func TestParameters_HeaderParamsPrimitive(t *testing.T) {
+	recordTest("parameters-header-params-primitive")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
 	var xHeaderBoolean bool = true
 
 	var xHeaderInteger int64 = 1
@@ -509,30 +503,31 @@ func TestParameters_HeaderParamsPrimitive(t *testing.T) {
 	var xHeaderNumber float64 = 1.1
 
 	var xHeaderString string = "test"
-
 	ctx := context.Background()
 	res, err := s.Parameters.HeaderParamsPrimitive(ctx, xHeaderBoolean, xHeaderInteger, xHeaderNumber, xHeaderString)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
-	assert.Equal(t, "true", res.Res.Headers.XHeaderBoolean)
-	assert.Equal(t, "1", res.Res.Headers.XHeaderInteger)
-	assert.Equal(t, "1.1", res.Res.Headers.XHeaderNumber)
-	assert.Equal(t, "test", res.Res.Headers.XHeaderString)
+	assert.Equal(t, operations.HeaderParamsPrimitiveRes{
+		Headers: operations.HeaderParamsPrimitiveHeaders{
+			XHeaderBoolean: "true",
+			XHeaderInteger: "1",
+			XHeaderNumber:  "1.1",
+			XHeaderString:  "test",
+		},
+	}, *res.Res)
 }
 
-func TestParameters_JSONQueryParamsObject(t *testing.T) {
+func TestParameters_JSONQueryParamsObjectSmaller(t *testing.T) {
+	recordTest("parameters-json-query-params-object")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
-	deepObjParam := shared.DeepObject{
-		Any: shared.CreateAnySimpleObject(
+	deepObjParam := shared.DeepObjectSmaller{
+		Any: shared.CreateDeepObjectSmallerAnySimpleObject(
 			shared.SimpleObject{
 				Any:        "any",
 				Bigint:     big.NewInt(8821239038968084),
@@ -540,14 +535,16 @@ func TestParameters_JSONQueryParamsObject(t *testing.T) {
 				Bool:       true,
 				BoolOpt:    openapi.Bool(true),
 				Date:       types.MustDateFromString("2020-01-01"),
-				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 				Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 				DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 				Enum:       shared.EnumOne,
 				Float32:    1.1,
+				Float64Str: openapi.Float64(1.1),
 				Int:        1,
 				Int32:      1,
 				Int32Enum:  shared.Int32EnumFiftyFive,
+				Int64Str:   openapi.Int64(100),
 				IntEnum:    shared.IntEnumSecond,
 				Num:        1.1,
 				Str:        "test",
@@ -562,14 +559,16 @@ func TestParameters_JSONQueryParamsObject(t *testing.T) {
 				Bool:       true,
 				BoolOpt:    openapi.Bool(true),
 				Date:       types.MustDateFromString("2020-01-01"),
-				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 				Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 				DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 				Enum:       shared.EnumOne,
 				Float32:    1.1,
+				Float64Str: openapi.Float64(1.1),
 				Int:        1,
 				Int32:      1,
 				Int32Enum:  shared.Int32EnumFiftyFive,
+				Int64Str:   openapi.Int64(100),
 				IntEnum:    shared.IntEnumSecond,
 				Num:        1.1,
 				Str:        "test",
@@ -582,14 +581,16 @@ func TestParameters_JSONQueryParamsObject(t *testing.T) {
 				Bool:       true,
 				BoolOpt:    openapi.Bool(true),
 				Date:       types.MustDateFromString("2020-01-01"),
-				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 				Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 				DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 				Enum:       shared.EnumOne,
 				Float32:    1.1,
+				Float64Str: openapi.Float64(1.1),
 				Int:        1,
 				Int32:      1,
 				Int32Enum:  shared.Int32EnumFiftyFive,
+				Int64Str:   openapi.Int64(100),
 				IntEnum:    shared.IntEnumSecond,
 				Num:        1.1,
 				Str:        "test",
@@ -606,34 +607,16 @@ func TestParameters_JSONQueryParamsObject(t *testing.T) {
 				Bool:       true,
 				BoolOpt:    openapi.Bool(true),
 				Date:       types.MustDateFromString("2020-01-01"),
-				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 				Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 				DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 				Enum:       shared.EnumOne,
 				Float32:    1.1,
+				Float64Str: openapi.Float64(1.1),
 				Int:        1,
 				Int32:      1,
 				Int32Enum:  shared.Int32EnumFiftyFive,
-				IntEnum:    shared.IntEnumSecond,
-				Num:        1.1,
-				Str:        "test",
-				StrOpt:     openapi.String("testOptional"),
-			},
-			"key2": shared.SimpleObject{
-				Any:        "any",
-				Bigint:     big.NewInt(8821239038968084),
-				BigintStr:  types.MustNewBigIntFromString("9223372036854775808"),
-				Bool:       true,
-				BoolOpt:    openapi.Bool(true),
-				Date:       types.MustDateFromString("2020-01-01"),
-				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
-				Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
-				DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
-				Enum:       shared.EnumOne,
-				Float32:    1.1,
-				Int:        1,
-				Int32:      1,
-				Int32Enum:  shared.Int32EnumFiftyFive,
+				Int64Str:   openapi.Int64(100),
 				IntEnum:    shared.IntEnumSecond,
 				Num:        1.1,
 				Str:        "test",
@@ -648,14 +631,16 @@ func TestParameters_JSONQueryParamsObject(t *testing.T) {
 			Bool:       true,
 			BoolOpt:    openapi.Bool(true),
 			Date:       types.MustDateFromString("2020-01-01"),
-			DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+			DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 			Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 			DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 			Enum:       shared.EnumOne,
 			Float32:    1.1,
+			Float64Str: openapi.Float64(1.1),
 			Int:        1,
 			Int32:      1,
 			Int32Enum:  shared.Int32EnumFiftyFive,
+			Int64Str:   openapi.Int64(100),
 			IntEnum:    shared.IntEnumSecond,
 			Num:        1.1,
 			Str:        "test",
@@ -671,92 +656,97 @@ func TestParameters_JSONQueryParamsObject(t *testing.T) {
 		Bool:       true,
 		BoolOpt:    openapi.Bool(true),
 		Date:       types.MustDateFromString("2020-01-01"),
-		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 		Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 		DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 		Enum:       shared.EnumOne,
 		Float32:    1.1,
+		Float64Str: openapi.Float64(1.1),
 		Int:        1,
 		Int32:      1,
 		Int32Enum:  shared.Int32EnumFiftyFive,
+		Int64Str:   openapi.Int64(100),
 		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
 	}
-
 	ctx := context.Background()
-	res, err := s.Parameters.JSONQueryParamsObject(ctx, deepObjParam, simpleObjParam)
+	res, err := s.Parameters.JSONQueryParamsObjectSmaller(ctx, deepObjParam, simpleObjParam)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
-	assert.Equal(t, "{\"any\":{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"},\"arr\":[{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"},{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}],\"bool\":true,\"int\":1,\"map\":{\"key\":{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"},\"key2\":{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}},\"num\":1.1,\"obj\":{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"},\"str\":\"test\"}", res.Res.Args.DeepObjParam)
-	assert.Equal(t, "{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}", res.Res.Args.SimpleObjParam)
-	assert.Equal(t, "http://localhost:35123/anything/queryParams/json/obj?deepObjParam={\"any\"%3A{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.000000001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}%2C\"arr\"%3A[{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.000000001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}%2C{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.000000001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}]%2C\"bool\"%3Atrue%2C\"int\"%3A1%2C\"map\"%3A{\"key\"%3A{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.000000001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}%2C\"key2\"%3A{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.000000001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}}%2C\"num\"%3A1.1%2C\"obj\"%3A{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.000000001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}%2C\"str\"%3A\"test\"}&simpleObjParam={\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.000000001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}", res.Res.URL)
+	assert.Equal(t, "{\"any\":{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"float64Str\":\"1.1\",\"int\":1,\"int32\":1,\"int32Enum\":55,\"int64Str\":\"100\",\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"},\"arr\":[{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"float64Str\":\"1.1\",\"int\":1,\"int32\":1,\"int32Enum\":55,\"int64Str\":\"100\",\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"},{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"float64Str\":\"1.1\",\"int\":1,\"int32\":1,\"int32Enum\":55,\"int64Str\":\"100\",\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}],\"bool\":true,\"int\":1,\"map\":{\"key\":{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"float64Str\":\"1.1\",\"int\":1,\"int32\":1,\"int32Enum\":55,\"int64Str\":\"100\",\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}},\"num\":1.1,\"obj\":{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"float64Str\":\"1.1\",\"int\":1,\"int32\":1,\"int32Enum\":55,\"int64Str\":\"100\",\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"},\"str\":\"test\"}", res.Res.Args.DeepObjParam)
+	assert.Equal(t, "{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"float64Str\":\"1.1\",\"int\":1,\"int32\":1,\"int32Enum\":55,\"int64Str\":\"100\",\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}", res.Res.Args.SimpleObjParam)
+	assert.Equal(t, "http://localhost:35123/anything/queryParams/json/objsmaller?deepObjParam={\"any\"%3A{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}%2C\"arr\"%3A[{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}%2C{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}]%2C\"bool\"%3Atrue%2C\"int\"%3A1%2C\"map\"%3A{\"key\"%3A{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}}%2C\"num\"%3A1.1%2C\"obj\"%3A{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}%2C\"str\"%3A\"test\"}&simpleObjParam={\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}", res.Res.URL)
 }
 
 func TestParameters_MixedParametersCamelCase(t *testing.T) {
+	recordTest("parameters-camel-case")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
 	var headerParam string = "headerValue"
 
 	var pathParam string = "pathValue"
 
 	var queryStringParam string = "queryValue"
-
 	ctx := context.Background()
 	res, err := s.Parameters.MixedParametersCamelCase(ctx, headerParam, pathParam, queryStringParam)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
-	assert.Equal(t, "queryValue", res.Res.Args.QueryStringParam)
-	assert.Equal(t, "headerValue", res.Res.Headers.HeaderParam)
-	assert.Equal(t, "http://localhost:35123/anything/mixedParams/path/pathValue/camelcase?query_string_param=queryValue", res.Res.URL)
+	assert.Equal(t, operations.MixedParametersCamelCaseRes{
+		Args: operations.MixedParametersCamelCaseArgs{
+			QueryStringParam: "queryValue",
+		},
+		Headers: operations.MixedParametersCamelCaseHeaders{
+			HeaderParam: "headerValue",
+		},
+		URL: "http://localhost:35123/anything/mixedParams/path/pathValue/camelcase?query_string_param=queryValue",
+	}, *res.Res)
 }
 
 func TestParameters_MixedParametersPrimitives(t *testing.T) {
+	recordTest("parameters-mixed-primitives")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
 	var headerParam string = "headerValue"
 
 	var pathParam string = "pathValue"
 
 	var queryStringParam string = "queryValue"
-
 	ctx := context.Background()
 	res, err := s.Parameters.MixedParametersPrimitives(ctx, headerParam, pathParam, queryStringParam)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
-	assert.Equal(t, "queryValue", res.Res.Args.QueryStringParam)
-	assert.Equal(t, "headerValue", res.Res.Headers.Headerparam)
-	assert.Equal(t, "http://localhost:35123/anything/mixedParams/path/pathValue?queryStringParam=queryValue", res.Res.URL)
+	assert.Equal(t, operations.MixedParametersPrimitivesRes{
+		Args: operations.MixedParametersPrimitivesArgs{
+			QueryStringParam: "queryValue",
+		},
+		Headers: operations.MixedParametersPrimitivesHeaders{
+			Headerparam: "headerValue",
+		},
+		URL: "http://localhost:35123/anything/mixedParams/path/pathValue?queryStringParam=queryValue",
+	}, *res.Res)
 }
 
 func TestParameters_MixedQueryParams(t *testing.T) {
+	recordTest("parameters-mixed-query-params")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
 	deepObjectParam := shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -764,14 +754,16 @@ func TestParameters_MixedQueryParams(t *testing.T) {
 		Bool:       true,
 		BoolOpt:    openapi.Bool(true),
 		Date:       types.MustDateFromString("2020-01-01"),
-		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 		Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 		DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 		Enum:       shared.EnumOne,
 		Float32:    1.1,
+		Float64Str: openapi.Float64(1.1),
 		Int:        1,
 		Int32:      1,
 		Int32Enum:  shared.Int32EnumFiftyFive,
+		Int64Str:   openapi.Int64(100),
 		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
@@ -785,14 +777,16 @@ func TestParameters_MixedQueryParams(t *testing.T) {
 		Bool:       true,
 		BoolOpt:    openapi.Bool(true),
 		Date:       types.MustDateFromString("2020-01-01"),
-		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 		Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 		DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 		Enum:       shared.EnumOne,
 		Float32:    1.1,
+		Float64Str: openapi.Float64(1.1),
 		Int:        1,
 		Int32:      1,
 		Int32Enum:  shared.Int32EnumFiftyFive,
+		Int64Str:   openapi.Int64(100),
 		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
@@ -806,77 +800,80 @@ func TestParameters_MixedQueryParams(t *testing.T) {
 		Bool:       true,
 		BoolOpt:    openapi.Bool(true),
 		Date:       types.MustDateFromString("2020-01-01"),
-		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 		Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 		DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 		Enum:       shared.EnumOne,
 		Float32:    1.1,
+		Float64Str: openapi.Float64(1.1),
 		Int:        1,
 		Int32:      1,
 		Int32Enum:  shared.Int32EnumFiftyFive,
+		Int64Str:   openapi.Int64(100),
 		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
 	}
-
 	ctx := context.Background()
 	res, err := s.Parameters.MixedQueryParams(ctx, deepObjectParam, formParam, jsonParam)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
 	assert.Equal(t, map[string]string{
-		"deepObjectParam[date]":       "2020-01-01",
-		"decimal":                     "3.141592653589793",
-		"strOpt":                      "testOptional",
 		"any":                         "any",
-		"dateTime":                    "2020-01-01T00:00:00.000000001Z",
-		"deepObjectParam[boolOpt]":    "true",
-		"float32":                     "1.1",
-		"deepObjectParam[enum]":       "one",
-		"deepObjectParam[decimal]":    "3.141592653589793",
-		"deepObjectParam[bigint]":     "8821239038968084",
-		"deepObjectParam[bool]":       "true",
-		"deepObjectParam[num]":        "1.1",
-		"deepObjectParam[decimalStr]": "3.14159265358979344719667586",
-		"deepObjectParam[strOpt]":     "testOptional",
-		"decimalStr":                  "3.14159265358979344719667586",
-		"str":                         "test",
+		"bigint":                      "8821239038968084",
+		"bigintStr":                   "9223372036854775808",
+		"bool":                        "true",
 		"boolOpt":                     "true",
 		"date":                        "2020-01-01",
-		"deepObjectParam[intEnum]":    "2",
-		"int":                         "1",
-		"intEnum":                     "2",
-		"int32Enum":                   "55",
+		"dateTime":                    "2020-01-01T00:00:00.001Z",
+		"deepObjectParam[any]":        "any",
+		"deepObjectParam[bigint]":     "8821239038968084",
 		"deepObjectParam[bigintStr]":  "9223372036854775808",
-		"deepObjectParam[dateTime]":   "2020-01-01T00:00:00.000000001Z",
+		"deepObjectParam[boolOpt]":    "true",
+		"deepObjectParam[bool]":       "true",
+		"deepObjectParam[dateTime]":   "2020-01-01T00:00:00.001Z",
+		"deepObjectParam[date]":       "2020-01-01",
+		"deepObjectParam[enum]":       "one",
 		"deepObjectParam[float32]":    "1.1",
+		"deepObjectParam[float64Str]": "1.1",
 		"deepObjectParam[int32]":      "1",
 		"deepObjectParam[int]":        "1",
+		"deepObjectParam[intEnum]":    "2",
 		"deepObjectParam[int32Enum]":  "55",
-		"int32":                       "1",
-		"bigintStr":                   "9223372036854775808",
-		"deepObjectParam[any]":        "any",
-		"num":                         "1.1",
+		"deepObjectParam[int64Str]":   "100",
+		"deepObjectParam[num]":        "1.1",
+		"deepObjectParam[decimal]":    "3.141592653589793",
+		"deepObjectParam[decimalStr]": "3.14159265358979344719667586",
+		"deepObjectParam[strOpt]":     "testOptional",
 		"deepObjectParam[str]":        "test",
 		"enum":                        "one",
-		"jsonParam":                   "{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}",
-		"bigint":                      "8821239038968084",
-		"bool":                        "true",
+		"float32":                     "1.1",
+		"float64Str":                  "1.1",
+		"int":                         "1",
+		"int32":                       "1",
+		"intEnum":                     "2",
+		"int32Enum":                   "55",
+		"int64Str":                    "100",
+		"jsonParam":                   "{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"float64Str\":\"1.1\",\"int\":1,\"int32\":1,\"int32Enum\":55,\"int64Str\":\"100\",\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}",
+		"num":                         "1.1",
+		"decimal":                     "3.141592653589793",
+		"decimalStr":                  "3.14159265358979344719667586",
+		"str":                         "test",
+		"strOpt":                      "testOptional",
 	}, res.Res.Args)
-	assert.Equal(t, "http://localhost:35123/anything/queryParams/mixed?any=any&bigint=8821239038968084&bigintStr=9223372036854775808&bool=true&boolOpt=true&date=2020-01-01&dateTime=2020-01-01T00%3A00%3A00.000000001Z&decimal=3.141592653589793&decimalStr=3.14159265358979344719667586&deepObjectParam[any]=any&deepObjectParam[bigintStr]=9223372036854775808&deepObjectParam[bigint]=8821239038968084&deepObjectParam[boolOpt]=true&deepObjectParam[bool]=true&deepObjectParam[dateTime]=2020-01-01T00%3A00%3A00.000000001Z&deepObjectParam[date]=2020-01-01&deepObjectParam[decimalStr]=3.14159265358979344719667586&deepObjectParam[decimal]=3.141592653589793&deepObjectParam[enum]=one&deepObjectParam[float32]=1.1&deepObjectParam[int32Enum]=55&deepObjectParam[int32]=1&deepObjectParam[intEnum]=2&deepObjectParam[int]=1&deepObjectParam[num]=1.1&deepObjectParam[strOpt]=testOptional&deepObjectParam[str]=test&enum=one&float32=1.1&int=1&int32=1&int32Enum=55&intEnum=2&jsonParam={\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.000000001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}&num=1.1&str=test&strOpt=testOptional", res.Res.URL)
+	assert.Equal(t, "http://localhost:35123/anything/queryParams/mixed?any=any&bigint=8821239038968084&bigintStr=9223372036854775808&bool=true&boolOpt=true&date=2020-01-01&dateTime=2020-01-01T00%3A00%3A00.001Z&decimal=3.141592653589793&decimalStr=3.14159265358979344719667586&deepObjectParam[any]=any&deepObjectParam[bigintStr]=9223372036854775808&deepObjectParam[bigint]=8821239038968084&deepObjectParam[boolOpt]=true&deepObjectParam[bool]=true&deepObjectParam[dateTime]=2020-01-01T00%3A00%3A00.001Z&deepObjectParam[date]=2020-01-01&deepObjectParam[decimalStr]=3.14159265358979344719667586&deepObjectParam[decimal]=3.141592653589793&deepObjectParam[enum]=one&deepObjectParam[float32]=1.1&deepObjectParam[float64Str]=1.1&deepObjectParam[int32Enum]=55&deepObjectParam[int32]=1&deepObjectParam[int64Str]=100&deepObjectParam[intEnum]=2&deepObjectParam[int]=1&deepObjectParam[num]=1.1&deepObjectParam[strOpt]=testOptional&deepObjectParam[str]=test&enum=one&float32=1.1&float64Str=1.1&int=1&int32=1&int32Enum=55&int64Str=100&intEnum=2&jsonParam={\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}&num=1.1&str=test&strOpt=testOptional", sortQueryParameters(res.Res.URL))
 }
 
 func TestParameters_PathParameterJSON(t *testing.T) {
+	recordTest("parameters-path-parameter-json")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
 	jsonObj := shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -884,148 +881,144 @@ func TestParameters_PathParameterJSON(t *testing.T) {
 		Bool:       true,
 		BoolOpt:    openapi.Bool(true),
 		Date:       types.MustDateFromString("2020-01-01"),
-		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 		Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 		DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 		Enum:       shared.EnumOne,
 		Float32:    1.1,
+		Float64Str: openapi.Float64(1.1),
 		Int:        1,
 		Int32:      1,
 		Int32Enum:  shared.Int32EnumFiftyFive,
+		Int64Str:   openapi.Int64(100),
 		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
 	}
-
 	ctx := context.Background()
 	res, err := s.Parameters.PathParameterJSON(ctx, jsonObj)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
-	assert.Equal(t, "http://localhost:35123/anything/pathParams/json/{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}", res.Res.URL)
+	assert.Equal(t, "http://localhost:35123/anything/pathParams/json/{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"float64Str\":\"1.1\",\"int\":1,\"int32\":1,\"int32Enum\":55,\"int64Str\":\"100\",\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}", res.Res.URL)
 }
 
 func TestParameters_PipeDelimitedQueryParamsArray(t *testing.T) {
+	recordTest("parameters-pipe-query-params-array")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
-	arrParam := []string{
+	var arrParam []string = []string{
 		"test",
 		"test2",
 	}
 
-	arrParamExploded := []int64{
+	var arrParamExploded []int64 = []int64{
 		1,
 		2,
 	}
 
-	mapParam := map[string]string{
+	var mapParam map[string]string = map[string]string{
 		"key1": "val1",
 		"key2": "val2",
 	}
 
-	objParam := &shared.SimpleObject{
+	var objParam *shared.SimpleObject = &shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
 		BigintStr:  types.MustNewBigIntFromString("9223372036854775808"),
 		Bool:       true,
 		BoolOpt:    openapi.Bool(true),
 		Date:       types.MustDateFromString("2020-01-01"),
-		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 		Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 		DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 		Enum:       shared.EnumOne,
 		Float32:    1.1,
+		Float64Str: openapi.Float64(1.1),
 		Int:        1,
 		Int32:      1,
 		Int32Enum:  shared.Int32EnumFiftyFive,
+		Int64Str:   openapi.Int64(100),
 		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
 	}
-
 	ctx := context.Background()
 	res, err := s.Parameters.PipeDelimitedQueryParamsArray(ctx, arrParam, arrParamExploded, mapParam, objParam)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
-	assert.Equal(t, "test|test2", res.Res.Args.ArrParam)
-	assert.Equal(t, []string{
-		"1",
-		"2",
-	}, res.Res.Args.ArrParamExploded)
-	assert.Equal(t, "http://localhost:35123/anything/queryParams/pipe/array?arrParam=test|test2&arrParamExploded=1&arrParamExploded=2&mapParam=key1|val1|key2|val2&objParam=any|any|bigint|8821239038968084|bigintStr|9223372036854775808|bool|true|boolOpt|true|date|2020-01-01|dateTime|2020-01-01T00%3A00%3A00.000000001Z|decimal|3.141592653589793|decimalStr|3.14159265358979344719667586|enum|one|float32|1.1|int|1|int32|1|int32Enum|55|intEnum|2|num|1.1|str|test|strOpt|testOptional", sortSerializedMaps(res.Res.URL, `.*?&mapParam=(.*?)&.*`, "|"))
+	assert.Equal(t, operations.PipeDelimitedQueryParamsArrayArgs{
+		ArrParam: "test|test2",
+		ArrParamExploded: []string{
+			"1",
+			"2",
+		},
+	}, res.Res.Args)
+	assert.Equal(t, "http://localhost:35123/anything/queryParams/pipe/array?arrParam=test|test2&arrParamExploded=1&arrParamExploded=2&mapParam=key1|val1|key2|val2&objParam=any|any|bigint|8821239038968084|bigintStr|9223372036854775808|bool|true|boolOpt|true|date|2020-01-01|dateTime|2020-01-01T00%3A00%3A00.001Z|decimal|3.141592653589793|decimalStr|3.14159265358979344719667586|enum|one|float32|1.1|float64Str|1.1|int|1|int32|1|int32Enum|55|int64Str|100|intEnum|2|num|1.1|str|test|strOpt|testOptional", sortSerializedMaps(sortQueryParameters(res.Res.URL), `(?:map|obj)Param=(.*?)(?:&|$)`, "|"))
 }
 
 func TestParameters_SimplePathParameterArrays(t *testing.T) {
+	recordTest("parameters-simple-path-parameter-arrays")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
 	arrParam := []string{
 		"test",
 		"test2",
 	}
-
 	ctx := context.Background()
 	res, err := s.Parameters.SimplePathParameterArrays(ctx, arrParam)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
-	assert.Equal(t, "http://localhost:35123/anything/pathParams/arr/test,test2", res.Res.URL)
+	assert.Equal(t, operations.SimplePathParameterArraysRes{
+		URL: "http://localhost:35123/anything/pathParams/arr/test,test2",
+	}, *res.Res)
 }
 
 func TestParameters_SimplePathParameterMaps(t *testing.T) {
+	recordTest("parameters-simple-path-parameter-maps")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
 	mapParam := map[string]string{
 		"test":  "value",
 		"test2": "value2",
 	}
 
 	mapParamExploded := map[string]int64{
-		"test2": 2,
 		"test":  1,
+		"test2": 2,
 	}
-
 	ctx := context.Background()
 	res, err := s.Parameters.SimplePathParameterMaps(ctx, mapParam, mapParamExploded)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
 	assert.Equal(t, "http://localhost:35123/anything/pathParams/map/test,value,test2,value2/mapExploded/test=1,test2=2", sortSerializedMaps(res.Res.URL, `.*?\/map\/(.*?)\/mapExploded\/(.*)`, ","))
 }
 
 func TestParameters_SimplePathParameterObjects(t *testing.T) {
+	recordTest("parameters-simple-path-parameter-objects")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
 	objParam := shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -1033,14 +1026,16 @@ func TestParameters_SimplePathParameterObjects(t *testing.T) {
 		Bool:       true,
 		BoolOpt:    openapi.Bool(true),
 		Date:       types.MustDateFromString("2020-01-01"),
-		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 		Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 		DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 		Enum:       shared.EnumOne,
 		Float32:    1.1,
+		Float64Str: openapi.Float64(1.1),
 		Int:        1,
 		Int32:      1,
 		Int32Enum:  shared.Int32EnumFiftyFive,
+		Int64Str:   openapi.Int64(100),
 		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
@@ -1054,38 +1049,37 @@ func TestParameters_SimplePathParameterObjects(t *testing.T) {
 		Bool:       true,
 		BoolOpt:    openapi.Bool(true),
 		Date:       types.MustDateFromString("2020-01-01"),
-		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 		Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 		DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 		Enum:       shared.EnumOne,
 		Float32:    1.1,
+		Float64Str: openapi.Float64(1.1),
 		Int:        1,
 		Int32:      1,
 		Int32Enum:  shared.Int32EnumFiftyFive,
+		Int64Str:   openapi.Int64(100),
 		IntEnum:    shared.IntEnumSecond,
 		Num:        1.1,
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
 	}
-
 	ctx := context.Background()
 	res, err := s.Parameters.SimplePathParameterObjects(ctx, objParam, objParamExploded)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
-	assert.Equal(t, "http://localhost:35123/anything/pathParams/obj/any,any,bigint,8821239038968084,bigintStr,9223372036854775808,bool,true,boolOpt,true,date,2020-01-01,dateTime,2020-01-01T00:00:00.000000001Z,decimal,3.141592653589793,decimalStr,3.14159265358979344719667586,enum,one,float32,1.1,int,1,int32,1,int32Enum,55,intEnum,2,num,1.1,str,test,strOpt,testOptional/objExploded/any=any,bigint=8821239038968084,bigintStr=9223372036854775808,bool=true,boolOpt=true,date=2020-01-01,dateTime=2020-01-01T00:00:00.000000001Z,decimal=3.141592653589793,decimalStr=3.14159265358979344719667586,enum=one,float32=1.1,int=1,int32=1,int32Enum=55,intEnum=2,num=1.1,str=test,strOpt=testOptional", res.Res.URL)
+	assert.Equal(t, "http://localhost:35123/anything/pathParams/obj/any,any,bigint,8821239038968084,bigintStr,9223372036854775808,bool,true,boolOpt,true,date,2020-01-01,dateTime,2020-01-01T00:00:00.001Z,decimal,3.141592653589793,decimalStr,3.14159265358979344719667586,enum,one,float32,1.1,float64Str,1.1,int,1,int32,1,int32Enum,55,int64Str,100,intEnum,2,num,1.1,str,test,strOpt,testOptional/objExploded/any=any,bigint=8821239038968084,bigintStr=9223372036854775808,bool=true,boolOpt=true,date=2020-01-01,dateTime=2020-01-01T00:00:00.001Z,decimal=3.141592653589793,decimalStr=3.14159265358979344719667586,enum=one,float32=1.1,float64Str=1.1,int=1,int32=1,int32Enum=55,int64Str=100,intEnum=2,num=1.1,str=test,strOpt=testOptional", sortSerializedMaps(res.Res.URL, `(?:obj|objExploded)\/(.*?)(?:\/|$)`, ","))
 }
 
 func TestParameters_SimplePathParameterPrimitives(t *testing.T) {
+	recordTest("parameters-simple-path-parameter-primitives")
+
 	s := openapi.New(
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
 	var boolParam bool = true
 
 	var intParam int64 = 1
@@ -1093,12 +1087,12 @@ func TestParameters_SimplePathParameterPrimitives(t *testing.T) {
 	var numParam float64 = 1.1
 
 	var strParam string = "test"
-
 	ctx := context.Background()
 	res, err := s.Parameters.SimplePathParameterPrimitives(ctx, boolParam, intParam, numParam, strParam)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-
 	assert.Equal(t, 200, res.StatusCode)
-	assert.Equal(t, "http://localhost:35123/anything/pathParams/str/test/bool/true/int/1/num/1.1", res.Res.URL)
+	assert.Equal(t, operations.SimplePathParameterPrimitivesRes{
+		URL: "http://localhost:35123/anything/pathParams/str/test/bool/true/int/1/num/1.1",
+	}, *res.Res)
 }

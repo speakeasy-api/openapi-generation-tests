@@ -6,20 +6,6 @@ import (
 	"net/http"
 )
 
-type Oauth2OverrideSecurity struct {
-	Oauth2 string `security:"scheme,type=oauth2,name=Authorization"`
-}
-
-func (o *Oauth2OverrideSecurity) GetOauth2() string {
-	if o == nil {
-		return ""
-	}
-	return o.Oauth2
-}
-
-type Oauth2OverrideRequest struct {
-}
-
 // Oauth2OverrideToken - Successful authentication.
 type Oauth2OverrideToken struct {
 	Authenticated bool   `json:"authenticated"`

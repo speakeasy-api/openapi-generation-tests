@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ...models.shared import nullableobject as shared_nullableobject
+from ...models.shared import nullableoptionalobject as shared_nullableoptionalobject
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional
@@ -12,8 +13,29 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class NullableRequiredSharedObjectPostRequestBody:
+    UNSET='__SPEAKEASY_UNSET__'
     nullable_required_obj: Optional[shared_nullableobject.NullableObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredObj') }})
-    nullable_optional_obj: Optional[shared_nullableobject.NullableObject] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOptionalObj') }})
+    nullable_optional_obj: Optional[shared_nullableoptionalobject.NullableOptionalObject] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOptionalObj'), 'exclude': lambda f: f is NullableRequiredSharedObjectPostRequestBody.UNSET }})
+    
+
+
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class NullableRequiredSharedObjectPostJSON:
+    UNSET='__SPEAKEASY_UNSET__'
+    nullable_required_obj: Optional[shared_nullableobject.NullableObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredObj') }})
+    nullable_optional_obj: Optional[shared_nullableoptionalobject.NullableOptionalObject] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOptionalObj'), 'exclude': lambda f: f is NullableRequiredSharedObjectPostJSON.UNSET }})
+    
+
+
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class NullableRequiredSharedObjectPostResponseBody:
+    r"""OK"""
+    data: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
+    json: Optional[NullableRequiredSharedObjectPostJSON] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     
 
 
@@ -24,9 +46,9 @@ class NullableRequiredSharedObjectPostResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
-    res: Optional[str] = dataclasses.field(default=None)
+    object: Optional[NullableRequiredSharedObjectPostResponseBody] = dataclasses.field(default=None)
     r"""OK"""
     
 

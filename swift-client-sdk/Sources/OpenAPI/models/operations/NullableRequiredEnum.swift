@@ -6,5 +6,6 @@ extension Operations {
     public enum NullableRequiredEnum: String, Codable, APIValue {
         case first = "first"
         case second = "second"
+        case null = "null"
     }
 }

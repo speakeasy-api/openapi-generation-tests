@@ -6,6 +6,7 @@
 * [CreateFile](#createfile)
 * [CreateResource](#createresource)
 * [DeleteResource](#deleteresource)
+* [GetArrayDataSource](#getarraydatasource)
 * [GetResource](#getresource)
 * [UpdateResource](#updateresource)
 
@@ -22,16 +23,14 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Resource.CreateFileAsync(new CreateFileRequestBody() {
-    File = new CreateFileFile() {
-        Content = "0xf10df1a3b9 as bytes <<<>>>",
-        FileName = "rap_national.mp4v",
-    },
-});
+CreateFileRequestBody req = new CreateFileRequestBody() {};
+
+var res = await sdk.Resource.CreateFileAsync(req);
 
 // handle response
 ```
@@ -46,7 +45,11 @@ var res = await sdk.Resource.CreateFileAsync(new CreateFileRequestBody() {
 ### Response
 
 **[CreateFileResponse](../../Models/Operations/CreateFileResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## CreateResource
 
@@ -61,33 +64,29 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Resource.CreateResourceAsync(new ExampleResource() {
+ExampleResource req = new ExampleResource() {
     Chocolates = new List<Chocolates>() {
         new Chocolates() {
             Description = "Digitized optimal archive",
         },
     },
-    Id = "<ID>",
-    Name = "string",
-    Vehicle = "string",
-    ArrayOfNumber = new List<double>() {
-        1124.19D,
-    },
-    ArrayOfString = new List<string>() {
-        "string",
-    },
-    InlineObject = new InlineObject() {},
-    MapOfInteger = new Dictionary<string, long>() {
-        { "key", 271791 },
-    },
-    MapOfString = new Dictionary<string, string>() {
-        { "key", "string" },
-    },
-});
+    Id = "<id>",
+    Name = "<value>",
+    Vehicle = ExampleVehicle.CreateExampleVehicleExampleBoat(
+            new ExampleBoat() {
+                Length = 2717.91D,
+                Name = "<value>",
+                Type = Openapi.Models.Shared.Type.Boat,
+            },
+    ),
+};
+
+var res = await sdk.Resource.CreateResourceAsync(req);
 
 // handle response
 ```
@@ -102,7 +101,11 @@ var res = await sdk.Resource.CreateResourceAsync(new ExampleResource() {
 ### Response
 
 **[CreateResourceResponse](../../Models/Operations/CreateResourceResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## DeleteResource
 
@@ -117,11 +120,12 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Resource.DeleteResourceAsync("string");
+var res = await sdk.Resource.DeleteResourceAsync(resourceId: "<value>");
 
 // handle response
 ```
@@ -136,7 +140,50 @@ var res = await sdk.Resource.DeleteResourceAsync("string");
 ### Response
 
 **[DeleteResourceResponse](../../Models/Operations/DeleteResourceResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
+
+## GetArrayDataSource
+
+### Example Usage
+
+```csharp
+using Openapi;
+using Openapi.Models.Shared;
+using Openapi.Models.Operations;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+var res = await sdk.Resource.GetArrayDataSourceAsync(filter: "<value>");
+
+// handle response
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `Filter`           | *string*           | :heavy_check_mark: | N/A                |
+
+
+### Response
+
+**[GetArrayDataSourceResponse](../../Models/Operations/GetArrayDataSourceResponse.md)**
+### Errors
+
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## GetResource
 
@@ -151,11 +198,12 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Resource.GetResourceAsync("string");
+var res = await sdk.Resource.GetResourceAsync(resourceId: "<value>");
 
 // handle response
 ```
@@ -170,7 +218,11 @@ var res = await sdk.Resource.GetResourceAsync("string");
 ### Response
 
 **[GetResourceResponse](../../Models/Operations/GetResourceResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## UpdateResource
 
@@ -185,11 +237,14 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Resource.UpdateResourceAsync("string");
+var res = await sdk.Resource.UpdateResourceAsync(
+    augment: "<value>",
+    resourceId: "<value>");
 
 // handle response
 ```
@@ -198,10 +253,15 @@ var res = await sdk.Resource.UpdateResourceAsync("string");
 
 | Parameter          | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `Augment`          | *string*           | :heavy_check_mark: | N/A                |
 | `ResourceId`       | *string*           | :heavy_check_mark: | N/A                |
 
 
 ### Response
 
 **[UpdateResourceResponse](../../Models/Operations/UpdateResourceResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
