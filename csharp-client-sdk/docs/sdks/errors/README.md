@@ -23,9 +23,10 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Errors.ConnectionErrorGetAsync();
 
@@ -42,7 +43,11 @@ var res = await sdk.Errors.ConnectionErrorGetAsync();
 ### Response
 
 **[ConnectionErrorGetResponse](../../Models/Operations/ConnectionErrorGetResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## StatusGetError
 
@@ -57,11 +62,12 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Errors.StatusGetErrorAsync(458364);
+var res = await sdk.Errors.StatusGetErrorAsync(statusCode: 458364);
 
 // handle response
 ```
@@ -76,7 +82,11 @@ var res = await sdk.Errors.StatusGetErrorAsync(458364);
 ### Response
 
 **[StatusGetErrorResponse](../../Models/Operations/StatusGetErrorResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## StatusGetXSpeakeasyErrors
 
@@ -91,11 +101,12 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Errors.StatusGetXSpeakeasyErrorsAsync(385913);
+var res = await sdk.Errors.StatusGetXSpeakeasyErrorsAsync(statusCode: 385913);
 
 // handle response
 ```
@@ -111,4 +122,10 @@ var res = await sdk.Errors.StatusGetXSpeakeasyErrorsAsync(385913);
 ### Response
 
 **[StatusGetXSpeakeasyErrorsResponse](../../Models/Operations/StatusGetXSpeakeasyErrorsResponse.md)**
+### Errors
 
+| Error Object                                                | Status Code                                                 | Content Type                                                |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| Openapi.Models.Errors.Error                                 | 500                                                         | application/json                                            |
+| Openapi.Models.Errors.StatusGetXSpeakeasyErrorsResponseBody | 501                                                         | application/json                                            |
+| Openapi.Models.Errors.SDKException                          | 4xx-5xx                                                     | */*                                                         |

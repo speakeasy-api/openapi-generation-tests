@@ -8,14 +8,14 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class PaginationLimitOffsetPageParamsRequest
 {
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=page')]
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=page')]
     public int $page;
-    
-	public function __construct()
-	{
-		$this->page = 0;
-	}
+
+    public function __construct()
+    {
+        $this->page = 0;
+    }
 }

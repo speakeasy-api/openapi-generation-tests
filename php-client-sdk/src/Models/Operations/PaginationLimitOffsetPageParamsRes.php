@@ -9,30 +9,31 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * PaginationLimitOffsetPageParamsRes - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** PaginationLimitOffsetPageParamsRes - OK */
 class PaginationLimitOffsetPageParamsRes
 {
-	#[\JMS\Serializer\Annotation\SerializedName('numPages')]
+    #[\JMS\Serializer\Annotation\SerializedName('next')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    public ?string $next = null;
+
+    #[\JMS\Serializer\Annotation\SerializedName('numPages')]
     #[\JMS\Serializer\Annotation\Type('int')]
     public int $numPages;
-    
+
     /**
      * $resultArray
-     * 
+     *
      * @var array<int> $resultArray
      */
-	#[\JMS\Serializer\Annotation\SerializedName('resultArray')]
+    #[\JMS\Serializer\Annotation\SerializedName('resultArray')]
     #[\JMS\Serializer\Annotation\Type('array<int>')]
     public array $resultArray;
-    
-	public function __construct()
-	{
-		$this->numPages = 0;
-		$this->resultArray = [];
-	}
+
+    public function __construct()
+    {
+        $this->next = null;
+        $this->numPages = 0;
+        $this->resultArray = [];
+    }
 }

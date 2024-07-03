@@ -31,7 +31,6 @@ const (
 func (e EnumNumber) ToPointer() *EnumNumber {
 	return &e
 }
-
 func (e *EnumNumber) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -61,7 +60,6 @@ const (
 func (e EnumStr) ToPointer() *EnumStr {
 	return &e
 }
-
 func (e *EnumStr) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
