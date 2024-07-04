@@ -9,20 +9,15 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * RequestBodyPutMultipartDeepRes - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** RequestBodyPutMultipartDeepRes - OK */
 class RequestBodyPutMultipartDeepRes
 {
-	#[\JMS\Serializer\Annotation\SerializedName('form')]
+    #[\JMS\Serializer\Annotation\SerializedName('form')]
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDeepForm')]
     public RequestBodyPutMultipartDeepForm $form;
-    
-	public function __construct()
-	{
-		$this->form = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDeepForm();
-	}
+
+    public function __construct()
+    {
+        $this->form = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDeepForm();
+    }
 }

@@ -8,19 +8,19 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class DecimalParamWithDefaultRequest
 {
     /**
      * A decimal parameter with a default value
-     * 
+     *
      * @var float $decimalInput
      */
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=decimalInput')]
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=decimalInput')]
     public float $decimalInput;
-    
-	public function __construct()
-	{
-		$this->decimalInput = 0;
-	}
+
+    public function __construct()
+    {
+        $this->decimalInput = 0;
+    }
 }
