@@ -11,12 +11,12 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 
 class Chocolates
 {
-	#[\JMS\Serializer\Annotation\SerializedName('description')]
+    #[\JMS\Serializer\Annotation\SerializedName('description')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $description;
-    
-	public function __construct()
-	{
-		$this->description = "";
-	}
+
+    public function __construct()
+    {
+        $this->description = '';
+    }
 }

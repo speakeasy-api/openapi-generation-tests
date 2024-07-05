@@ -8,22 +8,18 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Shared;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class Security
 {
-	#[SpeakeasyMetadata('security:scheme=true,type=apiKey,subtype=header,name=Authorization')]
+    #[SpeakeasyMetadata('security:scheme=true,type=apiKey,subtype=header,name=Authorization')]
     public ?string $apiKeyAuth = null;
-    
-	#[SpeakeasyMetadata('security:scheme=true,type=apiKey,subtype=header,name=x-api-key')]
-    public ?string $apiKeyAuthNew = null;
-    
-	#[SpeakeasyMetadata('security:scheme=true,type=oauth2,name=Authorization')]
+
+    #[SpeakeasyMetadata('security:scheme=true,type=oauth2,name=Authorization')]
     public ?string $oauth2 = null;
-    
-	public function __construct()
-	{
-		$this->apiKeyAuth = null;
-		$this->apiKeyAuthNew = null;
-		$this->oauth2 = null;
-	}
+
+    public function __construct()
+    {
+        $this->apiKeyAuth = null;
+        $this->oauth2 = null;
+    }
 }

@@ -8,14 +8,14 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class GlobalsQueryParameterGetRequest
 {
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=globalQueryParam')]
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=globalQueryParam')]
     public ?string $globalQueryParam = null;
-    
-	public function __construct()
-	{
-		$this->globalQueryParam = null;
-	}
+
+    public function __construct()
+    {
+        $this->globalQueryParam = null;
+    }
 }

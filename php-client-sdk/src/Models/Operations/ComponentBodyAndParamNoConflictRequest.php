@@ -8,18 +8,18 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class ComponentBodyAndParamNoConflictRequest
 {
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=paramStr')]
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=paramStr')]
     public string $paramStr;
-    
-	#[SpeakeasyMetadata('request:mediaType=application/json')]
+
+    #[SpeakeasyMetadata('request:mediaType=application/json')]
     public \OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObject;
-    
-	public function __construct()
-	{
-		$this->paramStr = "";
-		$this->simpleObject = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
-	}
+
+    public function __construct()
+    {
+        $this->paramStr = '';
+        $this->simpleObject = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
+    }
 }

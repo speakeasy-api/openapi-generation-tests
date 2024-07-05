@@ -6,6 +6,10 @@ import Foundation
 ///
 /// > Note: These parameters may be overridden by individual API operations
 public struct GlobalParameters {
+    public let globalHeaderParam: Bool?
+    public let globalHiddenHeaderParam: String?
+    public let globalHiddenPathParam: String?
+    public let globalHiddenQueryParam: String?
     public let globalPathParam: Int?
     public let globalQueryParam: String?
 
@@ -13,9 +17,17 @@ public struct GlobalParameters {
     ///
     ///
     public init(
+        globalHeaderParam: Bool? = nil,
+        globalHiddenHeaderParam: String? = nil,
+        globalHiddenPathParam: String? = nil,
+        globalHiddenQueryParam: String? = nil,
         globalPathParam: Int? = nil,
         globalQueryParam: String? = nil
     ) {
+        self.globalHeaderParam = globalHeaderParam
+        self.globalHiddenHeaderParam = globalHiddenHeaderParam
+        self.globalHiddenPathParam = globalHiddenPathParam
+        self.globalHiddenQueryParam = globalHiddenQueryParam
         self.globalPathParam = globalPathParam
         self.globalQueryParam = globalQueryParam
     }
@@ -24,13 +36,15 @@ public struct GlobalParameters {
 extension GlobalParameters: ParameterDefaults {
     public func defaultSerializedPathParameter(for key: String) throws -> String? {
         switch key {
-        case "globalPathParam": return try globalPathParam.serialize(with: .path(explode: false))
+        case "globalHiddenPathParam": return try globalHiddenPathParam?.serialize(with: .path(explode: false))
+        case "globalPathParam": return try globalPathParam?.serialize(with: .path(explode: false))
         default: return nil
         }
     }
 
     public func defaultQueryParameter(for key: String) -> AnyValue? {
         switch key {
+        case "globalHiddenQueryParam": return globalHiddenQueryParam.map { AnyValue($0) }
         case "globalQueryParam": return globalQueryParam.map { AnyValue($0) }
         default: return nil
         }
