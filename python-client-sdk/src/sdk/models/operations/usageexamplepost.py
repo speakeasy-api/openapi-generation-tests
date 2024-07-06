@@ -37,11 +37,13 @@ class UsageExamplePostRequestBody:
     
 
 
+
 class EnumParameter(str, Enum):
     r"""An enum type"""
     VALUE1 = 'value1'
     VALUE2 = 'value2'
     VALUE3 = 'value3'
+
 
 class OptEnumParameter(str, Enum):
     r"""An enum type"""
@@ -76,14 +78,20 @@ class UsageExamplePostRequest:
     r"""A number parameter that contains a falsey example value"""
     float32_parameter: float = dataclasses.field(metadata={'query_param': { 'field_name': 'float32Parameter', 'style': 'form', 'explode': True }})
     r"""A float32 parameter"""
+    float64_string_parameter: float = dataclasses.field(metadata={'query_param': { 'field_name': 'float64StringParameter', 'style': 'form', 'explode': True }})
+    r"""A float64 parameter"""
     float_parameter: float = dataclasses.field(metadata={'query_param': { 'field_name': 'floatParameter', 'style': 'form', 'explode': True }})
     r"""A float parameter"""
     int64_parameter: int = dataclasses.field(metadata={'query_param': { 'field_name': 'int64Parameter', 'style': 'form', 'explode': True }})
+    r"""An int64 parameter"""
+    int64_string_parameter: int = dataclasses.field(metadata={'query_param': { 'field_name': 'int64StringParameter', 'style': 'form', 'explode': True }})
     r"""An int64 parameter"""
     int_parameter: int = dataclasses.field(metadata={'query_param': { 'field_name': 'intParameter', 'style': 'form', 'explode': True }})
     r"""An integer parameter"""
     str_parameter: str = dataclasses.field(metadata={'query_param': { 'field_name': 'strParameter', 'style': 'form', 'explode': True }})
     r"""A string parameter"""
+    request_body: Optional[UsageExamplePostRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    r"""A request body that contains fields with different formats for testing example generation"""
     bigint_parameter_optional: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'bigintParameterOptional', 'style': 'form', 'explode': True }})
     r"""An bigint parameter"""
     bigint_str_parameter_optional: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'bigintStrParameterOptional', 'style': 'form', 'explode': True }})
@@ -94,8 +102,6 @@ class UsageExamplePostRequest:
     r"""A decimal parameter"""
     opt_enum_parameter: Optional[OptEnumParameter] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'optEnumParameter', 'style': 'form', 'explode': True }})
     r"""An enum parameter"""
-    request_body: Optional[UsageExamplePostRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-    r"""A request body that contains fields with different formats for testing example generation"""
     
 
 
@@ -119,7 +125,7 @@ class UsageExamplePostJSON:
 @dataclasses.dataclass
 class UsageExamplePostResponseBody:
     r"""A response body that contains the simpleObject sent in the request body"""
-    json: UsageExamplePostJSON = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
+    json: Optional[UsageExamplePostJSON] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
 
 
@@ -130,9 +136,9 @@ class UsageExamplePostResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     object: Optional[UsageExamplePostResponseBody] = dataclasses.field(default=None)
     r"""A successful response that contains the simpleObject sent in the request body"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

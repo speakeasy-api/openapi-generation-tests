@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### 
+### `bool`
 
 ```python
-nullableOneOfTypeInObjectNullableOneOfTwo: bool = /* values here */
+value: bool = /* values here */
 ```
 
-### 
+### `int`
 
 ```python
-nullableOneOfTypeInObjectNullableOneOfTwo: int = /* values here */
+value: int = /* values here */
 ```
 

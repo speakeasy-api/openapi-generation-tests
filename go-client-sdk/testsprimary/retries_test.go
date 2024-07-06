@@ -11,7 +11,7 @@ import (
 
 	"openapi/v2/pkg/models/operations"
 	"openapi/v2/pkg/models/sdkerrors"
-	"openapi/v2/pkg/utils"
+	"openapi/v2/pkg/retry"
 
 	sdk "openapi/v2"
 
@@ -27,7 +27,22 @@ func TestRetriesSucceeds(t *testing.T) {
 	res, err := s.Retries.RetriesGet(context.Background(), pseudo_uuid(), nil)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
+	assert.NotNil(t, res.Retries)
+	assert.EqualValues(t, 3, res.Retries.Retries)
+}
+
+func TestRetriesWithBodySucceeds(t *testing.T) {
+	recordTest("retries-succeeds-with-body")
+
+	s := sdk.New()
+
+	res, err := s.Retries.RetriesPost(context.Background(), pseudo_uuid(), &operations.RetriesPostRequestBody{
+		FieldOne: "one",
+	}, nil)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
 	assert.NotNil(t, res.Retries)
 	assert.EqualValues(t, 3, res.Retries.Retries)
 }
@@ -37,9 +52,9 @@ func TestRetriesTimeout(t *testing.T) {
 
 	s := sdk.New()
 
-	res, err := s.Retries.RetriesGet(context.Background(), pseudo_uuid(), sdk.Int64(1000000000), operations.WithRetries(utils.RetryConfig{
+	res, err := s.Retries.RetriesGet(context.Background(), pseudo_uuid(), sdk.Int64(1000000000), operations.WithRetries(retry.Config{
 		Strategy: "backoff",
-		Backoff: &utils.BackoffStrategy{
+		Backoff: &retry.BackoffStrategy{
 			InitialInterval: 1,
 			MaxInterval:     50,
 			Exponent:        1.1,
@@ -55,7 +70,7 @@ func TestRetriesTimeout(t *testing.T) {
 func TestGlobalRetryConfigDisable(t *testing.T) {
 	recordTest("retries-global-config-disable")
 
-	s := sdk.New(sdk.WithRetryConfig(utils.RetryConfig{Strategy: ""}))
+	s := sdk.New(sdk.WithRetryConfig(retry.Config{Strategy: ""}))
 
 	res, err := s.Retries.RetriesGet(context.Background(), pseudo_uuid(), sdk.Int64(2))
 	assert.Error(t, err)
@@ -66,9 +81,9 @@ func TestGlobalRetryConfigDisable(t *testing.T) {
 func TestGlobalRetryConfigSuccess(t *testing.T) {
 	recordTest("retries-global-config-success")
 
-	s := sdk.New(sdk.WithRetryConfig(utils.RetryConfig{
+	s := sdk.New(sdk.WithRetryConfig(retry.Config{
 		Strategy: "backoff",
-		Backoff: &utils.BackoffStrategy{
+		Backoff: &retry.BackoffStrategy{
 			InitialInterval: 1,
 			MaxInterval:     50,
 			Exponent:        1.1,
@@ -80,7 +95,7 @@ func TestGlobalRetryConfigSuccess(t *testing.T) {
 	res, err := s.Retries.RetriesGet(context.Background(), pseudo_uuid(), sdk.Int64(20))
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
 	assert.NotNil(t, res.Retries)
 	assert.EqualValues(t, 20, res.Retries.Retries)
 }
@@ -88,9 +103,9 @@ func TestGlobalRetryConfigSuccess(t *testing.T) {
 func TestGlobalRetryConfigTimeout(t *testing.T) {
 	recordTest("retries-global-config-timeout")
 
-	s := sdk.New(sdk.WithRetryConfig(utils.RetryConfig{
+	s := sdk.New(sdk.WithRetryConfig(retry.Config{
 		Strategy: "backoff",
-		Backoff: &utils.BackoffStrategy{
+		Backoff: &retry.BackoffStrategy{
 			InitialInterval: 1,
 			MaxInterval:     50,
 			Exponent:        1.1,

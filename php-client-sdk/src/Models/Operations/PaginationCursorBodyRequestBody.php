@@ -11,12 +11,12 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 
 class PaginationCursorBodyRequestBody
 {
-	#[\JMS\Serializer\Annotation\SerializedName('cursor')]
+    #[\JMS\Serializer\Annotation\SerializedName('cursor')]
     #[\JMS\Serializer\Annotation\Type('int')]
     public int $cursor;
-    
-	public function __construct()
-	{
-		$this->cursor = 0;
-	}
+
+    public function __construct()
+    {
+        $this->cursor = 0;
+    }
 }

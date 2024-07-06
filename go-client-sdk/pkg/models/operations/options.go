@@ -4,6 +4,7 @@ package operations
 
 import (
 	"errors"
+	"openapi/v2/pkg/retry"
 	"openapi/v2/pkg/utils"
 )
 
@@ -18,12 +19,13 @@ const (
 type AcceptHeaderEnum string
 
 const (
-	AcceptHeaderEnumApplicationJson        AcceptHeaderEnum = "application/json"
 	AcceptHeaderEnumWildcardWildcard       AcceptHeaderEnum = "*/*"
+	AcceptHeaderEnumApplicationJson        AcceptHeaderEnum = "application/json"
 	AcceptHeaderEnumApplicationOctetStream AcceptHeaderEnum = "application/octet-stream"
 	AcceptHeaderEnumTextPlain              AcceptHeaderEnum = "text/plain"
 	AcceptHeaderEnumTextHtml               AcceptHeaderEnum = "text/html"
 	AcceptHeaderEnumApplicationXml         AcceptHeaderEnum = "application/xml"
+	AcceptHeaderEnumTextEventStream        AcceptHeaderEnum = "text/event-stream"
 )
 
 func (e AcceptHeaderEnum) ToPointer() *AcceptHeaderEnum {
@@ -32,7 +34,7 @@ func (e AcceptHeaderEnum) ToPointer() *AcceptHeaderEnum {
 
 type Options struct {
 	ServerURL            *string
-	Retries              *utils.RetryConfig
+	Retries              *retry.Config
 	AcceptHeaderOverride *AcceptHeaderEnum
 }
 
@@ -67,7 +69,7 @@ func WithTemplatedServerURL(serverURL string, params map[string]string) Option {
 }
 
 // WithRetries allows customizing the default retry configuration.
-func WithRetries(config utils.RetryConfig) Option {
+func WithRetries(config retry.Config) Option {
 	return func(opts *Options, supportedOptions ...string) error {
 		if !utils.Contains(supportedOptions, SupportedOptionRetries) {
 			return ErrUnsupportedOption
