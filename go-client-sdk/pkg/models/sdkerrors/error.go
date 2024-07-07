@@ -2,10 +2,14 @@
 
 package sdkerrors
 
+import (
+	"openapi/v2/pkg/models/shared"
+)
+
 type Error struct {
-	Code    *string    `json:"code,omitempty"`
-	Message *string    `json:"message,omitempty"`
-	Type    *ErrorType `json:"type,omitempty"`
+	Code    *string           `json:"code,omitempty"`
+	Message *string           `json:"message,omitempty"`
+	Type    *shared.ErrorType `json:"type,omitempty"`
 }
 
 var _ error = &Error{}

@@ -21,12 +21,14 @@ Endpoints for testing flattening through request body and parameter combinations
 import dateutil.parser
 import sdk
 from decimal import Decimal
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -34,14 +36,9 @@ s = sdk.SDK(
 
 res = s.flattening.component_body_and_param_conflict(simple_object=shared.SimpleObject(
     any='any',
-    bigint=8821239038968084,
-    bigint_str=9223372036854775808,
     bool=True,
-    bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-    decimal=Decimal('3.141592653589793'),
-    decimal_str=Decimal('3.14159265358979344719667586'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
     enum=shared.EnumT.ONE,
     float32=1.1,
     int=1,
@@ -50,12 +47,20 @@ res = s.flattening.component_body_and_param_conflict(simple_object=shared.Simple
     int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    float64_str=1.1,
+    int64_str=100,
     str_opt='testOptional',
-), str_='string')
+), str_='<value>')
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -73,7 +78,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## component_body_and_param_no_conflict
 
@@ -83,27 +88,24 @@ if res.res is not None:
 import dateutil.parser
 import sdk
 from decimal import Decimal
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
 
-res = s.flattening.component_body_and_param_no_conflict(param_str='string', simple_object=shared.SimpleObject(
+res = s.flattening.component_body_and_param_no_conflict(param_str='<value>', simple_object=shared.SimpleObject(
     any='any',
-    bigint=8821239038968084,
-    bigint_str=9223372036854775808,
     bool=True,
-    bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-    decimal=Decimal('3.141592653589793'),
-    decimal_str=Decimal('3.14159265358979344719667586'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.001Z'),
     enum=shared.EnumT.ONE,
     float32=1.1,
     int=1,
@@ -112,12 +114,20 @@ res = s.flattening.component_body_and_param_no_conflict(param_str='string', simp
     int_enum=shared.IntEnum.SECOND,
     num=1.1,
     str_='test',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool_opt=True,
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    float64_str=1.1,
+    int64_str=100,
     str_opt='testOptional',
 ))
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -135,7 +145,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## conflicting_params
 
@@ -143,22 +153,25 @@ if res.res is not None:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
 
-res = s.flattening.conflicting_params(str_path_parameter='string', str_query_parameter='string')
+res = s.flattening.conflicting_params(str_path_parameter='<value>', str_query_parameter='<value>')
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -176,7 +189,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## inline_body_and_param_conflict
 
@@ -190,18 +203,21 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
 
 res = s.flattening.inline_body_and_param_conflict(request_body=operations.InlineBodyAndParamConflictRequestBody(
-    str_='string',
-), str_='string')
+    str_='<value>',
+), str_='<value>')
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -219,7 +235,7 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## inline_body_and_param_no_conflict
 
@@ -233,18 +249,21 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
 
 
 res = s.flattening.inline_body_and_param_no_conflict(request_body=operations.InlineBodyAndParamNoConflictRequestBody(
-    body_str='string',
-), param_str='string')
+    body_str='<value>',
+), param_str='<value>')
 
 if res.res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -262,4 +281,4 @@ if res.res is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

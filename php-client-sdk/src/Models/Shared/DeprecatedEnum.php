@@ -10,7 +10,7 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 
 
 /**
- * 
+ *
  * @deprecated  enum: This enum is deprecated.
  */
 enum DeprecatedEnum: string
