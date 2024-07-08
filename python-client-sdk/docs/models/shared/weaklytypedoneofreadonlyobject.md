@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### SimpleObject
+### `shared.SimpleObject`
 
 ```python
-weaklyTypedOneOfReadOnlyObject: shared.SimpleObject = /* values here */
+value: shared.SimpleObject = /* values here */
 ```
 
-### ReadOnlyObject
+### `shared.ReadOnlyObject`
 
 ```python
-weaklyTypedOneOfReadOnlyObject: shared.ReadOnlyObject = /* values here */
+value: shared.ReadOnlyObject = /* values here */
 ```
 
