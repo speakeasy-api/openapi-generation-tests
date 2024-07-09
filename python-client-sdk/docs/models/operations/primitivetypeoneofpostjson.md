@@ -3,27 +3,27 @@
 
 ## Supported Types
 
-### 
+### `str`
 
 ```python
-primitiveTypeOneOfPostJSON: str = /* values here */
+value: str = /* values here */
 ```
 
-### 
+### `int`
 
 ```python
-primitiveTypeOneOfPostJSON: int = /* values here */
+value: int = /* values here */
 ```
 
-### 
+### `float`
 
 ```python
-primitiveTypeOneOfPostJSON: float = /* values here */
+value: float = /* values here */
 ```
 
-### 
+### `bool`
 
 ```python
-primitiveTypeOneOfPostJSON: bool = /* values here */
+value: bool = /* values here */
 ```
 

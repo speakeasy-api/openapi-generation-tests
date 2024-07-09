@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### ExampleBoat
+### `shared.ExampleBoat`
 
 ```python
-exampleVehicle: shared.ExampleBoat = /* values here */
+value: shared.ExampleBoat = /* values here */
 ```
 
-### ExampleCar
+### `shared.ExampleCar`
 
 ```python
-exampleVehicle: shared.ExampleCar = /* values here */
+value: shared.ExampleCar = /* values here */
 ```
 

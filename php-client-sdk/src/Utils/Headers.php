@@ -13,10 +13,11 @@ use ReflectionProperty;
 class Headers
 {
     /**
-     * @param mixed $headers
-     * @return array<string, string>
+     * @param  mixed  $headers
+     * @param  array<string,array<string,array<string,string>>>  $globals
+     * @return array<string,string>
      */
-    public function parseHeaders(mixed $headers): array
+    public function parseHeaders(mixed $headers, array $globals): array
     {
         $out = [];
 
@@ -25,11 +26,12 @@ class Headers
         }
 
         foreach ($headers as $field => $value) {
+            $value = populateGlobal($value, 'header', $field, $globals);
             if ($value === null) {
                 continue;
             }
 
-            $metadata = $this->parseHeaderMetadata(new ReflectionProperty(get_class($headers), $field));
+            $metadata = $this->parseHeaderMetadata(new ReflectionProperty($headers::class, $field));
             if ($metadata === null) {
                 continue;
             }
@@ -57,13 +59,13 @@ class Headers
                         continue;
                     }
 
-                    $fieldMetadata = $this->parseHeaderMetadata(new ReflectionProperty(get_class($value), $field));
+                    $fieldMetadata = $this->parseHeaderMetadata(new ReflectionProperty($value::class, $field));
                     if ($fieldMetadata === null || empty($fieldMetadata->name)) {
                         continue;
                     }
 
                     if ($metadata->explode) {
-                        $items[] = $fieldMetadata->name . '=' . valToString($fieldValue);
+                        $items[] = $fieldMetadata->name.'='.valToString($fieldValue);
                     } else {
                         $items[] = $fieldMetadata->name;
                         $items[] = valToString($fieldValue);
@@ -83,7 +85,7 @@ class Headers
                         }
 
                         if ($metadata->explode) {
-                            $items[] = $field . '=' . valToString($fieldValue);
+                            $items[] = $field.'='.valToString($fieldValue);
                         } else {
                             $items[] = $field;
                             $items[] = valToString($fieldValue);
@@ -97,9 +99,9 @@ class Headers
         }
     }
 
-    private function parseHeaderMetadata(ReflectionProperty $property): ParamsMetadata | null
+    private function parseHeaderMetadata(ReflectionProperty $property): ?ParamsMetadata
     {
-        $metadataStr = SpeakeasyMetadata::find($property->getAttributes(SpeakeasyMetadata::class), "header");
+        $metadataStr = SpeakeasyMetadata::find($property->getAttributes(SpeakeasyMetadata::class), 'header');
         if ($metadataStr === null) {
             return null;
         }

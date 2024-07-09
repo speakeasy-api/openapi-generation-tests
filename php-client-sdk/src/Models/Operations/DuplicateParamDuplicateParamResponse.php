@@ -9,21 +9,16 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * DuplicateParamDuplicateParamResponse - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** DuplicateParamDuplicateParamResponse - OK */
 class DuplicateParamDuplicateParamResponse
 {
-	#[\JMS\Serializer\Annotation\SerializedName('url')]
+    #[\JMS\Serializer\Annotation\SerializedName('url')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $url = null;
-    
-	public function __construct()
-	{
-		$this->url = null;
-	}
+
+    public function __construct()
+    {
+        $this->url = null;
+    }
 }

@@ -9,25 +9,20 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * RequestBodyPutMultipartFileRes - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** RequestBodyPutMultipartFileRes - OK */
 class RequestBodyPutMultipartFileRes
 {
     /**
      * $files
-     * 
+     *
      * @var array<string, string> $files
      */
-	#[\JMS\Serializer\Annotation\SerializedName('files')]
+    #[\JMS\Serializer\Annotation\SerializedName('files')]
     #[\JMS\Serializer\Annotation\Type('array<string, string>')]
     public array $files;
-    
-	public function __construct()
-	{
-		$this->files = [];
-	}
+
+    public function __construct()
+    {
+        $this->files = [];
+    }
 }

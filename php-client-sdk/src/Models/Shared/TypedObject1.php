@@ -11,17 +11,17 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 
 class TypedObject1
 {
-	#[\JMS\Serializer\Annotation\SerializedName('type')]
+    #[\JMS\Serializer\Annotation\SerializedName('type')]
     #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\Type>')]
     public Type $type;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('value')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('value')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $value;
-    
-	public function __construct()
-	{
-		$this->type = \OpenAPI\OpenAPI\Models\Shared\Type::Obj1;
-		$this->value = "";
-	}
+
+    public function __construct()
+    {
+        $this->type = \OpenAPI\OpenAPI\Models\Shared\Type::Obj1;
+        $this->value = '';
+    }
 }
