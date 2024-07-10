@@ -8,18 +8,18 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class FormQueryParamsCamelObjectRequest
 {
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=obj_param_exploded')]
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=obj_param_exploded')]
     public ObjParamExploded $objParamExploded;
-    
-	#[SpeakeasyMetadata('queryParam:style=form,explode=false,name=obj_param')]
+
+    #[SpeakeasyMetadata('queryParam:style=form,explode=false,name=obj_param')]
     public ?ObjParam $objParam = null;
-    
-	public function __construct()
-	{
-		$this->objParamExploded = new \OpenAPI\OpenAPI\Models\Operations\ObjParamExploded();
-		$this->objParam = null;
-	}
+
+    public function __construct()
+    {
+        $this->objParamExploded = new \OpenAPI\OpenAPI\Models\Operations\ObjParamExploded();
+        $this->objParam = null;
+    }
 }

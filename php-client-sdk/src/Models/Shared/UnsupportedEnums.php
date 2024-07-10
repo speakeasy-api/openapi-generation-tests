@@ -11,17 +11,17 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 
 class UnsupportedEnums
 {
-	#[\JMS\Serializer\Annotation\SerializedName('booleanEnum')]
+    #[\JMS\Serializer\Annotation\SerializedName('booleanEnum')]
     #[\JMS\Serializer\Annotation\Type('bool')]
     public bool $booleanEnum;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('numberEnum')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('numberEnum')]
     #[\JMS\Serializer\Annotation\Type('float')]
     public float $numberEnum;
-    
-	public function __construct()
-	{
-		$this->booleanEnum = false;
-		$this->numberEnum = 0;
-	}
+
+    public function __construct()
+    {
+        $this->booleanEnum = false;
+        $this->numberEnum = 0;
+    }
 }

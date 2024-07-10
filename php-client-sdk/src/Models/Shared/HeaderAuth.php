@@ -11,17 +11,17 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 
 class HeaderAuth
 {
-	#[\JMS\Serializer\Annotation\SerializedName('expectedValue')]
+    #[\JMS\Serializer\Annotation\SerializedName('expectedValue')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $expectedValue;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('headerName')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('headerName')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $headerName;
-    
-	public function __construct()
-	{
-		$this->expectedValue = "";
-		$this->headerName = "";
-	}
+
+    public function __construct()
+    {
+        $this->expectedValue = '';
+        $this->headerName = '';
+    }
 }
