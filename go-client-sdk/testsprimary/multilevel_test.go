@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"testing"
 
-	sdk "openapi/v2"
+	sdk "openapi"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -21,15 +21,15 @@ func TestMultiLevel(t *testing.T) {
 	res, err := s.Nested.First.Get(context.Background())
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
 
 	res1, err1 := s.Nested.Second.Get(context.Background())
 	require.NoError(t, err1)
 	require.NotNil(t, res1)
-	assert.Equal(t, http.StatusOK, res1.StatusCode)
+	assert.Equal(t, http.StatusOK, res1.HTTPMeta.Response.StatusCode)
 
 	res2, err2 := s.Nested.Get(context.Background())
 	require.NoError(t, err2)
 	require.NotNil(t, res2)
-	assert.Equal(t, http.StatusOK, res2.StatusCode)
+	assert.Equal(t, http.StatusOK, res2.HTTPMeta.Response.StatusCode)
 }

@@ -9,25 +9,20 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * RequestBodyPostJsonDataTypesDateResponseBody - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** RequestBodyPostJsonDataTypesDateResponseBody - OK */
 class RequestBodyPostJsonDataTypesDateResponseBody
 {
-	#[\JMS\Serializer\Annotation\SerializedName('data')]
+    #[\JMS\Serializer\Annotation\SerializedName('data')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $data;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('json')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('json')]
     #[\JMS\Serializer\Annotation\Type("DateTime<'Y-m-d', '', '|Y-m-d'>")]
     public \DateTime $json;
-    
-	public function __construct()
-	{
-		$this->data = "";
-		$this->json = new \DateTime();
-	}
+
+    public function __construct()
+    {
+        $this->data = '';
+        $this->json = new \DateTime();
+    }
 }

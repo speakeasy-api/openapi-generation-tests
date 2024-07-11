@@ -11,13 +11,13 @@ namespace OpenAPI\OpenAPI\Models\Callbacks;
 
 class IgnoredGenerationGetNotIgnoredCallbackRequestBody
 {
-	#[\JMS\Serializer\Annotation\SerializedName('someProp')]
+    #[\JMS\Serializer\Annotation\SerializedName('someProp')]
     #[\JMS\Serializer\Annotation\Type('string')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $someProp = null;
-    
-	public function __construct()
-	{
-		$this->someProp = null;
-	}
+
+    public function __construct()
+    {
+        $this->someProp = null;
+    }
 }
