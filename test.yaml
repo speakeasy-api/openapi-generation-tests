@@ -7140,6 +7140,33 @@ paths:
             type: page
         outputs:
           numPages: $.numPages
+  /pagination/limitoffset/deep_outputs/page:
+    put:
+      operationId: paginationLimitOffsetDeepOutputsPageBody
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/limitOffsetConfig"
+        required: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponseDeep"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: limit
+            in: requestBody
+            type: limit
+          - name: page
+            in: requestBody
+            type: page
+        outputs:
+          numPages: $.pageInfo.numPages
   /pagination/limitoffset/offset:
     get:
       operationId: paginationLimitOffsetOffsetParams
