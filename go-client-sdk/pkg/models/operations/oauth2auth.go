@@ -6,17 +6,6 @@ import (
 	"net/http"
 )
 
-type Oauth2AuthSecurity struct {
-	Oauth2 string `security:"scheme,type=oauth2,name=Authorization"`
-}
-
-func (o *Oauth2AuthSecurity) GetOauth2() string {
-	if o == nil {
-		return ""
-	}
-	return o.Oauth2
-}
-
 // Oauth2AuthToken - Successful authentication.
 type Oauth2AuthToken struct {
 	Authenticated bool   `json:"authenticated"`
