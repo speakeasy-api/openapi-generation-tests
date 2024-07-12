@@ -568,6 +568,47 @@ components:
         - map
         - arr
         - any
+    deepObjectQueryParams:
+      description: >
+        deepObject style query parameter serialization is undefined for
+        arrays or nested objects by the specification:
+           https://github.com/OAI/OpenAPI-Specification/issues/1706
+        This schema covers the intended implementation cases rather than
+        the fully complex deepObject schema.
+      type: object
+      properties:
+        arr:
+          type: array
+          items:
+            type: string
+          example: ["test1", "test2"]
+        bool:
+          type: boolean
+          example: true
+        int:
+          type: integer
+          example: 1
+        map:
+          type: object
+          additionalProperties:
+            type: string
+          example: {"testkey1": "testvalue1", "testkey2": "testvalue2"}
+        num:
+          type: number
+          example: 1.1
+        obj:
+          $ref: "#/components/schemas/simpleObject"
+        str:
+          type: string
+          example: "test"
+      required:
+        - arr
+        - bool
+        - int
+        - map
+        - num
+        - obj
+        - str
     deepObjectSmaller:
       type: object
       properties:

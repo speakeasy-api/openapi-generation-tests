@@ -1517,6 +1517,152 @@ paths:
                 required:
                   - url
                   - args
+  /anything/queryParams/deepObject/deepObj:
+    get:
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: parameters-deep-object-query-params-deep-object
+      operationId: deepObjectQueryParamsDeepObject
+      tags:
+        - parameters
+      parameters:
+        - name: deepObj
+          in: query
+          style: deepObject
+          schema:
+            $ref: "components.yaml#/components/schemas/deepObjectQueryParams"
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                    example: http://localhost:35123/anything/queryParams/deepObject/deepObj?deepObj[arr]=test1&deepObj[arr]=test2&deepObj[bool]=true&deepObj[int]=1&deepObj[map][testkey1]=testvalue1&deepObj[map][testkey2]=testvalue2&deepObj[num]=1.1&deepObj[obj][any]=any&deepObj[obj][bigintStr]=9223372036854775808&deepObj[obj][bigint]=8821239038968084&deepObj[obj][boolOpt]=true&deepObj[obj][bool]=true&deepObj[obj][dateTime]=2020-01-01T00%3A00%3A00.001Z&deepObj[obj][date]=2020-01-01&deepObj[obj][decimalStr]=3.14159265358979344719667586&deepObj[obj][decimal]=3.141592653589793&deepObj[obj][enum]=one&deepObj[obj][float32]=1.1&deepObj[obj][float64Str]=1.1&deepObj[obj][int32Enum]=55&deepObj[obj][int32]=1&deepObj[obj][int64Str]=100&deepObj[obj][intEnum]=2&deepObj[obj][int]=1&deepObj[obj][num]=1.1&deepObj[obj][strOpt]=testOptional&deepObj[obj][str]=test&deepObj[str]=test
+                    x-speakeasy-test-internal-directives:
+                      - sortQueryParameters: {}
+                      - sanitizeTimestamp: {}
+                  args:
+                    type: object
+                    properties:
+                      deepObj[arr]:
+                        type: array
+                        items:
+                          type: string
+                        example: ["test1", "test2"]
+                      deepObj[bool]:
+                        type: string
+                        example: "true"
+                      deepObj[int]:
+                        type: string
+                        example: "1"
+                      deepObj[num]:
+                        type: string
+                        example: "1.1"
+                      deepObj[map][testkey1]:
+                        type: string
+                        example: "testvalue1"
+                      deepObj[map][testkey2]:
+                        type: string
+                        example: "testvalue2"
+                      deepObj[obj][any]:
+                        type: string
+                        example: "any"
+                      deepObj[obj][bigint]:
+                        type: string
+                        example: "8821239038968084"
+                      deepObj[obj][bigintStr]:
+                        type: string
+                        example: "9223372036854775808"
+                      deepObj[obj][boolOpt]:
+                        type: string
+                        example: "true"
+                      deepObj[obj][bool]:
+                        type: string
+                        example: "true"
+                      deepObj[obj][dateTime]:
+                        type: string
+                        example: "2020-01-01T00:00:00.001Z"
+                      deepObj[obj][date]:
+                        type: string
+                        example: "2020-01-01"
+                      deepObj[obj][decimal]:
+                        type: string
+                        example: "3.141592653589793"
+                      deepObj[obj][decimalStr]:
+                        type: string
+                        example: "3.14159265358979344719667586"
+                      deepObj[obj][enum]:
+                        type: string
+                        example: "one"
+                      deepObj[obj][float32]:
+                        type: string
+                        example: "1.1"
+                      deepObj[obj][float64Str]:
+                        type: string
+                        example: "1.1"
+                      deepObj[obj][int32]:
+                        type: string
+                        example: "1"
+                      deepObj[obj][int32Enum]:
+                        type: string
+                        example: "55"
+                      deepObj[obj][int64Str]:
+                        type: string
+                        example: "100"
+                      deepObj[obj][intEnum]:
+                        type: string
+                        example: "2"
+                      deepObj[obj][int]:
+                        type: string
+                        example: "1"
+                      deepObj[obj][num]:
+                        type: string
+                        example: "1.1"
+                      deepObj[obj][str]:
+                        type: string
+                        example: "test"
+                      deepObj[obj][strOpt]:
+                        type: string
+                        example: "testOptional"
+                      deepObj[str]:
+                        type: string
+                        example: "test"
+                    required:
+                      - deepObj[arr]
+                      - deepObj[bool]
+                      - deepObj[int]
+                      - deepObj[map][testkey1]
+                      - deepObj[map][testkey2]
+                      - deepObj[num]
+                      - deepObj[obj][any]
+                      - deepObj[obj][bigint]
+                      - deepObj[obj][bigintStr]
+                      - deepObj[obj][bool]
+                      - deepObj[obj][boolOpt]
+                      - deepObj[obj][date]
+                      - deepObj[obj][dateTime]
+                      - deepObj[obj][decimal]
+                      - deepObj[obj][decimalStr]
+                      - deepObj[obj][enum]
+                      - deepObj[obj][float32]
+                      - deepObj[obj][int]
+                      - deepObj[obj][int32]
+                      - deepObj[obj][int32Enum]
+                      - deepObj[obj][intEnum]
+                      - deepObj[obj][num]
+                      - deepObj[obj][str]
+                      - deepObj[obj][strOpt]
+                      - deepObj[str]
+                    x-speakeasy-test-internal-directives:
+                      - sanitizeTimestamp: {}
+                required:
+                  - url
+                  - args
   /anything/queryParams/deepObject/map:
     get:
       x-speakeasy-test: true
