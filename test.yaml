@@ -3848,6 +3848,52 @@ paths:
                       "NullableOptionalObj": {}
                     }
                   }
+  /anything/requestBodies/post/nullableOptionalFields:
+    post:
+      operationId: nullableOptionalFieldsPost
+      tags:
+        - requestBodies
+      x-speakeasy-flatten-request: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nullableRequired:
+                  type: string
+                  nullable: true
+                optional:
+                  type: string
+                nullableOptional:
+                  type: string
+                  nullable: true
+              required:
+                - nullableRequired
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    type: object
+                    properties:
+                      nullableRequired:
+                        type: string
+                        nullable: true
+                      optional:
+                        type: string
+                      nullableOptional:
+                        type: string
+                        nullable: true
+                    required:
+                      - nullableRequired
+                required:
+                  - json
   /anything/requestBodies/post/{pathBigInt}/{pathBigIntStr}/{pathDecimal}/{pathDecimalStr}/complex-number-types:
     post:
       operationId: requestBodyPostComplexNumberTypes

@@ -346,6 +346,7 @@ components:
             - 2
             - 3
           example: 2
+          x-speakeasy-enum-format: enum
           x-speakeasy-enums:
             - First
             - Second
@@ -470,6 +471,7 @@ components:
             - 2
             - 3
           example: 3
+          x-speakeasy-enum-format: enum
           x-speakeasy-enums:
             - First
             - Second
