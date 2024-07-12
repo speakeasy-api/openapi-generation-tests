@@ -8,28 +8,28 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class SimplePathParameterObjectsRequest
 {
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
-     * 
+     *
      * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam
      */
-	#[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=objParam')]
+    #[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=objParam')]
     public \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam;
-    
+
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
-     * 
+     *
      * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParamExploded
      */
-	#[SpeakeasyMetadata('pathParam:style=simple,explode=true,name=objParamExploded')]
+    #[SpeakeasyMetadata('pathParam:style=simple,explode=true,name=objParamExploded')]
     public \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParamExploded;
-    
-	public function __construct()
-	{
-		$this->objParam = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
-		$this->objParamExploded = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
-	}
+
+    public function __construct()
+    {
+        $this->objParam = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
+        $this->objParamExploded = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
+    }
 }

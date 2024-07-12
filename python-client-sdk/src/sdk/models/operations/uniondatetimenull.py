@@ -14,7 +14,7 @@ from typing import Optional
 @dataclasses.dataclass
 class UnionDateTimeNullRes:
     r"""OK"""
-    json: Optional[datetime] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }})
+    json: Optional[datetime] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse }})
     
 
 
@@ -25,7 +25,7 @@ class UnionDateTimeNullResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
     res: Optional[UnionDateTimeNullRes] = dataclasses.field(default=None)
     r"""OK"""

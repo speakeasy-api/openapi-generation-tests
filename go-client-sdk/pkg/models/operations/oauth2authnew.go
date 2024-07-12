@@ -10,17 +10,6 @@ var Oauth2AuthNewServerList = []string{
 	"http://localhost:35456",
 }
 
-type Oauth2AuthNewSecurity struct {
-	Oauth2 string `security:"scheme,type=oauth2,name=Authorization"`
-}
-
-func (o *Oauth2AuthNewSecurity) GetOauth2() string {
-	if o == nil {
-		return ""
-	}
-	return o.Oauth2
-}
-
 type Oauth2AuthNewResponse struct {
 	// HTTP response content type for this operation
 	ContentType string

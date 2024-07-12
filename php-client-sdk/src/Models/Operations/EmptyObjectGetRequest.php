@@ -8,14 +8,14 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class EmptyObjectGetRequest
 {
-	#[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=emptyObject')]
+    #[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=emptyObject')]
     public \OpenAPI\OpenAPI\Models\Shared\EmptyObjectParam $emptyObject;
-    
-	public function __construct()
-	{
-		$this->emptyObject = new \OpenAPI\OpenAPI\Models\Shared\EmptyObjectParam();
-	}
+
+    public function __construct()
+    {
+        $this->emptyObject = new \OpenAPI\OpenAPI\Models\Shared\EmptyObjectParam();
+    }
 }
