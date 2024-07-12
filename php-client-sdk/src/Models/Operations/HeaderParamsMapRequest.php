@@ -8,28 +8,28 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class HeaderParamsMapRequest
 {
     /**
      * $xHeaderMap
-     * 
+     *
      * @var array<string, string> $xHeaderMap
      */
-	#[SpeakeasyMetadata('header:style=simple,explode=false,name=X-Header-Map')]
+    #[SpeakeasyMetadata('header:style=simple,explode=false,name=X-Header-Map')]
     public array $xHeaderMap;
-    
+
     /**
      * $xHeaderMapExplode
-     * 
+     *
      * @var array<string, string> $xHeaderMapExplode
      */
-	#[SpeakeasyMetadata('header:style=simple,explode=true,name=X-Header-Map-Explode')]
+    #[SpeakeasyMetadata('header:style=simple,explode=true,name=X-Header-Map-Explode')]
     public array $xHeaderMapExplode;
-    
-	public function __construct()
-	{
-		$this->xHeaderMap = [];
-		$this->xHeaderMapExplode = [];
-	}
+
+    public function __construct()
+    {
+        $this->xHeaderMap = [];
+        $this->xHeaderMapExplode = [];
+    }
 }

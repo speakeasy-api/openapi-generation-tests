@@ -20,7 +20,6 @@ const (
 func (e Enum) ToPointer() *Enum {
 	return &e
 }
-
 func (e *Enum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
