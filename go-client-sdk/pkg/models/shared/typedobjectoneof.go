@@ -4,6 +4,7 @@ package shared
 
 import (
 	"errors"
+	"fmt"
 	"openapi/v2/pkg/utils"
 )
 
@@ -52,28 +53,28 @@ func CreateTypedObjectOneOfTypedObject3(typedObject3 TypedObject3) TypedObjectOn
 
 func (u *TypedObjectOneOf) UnmarshalJSON(data []byte) error {
 
-	typedObject1 := TypedObject1{}
+	var typedObject1 TypedObject1 = TypedObject1{}
 	if err := utils.UnmarshalJSON(data, &typedObject1, "", true, true); err == nil {
 		u.TypedObject1 = &typedObject1
 		u.Type = TypedObjectOneOfTypeTypedObject1
 		return nil
 	}
 
-	typedObject2 := TypedObject2{}
+	var typedObject2 TypedObject2 = TypedObject2{}
 	if err := utils.UnmarshalJSON(data, &typedObject2, "", true, true); err == nil {
 		u.TypedObject2 = &typedObject2
 		u.Type = TypedObjectOneOfTypeTypedObject2
 		return nil
 	}
 
-	typedObject3 := TypedObject3{}
+	var typedObject3 TypedObject3 = TypedObject3{}
 	if err := utils.UnmarshalJSON(data, &typedObject3, "", true, true); err == nil {
 		u.TypedObject3 = &typedObject3
 		u.Type = TypedObjectOneOfTypeTypedObject3
 		return nil
 	}
 
-	return errors.New("could not unmarshal into supported union types")
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TypedObjectOneOf", string(data))
 }
 
 func (u TypedObjectOneOf) MarshalJSON() ([]byte, error) {
@@ -89,5 +90,5 @@ func (u TypedObjectOneOf) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.TypedObject3, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type: all fields are null")
+	return nil, errors.New("could not marshal union type TypedObjectOneOf: all fields are null")
 }

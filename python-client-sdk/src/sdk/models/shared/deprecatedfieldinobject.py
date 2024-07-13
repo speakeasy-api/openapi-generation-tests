@@ -7,6 +7,7 @@ from enum import Enum
 from sdk import utils
 from typing import Optional
 
+
 class DeprecatedEnum(str, Enum):
     r"""Deprecated class: This enum is deprecated."""
     A = 'a'

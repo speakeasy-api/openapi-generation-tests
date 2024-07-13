@@ -11,27 +11,27 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 
 class FormQueryParamsPrimitiveArgs
 {
-	#[\JMS\Serializer\Annotation\SerializedName('boolParam')]
+    #[\JMS\Serializer\Annotation\SerializedName('boolParam')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $boolParam;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('intParam')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('intParam')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $intParam;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('numParam')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('numParam')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $numParam;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('strParam')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('strParam')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $strParam;
-    
-	public function __construct()
-	{
-		$this->boolParam = "";
-		$this->intParam = "";
-		$this->numParam = "";
-		$this->strParam = "";
-	}
+
+    public function __construct()
+    {
+        $this->boolParam = '';
+        $this->intParam = '';
+        $this->numParam = '';
+        $this->strParam = '';
+    }
 }
