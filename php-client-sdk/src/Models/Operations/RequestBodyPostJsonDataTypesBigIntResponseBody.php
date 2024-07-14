@@ -9,25 +9,20 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * RequestBodyPostJsonDataTypesBigIntResponseBody - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** RequestBodyPostJsonDataTypesBigIntResponseBody - OK */
 class RequestBodyPostJsonDataTypesBigIntResponseBody
 {
-	#[\JMS\Serializer\Annotation\SerializedName('data')]
+    #[\JMS\Serializer\Annotation\SerializedName('data')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $data;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('json')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('json')]
     #[\JMS\Serializer\Annotation\Type('int')]
     public int $json;
-    
-	public function __construct()
-	{
-		$this->data = "";
-		$this->json = 0;
-	}
+
+    public function __construct()
+    {
+        $this->data = '';
+        $this->json = 0;
+    }
 }

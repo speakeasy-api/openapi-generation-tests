@@ -5,7 +5,7 @@ OK
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `data`             | *string*           | :heavy_check_mark: | N/A                |
-| `json`             | *number*[]         | :heavy_check_mark: | N/A                |
+| Field              | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `data`             | *string*           | :heavy_check_mark: | N/A                | [1]                |
+| `json`             | *BigInt*[]         | :heavy_check_mark: | N/A                | [<br/>1<br/>]      |

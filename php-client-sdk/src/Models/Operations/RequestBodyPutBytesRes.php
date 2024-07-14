@@ -9,20 +9,15 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * RequestBodyPutBytesRes - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** RequestBodyPutBytesRes - OK */
 class RequestBodyPutBytesRes
 {
-	#[\JMS\Serializer\Annotation\SerializedName('data')]
+    #[\JMS\Serializer\Annotation\SerializedName('data')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $data;
-    
-	public function __construct()
-	{
-		$this->data = "";
-	}
+
+    public function __construct()
+    {
+        $this->data = '';
+    }
 }

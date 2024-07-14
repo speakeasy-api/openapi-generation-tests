@@ -16,7 +16,6 @@ const (
 func (e TypedObject2Type) ToPointer() *TypedObject2Type {
 	return &e
 }
-
 func (e *TypedObject2Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

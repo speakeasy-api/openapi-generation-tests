@@ -11,25 +11,25 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 
 class LimitOffsetConfig
 {
-	#[\JMS\Serializer\Annotation\SerializedName('limit')]
+    #[\JMS\Serializer\Annotation\SerializedName('limit')]
     #[\JMS\Serializer\Annotation\Type('int')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?int $limit = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('offset')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('offset')]
     #[\JMS\Serializer\Annotation\Type('int')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?int $offset = null;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('page')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('page')]
     #[\JMS\Serializer\Annotation\Type('int')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?int $page = null;
-    
-	public function __construct()
-	{
-		$this->limit = null;
-		$this->offset = null;
-		$this->page = null;
-	}
+
+    public function __construct()
+    {
+        $this->limit = null;
+        $this->offset = null;
+        $this->page = null;
+    }
 }

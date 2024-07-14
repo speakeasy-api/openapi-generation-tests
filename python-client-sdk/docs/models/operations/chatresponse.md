@@ -1,0 +1,12 @@
+# ChatResponse
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `content_type`                                                                        | *str*                                                                                 | :heavy_check_mark:                                                                    | HTTP response content type for this operation                                         |
+| `status_code`                                                                         | *int*                                                                                 | :heavy_check_mark:                                                                    | HTTP response status code for this operation                                          |
+| `raw_response`                                                                        | [requests.Response](https://requests.readthedocs.io/en/latest/api/#requests.Response) | :heavy_check_mark:                                                                    | Raw HTTP response; suitable for custom response parsing                               |
+| `chat_completion_result`                                                              | List[[shared.ChatCompletionResult](../../models/shared/chatcompletionresult.md)]      | :heavy_minus_sign:                                                                    | Ok                                                                                    |
+| `chat_completion_stream`                                                              | *Optional[Generator[shared.ChatCompletionStream, None, None]]*                        | :heavy_minus_sign:                                                                    | Ok                                                                                    |
