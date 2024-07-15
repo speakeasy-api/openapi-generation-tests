@@ -1212,6 +1212,33 @@ components:
             - message
       required:
         - error
+    taggedError1:
+      type: object
+      properties:
+        tag:
+          type: string
+          const: tag1
+        error:
+          type: string
+      required:
+        - tag
+        - error
+    taggedError2:
+      type: object
+      properties:
+        tag:
+          type: string
+          const: tag2
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+          required:
+            - message
+      required:
+        - tag
+        - error
     complexNumberTypes:
       type: object
       properties:
