@@ -9,25 +9,20 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * RequestBodyPostComplexNumberTypesResponseBody - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** RequestBodyPostComplexNumberTypesResponseBody - OK */
 class RequestBodyPostComplexNumberTypesResponseBody
 {
-	#[\JMS\Serializer\Annotation\SerializedName('json')]
+    #[\JMS\Serializer\Annotation\SerializedName('json')]
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\ComplexNumberTypes')]
     public \OpenAPI\OpenAPI\Models\Shared\ComplexNumberTypes $json;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('url')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('url')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $url;
-    
-	public function __construct()
-	{
-		$this->json = new \OpenAPI\OpenAPI\Models\Shared\ComplexNumberTypes();
-		$this->url = "";
-	}
+
+    public function __construct()
+    {
+        $this->json = new \OpenAPI\OpenAPI\Models\Shared\ComplexNumberTypes();
+        $this->url = '';
+    }
 }
