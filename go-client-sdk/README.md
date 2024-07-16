@@ -1,16 +1,75 @@
 # openapi
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ```bash
 go get github.com/speakeasy-api/openapi-generation-tests/go-client-sdk
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example 1
+
+```go
+package main
+
+import (
+	"context"
+	"log"
+	"math/big"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/types"
+)
+
+func main() {
+	s := openapi.New(
+		openapi.WithSecurity(shared.Security{
+			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+		}),
+		openapi.WithGlobalHeaderParam(true),
+		openapi.WithGlobalHiddenQueryParam("hello"),
+		openapi.WithGlobalPathParam(100),
+		openapi.WithGlobalQueryParam("some example global query param"),
+	)
+	var request *shared.SimpleObject = &shared.SimpleObject{
+		Any:        "any",
+		Bigint:     big.NewInt(8821239038968084),
+		BigintStr:  types.MustNewBigIntFromString("9223372036854775808"),
+		Bool:       true,
+		BoolOpt:    openapi.Bool(true),
+		Date:       types.MustDateFromString("2020-01-01"),
+		DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
+		Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
+		DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+		Enum:       shared.EnumOne,
+		Float32:    1.1,
+		Float64Str: openapi.Float64(1.1),
+		Int:        1,
+		Int32:      1,
+		Int32Enum:  shared.Int32EnumFiftyFive,
+		Int64Str:   openapi.Int64(100),
+		IntEnum:    shared.IntEnumSecond,
+		Num:        1.1,
+		Str:        "test",
+		StrOpt:     openapi.String("testOptional"),
+	}
+	ctx := context.Background()
+	res, err := s.Generation.GlobalNameOverridden(ctx, request)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if res.Object != nil {
+		// handle response
+	}
+}
+
+```
+
+### Example 2
 
 ```go
 package main
@@ -27,17 +86,18 @@ func main() {
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
+		openapi.WithGlobalHeaderParam(true),
+		openapi.WithGlobalHiddenQueryParam("hello"),
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
 
 	ctx := context.Background()
-	res, err := s.Generation.GlobalNameOverridden(ctx)
+	res, err := s.Servers.SelectGlobalServer(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	if res.Object != nil {
+	if res != nil {
 		// handle response
 	}
 }
@@ -63,20 +123,13 @@ import (
 
 func main() {
 	s := openapi.New(
+		openapi.WithGlobalHeaderParam(true),
+		openapi.WithGlobalHiddenQueryParam("hello"),
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
-	operationSecurity := operations.UsageExamplePostSecurity{
-		Password: "YOUR_PASSWORD",
-		Username: "YOUR_USERNAME",
-	}
-
-	ctx := context.Background()
-	res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
+	request := operations.UsageExamplePostRequest{
 		RequestBody: &operations.UsageExamplePostRequestBody{
-			FakerFormattedStrings: &shared.FakerFormattedStrings{},
-			FakerStrings:          &shared.FakerStrings{},
 			SimpleObject: &shared.SimpleObject{
 				Any:        "any",
 				Bigint:     big.NewInt(8821239038968084),
@@ -84,14 +137,16 @@ func main() {
 				Bool:       true,
 				BoolOpt:    openapi.Bool(true),
 				Date:       types.MustDateFromString("2020-01-01"),
-				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
 				Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
 				DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
 				Enum:       shared.EnumOne,
 				Float32:    1.1,
+				Float64Str: openapi.Float64(1.1),
 				Int:        1,
 				Int32:      1,
 				Int32Enum:  shared.Int32EnumFiftyFive,
+				Int64Str:   openapi.Int64(100),
 				IntEnum:    shared.IntEnumSecond,
 				Num:        1.1,
 				Str:        "test",
@@ -101,39 +156,49 @@ func main() {
 		BigintParameter:          big.NewInt(168827),
 		BigintStrParameter:       big.NewInt(446729),
 		BoolParameter:            false,
-		DateParameter:            types.MustDateFromString("2023-06-11"),
-		DateTimeDefaultParameter: types.MustTimeFromString("2022-07-22T13:16:48.221Z"),
-		DateTimeParameter:        types.MustTimeFromString("2021-10-21T09:16:58.799Z"),
+		DateParameter:            types.MustDateFromString("2024-06-10"),
+		DateTimeDefaultParameter: types.MustTimeFromString("2023-07-23T01:43:10.512Z"),
+		DateTimeParameter:        types.MustTimeFromString("2022-10-21T15:42:48.223Z"),
 		DecimalParameter:         types.MustNewDecimalFromString("5223.72"),
 		DecimalStrParameter:      types.MustNewDecimalFromString("2911.37"),
 		DoubleParameter:          6946.59,
 		EnumParameter:            operations.EnumParameterValue1,
 		FalseyNumberParameter:    0,
 		Float32Parameter:         1029.75,
-		FloatParameter:           5669.99,
-		Int64Parameter:           195232,
-		IntParameter:             569663,
+		Float64StringParameter:   5669.99,
+		FloatParameter:           1952.32,
+		Int64Parameter:           569663,
+		Int64StringParameter:     264295,
+		IntParameter:             352778,
 		OptEnumParameter:         operations.OptEnumParameterValue3.ToPointer(),
-		StrParameter:             "example 1",
-	}, operationSecurity)
+		StrParameter:             "example 2",
+	}
+
+	security := operations.UsageExamplePostSecurity{
+		Password: "YOUR_PASSWORD",
+		Username: "YOUR_USERNAME",
+	}
+	ctx := context.Background()
+	res, err := s.Generation.UsageExamplePost(ctx, request, security)
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	if res.Object != nil {
 		// handle response
 	}
 }
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [SDK](docs/sdks/sdk/README.md)
 
-* [PutAnythingIgnoredGeneration](docs/sdks/sdk/README.md#putanythingignoredgeneration)
+* [AuthenticatedRequest](docs/sdks/sdk/README.md#authenticatedrequest)
+* [ConflictingEnum](docs/sdks/sdk/README.md#conflictingenum) - Test potential namespace conflicts with java.lang.Object
+* [IgnoredGenerationPut](docs/sdks/sdk/README.md#ignoredgenerationput)
 * [ResponseBodyJSONGet](docs/sdks/sdk/README.md#responsebodyjsonget)
 
 ### [Generation](docs/sdks/generation/README.md)
@@ -159,29 +224,61 @@ func main() {
 * [TypedParameterGenerationGet](docs/sdks/generation/README.md#typedparametergenerationget)
 * [UsageExamplePost](docs/sdks/generation/README.md#usageexamplepost) - An operation used for testing usage examples
 
-### [Errors](docs/sdks/errors/README.md)
-
-* [ConnectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
-* [StatusGetError](docs/sdks/errors/README.md#statusgeterror)
-* [StatusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
-
 ### [Unions](docs/sdks/unions/README.md)
 
+* [CollectionOneOfPost](docs/sdks/unions/README.md#collectiononeofpost)
 * [FlattenedTypedObjectPost](docs/sdks/unions/README.md#flattenedtypedobjectpost)
 * [MixedTypeOneOfPost](docs/sdks/unions/README.md#mixedtypeoneofpost)
 * [NullableOneOfRefInObjectPost](docs/sdks/unions/README.md#nullableoneofrefinobjectpost)
 * [NullableOneOfSchemaPost](docs/sdks/unions/README.md#nullableoneofschemapost)
 * [NullableOneOfTypeInObjectPost](docs/sdks/unions/README.md#nullableoneoftypeinobjectpost)
 * [NullableTypedObjectPost](docs/sdks/unions/README.md#nullabletypedobjectpost)
+* [OneOfOverlappingObjects](docs/sdks/unions/README.md#oneofoverlappingobjects)
 * [PrimitiveTypeOneOfPost](docs/sdks/unions/README.md#primitivetypeoneofpost)
+* [StronglyTypedOneOfDiscriminatedPost](docs/sdks/unions/README.md#stronglytypedoneofdiscriminatedpost)
 * [StronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
+* [StronglyTypedOneOfPostWithNonStandardDiscriminatorName](docs/sdks/unions/README.md#stronglytypedoneofpostwithnonstandarddiscriminatorname)
 * [TypedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
 * [TypedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
-* [UnionBigIntDecimal](docs/sdks/unions/README.md#unionbigintdecimal)
+* [UnionBigIntStrDecimal](docs/sdks/unions/README.md#unionbigintstrdecimal)
 * [UnionDateNull](docs/sdks/unions/README.md#uniondatenull)
 * [UnionDateTimeBigInt](docs/sdks/unions/README.md#uniondatetimebigint)
 * [UnionDateTimeNull](docs/sdks/unions/README.md#uniondatetimenull)
+* [UnionMap](docs/sdks/unions/README.md#unionmap)
+* [WeaklyTypedOneOfNullEnumPost](docs/sdks/unions/README.md#weaklytypedoneofnullenumpost)
 * [WeaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
+
+### [Errors](docs/sdks/errors/README.md)
+
+* [ConnectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
+* [StatusGetError](docs/sdks/errors/README.md#statusgeterror)
+* [StatusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
+* [UnionErrorsDiscriminatedGet](docs/sdks/errors/README.md#unionerrorsdiscriminatedget)
+* [UnionErrorsGet](docs/sdks/errors/README.md#unionerrorsget)
+
+### [CustomClient](docs/sdks/customclient/README.md)
+
+* [CustomClientPost](docs/sdks/customclient/README.md#customclientpost)
+
+### [ResponseBodies](docs/sdks/responsebodies/README.md)
+
+* [FlattenedEnvelopePaginationResponse](docs/sdks/responsebodies/README.md#flattenedenvelopepaginationresponse)
+* [FlattenedEnvelopeResponse](docs/sdks/responsebodies/README.md#flattenedenveloperesponse)
+* [FlattenedEnvelopeUnionResponse](docs/sdks/responsebodies/README.md#flattenedenvelopeunionresponse)
+* [FlattenedUnionResponse](docs/sdks/responsebodies/README.md#flattenedunionresponse)
+* [ResponseBodyAdditionalPropertiesAnyPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesanypost)
+* [ResponseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
+* [ResponseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
+* [ResponseBodyAdditionalPropertiesObjectPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesobjectpost)
+* [ResponseBodyAdditionalPropertiesPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiespost)
+* [ResponseBodyBytesGet](docs/sdks/responsebodies/README.md#responsebodybytesget)
+* [ResponseBodyDecimalStr](docs/sdks/responsebodies/README.md#responsebodydecimalstr)
+* [ResponseBodyEmptyWithHeaders](docs/sdks/responsebodies/README.md#responsebodyemptywithheaders)
+* [ResponseBodyMissing2xxOr3xxGet](docs/sdks/responsebodies/README.md#responsebodymissing2xxor3xxget)
+* [ResponseBodyOptionalGet](docs/sdks/responsebodies/README.md#responsebodyoptionalget)
+* [ResponseBodyReadOnly](docs/sdks/responsebodies/README.md#responsebodyreadonly)
+* [ResponseBodyStringGet](docs/sdks/responsebodies/README.md#responsebodystringget)
+* [ResponseBodyXMLGet](docs/sdks/responsebodies/README.md#responsebodyxmlget)
 
 ### [Flattening](docs/sdks/flattening/README.md)
 
@@ -194,10 +291,13 @@ func main() {
 ### [Globals](docs/sdks/globals/README.md)
 
 * [GlobalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
+* [GlobalsHeaderGet](docs/sdks/globals/README.md#globalsheaderget)
+* [GlobalsHiddenPost](docs/sdks/globals/README.md#globalshiddenpost)
 * [GlobalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
 
 ### [Parameters](docs/sdks/parameters/README.md)
 
+* [DeepObjectQueryParamsDeepObject](docs/sdks/parameters/README.md#deepobjectqueryparamsdeepobject)
 * [DeepObjectQueryParamsMap](docs/sdks/parameters/README.md#deepobjectqueryparamsmap)
 * [DeepObjectQueryParamsObject](docs/sdks/parameters/README.md#deepobjectqueryparamsobject)
 * [DuplicateParam](docs/sdks/parameters/README.md#duplicateparam)
@@ -212,6 +312,7 @@ func main() {
 * [HeaderParamsObject](docs/sdks/parameters/README.md#headerparamsobject)
 * [HeaderParamsPrimitive](docs/sdks/parameters/README.md#headerparamsprimitive)
 * [JSONQueryParamsObject](docs/sdks/parameters/README.md#jsonqueryparamsobject)
+* [JSONQueryParamsObjectSmaller](docs/sdks/parameters/README.md#jsonqueryparamsobjectsmaller)
 * [MixedParametersCamelCase](docs/sdks/parameters/README.md#mixedparameterscamelcase)
 * [MixedParametersPrimitives](docs/sdks/parameters/README.md#mixedparametersprimitives)
 * [MixedQueryParams](docs/sdks/parameters/README.md#mixedqueryparams)
@@ -221,6 +322,14 @@ func main() {
 * [SimplePathParameterMaps](docs/sdks/parameters/README.md#simplepathparametermaps)
 * [SimplePathParameterObjects](docs/sdks/parameters/README.md#simplepathparameterobjects)
 * [SimplePathParameterPrimitives](docs/sdks/parameters/README.md#simplepathparameterprimitives)
+
+### [Hooks](docs/sdks/hooks/README.md)
+
+* [AuthorizationHeaderModification](docs/sdks/hooks/README.md#authorizationheadermodification)
+* [TestHooks](docs/sdks/hooks/README.md#testhooks)
+* [TestHooksAfterResponse](docs/sdks/hooks/README.md#testhooksafterresponse)
+* [TestHooksBeforeCreateRequestPaths](docs/sdks/hooks/README.md#testhooksbeforecreaterequestpaths)
+* [TestHooksError](docs/sdks/hooks/README.md#testhookserror)
 
 
 ### [Nest.First](docs/sdks/sdkfirst/README.md)
@@ -251,9 +360,15 @@ func main() {
 * [Oauth2Override](docs/sdks/auth/README.md#oauth2override)
 * [OpenIDConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
+### [OpenEnums](docs/sdks/openenums/README.md)
+
+* [OpenEnumsPostUnrecognized](docs/sdks/openenums/README.md#openenumspostunrecognized)
+
 ### [RequestBodies](docs/sdks/requestbodies/README.md)
 
+* [NullEnumPost](docs/sdks/requestbodies/README.md#nullenumpost)
 * [NullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
+* [NullableOptionalFieldsPost](docs/sdks/requestbodies/README.md#nullableoptionalfieldspost)
 * [NullableRequiredEmptyObjectPost](docs/sdks/requestbodies/README.md#nullablerequiredemptyobjectpost)
 * [NullableRequiredPropertyPost](docs/sdks/requestbodies/README.md#nullablerequiredpropertypost)
 * [NullableRequiredSharedObjectPost](docs/sdks/requestbodies/README.md#nullablerequiredsharedobjectpost)
@@ -294,6 +409,8 @@ func main() {
 * [RequestBodyPostJSONDataTypesBigInt](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesbigint)
 * [RequestBodyPostJSONDataTypesBigIntStr](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesbigintstr)
 * [RequestBodyPostJSONDataTypesBoolean](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesboolean)
+* [RequestBodyPostJSONDataTypesComplexNumberArrays](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypescomplexnumberarrays)
+* [RequestBodyPostJSONDataTypesComplexNumberMaps](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypescomplexnumbermaps)
 * [RequestBodyPostJSONDataTypesDate](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesdate)
 * [RequestBodyPostJSONDataTypesDateTime](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesdatetime)
 * [RequestBodyPostJSONDataTypesDecimal](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesdecimal)
@@ -324,6 +441,7 @@ func main() {
 * [RequestBodyPutMultipartDeep](docs/sdks/requestbodies/README.md#requestbodyputmultipartdeep)
 * [RequestBodyPutMultipartDifferentFileName](docs/sdks/requestbodies/README.md#requestbodyputmultipartdifferentfilename)
 * [RequestBodyPutMultipartFile](docs/sdks/requestbodies/README.md#requestbodyputmultipartfile)
+* [RequestBodyPutMultipartOptionalRequestBody](docs/sdks/requestbodies/README.md#requestbodyputmultipartoptionalrequestbody)
 * [RequestBodyPutMultipartSimple](docs/sdks/requestbodies/README.md#requestbodyputmultipartsimple)
 * [RequestBodyPutString](docs/sdks/requestbodies/README.md#requestbodyputstring)
 * [RequestBodyPutStringWithParams](docs/sdks/requestbodies/README.md#requestbodyputstringwithparams)
@@ -334,20 +452,6 @@ func main() {
 * [RequestBodyWriteOnly](docs/sdks/requestbodies/README.md#requestbodywriteonly)
 * [RequestBodyWriteOnlyOutput](docs/sdks/requestbodies/README.md#requestbodywriteonlyoutput)
 * [RequestBodyWriteOnlyUnion](docs/sdks/requestbodies/README.md#requestbodywriteonlyunion)
-
-### [ResponseBodies](docs/sdks/responsebodies/README.md)
-
-* [ResponseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
-* [ResponseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
-* [ResponseBodyAdditionalPropertiesObjectPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesobjectpost)
-* [ResponseBodyAdditionalPropertiesPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiespost)
-* [ResponseBodyBytesGet](docs/sdks/responsebodies/README.md#responsebodybytesget)
-* [ResponseBodyEmptyWithHeaders](docs/sdks/responsebodies/README.md#responsebodyemptywithheaders)
-* [ResponseBodyOptionalGet](docs/sdks/responsebodies/README.md#responsebodyoptionalget)
-* [ResponseBodyReadOnly](docs/sdks/responsebodies/README.md#responsebodyreadonly)
-* [ResponseBodyStringGet](docs/sdks/responsebodies/README.md#responsebodystringget)
-* [ResponseBodyXMLGet](docs/sdks/responsebodies/README.md#responsebodyxmlget)
-* [ResponseBodyZeroValueComplexTypePtrsPost](docs/sdks/responsebodies/README.md#responsebodyzerovaluecomplextypeptrspost)
 
 ### [Servers](docs/sdks/servers/README.md)
 
@@ -365,7 +469,6 @@ func main() {
 
 ### [AuthNew](docs/sdks/authnew/README.md)
 
-* [APIKeyAuthGlobalNew](docs/sdks/authnew/README.md#apikeyauthglobalnew)
 * [AuthGlobal](docs/sdks/authnew/README.md#authglobal)
 * [BasicAuthNew](docs/sdks/authnew/README.md#basicauthnew)
 * [MultipleMixedOptionsAuth](docs/sdks/authnew/README.md#multiplemixedoptionsauth)
@@ -377,17 +480,28 @@ func main() {
 * [Oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [OpenIDConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
-### [Documentation](docs/sdks/documentation/README.md)
-
-* [GetDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
-
 ### [Resource](docs/sdks/resource/README.md)
 
 * [CreateFile](docs/sdks/resource/README.md#createfile)
 * [CreateResource](docs/sdks/resource/README.md#createresource)
 * [DeleteResource](docs/sdks/resource/README.md#deleteresource)
+* [GetArrayDataSource](docs/sdks/resource/README.md#getarraydatasource)
 * [GetResource](docs/sdks/resource/README.md#getresource)
 * [UpdateResource](docs/sdks/resource/README.md#updateresource)
+
+### [Documentation](docs/sdks/documentation/README.md)
+
+* [GetDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
+
+### [Eventstreams](docs/sdks/eventstreams/README.md)
+
+* [Chat](docs/sdks/eventstreams/README.md#chat)
+* [ChatSkipSentinel](docs/sdks/eventstreams/README.md#chatskipsentinel)
+* [DifferentDataSchemas](docs/sdks/eventstreams/README.md#differentdataschemas)
+* [JSON](docs/sdks/eventstreams/README.md#json)
+* [Multiline](docs/sdks/eventstreams/README.md#multiline)
+* [Rich](docs/sdks/eventstreams/README.md#rich)
+* [Text](docs/sdks/eventstreams/README.md#text)
 
 ### [First](docs/sdks/first/README.md)
 
@@ -400,26 +514,30 @@ func main() {
 ### [Pagination](docs/sdks/pagination/README.md)
 
 * [PaginationCursorBody](docs/sdks/pagination/README.md#paginationcursorbody)
+* [PaginationCursorNonNumeric](docs/sdks/pagination/README.md#paginationcursornonnumeric)
 * [PaginationCursorParams](docs/sdks/pagination/README.md#paginationcursorparams)
+* [PaginationLimitOffsetDeepOutputsPageBody](docs/sdks/pagination/README.md#paginationlimitoffsetdeepoutputspagebody)
 * [PaginationLimitOffsetOffsetBody](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetbody)
 * [PaginationLimitOffsetOffsetParams](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetparams)
 * [PaginationLimitOffsetPageBody](docs/sdks/pagination/README.md#paginationlimitoffsetpagebody)
 * [PaginationLimitOffsetPageParams](docs/sdks/pagination/README.md#paginationlimitoffsetpageparams)
+* [PaginationURLParams](docs/sdks/pagination/README.md#paginationurlparams)
+* [PaginationWithRetries](docs/sdks/pagination/README.md#paginationwithretries)
 
 ### [Retries](docs/sdks/retries/README.md)
 
+* [RetriesAfter](docs/sdks/retries/README.md#retriesafter)
+* [RetriesConnectErrorGet](docs/sdks/retries/README.md#retriesconnecterrorget) - A request to a non-valid port to test connection errors
+* [RetriesFlatEmptyResponsePost](docs/sdks/retries/README.md#retriesflatemptyresponsepost)
 * [RetriesGet](docs/sdks/retries/README.md#retriesget)
-<!-- End SDK Available Operations -->
+* [RetriesPost](docs/sdks/retries/README.md#retriespost)
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
 
 
-
-<!-- Start Pagination -->
+<!-- Start Pagination [pagination] -->
 ## Pagination
 
 Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
@@ -434,7 +552,6 @@ import (
 	"context"
 	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
 	"openapi/v2/pkg/models/shared"
 )
 
@@ -443,23 +560,27 @@ func main() {
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
+		openapi.WithGlobalHeaderParam(true),
+		openapi.WithGlobalHiddenQueryParam("hello"),
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
+	var cursor *string = openapi.String("<value>")
 	ctx := context.Background()
-	res, err := s.Pagination.PaginationCursorBody(ctx, operations.PaginationCursorBodyRequestBody{
-		Cursor: 868337,
-	})
+	res, err := s.ResponseBodies.FlattenedEnvelopePaginationResponse(ctx, cursor)
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	if res.Res != nil {
 		for {
 			// handle items
 
-			res = res.Next()
+			res, err = res.Next()
+
+			if err != nil {
+				// handle error
+			}
+
 			if res == nil {
 				break
 			}
@@ -469,20 +590,20 @@ func main() {
 }
 
 ```
-<!-- End Pagination -->
+<!-- End Pagination [pagination] -->
 
 
 
-<!-- Start Go Types -->
-# Special Types
+<!-- Start Special Types [types] -->
+## Special Types
 
 This SDK defines the following custom types to assist with marshalling and unmarshalling data.
 
-## Date
+### Date
 
 `types.Date` is a wrapper around time.Time that allows for JSON marshaling a date string formatted as "2006-01-02".
 
-### Usage
+#### Usage
 
 ```go
 d1 := types.NewDate(time.Now()) // returns *types.Date
@@ -497,26 +618,30 @@ d5 := types.MustNewDateFromString("2019-01-01") // returns *types.Date and panic
 
 d6 := types.MustDateFromString("2019-01-01") // returns types.Date and panics on error
 ```
-<!-- End Go Types -->
+<!-- End Special Types [types] -->
 
 
 
-<!-- Start Global Parameters -->
+<!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
-Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
+Certain parameters are configured globally. These parameters may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `globalPathParam` to `100` at SDK initialization and then you do not have to pass the same value on calls to operations like `GlobalPathParameterGet`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `globalHeaderParam` to `true` at SDK initialization and then you do not have to pass the same value on calls to operations like `GlobalPathParameterGet`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
 
-The following global parameters are available. The required parameters must be set when you initialize the SDK client.
+The following global parameters are available.
 
 | Name | Type | Required | Description |
 | ---- | ---- |:--------:| ----------- |
-| globalPathParam | int64 | ✔️ | The globalPathParam parameter. |
-| globalQueryParam | string | ✔️ | The globalQueryParam parameter. |
+| GlobalHeaderParam | bool |  | The GlobalHeaderParam parameter. |
+| GlobalHiddenHeaderParam | string |  | The GlobalHiddenHeaderParam parameter. |
+| GlobalHiddenPathParam | string |  | The GlobalHiddenPathParam parameter. |
+| GlobalHiddenQueryParam | string |  | The GlobalHiddenQueryParam parameter. |
+| GlobalPathParam | int64 |  | The GlobalPathParam parameter. |
+| GlobalQueryParam | string |  | The GlobalQueryParam parameter. |
 
 
 ### Example
@@ -536,29 +661,28 @@ func main() {
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
+		openapi.WithGlobalHeaderParam(true),
+		openapi.WithGlobalHiddenQueryParam("hello"),
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
-	var globalPathParam *int64 = 719830
-
+	var globalPathParam *int64 = openapi.Int64(100)
 	ctx := context.Background()
 	res, err := s.Globals.GlobalPathParameterGet(ctx, globalPathParam)
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	if res.Res != nil {
 		// handle response
 	}
 }
 
 ```
-<!-- End Global Parameters -->
+<!-- End Global Parameters [global-parameters] -->
 
 
 
-<!-- Start Error Handling -->
+<!-- Start Error Handling [errors] -->
 ## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
@@ -567,7 +691,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
 | sdkerrors.Error                                 | 500                                             | application/json                                |
 | sdkerrors.StatusGetXSpeakeasyErrorsResponseBody | 501                                             | application/json                                |
-| sdkerrors.SDKError                              | 400-600                                         | */*                                             |
+| sdkerrors.SDKError                              | 4xx-5xx                                         | */*                                             |
 
 ### Example
 
@@ -576,8 +700,10 @@ package main
 
 import (
 	"context"
+	"errors"
 	"log"
 	openapi "openapi/v2"
+	"openapi/v2/pkg/models/sdkerrors"
 	"openapi/v2/pkg/models/shared"
 )
 
@@ -586,12 +712,12 @@ func main() {
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
+		openapi.WithGlobalHeaderParam(true),
+		openapi.WithGlobalHiddenQueryParam("hello"),
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
 	var statusCode int64 = 385913
-
 	ctx := context.Background()
 	res, err := s.Errors.StatusGetXSpeakeasyErrors(ctx, statusCode)
 	if err != nil {
@@ -617,11 +743,11 @@ func main() {
 }
 
 ```
-<!-- End Error Handling -->
+<!-- End Error Handling [errors] -->
 
 
 
-<!-- Start Server Selection -->
+<!-- Start Server Selection [server] -->
 ## Server Selection
 
 ### Select Server by Index
@@ -645,26 +771,29 @@ import (
 	"context"
 	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
+	"os"
 )
 
 func main() {
 	s := openapi.New(
 		openapi.WithServerIndex(4),
-		openapi.WithSecurity(shared.Security{
-			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-		}),
+		openapi.WithGlobalHeaderParam(true),
+		openapi.WithGlobalHiddenQueryParam("hello"),
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+	security := operations.AuthenticatedRequestSecurity{
+		ClientCredentials: os.Getenv("CLIENT_CREDENTIALS"),
+	}
 
+	var request *operations.AuthenticatedRequestRequestBody = &operations.AuthenticatedRequestRequestBody{}
 	ctx := context.Background()
-	res, err := s.PutAnythingIgnoredGeneration(ctx, "string")
+	res, err := s.AuthenticatedRequest(ctx, security, request)
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	if res.Object != nil {
+	if res != nil {
 		// handle response
 	}
 }
@@ -676,8 +805,8 @@ func main() {
 Some of the server options above contain variables. If you want to set the values of those variables, the following options are provided for doing so:
  * `WithHostname string`
  * `WithPort string`
- * `WithProtocol string`
  * `WithSomething openapi.ServerSomething`
+ * `WithProtocol string`
 
 ### Override Server URL Per-Client
 
@@ -689,26 +818,29 @@ import (
 	"context"
 	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
+	"os"
 )
 
 func main() {
 	s := openapi.New(
 		openapi.WithServerURL("http://localhost:35123"),
-		openapi.WithSecurity(shared.Security{
-			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-		}),
+		openapi.WithGlobalHeaderParam(true),
+		openapi.WithGlobalHiddenQueryParam("hello"),
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+	security := operations.AuthenticatedRequestSecurity{
+		ClientCredentials: os.Getenv("CLIENT_CREDENTIALS"),
+	}
 
+	var request *operations.AuthenticatedRequestRequestBody = &operations.AuthenticatedRequestRequestBody{}
 	ctx := context.Background()
-	res, err := s.PutAnythingIgnoredGeneration(ctx, "string")
+	res, err := s.AuthenticatedRequest(ctx, security, request)
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	if res.Object != nil {
+	if res != nil {
 		// handle response
 	}
 }
@@ -725,6 +857,7 @@ import (
 	"context"
 	"log"
 	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
 	"openapi/v2/pkg/models/shared"
 )
 
@@ -733,6 +866,8 @@ func main() {
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
+		openapi.WithGlobalHeaderParam(true),
+		openapi.WithGlobalHiddenQueryParam("hello"),
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
@@ -742,18 +877,17 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	if res.StatusCode == http.StatusOK {
+	if res != nil {
 		// handle response
 	}
 }
 
 ```
-<!-- End Server Selection -->
+<!-- End Server Selection [server] -->
 
 
 
-<!-- Start Custom HTTP Client -->
+<!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
 The Go SDK makes API calls that wrap an internal HTTP client. The requirements for the HTTP client are very simple. It must match this interface:
@@ -780,16 +914,16 @@ var (
 ```
 
 This can be a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration.
-<!-- End Custom HTTP Client -->
+<!-- End Custom HTTP Client [http-client] -->
 
 
 
-<!-- Start Retries -->
+<!-- Start Retries [retries] -->
 ## Retries
 
-Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
 
-To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
+To change the default retry strategy for a single API call, simply provide a `retry.Config` object to the call by using the `WithRetries` option:
 ```go
 package main
 
@@ -797,110 +931,108 @@ import (
 	"context"
 	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/retry"
+	"os"
 	"pkg/models/operations"
-	"pkg/utils"
 )
 
 func main() {
 	s := openapi.New(
-		openapi.WithSecurity(shared.Security{
-			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-		}),
+		openapi.WithGlobalHeaderParam(true),
+		openapi.WithGlobalHiddenQueryParam("hello"),
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+	security := operations.AuthenticatedRequestSecurity{
+		ClientCredentials: os.Getenv("CLIENT_CREDENTIALS"),
+	}
 
-	var requestID string = "string"
-
-	var numRetries *int64 = 75342
-
+	var request *operations.AuthenticatedRequestRequestBody = &operations.AuthenticatedRequestRequestBody{}
 	ctx := context.Background()
-	res, err := s.Retries.RetriesGet(ctx, requestID, numRetries, operations.WithRetries(utils.RetryConfig{
-		Strategy: "backoff",
-		Backoff: &utils.BackoffStrategy{
-			InitialInterval: 1,
-			MaxInterval:     50,
-			Exponent:        1.1,
-			MaxElapsedTime:  100,
-		},
-		RetryConnectionErrors: false,
-	}))
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	if res.Retries != nil {
-		// handle response
-	}
-}
-
-```
-
-If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
-```go
-package main
-
-import (
-	"context"
-	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"pkg/models/operations"
-	"pkg/utils"
-)
-
-func main() {
-	s := openapi.New(
-		openapi.WithRetryConfig(utils.RetryConfig{
+	res, err := s.AuthenticatedRequest(ctx, security, request, operations.WithRetries(
+		retry.Config{
 			Strategy: "backoff",
-			Backoff: &utils.BackoffStrategy{
+			Backoff: &retry.BackoffStrategy{
 				InitialInterval: 1,
 				MaxInterval:     50,
 				Exponent:        1.1,
 				MaxElapsedTime:  100,
 			},
 			RetryConnectionErrors: false,
-		}),
-		openapi.WithSecurity(shared.Security{
-			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-		}),
-		openapi.WithGlobalPathParam(100),
-		openapi.WithGlobalQueryParam("some example global query param"),
-	)
-
-	var requestID string = "string"
-
-	var numRetries *int64 = 75342
-
-	ctx := context.Background()
-	res, err := s.Retries.RetriesGet(ctx, requestID, numRetries)
+		}))
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	if res.Retries != nil {
+	if res != nil {
 		// handle response
 	}
 }
 
 ```
-<!-- End Retries -->
+
+If you'd like to override the default retry strategy for all operations that support retries, you can use the `WithRetryConfig` option at SDK initialization:
+```go
+package main
+
+import (
+	"context"
+	"log"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/retry"
+	"os"
+)
+
+func main() {
+	s := openapi.New(
+		openapi.WithRetryConfig(
+			retry.Config{
+				Strategy: "backoff",
+				Backoff: &retry.BackoffStrategy{
+					InitialInterval: 1,
+					MaxInterval:     50,
+					Exponent:        1.1,
+					MaxElapsedTime:  100,
+				},
+				RetryConnectionErrors: false,
+			}),
+		openapi.WithGlobalHeaderParam(true),
+		openapi.WithGlobalHiddenQueryParam("hello"),
+		openapi.WithGlobalPathParam(100),
+		openapi.WithGlobalQueryParam("some example global query param"),
+	)
+	security := operations.AuthenticatedRequestSecurity{
+		ClientCredentials: os.Getenv("CLIENT_CREDENTIALS"),
+	}
+
+	var request *operations.AuthenticatedRequestRequestBody = &operations.AuthenticatedRequestRequestBody{}
+	ctx := context.Background()
+	res, err := s.AuthenticatedRequest(ctx, security, request)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if res != nil {
+		// handle response
+	}
+}
+
+```
+<!-- End Retries [retries] -->
 
 
 
-<!-- Start Authentication -->
+<!-- Start Authentication [security] -->
 ## Authentication
 
 ### Per-Client Security Schemes
 
 This SDK supports the following security schemes globally:
 
-| Name            | Type            | Scheme          |
-| --------------- | --------------- | --------------- |
-| `APIKeyAuth`    | apiKey          | API key         |
-| `APIKeyAuthNew` | apiKey          | API key         |
-| `Oauth2`        | oauth2          | OAuth2 token    |
+| Name         | Type         | Scheme       |
+| ------------ | ------------ | ------------ |
+| `APIKeyAuth` | apiKey       | API key      |
+| `Oauth2`     | oauth2       | OAuth2 token |
 
 You can set the security parameters through the `WithSecurity` option when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```go
@@ -918,17 +1050,18 @@ func main() {
 		openapi.WithSecurity(shared.Security{
 			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
 		}),
+		openapi.WithGlobalHeaderParam(true),
+		openapi.WithGlobalHiddenQueryParam("hello"),
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
+	var request *shared.ConflictingEnum = &shared.ConflictingEnum{}
 	ctx := context.Background()
-	res, err := s.PutAnythingIgnoredGeneration(ctx, "string")
+	res, err := s.ConflictingEnum(ctx, request)
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	if res.Object != nil {
+	if res != nil {
 		// handle response
 	}
 }
@@ -944,79 +1077,88 @@ package main
 import (
 	"context"
 	"log"
-	"math/big"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/types"
+	"os"
 )
 
 func main() {
 	s := openapi.New(
+		openapi.WithGlobalHeaderParam(true),
+		openapi.WithGlobalHiddenQueryParam("hello"),
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
-
-	operationSecurity := operations.UsageExamplePostSecurity{
-		Password: "YOUR_PASSWORD",
-		Username: "YOUR_USERNAME",
+	security := operations.AuthenticatedRequestSecurity{
+		ClientCredentials: os.Getenv("CLIENT_CREDENTIALS"),
 	}
 
+	var request *operations.AuthenticatedRequestRequestBody = &operations.AuthenticatedRequestRequestBody{}
 	ctx := context.Background()
-	res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
-		RequestBody: &operations.UsageExamplePostRequestBody{
-			FakerFormattedStrings: &shared.FakerFormattedStrings{},
-			FakerStrings:          &shared.FakerStrings{},
-			SimpleObject: &shared.SimpleObject{
-				Any:        "any",
-				Bigint:     big.NewInt(8821239038968084),
-				BigintStr:  types.MustNewBigIntFromString("9223372036854775808"),
-				Bool:       true,
-				BoolOpt:    openapi.Bool(true),
-				Date:       types.MustDateFromString("2020-01-01"),
-				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
-				Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
-				DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
-				Enum:       shared.EnumOne,
-				Float32:    1.1,
-				Int:        1,
-				Int32:      1,
-				Int32Enum:  shared.Int32EnumFiftyFive,
-				IntEnum:    shared.IntEnumSecond,
-				Num:        1.1,
-				Str:        "test",
-				StrOpt:     openapi.String("testOptional"),
-			},
-		},
-		BigintParameter:          big.NewInt(168827),
-		BigintStrParameter:       big.NewInt(446729),
-		BoolParameter:            false,
-		DateParameter:            types.MustDateFromString("2023-06-11"),
-		DateTimeDefaultParameter: types.MustTimeFromString("2022-07-22T13:16:48.221Z"),
-		DateTimeParameter:        types.MustTimeFromString("2021-10-21T09:16:58.799Z"),
-		DecimalParameter:         types.MustNewDecimalFromString("5223.72"),
-		DecimalStrParameter:      types.MustNewDecimalFromString("2911.37"),
-		DoubleParameter:          6946.59,
-		EnumParameter:            operations.EnumParameterValue1,
-		FalseyNumberParameter:    0,
-		Float32Parameter:         1029.75,
-		FloatParameter:           5669.99,
-		Int64Parameter:           195232,
-		IntParameter:             569663,
-		OptEnumParameter:         operations.OptEnumParameterValue3.ToPointer(),
-		StrParameter:             "example 1",
-	}, operationSecurity)
+	res, err := s.AuthenticatedRequest(ctx, security, request)
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	if res.Object != nil {
+	if res != nil {
 		// handle response
 	}
 }
 
 ```
-<!-- End Authentication -->
+<!-- End Authentication [security] -->
+
+<!-- Start Server-sent event streaming [eventstream] -->
+## Server-sent event streaming
+
+[Server-sent events][mdn-sse] are used to stream content from certain
+operations. These operations will expose the stream as an iterable that
+can be consumed using a simple `for` loop. The loop will
+terminate when the server no longer has any events to send and closes the
+underlying connection.
+
+```go
+package main
+
+import (
+	"context"
+	"log"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
+	"openapi/v2/pkg/models/shared"
+)
+
+func main() {
+	s := openapi.New(
+		openapi.WithSecurity(shared.Security{
+			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+		}),
+		openapi.WithGlobalHeaderParam(true),
+		openapi.WithGlobalHiddenQueryParam("hello"),
+		openapi.WithGlobalPathParam(100),
+		openapi.WithGlobalQueryParam("some example global query param"),
+	)
+	request := operations.ChatRequestBody{
+		Prompt: "<value>",
+	}
+	ctx := context.Background()
+	res, err := s.Eventstreams.Chat(ctx, request)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if res.ChatCompletionResult != nil {
+		defer res.chatCompletionStream.Close()
+
+		for res.chatCompletionStream.Next() {
+			event := res.chatCompletionStream.Value()
+			// Handle the event
+		}
+	}
+}
+
+```
+
+[mdn-sse]: https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
+<!-- End Server-sent event streaming [eventstream] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

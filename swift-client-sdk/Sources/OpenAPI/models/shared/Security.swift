@@ -9,7 +9,6 @@ extension Shared {
     ///
     public enum Security {
         case apiKeyAuth(String)
-        case apiKeyAuthNew(String)
         case oauth2(String)
     }
 }

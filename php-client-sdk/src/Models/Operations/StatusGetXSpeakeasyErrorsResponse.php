@@ -13,50 +13,45 @@ class StatusGetXSpeakeasyErrorsResponse
 {
     /**
      * HTTP response content type for this operation
-     * 
+     *
      * @var string $contentType
      */
-	
     public string $contentType;
-    
+
     /**
      * HTTP response status code for this operation
-     * 
+     *
      * @var int $statusCode
      */
-	
     public int $statusCode;
-    
+
     /**
      * Raw HTTP response; suitable for custom response parsing
-     * 
+     *
      * @var ?\Psr\Http\Message\ResponseInterface $rawResponse
      */
-	
-    public ?\Psr\Http\Message\ResponseInterface $rawResponse = null;
-    
+    public ?\Psr\Http\Message\ResponseInterface $rawResponse;
+
     /**
      * Internal Server Error
-     * 
+     *
      * @var ?\OpenAPI\OpenAPI\Models\Shared\Error $error
      */
-	
     public ?\OpenAPI\OpenAPI\Models\Shared\Error $error = null;
-    
+
     /**
      * Not Implemented
-     * 
+     *
      * @var ?\OpenAPI\OpenAPI\Models\Operations\StatusGetXSpeakeasyErrorsResponseBody $object
      */
-	
     public ?StatusGetXSpeakeasyErrorsResponseBody $object = null;
-    
-	public function __construct()
-	{
-		$this->contentType = "";
-		$this->statusCode = 0;
-		$this->rawResponse = null;
-		$this->error = null;
-		$this->object = null;
-	}
+
+    public function __construct()
+    {
+        $this->contentType = '';
+        $this->statusCode = 0;
+        $this->rawResponse = null;
+        $this->error = null;
+        $this->object = null;
+    }
 }

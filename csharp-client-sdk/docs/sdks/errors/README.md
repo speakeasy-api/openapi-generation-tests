@@ -10,6 +10,8 @@ Endpoints for testing error responses.
 * [ConnectionErrorGet](#connectionerrorget)
 * [StatusGetError](#statusgeterror)
 * [StatusGetXSpeakeasyErrors](#statusgetxspeakeasyerrors)
+* [UnionErrorsDiscriminatedGet](#unionerrorsdiscriminatedget)
+* [UnionErrorsGet](#unionerrorsget)
 
 ## ConnectionErrorGet
 
@@ -23,9 +25,10 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Errors.ConnectionErrorGetAsync();
 
@@ -42,7 +45,11 @@ var res = await sdk.Errors.ConnectionErrorGetAsync();
 ### Response
 
 **[ConnectionErrorGetResponse](../../Models/Operations/ConnectionErrorGetResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## StatusGetError
 
@@ -50,18 +57,19 @@ var res = await sdk.Errors.ConnectionErrorGetAsync();
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Errors.StatusGetErrorAsync(458364);
+var res = await sdk.Errors.StatusGetErrorAsync(statusCode: 458364);
 
 // handle response
 ```
@@ -76,7 +84,11 @@ var res = await sdk.Errors.StatusGetErrorAsync(458364);
 ### Response
 
 **[StatusGetErrorResponse](../../Models/Operations/StatusGetErrorResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## StatusGetXSpeakeasyErrors
 
@@ -84,18 +96,19 @@ var res = await sdk.Errors.StatusGetErrorAsync(458364);
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Errors.StatusGetXSpeakeasyErrorsAsync(385913);
+var res = await sdk.Errors.StatusGetXSpeakeasyErrorsAsync(statusCode: 385913);
 
 // handle response
 ```
@@ -111,4 +124,92 @@ var res = await sdk.Errors.StatusGetXSpeakeasyErrorsAsync(385913);
 ### Response
 
 **[StatusGetXSpeakeasyErrorsResponse](../../Models/Operations/StatusGetXSpeakeasyErrorsResponse.md)**
+### Errors
 
+| Error Object                                                | Status Code                                                 | Content Type                                                |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| Openapi.Models.Errors.Error                                 | 500                                                         | application/json                                            |
+| Openapi.Models.Errors.StatusGetXSpeakeasyErrorsResponseBody | 501                                                         | application/json                                            |
+| Openapi.Models.Errors.SDKException                          | 4xx-5xx                                                     | */*                                                         |
+
+## UnionErrorsDiscriminatedGet
+
+### Example Usage
+
+```csharp
+using Openapi;
+using Openapi.Models.Operations;
+using Openapi.Models.Shared;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+var res = await sdk.Errors.UnionErrorsDiscriminatedGetAsync(errorTag: Openapi.Models.Operations.ErrorTag.Tag1);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                       | Type                                            | Required                                        | Description                                     |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| `ErrorTag`                                      | [ErrorTag](../../Models/Operations/ErrorTag.md) | :heavy_check_mark:                              | N/A                                             |
+| `serverURL`                                     | *string*                                        | :heavy_minus_sign:                              | An optional server URL to use.                  |
+
+
+### Response
+
+**[UnionErrorsDiscriminatedGetResponse](../../Models/Operations/UnionErrorsDiscriminatedGetResponse.md)**
+### Errors
+
+| Error Object                                                  | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| Openapi.Models.Errors.UnionErrorsDiscriminatedGetResponseBody | 5XX                                                           | application/json                                              |
+| Openapi.Models.Errors.SDKException                            | 4xx-5xx                                                       | */*                                                           |
+
+## UnionErrorsGet
+
+### Example Usage
+
+```csharp
+using Openapi;
+using Openapi.Models.Operations;
+using Openapi.Models.Shared;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+var res = await sdk.Errors.UnionErrorsGetAsync(errorType: Openapi.Models.Operations.ErrorType.Type1);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `ErrorType`                                                         | [Models.Operations.ErrorType](../../Models/Operations/ErrorType.md) | :heavy_check_mark:                                                  | N/A                                                                 |
+| `serverURL`                                                         | *string*                                                            | :heavy_minus_sign:                                                  | An optional server URL to use.                                      |
+
+
+### Response
+
+**[UnionErrorsGetResponse](../../Models/Operations/UnionErrorsGetResponse.md)**
+### Errors
+
+| Error Object                                     | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| Openapi.Models.Errors.UnionErrorsGetResponseBody | 500                                              | application/json                                 |
+| Openapi.Models.Errors.SDKException               | 4xx-5xx                                          | */*                                              |

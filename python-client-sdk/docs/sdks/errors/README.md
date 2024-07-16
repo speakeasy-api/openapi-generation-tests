@@ -10,6 +10,8 @@ Endpoints for testing error responses.
 * [connection_error_get](#connection_error_get)
 * [status_get_error](#status_get_error)
 * [status_get_x_speakeasy_errors](#status_get_x_speakeasy_errors)
+* [union_errors_discriminated_get](#union_errors_discriminated_get)
+* [union_errors_get](#union_errors_get)
 
 ## connection_error_get
 
@@ -23,6 +25,8 @@ s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -30,9 +34,10 @@ s = sdk.SDK(
 
 res = s.errors.connection_error_get()
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -49,7 +54,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## status_get_error
 
@@ -57,12 +62,14 @@ if res.status_code == 200:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -70,9 +77,10 @@ s = sdk.SDK(
 
 res = s.errors.status_get_error(status_code=458364)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -89,7 +97,7 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## status_get_x_speakeasy_errors
 
@@ -97,12 +105,14 @@ if res.status_code == 200:
 
 ```python
 import sdk
-from sdk.models import operations, shared
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
         api_key_auth="Token YOUR_API_KEY",
     ),
+    global_header_param=True,
+    global_hidden_query_param='hello',
     global_path_param=100,
     global_query_param='some example global query param',
 )
@@ -110,9 +120,10 @@ s = sdk.SDK(
 
 res = s.errors.status_get_x_speakeasy_errors(status_code=385913)
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -132,4 +143,94 @@ if res.status_code == 200:
 | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
 | errors.Error                                 | 500                                          | application/json                             |
 | errors.StatusGetXSpeakeasyErrorsResponseBody | 501                                          | application/json                             |
-| errors.SDKError                              | 400-600                                      | */*                                          |
+| errors.SDKError                              | 4xx-5xx                                      | */*                                          |
+
+## union_errors_discriminated_get
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import operations, shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_header_param=True,
+    global_hidden_query_param='hello',
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.errors.union_errors_discriminated_get(error_tag=operations.ErrorTag.TAG1)
+
+if res is not None:
+    # handle response
+    pass
+
+```
+
+### Parameters
+
+| Parameter                                                  | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `error_tag`                                                | [operations.ErrorTag](../../models/operations/errortag.md) | :heavy_check_mark:                                         | N/A                                                        |
+| `server_url`                                               | *Optional[str]*                                            | :heavy_minus_sign:                                         | An optional server URL to use.                             |
+
+
+### Response
+
+**[operations.UnionErrorsDiscriminatedGetResponse](../../models/operations/unionerrorsdiscriminatedgetresponse.md)**
+### Errors
+
+| Error Object                                   | Status Code                                    | Content Type                                   |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| errors.UnionErrorsDiscriminatedGetResponseBody | 5XX                                            | application/json                               |
+| errors.SDKError                                | 4xx-5xx                                        | */*                                            |
+
+## union_errors_get
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import operations, shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_header_param=True,
+    global_hidden_query_param='hello',
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.errors.union_errors_get(error_type=operations.ErrorType.TYPE1)
+
+if res is not None:
+    # handle response
+    pass
+
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `error_type`                                                 | [operations.ErrorType](../../models/operations/errortype.md) | :heavy_check_mark:                                           | N/A                                                          |
+| `server_url`                                                 | *Optional[str]*                                              | :heavy_minus_sign:                                           | An optional server URL to use.                               |
+
+
+### Response
+
+**[operations.UnionErrorsGetResponse](../../models/operations/unionerrorsgetresponse.md)**
+### Errors
+
+| Error Object                      | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.UnionErrorsGetResponseBody | 500                               | application/json                  |
+| errors.SDKError                   | 4xx-5xx                           | */*                               |
