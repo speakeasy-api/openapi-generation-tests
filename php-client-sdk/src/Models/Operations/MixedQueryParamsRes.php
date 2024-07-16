@@ -9,30 +9,25 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * MixedQueryParamsRes - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** MixedQueryParamsRes - OK */
 class MixedQueryParamsRes
 {
     /**
      * $args
-     * 
+     *
      * @var array<string, string> $args
      */
-	#[\JMS\Serializer\Annotation\SerializedName('args')]
+    #[\JMS\Serializer\Annotation\SerializedName('args')]
     #[\JMS\Serializer\Annotation\Type('array<string, string>')]
     public array $args;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('url')]
+
+    #[\JMS\Serializer\Annotation\SerializedName('url')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $url;
-    
-	public function __construct()
-	{
-		$this->args = [];
-		$this->url = "";
-	}
+
+    public function __construct()
+    {
+        $this->args = [];
+        $this->url = '';
+    }
 }

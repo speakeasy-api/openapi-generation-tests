@@ -6,6 +6,17 @@ import (
 	"net/http"
 )
 
+type GlobalPathParameterGetGlobals struct {
+	GlobalPathParam *int64 `pathParam:"style=simple,explode=false,name=globalPathParam"`
+}
+
+func (o *GlobalPathParameterGetGlobals) GetGlobalPathParam() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.GlobalPathParam
+}
+
 type GlobalPathParameterGetRequest struct {
 	GlobalPathParam *int64 `pathParam:"style=simple,explode=false,name=globalPathParam"`
 }

@@ -13,16 +13,16 @@ class ValidCircularReferenceObject
 {
     /**
      * $circular
-     * 
+     *
      * @var ?array<\OpenAPI\OpenAPI\Models\Shared\ValidCircularReferenceObject> $circular
      */
-	#[\JMS\Serializer\Annotation\SerializedName('circular')]
+    #[\JMS\Serializer\Annotation\SerializedName('circular')]
     #[\JMS\Serializer\Annotation\Type('array<OpenAPI\OpenAPI\Models\Shared\ValidCircularReferenceObject>')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?array $circular = null;
-    
-	public function __construct()
-	{
-		$this->circular = null;
-	}
+
+    public function __construct()
+    {
+        $this->circular = null;
+    }
 }

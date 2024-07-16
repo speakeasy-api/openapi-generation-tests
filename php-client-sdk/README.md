@@ -1,6 +1,6 @@
 # openapi/openapi
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### Composer
@@ -8,17 +8,19 @@
 ```bash
 composer require "openapi/openapi"
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example 1
 
 ```php
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use OpenAPI\OpenAPI;
 use OpenAPI\OpenAPI\Models\Shared;
@@ -27,16 +29,79 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->setSecurity($security)
     ->build();
 
 try {
-    $response = $sdk->generation->globalNameOverridden();
+    $request = new Shared\SimpleObject();
+    $request->any = 'any';
+    $request->bigint = 8821239038968084;
+    $request->bigintStr = '9223372036854775808';
+    $request->bool = true;
+    $request->boolOpt = true;
+    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
+    $request->decimal = 3.141592653589793;
+    $request->decimalStr = '3.14159265358979344719667586';
+    $request->enum = Shared\Enum::One;
+    $request->float32 = 1.1;
+    $request->float64Str = '1.1';
+    $request->int = 1;
+    $request->int32 = 1;
+    $request->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $request->int64Str = '100';
+    $request->intEnum = Shared\IntEnum::Second;
+    $request->intOptNull = 930591;
+    $request->num = 1.1;
+    $request->numOptNull = 5244.22;
+    $request->str = 'test';
+    $request->strOpt = 'testOptional';
+
+    $response = $sdk->generation->globalNameOverridden($request);
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
+    // handle exception
+}
+
+```
+
+### Example 2
+
+```php
+<?php
+
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)
+    ->build();
+
+try {
+    $response = $sdk->servers->selectGlobalServer();
+
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+} catch (Throwable $e) {
     // handle exception
 }
 
@@ -50,13 +115,19 @@ Do this second
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use OpenAPI\OpenAPI;
 use OpenAPI\OpenAPI\Models\Shared;
 use OpenAPI\OpenAPI\Models\Operations;
 
-$sdk = OpenAPI\SDK::builder()->build();
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
 
 try {
     $request = new Operations\UsageExamplePostRequest();
@@ -66,55 +137,55 @@ try {
     $request->requestBody->fakerFormattedStrings->directoryFormat = '/etc/defaults';
     $request->requestBody->fakerFormattedStrings->domainFormat = 'next-conflict.name';
     $request->requestBody->fakerFormattedStrings->emailFormat = 'Fermin_Koelpin@gmail.com';
-    $request->requestBody->fakerFormattedStrings->filenameFormat = 'northeast.wav';
-    $request->requestBody->fakerFormattedStrings->filepathFormat = '/lib/pizza_integrated.hbs';
+    $request->requestBody->fakerFormattedStrings->filenameFormat = 'your_file_here';
+    $request->requestBody->fakerFormattedStrings->filepathFormat = '/bin/northwest.mlp';
     $request->requestBody->fakerFormattedStrings->imageFormat = 'https://loremflickr.com/640/480';
-    $request->requestBody->fakerFormattedStrings->ipv4Format = '75.42.25.241';
+    $request->requestBody->fakerFormattedStrings->ipv4Format = '152.55.213.110';
     $request->requestBody->fakerFormattedStrings->ipv6Format =
-        '36a9:c057:a71b:b73a:c9ee:2348:d76c:3164';
+        'e4ce:421f:36a9:c057:a71b:b73a:c9ee:2348';
     $request->requestBody->fakerFormattedStrings->jsonFormat =
-        '{key: 66681, key1: null, key2: "string"}';
-    $request->requestBody->fakerFormattedStrings->macFormat = '25:8b:e7:e1:35:86';
-    $request->requestBody->fakerFormattedStrings->passwordFormat = 'IKpiCb6eWzdveK0';
-    $request->requestBody->fakerFormattedStrings->phoneFormat = '1-803-587-3283';
-    $request->requestBody->fakerFormattedStrings->timezoneFormat = 'America/Argentina/Buenos_Aires';
-    $request->requestBody->fakerFormattedStrings->unknownFormat = 'string';
-    $request->requestBody->fakerFormattedStrings->urlFormat = 'http://beneficial-inconvenience.net';
+        '{key: 86008, key1: null, key2: "<value>"}';
+    $request->requestBody->fakerFormattedStrings->macFormat = '76:c3:16:4a:25:8b';
+    $request->requestBody->fakerFormattedStrings->passwordFormat = 'zMy5BUDIKpiCb6e';
+    $request->requestBody->fakerFormattedStrings->phoneFormat = '(917) 974-0191 x1803';
+    $request->requestBody->fakerFormattedStrings->timezoneFormat = 'Europe/Berlin';
+    $request->requestBody->fakerFormattedStrings->unknownFormat = '<value>';
+    $request->requestBody->fakerFormattedStrings->urlFormat = 'https://spectacular-footage.biz';
     $request->requestBody->fakerFormattedStrings->uuidFormat =
-        '342442b8-aff3-42e0-b62d-e2e2d47a9bf1';
-    $request->requestBody->fakerFormattedStrings->zipcodeFormat = '09432';
+        'd63717a3-4244-42b8-aff3-2e0f62de2e2d';
+    $request->requestBody->fakerFormattedStrings->zipcodeFormat = '46679';
     $request->requestBody->fakerStrings = new Shared\FakerStrings();
-    $request->requestBody->fakerStrings->city = 'McLaughlinchester';
-    $request->requestBody->fakerStrings->iban = 'TL232743267267003560099';
-    $request->requestBody->fakerStrings->id = '<ID>';
-    $request->requestBody->fakerStrings->iPv4 = '208.201.244.247';
-    $request->requestBody->fakerStrings->iPv6 = 'bd3a:d72b:208b:2c81:8830:8bb9:7902:374e';
-    $request->requestBody->fakerStrings->account = '65982652';
-    $request->requestBody->fakerStrings->address = '0010 Assunta Throughway';
-    $request->requestBody->fakerStrings->amount = '616.94';
+    $request->requestBody->fakerStrings->city = 'North Amanishire';
+    $request->requestBody->fakerStrings->iban = 'JO74IFSP2274326726700356009879';
+    $request->requestBody->fakerStrings->id = '<id>';
+    $request->requestBody->fakerStrings->iPv4 = '247.188.210.52';
+    $request->requestBody->fakerStrings->iPv6 = 'ad72:b208:b2c8:1883:08bb:9790:2374:ea8e';
+    $request->requestBody->fakerStrings->account = '82652500';
+    $request->requestBody->fakerStrings->address = '00086 Sipes Corners';
+    $request->requestBody->fakerStrings->amount = '913.36';
     $request->requestBody->fakerStrings->avatar = 'https://loremflickr.com/640/480';
-    $request->requestBody->fakerStrings->color = 'tan';
+    $request->requestBody->fakerStrings->color = 'olive';
     $request->requestBody->fakerStrings->comment =
-        'New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart';
-    $request->requestBody->fakerStrings->company = 'Volkman LLC';
-    $request->requestBody->fakerStrings->country = 'Nicaragua';
-    $request->requestBody->fakerStrings->countryCode = 'MO';
-    $request->requestBody->fakerStrings->currency = 'Canadian Dollar';
-    $request->requestBody->fakerStrings->datatype = 'point';
-    $request->requestBody->fakerStrings->default = 'string';
-    $request->requestBody->fakerStrings->description = 'Quality-focused full-range circuit';
-    $request->requestBody->fakerStrings->directory = '/usr/ports';
-    $request->requestBody->fakerStrings->domainName = 'klutzy-prostacyclin.com';
-    $request->requestBody->fakerStrings->emailAddr = 'Jalyn_Haley47@gmail.com';
-    $request->requestBody->fakerStrings->extension = 'png';
-    $request->requestBody->fakerStrings->filename = 'panel.jpeg';
-    $request->requestBody->fakerStrings->filepath = '/opt/share/yahoo.xul';
-    $request->requestBody->fakerStrings->filetype = 'video';
-    $request->requestBody->fakerStrings->firstName = 'Trystan';
-    $request->requestBody->fakerStrings->fullName = 'Mrs. Lillian Bode';
+        'Carbonite web goalkeeper gloves are ergonomically designed to give easy fit';
+    $request->requestBody->fakerStrings->company = 'Considine - Wolf';
+    $request->requestBody->fakerStrings->country = 'Paraguay';
+    $request->requestBody->fakerStrings->countryCode = 'IN';
+    $request->requestBody->fakerStrings->currency = 'Colombian Peso';
+    $request->requestBody->fakerStrings->datatype = 'enum';
+    $request->requestBody->fakerStrings->default = '<value>';
+    $request->requestBody->fakerStrings->description = 'Multi-lateral neutral adapter';
+    $request->requestBody->fakerStrings->directory = '/bin';
+    $request->requestBody->fakerStrings->domainName = 'juvenile-equivalent.org';
+    $request->requestBody->fakerStrings->emailAddr = 'Jany53@yahoo.com';
+    $request->requestBody->fakerStrings->extension = 'mp2a';
+    $request->requestBody->fakerStrings->filename = 'your_file_here';
+    $request->requestBody->fakerStrings->filepath = '/Applications/ubiquitous_executive.pkpass';
+    $request->requestBody->fakerStrings->filetype = 'application';
+    $request->requestBody->fakerStrings->firstName = 'Blaise';
+    $request->requestBody->fakerStrings->fullName = 'Stephanie Carroll';
     $request->requestBody->fakerStrings->gender = 'Cis female';
     $request->requestBody->fakerStrings->job = 'Future Solutions Specialist';
-    $request->requestBody->fakerStrings->json = '{key: 95274, key1: null, key2: "string"}';
+    $request->requestBody->fakerStrings->json = '{key: 95274, key1: null, key2: "<value>"}';
     $request->requestBody->fakerStrings->key = '<key>';
     $request->requestBody->fakerStrings->lastName = 'Renner';
     $request->requestBody->fakerStrings->latitude = '-71.5944';
@@ -147,15 +218,17 @@ try {
     $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat(
         'Y-m-d\TH:i:s+',
-        '2020-01-01T00:00:00.000000001Z',
+        '2020-01-01T00:00:00.001Z',
     );
     $request->requestBody->simpleObject->decimal = 3.141592653589793;
     $request->requestBody->simpleObject->decimalStr = '3.14159265358979344719667586';
     $request->requestBody->simpleObject->enum = Shared\Enum::One;
     $request->requestBody->simpleObject->float32 = 1.1;
+    $request->requestBody->simpleObject->float64Str = '1.1';
     $request->requestBody->simpleObject->int = 1;
     $request->requestBody->simpleObject->int32 = 1;
     $request->requestBody->simpleObject->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $request->requestBody->simpleObject->int64Str = '100';
     $request->requestBody->simpleObject->intEnum = Shared\IntEnum::Second;
     $request->requestBody->simpleObject->intOptNull = 165468;
     $request->requestBody->simpleObject->num = 1.1;
@@ -164,28 +237,30 @@ try {
     $request->requestBody->simpleObject->strOpt = 'testOptional';
     $request->bigintParameter = 924793;
     $request->bigintParameterOptional = 583481;
-    $request->bigintStrParameter = 'string';
-    $request->bigintStrParameterOptional = 'string';
+    $request->bigintStrParameter = '<value>';
+    $request->bigintStrParameterOptional = '<value>';
     $request->boolParameter = false;
-    $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2023-12-21');
+    $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2024-12-21');
     $request->dateTimeDefaultParameter = DateTime::createFromFormat(
         'Y-m-d\TH:i:s+',
-        '2021-03-16T01:25:42.471Z',
+        '2022-03-16T03:03:06.071Z',
     );
     $request->dateTimeParameter = DateTime::createFromFormat(
         'Y-m-d\TH:i:s+',
-        '2023-05-24T07:01:53.326Z',
+        '2024-05-24T02:10:19.731Z',
     );
     $request->decimalParameter = 4713.96;
     $request->decimalParameterOptional = 9349.54;
-    $request->decimalStrParameter = 'string';
-    $request->decimalStrParameterOptional = 'string';
+    $request->decimalStrParameter = '<value>';
+    $request->decimalStrParameterOptional = '<value>';
     $request->doubleParameter = 8700.78;
     $request->enumParameter = Operations\EnumParameter::Value2;
     $request->falseyNumberParameter = 0;
     $request->float32Parameter = 1341.86;
+    $request->float64StringParameter = '<value>';
     $request->floatParameter = 5429.24;
     $request->int64Parameter = 101970;
+    $request->int64StringParameter = '<value>';
     $request->intParameter = 938852;
     $request->optEnumParameter = Operations\OptEnumParameter::Value3;
     $request->strParameter = 'example 3';
@@ -199,19 +274,21 @@ try {
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [SDK](docs/sdks/sdk/README.md)
 
-* [putAnythingIgnoredGeneration](docs/sdks/sdk/README.md#putanythingignoredgeneration)
+* [authenticatedRequest](docs/sdks/sdk/README.md#authenticatedrequest)
+* [conflictingEnum](docs/sdks/sdk/README.md#conflictingenum) - Test potential namespace conflicts with java.lang.Object
+* [ignoredGenerationPut](docs/sdks/sdk/README.md#ignoredgenerationput)
 * [responseBodyJsonGet](docs/sdks/sdk/README.md#responsebodyjsonget)
 
 ### [Generation](docs/sdks/generation/README.md)
@@ -237,29 +314,61 @@ try {
 * [typedParameterGenerationGet](docs/sdks/generation/README.md#typedparametergenerationget)
 * [usageExamplePost](docs/sdks/generation/README.md#usageexamplepost) - An operation used for testing usage examples
 
-### [Errors](docs/sdks/errors/README.md)
-
-* [connectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
-* [statusGetError](docs/sdks/errors/README.md#statusgeterror)
-* [statusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
-
 ### [Unions](docs/sdks/unions/README.md)
 
+* [collectionOneOfPost](docs/sdks/unions/README.md#collectiononeofpost)
 * [flattenedTypedObjectPost](docs/sdks/unions/README.md#flattenedtypedobjectpost)
 * [mixedTypeOneOfPost](docs/sdks/unions/README.md#mixedtypeoneofpost)
 * [nullableOneOfRefInObjectPost](docs/sdks/unions/README.md#nullableoneofrefinobjectpost)
 * [nullableOneOfSchemaPost](docs/sdks/unions/README.md#nullableoneofschemapost)
 * [nullableOneOfTypeInObjectPost](docs/sdks/unions/README.md#nullableoneoftypeinobjectpost)
 * [nullableTypedObjectPost](docs/sdks/unions/README.md#nullabletypedobjectpost)
+* [oneOfOverlappingObjects](docs/sdks/unions/README.md#oneofoverlappingobjects)
 * [primitiveTypeOneOfPost](docs/sdks/unions/README.md#primitivetypeoneofpost)
+* [stronglyTypedOneOfDiscriminatedPost](docs/sdks/unions/README.md#stronglytypedoneofdiscriminatedpost)
 * [stronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
+* [stronglyTypedOneOfPostWithNonStandardDiscriminatorName](docs/sdks/unions/README.md#stronglytypedoneofpostwithnonstandarddiscriminatorname)
 * [typedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
 * [typedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
-* [unionBigIntDecimal](docs/sdks/unions/README.md#unionbigintdecimal)
+* [unionBigIntStrDecimal](docs/sdks/unions/README.md#unionbigintstrdecimal)
 * [unionDateNull](docs/sdks/unions/README.md#uniondatenull)
 * [unionDateTimeBigInt](docs/sdks/unions/README.md#uniondatetimebigint)
 * [unionDateTimeNull](docs/sdks/unions/README.md#uniondatetimenull)
+* [unionMap](docs/sdks/unions/README.md#unionmap)
+* [weaklyTypedOneOfNullEnumPost](docs/sdks/unions/README.md#weaklytypedoneofnullenumpost)
 * [weaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
+
+### [Errors](docs/sdks/errors/README.md)
+
+* [connectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
+* [statusGetError](docs/sdks/errors/README.md#statusgeterror)
+* [statusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
+* [unionErrorsDiscriminatedGet](docs/sdks/errors/README.md#unionerrorsdiscriminatedget)
+* [unionErrorsGet](docs/sdks/errors/README.md#unionerrorsget)
+
+### [CustomClient](docs/sdks/customclient/README.md)
+
+* [customClientPost](docs/sdks/customclient/README.md#customclientpost)
+
+### [ResponseBodies](docs/sdks/responsebodies/README.md)
+
+* [flattenedEnvelopePaginationResponse](docs/sdks/responsebodies/README.md#flattenedenvelopepaginationresponse)
+* [flattenedEnvelopeResponse](docs/sdks/responsebodies/README.md#flattenedenveloperesponse)
+* [flattenedEnvelopeUnionResponse](docs/sdks/responsebodies/README.md#flattenedenvelopeunionresponse)
+* [flattenedUnionResponse](docs/sdks/responsebodies/README.md#flattenedunionresponse)
+* [responseBodyAdditionalPropertiesAnyPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesanypost)
+* [responseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
+* [responseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
+* [responseBodyAdditionalPropertiesObjectPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesobjectpost)
+* [responseBodyAdditionalPropertiesPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiespost)
+* [responseBodyBytesGet](docs/sdks/responsebodies/README.md#responsebodybytesget)
+* [responseBodyDecimalStr](docs/sdks/responsebodies/README.md#responsebodydecimalstr)
+* [responseBodyEmptyWithHeaders](docs/sdks/responsebodies/README.md#responsebodyemptywithheaders)
+* [responseBodyMissing2xxOr3xxGet](docs/sdks/responsebodies/README.md#responsebodymissing2xxor3xxget)
+* [responseBodyOptionalGet](docs/sdks/responsebodies/README.md#responsebodyoptionalget)
+* [responseBodyReadOnly](docs/sdks/responsebodies/README.md#responsebodyreadonly)
+* [responseBodyStringGet](docs/sdks/responsebodies/README.md#responsebodystringget)
+* [responseBodyXmlGet](docs/sdks/responsebodies/README.md#responsebodyxmlget)
 
 ### [Flattening](docs/sdks/flattening/README.md)
 
@@ -272,6 +381,8 @@ try {
 ### [Globals](docs/sdks/globals/README.md)
 
 * [globalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
+* [globalsHeaderGet](docs/sdks/globals/README.md#globalsheaderget)
+* [globalsHiddenPost](docs/sdks/globals/README.md#globalshiddenpost)
 * [globalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
 
 ### [Parameters](docs/sdks/parameters/README.md)
@@ -290,6 +401,7 @@ try {
 * [headerParamsObject](docs/sdks/parameters/README.md#headerparamsobject)
 * [headerParamsPrimitive](docs/sdks/parameters/README.md#headerparamsprimitive)
 * [jsonQueryParamsObject](docs/sdks/parameters/README.md#jsonqueryparamsobject)
+* [jsonQueryParamsObjectSmaller](docs/sdks/parameters/README.md#jsonqueryparamsobjectsmaller)
 * [mixedParametersCamelCase](docs/sdks/parameters/README.md#mixedparameterscamelcase)
 * [mixedParametersPrimitives](docs/sdks/parameters/README.md#mixedparametersprimitives)
 * [mixedQueryParams](docs/sdks/parameters/README.md#mixedqueryparams)
@@ -299,6 +411,14 @@ try {
 * [simplePathParameterMaps](docs/sdks/parameters/README.md#simplepathparametermaps)
 * [simplePathParameterObjects](docs/sdks/parameters/README.md#simplepathparameterobjects)
 * [simplePathParameterPrimitives](docs/sdks/parameters/README.md#simplepathparameterprimitives)
+
+### [Hooks](docs/sdks/hooks/README.md)
+
+* [authorizationHeaderModification](docs/sdks/hooks/README.md#authorizationheadermodification)
+* [testHooks](docs/sdks/hooks/README.md#testhooks)
+* [testHooksAfterResponse](docs/sdks/hooks/README.md#testhooksafterresponse)
+* [testHooksBeforeCreateRequestPaths](docs/sdks/hooks/README.md#testhooksbeforecreaterequestpaths)
+* [testHooksError](docs/sdks/hooks/README.md#testhookserror)
 
 ### [NestFirst](docs/sdks/nestfirst/README.md)
 
@@ -328,9 +448,15 @@ try {
 * [oauth2Override](docs/sdks/auth/README.md#oauth2override)
 * [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
+### [OpenEnums](docs/sdks/openenums/README.md)
+
+* [openEnumsPostUnrecognized](docs/sdks/openenums/README.md#openenumspostunrecognized)
+
 ### [RequestBodies](docs/sdks/requestbodies/README.md)
 
+* [nullEnumPost](docs/sdks/requestbodies/README.md#nullenumpost)
 * [nullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
+* [nullableOptionalFieldsPost](docs/sdks/requestbodies/README.md#nullableoptionalfieldspost)
 * [nullableRequiredEmptyObjectPost](docs/sdks/requestbodies/README.md#nullablerequiredemptyobjectpost)
 * [nullableRequiredPropertyPost](docs/sdks/requestbodies/README.md#nullablerequiredpropertypost)
 * [nullableRequiredSharedObjectPost](docs/sdks/requestbodies/README.md#nullablerequiredsharedobjectpost)
@@ -371,6 +497,8 @@ try {
 * [requestBodyPostJsonDataTypesBigInt](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesbigint)
 * [requestBodyPostJsonDataTypesBigIntStr](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesbigintstr)
 * [requestBodyPostJsonDataTypesBoolean](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesboolean)
+* [requestBodyPostJsonDataTypesComplexNumberArrays](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypescomplexnumberarrays)
+* [requestBodyPostJsonDataTypesComplexNumberMaps](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypescomplexnumbermaps)
 * [requestBodyPostJsonDataTypesDate](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesdate)
 * [requestBodyPostJsonDataTypesDateTime](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesdatetime)
 * [requestBodyPostJsonDataTypesDecimal](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesdecimal)
@@ -401,6 +529,7 @@ try {
 * [requestBodyPutMultipartDeep](docs/sdks/requestbodies/README.md#requestbodyputmultipartdeep)
 * [requestBodyPutMultipartDifferentFileName](docs/sdks/requestbodies/README.md#requestbodyputmultipartdifferentfilename)
 * [requestBodyPutMultipartFile](docs/sdks/requestbodies/README.md#requestbodyputmultipartfile)
+* [requestBodyPutMultipartOptionalRequestBody](docs/sdks/requestbodies/README.md#requestbodyputmultipartoptionalrequestbody)
 * [requestBodyPutMultipartSimple](docs/sdks/requestbodies/README.md#requestbodyputmultipartsimple)
 * [requestBodyPutString](docs/sdks/requestbodies/README.md#requestbodyputstring)
 * [requestBodyPutStringWithParams](docs/sdks/requestbodies/README.md#requestbodyputstringwithparams)
@@ -411,20 +540,6 @@ try {
 * [requestBodyWriteOnly](docs/sdks/requestbodies/README.md#requestbodywriteonly)
 * [requestBodyWriteOnlyOutput](docs/sdks/requestbodies/README.md#requestbodywriteonlyoutput)
 * [requestBodyWriteOnlyUnion](docs/sdks/requestbodies/README.md#requestbodywriteonlyunion)
-
-### [ResponseBodies](docs/sdks/responsebodies/README.md)
-
-* [responseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
-* [responseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
-* [responseBodyAdditionalPropertiesObjectPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesobjectpost)
-* [responseBodyAdditionalPropertiesPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiespost)
-* [responseBodyBytesGet](docs/sdks/responsebodies/README.md#responsebodybytesget)
-* [responseBodyEmptyWithHeaders](docs/sdks/responsebodies/README.md#responsebodyemptywithheaders)
-* [responseBodyOptionalGet](docs/sdks/responsebodies/README.md#responsebodyoptionalget)
-* [responseBodyReadOnly](docs/sdks/responsebodies/README.md#responsebodyreadonly)
-* [responseBodyStringGet](docs/sdks/responsebodies/README.md#responsebodystringget)
-* [responseBodyXmlGet](docs/sdks/responsebodies/README.md#responsebodyxmlget)
-* [responseBodyZeroValueComplexTypePtrsPost](docs/sdks/responsebodies/README.md#responsebodyzerovaluecomplextypeptrspost)
 
 ### [Servers](docs/sdks/servers/README.md)
 
@@ -442,7 +557,6 @@ try {
 
 ### [AuthNew](docs/sdks/authnew/README.md)
 
-* [apiKeyAuthGlobalNew](docs/sdks/authnew/README.md#apikeyauthglobalnew)
 * [authGlobal](docs/sdks/authnew/README.md#authglobal)
 * [basicAuthNew](docs/sdks/authnew/README.md#basicauthnew)
 * [multipleMixedOptionsAuth](docs/sdks/authnew/README.md#multiplemixedoptionsauth)
@@ -454,17 +568,18 @@ try {
 * [oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [openIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
-### [Documentation](docs/sdks/documentation/README.md)
-
-* [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
-
 ### [Resource](docs/sdks/resource/README.md)
 
 * [createFile](docs/sdks/resource/README.md#createfile)
 * [createResource](docs/sdks/resource/README.md#createresource)
 * [deleteResource](docs/sdks/resource/README.md#deleteresource)
+* [getArrayDataSource](docs/sdks/resource/README.md#getarraydatasource)
 * [getResource](docs/sdks/resource/README.md#getresource)
 * [updateResource](docs/sdks/resource/README.md#updateresource)
+
+### [Documentation](docs/sdks/documentation/README.md)
+
+* [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
 
 ### [First](docs/sdks/first/README.md)
 
@@ -477,41 +592,49 @@ try {
 ### [Pagination](docs/sdks/pagination/README.md)
 
 * [paginationCursorBody](docs/sdks/pagination/README.md#paginationcursorbody)
+* [paginationCursorNonNumeric](docs/sdks/pagination/README.md#paginationcursornonnumeric)
 * [paginationCursorParams](docs/sdks/pagination/README.md#paginationcursorparams)
+* [paginationLimitOffsetDeepOutputsPageBody](docs/sdks/pagination/README.md#paginationlimitoffsetdeepoutputspagebody)
 * [paginationLimitOffsetOffsetBody](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetbody)
 * [paginationLimitOffsetOffsetParams](docs/sdks/pagination/README.md#paginationlimitoffsetoffsetparams)
 * [paginationLimitOffsetPageBody](docs/sdks/pagination/README.md#paginationlimitoffsetpagebody)
 * [paginationLimitOffsetPageParams](docs/sdks/pagination/README.md#paginationlimitoffsetpageparams)
+* [paginationURLParams](docs/sdks/pagination/README.md#paginationurlparams)
+* [paginationWithRetries](docs/sdks/pagination/README.md#paginationwithretries)
 
 ### [Retries](docs/sdks/retries/README.md)
 
+* [retriesAfter](docs/sdks/retries/README.md#retriesafter)
+* [retriesConnectErrorGet](docs/sdks/retries/README.md#retriesconnecterrorget) - A request to a non-valid port to test connection errors
+* [retriesFlatEmptyResponsePost](docs/sdks/retries/README.md#retriesflatemptyresponsepost)
 * [retriesGet](docs/sdks/retries/README.md#retriesget)
-<!-- End SDK Available Operations -->
+* [retriesPost](docs/sdks/retries/README.md#retriespost)
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
 
 
-
-<!-- Start Global Parameters -->
+<!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
-Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
+Certain parameters are configured globally. These parameters may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `globalPathParam` to `100` at SDK initialization and then you do not have to pass the same value on calls to operations like `globalPathParameterGet`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `globalHeaderParam` to `true` at SDK initialization and then you do not have to pass the same value on calls to operations like `globalPathParameterGet`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
 
-The following global parameters are available. The required parameters must be set when you initialize the SDK client.
+The following global parameters are available.
 
 | Name | Type | Required | Description |
 | ---- | ---- |:--------:| ----------- |
-| globalPathParam | int | ✔️ | The globalPathParam parameter. |
-| globalQueryParam | string | ✔️ | The globalQueryParam parameter. |
+| globalHeaderParam | bool |  | The globalHeaderParam parameter. |
+| globalHiddenHeaderParam | string |  | The globalHiddenHeaderParam parameter. |
+| globalHiddenPathParam | string |  | The globalHiddenPathParam parameter. |
+| globalHiddenQueryParam | string |  | The globalHiddenQueryParam parameter. |
+| globalPathParam | int |  | The globalPathParam parameter. |
+| globalQueryParam | string |  | The globalQueryParam parameter. |
 
 
 ### Example
@@ -520,7 +643,8 @@ The following global parameters are available. The required parameters must be s
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use OpenAPI\OpenAPI;
 use OpenAPI\OpenAPI\Models\Shared;
@@ -530,21 +654,94 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->setSecurity($security)
     ->build();
 
 try {
-    $response = $sdk->globals->globalPathParameterGet(719830);
+    $response = $sdk->globals->globalPathParameterGet(100);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 
 ```
-<!-- End Global Parameters -->
+<!-- End Global Parameters [global-parameters] -->
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+## Server Selection
+
+### Select Server by Index
+
+You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `http://localhost:35123` | None |
+| 1 | `http://broken` | None |
+| 2 | `http://{hostname}:{port}` | `hostname` (default is `localhost`), `port` (default is `35123`) |
+| 3 | `http://localhost:35123/anything/{something}` | `something` (default is `something`) |
+| 4 | `{protocol}://{hostname}:{port}` | `hostname` (default is `localhost`), `port` (default is `35123`), `protocol` (default is `http`) |
+
+
+
+#### Variables
+
+Some of the server options above contain variables. If you want to set the values of those variables, the following optional parameters are available when initializing the SDK client instance:
+ * `hostname: string`
+ * `port: string`
+ * `something: ServerSomething`
+ * `protocol: string`
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+
+
+### Override Server URL Per-Operation
+
+The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
+```php
+<?php
+
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)
+    ->build();
+
+try {
+    $response = $sdk->errors->connectionErrorGet('http://somebrokenapi.broken');
+
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+} catch (Throwable $e) {
+    // handle exception
+}
+
+```
+<!-- End Server Selection [server] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

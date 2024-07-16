@@ -4,11 +4,12 @@ from sdk import SDK
 from sdk.models.operations import *
 from sdk.utils import *
 
-from .helpers import *
 from .common_helpers import *
+from .test_helpers import *
+
 
 def test_component_body_and_param_no_conflict():
-    record_test('flattening-component-body-and-param-no-conflict')
+    record_test("flattening-component-body-and-param-no-conflict")
 
     s = SDK()
     assert s is not None
@@ -16,16 +17,17 @@ def test_component_body_and_param_no_conflict():
     obj = create_simple_object()
 
     res = s.flattening.component_body_and_param_no_conflict(
-        param_str='param test', simple_object=obj)
+        param_str="param test", simple_object=obj
+    )
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res is not None
-    assert res.res.args['paramStr'] == 'param test'
+    assert res.res.args["paramStr"] == "param test"
     compare_simple_object(res.res.json, obj)
 
 
 def test_component_body_and_param_conflict():
-    record_test('flattening-component-body-and-param-conflict')
+    record_test("flattening-component-body-and-param-conflict")
 
     s = SDK()
     assert s is not None
@@ -33,66 +35,68 @@ def test_component_body_and_param_conflict():
     obj = create_simple_object()
 
     res = s.flattening.component_body_and_param_conflict(
-        str_='param test', simple_object=obj)
+        str_="param test", simple_object=obj
+    )
 
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res is not None
-    assert res.res.args['str'] == 'param test'
+    assert res.res.args["str"] == "param test"
     compare_simple_object(res.res.json, obj)
 
 
 def test_inline_body_and_param_conflict():
-    record_test('flattening-inline-body-and-param-conflict')
+    record_test("flattening-inline-body-and-param-conflict")
 
     s = SDK()
     assert s is not None
 
     res = s.flattening.inline_body_and_param_conflict(
-        str_='param test',
+        str_="param test",
         request_body=InlineBodyAndParamConflictRequestBody(
-            str_='body test',
+            str_="body test",
         ),
     )
 
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res is not None
-    assert res.res.args['str'] == 'param test'
-    assert res.res.json.str_ == 'body test'
+    assert res.res.args["str"] == "param test"
+    assert res.res.json.str_ == "body test"
 
 
 def test_inline_body_and_param_no_conflict():
-    record_test('flattening-inline-body-and-param-no-conflict')
+    record_test("flattening-inline-body-and-param-no-conflict")
 
     s = SDK()
     assert s is not None
 
     res = s.flattening.inline_body_and_param_no_conflict(
-        param_str='param test',
+        param_str="param test",
         request_body=InlineBodyAndParamNoConflictRequestBody(
-            body_str='body test',
-        )
+            body_str="body test",
+        ),
     )
 
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res is not None
-    assert res.res.args['paramStr'] == 'param test'
-    assert res.res.json.body_str == 'body test'
+    assert res.res.args["paramStr"] == "param test"
+    assert res.res.json.body_str == "body test"
 
 
 def test_conflicting_params():
-    record_test('flattening-conflicting-params')
+    record_test("flattening-conflicting-params")
 
     s = SDK()
     assert s is not None
 
     res = s.flattening.conflicting_params(
-        str_path_parameter='pathParam', str_query_parameter='queryParam')
+        str_path_parameter="pathParam", str_query_parameter="queryParam"
+    )
 
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
     assert res.res is not None
-    assert '/pathParam?' in res.res.url
-    assert res.res.args['str'] == 'queryParam'
+    assert "/pathParam?" in res.res.url
+    assert res.res.args["str"] == "queryParam"
