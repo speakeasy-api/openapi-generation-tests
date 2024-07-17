@@ -3,21 +3,21 @@
 
 ## Supported Types
 
-### TypedObject1
+### `shared.TypedObject1`
 
 ```python
-typedObjectOneOf: shared.TypedObject1 = /* values here */
+value: shared.TypedObject1 = /* values here */
 ```
 
-### TypedObject2
+### `shared.TypedObject2`
 
 ```python
-typedObjectOneOf: shared.TypedObject2 = /* values here */
+value: shared.TypedObject2 = /* values here */
 ```
 
-### TypedObject3
+### `shared.TypedObject3`
 
 ```python
-typedObjectOneOf: shared.TypedObject3 = /* values here */
+value: shared.TypedObject3 = /* values here */
 ```
 

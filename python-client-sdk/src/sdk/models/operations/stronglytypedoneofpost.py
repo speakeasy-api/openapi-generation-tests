@@ -3,18 +3,17 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ...models.shared import deepobjectwithtype as shared_deepobjectwithtype
-from ...models.shared import simpleobjectwithtype as shared_simpleobjectwithtype
+from ...models.shared import stronglytypedoneofobject as shared_stronglytypedoneofobject
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Optional, Union
+from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class StronglyTypedOneOfPostRes:
     r"""OK"""
-    json: Union[shared_simpleobjectwithtype.SimpleObjectWithType, shared_deepobjectwithtype.DeepObjectWithType] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
+    json: shared_stronglytypedoneofobject.StronglyTypedOneOfObject = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
 
 
@@ -25,7 +24,7 @@ class StronglyTypedOneOfPostResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
     res: Optional[StronglyTypedOneOfPostRes] = dataclasses.field(default=None)
     r"""OK"""

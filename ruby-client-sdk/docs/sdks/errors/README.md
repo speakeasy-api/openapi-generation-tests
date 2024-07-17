@@ -10,26 +10,33 @@ Endpoints for testing error responses.
 * [connection_error_get](#connection_error_get)
 * [status_get_error](#status_get_error)
 * [status_get_x_speakeasy_errors](#status_get_x_speakeasy_errors)
+* [union_errors_discriminated_get](#union_errors_discriminated_get)
+* [union_errors_get](#union_errors_get)
 
 ## connection_error_get
 
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
     
 res = s.errors.connection_error_get()
 
-if res.status == 200
+if res.status_code == 200
   # handle response
 end
 
@@ -44,7 +51,7 @@ end
 
 ### Response
 
-**[T.nilable(Operations::ConnectionErrorGetResponse)](../../models/operations/connectionerrorgetresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::ConnectionErrorGetResponse)](../../models/operations/connectionerrorgetresponse.md)**
 
 
 ## status_get_error
@@ -52,26 +59,25 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::StatusGetErrorRequest.new(
-  path_params=Operations::StatusGetErrorRequest.new(
-    status_code=458364,
-  ),
-)
     
-res = s.errors.status_get_error(req)
+res = s.errors.status_get_error(status_code=458364)
 
-if res.status == 200
+if res.status_code == 200
   # handle response
 end
 
@@ -81,12 +87,12 @@ end
 
 | Parameter          | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `status_code`      | *Integer*          | :heavy_check_mark: | N/A                |
+| `status_code`      | *::Integer*        | :heavy_check_mark: | N/A                |
 
 
 ### Response
 
-**[T.nilable(Operations::StatusGetErrorResponse)](../../models/operations/statusgeterrorresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::StatusGetErrorResponse)](../../models/operations/statusgeterrorresponse.md)**
 
 
 ## status_get_x_speakeasy_errors
@@ -94,26 +100,25 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::StatusGetXSpeakeasyErrorsRequest.new(
-  path_params=Operations::StatusGetXSpeakeasyErrorsRequest.new(
-    status_code=385913,
-  ),
-)
     
-res = s.errors.status_get_x_speakeasy_errors(req)
+res = s.errors.status_get_x_speakeasy_errors(status_code=385913)
 
-if res.status == 200
+if res.status_code == 200
   # handle response
 end
 
@@ -123,11 +128,95 @@ end
 
 | Parameter                      | Type                           | Required                       | Description                    |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `status_code`                  | *Integer*                      | :heavy_check_mark:             | N/A                            |
+| `status_code`                  | *::Integer*                    | :heavy_check_mark:             | N/A                            |
 | `server_url`                   | *String*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
 
 ### Response
 
-**[T.nilable(Operations::StatusGetXSpeakeasyErrorsResponse)](../../models/operations/statusgetxspeakeasyerrorsresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::StatusGetXSpeakeasyErrorsResponse)](../../models/operations/statusgetxspeakeasyerrorsresponse.md)**
+
+
+## union_errors_discriminated_get
+
+### Example Usage
+
+```ruby
+require 'openapi'
+
+
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
+s.config_security(
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
+  )
+)
+
+    
+res = s.errors.union_errors_discriminated_get(error_tag=::OpenApiSDK::Operations::ErrorTag::TAG1)
+
+if res.status_code == 200
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `error_tag`                                                               | [::OpenApiSDK::Operations::ErrorTag](../../models/operations/errortag.md) | :heavy_check_mark:                                                        | N/A                                                                       |
+| `server_url`                                                              | *String*                                                                  | :heavy_minus_sign:                                                        | An optional server URL to use.                                            |
+
+
+### Response
+
+**[T.nilable(::OpenApiSDK::Operations::UnionErrorsDiscriminatedGetResponse)](../../models/operations/unionerrorsdiscriminatedgetresponse.md)**
+
+
+## union_errors_get
+
+### Example Usage
+
+```ruby
+require 'openapi'
+
+
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
+s.config_security(
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
+  )
+)
+
+    
+res = s.errors.union_errors_get(error_type=::OpenApiSDK::Operations::ErrorType::TYPE1)
+
+if res.status_code == 200
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `error_type`                                                                | [::OpenApiSDK::Operations::ErrorType](../../models/operations/errortype.md) | :heavy_check_mark:                                                          | N/A                                                                         |
+| `server_url`                                                                | *String*                                                                    | :heavy_minus_sign:                                                          | An optional server URL to use.                                              |
+
+
+### Response
+
+**[T.nilable(::OpenApiSDK::Operations::UnionErrorsGetResponse)](../../models/operations/unionerrorsgetresponse.md)**
 

@@ -5,5 +5,5 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `booleanEnum`      | *Boolean*          | :heavy_check_mark: | N/A                |
-| `numberEnum`       | *Double*           | :heavy_check_mark: | N/A                |
+| `booleanEnum`      | *boolean*          | :heavy_check_mark: | N/A                |
+| `numberEnum`       | *double*           | :heavy_check_mark: | N/A                |

@@ -1,31 +1,87 @@
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ```bash
 gem install specific_install
 gem specific_install https://github.com/speakeasy-api/openapi-generation-tests -d ruby-client-sdk 
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example 1
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
+  )
+)
+
+
+req = ::OpenApiSDK::Shared::SimpleObject.new(
+  any: "any",
+  bigint: 8821239038968084,
+  bigint_str: "9223372036854775808",
+  bool: true,
+  bool_opt: true,
+  date: Date.parse("2020-01-01"),
+  date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+  decimal: 3.141592653589793,
+  decimal_str: "3.14159265358979344719667586",
+  enum: ::OpenApiSDK::Shared::Enum::ONE,
+  float32: 1.1,
+  float64_str: "1.1",
+  int: 1,
+  int32: 1,
+  int32_enum: ::OpenApiSDK::Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+  int64_str: "100",
+  int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+  num: 1.1,
+  str_: "test",
+  str_opt: "testOptional",
+)
+    
+res = s.generation.global_name_overridden(req)
+
+if ! res.object.nil?
+  # handle response
+end
+
+```
+
+### Example 2
+
+```ruby
+require 'openapi'
+
+
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
+s.config_security(
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
     
-res = s.generation.global_name_overridden()
+res = s.servers.select_global_server()
 
-if ! res.object.nil?
+if res.status_code == 200
   # handle response
 end
 
@@ -36,255 +92,83 @@ end
 Do this second
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 
-   
-req = Operations::UsageExamplePostRequest.new(
-  security=Operations::UsageExamplePostSecurity.new(
-    password="YOUR_PASSWORD",
-    username="YOUR_USERNAME",
-  ),
-  query_params=Operations::UsageExamplePostRequest.new(
-    request_body=Operations::UsageExamplePostRequestBody.new(
-      faker_formatted_strings=Shared::FakerFormattedStrings.new(
-        address_format="48525 Maude Fall",
-        directory_format="/etc/defaults",
-        domain_format="next-conflict.name",
-        email_format="Fermin_Koelpin@gmail.com",
-        filename_format="northeast.wav",
-        filepath_format="/lib/pizza_integrated.hbs",
-        image_format="https://loremflickr.com/640/480",
-        ipv4_format="75.42.25.241",
-        ipv6_format="36a9:c057:a71b:b73a:c9ee:2348:d76c:3164",
-        json_format="{key: 66681, key1: null, key2: \"string\"}",
-        mac_format="25:8b:e7:e1:35:86",
-        password_format="IKpiCb6eWzdveK0",
-        phone_format="1-803-587-3283",
-        timezone_format="America/Argentina/Buenos_Aires",
-        unknown_format="string",
-        url_format="http://beneficial-inconvenience.net",
-        uuid_format="342442b8-aff3-42e0-b62d-e2e2d47a9bf1",
-        zipcode_format="09432",
-      ),
-      faker_strings=Shared::FakerStrings.new(
-        city="McLaughlinchester",
-        iban="TL232743267267003560099",
-        id="<ID>",
-        i_pv4="208.201.244.247",
-        i_pv6="bd3a:d72b:208b:2c81:8830:8bb9:7902:374e",
-        account="65982652",
-        address="0010 Assunta Throughway",
-        amount="616.94",
-        avatar="https://loremflickr.com/640/480",
-        color="tan",
-        comment="New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
-        company="Volkman LLC",
-        country="Nicaragua",
-        country_code="MO",
-        currency="Canadian Dollar",
-        datatype="point",
-        default="string",
-        description="Quality-focused full-range circuit",
-        directory="/usr/ports",
-        domain_name="klutzy-prostacyclin.com",
-        email_addr="Jalyn_Haley47@gmail.com",
-        extension="png",
-        filename="panel.jpeg",
-        filepath="/opt/share/yahoo.xul",
-        filetype="video",
-        first_name="Trystan",
-        full_name="Mrs. Lillian Bode",
-        gender="Cis female",
-        job="Future Solutions Specialist",
-        json="{key: 95274, key1: null, key2: \"string\"}",
-        key="<key>",
-        last_name="Renner",
-        latitude="-71.5944",
-        locale="sv",
-        longitude="-131.8166",
-        mac="e9:ee:6a:24:2a:1b",
-        manufacturer="Volvo",
-        material="Plastic",
-        middle_name="Sawyer",
-        model="Mustang",
-        password="YAC_QiNrTzqbDz8",
-        phone="(650) 469-3026 x116",
-        pin="9497",
-        postal_code="64696",
-        price="25.00",
-        product="Recycled Granite Pants",
-        sex="male",
-        street="Lura Wells",
-        timezone="Africa/Nairobi",
-        unit="degree Celsius",
-        url="https://crooked-dulcimer.name",
-        username="Mable76",
-        uuid="16b919d6-51cd-4e97-81e2-5221b7b6969f",
-      ),
-      simple_object=Shared::SimpleObject.new(
-        any="any",
-        bigint=8821239038968084,
-        bigint_str="9223372036854775808",
-        bool=true,
-        bool_opt=true,
-        date=Date.parse("2020-01-01"),
-        date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-        decimal=3.141592653589793,
-        decimal_str="3.14159265358979344719667586",
-        enum=Shared::Enum::ONE,
-        float32=1.1,
-        int=1,
-        int32=1,
-        int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::IntEnum::SECOND,
-        int_opt_null=165468,
-        num=1.1,
-        num_opt_null=5944.32,
-        str_="test",
-        str_opt="testOptional",
-      ),
-    ),
-    bigint_parameter=924793,
-    bigint_parameter_optional=583481,
-    bigint_str_parameter="string",
-    bigint_str_parameter_optional="string",
-    bool_parameter=false,
-    date_parameter=Date.parse("2023-12-21"),
-    date_time_default_parameter=DateTime.iso8601('2021-03-16T01:25:42.471Z'),
-    date_time_parameter=DateTime.iso8601('2023-05-24T07:01:53.326Z'),
-    decimal_parameter=4713.96,
-    decimal_parameter_optional=9349.54,
-    decimal_str_parameter="string",
-    decimal_str_parameter_optional="string",
-    double_parameter=8700.78,
-    enum_parameter=Operations::EnumParameter::VALUE2,
-    falsey_number_parameter=0,
-    float32_parameter=1341.86,
-    float_parameter=5429.24,
-    int64_parameter=101970,
-    int_parameter=938852,
-    opt_enum_parameter=Operations::OptEnumParameter::VALUE3,
-    str_parameter="example 3",
-  ),
-  request_body=Operations::UsageExamplePostRequestBody.new(
-    faker_formatted_strings=Shared::FakerFormattedStrings.new(
-      address_format="37376 Humberto Court",
-      directory_format="/net",
-      domain_format="rubbery-enrollment.net",
-      email_format="Marcella.Kuhic82@gmail.com",
-      filename_format="fiji.wav",
-      filepath_format="/etc/ppp/psst.ppam",
-      image_format="https://loremflickr.com/640/480",
-      ipv4_format="88.90.151.95",
-      ipv6_format="51e9:386a:9f8f:4b14:b9d6:be98:7720:83fe",
-      json_format="{key: 53630, key1: null, key2: \"string\"}",
-      mac_format="79:c1:4d:82:11:db",
-      password_format="ibYyx3Won4RR_4m",
-      phone_format="500.706.4774 x6701",
-      timezone_format="Asia/Kuwait",
-      unknown_format="string",
-      url_format="https://extraneous-dagger.net",
-      uuid_format="8b35beed-b88c-40d0-8471-2404bc12b138",
-      zipcode_format="58660",
-    ),
-    faker_strings=Shared::FakerStrings.new(
-      city="Cruzboro",
-      iban="FI1600143086790364",
-      id="<ID>",
-      i_pv4="148.203.197.152",
-      i_pv6="e518:1ba7:4f79:621f:5419:63d7:30a3:1fb6",
-      account="61697367",
-      address="209 Hazel Freeway",
-      amount="313.41",
-      avatar="https://loremflickr.com/640/480",
-      color="lime",
-      comment="The Football Is Good For Training And Recreational Purposes",
-      company="Franey Inc",
-      country="Estonia",
-      country_code="MV",
-      currency="Singapore Dollar",
-      datatype="time",
-      default="string",
-      description="Integrated explicit artificial intelligence",
-      directory="/net",
-      domain_name="feline-signup.biz",
-      email_addr="Coralie72@yahoo.com",
-      extension="pdf",
-      filename="jittery_besides_account.htm",
-      filepath="/private/response_tesla_global.cat",
-      filetype="application",
-      first_name="Jailyn",
-      full_name="Michele Rice",
-      gender="Trans",
-      job="National Metrics Administrator",
-      json="{key: 78733, key1: null, key2: \"string\"}",
-      key="<key>",
-      last_name="Fisher",
-      latitude="-23.5142",
-      locale="lv",
-      longitude="-161.4248",
-      mac="58:66:74:71:5f:e7",
-      manufacturer="Kia",
-      material="Granite",
-      middle_name="Nico",
-      model="Grand Cherokee",
-      password="kcH1VhIg2TEQP2U",
-      phone="238-626-8671",
-      pin="2569",
-      postal_code="91734-1821",
-      price="178.00",
-      product="Intelligent Soft Towels",
-      sex="male",
-      street="O'Kon Circle",
-      timezone="Europe/Bratislava",
-      unit="kelvin",
-      url="http://clear-rain.info",
-      username="Cassandra.Rolfson55",
-      uuid="2fbb06b4-9579-4b19-8606-6dc6dbd9c0be",
-    ),
-    simple_object=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::IntEnum::SECOND,
-      int_opt_null=303425,
-      num=1.1,
-      num_opt_null=2928.25,
-      str_="test",
-      str_opt="testOptional",
+
+req = ::OpenApiSDK::Operations::UsageExamplePostRequest.new(
+  request_body: ::OpenApiSDK::Operations::UsageExamplePostRequestBody.new(
+    simple_object: ::OpenApiSDK::Shared::SimpleObject.new(
+      any: "any",
+      bigint: 8821239038968084,
+      bigint_str: "9223372036854775808",
+      bool: true,
+      bool_opt: true,
+      date: Date.parse("2020-01-01"),
+      date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+      decimal: 3.141592653589793,
+      decimal_str: "3.14159265358979344719667586",
+      enum: ::OpenApiSDK::Shared::Enum::ONE,
+      float32: 1.1,
+      float64_str: "1.1",
+      int: 1,
+      int32: 1,
+      int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+      int64_str: "100",
+      int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+      num: 1.1,
+      str_: "test",
+      str_opt: "testOptional",
     ),
   ),
+  bigint_parameter: 813724,
+  bigint_str_parameter: "<value>",
+  bool_parameter: false,
+  date_parameter: Date.parse("2023-07-23"),
+  date_time_default_parameter: DateTime.iso8601('2022-10-21T15:42:48.223Z'),
+  date_time_parameter: DateTime.iso8601('2023-07-27T12:28:20.045Z'),
+  decimal_parameter: 2911.37,
+  decimal_str_parameter: "<value>",
+  double_parameter: 6946.59,
+  enum_parameter: ::OpenApiSDK::Operations::EnumParameter::VALUE1,
+  falsey_number_parameter: 0.0,
+  float32_parameter: 1029.75,
+  float64_string_parameter: "<value>",
+  float_parameter: 5669.99,
+  int64_parameter: 195232,
+  int64_string_parameter: "<value>",
+  int_parameter: 569663,
+  opt_enum_parameter: ::OpenApiSDK::Operations::OptEnumParameter::VALUE3,
+  str_parameter: "example 1",
 )
     
-res = s.generation.usage_example_post(req)
+res = s.generation.usage_example_post(req, ::OpenApiSDK::Operations::UsageExamplePostSecurity.new(
+    password: "YOUR_PASSWORD",
+    username: "YOUR_USERNAME",
+  ))
 
 if ! res.object.nil?
   # handle response
 end
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [SDK](docs/sdks/sdk/README.md)
 
-* [put_anything_ignored_generation](docs/sdks/sdk/README.md#put_anything_ignored_generation)
+* [authenticated_request](docs/sdks/sdk/README.md#authenticated_request)
+* [conflicting_enum](docs/sdks/sdk/README.md#conflicting_enum) - Test potential namespace conflicts with java.lang.Object
+* [ignored_generation_put](docs/sdks/sdk/README.md#ignored_generation_put)
 * [response_body_json_get](docs/sdks/sdk/README.md#response_body_json_get)
 
 ### [Generation](docs/sdks/generation/README.md)
@@ -310,29 +194,62 @@ end
 * [typed_parameter_generation_get](docs/sdks/generation/README.md#typed_parameter_generation_get)
 * [usage_example_post](docs/sdks/generation/README.md#usage_example_post) - An operation used for testing usage examples
 
-### [Errors](docs/sdks/errors/README.md)
-
-* [connection_error_get](docs/sdks/errors/README.md#connection_error_get)
-* [status_get_error](docs/sdks/errors/README.md#status_get_error)
-* [status_get_x_speakeasy_errors](docs/sdks/errors/README.md#status_get_x_speakeasy_errors)
-
 ### [Unions](docs/sdks/unions/README.md)
 
+* [collection_one_of_post](docs/sdks/unions/README.md#collection_one_of_post)
 * [flattened_typed_object_post](docs/sdks/unions/README.md#flattened_typed_object_post)
+* [infected_with_any](docs/sdks/unions/README.md#infected_with_any)
 * [mixed_type_one_of_post](docs/sdks/unions/README.md#mixed_type_one_of_post)
 * [nullable_one_of_ref_in_object_post](docs/sdks/unions/README.md#nullable_one_of_ref_in_object_post)
 * [nullable_one_of_schema_post](docs/sdks/unions/README.md#nullable_one_of_schema_post)
 * [nullable_one_of_type_in_object_post](docs/sdks/unions/README.md#nullable_one_of_type_in_object_post)
 * [nullable_typed_object_post](docs/sdks/unions/README.md#nullable_typed_object_post)
+* [one_of_overlapping_objects](docs/sdks/unions/README.md#one_of_overlapping_objects)
 * [primitive_type_one_of_post](docs/sdks/unions/README.md#primitive_type_one_of_post)
+* [strongly_typed_one_of_discriminated_post](docs/sdks/unions/README.md#strongly_typed_one_of_discriminated_post)
 * [strongly_typed_one_of_post](docs/sdks/unions/README.md#strongly_typed_one_of_post)
+* [strongly_typed_one_of_post_with_non_standard_discriminator_name](docs/sdks/unions/README.md#strongly_typed_one_of_post_with_non_standard_discriminator_name)
 * [typed_object_nullable_one_of_post](docs/sdks/unions/README.md#typed_object_nullable_one_of_post)
 * [typed_object_one_of_post](docs/sdks/unions/README.md#typed_object_one_of_post)
-* [union_big_int_decimal](docs/sdks/unions/README.md#union_big_int_decimal)
+* [union_big_int_str_decimal](docs/sdks/unions/README.md#union_big_int_str_decimal)
 * [union_date_null](docs/sdks/unions/README.md#union_date_null)
 * [union_date_time_big_int](docs/sdks/unions/README.md#union_date_time_big_int)
 * [union_date_time_null](docs/sdks/unions/README.md#union_date_time_null)
+* [union_map](docs/sdks/unions/README.md#union_map)
+* [weakly_typed_one_of_null_enum_post](docs/sdks/unions/README.md#weakly_typed_one_of_null_enum_post)
 * [weakly_typed_one_of_post](docs/sdks/unions/README.md#weakly_typed_one_of_post)
+
+### [Errors](docs/sdks/errors/README.md)
+
+* [connection_error_get](docs/sdks/errors/README.md#connection_error_get)
+* [status_get_error](docs/sdks/errors/README.md#status_get_error)
+* [status_get_x_speakeasy_errors](docs/sdks/errors/README.md#status_get_x_speakeasy_errors)
+* [union_errors_discriminated_get](docs/sdks/errors/README.md#union_errors_discriminated_get)
+* [union_errors_get](docs/sdks/errors/README.md#union_errors_get)
+
+### [CustomClient](docs/sdks/customclient/README.md)
+
+* [custom_client_post](docs/sdks/customclient/README.md#custom_client_post)
+
+### [ResponseBodies](docs/sdks/responsebodies/README.md)
+
+* [flattened_envelope_pagination_response](docs/sdks/responsebodies/README.md#flattened_envelope_pagination_response)
+* [flattened_envelope_response](docs/sdks/responsebodies/README.md#flattened_envelope_response)
+* [flattened_envelope_union_response](docs/sdks/responsebodies/README.md#flattened_envelope_union_response)
+* [flattened_union_response](docs/sdks/responsebodies/README.md#flattened_union_response)
+* [response_body_additional_properties_any_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_any_post)
+* [response_body_additional_properties_complex_numbers_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_complex_numbers_post)
+* [response_body_additional_properties_date_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_date_post)
+* [response_body_additional_properties_object_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_object_post)
+* [response_body_additional_properties_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_post)
+* [response_body_bytes_get](docs/sdks/responsebodies/README.md#response_body_bytes_get)
+* [response_body_decimal_str](docs/sdks/responsebodies/README.md#response_body_decimal_str)
+* [response_body_empty_with_headers](docs/sdks/responsebodies/README.md#response_body_empty_with_headers)
+* [response_body_missing2xx_or3xx_get](docs/sdks/responsebodies/README.md#response_body_missing2xx_or3xx_get)
+* [response_body_optional_get](docs/sdks/responsebodies/README.md#response_body_optional_get)
+* [response_body_read_only](docs/sdks/responsebodies/README.md#response_body_read_only)
+* [response_body_string_get](docs/sdks/responsebodies/README.md#response_body_string_get)
+* [response_body_xml_get](docs/sdks/responsebodies/README.md#response_body_xml_get)
 
 ### [Flattening](docs/sdks/flattening/README.md)
 
@@ -345,6 +262,8 @@ end
 ### [Globals](docs/sdks/globals/README.md)
 
 * [global_path_parameter_get](docs/sdks/globals/README.md#global_path_parameter_get)
+* [globals_header_get](docs/sdks/globals/README.md#globals_header_get)
+* [globals_hidden_post](docs/sdks/globals/README.md#globals_hidden_post)
 * [globals_query_parameter_get](docs/sdks/globals/README.md#globals_query_parameter_get)
 
 ### [Parameters](docs/sdks/parameters/README.md)
@@ -363,6 +282,7 @@ end
 * [header_params_object](docs/sdks/parameters/README.md#header_params_object)
 * [header_params_primitive](docs/sdks/parameters/README.md#header_params_primitive)
 * [json_query_params_object](docs/sdks/parameters/README.md#json_query_params_object)
+* [json_query_params_object_smaller](docs/sdks/parameters/README.md#json_query_params_object_smaller)
 * [mixed_parameters_camel_case](docs/sdks/parameters/README.md#mixed_parameters_camel_case)
 * [mixed_parameters_primitives](docs/sdks/parameters/README.md#mixed_parameters_primitives)
 * [mixed_query_params](docs/sdks/parameters/README.md#mixed_query_params)
@@ -372,6 +292,14 @@ end
 * [simple_path_parameter_maps](docs/sdks/parameters/README.md#simple_path_parameter_maps)
 * [simple_path_parameter_objects](docs/sdks/parameters/README.md#simple_path_parameter_objects)
 * [simple_path_parameter_primitives](docs/sdks/parameters/README.md#simple_path_parameter_primitives)
+
+### [Hooks](docs/sdks/hooks/README.md)
+
+* [authorization_header_modification](docs/sdks/hooks/README.md#authorization_header_modification)
+* [test_hooks](docs/sdks/hooks/README.md#test_hooks)
+* [test_hooks_after_response](docs/sdks/hooks/README.md#test_hooks_after_response)
+* [test_hooks_before_create_request_paths](docs/sdks/hooks/README.md#test_hooks_before_create_request_paths)
+* [test_hooks_error](docs/sdks/hooks/README.md#test_hooks_error)
 
 ### [NestFirst](docs/sdks/nestfirst/README.md)
 
@@ -401,9 +329,15 @@ end
 * [oauth2_override](docs/sdks/auth/README.md#oauth2_override)
 * [open_id_connect_auth](docs/sdks/auth/README.md#open_id_connect_auth)
 
+### [OpenEnums](docs/sdks/openenums/README.md)
+
+* [open_enums_post_unrecognized](docs/sdks/openenums/README.md#open_enums_post_unrecognized)
+
 ### [RequestBodies](docs/sdks/requestbodies/README.md)
 
+* [null_enum_post](docs/sdks/requestbodies/README.md#null_enum_post)
 * [nullable_object_post](docs/sdks/requestbodies/README.md#nullable_object_post)
+* [nullable_optional_fields_post](docs/sdks/requestbodies/README.md#nullable_optional_fields_post)
 * [nullable_required_empty_object_post](docs/sdks/requestbodies/README.md#nullable_required_empty_object_post)
 * [nullable_required_property_post](docs/sdks/requestbodies/README.md#nullable_required_property_post)
 * [nullable_required_shared_object_post](docs/sdks/requestbodies/README.md#nullable_required_shared_object_post)
@@ -444,6 +378,8 @@ end
 * [request_body_post_json_data_types_big_int](docs/sdks/requestbodies/README.md#request_body_post_json_data_types_big_int)
 * [request_body_post_json_data_types_big_int_str](docs/sdks/requestbodies/README.md#request_body_post_json_data_types_big_int_str)
 * [request_body_post_json_data_types_boolean](docs/sdks/requestbodies/README.md#request_body_post_json_data_types_boolean)
+* [request_body_post_json_data_types_complex_number_arrays](docs/sdks/requestbodies/README.md#request_body_post_json_data_types_complex_number_arrays)
+* [request_body_post_json_data_types_complex_number_maps](docs/sdks/requestbodies/README.md#request_body_post_json_data_types_complex_number_maps)
 * [request_body_post_json_data_types_date](docs/sdks/requestbodies/README.md#request_body_post_json_data_types_date)
 * [request_body_post_json_data_types_date_time](docs/sdks/requestbodies/README.md#request_body_post_json_data_types_date_time)
 * [request_body_post_json_data_types_decimal](docs/sdks/requestbodies/README.md#request_body_post_json_data_types_decimal)
@@ -474,6 +410,7 @@ end
 * [request_body_put_multipart_deep](docs/sdks/requestbodies/README.md#request_body_put_multipart_deep)
 * [request_body_put_multipart_different_file_name](docs/sdks/requestbodies/README.md#request_body_put_multipart_different_file_name)
 * [request_body_put_multipart_file](docs/sdks/requestbodies/README.md#request_body_put_multipart_file)
+* [request_body_put_multipart_optional_request_body](docs/sdks/requestbodies/README.md#request_body_put_multipart_optional_request_body)
 * [request_body_put_multipart_simple](docs/sdks/requestbodies/README.md#request_body_put_multipart_simple)
 * [request_body_put_string](docs/sdks/requestbodies/README.md#request_body_put_string)
 * [request_body_put_string_with_params](docs/sdks/requestbodies/README.md#request_body_put_string_with_params)
@@ -484,20 +421,6 @@ end
 * [request_body_write_only](docs/sdks/requestbodies/README.md#request_body_write_only)
 * [request_body_write_only_output](docs/sdks/requestbodies/README.md#request_body_write_only_output)
 * [request_body_write_only_union](docs/sdks/requestbodies/README.md#request_body_write_only_union)
-
-### [ResponseBodies](docs/sdks/responsebodies/README.md)
-
-* [response_body_additional_properties_complex_numbers_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_complex_numbers_post)
-* [response_body_additional_properties_date_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_date_post)
-* [response_body_additional_properties_object_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_object_post)
-* [response_body_additional_properties_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_post)
-* [response_body_bytes_get](docs/sdks/responsebodies/README.md#response_body_bytes_get)
-* [response_body_empty_with_headers](docs/sdks/responsebodies/README.md#response_body_empty_with_headers)
-* [response_body_optional_get](docs/sdks/responsebodies/README.md#response_body_optional_get)
-* [response_body_read_only](docs/sdks/responsebodies/README.md#response_body_read_only)
-* [response_body_string_get](docs/sdks/responsebodies/README.md#response_body_string_get)
-* [response_body_xml_get](docs/sdks/responsebodies/README.md#response_body_xml_get)
-* [response_body_zero_value_complex_type_ptrs_post](docs/sdks/responsebodies/README.md#response_body_zero_value_complex_type_ptrs_post)
 
 ### [Servers](docs/sdks/servers/README.md)
 
@@ -515,7 +438,6 @@ end
 
 ### [AuthNew](docs/sdks/authnew/README.md)
 
-* [api_key_auth_global_new](docs/sdks/authnew/README.md#api_key_auth_global_new)
 * [auth_global](docs/sdks/authnew/README.md#auth_global)
 * [basic_auth_new](docs/sdks/authnew/README.md#basic_auth_new)
 * [multiple_mixed_options_auth](docs/sdks/authnew/README.md#multiple_mixed_options_auth)
@@ -527,17 +449,18 @@ end
 * [oauth2_auth_new](docs/sdks/authnew/README.md#oauth2_auth_new)
 * [open_id_connect_auth_new](docs/sdks/authnew/README.md#open_id_connect_auth_new)
 
-### [Documentation](docs/sdks/documentation/README.md)
-
-* [get_documentation_per_language](docs/sdks/documentation/README.md#get_documentation_per_language) - Gets documentation for some language, I guess.
-
 ### [Resource](docs/sdks/resource/README.md)
 
 * [create_file](docs/sdks/resource/README.md#create_file)
 * [create_resource](docs/sdks/resource/README.md#create_resource)
 * [delete_resource](docs/sdks/resource/README.md#delete_resource)
+* [get_array_data_source](docs/sdks/resource/README.md#get_array_data_source)
 * [get_resource](docs/sdks/resource/README.md#get_resource)
 * [update_resource](docs/sdks/resource/README.md#update_resource)
+
+### [Documentation](docs/sdks/documentation/README.md)
+
+* [get_documentation_per_language](docs/sdks/documentation/README.md#get_documentation_per_language) - Gets documentation for some language, I guess.
 
 ### [First](docs/sdks/first/README.md)
 
@@ -550,69 +473,139 @@ end
 ### [Pagination](docs/sdks/pagination/README.md)
 
 * [pagination_cursor_body](docs/sdks/pagination/README.md#pagination_cursor_body)
+* [pagination_cursor_non_numeric](docs/sdks/pagination/README.md#pagination_cursor_non_numeric)
 * [pagination_cursor_params](docs/sdks/pagination/README.md#pagination_cursor_params)
+* [pagination_limit_offset_deep_outputs_page_body](docs/sdks/pagination/README.md#pagination_limit_offset_deep_outputs_page_body)
 * [pagination_limit_offset_offset_body](docs/sdks/pagination/README.md#pagination_limit_offset_offset_body)
 * [pagination_limit_offset_offset_params](docs/sdks/pagination/README.md#pagination_limit_offset_offset_params)
 * [pagination_limit_offset_page_body](docs/sdks/pagination/README.md#pagination_limit_offset_page_body)
 * [pagination_limit_offset_page_params](docs/sdks/pagination/README.md#pagination_limit_offset_page_params)
+* [pagination_url_params](docs/sdks/pagination/README.md#pagination_url_params)
+* [pagination_with_retries](docs/sdks/pagination/README.md#pagination_with_retries)
 
 ### [Retries](docs/sdks/retries/README.md)
 
+* [retries_after](docs/sdks/retries/README.md#retries_after)
+* [retries_connect_error_get](docs/sdks/retries/README.md#retries_connect_error_get) - A request to a non-valid port to test connection errors
+* [retries_flat_empty_response_post](docs/sdks/retries/README.md#retries_flat_empty_response_post)
 * [retries_get](docs/sdks/retries/README.md#retries_get)
-<!-- End SDK Available Operations -->
+* [retries_post](docs/sdks/retries/README.md#retries_post)
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
 
 
-
-<!-- Start Global Parameters -->
+<!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
-Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
+Certain parameters are configured globally. These parameters may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `globalPathParam` to `100` at SDK initialization and then you do not have to pass the same value on calls to operations like `global_path_parameter_get`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `globalHeaderParam` to `true` at SDK initialization and then you do not have to pass the same value on calls to operations like `global_path_parameter_get`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
 
-The following global parameters are available. The required parameters must be set when you initialize the SDK client.
+The following global parameters are available.
 
 | Name | Type | Required | Description |
 | ---- | ---- |:--------:| ----------- |
-| globalPathParam | Integer | ✔️ | The globalPathParam parameter. |
-| globalQueryParam | String | ✔️ | The globalQueryParam parameter. |
+| global_header_param | T::Boolean |  | The global_header_param parameter. |
+| global_hidden_header_param | ::String |  | The global_hidden_header_param parameter. |
+| global_hidden_path_param | ::String |  | The global_hidden_path_param parameter. |
+| global_hidden_query_param | ::String |  | The global_hidden_query_param parameter. |
+| global_path_param | ::Integer |  | The global_path_param parameter. |
+| global_query_param | ::String |  | The global_query_param parameter. |
 
 
 ### Example
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::GlobalPathParameterGetRequest.new(
-  path_params=Operations::GlobalPathParameterGetRequest.new(),
-)
     
-res = s.globals.global_path_parameter_get(req)
+res = s.globals.global_path_parameter_get(global_path_param=100)
 
 if ! res.res.nil?
   # handle response
 end
 
 ```
-<!-- End Global Parameters -->
+<!-- End Global Parameters [global-parameters] -->
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+## Server Selection
+
+### Select Server by Index
+
+You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `http://localhost:35123` | None |
+| 1 | `http://broken` | None |
+| 2 | `http://{hostname}:{port}` | `hostname` (default is `localhost`), `port` (default is `35123`) |
+| 3 | `http://localhost:35123/anything/{something}` | `something` (default is `something`) |
+| 4 | `{protocol}://{hostname}:{port}` | `hostname` (default is `localhost`), `port` (default is `35123`), `protocol` (default is `http`) |
+
+
+
+#### Variables
+
+Some of the server options above contain variables. If you want to set the values of those variables, the following optional parameters are available when initializing the SDK client instance:
+ * `hostname: ::String`
+ * `port: ::String`
+ * `something: ::OpenApiSDK::ServerVariables::ServerSomething`
+ * `protocol: ::String`
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+
+
+### Override Server URL Per-Operation
+
+The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
+```ruby
+require 'openapi'
+
+
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
+s.config_security(
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
+  )
+)
+
+    
+res = s.errors.connection_error_get(server_url: "http://somebrokenapi.broken")
+
+if res.status_code == 200
+  # handle response
+end
+
+```
+<!-- End Server Selection [server] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
