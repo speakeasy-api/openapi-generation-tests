@@ -38,6 +38,26 @@ class _ErrorsAPI: ErrorsAPI {
             handleResponse: handleStatusGetXSpeakeasyErrorsResponse
         )
     }
+    
+    public func unionErrorsDiscriminatedGet(request: Operations.UnionErrorsDiscriminatedGetRequest, server: ErrorsServers.UnionErrorsDiscriminatedGet?) async throws -> Response<Operations.UnionErrorsDiscriminatedGetResponse> {
+        return try await client.makeRequest(
+            with: try server?.server() ?? ErrorsServers.UnionErrorsDiscriminatedGet.default(),
+            configureRequest: { configuration in
+                try configureUnionErrorsDiscriminatedGetRequest(with: configuration, request: request)
+            },
+            handleResponse: handleUnionErrorsDiscriminatedGetResponse
+        )
+    }
+    
+    public func unionErrorsGet(request: Operations.UnionErrorsGetRequest, server: ErrorsServers.UnionErrorsGet?) async throws -> Response<Operations.UnionErrorsGetResponse> {
+        return try await client.makeRequest(
+            with: try server?.server() ?? ErrorsServers.UnionErrorsGet.default(),
+            configureRequest: { configuration in
+                try configureUnionErrorsGetRequest(with: configuration, request: request)
+            },
+            handleResponse: handleUnionErrorsGetResponse
+        )
+    }
 
 }
 
@@ -60,6 +80,20 @@ private func configureStatusGetXSpeakeasyErrorsRequest(with configuration: URLRe
     configuration.path = "/errors/{statusCode}"
     configuration.method = .get
     configuration.pathParameterSerializable = request
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configureUnionErrorsDiscriminatedGetRequest(with configuration: URLRequestConfiguration, request: Operations.UnionErrorsDiscriminatedGetRequest) throws {
+    configuration.path = "/errors/unionErrorsDiscriminated"
+    configuration.method = .get
+    configuration.queryParameterSerializable = request
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configureUnionErrorsGetRequest(with configuration: URLRequestConfiguration, request: Operations.UnionErrorsGetRequest) throws {
+    configuration.path = "/errors/unionErrors"
+    configuration.method = .get
+    configuration.queryParameterSerializable = request
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
@@ -102,6 +136,42 @@ private func handleStatusGetXSpeakeasyErrorsResponse(response: Client.APIRespons
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .object(try JSONDecoder().decode(Operations.StatusGetXSpeakeasyErrorsResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleUnionErrorsDiscriminatedGetResponse(response: Client.APIResponse) throws -> Operations.UnionErrorsDiscriminatedGetResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        return .empty
+    } else if httpResponse.statusCode >= 500 && httpResponse.statusCode < 600 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .oneOf(try JSONDecoder().decode(Operations.UnionErrorsDiscriminatedGetResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleUnionErrorsGetResponse(response: Client.APIResponse) throws -> Operations.UnionErrorsGetResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        return .empty
+    } else if httpResponse.statusCode == 500 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .oneOf(try JSONDecoder().decode(Operations.UnionErrorsGetResponseBody.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

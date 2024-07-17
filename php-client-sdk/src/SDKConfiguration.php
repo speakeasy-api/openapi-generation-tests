@@ -10,54 +10,82 @@ namespace OpenAPI\OpenAPI;
 
 class SDKConfiguration
 {
-	public ?\GuzzleHttp\ClientInterface $defaultClient = null;
-	public ?\GuzzleHttp\ClientInterface $securityClient = null;
-	public ?Models\Shared\Security $security = null;
-	public string $serverUrl = '';
-	public int $serverIndex = 0;
-	/** @var array<array<string, string>> */
-	public ?array $serverDefaults = [
-		[
-		],
-		[
-		],
-		[
-			'hostname' => 'localhost',
-			'port' => '35123',
-		],
-		[
-			'something' => 'something',
-		],
-		[
-			'hostname' => 'localhost',
-			'port' => '35123',
-			'protocol' => 'http',
-		],
-	];
-	public string $language = 'php';
-	public string $openapiDocVersion = '0.1.0';
-	public string $sdkVersion = '2.1.1';
-	public string $genVersion = '2.188.3';
-	public string $userAgent = 'speakeasy-sdk/php 2.1.1 2.188.3 0.1.0 openapi/openapi';
-	/** @var array<string, array<string, array<string, mixed>>> */
-	public ?array $globals = [
-    	'parameters' => []
+    public ?\GuzzleHttp\ClientInterface $defaultClient = null;
+
+    public ?\GuzzleHttp\ClientInterface $securityClient = null;
+
+    public ?Models\Shared\Security $security = null;
+    /** @var pure-Closure(): Models\Shared\Security */
+    public ?\Closure $securitySource = null;
+
+    public string $serverUrl = '';
+
+    public int $serverIndex = 0;
+
+    /** @var array<array<string, string>> */
+    public ?array $serverDefaults = [
+        [
+        ],
+        [
+        ],
+        [
+            'hostname' => 'localhost',
+            'port' => '35123',
+        ],
+        [
+            'something' => 'something',
+        ],
+        [
+            'hostname' => 'localhost',
+            'port' => '35123',
+            'protocol' => 'http',
+        ],
     ];
 
-	public function getServerUrl(): string
-	{
-		
-		if ($this->serverUrl !== '') {
-			return $this->serverUrl;
-		};
-		return SDK::SERVERS[$this->serverIndex];
-	}
-	
-	/**
-	 * @return array<string, string>
-	 */
-	public function getServerDefaults(): ?array
-	{
-		return $this->serverDefaults[$this->serverIndex];
-	}
+    public string $language = 'php';
+
+    public string $openapiDocVersion = '0.1.0';
+
+    public string $sdkVersion = '2.2.0';
+
+    public string $genVersion = '2.373.2';
+
+    public string $userAgent = 'speakeasy-sdk/php 2.2.0 2.373.2 0.1.0 openapi/openapi';
+    /** @var array<string, array<string, array<string, mixed>>> */
+    public ?array $globals = [
+        'parameters' => [],
+    ];
+
+    public function getServerUrl(): string
+    {
+
+        if ($this->serverUrl !== '') {
+            return $this->serverUrl;
+        }
+
+        return SDK::SERVERS[$this->serverIndex];
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function getServerDefaults(): ?array
+    {
+        return $this->serverDefaults[$this->serverIndex];
+    }
+    public function hasSecurity(): bool
+    {
+        return $this->security !== null || $this->securitySource !== null;
+    }
+
+    public function getSecurity(): ?Models\Shared\Security
+    {
+        if ($this->securitySource !== null) {
+            $security = $this->securitySource->call($this);
+
+            return $security;
+        } else {
+            return $this->security;
+        }
+    }
 }
