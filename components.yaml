@@ -94,6 +94,16 @@ components:
           tag3: "#/components/schemas/taggedObject3"
           tag1: "#/components/schemas/taggedObject1"
           tag2: "#/components/schemas/taggedObject2"
+    infectedWithAny:
+      type: object
+      required: [data]
+      properties:
+        data:
+          oneOf:
+            - $ref: "#/components/schemas/simpleObject"
+            - $ref: "#/components/schemas/deepObject"
+            - type: object
+              x-speakeasy-type-override: any
     weaklyTypedOneOfObject:
       oneOf:
         - $ref: "#/components/schemas/simpleObject"
