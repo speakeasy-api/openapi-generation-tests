@@ -1227,7 +1227,7 @@ components:
       properties:
         tag:
           type: string
-          const: tag1
+          enum: [tag1]
         error:
           type: string
       required:
@@ -2026,6 +2026,27 @@ components:
             required:
               - numPages
               - resultArray
+    errorUnionResponse:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: "components.yaml#/components/schemas/errorType1"
+              - $ref: "components.yaml#/components/schemas/errorType2"
+    errorUnionDiscriminatedResponse:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: "components.yaml#/components/schemas/taggedError1"
+              - $ref: "components.yaml#/components/schemas/taggedError2"
+            discriminator:
+              propertyName: tag
+              mapping:
+                tag1: "components.yaml#/components/schemas/taggedError1"
+                tag2: "components.yaml#/components/schemas/taggedError2"
   parameters:
     emptyObjectParam:
       name: emptyObject

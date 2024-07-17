@@ -7165,65 +7165,86 @@ paths:
       responses:
         "200":
           description: OK
-  /errors/unionErrors:
+  /errors/500#errorUnion:
     servers:
       - url: http://localhost:35456
-    get:
-      operationId: unionErrorsGet
+    post:
+      operationId: errorUnionPost
       tags:
         - errors
-      parameters:
-        - name: errorType
-          in: query
-          required: true
-          schema:
-            type: string
-            enum:
-              - "type1"
-              - "type2"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: object
+                  x-speakeasy-name-override: errorType1RequestBody
+                  properties:
+                    error:
+                      type: string
+                  required:
+                    - error
+                - type: object
+                  x-speakeasy-name-override: errorType2RequestBody
+                  properties:
+                    error:
+                      type: object
+                      x-speakeasy-name-override: errorType2Message
+                      properties:
+                        message:
+                          type: string
+                      required:
+                        - message
       responses:
         "200":
           description: OK
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: "components.yaml#/components/schemas/errorType1"
-                  - $ref: "components.yaml#/components/schemas/errorType2"
-  /errors/unionErrorsDiscriminated:
+          $ref: "components.yaml#/components/responses/errorUnionResponse"
+  /errors/400#errorUnionDiscriminated:
     servers:
       - url: http://localhost:35456
-    get:
-      operationId: unionErrorsDiscriminatedGet
+    post:
+      operationId: errorUnionDiscriminatedPost
       tags:
         - errors
-      parameters:
-        - name: errorTag
-          in: query
-          required: true
-          schema:
-            type: string
-            enum:
-              - "tag1"
-              - "tag2"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: object
+                  x-speakeasy-name-override: taggedError1RequestBody
+                  properties:
+                    tag:
+                      type: string
+                    error:
+                      type: string
+                  required:
+                    - tag
+                    - error
+                - type: object
+                  x-speakeasy-name-override: taggedError2RequestBody
+                  properties:
+                    tag:
+                      type: string
+                    error:
+                      type: object
+                      x-speakeasy-name-override: taggedError2Message
+                      properties:
+                        message:
+                          type: string
+                      required:
+                        - message
+                  required:
+                    - tag
+                    - error
       responses:
         "200":
           description: OK
-        "5XX":
-          description: Error
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: "components.yaml#/components/schemas/taggedError1"
-                  - $ref: "components.yaml#/components/schemas/taggedError2"
-                discriminator:
-                  propertyName: tag
-                  mapping:
-                    tag1: "components.yaml#/components/schemas/taggedError1"
-                    tag2: "components.yaml#/components/schemas/taggedError2"
+        "4XX":
+          $ref: "components.yaml#/components/responses/errorUnionDiscriminatedResponse"
   /anything/telemetry/user-agent:
     get:
       operationId: telemetryUserAgentGet
