@@ -2,14 +2,13 @@
 
 from sdk import SDK, SERVERS, ServerSomething
 from sdk.models.operations import *
-from sdk.utils import *
+from sdk.utils import template_url
 
-from .common_helpers import *
-from .helpers import *
+from .common_helpers import record_test
 
 
 def test_select_global_server_valid():
-    record_test('servers-select-global-server-valid')
+    record_test("servers-select-global-server-valid")
 
     s = SDK(server_url=SERVERS[0])
     assert s is not None
@@ -17,11 +16,11 @@ def test_select_global_server_valid():
     res = s.servers.select_global_server()
 
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
 
 
 def test_select_global_server_broken():
-    record_test('servers-select-global-server-broken')
+    record_test("servers-select-global-server-broken")
 
     s = SDK(server_idx=1)
     assert s is not None
@@ -29,7 +28,7 @@ def test_select_global_server_broken():
     error = None
 
     try:
-        res = s.servers.select_global_server()
+        s.servers.select_global_server()
     except Exception as err:
         error = err
 
@@ -37,7 +36,7 @@ def test_select_global_server_broken():
 
 
 def test_select_server_with_id_default():
-    record_test('servers-select-server-with-id-default')
+    record_test("servers-select-server-with-id-default")
 
     s = SDK()
     assert s is not None
@@ -45,24 +44,25 @@ def test_select_server_with_id_default():
     res = s.servers.select_server_with_id()
 
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
 
 
 def test_select_server_with_id_valid():
-    record_test('servers-select-server-with-id-valid')
+    record_test("servers-select-server-with-id-valid")
 
-    s = SDK()
+    s = SDK(server_url="http://broken")  # overridden by operation
     assert s is not None
 
     res = s.servers.select_server_with_id(
-        server_url=SELECT_SERVER_WITH_ID_SERVERS[SELECT_SERVER_WITH_ID_SERVER_VALID])
+        server_url=SELECT_SERVER_WITH_ID_SERVERS[SELECT_SERVER_WITH_ID_SERVER_VALID]
+    )
 
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
 
 
 def test_select_server_with_id_broken():
-    record_test('servers-select-server-with-id-broken')
+    record_test("servers-select-server-with-id-broken")
 
     s = SDK()
     assert s is not None
@@ -71,7 +71,10 @@ def test_select_server_with_id_broken():
 
     try:
         res = s.servers.select_server_with_id(
-            server_url=SELECT_SERVER_WITH_ID_SERVERS[SELECT_SERVER_WITH_ID_SERVER_BROKEN])
+            server_url=SELECT_SERVER_WITH_ID_SERVERS[
+                SELECT_SERVER_WITH_ID_SERVER_BROKEN
+            ]
+        )
     except Exception as e:
         error = e
 
@@ -79,19 +82,19 @@ def test_select_server_with_id_broken():
 
 
 def test_server_with_templates_global():
-    record_test('servers-server-with-templates-global')
+    record_test("servers-server-with-templates-global")
 
-    s = SDK(server_idx=2, hostname='localhost', port='35123')
+    s = SDK(server_idx=2, hostname="localhost", port="35123")
     assert s is not None
 
     res = s.servers.server_with_templates_global()
 
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
 
 
 def test_server_with_templates_global_defaults():
-    record_test('servers-server-with-templates-global-defaults')
+    record_test("servers-server-with-templates-global-defaults")
 
     s = SDK(server_idx=2)
     assert s is not None
@@ -99,11 +102,11 @@ def test_server_with_templates_global_defaults():
     res = s.servers.server_with_templates_global()
 
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
 
 
 def test_server_with_templates_global_enum():
-    record_test('servers-server-with-templates-global-enum')
+    record_test("servers-server-with-templates-global-enum")
 
     s = SDK(server_idx=3, something=ServerSomething.SOMETHING_ELSE_AGAIN)
     assert s is not None
@@ -111,26 +114,27 @@ def test_server_with_templates_global_enum():
     res = s.servers.server_with_templates_global()
 
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
 
 
 def test_server_with_templates():
-    record_test('servers-server-with-templates')
+    record_test("servers-server-with-templates")
 
     s = SDK()
     assert s is not None
 
-    res = s.servers.server_with_templates(server_url=template_url(SERVER_WITH_TEMPLATES_SERVERS[0], {
-        "hostname": "localhost",
-        "port": "35123"
-    }))
+    res = s.servers.server_with_templates(
+        server_url=template_url(
+            SERVER_WITH_TEMPLATES_SERVERS[0], {"hostname": "localhost", "port": "35123"}
+        )
+    )
 
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
 
 
 def test_server_with_templates_defaults():
-    record_test('servers-server-with-templates-defaults')
+    record_test("servers-server-with-templates-defaults")
 
     s = SDK()
     assert s is not None
@@ -138,11 +142,11 @@ def test_server_with_templates_defaults():
     res = s.servers.server_with_templates()
 
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200
 
 
 def test_servers_by_id_with_templates():
-    record_test('servers-server-by-id-with-templates')
+    record_test("servers-server-by-id-with-templates")
 
     s = SDK()
     assert s is not None
@@ -150,4 +154,4 @@ def test_servers_by_id_with_templates():
     res = s.servers.servers_by_id_with_templates()
 
     assert res is not None
-    assert res.status_code == 200
+    assert res.http_meta.response.status_code == 200

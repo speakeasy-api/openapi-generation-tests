@@ -5,7 +5,8 @@ OK
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `numPages`         | *Long*             | :heavy_check_mark: | N/A                |
-| `resultArray`      | List<*Long*>       | :heavy_check_mark: | N/A                |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `next`                       | *Optional<? extends String>* | :heavy_minus_sign:           | N/A                          |
+| `numPages`                   | *long*                       | :heavy_check_mark:           | N/A                          |
+| `resultArray`                | List<*long*>                 | :heavy_check_mark:           | N/A                          |
