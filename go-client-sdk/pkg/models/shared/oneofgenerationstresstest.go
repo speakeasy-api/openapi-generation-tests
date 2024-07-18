@@ -43,21 +43,21 @@ func CreateOneOfFromArrayOfTypesInteger(integer int64) OneOfFromArrayOfTypes {
 
 func (u *OneOfFromArrayOfTypes) UnmarshalJSON(data []byte) error {
 
-	str := ""
+	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
 		u.Type = OneOfFromArrayOfTypesTypeStr
 		return nil
 	}
 
-	integer := int64(0)
+	var integer int64 = int64(0)
 	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
 		u.Integer = &integer
 		u.Type = OneOfFromArrayOfTypesTypeInteger
 		return nil
 	}
 
-	return errors.New("could not unmarshal into supported union types")
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for OneOfFromArrayOfTypes", string(data))
 }
 
 func (u OneOfFromArrayOfTypes) MarshalJSON() ([]byte, error) {
@@ -69,7 +69,7 @@ func (u OneOfFromArrayOfTypes) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Integer, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type: all fields are null")
+	return nil, errors.New("could not marshal union type OneOfFromArrayOfTypes: all fields are null")
 }
 
 type Two string
@@ -81,7 +81,6 @@ const (
 func (e Two) ToPointer() *Two {
 	return &e
 }
-
 func (e *Two) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -130,21 +129,21 @@ func CreateOneOfSameTypeTwo(two Two) OneOfSameType {
 
 func (u *OneOfSameType) UnmarshalJSON(data []byte) error {
 
-	str := ""
+	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
 		u.Type = OneOfSameTypeTypeStr
 		return nil
 	}
 
-	two := Two("")
+	var two Two = Two("")
 	if err := utils.UnmarshalJSON(data, &two, "", true, true); err == nil {
 		u.Two = &two
 		u.Type = OneOfSameTypeTypeTwo
 		return nil
 	}
 
-	return errors.New("could not unmarshal into supported union types")
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for OneOfSameType", string(data))
 }
 
 func (u OneOfSameType) MarshalJSON() ([]byte, error) {
@@ -156,24 +155,24 @@ func (u OneOfSameType) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Two, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type: all fields are null")
+	return nil, errors.New("could not marshal union type OneOfSameType: all fields are null")
 }
 
 type OneOfGenerationStressTest struct {
-	Any                   interface{}            `json:"any"`
-	NullableAny           interface{}            `json:"nullableAny"`
+	Any                   any                    `json:"any"`
+	NullableAny           any                    `json:"nullableAny"`
 	OneOfFromArrayOfTypes *OneOfFromArrayOfTypes `json:"oneOfFromArrayOfTypes"`
 	OneOfSameType         *OneOfSameType         `json:"oneOfSameType"`
 }
 
-func (o *OneOfGenerationStressTest) GetAny() interface{} {
+func (o *OneOfGenerationStressTest) GetAny() any {
 	if o == nil {
 		return nil
 	}
 	return o.Any
 }
 
-func (o *OneOfGenerationStressTest) GetNullableAny() interface{} {
+func (o *OneOfGenerationStressTest) GetNullableAny() any {
 	if o == nil {
 		return nil
 	}
