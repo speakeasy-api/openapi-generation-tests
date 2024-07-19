@@ -8,18 +8,18 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class ResponseBodyEmptyWithHeadersRequest
 {
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=X-Number-Header')]
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=X-Number-Header')]
     public float $xNumberHeader;
-    
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=X-String-Header')]
+
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=X-String-Header')]
     public string $xStringHeader;
-    
-	public function __construct()
-	{
-		$this->xNumberHeader = 0;
-		$this->xStringHeader = "";
-	}
+
+    public function __construct()
+    {
+        $this->xNumberHeader = 0;
+        $this->xStringHeader = '';
+    }
 }

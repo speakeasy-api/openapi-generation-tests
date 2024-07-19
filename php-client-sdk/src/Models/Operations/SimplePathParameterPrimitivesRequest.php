@@ -8,26 +8,26 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class SimplePathParameterPrimitivesRequest
 {
-	#[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=boolParam')]
+    #[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=boolParam')]
     public bool $boolParam;
-    
-	#[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=intParam')]
+
+    #[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=intParam')]
     public int $intParam;
-    
-	#[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=numParam')]
+
+    #[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=numParam')]
     public float $numParam;
-    
-	#[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=strParam')]
+
+    #[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=strParam')]
     public string $strParam;
-    
-	public function __construct()
-	{
-		$this->boolParam = false;
-		$this->intParam = 0;
-		$this->numParam = 0;
-		$this->strParam = "";
-	}
+
+    public function __construct()
+    {
+        $this->boolParam = false;
+        $this->intParam = 0;
+        $this->numParam = 0;
+        $this->strParam = '';
+    }
 }

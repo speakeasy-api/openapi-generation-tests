@@ -5,15 +5,16 @@ package sdkerrors
 import (
 	"encoding/json"
 	"net/http"
+	"openapi/v2/pkg/models/shared"
 )
 
 // StatusGetXSpeakeasyErrorsResponseBody - Not Implemented
 type StatusGetXSpeakeasyErrorsResponseBody struct {
 	// Raw HTTP response; suitable for custom response parsing
-	RawResponse *http.Response `json:"-"`
-	Code        *string        `json:"code,omitempty"`
-	Message     *string        `json:"message,omitempty"`
-	Type        *ErrorType     `json:"type,omitempty"`
+	RawResponse *http.Response    `json:"-"`
+	Code        *string           `json:"code,omitempty"`
+	Message     *string           `json:"message,omitempty"`
+	Type        *shared.ErrorType `json:"type,omitempty"`
 }
 
 var _ error = &StatusGetXSpeakeasyErrorsResponseBody{}

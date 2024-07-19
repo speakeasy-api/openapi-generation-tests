@@ -7,6 +7,7 @@ from enum import Enum
 from sdk import utils
 from typing import Any, Optional, Union
 
+
 class Two(str, Enum):
     LATEST = 'latest'
 
@@ -16,7 +17,11 @@ class Two(str, Enum):
 class OneOfGenerationStressTest:
     any: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }})
     nullable_any: Optional[Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('nullableAny') }})
-    one_of_from_array_of_types: Optional[Union[str, int]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('oneOfFromArrayOfTypes') }})
-    one_of_same_type: Optional[Union[str, Two]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('oneOfSameType') }})
+    one_of_from_array_of_types: Optional[OneOfFromArrayOfTypes] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('oneOfFromArrayOfTypes') }})
+    one_of_same_type: Optional[OneOfSameType] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('oneOfSameType') }})
     
 
+
+OneOfFromArrayOfTypes = Union[str, int]
+
+OneOfSameType = Union[str, Two]
