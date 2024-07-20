@@ -11,12 +11,12 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 
 class MixedParametersPrimitivesHeaders
 {
-	#[\JMS\Serializer\Annotation\SerializedName('Headerparam')]
+    #[\JMS\Serializer\Annotation\SerializedName('Headerparam')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $headerparam;
-    
-	public function __construct()
-	{
-		$this->headerparam = "";
-	}
+
+    public function __construct()
+    {
+        $this->headerparam = '';
+    }
 }

@@ -23,8 +23,16 @@ func (o *PaginationCursorParamsRequest) GetCursor() int64 {
 
 // PaginationCursorParamsRes - OK
 type PaginationCursorParamsRes struct {
+	Next        *string `json:"next,omitempty"`
 	NumPages    int64   `json:"numPages"`
 	ResultArray []int64 `json:"resultArray"`
+}
+
+func (o *PaginationCursorParamsRes) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
 }
 
 func (o *PaginationCursorParamsRes) GetNumPages() int64 {

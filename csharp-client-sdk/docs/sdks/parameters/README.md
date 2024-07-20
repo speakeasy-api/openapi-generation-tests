@@ -21,6 +21,7 @@ Endpoints for testing parameters.
 * [HeaderParamsObject](#headerparamsobject)
 * [HeaderParamsPrimitive](#headerparamsprimitive)
 * [JsonQueryParamsObject](#jsonqueryparamsobject)
+* [JsonQueryParamsObjectSmaller](#jsonqueryparamsobjectsmaller)
 * [MixedParametersCamelCase](#mixedparameterscamelcase)
 * [MixedParametersPrimitives](#mixedparametersprimitives)
 * [MixedQueryParams](#mixedqueryparams)
@@ -37,22 +38,25 @@ Endpoints for testing parameters.
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
 using System.Collections.Generic;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.DeepObjectQueryParamsMapAsync(new Dictionary<string, string>() {
+var res = await sdk.Parameters.DeepObjectQueryParamsMapAsync(
+    mapParam: new Dictionary<string, string>() {
     { "test", "value" },
     { "test2", "value2" },
-}, new Dictionary<string, List<string>>() {
+},
+    mapArrParam: new Dictionary<string, List<string>>() {
     { "test", new List<string>() {
         "test",
         "test2",
@@ -68,16 +72,20 @@ var res = await sdk.Parameters.DeepObjectQueryParamsMapAsync(new Dictionary<stri
 
 ### Parameters
 
-| Parameter                          | Type                               | Required                           | Description                        | Example                            |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `MapParam`                         | Dictionary<String, *string*>       | :heavy_check_mark:                 | N/A                                | [object Object]                    |
-| `MapArrParam`                      | Dictionary<String, List<*string*>> | :heavy_minus_sign:                 | N/A                                | [object Object]                    |
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    | Example                                                        |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `MapParam`                                                     | Dictionary<String, *string*>                                   | :heavy_check_mark:                                             | N/A                                                            | {<br/>"test": "value",<br/>"test2": "value2"<br/>}             |
+| `MapArrParam`                                                  | Dictionary<String, List<*string*>>                             | :heavy_minus_sign:                                             | N/A                                                            | {<br/>"test": [<br/>"test",<br/>"test2"<br/>],<br/>"test2": [<br/>"test3",<br/>"test4"<br/>]<br/>} |
 
 
 ### Response
 
 **[DeepObjectQueryParamsMapResponse](../../Models/Operations/DeepObjectQueryParamsMapResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## DeepObjectQueryParamsObject
 
@@ -85,30 +93,33 @@ var res = await sdk.Parameters.DeepObjectQueryParamsMapAsync(new Dictionary<stri
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
-using System.Collections.Generic;
+using Openapi.Models.Shared;
 using NodaTime;
+using System.Numerics;
+using System.Collections.Generic;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.DeepObjectQueryParamsObjectAsync(new SimpleObject() {
+var res = await sdk.Parameters.DeepObjectQueryParamsObjectAsync(
+    objParam: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = Enum.One,
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+    Enum = Openapi.Models.Shared.Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = Int32Enum.FiftyFive,
-    IntEnum = IntEnum.Two,
+    Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+    IntEnum = Openapi.Models.Shared.IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -116,8 +127,11 @@ var res = await sdk.Parameters.DeepObjectQueryParamsObjectAsync(new SimpleObject
     BoolOpt = true,
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
+    Float64Str = "1.1",
+    Int64Str = "100",
     StrOpt = "testOptional",
-}, new ObjArrParam() {
+},
+    objArrParam: new ObjArrParam() {
     Arr = new List<string>() {
         "test",
         "test2",
@@ -138,7 +152,11 @@ var res = await sdk.Parameters.DeepObjectQueryParamsObjectAsync(new SimpleObject
 ### Response
 
 **[DeepObjectQueryParamsObjectResponse](../../Models/Operations/DeepObjectQueryParamsObjectResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## DuplicateParam
 
@@ -146,18 +164,19 @@ var res = await sdk.Parameters.DeepObjectQueryParamsObjectAsync(new SimpleObject
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.DuplicateParamAsync("string");
+var res = await sdk.Parameters.DuplicateParamAsync(duplicateParamRequest: "<value>");
 
 // handle response
 ```
@@ -172,7 +191,11 @@ var res = await sdk.Parameters.DuplicateParamAsync("string");
 ### Response
 
 **[DuplicateParamResponse](../../Models/Operations/DuplicateParamResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## FormQueryParamsArray
 
@@ -180,22 +203,25 @@ var res = await sdk.Parameters.DuplicateParamAsync("string");
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
 using System.Collections.Generic;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.FormQueryParamsArrayAsync(new List<string>() {
+var res = await sdk.Parameters.FormQueryParamsArrayAsync(
+    arrParam: new List<string>() {
     "test",
     "test2",
-}, new List<long>() {
+},
+    arrParamExploded: new List<long>() {
     1,
     2,
 });
@@ -214,7 +240,11 @@ var res = await sdk.Parameters.FormQueryParamsArrayAsync(new List<string>() {
 ### Response
 
 **[FormQueryParamsArrayResponse](../../Models/Operations/FormQueryParamsArrayResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## FormQueryParamsCamelObject
 
@@ -222,21 +252,24 @@ var res = await sdk.Parameters.FormQueryParamsArrayAsync(new List<string>() {
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.FormQueryParamsCamelObjectAsync(new ObjParamExploded() {
+var res = await sdk.Parameters.FormQueryParamsCamelObjectAsync(
+    objParamExploded: new ObjParamExploded() {
     ItemCount = "10",
     SearchTerm = "foo",
-}, new ObjParam() {
+},
+    objParam: new ObjParam() {
     EncodedCount = "11",
     EncodedTerm = "bar",
 });
@@ -255,7 +288,11 @@ var res = await sdk.Parameters.FormQueryParamsCamelObjectAsync(new ObjParamExplo
 ### Response
 
 **[FormQueryParamsCamelObjectResponse](../../Models/Operations/FormQueryParamsCamelObjectResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## FormQueryParamsMap
 
@@ -263,22 +300,25 @@ var res = await sdk.Parameters.FormQueryParamsCamelObjectAsync(new ObjParamExplo
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
 using System.Collections.Generic;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.FormQueryParamsMapAsync(new Dictionary<string, string>() {
+var res = await sdk.Parameters.FormQueryParamsMapAsync(
+    mapParam: new Dictionary<string, string>() {
     { "test", "value" },
     { "test2", "value2" },
-}, new Dictionary<string, long>() {
+},
+    mapParamExploded: new Dictionary<string, long>() {
     { "test", 1 },
     { "test2", 2 },
 });
@@ -288,16 +328,20 @@ var res = await sdk.Parameters.FormQueryParamsMapAsync(new Dictionary<string, st
 
 ### Parameters
 
-| Parameter                    | Type                         | Required                     | Description                  | Example                      |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `MapParam`                   | Dictionary<String, *string*> | :heavy_minus_sign:           | N/A                          | [object Object]              |
-| `MapParamExploded`           | Dictionary<String, *long*>   | :heavy_minus_sign:           | N/A                          | [object Object]              |
+| Parameter                              | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `MapParam`                             | Dictionary<String, *string*>           | :heavy_minus_sign:                     | N/A                                    | {<br/>"test": "value",<br/>"test2": "value2"<br/>} |
+| `MapParamExploded`                     | Dictionary<String, *long*>             | :heavy_minus_sign:                     | N/A                                    | {<br/>"test": 1,<br/>"test2": 2<br/>}  |
 
 
 ### Response
 
 **[FormQueryParamsMapResponse](../../Models/Operations/FormQueryParamsMapResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## FormQueryParamsObject
 
@@ -305,29 +349,32 @@ var res = await sdk.Parameters.FormQueryParamsMapAsync(new Dictionary<string, st
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 using NodaTime;
+using System.Numerics;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.FormQueryParamsObjectAsync(new SimpleObject() {
+var res = await sdk.Parameters.FormQueryParamsObjectAsync(
+    objParamExploded: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = Enum.One,
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+    Enum = Openapi.Models.Shared.Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = Int32Enum.FiftyFive,
-    IntEnum = IntEnum.Two,
+    Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+    IntEnum = Openapi.Models.Shared.IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -335,18 +382,21 @@ var res = await sdk.Parameters.FormQueryParamsObjectAsync(new SimpleObject() {
     BoolOpt = true,
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
+    Float64Str = "1.1",
+    Int64Str = "100",
     StrOpt = "testOptional",
-}, new SimpleObject() {
+},
+    objParam: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = Enum.One,
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+    Enum = Openapi.Models.Shared.Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = Int32Enum.FiftyFive,
-    IntEnum = IntEnum.Two,
+    Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+    IntEnum = Openapi.Models.Shared.IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -354,6 +404,8 @@ var res = await sdk.Parameters.FormQueryParamsObjectAsync(new SimpleObject() {
     BoolOpt = true,
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
+    Float64Str = "1.1",
+    Int64Str = "100",
     StrOpt = "testOptional",
 });
 
@@ -371,7 +423,11 @@ var res = await sdk.Parameters.FormQueryParamsObjectAsync(new SimpleObject() {
 ### Response
 
 **[FormQueryParamsObjectResponse](../../Models/Operations/FormQueryParamsObjectResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## FormQueryParamsPrimitive
 
@@ -379,18 +435,23 @@ var res = await sdk.Parameters.FormQueryParamsObjectAsync(new SimpleObject() {
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.FormQueryParamsPrimitiveAsync(true, 1, 1.1D, "test");
+var res = await sdk.Parameters.FormQueryParamsPrimitiveAsync(
+    boolParam: true,
+    intParam: 1,
+    numParam: 1.1D,
+    strParam: "test");
 
 // handle response
 ```
@@ -408,7 +469,11 @@ var res = await sdk.Parameters.FormQueryParamsPrimitiveAsync(true, 1, 1.1D, "tes
 ### Response
 
 **[FormQueryParamsPrimitiveResponse](../../Models/Operations/FormQueryParamsPrimitiveResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## FormQueryParamsRefParamObject
 
@@ -416,23 +481,26 @@ var res = await sdk.Parameters.FormQueryParamsPrimitiveAsync(true, 1, 1.1D, "tes
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.FormQueryParamsRefParamObjectAsync(new RefQueryParamObj() {
+var res = await sdk.Parameters.FormQueryParamsRefParamObjectAsync(
+    refObjParam: new RefQueryParamObj() {
     Bool = true,
     Int = 1,
     Num = 1.1D,
     Str = "test",
-}, new RefQueryParamObjExploded() {
+},
+    refObjParamExploded: new RefQueryParamObjExploded() {
     Bool = true,
     Int = 1,
     Num = 1.1D,
@@ -453,7 +521,11 @@ var res = await sdk.Parameters.FormQueryParamsRefParamObjectAsync(new RefQueryPa
 ### Response
 
 **[FormQueryParamsRefParamObjectResponse](../../Models/Operations/FormQueryParamsRefParamObjectResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## HeaderParamsArray
 
@@ -461,19 +533,20 @@ var res = await sdk.Parameters.FormQueryParamsRefParamObjectAsync(new RefQueryPa
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
 using System.Collections.Generic;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.HeaderParamsArrayAsync(new List<string>() {
+var res = await sdk.Parameters.HeaderParamsArrayAsync(xHeaderArray: new List<string>() {
     "test1",
     "test2",
 });
@@ -491,7 +564,11 @@ var res = await sdk.Parameters.HeaderParamsArrayAsync(new List<string>() {
 ### Response
 
 **[HeaderParamsArrayResponse](../../Models/Operations/HeaderParamsArrayResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## HeaderParamsMap
 
@@ -499,22 +576,25 @@ var res = await sdk.Parameters.HeaderParamsArrayAsync(new List<string>() {
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
 using System.Collections.Generic;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.HeaderParamsMapAsync(new Dictionary<string, string>() {
+var res = await sdk.Parameters.HeaderParamsMapAsync(
+    xHeaderMap: new Dictionary<string, string>() {
     { "key1", "value1" },
     { "key2", "value2" },
-}, new Dictionary<string, string>() {
+},
+    xHeaderMapExplode: new Dictionary<string, string>() {
     { "test1", "val1" },
     { "test2", "val2" },
 });
@@ -524,16 +604,20 @@ var res = await sdk.Parameters.HeaderParamsMapAsync(new Dictionary<string, strin
 
 ### Parameters
 
-| Parameter                    | Type                         | Required                     | Description                  | Example                      |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `XHeaderMap`                 | Dictionary<String, *string*> | :heavy_check_mark:           | N/A                          | [object Object]              |
-| `XHeaderMapExplode`          | Dictionary<String, *string*> | :heavy_check_mark:           | N/A                          | [object Object]              |
+| Parameter                              | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `XHeaderMap`                           | Dictionary<String, *string*>           | :heavy_check_mark:                     | N/A                                    | {<br/>"key1": "value1",<br/>"key2": "value2"<br/>} |
+| `XHeaderMapExplode`                    | Dictionary<String, *string*>           | :heavy_check_mark:                     | N/A                                    | {<br/>"test1": "val1",<br/>"test2": "val2"<br/>} |
 
 
 ### Response
 
 **[HeaderParamsMapResponse](../../Models/Operations/HeaderParamsMapResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## HeaderParamsObject
 
@@ -541,29 +625,32 @@ var res = await sdk.Parameters.HeaderParamsMapAsync(new Dictionary<string, strin
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 using NodaTime;
+using System.Numerics;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.HeaderParamsObjectAsync(new SimpleObject() {
+var res = await sdk.Parameters.HeaderParamsObjectAsync(
+    xHeaderObj: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = Enum.One,
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+    Enum = Openapi.Models.Shared.Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = Int32Enum.FiftyFive,
-    IntEnum = IntEnum.Two,
+    Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+    IntEnum = Openapi.Models.Shared.IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -571,18 +658,21 @@ var res = await sdk.Parameters.HeaderParamsObjectAsync(new SimpleObject() {
     BoolOpt = true,
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
+    Float64Str = "1.1",
+    Int64Str = "100",
     StrOpt = "testOptional",
-}, new SimpleObject() {
+},
+    xHeaderObjExplode: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = Enum.One,
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+    Enum = Openapi.Models.Shared.Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = Int32Enum.FiftyFive,
-    IntEnum = IntEnum.Two,
+    Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+    IntEnum = Openapi.Models.Shared.IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -590,6 +680,8 @@ var res = await sdk.Parameters.HeaderParamsObjectAsync(new SimpleObject() {
     BoolOpt = true,
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
+    Float64Str = "1.1",
+    Int64Str = "100",
     StrOpt = "testOptional",
 });
 
@@ -607,7 +699,11 @@ var res = await sdk.Parameters.HeaderParamsObjectAsync(new SimpleObject() {
 ### Response
 
 **[HeaderParamsObjectResponse](../../Models/Operations/HeaderParamsObjectResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## HeaderParamsPrimitive
 
@@ -615,18 +711,23 @@ var res = await sdk.Parameters.HeaderParamsObjectAsync(new SimpleObject() {
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.HeaderParamsPrimitiveAsync(true, 1, 1.1D, "test");
+var res = await sdk.Parameters.HeaderParamsPrimitiveAsync(
+    xHeaderBoolean: true,
+    xHeaderInteger: 1,
+    xHeaderNumber: 1.1D,
+    xHeaderString: "test");
 
 // handle response
 ```
@@ -644,7 +745,11 @@ var res = await sdk.Parameters.HeaderParamsPrimitiveAsync(true, 1, 1.1D, "test")
 ### Response
 
 **[HeaderParamsPrimitiveResponse](../../Models/Operations/HeaderParamsPrimitiveResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## JsonQueryParamsObject
 
@@ -652,33 +757,59 @@ var res = await sdk.Parameters.HeaderParamsPrimitiveAsync(true, 1, 1.1D, "test")
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
-using System.Collections.Generic;
+using Openapi.Models.Shared;
 using NodaTime;
+using System.Numerics;
+using System.Collections.Generic;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
-    Any = "anyOf[0]",
+var res = await sdk.Parameters.JsonQueryParamsObjectAsync(
+    deepObjParam: new DeepObject() {
+    Any = Any.CreateSimpleObject(
+            new SimpleObject() {
+                Any = "any",
+                Bool = true,
+                Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+                DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+                Enum = Openapi.Models.Shared.Enum.One,
+                Float32 = 1.1F,
+                Int = 1,
+                Int32 = 1,
+                Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+                IntEnum = Openapi.Models.Shared.IntEnum.Two,
+                Num = 1.1D,
+                Str = "test",
+                Bigint = 8821239038968084,
+                BigintStr = 9223372036854775808,
+                BoolOpt = true,
+                Decimal = 3.141592653589793M,
+                DecimalStr = 3.14159265358979344719667586M,
+                Float64Str = "1.1",
+                Int64Str = "100",
+                StrOpt = "testOptional",
+            }
+    ),
     Arr = new List<SimpleObject>() {
         new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = Enum.One,
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+            Enum = Openapi.Models.Shared.Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = Int32Enum.FiftyFive,
-            IntEnum = IntEnum.Two,
+            Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+            IntEnum = Openapi.Models.Shared.IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -686,19 +817,21 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
             BoolOpt = true,
             Decimal = 3.141592653589793M,
             DecimalStr = 3.14159265358979344719667586M,
+            Float64Str = "1.1",
+            Int64Str = "100",
             StrOpt = "testOptional",
         },
         new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = Enum.One,
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+            Enum = Openapi.Models.Shared.Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = Int32Enum.FiftyFive,
-            IntEnum = IntEnum.Two,
+            Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+            IntEnum = Openapi.Models.Shared.IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -706,6 +839,8 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
             BoolOpt = true,
             Decimal = 3.141592653589793M,
             DecimalStr = 3.14159265358979344719667586M,
+            Float64Str = "1.1",
+            Int64Str = "100",
             StrOpt = "testOptional",
         },
     },
@@ -716,13 +851,13 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = Enum.One,
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+            Enum = Openapi.Models.Shared.Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = Int32Enum.FiftyFive,
-            IntEnum = IntEnum.Two,
+            Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+            IntEnum = Openapi.Models.Shared.IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -730,19 +865,21 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
             BoolOpt = true,
             Decimal = 3.141592653589793M,
             DecimalStr = 3.14159265358979344719667586M,
+            Float64Str = "1.1",
+            Int64Str = "100",
             StrOpt = "testOptional",
         } },
         { "key2", new SimpleObject() {
             Any = "any",
             Bool = true,
             Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-            Enum = Enum.One,
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+            Enum = Openapi.Models.Shared.Enum.One,
             Float32 = 1.1F,
             Int = 1,
             Int32 = 1,
-            Int32Enum = Int32Enum.FiftyFive,
-            IntEnum = IntEnum.Two,
+            Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+            IntEnum = Openapi.Models.Shared.IntEnum.Two,
             Num = 1.1D,
             Str = "test",
             Bigint = 8821239038968084,
@@ -750,6 +887,8 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
             BoolOpt = true,
             Decimal = 3.141592653589793M,
             DecimalStr = 3.14159265358979344719667586M,
+            Float64Str = "1.1",
+            Int64Str = "100",
             StrOpt = "testOptional",
         } },
     },
@@ -758,13 +897,13 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
         Any = "any",
         Bool = true,
         Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-        Enum = Enum.One,
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+        Enum = Openapi.Models.Shared.Enum.One,
         Float32 = 1.1F,
         Int = 1,
         Int32 = 1,
-        Int32Enum = Int32Enum.FiftyFive,
-        IntEnum = IntEnum.Two,
+        Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+        IntEnum = Openapi.Models.Shared.IntEnum.Two,
         Num = 1.1D,
         Str = "test",
         Bigint = 8821239038968084,
@@ -772,20 +911,23 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
         BoolOpt = true,
         Decimal = 3.141592653589793M,
         DecimalStr = 3.14159265358979344719667586M,
+        Float64Str = "1.1",
+        Int64Str = "100",
         StrOpt = "testOptional",
     },
     Str = "test",
-}, new SimpleObject() {
+},
+    simpleObjParam: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = Enum.One,
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+    Enum = Openapi.Models.Shared.Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = Int32Enum.FiftyFive,
-    IntEnum = IntEnum.Two,
+    Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+    IntEnum = Openapi.Models.Shared.IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -793,6 +935,8 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
     BoolOpt = true,
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
+    Float64Str = "1.1",
+    Int64Str = "100",
     StrOpt = "testOptional",
 });
 
@@ -810,7 +954,198 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
 ### Response
 
 **[JsonQueryParamsObjectResponse](../../Models/Operations/JsonQueryParamsObjectResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
+
+## JsonQueryParamsObjectSmaller
+
+### Example Usage
+
+```csharp
+using Openapi;
+using Openapi.Models.Operations;
+using Openapi.Models.Shared;
+using NodaTime;
+using System.Numerics;
+using System.Collections.Generic;
+
+var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param");
+
+var res = await sdk.Parameters.JsonQueryParamsObjectSmallerAsync(
+    deepObjParam: new DeepObjectSmaller() {
+    Any = DeepObjectSmallerAny.CreateSimpleObject(
+            new SimpleObject() {
+                Any = "any",
+                Bool = true,
+                Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+                DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+                Enum = Openapi.Models.Shared.Enum.One,
+                Float32 = 1.1F,
+                Int = 1,
+                Int32 = 1,
+                Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+                IntEnum = Openapi.Models.Shared.IntEnum.Two,
+                Num = 1.1D,
+                Str = "test",
+                Bigint = 8821239038968084,
+                BigintStr = 9223372036854775808,
+                BoolOpt = true,
+                Decimal = 3.141592653589793M,
+                DecimalStr = 3.14159265358979344719667586M,
+                Float64Str = "1.1",
+                Int64Str = "100",
+                StrOpt = "testOptional",
+            }
+    ),
+    Arr = new List<SimpleObject>() {
+        new SimpleObject() {
+            Any = "any",
+            Bool = true,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+            Enum = Openapi.Models.Shared.Enum.One,
+            Float32 = 1.1F,
+            Int = 1,
+            Int32 = 1,
+            Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+            IntEnum = Openapi.Models.Shared.IntEnum.Two,
+            Num = 1.1D,
+            Str = "test",
+            Bigint = 8821239038968084,
+            BigintStr = 9223372036854775808,
+            BoolOpt = true,
+            Decimal = 3.141592653589793M,
+            DecimalStr = 3.14159265358979344719667586M,
+            Float64Str = "1.1",
+            Int64Str = "100",
+            StrOpt = "testOptional",
+        },
+        new SimpleObject() {
+            Any = "any",
+            Bool = true,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+            Enum = Openapi.Models.Shared.Enum.One,
+            Float32 = 1.1F,
+            Int = 1,
+            Int32 = 1,
+            Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+            IntEnum = Openapi.Models.Shared.IntEnum.Two,
+            Num = 1.1D,
+            Str = "test",
+            Bigint = 8821239038968084,
+            BigintStr = 9223372036854775808,
+            BoolOpt = true,
+            Decimal = 3.141592653589793M,
+            DecimalStr = 3.14159265358979344719667586M,
+            Float64Str = "1.1",
+            Int64Str = "100",
+            StrOpt = "testOptional",
+        },
+    },
+    Bool = true,
+    Int = 1,
+    Map = new Dictionary<string, SimpleObject>() {
+        { "key", new SimpleObject() {
+            Any = "any",
+            Bool = true,
+            Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+            DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+            Enum = Openapi.Models.Shared.Enum.One,
+            Float32 = 1.1F,
+            Int = 1,
+            Int32 = 1,
+            Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+            IntEnum = Openapi.Models.Shared.IntEnum.Two,
+            Num = 1.1D,
+            Str = "test",
+            Bigint = 8821239038968084,
+            BigintStr = 9223372036854775808,
+            BoolOpt = true,
+            Decimal = 3.141592653589793M,
+            DecimalStr = 3.14159265358979344719667586M,
+            Float64Str = "1.1",
+            Int64Str = "100",
+            StrOpt = "testOptional",
+        } },
+    },
+    Num = 1.1D,
+    Obj = new SimpleObject() {
+        Any = "any",
+        Bool = true,
+        Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+        DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+        Enum = Openapi.Models.Shared.Enum.One,
+        Float32 = 1.1F,
+        Int = 1,
+        Int32 = 1,
+        Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+        IntEnum = Openapi.Models.Shared.IntEnum.Two,
+        Num = 1.1D,
+        Str = "test",
+        Bigint = 8821239038968084,
+        BigintStr = 9223372036854775808,
+        BoolOpt = true,
+        Decimal = 3.141592653589793M,
+        DecimalStr = 3.14159265358979344719667586M,
+        Float64Str = "1.1",
+        Int64Str = "100",
+        StrOpt = "testOptional",
+    },
+    Str = "test",
+},
+    simpleObjParam: new SimpleObject() {
+    Any = "any",
+    Bool = true,
+    Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+    Enum = Openapi.Models.Shared.Enum.One,
+    Float32 = 1.1F,
+    Int = 1,
+    Int32 = 1,
+    Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+    IntEnum = Openapi.Models.Shared.IntEnum.Two,
+    Num = 1.1D,
+    Str = "test",
+    Bigint = 8821239038968084,
+    BigintStr = 9223372036854775808,
+    BoolOpt = true,
+    Decimal = 3.141592653589793M,
+    DecimalStr = 3.14159265358979344719667586M,
+    Float64Str = "1.1",
+    Int64Str = "100",
+    StrOpt = "testOptional",
+});
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `DeepObjParam`                                                                                     | [DeepObjectSmaller](../../Models/Shared/DeepObjectSmaller.md)                                      | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `SimpleObjParam`                                                                                   | [SimpleObject](../../Models/Shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+
+
+### Response
+
+**[JsonQueryParamsObjectSmallerResponse](../../Models/Operations/JsonQueryParamsObjectSmallerResponse.md)**
+### Errors
+
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## MixedParametersCamelCase
 
@@ -818,18 +1153,22 @@ var res = await sdk.Parameters.JsonQueryParamsObjectAsync(new DeepObject() {
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.MixedParametersCamelCaseAsync("headerValue", "pathValue", "queryValue");
+var res = await sdk.Parameters.MixedParametersCamelCaseAsync(
+    headerParam: "headerValue",
+    pathParam: "pathValue",
+    queryStringParam: "queryValue");
 
 // handle response
 ```
@@ -846,7 +1185,11 @@ var res = await sdk.Parameters.MixedParametersCamelCaseAsync("headerValue", "pat
 ### Response
 
 **[MixedParametersCamelCaseResponse](../../Models/Operations/MixedParametersCamelCaseResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## MixedParametersPrimitives
 
@@ -854,18 +1197,22 @@ var res = await sdk.Parameters.MixedParametersCamelCaseAsync("headerValue", "pat
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.MixedParametersPrimitivesAsync("headerValue", "pathValue", "queryValue");
+var res = await sdk.Parameters.MixedParametersPrimitivesAsync(
+    headerParam: "headerValue",
+    pathParam: "pathValue",
+    queryStringParam: "queryValue");
 
 // handle response
 ```
@@ -882,7 +1229,11 @@ var res = await sdk.Parameters.MixedParametersPrimitivesAsync("headerValue", "pa
 ### Response
 
 **[MixedParametersPrimitivesResponse](../../Models/Operations/MixedParametersPrimitivesResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## MixedQueryParams
 
@@ -890,29 +1241,32 @@ var res = await sdk.Parameters.MixedParametersPrimitivesAsync("headerValue", "pa
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 using NodaTime;
+using System.Numerics;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.MixedQueryParamsAsync(new SimpleObject() {
+var res = await sdk.Parameters.MixedQueryParamsAsync(
+    deepObjectParam: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = Enum.One,
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+    Enum = Openapi.Models.Shared.Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = Int32Enum.FiftyFive,
-    IntEnum = IntEnum.Two,
+    Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+    IntEnum = Openapi.Models.Shared.IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -920,18 +1274,21 @@ var res = await sdk.Parameters.MixedQueryParamsAsync(new SimpleObject() {
     BoolOpt = true,
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
+    Float64Str = "1.1",
+    Int64Str = "100",
     StrOpt = "testOptional",
-}, new SimpleObject() {
+},
+    formParam: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = Enum.One,
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+    Enum = Openapi.Models.Shared.Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = Int32Enum.FiftyFive,
-    IntEnum = IntEnum.Two,
+    Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+    IntEnum = Openapi.Models.Shared.IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -939,18 +1296,21 @@ var res = await sdk.Parameters.MixedQueryParamsAsync(new SimpleObject() {
     BoolOpt = true,
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
+    Float64Str = "1.1",
+    Int64Str = "100",
     StrOpt = "testOptional",
-}, new SimpleObject() {
+},
+    jsonParam: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = Enum.One,
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+    Enum = Openapi.Models.Shared.Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = Int32Enum.FiftyFive,
-    IntEnum = IntEnum.Two,
+    Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+    IntEnum = Openapi.Models.Shared.IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -958,6 +1318,8 @@ var res = await sdk.Parameters.MixedQueryParamsAsync(new SimpleObject() {
     BoolOpt = true,
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
+    Float64Str = "1.1",
+    Int64Str = "100",
     StrOpt = "testOptional",
 });
 
@@ -976,7 +1338,11 @@ var res = await sdk.Parameters.MixedQueryParamsAsync(new SimpleObject() {
 ### Response
 
 **[MixedQueryParamsResponse](../../Models/Operations/MixedQueryParamsResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## PathParameterJson
 
@@ -984,29 +1350,31 @@ var res = await sdk.Parameters.MixedQueryParamsAsync(new SimpleObject() {
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 using NodaTime;
+using System.Numerics;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.PathParameterJsonAsync(new SimpleObject() {
+var res = await sdk.Parameters.PathParameterJsonAsync(jsonObj: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = Enum.One,
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+    Enum = Openapi.Models.Shared.Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = Int32Enum.FiftyFive,
-    IntEnum = IntEnum.Two,
+    Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+    IntEnum = Openapi.Models.Shared.IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -1014,6 +1382,8 @@ var res = await sdk.Parameters.PathParameterJsonAsync(new SimpleObject() {
     BoolOpt = true,
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
+    Float64Str = "1.1",
+    Int64Str = "100",
     StrOpt = "testOptional",
 });
 
@@ -1030,7 +1400,11 @@ var res = await sdk.Parameters.PathParameterJsonAsync(new SimpleObject() {
 ### Response
 
 **[PathParameterJsonResponse](../../Models/Operations/PathParameterJsonResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## PipeDelimitedQueryParamsArray
 
@@ -1038,39 +1412,45 @@ var res = await sdk.Parameters.PathParameterJsonAsync(new SimpleObject() {
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
 using System.Collections.Generic;
+using Openapi.Models.Shared;
 using NodaTime;
+using System.Numerics;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.PipeDelimitedQueryParamsArrayAsync(new List<string>() {
+var res = await sdk.Parameters.PipeDelimitedQueryParamsArrayAsync(
+    arrParam: new List<string>() {
     "test",
     "test2",
-}, new List<long>() {
+},
+    arrParamExploded: new List<long>() {
     1,
     2,
-}, new Dictionary<string, string>() {
-    { "key2", "val2" },
+},
+    mapParam: new Dictionary<string, string>() {
     { "key1", "val1" },
-}, new SimpleObject() {
+    { "key2", "val2" },
+},
+    objParam: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = Enum.One,
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+    Enum = Openapi.Models.Shared.Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = Int32Enum.FiftyFive,
-    IntEnum = IntEnum.Two,
+    Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+    IntEnum = Openapi.Models.Shared.IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -1078,6 +1458,8 @@ var res = await sdk.Parameters.PipeDelimitedQueryParamsArrayAsync(new List<strin
     BoolOpt = true,
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
+    Float64Str = "1.1",
+    Int64Str = "100",
     StrOpt = "testOptional",
 });
 
@@ -1090,14 +1472,18 @@ var res = await sdk.Parameters.PipeDelimitedQueryParamsArrayAsync(new List<strin
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `ArrParam`                                                                                         | List<*string*>                                                                                     | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `ArrParamExploded`                                                                                 | List<*long*>                                                                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `MapParam`                                                                                         | Dictionary<String, *string*>                                                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
+| `MapParam`                                                                                         | Dictionary<String, *string*>                                                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                | {<br/>"key1": "val1",<br/>"key2": "val2"<br/>}                                                     |
 | `ObjParam`                                                                                         | [SimpleObject](../../Models/Shared/SimpleObject.md)                                                | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 
 
 ### Response
 
 **[PipeDelimitedQueryParamsArrayResponse](../../Models/Operations/PipeDelimitedQueryParamsArrayResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## SimplePathParameterArrays
 
@@ -1105,19 +1491,20 @@ var res = await sdk.Parameters.PipeDelimitedQueryParamsArrayAsync(new List<strin
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
 using System.Collections.Generic;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.SimplePathParameterArraysAsync(new List<string>() {
+var res = await sdk.Parameters.SimplePathParameterArraysAsync(arrParam: new List<string>() {
     "test",
     "test2",
 });
@@ -1135,7 +1522,11 @@ var res = await sdk.Parameters.SimplePathParameterArraysAsync(new List<string>()
 ### Response
 
 **[SimplePathParameterArraysResponse](../../Models/Operations/SimplePathParameterArraysResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## SimplePathParameterMaps
 
@@ -1143,22 +1534,25 @@ var res = await sdk.Parameters.SimplePathParameterArraysAsync(new List<string>()
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
 using System.Collections.Generic;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.SimplePathParameterMapsAsync(new Dictionary<string, string>() {
+var res = await sdk.Parameters.SimplePathParameterMapsAsync(
+    mapParam: new Dictionary<string, string>() {
     { "test", "value" },
     { "test2", "value2" },
-}, new Dictionary<string, long>() {
+},
+    mapParamExploded: new Dictionary<string, long>() {
     { "test", 1 },
     { "test2", 2 },
 });
@@ -1168,16 +1562,20 @@ var res = await sdk.Parameters.SimplePathParameterMapsAsync(new Dictionary<strin
 
 ### Parameters
 
-| Parameter                    | Type                         | Required                     | Description                  | Example                      |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `MapParam`                   | Dictionary<String, *string*> | :heavy_check_mark:           | N/A                          | [object Object]              |
-| `MapParamExploded`           | Dictionary<String, *long*>   | :heavy_check_mark:           | N/A                          | [object Object]              |
+| Parameter                              | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `MapParam`                             | Dictionary<String, *string*>           | :heavy_check_mark:                     | N/A                                    | {<br/>"test": "value",<br/>"test2": "value2"<br/>} |
+| `MapParamExploded`                     | Dictionary<String, *long*>             | :heavy_check_mark:                     | N/A                                    | {<br/>"test": 1,<br/>"test2": 2<br/>}  |
 
 
 ### Response
 
 **[SimplePathParameterMapsResponse](../../Models/Operations/SimplePathParameterMapsResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## SimplePathParameterObjects
 
@@ -1185,29 +1583,32 @@ var res = await sdk.Parameters.SimplePathParameterMapsAsync(new Dictionary<strin
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 using NodaTime;
+using System.Numerics;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.SimplePathParameterObjectsAsync(new SimpleObject() {
+var res = await sdk.Parameters.SimplePathParameterObjectsAsync(
+    objParam: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = Enum.One,
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+    Enum = Openapi.Models.Shared.Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = Int32Enum.FiftyFive,
-    IntEnum = IntEnum.Two,
+    Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+    IntEnum = Openapi.Models.Shared.IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -1215,18 +1616,21 @@ var res = await sdk.Parameters.SimplePathParameterObjectsAsync(new SimpleObject(
     BoolOpt = true,
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
+    Float64Str = "1.1",
+    Int64Str = "100",
     StrOpt = "testOptional",
-}, new SimpleObject() {
+},
+    objParamExploded: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = Enum.One,
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+    Enum = Openapi.Models.Shared.Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = Int32Enum.FiftyFive,
-    IntEnum = IntEnum.Two,
+    Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+    IntEnum = Openapi.Models.Shared.IntEnum.Two,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -1234,6 +1638,8 @@ var res = await sdk.Parameters.SimplePathParameterObjectsAsync(new SimpleObject(
     BoolOpt = true,
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
+    Float64Str = "1.1",
+    Int64Str = "100",
     StrOpt = "testOptional",
 });
 
@@ -1251,7 +1657,11 @@ var res = await sdk.Parameters.SimplePathParameterObjectsAsync(new SimpleObject(
 ### Response
 
 **[SimplePathParameterObjectsResponse](../../Models/Operations/SimplePathParameterObjectsResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## SimplePathParameterPrimitives
 
@@ -1259,18 +1669,23 @@ var res = await sdk.Parameters.SimplePathParameterObjectsAsync(new SimpleObject(
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Parameters.SimplePathParameterPrimitivesAsync(true, 1, 1.1D, "test");
+var res = await sdk.Parameters.SimplePathParameterPrimitivesAsync(
+    boolParam: true,
+    intParam: 1,
+    numParam: 1.1D,
+    strParam: "test");
 
 // handle response
 ```
@@ -1288,4 +1703,8 @@ var res = await sdk.Parameters.SimplePathParameterPrimitivesAsync(true, 1, 1.1D,
 ### Response
 
 **[SimplePathParameterPrimitivesResponse](../../Models/Operations/SimplePathParameterPrimitivesResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |

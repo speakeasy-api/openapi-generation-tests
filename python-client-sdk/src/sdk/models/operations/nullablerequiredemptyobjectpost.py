@@ -26,9 +26,46 @@ class RequiredObj:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class NullableRequiredEmptyObjectPostRequestBody:
+    UNSET='__SPEAKEASY_UNSET__'
     nullable_required_obj: Optional[NullableRequiredObj] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredObj') }})
     required_obj: RequiredObj = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('RequiredObj') }})
-    nullable_optional_obj: Optional[NullableOptionalObj] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOptionalObj') }})
+    nullable_optional_obj: Optional[NullableOptionalObj] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOptionalObj'), 'exclude': lambda f: f is NullableRequiredEmptyObjectPostRequestBody.UNSET }})
+    
+
+
+
+@dataclasses.dataclass
+class NullableRequiredEmptyObjectPostNullableOptionalObj:
+    pass
+
+
+@dataclasses.dataclass
+class NullableRequiredEmptyObjectPostNullableRequiredObj:
+    pass
+
+
+@dataclasses.dataclass
+class NullableRequiredEmptyObjectPostRequiredObj:
+    pass
+
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class NullableRequiredEmptyObjectPostJSON:
+    UNSET='__SPEAKEASY_UNSET__'
+    nullable_required_obj: Optional[NullableRequiredEmptyObjectPostNullableRequiredObj] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredObj') }})
+    required_obj: NullableRequiredEmptyObjectPostRequiredObj = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('RequiredObj') }})
+    nullable_optional_obj: Optional[NullableRequiredEmptyObjectPostNullableOptionalObj] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOptionalObj'), 'exclude': lambda f: f is NullableRequiredEmptyObjectPostJSON.UNSET }})
+    
+
+
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class NullableRequiredEmptyObjectPostResponseBody:
+    r"""OK"""
+    data: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data'), 'exclude': lambda f: f is None }})
+    json: Optional[NullableRequiredEmptyObjectPostJSON] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     
 
 
@@ -39,9 +76,9 @@ class NullableRequiredEmptyObjectPostResponse:
     r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
-    res: Optional[str] = dataclasses.field(default=None)
+    object: Optional[NullableRequiredEmptyObjectPostResponseBody] = dataclasses.field(default=None)
     r"""OK"""
     
 
