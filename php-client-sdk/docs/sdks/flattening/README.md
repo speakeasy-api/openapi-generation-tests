@@ -21,7 +21,8 @@ Endpoints for testing flattening through request body and parameter combinations
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -31,25 +32,30 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $simpleObject = new Shared\SimpleObject();
+        $simpleObject = new Shared\SimpleObject();
     $simpleObject->any = 'any';
     $simpleObject->bigint = 8821239038968084;
     $simpleObject->bigintStr = '9223372036854775808';
     $simpleObject->bool = true;
     $simpleObject->boolOpt = true;
     $simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $simpleObject->decimal = 3.141592653589793;
     $simpleObject->decimalStr = '3.14159265358979344719667586';
     $simpleObject->enum = Shared\Enum::One;
     $simpleObject->float32 = 1.1;
+    $simpleObject->float64Str = '1.1';
     $simpleObject->int = 1;
     $simpleObject->int32 = 1;
     $simpleObject->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $simpleObject->int64Str = '100';
     $simpleObject->intEnum = Shared\IntEnum::Second;
     $simpleObject->intOptNull = 843322;
     $simpleObject->num = 1.1;
@@ -57,12 +63,12 @@ try {
     $simpleObject->str = 'test';
     $simpleObject->strOpt = 'testOptional';
 
-    $response = $sdk->flattening->componentBodyAndParamConflict($simpleObject, 'string');
+    $response = $sdk->flattening->componentBodyAndParamConflict($simpleObject, '<value>');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -88,7 +94,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -98,25 +105,30 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $simpleObject = new Shared\SimpleObject();
+        $simpleObject = new Shared\SimpleObject();
     $simpleObject->any = 'any';
     $simpleObject->bigint = 8821239038968084;
     $simpleObject->bigintStr = '9223372036854775808';
     $simpleObject->bool = true;
     $simpleObject->boolOpt = true;
     $simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.001Z');
     $simpleObject->decimal = 3.141592653589793;
     $simpleObject->decimalStr = '3.14159265358979344719667586';
     $simpleObject->enum = Shared\Enum::One;
     $simpleObject->float32 = 1.1;
+    $simpleObject->float64Str = '1.1';
     $simpleObject->int = 1;
     $simpleObject->int32 = 1;
     $simpleObject->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
+    $simpleObject->int64Str = '100';
     $simpleObject->intEnum = Shared\IntEnum::Third;
     $simpleObject->intOptNull = 758827;
     $simpleObject->num = 1.1;
@@ -124,12 +136,12 @@ try {
     $simpleObject->str = 'test';
     $simpleObject->strOpt = 'testOptional';
 
-    $response = $sdk->flattening->componentBodyAndParamNoConflict('string', $simpleObject);
+    $response = $sdk->flattening->componentBodyAndParamNoConflict('<value>', $simpleObject);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -155,7 +167,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -165,18 +178,21 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
+    
 
-
-    $response = $sdk->flattening->conflictingParams('string', 'string');
+    $response = $sdk->flattening->conflictingParams('<value>', '<value>');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -202,7 +218,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -212,19 +229,22 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $requestBody = new Operations\InlineBodyAndParamConflictRequestBody();
-    $requestBody->str = 'string';
+        $requestBody = new Operations\InlineBodyAndParamConflictRequestBody();
+    $requestBody->str = '<value>';
 
-    $response = $sdk->flattening->inlineBodyAndParamConflict($requestBody, 'string');
+    $response = $sdk->flattening->inlineBodyAndParamConflict($requestBody, '<value>');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -250,7 +270,8 @@ try {
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Shared;
@@ -260,19 +281,22 @@ $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $requestBody = new Operations\InlineBodyAndParamNoConflictRequestBody();
-    $requestBody->bodyStr = 'string';
+        $requestBody = new Operations\InlineBodyAndParamNoConflictRequestBody();
+    $requestBody->bodyStr = '<value>';
 
-    $response = $sdk->flattening->inlineBodyAndParamNoConflict($requestBody, 'string');
+    $response = $sdk->flattening->inlineBodyAndParamNoConflict($requestBody, '<value>');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
