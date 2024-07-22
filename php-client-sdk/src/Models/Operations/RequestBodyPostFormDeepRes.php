@@ -9,20 +9,15 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-/**
- * RequestBodyPostFormDeepRes - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Operations
- * @access public
- */
+/** RequestBodyPostFormDeepRes - OK */
 class RequestBodyPostFormDeepRes
 {
-	#[\JMS\Serializer\Annotation\SerializedName('form')]
+    #[\JMS\Serializer\Annotation\SerializedName('form')]
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\Form')]
     public Form $form;
-    
-	public function __construct()
-	{
-		$this->form = new \OpenAPI\OpenAPI\Models\Operations\Form();
-	}
+
+    public function __construct()
+    {
+        $this->form = new \OpenAPI\OpenAPI\Models\Operations\Form();
+    }
 }

@@ -6,6 +6,7 @@ import (
 	"context"
 	"testing"
 
+	"openapi/pkg/models/operations"
 	"openapi/pkg/models/sdkerrors"
 
 	sdk "openapi"
@@ -43,14 +44,14 @@ func TestStatusGetError_DefaultErrorCodes(t *testing.T) {
 }
 
 func TestStatusGetError_300_NonError(t *testing.T) {
-	recordTest("errors-status-get-error-300-non-error")
+	recordTest("errors-status-get-error300-non-error")
 
 	s := sdk.New()
 
 	res, err := s.Errors.StatusGetError(context.Background(), 300)
 	assert.NoError(t, err)
 
-	assert.Equal(t, 300, res.StatusCode)
+	assert.Equal(t, 300, res.HTTPMeta.Response.StatusCode)
 }
 
 func TestStatusGetErrorXSpeakeasyErrors(t *testing.T) {
@@ -107,7 +108,7 @@ func TestStatusGetErrorXSpeakeasyErrors(t *testing.T) {
 	var e501 *sdkerrors.StatusGetXSpeakeasyErrorsResponseBody
 	if assert.ErrorAs(t, err, &e501) {
 		assert.Equal(t, "501", *e501.Code)
-		assert.Equal(t, 501, e501.RawResponse.StatusCode)
+		assert.Equal(t, 501, e501.HTTPMeta.Response.StatusCode)
 	}
 }
 
@@ -120,4 +121,53 @@ func TestConnectionErrorGet(t *testing.T) {
 	assert.Error(t, err)
 	assert.ErrorContains(t, err, "error sending request: Get \"http://somebrokenapi.broken/anything/connectionError\": dial tcp: lookup somebrokenapi.broken")
 	assert.Nil(t, res)
+}
+
+func TestUnionOfErrors(t *testing.T) {
+	recordTest("errors-union-of-errors")
+
+	s := sdk.New()
+
+	req1 := operations.CreateErrorUnionPostRequestBodyErrorType1RequestBody(
+		operations.ErrorType1RequestBody{Error: "Error1"},
+	)
+	res1, err1 := s.Errors.ErrorUnionPost(context.Background(), req1)
+	assert.Nil(t, res1)
+	assert.Error(t, err1)
+	assert.Equal(t, "{\"error\":\"Error1\"}", err1.Error())
+
+	req2 := operations.CreateErrorUnionPostRequestBodyErrorType2RequestBody(
+		operations.ErrorType2RequestBody{
+			ErrorType2Message: &operations.ErrorType2Message{Message: "Error2"},
+		},
+	)
+	res2, err2 := s.Errors.ErrorUnionPost(context.Background(), req2)
+	assert.Nil(t, res2)
+	assert.Error(t, err2)
+	assert.Equal(t, "{\"error\":{\"message\":\"Error2\"}}", err2.Error())
+}
+
+func TestUnionOfErrorsDiscriminated(t *testing.T) {
+	recordTest("errors-union-of-errors-discriminated")
+
+	s := sdk.New()
+
+	req1 := operations.CreateErrorUnionDiscriminatedPostRequestBodyTaggedError1RequestBody(
+		operations.TaggedError1RequestBody{Error: "Error1", Tag: "tag1"},
+	)
+	res1, err1 := s.Errors.ErrorUnionDiscriminatedPost(context.Background(), req1)
+	assert.Nil(t, res1)
+	assert.Error(t, err1)
+	assert.Equal(t, "{\"error\":\"Error1\",\"tag\":\"tag1\"}", err1.Error())
+
+	req2 := operations.CreateErrorUnionDiscriminatedPostRequestBodyTaggedError2RequestBody(
+		operations.TaggedError2RequestBody{
+			Tag:                 "tag2",
+			TaggedError2Message: &operations.TaggedError2Message{Message: "Error2"},
+		},
+	)
+	res2, err2 := s.Errors.ErrorUnionDiscriminatedPost(context.Background(), req2)
+	assert.Nil(t, res2)
+	assert.Error(t, err2)
+	assert.Equal(t, "{\"error\":{\"message\":\"Error2\"},\"tag\":\"tag2\"}", err2.Error())
 }

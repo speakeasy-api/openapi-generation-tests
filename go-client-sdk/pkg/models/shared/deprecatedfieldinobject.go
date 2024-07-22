@@ -21,7 +21,6 @@ const (
 func (e DeprecatedEnum) ToPointer() *DeprecatedEnum {
 	return &e
 }
-
 func (e *DeprecatedEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
