@@ -5548,6 +5548,62 @@ paths:
               examples:
                 test:
                   value: 3.141592653589793
+  /anything/overriddenFieldNames:
+    post:
+      operationId: overriddenFieldNamesPost
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: response-bodies-overridden-field-names
+      tags:
+        - responseBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                int:
+                  type: integer
+                  x-speakeasy-name-override: inInt
+                str:
+                  type: string
+                  x-speakeasy-name-override: inStr                
+            examples:
+              test:
+                value: {
+                  "int": 1,
+                  "str": "test"
+                }
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    type: object
+                    properties:
+                      int:
+                        type: integer
+                        x-speakeasy-name-override: outInt
+                      str:
+                        type: string
+                        x-speakeasy-name-override: outStr  
+                    required:
+                      - int
+                      - str
+                required:
+                  - json
+              examples:
+                test:
+                  value: {
+                    "json": {
+                      "int": 1,
+                      "str": "test"
+                    }
+                  }
   /anything/{emptyObject}:
     get:
       operationId: emptyObjectGet
