@@ -8,18 +8,18 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class IgnoresPostRequest
 {
-	#[SpeakeasyMetadata('request:mediaType=application/json')]
+    #[SpeakeasyMetadata('request:mediaType=application/json')]
     public IgnoresPostRequestBody $requestBody;
-    
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=testParam')]
+
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=testParam')]
     public ?string $testParam = null;
-    
-	public function __construct()
-	{
-		$this->requestBody = new \OpenAPI\OpenAPI\Models\Operations\IgnoresPostRequestBody();
-		$this->testParam = null;
-	}
+
+    public function __construct()
+    {
+        $this->requestBody = new \OpenAPI\OpenAPI\Models\Operations\IgnoresPostRequestBody();
+        $this->testParam = null;
+    }
 }

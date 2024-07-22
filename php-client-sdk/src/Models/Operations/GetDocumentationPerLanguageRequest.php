@@ -8,19 +8,19 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class GetDocumentationPerLanguageRequest
 {
     /**
      * The language parameter for this endpoint.
-     * 
+     *
      * @var string $language
      */
-	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=language')]
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=language')]
     public string $language;
-    
-	public function __construct()
-	{
-		$this->language = "";
-	}
+
+    public function __construct()
+    {
+        $this->language = '';
+    }
 }

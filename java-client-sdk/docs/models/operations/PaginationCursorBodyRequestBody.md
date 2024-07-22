@@ -5,4 +5,4 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `cursor`           | *Long*             | :heavy_check_mark: | N/A                |
+| `cursor`           | *long*             | :heavy_check_mark: | N/A                |
