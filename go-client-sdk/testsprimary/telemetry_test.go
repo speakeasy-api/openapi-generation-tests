@@ -21,8 +21,8 @@ func TestTelemetryUserAgentGet(t *testing.T) {
 	res, err := s.Telemetry.TelemetryUserAgentGet(context.Background())
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.Equal(t, "speakeasy-sdk/go 2.1.2 2.188.3 0.1.0 openapi", res.Res.Headers["X-Speakeasy-User-Agent"])
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
+	assert.Equal(t, "speakeasy-sdk/go 2.2.0 2.378.1 0.1.0 openapi", res.Res.Headers["X-Speakeasy-User-Agent"])
 }
 
 func TestTelemetrySpeakeasyUserAgentGet(t *testing.T) {
@@ -35,7 +35,7 @@ func TestTelemetrySpeakeasyUserAgentGet(t *testing.T) {
 	res, err := s.Telemetry.TelemetrySpeakeasyUserAgentGet(context.Background(), userAgent)
 	require.NoError(t, err)
 	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, http.StatusOK, res.HTTPMeta.Response.StatusCode)
 	assert.Equal(t, userAgent, res.Res.Headers["User-Agent"])
-	assert.Equal(t, "speakeasy-sdk/go 2.1.2 2.188.3 0.1.0 openapi", res.Res.Headers["X-Speakeasy-User-Agent"])
+	assert.Equal(t, "speakeasy-sdk/go 2.2.0 2.378.1 0.1.0 openapi", res.Res.Headers["X-Speakeasy-User-Agent"])
 }

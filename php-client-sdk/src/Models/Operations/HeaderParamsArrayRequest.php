@@ -8,19 +8,19 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class HeaderParamsArrayRequest
 {
     /**
      * $xHeaderArray
-     * 
+     *
      * @var array<string> $xHeaderArray
      */
-	#[SpeakeasyMetadata('header:style=simple,explode=false,name=X-Header-Array')]
+    #[SpeakeasyMetadata('header:style=simple,explode=false,name=X-Header-Array')]
     public array $xHeaderArray;
-    
-	public function __construct()
-	{
-		$this->xHeaderArray = [];
-	}
+
+    public function __construct()
+    {
+        $this->xHeaderArray = [];
+    }
 }

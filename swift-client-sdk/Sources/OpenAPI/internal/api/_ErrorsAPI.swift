@@ -20,6 +20,26 @@ class _ErrorsAPI: ErrorsAPI {
         )
     }
     
+    public func errorUnionDiscriminatedPost(request: Operations.ErrorUnionDiscriminatedPostRequestBody, server: ErrorsServers.ErrorUnionDiscriminatedPost?) async throws -> Response<Operations.ErrorUnionDiscriminatedPostResponse> {
+        return try await client.makeRequest(
+            with: try server?.server() ?? ErrorsServers.ErrorUnionDiscriminatedPost.default(),
+            configureRequest: { configuration in
+                try configureErrorUnionDiscriminatedPostRequest(with: configuration, request: request)
+            },
+            handleResponse: handleErrorUnionDiscriminatedPostResponse
+        )
+    }
+    
+    public func errorUnionPost(request: Operations.ErrorUnionPostRequestBody, server: ErrorsServers.ErrorUnionPost?) async throws -> Response<Operations.ErrorUnionPostResponse> {
+        return try await client.makeRequest(
+            with: try server?.server() ?? ErrorsServers.ErrorUnionPost.default(),
+            configureRequest: { configuration in
+                try configureErrorUnionPostRequest(with: configuration, request: request)
+            },
+            handleResponse: handleErrorUnionPostResponse
+        )
+    }
+    
     public func statusGetError(request: Operations.StatusGetErrorRequest) async throws -> Response<Operations.StatusGetErrorResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
@@ -49,6 +69,28 @@ private func configureConnectionErrorGetRequest(with configuration: URLRequestCo
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
+private func configureErrorUnionDiscriminatedPostRequest(with configuration: URLRequestConfiguration, request: Operations.ErrorUnionDiscriminatedPostRequestBody) throws {
+    configuration.path = "/errors/400#errorUnionDiscriminated"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configureErrorUnionPostRequest(with configuration: URLRequestConfiguration, request: Operations.ErrorUnionPostRequestBody) throws {
+    configuration.path = "/errors/500#errorUnion"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
 private func configureStatusGetErrorRequest(with configuration: URLRequestConfiguration, request: Operations.StatusGetErrorRequest) throws {
     configuration.path = "/status/{statusCode}"
     configuration.method = .get
@@ -70,6 +112,42 @@ private func handleConnectionErrorGetResponse(response: Client.APIResponse) thro
     
     if httpResponse.statusCode == 200 { 
         return .empty
+    }
+
+    return .empty
+}
+
+private func handleErrorUnionDiscriminatedPostResponse(response: Client.APIResponse) throws -> Operations.ErrorUnionDiscriminatedPostResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        return .empty
+    } else if httpResponse.statusCode >= 400 && httpResponse.statusCode < 500 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .oneOf(try JSONDecoder().decode(Operations.ErrorUnionDiscriminatedPostResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleErrorUnionPostResponse(response: Client.APIResponse) throws -> Operations.ErrorUnionPostResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        return .empty
+    } else if httpResponse.statusCode == 500 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .oneOf(try JSONDecoder().decode(Operations.ErrorUnionPostResponseBody.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
     }
 
     return .empty

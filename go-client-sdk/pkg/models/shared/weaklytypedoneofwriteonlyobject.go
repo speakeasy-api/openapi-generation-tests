@@ -4,6 +4,7 @@ package shared
 
 import (
 	"errors"
+	"fmt"
 	"openapi/v2/pkg/utils"
 )
 
@@ -41,21 +42,21 @@ func CreateWeaklyTypedOneOfWriteOnlyObjectWriteOnlyObject(writeOnlyObject WriteO
 
 func (u *WeaklyTypedOneOfWriteOnlyObject) UnmarshalJSON(data []byte) error {
 
-	writeOnlyObject := WriteOnlyObject{}
+	var writeOnlyObject WriteOnlyObject = WriteOnlyObject{}
 	if err := utils.UnmarshalJSON(data, &writeOnlyObject, "", true, true); err == nil {
 		u.WriteOnlyObject = &writeOnlyObject
 		u.Type = WeaklyTypedOneOfWriteOnlyObjectTypeWriteOnlyObject
 		return nil
 	}
 
-	simpleObject := SimpleObject{}
+	var simpleObject SimpleObject = SimpleObject{}
 	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
 		u.SimpleObject = &simpleObject
 		u.Type = WeaklyTypedOneOfWriteOnlyObjectTypeSimpleObject
 		return nil
 	}
 
-	return errors.New("could not unmarshal into supported union types")
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for WeaklyTypedOneOfWriteOnlyObject", string(data))
 }
 
 func (u WeaklyTypedOneOfWriteOnlyObject) MarshalJSON() ([]byte, error) {
@@ -67,5 +68,5 @@ func (u WeaklyTypedOneOfWriteOnlyObject) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.WriteOnlyObject, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type: all fields are null")
+	return nil, errors.New("could not marshal union type WeaklyTypedOneOfWriteOnlyObject: all fields are null")
 }
