@@ -7,3 +7,4 @@
 | ---------------------------- | ---------------------------- |
 | `NullableRequiredEnumFirst`  | first                        |
 | `NullableRequiredEnumSecond` | second                       |
+| `NullableRequiredEnumNull`   | null                         |

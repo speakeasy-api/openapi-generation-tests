@@ -11,12 +11,12 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 
 class MixedParametersCamelCaseArgs
 {
-	#[\JMS\Serializer\Annotation\SerializedName('query_string_param')]
+    #[\JMS\Serializer\Annotation\SerializedName('query_string_param')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $queryStringParam;
-    
-	public function __construct()
-	{
-		$this->queryStringParam = "";
-	}
+
+    public function __construct()
+    {
+        $this->queryStringParam = '';
+    }
 }

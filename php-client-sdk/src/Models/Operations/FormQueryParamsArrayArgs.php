@@ -11,22 +11,22 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 
 class FormQueryParamsArrayArgs
 {
-	#[\JMS\Serializer\Annotation\SerializedName('arrParam')]
+    #[\JMS\Serializer\Annotation\SerializedName('arrParam')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $arrParam;
-    
+
     /**
      * $arrParamExploded
-     * 
+     *
      * @var array<string> $arrParamExploded
      */
-	#[\JMS\Serializer\Annotation\SerializedName('arrParamExploded')]
+    #[\JMS\Serializer\Annotation\SerializedName('arrParamExploded')]
     #[\JMS\Serializer\Annotation\Type('array<string>')]
     public array $arrParamExploded;
-    
-	public function __construct()
-	{
-		$this->arrParam = "";
-		$this->arrParamExploded = [];
-	}
+
+    public function __construct()
+    {
+        $this->arrParam = '';
+        $this->arrParamExploded = [];
+    }
 }

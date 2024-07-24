@@ -11,12 +11,12 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 
 class InlineBodyAndParamConflictRequestBody
 {
-	#[\JMS\Serializer\Annotation\SerializedName('str')]
+    #[\JMS\Serializer\Annotation\SerializedName('str')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $str;
-    
-	public function __construct()
-	{
-		$this->str = "";
-	}
+
+    public function __construct()
+    {
+        $this->str = '';
+    }
 }
