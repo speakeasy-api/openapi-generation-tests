@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             | Example                 |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `xHeaderMap`            | array<string, *string*> | :heavy_check_mark:      | N/A                     | [object Object]         |
-| `xHeaderMapExplode`     | array<string, *string*> | :heavy_check_mark:      | N/A                     | [object Object]         |
+| Field                                  | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `xHeaderMap`                           | array<string, *string*>                | :heavy_check_mark:                     | N/A                                    | {<br/>"key1": "value1",<br/>"key2": "value2"<br/>} |
+| `xHeaderMapExplode`                    | array<string, *string*>                | :heavy_check_mark:                     | N/A                                    | {<br/>"test1": "val1",<br/>"test2": "val2"<br/>} |

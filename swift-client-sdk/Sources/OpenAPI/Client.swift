@@ -62,7 +62,9 @@ import FoundationNetworking
 ///
 /// These methods allow you to make requests to the API.
 ///
-/// - ``putAnythingIgnoredGeneration(request:)``
+/// - ``authenticatedRequest(request:security:)``
+/// - ``conflictingEnum(request:)``
+/// - ``ignoredGenerationPut(request:)``
 /// - ``responseBodyJsonGet()``
 ///
 /// ### Scoped API calls
@@ -70,23 +72,26 @@ import FoundationNetworking
 /// These properties logically group other parts of the API.
 ///
 /// - ``generation``
-/// - ``errors``
 /// - ``unions``
+/// - ``errors``
+/// - ``customClient``
+/// - ``responseBodies``
 /// - ``flattening``
 /// - ``globals``
 /// - ``parameters``
+/// - ``hooks``
 /// - ``nestFirst``
 /// - ``nested``
 /// - ``nestedFirst``
 /// - ``nestedSecond``
 /// - ``auth``
+/// - ``openEnums``
 /// - ``requestBodies``
-/// - ``responseBodies``
 /// - ``servers``
 /// - ``telemetry``
 /// - ``authNew``
-/// - ``documentation``
 /// - ``resource``
+/// - ``documentation``
 /// - ``first``
 /// - ``second``
 /// - ``pagination``
@@ -101,16 +106,17 @@ public final class Client {
     internal typealias ConfigureURLRequest = (_ configuration: URLRequestConfiguration) throws -> Void
     internal typealias ResponseHandler<ResponseObject> = (_ apiResponse: APIResponse) throws -> ResponseObject
 
-    private lazy var session = URLSession(configuration: .default)
-    private var globalParameters: GlobalParameters?
-    private var security: Shared.Security
+    // Underscore-prefix properties so these do not potentially conflict with any operation namespaces.
+    private lazy var _session = URLSession(configuration: .default)
+    private var _globalParameters: GlobalParameters?
+    private var _security: Shared.Security?
 
-    private var selectedServer: GlobalServers?
+    private var _selectedServer: GlobalServers?
 
     /// Creates an API client object with the specified parameters.
-    public init(globalParameters: GlobalParameters? = nil, security: Shared.Security) {
-        self.globalParameters = globalParameters
-        self.security = security
+    public init(globalParameters: GlobalParameters? = nil, security: Shared.Security? = nil) {
+        self._globalParameters = globalParameters
+        self._security = security
     }
 
     // MARK: - Configuration
@@ -119,7 +125,7 @@ public final class Client {
     ///
     /// By default, API calls are made to `http://localhost:35123`. Pass one of the values from the ``GlobalServers`` enumeration to override this.
     public func use(server: GlobalServers?) {
-        selectedServer = server
+        _selectedServer = server
     }
 
     // MARK: - Internal
@@ -188,8 +194,8 @@ public final class Client {
         do {
             let builder = URLRequestBuilder(
                 baseURL: try baseURL(serverOverride: server),
-                parameterDefaults: globalParameters,
-                defaultSecurityParameterProviding: security
+                parameterDefaults: _globalParameters,
+                defaultSecurityParameterProviding: _security
             )
             try configureRequest(builder)
             return makeDataRequest(with: try builder.build(), completion: completion)
@@ -204,7 +210,7 @@ public final class Client {
         let server: Server
         if let serverOverride {
             server = serverOverride
-        } else if let selectedServer {
+        } else if let selectedServer = _selectedServer {
             server = try selectedServer.server()
         } else {
             server = try GlobalServers.default()
@@ -217,7 +223,7 @@ public final class Client {
     }
 
     private func makeDataRequest(with urlRequest: URLRequest, completion: @escaping (Result<APIResponse, Swift.Error>) -> Void) {
-        let task = session.dataTask(with: urlRequest) { data, response, error in
+        let task = _session.dataTask(with: urlRequest) { data, response, error in
             if let error {
                 completion(.failure(OpenAPIError.failedToMakeNetworkRequest(error: error)))
             } else if let httpResponse = response as? HTTPURLResponse {

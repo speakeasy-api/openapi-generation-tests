@@ -8,18 +8,18 @@ declare(strict_types=1);
 
 namespace OpenAPI\OpenAPI\Models\Operations;
 
-use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
+use OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class MultipleOptionsWithSimpleSchemesAuthSecurityOption1
 {
-	#[SpeakeasyMetadata('security:scheme=true,type=apiKey,subtype=header,name=x-api-key')]
+    #[SpeakeasyMetadata('security:scheme=true,type=apiKey,subtype=header,name=x-api-key')]
     public string $apiKeyAuthNew;
-    
-	#[SpeakeasyMetadata('security:scheme=true,type=oauth2,name=Authorization')]
+
+    #[SpeakeasyMetadata('security:scheme=true,type=oauth2,name=Authorization')]
     public string $oauth2;
-    
-	public function __construct()
-	{
-		$this->apiKeyAuthNew = "";
-		$this->oauth2 = "";
-	}
+
+    public function __construct()
+    {
+        $this->apiKeyAuthNew = '';
+        $this->oauth2 = '';
+    }
 }
