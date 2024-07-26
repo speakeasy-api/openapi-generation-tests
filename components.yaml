@@ -290,7 +290,7 @@ components:
       description: "A simple object that uses all our supported primitive types and enums and has optional properties."
       externalDocs:
         description: "A link to the external docs."
-        url: "https://docs.speakeasyapi.dev"
+        url: "https://speakeasy.com/docs"
       type: object
       properties:
         str:
@@ -413,7 +413,7 @@ components:
       description: "A simple object that uses all our supported primitive types and enums and has optional properties."
       externalDocs:
         description: "A link to the external docs."
-        url: "https://docs.speakeasyapi.dev"
+        url: "https://speakeasy.com/docs"
       type: object
       properties:
         str_val:

@@ -13,7 +13,7 @@ info:
 x-speakeasy-extension-rewrite:
   x-speakeasy-ignore: x-my-ignore
 externalDocs:
-  url: https://speakeasyapi.dev/docs/home
+  url: https://speakeasy.com/docs
   description: Speakeasy Docs
 servers:
   - url: http://localhost:35123
