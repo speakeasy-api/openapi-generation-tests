@@ -3,7 +3,7 @@
 A simple object that uses all our supported primitive types and enums and has optional properties.
 
 A link to the external docs.
-<https://docs.speakeasyapi.dev>
+<https://speakeasy.com/docs>
 
 
 ## Fields
