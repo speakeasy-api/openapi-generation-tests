@@ -6620,6 +6620,86 @@ paths:
                     $ref: "components.yaml#/components/schemas/stronglyTypedOneOfDiscriminatedObject"
                 required:
                   - json
+                  
+  # discriminating property is defined as const
+  /anything/constDiscriminatedOneOf:
+    post:
+      operationId: constDiscriminatedOneOf
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/constDiscriminatedOneOf"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/constDiscriminatedOneOf"
+                required:
+                  - json     
+               
+  # an object participates in multiple discriminated oneOf definitions
+  /anything/discriminatedOneMultipleMemberships:
+    post:
+      operationId: discriminatedOneMultipleMemberships
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/Vehicle"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/Vehicle"
+                required:
+                  - json    
+
+  # ensure that the HasWheels type is generated as well
+  # so we can properly test multiple memberships
+  /anything/discriminatedOneMultipleMembershipsHasWheels:
+    post:
+      operationId: discriminatedOneMultipleMembershipsHasWheels
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/HasWheels"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/HasWheels"
+                required:
+                  - json                      
+                                         
   /anything/infectedWithAny:
     post:
       operationId: infectedWithAny
