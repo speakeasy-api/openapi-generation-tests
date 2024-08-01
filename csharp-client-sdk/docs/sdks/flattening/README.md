@@ -19,29 +19,32 @@ Endpoints for testing flattening through request body and parameter combinations
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 using NodaTime;
+using System.Numerics;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Flattening.ComponentBodyAndParamConflictAsync(new SimpleObject() {
+var res = await sdk.Flattening.ComponentBodyAndParamConflictAsync(
+    simpleObject: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = Enum.One,
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+    Enum = Openapi.Models.Shared.Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = Int32Enum.FiftyFive,
-    IntEnum = IntEnum.Two,
+    Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+    IntEnum = Openapi.Models.Shared.IntEnum.Second,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -49,8 +52,11 @@ var res = await sdk.Flattening.ComponentBodyAndParamConflictAsync(new SimpleObje
     BoolOpt = true,
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
+    Float64Str = "1.1",
+    Int64Str = "100",
     StrOpt = "testOptional",
-}, "string");
+},
+    str: "<value>");
 
 // handle response
 ```
@@ -66,7 +72,11 @@ var res = await sdk.Flattening.ComponentBodyAndParamConflictAsync(new SimpleObje
 ### Response
 
 **[ComponentBodyAndParamConflictResponse](../../Models/Operations/ComponentBodyAndParamConflictResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## ComponentBodyAndParamNoConflict
 
@@ -74,29 +84,33 @@ var res = await sdk.Flattening.ComponentBodyAndParamConflictAsync(new SimpleObje
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 using NodaTime;
+using System.Numerics;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Flattening.ComponentBodyAndParamNoConflictAsync("string", new SimpleObject() {
+var res = await sdk.Flattening.ComponentBodyAndParamNoConflictAsync(
+    paramStr: "<value>",
+    simpleObject: new SimpleObject() {
     Any = "any",
     Bool = true,
     Date = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-01")),
-    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.000000001Z"),
-    Enum = Enum.One,
+    DateTime = System.DateTime.Parse("2020-01-01T00:00:00.001Z"),
+    Enum = Openapi.Models.Shared.Enum.One,
     Float32 = 1.1F,
     Int = 1,
     Int32 = 1,
-    Int32Enum = Int32Enum.FiftyFive,
-    IntEnum = IntEnum.Two,
+    Int32Enum = Openapi.Models.Shared.Int32Enum.FiftyFive,
+    IntEnum = Openapi.Models.Shared.IntEnum.Second,
     Num = 1.1D,
     Str = "test",
     Bigint = 8821239038968084,
@@ -104,6 +118,8 @@ var res = await sdk.Flattening.ComponentBodyAndParamNoConflictAsync("string", ne
     BoolOpt = true,
     Decimal = 3.141592653589793M,
     DecimalStr = 3.14159265358979344719667586M,
+    Float64Str = "1.1",
+    Int64Str = "100",
     StrOpt = "testOptional",
 });
 
@@ -121,7 +137,11 @@ var res = await sdk.Flattening.ComponentBodyAndParamNoConflictAsync("string", ne
 ### Response
 
 **[ComponentBodyAndParamNoConflictResponse](../../Models/Operations/ComponentBodyAndParamNoConflictResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## ConflictingParams
 
@@ -129,18 +149,21 @@ var res = await sdk.Flattening.ComponentBodyAndParamNoConflictAsync("string", ne
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Flattening.ConflictingParamsAsync("string", "string");
+var res = await sdk.Flattening.ConflictingParamsAsync(
+    strPathParameter: "<value>",
+    strQueryParameter: "<value>");
 
 // handle response
 ```
@@ -156,7 +179,11 @@ var res = await sdk.Flattening.ConflictingParamsAsync("string", "string");
 ### Response
 
 **[ConflictingParamsResponse](../../Models/Operations/ConflictingParamsResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## InlineBodyAndParamConflict
 
@@ -164,20 +191,23 @@ var res = await sdk.Flattening.ConflictingParamsAsync("string", "string");
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Flattening.InlineBodyAndParamConflictAsync(new InlineBodyAndParamConflictRequestBody() {
-    Str = "string",
-}, "string");
+var res = await sdk.Flattening.InlineBodyAndParamConflictAsync(
+    requestBody: new InlineBodyAndParamConflictRequestBody() {
+    Str = "<value>",
+},
+    str: "<value>");
 
 // handle response
 ```
@@ -193,7 +223,11 @@ var res = await sdk.Flattening.InlineBodyAndParamConflictAsync(new InlineBodyAnd
 ### Response
 
 **[InlineBodyAndParamConflictResponse](../../Models/Operations/InlineBodyAndParamConflictResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## InlineBodyAndParamNoConflict
 
@@ -201,20 +235,23 @@ var res = await sdk.Flattening.InlineBodyAndParamConflictAsync(new InlineBodyAnd
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Flattening.InlineBodyAndParamNoConflictAsync(new InlineBodyAndParamNoConflictRequestBody() {
-    BodyStr = "string",
-}, "string");
+var res = await sdk.Flattening.InlineBodyAndParamNoConflictAsync(
+    requestBody: new InlineBodyAndParamNoConflictRequestBody() {
+    BodyStr = "<value>",
+},
+    paramStr: "<value>");
 
 // handle response
 ```
@@ -230,4 +267,8 @@ var res = await sdk.Flattening.InlineBodyAndParamNoConflictAsync(new InlineBodyA
 ### Response
 
 **[InlineBodyAndParamNoConflictResponse](../../Models/Operations/InlineBodyAndParamNoConflictResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |

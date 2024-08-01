@@ -6,6 +6,7 @@
 * [CreateFile](#createfile)
 * [CreateResource](#createresource)
 * [DeleteResource](#deleteresource)
+* [GetArrayDataSource](#getarraydatasource)
 * [GetResource](#getresource)
 * [UpdateResource](#updateresource)
 
@@ -17,11 +18,11 @@
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"openapi/v2/pkg/models/operations"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"openapi/v2/pkg/models/operations"
 )
 
 func main() {
@@ -29,21 +30,17 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
+    request := operations.CreateFileRequestBody{}
     ctx := context.Background()
-    res, err := s.Resource.CreateFile(ctx, operations.CreateFileRequestBody{
-        File: &operations.CreateFileFile{
-            Content: []byte("0xf10df1a3b9"),
-            FileName: "rap_national.mp4v",
-        },
-    })
+    res, err := s.Resource.CreateFile(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.FileResource != nil {
         // handle response
     }
@@ -56,6 +53,7 @@ func main() {
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |
 | `request`                                                                                | [operations.CreateFileRequestBody](../../pkg/models/operations/createfilerequestbody.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `opts`                                                                                   | [][operations.Option](../../pkg/models/operations/option.md)                             | :heavy_minus_sign:                                                                       | The options for this request.                                                            |
 
 
 ### Response
@@ -63,7 +61,7 @@ func main() {
 **[*operations.CreateFileResponse](../../pkg/models/operations/createfileresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## CreateResource
 
@@ -73,10 +71,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -84,46 +82,32 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Resource.CreateResource(ctx, shared.ExampleResource{
-        ArrayOfNumber: []float64{
-            1867.47,
-        },
-        ArrayOfString: []string{
-            "string",
-        },
+    request := shared.ExampleResource{
         Chocolates: []shared.Chocolates{
             shared.Chocolates{
-                Description: "Re-engineered asynchronous array",
+                Description: "Digitized optimal archive",
             },
         },
-        ID: "<ID>",
-        InlineObject: &shared.InlineObject{},
-        MapOfInteger: map[string]int64{
-            "key": 271791,
-        },
-        MapOfString: map[string]string{
-            "key": "string",
-        },
-        Name: "string",
-        Vehicle: shared.CreateExampleVehicleExampleCar(
-                shared.ExampleCar{
-                    Make: "string",
-                    Model: "PT Cruiser",
-                    Name: "string",
-                    Type: shared.ExampleCarTypeCar,
-                    Year: 1259.83,
+        ID: "<id>",
+        Name: "<value>",
+        Vehicle: shared.CreateExampleVehicleExampleBoat(
+                shared.ExampleBoat{
+                    Length: 2717.91,
+                    Name: "<value>",
+                    Type: shared.TypeBoat,
                 },
         ),
-    })
+    }
+    ctx := context.Background()
+    res, err := s.Resource.CreateResource(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ExampleResource != nil {
         // handle response
     }
@@ -136,6 +120,7 @@ func main() {
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `ctx`                                                                | [context.Context](https://pkg.go.dev/context#Context)                | :heavy_check_mark:                                                   | The context to use for the request.                                  |
 | `request`                                                            | [shared.ExampleResource](../../pkg/models/shared/exampleresource.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
+| `opts`                                                               | [][operations.Option](../../pkg/models/operations/option.md)         | :heavy_minus_sign:                                                   | The options for this request.                                        |
 
 
 ### Response
@@ -143,7 +128,7 @@ func main() {
 **[*operations.CreateResourceResponse](../../pkg/models/operations/createresourceresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## DeleteResource
 
@@ -153,10 +138,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -164,20 +149,18 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
-    var resourceID string = "string"
-
+    var resourceID string = "<value>"
     ctx := context.Background()
     res, err := s.Resource.DeleteResource(ctx, resourceID)
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -185,10 +168,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-| `resourceID`                                          | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `resourceID`                                                 | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
 
 ### Response
@@ -196,7 +180,59 @@ func main() {
 **[*operations.DeleteResourceResponse](../../pkg/models/operations/deleteresourceresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
+
+## GetArrayDataSource
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
+	"context"
+	"log"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+    var filter string = "<value>"
+    ctx := context.Background()
+    res, err := s.Resource.GetArrayDataSource(ctx, filter)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ArrayDataSource != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `filter`                                                     | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
+
+
+### Response
+
+**[*operations.GetArrayDataSourceResponse](../../pkg/models/operations/getarraydatasourceresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetResource
 
@@ -206,10 +242,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -217,19 +253,17 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-
-
-    var resourceID string = "string"
-
+    var resourceID string = "<value>"
     ctx := context.Background()
     res, err := s.Resource.GetResource(ctx, resourceID)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ExampleResource != nil {
         // handle response
     }
@@ -238,10 +272,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-| `resourceID`                                          | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `resourceID`                                                 | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
 
 ### Response
@@ -249,7 +284,7 @@ func main() {
 **[*operations.GetResourceResponse](../../pkg/models/operations/getresourceresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UpdateResource
 
@@ -259,10 +294,10 @@ func main() {
 package main
 
 import(
+	"openapi/v2/pkg/models/shared"
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
@@ -270,20 +305,20 @@ func main() {
         openapi.WithSecurity(shared.Security{
             APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+    var augment string = "<value>"
 
-
-    var resourceID string = "string"
-
+    var resourceID string = "<value>"
     ctx := context.Background()
-    res, err := s.Resource.UpdateResource(ctx, resourceID)
+    res, err := s.Resource.UpdateResource(ctx, augment, resourceID)
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -291,10 +326,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-| `resourceID`                                          | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `augment`                                                    | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `resourceID`                                                 | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
 
 ### Response
@@ -302,4 +339,4 @@ func main() {
 **[*operations.UpdateResourceResponse](../../pkg/models/operations/updateresourceresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
