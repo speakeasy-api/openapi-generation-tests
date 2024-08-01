@@ -578,20 +578,26 @@ paths:
           in: path
           schema:
             type: string
-            example: pathValue
           required: true
+          examples:
+            test:
+              value: pathValue
         - name: queryStringParam
           in: query
           schema:
             type: string
-            example: queryValue
           required: true
+          examples:
+            test:
+              value: queryValue
         - name: headerParam
           in: header
           schema:
             type: string
-            example: headerValue
           required: true
+          examples:
+            test:
+              value: headerValue
       responses:
         "200":
           description: OK
@@ -603,13 +609,11 @@ paths:
                 properties:
                   url:
                     type: string
-                    example: http://localhost:35123/anything/mixedParams/path/pathValue?queryStringParam=queryValue
                   args:
                     type: object
                     properties:
                       queryStringParam:
                         type: string
-                        example: queryValue
                     required:
                       - queryStringParam
                   headers:
@@ -624,6 +628,17 @@ paths:
                   - url
                   - args
                   - headers
+              examples:
+                test:
+                  value: {
+                    "url": "http://localhost:35123/anything/mixedParams/path/pathValue?queryStringParam=queryValue",
+                    "args": {
+                      "queryStringParam": "queryValue"
+                    },
+                    "headers": {
+                      "Headerparam": "headerValue"
+                    }
+                  }
   /anything/params/{duplicateParamRequest}:
     get:
       operationId: duplicateParam
@@ -2133,8 +2148,6 @@ paths:
   /readonlyorwriteonly#readOnlyInput:
     post:
       operationId: requestBodyReadOnlyInput
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: request-bodies-read-only-input
       servers:
         - url: http://localhost:35456
       tags:
@@ -2155,8 +2168,6 @@ paths:
   /writeonlyoutput#writeOnlyOutput:
     post:
       operationId: requestBodyWriteOnlyOutput
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: request-bodies-write-only-output
       servers:
         - url: http://localhost:35456
       tags:
