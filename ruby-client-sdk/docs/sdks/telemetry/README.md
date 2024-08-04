@@ -15,24 +15,23 @@ Endpoints for testing telemetry.
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::TelemetrySpeakeasyUserAgentGetRequest.new(
-  headers=Operations::TelemetrySpeakeasyUserAgentGetRequest.new(
-    user_agent="string",
-  ),
-)
     
-res = s.telemetry.telemetry_speakeasy_user_agent_get(req)
+res = s.telemetry.telemetry_speakeasy_user_agent_get(user_agent="<value>")
 
 if ! res.res.nil?
   # handle response
@@ -44,12 +43,12 @@ end
 
 | Parameter          | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `user_agent`       | *String*           | :heavy_check_mark: | N/A                |
+| `user_agent`       | *::String*         | :heavy_check_mark: | N/A                |
 
 
 ### Response
 
-**[T.nilable(Operations::TelemetrySpeakeasyUserAgentGetResponse)](../../models/operations/telemetryspeakeasyuseragentgetresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::TelemetrySpeakeasyUserAgentGetResponse)](../../models/operations/telemetryspeakeasyuseragentgetresponse.md)**
 
 
 ## telemetry_user_agent_get
@@ -57,13 +56,18 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
@@ -79,5 +83,5 @@ end
 
 ### Response
 
-**[T.nilable(Operations::TelemetryUserAgentGetResponse)](../../models/operations/telemetryuseragentgetresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::TelemetryUserAgentGetResponse)](../../models/operations/telemetryuseragentgetresponse.md)**
 
