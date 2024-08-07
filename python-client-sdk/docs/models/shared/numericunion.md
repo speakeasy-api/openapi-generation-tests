@@ -3,27 +3,27 @@
 
 ## Supported Types
 
-### 
+### `int`
 
 ```python
-numericUnion: int = /* values here */
+value: int = /* values here */
 ```
 
-### 
+### `float`
 
 ```python
-numericUnion: float = /* values here */
+value: float = /* values here */
 ```
 
-### 
+### `int`
 
 ```python
-numericUnion: int = /* values here */
+value: int = /* values here */
 ```
 
-### 
+### `Decimal`
 
 ```python
-numericUnion: Decimal = /* values here */
+value: Decimal = /* values here */
 ```
 
