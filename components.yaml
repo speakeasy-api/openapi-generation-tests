@@ -362,6 +362,31 @@ components:
         - "three"
         - "four_and_more"
       example: "one"
+    enumArray:
+      type: array
+      items:
+        $ref: "#/components/schemas/enum"
+    enumMap:
+      type: object
+      additionalProperties:
+        $ref: "#/components/schemas/enum"
+    nestedEnumArray:
+      type: object
+      properties:
+        tags:
+          type: string
+        enums:
+          $ref: "#/components/schemas/enumArray"
+      required:
+        - tags
+        - enums
+    nestedEnumMap:
+      type: object
+      properties:
+        enums:
+          $ref: "#/components/schemas/enumMap"
+      required:
+        - enums
     simpleObject:
       description: "A simple object that uses all our supported primitive types and enums and has optional properties."
       externalDocs:
