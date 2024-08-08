@@ -8599,6 +8599,25 @@ paths:
                   - url
                   - args
                   - headers
+                  
+  /anything/multilineExample:
+    get:
+      operationId: multilineExample
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  example: "hello\nthere!"
+              required:
+                - message
+      responses:
+        "201":
+          description: OK
+          
 components:
   schemas:
     ExampleVehicle:
