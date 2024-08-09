@@ -10,20 +10,22 @@
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
     $response = $sdk->nested->get();
@@ -31,7 +33,7 @@ try {
     if ($response->statusCode === 200) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -39,5 +41,9 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\NestedGetResponse](../../Models/Operations/NestedGetResponse.md)**
+**[?Operations\NestedGetResponse](../../Models/Operations/NestedGetResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
