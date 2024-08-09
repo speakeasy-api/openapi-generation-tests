@@ -554,7 +554,7 @@ components:
           type: string
           format: date-time
           description: "A date-time property."
-          example: "2020-01-01T00:00:00Z"
+          example: "2020-01-01T00:00:00.001Z"
         any_val:
           description: "An any property."
           example: "any example"
@@ -1535,167 +1535,6 @@ components:
         - defaultBigIntStr
         - defaultDecimal
         - defaultDecimalStr
-    defaultsAndConstsOutput:
-      type: object
-      properties:
-        normalField:
-          type: string
-          example: "test"
-        constStr:
-          type: string
-          example: "const"
-        constStrDQuotes:
-          type: string
-          example: 'const with "double quotes"'
-        constStrSQuotes:
-          type: string
-          example: "const with 'single quotes'"
-        constStrNull:
-          type: string
-          nullable: true
-          example: null
-        constInt:
-          type: integer
-          example: 123
-        constNum:
-          type: number
-          example: 123.456
-        constBool:
-          type: boolean
-          example: true
-        constDate:
-          type: string
-          format: date
-          example: "2020-01-01"
-        constDateTime:
-          type: string
-          format: date-time
-          example: "2020-01-01T00:00:00Z"
-        constEnumStr:
-          type: string
-          enum:
-            - "one"
-            - "two"
-            - "three"
-          example: "two"
-        constEnumInt:
-          type: integer
-          enum:
-            - 1
-            - 2
-            - 3
-          example: 2
-        constBigInt:
-          type: integer
-          format: bigint
-          example: 9007199254740991
-        constBigIntStr:
-          type: string
-          format: bigint
-          example: "9223372036854775807"
-        constDecimal:
-          type: number
-          format: decimal
-          example: 3.141592653589793
-        constDecimalStr:
-          type: string
-          format: decimal
-          example: "3.141592653589793238462643383279"
-        defaultStr:
-          type: string
-          example: "default"
-        defaultStrDQuotes:
-          type: string
-          example: 'default with "double quotes"'
-        defaultStrSQuotes:
-          type: string
-          example: "default with 'single quotes'"
-        defaultStrNullable:
-          type: string
-          nullable: true
-          example: null
-        defaultStrOptional:
-          type: string
-          example: "default"
-        defaultInt:
-          type: integer
-          example: 123
-        defaultNum:
-          type: number
-          example: 123.456
-        defaultBool:
-          type: boolean
-          example: true
-        defaultDate:
-          type: string
-          format: date
-          example: "2020-01-01"
-        defaultDateTime:
-          type: string
-          format: date-time
-          example: "2020-01-01T00:00:00Z"
-        defaultEnumStr:
-          type: string
-          enum:
-            - "one"
-            - "two"
-            - "three"
-          example: "two"
-        defaultEnumInt:
-          type: integer
-          enum:
-            - 1
-            - 2
-            - 3
-          example: 2
-        defaultBigInt:
-          type: integer
-          format: bigint
-          example: 9007199254740991
-        defaultBigIntStr:
-          type: string
-          format: bigint
-          example: "9223372036854775807"
-        defaultDecimal:
-          type: number
-          format: decimal
-          example: 3.141592653589793
-        defaultDecimalStr:
-          type: string
-          format: decimal
-          example: "3.141592653589793238462643383279"
-      required:
-        - normalField
-        - constStr
-        - constStrDQuotes
-        - constStrSQuotes
-        - constStrNull
-        - constInt
-        - constNum
-        - constBool
-        - constDate
-        - constDateTime
-        - constEnumStr
-        - constEnumInt
-        - constBigInt
-        - constBigIntStr
-        - constDecimal
-        - constDecimalStr
-        - defaultStr
-        - defaultStrDQuotes
-        - defaultStrSQuotes
-        - defaultStrNullable
-        - defaultInt
-        - defaultNum
-        - defaultBool
-        - defaultDate
-        - defaultDateTime
-        - defaultEnumStr
-        - defaultEnumInt
-        - defaultBigInt
-        - defaultBigIntStr
-        - defaultDecimal
-        - defaultDecimalStr
     objWithStringAdditionalProperties:
       type: object
       properties:
@@ -2055,6 +1894,12 @@ components:
                     x-speakeasy-test-internal-directives:
                       - sortJSONObjectKeys: {"fields": []}
                       - sanitizeTimestamp: {}
+                  any:
+                    type: string
+                    example: "{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"float64Str\":\"1.1\",\"int\":1,\"int32\":1,\"int32Enum\":55,\"int64Str\":\"100\",\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}"
+                    x-speakeasy-test-internal-directives:
+                      - sortJSONObjectKeys: {"fields": []}
+                      - sanitizeTimestamp: {}
                 required:
                   - str
                   - bool
@@ -2063,6 +1908,7 @@ components:
                   - obj
                   - map
                   - arr
+                  - any
             required:
               - form
     paginationResponse:
