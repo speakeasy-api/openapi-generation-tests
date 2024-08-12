@@ -8330,8 +8330,47 @@ paths:
         "201":
           description: OK
           
+  /anything/multiMatchAnyOf:
+    get:
+      operationId: multiMatchAnyOf
+      tags: [unions]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AnyOfMultiMatch"     
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AnyOfMultiMatch"     
+          
 components:
   schemas:
+    AnyOfMultiMatch:
+      anyOf:
+        - $ref: "#/components/schemas/AnyOfMultiMatchMember1"
+        - $ref: "#/components/schemas/AnyOfMultiMatchMember2"
+    AnyOfMultiMatchMember1:
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+      required: [name, description]
+    AnyOfMultiMatchMember2:
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        details:
+          type: string
+      required: [name, description]
+      
     ExampleVehicle:
       type: object
       oneOf:
