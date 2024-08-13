@@ -5386,6 +5386,12 @@ paths:
             application/octet-stream:
               schema:
                 type: object
+        "404":
+          description: Unsupported error content, treated as empty
+          content:
+            application/json:
+              schema:
+                type: string
   /anything/ignores:
     post:
       operationId: ignoresPost
