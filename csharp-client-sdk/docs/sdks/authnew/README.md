@@ -7,7 +7,6 @@ Endpoints for testing authentication.
 
 ### Available Operations
 
-* [ApiKeyAuthGlobalNew](#apikeyauthglobalnew)
 * [AuthGlobal](#authglobal)
 * [BasicAuthNew](#basicauthnew)
 * [MultipleMixedOptionsAuth](#multiplemixedoptionsauth)
@@ -18,52 +17,6 @@ Endpoints for testing authentication.
 * [MultipleSimpleSchemeAuth](#multiplesimpleschemeauth)
 * [Oauth2AuthNew](#oauth2authnew)
 * [OpenIdConnectAuthNew](#openidconnectauthnew)
-
-## ApiKeyAuthGlobalNew
-
-### Example Usage
-
-```csharp
-using Openapi;
-using Openapi.Models.Shared;
-using System.Collections.Generic;
-
-var sdk = new SDK(
-    security: new Security() {
-        ApiKeyAuth = "Token YOUR_API_KEY",
-    },
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
-
-var res = await sdk.AuthNew.ApiKeyAuthGlobalNewAsync(new AuthServiceRequestBody() {
-    BasicAuth = new BasicAuth() {
-        Password = "owsGgP4_AhRPMSJ",
-        Username = "Devonte_Bins",
-    },
-    HeaderAuth = new List<HeaderAuth>() {
-        new HeaderAuth() {
-            ExpectedValue = "string",
-            HeaderName = "string",
-        },
-    },
-});
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `request`                                                               | [AuthServiceRequestBody](../../Models/Shared/AuthServiceRequestBody.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
-| `serverURL`                                                             | *string*                                                                | :heavy_minus_sign:                                                      | An optional server URL to use.                                          |
-
-
-### Response
-
-**[ApiKeyAuthGlobalNewResponse](../../Models/Operations/ApiKeyAuthGlobalNewResponse.md)**
-
 
 ## AuthGlobal
 
@@ -78,25 +31,19 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.AuthGlobalAsync(new AuthServiceRequestBody() {
-    BasicAuth = new BasicAuth() {
-        Password = "xvJcf9GiJNr7T2x",
-        Username = "Cory33",
-    },
-    HeaderAuth = new List<HeaderAuth>() {
-        new HeaderAuth() {
-            ExpectedValue = "string",
-            HeaderName = "string",
-        },
-    },
-});
+AuthServiceRequestBody req = new AuthServiceRequestBody() {};
+
+var res = await sdk.AuthNew.AuthGlobalAsync(req);
 
 // handle response
 ```
+
+
 
 ### Parameters
 
@@ -109,7 +56,11 @@ var res = await sdk.AuthNew.AuthGlobalAsync(new AuthServiceRequestBody() {
 ### Response
 
 **[AuthGlobalResponse](../../Models/Operations/AuthGlobalResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## BasicAuthNew
 
@@ -122,28 +73,24 @@ using System.Collections.Generic;
 using Openapi.Models.Operations;
 
 var sdk = new SDK(
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.BasicAuthNewAsync(new BasicAuthNewSecurity() {
-    Password = "YOUR_PASSWORD",
-    Username = "YOUR_USERNAME",
-}, new AuthServiceRequestBody() {
-    BasicAuth = new BasicAuth() {
-        Password = "Z2OStPksFyrcGeu",
-        Username = "Ashton.Steuber27",
+AuthServiceRequestBody req = new AuthServiceRequestBody() {};
+
+var res = await sdk.AuthNew.BasicAuthNewAsync(
+    security: new BasicAuthNewSecurity() {
+        Password = "YOUR_PASSWORD",
+        Username = "YOUR_USERNAME",
     },
-    HeaderAuth = new List<HeaderAuth>() {
-        new HeaderAuth() {
-            ExpectedValue = "string",
-            HeaderName = "string",
-        },
-    },
-});
+    req);
 
 // handle response
 ```
+
+
 
 ### Parameters
 
@@ -157,7 +104,11 @@ var res = await sdk.AuthNew.BasicAuthNewAsync(new BasicAuthNewSecurity() {
 ### Response
 
 **[BasicAuthNewResponse](../../Models/Operations/BasicAuthNewResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## MultipleMixedOptionsAuth
 
@@ -170,27 +121,23 @@ using System.Collections.Generic;
 using Openapi.Models.Operations;
 
 var sdk = new SDK(
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.MultipleMixedOptionsAuthAsync(new MultipleMixedOptionsAuthSecurity() {
-    ApiKeyAuthNew = "Token <YOUR_API_KEY>",
-}, new AuthServiceRequestBody() {
-    BasicAuth = new BasicAuth() {
-        Password = "Iq1JSzG1wqLDz4v",
-        Username = "Ismael.Emmerich",
+AuthServiceRequestBody req = new AuthServiceRequestBody() {};
+
+var res = await sdk.AuthNew.MultipleMixedOptionsAuthAsync(
+    security: new MultipleMixedOptionsAuthSecurity() {
+        ApiKeyAuthNew = "Token <YOUR_API_KEY>",
     },
-    HeaderAuth = new List<HeaderAuth>() {
-        new HeaderAuth() {
-            ExpectedValue = "string",
-            HeaderName = "string",
-        },
-    },
-});
+    req);
 
 // handle response
 ```
+
+
 
 ### Parameters
 
@@ -204,7 +151,11 @@ var res = await sdk.AuthNew.MultipleMixedOptionsAuthAsync(new MultipleMixedOptio
 ### Response
 
 **[MultipleMixedOptionsAuthResponse](../../Models/Operations/MultipleMixedOptionsAuthResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## MultipleMixedSchemeAuth
 
@@ -217,31 +168,27 @@ using System.Collections.Generic;
 using Openapi.Models.Operations;
 
 var sdk = new SDK(
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.MultipleMixedSchemeAuthAsync(new MultipleMixedSchemeAuthSecurity() {
-    ApiKeyAuthNew = "Token <YOUR_API_KEY>",
-    BasicAuth = new SchemeBasicAuth() {
-        Password = "YOUR_PASSWORD",
-        Username = "YOUR_USERNAME",
-    },
-}, new AuthServiceRequestBody() {
-    BasicAuth = new BasicAuth() {
-        Password = "OcWVV5608IiaWJQ",
-        Username = "Kameron42",
-    },
-    HeaderAuth = new List<HeaderAuth>() {
-        new HeaderAuth() {
-            ExpectedValue = "string",
-            HeaderName = "string",
+AuthServiceRequestBody req = new AuthServiceRequestBody() {};
+
+var res = await sdk.AuthNew.MultipleMixedSchemeAuthAsync(
+    security: new MultipleMixedSchemeAuthSecurity() {
+        ApiKeyAuthNew = "Token <YOUR_API_KEY>",
+        BasicAuth = new SchemeBasicAuth() {
+            Password = "YOUR_PASSWORD",
+            Username = "YOUR_USERNAME",
         },
     },
-});
+    req);
 
 // handle response
 ```
+
+
 
 ### Parameters
 
@@ -255,7 +202,11 @@ var res = await sdk.AuthNew.MultipleMixedSchemeAuthAsync(new MultipleMixedScheme
 ### Response
 
 **[MultipleMixedSchemeAuthResponse](../../Models/Operations/MultipleMixedSchemeAuthResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## MultipleOptionsWithMixedSchemesAuth
 
@@ -268,30 +219,26 @@ using System.Collections.Generic;
 using Openapi.Models.Operations;
 
 var sdk = new SDK(
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.MultipleOptionsWithMixedSchemesAuthAsync(new MultipleOptionsWithMixedSchemesAuthSecurity() {
-    Option1 = new MultipleOptionsWithMixedSchemesAuthSecurityOption1() {
-        ApiKeyAuthNew = "Token <YOUR_API_KEY>",
-        Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
-    },
-}, new AuthServiceRequestBody() {
-    BasicAuth = new BasicAuth() {
-        Password = "fpwNE90MyqKIrXk",
-        Username = "Caroline_Walsh",
-    },
-    HeaderAuth = new List<HeaderAuth>() {
-        new HeaderAuth() {
-            ExpectedValue = "string",
-            HeaderName = "string",
+AuthServiceRequestBody req = new AuthServiceRequestBody() {};
+
+var res = await sdk.AuthNew.MultipleOptionsWithMixedSchemesAuthAsync(
+    security: new MultipleOptionsWithMixedSchemesAuthSecurity() {
+        Option1 = new MultipleOptionsWithMixedSchemesAuthSecurityOption1() {
+            ApiKeyAuthNew = "Token <YOUR_API_KEY>",
+            Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
         },
     },
-});
+    req);
 
 // handle response
 ```
+
+
 
 ### Parameters
 
@@ -305,7 +252,11 @@ var res = await sdk.AuthNew.MultipleOptionsWithMixedSchemesAuthAsync(new Multipl
 ### Response
 
 **[MultipleOptionsWithMixedSchemesAuthResponse](../../Models/Operations/MultipleOptionsWithMixedSchemesAuthResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## MultipleOptionsWithSimpleSchemesAuth
 
@@ -318,30 +269,26 @@ using System.Collections.Generic;
 using Openapi.Models.Operations;
 
 var sdk = new SDK(
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.MultipleOptionsWithSimpleSchemesAuthAsync(new MultipleOptionsWithSimpleSchemesAuthSecurity() {
-    Option1 = new MultipleOptionsWithSimpleSchemesAuthSecurityOption1() {
-        ApiKeyAuthNew = "Token <YOUR_API_KEY>",
-        Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
-    },
-}, new AuthServiceRequestBody() {
-    BasicAuth = new BasicAuth() {
-        Password = "pibxDTiJSijK04Y",
-        Username = "Selena76",
-    },
-    HeaderAuth = new List<HeaderAuth>() {
-        new HeaderAuth() {
-            ExpectedValue = "string",
-            HeaderName = "string",
+AuthServiceRequestBody req = new AuthServiceRequestBody() {};
+
+var res = await sdk.AuthNew.MultipleOptionsWithSimpleSchemesAuthAsync(
+    security: new MultipleOptionsWithSimpleSchemesAuthSecurity() {
+        Option1 = new MultipleOptionsWithSimpleSchemesAuthSecurityOption1() {
+            ApiKeyAuthNew = "Token <YOUR_API_KEY>",
+            Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
         },
     },
-});
+    req);
 
 // handle response
 ```
+
+
 
 ### Parameters
 
@@ -355,7 +302,11 @@ var res = await sdk.AuthNew.MultipleOptionsWithSimpleSchemesAuthAsync(new Multip
 ### Response
 
 **[MultipleOptionsWithSimpleSchemesAuthResponse](../../Models/Operations/MultipleOptionsWithSimpleSchemesAuthResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## MultipleSimpleOptionsAuth
 
@@ -368,27 +319,23 @@ using System.Collections.Generic;
 using Openapi.Models.Operations;
 
 var sdk = new SDK(
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.MultipleSimpleOptionsAuthAsync(new MultipleSimpleOptionsAuthSecurity() {
-    ApiKeyAuthNew = "Token <YOUR_API_KEY>",
-}, new AuthServiceRequestBody() {
-    BasicAuth = new BasicAuth() {
-        Password = "pzdKQgSGZSrUGNs",
-        Username = "Eryn51",
+AuthServiceRequestBody req = new AuthServiceRequestBody() {};
+
+var res = await sdk.AuthNew.MultipleSimpleOptionsAuthAsync(
+    security: new MultipleSimpleOptionsAuthSecurity() {
+        ApiKeyAuthNew = "Token <YOUR_API_KEY>",
     },
-    HeaderAuth = new List<HeaderAuth>() {
-        new HeaderAuth() {
-            ExpectedValue = "string",
-            HeaderName = "string",
-        },
-    },
-});
+    req);
 
 // handle response
 ```
+
+
 
 ### Parameters
 
@@ -402,7 +349,11 @@ var res = await sdk.AuthNew.MultipleSimpleOptionsAuthAsync(new MultipleSimpleOpt
 ### Response
 
 **[MultipleSimpleOptionsAuthResponse](../../Models/Operations/MultipleSimpleOptionsAuthResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## MultipleSimpleSchemeAuth
 
@@ -415,28 +366,24 @@ using System.Collections.Generic;
 using Openapi.Models.Operations;
 
 var sdk = new SDK(
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.MultipleSimpleSchemeAuthAsync(new MultipleSimpleSchemeAuthSecurity() {
-    ApiKeyAuthNew = "Token <YOUR_API_KEY>",
-    Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
-}, new AuthServiceRequestBody() {
-    BasicAuth = new BasicAuth() {
-        Password = "UrAsw466AAaYtr1",
-        Username = "Kenya.Baumbach",
+AuthServiceRequestBody req = new AuthServiceRequestBody() {};
+
+var res = await sdk.AuthNew.MultipleSimpleSchemeAuthAsync(
+    security: new MultipleSimpleSchemeAuthSecurity() {
+        ApiKeyAuthNew = "Token <YOUR_API_KEY>",
+        Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
     },
-    HeaderAuth = new List<HeaderAuth>() {
-        new HeaderAuth() {
-            ExpectedValue = "string",
-            HeaderName = "string",
-        },
-    },
-});
+    req);
 
 // handle response
 ```
+
+
 
 ### Parameters
 
@@ -450,7 +397,11 @@ var res = await sdk.AuthNew.MultipleSimpleSchemeAuthAsync(new MultipleSimpleSche
 ### Response
 
 **[MultipleSimpleSchemeAuthResponse](../../Models/Operations/MultipleSimpleSchemeAuthResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## Oauth2AuthNew
 
@@ -460,44 +411,41 @@ var res = await sdk.AuthNew.MultipleSimpleSchemeAuthAsync(new MultipleSimpleSche
 using Openapi;
 using Openapi.Models.Shared;
 using System.Collections.Generic;
-using Openapi.Models.Operations;
 
 var sdk = new SDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.Oauth2AuthNewAsync(new Oauth2AuthNewSecurity() {
-    Oauth2 = "Bearer YOUR_OAUTH2_TOKEN",
-}, new AuthServiceRequestBody() {
-    BasicAuth = new BasicAuth() {
-        Password = "V02sHy2onRTMRgS",
-        Username = "Polly.Aufderhar78",
-    },
-    HeaderAuth = new List<HeaderAuth>() {
-        new HeaderAuth() {
-            ExpectedValue = "string",
-            HeaderName = "string",
-        },
-    },
-});
+AuthServiceRequestBody req = new AuthServiceRequestBody() {};
+
+var res = await sdk.AuthNew.Oauth2AuthNewAsync(req);
 
 // handle response
 ```
 
+
+
 ### Parameters
 
-| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
-| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `request`                                                                                           | [AuthServiceRequestBody](../../Models/Shared/AuthServiceRequestBody.md)                             | :heavy_check_mark:                                                                                  | The request object to use for the request.                                                          |
-| `security`                                                                                          | [Openapi.Models.Operations.Oauth2AuthNewSecurity](../../Models/Operations/Oauth2AuthNewSecurity.md) | :heavy_check_mark:                                                                                  | The security requirements to use for the request.                                                   |
-| `serverURL`                                                                                         | *string*                                                                                            | :heavy_minus_sign:                                                                                  | An optional server URL to use.                                                                      |
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `request`                                                               | [AuthServiceRequestBody](../../Models/Shared/AuthServiceRequestBody.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
+| `serverURL`                                                             | *string*                                                                | :heavy_minus_sign:                                                      | An optional server URL to use.                                          |
 
 
 ### Response
 
 **[Oauth2AuthNewResponse](../../Models/Operations/Oauth2AuthNewResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
 
 ## OpenIdConnectAuthNew
 
@@ -510,27 +458,23 @@ using System.Collections.Generic;
 using Openapi.Models.Operations;
 
 var sdk = new SDK(
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.AuthNew.OpenIdConnectAuthNewAsync(new OpenIdConnectAuthNewSecurity() {
-    OpenIdConnect = "Bearer YOUR_OPENID_TOKEN",
-}, new AuthServiceRequestBody() {
-    BasicAuth = new BasicAuth() {
-        Password = "1_B3hNdr8HC3AeS",
-        Username = "Floy_Heller",
+AuthServiceRequestBody req = new AuthServiceRequestBody() {};
+
+var res = await sdk.AuthNew.OpenIdConnectAuthNewAsync(
+    security: new OpenIdConnectAuthNewSecurity() {
+        OpenIdConnect = "Bearer YOUR_OPENID_TOKEN",
     },
-    HeaderAuth = new List<HeaderAuth>() {
-        new HeaderAuth() {
-            ExpectedValue = "string",
-            HeaderName = "string",
-        },
-    },
-});
+    req);
 
 // handle response
 ```
+
+
 
 ### Parameters
 
@@ -544,4 +488,8 @@ var res = await sdk.AuthNew.OpenIdConnectAuthNewAsync(new OpenIdConnectAuthNewSe
 ### Response
 
 **[OpenIdConnectAuthNewResponse](../../Models/Operations/OpenIdConnectAuthNewResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
