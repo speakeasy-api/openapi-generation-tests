@@ -1,5 +1,5 @@
 # Pagination
-(*pagination*)
+(*pagination()*)
 
 ## Overview
 
@@ -8,11 +8,15 @@ Endpoints for testing the pagination extension
 ### Available Operations
 
 * [paginationCursorBody](#paginationcursorbody)
+* [paginationCursorNonNumeric](#paginationcursornonnumeric)
 * [paginationCursorParams](#paginationcursorparams)
+* [paginationLimitOffsetDeepOutputsPageBody](#paginationlimitoffsetdeepoutputspagebody)
 * [paginationLimitOffsetOffsetBody](#paginationlimitoffsetoffsetbody)
 * [paginationLimitOffsetOffsetParams](#paginationlimitoffsetoffsetparams)
 * [paginationLimitOffsetPageBody](#paginationlimitoffsetpagebody)
 * [paginationLimitOffsetPageParams](#paginationlimitoffsetpageparams)
+* [paginationURLParams](#paginationurlparams)
+* [paginationWithRetries](#paginationwithretries)
 
 ## paginationCursorBody
 
@@ -21,48 +25,123 @@ Endpoints for testing the pagination extension
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.PaginationCursorBodyRequestBody;
-import org.openapis.openapi.models.operations.PaginationCursorBodyResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            PaginationCursorBodyRequestBody req = new PaginationCursorBodyRequestBody(868337L);            
+            PaginationCursorBodyRequestBody req = PaginationCursorBodyRequestBody.builder()
+                .cursor(868337L)
+                .build();
 
-            PaginationCursorBodyResponse res = sdk.pagination.paginationCursorBody(req);
+            sdk.pagination().paginationCursorBody()
+                .request(req)
+                .callAsStreamUnwrapped()
+                .forEach(item -> {
+                   // handle item
+                });
 
-            if (res.res != null) {
-                // handle response
-            }
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
+
     }
 }
 ```
 
+
+
 ### Parameters
 
-| Parameter                                                                                                                            | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                            | [org.openapis.openapi.models.operations.PaginationCursorBodyRequestBody](../../models/operations/PaginationCursorBodyRequestBody.md) | :heavy_check_mark:                                                                                                                   | The request object to use for the request.                                                                                           |
-| `serverURL`                                                                                                                          | *String*                                                                                                                             | :heavy_minus_sign:                                                                                                                   | An optional server URL to use.                                                                                                       |
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `request`                                                                                     | [PaginationCursorBodyRequestBody](../../models/operations/PaginationCursorBodyRequestBody.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
+| `serverURL`                                                                                   | *String*                                                                                      | :heavy_minus_sign:                                                                            | An optional server URL to use.                                                                |
 
 
 ### Response
 
-**[org.openapis.openapi.models.operations.PaginationCursorBodyResponse](../../models/operations/PaginationCursorBodyResponse.md)**
+**[PaginationCursorBodyResponse](../../models/operations/PaginationCursorBodyResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
+## paginationCursorNonNumeric
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+        try {
+            SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+                .build();
+
+            sdk.pagination().paginationCursorNonNumeric()
+                .cursor("<value>")
+                .callAsStreamUnwrapped()
+                .forEach(item -> {
+                   // handle item
+                });
+
+        } catch (Exception e) {
+            // handle exception
+            throw e;
+        }
+
+    }
+}
+```
+
+
+
+### Parameters
+
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `cursor`                                                             | *Optional<String>*                                                   | :heavy_minus_sign:                                                   | The page token used to request a specific page of the search results |
+| `serverURL`                                                          | *String*                                                             | :heavy_minus_sign:                                                   | An optional server URL to use.                                       |
+
+
+### Response
+
+**[PaginationCursorNonNumericResponse](../../models/operations/PaginationCursorNonNumericResponse.md)**
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## paginationCursorParams
 
@@ -71,46 +150,122 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.PaginationCursorParamsRequest;
-import org.openapis.openapi.models.operations.PaginationCursorParamsResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            PaginationCursorParamsResponse res = sdk.pagination.paginationCursorParams(24812L);
+            sdk.pagination().paginationCursorParams()
+                .cursor(24812L)
+                .callAsStreamUnwrapped()
+                .forEach(item -> {
+                   // handle item
+                });
 
-            if (res.res != null) {
-                // handle response
-            }
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
+
     }
 }
 ```
+
+
 
 ### Parameters
 
 | Parameter                      | Type                           | Required                       | Description                    |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `cursor`                       | *Long*                         | :heavy_check_mark:             | N/A                            |
+| `cursor`                       | *long*                         | :heavy_check_mark:             | N/A                            |
 | `serverURL`                    | *String*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
 
 ### Response
 
-**[org.openapis.openapi.models.operations.PaginationCursorParamsResponse](../../models/operations/PaginationCursorParamsResponse.md)**
+**[PaginationCursorParamsResponse](../../models/operations/PaginationCursorParamsResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
+## paginationLimitOffsetDeepOutputsPageBody
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.shared.LimitOffsetConfig;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+        try {
+            SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+                .build();
+
+            LimitOffsetConfig req = LimitOffsetConfig.builder()
+                .build();
+
+            sdk.pagination().paginationLimitOffsetDeepOutputsPageBody()
+                .request(req)
+                .callAsStreamUnwrapped()
+                .forEach(item -> {
+                   // handle item
+                });
+
+        } catch (Exception e) {
+            // handle exception
+            throw e;
+        }
+
+    }
+}
+```
+
+
+
+### Parameters
+
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `request`                                                     | [LimitOffsetConfig](../../models/shared/LimitOffsetConfig.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
+| `serverURL`                                                   | *String*                                                      | :heavy_minus_sign:                                            | An optional server URL to use.                                |
+
+
+### Response
+
+**[PaginationLimitOffsetDeepOutputsPageBodyResponse](../../models/operations/PaginationLimitOffsetDeepOutputsPageBodyResponse.md)**
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## paginationLimitOffsetOffsetBody
 
@@ -119,52 +274,62 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.PaginationLimitOffsetOffsetBodyResponse;
 import org.openapis.openapi.models.shared.LimitOffsetConfig;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.LimitOffsetConfig req = new LimitOffsetConfig(){{
-                limit = 189971L;
-                offset = 995974L;
-                page = 329413L;
-            }};            
+            LimitOffsetConfig req = LimitOffsetConfig.builder()
+                .build();
 
-            PaginationLimitOffsetOffsetBodyResponse res = sdk.pagination.paginationLimitOffsetOffsetBody(req);
+            sdk.pagination().paginationLimitOffsetOffsetBody()
+                .request(req)
+                .callAsStreamUnwrapped()
+                .forEach(item -> {
+                   // handle item
+                });
 
-            if (res.res != null) {
-                // handle response
-            }
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
+
     }
 }
 ```
 
+
+
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `request`                                                                                        | [org.openapis.openapi.models.shared.LimitOffsetConfig](../../models/shared/LimitOffsetConfig.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `serverURL`                                                                                      | *String*                                                                                         | :heavy_minus_sign:                                                                               | An optional server URL to use.                                                                   |
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `request`                                                     | [LimitOffsetConfig](../../models/shared/LimitOffsetConfig.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
+| `serverURL`                                                   | *String*                                                      | :heavy_minus_sign:                                            | An optional server URL to use.                                |
 
 
 ### Response
 
-**[org.openapis.openapi.models.operations.PaginationLimitOffsetOffsetBodyResponse](../../models/operations/PaginationLimitOffsetOffsetBodyResponse.md)**
+**[PaginationLimitOffsetOffsetBodyResponse](../../models/operations/PaginationLimitOffsetOffsetBodyResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## paginationLimitOffsetOffsetParams
 
@@ -173,47 +338,60 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.PaginationLimitOffsetOffsetParamsRequest;
-import org.openapis.openapi.models.operations.PaginationLimitOffsetOffsetParamsResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            PaginationLimitOffsetOffsetParamsResponse res = sdk.pagination.paginationLimitOffsetOffsetParams(661976L, 600173L);
+            sdk.pagination().paginationLimitOffsetOffsetParams()
+                .limit(661976L)
+                .offset(600173L)
+                .callAsStreamUnwrapped()
+                .forEach(item -> {
+                   // handle item
+                });
 
-            if (res.res != null) {
-                // handle response
-            }
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
+
     }
 }
 ```
+
+
 
 ### Parameters
 
 | Parameter                      | Type                           | Required                       | Description                    |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `limit`                        | *Long*                         | :heavy_minus_sign:             | N/A                            |
-| `offset`                       | *Long*                         | :heavy_minus_sign:             | N/A                            |
+| `limit`                        | *Optional<Long>*               | :heavy_minus_sign:             | N/A                            |
+| `offset`                       | *Optional<Long>*               | :heavy_minus_sign:             | N/A                            |
 | `serverURL`                    | *String*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
 
 ### Response
 
-**[org.openapis.openapi.models.operations.PaginationLimitOffsetOffsetParamsResponse](../../models/operations/PaginationLimitOffsetOffsetParamsResponse.md)**
+**[PaginationLimitOffsetOffsetParamsResponse](../../models/operations/PaginationLimitOffsetOffsetParamsResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## paginationLimitOffsetPageBody
 
@@ -222,52 +400,62 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.PaginationLimitOffsetPageBodyResponse;
 import org.openapis.openapi.models.shared.LimitOffsetConfig;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.LimitOffsetConfig req = new LimitOffsetConfig(){{
-                limit = 479052L;
-                offset = 716379L;
-                page = 911806L;
-            }};            
+            LimitOffsetConfig req = LimitOffsetConfig.builder()
+                .build();
 
-            PaginationLimitOffsetPageBodyResponse res = sdk.pagination.paginationLimitOffsetPageBody(req);
+            sdk.pagination().paginationLimitOffsetPageBody()
+                .request(req)
+                .callAsStreamUnwrapped()
+                .forEach(item -> {
+                   // handle item
+                });
 
-            if (res.res != null) {
-                // handle response
-            }
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
+
     }
 }
 ```
 
+
+
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `request`                                                                                        | [org.openapis.openapi.models.shared.LimitOffsetConfig](../../models/shared/LimitOffsetConfig.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `serverURL`                                                                                      | *String*                                                                                         | :heavy_minus_sign:                                                                               | An optional server URL to use.                                                                   |
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `request`                                                     | [LimitOffsetConfig](../../models/shared/LimitOffsetConfig.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
+| `serverURL`                                                   | *String*                                                      | :heavy_minus_sign:                                            | An optional server URL to use.                                |
 
 
 ### Response
 
-**[org.openapis.openapi.models.operations.PaginationLimitOffsetPageBodyResponse](../../models/operations/PaginationLimitOffsetPageBodyResponse.md)**
+**[PaginationLimitOffsetPageBodyResponse](../../models/operations/PaginationLimitOffsetPageBodyResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## paginationLimitOffsetPageParams
 
@@ -276,43 +464,186 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.PaginationLimitOffsetPageParamsRequest;
-import org.openapis.openapi.models.operations.PaginationLimitOffsetPageParamsResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            PaginationLimitOffsetPageParamsResponse res = sdk.pagination.paginationLimitOffsetPageParams(1177L);
+            sdk.pagination().paginationLimitOffsetPageParams()
+                .page(1177L)
+                .callAsStreamUnwrapped()
+                .forEach(item -> {
+                   // handle item
+                });
 
-            if (res.res != null) {
-                // handle response
-            }
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
+
     }
 }
 ```
+
+
 
 ### Parameters
 
 | Parameter                      | Type                           | Required                       | Description                    |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `page`                         | *Long*                         | :heavy_check_mark:             | N/A                            |
+| `page`                         | *long*                         | :heavy_check_mark:             | N/A                            |
 | `serverURL`                    | *String*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
 
 ### Response
 
-**[org.openapis.openapi.models.operations.PaginationLimitOffsetPageParamsResponse](../../models/operations/PaginationLimitOffsetPageParamsResponse.md)**
+**[PaginationLimitOffsetPageParamsResponse](../../models/operations/PaginationLimitOffsetPageParamsResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
+## paginationURLParams
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.errors.SDKError;
+import org.openapis.openapi.models.operations.PaginationURLParamsResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+        try {
+            SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+                .build();
+
+            PaginationURLParamsResponse res = sdk.pagination().paginationURLParams()
+                .attempts(778920L)
+                .isReferencePath("<value>")
+                .call();
+
+            if (res.res().isPresent()) {
+                // handle response
+            }
+        } catch (SDKError e) {
+            // handle exception
+            throw e;
+        } catch (Exception e) {
+            // handle exception
+            throw e;
+        }
+
+    }
+}
+```
+
+
+
+### Parameters
+
+| Parameter                      | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `attempts`                     | *long*                         | :heavy_check_mark:             | N/A                            |
+| `isReferencePath`              | *Optional<String>*             | :heavy_minus_sign:             | N/A                            |
+| `serverURL`                    | *String*                       | :heavy_minus_sign:             | An optional server URL to use. |
+
+
+### Response
+
+**[PaginationURLParamsResponse](../../models/operations/PaginationURLParamsResponse.md)**
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
+## paginationWithRetries
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+        try {
+            SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+                .build();
+
+            sdk.pagination().paginationWithRetries()
+                .cursor("<value>")
+                .faultSettings("{\"error_code\": 503, \"error_count\": 3}")
+                .requestId("paginationWithRetries")
+                .callAsStreamUnwrapped()
+                .forEach(item -> {
+                   // handle item
+                });
+
+        } catch (Exception e) {
+            // handle exception
+            throw e;
+        }
+
+    }
+}
+```
+
+
+
+### Parameters
+
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `cursor`                                                             | *Optional<String>*                                                   | :heavy_minus_sign:                                                   | The page token used to request a specific page of the search results |
+| `faultSettings`                                                      | *Optional<String>*                                                   | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `requestId`                                                          | *Optional<String>*                                                   | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `serverURL`                                                          | *String*                                                             | :heavy_minus_sign:                                                   | An optional server URL to use.                                       |
+
+
+### Response
+
+**[PaginationWithRetriesResponse](../../models/operations/PaginationWithRetriesResponse.md)**
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
