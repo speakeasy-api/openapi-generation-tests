@@ -1728,7 +1728,9 @@ components:
       properties:
         color:
           type: string
-          enum: [red, green, blue]
+          # include some common reserverd words in the enum
+          # to test sanitization
+          enum: [red, green, blue, return, class, int]
           example: green
           default: blue
           x-speakeasy-unknown-values: allow
