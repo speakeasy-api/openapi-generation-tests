@@ -17,21 +17,24 @@ Gets documentation for some language, I guess.
 
 ```csharp
 using Openapi;
-using Openapi.Models.Shared;
 using Openapi.Models.Operations;
+using Openapi.Models.Shared;
 
 var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
-var res = await sdk.Documentation.GetDocumentationPerLanguageAsync("string");
+var res = await sdk.Documentation.GetDocumentationPerLanguageAsync(language: "<value>");
 
 // handle response
 ```
+
+
 
 ### Parameters
 
@@ -43,4 +46,8 @@ var res = await sdk.Documentation.GetDocumentationPerLanguageAsync("string");
 ### Response
 
 **[GetDocumentationPerLanguageResponse](../../Models/Operations/GetDocumentationPerLanguageResponse.md)**
+### Errors
 
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |

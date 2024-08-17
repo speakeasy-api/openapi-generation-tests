@@ -2,6 +2,16 @@
 
 Successful authentication.
 
+## Example Usage
+
+```typescript
+import { Oauth2AuthToken } from "openapi/sdk/models/operations";
+
+let value: Oauth2AuthToken = {
+    authenticated: false,
+    token: "<value>",
+};
+```
 
 ## Fields
 
