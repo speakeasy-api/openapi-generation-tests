@@ -1,5 +1,18 @@
 # MultipleMixedOptionsAuthSecurity
 
+## Example Usage
+
+```typescript
+import { MultipleMixedOptionsAuthSecurity } from "openapi/sdk/models/operations";
+
+let value: MultipleMixedOptionsAuthSecurity = {
+    apiKeyAuthNew: "Token <YOUR_API_KEY>",
+    basicAuth: {
+        password: "YOUR_PASSWORD",
+        username: "YOUR_USERNAME",
+    },
+};
+```
 
 ## Fields
 

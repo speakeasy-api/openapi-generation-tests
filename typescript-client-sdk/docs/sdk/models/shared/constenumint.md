@@ -1,10 +1,15 @@
 # ConstEnumInt
 
+## Example Usage
+
+```typescript
+import { ConstEnumInt } from "openapi/sdk/models/shared";
+
+let value: ConstEnumInt = 2;
+```
 
 ## Values
 
-| Name    | Value   |
-| ------- | ------- |
-| `One`   | 1       |
-| `Two`   | 2       |
-| `Three` | 3       |
+```typescript
+1 | 2 | 3
+```
