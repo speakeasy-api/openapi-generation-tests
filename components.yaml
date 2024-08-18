@@ -487,6 +487,9 @@ components:
           type: string
           format: decimal
           example: "3.14159265358979344719667586"
+        decimalNullableOpt:
+          type: [number, "null"]
+          format: decimal
         int64Str:
           type: string
           format: int64
