@@ -2,6 +2,19 @@
 
 OK
 
+## Example Usage
+
+```typescript
+import { FormQueryParamsCamelObjectRes } from "openapi/sdk/models/operations";
+
+let value: FormQueryParamsCamelObjectRes = {
+    args: {
+        itemCount: "10",
+        searchTerm: "foo",
+    },
+    url: "http://localhost:35123/anything/queryParams/form/camelObj?item_count=10&obj_param=encoded_count%2C11%2Cencoded_term%2Cbar&search_term=foo",
+};
+```
 
 ## Fields
 
