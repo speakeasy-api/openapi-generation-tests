@@ -2,6 +2,17 @@
 
 OK
 
+## Example Usage
+
+```typescript
+import { RequestBodyPutMultipartFileRes } from "openapi/sdk/models/operations";
+
+let value: RequestBodyPutMultipartFileRes = {
+    files: {
+        key: "<value>",
+    },
+};
+```
 
 ## Fields
 
