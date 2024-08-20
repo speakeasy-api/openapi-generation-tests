@@ -1,5 +1,15 @@
 # ResponseBodyEmptyWithHeadersRequest
 
+## Example Usage
+
+```typescript
+import { ResponseBodyEmptyWithHeadersRequest } from "openapi/sdk/models/operations";
+
+let value: ResponseBodyEmptyWithHeadersRequest = {
+    xNumberHeader: 3637.11,
+    xStringHeader: "<value>",
+};
+```
 
 ## Fields
 

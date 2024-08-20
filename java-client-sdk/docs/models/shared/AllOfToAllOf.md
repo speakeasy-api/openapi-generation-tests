@@ -5,4 +5,4 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *String*           | :heavy_minus_sign: | N/A                |
+| `id`               | *Optional<String>* | :heavy_minus_sign: | N/A                |

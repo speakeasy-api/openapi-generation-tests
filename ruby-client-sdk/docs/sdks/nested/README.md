@@ -10,27 +10,34 @@
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
     
 res = s.nested.get()
 
-if res.status == 200
+if res.status_code == 200
   # handle response
 end
 
 ```
 
 
+
+
 ### Response
 
-**[T.nilable(Operations::NestedGetResponse)](../../models/operations/nestedgetresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::NestedGetResponse)](../../models/operations/nestedgetresponse.md)**
 
