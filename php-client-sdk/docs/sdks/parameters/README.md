@@ -21,6 +21,7 @@ Endpoints for testing parameters.
 * [headerParamsObject](#headerparamsobject)
 * [headerParamsPrimitive](#headerparamsprimitive)
 * [jsonQueryParamsObject](#jsonqueryparamsobject)
+* [jsonQueryParamsObjectSmaller](#jsonqueryparamsobjectsmaller)
 * [mixedParametersCamelCase](#mixedparameterscamelcase)
 * [mixedParametersPrimitives](#mixedparametersprimitives)
 * [mixedQueryParams](#mixedqueryparams)
@@ -36,159 +37,180 @@ Endpoints for testing parameters.
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
 
-
     $response = $sdk->parameters->deepObjectQueryParamsMap([
-    'compress' => 'string',
-], [
-    'of' => [
-        'string',
-    ],
-]);
+        'compress' => '<value>',
+    ], [
+        'of' => [
+            '<value>',
+        ],
+    ]);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
 
+
+
 ### Parameters
 
-| Parameter                      | Type                           | Required                       | Description                    | Example                        |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `mapParam`                     | array<string, *string*>        | :heavy_check_mark:             | N/A                            | [object Object]                |
-| `mapArrParam`                  | array<string, array<*string*>> | :heavy_minus_sign:             | N/A                            | [object Object]                |
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    | Example                                                        |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `mapParam`                                                     | array<string, *string*>                                        | :heavy_check_mark:                                             | N/A                                                            | {<br/>"test": "value",<br/>"test2": "value2"<br/>}             |
+| `mapArrParam`                                                  | array<string, array<*string*>>                                 | :heavy_minus_sign:                                             | N/A                                                            | {<br/>"test": [<br/>"test",<br/>"test2"<br/>],<br/>"test2": [<br/>"test3",<br/>"test4"<br/>]<br/>} |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsMapResponse](../../Models/Operations/DeepObjectQueryParamsMapResponse.md)**
+**[?Operations\DeepObjectQueryParamsMapResponse](../../Models/Operations/DeepObjectQueryParamsMapResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## deepObjectQueryParamsObject
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $objParam = new Shared\SimpleObject();
-    $objParam->any = 'any';
-    $objParam->bigint = 8821239038968084;
-    $objParam->bigintStr = '9223372036854775808';
-    $objParam->bool = true;
-    $objParam->boolOpt = true;
-    $objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $objParam->decimal = 3.141592653589793;
-    $objParam->decimalStr = '3.14159265358979344719667586';
-    $objParam->enum = Shared\Enum::One;
-    $objParam->float32 = 1.1;
-    $objParam->int = 1;
-    $objParam->int32 = 1;
-    $objParam->int32Enum = Shared\Int32Enum::SixtyNine;
-    $objParam->intEnum = Shared\IntEnum::Second;
-    $objParam->intOptNull = 303001;
-    $objParam->num = 1.1;
-    $objParam->numOptNull = 5571.55;
-    $objParam->str = 'test';
-    $objParam->strOpt = 'testOptional';
-
-    $objArrParam = new Operations\ObjArrParam();
-    $objArrParam->arr = [
-        'test',
-    ];
-
+    $objParam = new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::SixtyNine,
+        intEnum: Shared\IntEnum::Second,
+        num: 1.1,
+        str: 'test',
+        bigint: 8821239038968084,
+        bigintStr: '9223372036854775808',
+        boolOpt: true,
+        decimal: 3.141592653589793,
+        decimalNullableOpt: 3030.01,
+        decimalStr: '3.14159265358979344719667586',
+        float64Str: '1.1',
+        int64Str: '100',
+        intOptNull: 557155,
+        numOptNull: 4253.15,
+        strOpt: 'testOptional',
+    );
+    $objArrParam = new Operations\ObjArrParam(
+        arr: [
+            '<value>',
+        ],
+    );
     $response = $sdk->parameters->deepObjectQueryParamsObject($objParam, $objArrParam);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
+
+
 
 ### Parameters
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `objParam`                                                                                         | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                 | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `objArrParam`                                                                                      | [\OpenAPI\OpenAPI\Models\Operations\ObjArrParam](../../Models/Operations/ObjArrParam.md)           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `objParam`                                                                                         | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objArrParam`                                                                                      | [Operations\ObjArrParam](../../Models/Operations/ObjArrParam.md)                                   | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectResponse](../../Models/Operations/DeepObjectQueryParamsObjectResponse.md)**
+**[?Operations\DeepObjectQueryParamsObjectResponse](../../Models/Operations/DeepObjectQueryParamsObjectResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## duplicateParam
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
 
-
-    $response = $sdk->parameters->duplicateParam('string');
+    $response = $sdk->parameters->duplicateParam('<value>');
 
     if ($response->duplicateParamResponse !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
+
+
 
 ### Parameters
 
@@ -199,46 +221,52 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DuplicateParamResponse](../../Models/Operations/DuplicateParamResponse.md)**
+**[?Operations\DuplicateParamResponse](../../Models/Operations/DuplicateParamResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## formQueryParamsArray
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
 
-
     $response = $sdk->parameters->formQueryParamsArray([
-    'test',
-], [
-    2,
-]);
+        'test',
+    ], [
+        2,
+    ]);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
+
+
 
 ### Parameters
 
@@ -250,235 +278,270 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\FormQueryParamsArrayResponse](../../Models/Operations/FormQueryParamsArrayResponse.md)**
+**[?Operations\FormQueryParamsArrayResponse](../../Models/Operations/FormQueryParamsArrayResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## formQueryParamsCamelObject
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $objParamExploded = new Operations\ObjParamExploded();
-    $objParamExploded->itemCount = '10';
-    $objParamExploded->searchTerm = 'foo';
-
-    $objParam = new Operations\ObjParam();
-    $objParam->encodedCount = '11';
-    $objParam->encodedTerm = 'bar';
-
+    $objParamExploded = new Operations\ObjParamExploded(
+        itemCount: '10',
+        searchTerm: 'foo',
+    );
+    $objParam = new Operations\ObjParam(
+        encodedCount: '11',
+        encodedTerm: 'bar',
+    );
     $response = $sdk->parameters->formQueryParamsCamelObject($objParamExploded, $objParam);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
 
+
+
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `objParamExploded`                                                                                 | [\OpenAPI\OpenAPI\Models\Operations\ObjParamExploded](../../Models/Operations/ObjParamExploded.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `objParam`                                                                                         | [\OpenAPI\OpenAPI\Models\Operations\ObjParam](../../Models/Operations/ObjParam.md)                 | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `objParamExploded`                                                         | [Operations\ObjParamExploded](../../Models/Operations/ObjParamExploded.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `objParam`                                                                 | [Operations\ObjParam](../../Models/Operations/ObjParam.md)                 | :heavy_minus_sign:                                                         | N/A                                                                        |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectResponse](../../Models/Operations/FormQueryParamsCamelObjectResponse.md)**
+**[?Operations\FormQueryParamsCamelObjectResponse](../../Models/Operations/FormQueryParamsCamelObjectResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## formQueryParamsMap
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
 
-
     $response = $sdk->parameters->formQueryParamsMap([
-    'male' => 'string',
-], [
-    'Reggae' => 355695,
-]);
+        'male' => '<value>',
+    ], [
+        'Reggae' => 355695,
+    ]);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
 
+
+
 ### Parameters
 
-| Parameter               | Type                    | Required                | Description             | Example                 |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `mapParam`              | array<string, *string*> | :heavy_minus_sign:      | N/A                     | [object Object]         |
-| `mapParamExploded`      | array<string, *int*>    | :heavy_minus_sign:      | N/A                     | [object Object]         |
+| Parameter                              | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `mapParam`                             | array<string, *string*>                | :heavy_minus_sign:                     | N/A                                    | {<br/>"test": "value",<br/>"test2": "value2"<br/>} |
+| `mapParamExploded`                     | array<string, *int*>                   | :heavy_minus_sign:                     | N/A                                    | {<br/>"test": 1,<br/>"test2": 2<br/>}  |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\FormQueryParamsMapResponse](../../Models/Operations/FormQueryParamsMapResponse.md)**
+**[?Operations\FormQueryParamsMapResponse](../../Models/Operations/FormQueryParamsMapResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## formQueryParamsObject
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $objParamExploded = new Shared\SimpleObject();
-    $objParamExploded->any = 'any';
-    $objParamExploded->bigint = 8821239038968084;
-    $objParamExploded->bigintStr = '9223372036854775808';
-    $objParamExploded->bool = true;
-    $objParamExploded->boolOpt = true;
-    $objParamExploded->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $objParamExploded->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $objParamExploded->decimal = 3.141592653589793;
-    $objParamExploded->decimalStr = '3.14159265358979344719667586';
-    $objParamExploded->enum = Shared\Enum::One;
-    $objParamExploded->float32 = 1.1;
-    $objParamExploded->int = 1;
-    $objParamExploded->int32 = 1;
-    $objParamExploded->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
-    $objParamExploded->intEnum = Shared\IntEnum::Second;
-    $objParamExploded->intOptNull = 645228;
-    $objParamExploded->num = 1.1;
-    $objParamExploded->numOptNull = 7602.31;
-    $objParamExploded->str = 'test';
-    $objParamExploded->strOpt = 'testOptional';
-
-    $objParam = new Shared\SimpleObject();
-    $objParam->any = 'any';
-    $objParam->bigint = 8821239038968084;
-    $objParam->bigintStr = '9223372036854775808';
-    $objParam->bool = true;
-    $objParam->boolOpt = true;
-    $objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $objParam->decimal = 3.141592653589793;
-    $objParam->decimalStr = '3.14159265358979344719667586';
-    $objParam->enum = Shared\Enum::One;
-    $objParam->float32 = 1.1;
-    $objParam->int = 1;
-    $objParam->int32 = 1;
-    $objParam->int32Enum = Shared\Int32Enum::SixtyNine;
-    $objParam->intEnum = Shared\IntEnum::First;
-    $objParam->intOptNull = 973554;
-    $objParam->num = 1.1;
-    $objParam->numOptNull = 873.54;
-    $objParam->str = 'test';
-    $objParam->strOpt = 'testOptional';
-
+    $objParamExploded = new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::OneHundredAndEightyOne,
+        intEnum: Shared\IntEnum::Second,
+        num: 1.1,
+        str: 'test',
+        bigint: 8821239038968084,
+        bigintStr: '9223372036854775808',
+        boolOpt: true,
+        decimal: 3.141592653589793,
+        decimalNullableOpt: 6452.28,
+        decimalStr: '3.14159265358979344719667586',
+        float64Str: '1.1',
+        int64Str: '100',
+        intOptNull: 760231,
+        numOptNull: 5427.82,
+        strOpt: 'testOptional',
+    );
+    $objParam = new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::FiftyFive,
+        intEnum: Shared\IntEnum::Third,
+        num: 1.1,
+        str: 'test',
+        bigint: 8821239038968084,
+        bigintStr: '9223372036854775808',
+        boolOpt: true,
+        decimal: 3.141592653589793,
+        decimalNullableOpt: 873.54,
+        decimalStr: '3.14159265358979344719667586',
+        float64Str: '1.1',
+        int64Str: '100',
+        intOptNull: 88391,
+        numOptNull: 6843.03,
+        strOpt: 'testOptional',
+    );
     $response = $sdk->parameters->formQueryParamsObject($objParamExploded, $objParam);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
+
+
 
 ### Parameters
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `objParamExploded`                                                                                 | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                 | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `objParam`                                                                                         | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                 | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objParamExploded`                                                                                 | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objParam`                                                                                         | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                                         | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\FormQueryParamsObjectResponse](../../Models/Operations/FormQueryParamsObjectResponse.md)**
+**[?Operations\FormQueryParamsObjectResponse](../../Models/Operations/FormQueryParamsObjectResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## formQueryParamsPrimitive
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
 
     $response = $sdk->parameters->formQueryParamsPrimitive(true, 1, 1.1, 'test');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
+
+
 
 ### Parameters
 
@@ -492,101 +555,114 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\FormQueryParamsPrimitiveResponse](../../Models/Operations/FormQueryParamsPrimitiveResponse.md)**
+**[?Operations\FormQueryParamsPrimitiveResponse](../../Models/Operations/FormQueryParamsPrimitiveResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## formQueryParamsRefParamObject
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $refObjParam = new Shared\RefQueryParamObj();
-    $refObjParam->bool = true;
-    $refObjParam->int = 1;
-    $refObjParam->num = 1.1;
-    $refObjParam->str = 'test';
-
-    $refObjParamExploded = new Shared\RefQueryParamObjExploded();
-    $refObjParamExploded->bool = true;
-    $refObjParamExploded->int = 1;
-    $refObjParamExploded->num = 1.1;
-    $refObjParamExploded->str = 'test';
-
+    $refObjParam = new Shared\RefQueryParamObj(
+        bool: true,
+        int: 1,
+        num: 1.1,
+        str: 'test',
+    );
+    $refObjParamExploded = new Shared\RefQueryParamObjExploded(
+        bool: true,
+        int: 1,
+        num: 1.1,
+        str: 'test',
+    );
     $response = $sdk->parameters->formQueryParamsRefParamObject($refObjParam, $refObjParamExploded);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
 
+
+
 ### Parameters
 
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `refObjParam`                                                                                              | [\OpenAPI\OpenAPI\Models\Shared\RefQueryParamObj](../../Models/Shared/RefQueryParamObj.md)                 | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |
-| `refObjParamExploded`                                                                                      | [\OpenAPI\OpenAPI\Models\Shared\RefQueryParamObjExploded](../../Models/Shared/RefQueryParamObjExploded.md) | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `refObjParam`                                                                      | [Shared\RefQueryParamObj](../../Models/Shared/RefQueryParamObj.md)                 | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `refObjParamExploded`                                                              | [Shared\RefQueryParamObjExploded](../../Models/Shared/RefQueryParamObjExploded.md) | :heavy_minus_sign:                                                                 | N/A                                                                                |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\FormQueryParamsRefParamObjectResponse](../../Models/Operations/FormQueryParamsRefParamObjectResponse.md)**
+**[?Operations\FormQueryParamsRefParamObjectResponse](../../Models/Operations/FormQueryParamsRefParamObjectResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## headerParamsArray
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
 
-
     $response = $sdk->parameters->headerParamsArray([
-    'test1',
-]);
+        'test1',
+    ]);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
+
+
 
 ### Parameters
 
@@ -597,182 +673,209 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\HeaderParamsArrayResponse](../../Models/Operations/HeaderParamsArrayResponse.md)**
+**[?Operations\HeaderParamsArrayResponse](../../Models/Operations/HeaderParamsArrayResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## headerParamsMap
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
 
-
     $response = $sdk->parameters->headerParamsMap([
-    'Ball' => 'string',
-], [
-    'Account' => 'string',
-]);
+        'Ball' => '<value>',
+    ], [
+        'Account' => '<value>',
+    ]);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
 
+
+
 ### Parameters
 
-| Parameter               | Type                    | Required                | Description             | Example                 |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `xHeaderMap`            | array<string, *string*> | :heavy_check_mark:      | N/A                     | [object Object]         |
-| `xHeaderMapExplode`     | array<string, *string*> | :heavy_check_mark:      | N/A                     | [object Object]         |
+| Parameter                              | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `xHeaderMap`                           | array<string, *string*>                | :heavy_check_mark:                     | N/A                                    | {<br/>"key1": "value1",<br/>"key2": "value2"<br/>} |
+| `xHeaderMapExplode`                    | array<string, *string*>                | :heavy_check_mark:                     | N/A                                    | {<br/>"test1": "val1",<br/>"test2": "val2"<br/>} |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\HeaderParamsMapResponse](../../Models/Operations/HeaderParamsMapResponse.md)**
+**[?Operations\HeaderParamsMapResponse](../../Models/Operations/HeaderParamsMapResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## headerParamsObject
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $xHeaderObj = new Shared\SimpleObject();
-    $xHeaderObj->any = 'any';
-    $xHeaderObj->bigint = 8821239038968084;
-    $xHeaderObj->bigintStr = '9223372036854775808';
-    $xHeaderObj->bool = true;
-    $xHeaderObj->boolOpt = true;
-    $xHeaderObj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $xHeaderObj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $xHeaderObj->decimal = 3.141592653589793;
-    $xHeaderObj->decimalStr = '3.14159265358979344719667586';
-    $xHeaderObj->enum = Shared\Enum::One;
-    $xHeaderObj->float32 = 1.1;
-    $xHeaderObj->int = 1;
-    $xHeaderObj->int32 = 1;
-    $xHeaderObj->int32Enum = Shared\Int32Enum::SixtyNine;
-    $xHeaderObj->intEnum = Shared\IntEnum::Third;
-    $xHeaderObj->intOptNull = 590416;
-    $xHeaderObj->num = 1.1;
-    $xHeaderObj->numOptNull = 144.68;
-    $xHeaderObj->str = 'test';
-    $xHeaderObj->strOpt = 'testOptional';
-
-    $xHeaderObjExplode = new Shared\SimpleObject();
-    $xHeaderObjExplode->any = 'any';
-    $xHeaderObjExplode->bigint = 8821239038968084;
-    $xHeaderObjExplode->bigintStr = '9223372036854775808';
-    $xHeaderObjExplode->bool = true;
-    $xHeaderObjExplode->boolOpt = true;
-    $xHeaderObjExplode->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $xHeaderObjExplode->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $xHeaderObjExplode->decimal = 3.141592653589793;
-    $xHeaderObjExplode->decimalStr = '3.14159265358979344719667586';
-    $xHeaderObjExplode->enum = Shared\Enum::One;
-    $xHeaderObjExplode->float32 = 1.1;
-    $xHeaderObjExplode->int = 1;
-    $xHeaderObjExplode->int32 = 1;
-    $xHeaderObjExplode->int32Enum = Shared\Int32Enum::FiftyFive;
-    $xHeaderObjExplode->intEnum = Shared\IntEnum::Second;
-    $xHeaderObjExplode->intOptNull = 54344;
-    $xHeaderObjExplode->num = 1.1;
-    $xHeaderObjExplode->numOptNull = 6940.18;
-    $xHeaderObjExplode->str = 'test';
-    $xHeaderObjExplode->strOpt = 'testOptional';
-
+    $xHeaderObj = new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::SixtyNine,
+        intEnum: Shared\IntEnum::Third,
+        num: 1.1,
+        str: 'test',
+        bigint: 8821239038968084,
+        bigintStr: '9223372036854775808',
+        boolOpt: true,
+        decimal: 3.141592653589793,
+        decimalNullableOpt: 5904.16,
+        decimalStr: '3.14159265358979344719667586',
+        float64Str: '1.1',
+        int64Str: '100',
+        intOptNull: 14468,
+        numOptNull: 2238.87,
+        strOpt: 'testOptional',
+    );
+    $xHeaderObjExplode = new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::SixtyNine,
+        intEnum: Shared\IntEnum::First,
+        num: 1.1,
+        str: 'test',
+        bigint: 8821239038968084,
+        bigintStr: '9223372036854775808',
+        boolOpt: true,
+        decimal: 3.141592653589793,
+        decimalNullableOpt: 6940.18,
+        decimalStr: '3.14159265358979344719667586',
+        float64Str: '1.1',
+        int64Str: '100',
+        intOptNull: 951209,
+        numOptNull: 5254.22,
+        strOpt: 'testOptional',
+    );
     $response = $sdk->parameters->headerParamsObject($xHeaderObj, $xHeaderObjExplode);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
+
+
 
 ### Parameters
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `xHeaderObj`                                                                                       | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                 | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `xHeaderObjExplode`                                                                                | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                 | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `xHeaderObj`                                                                                       | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `xHeaderObjExplode`                                                                                | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\HeaderParamsObjectResponse](../../Models/Operations/HeaderParamsObjectResponse.md)**
+**[?Operations\HeaderParamsObjectResponse](../../Models/Operations/HeaderParamsObjectResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## headerParamsPrimitive
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
 
     $response = $sdk->parameters->headerParamsPrimitive(true, 1, 1.1, 'test');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
+
+
 
 ### Parameters
 
@@ -786,144 +889,308 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\HeaderParamsPrimitiveResponse](../../Models/Operations/HeaderParamsPrimitiveResponse.md)**
+**[?Operations\HeaderParamsPrimitiveResponse](../../Models/Operations/HeaderParamsPrimitiveResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## jsonQueryParamsObject
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $deepObjParam = new Shared\DeepObject();
-    $deepObjParam->any = 'anyOf[0]';
-    $deepObjParam->arr = [
-        new Shared\SimpleObject(),
-    ];
-    $deepObjParam->bool = true;
-    $deepObjParam->int = 1;
-    $deepObjParam->map = [
-        'Hybrid' => new Shared\SimpleObject(),
-    ];
-    $deepObjParam->num = 1.1;
-    $deepObjParam->obj = new Shared\SimpleObject();
-    $deepObjParam->obj->any = 'any';
-    $deepObjParam->obj->bigint = 8821239038968084;
-    $deepObjParam->obj->bigintStr = '9223372036854775808';
-    $deepObjParam->obj->bool = true;
-    $deepObjParam->obj->boolOpt = true;
-    $deepObjParam->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $deepObjParam->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $deepObjParam->obj->decimal = 3.141592653589793;
-    $deepObjParam->obj->decimalStr = '3.14159265358979344719667586';
-    $deepObjParam->obj->enum = Shared\Enum::One;
-    $deepObjParam->obj->float32 = 1.1;
-    $deepObjParam->obj->int = 1;
-    $deepObjParam->obj->int32 = 1;
-    $deepObjParam->obj->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
-    $deepObjParam->obj->intEnum = Shared\IntEnum::Third;
-    $deepObjParam->obj->intOptNull = 980270;
-    $deepObjParam->obj->num = 1.1;
-    $deepObjParam->obj->numOptNull = 2047.13;
-    $deepObjParam->obj->str = 'test';
-    $deepObjParam->obj->strOpt = 'testOptional';
-    $deepObjParam->str = 'test';
-    $deepObjParam->type = 'string';
-
-    $simpleObjParam = new Shared\SimpleObject();
-    $simpleObjParam->any = 'any';
-    $simpleObjParam->bigint = 8821239038968084;
-    $simpleObjParam->bigintStr = '9223372036854775808';
-    $simpleObjParam->bool = true;
-    $simpleObjParam->boolOpt = true;
-    $simpleObjParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $simpleObjParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $simpleObjParam->decimal = 3.141592653589793;
-    $simpleObjParam->decimalStr = '3.14159265358979344719667586';
-    $simpleObjParam->enum = Shared\Enum::One;
-    $simpleObjParam->float32 = 1.1;
-    $simpleObjParam->int = 1;
-    $simpleObjParam->int32 = 1;
-    $simpleObjParam->int32Enum = Shared\Int32Enum::FiftyFive;
-    $simpleObjParam->intEnum = Shared\IntEnum::First;
-    $simpleObjParam->intOptNull = 835122;
-    $simpleObjParam->num = 1.1;
-    $simpleObjParam->numOptNull = 9111.59;
-    $simpleObjParam->str = 'test';
-    $simpleObjParam->strOpt = 'testOptional';
-
+    $deepObjParam = new Shared\DeepObject(
+        any: 'anyOf[0]',
+        arr: [
+            new Shared\SimpleObject,
+        ],
+        bool: true,
+        int: 1,
+        map: [
+            'qua' => new Shared\SimpleObject,
+        ],
+        num: 1.1,
+        obj: new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::OneHundredAndEightyOne,
+            intEnum: Shared\IntEnum::Third,
+            num: 1.1,
+            str: 'test',
+            bigint: 8821239038968084,
+            bigintStr: '9223372036854775808',
+            boolOpt: true,
+            decimal: 3.141592653589793,
+            decimalNullableOpt: 2047.13,
+            decimalStr: '3.14159265358979344719667586',
+            float64Str: '1.1',
+            int64Str: '100',
+            intOptNull: 240276,
+            numOptNull: 3309.36,
+            strOpt: 'testOptional',
+        ),
+        str: 'test',
+        type: '<value>',
+    );
+    $simpleObjParam = new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::OneHundredAndEightyOne,
+        intEnum: Shared\IntEnum::Third,
+        num: 1.1,
+        str: 'test',
+        bigint: 8821239038968084,
+        bigintStr: '9223372036854775808',
+        boolOpt: true,
+        decimal: 3.141592653589793,
+        decimalNullableOpt: 7237.19,
+        decimalStr: '3.14159265358979344719667586',
+        float64Str: '1.1',
+        int64Str: '100',
+        intOptNull: 903355,
+        numOptNull: 4168.07,
+        strOpt: 'testOptional',
+    );
     $response = $sdk->parameters->jsonQueryParamsObject($deepObjParam, $simpleObjParam);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
+
+
 
 ### Parameters
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `deepObjParam`                                                                                     | [\OpenAPI\OpenAPI\Models\Shared\DeepObject](../../Models/Shared/DeepObject.md)                     | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `simpleObjParam`                                                                                   | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                 | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `deepObjParam`                                                                                     | [Shared\DeepObject](../../Models/Shared/DeepObject.md)                                             | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `simpleObjParam`                                                                                   | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\JsonQueryParamsObjectResponse](../../Models/Operations/JsonQueryParamsObjectResponse.md)**
+**[?Operations\JsonQueryParamsObjectResponse](../../Models/Operations/JsonQueryParamsObjectResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
+
+## jsonQueryParamsObjectSmaller
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
+
+$security = new Shared\Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
+
+try {
+    $deepObjParam = new Shared\DeepObjectSmaller(
+        any: new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::SixtyNine,
+            intEnum: Shared\IntEnum::Third,
+            num: 1.1,
+            str: 'test',
+            bigint: 8821239038968084,
+            bigintStr: '9223372036854775808',
+            boolOpt: true,
+            decimal: 3.141592653589793,
+            decimalNullableOpt: 9545.11,
+            decimalStr: '3.14159265358979344719667586',
+            float64Str: '1.1',
+            int64Str: '100',
+            intOptNull: 185097,
+            numOptNull: 15.54,
+            strOpt: 'testOptional',
+        ),
+        arr: [
+            new Shared\SimpleObject,
+        ],
+        bool: true,
+        int: 1,
+        map: [
+            'Land' => new Shared\SimpleObject,
+        ],
+        num: 1.1,
+        obj: new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Third,
+            num: 1.1,
+            str: 'test',
+            bigint: 8821239038968084,
+            bigintStr: '9223372036854775808',
+            boolOpt: true,
+            decimal: 3.141592653589793,
+            decimalNullableOpt: 229.11,
+            decimalStr: '3.14159265358979344719667586',
+            float64Str: '1.1',
+            int64Str: '100',
+            intOptNull: 515818,
+            numOptNull: 5006.96,
+            strOpt: 'testOptional',
+        ),
+        str: 'test',
+        type: '<value>',
+    );
+    $simpleObjParam = new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::OneHundredAndEightyOne,
+        intEnum: Shared\IntEnum::Third,
+        num: 1.1,
+        str: 'test',
+        bigint: 8821239038968084,
+        bigintStr: '9223372036854775808',
+        boolOpt: true,
+        decimal: 3.141592653589793,
+        decimalNullableOpt: 5780.97,
+        decimalStr: '3.14159265358979344719667586',
+        float64Str: '1.1',
+        int64Str: '100',
+        intOptNull: 316485,
+        numOptNull: 37.11,
+        strOpt: 'testOptional',
+    );
+    $response = $sdk->parameters->jsonQueryParamsObjectSmaller($deepObjParam, $simpleObjParam);
+
+    if ($response->res !== null) {
+        // handle response
+    }
+} catch (Throwable $e) {
+    // handle exception
+}
+```
+
+
+
+### Parameters
+
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `deepObjParam`                                                                                     | [Shared\DeepObjectSmaller](../../Models/Shared/DeepObjectSmaller.md)                               | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `simpleObjParam`                                                                                   | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+
+
+### Response
+
+**[?Operations\JsonQueryParamsObjectSmallerResponse](../../Models/Operations/JsonQueryParamsObjectSmallerResponse.md)**
+### Errors
+
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## mixedParametersCamelCase
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
 
     $response = $sdk->parameters->mixedParametersCamelCase('headerValue', 'pathValue', 'queryValue');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
+
+
 
 ### Parameters
 
@@ -936,294 +1203,342 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\MixedParametersCamelCaseResponse](../../Models/Operations/MixedParametersCamelCaseResponse.md)**
+**[?Operations\MixedParametersCamelCaseResponse](../../Models/Operations/MixedParametersCamelCaseResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## mixedParametersPrimitives
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
 
-
-    $response = $sdk->parameters->mixedParametersPrimitives('headerValue', 'pathValue', 'queryValue');
+    $response = $sdk->parameters->mixedParametersPrimitives('<value>', '<value>', '<value>');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
 
+
+
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        | Example            |
-| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `headerParam`      | *string*           | :heavy_check_mark: | N/A                | headerValue        |
-| `pathParam`        | *string*           | :heavy_check_mark: | N/A                | pathValue          |
-| `queryStringParam` | *string*           | :heavy_check_mark: | N/A                | queryValue         |
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `headerParam`      | *string*           | :heavy_check_mark: | N/A                |
+| `pathParam`        | *string*           | :heavy_check_mark: | N/A                |
+| `queryStringParam` | *string*           | :heavy_check_mark: | N/A                |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\MixedParametersPrimitivesResponse](../../Models/Operations/MixedParametersPrimitivesResponse.md)**
+**[?Operations\MixedParametersPrimitivesResponse](../../Models/Operations/MixedParametersPrimitivesResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## mixedQueryParams
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $deepObjectParam = new Shared\SimpleObject();
-    $deepObjectParam->any = 'any';
-    $deepObjectParam->bigint = 8821239038968084;
-    $deepObjectParam->bigintStr = '9223372036854775808';
-    $deepObjectParam->bool = true;
-    $deepObjectParam->boolOpt = true;
-    $deepObjectParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $deepObjectParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $deepObjectParam->decimal = 3.141592653589793;
-    $deepObjectParam->decimalStr = '3.14159265358979344719667586';
-    $deepObjectParam->enum = Shared\Enum::One;
-    $deepObjectParam->float32 = 1.1;
-    $deepObjectParam->int = 1;
-    $deepObjectParam->int32 = 1;
-    $deepObjectParam->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
-    $deepObjectParam->intEnum = Shared\IntEnum::Second;
-    $deepObjectParam->intOptNull = 89281;
-    $deepObjectParam->num = 1.1;
-    $deepObjectParam->numOptNull = 2132.48;
-    $deepObjectParam->str = 'test';
-    $deepObjectParam->strOpt = 'testOptional';
-
-    $formParam = new Shared\SimpleObject();
-    $formParam->any = 'any';
-    $formParam->bigint = 8821239038968084;
-    $formParam->bigintStr = '9223372036854775808';
-    $formParam->bool = true;
-    $formParam->boolOpt = true;
-    $formParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $formParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $formParam->decimal = 3.141592653589793;
-    $formParam->decimalStr = '3.14159265358979344719667586';
-    $formParam->enum = Shared\Enum::One;
-    $formParam->float32 = 1.1;
-    $formParam->int = 1;
-    $formParam->int32 = 1;
-    $formParam->int32Enum = Shared\Int32Enum::FiftyFive;
-    $formParam->intEnum = Shared\IntEnum::Second;
-    $formParam->intOptNull = 218100;
-    $formParam->num = 1.1;
-    $formParam->numOptNull = 75.58;
-    $formParam->str = 'test';
-    $formParam->strOpt = 'testOptional';
-
-    $jsonParam = new Shared\SimpleObject();
-    $jsonParam->any = 'any';
-    $jsonParam->bigint = 8821239038968084;
-    $jsonParam->bigintStr = '9223372036854775808';
-    $jsonParam->bool = true;
-    $jsonParam->boolOpt = true;
-    $jsonParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $jsonParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $jsonParam->decimal = 3.141592653589793;
-    $jsonParam->decimalStr = '3.14159265358979344719667586';
-    $jsonParam->enum = Shared\Enum::One;
-    $jsonParam->float32 = 1.1;
-    $jsonParam->int = 1;
-    $jsonParam->int32 = 1;
-    $jsonParam->int32Enum = Shared\Int32Enum::FiftyFive;
-    $jsonParam->intEnum = Shared\IntEnum::Third;
-    $jsonParam->intOptNull = 387493;
-    $jsonParam->num = 1.1;
-    $jsonParam->numOptNull = 5641.93;
-    $jsonParam->str = 'test';
-    $jsonParam->strOpt = 'testOptional';
-
+    $deepObjectParam = new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::OneHundredAndEightyOne,
+        intEnum: Shared\IntEnum::Second,
+        num: 1.1,
+        str: 'test',
+        bigint: 8821239038968084,
+        bigintStr: '9223372036854775808',
+        boolOpt: true,
+        decimal: 3.141592653589793,
+        decimalNullableOpt: 892.81,
+        decimalStr: '3.14159265358979344719667586',
+        float64Str: '1.1',
+        int64Str: '100',
+        intOptNull: 213248,
+        numOptNull: 1088.12,
+        strOpt: 'testOptional',
+    );
+    $formParam = new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::SixtyNine,
+        intEnum: Shared\IntEnum::First,
+        num: 1.1,
+        str: 'test',
+        bigint: 8821239038968084,
+        bigintStr: '9223372036854775808',
+        boolOpt: true,
+        decimal: 3.141592653589793,
+        decimalNullableOpt: 75.58,
+        decimalStr: '3.14159265358979344719667586',
+        float64Str: '1.1',
+        int64Str: '100',
+        intOptNull: 76901,
+        numOptNull: 7147.05,
+        strOpt: 'testOptional',
+    );
+    $jsonParam = new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::SixtyNine,
+        intEnum: Shared\IntEnum::Second,
+        num: 1.1,
+        str: 'test',
+        bigint: 8821239038968084,
+        bigintStr: '9223372036854775808',
+        boolOpt: true,
+        decimal: 3.141592653589793,
+        decimalNullableOpt: 7569.62,
+        decimalStr: '3.14159265358979344719667586',
+        float64Str: '1.1',
+        int64Str: '100',
+        intOptNull: 882463,
+        numOptNull: 2105.19,
+        strOpt: 'testOptional',
+    );
     $response = $sdk->parameters->mixedQueryParams($deepObjectParam, $formParam, $jsonParam);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
+
+
 
 ### Parameters
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `deepObjectParam`                                                                                  | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                 | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `formParam`                                                                                        | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                 | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `jsonParam`                                                                                        | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                 | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `deepObjectParam`                                                                                  | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `formParam`                                                                                        | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `jsonParam`                                                                                        | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\MixedQueryParamsResponse](../../Models/Operations/MixedQueryParamsResponse.md)**
+**[?Operations\MixedQueryParamsResponse](../../Models/Operations/MixedQueryParamsResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## pathParameterJson
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $jsonObj = new Shared\SimpleObject();
-    $jsonObj->any = 'any';
-    $jsonObj->bigint = 8821239038968084;
-    $jsonObj->bigintStr = '9223372036854775808';
-    $jsonObj->bool = true;
-    $jsonObj->boolOpt = true;
-    $jsonObj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $jsonObj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $jsonObj->decimal = 3.141592653589793;
-    $jsonObj->decimalStr = '3.14159265358979344719667586';
-    $jsonObj->enum = Shared\Enum::One;
-    $jsonObj->float32 = 1.1;
-    $jsonObj->int = 1;
-    $jsonObj->int32 = 1;
-    $jsonObj->int32Enum = Shared\Int32Enum::SixtyNine;
-    $jsonObj->intEnum = Shared\IntEnum::Second;
-    $jsonObj->intOptNull = 355762;
-    $jsonObj->num = 1.1;
-    $jsonObj->numOptNull = 5955.49;
-    $jsonObj->str = 'test';
-    $jsonObj->strOpt = 'testOptional';
-
+    $jsonObj = new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::SixtyNine,
+        intEnum: Shared\IntEnum::Second,
+        num: 1.1,
+        str: 'test',
+        bigint: 8821239038968084,
+        bigintStr: '9223372036854775808',
+        boolOpt: true,
+        decimal: 3.141592653589793,
+        decimalNullableOpt: 3557.62,
+        decimalStr: '3.14159265358979344719667586',
+        float64Str: '1.1',
+        int64Str: '100',
+        intOptNull: 595549,
+        numOptNull: 1213.34,
+        strOpt: 'testOptional',
+    );
     $response = $sdk->parameters->pathParameterJson($jsonObj);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
+
+
 
 ### Parameters
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `jsonObj`                                                                                          | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                 | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `jsonObj`                                                                                          | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\PathParameterJsonResponse](../../Models/Operations/PathParameterJsonResponse.md)**
+**[?Operations\PathParameterJsonResponse](../../Models/Operations/PathParameterJsonResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## pipeDelimitedQueryParamsArray
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $objParam = new Shared\SimpleObject();
-    $objParam->any = 'any';
-    $objParam->bigint = 8821239038968084;
-    $objParam->bigintStr = '9223372036854775808';
-    $objParam->bool = true;
-    $objParam->boolOpt = true;
-    $objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $objParam->decimal = 3.141592653589793;
-    $objParam->decimalStr = '3.14159265358979344719667586';
-    $objParam->enum = Shared\Enum::One;
-    $objParam->float32 = 1.1;
-    $objParam->int = 1;
-    $objParam->int32 = 1;
-    $objParam->int32Enum = Shared\Int32Enum::SixtyNine;
-    $objParam->intEnum = Shared\IntEnum::First;
-    $objParam->intOptNull = 110513;
-    $objParam->num = 1.1;
-    $objParam->numOptNull = 1666.19;
-    $objParam->str = 'test';
-    $objParam->strOpt = 'testOptional';
-
+    $objParam = new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::SixtyNine,
+        intEnum: Shared\IntEnum::First,
+        num: 1.1,
+        str: 'test',
+        bigint: 8821239038968084,
+        bigintStr: '9223372036854775808',
+        boolOpt: true,
+        decimal: 3.141592653589793,
+        decimalNullableOpt: 1105.13,
+        decimalStr: '3.14159265358979344719667586',
+        float64Str: '1.1',
+        int64Str: '100',
+        intOptNull: 166619,
+        numOptNull: 8135.09,
+        strOpt: 'testOptional',
+    );
     $response = $sdk->parameters->pipeDelimitedQueryParamsArray([
-    'test2',
-], [
-    2,
-], [
-    'blue' => 'string',
-], $objParam);
+        'test2',
+    ], [
+        1,
+    ], [
+        'Avon' => '<value>',
+    ], $objParam);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
+
+
 
 ### Parameters
 
@@ -1231,50 +1546,56 @@ try {
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `arrParam`                                                                                         | array<*string*>                                                                                    | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `arrParamExploded`                                                                                 | array<*int*>                                                                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `mapParam`                                                                                         | array<string, *string*>                                                                            | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
-| `objParam`                                                                                         | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                 | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
+| `mapParam`                                                                                         | array<string, *string*>                                                                            | :heavy_minus_sign:                                                                                 | N/A                                                                                                | {<br/>"key1": "val1",<br/>"key2": "val2"<br/>}                                                     |
+| `objParam`                                                                                         | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                                         | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\PipeDelimitedQueryParamsArrayResponse](../../Models/Operations/PipeDelimitedQueryParamsArrayResponse.md)**
+**[?Operations\PipeDelimitedQueryParamsArrayResponse](../../Models/Operations/PipeDelimitedQueryParamsArrayResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## simplePathParameterArrays
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
 
-
     $response = $sdk->parameters->simplePathParameterArrays([
-    'test',
-]);
+        'test',
+    ]);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
+
+
 
 ### Parameters
 
@@ -1285,182 +1606,209 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\SimplePathParameterArraysResponse](../../Models/Operations/SimplePathParameterArraysResponse.md)**
+**[?Operations\SimplePathParameterArraysResponse](../../Models/Operations/SimplePathParameterArraysResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## simplePathParameterMaps
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
 
-
     $response = $sdk->parameters->simplePathParameterMaps([
-    'weber' => 'string',
-], [
-    'Sausages' => 157687,
-]);
+        'weber' => '<value>',
+    ], [
+        'Sausages' => 157687,
+    ]);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
 
+
+
 ### Parameters
 
-| Parameter               | Type                    | Required                | Description             | Example                 |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `mapParam`              | array<string, *string*> | :heavy_check_mark:      | N/A                     | [object Object]         |
-| `mapParamExploded`      | array<string, *int*>    | :heavy_check_mark:      | N/A                     | [object Object]         |
+| Parameter                              | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `mapParam`                             | array<string, *string*>                | :heavy_check_mark:                     | N/A                                    | {<br/>"test": "value",<br/>"test2": "value2"<br/>} |
+| `mapParamExploded`                     | array<string, *int*>                   | :heavy_check_mark:                     | N/A                                    | {<br/>"test": 1,<br/>"test2": 2<br/>}  |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\SimplePathParameterMapsResponse](../../Models/Operations/SimplePathParameterMapsResponse.md)**
+**[?Operations\SimplePathParameterMapsResponse](../../Models/Operations/SimplePathParameterMapsResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## simplePathParameterObjects
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-    $objParam = new Shared\SimpleObject();
-    $objParam->any = 'any';
-    $objParam->bigint = 8821239038968084;
-    $objParam->bigintStr = '9223372036854775808';
-    $objParam->bool = true;
-    $objParam->boolOpt = true;
-    $objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $objParam->decimal = 3.141592653589793;
-    $objParam->decimalStr = '3.14159265358979344719667586';
-    $objParam->enum = Shared\Enum::One;
-    $objParam->float32 = 1.1;
-    $objParam->int = 1;
-    $objParam->int32 = 1;
-    $objParam->int32Enum = Shared\Int32Enum::FiftyFive;
-    $objParam->intEnum = Shared\IntEnum::Third;
-    $objParam->intOptNull = 384918;
-    $objParam->num = 1.1;
-    $objParam->numOptNull = 9559.93;
-    $objParam->str = 'test';
-    $objParam->strOpt = 'testOptional';
-
-    $objParamExploded = new Shared\SimpleObject();
-    $objParamExploded->any = 'any';
-    $objParamExploded->bigint = 8821239038968084;
-    $objParamExploded->bigintStr = '9223372036854775808';
-    $objParamExploded->bool = true;
-    $objParamExploded->boolOpt = true;
-    $objParamExploded->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $objParamExploded->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $objParamExploded->decimal = 3.141592653589793;
-    $objParamExploded->decimalStr = '3.14159265358979344719667586';
-    $objParamExploded->enum = Shared\Enum::One;
-    $objParamExploded->float32 = 1.1;
-    $objParamExploded->int = 1;
-    $objParamExploded->int32 = 1;
-    $objParamExploded->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
-    $objParamExploded->intEnum = Shared\IntEnum::Second;
-    $objParamExploded->intOptNull = 678638;
-    $objParamExploded->num = 1.1;
-    $objParamExploded->numOptNull = 5865.54;
-    $objParamExploded->str = 'test';
-    $objParamExploded->strOpt = 'testOptional';
-
+    $objParam = new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::FiftyFive,
+        intEnum: Shared\IntEnum::Third,
+        num: 1.1,
+        str: 'test',
+        bigint: 8821239038968084,
+        bigintStr: '9223372036854775808',
+        boolOpt: true,
+        decimal: 3.141592653589793,
+        decimalNullableOpt: 3849.18,
+        decimalStr: '3.14159265358979344719667586',
+        float64Str: '1.1',
+        int64Str: '100',
+        intOptNull: 955993,
+        numOptNull: 6703.74,
+        strOpt: 'testOptional',
+    );
+    $objParamExploded = new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::SixtyNine,
+        intEnum: Shared\IntEnum::Third,
+        num: 1.1,
+        str: 'test',
+        bigint: 8821239038968084,
+        bigintStr: '9223372036854775808',
+        boolOpt: true,
+        decimal: 3.141592653589793,
+        decimalNullableOpt: 5865.54,
+        decimalStr: '3.14159265358979344719667586',
+        float64Str: '1.1',
+        int64Str: '100',
+        intOptNull: 255800,
+        numOptNull: 6354.28,
+        strOpt: 'testOptional',
+    );
     $response = $sdk->parameters->simplePathParameterObjects($objParam, $objParamExploded);
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
+
+
 
 ### Parameters
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `objParam`                                                                                         | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                 | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `objParamExploded`                                                                                 | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                 | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objParam`                                                                                         | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objParamExploded`                                                                                 | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md)                                         | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\SimplePathParameterObjectsResponse](../../Models/Operations/SimplePathParameterObjectsResponse.md)**
+**[?Operations\SimplePathParameterObjectsResponse](../../Models/Operations/SimplePathParameterObjectsResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 ## simplePathParameterPrimitives
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $security = new Shared\Security();
 $security->apiKeyAuth = 'Token YOUR_API_KEY';
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
 try {
-
 
     $response = $sdk->parameters->simplePathParameterPrimitives(true, 1, 1.1, 'test');
 
     if ($response->res !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
+
+
 
 ### Parameters
 
@@ -1474,5 +1822,9 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\SimplePathParameterPrimitivesResponse](../../Models/Operations/SimplePathParameterPrimitivesResponse.md)**
+**[?Operations\SimplePathParameterPrimitivesResponse](../../Models/Operations/SimplePathParameterPrimitivesResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
