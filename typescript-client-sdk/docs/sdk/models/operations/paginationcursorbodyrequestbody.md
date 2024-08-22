@@ -1,5 +1,14 @@
 # PaginationCursorBodyRequestBody
 
+## Example Usage
+
+```typescript
+import { PaginationCursorBodyRequestBody } from "openapi/sdk/models/operations";
+
+let value: PaginationCursorBodyRequestBody = {
+    cursor: 592042,
+};
+```
 
 ## Fields
 
