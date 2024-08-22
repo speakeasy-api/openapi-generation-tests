@@ -1,5 +1,14 @@
 # RequestBodyPostFormSimpleHeaders
 
+## Example Usage
+
+```typescript
+import { RequestBodyPostFormSimpleHeaders } from "openapi/sdk/models/operations";
+
+let value: RequestBodyPostFormSimpleHeaders = {
+    contentType: "<value>",
+};
+```
 
 ## Fields
 

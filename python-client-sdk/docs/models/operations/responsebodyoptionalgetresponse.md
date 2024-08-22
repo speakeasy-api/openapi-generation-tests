@@ -1,12 +1,17 @@
 # ResponseBodyOptionalGetResponse
 
 
-## Fields
+## Supported Types
 
-| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `content_type`                                                                        | *str*                                                                                 | :heavy_check_mark:                                                                    | HTTP response content type for this operation                                         |
-| `status_code`                                                                         | *int*                                                                                 | :heavy_check_mark:                                                                    | HTTP response status code for this operation                                          |
-| `raw_response`                                                                        | [requests.Response](https://requests.readthedocs.io/en/latest/api/#requests.Response) | :heavy_minus_sign:                                                                    | Raw HTTP response; suitable for custom response parsing                               |
-| `res`                                                                                 | *Optional[str]*                                                                       | :heavy_minus_sign:                                                                    | OK                                                                                    |
-| `typed_object1`                                                                       | [Optional[shared.TypedObject1]](../../models/shared/typedobject1.md)                  | :heavy_minus_sign:                                                                    | OK                                                                                    |
+### `str`
+
+```python
+value: str = /* values here */
+```
+
+### `shared.TypedObject1`
+
+```python
+value: shared.TypedObject1 = /* values here */
+```
+

@@ -1,0 +1,10 @@
+# RequestBodyPostJsonDataTypesComplexNumberArraysRes
+
+OK
+
+
+## Fields
+
+| Field                                                             | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `Json`                                                            | [ComplexNumberArrays](../../Models/Shared/ComplexNumberArrays.md) | :heavy_check_mark:                                                | N/A                                                               |

@@ -1,6 +1,8 @@
 # Nested
 (*Nested*)
 
+## Overview
+
 ### Available Operations
 
 * [Get](#get)
@@ -17,17 +19,22 @@ var sdk = new SDK(
     security: new Security() {
         ApiKeyAuth = "Token YOUR_API_KEY",
     },
+    globalHeaderParam: true,
+    globalHiddenQueryParam: "hello",
     globalPathParam: 100,
-    globalQueryParam: "some example global query param"
-);
+    globalQueryParam: "some example global query param");
 
 var res = await sdk.Nested.GetAsync();
 
 // handle response
 ```
 
-
 ### Response
 
 **[NestedGetResponse](../../Models/Operations/NestedGetResponse.md)**
 
+### Errors
+
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Openapi.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
