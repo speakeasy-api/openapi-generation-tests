@@ -2437,6 +2437,36 @@ paths:
                   title: arr
                   items:
                     $ref: "components.yaml#/components/schemas/simpleObjectCamelCase"
+  /requestbody#arrayOfUnions:
+      post:
+        operationId: requestBodyPostApplicationJsonArrayOfUnions
+        tags:
+          - requestBodies
+        servers:
+          - url: http://localhost:35456
+        x-speakeasy-flatten-request: false
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - unions
+                  - dates
+                properties:
+                  unions:
+                    type: array
+                    items:
+                      $ref: "components.yaml#/components/schemas/typedObjectOneOf"
+                  dates:
+                    type: array
+                    items:
+                      type: string
+                      format: date
+          required: true
+        responses:
+          "200":
+            description: OK
   /requestbody#map:
     post:
       operationId: requestBodyPostApplicationJsonMap
