@@ -2,6 +2,17 @@
 
 OK
 
+## Example Usage
+
+```typescript
+import { TelemetryUserAgentGetRes } from "openapi/sdk/models/operations";
+
+let value: TelemetryUserAgentGetRes = {
+    headers: {
+        key: "<value>",
+    },
+};
+```
 
 ## Fields
 
