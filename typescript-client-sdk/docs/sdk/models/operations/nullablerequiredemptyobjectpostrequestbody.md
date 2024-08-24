@@ -1,5 +1,15 @@
 # NullableRequiredEmptyObjectPostRequestBody
 
+## Example Usage
+
+```typescript
+import { NullableRequiredEmptyObjectPostRequestBody } from "openapi/sdk/models/operations";
+
+let value: NullableRequiredEmptyObjectPostRequestBody = {
+    nullableRequiredObj: {},
+    requiredObj: {},
+};
+```
 
 ## Fields
 

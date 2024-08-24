@@ -1,5 +1,15 @@
 # HeaderParamsMapHeaders
 
+## Example Usage
+
+```typescript
+import { HeaderParamsMapHeaders } from "openapi/sdk/models/operations";
+
+let value: HeaderParamsMapHeaders = {
+    xHeaderMap: "key1,value1,key2,value2",
+    xHeaderMapExplode: "test1=val1,test2=val2",
+};
+```
 
 ## Fields
 

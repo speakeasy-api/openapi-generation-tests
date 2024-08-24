@@ -8,6 +8,8 @@ Endpoints for testing error responses.
 ### Available Operations
 
 * [connectionErrorGet](#connectionerrorget)
+* [errorUnionDiscriminatedPost](#erroruniondiscriminatedpost)
+* [errorUnionPost](#errorunionpost)
 * [statusGetError](#statusgeterror)
 * [statusGetXSpeakeasyErrors](#statusgetxspeakeasyerrors)
 
@@ -18,39 +20,237 @@ Endpoints for testing error responses.
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
-  const sdk = new SDK({
-    security: {
-      apiKeyAuth: "Token YOUR_API_KEY",
-    },
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
-  });
+const sdk = new SDK({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
 
-  const res = await sdk.errors.connectionErrorGet();
+async function run() {
+  await sdk.errors.connectionErrorGet();
 
-  if (res.statusCode == 200) {
-    // handle response
+  
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SDKCore } from "openapi/core.js";
+import { errorsConnectionErrorGet } from "openapi/funcs/errorsConnectionErrorGet.js";
+
+// Use `SDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sdk = new SDKCore({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  const res = await errorsConnectionErrorGet(sdk);
+
+  if (!res.ok) {
+    throw res.error;
   }
-})();
+
+  const { value: result } = res;
+
+  
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `serverURL`                                                  | *string*                                                     | :heavy_minus_sign:                                           | An optional server URL to use.                               |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
-
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
-**Promise<[operations.ConnectionErrorGetResponse](../../sdk/models/operations/connectionerrorgetresponse.md)>**
+**Promise\<void\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+
+## errorUnionDiscriminatedPost
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+
+const sdk = new SDK({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  await sdk.errors.errorUnionDiscriminatedPost({
+    tag: "<value>",
+    taggedError2Message: {
+      message: "<value>",
+    },
+  });
+
+  
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SDKCore } from "openapi/core.js";
+import { errorsErrorUnionDiscriminatedPost } from "openapi/funcs/errorsErrorUnionDiscriminatedPost.js";
+
+// Use `SDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sdk = new SDKCore({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  const res = await errorsErrorUnionDiscriminatedPost(sdk, {
+    error: "<value>",
+    tag: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ErrorUnionDiscriminatedPostRequestBody](../../sdk/models/operations/erroruniondiscriminatedpostrequestbody.md)                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
+
+### Response
+
+**Promise\<void\>**
+
+### Errors
+
+| Error Object                                   | Status Code                                    | Content Type                                   |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| errors.ErrorUnionDiscriminatedPostResponseBody | 4XX                                            | application/json                               |
+| errors.SDKError                                | 4xx-5xx                                        | */*                                            |
+
+
+## errorUnionPost
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+
+const sdk = new SDK({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  await sdk.errors.errorUnionPost({
+    error: "<value>",
+  });
+
+  
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SDKCore } from "openapi/core.js";
+import { errorsErrorUnionPost } from "openapi/funcs/errorsErrorUnionPost.js";
+
+// Use `SDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sdk = new SDKCore({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  const res = await errorsErrorUnionPost(sdk, {});
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ErrorUnionPostRequestBody](../../sdk/models/operations/errorunionpostrequestbody.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
+
+### Response
+
+**Promise\<void\>**
+
+### Errors
+
+| Error Object                      | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.ErrorUnionPostResponseBody | 500                               | application/json                  |
+| errors.SDKError                   | 4xx-5xx                           | */*                               |
+
 
 ## statusGetError
 
@@ -58,42 +258,74 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { StatusGetErrorRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
-    security: {
-      apiKeyAuth: "Token YOUR_API_KEY",
-    },
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
-  });
-const statusCode: number = 458364;
+const sdk = new SDK({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
 
-  const res = await sdk.errors.statusGetError(statusCode);
+async function run() {
+  await sdk.errors.statusGetError(458364);
 
-  if (res.statusCode == 200) {
-    // handle response
+  
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SDKCore } from "openapi/core.js";
+import { errorsStatusGetError } from "openapi/funcs/errorsStatusGetError.js";
+
+// Use `SDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sdk = new SDKCore({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  const res = await errorsStatusGetError(sdk, 354246);
+
+  if (!res.ok) {
+    throw res.error;
   }
-})();
+
+  const { value: result } = res;
+
+  
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `statusCode`                                                 | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
-
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `statusCode`                                                                                                                                                                   | *number*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise<[operations.StatusGetErrorResponse](../../sdk/models/operations/statusgeterrorresponse.md)>**
+**Promise\<void\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## statusGetXSpeakeasyErrors
 
@@ -101,42 +333,73 @@ const statusCode: number = 458364;
 
 ```typescript
 import { SDK } from "openapi";
-import { StatusGetXSpeakeasyErrorsRequest } from "openapi/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
-    security: {
-      apiKeyAuth: "Token YOUR_API_KEY",
-    },
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
-  });
-const statusCode: number = 385913;
+const sdk = new SDK({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
 
-  const res = await sdk.errors.statusGetXSpeakeasyErrors(statusCode);
+async function run() {
+  await sdk.errors.statusGetXSpeakeasyErrors(385913);
 
-  if (res.statusCode == 200) {
-    // handle response
+  
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SDKCore } from "openapi/core.js";
+import { errorsStatusGetXSpeakeasyErrors } from "openapi/funcs/errorsStatusGetXSpeakeasyErrors.js";
+
+// Use `SDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sdk = new SDKCore({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  const res = await errorsStatusGetXSpeakeasyErrors(sdk, 343396);
+
+  if (!res.ok) {
+    throw res.error;
   }
-})();
+
+  const { value: result } = res;
+
+  
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `statusCode`                                                 | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `serverURL`                                                  | *string*                                                     | :heavy_minus_sign:                                           | An optional server URL to use.                               |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
-
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `statusCode`                                                                                                                                                                   | *number*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
-**Promise<[operations.StatusGetXSpeakeasyErrorsResponse](../../sdk/models/operations/statusgetxspeakeasyerrorsresponse.md)>**
+**Promise\<void\>**
+
 ### Errors
 
 | Error Object                                 | Status Code                                  | Content Type                                 |
 | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
 | errors.ErrorT                                | 500                                          | application/json                             |
 | errors.StatusGetXSpeakeasyErrorsResponseBody | 501                                          | application/json                             |
-| errors.SDKError                              | 400-600                                      | */*                                          |
+| errors.SDKError                              | 4xx-5xx                                      | */*                                          |
