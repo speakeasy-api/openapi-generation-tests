@@ -1,10 +1,15 @@
 # EnumStr
 
+## Example Usage
+
+```typescript
+import { EnumStr } from "openapi/sdk/models/shared";
+
+let value: EnumStr = "two";
+```
 
 ## Values
 
-| Name    | Value   |
-| ------- | ------- |
-| `One`   | one     |
-| `Two`   | two     |
-| `Three` | three   |
+```typescript
+"one" | "two" | "three"
+```

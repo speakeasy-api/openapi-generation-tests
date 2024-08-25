@@ -1,10 +1,21 @@
 # WriteOnlyObject
 
+## Example Usage
+
+```typescript
+import { WriteOnlyObject } from "openapi/sdk/models/shared";
+
+let value: WriteOnlyObject = {
+    bool: true,
+    num: 1,
+    string: "hello",
+};
+```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `bool`             | *boolean*          | :heavy_check_mark: | N/A                |
-| `num`              | *number*           | :heavy_check_mark: | N/A                |
-| `string`           | *string*           | :heavy_check_mark: | N/A                |
+| Field              | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `bool`             | *boolean*          | :heavy_check_mark: | N/A                | true               |
+| `num`              | *number*           | :heavy_check_mark: | N/A                | 1                  |
+| `string`           | *string*           | :heavy_check_mark: | N/A                | hello              |
