@@ -1941,6 +1941,20 @@ paths:
                 required:
                   - url
                   - args
+  /anything/queryParams/namespaceConflict:
+    get:
+      operationId: ambiguousQueryParam
+      summary: Tests conflict with C# System namespace
+      parameters:
+        - name: console
+          in: query
+          required: true
+          schema:
+            type: integer
+            enum: [1, 2, 3]
+      responses:
+        "200":
+          description: OK
   /anything/headers/primitive:
     get:
       x-speakeasy-test: true
