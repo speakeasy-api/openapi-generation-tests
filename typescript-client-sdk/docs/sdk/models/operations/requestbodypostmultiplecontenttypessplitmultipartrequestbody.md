@@ -1,5 +1,16 @@
 # RequestBodyPostMultipleContentTypesSplitMultipartRequestBody
 
+## Example Usage
+
+```typescript
+import { RequestBodyPostMultipleContentTypesSplitMultipartRequestBody } from "openapi/sdk/models/operations";
+
+let value: RequestBodyPostMultipleContentTypesSplitMultipartRequestBody = {
+    bool2: false,
+    num2: 9182.36,
+    str2: "<value>",
+};
+```
 
 ## Fields
 

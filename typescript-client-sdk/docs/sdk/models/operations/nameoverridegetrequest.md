@@ -1,5 +1,15 @@
 # NameOverrideGetRequest
 
+## Example Usage
+
+```typescript
+import { NameOverrideGetRequest } from "openapi/sdk/models/operations";
+
+let value: NameOverrideGetRequest = {
+    testEnumQueryParam: "value3",
+    testQueryParam: "example",
+};
+```
 
 ## Fields
 
