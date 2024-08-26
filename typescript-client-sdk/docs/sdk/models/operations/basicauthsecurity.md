@@ -1,5 +1,15 @@
 # BasicAuthSecurity
 
+## Example Usage
+
+```typescript
+import { BasicAuthSecurity } from "openapi/sdk/models/operations";
+
+let value: BasicAuthSecurity = {
+    password: "YOUR_PASSWORD",
+    username: "YOUR_USERNAME",
+};
+```
 
 ## Fields
 
