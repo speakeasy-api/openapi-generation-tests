@@ -2,6 +2,15 @@
 
 OK
 
+## Example Usage
+
+```typescript
+import { RequestBodyPutBytesRes } from "openapi/sdk/models/operations";
+
+let value: RequestBodyPutBytesRes = {
+    data: "<value>",
+};
+```
 
 ## Fields
 

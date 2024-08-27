@@ -1,5 +1,15 @@
 # RequestBodyPutBytesWithParamsRequest
 
+## Example Usage
+
+```typescript
+import { RequestBodyPutBytesWithParamsRequest } from "openapi/sdk/models/operations";
+
+let value: RequestBodyPutBytesWithParamsRequest = {
+    requestBody: new TextEncoder().encode("0xc03C803ec5"),
+    queryStringParam: "<value>",
+};
+```
 
 ## Fields
 
