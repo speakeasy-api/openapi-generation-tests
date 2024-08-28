@@ -1,5 +1,15 @@
 # ObjParamExploded
 
+## Example Usage
+
+```typescript
+import { ObjParamExploded } from "openapi/sdk/models/operations";
+
+let value: ObjParamExploded = {
+    itemCount: "10",
+    searchTerm: "foo",
+};
+```
 
 ## Fields
 
