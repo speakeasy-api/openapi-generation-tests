@@ -168,8 +168,7 @@ components:
           const: two
         colour:
           type: string
-      required: [vehicleType, wheelsType, colour]        
-                      
+      required: [vehicleType, wheelsType, colour]
     infectedWithAny:
       type: object
       required: [data]
@@ -180,6 +179,29 @@ components:
             - $ref: "#/components/schemas/deepObject"
             - type: object
               x-speakeasy-type-override: any
+    unionOfArrays:
+      oneOf:
+        - type: array
+          items:
+            type: object
+            required: [foo]
+            properties:
+              foo:
+                type: string
+        - type: array
+          items:
+            type: object
+            required: [bar]
+            properties:
+              bar:
+                type: string
+        - type: array
+          items:
+            type: object
+            required: [baz]
+            properties:
+              baz:
+                type: string
     weaklyTypedOneOfObject:
       oneOf:
         - $ref: "#/components/schemas/simpleObject"
