@@ -1,5 +1,14 @@
 # BearerAuthSecurity
 
+## Example Usage
+
+```typescript
+import { BearerAuthSecurity } from "openapi/sdk/models/operations";
+
+let value: BearerAuthSecurity = {
+    bearerAuth: "YOUR_JWT",
+};
+```
 
 ## Fields
 
