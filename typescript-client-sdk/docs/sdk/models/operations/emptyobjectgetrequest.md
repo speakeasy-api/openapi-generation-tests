@@ -1,5 +1,14 @@
 # EmptyObjectGetRequest
 
+## Example Usage
+
+```typescript
+import { EmptyObjectGetRequest } from "openapi/sdk/models/operations";
+
+let value: EmptyObjectGetRequest = {
+    emptyObject: {},
+};
+```
 
 ## Fields
 

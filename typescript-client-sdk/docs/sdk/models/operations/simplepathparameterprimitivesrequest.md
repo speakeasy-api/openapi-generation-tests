@@ -1,5 +1,17 @@
 # SimplePathParameterPrimitivesRequest
 
+## Example Usage
+
+```typescript
+import { SimplePathParameterPrimitivesRequest } from "openapi/sdk/models/operations";
+
+let value: SimplePathParameterPrimitivesRequest = {
+    boolParam: true,
+    intParam: 1,
+    numParam: 1.1,
+    strParam: "test",
+};
+```
 
 ## Fields
 
