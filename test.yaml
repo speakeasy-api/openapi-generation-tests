@@ -6490,7 +6490,7 @@ paths:
     post:
       # TODO: add Javav2 testgen after this is fixed: https://linear.app/speakeasy/issue/SPE-4051/bug-union-of-arrays-breaks-java-sdks
       # TODO: add Go testgen after this is fixed: https://linear.app/speakeasy/issue/SPE-4053/bug-unmarshalling-into-a-slice-of-structs-does-not-respect
-      x-speakeasy-test: [typescriptv2]
+      x-speakeasy-test: [typescriptv2, pythonv2]
       x-speakeasy-test-internal-id: unions-union-array
       operationId: unionOfArraysPost
       tags:
