@@ -1,5 +1,17 @@
 # FormQueryParamsPrimitiveArgs
 
+## Example Usage
+
+```typescript
+import { FormQueryParamsPrimitiveArgs } from "openapi/sdk/models/operations";
+
+let value: FormQueryParamsPrimitiveArgs = {
+    boolParam: "true",
+    intParam: "1",
+    numParam: "1.1",
+    strParam: "test",
+};
+```
 
 ## Fields
 

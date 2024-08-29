@@ -1,5 +1,15 @@
 # HeaderAuth
 
+## Example Usage
+
+```typescript
+import { HeaderAuth } from "openapi/sdk/models/shared";
+
+let value: HeaderAuth = {
+    expectedValue: "<value>",
+    headerName: "<value>",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,14 @@
 # Json
 
+## Example Usage
+
+```typescript
+import { Json } from "openapi/sdk/models/operations";
+
+let value: Json = {
+    str: "<value>",
+};
+```
 
 ## Fields
 

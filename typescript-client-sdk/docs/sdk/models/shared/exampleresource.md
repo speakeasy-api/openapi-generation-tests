@@ -1,5 +1,27 @@
 # ExampleResource
 
+## Example Usage
+
+```typescript
+import { ExampleResource } from "openapi/sdk/models/shared";
+
+let value: ExampleResource = {
+    chocolates: [
+        {
+            description: "Re-engineered well-modulated extranet",
+        },
+    ],
+    id: "<id>",
+    name: "<value>",
+    vehicle: {
+        make: "<value>",
+        model: "Charger",
+        name: "<value>",
+        type: "car",
+        year: 2123.9,
+    },
+};
+```
 
 ## Fields
 
@@ -18,4 +40,4 @@
 | `name`                                                                                        | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `namePrefix`                                                                                  | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `updatedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |
-| `vehicle`                                                                                     | *any*                                                                                         | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `vehicle`                                                                                     | *shared.ExampleVehicle*                                                                       | :heavy_check_mark:                                                                            | N/A                                                                                           |

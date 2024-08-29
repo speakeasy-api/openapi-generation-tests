@@ -3,27 +3,27 @@
 
 ## Supported Types
 
-### 
+### `str`
 
 ```python
-primitiveTypeOneOfPostRequestBody: str = /* values here */
+value: str = /* values here */
 ```
 
-### 
+### `int`
 
 ```python
-primitiveTypeOneOfPostRequestBody: int = /* values here */
+value: int = /* values here */
 ```
 
-### 
+### `float`
 
 ```python
-primitiveTypeOneOfPostRequestBody: float = /* values here */
+value: float = /* values here */
 ```
 
-### 
+### `bool`
 
 ```python
-primitiveTypeOneOfPostRequestBody: bool = /* values here */
+value: bool = /* values here */
 ```
 
