@@ -566,6 +566,20 @@ paths:
           description: OK
         "401":
           description: Unsuccessful authentication.
+  /auth/customsecurity/customSchemeAppId:
+    get:
+      operationId: customSchemeAppId
+      tags:
+        - authNew
+      servers:
+        - url: http://localhost:35456
+      security:
+        - customSchemeAppId: []
+      responses:
+        "200":
+          description: OK
+        "401":
+          description: Unsuccessful authentication.
   /anything/mixedParams/path/{pathParam}:
     get:
       x-speakeasy-test: true
@@ -8781,3 +8795,20 @@ components:
           scopes:
             read: Read access
             write: Write access
+    customSchemeAppId:
+      type: http
+      scheme: custom
+      x-speakeasy-custom-security-scheme:
+        usesScopes: false
+        schema:
+          type: object
+          properties:
+            appId:
+              type: string
+              example: app-speakeasy-123
+            secret:
+              type: string
+              example: MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI
+          required:
+            - appId
+            - secret
