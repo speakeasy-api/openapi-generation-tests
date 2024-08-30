@@ -2,6 +2,21 @@
 
 OK
 
+## Example Usage
+
+```typescript
+import { MixedParametersCamelCaseRes } from "openapi/sdk/models/operations";
+
+let value: MixedParametersCamelCaseRes = {
+    args: {
+        queryStringParam: "queryValue",
+    },
+    headers: {
+        headerParam: "headerValue",
+    },
+    url: "http://localhost:35123/anything/mixedParams/path/pathValue/camelcase?query_string_param=queryValue",
+};
+```
 
 ## Fields
 

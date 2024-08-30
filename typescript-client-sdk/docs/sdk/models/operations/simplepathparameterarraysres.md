@@ -2,6 +2,15 @@
 
 OK
 
+## Example Usage
+
+```typescript
+import { SimplePathParameterArraysRes } from "openapi/sdk/models/operations";
+
+let value: SimplePathParameterArraysRes = {
+    url: "http://localhost:35123/anything/pathParams/arr/test,test2",
+};
+```
 
 ## Fields
 
