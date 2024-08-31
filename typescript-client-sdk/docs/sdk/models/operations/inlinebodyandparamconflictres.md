@@ -2,6 +2,20 @@
 
 OK
 
+## Example Usage
+
+```typescript
+import { InlineBodyAndParamConflictRes } from "openapi/sdk/models/operations";
+
+let value: InlineBodyAndParamConflictRes = {
+    args: {
+        key: "<value>",
+    },
+    json: {
+        str: "<value>",
+    },
+};
+```
 
 ## Fields
 
