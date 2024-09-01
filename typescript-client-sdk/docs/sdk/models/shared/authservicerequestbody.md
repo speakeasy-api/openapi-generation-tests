@@ -1,5 +1,12 @@
 # AuthServiceRequestBody
 
+## Example Usage
+
+```typescript
+import { AuthServiceRequestBody } from "openapi/sdk/models/shared";
+
+let value: AuthServiceRequestBody = {};
+```
 
 ## Fields
 
