@@ -1,5 +1,17 @@
 # RefQueryParamObj
 
+## Example Usage
+
+```typescript
+import { RefQueryParamObj } from "openapi/sdk/models/shared";
+
+let value: RefQueryParamObj = {
+    bool: true,
+    int: 1,
+    num: 1.1,
+    str: "test",
+};
+```
 
 ## Fields
 
