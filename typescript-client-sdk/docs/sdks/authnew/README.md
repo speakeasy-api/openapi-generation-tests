@@ -7,9 +7,9 @@ Endpoints for testing authentication.
 
 ### Available Operations
 
-* [apiKeyAuthGlobalNew](#apikeyauthglobalnew)
 * [authGlobal](#authglobal)
 * [basicAuthNew](#basicauthnew)
+* [customSchemeAppId](#customschemeappid)
 * [multipleMixedOptionsAuth](#multiplemixedoptionsauth)
 * [multipleMixedSchemeAuth](#multiplemixedschemeauth)
 * [multipleOptionsWithMixedSchemesAuth](#multipleoptionswithmixedschemesauth)
@@ -19,59 +19,6 @@ Endpoints for testing authentication.
 * [oauth2AuthNew](#oauth2authnew)
 * [openIdConnectAuthNew](#openidconnectauthnew)
 
-## apiKeyAuthGlobalNew
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-
-(async() => {
-  const sdk = new SDK({
-    security: {
-      apiKeyAuth: "Token YOUR_API_KEY",
-    },
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
-  });
-
-  const res = await sdk.authNew.apiKeyAuthGlobalNew({
-    basicAuth: {
-      password: "owsGgP4_AhRPMSJ",
-      username: "Devonte_Bins",
-    },
-    headerAuth: [
-      {
-        expectedValue: "string",
-        headerName: "string",
-      },
-    ],
-  });
-
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
-```
-
-### Parameters
-
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `serverURL`                                                                        | *string*                                                                           | :heavy_minus_sign:                                                                 | An optional server URL to use.                                                     |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
-
-
-### Response
-
-**Promise<[operations.ApiKeyAuthGlobalNewResponse](../../sdk/models/operations/apikeyauthglobalnewresponse.md)>**
-### Errors
-
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
-
 ## authGlobal
 
 ### Example Usage
@@ -79,51 +26,74 @@ import { SDK } from "openapi";
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
-  const sdk = new SDK({
-    security: {
-      apiKeyAuth: "Token YOUR_API_KEY",
-    },
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
-  });
+const sdk = new SDK({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
 
-  const res = await sdk.authNew.authGlobal({
-    basicAuth: {
-      password: "xvJcf9GiJNr7T2x",
-      username: "Cory33",
-    },
-    headerAuth: [
-      {
-        expectedValue: "string",
-        headerName: "string",
-      },
-    ],
-  });
+async function run() {
+  await sdk.authNew.authGlobal({});
 
-  if (res.statusCode == 200) {
-    // handle response
+  
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SDKCore } from "openapi/core.js";
+import { authNewAuthGlobal } from "openapi/funcs/authNewAuthGlobal.js";
+
+// Use `SDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sdk = new SDKCore({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  const res = await authNewAuthGlobal(sdk, {});
+
+  if (!res.ok) {
+    throw res.error;
   }
-})();
+
+  const { value: result } = res;
+
+  
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `serverURL`                                                                        | *string*                                                                           | :heavy_minus_sign:                                                                 | An optional server URL to use.                                                     |
-| `config`                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                       | :heavy_minus_sign:                                                                 | Available config options for making requests.                                      |
-
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
-**Promise<[operations.AuthGlobalResponse](../../sdk/models/operations/authglobalresponse.md)>**
+**Promise\<void\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## basicAuthNew
 
@@ -131,55 +101,164 @@ import { SDK } from "openapi";
 
 ```typescript
 import { SDK } from "openapi";
-import { BasicAuthNewSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
+const sdk = new SDK({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  await sdk.authNew.basicAuthNew({}, {
+    password: "YOUR_PASSWORD",
+    username: "YOUR_USERNAME",
   });
-const operationSecurity: BasicAuthNewSecurity = {
-  password: "YOUR_PASSWORD",
-  username: "YOUR_USERNAME",
-};
 
-  const res = await sdk.authNew.basicAuthNew({
-    basicAuth: {
-      password: "Z2OStPksFyrcGeu",
-      username: "Ashton.Steuber27",
-    },
-    headerAuth: [
-      {
-        expectedValue: "string",
-        headerName: "string",
-      },
-    ],
-  }, operationSecurity);
+  
+}
 
-  if (res.statusCode == 200) {
-    // handle response
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SDKCore } from "openapi/core.js";
+import { authNewBasicAuthNew } from "openapi/funcs/authNewBasicAuthNew.js";
+
+// Use `SDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sdk = new SDKCore({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  const res = await authNewBasicAuthNew(sdk, {}, {
+    password: "YOUR_PASSWORD",
+    username: "YOUR_USERNAME",
+  });
+
+  if (!res.ok) {
+    throw res.error;
   }
-})();
+
+  const { value: result } = res;
+
+  
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)     | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `security`                                                                             | [operations.BasicAuthNewSecurity](../../sdk/models/operations/basicauthnewsecurity.md) | :heavy_check_mark:                                                                     | The security requirements to use for the request.                                      |
-| `serverURL`                                                                            | *string*                                                                               | :heavy_minus_sign:                                                                     | An optional server URL to use.                                                         |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
-
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.BasicAuthNewSecurity](../../sdk/models/operations/basicauthnewsecurity.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
-**Promise<[operations.BasicAuthNewResponse](../../sdk/models/operations/basicauthnewresponse.md)>**
+**Promise\<void\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+
+## customSchemeAppId
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+
+const sdk = new SDK({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  await sdk.authNew.customSchemeAppId({
+    appId: "app-speakeasy-123",
+    secret: "MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI",
+  });
+
+  
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SDKCore } from "openapi/core.js";
+import { authNewCustomSchemeAppId } from "openapi/funcs/authNewCustomSchemeAppId.js";
+
+// Use `SDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sdk = new SDKCore({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  const res = await authNewCustomSchemeAppId(sdk, {
+    appId: "app-speakeasy-123",
+    secret: "MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `security`                                                                                                                                                                     | [operations.CustomSchemeAppIdSecurity](../../sdk/models/operations/customschemeappidsecurity.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
+
+### Response
+
+**Promise\<void\>**
+
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## multipleMixedOptionsAuth
 
@@ -187,54 +266,80 @@ const operationSecurity: BasicAuthNewSecurity = {
 
 ```typescript
 import { SDK } from "openapi";
-import { MultipleMixedOptionsAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
+const sdk = new SDK({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  await sdk.authNew.multipleMixedOptionsAuth({}, {
+    apiKeyAuthNew: "Token <YOUR_API_KEY>",
   });
-const operationSecurity: MultipleMixedOptionsAuthSecurity = {
-  apiKeyAuthNew: "Token <YOUR_API_KEY>",
-};
 
-  const res = await sdk.authNew.multipleMixedOptionsAuth({
-    basicAuth: {
-      password: "Iq1JSzG1wqLDz4v",
-      username: "Ismael.Emmerich",
-    },
-    headerAuth: [
-      {
-        expectedValue: "string",
-        headerName: "string",
-      },
-    ],
-  }, operationSecurity);
+  
+}
 
-  if (res.statusCode == 200) {
-    // handle response
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SDKCore } from "openapi/core.js";
+import { authNewMultipleMixedOptionsAuth } from "openapi/funcs/authNewMultipleMixedOptionsAuth.js";
+
+// Use `SDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sdk = new SDKCore({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  const res = await authNewMultipleMixedOptionsAuth(sdk, {}, {
+    apiKeyAuthNew: "Token <YOUR_API_KEY>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
   }
-})();
+
+  const { value: result } = res;
+
+  
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                      | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)                             | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
-| `security`                                                                                                     | [operations.MultipleMixedOptionsAuthSecurity](../../sdk/models/operations/multiplemixedoptionsauthsecurity.md) | :heavy_check_mark:                                                                                             | The security requirements to use for the request.                                                              |
-| `serverURL`                                                                                                    | *string*                                                                                                       | :heavy_minus_sign:                                                                                             | An optional server URL to use.                                                                                 |
-| `config`                                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                   | :heavy_minus_sign:                                                                                             | Available config options for making requests.                                                                  |
-
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.MultipleMixedOptionsAuthSecurity](../../sdk/models/operations/multiplemixedoptionsauthsecurity.md)                                                                 | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
-**Promise<[operations.MultipleMixedOptionsAuthResponse](../../sdk/models/operations/multiplemixedoptionsauthresponse.md)>**
+**Promise\<void\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## multipleMixedSchemeAuth
 
@@ -242,58 +347,88 @@ const operationSecurity: MultipleMixedOptionsAuthSecurity = {
 
 ```typescript
 import { SDK } from "openapi";
-import { MultipleMixedSchemeAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
-  });
-const operationSecurity: MultipleMixedSchemeAuthSecurity = {
-  apiKeyAuthNew: "Token <YOUR_API_KEY>",
-  basicAuth: {
-    password: "YOUR_PASSWORD",
-    username: "YOUR_USERNAME",
-  },
-};
+const sdk = new SDK({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
 
-  const res = await sdk.authNew.multipleMixedSchemeAuth({
+async function run() {
+  await sdk.authNew.multipleMixedSchemeAuth({}, {
+    apiKeyAuthNew: "Token <YOUR_API_KEY>",
     basicAuth: {
-      password: "OcWVV5608IiaWJQ",
-      username: "Kameron42",
+      password: "YOUR_PASSWORD",
+      username: "YOUR_USERNAME",
     },
-    headerAuth: [
-      {
-        expectedValue: "string",
-        headerName: "string",
-      },
-    ],
-  }, operationSecurity);
+  });
 
-  if (res.statusCode == 200) {
-    // handle response
+  
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SDKCore } from "openapi/core.js";
+import { authNewMultipleMixedSchemeAuth } from "openapi/funcs/authNewMultipleMixedSchemeAuth.js";
+
+// Use `SDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sdk = new SDKCore({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  const res = await authNewMultipleMixedSchemeAuth(sdk, {}, {
+    apiKeyAuthNew: "Token <YOUR_API_KEY>",
+    basicAuth: {
+      password: "YOUR_PASSWORD",
+      username: "YOUR_USERNAME",
+    },
+  });
+
+  if (!res.ok) {
+    throw res.error;
   }
-})();
+
+  const { value: result } = res;
+
+  
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                    | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)                           | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
-| `security`                                                                                                   | [operations.MultipleMixedSchemeAuthSecurity](../../sdk/models/operations/multiplemixedschemeauthsecurity.md) | :heavy_check_mark:                                                                                           | The security requirements to use for the request.                                                            |
-| `serverURL`                                                                                                  | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | An optional server URL to use.                                                                               |
-| `config`                                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                 | :heavy_minus_sign:                                                                                           | Available config options for making requests.                                                                |
-
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.MultipleMixedSchemeAuthSecurity](../../sdk/models/operations/multiplemixedschemeauthsecurity.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
-**Promise<[operations.MultipleMixedSchemeAuthResponse](../../sdk/models/operations/multiplemixedschemeauthresponse.md)>**
+**Promise\<void\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## multipleOptionsWithMixedSchemesAuth
 
@@ -301,57 +436,86 @@ const operationSecurity: MultipleMixedSchemeAuthSecurity = {
 
 ```typescript
 import { SDK } from "openapi";
-import { MultipleOptionsWithMixedSchemesAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
-  });
-const operationSecurity: MultipleOptionsWithMixedSchemesAuthSecurity = {
-  option1: {
-    apiKeyAuthNew: "Token <YOUR_API_KEY>",
-    oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-  },
-};
+const sdk = new SDK({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
 
-  const res = await sdk.authNew.multipleOptionsWithMixedSchemesAuth({
-    basicAuth: {
-      password: "fpwNE90MyqKIrXk",
-      username: "Caroline_Walsh",
+async function run() {
+  await sdk.authNew.multipleOptionsWithMixedSchemesAuth({}, {
+    option1: {
+      apiKeyAuthNew: "Token <YOUR_API_KEY>",
+      oauth2: "Bearer YOUR_OAUTH2_TOKEN",
     },
-    headerAuth: [
-      {
-        expectedValue: "string",
-        headerName: "string",
-      },
-    ],
-  }, operationSecurity);
+  });
 
-  if (res.statusCode == 200) {
-    // handle response
+  
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SDKCore } from "openapi/core.js";
+import { authNewMultipleOptionsWithMixedSchemesAuth } from "openapi/funcs/authNewMultipleOptionsWithMixedSchemesAuth.js";
+
+// Use `SDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sdk = new SDKCore({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  const res = await authNewMultipleOptionsWithMixedSchemesAuth(sdk, {}, {
+    option1: {
+      apiKeyAuthNew: "Token <YOUR_API_KEY>",
+      oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+    },
+  });
+
+  if (!res.ok) {
+    throw res.error;
   }
-})();
+
+  const { value: result } = res;
+
+  
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                            | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                            | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)                                                   | :heavy_check_mark:                                                                                                                   | The request object to use for the request.                                                                                           |
-| `security`                                                                                                                           | [operations.MultipleOptionsWithMixedSchemesAuthSecurity](../../sdk/models/operations/multipleoptionswithmixedschemesauthsecurity.md) | :heavy_check_mark:                                                                                                                   | The security requirements to use for the request.                                                                                    |
-| `serverURL`                                                                                                                          | *string*                                                                                                                             | :heavy_minus_sign:                                                                                                                   | An optional server URL to use.                                                                                                       |
-| `config`                                                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                         | :heavy_minus_sign:                                                                                                                   | Available config options for making requests.                                                                                        |
-
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.MultipleOptionsWithMixedSchemesAuthSecurity](../../sdk/models/operations/multipleoptionswithmixedschemesauthsecurity.md)                                           | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
-**Promise<[operations.MultipleOptionsWithMixedSchemesAuthResponse](../../sdk/models/operations/multipleoptionswithmixedschemesauthresponse.md)>**
+**Promise\<void\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## multipleOptionsWithSimpleSchemesAuth
 
@@ -359,57 +523,86 @@ const operationSecurity: MultipleOptionsWithMixedSchemesAuthSecurity = {
 
 ```typescript
 import { SDK } from "openapi";
-import { MultipleOptionsWithSimpleSchemesAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
-  });
-const operationSecurity: MultipleOptionsWithSimpleSchemesAuthSecurity = {
-  option1: {
-    apiKeyAuthNew: "Token <YOUR_API_KEY>",
-    oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-  },
-};
+const sdk = new SDK({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
 
-  const res = await sdk.authNew.multipleOptionsWithSimpleSchemesAuth({
-    basicAuth: {
-      password: "pibxDTiJSijK04Y",
-      username: "Selena76",
+async function run() {
+  await sdk.authNew.multipleOptionsWithSimpleSchemesAuth({}, {
+    option1: {
+      apiKeyAuthNew: "Token <YOUR_API_KEY>",
+      oauth2: "Bearer YOUR_OAUTH2_TOKEN",
     },
-    headerAuth: [
-      {
-        expectedValue: "string",
-        headerName: "string",
-      },
-    ],
-  }, operationSecurity);
+  });
 
-  if (res.statusCode == 200) {
-    // handle response
+  
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SDKCore } from "openapi/core.js";
+import { authNewMultipleOptionsWithSimpleSchemesAuth } from "openapi/funcs/authNewMultipleOptionsWithSimpleSchemesAuth.js";
+
+// Use `SDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sdk = new SDKCore({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  const res = await authNewMultipleOptionsWithSimpleSchemesAuth(sdk, {}, {
+    option1: {
+      apiKeyAuthNew: "Token <YOUR_API_KEY>",
+      oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+    },
+  });
+
+  if (!res.ok) {
+    throw res.error;
   }
-})();
+
+  const { value: result } = res;
+
+  
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                              | Type                                                                                                                                   | Required                                                                                                                               | Description                                                                                                                            |
-| -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                              | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)                                                     | :heavy_check_mark:                                                                                                                     | The request object to use for the request.                                                                                             |
-| `security`                                                                                                                             | [operations.MultipleOptionsWithSimpleSchemesAuthSecurity](../../sdk/models/operations/multipleoptionswithsimpleschemesauthsecurity.md) | :heavy_check_mark:                                                                                                                     | The security requirements to use for the request.                                                                                      |
-| `serverURL`                                                                                                                            | *string*                                                                                                                               | :heavy_minus_sign:                                                                                                                     | An optional server URL to use.                                                                                                         |
-| `config`                                                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                           | :heavy_minus_sign:                                                                                                                     | Available config options for making requests.                                                                                          |
-
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.MultipleOptionsWithSimpleSchemesAuthSecurity](../../sdk/models/operations/multipleoptionswithsimpleschemesauthsecurity.md)                                         | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
-**Promise<[operations.MultipleOptionsWithSimpleSchemesAuthResponse](../../sdk/models/operations/multipleoptionswithsimpleschemesauthresponse.md)>**
+**Promise\<void\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## multipleSimpleOptionsAuth
 
@@ -417,54 +610,80 @@ const operationSecurity: MultipleOptionsWithSimpleSchemesAuthSecurity = {
 
 ```typescript
 import { SDK } from "openapi";
-import { MultipleSimpleOptionsAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
+const sdk = new SDK({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  await sdk.authNew.multipleSimpleOptionsAuth({}, {
+    apiKeyAuthNew: "Token <YOUR_API_KEY>",
   });
-const operationSecurity: MultipleSimpleOptionsAuthSecurity = {
-  apiKeyAuthNew: "Token <YOUR_API_KEY>",
-};
 
-  const res = await sdk.authNew.multipleSimpleOptionsAuth({
-    basicAuth: {
-      password: "pzdKQgSGZSrUGNs",
-      username: "Eryn51",
-    },
-    headerAuth: [
-      {
-        expectedValue: "string",
-        headerName: "string",
-      },
-    ],
-  }, operationSecurity);
+  
+}
 
-  if (res.statusCode == 200) {
-    // handle response
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SDKCore } from "openapi/core.js";
+import { authNewMultipleSimpleOptionsAuth } from "openapi/funcs/authNewMultipleSimpleOptionsAuth.js";
+
+// Use `SDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sdk = new SDKCore({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  const res = await authNewMultipleSimpleOptionsAuth(sdk, {}, {
+    apiKeyAuthNew: "Token <YOUR_API_KEY>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
   }
-})();
+
+  const { value: result } = res;
+
+  
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                        | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)                               | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
-| `security`                                                                                                       | [operations.MultipleSimpleOptionsAuthSecurity](../../sdk/models/operations/multiplesimpleoptionsauthsecurity.md) | :heavy_check_mark:                                                                                               | The security requirements to use for the request.                                                                |
-| `serverURL`                                                                                                      | *string*                                                                                                         | :heavy_minus_sign:                                                                                               | An optional server URL to use.                                                                                   |
-| `config`                                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                     | :heavy_minus_sign:                                                                                               | Available config options for making requests.                                                                    |
-
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.MultipleSimpleOptionsAuthSecurity](../../sdk/models/operations/multiplesimpleoptionsauthsecurity.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
-**Promise<[operations.MultipleSimpleOptionsAuthResponse](../../sdk/models/operations/multiplesimpleoptionsauthresponse.md)>**
+**Promise\<void\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## multipleSimpleSchemeAuth
 
@@ -472,55 +691,82 @@ const operationSecurity: MultipleSimpleOptionsAuthSecurity = {
 
 ```typescript
 import { SDK } from "openapi";
-import { MultipleSimpleSchemeAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
+const sdk = new SDK({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  await sdk.authNew.multipleSimpleSchemeAuth({}, {
+    apiKeyAuthNew: "Token <YOUR_API_KEY>",
+    oauth2: "Bearer YOUR_OAUTH2_TOKEN",
   });
-const operationSecurity: MultipleSimpleSchemeAuthSecurity = {
-  apiKeyAuthNew: "Token <YOUR_API_KEY>",
-  oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-};
 
-  const res = await sdk.authNew.multipleSimpleSchemeAuth({
-    basicAuth: {
-      password: "UrAsw466AAaYtr1",
-      username: "Kenya.Baumbach",
-    },
-    headerAuth: [
-      {
-        expectedValue: "string",
-        headerName: "string",
-      },
-    ],
-  }, operationSecurity);
+  
+}
 
-  if (res.statusCode == 200) {
-    // handle response
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SDKCore } from "openapi/core.js";
+import { authNewMultipleSimpleSchemeAuth } from "openapi/funcs/authNewMultipleSimpleSchemeAuth.js";
+
+// Use `SDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sdk = new SDKCore({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  const res = await authNewMultipleSimpleSchemeAuth(sdk, {}, {
+    apiKeyAuthNew: "Token <YOUR_API_KEY>",
+    oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+  });
+
+  if (!res.ok) {
+    throw res.error;
   }
-})();
+
+  const { value: result } = res;
+
+  
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                      | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)                             | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
-| `security`                                                                                                     | [operations.MultipleSimpleSchemeAuthSecurity](../../sdk/models/operations/multiplesimpleschemeauthsecurity.md) | :heavy_check_mark:                                                                                             | The security requirements to use for the request.                                                              |
-| `serverURL`                                                                                                    | *string*                                                                                                       | :heavy_minus_sign:                                                                                             | An optional server URL to use.                                                                                 |
-| `config`                                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                   | :heavy_minus_sign:                                                                                             | Available config options for making requests.                                                                  |
-
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.MultipleSimpleSchemeAuthSecurity](../../sdk/models/operations/multiplesimpleschemeauthsecurity.md)                                                                 | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
-**Promise<[operations.MultipleSimpleSchemeAuthResponse](../../sdk/models/operations/multiplesimpleschemeauthresponse.md)>**
+**Promise\<void\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## oauth2AuthNew
 
@@ -528,54 +774,75 @@ const operationSecurity: MultipleSimpleSchemeAuthSecurity = {
 
 ```typescript
 import { SDK } from "openapi";
-import { Oauth2AuthNewSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
-  });
-const operationSecurity: Oauth2AuthNewSecurity = {
-  oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-};
+const sdk = new SDK({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
 
-  const res = await sdk.authNew.oauth2AuthNew({
-    basicAuth: {
-      password: "V02sHy2onRTMRgS",
-      username: "Polly.Aufderhar78",
-    },
-    headerAuth: [
-      {
-        expectedValue: "string",
-        headerName: "string",
-      },
-    ],
-  }, operationSecurity);
+async function run() {
+  await sdk.authNew.oauth2AuthNew({});
 
-  if (res.statusCode == 200) {
-    // handle response
+  
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SDKCore } from "openapi/core.js";
+import { authNewOauth2AuthNew } from "openapi/funcs/authNewOauth2AuthNew.js";
+
+// Use `SDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sdk = new SDKCore({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  const res = await authNewOauth2AuthNew(sdk, {});
+
+  if (!res.ok) {
+    throw res.error;
   }
-})();
+
+  const { value: result } = res;
+
+  
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)       | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `security`                                                                               | [operations.Oauth2AuthNewSecurity](../../sdk/models/operations/oauth2authnewsecurity.md) | :heavy_check_mark:                                                                       | The security requirements to use for the request.                                        |
-| `serverURL`                                                                              | *string*                                                                                 | :heavy_minus_sign:                                                                       | An optional server URL to use.                                                           |
-| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
-
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
-**Promise<[operations.Oauth2AuthNewResponse](../../sdk/models/operations/oauth2authnewresponse.md)>**
+**Promise\<void\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## openIdConnectAuthNew
 
@@ -583,51 +850,76 @@ const operationSecurity: Oauth2AuthNewSecurity = {
 
 ```typescript
 import { SDK } from "openapi";
-import { OpenIdConnectAuthNewSecurity } from "openapi/dist/sdk/models/operations";
 
-(async() => {
-  const sdk = new SDK({
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
+const sdk = new SDK({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  await sdk.authNew.openIdConnectAuthNew({}, {
+    openIdConnect: "Bearer YOUR_OPENID_TOKEN",
   });
-const operationSecurity: OpenIdConnectAuthNewSecurity = {
-  openIdConnect: "Bearer YOUR_OPENID_TOKEN",
-};
 
-  const res = await sdk.authNew.openIdConnectAuthNew({
-    basicAuth: {
-      password: "1_B3hNdr8HC3AeS",
-      username: "Floy_Heller",
-    },
-    headerAuth: [
-      {
-        expectedValue: "string",
-        headerName: "string",
-      },
-    ],
-  }, operationSecurity);
+  
+}
 
-  if (res.statusCode == 200) {
-    // handle response
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SDKCore } from "openapi/core.js";
+import { authNewOpenIdConnectAuthNew } from "openapi/funcs/authNewOpenIdConnectAuthNew.js";
+
+// Use `SDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sdk = new SDKCore({
+  globalHeaderParam: true,
+  globalHiddenQueryParam: "hello",
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+async function run() {
+  const res = await authNewOpenIdConnectAuthNew(sdk, {}, {
+    openIdConnect: "Bearer YOUR_OPENID_TOKEN",
+  });
+
+  if (!res.ok) {
+    throw res.error;
   }
-})();
+
+  const { value: result } = res;
+
+  
+}
+
+run();
 ```
 
 ### Parameters
 
-| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                              | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)                     | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
-| `security`                                                                                             | [operations.OpenIdConnectAuthNewSecurity](../../sdk/models/operations/openidconnectauthnewsecurity.md) | :heavy_check_mark:                                                                                     | The security requirements to use for the request.                                                      |
-| `serverURL`                                                                                            | *string*                                                                                               | :heavy_minus_sign:                                                                                     | An optional server URL to use.                                                                         |
-| `config`                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                           | :heavy_minus_sign:                                                                                     | Available config options for making requests.                                                          |
-
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [shared.AuthServiceRequestBody](../../sdk/models/shared/authservicerequestbody.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `security`                                                                                                                                                                     | [operations.OpenIdConnectAuthNewSecurity](../../sdk/models/operations/openidconnectauthnewsecurity.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The security requirements to use for the request.                                                                                                                              |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
 
 ### Response
 
-**Promise<[operations.OpenIdConnectAuthNewResponse](../../sdk/models/operations/openidconnectauthnewresponse.md)>**
+**Promise\<void\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
