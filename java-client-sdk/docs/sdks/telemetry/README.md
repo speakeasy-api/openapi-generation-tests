@@ -1,5 +1,5 @@
 # Telemetry
-(*telemetry*)
+(*telemetry()*)
 
 ## Overview
 
@@ -17,30 +17,41 @@ Endpoints for testing telemetry.
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.TelemetrySpeakeasyUserAgentGetRequest;
+import org.openapis.openapi.models.errors.SDKError;
 import org.openapis.openapi.models.operations.TelemetrySpeakeasyUserAgentGetResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            TelemetrySpeakeasyUserAgentGetResponse res = sdk.telemetry.telemetrySpeakeasyUserAgentGet("string");
+            TelemetrySpeakeasyUserAgentGetResponse res = sdk.telemetry().telemetrySpeakeasyUserAgentGet()
+                .userAgent("<value>")
+                .call();
 
-            if (res.res != null) {
+            if (res.res().isPresent()) {
                 // handle response
             }
+        } catch (SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
+
     }
 }
 ```
@@ -51,10 +62,15 @@ public class Application {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `userAgent`        | *String*           | :heavy_check_mark: | N/A                |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.TelemetrySpeakeasyUserAgentGetResponse](../../models/operations/TelemetrySpeakeasyUserAgentGetResponse.md)**
+**[TelemetrySpeakeasyUserAgentGetResponse](../../models/operations/TelemetrySpeakeasyUserAgentGetResponse.md)**
+
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 
 ## telemetryUserAgentGet
@@ -64,35 +80,50 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.errors.SDKError;
 import org.openapis.openapi.models.operations.TelemetryUserAgentGetResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
                 .build();
 
-            TelemetryUserAgentGetResponse res = sdk.telemetry.telemetryUserAgentGet();
+            TelemetryUserAgentGetResponse res = sdk.telemetry().telemetryUserAgentGet()
+                .call();
 
-            if (res.res != null) {
+            if (res.res().isPresent()) {
                 // handle response
             }
+        } catch (SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
+
     }
 }
 ```
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.TelemetryUserAgentGetResponse](../../models/operations/TelemetryUserAgentGetResponse.md)**
+**[TelemetryUserAgentGetResponse](../../models/operations/TelemetryUserAgentGetResponse.md)**
 
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
