@@ -3467,7 +3467,6 @@ paths:
   /anything/requestBodies/put/bytes:
     put:
       operationId: requestBodyPutBytes
-      # x-speakeasy-test: true - can't enable until we find a way to control file upload for tests
       tags:
         - requestBodies
       requestBody:
@@ -3535,7 +3534,6 @@ paths:
   /anything/requestBodies/put/bytesWithParams:
     put:
       operationId: requestBodyPutBytesWithParams
-      # x-speakeasy-test: true - can't enable until we find a way to control file upload for tests
       tags:
         - requestBodies
       parameters:
