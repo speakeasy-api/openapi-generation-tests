@@ -1,5 +1,15 @@
 # UnsupportedEnums
 
+## Example Usage
+
+```typescript
+import { UnsupportedEnums } from "openapi/sdk/models/shared";
+
+let value: UnsupportedEnums = {
+    booleanEnum: false,
+    numberEnum: 9923.97,
+};
+```
 
 ## Fields
 

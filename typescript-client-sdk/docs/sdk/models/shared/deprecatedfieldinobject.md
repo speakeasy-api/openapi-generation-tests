@@ -1,5 +1,12 @@
 # DeprecatedFieldInObject
 
+## Example Usage
+
+```typescript
+import { DeprecatedFieldInObject } from "openapi/sdk/models/shared";
+
+let value: DeprecatedFieldInObject = {};
+```
 
 ## Fields
 
