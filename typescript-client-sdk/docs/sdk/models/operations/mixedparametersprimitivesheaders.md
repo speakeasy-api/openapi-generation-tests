@@ -1,5 +1,14 @@
 # MixedParametersPrimitivesHeaders
 
+## Example Usage
+
+```typescript
+import { MixedParametersPrimitivesHeaders } from "openapi/sdk/models/operations";
+
+let value: MixedParametersPrimitivesHeaders = {
+    headerparam: "headerValue",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,15 @@
 # MultipleOptionsWithSimpleSchemesAuthSecurityOption2
 
+## Example Usage
+
+```typescript
+import { MultipleOptionsWithSimpleSchemesAuthSecurityOption2 } from "openapi/sdk/models/operations";
+
+let value: MultipleOptionsWithSimpleSchemesAuthSecurityOption2 = {
+    apiKeyAuthNew: "Token <YOUR_API_KEY>",
+    openIdConnect: "Bearer YOUR_OPENID_TOKEN",
+};
+```
 
 ## Fields
 

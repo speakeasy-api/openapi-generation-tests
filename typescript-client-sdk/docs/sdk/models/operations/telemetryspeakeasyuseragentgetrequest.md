@@ -1,5 +1,14 @@
 # TelemetrySpeakeasyUserAgentGetRequest
 
+## Example Usage
+
+```typescript
+import { TelemetrySpeakeasyUserAgentGetRequest } from "openapi/sdk/models/operations";
+
+let value: TelemetrySpeakeasyUserAgentGetRequest = {
+    userAgent: "<value>",
+};
+```
 
 ## Fields
 
