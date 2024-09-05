@@ -1,10 +1,21 @@
 # NullableOneOfTypeInObject
 
+## Example Usage
+
+```typescript
+import { NullableOneOfTypeInObject } from "openapi/sdk/models/shared";
+
+let value: NullableOneOfTypeInObject = {
+    nullableOneOfOne: false,
+    nullableOneOfTwo: 660174,
+    oneOfOne: false,
+};
+```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `nullableOneOfOne` | *boolean*          | :heavy_check_mark: | N/A                |
-| `nullableOneOfTwo` | *any*              | :heavy_check_mark: | N/A                |
-| `oneOfOne`         | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `nullableOneOfOne`                                 | *boolean*                                          | :heavy_check_mark:                                 | N/A                                                |
+| `nullableOneOfTwo`                                 | *shared.NullableOneOfTypeInObjectNullableOneOfTwo* | :heavy_check_mark:                                 | N/A                                                |
+| `oneOfOne`                                         | *boolean*                                          | :heavy_check_mark:                                 | N/A                                                |
