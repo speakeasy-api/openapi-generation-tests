@@ -5278,6 +5278,79 @@ paths:
                       "key1": "..."
                     }
                   }
+  # Reference: https://linear.app/speakeasy/issue/SPE-4103/bug-test-generation-in-typescriptv2-unterminated-multiline-strings
+  /anything/responseBodies/multilineString:
+    post:
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: response-bodies-multiline-string
+      operationId: responseBodyMultilineStringPost
+      tags:
+        - responseBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                array:
+                  type: array
+                  items:
+                    type: string
+              required:
+                - array
+            examples:
+              test:
+                value:
+                  array:
+                    - |-
+                      BEGIN:VEVENT
+                      DTSTART:20220612T090000
+                      DURATION:PT8H
+                      RRULE:FREQ=WEEKLY;BYDAY=SU
+                      END:VEVENT
+                    - |-
+                      BEGIN:VEVENT
+                      DTSTART:20220606T090000
+                      DURATION:PT8H
+                      RRULE:FREQ=WEEKLY;BYDAY=MO
+                      END:VEVENT
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    type: object
+                    properties:
+                      array:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - array
+                required:
+                  - json
+              examples:
+                test:
+                  value:
+                    json:
+                      array:
+                        - |-
+                          BEGIN:VEVENT
+                          DTSTART:20220612T090000
+                          DURATION:PT8H
+                          RRULE:FREQ=WEEKLY;BYDAY=SU
+                          END:VEVENT
+                        - |-
+                          BEGIN:VEVENT
+                          DTSTART:20220606T090000
+                          DURATION:PT8H
+                          RRULE:FREQ=WEEKLY;BYDAY=MO
+                          END:VEVENT
   /anything/responseBodies/missing2xxOr3xx:
     get:
       operationId: responseBodyMissing2xxOr3xxGet
