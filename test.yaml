@@ -99,6 +99,8 @@ tags:
     description: Endpoints for testing request bodies.
   - name: responseBodies
     description: Endpoints for testing response bodies.
+  - name: methods
+    description: Endpoints for testing HTTP methods.
   - name: retries
     description: Endpoints for testing retries.
   - name: generation
@@ -8516,6 +8518,177 @@ paths:
               schema:
                 $ref: "#/components/schemas/AnyOfMultiMatch"     
           
+  /method/delete:
+    delete:
+      operationId: methodDelete
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - methods
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: "test123"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                   type: string
+                   example: "OK"
+  /method/get:
+    get:
+      operationId: methodGet
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - methods
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                   type: string
+                   example: "OK"
+  /method/head:
+    head:
+      operationId: methodHead
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - methods
+      responses:
+        "200":
+          description: OK
+  /method/options:
+    options:
+      operationId: methodOptions
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - methods
+      responses:
+        "200":
+          description: OK
+          headers:
+            Allow:
+              schema:
+                type: string
+                example: OPTIONS
+  /method/patch:
+    patch:
+      operationId: methodPatch
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - methods
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: "test123"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                   type: string
+                   example: "OK"
+  /method/post:
+    post:
+      operationId: methodPost
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - methods
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: "test123"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                   type: string
+                   example: "OK"
+  /method/put:
+    put:
+      operationId: methodPut
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - methods
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: "test123"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                   type: string
+                   example: "OK"
+  /method/trace:
+    trace:
+      operationId: methodTrace
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - methods
+      responses:
+        "200":
+          description: OK
+          content:
+            message/http:
+              schema:
+                type: string
+                example: "TRACE /method/trace HTTP/1.1\\r\\nHost: example.com\\r\\n"
+
 components:
   schemas:
     AnyOfMultiMatch:
