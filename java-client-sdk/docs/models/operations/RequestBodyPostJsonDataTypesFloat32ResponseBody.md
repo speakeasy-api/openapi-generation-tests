@@ -5,6 +5,6 @@ OK
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `json`             | *Double*           | :heavy_check_mark: | N/A                |
+| Field              | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `json`             | *double*           | :heavy_check_mark: | N/A                | 1.1                |

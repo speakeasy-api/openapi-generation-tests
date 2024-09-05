@@ -1,5 +1,12 @@
 # IgnoresPostRequestBody
 
+## Example Usage
+
+```typescript
+import { IgnoresPostRequestBody } from "openapi/sdk/models/operations";
+
+let value: IgnoresPostRequestBody = {};
+```
 
 ## Fields
 

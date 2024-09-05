@@ -1,5 +1,14 @@
 # InlineBodyAndParamNoConflictRequestBody
 
+## Example Usage
+
+```typescript
+import { InlineBodyAndParamNoConflictRequestBody } from "openapi/sdk/models/operations";
+
+let value: InlineBodyAndParamNoConflictRequestBody = {
+    bodyStr: "<value>",
+};
+```
 
 ## Fields
 

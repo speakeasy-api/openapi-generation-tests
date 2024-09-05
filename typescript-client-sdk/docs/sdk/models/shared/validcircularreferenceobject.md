@@ -1,5 +1,12 @@
 # ValidCircularReferenceObject
 
+## Example Usage
+
+```typescript
+import { ValidCircularReferenceObject } from "openapi/sdk/models/shared";
+
+let value: ValidCircularReferenceObject = {};
+```
 
 ## Fields
 
