@@ -1,5 +1,15 @@
 # ObjParam
 
+## Example Usage
+
+```typescript
+import { ObjParam } from "openapi/sdk/models/operations";
+
+let value: ObjParam = {
+    encodedCount: "11",
+    encodedTerm: "bar",
+};
+```
 
 ## Fields
 

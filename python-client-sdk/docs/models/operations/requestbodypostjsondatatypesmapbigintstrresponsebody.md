@@ -5,7 +5,7 @@ OK
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `data`             | *str*              | :heavy_check_mark: | N/A                |
-| `json`             | Dict[str, *int*]   | :heavy_check_mark: | N/A                |
+| Field              | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `data`             | *str*              | :heavy_check_mark: | N/A                | {"test":"1"}       |
+| `json_`            | Dict[str, *int*]   | :heavy_check_mark: | N/A                | {<br/>"test": "1"<br/>} |
