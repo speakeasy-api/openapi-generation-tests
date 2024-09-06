@@ -1,5 +1,14 @@
 # DateTimeParamWithDefaultRequest
 
+## Example Usage
+
+```typescript
+import { DateTimeParamWithDefaultRequest } from "openapi/sdk/models/operations";
+
+let value: DateTimeParamWithDefaultRequest = {
+    dateTimeInput: new Date("2023-10-13T12:42:42.999+00:00"),
+};
+```
 
 ## Fields
 

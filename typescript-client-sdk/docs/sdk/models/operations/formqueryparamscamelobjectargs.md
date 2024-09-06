@@ -1,5 +1,15 @@
 # FormQueryParamsCamelObjectArgs
 
+## Example Usage
+
+```typescript
+import { FormQueryParamsCamelObjectArgs } from "openapi/sdk/models/operations";
+
+let value: FormQueryParamsCamelObjectArgs = {
+    itemCount: "10",
+    searchTerm: "foo",
+};
+```
 
 ## Fields
 

@@ -5,4 +5,4 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `inlineName`       | *String*           | :heavy_minus_sign: | N/A                |
+| `inlineName`       | *Optional<String>* | :heavy_minus_sign: | N/A                |
