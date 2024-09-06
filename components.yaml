@@ -1290,6 +1290,14 @@ components:
       properties:
         str:
           type: string
+    deprecatedObjectWithExample:
+      type: object
+      deprecated: true
+      properties:
+        str:
+          type: string
+      example:
+        str: "testvalue"
     deprecatedFieldInObject:
       type: object
       properties:

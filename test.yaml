@@ -2369,6 +2369,35 @@ paths:
                     $ref: "components.yaml#/components/schemas/simpleObjectCamelCase"
                 required:
                   - json
+  /anything/requestBodies/deprecatedRequestBodyRef:
+    post:
+      # Reference: https://linear.app/speakeasy/issue/SPE-4115/bug-request-body-deprecated-object-ref-causes-incomplete-test
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: request-bodies-deprecated-request-body-ref
+      operationId: requestBodyDeprecatedRequestBodyRefPost
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/deprecatedObjectWithExample"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/deprecatedObjectWithExample"
+                required:
+                  - json
+                example:
+                  json:
+                    str: "testvalue"
   /requestbody#array:
     post:
       operationId: requestBodyPostApplicationJsonArray
