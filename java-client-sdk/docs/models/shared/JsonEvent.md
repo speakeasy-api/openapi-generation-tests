@@ -1,0 +1,10 @@
+# JsonEvent
+
+Represents a single event in a json stream
+
+
+## Fields
+
+| Field                                                 | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `data`                                                | [JsonEventData](../../models/shared/JsonEventData.md) | :heavy_check_mark:                                    | N/A                                                   |

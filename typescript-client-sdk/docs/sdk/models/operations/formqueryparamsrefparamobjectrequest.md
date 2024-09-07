@@ -1,5 +1,25 @@
 # FormQueryParamsRefParamObjectRequest
 
+## Example Usage
+
+```typescript
+import { FormQueryParamsRefParamObjectRequest } from "openapi/sdk/models/operations";
+
+let value: FormQueryParamsRefParamObjectRequest = {
+    refObjParam: {
+        bool: true,
+        int: 1,
+        num: 1.1,
+        str: "test",
+    },
+    refObjParamExploded: {
+        bool: true,
+        int: 1,
+        num: 1.1,
+        str: "test",
+    },
+};
+```
 
 ## Fields
 

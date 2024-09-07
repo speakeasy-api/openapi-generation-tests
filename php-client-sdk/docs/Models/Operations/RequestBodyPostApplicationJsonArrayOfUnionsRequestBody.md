@@ -1,0 +1,9 @@
+# RequestBodyPostApplicationJsonArrayOfUnionsRequestBody
+
+
+## Fields
+
+| Field                                                                                                         | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `dates`                                                                                                       | array<[\DateTime](https://www.php.net/manual/en/class.datetime.php)>                                          | :heavy_check_mark:                                                                                            | N/A                                                                                                           |
+| `unions`                                                                                                      | array<[Shared\TypedObject1\|Shared\TypedObject2\|Shared\TypedObject3](../../Models/Shared/TypedObjectOneOf.md)> | :heavy_check_mark:                                                                                            | N/A                                                                                                           |

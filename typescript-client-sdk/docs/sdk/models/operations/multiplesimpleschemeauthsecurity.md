@@ -1,5 +1,15 @@
 # MultipleSimpleSchemeAuthSecurity
 
+## Example Usage
+
+```typescript
+import { MultipleSimpleSchemeAuthSecurity } from "openapi/sdk/models/operations";
+
+let value: MultipleSimpleSchemeAuthSecurity = {
+    apiKeyAuthNew: "Token <YOUR_API_KEY>",
+    oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+};
+```
 
 ## Fields
 
