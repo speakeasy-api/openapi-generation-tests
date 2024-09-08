@@ -1,5 +1,24 @@
 # MultipleOptionsWithMixedSchemesAuthSecurity
 
+## Example Usage
+
+```typescript
+import { MultipleOptionsWithMixedSchemesAuthSecurity } from "openapi/sdk/models/operations";
+
+let value: MultipleOptionsWithMixedSchemesAuthSecurity = {
+    option1: {
+        apiKeyAuthNew: "Token <YOUR_API_KEY>",
+        oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+    },
+    option2: {
+        apiKeyAuthNew: "Token <YOUR_API_KEY>",
+        basicAuth: {
+            password: "YOUR_PASSWORD",
+            username: "YOUR_USERNAME",
+        },
+    },
+};
+```
 
 ## Fields
 
