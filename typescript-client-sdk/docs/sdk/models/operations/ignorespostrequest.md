@@ -1,5 +1,14 @@
 # IgnoresPostRequest
 
+## Example Usage
+
+```typescript
+import { IgnoresPostRequest } from "openapi/sdk/models/operations";
+
+let value: IgnoresPostRequest = {
+    requestBody: {},
+};
+```
 
 ## Fields
 

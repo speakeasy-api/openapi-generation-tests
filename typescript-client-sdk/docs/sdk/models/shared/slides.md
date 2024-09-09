@@ -1,5 +1,15 @@
 # Slides
 
+## Example Usage
+
+```typescript
+import { Slides } from "openapi/sdk/models/shared";
+
+let value: Slides = {
+    title: "<value>",
+    type: "<value>",
+};
+```
 
 ## Fields
 
