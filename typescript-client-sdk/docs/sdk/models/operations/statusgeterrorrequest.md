@@ -1,5 +1,14 @@
 # StatusGetErrorRequest
 
+## Example Usage
+
+```typescript
+import { StatusGetErrorRequest } from "openapi/sdk/models/operations";
+
+let value: StatusGetErrorRequest = {
+  statusCode: 969810,
+};
+```
 
 ## Fields
 
