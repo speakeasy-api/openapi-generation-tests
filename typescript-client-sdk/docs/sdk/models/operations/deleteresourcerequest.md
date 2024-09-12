@@ -1,5 +1,14 @@
 # DeleteResourceRequest
 
+## Example Usage
+
+```typescript
+import { DeleteResourceRequest } from "openapi/sdk/models/operations";
+
+let value: DeleteResourceRequest = {
+  resourceId: "<value>",
+};
+```
 
 ## Fields
 
