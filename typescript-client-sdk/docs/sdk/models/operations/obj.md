@@ -1,5 +1,16 @@
 # Obj
 
+## Example Usage
+
+```typescript
+import { Obj } from "openapi/sdk/models/operations";
+
+let value: Obj = {
+  bool: false,
+  num: 8442.66,
+  str: "<value>",
+};
+```
 
 ## Fields
 
