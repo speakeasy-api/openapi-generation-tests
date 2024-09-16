@@ -3,6 +3,6 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `Arr`              | []*string*         | :heavy_minus_sign: | N/A                |
+| Field               | Type                | Required            | Description         | Example             |
+| ------------------- | ------------------- | ------------------- | ------------------- | ------------------- |
+| `Arr`               | []*string*          | :heavy_minus_sign:  | N/A                 | [<br/>"test",<br/>"test2"<br/>] |
