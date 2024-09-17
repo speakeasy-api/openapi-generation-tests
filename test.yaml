@@ -6602,6 +6602,30 @@ paths:
                     $ref: "components.yaml#/components/schemas/infectedWithAny"
                 required:
                   - json
+  /anything/mixedUnions:
+    post:
+      operationId: mixedUnionTypes
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/mixedUnionTypes"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/mixedUnionTypes"
+                required:
+                  - json
   /anything/unionOfArrays:
     post:
       # TODO: add Javav2 testgen after this is fixed: https://linear.app/speakeasy/issue/SPE-4051/bug-union-of-arrays-breaks-java-sdks
@@ -7129,6 +7153,40 @@ paths:
                   json:
                     type: object
                     required: [input]
+                    properties:
+                      input:
+                        type: object
+                        additionalProperties:
+                          $ref: "components.yaml#/components/schemas/oneOfPrimitives"
+                required:
+                  - json
+  /anything/union/unionMapOptional:
+    post:
+      operationId: unionMapOptional
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                input:
+                  type: object
+                  additionalProperties:
+                    $ref: "components.yaml#/components/schemas/oneOfPrimitives"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    type: object
                     properties:
                       input:
                         type: object
