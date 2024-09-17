@@ -1,5 +1,14 @@
 # StatusGetXSpeakeasyErrorsRequest
 
+## Example Usage
+
+```typescript
+import { StatusGetXSpeakeasyErrorsRequest } from "openapi/sdk/models/operations";
+
+let value: StatusGetXSpeakeasyErrorsRequest = {
+  statusCode: 653140,
+};
+```
 
 ## Fields
 

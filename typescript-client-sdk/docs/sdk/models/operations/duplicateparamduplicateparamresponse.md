@@ -2,6 +2,13 @@
 
 OK
 
+## Example Usage
+
+```typescript
+import { DuplicateParamDuplicateParamResponse } from "openapi/sdk/models/operations";
+
+let value: DuplicateParamDuplicateParamResponse = {};
+```
 
 ## Fields
 

@@ -2,6 +2,15 @@
 
 OK
 
+## Example Usage
+
+```typescript
+import { UnionDateTimeNullRes } from "openapi/sdk/models/operations";
+
+let value: UnionDateTimeNullRes = {
+  json: new Date("2023-02-28T14:12:21.883Z"),
+};
+```
 
 ## Fields
 

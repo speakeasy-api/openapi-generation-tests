@@ -1,0 +1,11 @@
+# ComplexNumberMaps
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `BigintMap`                                                                        | map[string][*big.Int](https://pkg.go.dev/math/big#Int)                             | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `BigintStrMap`                                                                     | map[string][*big.Int](https://pkg.go.dev/math/big#Int)                             | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `DecimalMap`                                                                       | map[string][*decimal.Big](https://pkg.go.dev/github.com/ericlagergren/decimal#Big) | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `DecimalStrMap`                                                                    | map[string][*decimal.Big](https://pkg.go.dev/github.com/ericlagergren/decimal#Big) | :heavy_minus_sign:                                                                 | N/A                                                                                |
