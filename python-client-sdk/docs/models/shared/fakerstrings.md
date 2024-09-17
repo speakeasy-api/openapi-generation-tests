@@ -36,7 +36,7 @@ A set of strings with fieldnames that lead to relevant examples being generated 
 | `full_name`        | *Optional[str]*    | :heavy_minus_sign: | N/A                |
 | `gender`           | *Optional[str]*    | :heavy_minus_sign: | N/A                |
 | `job`              | *Optional[str]*    | :heavy_minus_sign: | N/A                |
-| `json`             | *Optional[str]*    | :heavy_minus_sign: | N/A                |
+| `json_`            | *Optional[str]*    | :heavy_minus_sign: | N/A                |
 | `key`              | *Optional[str]*    | :heavy_minus_sign: | N/A                |
 | `last_name`        | *Optional[str]*    | :heavy_minus_sign: | N/A                |
 | `latitude`         | *Optional[str]*    | :heavy_minus_sign: | N/A                |

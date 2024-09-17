@@ -1,0 +1,50 @@
+# StronglyTypedOneOfObjectWithNonStandardDiscriminatorName
+
+## Example Usage
+
+```typescript
+import {
+  SimpleObjectWithNonStandardTypeNameIntEnum,
+  StronglyTypedOneOfObjectWithNonStandardDiscriminatorName,
+} from "openapi/sdk/models/shared";
+import { Decimal, RFCDate } from "openapi/sdk/types";
+
+let value: StronglyTypedOneOfObjectWithNonStandardDiscriminatorName = {
+  any: "any",
+  bigint: BigInt("8821239038968084"),
+  bigintStr: BigInt("9223372036854775808"),
+  bool: true,
+  boolOpt: true,
+  date: new RFCDate("2020-01-01"),
+  dateTime: new Date("2020-01-01T00:00:00.001Z"),
+  decimal: new Decimal("3.141592653589793"),
+  decimalStr: new Decimal("3.14159265358979344719667586"),
+  enum: "one",
+  float32: 1.1,
+  float64Str: 1.1,
+  int: 1,
+  int32: 1,
+  int32Enum: 55,
+  int64Str: 100,
+  intEnum: SimpleObjectWithNonStandardTypeNameIntEnum.Second,
+  num: 1.1,
+  objType: "<value>",
+  str: "test",
+  strOpt: "testOptional",
+};
+```
+
+## Supported Types
+
+### `shared.SimpleObjectWithNonStandardTypeName`
+
+```typescript
+const value: shared.SimpleObjectWithNonStandardTypeName = /* values here */
+```
+
+### `shared.DeepObjectWithNonStandardTypeName`
+
+```typescript
+const value: shared.DeepObjectWithNonStandardTypeName = /* values here */
+```
+
