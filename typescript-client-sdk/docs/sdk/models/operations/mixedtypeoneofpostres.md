@@ -2,9 +2,18 @@
 
 OK
 
+## Example Usage
+
+```typescript
+import { MixedTypeOneOfPostRes } from "openapi/sdk/models/operations";
+
+let value: MixedTypeOneOfPostRes = {
+  json: 87129,
+};
+```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `json`             | *any*              | :heavy_check_mark: | N/A                |
+| Field                               | Type                                | Required                            | Description                         |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| `json`                              | *operations.MixedTypeOneOfPostJson* | :heavy_check_mark:                  | N/A                                 |

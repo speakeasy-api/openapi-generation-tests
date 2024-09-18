@@ -3,9 +3,9 @@
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `any`                   | *Object*                | :heavy_check_mark:      | N/A                     |
-| `nullableAny`           | *Object*                | :heavy_check_mark:      | N/A                     |
-| `oneOfFromArrayOfTypes` | *Object*                | :heavy_check_mark:      | N/A                     |
-| `oneOfSameType`         | *Object*                | :heavy_check_mark:      | N/A                     |
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `any`                                                                           | *Object*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
+| `nullableAny`                                                                   | *Optional<Object>*                                                              | :heavy_check_mark:                                                              | N/A                                                                             |
+| `oneOfFromArrayOfTypes`                                                         | [Optional<OneOfFromArrayOfTypes>](../../models/shared/OneOfFromArrayOfTypes.md) | :heavy_check_mark:                                                              | N/A                                                                             |
+| `oneOfSameType`                                                                 | [Optional<OneOfSameType>](../../models/shared/OneOfSameType.md)                 | :heavy_check_mark:                                                              | N/A                                                                             |

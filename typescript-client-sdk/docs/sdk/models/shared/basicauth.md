@@ -1,5 +1,15 @@
 # BasicAuth
 
+## Example Usage
+
+```typescript
+import { BasicAuth } from "openapi/sdk/models/shared";
+
+let value: BasicAuth = {
+  password: "cDLHesCr6iCzfh1",
+  username: "Eulalia.Lebsack",
+};
+```
 
 ## Fields
 
