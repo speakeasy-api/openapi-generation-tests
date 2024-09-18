@@ -3937,6 +3937,42 @@ paths:
                       - nullableRequired
                 required:
                   - json
+  /anything/requestBodies/post/empty-body-retained-with-all-optional-fields:
+    post:
+      operationId: requestBodyPostEmptyBodyRetainedWithAllOptionalFields
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                str:
+                  type: string
+                bool:
+                  type: boolean
+                int:
+                  type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    type: object
+                    properties:
+                      str:
+                        type: string
+                      bool:
+                        type: boolean
+                      int:
+                        type: integer
+                required:
+                  - json
   /anything/requestBodies/post/{pathBigInt}/{pathBigIntStr}/{pathDecimal}/{pathDecimalStr}/complex-number-types:
     post:
       operationId: requestBodyPostComplexNumberTypes
