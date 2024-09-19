@@ -5053,6 +5053,13 @@ paths:
       operationId: responseBodyBytesGet
       tags:
         - responseBodies
+      parameters:
+        - name: seed
+          in: query
+          schema:
+            type: integer
+            format: int32
+          required: false
       responses:
         "200":
           description: OK
@@ -7775,6 +7782,8 @@ paths:
       operationId: nestedFirstGet
       x-speakeasy-name-override: get
       x-speakeasy-group: nested.first
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: multi-level-grouping
       responses:
         "200":
           description: OK
