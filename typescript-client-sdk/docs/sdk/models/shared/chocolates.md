@@ -1,5 +1,14 @@
 # Chocolates
 
+## Example Usage
+
+```typescript
+import { Chocolates } from "openapi/sdk/models/shared";
+
+let value: Chocolates = {
+  description: "Horizontal zero administration access",
+};
+```
 
 ## Fields
 
