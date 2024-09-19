@@ -1,5 +1,14 @@
 # RequestBodyPutMultipartSimpleHeaders
 
+## Example Usage
+
+```typescript
+import { RequestBodyPutMultipartSimpleHeaders } from "openapi/sdk/models/operations";
+
+let value: RequestBodyPutMultipartSimpleHeaders = {
+  contentType: "<value>",
+};
+```
 
 ## Fields
 
