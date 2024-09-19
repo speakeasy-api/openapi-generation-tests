@@ -2,6 +2,19 @@
 
 OK
 
+## Example Usage
+
+```typescript
+import { NullableOneOfTypeInObjectPostRes } from "openapi/sdk/models/operations";
+
+let value: NullableOneOfTypeInObjectPostRes = {
+  json: {
+    nullableOneOfOne: false,
+    nullableOneOfTwo: 140350,
+    oneOfOne: false,
+  },
+};
+```
 
 ## Fields
 
