@@ -2,6 +2,13 @@
 
 A set of strings with fieldnames that lead to relevant examples being generated for them
 
+## Example Usage
+
+```typescript
+import { FakerStrings } from "openapi/sdk/models/shared";
+
+let value: FakerStrings = {};
+```
 
 ## Fields
 
