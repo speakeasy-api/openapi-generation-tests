@@ -2175,6 +2175,58 @@ paths:
                       - X-Header-Array
                 required:
                   - headers
+  /anything/inferredOptionalRequestWrapper:
+    get:
+      # We don't want to flattening because we are testing when the request
+      # wrapper argument is made of optional fields and it gets inferred as
+      # optional as a result.
+      x-speakeasy-max-method-params: 0
+      x-speakeasy-test: [typescriptv2] # TODO: fix pythonv2 and go bug
+      # This test is useful for any targets that implement:
+      # methodArguments: infer-optional-args
+      x-speakeasy-test-internal-id: request-bodies-get-inferred-optional-request-wrapper
+      operationId: requestBodyGetInferredOptionalRequestWrapper
+      servers:
+        - url: http://localhost:35123
+      tags:
+        - requestBodies
+      parameters:
+        - name: keyword
+          in: query
+          required: false
+          schema:
+            type: string
+            x-speakeasy-example-unset: true
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            x-speakeasy-example-unset: true
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            x-speakeasy-example-unset: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [args]
+                properties:
+                  args:
+                    type: object
+                    properties:
+                      keyword:
+                        type: string
+                      offset:
+                        type: integer
+                      limit:
+                        type: integer
   /readonlyorwriteonly#readOnlyInput:
     post:
       operationId: requestBodyReadOnlyInput
