@@ -8,11 +8,15 @@ Endpoints for testing the pagination extension
 ### Available Operations
 
 * [PaginationCursorBody](#paginationcursorbody)
+* [PaginationCursorNonNumeric](#paginationcursornonnumeric)
 * [PaginationCursorParams](#paginationcursorparams)
+* [PaginationLimitOffsetDeepOutputsPageBody](#paginationlimitoffsetdeepoutputspagebody)
 * [PaginationLimitOffsetOffsetBody](#paginationlimitoffsetoffsetbody)
 * [PaginationLimitOffsetOffsetParams](#paginationlimitoffsetoffsetparams)
 * [PaginationLimitOffsetPageBody](#paginationlimitoffsetpagebody)
 * [PaginationLimitOffsetPageParams](#paginationlimitoffsetpageparams)
+* [PaginationURLParams](#paginationurlparams)
+* [PaginationWithRetries](#paginationwithretries)
 
 ## PaginationCursorBody
 
@@ -22,18 +26,16 @@ Endpoints for testing the pagination extension
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"context"
 	"openapi/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
@@ -45,17 +47,21 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
-         for {
+                for {
             // handle items
-
-            res = res.Next()
+        
+            res, err = res.Next()
+        
+            if err != nil {
+                // handle error
+            }
+        
             if res == nil {
                 break
             }
         }
-
+        
     }
 }
 ```
@@ -68,13 +74,80 @@ func main() {
 | `request`                                                                                                    | [operations.PaginationCursorBodyRequestBody](../../pkg/models/operations/paginationcursorbodyrequestbody.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
 | `opts`                                                                                                       | [][operations.Option](../../pkg/models/operations/option.md)                                                 | :heavy_minus_sign:                                                                                           | The options for this request.                                                                                |
 
-
 ### Response
 
 **[*operations.PaginationCursorBodyResponse](../../pkg/models/operations/paginationcursorbodyresponse.md), error**
+
+### Errors
+
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
+
+
+## PaginationCursorNonNumeric
+
+### Example Usage
+
+```go
+package main
+
+import(
+	openapi "openapi/v2"
+	"context"
+	"log"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Pagination.PaginationCursorNonNumeric(ctx, nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Res != nil {
+                for {
+            // handle items
+        
+            res, err = res.Next()
+        
+            if err != nil {
+                // handle error
+            }
+        
+            if res == nil {
+                break
+            }
+        }
+        
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `ctx`                                                                | [context.Context](https://pkg.go.dev/context#Context)                | :heavy_check_mark:                                                   | The context to use for the request.                                  |
+| `cursor`                                                             | **string*                                                            | :heavy_minus_sign:                                                   | The page token used to request a specific page of the search results |
+| `opts`                                                               | [][operations.Option](../../pkg/models/operations/option.md)         | :heavy_minus_sign:                                                   | The options for this request.                                        |
+
+### Response
+
+**[*operations.PaginationCursorNonNumericResponse](../../pkg/models/operations/paginationcursornonnumericresponse.md), error**
+
+### Errors
+
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
+
 
 ## PaginationCursorParams
 
@@ -84,40 +157,39 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-
-    var cursor int64 = 24812
-
     ctx := context.Background()
-    res, err := s.Pagination.PaginationCursorParams(ctx, cursor)
+    res, err := s.Pagination.PaginationCursorParams(ctx, 24812)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
-         for {
+                for {
             // handle items
-
-            res = res.Next()
+        
+            res, err = res.Next()
+        
+            if err != nil {
+                // handle error
+            }
+        
             if res == nil {
                 break
             }
         }
-
+        
     }
 }
 ```
@@ -130,15 +202,18 @@ func main() {
 | `cursor`                                                     | *int64*                                                      | :heavy_check_mark:                                           | N/A                                                          |
 | `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
-
 ### Response
 
 **[*operations.PaginationCursorParamsResponse](../../pkg/models/operations/paginationcursorparamsresponse.md), error**
+
+### Errors
+
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
-## PaginationLimitOffsetOffsetBody
+
+## PaginationLimitOffsetDeepOutputsPageBody
 
 ### Example Usage
 
@@ -146,37 +221,40 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/models/shared"
+	"log"
 )
 
 func main() {
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
-    res, err := s.Pagination.PaginationLimitOffsetOffsetBody(ctx, shared.LimitOffsetConfig{})
+    res, err := s.Pagination.PaginationLimitOffsetDeepOutputsPageBody(ctx, shared.LimitOffsetConfig{})
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
-         for {
+                for {
             // handle items
-
-            res = res.Next()
+        
+            res, err = res.Next()
+        
+            if err != nil {
+                // handle error
+            }
+        
             if res == nil {
                 break
             }
         }
-
+        
     }
 }
 ```
@@ -189,13 +267,81 @@ func main() {
 | `request`                                                                | [shared.LimitOffsetConfig](../../pkg/models/shared/limitoffsetconfig.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
 | `opts`                                                                   | [][operations.Option](../../pkg/models/operations/option.md)             | :heavy_minus_sign:                                                       | The options for this request.                                            |
 
+### Response
+
+**[*operations.PaginationLimitOffsetDeepOutputsPageBodyResponse](../../pkg/models/operations/paginationlimitoffsetdeepoutputspagebodyresponse.md), error**
+
+### Errors
+
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
+
+
+## PaginationLimitOffsetOffsetBody
+
+### Example Usage
+
+```go
+package main
+
+import(
+	openapi "openapi/v2"
+	"context"
+	"openapi/v2/pkg/models/shared"
+	"log"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Pagination.PaginationLimitOffsetOffsetBody(ctx, shared.LimitOffsetConfig{})
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Res != nil {
+                for {
+            // handle items
+        
+            res, err = res.Next()
+        
+            if err != nil {
+                // handle error
+            }
+        
+            if res == nil {
+                break
+            }
+        }
+        
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `ctx`                                                                    | [context.Context](https://pkg.go.dev/context#Context)                    | :heavy_check_mark:                                                       | The context to use for the request.                                      |
+| `request`                                                                | [shared.LimitOffsetConfig](../../pkg/models/shared/limitoffsetconfig.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
+| `opts`                                                                   | [][operations.Option](../../pkg/models/operations/option.md)             | :heavy_minus_sign:                                                       | The options for this request.                                            |
 
 ### Response
 
 **[*operations.PaginationLimitOffsetOffsetBodyResponse](../../pkg/models/operations/paginationlimitoffsetoffsetbodyresponse.md), error**
+
+### Errors
+
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
+
 
 ## PaginationLimitOffsetOffsetParams
 
@@ -205,42 +351,39 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-
-    var limit *int64 = 661976
-
-    var offset *int64 = 600173
-
     ctx := context.Background()
-    res, err := s.Pagination.PaginationLimitOffsetOffsetParams(ctx, limit, offset)
+    res, err := s.Pagination.PaginationLimitOffsetOffsetParams(ctx, nil, nil)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
-         for {
+                for {
             // handle items
-
-            res = res.Next()
+        
+            res, err = res.Next()
+        
+            if err != nil {
+                // handle error
+            }
+        
             if res == nil {
                 break
             }
         }
-
+        
     }
 }
 ```
@@ -254,13 +397,16 @@ func main() {
 | `offset`                                                     | **int64*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
 | `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
-
 ### Response
 
 **[*operations.PaginationLimitOffsetOffsetParamsResponse](../../pkg/models/operations/paginationlimitoffsetoffsetparamsresponse.md), error**
+
+### Errors
+
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
+
 
 ## PaginationLimitOffsetPageBody
 
@@ -270,17 +416,16 @@ func main() {
 package main
 
 import(
-	"context"
-	"log"
 	openapi "openapi/v2"
+	"context"
 	"openapi/v2/pkg/models/shared"
+	"log"
 )
 
 func main() {
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
@@ -290,17 +435,21 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
-         for {
+                for {
             // handle items
-
-            res = res.Next()
+        
+            res, err = res.Next()
+        
+            if err != nil {
+                // handle error
+            }
+        
             if res == nil {
                 break
             }
         }
-
+        
     }
 }
 ```
@@ -313,13 +462,16 @@ func main() {
 | `request`                                                                | [shared.LimitOffsetConfig](../../pkg/models/shared/limitoffsetconfig.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
 | `opts`                                                                   | [][operations.Option](../../pkg/models/operations/option.md)             | :heavy_minus_sign:                                                       | The options for this request.                                            |
 
-
 ### Response
 
 **[*operations.PaginationLimitOffsetPageBodyResponse](../../pkg/models/operations/paginationlimitoffsetpagebodyresponse.md), error**
+
+### Errors
+
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
+
 
 ## PaginationLimitOffsetPageParams
 
@@ -329,40 +481,39 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-
-    var page int64 = 1177
-
     ctx := context.Background()
-    res, err := s.Pagination.PaginationLimitOffsetPageParams(ctx, page)
+    res, err := s.Pagination.PaginationLimitOffsetPageParams(ctx, 1177)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Res != nil {
-         for {
+                for {
             // handle items
-
-            res = res.Next()
+        
+            res, err = res.Next()
+        
+            if err != nil {
+                // handle error
+            }
+        
             if res == nil {
                 break
             }
         }
-
+        
     }
 }
 ```
@@ -375,10 +526,143 @@ func main() {
 | `page`                                                       | *int64*                                                      | :heavy_check_mark:                                           | N/A                                                          |
 | `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
-
 ### Response
 
 **[*operations.PaginationLimitOffsetPageParamsResponse](../../pkg/models/operations/paginationlimitoffsetpageparamsresponse.md), error**
+
+### Errors
+
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
+
+
+## PaginationURLParams
+
+### Example Usage
+
+```go
+package main
+
+import(
+	openapi "openapi/v2"
+	"context"
+	"log"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Pagination.PaginationURLParams(ctx, 778920, nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Res != nil {
+                for {
+            // handle items
+        
+            res, err = res.Next()
+        
+            if err != nil {
+                // handle error
+            }
+        
+            if res == nil {
+                break
+            }
+        }
+        
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `attempts`                                                   | *int64*                                                      | :heavy_check_mark:                                           | N/A                                                          |
+| `isReferencePath`                                            | **string*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
+
+### Response
+
+**[*operations.PaginationURLParamsResponse](../../pkg/models/operations/paginationurlparamsresponse.md), error**
+
+### Errors
+
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
+
+
+## PaginationWithRetries
+
+### Example Usage
+
+```go
+package main
+
+import(
+	openapi "openapi/v2"
+	"context"
+	"log"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Pagination.PaginationWithRetries(ctx, nil, nil, nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Res != nil {
+                for {
+            // handle items
+        
+            res, err = res.Next()
+        
+            if err != nil {
+                // handle error
+            }
+        
+            if res == nil {
+                break
+            }
+        }
+        
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `ctx`                                                                | [context.Context](https://pkg.go.dev/context#Context)                | :heavy_check_mark:                                                   | The context to use for the request.                                  |
+| `cursor`                                                             | **string*                                                            | :heavy_minus_sign:                                                   | The page token used to request a specific page of the search results |
+| `faultSettings`                                                      | **string*                                                            | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `requestID`                                                          | **string*                                                            | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `opts`                                                               | [][operations.Option](../../pkg/models/operations/option.md)         | :heavy_minus_sign:                                                   | The options for this request.                                        |
+
+### Response
+
+**[*operations.PaginationWithRetriesResponse](../../pkg/models/operations/paginationwithretriesresponse.md), error**
+
+### Errors
+
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
