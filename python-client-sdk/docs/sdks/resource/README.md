@@ -1,11 +1,14 @@
 # Resource
 (*resource*)
 
+## Overview
+
 ### Available Operations
 
 * [create_file](#create_file)
 * [create_resource](#create_resource)
 * [delete_resource](#delete_resource)
+* [get_array_data_source](#get_array_data_source)
 * [get_resource](#get_resource)
 * [update_resource](#update_resource)
 
@@ -14,29 +17,21 @@
 ### Example Usage
 
 ```python
-import sdk
-from sdk.models import operations, shared
+from openapi import SDK
 
-s = sdk.SDK(
-    security=shared.Security(
-        api_key_auth="Token YOUR_API_KEY",
-    ),
+s = SDK(
+    global_header_param=True,
+    global_hidden_query_param="hello",
     global_path_param=100,
-    global_query_param='some example global query param',
+    global_query_param="some example global query param",
 )
 
-req = operations.CreateFileRequestBody(
-    file=operations.CreateFileFile(
-        content='0xf10df1a3b9'.encode(),
-        file_name='rap_national.mp4v',
-    ),
-)
+res = s.resource.create_file()
 
-res = s.resource.create_file(req)
-
-if res.file_resource is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -44,203 +39,217 @@ if res.file_resource is not None:
 | Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
 | `request`                                                                            | [operations.CreateFileRequestBody](../../models/operations/createfilerequestbody.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-
+| `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
 
 ### Response
 
-**[operations.CreateFileResponse](../../models/operations/createfileresponse.md)**
+**[shared.FileResource](../../models/shared/fileresource.md)**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## create_resource
 
 ### Example Usage
 
 ```python
-import dateutil.parser
-import sdk
-from sdk.models import shared
+from openapi import SDK
+from openapi.models import shared
 
-s = sdk.SDK(
-    security=shared.Security(
-        api_key_auth="Token YOUR_API_KEY",
-    ),
+s = SDK(
+    global_header_param=True,
+    global_hidden_query_param="hello",
     global_path_param=100,
-    global_query_param='some example global query param',
+    global_query_param="some example global query param",
 )
 
-req = shared.ExampleResource(
-    array_of_number=[
-        1867.47,
+res = s.resource.create_resource(request={
+    "chocolates": [
+        {
+            "description": "Digitized asynchronous data-warehouse",
+        },
     ],
-    array_of_string=[
-        'string',
-    ],
-    chocolates=[
-        shared.Chocolates(
-            description='Re-engineered asynchronous array',
-        ),
-    ],
-    id='<ID>',
-    inline_object=shared.InlineObject(),
-    map_of_integer={
-        "key": 271791,
+    "id": "<id>",
+    "name": "<value>",
+    "vehicle": {
+        "length": 1731.99,
+        "name": "<value>",
+        "type": shared.Type.BOAT,
     },
-    map_of_string={
-        "key": 'string',
-    },
-    name='string',
-    shared.ExampleCar(
-        make='string',
-        model='PT Cruiser',
-        name='string',
-        type=shared.ExampleCarType.CAR,
-        year=1259.83,
-    ),
-)
+})
 
-res = s.resource.create_resource(req)
-
-if res.example_resource is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
 
-| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `request`                                                        | [shared.ExampleResource](../../models/shared/exampleresource.md) | :heavy_check_mark:                                               | The request object to use for the request.                       |
-
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [shared.ExampleResource](../../models/shared/exampleresource.md)    | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[operations.CreateResourceResponse](../../models/operations/createresourceresponse.md)**
+**[shared.ExampleResource](../../models/shared/exampleresource.md)**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## delete_resource
 
 ### Example Usage
 
 ```python
-import sdk
-from sdk.models import operations, shared
+from openapi import SDK
 
-s = sdk.SDK(
-    security=shared.Security(
-        api_key_auth="Token YOUR_API_KEY",
-    ),
+s = SDK(
+    global_header_param=True,
+    global_hidden_query_param="hello",
     global_path_param=100,
-    global_query_param='some example global query param',
+    global_query_param="some example global query param",
 )
 
+s.resource.delete_resource(resource_id="<value>")
 
-res = s.resource.delete_resource(resource_id='string')
+# Use the SDK ...
 
-if res.status_code == 200:
-    # handle response
-    pass
 ```
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `resource_id`      | *str*              | :heavy_check_mark: | N/A                |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `resource_id`                                                       | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
-
-### Response
-
-**[operations.DeleteResourceResponse](../../models/operations/deleteresourceresponse.md)**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+
+## get_array_data_source
+
+### Example Usage
+
+```python
+from openapi import SDK
+
+s = SDK(
+    global_header_param=True,
+    global_hidden_query_param="hello",
+    global_path_param=100,
+    global_query_param="some example global query param",
+)
+
+res = s.resource.get_array_data_source(filter_="<value>")
+
+if res is not None:
+    # handle response
+    pass
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `filter_`                                                           | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[List[str]](../../models/.md)**
+
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## get_resource
 
 ### Example Usage
 
 ```python
-import sdk
-from sdk.models import operations, shared
+from openapi import SDK
 
-s = sdk.SDK(
-    security=shared.Security(
-        api_key_auth="Token YOUR_API_KEY",
-    ),
+s = SDK(
+    global_header_param=True,
+    global_hidden_query_param="hello",
     global_path_param=100,
-    global_query_param='some example global query param',
+    global_query_param="some example global query param",
 )
 
+res = s.resource.get_resource(resource_id="<value>")
 
-res = s.resource.get_resource(resource_id='string')
-
-if res.example_resource is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `resource_id`      | *str*              | :heavy_check_mark: | N/A                |
-
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `resource_id`                                                       | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[operations.GetResourceResponse](../../models/operations/getresourceresponse.md)**
+**[shared.ExampleResource](../../models/shared/exampleresource.md)**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## update_resource
 
 ### Example Usage
 
 ```python
-import sdk
-from sdk.models import operations, shared
+from openapi import SDK
 
-s = sdk.SDK(
-    security=shared.Security(
-        api_key_auth="Token YOUR_API_KEY",
-    ),
+s = SDK(
+    global_header_param=True,
+    global_hidden_query_param="hello",
     global_path_param=100,
-    global_query_param='some example global query param',
+    global_query_param="some example global query param",
 )
 
+s.resource.update_resource(augment="<value>", resource_id="<value>")
 
-res = s.resource.update_resource(resource_id='string')
+# Use the SDK ...
 
-if res.status_code == 200:
-    # handle response
-    pass
 ```
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `resource_id`      | *str*              | :heavy_check_mark: | N/A                |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `augment`                                                           | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `resource_id`                                                       | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
-
-### Response
-
-**[operations.UpdateResourceResponse](../../models/operations/updateresourceresponse.md)**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
