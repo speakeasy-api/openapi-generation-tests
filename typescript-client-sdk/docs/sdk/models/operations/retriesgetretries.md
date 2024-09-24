@@ -2,6 +2,15 @@
 
 OK
 
+## Example Usage
+
+```typescript
+import { RetriesGetRetries } from "openapi/sdk/models/operations";
+
+let value: RetriesGetRetries = {
+  retries: 798047,
+};
+```
 
 ## Fields
 
