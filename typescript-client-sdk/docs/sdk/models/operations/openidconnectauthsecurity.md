@@ -1,5 +1,14 @@
 # OpenIdConnectAuthSecurity
 
+## Example Usage
+
+```typescript
+import { OpenIdConnectAuthSecurity } from "openapi/sdk/models/operations";
+
+let value: OpenIdConnectAuthSecurity = {
+  openIdConnect: "Bearer YOUR_OPENID_TOKEN",
+};
+```
 
 ## Fields
 

@@ -5,7 +5,7 @@ OK
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `data`             | *string*           | :heavy_check_mark: | N/A                |
-| `json`             | *string*           | :heavy_check_mark: | N/A                |
+| Field              | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `data`             | *string*           | :heavy_check_mark: | N/A                | "1.1"              |
+| `json`             | *string*           | :heavy_check_mark: | N/A                | 1.1                |
