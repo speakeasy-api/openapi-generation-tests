@@ -1,9 +1,15 @@
 # NullableRequiredEnum
 
+## Example Usage
+
+```typescript
+import { NullableRequiredEnum } from "openapi/sdk/models/operations";
+
+let value: NullableRequiredEnum = "first";
+```
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `First`  | first    |
-| `Second` | second   |
+```typescript
+"first" | "second" | "null"
+```

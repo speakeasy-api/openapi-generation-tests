@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### SimpleObject
+### `shared.SimpleObject`
 
 ```python
-anyT: shared.SimpleObject = /* values here */
+value: shared.SimpleObject = /* values here */
 ```
 
-### 
+### `str`
 
 ```python
-anyT: str = /* values here */
+value: str = /* values here */
 ```
 
