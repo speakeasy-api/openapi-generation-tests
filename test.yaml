@@ -7806,6 +7806,203 @@ paths:
             type: cursor
         outputs:
           nextCursor: $.resultArray[(@.length-1)]
+  /pagination/limitoffset/offset#paginationBodyFlattenedWithSecurity:
+    x-speakeasy-exclude-test-sdk: [csharp,javav2,python,swift]
+    get:
+      operationId: paginationBodyFlattenedWithSecurity
+      x-speakeasy-max-method-params: 20
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          required: true
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          required: true
+      servers:
+        - url: http://localhost:35456
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponse"
+      tags:
+        - pagination
+      security:
+        - paginationAuth: []
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: limit
+            in: parameters
+            type: limit
+          - name: offset
+            in: parameters
+            type: offset
+        outputs:
+          results: $.resultArray
+  /pagination/limitoffset/offset#paginationBodyFlattenedOptionalSecurity:
+    x-speakeasy-exclude-test-sdk: [javav2,csharp,python,swift]
+    get:
+      operationId: paginationBodyFlattenedOptionalSecurity
+      x-speakeasy-max-method-params: 20
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          required: true
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          required: true
+      servers:
+        - url: http://localhost:35456
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponse"
+      tags:
+        - pagination
+      security:
+        - paginationAuth: []
+        - {}
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: limit
+            in: parameters
+            type: limit
+          - name: offset
+            in: parameters
+            type: offset
+        outputs:
+          results: $.resultArray
+  /pagination/limitoffset/page#paginationBodyWrappedRequest:
+    x-speakeasy-exclude-test-sdk: [go,csharp,javav2,python,pythonv2,swift,terraform]
+    put:
+      description: |
+        This operation has a request wrapper type that encapsulates the
+        parameters and request body. The pagination inputs are meant to go in
+        the request body and we want to test that the generator correctly
+        generates the next() function call preserving everything from the
+        original request and interpolating the next pagination inputs.
+      operationId: paginationBodyWrappedRequest
+      x-speakeasy-max-method-params: 0
+      parameters:
+        - name: request-id
+          in: header
+          schema:
+            type: string
+        - name: idempotency-key
+          in: header
+          schema:
+            type: string
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/limitOffsetConfig"
+        required: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponse"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: limit
+            in: requestBody
+            type: limit
+          - name: page
+            in: requestBody
+            type: page
+        outputs:
+          numPages: $.numPages
+  /pagination/cursor#ambiguousInput:
+    x-speakeasy-exclude-test-sdk: [go,csharp,javav2,python,pythonv2,swift,terraform]
+    put:
+      description: |
+        This is a paginated operation where there is both a query parameter and
+        request body field called "cursor". This ambiguity is used to test that
+        the generator only updates the appropriate field in the pagination code
+        "next()" function.
+      operationId: paginationAmbiguousInput
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: cursor
+          in: query
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cursor:
+                  type: integer
+              required:
+                - cursor
+        required: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponse"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: cursor
+        inputs:
+          - name: cursor
+            in: requestBody
+            type: cursor
+        outputs:
+          nextCursor: $.resultArray[(@.length-1)]
+  /pagination/limitoffset/offset#paginationWrappedOptionalBody:
+    x-speakeasy-exclude-test-sdk: [go,csharp,javav2,python,pythonv2,terraform]
+    put:
+      operationId: paginationWrappedOptionalBody
+      x-speakeasy-max-method-params: 0
+      parameters:
+        - name: request-id
+          in: header
+          schema:
+            type: string
+        - name: idempotency-key
+          in: header
+          schema:
+            type: string
+      servers:
+        - url: http://localhost:35456
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponse"
+      tags:
+        - pagination
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/limitOffsetConfig"
+      security:
+        - paginationAuth: []
+        - {}
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: limit
+            in: requestBody
+            type: limit
+          - name: offset
+            in: requestBody
+            type: offset
+        outputs:
+          results: $.resultArray
   /group/first:
     get:
       operationId: groupFirstGet
@@ -9234,6 +9431,11 @@ components:
       scheme: bearer
       x-speakeasy-example: YOUR_JWT
     apiKeyAuthNew:
+      type: apiKey
+      in: header
+      name: x-api-key
+      x-speakeasy-example: Token <YOUR_API_KEY>
+    paginationAuth:
       type: apiKey
       in: header
       name: x-api-key
