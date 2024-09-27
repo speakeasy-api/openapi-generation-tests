@@ -1,11 +1,22 @@
 # PaginationCursorBodyResponse
 
+## Example Usage
+
+```typescript
+import { PaginationCursorBodyResponse } from "openapi/sdk/models/operations";
+
+let value: PaginationCursorBodyResponse = {
+  result: {
+    numPages: 223924,
+    resultArray: [
+      345352,
+    ],
+  },
+};
+```
 
 ## Fields
 
 | Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
 | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `contentType`                                                                                   | *string*                                                                                        | :heavy_check_mark:                                                                              | HTTP response content type for this operation                                                   |
-| `statusCode`                                                                                    | *number*                                                                                        | :heavy_check_mark:                                                                              | HTTP response status code for this operation                                                    |
-| `rawResponse`                                                                                   | [AxiosResponse](https://axios-http.com/docs/res_schema)                                         | :heavy_minus_sign:                                                                              | Raw HTTP response; suitable for custom response parsing                                         |
-| `res`                                                                                           | [operations.PaginationCursorBodyRes](../../../sdk/models/operations/paginationcursorbodyres.md) | :heavy_minus_sign:                                                                              | OK                                                                                              |
+| `result`                                                                                        | [operations.PaginationCursorBodyRes](../../../sdk/models/operations/paginationcursorbodyres.md) | :heavy_check_mark:                                                                              | N/A                                                                                             |

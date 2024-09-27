@@ -1,47 +1,220 @@
 # SDK
 
-
 ## Overview
 
 Some test description.
 About our test document.
 
 Speakeasy Docs
-<https://speakeasyapi.dev/docs/home>
+<https://speakeasy.com/docs>
+
 ### Available Operations
 
-* [putAnythingIgnoredGeneration](#putanythingignoredgeneration)
+* [ambiguousQueryParam](#ambiguousqueryparam) - Tests conflict with C# System namespace
+* [authenticatedRequest](#authenticatedrequest)
+* [conflictingEnum](#conflictingenum) - Test potential namespace conflicts with java.lang.Object
+* [ignoredGenerationPut](#ignoredgenerationput)
+* [multilineExample](#multilineexample)
+* [postAdditionalPropertiesWithNullableFields](#postadditionalpropertieswithnullablefields)
 * [responseBodyJsonGet](#responsebodyjsonget)
 
-## putAnythingIgnoredGeneration
+## ambiguousQueryParam
+
+Tests conflict with C# System namespace
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security(
+    apiKeyAuth: 'Token YOUR_API_KEY',
+);
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
-
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 try {
-'string'
 
-    $response = $sdk->putAnythingIgnoredGeneration($request);
+    $response = $sdk->ambiguousQueryParam(
+        console: Operations\Console::Three
+    );
+
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+} catch (Throwable $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `console`                                                | [Operations\Console](../../Models/Operations/Console.md) | :heavy_check_mark:                                       | N/A                                                      |
+
+### Response
+
+**[?Operations\AmbiguousQueryParamResponse](../../Models/Operations/AmbiguousQueryParamResponse.md)**
+
+### Errors
+
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
+
+
+## authenticatedRequest
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+try {
+    $request = new Operations\AuthenticatedRequestRequestBody();
+    $requestSecurity = new Operations\AuthenticatedRequestSecurity(
+        clientCredentials: '<YOUR_CLIENT_CREDENTIALS_HERE>',
+    );
+    $response = $sdk->authenticatedRequest(
+        request: $request,
+        security: $requestSecurity
+    );
+
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+} catch (Throwable $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                               | [Operations\AuthenticatedRequestRequestBody](../../Models/Operations/AuthenticatedRequestRequestBody.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| `security`                                                                                               | [Operations\AuthenticatedRequestSecurity](../../Models/Operations/AuthenticatedRequestSecurity.md)       | :heavy_check_mark:                                                                                       | The security requirements to use for the request.                                                        |
+
+### Response
+
+**[?Operations\AuthenticatedRequestResponse](../../Models/Operations/AuthenticatedRequestResponse.md)**
+
+### Errors
+
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
+
+
+## conflictingEnum
+
+Test potential namespace conflicts with java.lang.Object
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security(
+    apiKeyAuth: 'Token YOUR_API_KEY',
+);
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
+try {
+    $request = new Shared\ConflictingEnum();
+    $response = $sdk->conflictingEnum(
+        request: $request
+    );
+
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+} catch (Throwable $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `$request`                                                       | [Shared\ConflictingEnum](../../Models/Shared/ConflictingEnum.md) | :heavy_check_mark:                                               | The request object to use for the request.                       |
+
+### Response
+
+**[?Operations\ConflictingEnumResponse](../../Models/Operations/ConflictingEnumResponse.md)**
+
+### Errors
+
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
+
+
+## ignoredGenerationPut
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security(
+    apiKeyAuth: 'Token YOUR_API_KEY',
+);
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
+try {
+    $request = '<value>';
+    $response = $sdk->ignoredGenerationPut(
+        request: $request
+    );
 
     if ($response->object !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
@@ -52,10 +225,127 @@ try {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `$request`                                 | [string](../../.md)                        | :heavy_check_mark:                         | The request object to use for the request. |
 
+### Response
+
+**[?Operations\IgnoredGenerationPutResponse](../../Models/Operations/IgnoredGenerationPutResponse.md)**
+
+### Errors
+
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
+
+
+## multilineExample
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security(
+    apiKeyAuth: 'Token YOUR_API_KEY',
+);
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
+try {
+    $request = new Operations\MultilineExampleRequestBody(
+        message: 'hello
+        there!',
+    );
+    $response = $sdk->multilineExample(
+        request: $request
+    );
+
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+} catch (Throwable $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `$request`                                                                                       | [Operations\MultilineExampleRequestBody](../../Models/Operations/MultilineExampleRequestBody.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\PutAnythingIgnoredGenerationResponse](../../Models/Operations/PutAnythingIgnoredGenerationResponse.md)**
+**[?Operations\MultilineExampleResponse](../../Models/Operations/MultilineExampleResponse.md)**
+
+### Errors
+
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
+
+
+## postAdditionalPropertiesWithNullableFields
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security(
+    apiKeyAuth: 'Token YOUR_API_KEY',
+);
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
+try {
+    $request = [
+        'key' => '<value>',
+    ];
+    $response = $sdk->postAdditionalPropertiesWithNullableFields(
+        request: $request
+    );
+
+    if ($response->object !== null) {
+        // handle response
+    }
+} catch (Throwable $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
+
+### Response
+
+**[?Operations\PostAdditionalPropertiesWithNullableFieldsResponse](../../Models/Operations/PostAdditionalPropertiesWithNullableFieldsResponse.md)**
+
+### Errors
+
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |
 
 
 ## responseBodyJsonGet
@@ -63,34 +353,42 @@ try {
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security(
+    apiKeyAuth: 'Token YOUR_API_KEY',
+);
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
-
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 try {
-    $response = $sdk->responseBodyJsonGet();
+    $response = $sdk->responseBodyJsonGet(
+
+    );
 
     if ($response->httpBinSimpleJsonObject !== null) {
         // handle response
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     // handle exception
 }
 ```
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ResponseBodyJsonGetResponse](../../Models/Operations/ResponseBodyJsonGetResponse.md)**
+**[?Operations\ResponseBodyJsonGetResponse](../../Models/Operations/ResponseBodyJsonGetResponse.md)**
 
+### Errors
+
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| OpenAPI\OpenAPI\Models\Errors.SDKException | 4xx-5xx                                    | */*                                        |

@@ -1,6 +1,5 @@
 # Auth
 
-
 ## Overview
 
 Endpoints for testing authentication.
@@ -22,10 +21,20 @@ Endpoints for testing authentication.
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
+s.config_security(
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
+  )
+)
 
     
 res = s.auth.api_key_auth()
@@ -36,16 +45,11 @@ end
 
 ```
 
-### Parameters
-
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `security`                                                                      | [Operations::ApiKeyAuthSecurity](../../models/operations/apikeyauthsecurity.md) | :heavy_check_mark:                                                              | The security requirements to use for the request.                               |
-
-
 ### Response
 
-**[T.nilable(Operations::ApiKeyAuthResponse)](../../models/operations/apikeyauthresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::ApiKeyAuthResponse)](../../models/operations/apikeyauthresponse.md)**
+
+
 
 
 ## api_key_auth_global
@@ -53,13 +57,18 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
@@ -72,10 +81,11 @@ end
 
 ```
 
-
 ### Response
 
-**[T.nilable(Operations::ApiKeyAuthGlobalResponse)](../../models/operations/apikeyauthglobalresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::ApiKeyAuthGlobalResponse)](../../models/operations/apikeyauthglobalresponse.md)**
+
+
 
 
 ## basic_auth
@@ -83,24 +93,21 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 
-   
-req = Operations::BasicAuthRequest.new(
-  security=Operations::BasicAuthSecurity.new(
-    password="YOUR_PASSWORD",
-    username="YOUR_USERNAME",
-  ),
-  path_params=Operations::BasicAuthRequest.new(
-    passwd="WcNBKmWbsjBqGmg",
-    user="Kara99",
-  ),
-)
     
-res = s.auth.basic_auth(req)
+res = s.auth.basic_auth(::OpenApiSDK::Operations::BasicAuthSecurity.new(
+    password: "YOUR_PASSWORD",
+    username: "YOUR_USERNAME",
+  ), passwd="cBKWsBqmT5r5EcU", user="Verner74")
 
 if ! res.user.nil?
   # handle response
@@ -110,16 +117,17 @@ end
 
 ### Parameters
 
-| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `security`                                                                    | [Operations::BasicAuthSecurity](../../models/operations/basicauthsecurity.md) | :heavy_check_mark:                                                            | The security requirements to use for the request.                             |
-| `passwd`                                                                      | *String*                                                                      | :heavy_check_mark:                                                            | N/A                                                                           |
-| `user`                                                                        | *String*                                                                      | :heavy_check_mark:                                                            | N/A                                                                           |
-
+| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `security`                                                                                  | [::OpenApiSDK::Operations::BasicAuthSecurity](../../models/operations/basicauthsecurity.md) | :heavy_check_mark:                                                                          | The security requirements to use for the request.                                           |
+| `passwd`                                                                                    | *::String*                                                                                  | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `user`                                                                                      | *::String*                                                                                  | :heavy_check_mark:                                                                          | N/A                                                                                         |
 
 ### Response
 
-**[T.nilable(Operations::BasicAuthResponse)](../../models/operations/basicauthresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::BasicAuthResponse)](../../models/operations/basicauthresponse.md)**
+
+
 
 
 ## bearer_auth
@@ -127,13 +135,20 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 
     
-res = s.auth.bearer_auth()
+res = s.auth.bearer_auth(::OpenApiSDK::Operations::BearerAuthSecurity.new(
+    bearer_auth: "YOUR_JWT",
+  ))
 
 if ! res.token.nil?
   # handle response
@@ -143,14 +158,15 @@ end
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `security`                                                                      | [Operations::BearerAuthSecurity](../../models/operations/bearerauthsecurity.md) | :heavy_check_mark:                                                              | The security requirements to use for the request.                               |
-
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `security`                                                                                    | [::OpenApiSDK::Operations::BearerAuthSecurity](../../models/operations/bearerauthsecurity.md) | :heavy_check_mark:                                                                            | The security requirements to use for the request.                                             |
 
 ### Response
 
-**[T.nilable(Operations::BearerAuthResponse)](../../models/operations/bearerauthresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::BearerAuthResponse)](../../models/operations/bearerauthresponse.md)**
+
+
 
 
 ## global_bearer_auth
@@ -158,13 +174,18 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
@@ -177,10 +198,11 @@ end
 
 ```
 
-
 ### Response
 
-**[T.nilable(Operations::GlobalBearerAuthResponse)](../../models/operations/globalbearerauthresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::GlobalBearerAuthResponse)](../../models/operations/globalbearerauthresponse.md)**
+
+
 
 
 ## no_auth
@@ -188,29 +210,30 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
-s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
-  )
-)
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 
     
 res = s.auth.no_auth()
 
-if res.status == 200
+if res.status_code == 200
   # handle response
 end
 
 ```
 
-
 ### Response
 
-**[T.nilable(Operations::NoAuthResponse)](../../models/operations/noauthresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::NoAuthResponse)](../../models/operations/noauthresponse.md)**
+
+
 
 
 ## oauth2_auth
@@ -218,10 +241,20 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
+s.config_security(
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
+  )
+)
 
     
 res = s.auth.oauth2_auth()
@@ -232,16 +265,11 @@ end
 
 ```
 
-### Parameters
-
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `security`                                                                      | [Operations::Oauth2AuthSecurity](../../models/operations/oauth2authsecurity.md) | :heavy_check_mark:                                                              | The security requirements to use for the request.                               |
-
-
 ### Response
 
-**[T.nilable(Operations::Oauth2AuthResponse)](../../models/operations/oauth2authresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::Oauth2AuthResponse)](../../models/operations/oauth2authresponse.md)**
+
+
 
 
 ## oauth2_override
@@ -249,20 +277,23 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
-
-   
-req = Operations::Oauth2OverrideRequest.new(
-  security=Operations::Oauth2OverrideSecurity.new(
-    oauth2="Bearer YOUR_OAUTH2_TOKEN",
-  ),
-  headers=Operations::Oauth2OverrideRequest.new(),
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
+s.config_security(
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
+  )
 )
+
     
-res = s.auth.oauth2_override(req)
+res = s.auth.oauth2_override()
 
 if ! res.token.nil?
   # handle response
@@ -270,16 +301,11 @@ end
 
 ```
 
-### Parameters
-
-| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `security`                                                                              | [Operations::Oauth2OverrideSecurity](../../models/operations/oauth2overridesecurity.md) | :heavy_check_mark:                                                                      | The security requirements to use for the request.                                       |
-
-
 ### Response
 
-**[T.nilable(Operations::Oauth2OverrideResponse)](../../models/operations/oauth2overrideresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::Oauth2OverrideResponse)](../../models/operations/oauth2overrideresponse.md)**
+
+
 
 
 ## open_id_connect_auth
@@ -287,13 +313,20 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 
     
-res = s.auth.open_id_connect_auth()
+res = s.auth.open_id_connect_auth(::OpenApiSDK::Operations::OpenIdConnectAuthSecurity.new(
+    open_id_connect: "Bearer YOUR_OPENID_TOKEN",
+  ))
 
 if ! res.token.nil?
   # handle response
@@ -303,12 +336,12 @@ end
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `security`                                                                                    | [Operations::OpenIdConnectAuthSecurity](../../models/operations/openidconnectauthsecurity.md) | :heavy_check_mark:                                                                            | The security requirements to use for the request.                                             |
-
+| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                  | [::OpenApiSDK::Operations::OpenIdConnectAuthSecurity](../../models/operations/openidconnectauthsecurity.md) | :heavy_check_mark:                                                                                          | The security requirements to use for the request.                                                           |
 
 ### Response
 
-**[T.nilable(Operations::OpenIdConnectAuthResponse)](../../models/operations/openidconnectauthresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::OpenIdConnectAuthResponse)](../../models/operations/openidconnectauthresponse.md)**
+
 
