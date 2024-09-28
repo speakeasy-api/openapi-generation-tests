@@ -12,6 +12,6 @@ deepObjectQueryParamsMapArgs := operations.CreateDeepObjectQueryParamsMapArgsStr
 ### 
 
 ```go
-deepObjectQueryParamsMapArgs := operations.CreateDeepObjectQueryParamsMapArgsArrayOfstr([]string{/* values here */})
+deepObjectQueryParamsMapArgs := operations.CreateDeepObjectQueryParamsMapArgsArrayOfStr([]string{/* values here */})
 ```
 

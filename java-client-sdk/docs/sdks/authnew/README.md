@@ -1,5 +1,5 @@
 # AuthNew
-(*authNew*)
+(*authNew()*)
 
 ## Overview
 
@@ -7,9 +7,9 @@ Endpoints for testing authentication.
 
 ### Available Operations
 
-* [apiKeyAuthGlobalNew](#apikeyauthglobalnew)
 * [authGlobal](#authglobal)
 * [basicAuthNew](#basicauthnew)
+* [customSchemeAppId](#customschemeappid)
 * [multipleMixedOptionsAuth](#multiplemixedoptionsauth)
 * [multipleMixedSchemeAuth](#multiplemixedschemeauth)
 * [multipleOptionsWithMixedSchemesAuth](#multipleoptionswithmixedschemesauth)
@@ -19,66 +19,6 @@ Endpoints for testing authentication.
 * [oauth2AuthNew](#oauth2authnew)
 * [openIdConnectAuthNew](#openidconnectauthnew)
 
-## apiKeyAuthGlobalNew
-
-### Example Usage
-
-```java
-package hello.world;
-
-import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.ApiKeyAuthGlobalNewResponse;
-import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.BasicAuth;
-import org.openapis.openapi.models.shared.HeaderAuth;
-import org.openapis.openapi.models.shared.Security;
-
-public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
-
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
-
-            ApiKeyAuthGlobalNewResponse res = sdk.authNew.apiKeyAuthGlobalNew(req);
-
-            if (res.statusCode == 200) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                  | [org.openapis.openapi.models.shared.AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
-| `serverURL`                                                                                                | *String*                                                                                                   | :heavy_minus_sign:                                                                                         | An optional server URL to use.                                                                             |
-
-
-### Response
-
-**[org.openapis.openapi.models.operations.ApiKeyAuthGlobalNewResponse](../../models/operations/ApiKeyAuthGlobalNewResponse.md)**
-
-
 ## authGlobal
 
 ### Example Usage
@@ -86,57 +26,54 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.AuthGlobalResponse;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.BasicAuth;
-import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        AuthServiceRequestBody req = AuthServiceRequestBody.builder()
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+        AuthGlobalResponse res = sdk.authNew().authGlobal()
+                .request(req)
+                .call();
 
-            AuthGlobalResponse res = sdk.authNew.authGlobal(req);
-
-            if (res.statusCode == 200) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
+        // handle response
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                  | [org.openapis.openapi.models.shared.AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
-| `serverURL`                                                                                                | *String*                                                                                                   | :heavy_minus_sign:                                                                                         | An optional server URL to use.                                                                             |
-
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `request`                                                               | [AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
+| `serverURL`                                                             | *String*                                                                | :heavy_minus_sign:                                                      | An optional server URL to use.                                          |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.AuthGlobalResponse](../../models/operations/AuthGlobalResponse.md)**
+**[AuthGlobalResponse](../../models/operations/AuthGlobalResponse.md)**
+
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 
 ## basicAuthNew
@@ -146,43 +83,35 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.BasicAuthNewResponse;
 import org.openapis.openapi.models.operations.BasicAuthNewSecurity;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.BasicAuth;
-import org.openapis.openapi.models.shared.HeaderAuth;
-import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        AuthServiceRequestBody req = AuthServiceRequestBody.builder()
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+        BasicAuthNewResponse res = sdk.authNew().basicAuthNew()
+                .request(req)
+                .security(BasicAuthNewSecurity.builder()
+                    .password("YOUR_PASSWORD")
+                    .username("YOUR_USERNAME")
+                    .build())
+                .call();
 
-            BasicAuthNewResponse res = sdk.authNew.basicAuthNew(req, new BasicAuthNewSecurity("YOUR_PASSWORD", "YOUR_USERNAME"){{
-                password = "YOUR_PASSWORD";
-                username = "YOUR_USERNAME";
-            }});
-
-            if (res.statusCode == 200) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
+        // handle response
     }
 }
 ```
@@ -191,14 +120,72 @@ public class Application {
 
 | Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
 | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                      | [org.openapis.openapi.models.shared.AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md)     | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
+| `request`                                                                                                      | [AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md)                                        | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
 | `security`                                                                                                     | [org.openapis.openapi.models.operations.BasicAuthNewSecurity](../../models/operations/BasicAuthNewSecurity.md) | :heavy_check_mark:                                                                                             | The security requirements to use for the request.                                                              |
 | `serverURL`                                                                                                    | *String*                                                                                                       | :heavy_minus_sign:                                                                                             | An optional server URL to use.                                                                                 |
 
+### Response
+
+**[BasicAuthNewResponse](../../models/operations/BasicAuthNewResponse.md)**
+
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
+
+## customSchemeAppId
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.CustomSchemeAppIdResponse;
+import org.openapis.openapi.models.operations.CustomSchemeAppIdSecurity;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        CustomSchemeAppIdResponse res = sdk.authNew().customSchemeAppId()
+                .security(CustomSchemeAppIdSecurity.builder()
+                    .password("")
+                    .username("")
+                    .build())
+                .call();
+
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `security`                                                                                                               | [org.openapis.openapi.models.operations.CustomSchemeAppIdSecurity](../../models/operations/CustomSchemeAppIdSecurity.md) | :heavy_check_mark:                                                                                                       | The security requirements to use for the request.                                                                        |
+| `serverURL`                                                                                                              | *String*                                                                                                                 | :heavy_minus_sign:                                                                                                       | An optional server URL to use.                                                                                           |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.BasicAuthNewResponse](../../models/operations/BasicAuthNewResponse.md)**
+**[CustomSchemeAppIdResponse](../../models/operations/CustomSchemeAppIdResponse.md)**
+
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 
 ## multipleMixedOptionsAuth
@@ -208,43 +195,34 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.MultipleMixedOptionsAuthResponse;
 import org.openapis.openapi.models.operations.MultipleMixedOptionsAuthSecurity;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.BasicAuth;
-import org.openapis.openapi.models.shared.HeaderAuth;
-import org.openapis.openapi.models.shared.SchemeBasicAuth;
-import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        AuthServiceRequestBody req = AuthServiceRequestBody.builder()
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+        MultipleMixedOptionsAuthResponse res = sdk.authNew().multipleMixedOptionsAuth()
+                .request(req)
+                .security(MultipleMixedOptionsAuthSecurity.builder()
+                    .apiKeyAuthNew("Token <YOUR_API_KEY>")
+                    .build())
+                .call();
 
-            MultipleMixedOptionsAuthResponse res = sdk.authNew.multipleMixedOptionsAuth(req, new MultipleMixedOptionsAuthSecurity(){{
-                apiKeyAuthNew = "Token <YOUR_API_KEY>";
-            }});
-
-            if (res.statusCode == 200) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
+        // handle response
     }
 }
 ```
@@ -253,14 +231,19 @@ public class Application {
 
 | Parameter                                                                                                                              | Type                                                                                                                                   | Required                                                                                                                               | Description                                                                                                                            |
 | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                              | [org.openapis.openapi.models.shared.AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md)                             | :heavy_check_mark:                                                                                                                     | The request object to use for the request.                                                                                             |
+| `request`                                                                                                                              | [AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md)                                                                | :heavy_check_mark:                                                                                                                     | The request object to use for the request.                                                                                             |
 | `security`                                                                                                                             | [org.openapis.openapi.models.operations.MultipleMixedOptionsAuthSecurity](../../models/operations/MultipleMixedOptionsAuthSecurity.md) | :heavy_check_mark:                                                                                                                     | The security requirements to use for the request.                                                                                      |
 | `serverURL`                                                                                                                            | *String*                                                                                                                               | :heavy_minus_sign:                                                                                                                     | An optional server URL to use.                                                                                                         |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.MultipleMixedOptionsAuthResponse](../../models/operations/MultipleMixedOptionsAuthResponse.md)**
+**[MultipleMixedOptionsAuthResponse](../../models/operations/MultipleMixedOptionsAuthResponse.md)**
+
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 
 ## multipleMixedSchemeAuth
@@ -270,47 +253,39 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.MultipleMixedSchemeAuthResponse;
 import org.openapis.openapi.models.operations.MultipleMixedSchemeAuthSecurity;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.BasicAuth;
-import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.SchemeBasicAuth;
-import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        AuthServiceRequestBody req = AuthServiceRequestBody.builder()
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+        MultipleMixedSchemeAuthResponse res = sdk.authNew().multipleMixedSchemeAuth()
+                .request(req)
+                .security(MultipleMixedSchemeAuthSecurity.builder()
+                    .apiKeyAuthNew("Token <YOUR_API_KEY>")
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("YOUR_PASSWORD")
+                        .username("YOUR_USERNAME")
+                        .build())
+                    .build())
+                .call();
 
-            MultipleMixedSchemeAuthResponse res = sdk.authNew.multipleMixedSchemeAuth(req, new MultipleMixedSchemeAuthSecurity("Token <YOUR_API_KEY>", new SchemeBasicAuth("YOUR_PASSWORD", "YOUR_USERNAME")){{
-                apiKeyAuthNew = "Token <YOUR_API_KEY>";
-                basicAuth = new SchemeBasicAuth("YOUR_PASSWORD", "YOUR_USERNAME"){{
-                    password = "YOUR_PASSWORD";
-                    username = "YOUR_USERNAME";
-                }};
-            }});
-
-            if (res.statusCode == 200) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
+        // handle response
     }
 }
 ```
@@ -319,14 +294,19 @@ public class Application {
 
 | Parameter                                                                                                                            | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                            | [org.openapis.openapi.models.shared.AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md)                           | :heavy_check_mark:                                                                                                                   | The request object to use for the request.                                                                                           |
+| `request`                                                                                                                            | [AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md)                                                              | :heavy_check_mark:                                                                                                                   | The request object to use for the request.                                                                                           |
 | `security`                                                                                                                           | [org.openapis.openapi.models.operations.MultipleMixedSchemeAuthSecurity](../../models/operations/MultipleMixedSchemeAuthSecurity.md) | :heavy_check_mark:                                                                                                                   | The security requirements to use for the request.                                                                                    |
 | `serverURL`                                                                                                                          | *String*                                                                                                                             | :heavy_minus_sign:                                                                                                                   | An optional server URL to use.                                                                                                       |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.MultipleMixedSchemeAuthResponse](../../models/operations/MultipleMixedSchemeAuthResponse.md)**
+**[MultipleMixedSchemeAuthResponse](../../models/operations/MultipleMixedSchemeAuthResponse.md)**
+
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 
 ## multipleOptionsWithMixedSchemesAuth
@@ -336,48 +316,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthResponse;
 import org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthSecurity;
 import org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthSecurityOption1;
-import org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthSecurityOption2;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.BasicAuth;
-import org.openapis.openapi.models.shared.HeaderAuth;
-import org.openapis.openapi.models.shared.SchemeBasicAuth;
-import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        AuthServiceRequestBody req = AuthServiceRequestBody.builder()
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+        MultipleOptionsWithMixedSchemesAuthResponse res = sdk.authNew().multipleOptionsWithMixedSchemesAuth()
+                .request(req)
+                .security(MultipleOptionsWithMixedSchemesAuthSecurity.builder()
+                    .option1(MultipleOptionsWithMixedSchemesAuthSecurityOption1.builder()
+                        .apiKeyAuthNew("Token <YOUR_API_KEY>")
+                        .oauth2("Bearer YOUR_OAUTH2_TOKEN")
+                        .build())
+                    .build())
+                .call();
 
-            MultipleOptionsWithMixedSchemesAuthResponse res = sdk.authNew.multipleOptionsWithMixedSchemesAuth(req, new MultipleOptionsWithMixedSchemesAuthSecurity(){{
-                option1 = new MultipleOptionsWithMixedSchemesAuthSecurityOption1("Token <YOUR_API_KEY>", "Bearer YOUR_OAUTH2_TOKEN"){{
-                    apiKeyAuthNew = "Token <YOUR_API_KEY>";
-                    oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
-                }};
-            }});
-
-            if (res.statusCode == 200) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
+        // handle response
     }
 }
 ```
@@ -386,14 +356,19 @@ public class Application {
 
 | Parameter                                                                                                                                                    | Type                                                                                                                                                         | Required                                                                                                                                                     | Description                                                                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                    | [org.openapis.openapi.models.shared.AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md)                                                   | :heavy_check_mark:                                                                                                                                           | The request object to use for the request.                                                                                                                   |
+| `request`                                                                                                                                                    | [AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md)                                                                                      | :heavy_check_mark:                                                                                                                                           | The request object to use for the request.                                                                                                                   |
 | `security`                                                                                                                                                   | [org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthSecurity](../../models/operations/MultipleOptionsWithMixedSchemesAuthSecurity.md) | :heavy_check_mark:                                                                                                                                           | The security requirements to use for the request.                                                                                                            |
 | `serverURL`                                                                                                                                                  | *String*                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                           | An optional server URL to use.                                                                                                                               |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthResponse](../../models/operations/MultipleOptionsWithMixedSchemesAuthResponse.md)**
+**[MultipleOptionsWithMixedSchemesAuthResponse](../../models/operations/MultipleOptionsWithMixedSchemesAuthResponse.md)**
+
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 
 ## multipleOptionsWithSimpleSchemesAuth
@@ -403,47 +378,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthResponse;
 import org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthSecurity;
 import org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthSecurityOption1;
-import org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthSecurityOption2;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.BasicAuth;
-import org.openapis.openapi.models.shared.HeaderAuth;
-import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        AuthServiceRequestBody req = AuthServiceRequestBody.builder()
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+        MultipleOptionsWithSimpleSchemesAuthResponse res = sdk.authNew().multipleOptionsWithSimpleSchemesAuth()
+                .request(req)
+                .security(MultipleOptionsWithSimpleSchemesAuthSecurity.builder()
+                    .option1(MultipleOptionsWithSimpleSchemesAuthSecurityOption1.builder()
+                        .apiKeyAuthNew("Token <YOUR_API_KEY>")
+                        .oauth2("Bearer YOUR_OAUTH2_TOKEN")
+                        .build())
+                    .build())
+                .call();
 
-            MultipleOptionsWithSimpleSchemesAuthResponse res = sdk.authNew.multipleOptionsWithSimpleSchemesAuth(req, new MultipleOptionsWithSimpleSchemesAuthSecurity(){{
-                option1 = new MultipleOptionsWithSimpleSchemesAuthSecurityOption1("Token <YOUR_API_KEY>", "Bearer YOUR_OAUTH2_TOKEN"){{
-                    apiKeyAuthNew = "Token <YOUR_API_KEY>";
-                    oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
-                }};
-            }});
-
-            if (res.statusCode == 200) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
+        // handle response
     }
 }
 ```
@@ -452,14 +418,19 @@ public class Application {
 
 | Parameter                                                                                                                                                      | Type                                                                                                                                                           | Required                                                                                                                                                       | Description                                                                                                                                                    |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                      | [org.openapis.openapi.models.shared.AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md)                                                     | :heavy_check_mark:                                                                                                                                             | The request object to use for the request.                                                                                                                     |
+| `request`                                                                                                                                                      | [AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md)                                                                                        | :heavy_check_mark:                                                                                                                                             | The request object to use for the request.                                                                                                                     |
 | `security`                                                                                                                                                     | [org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthSecurity](../../models/operations/MultipleOptionsWithSimpleSchemesAuthSecurity.md) | :heavy_check_mark:                                                                                                                                             | The security requirements to use for the request.                                                                                                              |
 | `serverURL`                                                                                                                                                    | *String*                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                             | An optional server URL to use.                                                                                                                                 |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthResponse](../../models/operations/MultipleOptionsWithSimpleSchemesAuthResponse.md)**
+**[MultipleOptionsWithSimpleSchemesAuthResponse](../../models/operations/MultipleOptionsWithSimpleSchemesAuthResponse.md)**
+
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 
 ## multipleSimpleOptionsAuth
@@ -469,42 +440,34 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.MultipleSimpleOptionsAuthResponse;
 import org.openapis.openapi.models.operations.MultipleSimpleOptionsAuthSecurity;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.BasicAuth;
-import org.openapis.openapi.models.shared.HeaderAuth;
-import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        AuthServiceRequestBody req = AuthServiceRequestBody.builder()
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+        MultipleSimpleOptionsAuthResponse res = sdk.authNew().multipleSimpleOptionsAuth()
+                .request(req)
+                .security(MultipleSimpleOptionsAuthSecurity.builder()
+                    .apiKeyAuthNew("Token <YOUR_API_KEY>")
+                    .build())
+                .call();
 
-            MultipleSimpleOptionsAuthResponse res = sdk.authNew.multipleSimpleOptionsAuth(req, new MultipleSimpleOptionsAuthSecurity(){{
-                apiKeyAuthNew = "Token <YOUR_API_KEY>";
-            }});
-
-            if (res.statusCode == 200) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
+        // handle response
     }
 }
 ```
@@ -513,14 +476,19 @@ public class Application {
 
 | Parameter                                                                                                                                | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
 | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                | [org.openapis.openapi.models.shared.AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md)                               | :heavy_check_mark:                                                                                                                       | The request object to use for the request.                                                                                               |
+| `request`                                                                                                                                | [AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md)                                                                  | :heavy_check_mark:                                                                                                                       | The request object to use for the request.                                                                                               |
 | `security`                                                                                                                               | [org.openapis.openapi.models.operations.MultipleSimpleOptionsAuthSecurity](../../models/operations/MultipleSimpleOptionsAuthSecurity.md) | :heavy_check_mark:                                                                                                                       | The security requirements to use for the request.                                                                                        |
 | `serverURL`                                                                                                                              | *String*                                                                                                                                 | :heavy_minus_sign:                                                                                                                       | An optional server URL to use.                                                                                                           |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.MultipleSimpleOptionsAuthResponse](../../models/operations/MultipleSimpleOptionsAuthResponse.md)**
+**[MultipleSimpleOptionsAuthResponse](../../models/operations/MultipleSimpleOptionsAuthResponse.md)**
+
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 
 ## multipleSimpleSchemeAuth
@@ -530,43 +498,35 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.MultipleSimpleSchemeAuthResponse;
 import org.openapis.openapi.models.operations.MultipleSimpleSchemeAuthSecurity;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.BasicAuth;
-import org.openapis.openapi.models.shared.HeaderAuth;
-import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        AuthServiceRequestBody req = AuthServiceRequestBody.builder()
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+        MultipleSimpleSchemeAuthResponse res = sdk.authNew().multipleSimpleSchemeAuth()
+                .request(req)
+                .security(MultipleSimpleSchemeAuthSecurity.builder()
+                    .apiKeyAuthNew("Token <YOUR_API_KEY>")
+                    .oauth2("Bearer YOUR_OAUTH2_TOKEN")
+                    .build())
+                .call();
 
-            MultipleSimpleSchemeAuthResponse res = sdk.authNew.multipleSimpleSchemeAuth(req, new MultipleSimpleSchemeAuthSecurity("Token <YOUR_API_KEY>", "Bearer YOUR_OAUTH2_TOKEN"){{
-                apiKeyAuthNew = "Token <YOUR_API_KEY>";
-                oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
-            }});
-
-            if (res.statusCode == 200) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
+        // handle response
     }
 }
 ```
@@ -575,14 +535,19 @@ public class Application {
 
 | Parameter                                                                                                                              | Type                                                                                                                                   | Required                                                                                                                               | Description                                                                                                                            |
 | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                              | [org.openapis.openapi.models.shared.AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md)                             | :heavy_check_mark:                                                                                                                     | The request object to use for the request.                                                                                             |
+| `request`                                                                                                                              | [AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md)                                                                | :heavy_check_mark:                                                                                                                     | The request object to use for the request.                                                                                             |
 | `security`                                                                                                                             | [org.openapis.openapi.models.operations.MultipleSimpleSchemeAuthSecurity](../../models/operations/MultipleSimpleSchemeAuthSecurity.md) | :heavy_check_mark:                                                                                                                     | The security requirements to use for the request.                                                                                      |
 | `serverURL`                                                                                                                            | *String*                                                                                                                               | :heavy_minus_sign:                                                                                                                     | An optional server URL to use.                                                                                                         |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.MultipleSimpleSchemeAuthResponse](../../models/operations/MultipleSimpleSchemeAuthResponse.md)**
+**[MultipleSimpleSchemeAuthResponse](../../models/operations/MultipleSimpleSchemeAuthResponse.md)**
+
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 
 ## oauth2AuthNew
@@ -592,58 +557,54 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.Oauth2AuthNewResponse;
-import org.openapis.openapi.models.operations.Oauth2AuthNewSecurity;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.BasicAuth;
-import org.openapis.openapi.models.shared.HeaderAuth;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        AuthServiceRequestBody req = AuthServiceRequestBody.builder()
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+        Oauth2AuthNewResponse res = sdk.authNew().oauth2AuthNew()
+                .request(req)
+                .call();
 
-            Oauth2AuthNewResponse res = sdk.authNew.oauth2AuthNew(req, new Oauth2AuthNewSecurity("Bearer YOUR_OAUTH2_TOKEN"){{
-                oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
-            }});
-
-            if (res.statusCode == 200) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
+        // handle response
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                        | [org.openapis.openapi.models.shared.AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md)       | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
-| `security`                                                                                                       | [org.openapis.openapi.models.operations.Oauth2AuthNewSecurity](../../models/operations/Oauth2AuthNewSecurity.md) | :heavy_check_mark:                                                                                               | The security requirements to use for the request.                                                                |
-| `serverURL`                                                                                                      | *String*                                                                                                         | :heavy_minus_sign:                                                                                               | An optional server URL to use.                                                                                   |
-
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `request`                                                               | [AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
+| `serverURL`                                                             | *String*                                                                | :heavy_minus_sign:                                                      | An optional server URL to use.                                          |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.Oauth2AuthNewResponse](../../models/operations/Oauth2AuthNewResponse.md)**
+**[Oauth2AuthNewResponse](../../models/operations/Oauth2AuthNewResponse.md)**
+
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 
 ## openIdConnectAuthNew
@@ -653,42 +614,34 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.OpenIdConnectAuthNewResponse;
 import org.openapis.openapi.models.operations.OpenIdConnectAuthNewSecurity;
 import org.openapis.openapi.models.shared.AuthServiceRequestBody;
-import org.openapis.openapi.models.shared.BasicAuth;
-import org.openapis.openapi.models.shared.HeaderAuth;
-import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        AuthServiceRequestBody req = AuthServiceRequestBody.builder()
                 .build();
 
-            org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new BasicAuth("string", "string");
-                headerAuth = new org.openapis.openapi.models.shared.HeaderAuth[]{{
-                    add(new HeaderAuth("string", "string"){{
-                        expectedValue = "string";
-                        headerName = "string";
-                    }}),
-                }};
-            }};            
+        OpenIdConnectAuthNewResponse res = sdk.authNew().openIdConnectAuthNew()
+                .request(req)
+                .security(OpenIdConnectAuthNewSecurity.builder()
+                    .openIdConnect("Bearer YOUR_OPENID_TOKEN")
+                    .build())
+                .call();
 
-            OpenIdConnectAuthNewResponse res = sdk.authNew.openIdConnectAuthNew(req, new OpenIdConnectAuthNewSecurity("Bearer YOUR_OPENID_TOKEN"){{
-                openIdConnect = "Bearer YOUR_OPENID_TOKEN";
-            }});
-
-            if (res.statusCode == 200) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
+        // handle response
     }
 }
 ```
@@ -697,12 +650,16 @@ public class Application {
 
 | Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                      | [org.openapis.openapi.models.shared.AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md)                     | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
+| `request`                                                                                                                      | [AuthServiceRequestBody](../../models/shared/AuthServiceRequestBody.md)                                                        | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
 | `security`                                                                                                                     | [org.openapis.openapi.models.operations.OpenIdConnectAuthNewSecurity](../../models/operations/OpenIdConnectAuthNewSecurity.md) | :heavy_check_mark:                                                                                                             | The security requirements to use for the request.                                                                              |
 | `serverURL`                                                                                                                    | *String*                                                                                                                       | :heavy_minus_sign:                                                                                                             | An optional server URL to use.                                                                                                 |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.OpenIdConnectAuthNewResponse](../../models/operations/OpenIdConnectAuthNewResponse.md)**
+**[OpenIdConnectAuthNewResponse](../../models/operations/OpenIdConnectAuthNewResponse.md)**
 
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

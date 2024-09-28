@@ -1,5 +1,5 @@
 # Documentation
-(*documentation*)
+(*documentation()*)
 
 ## Overview
 
@@ -18,30 +18,30 @@ Gets documentation for some language, I guess.
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.GetDocumentationPerLanguageRequest;
 import org.openapis.openapi.models.operations.GetDocumentationPerLanguageResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            GetDocumentationPerLanguageResponse res = sdk.documentation.getDocumentationPerLanguage("string");
+    public static void main(String[] args) throws Exception {
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        GetDocumentationPerLanguageResponse res = sdk.documentation().getDocumentationPerLanguage()
+                .language("<value>")
+                .call();
+
+        // handle response
     }
 }
 ```
@@ -52,8 +52,12 @@ public class Application {
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
 | `language`                                | *String*                                  | :heavy_check_mark:                        | The language parameter for this endpoint. |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.GetDocumentationPerLanguageResponse](../../models/operations/GetDocumentationPerLanguageResponse.md)**
+**[GetDocumentationPerLanguageResponse](../../models/operations/GetDocumentationPerLanguageResponse.md)**
 
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
