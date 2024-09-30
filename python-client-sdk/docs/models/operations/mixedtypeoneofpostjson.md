@@ -3,21 +3,21 @@
 
 ## Supported Types
 
-### 
+### `str`
 
 ```python
-mixedTypeOneOfPostJSON: str = /* values here */
+value: str = /* values here */
 ```
 
-### 
+### `int`
 
 ```python
-mixedTypeOneOfPostJSON: int = /* values here */
+value: int = /* values here */
 ```
 
-### SimpleObject
+### `shared.SimpleObject`
 
 ```python
-mixedTypeOneOfPostJSON: shared.SimpleObject = /* values here */
+value: shared.SimpleObject = /* values here */
 ```
 
