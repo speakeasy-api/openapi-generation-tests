@@ -5,5 +5,5 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `callbackUrl`      | *String*           | :heavy_minus_sign: | N/A                |
-| `testProp`         | *String*           | :heavy_minus_sign: | N/A                |
+| `callbackUrl`      | *Optional<String>* | :heavy_minus_sign: | N/A                |
+| `testProp`         | *Optional<String>* | :heavy_minus_sign: | N/A                |

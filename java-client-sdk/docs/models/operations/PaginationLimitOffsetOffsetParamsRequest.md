@@ -5,5 +5,5 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `limit`            | *Long*             | :heavy_minus_sign: | N/A                |
-| `offset`           | *Long*             | :heavy_minus_sign: | N/A                |
+| `limit`            | *Optional<Long>*   | :heavy_minus_sign: | N/A                |
+| `offset`           | *Optional<Long>*   | :heavy_minus_sign: | N/A                |
