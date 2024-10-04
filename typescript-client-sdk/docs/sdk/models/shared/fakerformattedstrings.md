@@ -2,6 +2,13 @@
 
 A set of strings with format values that lead to relevant examples being generated for them
 
+## Example Usage
+
+```typescript
+import { FakerFormattedStrings } from "openapi/sdk/models/shared";
+
+let value: FakerFormattedStrings = {};
+```
 
 ## Fields
 

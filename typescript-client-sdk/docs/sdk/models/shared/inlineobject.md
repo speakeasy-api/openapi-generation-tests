@@ -1,5 +1,12 @@
 # InlineObject
 
+## Example Usage
+
+```typescript
+import { InlineObject } from "openapi/sdk/models/shared";
+
+let value: InlineObject = {};
+```
 
 ## Fields
 

@@ -7,4 +7,4 @@ OK
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `url`              | *String*           | :heavy_minus_sign: | N/A                |
+| `url`              | *Optional<String>* | :heavy_minus_sign: | N/A                |
