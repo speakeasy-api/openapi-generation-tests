@@ -1,5 +1,12 @@
 # IgnoredGenerationGetNotIgnoredCallbackRequestBody
 
+## Example Usage
+
+```typescript
+import { IgnoredGenerationGetNotIgnoredCallbackRequestBody } from "openapi/sdk/models/callbacks";
+
+let value: IgnoredGenerationGetNotIgnoredCallbackRequestBody = {};
+```
 
 ## Fields
 
