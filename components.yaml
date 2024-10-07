@@ -1389,6 +1389,11 @@ components:
       required:
         - tag
         - error
+    teapotJSONError:
+      type: object
+      properties:
+        message:
+          type: string
     complexNumberTypes:
       type: object
       properties:
