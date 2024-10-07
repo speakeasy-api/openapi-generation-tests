@@ -2,12 +2,16 @@
 
 A string based enum
 
+## Example Usage
+
+```typescript
+import { Enum } from "openapi/sdk/models/shared";
+
+let value: Enum = "one";
+```
 
 ## Values
 
-| Name          | Value         |
-| ------------- | ------------- |
-| `One`         | one           |
-| `Two`         | two           |
-| `Three`       | three         |
-| `FourAndMore` | four_and_more |
+```typescript
+"one" | "two" | "three" | "four_and_more"
+```
