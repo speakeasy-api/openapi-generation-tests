@@ -7,4 +7,4 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `str`              | *String*           | :heavy_minus_sign: | N/A                |
+| `str`              | *Optional<String>* | :heavy_minus_sign: | N/A                |
