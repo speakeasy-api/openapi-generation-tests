@@ -1,0 +1,11 @@
+# CustomClientPostRequest
+
+
+## Fields
+
+| Field                                                       | Type                                                        | Required                                                    | Description                                                 | Example                                                     |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| `headerParam`                                               | *string*                                                    | :heavy_check_mark:                                          | N/A                                                         | headerValue                                                 |
+| `pathParam`                                                 | *string*                                                    | :heavy_check_mark:                                          | N/A                                                         | pathValue                                                   |
+| `queryStringParam`                                          | *string*                                                    | :heavy_check_mark:                                          | N/A                                                         | queryValue                                                  |
+| `simpleObject`                                              | [?Shared\SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_minus_sign:                                          | N/A                                                         |                                                             |

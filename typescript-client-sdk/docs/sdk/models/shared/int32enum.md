@@ -2,11 +2,16 @@
 
 An int32 enum property.
 
+## Example Usage
+
+```typescript
+import { Int32Enum } from "openapi/sdk/models/shared";
+
+let value: Int32Enum = 55;
+```
 
 ## Values
 
-| Name                     | Value                    |
-| ------------------------ | ------------------------ |
-| `FiftyFive`              | 55                       |
-| `SixtyNine`              | 69                       |
-| `OneHundredAndEightyOne` | 181                      |
+```typescript
+55 | 69 | 181
+```
