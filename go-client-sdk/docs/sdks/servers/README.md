@@ -22,17 +22,15 @@ Endpoints for testing servers.
 package main
 
 import(
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
@@ -42,8 +40,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -51,17 +48,20 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
 ### Response
 
 **[*operations.SelectGlobalServerResponse](../../pkg/models/operations/selectglobalserverresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## SelectServerWithID
 
@@ -73,17 +73,15 @@ Select a server by ID.
 package main
 
 import(
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
@@ -93,8 +91,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -107,13 +104,15 @@ func main() {
 | `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
 | `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
-
 ### Response
 
 **[*operations.SelectServerWithIDResponse](../../pkg/models/operations/selectserverwithidresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## ServerWithProtocolTemplate
 
@@ -123,17 +122,15 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
@@ -143,8 +140,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -157,13 +153,15 @@ func main() {
 | `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
 | `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
-
 ### Response
 
 **[*operations.ServerWithProtocolTemplateResponse](../../pkg/models/operations/serverwithprotocoltemplateresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## ServerWithTemplates
 
@@ -173,17 +171,15 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
@@ -193,8 +189,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -207,13 +202,15 @@ func main() {
 | `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
 | `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
-
 ### Response
 
 **[*operations.ServerWithTemplatesResponse](../../pkg/models/operations/serverwithtemplatesresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## ServerWithTemplatesGlobal
 
@@ -223,17 +220,15 @@ func main() {
 package main
 
 import(
+	openapi "openapi/v2"
 	"context"
 	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 )
 
 func main() {
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
@@ -243,57 +238,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-
-
-### Response
-
-**[*operations.ServerWithTemplatesGlobalResponse](../../pkg/models/operations/serverwithtemplatesglobalresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
-
-## ServersByIDWithTemplates
-
-### Example Usage
-
-```go
-package main
-
-import(
-	"context"
-	"log"
-	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-)
-
-func main() {
-    s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
-        openapi.WithGlobalPathParam(100),
-        openapi.WithGlobalQueryParam("some example global query param"),
-    )
-
-    ctx := context.Background()
-    res, err := s.Servers.ServersByIDWithTemplates(ctx)
-    if err != nil {
-        log.Fatal(err)
-    }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -306,10 +251,61 @@ func main() {
 | `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
 | `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
+### Response
+
+**[*operations.ServerWithTemplatesGlobalResponse](../../pkg/models/operations/serverwithtemplatesglobalresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## ServersByIDWithTemplates
+
+### Example Usage
+
+```go
+package main
+
+import(
+	openapi "openapi/v2"
+	"context"
+	"log"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Servers.ServersByIDWithTemplates(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
 ### Response
 
 **[*operations.ServersByIDWithTemplatesResponse](../../pkg/models/operations/serversbyidwithtemplatesresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
