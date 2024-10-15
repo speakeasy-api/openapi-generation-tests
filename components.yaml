@@ -188,6 +188,7 @@ components:
             properties:
               foo:
                 type: string
+          x-speakeasy-name-override: foos
         - type: array
           items:
             type: object

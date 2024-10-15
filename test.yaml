@@ -6724,8 +6724,7 @@ paths:
                   - json
   /anything/unionOfArrays:
     post:
-      # TODO: add Javav2 testgen after this is fixed: https://linear.app/speakeasy/issue/SPE-4051/bug-union-of-arrays-breaks-java-sdks
-      x-speakeasy-test: [typescriptv2, pythonv2, go]
+      x-speakeasy-test: [typescriptv2, pythonv2, go, javav2]
       x-speakeasy-test-internal-id: unions-union-array
       operationId: unionOfArraysPost
       tags:
