@@ -1,5 +1,17 @@
 # HeaderParamsPrimitiveHeaders
 
+## Example Usage
+
+```typescript
+import { HeaderParamsPrimitiveHeaders } from "openapi/sdk/models/operations";
+
+let value: HeaderParamsPrimitiveHeaders = {
+  xHeaderBoolean: "true",
+  xHeaderInteger: "1",
+  xHeaderNumber: "1.1",
+  xHeaderString: "test",
+};
+```
 
 ## Fields
 
