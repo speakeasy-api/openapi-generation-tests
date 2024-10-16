@@ -1,5 +1,2 @@
 # Nest
 (*nest*)
-
-### Available Operations
-
