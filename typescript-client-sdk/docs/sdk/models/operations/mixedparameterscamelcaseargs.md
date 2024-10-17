@@ -1,5 +1,14 @@
 # MixedParametersCamelCaseArgs
 
+## Example Usage
+
+```typescript
+import { MixedParametersCamelCaseArgs } from "openapi/sdk/models/operations";
+
+let value: MixedParametersCamelCaseArgs = {
+  queryStringParam: "queryValue",
+};
+```
 
 ## Fields
 
