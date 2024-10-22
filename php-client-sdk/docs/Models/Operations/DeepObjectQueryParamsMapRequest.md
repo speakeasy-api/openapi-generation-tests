@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field                          | Type                           | Required                       | Description                    | Example                        |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `mapParam`                     | array<string, *string*>        | :heavy_check_mark:             | N/A                            | [object Object]                |
-| `mapArrParam`                  | array<string, array<*string*>> | :heavy_minus_sign:             | N/A                            | [object Object]                |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    | Example                                                        |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `mapParam`                                                     | array<string, *string*>                                        | :heavy_check_mark:                                             | N/A                                                            | {<br/>"test": "value",<br/>"test2": "value2"<br/>}             |
+| `mapArrParam`                                                  | array<string, array<*string*>>                                 | :heavy_minus_sign:                                             | N/A                                                            | {<br/>"test": [<br/>"test",<br/>"test2"<br/>],<br/>"test2": [<br/>"test3",<br/>"test4"<br/>]<br/>} |
