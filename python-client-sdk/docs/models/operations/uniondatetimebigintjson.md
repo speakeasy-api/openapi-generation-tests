@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### 
+### `datetime`
 
 ```python
-unionDateTimeBigIntJSON: datetime = /* values here */
+value: datetime = /* values here */
 ```
 
-### 
+### `int`
 
 ```python
-unionDateTimeBigIntJSON: int = /* values here */
+value: int = /* values here */
 ```
 

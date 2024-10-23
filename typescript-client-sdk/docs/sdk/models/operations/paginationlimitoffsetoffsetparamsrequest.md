@@ -1,5 +1,12 @@
 # PaginationLimitOffsetOffsetParamsRequest
 
+## Example Usage
+
+```typescript
+import { PaginationLimitOffsetOffsetParamsRequest } from "openapi/sdk/models/operations";
+
+let value: PaginationLimitOffsetOffsetParamsRequest = {};
+```
 
 ## Fields
 
