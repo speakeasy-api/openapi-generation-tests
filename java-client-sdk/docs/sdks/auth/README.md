@@ -1,5 +1,5 @@
 # Auth
-(*auth*)
+(*auth()*)
 
 ## Overview
 
@@ -24,44 +24,44 @@ Endpoints for testing authentication.
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.ApiKeyAuthResponse;
-import org.openapis.openapi.models.operations.ApiKeyAuthSecurity;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            ApiKeyAuthResponse res = sdk.auth.apiKeyAuth(new ApiKeyAuthSecurity("Token YOUR_API_KEY"){{
-                apiKeyAuth = "Token YOUR_API_KEY";
-            }});
+    public static void main(String[] args) throws Exception {
 
-            if (res.token != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        ApiKeyAuthResponse res = sdk.auth().apiKeyAuth()
+                .call();
+
+        if (res.token().isPresent()) {
+            // handle response
         }
     }
 }
 ```
 
-### Parameters
-
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                 | [org.openapis.openapi.models.operations.ApiKeyAuthSecurity](../../models/operations/ApiKeyAuthSecurity.md) | :heavy_check_mark:                                                                                         | The security requirements to use for the request.                                                          |
-
-
 ### Response
 
-**[org.openapis.openapi.models.operations.ApiKeyAuthResponse](../../models/operations/ApiKeyAuthResponse.md)**
+**[ApiKeyAuthResponse](../../models/operations/ApiKeyAuthResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## apiKeyAuthGlobal
 
@@ -70,38 +70,44 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.ApiKeyAuthGlobalResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            ApiKeyAuthGlobalResponse res = sdk.auth.apiKeyAuthGlobal();
+    public static void main(String[] args) throws Exception {
 
-            if (res.token != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        ApiKeyAuthGlobalResponse res = sdk.auth().apiKeyAuthGlobal()
+                .call();
+
+        if (res.token().isPresent()) {
+            // handle response
         }
     }
 }
 ```
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.ApiKeyAuthGlobalResponse](../../models/operations/ApiKeyAuthGlobalResponse.md)**
+**[ApiKeyAuthGlobalResponse](../../models/operations/ApiKeyAuthGlobalResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## basicAuth
 
@@ -110,30 +116,33 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.BasicAuthRequest;
 import org.openapis.openapi.models.operations.BasicAuthResponse;
 import org.openapis.openapi.models.operations.BasicAuthSecurity;
-import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            BasicAuthResponse res = sdk.auth.basicAuth(new BasicAuthSecurity("YOUR_PASSWORD", "YOUR_USERNAME"){{
-                password = "YOUR_PASSWORD";
-                username = "YOUR_USERNAME";
-            }}, "string", "string");
+    public static void main(String[] args) throws Exception {
 
-            if (res.user != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        SDK sdk = SDK.builder()
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        BasicAuthResponse res = sdk.auth().basicAuth()
+                .security(BasicAuthSecurity.builder()
+                    .password("YOUR_PASSWORD")
+                    .username("YOUR_USERNAME")
+                    .build())
+                .passwd("cBKWsBqmT5r5EcU")
+                .user("Verner74")
+                .call();
+
+        if (res.user().isPresent()) {
+            // handle response
         }
     }
 }
@@ -147,11 +156,15 @@ public class Application {
 | `passwd`                                                                                                 | *String*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
 | `user`                                                                                                   | *String*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.BasicAuthResponse](../../models/operations/BasicAuthResponse.md)**
+**[BasicAuthResponse](../../models/operations/BasicAuthResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## bearerAuth
 
@@ -160,28 +173,30 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.BearerAuthResponse;
 import org.openapis.openapi.models.operations.BearerAuthSecurity;
-import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            BearerAuthResponse res = sdk.auth.bearerAuth(new BearerAuthSecurity("YOUR_JWT"){{
-                bearerAuth = "YOUR_JWT";
-            }});
+    public static void main(String[] args) throws Exception {
 
-            if (res.token != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        SDK sdk = SDK.builder()
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        BearerAuthResponse res = sdk.auth().bearerAuth()
+                .security(BearerAuthSecurity.builder()
+                    .bearerAuth("YOUR_JWT")
+                    .build())
+                .call();
+
+        if (res.token().isPresent()) {
+            // handle response
         }
     }
 }
@@ -193,11 +208,15 @@ public class Application {
 | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | `security`                                                                                                 | [org.openapis.openapi.models.operations.BearerAuthSecurity](../../models/operations/BearerAuthSecurity.md) | :heavy_check_mark:                                                                                         | The security requirements to use for the request.                                                          |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.BearerAuthResponse](../../models/operations/BearerAuthResponse.md)**
+**[BearerAuthResponse](../../models/operations/BearerAuthResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## globalBearerAuth
 
@@ -206,38 +225,44 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.GlobalBearerAuthResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            GlobalBearerAuthResponse res = sdk.auth.globalBearerAuth();
+    public static void main(String[] args) throws Exception {
 
-            if (res.token != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        GlobalBearerAuthResponse res = sdk.auth().globalBearerAuth()
+                .call();
+
+        if (res.token().isPresent()) {
+            // handle response
         }
     }
 }
 ```
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.GlobalBearerAuthResponse](../../models/operations/GlobalBearerAuthResponse.md)**
+**[GlobalBearerAuthResponse](../../models/operations/GlobalBearerAuthResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## noAuth
 
@@ -246,38 +271,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.NoAuthResponse;
-import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            NoAuthResponse res = sdk.auth.noAuth();
+    public static void main(String[] args) throws Exception {
 
-            if (res.statusCode == 200) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
+        SDK sdk = SDK.builder()
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        NoAuthResponse res = sdk.auth().noAuth()
+                .call();
+
+        // handle response
     }
 }
 ```
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.NoAuthResponse](../../models/operations/NoAuthResponse.md)**
+**[NoAuthResponse](../../models/operations/NoAuthResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## oauth2Auth
 
@@ -286,44 +311,44 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.Oauth2AuthResponse;
-import org.openapis.openapi.models.operations.Oauth2AuthSecurity;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            Oauth2AuthResponse res = sdk.auth.oauth2Auth(new Oauth2AuthSecurity("Bearer YOUR_OAUTH2_TOKEN"){{
-                oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
-            }});
+    public static void main(String[] args) throws Exception {
 
-            if (res.token != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        Oauth2AuthResponse res = sdk.auth().oauth2Auth()
+                .call();
+
+        if (res.token().isPresent()) {
+            // handle response
         }
     }
 }
 ```
 
-### Parameters
-
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                 | [org.openapis.openapi.models.operations.Oauth2AuthSecurity](../../models/operations/Oauth2AuthSecurity.md) | :heavy_check_mark:                                                                                         | The security requirements to use for the request.                                                          |
-
-
 ### Response
 
-**[org.openapis.openapi.models.operations.Oauth2AuthResponse](../../models/operations/Oauth2AuthResponse.md)**
+**[Oauth2AuthResponse](../../models/operations/Oauth2AuthResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## oauth2Override
 
@@ -332,45 +357,44 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.Oauth2OverrideRequest;
 import org.openapis.openapi.models.operations.Oauth2OverrideResponse;
-import org.openapis.openapi.models.operations.Oauth2OverrideSecurity;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            Oauth2OverrideResponse res = sdk.auth.oauth2Override(new Oauth2OverrideSecurity("Bearer YOUR_OAUTH2_TOKEN"){{
-                oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
-            }});
+    public static void main(String[] args) throws Exception {
 
-            if (res.token != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        Oauth2OverrideResponse res = sdk.auth().oauth2Override()
+                .call();
+
+        if (res.token().isPresent()) {
+            // handle response
         }
     }
 }
 ```
 
-### Parameters
-
-| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `security`                                                                                                         | [org.openapis.openapi.models.operations.Oauth2OverrideSecurity](../../models/operations/Oauth2OverrideSecurity.md) | :heavy_check_mark:                                                                                                 | The security requirements to use for the request.                                                                  |
-
-
 ### Response
 
-**[org.openapis.openapi.models.operations.Oauth2OverrideResponse](../../models/operations/Oauth2OverrideResponse.md)**
+**[Oauth2OverrideResponse](../../models/operations/Oauth2OverrideResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## openIdConnectAuth
 
@@ -379,28 +403,30 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.OpenIdConnectAuthResponse;
 import org.openapis.openapi.models.operations.OpenIdConnectAuthSecurity;
-import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            OpenIdConnectAuthResponse res = sdk.auth.openIdConnectAuth(new OpenIdConnectAuthSecurity("Bearer YOUR_OPENID_TOKEN"){{
-                openIdConnect = "Bearer YOUR_OPENID_TOKEN";
-            }});
+    public static void main(String[] args) throws Exception {
 
-            if (res.token != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        SDK sdk = SDK.builder()
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        OpenIdConnectAuthResponse res = sdk.auth().openIdConnectAuth()
+                .security(OpenIdConnectAuthSecurity.builder()
+                    .openIdConnect("Bearer YOUR_OPENID_TOKEN")
+                    .build())
+                .call();
+
+        if (res.token().isPresent()) {
+            // handle response
         }
     }
 }
@@ -412,8 +438,12 @@ public class Application {
 | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
 | `security`                                                                                                               | [org.openapis.openapi.models.operations.OpenIdConnectAuthSecurity](../../models/operations/OpenIdConnectAuthSecurity.md) | :heavy_check_mark:                                                                                                       | The security requirements to use for the request.                                                                        |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.OpenIdConnectAuthResponse](../../models/operations/OpenIdConnectAuthResponse.md)**
+**[OpenIdConnectAuthResponse](../../models/operations/OpenIdConnectAuthResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
