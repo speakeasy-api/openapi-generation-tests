@@ -1,0 +1,9 @@
+# ErrorType2
+
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `RawResponse`                                                                                                        | [HttpResponseMessage](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpresponsemessage?view=net-5.0) | :heavy_minus_sign:                                                                                                   | Raw HTTP response; suitable for custom response parsing                                                              |
+| `Error`                                                                                                              | [SchemasError](../../Models/Errors/SchemasError.md)                                                                  | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
