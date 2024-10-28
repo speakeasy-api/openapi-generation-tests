@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### SimpleObjectCamelCase
+### `shared.SimpleObjectCamelCase`
 
 ```python
-anyVal: shared.SimpleObjectCamelCase = /* values here */
+value: shared.SimpleObjectCamelCase = /* values here */
 ```
 
-### 
+### `str`
 
 ```python
-anyVal: str = /* values here */
+value: str = /* values here */
 ```
 
