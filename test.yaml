@@ -5037,6 +5037,30 @@ paths:
                 required:
                   - url
                   - args
+  /anything/flattening/requiredBodyAllOptional:
+    post:
+      operationId: requiredBodyAllOptional
+      tags:
+        - flattening
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/objWithOptionalProperties"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/objWithOptionalProperties"
+                required:
+                  - json
   /anything/conflictingEnum/:
     post:
       operationId: conflictingEnum

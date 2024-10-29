@@ -1630,6 +1630,13 @@ components:
             type: integer
       additionalProperties:
         $ref: "components.yaml#/components/schemas/simpleObject"
+    objWithOptionalProperties:
+      type: object
+      properties:
+        optStr:
+          type: string
+        optInt:
+          type: integer
     jsonEvent:
       description: Represents a single event in a json stream
       type: object
