@@ -1,5 +1,14 @@
 # ArrayCircularReferenceObject
 
+## Example Usage
+
+```typescript
+import { ArrayCircularReferenceObject } from "openapi/sdk/models/shared";
+
+let value: ArrayCircularReferenceObject = {
+  circular: [],
+};
+```
 
 ## Fields
 
