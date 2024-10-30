@@ -1,5 +1,14 @@
 # PaginationCursorParamsRequest
 
+## Example Usage
+
+```typescript
+import { PaginationCursorParamsRequest } from "openapi/sdk/models/operations";
+
+let value: PaginationCursorParamsRequest = {
+  cursor: 696344,
+};
+```
 
 ## Fields
 
