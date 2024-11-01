@@ -15,71 +15,74 @@ Endpoints for testing telemetry.
 ### Example Usage
 
 ```python
-import sdk
-from sdk.models import operations, shared
+from openapi import SDK
 
-s = sdk.SDK(
-    security=shared.Security(
-        api_key_auth="Token YOUR_API_KEY",
-    ),
+s = SDK(
+    global_header_param=True,
+    global_hidden_query_param="hello",
     global_path_param=100,
-    global_query_param='some example global query param',
+    global_query_param="some example global query param",
 )
 
+res = s.telemetry.telemetry_speakeasy_user_agent_get(user_agent="<value>")
 
-res = s.telemetry.telemetry_speakeasy_user_agent_get(user_agent='string')
-
-if res.res is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `user_agent`       | *str*              | :heavy_check_mark: | N/A                |
-
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `user_agent`                                                        | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[operations.TelemetrySpeakeasyUserAgentGetResponse](../../models/operations/telemetryspeakeasyuseragentgetresponse.md)**
+**[operations.TelemetrySpeakeasyUserAgentGetRes](../../models/operations/telemetryspeakeasyuseragentgetres.md)**
+
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## telemetry_user_agent_get
 
 ### Example Usage
 
 ```python
-import sdk
-from sdk.models import shared
+from openapi import SDK
 
-s = sdk.SDK(
-    security=shared.Security(
-        api_key_auth="Token YOUR_API_KEY",
-    ),
+s = SDK(
+    global_header_param=True,
+    global_hidden_query_param="hello",
     global_path_param=100,
-    global_query_param='some example global query param',
+    global_query_param="some example global query param",
 )
-
 
 res = s.telemetry.telemetry_user_agent_get()
 
-if res.res is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[operations.TelemetryUserAgentGetResponse](../../models/operations/telemetryuseragentgetresponse.md)**
+**[operations.TelemetryUserAgentGetRes](../../models/operations/telemetryuseragentgetres.md)**
+
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
