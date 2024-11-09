@@ -1,49 +1,225 @@
 # SDK
 
-
 ## Overview
 
 Some test description.
 About our test document.
 
 Speakeasy Docs
-<https://speakeasyapi.dev/docs/home>
+<https://speakeasy.com/docs>
+
 ### Available Operations
 
-* [putAnythingIgnoredGeneration](#putanythingignoredgeneration)
+* [ambiguousQueryParam](#ambiguousqueryparam) - Tests conflict with C# System namespace
+* [authenticatedRequest](#authenticatedrequest)
+* [conflictingEnum](#conflictingenum) - Test potential namespace conflicts with java.lang.Object
+* [ignoredGenerationPut](#ignoredgenerationput)
+* [multilineExample](#multilineexample)
+* [postAdditionalPropertiesWithNullableFields](#postadditionalpropertieswithnullablefields)
 * [responseBodyJsonGet](#responsebodyjsonget)
 
-## putAnythingIgnoredGeneration
+## ambiguousQueryParam
+
+Tests conflict with C# System namespace
 
 ### Example Usage
 
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.PutAnythingIgnoredGenerationResponse;
+import org.openapis.openapi.models.operations.AmbiguousQueryParamResponse;
+import org.openapis.openapi.models.operations.Console;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        AmbiguousQueryParamResponse res = sdk.ambiguousQueryParam()
+                .console(Console.THREE)
+                .call();
+
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                     | Type                                          | Required                                      | Description                                   |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| `console`                                     | [Console](../../models/operations/Console.md) | :heavy_check_mark:                            | N/A                                           |
+
+### Response
+
+**[AmbiguousQueryParamResponse](../../models/operations/AmbiguousQueryParamResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## authenticatedRequest
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.AuthenticatedRequestRequestBody;
+import org.openapis.openapi.models.operations.AuthenticatedRequestResponse;
+import org.openapis.openapi.models.operations.AuthenticatedRequestSecurity;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        AuthenticatedRequestRequestBody req = AuthenticatedRequestRequestBody.builder()
                 .build();
 
-            org.openapis.openapi.models.. req = "string";            
+        AuthenticatedRequestResponse res = sdk.authenticatedRequest()
+                .request(req)
+                .security(AuthenticatedRequestSecurity.builder()
+                    .clientCredentials("<YOUR_CLIENT_CREDENTIALS_HERE>")
+                    .build())
+                .call();
 
-            PutAnythingIgnoredGenerationResponse res = sdk.putAnythingIgnoredGeneration(req);
+        // handle response
+    }
+}
+```
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+### Parameters
+
+| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                      | [AuthenticatedRequestRequestBody](../../models/operations/AuthenticatedRequestRequestBody.md)                                  | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
+| `security`                                                                                                                     | [org.openapis.openapi.models.operations.AuthenticatedRequestSecurity](../../models/operations/AuthenticatedRequestSecurity.md) | :heavy_check_mark:                                                                                                             | The security requirements to use for the request.                                                                              |
+
+### Response
+
+**[AuthenticatedRequestResponse](../../models/operations/AuthenticatedRequestResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## conflictingEnum
+
+Test potential namespace conflicts with java.lang.Object
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.ConflictingEnumResponse;
+import org.openapis.openapi.models.shared.ConflictingEnum;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        ConflictingEnum req = ConflictingEnum.builder()
+                .build();
+
+        ConflictingEnumResponse res = sdk.conflictingEnum()
+                .request(req)
+                .call();
+
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                 | Type                                                      | Required                                                  | Description                                               |
+| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| `request`                                                 | [ConflictingEnum](../../models/shared/ConflictingEnum.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
+
+### Response
+
+**[ConflictingEnumResponse](../../models/operations/ConflictingEnumResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## ignoredGenerationPut
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import java.lang.String;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.IgnoredGenerationPutResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        String req = "<value>";
+
+        IgnoredGenerationPutResponse res = sdk.ignoredGenerationPut()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -55,11 +231,128 @@ public class Application {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `request`                                  | [String](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
 
+### Response
+
+**[IgnoredGenerationPutResponse](../../models/operations/IgnoredGenerationPutResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## multilineExample
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.MultilineExampleRequestBody;
+import org.openapis.openapi.models.operations.MultilineExampleResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        MultilineExampleRequestBody req = MultilineExampleRequestBody.builder()
+                .message("hello\nthere!")
+                .build();
+
+        MultilineExampleResponse res = sdk.multilineExample()
+                .request(req)
+                .call();
+
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `request`                                                                             | [MultilineExampleRequestBody](../../models/operations/MultilineExampleRequestBody.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.PutAnythingIgnoredGenerationResponse](../../models/operations/PutAnythingIgnoredGenerationResponse.md)**
+**[MultilineExampleResponse](../../models/operations/MultilineExampleResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## postAdditionalPropertiesWithNullableFields
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.PostAdditionalPropertiesWithNullableFieldsRequestBody;
+import org.openapis.openapi.models.operations.PostAdditionalPropertiesWithNullableFieldsResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        PostAdditionalPropertiesWithNullableFieldsRequestBody req = PostAdditionalPropertiesWithNullableFieldsRequestBody.builder()
+                .build();
+
+        PostAdditionalPropertiesWithNullableFieldsResponse res = sdk.postAdditionalPropertiesWithNullableFields()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                 | Type                                                                                                                                      | Required                                                                                                                                  | Description                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                 | [PostAdditionalPropertiesWithNullableFieldsRequestBody](../../models/operations/PostAdditionalPropertiesWithNullableFieldsRequestBody.md) | :heavy_check_mark:                                                                                                                        | The request object to use for the request.                                                                                                |
+
+### Response
+
+**[PostAdditionalPropertiesWithNullableFieldsResponse](../../models/operations/PostAdditionalPropertiesWithNullableFieldsResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## responseBodyJsonGet
 
@@ -68,35 +361,41 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.ResponseBodyJsonGetResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            ResponseBodyJsonGetResponse res = sdk.responseBodyJsonGet();
+    public static void main(String[] args) throws Exception {
 
-            if (res.httpBinSimpleJsonObject != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        ResponseBodyJsonGetResponse res = sdk.responseBodyJsonGet()
+                .call();
+
+        if (res.httpBinSimpleJsonObject().isPresent()) {
+            // handle response
         }
     }
 }
 ```
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.ResponseBodyJsonGetResponse](../../models/operations/ResponseBodyJsonGetResponse.md)**
+**[ResponseBodyJsonGetResponse](../../models/operations/ResponseBodyJsonGetResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

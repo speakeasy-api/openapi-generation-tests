@@ -5,7 +5,7 @@ OK
 
 ## Fields
 
-| Field                         | Type                          | Required                      | Description                   |
-| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
-| `Data`                        | *string*                      | :heavy_check_mark:            | N/A                           |
-| `Json`                        | Dictionary<String, *decimal*> | :heavy_check_mark:            | N/A                           |
+| Field                         | Type                          | Required                      | Description                   | Example                       |
+| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
+| `Data`                        | *string*                      | :heavy_check_mark:            | N/A                           | {"test":3.141592653589793}    |
+| `Json`                        | Dictionary<String, *decimal*> | :heavy_check_mark:            | N/A                           | {<br/>"test": 3.141592653589793<br/>} |
