@@ -1,5 +1,14 @@
 # GetDocumentationPerLanguageRequest
 
+## Example Usage
+
+```typescript
+import { GetDocumentationPerLanguageRequest } from "openapi/sdk/models/operations";
+
+let value: GetDocumentationPerLanguageRequest = {
+  language: "<value>",
+};
+```
 
 ## Fields
 
