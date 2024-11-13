@@ -5,6 +5,6 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `str`              | *String*           | :heavy_minus_sign: | N/A                |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `str`               | *Optional\<String>* | :heavy_minus_sign:  | N/A                 |
