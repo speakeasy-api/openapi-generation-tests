@@ -9135,6 +9135,47 @@ paths:
             examples:
               test:
                 value: {"foo": "bar"}
+  
+  /pathencoding/{param1}/{param2}:
+    get:
+      operationId: pathEncoding
+      tags:
+        - parameters
+      parameters:
+        - name: param1
+          in: path
+          schema:
+            type: string
+            example: value1
+          required: true
+        - name: param2
+          in: path
+          schema:
+            type: string
+            example: value2
+          required: true
+          x-speakeasy-param-encoding-override: allowReserved
+      responses:
+        "200":
+          description: OK
+          
+  /queryencoding:
+    get:
+      operationId: queryEncoding
+      tags:
+        - parameters
+      parameters:
+        - name: param1
+          in: query
+          schema:
+            type: string
+            example: value1
+          required: true
+          allowReserved: true
+      responses:
+        "200":
+          description: OK          
+
 components:
   schemas:
     AnyOfMultiMatch:
