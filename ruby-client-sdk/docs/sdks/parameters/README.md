@@ -1,5 +1,5 @@
 # Parameters
-
+(*parameters*)
 
 ## Overview
 
@@ -21,9 +21,11 @@ Endpoints for testing parameters.
 * [header_params_object](#header_params_object)
 * [header_params_primitive](#header_params_primitive)
 * [json_query_params_object](#json_query_params_object)
+* [json_query_params_object_smaller](#json_query_params_object_smaller)
 * [mixed_parameters_camel_case](#mixed_parameters_camel_case)
 * [mixed_parameters_primitives](#mixed_parameters_primitives)
 * [mixed_query_params](#mixed_query_params)
+* [path_encoding](#path_encoding)
 * [path_parameter_json](#path_parameter_json)
 * [pipe_delimited_query_params_array](#pipe_delimited_query_params_array)
 * [simple_path_parameter_arrays](#simple_path_parameter_arrays)
@@ -36,31 +38,35 @@ Endpoints for testing parameters.
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::DeepObjectQueryParamsMapRequest.new(
-  query_params=Operations::DeepObjectQueryParamsMapRequest.new(
-    map_param=.new{
-      "compress": "string",
-    },
-    map_arr_param=.new{
-      "of": .new[
-        "string",
-      ],
-    },
-  ),
-)
     
-res = s.parameters.deep_object_query_params_map(req)
+res = s.parameters.deep_object_query_params_map(map_param={
+  "test": "value",
+  "test2": "value2",
+}, map_arr_param={
+  "test": [
+    "test",
+    "test2",
+  ],
+  "test2": [
+    "test3",
+    "test4",
+  ],
+})
 
 if ! res.res.nil?
   # handle response
@@ -70,15 +76,15 @@ end
 
 ### Parameters
 
-| Parameter                           | Type                                | Required                            | Description                         | Example                             |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `map_param`                         | T::Hash[Symbol, *String*]           | :heavy_check_mark:                  | N/A                                 | [object Object]                     |
-| `map_arr_param`                     | T::Hash[Symbol, T::Array<*String*>] | :heavy_minus_sign:                  | N/A                                 | [object Object]                     |
-
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    | Example                                                        |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `map_param`                                                    | T::Hash[Symbol, *::String*]                                    | :heavy_check_mark:                                             | N/A                                                            | {<br/>"test": "value",<br/>"test2": "value2"<br/>}             |
+| `map_arr_param`                                                | T::Hash[Symbol, T::Array<*::String*>]                          | :heavy_minus_sign:                                             | N/A                                                            | {<br/>"test": [<br/>"test",<br/>"test2"<br/>],<br/>"test2": [<br/>"test3",<br/>"test4"<br/>]<br/>} |
 
 ### Response
 
-**[T.nilable(Operations::DeepObjectQueryParamsMapResponse)](../../models/operations/deepobjectqueryparamsmapresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::DeepObjectQueryParamsMapResponse)](../../models/operations/deepobjectqueryparamsmapresponse.md)**
+
 
 
 ## deep_object_query_params_object
@@ -86,50 +92,49 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::DeepObjectQueryParamsObjectRequest.new(
-  query_params=Operations::DeepObjectQueryParamsObjectRequest.new(
-    obj_param=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::SIXTY_NINE,
-      int_enum=Shared::IntEnum::SECOND,
-      int_opt_null=303001,
-      num=1.1,
-      num_opt_null=5571.55,
-      str_="test",
-      str_opt="testOptional",
-    ),
-    obj_arr_param=Operations::ObjArrParam.new(
-      arr=.new[
-        "test",
-      ],
-    ),
-  ),
-)
     
-res = s.parameters.deep_object_query_params_object(req)
+res = s.parameters.deep_object_query_params_object(obj_param=::OpenApiSDK::Shared::SimpleObject.new(
+  any: "any",
+  bigint: 8821239038968084,
+  bigint_str: "9223372036854775808",
+  bool: true,
+  bool_opt: true,
+  date: Date.parse("2020-01-01"),
+  date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+  decimal: 3.141592653589793,
+  decimal_str: "3.14159265358979344719667586",
+  enum: ::OpenApiSDK::Shared::Enum::ONE,
+  float32: 1.1,
+  float64_str: "1.1",
+  int: 1,
+  int32: 1,
+  int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+  int64_str: "100",
+  int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+  num: 1.1,
+  str_: "test",
+  str_opt: "testOptional",
+), obj_arr_param=::OpenApiSDK::Operations::ObjArrParam.new(
+  arr: [
+    "test",
+    "test2",
+  ],
+))
 
 if ! res.res.nil?
   # handle response
@@ -141,13 +146,13 @@ end
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `obj_param`                                                                                        | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `obj_arr_param`                                                                                    | [Operations::ObjArrParam](../../models/operations/objarrparam.md)                                  | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-
+| `obj_param`                                                                                        | [::OpenApiSDK::Shared::SimpleObject](../../models/shared/simpleobject.md)                          | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `obj_arr_param`                                                                                    | [T.nilable(::OpenApiSDK::Operations::ObjArrParam)](../../models/operations/objarrparam.md)         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 
 ### Response
 
-**[T.nilable(Operations::DeepObjectQueryParamsObjectResponse)](../../models/operations/deepobjectqueryparamsobjectresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::DeepObjectQueryParamsObjectResponse)](../../models/operations/deepobjectqueryparamsobjectresponse.md)**
+
 
 
 ## duplicate_param
@@ -155,24 +160,23 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::DuplicateParamRequest.new(
-  path_params=Operations::DuplicateParamRequest.new(
-    duplicate_param_request="string",
-  ),
-)
     
-res = s.parameters.duplicate_param(req)
+res = s.parameters.duplicate_param(duplicate_param_request="<value>")
 
 if ! res.duplicate_param_response.nil?
   # handle response
@@ -184,12 +188,12 @@ end
 
 | Parameter                 | Type                      | Required                  | Description               |
 | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `duplicate_param_request` | *String*                  | :heavy_check_mark:        | N/A                       |
-
+| `duplicate_param_request` | *::String*                | :heavy_check_mark:        | N/A                       |
 
 ### Response
 
-**[T.nilable(Operations::DuplicateParamResponse)](../../models/operations/duplicateparamresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::DuplicateParamResponse)](../../models/operations/duplicateparamresponse.md)**
+
 
 
 ## form_query_params_array
@@ -197,29 +201,29 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::FormQueryParamsArrayRequest.new(
-  query_params=Operations::FormQueryParamsArrayRequest.new(
-    arr_param=.new[
-      "test",
-    ],
-    arr_param_exploded=.new[
-      2,
-    ],
-  ),
-)
     
-res = s.parameters.form_query_params_array(req)
+res = s.parameters.form_query_params_array(arr_param=[
+  "test",
+  "test2",
+], arr_param_exploded=[
+  1,
+  2,
+])
 
 if ! res.res.nil?
   # handle response
@@ -229,15 +233,15 @@ end
 
 ### Parameters
 
-| Parameter            | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `arr_param`          | T::Array<*String*>   | :heavy_minus_sign:   | N/A                  |
-| `arr_param_exploded` | T::Array<*Integer*>  | :heavy_minus_sign:   | N/A                  |
-
+| Parameter             | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `arr_param`           | T::Array<*::String*>  | :heavy_minus_sign:    | N/A                   |
+| `arr_param_exploded`  | T::Array<*::Integer*> | :heavy_minus_sign:    | N/A                   |
 
 ### Response
 
-**[T.nilable(Operations::FormQueryParamsArrayResponse)](../../models/operations/formqueryparamsarrayresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::FormQueryParamsArrayResponse)](../../models/operations/formqueryparamsarrayresponse.md)**
+
 
 
 ## form_query_params_camel_object
@@ -245,31 +249,29 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::FormQueryParamsCamelObjectRequest.new(
-  query_params=Operations::FormQueryParamsCamelObjectRequest.new(
-    obj_param_exploded=Operations::ObjParamExploded.new(
-      item_count="10",
-      search_term="foo",
-    ),
-    obj_param=Operations::ObjParam.new(
-      encoded_count="11",
-      encoded_term="bar",
-    ),
-  ),
-)
     
-res = s.parameters.form_query_params_camel_object(req)
+res = s.parameters.form_query_params_camel_object(obj_param_exploded=::OpenApiSDK::Operations::ObjParamExploded.new(
+  item_count: "10",
+  search_term: "foo",
+), obj_param=::OpenApiSDK::Operations::ObjParam.new(
+  encoded_count: "11",
+  encoded_term: "bar",
+))
 
 if ! res.res.nil?
   # handle response
@@ -279,15 +281,15 @@ end
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `obj_param_exploded`                                                        | [Operations::ObjParamExploded](../../models/operations/objparamexploded.md) | :heavy_check_mark:                                                          | N/A                                                                         |
-| `obj_param`                                                                 | [Operations::ObjParam](../../models/operations/objparam.md)                 | :heavy_minus_sign:                                                          | N/A                                                                         |
-
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `obj_param_exploded`                                                                      | [::OpenApiSDK::Operations::ObjParamExploded](../../models/operations/objparamexploded.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `obj_param`                                                                               | [T.nilable(::OpenApiSDK::Operations::ObjParam)](../../models/operations/objparam.md)      | :heavy_minus_sign:                                                                        | N/A                                                                                       |
 
 ### Response
 
-**[T.nilable(Operations::FormQueryParamsCamelObjectResponse)](../../models/operations/formqueryparamscamelobjectresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::FormQueryParamsCamelObjectResponse)](../../models/operations/formqueryparamscamelobjectresponse.md)**
+
 
 
 ## form_query_params_map
@@ -295,29 +297,29 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::FormQueryParamsMapRequest.new(
-  query_params=Operations::FormQueryParamsMapRequest.new(
-    map_param=.new{
-      "male": "string",
-    },
-    map_param_exploded=.new{
-      "Reggae": 355695,
-    },
-  ),
-)
     
-res = s.parameters.form_query_params_map(req)
+res = s.parameters.form_query_params_map(map_param={
+  "test": "value",
+  "test2": "value2",
+}, map_param_exploded={
+  "test": 1,
+  "test2": 2,
+})
 
 if ! res.res.nil?
   # handle response
@@ -327,15 +329,15 @@ end
 
 ### Parameters
 
-| Parameter                  | Type                       | Required                   | Description                | Example                    |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `map_param`                | T::Hash[Symbol, *String*]  | :heavy_minus_sign:         | N/A                        | [object Object]            |
-| `map_param_exploded`       | T::Hash[Symbol, *Integer*] | :heavy_minus_sign:         | N/A                        | [object Object]            |
-
+| Parameter                              | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `map_param`                            | T::Hash[Symbol, *::String*]            | :heavy_minus_sign:                     | N/A                                    | {<br/>"test": "value",<br/>"test2": "value2"<br/>} |
+| `map_param_exploded`                   | T::Hash[Symbol, *::Integer*]           | :heavy_minus_sign:                     | N/A                                    | {<br/>"test": 1,<br/>"test2": 2<br/>}  |
 
 ### Response
 
-**[T.nilable(Operations::FormQueryParamsMapResponse)](../../models/operations/formqueryparamsmapresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::FormQueryParamsMapResponse)](../../models/operations/formqueryparamsmapresponse.md)**
+
 
 
 ## form_query_params_object
@@ -343,67 +345,65 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::FormQueryParamsObjectRequest.new(
-  query_params=Operations::FormQueryParamsObjectRequest.new(
-    obj_param_exploded=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::IntEnum::SECOND,
-      int_opt_null=645228,
-      num=1.1,
-      num_opt_null=7602.31,
-      str_="test",
-      str_opt="testOptional",
-    ),
-    obj_param=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::SIXTY_NINE,
-      int_enum=Shared::IntEnum::FIRST,
-      int_opt_null=973554,
-      num=1.1,
-      num_opt_null=873.54,
-      str_="test",
-      str_opt="testOptional",
-    ),
-  ),
-)
     
-res = s.parameters.form_query_params_object(req)
+res = s.parameters.form_query_params_object(obj_param_exploded=::OpenApiSDK::Shared::SimpleObject.new(
+  any: "any",
+  bigint: 8821239038968084,
+  bigint_str: "9223372036854775808",
+  bool: true,
+  bool_opt: true,
+  date: Date.parse("2020-01-01"),
+  date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+  decimal: 3.141592653589793,
+  decimal_str: "3.14159265358979344719667586",
+  enum: ::OpenApiSDK::Shared::Enum::ONE,
+  float32: 1.1,
+  float64_str: "1.1",
+  int: 1,
+  int32: 1,
+  int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+  int64_str: "100",
+  int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+  num: 1.1,
+  str_: "test",
+  str_opt: "testOptional",
+), obj_param=::OpenApiSDK::Shared::SimpleObject.new(
+  any: "any",
+  bigint: 8821239038968084,
+  bigint_str: "9223372036854775808",
+  bool: true,
+  bool_opt: true,
+  date: Date.parse("2020-01-01"),
+  date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+  decimal: 3.141592653589793,
+  decimal_str: "3.14159265358979344719667586",
+  enum: ::OpenApiSDK::Shared::Enum::ONE,
+  float32: 1.1,
+  float64_str: "1.1",
+  int: 1,
+  int32: 1,
+  int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+  int64_str: "100",
+  int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+  num: 1.1,
+  str_: "test",
+  str_opt: "testOptional",
+))
 
 if ! res.res.nil?
   # handle response
@@ -415,13 +415,13 @@ end
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `obj_param_exploded`                                                                               | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `obj_param`                                                                                        | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-
+| `obj_param_exploded`                                                                               | [::OpenApiSDK::Shared::SimpleObject](../../models/shared/simpleobject.md)                          | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `obj_param`                                                                                        | [T.nilable(::OpenApiSDK::Shared::SimpleObject)](../../models/shared/simpleobject.md)               | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 ### Response
 
-**[T.nilable(Operations::FormQueryParamsObjectResponse)](../../models/operations/formqueryparamsobjectresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::FormQueryParamsObjectResponse)](../../models/operations/formqueryparamsobjectresponse.md)**
+
 
 
 ## form_query_params_primitive
@@ -429,27 +429,23 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::FormQueryParamsPrimitiveRequest.new(
-  query_params=Operations::FormQueryParamsPrimitiveRequest.new(
-    bool_param=true,
-    int_param=1,
-    num_param=1.1,
-    str_param="test",
-  ),
-)
     
-res = s.parameters.form_query_params_primitive(req)
+res = s.parameters.form_query_params_primitive(bool_param=true, int_param=1, num_param=1.1, str_param="test")
 
 if ! res.res.nil?
   # handle response
@@ -462,14 +458,14 @@ end
 | Parameter          | Type               | Required           | Description        | Example            |
 | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
 | `bool_param`       | *T::Boolean*       | :heavy_check_mark: | N/A                | true               |
-| `int_param`        | *Integer*          | :heavy_check_mark: | N/A                | 1                  |
-| `num_param`        | *Float*            | :heavy_check_mark: | N/A                | 1.1                |
-| `str_param`        | *String*           | :heavy_check_mark: | N/A                | test               |
-
+| `int_param`        | *::Integer*        | :heavy_check_mark: | N/A                | 1                  |
+| `num_param`        | *::Float*          | :heavy_check_mark: | N/A                | 1.1                |
+| `str_param`        | *::String*         | :heavy_check_mark: | N/A                | test               |
 
 ### Response
 
-**[T.nilable(Operations::FormQueryParamsPrimitiveResponse)](../../models/operations/formqueryparamsprimitiveresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::FormQueryParamsPrimitiveResponse)](../../models/operations/formqueryparamsprimitiveresponse.md)**
+
 
 
 ## form_query_params_ref_param_object
@@ -477,35 +473,33 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::FormQueryParamsRefParamObjectRequest.new(
-  query_params=Operations::FormQueryParamsRefParamObjectRequest.new(
-    ref_obj_param=Shared::RefQueryParamObj.new(
-      bool=true,
-      int=1,
-      num=1.1,
-      str_="test",
-    ),
-    ref_obj_param_exploded=Shared::RefQueryParamObjExploded.new(
-      bool=true,
-      int=1,
-      num=1.1,
-      str_="test",
-    ),
-  ),
-)
     
-res = s.parameters.form_query_params_ref_param_object(req)
+res = s.parameters.form_query_params_ref_param_object(ref_obj_param=::OpenApiSDK::Shared::RefQueryParamObj.new(
+  bool: true,
+  int: 1,
+  num: 1.1,
+  str_: "test",
+), ref_obj_param_exploded=::OpenApiSDK::Shared::RefQueryParamObjExploded.new(
+  bool: true,
+  int: 1,
+  num: 1.1,
+  str_: "test",
+))
 
 if ! res.res.nil?
   # handle response
@@ -515,15 +509,15 @@ end
 
 ### Parameters
 
-| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `ref_obj_param`                                                                     | [Shared::RefQueryParamObj](../../models/shared/refqueryparamobj.md)                 | :heavy_minus_sign:                                                                  | N/A                                                                                 |
-| `ref_obj_param_exploded`                                                            | [Shared::RefQueryParamObjExploded](../../models/shared/refqueryparamobjexploded.md) | :heavy_minus_sign:                                                                  | N/A                                                                                 |
-
+| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `ref_obj_param`                                                                                              | [T.nilable(::OpenApiSDK::Shared::RefQueryParamObj)](../../models/shared/refqueryparamobj.md)                 | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
+| `ref_obj_param_exploded`                                                                                     | [T.nilable(::OpenApiSDK::Shared::RefQueryParamObjExploded)](../../models/shared/refqueryparamobjexploded.md) | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
 
 ### Response
 
-**[T.nilable(Operations::FormQueryParamsRefParamObjectResponse)](../../models/operations/formqueryparamsrefparamobjectresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::FormQueryParamsRefParamObjectResponse)](../../models/operations/formqueryparamsrefparamobjectresponse.md)**
+
 
 
 ## header_params_array
@@ -531,26 +525,26 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::HeaderParamsArrayRequest.new(
-  headers=Operations::HeaderParamsArrayRequest.new(
-    x_header_array=.new[
-      "test1",
-    ],
-  ),
-)
     
-res = s.parameters.header_params_array(req)
+res = s.parameters.header_params_array(x_header_array=[
+  "test1",
+  "test2",
+])
 
 if ! res.res.nil?
   # handle response
@@ -560,14 +554,14 @@ end
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `x_header_array`   | T::Array<*String*> | :heavy_check_mark: | N/A                |
-
+| Parameter            | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `x_header_array`     | T::Array<*::String*> | :heavy_check_mark:   | N/A                  |
 
 ### Response
 
-**[T.nilable(Operations::HeaderParamsArrayResponse)](../../models/operations/headerparamsarrayresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::HeaderParamsArrayResponse)](../../models/operations/headerparamsarrayresponse.md)**
+
 
 
 ## header_params_map
@@ -575,29 +569,29 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::HeaderParamsMapRequest.new(
-  headers=Operations::HeaderParamsMapRequest.new(
-    x_header_map=.new{
-      "Ball": "string",
-    },
-    x_header_map_explode=.new{
-      "Account": "string",
-    },
-  ),
-)
     
-res = s.parameters.header_params_map(req)
+res = s.parameters.header_params_map(x_header_map={
+  "key1": "value1",
+  "key2": "value2",
+}, x_header_map_explode={
+  "test1": "val1",
+  "test2": "val2",
+})
 
 if ! res.res.nil?
   # handle response
@@ -607,15 +601,15 @@ end
 
 ### Parameters
 
-| Parameter                 | Type                      | Required                  | Description               | Example                   |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `x_header_map`            | T::Hash[Symbol, *String*] | :heavy_check_mark:        | N/A                       | [object Object]           |
-| `x_header_map_explode`    | T::Hash[Symbol, *String*] | :heavy_check_mark:        | N/A                       | [object Object]           |
-
+| Parameter                              | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `x_header_map`                         | T::Hash[Symbol, *::String*]            | :heavy_check_mark:                     | N/A                                    | {<br/>"key1": "value1",<br/>"key2": "value2"<br/>} |
+| `x_header_map_explode`                 | T::Hash[Symbol, *::String*]            | :heavy_check_mark:                     | N/A                                    | {<br/>"test1": "val1",<br/>"test2": "val2"<br/>} |
 
 ### Response
 
-**[T.nilable(Operations::HeaderParamsMapResponse)](../../models/operations/headerparamsmapresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::HeaderParamsMapResponse)](../../models/operations/headerparamsmapresponse.md)**
+
 
 
 ## header_params_object
@@ -623,67 +617,65 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::HeaderParamsObjectRequest.new(
-  headers=Operations::HeaderParamsObjectRequest.new(
-    x_header_obj=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::SIXTY_NINE,
-      int_enum=Shared::IntEnum::THIRD,
-      int_opt_null=590416,
-      num=1.1,
-      num_opt_null=144.68,
-      str_="test",
-      str_opt="testOptional",
-    ),
-    x_header_obj_explode=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::FIFTY_FIVE,
-      int_enum=Shared::IntEnum::SECOND,
-      int_opt_null=54344,
-      num=1.1,
-      num_opt_null=6940.18,
-      str_="test",
-      str_opt="testOptional",
-    ),
-  ),
-)
     
-res = s.parameters.header_params_object(req)
+res = s.parameters.header_params_object(x_header_obj=::OpenApiSDK::Shared::SimpleObject.new(
+  any: "any",
+  bigint: 8821239038968084,
+  bigint_str: "9223372036854775808",
+  bool: true,
+  bool_opt: true,
+  date: Date.parse("2020-01-01"),
+  date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+  decimal: 3.141592653589793,
+  decimal_str: "3.14159265358979344719667586",
+  enum: ::OpenApiSDK::Shared::Enum::ONE,
+  float32: 1.1,
+  float64_str: "1.1",
+  int: 1,
+  int32: 1,
+  int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+  int64_str: "100",
+  int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+  num: 1.1,
+  str_: "test",
+  str_opt: "testOptional",
+), x_header_obj_explode=::OpenApiSDK::Shared::SimpleObject.new(
+  any: "any",
+  bigint: 8821239038968084,
+  bigint_str: "9223372036854775808",
+  bool: true,
+  bool_opt: true,
+  date: Date.parse("2020-01-01"),
+  date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+  decimal: 3.141592653589793,
+  decimal_str: "3.14159265358979344719667586",
+  enum: ::OpenApiSDK::Shared::Enum::ONE,
+  float32: 1.1,
+  float64_str: "1.1",
+  int: 1,
+  int32: 1,
+  int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+  int64_str: "100",
+  int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+  num: 1.1,
+  str_: "test",
+  str_opt: "testOptional",
+))
 
 if ! res.res.nil?
   # handle response
@@ -695,13 +687,13 @@ end
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `x_header_obj`                                                                                     | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `x_header_obj_explode`                                                                             | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-
+| `x_header_obj`                                                                                     | [::OpenApiSDK::Shared::SimpleObject](../../models/shared/simpleobject.md)                          | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `x_header_obj_explode`                                                                             | [::OpenApiSDK::Shared::SimpleObject](../../models/shared/simpleobject.md)                          | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 ### Response
 
-**[T.nilable(Operations::HeaderParamsObjectResponse)](../../models/operations/headerparamsobjectresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::HeaderParamsObjectResponse)](../../models/operations/headerparamsobjectresponse.md)**
+
 
 
 ## header_params_primitive
@@ -709,27 +701,23 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::HeaderParamsPrimitiveRequest.new(
-  headers=Operations::HeaderParamsPrimitiveRequest.new(
-    x_header_boolean=true,
-    x_header_integer=1,
-    x_header_number=1.1,
-    x_header_string="test",
-  ),
-)
     
-res = s.parameters.header_params_primitive(req)
+res = s.parameters.header_params_primitive(x_header_boolean=true, x_header_integer=1, x_header_number=1.1, x_header_string="test")
 
 if ! res.res.nil?
   # handle response
@@ -742,14 +730,14 @@ end
 | Parameter          | Type               | Required           | Description        | Example            |
 | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
 | `x_header_boolean` | *T::Boolean*       | :heavy_check_mark: | N/A                | true               |
-| `x_header_integer` | *Integer*          | :heavy_check_mark: | N/A                | 1                  |
-| `x_header_number`  | *Float*            | :heavy_check_mark: | N/A                | 1.1                |
-| `x_header_string`  | *String*           | :heavy_check_mark: | N/A                | test               |
-
+| `x_header_integer` | *::Integer*        | :heavy_check_mark: | N/A                | 1                  |
+| `x_header_number`  | *::Float*          | :heavy_check_mark: | N/A                | 1.1                |
+| `x_header_string`  | *::String*         | :heavy_check_mark: | N/A                | test               |
 
 ### Response
 
-**[T.nilable(Operations::HeaderParamsPrimitiveResponse)](../../models/operations/headerparamsprimitiveresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::HeaderParamsPrimitiveResponse)](../../models/operations/headerparamsprimitiveresponse.md)**
+
 
 
 ## json_query_params_object
@@ -757,123 +745,164 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::JsonQueryParamsObjectRequest.new(
-  query_params=Operations::JsonQueryParamsObjectRequest.new(
-    deep_obj_param=Shared::DeepObject.new(
-      any="anyOf[0]",
-      arr=.new[
-        Shared::SimpleObject.new(
-          any="any",
-          bigint=8821239038968084,
-          bigint_str="9223372036854775808",
-          bool=true,
-          bool_opt=true,
-          date=Date.parse("2020-01-01"),
-          date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-          decimal=3.141592653589793,
-          decimal_str="3.14159265358979344719667586",
-          enum=Shared::Enum::ONE,
-          float32=1.1,
-          int=1,
-          int32=1,
-          int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-          int_enum=Shared::IntEnum::THIRD,
-          int_opt_null=740671,
-          num=1.1,
-          num_opt_null=8661.35,
-          str_="test",
-          str_opt="testOptional",
-        ),
-      ],
-      bool=true,
-      int=1,
-      map=.new{
-        "damp": Shared::SimpleObject.new(
-          any="any",
-          bigint=8821239038968084,
-          bigint_str="9223372036854775808",
-          bool=true,
-          bool_opt=true,
-          date=Date.parse("2020-01-01"),
-          date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-          decimal=3.141592653589793,
-          decimal_str="3.14159265358979344719667586",
-          enum=Shared::Enum::ONE,
-          float32=1.1,
-          int=1,
-          int32=1,
-          int32_enum=Shared::Int32Enum::FIFTY_FIVE,
-          int_enum=Shared::IntEnum::FIRST,
-          int_opt_null=835122,
-          num=1.1,
-          num_opt_null=9111.59,
-          str_="test",
-          str_opt="testOptional",
-        ),
-      },
-      num=1.1,
-      obj=Shared::SimpleObject.new(
-        any="any",
-        bigint=8821239038968084,
-        bigint_str="9223372036854775808",
-        bool=true,
-        bool_opt=true,
-        date=Date.parse("2020-01-01"),
-        date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-        decimal=3.141592653589793,
-        decimal_str="3.14159265358979344719667586",
-        enum=Shared::Enum::ONE,
-        float32=1.1,
-        int=1,
-        int32=1,
-        int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::IntEnum::THIRD,
-        int_opt_null=416807,
-        num=1.1,
-        num_opt_null=8525.86,
-        str_="test",
-        str_opt="testOptional",
-      ),
-      str_="test",
-      type="string",
-    ),
-    simple_obj_param=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::IntEnum::FIRST,
-      int_opt_null=488845,
-      num=1.1,
-      num_opt_null=5405.85,
-      str_="test",
-      str_opt="testOptional",
-    ),
-  ),
-)
     
-res = s.parameters.json_query_params_object(req)
+res = s.parameters.json_query_params_object(deep_obj_param=::OpenApiSDK::Shared::DeepObject.new(
+  any: "anyOf[0]",
+  arr: [
+    ::OpenApiSDK::Shared::SimpleObject.new(
+      any: "any",
+      bigint: 8821239038968084,
+      bigint_str: "9223372036854775808",
+      bool: true,
+      bool_opt: true,
+      date: Date.parse("2020-01-01"),
+      date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+      decimal: 3.141592653589793,
+      decimal_str: "3.14159265358979344719667586",
+      enum: ::OpenApiSDK::Shared::Enum::ONE,
+      float32: 1.1,
+      float64_str: "1.1",
+      int: 1,
+      int32: 1,
+      int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+      int64_str: "100",
+      int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+      num: 1.1,
+      str_: "test",
+      str_opt: "testOptional",
+    ),
+    ::OpenApiSDK::Shared::SimpleObject.new(
+      any: "any",
+      bigint: 8821239038968084,
+      bigint_str: "9223372036854775808",
+      bool: true,
+      bool_opt: true,
+      date: Date.parse("2020-01-01"),
+      date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+      decimal: 3.141592653589793,
+      decimal_str: "3.14159265358979344719667586",
+      enum: ::OpenApiSDK::Shared::Enum::ONE,
+      float32: 1.1,
+      float64_str: "1.1",
+      int: 1,
+      int32: 1,
+      int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+      int64_str: "100",
+      int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+      num: 1.1,
+      str_: "test",
+      str_opt: "testOptional",
+    ),
+  ],
+  bool: true,
+  int: 1,
+  map: {
+    "key": ::OpenApiSDK::Shared::SimpleObject.new(
+      any: "any",
+      bigint: 8821239038968084,
+      bigint_str: "9223372036854775808",
+      bool: true,
+      bool_opt: true,
+      date: Date.parse("2020-01-01"),
+      date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+      decimal: 3.141592653589793,
+      decimal_str: "3.14159265358979344719667586",
+      enum: ::OpenApiSDK::Shared::Enum::ONE,
+      float32: 1.1,
+      float64_str: "1.1",
+      int: 1,
+      int32: 1,
+      int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+      int64_str: "100",
+      int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+      num: 1.1,
+      str_: "test",
+      str_opt: "testOptional",
+    ),
+    "key2": ::OpenApiSDK::Shared::SimpleObject.new(
+      any: "any",
+      bigint: 8821239038968084,
+      bigint_str: "9223372036854775808",
+      bool: true,
+      bool_opt: true,
+      date: Date.parse("2020-01-01"),
+      date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+      decimal: 3.141592653589793,
+      decimal_str: "3.14159265358979344719667586",
+      enum: ::OpenApiSDK::Shared::Enum::ONE,
+      float32: 1.1,
+      float64_str: "1.1",
+      int: 1,
+      int32: 1,
+      int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+      int64_str: "100",
+      int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+      num: 1.1,
+      str_: "test",
+      str_opt: "testOptional",
+    ),
+  },
+  num: 1.1,
+  obj: ::OpenApiSDK::Shared::SimpleObject.new(
+    any: "any",
+    bigint: 8821239038968084,
+    bigint_str: "9223372036854775808",
+    bool: true,
+    bool_opt: true,
+    date: Date.parse("2020-01-01"),
+    date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+    decimal: 3.141592653589793,
+    decimal_str: "3.14159265358979344719667586",
+    enum: ::OpenApiSDK::Shared::Enum::ONE,
+    float32: 1.1,
+    float64_str: "1.1",
+    int: 1,
+    int32: 1,
+    int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+    int64_str: "100",
+    int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+    num: 1.1,
+    str_: "test",
+    str_opt: "testOptional",
+  ),
+  str_: "test",
+), simple_obj_param=::OpenApiSDK::Shared::SimpleObject.new(
+  any: "any",
+  bigint: 8821239038968084,
+  bigint_str: "9223372036854775808",
+  bool: true,
+  bool_opt: true,
+  date: Date.parse("2020-01-01"),
+  date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+  decimal: 3.141592653589793,
+  decimal_str: "3.14159265358979344719667586",
+  enum: ::OpenApiSDK::Shared::Enum::ONE,
+  float32: 1.1,
+  float64_str: "1.1",
+  int: 1,
+  int32: 1,
+  int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+  int64_str: "100",
+  int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+  num: 1.1,
+  str_: "test",
+  str_opt: "testOptional",
+))
 
 if ! res.res.nil?
   # handle response
@@ -885,13 +914,174 @@ end
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `deep_obj_param`                                                                                   | [Shared::DeepObject](../../models/shared/deepobject.md)                                            | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `simple_obj_param`                                                                                 | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-
+| `deep_obj_param`                                                                                   | [::OpenApiSDK::Shared::DeepObject](../../models/shared/deepobject.md)                              | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `simple_obj_param`                                                                                 | [::OpenApiSDK::Shared::SimpleObject](../../models/shared/simpleobject.md)                          | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 ### Response
 
-**[T.nilable(Operations::JsonQueryParamsObjectResponse)](../../models/operations/jsonqueryparamsobjectresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::JsonQueryParamsObjectResponse)](../../models/operations/jsonqueryparamsobjectresponse.md)**
+
+
+
+## json_query_params_object_smaller
+
+### Example Usage
+
+```ruby
+require 'openapi'
+
+
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
+s.config_security(
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
+  )
+)
+
+    
+res = s.parameters.json_query_params_object_smaller(deep_obj_param=::OpenApiSDK::Shared::DeepObjectSmaller.new(
+  any: "anyOf[0]",
+  arr: [
+    ::OpenApiSDK::Shared::SimpleObject.new(
+      any: "any",
+      bigint: 8821239038968084,
+      bigint_str: "9223372036854775808",
+      bool: true,
+      bool_opt: true,
+      date: Date.parse("2020-01-01"),
+      date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+      decimal: 3.141592653589793,
+      decimal_str: "3.14159265358979344719667586",
+      enum: ::OpenApiSDK::Shared::Enum::ONE,
+      float32: 1.1,
+      float64_str: "1.1",
+      int: 1,
+      int32: 1,
+      int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+      int64_str: "100",
+      int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+      num: 1.1,
+      str_: "test",
+      str_opt: "testOptional",
+    ),
+    ::OpenApiSDK::Shared::SimpleObject.new(
+      any: "any",
+      bigint: 8821239038968084,
+      bigint_str: "9223372036854775808",
+      bool: true,
+      bool_opt: true,
+      date: Date.parse("2020-01-01"),
+      date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+      decimal: 3.141592653589793,
+      decimal_str: "3.14159265358979344719667586",
+      enum: ::OpenApiSDK::Shared::Enum::ONE,
+      float32: 1.1,
+      float64_str: "1.1",
+      int: 1,
+      int32: 1,
+      int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+      int64_str: "100",
+      int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+      num: 1.1,
+      str_: "test",
+      str_opt: "testOptional",
+    ),
+  ],
+  bool: true,
+  int: 1,
+  map: {
+    "key": ::OpenApiSDK::Shared::SimpleObject.new(
+      any: "any",
+      bigint: 8821239038968084,
+      bigint_str: "9223372036854775808",
+      bool: true,
+      bool_opt: true,
+      date: Date.parse("2020-01-01"),
+      date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+      decimal: 3.141592653589793,
+      decimal_str: "3.14159265358979344719667586",
+      enum: ::OpenApiSDK::Shared::Enum::ONE,
+      float32: 1.1,
+      float64_str: "1.1",
+      int: 1,
+      int32: 1,
+      int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+      int64_str: "100",
+      int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+      num: 1.1,
+      str_: "test",
+      str_opt: "testOptional",
+    ),
+  },
+  num: 1.1,
+  obj: ::OpenApiSDK::Shared::SimpleObject.new(
+    any: "any",
+    bigint: 8821239038968084,
+    bigint_str: "9223372036854775808",
+    bool: true,
+    bool_opt: true,
+    date: Date.parse("2020-01-01"),
+    date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+    decimal: 3.141592653589793,
+    decimal_str: "3.14159265358979344719667586",
+    enum: ::OpenApiSDK::Shared::Enum::ONE,
+    float32: 1.1,
+    float64_str: "1.1",
+    int: 1,
+    int32: 1,
+    int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+    int64_str: "100",
+    int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+    num: 1.1,
+    str_: "test",
+    str_opt: "testOptional",
+  ),
+  str_: "test",
+), simple_obj_param=::OpenApiSDK::Shared::SimpleObject.new(
+  any: "any",
+  bigint: 8821239038968084,
+  bigint_str: "9223372036854775808",
+  bool: true,
+  bool_opt: true,
+  date: Date.parse("2020-01-01"),
+  date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+  decimal: 3.141592653589793,
+  decimal_str: "3.14159265358979344719667586",
+  enum: ::OpenApiSDK::Shared::Enum::ONE,
+  float32: 1.1,
+  float64_str: "1.1",
+  int: 1,
+  int32: 1,
+  int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+  int64_str: "100",
+  int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+  num: 1.1,
+  str_: "test",
+  str_opt: "testOptional",
+))
+
+if ! res.res.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `deep_obj_param`                                                                                   | [::OpenApiSDK::Shared::DeepObjectSmaller](../../models/shared/deepobjectsmaller.md)                | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `simple_obj_param`                                                                                 | [::OpenApiSDK::Shared::SimpleObject](../../models/shared/simpleobject.md)                          | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+
+### Response
+
+**[T.nilable(::OpenApiSDK::Operations::JsonQueryParamsObjectSmallerResponse)](../../models/operations/jsonqueryparamsobjectsmallerresponse.md)**
+
 
 
 ## mixed_parameters_camel_case
@@ -899,36 +1089,23 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::MixedParametersCamelCaseRequest.new(
-  path_params=Operations::MixedParametersCamelCaseRequest.new(
-    header_param="headerValue",
-    path_param="pathValue",
-    query_string_param="queryValue",
-  ),
-  query_params=Operations::MixedParametersCamelCaseRequest.new(
-    header_param="headerValue",
-    path_param="pathValue",
-    query_string_param="queryValue",
-  ),
-  headers=Operations::MixedParametersCamelCaseRequest.new(
-    header_param="headerValue",
-    path_param="pathValue",
-    query_string_param="queryValue",
-  ),
-)
     
-res = s.parameters.mixed_parameters_camel_case(req)
+res = s.parameters.mixed_parameters_camel_case(header_param="headerValue", path_param="pathValue", query_string_param="queryValue")
 
 if ! res.res.nil?
   # handle response
@@ -940,14 +1117,14 @@ end
 
 | Parameter            | Type                 | Required             | Description          | Example              |
 | -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
-| `header_param`       | *String*             | :heavy_check_mark:   | N/A                  | headerValue          |
-| `path_param`         | *String*             | :heavy_check_mark:   | N/A                  | pathValue            |
-| `query_string_param` | *String*             | :heavy_check_mark:   | N/A                  | queryValue           |
-
+| `header_param`       | *::String*           | :heavy_check_mark:   | N/A                  | headerValue          |
+| `path_param`         | *::String*           | :heavy_check_mark:   | N/A                  | pathValue            |
+| `query_string_param` | *::String*           | :heavy_check_mark:   | N/A                  | queryValue           |
 
 ### Response
 
-**[T.nilable(Operations::MixedParametersCamelCaseResponse)](../../models/operations/mixedparameterscamelcaseresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::MixedParametersCamelCaseResponse)](../../models/operations/mixedparameterscamelcaseresponse.md)**
+
 
 
 ## mixed_parameters_primitives
@@ -955,36 +1132,23 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::MixedParametersPrimitivesRequest.new(
-  path_params=Operations::MixedParametersPrimitivesRequest.new(
-    header_param="headerValue",
-    path_param="pathValue",
-    query_string_param="queryValue",
-  ),
-  query_params=Operations::MixedParametersPrimitivesRequest.new(
-    header_param="headerValue",
-    path_param="pathValue",
-    query_string_param="queryValue",
-  ),
-  headers=Operations::MixedParametersPrimitivesRequest.new(
-    header_param="headerValue",
-    path_param="pathValue",
-    query_string_param="queryValue",
-  ),
-)
     
-res = s.parameters.mixed_parameters_primitives(req)
+res = s.parameters.mixed_parameters_primitives(header_param="<value>", path_param="<value>", query_string_param="<value>")
 
 if ! res.res.nil?
   # handle response
@@ -994,16 +1158,16 @@ end
 
 ### Parameters
 
-| Parameter            | Type                 | Required             | Description          | Example              |
-| -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
-| `header_param`       | *String*             | :heavy_check_mark:   | N/A                  | headerValue          |
-| `path_param`         | *String*             | :heavy_check_mark:   | N/A                  | pathValue            |
-| `query_string_param` | *String*             | :heavy_check_mark:   | N/A                  | queryValue           |
-
+| Parameter            | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `header_param`       | *::String*           | :heavy_check_mark:   | N/A                  |
+| `path_param`         | *::String*           | :heavy_check_mark:   | N/A                  |
+| `query_string_param` | *::String*           | :heavy_check_mark:   | N/A                  |
 
 ### Response
 
-**[T.nilable(Operations::MixedParametersPrimitivesResponse)](../../models/operations/mixedparametersprimitivesresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::MixedParametersPrimitivesResponse)](../../models/operations/mixedparametersprimitivesresponse.md)**
+
 
 
 ## mixed_query_params
@@ -1011,89 +1175,86 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::MixedQueryParamsRequest.new(
-  query_params=Operations::MixedQueryParamsRequest.new(
-    deep_object_param=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::IntEnum::SECOND,
-      int_opt_null=89281,
-      num=1.1,
-      num_opt_null=2132.48,
-      str_="test",
-      str_opt="testOptional",
-    ),
-    form_param=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::FIFTY_FIVE,
-      int_enum=Shared::IntEnum::SECOND,
-      int_opt_null=218100,
-      num=1.1,
-      num_opt_null=75.58,
-      str_="test",
-      str_opt="testOptional",
-    ),
-    json_param=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::FIFTY_FIVE,
-      int_enum=Shared::IntEnum::THIRD,
-      int_opt_null=387493,
-      num=1.1,
-      num_opt_null=5641.93,
-      str_="test",
-      str_opt="testOptional",
-    ),
-  ),
-)
     
-res = s.parameters.mixed_query_params(req)
+res = s.parameters.mixed_query_params(deep_object_param=::OpenApiSDK::Shared::SimpleObject.new(
+  any: "any",
+  bigint: 8821239038968084,
+  bigint_str: "9223372036854775808",
+  bool: true,
+  bool_opt: true,
+  date: Date.parse("2020-01-01"),
+  date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+  decimal: 3.141592653589793,
+  decimal_str: "3.14159265358979344719667586",
+  enum: ::OpenApiSDK::Shared::Enum::ONE,
+  float32: 1.1,
+  float64_str: "1.1",
+  int: 1,
+  int32: 1,
+  int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+  int64_str: "100",
+  int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+  num: 1.1,
+  str_: "test",
+  str_opt: "testOptional",
+), form_param=::OpenApiSDK::Shared::SimpleObject.new(
+  any: "any",
+  bigint: 8821239038968084,
+  bigint_str: "9223372036854775808",
+  bool: true,
+  bool_opt: true,
+  date: Date.parse("2020-01-01"),
+  date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+  decimal: 3.141592653589793,
+  decimal_str: "3.14159265358979344719667586",
+  enum: ::OpenApiSDK::Shared::Enum::ONE,
+  float32: 1.1,
+  float64_str: "1.1",
+  int: 1,
+  int32: 1,
+  int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+  int64_str: "100",
+  int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+  num: 1.1,
+  str_: "test",
+  str_opt: "testOptional",
+), json_param=::OpenApiSDK::Shared::SimpleObject.new(
+  any: "any",
+  bigint: 8821239038968084,
+  bigint_str: "9223372036854775808",
+  bool: true,
+  bool_opt: true,
+  date: Date.parse("2020-01-01"),
+  date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+  decimal: 3.141592653589793,
+  decimal_str: "3.14159265358979344719667586",
+  enum: ::OpenApiSDK::Shared::Enum::ONE,
+  float32: 1.1,
+  float64_str: "1.1",
+  int: 1,
+  int32: 1,
+  int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+  int64_str: "100",
+  int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+  num: 1.1,
+  str_: "test",
+  str_opt: "testOptional",
+))
 
 if ! res.res.nil?
   # handle response
@@ -1105,14 +1266,56 @@ end
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `deep_object_param`                                                                                | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `form_param`                                                                                       | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `json_param`                                                                                       | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-
+| `deep_object_param`                                                                                | [::OpenApiSDK::Shared::SimpleObject](../../models/shared/simpleobject.md)                          | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `form_param`                                                                                       | [::OpenApiSDK::Shared::SimpleObject](../../models/shared/simpleobject.md)                          | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `json_param`                                                                                       | [::OpenApiSDK::Shared::SimpleObject](../../models/shared/simpleobject.md)                          | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 ### Response
 
-**[T.nilable(Operations::MixedQueryParamsResponse)](../../models/operations/mixedqueryparamsresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::MixedQueryParamsResponse)](../../models/operations/mixedqueryparamsresponse.md)**
+
+
+
+## path_encoding
+
+### Example Usage
+
+```ruby
+require 'openapi'
+
+
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
+s.config_security(
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
+  )
+)
+
+    
+res = s.parameters.path_encoding(param1="value1", param2="value2")
+
+if res.status_code == 200
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `param1`           | *::String*         | :heavy_check_mark: | N/A                | value1             |
+| `param2`           | *::String*         | :heavy_check_mark: | N/A                | value2             |
+
+### Response
+
+**[T.nilable(::OpenApiSDK::Operations::PathEncodingResponse)](../../models/operations/pathencodingresponse.md)**
+
 
 
 ## path_parameter_json
@@ -1120,45 +1323,44 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::PathParameterJsonRequest.new(
-  path_params=Operations::PathParameterJsonRequest.new(
-    json_obj=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::SIXTY_NINE,
-      int_enum=Shared::IntEnum::SECOND,
-      int_opt_null=355762,
-      num=1.1,
-      num_opt_null=5955.49,
-      str_="test",
-      str_opt="testOptional",
-    ),
-  ),
-)
     
-res = s.parameters.path_parameter_json(req)
+res = s.parameters.path_parameter_json(json_obj=::OpenApiSDK::Shared::SimpleObject.new(
+  any: "any",
+  bigint: 8821239038968084,
+  bigint_str: "9223372036854775808",
+  bool: true,
+  bool_opt: true,
+  date: Date.parse("2020-01-01"),
+  date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+  decimal: 3.141592653589793,
+  decimal_str: "3.14159265358979344719667586",
+  enum: ::OpenApiSDK::Shared::Enum::ONE,
+  float32: 1.1,
+  float64_str: "1.1",
+  int: 1,
+  int32: 1,
+  int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+  int64_str: "100",
+  int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+  num: 1.1,
+  str_: "test",
+  str_opt: "testOptional",
+))
 
 if ! res.res.nil?
   # handle response
@@ -1170,12 +1372,12 @@ end
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `json_obj`                                                                                         | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-
+| `json_obj`                                                                                         | [::OpenApiSDK::Shared::SimpleObject](../../models/shared/simpleobject.md)                          | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 ### Response
 
-**[T.nilable(Operations::PathParameterJsonResponse)](../../models/operations/pathparameterjsonresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::PathParameterJsonResponse)](../../models/operations/pathparameterjsonresponse.md)**
+
 
 
 ## pipe_delimited_query_params_array
@@ -1183,54 +1385,53 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::PipeDelimitedQueryParamsArrayRequest.new(
-  query_params=Operations::PipeDelimitedQueryParamsArrayRequest.new(
-    arr_param=.new[
-      "test2",
-    ],
-    arr_param_exploded=.new[
-      1,
-    ],
-    map_param=.new{
-      "Northeast": "string",
-    },
-    obj_param=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::IntEnum::THIRD,
-      int_opt_null=161819,
-      num=1.1,
-      num_opt_null=722.43,
-      str_="test",
-      str_opt="testOptional",
-    ),
-  ),
-)
     
-res = s.parameters.pipe_delimited_query_params_array(req)
+res = s.parameters.pipe_delimited_query_params_array(arr_param=[
+  "test",
+  "test2",
+], arr_param_exploded=[
+  1,
+  2,
+], map_param={
+  "key1": "val1",
+  "key2": "val2",
+}, obj_param=::OpenApiSDK::Shared::SimpleObject.new(
+  any: "any",
+  bigint: 8821239038968084,
+  bigint_str: "9223372036854775808",
+  bool: true,
+  bool_opt: true,
+  date: Date.parse("2020-01-01"),
+  date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+  decimal: 3.141592653589793,
+  decimal_str: "3.14159265358979344719667586",
+  enum: ::OpenApiSDK::Shared::Enum::ONE,
+  float32: 1.1,
+  float64_str: "1.1",
+  int: 1,
+  int32: 1,
+  int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+  int64_str: "100",
+  int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+  num: 1.1,
+  str_: "test",
+  str_opt: "testOptional",
+))
 
 if ! res.res.nil?
   # handle response
@@ -1242,15 +1443,15 @@ end
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `arr_param`                                                                                        | T::Array<*String*>                                                                                 | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `arr_param_exploded`                                                                               | T::Array<*Integer*>                                                                                | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `map_param`                                                                                        | T::Hash[Symbol, *String*]                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
-| `obj_param`                                                                                        | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
-
+| `arr_param`                                                                                        | T::Array<*::String*>                                                                               | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `arr_param_exploded`                                                                               | T::Array<*::Integer*>                                                                              | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `map_param`                                                                                        | T::Hash[Symbol, *::String*]                                                                        | :heavy_minus_sign:                                                                                 | N/A                                                                                                | {<br/>"key1": "val1",<br/>"key2": "val2"<br/>}                                                     |
+| `obj_param`                                                                                        | [T.nilable(::OpenApiSDK::Shared::SimpleObject)](../../models/shared/simpleobject.md)               | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 
 ### Response
 
-**[T.nilable(Operations::PipeDelimitedQueryParamsArrayResponse)](../../models/operations/pipedelimitedqueryparamsarrayresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::PipeDelimitedQueryParamsArrayResponse)](../../models/operations/pipedelimitedqueryparamsarrayresponse.md)**
+
 
 
 ## simple_path_parameter_arrays
@@ -1258,26 +1459,26 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::SimplePathParameterArraysRequest.new(
-  path_params=Operations::SimplePathParameterArraysRequest.new(
-    arr_param=.new[
-      "test",
-    ],
-  ),
-)
     
-res = s.parameters.simple_path_parameter_arrays(req)
+res = s.parameters.simple_path_parameter_arrays(arr_param=[
+  "test",
+  "test2",
+])
 
 if ! res.res.nil?
   # handle response
@@ -1287,14 +1488,14 @@ end
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `arr_param`        | T::Array<*String*> | :heavy_check_mark: | N/A                |
-
+| Parameter            | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `arr_param`          | T::Array<*::String*> | :heavy_check_mark:   | N/A                  |
 
 ### Response
 
-**[T.nilable(Operations::SimplePathParameterArraysResponse)](../../models/operations/simplepathparameterarraysresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::SimplePathParameterArraysResponse)](../../models/operations/simplepathparameterarraysresponse.md)**
+
 
 
 ## simple_path_parameter_maps
@@ -1302,29 +1503,29 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::SimplePathParameterMapsRequest.new(
-  path_params=Operations::SimplePathParameterMapsRequest.new(
-    map_param=.new{
-      "weber": "string",
-    },
-    map_param_exploded=.new{
-      "Sausages": 157687,
-    },
-  ),
-)
     
-res = s.parameters.simple_path_parameter_maps(req)
+res = s.parameters.simple_path_parameter_maps(map_param={
+  "test": "value",
+  "test2": "value2",
+}, map_param_exploded={
+  "test": 1,
+  "test2": 2,
+})
 
 if ! res.res.nil?
   # handle response
@@ -1334,15 +1535,15 @@ end
 
 ### Parameters
 
-| Parameter                  | Type                       | Required                   | Description                | Example                    |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `map_param`                | T::Hash[Symbol, *String*]  | :heavy_check_mark:         | N/A                        | [object Object]            |
-| `map_param_exploded`       | T::Hash[Symbol, *Integer*] | :heavy_check_mark:         | N/A                        | [object Object]            |
-
+| Parameter                              | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `map_param`                            | T::Hash[Symbol, *::String*]            | :heavy_check_mark:                     | N/A                                    | {<br/>"test": "value",<br/>"test2": "value2"<br/>} |
+| `map_param_exploded`                   | T::Hash[Symbol, *::Integer*]           | :heavy_check_mark:                     | N/A                                    | {<br/>"test": 1,<br/>"test2": 2<br/>}  |
 
 ### Response
 
-**[T.nilable(Operations::SimplePathParameterMapsResponse)](../../models/operations/simplepathparametermapsresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::SimplePathParameterMapsResponse)](../../models/operations/simplepathparametermapsresponse.md)**
+
 
 
 ## simple_path_parameter_objects
@@ -1350,67 +1551,65 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::SimplePathParameterObjectsRequest.new(
-  path_params=Operations::SimplePathParameterObjectsRequest.new(
-    obj_param=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::FIFTY_FIVE,
-      int_enum=Shared::IntEnum::THIRD,
-      int_opt_null=384918,
-      num=1.1,
-      num_opt_null=9559.93,
-      str_="test",
-      str_opt="testOptional",
-    ),
-    obj_param_exploded=Shared::SimpleObject.new(
-      any="any",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::Int32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::IntEnum::SECOND,
-      int_opt_null=678638,
-      num=1.1,
-      num_opt_null=5865.54,
-      str_="test",
-      str_opt="testOptional",
-    ),
-  ),
-)
     
-res = s.parameters.simple_path_parameter_objects(req)
+res = s.parameters.simple_path_parameter_objects(obj_param=::OpenApiSDK::Shared::SimpleObject.new(
+  any: "any",
+  bigint: 8821239038968084,
+  bigint_str: "9223372036854775808",
+  bool: true,
+  bool_opt: true,
+  date: Date.parse("2020-01-01"),
+  date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+  decimal: 3.141592653589793,
+  decimal_str: "3.14159265358979344719667586",
+  enum: ::OpenApiSDK::Shared::Enum::ONE,
+  float32: 1.1,
+  float64_str: "1.1",
+  int: 1,
+  int32: 1,
+  int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+  int64_str: "100",
+  int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+  num: 1.1,
+  str_: "test",
+  str_opt: "testOptional",
+), obj_param_exploded=::OpenApiSDK::Shared::SimpleObject.new(
+  any: "any",
+  bigint: 8821239038968084,
+  bigint_str: "9223372036854775808",
+  bool: true,
+  bool_opt: true,
+  date: Date.parse("2020-01-01"),
+  date_time: DateTime.iso8601('2020-01-01T00:00:00.001Z'),
+  decimal: 3.141592653589793,
+  decimal_str: "3.14159265358979344719667586",
+  enum: ::OpenApiSDK::Shared::Enum::ONE,
+  float32: 1.1,
+  float64_str: "1.1",
+  int: 1,
+  int32: 1,
+  int32_enum: ::OpenApiSDK::Shared::Int32Enum::FIFTY_FIVE,
+  int64_str: "100",
+  int_enum: ::OpenApiSDK::Shared::IntEnum::SECOND,
+  num: 1.1,
+  str_: "test",
+  str_opt: "testOptional",
+))
 
 if ! res.res.nil?
   # handle response
@@ -1422,13 +1621,13 @@ end
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `obj_param`                                                                                        | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `obj_param_exploded`                                                                               | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-
+| `obj_param`                                                                                        | [::OpenApiSDK::Shared::SimpleObject](../../models/shared/simpleobject.md)                          | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `obj_param_exploded`                                                                               | [::OpenApiSDK::Shared::SimpleObject](../../models/shared/simpleobject.md)                          | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 ### Response
 
-**[T.nilable(Operations::SimplePathParameterObjectsResponse)](../../models/operations/simplepathparameterobjectsresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::SimplePathParameterObjectsResponse)](../../models/operations/simplepathparameterobjectsresponse.md)**
+
 
 
 ## simple_path_parameter_primitives
@@ -1436,27 +1635,23 @@ end
 ### Example Usage
 
 ```ruby
-require_relative openapi
+require 'openapi'
 
 
-s = OpenApiSDK::SDK.new
+s = ::OpenApiSDK::SDK.new(
+      global_header_param: true,
+      global_hidden_query_param: "hello",
+      global_path_param: 100,
+      global_query_param: "some example global query param",
+    )
 s.config_security(
-  security=Shared::Security.new(
-    api_key_auth=.foo"Token YOUR_API_KEY",
+  ::OpenApiSDK::Shared::Security.new(
+    api_key_auth: "Token YOUR_API_KEY",
   )
 )
 
-   
-req = Operations::SimplePathParameterPrimitivesRequest.new(
-  path_params=Operations::SimplePathParameterPrimitivesRequest.new(
-    bool_param=true,
-    int_param=1,
-    num_param=1.1,
-    str_param="test",
-  ),
-)
     
-res = s.parameters.simple_path_parameter_primitives(req)
+res = s.parameters.simple_path_parameter_primitives(bool_param=true, int_param=1, num_param=1.1, str_param="test")
 
 if ! res.res.nil?
   # handle response
@@ -1469,12 +1664,11 @@ end
 | Parameter          | Type               | Required           | Description        | Example            |
 | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
 | `bool_param`       | *T::Boolean*       | :heavy_check_mark: | N/A                | true               |
-| `int_param`        | *Integer*          | :heavy_check_mark: | N/A                | 1                  |
-| `num_param`        | *Float*            | :heavy_check_mark: | N/A                | 1.1                |
-| `str_param`        | *String*           | :heavy_check_mark: | N/A                | test               |
-
+| `int_param`        | *::Integer*        | :heavy_check_mark: | N/A                | 1                  |
+| `num_param`        | *::Float*          | :heavy_check_mark: | N/A                | 1.1                |
+| `str_param`        | *::String*         | :heavy_check_mark: | N/A                | test               |
 
 ### Response
 
-**[T.nilable(Operations::SimplePathParameterPrimitivesResponse)](../../models/operations/simplepathparameterprimitivesresponse.md)**
+**[T.nilable(::OpenApiSDK::Operations::SimplePathParameterPrimitivesResponse)](../../models/operations/simplepathparameterprimitivesresponse.md)**
 

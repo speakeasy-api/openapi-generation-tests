@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### SimpleObjectWithType
+### `shared.SimpleObjectWithType`
 
 ```python
-stronglyTypedOneOfObject: shared.SimpleObjectWithType = /* values here */
+value: shared.SimpleObjectWithType = /* values here */
 ```
 
-### DeepObjectWithType
+### `shared.DeepObjectWithType`
 
 ```python
-stronglyTypedOneOfObject: shared.DeepObjectWithType = /* values here */
+value: shared.DeepObjectWithType = /* values here */
 ```
 
