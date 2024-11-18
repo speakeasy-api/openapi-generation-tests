@@ -1,5 +1,12 @@
 # NullableObject
 
+## Example Usage
+
+```typescript
+import { NullableObject } from "openapi/sdk/models/shared";
+
+let value: NullableObject = null;
+```
 
 ## Fields
 

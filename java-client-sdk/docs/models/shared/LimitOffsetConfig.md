@@ -5,6 +5,6 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `limit`            | *Long*             | :heavy_minus_sign: | N/A                |
-| `offset`           | *Long*             | :heavy_minus_sign: | N/A                |
-| `page`             | *Long*             | :heavy_minus_sign: | N/A                |
+| `limit`            | *Optional\<Long>*  | :heavy_minus_sign: | N/A                |
+| `offset`           | *Optional\<Long>*  | :heavy_minus_sign: | N/A                |
+| `page`             | *Optional\<Long>*  | :heavy_minus_sign: | N/A                |

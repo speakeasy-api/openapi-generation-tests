@@ -2,6 +2,16 @@
 
 Successful authentication.
 
+## Example Usage
+
+```typescript
+import { GlobalBearerAuthToken } from "openapi/sdk/models/operations";
+
+let value: GlobalBearerAuthToken = {
+  authenticated: false,
+  token: "<value>",
+};
+```
 
 ## Fields
 
