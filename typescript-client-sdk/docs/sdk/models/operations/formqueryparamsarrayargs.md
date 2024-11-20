@@ -1,5 +1,18 @@
 # FormQueryParamsArrayArgs
 
+## Example Usage
+
+```typescript
+import { FormQueryParamsArrayArgs } from "openapi/sdk/models/operations";
+
+let value: FormQueryParamsArrayArgs = {
+  arrParam: "test,test2",
+  arrParamExploded: [
+    "1",
+    "2",
+  ],
+};
+```
 
 ## Fields
 
