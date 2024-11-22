@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### 
+### `str`
 
 ```python
-oneOfSameType: str = /* values here */
+value: str = /* values here */
 ```
 
-### Two
+### `shared.Two`
 
 ```python
-oneOfSameType: shared.Two = /* values here */
+value: shared.Two = /* values here */
 ```
 

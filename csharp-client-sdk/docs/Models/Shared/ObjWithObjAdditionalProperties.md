@@ -1,0 +1,10 @@
+# ObjWithObjAdditionalProperties
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `AdditionalProperties`                                                                | List<*long*>                                                                          | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `Datetime`                                                                            | [DateTime](https://learn.microsoft.com/en-us/dotnet/api/system.datetime?view=net-5.0) | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `AdditionalPropertiesT`                                                               | Dictionary<String, [SimpleObject](../../Models/Shared/SimpleObject.md)>               | :heavy_minus_sign:                                                                    | N/A                                                                                   |
