@@ -5654,6 +5654,31 @@ paths:
             application/json:
               schema:
                 $ref: "components.yaml#/components/schemas/oneOfCircularReferenceObject"
+  /anything/circularReferenceOneDegree:
+    x-speakeasy-exclude-test-sdk: [python,pythonv2]
+    post:
+      # Other examples in this spec have demonstrated self-referencing models
+      # instead of several distinct models forming reference cycles.
+      description: A reference cycle that spans three models separated by one degree
+      operationId: circularReferenceOneDegree
+      tags:
+        - generation
+      security: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/figma_ComponentNode"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [json]
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/figma_ComponentNode"
   /anything/emptyResponseObjectWithComment:
     get:
       operationId: emptyResponseObjectWithCommentGet
