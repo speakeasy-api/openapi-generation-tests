@@ -1,10 +1,15 @@
 # ConstEnumStr
 
+## Example Usage
+
+```typescript
+import { ConstEnumStr } from "openapi/sdk/models/shared";
+
+let value: ConstEnumStr = "three";
+```
 
 ## Values
 
-| Name    | Value   |
-| ------- | ------- |
-| `One`   | one     |
-| `Two`   | two     |
-| `Three` | three   |
+```typescript
+"one" | "two" | "three"
+```

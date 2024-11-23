@@ -1,5 +1,12 @@
 # DeprecatedOperationNoCommentsGetRequest
 
+## Example Usage
+
+```typescript
+import { DeprecatedOperationNoCommentsGetRequest } from "openapi/sdk/models/operations";
+
+let value: DeprecatedOperationNoCommentsGetRequest = {};
+```
 
 ## Fields
 
