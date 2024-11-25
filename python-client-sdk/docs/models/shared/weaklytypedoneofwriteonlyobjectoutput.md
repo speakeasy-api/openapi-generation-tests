@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### SimpleObject
+### `shared.SimpleObject`
 
 ```python
-weaklyTypedOneOfWriteOnlyObjectOutput: shared.SimpleObject = /* values here */
+value: shared.SimpleObject = /* values here */
 ```
 
-### WriteOnlyObjectOutput
+### `shared.WriteOnlyObjectOutput`
 
 ```python
-weaklyTypedOneOfWriteOnlyObjectOutput: shared.WriteOnlyObjectOutput = /* values here */
+value: shared.WriteOnlyObjectOutput = /* values here */
 ```
 
