@@ -6774,7 +6774,7 @@ paths:
   /anything/unionOfArrays:
     post:
       x-speakeasy-test: [typescriptv2, pythonv2, go, javav2]
-      x-speakeasy-test-internal-id: unions-union-array
+      x-speakeasy-test-internal-id: unions-union-of-arrays
       operationId: unionOfArraysPost
       tags:
         - unions
@@ -7375,6 +7375,78 @@ paths:
                     additionalProperties: true
                 required:
                   - form
+  /anything/arrayOfDiscriminatedUnions:
+    post:
+      operationId: arrayOfDiscriminatedUnions
+      tags:
+        - unions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/arrayOfDiscriminatedUnions"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/arrayOfDiscriminatedUnions"
+                required:
+                  - json
+  /anything/arrayOfDiscriminatedUnionsMap:
+    post:
+      operationId: arrayOfDiscriminatedUnionsMap
+      tags:
+        - unions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/arrayOfDiscriminatedUnionsMap"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/arrayOfDiscriminatedUnionsMap"
+                required:
+                  - json
+  /anything/nestedArrayOfDiscriminatedUnions:
+    post:
+      operationId: nestedArrayOfDiscriminatedUnions
+      tags:
+        - unions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/nestedArrayOfDiscriminatedUnions"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/nestedArrayOfDiscriminatedUnions"
+                required:
+                  - json
   /status/{statusCode}:
     get:
       operationId: statusGetError
