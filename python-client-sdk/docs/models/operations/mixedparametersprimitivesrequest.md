@@ -3,8 +3,8 @@
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          | Example              |
-| -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
-| `header_param`       | *str*                | :heavy_check_mark:   | N/A                  | headerValue          |
-| `path_param`         | *str*                | :heavy_check_mark:   | N/A                  | pathValue            |
-| `query_string_param` | *str*                | :heavy_check_mark:   | N/A                  | queryValue           |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `header_param`       | *str*                | :heavy_check_mark:   | N/A                  |
+| `path_param`         | *str*                | :heavy_check_mark:   | N/A                  |
+| `query_string_param` | *str*                | :heavy_check_mark:   | N/A                  |

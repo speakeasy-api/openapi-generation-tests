@@ -2,9 +2,21 @@
 
 OK
 
+## Example Usage
+
+```typescript
+import { NullableOneOfSchemaPostRes } from "openapi/sdk/models/operations";
+
+let value: NullableOneOfSchemaPostRes = {
+  json: {
+    type: "obj2",
+    value: "<value>",
+  },
+};
+```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `json`             | *any*              | :heavy_check_mark: | N/A                |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `json`                                   | *operations.NullableOneOfSchemaPostJson* | :heavy_check_mark:                       | N/A                                      |
