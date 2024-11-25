@@ -3064,13 +3064,13 @@ paths:
             schema:
               $ref: "components.yaml#/components/schemas/simpleObject"
             examples:
-              application_json:
+              application-json:
                 value: "..."
           multipart/form-data:
             schema:
               $ref: "components.yaml#/components/schemas/simpleObject"
             examples:
-              multipart_form_data:
+              multipart-form-data:
                 value: "..."
           application/x-www-form-urlencoded:
             schema:
@@ -3090,9 +3090,9 @@ paths:
                 required:
                   - json
               examples:
-                application_json:
+                application-json:
                   value: "..."
-                multipart_form_data:
+                multipart-form-data:
                   value: "..."
   /anything/requestBodies/post/multiple/contentTypes/component/filtered#defaultTest:
     post:
@@ -8677,6 +8677,7 @@ paths:
       operationId: testHooks
       x-speakeasy-test: true
       x-speakeasy-test-internal-id: test-hooks
+      x-speakeasy-test-server: http://localhost:35123
       tags:
         - hooks
       parameters:
