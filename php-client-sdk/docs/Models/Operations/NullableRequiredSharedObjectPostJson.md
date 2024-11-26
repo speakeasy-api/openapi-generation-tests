@@ -1,0 +1,9 @@
+# NullableRequiredSharedObjectPostJson
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     | Example                                                                         |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `nullableRequiredObj`                                                           | [Shared\NullableObject](../../Models/Shared/NullableObject.md)                  | :heavy_check_mark:                                                              | N/A                                                                             | <nil>                                                                           |
+| `nullableOptionalObj`                                                           | [?Shared\NullableOptionalObject](../../Models/Shared/NullableOptionalObject.md) | :heavy_minus_sign:                                                              | N/A                                                                             |                                                                                 |
