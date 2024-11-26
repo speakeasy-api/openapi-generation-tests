@@ -2,6 +2,13 @@
 
 OK
 
+## Example Usage
+
+```typescript
+import { RequestBodyPostMultipleContentTypesSplitParamJsonRes } from "openapi/sdk/models/operations";
+
+let value: RequestBodyPostMultipleContentTypesSplitParamJsonRes = {};
+```
 
 ## Fields
 

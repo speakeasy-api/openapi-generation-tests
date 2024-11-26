@@ -5,4 +5,4 @@
 
 | Name   | Value  |
 | ------ | ------ |
-| `OBJ1` | obj1   |
+| `BOAT` | boat   |
