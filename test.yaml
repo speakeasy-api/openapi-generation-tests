@@ -9233,7 +9233,6 @@ paths:
             examples:
               test:
                 value: {"foo": "bar"}
-  
   /pathencoding/{param1}/{param2}:
     get:
       operationId: pathEncoding
@@ -9256,7 +9255,6 @@ paths:
       responses:
         "200":
           description: OK
-          
   /queryencoding:
     get:
       operationId: queryEncoding
@@ -9274,8 +9272,61 @@ paths:
         "200":
           description: OK          
 
+webhooks:
+  no-signing-webhook-key:
+    post:
+      operationId: sendNoSigning
+      x-speakeasy-group: webhooks
+      summary: Send Webhook No Signing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WebhookRequestCreated"
+      responses:
+        '200':
+          description: Consumer's response
+  no-signing-webhook-key-2:
+    post:
+      operationId: foo
+      x-speakeasy-group: webhooks
+      summary: Send Webhook No Signing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WebhookRequestUpdated"
+      responses:
+        '200':
+          description: Consumer's response
 components:
   schemas:
+    WebhookRequestCreated:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - webhook.created
+        data:
+          $ref: "components.yaml#/components/schemas/simpleObject"
+      required:
+        - type
+        - data
+    WebhookRequestUpdated:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - webhook.updated
+        data:
+          $ref: "components.yaml#/components/schemas/simpleObject"
+      required:
+        - type
+        - data
     AnyOfMultiMatch:
       anyOf:
         - $ref: "#/components/schemas/AnyOfMultiMatchMember1"
