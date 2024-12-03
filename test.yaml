@@ -103,6 +103,8 @@ tags:
     description: Endpoints for testing HTTP methods.
   - name: retries
     description: Endpoints for testing retries.
+  - name: statusCode
+    description: Endpoints for testing HTTP status codes, especially OAS-defined XX and default.
   - name: generation
     description: Endpoints for purely testing valid generation behavior.
   - name: flattening
@@ -7467,6 +7469,58 @@ paths:
           description: Bad Request
         "500":
           description: Internal Server Error
+  /statusCode/2XX:
+    get:
+      operationId: statusCode2XX
+      # TODO: Set to true when python (v1) has been sunset.
+      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test-internal-id: status-code2-xx
+      # TODO: Remove when mockserver is default
+      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
+      tags:
+        - statusCode
+      responses:
+        "2XX":
+          description: OK
+  /statusCode/4XX:
+    get:
+      operationId: statusCode4XX
+      # TODO: Set to true when python (v1) has been sunset.
+      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test-internal-id: status-code4-xx
+      # TODO: Remove when mockserver is default
+      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
+      tags:
+        - statusCode
+      responses:
+        "4XX":
+          description: OK
+  /statusCode/5XX:
+    get:
+      operationId: statusCode5XX
+      # TODO: Set to true when python (v1) has been sunset.
+      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test-internal-id: status-code5-xx
+      # TODO: Remove when mockserver is default
+      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
+      tags:
+        - statusCode
+      responses:
+        "5XX":
+          description: OK
+  /statusCode/default:
+    get:
+      operationId: statusCodeDefault
+      # TODO: Set to true when python (v1) has been sunset.
+      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test-internal-id: status-code-default
+      # TODO: Remove when mockserver is default
+      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
+      tags:
+        - statusCode
+      responses:
+        default:
+          description: OK
   /errors/{statusCode}:
     servers:
       - url: http://localhost:35456
