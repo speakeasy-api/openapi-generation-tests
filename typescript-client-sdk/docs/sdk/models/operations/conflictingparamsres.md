@@ -2,6 +2,18 @@
 
 OK
 
+## Example Usage
+
+```typescript
+import { ConflictingParamsRes } from "openapi/sdk/models/operations";
+
+let value: ConflictingParamsRes = {
+  args: {
+    "key": "<value>",
+  },
+  url: "https://dental-morbidity.com/",
+};
+```
 
 ## Fields
 

@@ -1,10 +1,15 @@
 # DefaultEnumStr
 
+## Example Usage
+
+```typescript
+import { DefaultEnumStr } from "openapi/sdk/models/shared";
+
+let value: DefaultEnumStr = "three";
+```
 
 ## Values
 
-| Name    | Value   |
-| ------- | ------- |
-| `One`   | one     |
-| `Two`   | two     |
-| `Three` | three   |
+```typescript
+"one" | "two" | "three"
+```
