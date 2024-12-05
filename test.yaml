@@ -5608,6 +5608,94 @@ paths:
       responses:
         "200":
           description: OK
+  /anything/reactHookGetAsMutation:
+    get:
+      operationId: reactHookGetAsMutation
+      x-speakeasy-react-hook:
+        type: mutation
+      tags:
+        - generation
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /anything/reactHookPostAsQuery:
+    get:
+      operationId: reactHookPostAsQuery
+      x-speakeasy-react-hook:
+        type: query
+      tags:
+        - generation
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /anything/reactHookRenamed:
+    post:
+      operationId: reactHookRenamed
+      x-speakeasy-react-hook:
+        name: SubmitData
+      tags:
+        - generation
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /anything/reactHookDisabled:
+    post:
+      operationId: reactHookDisabled
+      x-speakeasy-react-hook:
+        disabled: true
+      tags:
+        - generation
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /anything/reactHookCombinedOptions:
+    post:
+      operationId: reactHookCombinedOptions
+      tags:
+        - generation
+      x-speakeasy-react-hook:
+        name: TextSearch 
+        type: query
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: page
+            in: parameters
+            type: page
+        outputs:
+          results: $.resultArray
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
   /anything/circularReference:
     get:
       operationId: circularReferenceGet
@@ -9324,7 +9412,7 @@ paths:
           allowReserved: true
       responses:
         "200":
-          description: OK          
+          description: OK
 
 webhooks:
   no-signing-webhook-key:
