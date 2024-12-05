@@ -2,6 +2,18 @@
 
 OK
 
+## Example Usage
+
+```typescript
+import { NullableTypedObjectPostRes } from "openapi/sdk/models/operations";
+
+let value: NullableTypedObjectPostRes = {
+  json: {
+    type: "obj1",
+    value: "<value>",
+  },
+};
+```
 
 ## Fields
 
