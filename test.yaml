@@ -9412,14 +9412,18 @@ paths:
           allowReserved: true
       responses:
         "200":
-          description: OK
-
+          description: OK          
+x-speakeasy-webhooks:
+  security:
+    type: signature
+    name: X-Signature
+    encoding: base64
+    algorithm: hmac-sha256
 webhooks:
-  no-signing-webhook-key:
+  user.created:
     post:
-      operationId: sendNoSigning
+      operationId: sendWebhookUserCreated
       x-speakeasy-group: webhooks
-      summary: Send Webhook No Signing
       requestBody:
         required: true
         content:
@@ -9429,11 +9433,10 @@ webhooks:
       responses:
         '200':
           description: Consumer's response
-  no-signing-webhook-key-2:
+  user.updated:
     post:
-      operationId: foo
+      operationId: sendWebhookUserUpdated
       x-speakeasy-group: webhooks
-      summary: Send Webhook No Signing
       requestBody:
         required: true
         content:
