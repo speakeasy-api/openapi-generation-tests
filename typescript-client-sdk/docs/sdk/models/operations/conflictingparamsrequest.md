@@ -1,5 +1,15 @@
 # ConflictingParamsRequest
 
+## Example Usage
+
+```typescript
+import { ConflictingParamsRequest } from "openapi/sdk/models/operations";
+
+let value: ConflictingParamsRequest = {
+  strPathParameter: "<value>",
+  strQueryParameter: "<value>",
+};
+```
 
 ## Fields
 
