@@ -1,6 +1,8 @@
 # First
 (*first*)
 
+## Overview
+
 ### Available Operations
 
 * [get](#get)
@@ -10,31 +12,28 @@
 ### Example Usage
 
 ```python
-import sdk
-from sdk.models import shared
+from openapi import SDK
 
-s = sdk.SDK(
-    security=shared.Security(
-        api_key_auth="Token YOUR_API_KEY",
-    ),
+with SDK(
+    global_header_param=True,
+    global_hidden_query_param="hello",
     global_path_param=100,
-    global_query_param='some example global query param',
-)
+    global_query_param="some example global query param",
+) as sdk:
+    sdk.first.get()
 
+    # Use the SDK ...
 
-res = s.first.get()
-
-if res.status_code == 200:
-    # handle response
-    pass
 ```
 
+### Parameters
 
-### Response
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
-**[operations.GroupFirstGetResponse](../../models/operations/groupfirstgetresponse.md)**
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

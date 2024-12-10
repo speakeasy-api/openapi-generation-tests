@@ -1,5 +1,12 @@
 # LimitOffsetConfig
 
+## Example Usage
+
+```typescript
+import { LimitOffsetConfig } from "openapi/sdk/models/shared";
+
+let value: LimitOffsetConfig = {};
+```
 
 ## Fields
 
