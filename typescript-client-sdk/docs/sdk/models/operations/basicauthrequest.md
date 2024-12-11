@@ -1,5 +1,15 @@
 # BasicAuthRequest
 
+## Example Usage
+
+```typescript
+import { BasicAuthRequest } from "openapi/sdk/models/operations";
+
+let value: BasicAuthRequest = {
+  passwd: "mcxds0qmWGcLesr",
+  user: "Adolf.Renner52",
+};
+```
 
 ## Fields
 
