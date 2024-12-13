@@ -763,6 +763,19 @@ components:
           example: 1.1
         obj:
           $ref: "#/components/schemas/simpleObject"
+        oneof:
+          oneOf:
+            - type: string
+              example: test
+            - type: integer
+        oneofnestedobject:
+          oneOf:
+            - type: string
+            - type: object
+              properties:
+                nested:
+                  type: string
+                  example: test
         str:
           type: string
           example: "test"
