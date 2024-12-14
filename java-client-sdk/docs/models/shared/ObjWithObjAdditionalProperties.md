@@ -1,0 +1,10 @@
+# ObjWithObjAdditionalProperties
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `additionalProperties`                                                                    | List\<*long*>                                                                             | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `additionalPropertiesT`                                                                   | Map\<String, [SimpleObject](../../models/shared/SimpleObject.md)>                         | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `datetime`                                                                                | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_check_mark:                                                                        | N/A                                                                                       |
