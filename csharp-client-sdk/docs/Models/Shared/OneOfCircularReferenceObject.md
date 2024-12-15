@@ -3,6 +3,6 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `Child`            | *object*           | :heavy_check_mark: | N/A                |
+| Field                                 | Type                                  | Required                              | Description                           |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| `Child`                               | [Child](../../Models/Shared/Child.md) | :heavy_check_mark:                    | N/A                                   |

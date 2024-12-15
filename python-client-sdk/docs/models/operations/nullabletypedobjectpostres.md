@@ -7,4 +7,4 @@ OK
 
 | Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `json`                                                               | [Optional[shared.TypedObject1]](../../models/shared/typedobject1.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| `json_`                                                              | [Nullable[shared.TypedObject1]](../../models/shared/typedobject1.md) | :heavy_check_mark:                                                   | N/A                                                                  |

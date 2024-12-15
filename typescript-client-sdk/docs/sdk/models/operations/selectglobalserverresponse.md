@@ -1,11 +1,21 @@
 # SelectGlobalServerResponse
 
+## Example Usage
+
+```typescript
+import { SelectGlobalServerResponse } from "openapi/sdk/models/operations";
+
+let value: SelectGlobalServerResponse = {
+  headers: {
+    "key": [
+      "<value>",
+    ],
+  },
+};
+```
 
 ## Fields
 
-| Field                                                   | Type                                                    | Required                                                | Description                                             |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `contentType`                                           | *string*                                                | :heavy_check_mark:                                      | HTTP response content type for this operation           |
-| `headers`                                               | Record<string, *string*[]>                              | :heavy_minus_sign:                                      | N/A                                                     |
-| `statusCode`                                            | *number*                                                | :heavy_check_mark:                                      | HTTP response status code for this operation            |
-| `rawResponse`                                           | [AxiosResponse](https://axios-http.com/docs/res_schema) | :heavy_minus_sign:                                      | Raw HTTP response; suitable for custom response parsing |
+| Field                      | Type                       | Required                   | Description                |
+| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
+| `headers`                  | Record<string, *string*[]> | :heavy_check_mark:         | N/A                        |

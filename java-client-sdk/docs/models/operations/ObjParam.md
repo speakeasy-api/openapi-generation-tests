@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        | Example            |
-| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `encodedCount`     | *String*           | :heavy_minus_sign: | N/A                | 11                 |
-| `encodedTerm`      | *String*           | :heavy_minus_sign: | N/A                | bar                |
+| Field               | Type                | Required            | Description         | Example             |
+| ------------------- | ------------------- | ------------------- | ------------------- | ------------------- |
+| `encodedCount`      | *Optional\<String>* | :heavy_minus_sign:  | N/A                 | 11                  |
+| `encodedTerm`       | *Optional\<String>* | :heavy_minus_sign:  | N/A                 | bar                 |

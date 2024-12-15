@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### OneOfCircularReferenceObject
+### `shared.OneOfCircularReferenceObject`
 
 ```python
-child: shared.OneOfCircularReferenceObject = /* values here */
+value: shared.OneOfCircularReferenceObject = /* values here */
 ```
 
-### SimpleObject
+### `shared.SimpleObject`
 
 ```python
-child: shared.SimpleObject = /* values here */
+value: shared.SimpleObject = /* values here */
 ```
 
