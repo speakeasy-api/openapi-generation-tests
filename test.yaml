@@ -8291,6 +8291,39 @@ paths:
             type: cursor
         outputs:
           nextCursor: $.resultArray[(@.length-1)]
+  /pagination/cursor#encapsulatedParameter:
+    x-speakeasy-exclude-test-sdk: [go,javav2,python,pythonv2,swift,terraform]
+    put:
+      description: |
+        This is a paginated operation where the input is a query parameter
+        but the number of arguments exceeds maxMethodParams so it ends up
+        being encapsulated into a request object.
+      operationId: paginationEncapsulatedParameter
+      servers:
+        - url: http://localhost:35456
+      x-speakeasy-max-method-params: 1
+      parameters:
+        - name: cursor
+          in: query
+          schema:
+            type: integer
+        - name: headerParam
+          in: header
+          schema:
+            type: string
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponse"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: cursor
+        inputs:
+          - name: cursor
+            in: parameters
+            type: cursor
+        outputs:
+          nextCursor: $.resultArray[(@.length-1)]
   /pagination/limitoffset/offset#paginationWrappedOptionalBody:
     x-speakeasy-exclude-test-sdk: [go,javav2,python,pythonv2,terraform]
     put:
