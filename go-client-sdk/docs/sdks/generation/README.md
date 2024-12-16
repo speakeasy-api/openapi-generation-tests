@@ -10,13 +10,14 @@ Endpoints for purely testing valid generation behavior.
 * [AnchorTypesGet](#anchortypesget)
 * [ArrayCircularReferenceGet](#arraycircularreferenceget)
 * [CircularReferenceGet](#circularreferenceget)
+* [CircularReferenceOneDegree](#circularreferenceonedegree) - A reference cycle that spans three models separated by one degree
 * [DateParamWithDefault](#dateparamwithdefault)
 * [DateTimeParamWithDefault](#datetimeparamwithdefault)
 * [DecimalParamWithDefault](#decimalparamwithdefault)
 * [DeprecatedFieldInSchemaPost](#deprecatedfieldinschemapost)
 * [DeprecatedObjectInSchemaGet](#deprecatedobjectinschemaget)
 * [~~DeprecatedOperationNoCommentsGet~~](#deprecatedoperationnocommentsget) - :warning: **Deprecated**
-* [~~DeprecatedOperationWithCommentsGet~~](#deprecatedoperationwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `SimplePathParameterObjects` instead.
+* [~~DeprecatedOperationWithCommentsGet~~](#deprecatedoperationwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use [SimplePathParameterObjects](docs/sdks/parameters/README.md#simplepathparameterobjects) instead.
 * [EmptyObjectGet](#emptyobjectget)
 * [EmptyResponseObjectWithCommentGet](#emptyresponseobjectwithcommentget)
 * [GlobalNameOverridden](#globalnameoverridden)
@@ -25,6 +26,11 @@ Endpoints for purely testing valid generation behavior.
 * [NameOverride](#nameoverride)
 * [ObjectCircularReferenceGet](#objectcircularreferenceget)
 * [OneOfCircularReferenceGet](#oneofcircularreferenceget)
+* [ReactHookCombinedOptions](#reacthookcombinedoptions)
+* [ReactHookDisabled](#reacthookdisabled)
+* [ReactHookGetAsMutation](#reacthookgetasmutation)
+* [ReactHookPostAsQuery](#reacthookpostasquery)
+* [ReactHookRenamed](#reacthookrenamed)
 * [TypedParameterGenerationGet](#typedparametergenerationget)
 * [UsageExamplePost](#usageexamplepost) - An operation used for testing usage examples
 
@@ -37,26 +43,24 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-    ctx := context.Background()
     res, err := s.Generation.AnchorTypesGet(ctx)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.TypeFromAnchor != nil {
         // handle response
     }
@@ -65,17 +69,20 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
 ### Response
 
 **[*operations.AnchorTypesGetResponse](../../pkg/models/operations/anchortypesgetresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## ArrayCircularReferenceGet
 
@@ -86,26 +93,24 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-    ctx := context.Background()
     res, err := s.Generation.ArrayCircularReferenceGet(ctx)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ArrayCircularReferenceObject != nil {
         // handle response
     }
@@ -114,17 +119,20 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
 ### Response
 
 **[*operations.ArrayCircularReferenceGetResponse](../../pkg/models/operations/arraycircularreferencegetresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## CircularReferenceGet
 
@@ -135,26 +143,24 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-    ctx := context.Background()
     res, err := s.Generation.CircularReferenceGet(ctx)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ValidCircularReferenceObject != nil {
         // handle response
     }
@@ -163,17 +169,73 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
 ### Response
 
 **[*operations.CircularReferenceGetResponse](../../pkg/models/operations/circularreferencegetresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## CircularReferenceOneDegree
+
+A reference cycle that spans three models separated by one degree
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	openapi "openapi/v2"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+    
+    s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    res, err := s.Generation.CircularReferenceOneDegree(ctx, nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
+| `request`                                                                  | [shared.FigmaComponentNode](../../pkg/models/shared/figmacomponentnode.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| `opts`                                                                     | [][operations.Option](../../pkg/models/operations/option.md)               | :heavy_minus_sign:                                                         | The options for this request.                                              |
+
+### Response
+
+**[*operations.CircularReferenceOneDegreeResponse](../../pkg/models/operations/circularreferenceonedegreeresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## DateParamWithDefault
 
@@ -184,31 +246,26 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-
-    var dateInput types.Date = types.MustDateFromString("2021-11-30")
-
-    ctx := context.Background()
-    res, err := s.Generation.DateParamWithDefault(ctx, dateInput)
+    res, err := s.Generation.DateParamWithDefault(ctx, types.MustDateFromString("2023-10-13"))
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -216,18 +273,21 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-| `dateInput`                                           | [types.Date](../../types/date.md)                     | :heavy_check_mark:                                    | A date parameter with a default value                 |
-
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `dateInput`                                                  | [types.Date](../../types/date.md)                            | :heavy_check_mark:                                           | A date parameter with a default value                        |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
 ### Response
 
 **[*operations.DateParamWithDefaultResponse](../../pkg/models/operations/dateparamwithdefaultresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## DateTimeParamWithDefault
 
@@ -238,31 +298,26 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-
-    var dateTimeInput time.Time = types.MustTimeFromString("2023-02-09T21:53:21.077Z")
-
-    ctx := context.Background()
-    res, err := s.Generation.DateTimeParamWithDefault(ctx, dateTimeInput)
+    res, err := s.Generation.DateTimeParamWithDefault(ctx, types.MustTimeFromString("2023-10-13T12:42:42.999+00:00"))
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -270,18 +325,21 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-| `dateTimeInput`                                       | [time.Time](https://pkg.go.dev/time#Time)             | :heavy_check_mark:                                    | A date time parameter with a default value            |
-
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `dateTimeInput`                                              | [time.Time](https://pkg.go.dev/time#Time)                    | :heavy_check_mark:                                           | A date time parameter with a default value                   |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
 ### Response
 
 **[*operations.DateTimeParamWithDefaultResponse](../../pkg/models/operations/datetimeparamwithdefaultresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## DecimalParamWithDefault
 
@@ -292,31 +350,26 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 	"openapi/v2/pkg/types"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-
-    var decimalInput *decimal.Big = types.MustNewDecimalFromString("4060.06")
-
-    ctx := context.Background()
-    res, err := s.Generation.DecimalParamWithDefault(ctx, decimalInput)
+    res, err := s.Generation.DecimalParamWithDefault(ctx, types.MustNewDecimalFromString("903275809834567300000"))
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -328,14 +381,17 @@ func main() {
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | `ctx`                                                                   | [context.Context](https://pkg.go.dev/context#Context)                   | :heavy_check_mark:                                                      | The context to use for the request.                                     |
 | `decimalInput`                                                          | [*decimal.Big](https://pkg.go.dev/github.com/ericlagergren/decimal#Big) | :heavy_check_mark:                                                      | A decimal parameter with a default value                                |
-
+| `opts`                                                                  | [][operations.Option](../../pkg/models/operations/option.md)            | :heavy_minus_sign:                                                      | The options for this request.                                           |
 
 ### Response
 
 **[*operations.DecimalParamWithDefaultResponse](../../pkg/models/operations/decimalparamwithdefaultresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## DeprecatedFieldInSchemaPost
 
@@ -346,27 +402,26 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-    ctx := context.Background()
     res, err := s.Generation.DeprecatedFieldInSchemaPost(ctx, shared.DeprecatedFieldInObject{})
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -378,14 +433,17 @@ func main() {
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
 | `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
 | `request`                                                                            | [shared.DeprecatedFieldInObject](../../pkg/models/shared/deprecatedfieldinobject.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-
+| `opts`                                                                               | [][operations.Option](../../pkg/models/operations/option.md)                         | :heavy_minus_sign:                                                                   | The options for this request.                                                        |
 
 ### Response
 
 **[*operations.DeprecatedFieldInSchemaPostResponse](../../pkg/models/operations/deprecatedfieldinschemapostresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## DeprecatedObjectInSchemaGet
 
@@ -396,26 +454,24 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-    ctx := context.Background()
     res, err := s.Generation.DeprecatedObjectInSchemaGet(ctx)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Object != nil {
         // handle response
     }
@@ -424,17 +480,20 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
 ### Response
 
 **[*operations.DeprecatedObjectInSchemaGetResponse](../../pkg/models/operations/deprecatedobjectinschemagetresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## ~~DeprecatedOperationNoCommentsGet~~
 
@@ -447,30 +506,25 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-
-    var deprecatedParameter *string = "string"
-
-    ctx := context.Background()
-    res, err := s.Generation.DeprecatedOperationNoCommentsGet(ctx, deprecatedParameter)
+    res, err := s.Generation.DeprecatedOperationNoCommentsGet(ctx, nil)
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -482,14 +536,17 @@ func main() {
 | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                                   | :heavy_check_mark:                                                                                                      | The context to use for the request.                                                                                     |
 | `deprecatedParameter`                                                                                                   | **string*                                                                                                               | :heavy_minus_sign:                                                                                                      | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible. |
-
+| `opts`                                                                                                                  | [][operations.Option](../../pkg/models/operations/option.md)                                                            | :heavy_minus_sign:                                                                                                      | The options for this request.                                                                                           |
 
 ### Response
 
 **[*operations.DeprecatedOperationNoCommentsGetResponse](../../pkg/models/operations/deprecatedoperationnocommentsgetresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## ~~DeprecatedOperationWithCommentsGet~~
 
@@ -504,32 +561,25 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-
-    var deprecatedParameter *string = "string"
-
-    var newParameter *string = "string"
-
-    ctx := context.Background()
-    res, err := s.Generation.DeprecatedOperationWithCommentsGet(ctx, deprecatedParameter, newParameter)
+    res, err := s.Generation.DeprecatedOperationWithCommentsGet(ctx, nil, nil)
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -542,14 +592,17 @@ func main() {
 | `ctx`                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                            | :heavy_check_mark:                                                                                               | The context to use for the request.                                                                              |
 | `deprecatedParameter`                                                                                            | **string*                                                                                                        | :heavy_minus_sign:                                                                                               | : warning: ** DEPRECATED **: This parameter is deprecated. Use NewParameter instead.<br/><br/>This is a string parameter |
 | `newParameter`                                                                                                   | **string*                                                                                                        | :heavy_minus_sign:                                                                                               | This is a string parameter                                                                                       |
-
+| `opts`                                                                                                           | [][operations.Option](../../pkg/models/operations/option.md)                                                     | :heavy_minus_sign:                                                                                               | The options for this request.                                                                                    |
 
 ### Response
 
 **[*operations.DeprecatedOperationWithCommentsGetResponse](../../pkg/models/operations/deprecatedoperationwithcommentsgetresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## EmptyObjectGet
 
@@ -560,30 +613,26 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
 	"openapi/v2/pkg/models/shared"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-
-    emptyObject := shared.EmptyObjectParam{}
-
-    ctx := context.Background()
-    res, err := s.Generation.EmptyObjectGet(ctx, emptyObject)
+    res, err := s.Generation.EmptyObjectGet(ctx, shared.EmptyObjectParam{})
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -591,18 +640,21 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `ctx`                                                                     | [context.Context](https://pkg.go.dev/context#Context)                     | :heavy_check_mark:                                                        | The context to use for the request.                                       |
-| `emptyObject`                                                             | [shared.EmptyObjectParam](../../../pkg/models/shared/emptyobjectparam.md) | :heavy_check_mark:                                                        | N/A                                                                       |
-
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `ctx`                                                                  | [context.Context](https://pkg.go.dev/context#Context)                  | :heavy_check_mark:                                                     | The context to use for the request.                                    |
+| `emptyObject`                                                          | [shared.EmptyObjectParam](../../pkg/models/shared/emptyobjectparam.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `opts`                                                                 | [][operations.Option](../../pkg/models/operations/option.md)           | :heavy_minus_sign:                                                     | The options for this request.                                          |
 
 ### Response
 
 **[*operations.EmptyObjectGetResponse](../../pkg/models/operations/emptyobjectgetresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## EmptyResponseObjectWithCommentGet
 
@@ -613,26 +665,24 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-    ctx := context.Background()
     res, err := s.Generation.EmptyResponseObjectWithCommentGet(ctx)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Body != nil {
         // handle response
     }
@@ -641,17 +691,20 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
 ### Response
 
 **[*operations.EmptyResponseObjectWithCommentGetResponse](../../pkg/models/operations/emptyresponseobjectwithcommentgetresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## GlobalNameOverridden
 
@@ -662,26 +715,48 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
+	"math/big"
+	"openapi/v2/pkg/types"
 	"openapi/v2/pkg/models/shared"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-    ctx := context.Background()
-    res, err := s.Generation.GlobalNameOverridden(ctx)
+    res, err := s.Generation.GlobalNameOverridden(ctx, &shared.SimpleObject{
+        Any: "any",
+        Bigint: big.NewInt(8821239038968084),
+        BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+        Bool: true,
+        BoolOpt: openapi.Bool(true),
+        Date: types.MustDateFromString("2020-01-01"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
+        Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+        DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+        Enum: shared.EnumOne,
+        Float32: 1.1,
+        Float64Str: openapi.Float64(1.1),
+        Int: 1,
+        Int32: 1,
+        Int32Enum: shared.Int32EnumFiftyFive,
+        Int64Str: openapi.Int64(100),
+        IntEnum: shared.IntEnumSecond,
+        Num: 1.1,
+        Str: "test",
+        StrOpt: openapi.String("testOptional"),
+    })
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Object != nil {
         // handle response
     }
@@ -690,17 +765,21 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `ctx`                                                          | [context.Context](https://pkg.go.dev/context#Context)          | :heavy_check_mark:                                             | The context to use for the request.                            |
+| `request`                                                      | [shared.SimpleObject](../../pkg/models/shared/simpleobject.md) | :heavy_check_mark:                                             | The request object to use for the request.                     |
+| `opts`                                                         | [][operations.Option](../../pkg/models/operations/option.md)   | :heavy_minus_sign:                                             | The options for this request.                                  |
 
 ### Response
 
 **[*operations.GetGlobalNameOverrideResponse](../../pkg/models/operations/getglobalnameoverrideresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## IgnoredGenerationGet
 
@@ -711,26 +790,24 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-    ctx := context.Background()
     res, err := s.Generation.IgnoredGenerationGet(ctx)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Object != nil {
         // handle response
     }
@@ -739,17 +816,20 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
 ### Response
 
 **[*operations.IgnoredGenerationGetResponse](../../pkg/models/operations/ignoredgenerationgetresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## IgnoresPost
 
@@ -760,32 +840,25 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 	"openapi/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-
-    requestBody := operations.IgnoresPostRequestBody{}
-
-    var testParam *string = "string"
-
-    ctx := context.Background()
-    res, err := s.Generation.IgnoresPost(ctx, requestBody, testParam)
+    res, err := s.Generation.IgnoresPost(ctx, operations.IgnoresPostRequestBody{}, nil)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.HTTPBinSimpleJSONObject != nil {
         // handle response
     }
@@ -794,19 +867,22 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                         | [context.Context](https://pkg.go.dev/context#Context)                                         | :heavy_check_mark:                                                                            | The context to use for the request.                                                           |
-| `requestBody`                                                                                 | [operations.IgnoresPostRequestBody](../../../pkg/models/operations/ignorespostrequestbody.md) | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `testParam`                                                                                   | **string*                                                                                     | :heavy_minus_sign:                                                                            | N/A                                                                                           |
-
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
+| `requestBody`                                                                              | [operations.IgnoresPostRequestBody](../../pkg/models/operations/ignorespostrequestbody.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `testParam`                                                                                | **string*                                                                                  | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `opts`                                                                                     | [][operations.Option](../../pkg/models/operations/option.md)                               | :heavy_minus_sign:                                                                         | The options for this request.                                                              |
 
 ### Response
 
 **[*operations.IgnoresPostResponse](../../pkg/models/operations/ignorespostresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## NameOverride
 
@@ -817,32 +893,25 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
 	"openapi/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-
-    var testEnumQueryParam operations.EnumNameOverride = operations.EnumNameOverrideValue3
-
-    var testQueryParam string = "example"
-
-    ctx := context.Background()
-    res, err := s.Generation.NameOverride(ctx, testEnumQueryParam, testQueryParam)
+    res, err := s.Generation.NameOverride(ctx, operations.EnumNameOverrideValue3, "example")
     if err != nil {
         log.Fatal(err)
     }
-
     if res.OverriddenResponse != nil {
         // handle response
     }
@@ -851,19 +920,22 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `ctx`                                                                             | [context.Context](https://pkg.go.dev/context#Context)                             | :heavy_check_mark:                                                                | The context to use for the request.                                               |                                                                                   |
-| `testEnumQueryParam`                                                              | [operations.EnumNameOverride](../../../pkg/models/operations/enumnameoverride.md) | :heavy_check_mark:                                                                | An enum type                                                                      | value3                                                                            |
-| `testQueryParam`                                                                  | *string*                                                                          | :heavy_check_mark:                                                                | N/A                                                                               | example                                                                           |
-
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |                                                                                |
+| `testEnumQueryParam`                                                           | [operations.EnumNameOverride](../../pkg/models/operations/enumnameoverride.md) | :heavy_check_mark:                                                             | An enum type                                                                   | value3                                                                         |
+| `testQueryParam`                                                               | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            | example                                                                        |
+| `opts`                                                                         | [][operations.Option](../../pkg/models/operations/option.md)                   | :heavy_minus_sign:                                                             | The options for this request.                                                  |                                                                                |
 
 ### Response
 
 **[*operations.NameOverrideGetResponse](../../pkg/models/operations/nameoverridegetresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## ObjectCircularReferenceGet
 
@@ -874,26 +946,24 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-    ctx := context.Background()
     res, err := s.Generation.ObjectCircularReferenceGet(ctx)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ObjectCircularReferenceObject != nil {
         // handle response
     }
@@ -902,17 +972,20 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
 ### Response
 
 **[*operations.ObjectCircularReferenceGetResponse](../../pkg/models/operations/objectcircularreferencegetresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## OneOfCircularReferenceGet
 
@@ -923,26 +996,24 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-    ctx := context.Background()
     res, err := s.Generation.OneOfCircularReferenceGet(ctx)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.OneOfCircularReferenceObject != nil {
         // handle response
     }
@@ -951,17 +1022,283 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
 
 ### Response
 
 **[*operations.OneOfCircularReferenceGetResponse](../../pkg/models/operations/oneofcircularreferencegetresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## ReactHookCombinedOptions
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	openapi "openapi/v2"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+    
+    s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    res, err := s.Generation.ReactHookCombinedOptions(ctx, 122236)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        for {
+            // handle items
+
+            res, err = res.Next()
+
+            if err != nil {
+                // handle error
+            }
+
+            if res == nil {
+                break
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `page`                                                       | *int64*                                                      | :heavy_check_mark:                                           | N/A                                                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
+
+### Response
+
+**[*operations.ReactHookCombinedOptionsResponse](../../pkg/models/operations/reacthookcombinedoptionsresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## ReactHookDisabled
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	openapi "openapi/v2"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+    
+    s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    res, err := s.Generation.ReactHookDisabled(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
+
+### Response
+
+**[*operations.ReactHookDisabledResponse](../../pkg/models/operations/reacthookdisabledresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## ReactHookGetAsMutation
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	openapi "openapi/v2"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+    
+    s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    res, err := s.Generation.ReactHookGetAsMutation(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
+
+### Response
+
+**[*operations.ReactHookGetAsMutationResponse](../../pkg/models/operations/reacthookgetasmutationresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## ReactHookPostAsQuery
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	openapi "openapi/v2"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+    
+    s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    res, err := s.Generation.ReactHookPostAsQuery(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
+
+### Response
+
+**[*operations.ReactHookPostAsQueryResponse](../../pkg/models/operations/reacthookpostasqueryresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## ReactHookRenamed
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	openapi "openapi/v2"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+    
+    s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    res, err := s.Generation.ReactHookRenamed(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`                                                        | [context.Context](https://pkg.go.dev/context#Context)        | :heavy_check_mark:                                           | The context to use for the request.                          |
+| `opts`                                                       | [][operations.Option](../../pkg/models/operations/option.md) | :heavy_minus_sign:                                           | The options for this request.                                |
+
+### Response
+
+**[*operations.ReactHookRenamedResponse](../../pkg/models/operations/reacthookrenamedresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## TypedParameterGenerationGet
 
@@ -972,43 +1309,25 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/shared"
-	"math/big"
-	"openapi/v2/pkg/types"
-	"openapi/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-
-    var bigint *big.Int = big.NewInt(879275)
-
-    var date *types.Date = types.MustDateFromString("2023-11-18")
-
-    var decimal *decimal.Big = types.MustNewDecimalFromString("3346.96")
-
-    obj := &operations.Obj{
-        Bool: false,
-        Num: 4778.06,
-        Str: "string",
-    }
-
-    ctx := context.Background()
-    res, err := s.Generation.TypedParameterGenerationGet(ctx, bigint, date, decimal, obj)
+    res, err := s.Generation.TypedParameterGenerationGet(ctx, nil, nil, nil, nil)
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -1022,15 +1341,18 @@ func main() {
 | `bigint`                                                                | [*big.Int](https://pkg.go.dev/math/big#Int)                             | :heavy_minus_sign:                                                      | N/A                                                                     |
 | `date`                                                                  | [*types.Date](../../types/date.md)                                      | :heavy_minus_sign:                                                      | N/A                                                                     |
 | `decimal`                                                               | [*decimal.Big](https://pkg.go.dev/github.com/ericlagergren/decimal#Big) | :heavy_minus_sign:                                                      | N/A                                                                     |
-| `obj`                                                                   | [*operations.Obj](../../../pkg/models/operations/obj.md)                | :heavy_minus_sign:                                                      | N/A                                                                     |
-
+| `obj`                                                                   | [*operations.Obj](../../pkg/models/operations/obj.md)                   | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `opts`                                                                  | [][operations.Option](../../pkg/models/operations/option.md)            | :heavy_minus_sign:                                                      | The options for this request.                                           |
 
 ### Response
 
 **[*operations.TypedParameterGenerationGetResponse](../../pkg/models/operations/typedparametergenerationgetresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
 
 ## UsageExamplePost
 
@@ -1046,31 +1368,26 @@ package main
 
 import(
 	"context"
-	"log"
 	openapi "openapi/v2"
-	"openapi/v2/pkg/models/operations"
-	"openapi/v2/pkg/models/shared"
 	"math/big"
 	"openapi/v2/pkg/types"
+	"openapi/v2/pkg/models/shared"
+	"openapi/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := openapi.New(
+        openapi.WithGlobalHeaderParam(true),
+        openapi.WithGlobalHiddenQueryParam("hello"),
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
 
-
-    operationSecurity := operations.UsageExamplePostSecurity{
-            Password: "YOUR_PASSWORD",
-            Username: "YOUR_USERNAME",
-        }
-
-    ctx := context.Background()
     res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
         RequestBody: &operations.UsageExamplePostRequestBody{
-            FakerFormattedStrings: &shared.FakerFormattedStrings{},
-            FakerStrings: &shared.FakerStrings{},
             SimpleObject: &shared.SimpleObject{
                 Any: "any",
                 Bigint: big.NewInt(8821239038968084),
@@ -1078,42 +1395,48 @@ func main() {
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.001Z"),
                 Decimal: types.MustNewDecimalFromString("3.141592653589793"),
                 DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
                 Enum: shared.EnumOne,
                 Float32: 1.1,
+                Float64Str: openapi.Float64(1.1),
                 Int: 1,
                 Int32: 1,
                 Int32Enum: shared.Int32EnumFiftyFive,
+                Int64Str: openapi.Int64(100),
                 IntEnum: shared.IntEnumSecond,
                 Num: 1.1,
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
             },
         },
-        BigintParameter: big.NewInt(168827),
-        BigintStrParameter: big.NewInt(446729),
-        BoolParameter: false,
-        DateParameter: types.MustDateFromString("2023-06-11"),
-        DateTimeDefaultParameter: types.MustTimeFromString("2022-07-22T13:16:48.221Z"),
-        DateTimeParameter: types.MustTimeFromString("2021-10-21T09:16:58.799Z"),
-        DecimalParameter: types.MustNewDecimalFromString("5223.72"),
-        DecimalStrParameter: types.MustNewDecimalFromString("2911.37"),
-        DoubleParameter: 6946.59,
-        EnumParameter: operations.EnumParameterValue1,
+        BigintParameter: big.NewInt(569663),
+        BigintStrParameter: big.NewInt(352778),
+        BoolParameter: true,
+        DateParameter: types.MustDateFromString("2022-11-22"),
+        DateTimeDefaultParameter: types.MustTimeFromString("2022-07-01T07:46:46.050Z"),
+        DateTimeParameter: types.MustTimeFromString("2024-10-20T01:22:27.683Z"),
+        DecimalParameter: types.MustNewDecimalFromString("1062.86"),
+        DecimalStrParameter: types.MustNewDecimalFromString("2346.83"),
+        DoubleParameter: 2152.17,
+        EnumParameter: operations.EnumParameterValue3,
         FalseyNumberParameter: 0,
-        Float32Parameter: 1029.75,
-        FloatParameter: 5669.99,
-        Int64Parameter: 195232,
-        IntParameter: 569663,
+        Float32Parameter: 200.82,
+        Float64StringParameter: 5669.99,
+        FloatParameter: 4819.51,
+        Int64Parameter: 291137,
+        Int64StringParameter: 228622,
+        IntParameter: 267933,
         OptEnumParameter: operations.OptEnumParameterValue3.ToPointer(),
-        StrParameter: "example 1",
-    }, operationSecurity)
+        StrParameter: "example 3",
+    }, operations.UsageExamplePostSecurity{
+        Password: "YOUR_PASSWORD",
+        Username: "YOUR_USERNAME",
+    })
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Object != nil {
         // handle response
     }
@@ -1127,11 +1450,14 @@ func main() {
 | `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |
 | `request`                                                                                      | [operations.UsageExamplePostRequest](../../pkg/models/operations/usageexamplepostrequest.md)   | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
 | `security`                                                                                     | [operations.UsageExamplePostSecurity](../../pkg/models/operations/usageexamplepostsecurity.md) | :heavy_check_mark:                                                                             | The security requirements to use for the request.                                              |
-
+| `opts`                                                                                         | [][operations.Option](../../pkg/models/operations/option.md)                                   | :heavy_minus_sign:                                                                             | The options for this request.                                                                  |
 
 ### Response
 
 **[*operations.UsageExamplePostResponse](../../pkg/models/operations/usageexamplepostresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
