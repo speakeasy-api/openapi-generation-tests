@@ -1852,6 +1852,9 @@ components:
           type: array
           items:
               $ref: "#/components/schemas/figma_SubcanvasNode"
+    binaryString:
+      type: string
+      format: binary
   responses:
     tokenAuthResponse:
       description: Successful authentication.

@@ -3402,6 +3402,36 @@ paths:
                       type: string
                 required:
                   - files
+  /anything/requestBodies/put/multipart/fileRef:
+    put:
+      operationId: requestBodyPutMultipartFileRef
+      # x-speakeasy-test: true - can't enable until we find a way to control file upload for tests
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  $ref: "components.yaml#/components/schemas/binaryString"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  files:
+                    type: object
+                    additionalProperties:
+                      type: string
+                required:
+                  - files
   /anything/requestBodies/put/multipart/differentFileName:
     put:
       operationId: requestBodyPutMultipartDifferentFileName
