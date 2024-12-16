@@ -5578,6 +5578,27 @@ paths:
       responses:
         "500":
           description: Internal Server Error
+  /anything/responseBodies/2xxJSONObjectAllOptionalProperties:
+    get:
+      # Reference: https://linear.app/speakeasy/issue/GEN-813/bug-missing-example-value-in-2xx-200-ast-handling
+      operationId: responseBodies2xxJSONObjectAllOptionalProperties
+      # TODO: Set to true when python (v1) has been sunset.
+      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test-internal-id: response-bodies2xx-json-object-all-optional-properties
+      # TODO: Remove when mockserver is default
+      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
+      tags:
+        - responseBodies
+      responses:
+        "2XX":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: string
   /reflect#decimalStr:
     post:
       operationId: responseBodyDecimalStr
