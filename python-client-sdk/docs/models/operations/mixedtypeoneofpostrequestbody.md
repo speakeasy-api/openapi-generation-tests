@@ -3,21 +3,21 @@
 
 ## Supported Types
 
-### 
+### `str`
 
 ```python
-mixedTypeOneOfPostRequestBody: str = /* values here */
+value: str = /* values here */
 ```
 
-### 
+### `int`
 
 ```python
-mixedTypeOneOfPostRequestBody: int = /* values here */
+value: int = /* values here */
 ```
 
-### SimpleObject
+### `shared.SimpleObject`
 
 ```python
-mixedTypeOneOfPostRequestBody: shared.SimpleObject = /* values here */
+value: shared.SimpleObject = /* values here */
 ```
 
