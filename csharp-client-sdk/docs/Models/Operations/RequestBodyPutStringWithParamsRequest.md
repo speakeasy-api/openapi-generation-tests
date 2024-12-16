@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `RequestBody`      | *string*           | :heavy_check_mark: | N/A                |
-| `QueryStringParam` | *string*           | :heavy_check_mark: | N/A                |
+| Field              | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `RequestBody`      | *string*           | :heavy_check_mark: | N/A                | Hello world        |
+| `QueryStringParam` | *string*           | :heavy_check_mark: | N/A                | test param         |
