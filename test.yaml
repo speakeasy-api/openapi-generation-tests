@@ -246,6 +246,38 @@ paths:
       responses:
         "200":
           description: OK
+  /ping#serversOverrideGlobalServerURL:
+    get:
+      operationId: serversOverrideGlobalServerURL
+      tags:
+        - servers
+      responses:
+        "200":
+          description: OK
+  /ping#serversOverrideOperationServerURL:
+    get:
+      operationId: serversOverrideOperationServerURL
+      tags:
+        - servers
+      responses:
+        "200":
+          description: OK
+      servers:
+        - url: "{protocol}://{hostname}:{port}/{base_path}"
+          variables:
+            protocol:
+              default: https
+              description: The protocol to use when making the network request.
+            port:
+              default: "35123"
+              description: The port on which the server is running.
+            hostname:
+              default: localhost
+              description: The hostname of the server.
+            base_path:
+              default: /status/404
+              description: The hostname of the server.
+          x-speakeasy-server-id: main
   /basic-auth/{user}/{passwd}:
     get:
       operationId: basicAuth
