@@ -2,11 +2,16 @@
 
 > :warning: **DEPRECATED**: This enum is deprecated.
 
+## Example Usage
+
+```typescript
+import { DeprecatedEnum } from "openapi/sdk/models/shared";
+
+let value: DeprecatedEnum = "a";
+```
 
 ## Values
 
-| Name  | Value |
-| ----- | ----- |
-| `A`   | a     |
-| `B`   | b     |
-| `C`   | c     |
+```typescript
+"a" | "b" | "c"
+```
