@@ -1,0 +1,10 @@
+# PaginationWrappedOptionalBodyRequest
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `idempotency_key`                                                                              | *T.nilable(::String)*                                                                          | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `limit_offset_config`                                                                          | [T.nilable(::OpenApiSDK::Shared::LimitOffsetConfig)](../../models/shared/limitoffsetconfig.md) | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `request_id`                                                                                   | *T.nilable(::String)*                                                                          | :heavy_minus_sign:                                                                             | N/A                                                                                            |
